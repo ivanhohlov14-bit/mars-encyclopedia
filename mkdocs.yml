@@ -1,0 +1,14 @@
+site_name: Марсианская энциклопедия
+site_url: https://ivanhohlov14-bit.github.io/mars-encyclopedia/
+
+theme:
+  name: readthedocs
+  language: ru
+
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+
+nav:
+  - Главная: index.md

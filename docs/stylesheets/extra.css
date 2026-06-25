@@ -1,0 +1,161 @@
+/* ==========================================
+   КЛАССИЧЕСКИЙ ВИКИ-СТИЛЬ ДЛЯ readthedocs
+   ========================================== */
+
+body {
+  font-family: 'Georgia', 'Times New Roman', 'Linux Libertine', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #202122;
+  background: #ffffff;
+}
+
+.wy-nav-content {
+  max-width: 1100px !important;
+  background: #ffffff;
+  padding: 2.5rem 3.5rem !important;
+  margin: 0 auto;
+  border-left: 1px solid #eaecf0;
+  border-right: 1px solid #eaecf0;
+}
+
+.wy-side-nav-search {
+  background: #f6f6f6 !important;
+}
+
+.wy-nav-side {
+  background: #f8f9fa !important;
+  border-right: 1px solid #a2a9b1 !important;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 2.6rem;
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 0.3rem;
+  color: #000000;
+}
+
+h2 {
+  font-weight: normal;
+  font-size: 2.0rem;
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 0.2rem;
+  margin-top: 2rem;
+  color: #000000;
+}
+
+a {
+  color: #0645ad !important;
+  text-decoration: none;
+}
+a:hover {
+  color: #0b0080 !important;
+  text-decoration: underline;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  width: 100%;
+  border: 1px solid #a2a9b1;
+}
+table th {
+  background: #eaecf0;
+  font-weight: bold;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #a2a9b1;
+}
+table td {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #a2a9b1;
+}
+table tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.infobox {
+  float: right;
+  clear: right;
+  background: #f8f9fa;
+  border: 1px solid #a2a9b1;
+  padding: 0.8rem 1.2rem;
+  margin: 0 0 1rem 1.5rem;
+  width: 280px;
+  font-size: 0.9rem;
+}
+
+blockquote {
+  background: #f8f9fa;
+  border-left: 4px solid #a2a9b1;
+  padding: 0.8rem 1.5rem;
+  font-style: italic;
+  color: #404244;
+}
+
+.rst-footer-buttons { display: none !important; }
+.footer { display: none !important; }
+
+/* ===== ТЁМНАЯ ТЕМА ===== */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #202122;
+  --border-color: #eaecf0;
+  --link-color: #0645ad;
+  --block-bg: #f8f9fa;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --text-color: #e0e0e0;
+  --border-color: #3a3a5a;
+  --link-color: #7fadff;
+  --block-bg: #2a2a4a;
+}
+
+body { background: var(--bg-color); color: var(--text-color); transition: 0.3s; }
+.wy-nav-content { background: var(--bg-color) !important; color: var(--text-color) !important; }
+.wy-nav-side { background: var(--bg-color) !important; border-color: var(--border-color) !important; }
+.wy-side-nav-search { background: var(--bg-color) !important; }
+.wy-menu-vertical a { color: var(--link-color) !important; }
+a { color: var(--link-color) !important; }
+blockquote, .infobox { background: var(--block-bg) !important; border-color: var(--border-color) !important; color: var(--text-color) !important; }
+table { background: var(--bg-color) !important; border-color: var(--border-color) !important; }
+table th { background: var(--block-bg) !important; color: var(--text-color) !important; }
+
+/* ===== БАННЕР ===== */
+.wy-side-nav-search {
+  padding-top: 0 !important;
+  background: transparent !important;
+  position: relative;
+}
+
+.wy-side-nav-search::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 180px;
+  background: url('/assets/images/header-banner.png') center/cover no-repeat;
+  margin-bottom: 10px;
+}
+
+.wy-side-nav-search .icon-home {
+  position: relative;
+  z-index: 10;
+}
+
+.wy-side-nav-search .icon-home img {
+  max-height: 60px !important;
+  width: auto;
+  display: block;
+  margin: 10px auto 5px auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.wy-side-nav-search a.icon-home {
+  font-size: 0 !important;
+}
+.wy-side-nav-search a.icon-home::before {
+  display: none !important;
+}

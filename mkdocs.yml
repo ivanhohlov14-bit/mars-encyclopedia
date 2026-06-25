@@ -1,14 +1,75 @@
 site_name: Марсианская энциклопедия
-site_url: https://ivanhohlov14-bit.github.io/mars-encyclopedia/
+site_url: https://ivanhohlov14-bit.github.io/mars-wiki/
 
 theme:
   name: readthedocs
   language: ru
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  custom_dir: overrides
 
 markdown_extensions:
   - admonition
   - tables
   - attr_list
+  - footnotes
 
 nav:
   - Главная: index.md
+  - История:
+      - Периодизация: history/periodization.md
+      - Хронология: history/timeline.md
+      - Мифы: history/myths.md
+  - География и геология:
+      - Физическая география: geography.md
+      - Геологическая эволюция: geology.md
+      - Климат: climate.md
+      - Вода на Марсе: water-on-mars.md
+      - Долина Маринера: geography/valles-marineris.md
+      - Ацидалийское море: geography/acidalia-sea.md
+      - Окхасен: geography/okhasen.md
+      - Роген-Ария: geography/rogen-aria.md
+      - Акха-Кор: geography/akkha-kor.md
+  - Астрономия:
+      - Фобос и Деймос: astronomy/phobos-deimos.md
+      - Звёздное небо Марса: astronomy/mars-sky.md
+      - Земля как цель: astronomy/earth-as-target.md
+  - Биология:
+      - Эволюция жизни: biology/biology-evolution.md
+      - Флора и фауна: biology/flora-fauna.md
+      - Адаптации марсиан: biology/martian-adaptations.md
+  - Технологии:
+      - Космические корабли: technology/spaceships.md
+      - Каналы и ирригация: technology/canals.md
+      - Строительство и материалы: technology/construction.md
+  - Религия и мифология:
+      - Пантеон богов: religion/pantheon.md
+      - Храмы и ритуалы: religion/temples.md
+      - Пророчества: religion/prophecies.md
+  - Общество и культура:
+      - Социальная структура: culture/social-structure.md
+      - Повседневная жизнь: culture/daily-life.md
+      - Календарь: culture/calendar.md
+      - Письменность и языки: svitok-e.md
+  - Персонажи:
+      - Хевсур: people/hevsur.md
+      - Талин: people/talin.md
+      - Элла: people/ella.md
+      - Аратан III: people/aratan-iii.md
+      - Йарра: people/yarra.md
+      - Алира: people/alira.md
+      - Миран: people/miran.md
+      - Ирайна: people/irayna.md
+      - Правители: svitok-b.md
+      - Родословные: svitok-g.md
+  - Книги:
+      - Ацидалийское море: books/acidalia-sea.md
+      - Круги на красном пепле: books/krugi-na-krasnom-peple.md
+      - Там, где спят голоса: books/tam-gde-spyat-golosa.md
+  - Источники и литература:
+      - Библиография: bibliography.md
+      - Семь свитков Хевсура: hevsur-scrolls.md
+      - Глоссарий: glossary.md
+
+extra_css:
+  - stylesheets/extra.css

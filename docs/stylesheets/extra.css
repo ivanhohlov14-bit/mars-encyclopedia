@@ -22,8 +22,8 @@ body {
 /* ===== БОКОВАЯ ПАНЕЛЬ С БАННЕРОМ (ФОН) ===== */
 .wy-side-nav-search {
   padding-top: 0 !important;
-  background: url('assets/images/cave-bg.png') center/cover no-repeat !important;
-  position: relative;
+  .wy-side-nav-search {
+  background: url('../assets/images/cave-bg.png') center/cover no-repeat !important;
 }
 
 /* Затемнение для читаемости текста */

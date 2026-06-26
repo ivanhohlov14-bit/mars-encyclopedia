@@ -821,11 +821,6 @@ const LEXICON_DATA = {
   "моря": { root: "ākha", pos: "noun" },
   "морю": { root: "ākha", pos: "noun" },
   "морем": { root: "ākha", pos: "noun" },
-  "тихий": { root: "sūl", pos: "adj" },
-  "тихая": { root: "sūl", pos: "adj" },
-  "тихое": { root: "sūl", pos: "adj" },
-  "тихие": { root: "sūl", pos: "adj" },
-  "тихим": { root: "sūl", pos: "adj" },
   "писать": { root: "khōs", pos: "verb" },
   "пишу": { root: "khōs", pos: "verb" },
   "пишешь": { root: "khōs", pos: "verb" },
@@ -1185,12 +1180,14 @@ function checkPhrases(text) {
     "прощайте": "Ariya lān",
     "очень приятно": "Tsan lān",
     "спасибо": "Tsan lān",
-    "глина помнит": "Lān sur"
+    "глина помнит": "Lān sur",
     "письмо из красной пыли": "Khalur khō sur",
     "марсианская энциклопедия": "Tsankhō Marzān",
     "красная пыль": "Khō sur",
-    "мнемис": "Lānīn",  // отсылка к имени автора
+    "мнемис": "Lānīn",
   };
+  ...
+}
   for (let key in phraseMap) {
     if (lower.includes(key)) {
       return { found: true, translation: phraseMap[key] };

@@ -1,3 +1,4 @@
+# Хевсур
 <div class="infobox" style="float: right; margin-left: 20px; max-width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 0.8rem 1.2rem;">
   <table style="border: none; margin:0; width:100%;">
     <tr><th style="border: none; background: transparent; text-align: left;">Имя</th><td style="border: none;">Хевсур</td></tr>
@@ -6,9 +7,6 @@
     <tr><th style="border: none; background: transparent; text-align: left;">Место</th><td style="border: none;">Окхасен</td></tr>
   </table>
 </div>
-
-# Хевсур
-
 **Хевсур** (2685 – ок. 2745 гг. Э.О.) — историк, писец и хранитель архива Академии Окхасена. Последний представитель рода хранителей, ведущего начало от Харана, сына Сарума.
 
 ## Биография

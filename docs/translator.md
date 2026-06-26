@@ -106,7 +106,6 @@ title: Марсианский переводчик
   <div id="output">
     <div class="result" id="translation">Здесь появится перевод...</div>
     <div class="gloss" id="gloss"></div>
-    <div class="gloss" id="debug" style="display:none;"></div>
   </div>
   <div class="footer">Автор языка: Mnemis • Вселенная «Письмо из Красной пыли»</div>
 </div>
@@ -143,7 +142,6 @@ fetch('/mars-encyclopedia/assets/dictionary.json')
 
 // Словарь исключений для глаголов (форма → инфинитив)
 const verbLemmas = {
-  // Группа "смотреть"
   "смотрю": "смотреть",
   "смотришь": "смотреть",
   "смотрит": "смотреть",
@@ -153,7 +151,6 @@ const verbLemmas = {
   "смотрел": "смотреть",
   "смотрела": "смотреть",
   "смотрели": "смотреть",
-  // Группа "помнить"
   "помню": "помнить",
   "помнишь": "помнить",
   "помнит": "помнить",
@@ -163,7 +160,6 @@ const verbLemmas = {
   "помнил": "помнить",
   "помнила": "помнить",
   "помнили": "помнить",
-  // Группа "знать"
   "знаю": "знать",
   "знаешь": "знать",
   "знает": "знать",
@@ -173,7 +169,6 @@ const verbLemmas = {
   "знал": "знать",
   "знала": "знать",
   "знали": "знать",
-  // Группа "умирать"
   "умираю": "умирать",
   "умираешь": "умирать",
   "умирает": "умирать",
@@ -183,7 +178,6 @@ const verbLemmas = {
   "умирал": "умирать",
   "умирала": "умирать",
   "умирали": "умирать",
-  // Группа "готовить"
   "готовлю": "готовить",
   "готовишь": "готовить",
   "готовит": "готовить",
@@ -193,7 +187,6 @@ const verbLemmas = {
   "готовил": "готовить",
   "готовила": "готовить",
   "готовили": "готовить",
-  // Группа "мечтать"
   "мечтаю": "мечтать",
   "мечтаешь": "мечтать",
   "мечтает": "мечтать",
@@ -203,7 +196,6 @@ const verbLemmas = {
   "мечтал": "мечтать",
   "мечтала": "мечтать",
   "мечтали": "мечтать",
-  // Группа "говорить"
   "говорю": "говорить",
   "говоришь": "говорить",
   "говорит": "говорить",
@@ -213,7 +205,6 @@ const verbLemmas = {
   "говорил": "говорить",
   "говорила": "говорить",
   "говорили": "говорить",
-  // Группа "сидеть"
   "сижу": "сидеть",
   "сидишь": "сидеть",
   "сидит": "сидеть",
@@ -223,7 +214,6 @@ const verbLemmas = {
   "сидел": "сидеть",
   "сидела": "сидеть",
   "сидели": "сидеть",
-  // Группа "хотеть"
   "хочу": "хотеть",
   "хочешь": "хотеть",
   "хочет": "хотеть",
@@ -233,7 +223,6 @@ const verbLemmas = {
   "хотел": "хотеть",
   "хотела": "хотеть",
   "хотели": "хотеть",
-  // Группа "трудиться"
   "тружусь": "трудиться",
   "трудишься": "трудиться",
   "трудится": "трудиться",
@@ -243,7 +232,6 @@ const verbLemmas = {
   "трудился": "трудиться",
   "трудилась": "трудиться",
   "трудились": "трудиться",
-  // Группа "желать"
   "желаю": "желать",
   "желаешь": "желать",
   "желает": "желать",
@@ -253,7 +241,6 @@ const verbLemmas = {
   "желал": "желать",
   "желала": "желать",
   "желали": "желать",
-  // Группа "рассказывать"
   "рассказываю": "рассказывать",
   "рассказываешь": "рассказывать",
   "рассказывает": "рассказывать",
@@ -263,7 +250,6 @@ const verbLemmas = {
   "рассказывал": "рассказывать",
   "рассказывала": "рассказывать",
   "рассказывали": "рассказывать",
-  // Группа "учить"
   "учу": "учить",
   "учишь": "учить",
   "учит": "учить",
@@ -273,7 +259,6 @@ const verbLemmas = {
   "учил": "учить",
   "учила": "учить",
   "учили": "учить",
-  // Группа "искать"
   "ищу": "искать",
   "ищешь": "искать",
   "ищет": "искать",
@@ -337,24 +322,15 @@ const nounLemmas = {
 };
 
 function lemmatizeRussian(word) {
-  // Проверяем в словарях
   if (verbLemmas[word]) return verbLemmas[word];
   if (nounLemmas[word]) return nounLemmas[word];
-  // Если слово заканчивается на "ться" → убираем "ся" и добавляем "ть" (упрощённо)
-  if (word.endsWith('ться')) {
-    return word.slice(0, -4) + 'ть';
-  }
-  // Если оканчивается на "ся" → убираем "ся"
+  // Упрощённое правило для глаголов на -ться и -ся
+  if (word.endsWith('ться')) return word.slice(0, -4) + 'ть';
   if (word.endsWith('ся')) {
     const stem = word.slice(0, -2);
-    // Проверяем, есть ли такой инфинитив в словаре, если нет, возвращаем как есть
-    // Упрощённо: если основа заканчивается на "а", "и", "е", то добавляем "ть"
-    if (stem.endsWith('а') || stem.endsWith('и') || stem.endsWith('е')) {
-      return stem + 'ть';
-    }
+    if (stem.endsWith('а') || stem.endsWith('и') || stem.endsWith('е')) return stem + 'ть';
     return stem;
   }
-  // Возвращаем исходное слово, если не нашли
   return word;
 }
 
@@ -362,42 +338,39 @@ function lemmatizeRussian(word) {
 // 3. ОСНОВНАЯ ЛОГИКА ПЕРЕВОДА
 // ============================================================
 
-// Предлоги, которые игнорируем
 const PREPOSITIONS = ['на', 'в', 'у', 'к', 'от', 'из', 'для', 'без', 'через', 'по', 'о', 'об', 'с', 'со', 'за', 'под', 'над', 'перед', 'между', 'возле', 'около'];
 
-// Определение множественного числа по русскому окончанию
 function isRussianPlural(word) {
   const w = word.toLowerCase();
-  // Окончания множественного числа: ы, и, а, я (для имён сущ.)
   if (w.endsWith('ы') || w.endsWith('и') || w.endsWith('а') || w.endsWith('я')) {
-    // Исключения: слова на "мя" (время, имя) – не множественное
     if (w.endsWith('мя')) return false;
-    // Слова на "ка" могут быть ед.ч. (рука) – проверяем по словарю, но упростим
-    // Если в словаре есть форма множественного числа, то true
-    // Мы можем проверить, есть ли лемма, и если лемма отличается
     const lemma = lemmatizeRussian(w);
-    // Если лемма не равна слову, значит это форма, возможно множественное
-    if (lemma !== w) {
-      // Проверяем, есть ли лемма в словаре
-      if (lexicon[lemma]) return true;
-    }
+    if (lemma !== w && lexicon[lemma]) return true;
   }
   return false;
 }
 
-// Определение прилагательных – у них окончания -ый, -ий, -ой, -ая, -яя, -ое, -ее, -ые, -ие
 function isRussianAdjective(word) {
   const w = word.toLowerCase();
   return /[ая]я$/.test(w) || /[оы]й$/.test(w) || /ий$/.test(w) || /ое$/.test(w) || /ее$/.test(w) || /ые$/.test(w) || /ие$/.test(w);
 }
 
-// Определение глагола в прошедшем времени (оканчивается на -л, -ла, -ли, -ло)
 function isRussianPastTense(word) {
   const w = word.toLowerCase();
   return w.endsWith('л') || w.endsWith('ла') || w.endsWith('ли') || w.endsWith('ло');
 }
 
-// Основная функция перевода
+function applyPlural(root) {
+  if (!root) return root;
+  const lastChar = root.charAt(root.length - 1);
+  const vowels = ['a', 'ā', 'o', 'ō', 'u', 'ū', 'e', 'i'];
+  if (vowels.includes(lastChar.toLowerCase())) {
+    return root + 'zān';
+  } else {
+    return root + 'ān';
+  }
+}
+
 function translateText() {
   const input = document.getElementById('inputText').value.trim();
   if (!input) {
@@ -406,170 +379,102 @@ function translateText() {
     return;
   }
 
-  // 1. Токенизация
   const words = input.split(/\s+/).filter(w => w.length > 0);
-  
-  // 2. Обработка каждого слова
-  let processedWords = []; // массив объектов { original, clean, lemma, pos, root, plural, adj }
+  let processedWords = [];
   let unknownWords = [];
 
   words.forEach(word => {
-    // Очищаем от знаков препинания
     const clean = word.toLowerCase().replace(/[^а-яa-z]/gi, '');
-    if (PREPOSITIONS.includes(clean)) {
-      // Игнорируем предлоги
-      return;
-    }
+    if (PREPOSITIONS.includes(clean)) return;
 
-    // Лемматизация
     let lemma = lemmatizeRussian(clean);
-    // Если лемма не найдена в словаре, попробуем использовать исходное clean
     if (!lexicon[lemma]) {
-      // Если исходное слово есть в словаре, используем его
       if (lexicon[clean]) {
         lemma = clean;
       } else {
-        // Пытаемся отсечь окончание для множественного числа
-        // Например, "звёзды" -> "звезда"
+        // Пробуем убрать окончание для существительных мн.ч.
         if (clean.endsWith('ы') && clean.length > 1) {
           const singular = clean.slice(0, -1) + 'а';
-          if (lexicon[singular]) {
-            lemma = singular;
-          }
+          if (lexicon[singular]) lemma = singular;
         }
-        // Если всё ещё нет, помечаем как неизвестное
         if (!lexicon[lemma]) {
           unknownWords.push(word);
-          processedWords.push({
-            original: word,
-            clean: clean,
-            lemma: null,
-            pos: 'unknown',
-            root: word, // оставляем как есть
-            plural: false,
-            adj: false
-          });
+          processedWords.push({ original: word, clean, lemma: null, pos: 'unknown', root: word, plural: false });
           return;
         }
       }
     }
 
-    // Теперь lemma точно есть в словаре
     const entry = lexicon[lemma];
-    let pos = entry.pos;
-    let root = entry.root;
-
-    // Определяем, является ли слово множественным числом
     let plural = false;
-    if (pos === 'noun' || pos === 'adj') {
-      // Проверяем, есть ли окончание множественного числа в исходном слове
-      if (isRussianPlural(clean)) {
-        plural = true;
-      }
+    if (entry.pos === 'noun' || entry.pos === 'adj') {
+      if (isRussianPlural(clean)) plural = true;
     }
-
-    // Определяем прилагательное (для перестановки)
     let adj = false;
-    if (pos === 'adj') {
-      adj = true;
-    }
+    if (entry.pos === 'adj') adj = true;
 
     processedWords.push({
       original: word,
-      clean: clean,
-      lemma: lemma,
-      pos: pos,
-      root: root,
-      plural: plural,
-      adj: adj
+      clean,
+      lemma,
+      pos: entry.pos,
+      root: entry.root,
+      plural,
+      adj
     });
   });
 
-  // 3. Построение марсианского предложения
-
-  // Разделяем на подлежащее, дополнение и сказуемое (глагол)
+  // Найти глагол
+  let verbIndex = processedWords.findIndex(w => w.pos === 'verb');
   let subject = [];
   let objects = [];
   let verb = null;
 
-  // Найдём глагол (первый глагол)
-  let verbIndex = processedWords.findIndex(w => w.pos === 'verb');
   if (verbIndex !== -1) {
     verb = processedWords[verbIndex];
     subject = processedWords.slice(0, verbIndex);
     objects = processedWords.slice(verbIndex + 1);
   } else {
-    // Если глагола нет, считаем все слова подлежащим (именное предложение)
     subject = processedWords;
   }
 
-  // 4. Сборка результата в порядке SOV
+  // Сборка SOV
+  let finalWords = [];
 
-  let resultWords = [];
+  // Подлежащее
+  let subjNouns = subject.filter(w => w.pos === 'noun' || w.pos === 'pron');
+  let subjAdj = subject.filter(w => w.pos === 'adj');
+  subjNouns.forEach(w => {
+    let word = w.root;
+    if (w.plural) word = applyPlural(word);
+    finalWords.push(word);
+  });
+  subjAdj.forEach(w => finalWords.push(w.root));
 
-  // Сначала подлежащее (существительные и прилагательные)
-  // Прилагательные должны стоять после существительных в марсианском
-  // Отделим существительные от прилагательных в подлежащем
-  let nounsSubj = subject.filter(w => w.pos === 'noun' || w.pos === 'pron');
-  let adjSubj = subject.filter(w => w.pos === 'adj');
-  // Объединяем: сначала существительные, потом прилагательные (но по правилам марсианского прилагательное после существительного)
-  // Однако если есть несколько существительных и прилагательных, нужно ставить прилагательное после того существительного, к которому оно относится.
-  // Упрощённо: все существительные, потом все прилагательные.
-  let subjWords = [];
-  // Сначала существительные
-  nounsSubj.forEach(w => {
+  // Дополнение
+  let objNouns = objects.filter(w => w.pos === 'noun' || w.pos === 'pron');
+  let objAdj = objects.filter(w => w.pos === 'adj');
+  objNouns.forEach(w => {
     let word = w.root;
-    if (w.plural) {
-      // Добавляем суффикс множественного числа
-      word = applyPlural(word);
-    }
-    subjWords.push(word);
+    if (w.plural) word = applyPlural(word);
+    finalWords.push(word);
   });
-  // Потом прилагательные (если они были в подлежащем)
-  adjSubj.forEach(w => {
-    let word = w.root;
-    // Прилагательные не изменяются по числам в марсианском (пока)
-    subjWords.push(word);
-  });
-
-  // Дополнения (объекты) – аналогично
-  let nounsObj = objects.filter(w => w.pos === 'noun' || w.pos === 'pron');
-  let adjObj = objects.filter(w => w.pos === 'adj');
-  let objWords = [];
-  nounsObj.forEach(w => {
-    let word = w.root;
-    if (w.plural) {
-      word = applyPlural(word);
-    }
-    objWords.push(word);
-  });
-  adjObj.forEach(w => {
-    objWords.push(w.root);
-  });
+  objAdj.forEach(w => finalWords.push(w.root));
 
   // Глагол
-  let verbWord = verb ? verb.root : null;
-  let verbPlural = verb ? verb.plural : false; // глаголы не изменяются по числам в марсианском
-
-  // Теперь собираем финальный порядок: subject + objects + verb
-  let finalWords = subjWords.concat(objWords);
-  if (verbWord) {
-    finalWords.push(verbWord);
+  if (verb) {
+    finalWords.push(verb.root);
   }
 
-  // 5. Добавление грамматических частиц
-
-  // Определяем время, отрицание, вопрос и т.д. по исходному тексту
+  // Грамматические частицы
   const lowerInput = input.toLowerCase();
 
-  // Отрицание (если есть "не" или "нет")
+  // Отрицание
   if (lowerInput.includes('не') || lowerInput.includes('нет')) {
-    // Находим позицию глагола в finalWords
-    if (verbWord) {
-      const verbIdx = finalWords.indexOf(verbWord);
-      if (verbIdx !== -1 && verbIdx < finalWords.length) {
-        // Вставляем "ān" после глагола
-        finalWords.splice(verbIdx + 1, 0, 'ān');
+    if (verb) {
+      const idx = finalWords.indexOf(verb.root);
+      if (idx !== -1 && idx < finalWords.length - 1) {
+        finalWords.splice(idx + 1, 0, 'ān');
       }
     }
   }
@@ -579,199 +484,96 @@ function translateText() {
     finalWords.push('kha');
   }
 
-  // Прошедшее время (если есть глагол в прошедшем времени или слова "был", "была")
+  // Прошедшее время
   const hasPastMarker = lowerInput.includes('был') || lowerInput.includes('была') || lowerInput.includes('были');
   const hasPastVerb = processedWords.some(w => w.pos === 'verb' && isRussianPastTense(w.clean));
   if (hasPastMarker || hasPastVerb) {
-    if (verbWord) {
-      const verbIdx = finalWords.indexOf(verbWord);
-      if (verbIdx !== -1 && verbIdx < finalWords.length) {
-        // Вставляем "nu" после глагола (перед отрицанием, если есть)
-        // Проверяем, не вставлен ли уже ān
-        const nextWord = finalWords[verbIdx + 1];
-        if (nextWord === 'ān') {
-          // Вставляем после ān
-          finalWords.splice(verbIdx + 2, 0, 'nu');
-        } else {
-          finalWords.splice(verbIdx + 1, 0, 'nu');
-        }
+    if (verb) {
+      const idx = finalWords.indexOf(verb.root);
+      if (idx !== -1 && idx < finalWords.length - 1) {
+        const next = finalWords[idx + 1];
+        if (next === 'ān') finalWords.splice(idx + 2, 0, 'nu');
+        else finalWords.splice(idx + 1, 0, 'nu');
       }
     }
   }
 
-  // Будущее время (если есть "буду", "будет", "будут")
+  // Будущее
   if (lowerInput.includes('буду') || lowerInput.includes('будет') || lowerInput.includes('будут')) {
-    if (verbWord) {
-      const verbIdx = finalWords.indexOf(verbWord);
-      if (verbIdx !== -1 && verbIdx < finalWords.length) {
-        // Вставляем "shu" после глагола (перед отрицанием, если есть)
-        const nextWord = finalWords[verbIdx + 1];
-        if (nextWord === 'ān') {
-          finalWords.splice(verbIdx + 2, 0, 'shu');
-        } else {
-          finalWords.splice(verbIdx + 1, 0, 'shu');
-        }
+    if (verb) {
+      const idx = finalWords.indexOf(verb.root);
+      if (idx !== -1 && idx < finalWords.length - 1) {
+        const next = finalWords[idx + 1];
+        if (next === 'ān') finalWords.splice(idx + 2, 0, 'shu');
+        else finalWords.splice(idx + 1, 0, 'shu');
       }
     }
   }
 
-  // Модальные глаголы (могу, хочешь, должен)
+  // Модальность
   const modalMap = {
-    'могу': 'xan',
-    'можешь': 'xan',
-    'может': 'xan',
-    'можем': 'xan',
-    'можете': 'xan',
-    'могут': 'xan',
-    'хочу': 'shar',
-    'хочешь': 'shar',
-    'хочет': 'shar',
-    'хотим': 'shar',
-    'хотите': 'shar',
-    'хотят': 'shar',
-    'должен': 'mun',
-    'должна': 'mun',
-    'должны': 'mun',
-    'должно': 'mun'
+    'могу': 'xan', 'можешь': 'xan', 'может': 'xan', 'можем': 'xan', 'можете': 'xan', 'могут': 'xan',
+    'хочу': 'shar', 'хочешь': 'shar', 'хочет': 'shar', 'хотим': 'shar', 'хотите': 'shar', 'хотят': 'shar',
+    'должен': 'mun', 'должна': 'mun', 'должны': 'mun', 'должно': 'mun'
   };
   let modalSuffix = null;
   for (let key in modalMap) {
-    if (lowerInput.includes(key)) {
-      modalSuffix = modalMap[key];
-      break;
-    }
+    if (lowerInput.includes(key)) { modalSuffix = modalMap[key]; break; }
   }
-  if (modalSuffix && verbWord) {
-    // Добавляем суффикс к глаголу (присоединяем к корню)
-    const verbIdx = finalWords.indexOf(verbWord);
-    if (verbIdx !== -1) {
-      finalWords[verbIdx] = verbWord + modalSuffix;
-    }
+  if (modalSuffix && verb) {
+    const idx = finalWords.indexOf(verb.root);
+    if (idx !== -1) finalWords[idx] = verb.root + modalSuffix;
   }
 
-  // Сослагательное наклонение (если есть "бы" или "чтобы")
+  // Сослагательное
   if (lowerInput.includes('бы') || lowerInput.includes('чтобы')) {
-    if (verbWord) {
-      const verbIdx = finalWords.indexOf(verbWord);
-      if (verbIdx !== -1) {
-        // Вставляем "kha" перед глаголом
-        finalWords.splice(verbIdx, 0, 'kha');
-      }
+    if (verb) {
+      const idx = finalWords.indexOf(verb.root);
+      if (idx !== -1) finalWords.splice(idx, 0, 'kha');
     }
   }
 
-  // Пассивный залог (если есть "был" + глагол в прош. вр. или "было")
-  // Упрощённо: если есть "был" и есть глагол, добавляем "rak" после глагола
+  // Пассив
   if (lowerInput.includes('был') || lowerInput.includes('была') || lowerInput.includes('были')) {
-    // Проверяем, есть ли глагол (кроме "был")
-    const hasOtherVerb = processedWords.some(w => w.pos === 'verb' && w.clean !== 'был' && w.clean !== 'была' && w.clean !== 'были');
-    if (hasOtherVerb && verbWord) {
-      const verbIdx = finalWords.indexOf(verbWord);
-      if (verbIdx !== -1 && verbIdx < finalWords.length) {
-        // Вставляем "rak" после глагола (или после отрицания/времени)
-        // Найдём позицию после глагола, но перед возможными частицами
-        let insertPos = verbIdx + 1;
-        // Пропускаем уже вставленные частицы (ān, nu, shu)
-        while (insertPos < finalWords.length && ['ān', 'nu', 'shu'].includes(finalWords[insertPos])) {
-          insertPos++;
-        }
-        finalWords.splice(insertPos, 0, 'rak');
+    const hasOtherVerb = processedWords.some(w => w.pos === 'verb' && !['был','была','были'].includes(w.clean));
+    if (hasOtherVerb && verb) {
+      const idx = finalWords.indexOf(verb.root);
+      if (idx !== -1 && idx < finalWords.length - 1) {
+        let pos = idx + 1;
+        while (pos < finalWords.length && ['ān','nu','shu'].includes(finalWords[pos])) pos++;
+        finalWords.splice(pos, 0, 'rak');
       }
     }
   }
 
-  // Эвокативы (упрощённо)
-  if (lowerInput.includes('вижу') || lowerInput.includes('наблюдаю')) {
-    // Добавляем -ra к глаголу
-    if (verbWord) {
-      const verbIdx = finalWords.indexOf(verbWord);
-      if (verbIdx !== -1) {
-        finalWords[verbIdx] = verbWord + 'ra';
-      }
-    }
-  } else if (lowerInput.includes('говорят') || lowerInput.includes('рассказывают')) {
-    if (verbWord) {
-      const verbIdx = finalWords.indexOf(verbWord);
-      if (verbIdx !== -1) {
-        finalWords[verbIdx] = verbWord + 'ma';
-      }
-    }
-  } else if (lowerInput.includes('должно быть') || lowerInput.includes('вероятно')) {
-    if (verbWord) {
-      const verbIdx = finalWords.indexOf(verbWord);
-      if (verbIdx !== -1) {
-        finalWords[verbIdx] = verbWord + 'la';
-      }
-    }
-  }
-
-  // 6. Формирование финальной строки
   let translation = finalWords.join(' ');
-
-  // 7. Вывод результата
   document.getElementById('translation').textContent = translation;
 
-  // Подстрочник (глосса)
-  let glossText = 'Подстрочник: ' + finalWords.map((w, i) => {
-    // Ищем русское слово по корню
+  // Подстрочник
+  let glossText = 'Подстрочник: ' + finalWords.map(w => {
     for (let key in lexicon) {
-      if (lexicon[key].root === w) {
-        return key;
-      }
+      if (lexicon[key].root === w) return key;
     }
-    // Если это частица, покажем её название
     if (w === 'ān') return 'отрицание';
-    if (w === 'nu') return 'прош. вр.';
-    if (w === 'shu') return 'буд. вр.';
+    if (w === 'nu') return 'прош.вр.';
+    if (w === 'shu') return 'буд.вр.';
     if (w === 'kha') return 'вопрос';
     if (w === 'rak') return 'пассив';
-    if (w === 'xan') return 'могу';
-    if (w === 'shar') return 'хочу';
-    if (w === 'mun') return 'должен';
     return w;
   }).join(' ');
-  document.getElementById('gloss').textContent = glossText;
-
   if (unknownWords.length > 0) {
-    document.getElementById('gloss').textContent += ' (⚠️ неизвестные: ' + unknownWords.join(', ') + ')';
+    glossText += ' (⚠️ неизвестные: ' + unknownWords.join(', ') + ')';
   }
-
-  // Показываем отладочную информацию (скрыто)
-  // document.getElementById('debug').textContent = 'DEBUG: ' + JSON.stringify(processedWords, null, 2);
-}
-
-// ============================================================
-// 4. ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
-// ============================================================
-
-function applyPlural(root) {
-  // Правила: после гласной добавляем -zān, после согласной -ān
-  // Проверяем последний символ корня
-  if (!root) return root;
-  const lastChar = root.charAt(root.length - 1);
-  // Гласные: a, ā, o, ō, u, ū, e, i (но у нас в основном a, o, u)
-  const vowels = ['a', 'ā', 'o', 'ō', 'u', 'ū', 'e', 'i'];
-  if (vowels.includes(lastChar.toLowerCase())) {
-    return root + 'zān';
-  } else {
-    return root + 'ān';
-  }
+  document.getElementById('gloss').textContent = glossText;
 }
 
 function clearAll() {
   document.getElementById('inputText').value = '';
   document.getElementById('translation').textContent = 'Здесь появится перевод...';
-  document.getElementById('translation').className = 'result';
   document.getElementById('gloss').textContent = '';
 }
 
-// ============================================================
-// 5. ДОПОЛНИТЕЛЬНО: обработка ошибок и улучшения
-// ============================================================
-// Добавляем возможность перевода по нажатию Ctrl+Enter
 document.getElementById('inputText').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-    translateText();
-  }
+  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) translateText();
 });
 </script>

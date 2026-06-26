@@ -118,10 +118,11 @@ title: Марсианский переводчик
     <br>• <kbd>Ctrl</kbd>+<kbd>Enter</kbd> — быстрый перевод.
   </div>
   <textarea id="inputText" placeholder="Например: Марсиане смотрят на звёзды."></textarea>
-  <div class="buttons">
-    <button onclick="translateText()">🔄 Перевести</button>
-    <button onclick="clearAll()" class="secondary">🗑 Очистить</button>
-  </div>
+ <div class="buttons">
+  <button onclick="translateText()">🔄 Перевести</button>
+  <button onclick="clearAll()" class="secondary">🗑 Очистить</button>
+  <button onclick="toggleGlyphs()" class="secondary" id="glyphToggle">🔮 Иероглифы</button>
+</div>
   <div id="output">
     <div class="result" id="translation">Здесь появится перевод...</div>
     <div class="gloss" id="gloss"></div>
@@ -1533,6 +1534,28 @@ function checkPhrases(text) {
     }
   }
   return { found: false };
+}
+
+// ============================================================
+// ПЕРЕКЛЮЧЕНИЕ РЕЖИМА ИЕРОГЛИФОВ
+// ============================================================
+function toggleGlyphs() {
+  showGlyphs = !showGlyphs;
+  const button = document.getElementById('glyphToggle');
+  if (showGlyphs) {
+    button.textContent = '📝 Латиница';
+    button.style.background = '#e67e22';
+    document.getElementById('translation').classList.add('glyph-mode');
+  } else {
+    button.textContent = '🔮 Иероглифы';
+    button.style.background = '#6c7a8a';
+    document.getElementById('translation').classList.remove('glyph-mode');
+  }
+  // Если есть текст, обновляем перевод
+  const input = document.getElementById('inputText').value.trim();
+  if (input) {
+    translateText();
+  }
 }
   
 // ============================================================

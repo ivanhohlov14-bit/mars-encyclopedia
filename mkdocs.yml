@@ -11,7 +11,7 @@ theme:
 plugins:
   - search
   - roamlinks
-  
+
 markdown_extensions:
   - admonition
   - tables
@@ -30,13 +30,17 @@ nav:
       - Роген-Ария: geography/rogen-aria.md
   - Астрономия:
       - Звёздное небо Марса: astronomy/mars-sky.md
+      - Фобос и Деймос: astronomy/phobos-deimos.md
+      - Земля как цель: astronomy/earth-as-target.md
   - Персонажи:
       - Хевсур: people/hevsur.md
       - Талин: people/talin.md
       - Элла: people/ella.md
+      - Йарра: people/yarra.md
+      - Алира: people/alira.md
+      - Аратан III: people/aratan-iii.md
   - Книги:
       - Ацидалийское море: books/acidalia-sea.md
-      - Переводчик: translator.md
-      - Лицензия: license.md 
+
 extra_css:
   - stylesheets/extra.css

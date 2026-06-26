@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "author": "Mnemis",
+    "project": "Марсианская энциклопедия (Письмо из Красной пыли)",
+    "description": "Словарь и грамматические правила для переводчика"
+  },
+  
+  "lexicon": {
+    "вода": { "root": "ākha", "pos": "noun" },
+    "звезда": { "root": "dzen", "pos": "noun" },
+    "земля": { "root": "kōl", "pos": "noun" },
+    "жизнь": { "root": "mar", "pos": "noun" },
+    "помнить": { "root": "lān", "pos": "verb" },
+    "смотреть": { "root": "thal", "pos": "verb" },
+    "умирать": { "root": "mōr", "pos": "verb" },
+    "великий": { "root": "suf", "pos": "adj" },
+    "избранный": { "root": "ari", "pos": "adj" },
+    "нет": { "root": "ān", "pos": "particle" },
+    "и": { "root": "un", "pos": "conj" },
+    "но": { "root": "kan", "pos": "conj" },
+    "когда": { "root": "tsen", "pos": "conj" },
+    "я": { "root": "an", "pos": "pron" },
+    "ты": { "root": "tan", "pos": "pron" }
+  },
+
+  "suffixes": {
+    "-ān": { "type": "plural", "desc": "множественное число (после гласной -zān)" },
+    "-an": { "type": "possessive", "desc": "мой (притяжательность 1-е лицо)" },
+    "-tan": { "type": "possessive", "desc": "твой" },
+    "-lan": { "type": "possessive", "desc": "его/её" },
+    "-xan": { "type": "modal", "desc": "могу (модальность возможности)" },
+    "-shar": { "type": "modal", "desc": "хочу" },
+    "-mun": { "type": "modal", "desc": "должен" },
+    "-sen": { "type": "abstract", "desc": "место действия (абстрактное сущ-ное)" },
+    "-kha": { "type": "comparative", "desc": "сравнительная степень (больше)" },
+    "kha-": { "type": "superlative", "desc": "превосходная степень (самый)" },
+    "-ra": { "type": "evidential", "desc": "прямое наблюдение" },
+    "-ma": { "type": "evidential", "desc": "с чужих слов" },
+    "-la": { "type": "evidential", "desc": "умозаключение" },
+    "-tha": { "type": "evidential", "desc": "сакральная истина" }
+  },
+
+  "particles": {
+    "nu": { "type": "tense", "desc": "прошедшее время (после глагола)" },
+    "shu": { "type": "tense", "desc": "будущее время (после глагола)" },
+    "rak": { "type": "voice", "desc": "пассивный залог (после глагола)" },
+    "kha": { "type": "question", "desc": "вопросительная частица (в конце)" },
+    "kha": { "type": "subjunctive", "desc": "сослагательное наклонение (перед глаголом)" },
+    "thu": { "type": "reported", "desc": "косвенная речь (в конце)" }
+  },
+
+  "syntax": {
+    "word_order": "SOV",
+    "adjective_position": "after_noun",
+    "negation": "после глагола (ān mōr), в будущем перед shu (ān shu)"
+  }
+}

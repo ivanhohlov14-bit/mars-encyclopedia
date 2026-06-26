@@ -31,6 +31,6 @@ nav:
       - Элла: people/ella.md
   - Книги:
       - Ацидалийское море: books/acidalia-sea.md
-
+      - Переводчик: translator.md
 extra_css:
   - stylesheets/extra.css

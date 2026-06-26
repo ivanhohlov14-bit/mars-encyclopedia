@@ -1,4 +1,32 @@
-site_name: Test
-theme: readthedocs
+site_name: Марсианская энциклопедия
+site_url: https://ivanhohlov14-bit.github.io/mars-wiki/
+
+theme:
+  name: readthedocs
+  language: ru
+
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+  - footnotes
+
 nav:
-  - Home: index.md
+  - Главная: index.md
+  - История:
+      - Периодизация: history/periodization.md
+      - Хронология: history/timeline.md
+      - Мифы: history/myths.md
+  - География:
+      - Ацидалийское море: geography/acidalia-sea.md
+      - Окхасен: geography/okhasen.md
+  - Астрономия:
+      - Звёздное небо: astronomy/mars-sky.md
+  - Персонажи:
+      - Хевсур: people/hevsur.md
+      - Талин: people/talin.md
+  - Книги:
+      - Ацидалийское море: books/acidalia-sea.md
+
+extra_css:
+  - stylesheets/extra.css

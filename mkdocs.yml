@@ -6,7 +6,6 @@ theme:
   name: readthedocs
   language: ru
   logo: assets/logo.png
-  custom_dir: overrides
 
 markdown_extensions:
   - admonition

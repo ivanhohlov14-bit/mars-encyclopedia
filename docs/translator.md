@@ -128,8 +128,8 @@ title: Марсианский переводчик
     <div class="gloss" id="gloss"></div>
   </div>
   <div class="footer">
-    Автор языка: <strong>Mnemis</strong> • Вселенная «Письмо из Красной пыли» • Все права защищены
-  </div>
+  © 2026 Mnemis. Автор языка: <strong>Mnemis</strong> • Вселенная «Письмо из Красной пыли» • Все права защищены.
+</div>
 </div>
 
 <script>

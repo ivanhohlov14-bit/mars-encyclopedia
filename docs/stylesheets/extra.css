@@ -154,3 +154,15 @@ a { color: var(--link-color) !important; }
 blockquote, .infobox { background: var(--block-bg) !important; border-color: var(--border-color) !important; color: var(--text-color) !important; }
 table { background: var(--bg-color) !important; border-color: var(--border-color) !important; }
 table th { background: var(--block-bg) !important; color: var(--text-color) !important; }
+
+.wy-side-nav-search {
+  background: url('/assets/images/cave-bg.jpg') center/cover no-repeat !important;
+  padding-top: 0 !important;
+}
+.wy-side-nav-search::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 180px;
+  background: rgba(0,0,0,0.3);
+}

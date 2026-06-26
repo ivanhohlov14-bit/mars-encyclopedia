@@ -133,10 +133,10 @@ title: Марсианский переводчик
 
 <script>
 // ============================================================
-// 0. ВСТРОЕННЫЙ ПОЛНЫЙ СЛОВАРЬ (РАБОТАЕТ БЕЗ ВНЕШНЕГО ФАЙЛА)
+// 0. ПОЛНЫЙ ВСТРОЕННЫЙ СЛОВАРЬ (БОЛЕЕ 500 СЛОВ)
 // ============================================================
-const BUILTIN_LEXICON = {
-  // Местоимения (все падежи)
+const LEXICON_DATA = {
+  // === МЕСТОИМЕНИЯ (все падежи) ===
   "я": { root: "an", pos: "pron" },
   "меня": { root: "an", pos: "pron" },
   "мне": { root: "an", pos: "pron" },
@@ -168,7 +168,8 @@ const BUILTIN_LEXICON = {
   "вам": { root: "tanān", pos: "pron" },
   "вами": { root: "tanān", pos: "pron" },
   "они": { root: "lanān", pos: "pron" },
-  // Существительные
+
+  // === СУЩЕСТВИТЕЛЬНЫЕ ===
   "вода": { root: "ākha", pos: "noun" },
   "воды": { root: "ākha", pos: "noun" },
   "воде": { root: "ākha", pos: "noun" },
@@ -290,7 +291,40 @@ const BUILTIN_LEXICON = {
   "рыбы": { root: "ākhakhōr", pos: "noun" },
   "птица": { root: "zalakhōr", pos: "noun" },
   "птицы": { root: "zalakhōr", pos: "noun" },
-  // Прилагательные
+  "камень": { root: "ghar", pos: "noun" },
+  "камня": { root: "ghar", pos: "noun" },
+  "камни": { root: "ghar", pos: "noun" },
+  "тень": { root: "ghōl", pos: "noun" },
+  "тени": { root: "ghōl", pos: "noun" },
+  "родина": { root: "ariya", pos: "noun" },
+  "свет": { root: "dzēn", pos: "noun" },
+  "знание": { root: "tsan", pos: "noun" },
+  "знания": { root: "tsan", pos: "noun" },
+  "гибель": { root: "mōrkhō", pos: "noun" },
+  "кухня": { root: "ōkhsen", pos: "noun" },
+  "дверь": { root: "tōkh", pos: "noun" },
+  "двери": { root: "tōkh", pos: "noun" },
+  "порог": { root: "tōkhsen", pos: "noun" },
+  "стена": { root: "gharōkh", pos: "noun" },
+  "стены": { root: "gharōkh", pos: "noun" },
+  "север": { root: "khūr", pos: "noun" },
+  "ткань": { root: "thōl", pos: "noun" },
+  "одежда": { root: "thōlīn", pos: "noun" },
+  "шерсть": { root: "kharm", pos: "noun" },
+  "плащ": { root: "kharmīn", pos: "noun" },
+  "пояс": { root: "sūk", pos: "noun" },
+  "предки": { root: "xalmar", pos: "noun" },
+  "год": { root: "amār", pos: "noun" },
+  "года": { root: "amār", pos: "noun" },
+  "лет": { root: "amār", pos: "noun" },
+  "солнце": { root: "khō", pos: "noun" },
+  "обсерватория": { root: "dzensen", pos: "noun" },
+  "вулкан": { root: "khōsen", pos: "noun" },
+  "крепость": { root: "gharokh", pos: "noun" },
+  "окхасен": { root: "Okhasen", pos: "noun" },
+  "ксанф": { root: "Ksanf", pos: "noun" },
+
+  // === ПРИЛАГАТЕЛЬНЫЕ ===
   "избранный": { root: "ari", pos: "adj" },
   "избранная": { root: "ari", pos: "adj" },
   "избранное": { root: "ari", pos: "adj" },
@@ -315,7 +349,8 @@ const BUILTIN_LEXICON = {
   "старая": { root: "xal", pos: "adj" },
   "старое": { root: "xal", pos: "adj" },
   "старые": { root: "xal", pos: "adj" },
-  // Глаголы (все формы)
+
+  // === ГЛАГОЛЫ (все формы) ===
   "смотреть": { root: "thal", pos: "verb" },
   "смотрю": { root: "thal", pos: "verb" },
   "смотришь": { root: "thal", pos: "verb" },
@@ -442,7 +477,268 @@ const BUILTIN_LEXICON = {
   "была": { root: "sen", pos: "verb" },
   "было": { root: "sen", pos: "verb" },
   "были": { root: "sen", pos: "verb" },
-  // Союзы и частицы
+  "думать": { root: "tsanur", pos: "verb" },
+  "думаю": { root: "tsanur", pos: "verb" },
+  "думаешь": { root: "tsanur", pos: "verb" },
+  "думает": { root: "tsanur", pos: "verb" },
+  "думаем": { root: "tsanur", pos: "verb" },
+  "думаете": { root: "tsanur", pos: "verb" },
+  "думают": { root: "tsanur", pos: "verb" },
+  "думал": { root: "tsanur", pos: "verb" },
+  "думала": { root: "tsanur", pos: "verb" },
+  "думали": { root: "tsanur", pos: "verb" },
+  "понимать": { root: "tsanlān", pos: "verb" },
+  "понимаю": { root: "tsanlān", pos: "verb" },
+  "понимаешь": { root: "tsanlān", pos: "verb" },
+  "понимает": { root: "tsanlān", pos: "verb" },
+  "понимаем": { root: "tsanlān", pos: "verb" },
+  "понимаете": { root: "tsanlān", pos: "verb" },
+  "понимают": { root: "tsanlān", pos: "verb" },
+  "понимал": { root: "tsanlān", pos: "verb" },
+  "понимала": { root: "tsanlān", pos: "verb" },
+  "понимали": { root: "tsanlān", pos: "verb" },
+  "бежать": { root: "nurkhō", pos: "verb" },
+  "бегу": { root: "nurkhō", pos: "verb" },
+  "бежишь": { root: "nurkhō", pos: "verb" },
+  "бежит": { root: "nurkhō", pos: "verb" },
+  "бежим": { root: "nurkhō", pos: "verb" },
+  "бежите": { root: "nurkhō", pos: "verb" },
+  "бегут": { root: "nurkhō", pos: "verb" },
+  "бежал": { root: "nurkhō", pos: "verb" },
+  "бежала": { root: "nurkhō", pos: "verb" },
+  "бежали": { root: "nurkhō", pos: "verb" },
+  "стоять": { root: "okhsen", pos: "verb" },
+  "стою": { root: "okhsen", pos: "verb" },
+  "стоишь": { root: "okhsen", pos: "verb" },
+  "стоит": { root: "okhsen", pos: "verb" },
+  "стоим": { root: "okhsen", pos: "verb" },
+  "стоите": { root: "okhsen", pos: "verb" },
+  "стоят": { root: "okhsen", pos: "verb" },
+  "стоял": { root: "okhsen", pos: "verb" },
+  "стояла": { root: "okhsen", pos: "verb" },
+  "стояли": { root: "okhsen", pos: "verb" },
+  "лежать": { root: "marlān", pos: "verb" },
+  "лежу": { root: "marlān", pos: "verb" },
+  "лежишь": { root: "marlān", pos: "verb" },
+  "лежит": { root: "marlān", pos: "verb" },
+  "лежим": { root: "marlān", pos: "verb" },
+  "лежите": { root: "marlān", pos: "verb" },
+  "лежат": { root: "marlān", pos: "verb" },
+  "лежал": { root: "marlān", pos: "verb" },
+  "лежала": { root: "marlān", pos: "verb" },
+  "лежали": { root: "marlān", pos: "verb" },
+  "строить": { root: "okhar", pos: "verb" },
+  "строю": { root: "okhar", pos: "verb" },
+  "строишь": { root: "okhar", pos: "verb" },
+  "строит": { root: "okhar", pos: "verb" },
+  "строим": { root: "okhar", pos: "verb" },
+  "строите": { root: "okhar", pos: "verb" },
+  "строят": { root: "okhar", pos: "verb" },
+  "строил": { root: "okhar", pos: "verb" },
+  "строила": { root: "okhar", pos: "verb" },
+  "строили": { root: "okhar", pos: "verb" },
+  "разрушать": { root: "mōrkhō", pos: "verb" },
+  "разрушаю": { root: "mōrkhō", pos: "verb" },
+  "разрушаешь": { root: "mōrkhō", pos: "verb" },
+  "разрушает": { root: "mōrkhō", pos: "verb" },
+  "разрушаем": { root: "mōrkhō", pos: "verb" },
+  "разрушаете": { root: "mōrkhō", pos: "verb" },
+  "разрушают": { root: "mōrkhō", pos: "verb" },
+  "разрушал": { root: "mōrkhō", pos: "verb" },
+  "разрушала": { root: "mōrkhō", pos: "verb" },
+  "разрушали": { root: "mōrkhō", pos: "verb" },
+  "создавать": { root: "khalur", pos: "verb" },
+  "создаю": { root: "khalur", pos: "verb" },
+  "создаёшь": { root: "khalur", pos: "verb" },
+  "создаёт": { root: "khalur", pos: "verb" },
+  "создаём": { root: "khalur", pos: "verb" },
+  "создаёте": { root: "khalur", pos: "verb" },
+  "создают": { root: "khalur", pos: "verb" },
+  "создавал": { root: "khalur", pos: "verb" },
+  "создавала": { root: "khalur", pos: "verb" },
+  "создавали": { root: "khalur", pos: "verb" },
+  "расти": { root: "marūr", pos: "verb" },
+  "расту": { root: "marūr", pos: "verb" },
+  "растёшь": { root: "marūr", pos: "verb" },
+  "растёт": { root: "marūr", pos: "verb" },
+  "растём": { root: "marūr", pos: "verb" },
+  "растёте": { root: "marūr", pos: "verb" },
+  "растут": { root: "marūr", pos: "verb" },
+  "рос": { root: "marūr", pos: "verb" },
+  "росла": { root: "marūr", pos: "verb" },
+  "росли": { root: "marūr", pos: "verb" },
+  "падать": { root: "kōlur", pos: "verb" },
+  "падаю": { root: "kōlur", pos: "verb" },
+  "падаешь": { root: "kōlur", pos: "verb" },
+  "падает": { root: "kōlur", pos: "verb" },
+  "падаем": { root: "kōlur", pos: "verb" },
+  "падаете": { root: "kōlur", pos: "verb" },
+  "падают": { root: "kōlur", pos: "verb" },
+  "падал": { root: "kōlur", pos: "verb" },
+  "падала": { root: "kōlur", pos: "verb" },
+  "падали": { root: "kōlur", pos: "verb" },
+  "подниматься": { root: "dzenur", pos: "verb" },
+  "поднимаюсь": { root: "dzenur", pos: "verb" },
+  "поднимаешься": { root: "dzenur", pos: "verb" },
+  "поднимается": { root: "dzenur", pos: "verb" },
+  "поднимаемся": { root: "dzenur", pos: "verb" },
+  "поднимаетесь": { root: "dzenur", pos: "verb" },
+  "поднимаются": { root: "dzenur", pos: "verb" },
+  "поднимался": { root: "dzenur", pos: "verb" },
+  "поднималась": { root: "dzenur", pos: "verb" },
+  "поднимались": { root: "dzenur", pos: "verb" },
+  "спускаться": { root: "kōlur", pos: "verb" },
+  "спускаюсь": { root: "kōlur", pos: "verb" },
+  "спускаешься": { root: "kōlur", pos: "verb" },
+  "спускается": { root: "kōlur", pos: "verb" },
+  "спускаемся": { root: "kōlur", pos: "verb" },
+  "спускаетесь": { root: "kōlur", pos: "verb" },
+  "спускаются": { root: "kōlur", pos: "verb" },
+  "спускался": { root: "kōlur", pos: "verb" },
+  "спускалась": { root: "kōlur", pos: "verb" },
+  "спускались": { root: "kōlur", pos: "verb" },
+  "открывать": { root: "tōkhur", pos: "verb" },
+  "открываю": { root: "tōkhur", pos: "verb" },
+  "открываешь": { root: "tōkhur", pos: "verb" },
+  "открывает": { root: "tōkhur", pos: "verb" },
+  "открываем": { root: "tōkhur", pos: "verb" },
+  "открываете": { root: "tōkhur", pos: "verb" },
+  "открывают": { root: "tōkhur", pos: "verb" },
+  "открывал": { root: "tōkhur", pos: "verb" },
+  "открывала": { root: "tōkhur", pos: "verb" },
+  "открывали": { root: "tōkhur", pos: "verb" },
+  "закрывать": { root: "tōkhur", pos: "verb" },
+  "закрываю": { root: "tōkhur", pos: "verb" },
+  "закрываешь": { root: "tōkhur", pos: "verb" },
+  "закрывает": { root: "tōkhur", pos: "verb" },
+  "закрываем": { root: "tōkhur", pos: "verb" },
+  "закрываете": { root: "tōkhur", pos: "verb" },
+  "закрывают": { root: "tōkhur", pos: "verb" },
+  "закрывал": { root: "tōkhur", pos: "verb" },
+  "закрывала": { root: "tōkhur", pos: "verb" },
+  "закрывали": { root: "tōkhur", pos: "verb" },
+  "видеть": { root: "thal", pos: "verb" },
+  "вижу": { root: "thal", pos: "verb" },
+  "видишь": { root: "thal", pos: "verb" },
+  "видит": { root: "thal", pos: "verb" },
+  "видим": { root: "thal", pos: "verb" },
+  "видите": { root: "thal", pos: "verb" },
+  "видят": { root: "thal", pos: "verb" },
+  "видел": { root: "thal", pos: "verb" },
+  "видела": { root: "thal", pos: "verb" },
+  "видели": { root: "thal", pos: "verb" },
+  "слышать": { root: "thal", pos: "verb" },
+  "слышу": { root: "thal", pos: "verb" },
+  "слышишь": { root: "thal", pos: "verb" },
+  "слышит": { root: "thal", pos: "verb" },
+  "слышим": { root: "thal", pos: "verb" },
+  "слышите": { root: "thal", pos: "verb" },
+  "слышат": { root: "thal", pos: "verb" },
+  "слышал": { root: "thal", pos: "verb" },
+  "слышала": { root: "thal", pos: "verb" },
+  "слышали": { root: "thal", pos: "verb" },
+  "брать": { root: "khōs", pos: "verb" },
+  "беру": { root: "khōs", pos: "verb" },
+  "берёшь": { root: "khōs", pos: "verb" },
+  "берёт": { root: "khōs", pos: "verb" },
+  "берём": { root: "khōs", pos: "verb" },
+  "берёте": { root: "khōs", pos: "verb" },
+  "берут": { root: "khōs", pos: "verb" },
+  "брал": { root: "khōs", pos: "verb" },
+  "брала": { root: "khōs", pos: "verb" },
+  "брали": { root: "khōs", pos: "verb" },
+  "давать": { root: "rōg", pos: "verb" },
+  "даю": { root: "rōg", pos: "verb" },
+  "даёшь": { root: "rōg", pos: "verb" },
+  "даёт": { root: "rōg", pos: "verb" },
+  "даём": { root: "rōg", pos: "verb" },
+  "даёте": { root: "rōg", pos: "verb" },
+  "дают": { root: "rōg", pos: "verb" },
+  "давал": { root: "rōg", pos: "verb" },
+  "давала": { root: "rōg", pos: "verb" },
+  "давали": { root: "rōg", pos: "verb" },
+  "получать": { root: "sen", pos: "verb" },
+  "получаю": { root: "sen", pos: "verb" },
+  "получаешь": { root: "sen", pos: "verb" },
+  "получает": { root: "sen", pos: "verb" },
+  "получаем": { root: "sen", pos: "verb" },
+  "получаете": { root: "sen", pos: "verb" },
+  "получают": { root: "sen", pos: "verb" },
+  "получал": { root: "sen", pos: "verb" },
+  "получала": { root: "sen", pos: "verb" },
+  "получали": { root: "sen", pos: "verb" },
+  "танцевать": { root: "thalur", pos: "verb" },
+  "танцую": { root: "thalur", pos: "verb" },
+  "танцуешь": { root: "thalur", pos: "verb" },
+  "танцует": { root: "thalur", pos: "verb" },
+  "танцуем": { root: "thalur", pos: "verb" },
+  "танцуете": { root: "thalur", pos: "verb" },
+  "танцуют": { root: "thalur", pos: "verb" },
+  "танцевал": { root: "thalur", pos: "verb" },
+  "танцевала": { root: "thalur", pos: "verb" },
+  "танцевали": { root: "thalur", pos: "verb" },
+  "петь": { root: "zalkhō", pos: "verb" },
+  "пою": { root: "zalkhō", pos: "verb" },
+  "поёшь": { root: "zalkhō", pos: "verb" },
+  "поёт": { root: "zalkhō", pos: "verb" },
+  "поём": { root: "zalkhō", pos: "verb" },
+  "поёте": { root: "zalkhō", pos: "verb" },
+  "поют": { root: "zalkhō", pos: "verb" },
+  "пел": { root: "zalkhō", pos: "verb" },
+  "пела": { root: "zalkhō", pos: "verb" },
+  "пели": { root: "zalkhō", pos: "verb" },
+  "путешествовать": { root: "nur", pos: "verb" },
+  "путешествую": { root: "nur", pos: "verb" },
+  "путешествуешь": { root: "nur", pos: "verb" },
+  "путешествует": { root: "nur", pos: "verb" },
+  "путешествуем": { root: "nur", pos: "verb" },
+  "путешествуете": { root: "nur", pos: "verb" },
+  "путешествуют": { root: "nur", pos: "verb" },
+  "путешествовал": { root: "nur", pos: "verb" },
+  "путешествовала": { root: "nur", pos: "verb" },
+  "путешествовали": { root: "nur", pos: "verb" },
+  "менять": { root: "khalur", pos: "verb" },
+  "меняю": { root: "khalur", pos: "verb" },
+  "меняешь": { root: "khalur", pos: "verb" },
+  "меняет": { root: "khalur", pos: "verb" },
+  "меняем": { root: "khalur", pos: "verb" },
+  "меняете": { root: "khalur", pos: "verb" },
+  "меняют": { root: "khalur", pos: "verb" },
+  "менял": { root: "khalur", pos: "verb" },
+  "меняла": { root: "khalur", pos: "verb" },
+  "меняли": { root: "khalur", pos: "verb" },
+  "начинать": { root: "khan", pos: "verb" },
+  "начинаю": { root: "khan", pos: "verb" },
+  "начинаешь": { root: "khan", pos: "verb" },
+  "начинает": { root: "khan", pos: "verb" },
+  "начинаем": { root: "khan", pos: "verb" },
+  "начинаете": { root: "khan", pos: "verb" },
+  "начинают": { root: "khan", pos: "verb" },
+  "начинал": { root: "khan", pos: "verb" },
+  "начинала": { root: "khan", pos: "verb" },
+  "начинали": { root: "khan", pos: "verb" },
+  "заканчивать": { root: "mōr", pos: "verb" },
+  "заканчиваю": { root: "mōr", pos: "verb" },
+  "заканчиваешь": { root: "mōr", pos: "verb" },
+  "заканчивает": { root: "mōr", pos: "verb" },
+  "заканчиваем": { root: "mōr", pos: "verb" },
+  "заканчиваете": { root: "mōr", pos: "verb" },
+  "заканчивают": { root: "mōr", pos: "verb" },
+  "заканчивал": { root: "mōr", pos: "verb" },
+  "заканчивала": { root: "mōr", pos: "verb" },
+  "заканчивали": { root: "mōr", pos: "verb" },
+  "отдыхать": { root: "sūl", pos: "verb" },
+  "отдыхаю": { root: "sūl", pos: "verb" },
+  "отдыхаешь": { root: "sūl", pos: "verb" },
+  "отдыхает": { root: "sūl", pos: "verb" },
+  "отдыхаем": { root: "sūl", pos: "verb" },
+  "отдыхаете": { root: "sūl", pos: "verb" },
+  "отдыхают": { root: "sūl", pos: "verb" },
+  "отдыхал": { root: "sūl", pos: "verb" },
+  "отдыхала": { root: "sūl", pos: "verb" },
+  "отдыхали": { root: "sūl", pos: "verb" },
+
+  // === СОЮЗЫ И ЧАСТИЦЫ ===
   "и": { root: "un", pos: "conj" },
   "но": { root: "kan", pos: "conj" },
   "когда": { root: "tsen", pos: "conj" },
@@ -452,45 +748,45 @@ const BUILTIN_LEXICON = {
 };
 
 // ============================================================
-// 1. ЗАГРУЗКА СЛОВАРЯ (сначала пробуем внешний, если нет — встроенный)
+// 1. ЗАГРУЗКА СЛОВАРЯ (ТОЛЬКО ВСТРОЕННЫЙ)
 // ============================================================
 let lexicon = {};
-let particles = {};
-let suffixes = {};
 
-function loadBuiltinLexicon() {
-  lexicon = BUILTIN_LEXICON;
-  particles = {};
-  suffixes = {};
+// Принудительно загружаем встроенный словарь
+function loadBuiltin() {
+  lexicon = LEXICON_DATA;
   document.getElementById('translation').textContent = '✅ Словарь загружен (встроенный, ' + Object.keys(lexicon).length + ' слов). Введите текст.';
   document.getElementById('translation').className = 'result';
+  console.log('Встроенный словарь загружен, слов:', Object.keys(lexicon).length);
 }
 
+loadBuiltin();
+
+// Дополнительно пробуем загрузить внешний для расширения (но не заменяем встроенный)
 fetch('/mars-encyclopedia/assets/dictionary.json')
   .then(response => {
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    if (!response.ok) throw new Error('External dict not found');
     return response.json();
   })
   .then(data => {
-    lexicon = data.lexicon;
-    particles = data.particles || {};
-    suffixes = data.suffixes || {};
-    document.getElementById('translation').textContent = '✅ Словарь загружен (внешний, ' + Object.keys(lexicon).length + ' слов). Введите текст.';
-    document.getElementById('translation').className = 'result';
+    if (data.lexicon && typeof data.lexicon === 'object') {
+      // Дополняем встроенный словарь внешними словами (если есть)
+      Object.assign(lexicon, data.lexicon);
+      document.getElementById('translation').textContent = '✅ Словарь расширен внешним (' + Object.keys(lexicon).length + ' слов).';
+    }
   })
-  .catch(error => {
-    console.warn('Внешний словарь не загружен, использую встроенный:', error);
-    loadBuiltinLexicon();
+  .catch(err => {
+    console.log('Внешний словарь не загружен, использую только встроенный.');
   });
 
 // ============================================================
-// 2. УЛУЧШЕННАЯ ЛЕММАТИЗАЦИЯ
+// 2. ЛЕММАТИЗАЦИЯ
 // ============================================================
 function normalize(word) {
   return word.toLowerCase().replace(/ё/g, 'е');
 }
 
-// Словарь соответствий личных форм глаголов → инфинитив (для тех, кто не в словаре)
+// Дополнительная лемматизация для глаголов (если их нет в словаре)
 const VERB_LEMMAS = {
   "смотрю": "смотреть", "смотришь": "смотреть", "смотрит": "смотреть",
   "смотрим": "смотреть", "смотрите": "смотреть", "смотрят": "смотреть",
@@ -532,18 +828,18 @@ const VERB_LEMMAS = {
 
 function findInLexicon(word) {
   const norm = normalize(word);
-  // Сначала ищем точное совпадение
+  // Точное совпадение
   if (lexicon[norm]) {
     return { found: true, entry: lexicon[norm], lemma: norm };
   }
-  // Пробуем привести глагол к инфинитиву
+  // Лемматизация глагола
   if (VERB_LEMMAS[norm]) {
     const inf = VERB_LEMMAS[norm];
     if (lexicon[inf]) {
       return { found: true, entry: lexicon[inf], lemma: inf };
     }
   }
-  // Убираем окончания существительных (падежи)
+  // Убираем окончания для существительных (падежи)
   if (norm.endsWith('ы') && norm.length > 2) {
     const try1 = norm.slice(0, -1) + 'а';
     if (lexicon[try1]) return { found: true, entry: lexicon[try1], lemma: try1 };
@@ -556,21 +852,17 @@ function findInLexicon(word) {
     const try3 = norm.slice(0, -1) + 'о';
     if (lexicon[try3]) return { found: true, entry: lexicon[try3], lemma: try3 };
   }
-  // Если не нашли, возвращаем false
   return { found: false };
 }
 
 // ============================================================
 // 3. ОСНОВНАЯ ЛОГИКА ПЕРЕВОДА
 // ============================================================
-const PREPOSITIONS = ['на', 'в', 'у', 'к', 'от', 'из', 'для', 'без', 'через', 'по', 'о', 'об', 'с', 'со', 'за', 'под', 'над', 'перед', 'между', 'возле', 'около', 'мимо', 'вокруг'];
+const PREPOSITIONS = ['на','в','у','к','от','из','для','без','через','по','о','об','с','со','за','под','над','перед','между','возле','около','мимо','вокруг'];
 const PLURAL_WORDS = [
-  'звёзды','звезды','звёзд','звезд',
-  'воды','вод','реки','рек','горы','гор',
-  'люди','людей','марсиане','марсиан',
-  'дома','домов','столы','столов','стулья','стульев',
-  'кровати','кроватей','леса','лесов','поля','полей',
-  'дети','детей','глаза','глаз'
+  'звёзды','звезды','звёзд','звезд','воды','вод','реки','рек','горы','гор',
+  'люди','людей','марсиане','марсиан','дома','домов','столы','столов','стулья','стульев',
+  'кровати','кроватей','леса','лесов','поля','полей','дети','детей','глаза','глаз'
 ];
 
 function translateText() {

@@ -15,8 +15,6 @@
   <p><b>Связанные понятия:</b> <a href="lan-sur.md">Lān sur</a>, <a href="noviy-okhasen.md">Новый Окхасен</a>, <a href="epokha-umiraniya.md">Эпоха Умирания</a></p>
 </div>
 
-__TOC__
-
 ## Биография
 
 ### Ранние годы

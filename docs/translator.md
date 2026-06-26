@@ -158,22 +158,20 @@ fetch('/mars-encyclopedia/assets/dictionary.json')
   });
 
 // ============================================================
-// 2. ЛЕММАТИЗАЦИЯ (все формы глаголов и существительных)
+// 2. ПРОСТАЯ ЛЕММАТИЗАЦИЯ (только нормализация)
 // ============================================================
-
-// Мы добавили в словарь все формы, поэтому лемматизация почти не нужна,
-// но оставляем для страховки (преобразование ё→е, окончания)
 function normalize(word) {
   return word.toLowerCase().replace(/ё/g, 'е');
 }
 
-// Основная функция поиска в словаре с учётом ё
+// Поиск в словаре с учётом нормализации
 function findInLexicon(word) {
   const norm = normalize(word);
-  if (lexicon[norm]) return { found: true, entry: lexicon[norm], lemma: norm };
-  // Пробуем убрать окончания (для нестандартных форм)
-  // Например, "звёзды" -> "звезда" уже есть в словаре, но если вдруг нет
-  // Попробуем отсечь "ы", "и", "а" и т.д.
+  if (lexicon[norm]) {
+    return { found: true, entry: lexicon[norm], lemma: norm };
+  }
+  // Если не найдено, пробуем убрать окончание "ы", "и", "а" для возможных падежных форм
+  // (но в словаре уже есть большинство форм, это запасной вариант)
   if (norm.endsWith('ы') && norm.length > 2) {
     const try1 = norm.slice(0, -1) + 'а';
     if (lexicon[try1]) return { found: true, entry: lexicon[try1], lemma: try1 };
@@ -182,11 +180,6 @@ function findInLexicon(word) {
     const try2 = norm.slice(0, -1) + 'а';
     if (lexicon[try2]) return { found: true, entry: lexicon[try2], lemma: try2 };
   }
-  if (norm.endsWith('е') && norm.length > 2) {
-    const try3 = norm.slice(0, -1) + 'о';
-    if (lexicon[try3]) return { found: true, entry: lexicon[try3], lemma: try3 };
-  }
-  // Если не нашли, возвращаем null
   return { found: false };
 }
 
@@ -195,6 +188,24 @@ function findInLexicon(word) {
 // ============================================================
 
 const PREPOSITIONS = ['на', 'в', 'у', 'к', 'от', 'из', 'для', 'без', 'через', 'по', 'о', 'об', 'с', 'со', 'за', 'под', 'над', 'перед', 'между', 'возле', 'около', 'мимо', 'вокруг'];
+
+// Список слов, которые точно являются множественным числом (чтобы не путаться с окончаниями)
+const PLURAL_WORDS = [
+  'звёзды','звезды','звёзд','звезд',
+  'воды','вод',
+  'реки','рек',
+  'горы','гор',
+  'люди','людей',
+  'марсиане','марсиан',
+  'дома','домов',
+  'столы','столов',
+  'стулья','стульев',
+  'кровати','кроватей',
+  'леса','лесов',
+  'поля','полей',
+  'дети','детей',
+  'глаза','глаз'
+];
 
 function translateText() {
   const input = document.getElementById('inputText').value.trim();
@@ -210,65 +221,46 @@ function translateText() {
   let unknown = [];
 
   rawWords.forEach(w => {
+    // Очищаем от знаков препинания
     const clean = w.replace(/[^а-яa-zё]/gi, '').toLowerCase();
-    if (PREPOSITIONS.includes(clean)) return; // пропускаем предлоги
+    // Пропускаем предлоги
+    if (PREPOSITIONS.includes(clean)) return;
 
     const result = findInLexicon(clean);
     if (result.found) {
       const entry = result.entry;
       let root = entry.root;
       let pos = entry.pos;
-      // Определяем множественное число (если слово заканчивается на ы, и, а, я, но не является исключением)
+
+      // Определяем множественное число
       let plural = false;
       if (pos === 'noun' || pos === 'adj') {
-        // Если в словаре уже есть форма множественного числа, она будет с суффиксом, но мы не можем определить.
-        // Проверим, содержит ли clean окончание мн.ч. (условно)
-        if (clean.endsWith('ы') || clean.endsWith('и') || clean.endsWith('а') || clean.endsWith('я')) {
-          // Исключим слова, которые в ед.ч. оканчиваются на "я" (земля) – они не всегда мн.ч.
-          if (!(clean.endsWith('ля') || clean.endsWith('ня') || clean.endsWith('ся'))) {
+        // Если корень уже заканчивается на -ān, считаем множественным
+        if (root.endsWith('ān')) {
+          plural = true;
+        } else {
+          // Проверяем по списку явных множественных форм
+          if (PLURAL_WORDS.includes(clean)) {
             plural = true;
           }
         }
-        // Для "звёзды" – точно мн.ч.
-        if (clean === 'звёзды' || clean === 'звезды' || clean === 'звёзд' || clean === 'звезд') plural = true;
-        if (clean === 'воды' || clean === 'вод') plural = true;
-        if (clean === 'реки' || clean === 'рек') plural = true;
-        if (clean === 'горы' || clean === 'гор') plural = true;
-        if (clean === 'люди' || clean === 'людей') plural = true;
-        if (clean === 'марсиане' || clean === 'марсиан') plural = true;
-        if (clean === 'дома' || clean === 'домов') plural = true; // но "дома" может быть и ед.ч. в род.п., но упростим
-        if (clean === 'столы' || clean === 'столов') plural = true;
-        if (clean === 'стулья' || clean === 'стульев') plural = true;
-        if (clean === 'кровати' || clean === 'кроватей') plural = true;
-        if (clean === 'леса' || clean === 'лесов') plural = true;
-        if (clean === 'поля' || clean === 'полей') plural = true;
-        if (clean === 'дети' || clean === 'детей') plural = true;
-        if (clean === 'глаза' || clean === 'глаз' && clean !== 'глаз'? ) // "глаз" может быть ед.ч. род.п. и мн.ч.
-        // Для простоты будем считать, что если слово имеет окончание мн.ч. и оно есть в словаре как отдельное слово, то plural = true
-        // Но у нас в словаре есть и формы мн.ч. с корнем + суффикс, например "марсиане" уже имеет root "marzān" (без суффикса, т.к. мы забили)
-        // Поэтому проще: если clean заканчивается на "е" (мн.ч. им.п.) или "и" (мн.ч. им.п.) для некоторых слов
-        // Мы просто оставим логику, которая определяет множественное число по наличию суффикса в корне, но так как мы добавили все формы, 
-        // то root уже содержит суффикс, поэтому plural не нужен? Но для единообразия оставим.
-        // В марсианском множественное число образуется добавлением -ān/-zān, если нет готового корня.
-        // Если слово имеет специальный корень для множественного числа (например, "люди" -> "mārīnān"), то мы его и возьмём.
-        // В нашем словаре для "люди" корень "mārīnān" – это уже множественное. Так что plural нам не нужен.
-        // Поэтому будем считать, что если root уже содержит суффикс множественного числа (заканчивается на "ān"), то plural = true
-        if (root.endsWith('ān')) plural = true;
-        else {
-          // Проверим, есть ли в словаре форма множественного числа с тем же корнем
-          // Мы не будем это делать, потому что словарь уже содержит все формы.
-          // Поэтому установим plural = false, если не обнаружено иное.
-        }
       }
-      // Определяем прилагательное
+
       let adj = (pos === 'adj');
       processed.push({ word: w, root: root, pos: pos, plural: plural, adj: adj });
     } else {
       unknown.push(w);
-      // Если не найдено, оставляем слово как есть (но в марсианском не переведётся)
+      // Если слово не найдено, сохраняем его как есть (но оно не переведётся)
       processed.push({ word: w, root: w, pos: 'unknown', plural: false, adj: false });
     }
   });
+
+  // Если после фильтрации предлогов не осталось слов, выходим
+  if (processed.length === 0) {
+    document.getElementById('translation').textContent = 'Нет слов для перевода (только предлоги).';
+    document.getElementById('gloss').textContent = '';
+    return;
+  }
 
   // Разделяем на подлежащее, дополнение, глагол
   let subject = [];
@@ -293,16 +285,13 @@ function translateText() {
     subject = processed;
   }
 
-  // Собираем марсианские слова
+  // Собираем марсианские слова в порядке SOV
   let resultWords = [];
 
-  // Функция добавления слова с учётом множественного числа
   function addWord(wordObj) {
     let root = wordObj.root;
-    // Если это существительное и оно множественное, но корень уже содержит суффикс, ничего не делаем
-    // Если корень не содержит суффикс и plural=true, добавляем суффикс
+    // Если это существительное/прилагательное, и оно множественное, и корень не оканчивается на -ān, добавляем суффикс
     if (wordObj.plural && (wordObj.pos === 'noun' || wordObj.pos === 'adj') && !root.endsWith('ān')) {
-      // Проверяем последнюю букву
       const last = root.charAt(root.length - 1);
       const vowels = ['a','ā','o','ō','u','ū','e','i'];
       if (vowels.includes(last.toLowerCase())) {
@@ -314,27 +303,26 @@ function translateText() {
     resultWords.push(root);
   }
 
-  // Добавляем существительные из подлежащего (без прилагательных, их позже)
+  // Подлежащее: сначала существительные/местоимения, потом прилагательные
   let subjNouns = subject.filter(w => w.pos === 'noun' || w.pos === 'pron');
   let subjAdjs = subject.filter(w => w.pos === 'adj');
   subjNouns.forEach(w => addWord(w));
-  // Прилагательные ставим после существительных
   subjAdjs.forEach(w => addWord(w));
 
-  // Добавляем объекты: сначала существительные, потом прилагательные
+  // Дополнение: сначала существительные/местоимения, потом прилагательные
   let objNouns = objects.filter(w => w.pos === 'noun' || w.pos === 'pron');
   let objAdjs = objects.filter(w => w.pos === 'adj');
   objNouns.forEach(w => addWord(w));
   objAdjs.forEach(w => addWord(w));
 
-  // Добавляем глагол (если есть)
+  // Глагол
   if (verb) {
-    let verbRoot = verb.root;
-    // Проверяем модальность, время и т.д. позже
-    resultWords.push(verbRoot);
+    resultWords.push(verb.root);
   }
 
-  // Теперь добавляем грамматические частицы
+  // ============================================================
+  // 4. ГРАММАТИЧЕСКИЕ ЧАСТИЦЫ
+  // ============================================================
 
   const lowerInput = input.toLowerCase();
 
@@ -353,14 +341,13 @@ function translateText() {
     resultWords.push('kha');
   }
 
-  // Прошедшее время (есть в тексте "был", "была", или глагол на -л)
+  // Прошедшее время
   const hasPastMarker = lowerInput.includes('был') || lowerInput.includes('была') || lowerInput.includes('были');
   const hasPastVerb = processed.some(w => w.pos === 'verb' && (w.word.endsWith('л') || w.word.endsWith('ла') || w.word.endsWith('ли') || w.word.endsWith('ло')));
   if (hasPastMarker || hasPastVerb) {
     if (verb) {
       const idx = resultWords.indexOf(verb.root);
       if (idx !== -1) {
-        // Вставляем "nu" после глагола, но перед отрицанием, если есть
         let insertPos = idx + 1;
         if (resultWords[insertPos] === 'ān') insertPos++;
         resultWords.splice(insertPos, 0, 'nu');
@@ -368,7 +355,7 @@ function translateText() {
     }
   }
 
-  // Будущее время (есть "буду", "будет", "будут")
+  // Будущее время
   if (lowerInput.includes('буду') || lowerInput.includes('будет') || lowerInput.includes('будут')) {
     if (verb) {
       const idx = resultWords.indexOf(verb.root);
@@ -380,7 +367,7 @@ function translateText() {
     }
   }
 
-  // Модальные глаголы (могу, хочешь, должен)
+  // Модальные глаголы
   const modalMap = {
     'могу': 'xan', 'можешь': 'xan', 'может': 'xan', 'можем': 'xan', 'можете': 'xan', 'могут': 'xan',
     'хочу': 'shar', 'хочешь': 'shar', 'хочет': 'shar', 'хотим': 'shar', 'хотите': 'shar', 'хотят': 'shar',
@@ -397,7 +384,7 @@ function translateText() {
     }
   }
 
-  // Сослагательное наклонение (если есть "бы" или "чтобы")
+  // Сослагательное наклонение
   if (lowerInput.includes('бы') || lowerInput.includes('чтобы')) {
     if (verb) {
       const idx = resultWords.indexOf(verb.root);
@@ -407,7 +394,7 @@ function translateText() {
     }
   }
 
-  // Пассив (если есть "был" + глагол, кроме "был")
+  // Пассив (если есть "был" + глагол, кроме самого "был")
   if (lowerInput.includes('был') || lowerInput.includes('была') || lowerInput.includes('были')) {
     const hasOtherVerb = processed.some(w => w.pos === 'verb' && !['был','была','были','было'].includes(w.word));
     if (hasOtherVerb && verb) {
@@ -438,10 +425,11 @@ function translateText() {
     }
   }
 
-  // Собираем финальную строку
-  let translation = resultWords.join(' ');
+  // ============================================================
+  // 5. ВЫВОД РЕЗУЛЬТАТА
+  // ============================================================
 
-  // Выводим результат
+  let translation = resultWords.join(' ');
   document.getElementById('translation').textContent = translation;
   document.getElementById('translation').className = 'result';
 
@@ -465,9 +453,8 @@ function translateText() {
 }
 
 // ============================================================
-// 4. ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+// 6. ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
 // ============================================================
-
 function clearAll() {
   document.getElementById('inputText').value = '';
   document.getElementById('translation').textContent = 'Здесь появится перевод...';

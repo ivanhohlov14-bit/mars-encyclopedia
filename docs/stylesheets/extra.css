@@ -169,12 +169,24 @@ table th { background: var(--block-bg) !important; color: var(--text-color) !imp
 
 /* Боковая панель как продолжение баннера */
 .wy-side-nav-search {
-  background: #1a1a2e !important; /* Тёмный фон в тон баннеру */
+  background: url('/assets/images/header-banner.png') center/cover no-repeat !important;
   padding-top: 0 !important;
 }
 
+.wy-side-nav-search::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .wy-side-nav-search .icon-home {
-  margin-top: 10px;
+  position: relative;
+  z-index: 10;
 }
 
 .wy-side-nav-search .icon-home img {

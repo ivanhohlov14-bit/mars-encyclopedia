@@ -166,3 +166,22 @@ table th { background: var(--block-bg) !important; color: var(--text-color) !imp
   height: 180px;
   background: rgba(0,0,0,0.3);
 }
+
+/* Боковая панель как продолжение баннера */
+.wy-side-nav-search {
+  background: #1a1a2e !important; /* Тёмный фон в тон баннеру */
+  padding-top: 0 !important;
+}
+
+.wy-side-nav-search .icon-home {
+  margin-top: 10px;
+}
+
+.wy-side-nav-search .icon-home img {
+  max-height: 60px !important;
+  width: auto;
+  display: block;
+  margin: 10px auto 5px auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}

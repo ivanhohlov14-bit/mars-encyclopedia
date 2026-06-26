@@ -6,7 +6,6 @@ theme:
   language: ru
   logo: assets/logo.png
   favicon: assets/favicon.png
-  custom_dir: overrides
   
 markdown_extensions:
   - admonition

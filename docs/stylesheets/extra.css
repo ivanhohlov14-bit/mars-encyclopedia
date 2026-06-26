@@ -1,5 +1,5 @@
 /* ==========================================
-   ВИКИ-СТИЛЬ + БАННЕР + ЛОГОТИП
+   ВИКИ-СТИЛЬ + БАННЕР + ЛОГОТИП (ЧИСТОВАЯ ВЕРСИЯ)
    ========================================== */
 
 body {
@@ -19,23 +19,26 @@ body {
   border-right: 1px solid #eaecf0;
 }
 
-/* ---------- БАННЕР В БОКОВОЙ ПАНЕЛИ ---------- */
+/* ===== БОКОВАЯ ПАНЕЛЬ С БАННЕРОМ (ФОН) ===== */
 .wy-side-nav-search {
   padding-top: 0 !important;
-  background: transparent !important;
+  background: url('assets/images/cave-bg.png') center/cover no-repeat !important;
   position: relative;
 }
 
+/* Затемнение для читаемости текста */
 .wy-side-nav-search::before {
   content: "";
   display: block;
   width: 100%;
-  height: 180px;
-  background: url('/assets/images/header-banner.png') center/cover no-repeat;
-  margin-bottom: 10px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/* ---------- ЛОГОТИП ПОВЕРХ БАННЕРА ---------- */
+/* ===== ЛОГОТИП ПОВЕРХ БАННЕРА ===== */
 .wy-side-nav-search .icon-home {
   position: relative;
   z-index: 10;
@@ -128,7 +131,7 @@ blockquote {
 .rst-footer-buttons { display: none !important; }
 .footer { display: none !important; }
 
-/* ---------- ТЁМНАЯ ТЕМА ---------- */
+/* ===== ТЁМНАЯ ТЕМА ===== */
 :root {
   --bg-color: #ffffff;
   --text-color: #202122;
@@ -154,46 +157,3 @@ a { color: var(--link-color) !important; }
 blockquote, .infobox { background: var(--block-bg) !important; border-color: var(--border-color) !important; color: var(--text-color) !important; }
 table { background: var(--bg-color) !important; border-color: var(--border-color) !important; }
 table th { background: var(--block-bg) !important; color: var(--text-color) !important; }
-
-.wy-side-nav-search {
-  background: url('/assets/images/cave-bg.jpg') center/cover no-repeat !important;
-  padding-top: 0 !important;
-}
-.wy-side-nav-search::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 180px;
-  background: rgba(0,0,0,0.3);
-}
-
-/* Боковая панель как продолжение баннера */
-.wy-side-nav-search {
-  background: url('/assets/images/header-banner.png') center/cover no-repeat !important;
-  padding-top: 0 !important;
-}
-
-.wy-side-nav-search::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.wy-side-nav-search .icon-home {
-  position: relative;
-  z-index: 10;
-}
-
-.wy-side-nav-search .icon-home img {
-  max-height: 60px !important;
-  width: auto;
-  display: block;
-  margin: 10px auto 5px auto;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}

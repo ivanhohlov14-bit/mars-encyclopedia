@@ -876,7 +876,82 @@ const LEXICON_DATA = {
   "ацидалийская": { root: "Acidalia", pos: "adj" },
   "ацидалийское": { root: "Acidalia", pos: "adj" },
   "ацидалийскому": { root: "Acidalia", pos: "adj" },
-  "ацидалийские": { root: "Acidalia", pos: "adj" }
+  "ацидалийские": { root: "Acidalia", pos: "adj" },
+  // === ПРИВЕТСТВИЯ И ФОРМУЛЫ ВЕЖЛИВОСТИ (из Свитка Ж) ===
+  "привет": { root: "Mar dzen", pos: "phrase" },
+  "здравствуй": { root: "Mar dzen", pos: "phrase" },
+  "здравствуйте": { root: "Mar dzen", pos: "phrase" },
+  "добрый день": { root: "Mar dzen", pos: "phrase" },
+  "доброе утро": { root: "Mar dzen", pos: "phrase" },
+  "добрый вечер": { root: "Mar dzen", pos: "phrase" },
+  "ответ на приветствие": { root: "Dzen thal", pos: "phrase" },
+  "и тебе здравствовать": { root: "Dzen thal", pos: "phrase" },
+  "прощай": { root: "Lān mar", pos: "phrase" },
+  "прощайте": { root: "Ariya lān", pos: "phrase" },
+  "до свидания": { root: "Lān mar", pos: "phrase" },
+  "до встречи": { root: "Lān mar", pos: "phrase" },
+  "очень приятно": { root: "Tsan lān", pos: "phrase" },
+  "рад познакомиться": { root: "Tsan lān", pos: "phrase" },
+  "спасибо": { root: "Tsan lān", pos: "phrase" },
+  "благодарю": { root: "Tsan lān", pos: "phrase" },
+  "пожалуйста": { root: "Marzān thal", pos: "phrase" },
+  "будь здоров": { root: "Marzān thal", pos: "phrase" },
+  "удачи": { root: "Marzān thal", pos: "phrase" },
+  "глина помнит": { root: "Lān sur", pos: "phrase" },
+  // === ЕДА И БЫТ (из Свитка Ж) ===
+  "есть (принимать пищу)": { root: "ōkhar", pos: "verb" },
+  "ем": { root: "ōkhar", pos: "verb" },
+  "ешь": { root: "ōkhar", pos: "verb" },
+  "ест": { root: "ōkhar", pos: "verb" },
+  "едим": { root: "ōkhar", pos: "verb" },
+  "едят": { root: "ōkhar", pos: "verb" },
+  "ел": { root: "ōkhar", pos: "verb" },
+  "ела": { root: "ōkhar", pos: "verb" },
+  "ели": { root: "ōkhar", pos: "verb" },
+  "сегодня": { root: "sōl", pos: "noun" },
+  "завтра": { root: "dzenur", pos: "noun" },
+  "вчера": { root: "lānur", pos: "noun" },
+  "красивый": { root: "suf", pos: "adj" },
+  "красивая": { root: "suf", pos: "adj" },
+  "красивое": { root: "suf", pos: "adj" },
+  "красивые": { root: "suf", pos: "adj" },
+  "ракета": { root: "raketa", pos: "noun" },
+  "ракеты": { root: "raketa", pos: "noun" },
+  "ракету": { root: "raketa", pos: "noun" },
+  "корабль": { root: "korabl", pos: "noun" },
+  "корабли": { root: "korablān", pos: "noun" },
+  // === ИМЕНА СОБСТВЕННЫЕ ===
+  "иван": { root: "Ivan", pos: "noun" },
+  "ивана": { root: "Ivan", pos: "noun" },
+  "ивану": { root: "Ivan", pos: "noun" },
+  "Мнемис": {root: "Lānsur", pos: "noun"},
+  "Mnemis": {root: "Lānsur", pos: "noun"},
+  "талин": { root: "Talīn", pos: "noun" },
+  "хевсур": { root: "Khevsur", pos: "noun" },
+  "йарра": { root: "Yarra", pos: "noun" },
+  "элла": { root: "Ella", pos: "noun" },
+  "аратан": { root: "Aratan", pos: "noun" },
+    // === ГЕОГРАФИЧЕСКИЕ НАЗВАНИЯ ===
+  "ацидалийское море": { root: "Acidalia", pos: "noun" },
+  "фарсида": { root: "Khōsen", pos: "noun" },
+  "эллада": { root: "Ellada", pos: "noun" },
+  "утопия": { root: "Kōl-ghar", pos: "noun" },
+  "аравия": { root: "Aravia", pos: "noun" },
+  "окхасен": { root: "Okhasen", pos: "noun" },
+  "роген-ария": { root: "Rogen-Ariya", pos: "noun" },
+  "ксанф": { root: "Ksanf", pos: "noun" },
+  "долина маринера": { root: "Valles", pos: "noun" },
+  "олимп": { root: "Olympus", pos: "noun" },
+// === ДИАЛЕКТЫ (замена русских диалектов) ===
+  "южный": { root: "ellada", pos: "adj" },
+  "элладский": { root: "ellada", pos: "adj" },
+  "по-элладски": { root: "ellada", pos: "adv" },
+  "западный": { root: "utopia", pos: "adj" },
+  "утопийский": { root: "utopia", pos: "adj" },
+  "по-утопийски": { root: "utopia", pos: "adv" },
+  "центральный": { root: "okhasen", pos: "adj" },
+  "окхасенский": { root: "okhasen", pos: "adj" }
+  
 };
 
 // ============================================================
@@ -961,7 +1036,9 @@ const VERB_LEMMAS = {
   "рисовать": "thalur", "рисую": "thalur", "рисуешь": "thalur",
   "рисует": "thalur", "рисуем": "thalur", "рисуете": "thalur",
   "рисуют": "thalur", "рисовал": "thalur", "рисовала": "thalur",
-  "рисовали": "thalur", "картина": "thalrak", "картины": "thalrak"
+  "рисовали": "thalur", "картина": "thalrak", "картины": "thalrak",
+  "ем": "есть", "ешь": "есть", "ест": "есть", "едим": "есть", "едят": "есть",
+  "ел": "есть", "ела": "есть", "ели": "есть"
 };
 
 function findInLexicon(word) {
@@ -992,7 +1069,32 @@ function findInLexicon(word) {
   }
   return { found: false };
 }
-
+  
+// ============================================================
+// 2.5 ОБРАБОТКА ФРАЗ-ПРИВЕТСТВИЙ
+// ============================================================
+function checkPhrases(text) {
+  const lower = text.toLowerCase();
+  const phraseMap = {
+    "привет": "Mar dzen",
+    "здравствуй": "Mar dzen",
+    "здравствуйте": "Mar dzen",
+    "добрый день": "Mar dzen",
+    "до свидания": "Lān mar",
+    "прощай": "Lān mar",
+    "прощайте": "Ariya lān",
+    "очень приятно": "Tsan lān",
+    "спасибо": "Tsan lān",
+    "глина помнит": "Lān sur"
+  };
+  for (let key in phraseMap) {
+    if (lower.includes(key)) {
+      return { found: true, translation: phraseMap[key] };
+    }
+  }
+  return { found: false };
+}
+  
 // ============================================================
 // 3. ОСНОВНАЯ ЛОГИКА ПЕРЕВОДА
 // ============================================================
@@ -1010,7 +1112,16 @@ function translateText() {
     document.getElementById('gloss').textContent = '';
     return;
   }
-
+// ============================================================
+  // ПРОВЕРКА НА ФРАЗЫ-ПРИВЕТСТВИЯ
+  // ============================================================
+  const phraseResult = checkPhrases(input);
+  if (phraseResult.found) {
+    document.getElementById('translation').textContent = phraseResult.translation;
+    document.getElementById('gloss').textContent = 'Подстрочник: ' + phraseResult.translation;
+    return;
+  }
+  
   const rawWords = input.split(/\s+/).filter(w => w.length > 0);
   let processed = [];
   let unknown = [];

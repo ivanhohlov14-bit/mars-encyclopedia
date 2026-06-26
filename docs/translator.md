@@ -835,7 +835,48 @@ const LEXICON_DATA = {
   "пишут": { root: "khōs", pos: "verb" },
   "писал": { root: "khōs", pos: "verb" },
   "писала": { root: "khōs", pos: "verb" },
-  "писали": { root: "khōs", pos: "verb" }
+  "писали": { root: "khōs", pos: "verb" },
+    // === НОВЫЕ СЛОВА (планеты, космос, корабли, эмоции и пр.) ===
+  "марс": { root: "Mars", pos: "noun" },
+  "планета": { root: "planeta", pos: "noun" },
+  "планеты": { root: "planeta", pos: "noun" },
+  "планет": { root: "planeta", pos: "noun" },
+  "космос": { root: "kosmos", pos: "noun" },
+  "ракета": { root: "raketa", pos: "noun" },
+  "ракеты": { root: "raketa", pos: "noun" },
+  "ракет": { root: "raketa", pos: "noun" },
+  "корабль": { root: "korabl", pos: "noun" },
+  "корабли": { root: "korablān", pos: "noun" },
+  "кораблей": { root: "korablān", pos: "noun" },
+  "корабля": { root: "korabl", pos: "noun" },
+  "море": { root: "ākha", pos: "noun" },
+  "моря": { root: "ākha", pos: "noun" },
+  "морю": { root: "ākha", pos: "noun" },
+  "морем": { root: "ākha", pos: "noun" },
+  "море": { root: "ākha", pos: "noun" },
+  "все": { root: "tō", pos: "pron" },
+  "всего": { root: "tō", pos: "pron" },
+  "всем": { root: "tō", pos: "pron" },
+  "всеми": { root: "tō", pos: "pron" },
+  "всех": { root: "tō", pos: "pron" },
+  "плодородный": { root: "mar", pos: "adj" },
+  "плодородная": { root: "mar", pos: "adj" },
+  "плодородное": { root: "mar", pos: "adj" },
+  "плодородные": { root: "mar", pos: "adj" },
+  "плодородными": { root: "mar", pos: "adj" },
+  "тихий": { root: "nōkh", pos: "adj" },
+  "тихая": { root: "nōkh", pos: "adj" },
+  "тихое": { root: "nōkh", pos: "adj" },
+  "тихие": { root: "nōkh", pos: "adj" },
+  "тихим": { root: "nōkh", pos: "adj" },
+  "аравия": { root: "Aravia", pos: "noun" },
+  "аравии": { root: "Aravia", pos: "noun" },
+  "аравию": { root: "Aravia", pos: "noun" },
+  "ацидалийский": { root: "Acidalia", pos: "adj" },
+  "ацидалийская": { root: "Acidalia", pos: "adj" },
+  "ацидалийское": { root: "Acidalia", pos: "adj" },
+  "ацидалийскому": { root: "Acidalia", pos: "adj" },
+  "ацидалийские": { root: "Acidalia", pos: "adj" }
 };
 
 // ============================================================
@@ -1041,7 +1082,12 @@ function translateText() {
   const lowerInput = input.toLowerCase();
 
   // Отрицание
-  if (lowerInput.includes('не') || lowerInput.includes('нет')) {
+ // Проверяем отдельные слова "не" и "нет" среди всех токенов
+const hasNegation = rawWords.some(w => {
+  const clean = w.replace(/[^а-яa-zё]/gi, '').toLowerCase();
+  return clean === 'не' || clean === 'нет';
+});
+if (hasNegation) {
     if (verb) {
       const idx = resultWords.indexOf(verb.root);
       if (idx !== -1 && idx < resultWords.length) {

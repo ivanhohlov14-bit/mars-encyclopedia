@@ -1,11 +1,11 @@
 site_name: Марсианская энциклопедия
 site_url: https://ivanhohlov14-bit.github.io/mars-wiki/
+site_favicon: assets/favicon.png
 
 theme:
   name: readthedocs
   language: ru
   logo: assets/logo.png
-  favicon: assets/favicon.png
   custom_dir: overrides
   
 markdown_extensions:

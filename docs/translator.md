@@ -1184,10 +1184,8 @@ function checkPhrases(text) {
     "письмо из красной пыли": "Khalur khō sur",
     "марсианская энциклопедия": "Tsankhō Marzān",
     "красная пыль": "Khō sur",
-    "мнемис": "Lānīn",
+    "мнемис": "Lānīn"
   };
-  ...
-}
   for (let key in phraseMap) {
     if (lower.includes(key)) {
       return { found: true, translation: phraseMap[key] };

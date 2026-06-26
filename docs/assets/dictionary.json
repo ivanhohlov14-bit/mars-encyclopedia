@@ -2,7 +2,7 @@
   "meta": {
     "author": "Mnemis",
     "project": "Марсианская энциклопедия",
-    "description": "Словарь и грамматические основы марсианского языка"
+    "description": "Словарь и грамматические основы марсианского языка (полная версия)"
   },
   "lexicon": {
     "вода": { "root": "ākha", "pos": "noun" },
@@ -72,6 +72,8 @@
     "звёздная обсерватория": { "root": "Dzenthalsen", "pos": "noun" },
     "история (наука)": { "root": "Marlāntsan", "pos": "noun" },
     "извержение": { "root": "Khōsenmōr", "pos": "noun" },
+    "гидрология (полная)": { "root": "Ākhakōllān", "pos": "noun" },
+    "астрофизика": { "root": "Dzenzalthal", "pos": "noun" },
     "готовить": { "root": "ōkhar", "pos": "verb" },
     "кухня": { "root": "ōkhsen", "pos": "noun" },
     "кровать": { "root": "marlā", "pos": "noun" },
@@ -147,11 +149,25 @@
     "вдохновение": { "root": "khōtsan", "pos": "noun" },
     "опыт": { "root": "martsan", "pos": "noun" },
     "судьба (звёздная)": { "root": "dzenlān", "pos": "noun" },
-    "судьба (водная)": { "root": "ākhalān", "pos": "noun" }
-    "гидрология (полная)": { "root": "Ākhakōllān", "pos": "noun" },
-    "астрофизика": { "root": "Dzenzalthal", "pos": "noun" }
+    "судьба (водная)": { "root": "ākhalān", "pos": "noun" },
+    "год": { "root": "amār", "pos": "noun" },
+    "сол": { "root": "sōl", "pos": "noun" },
+    "сутки": { "root": "sōlān", "pos": "noun" },
+    "окхасен": { "root": "Okhasen", "pos": "noun" },
+    "ксанф": { "root": "Ksanf", "pos": "noun" },
+    "марсиане": { "root": "marzān", "pos": "noun" },
+    "марсианин": { "root": "marzān", "pos": "noun" },
+    "звёзды": { "root": "dzen", "pos": "noun" },
+    "звезду": { "root": "dzen", "pos": "noun" },
+    "воды": { "root": "ākha", "pos": "noun" },
+    "воду": { "root": "ākha", "pos": "noun" },
+    "реки": { "root": "khan", "pos": "noun" },
+    "реку": { "root": "khan", "pos": "noun" },
+    "земли": { "root": "kōl", "pos": "noun" },
+    "землю": { "root": "kōl", "pos": "noun" },
+    "огня": { "root": "khō", "pos": "noun" },
+    "огню": { "root": "khō", "pos": "noun" }
   },
-
   "particles": {
     "nu": { "type": "tense_past", "placement": "after_verb", "desc": "прошедшее время" },
     "shu": { "type": "tense_future", "placement": "after_verb", "desc": "будущее время" },
@@ -164,7 +180,6 @@
     "la_emph": { "type": "emphasis", "placement": "after_subject", "desc": "эмфаза подлежащего" },
     "ra_emph": { "type": "emphasis", "placement": "after_object", "desc": "эмфаза дополнения" }
   },
-
   "suffixes": {
     "ān": { "type": "plural", "attaches_to": "noun, adj", "rule": "после согласной -ān, после гласной -zān", "desc": "множественное число" },
     "an": { "type": "possessive", "person": "1sg", "desc": "мой" },
@@ -191,7 +206,6 @@
     "la_evid": { "type": "evidential", "source": "inference", "desc": "умозаключение (должно быть)" },
     "tha_evid": { "type": "evidential", "source": "sacred", "desc": "сакральная истина (откровение)" }
   },
-
   "test_examples": [
     { "martian": "Marzān dzen thal.", "russian": "Марсиане смотрят на звёзды.", "literal": "Марсиане звёзды смотрят." },
     { "martian": "Okhasen ākha sen.", "russian": "Окхасен — место у воды.", "literal": "Окхасен вода место." },

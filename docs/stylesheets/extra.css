@@ -157,3 +157,30 @@ a { color: var(--link-color) !important; }
 blockquote, .infobox { background: var(--block-bg) !important; border-color: var(--border-color) !important; color: var(--text-color) !important; }
 table { background: var(--bg-color) !important; border-color: var(--border-color) !important; }
 table th { background: var(--block-bg) !important; color: var(--text-color) !important; }
+
+/* ===== ИНФОБОКС (как в Википедии) ===== */
+.infobox {
+  float: right;
+  clear: right;
+  background: #f8f9fa;
+  border: 1px solid #a2a9b1;
+  padding: 0.8rem 1.2rem;
+  margin: 0 0 1rem 1.5rem;
+  width: 280px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.infobox h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 0.3rem;
+}
+.infobox hr {
+  border: none;
+  border-top: 1px solid #a2a9b1;
+  margin: 0.5rem 0;
+}
+.infobox p {
+  margin: 0.3rem 0;
+}

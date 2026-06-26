@@ -4,6 +4,8 @@ site_url: https://ivanhohlov14-bit.github.io/mars-wiki/
 theme:
   name: readthedocs
   language: ru
+  logo: assets/logo.png
+  favicon: assets/logo.png
 
 markdown_extensions:
   - admonition
@@ -20,11 +22,13 @@ nav:
   - География:
       - Ацидалийское море: geography/acidalia-sea.md
       - Окхасен: geography/okhasen.md
+      - Роген-Ария: geography/rogen-aria.md
   - Астрономия:
-      - Звёздное небо: astronomy/mars-sky.md
+      - Звёздное небо Марса: astronomy/mars-sky.md
   - Персонажи:
       - Хевсур: people/hevsur.md
       - Талин: people/talin.md
+      - Элла: people/ella.md
   - Книги:
       - Ацидалийское море: books/acidalia-sea.md
 

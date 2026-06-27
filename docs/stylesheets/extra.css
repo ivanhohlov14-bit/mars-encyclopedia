@@ -131,51 +131,63 @@ blockquote {
 .rst-footer-buttons { display: none !important; }
 .footer { display: none !important; }
 
-/* ===== ТЁМНАЯ ТЕМА — ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ===== */
+/* ===== ПЕРЕКЛЮЧЕНИЕ ТЕМЫ ===== */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #202122;
+  --border-color: #eaecf0;
+  --link-color: #0645ad;
+  --block-bg: #f8f9fa;
+}
 
-/* Улучшение читаемости таблиц в тёмной теме */
-[data-theme="dark"] table {
-  background: var(--bg-color) !important;
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --text-color: #e0e0e0;
+  --border-color: #3a3a5a;
+  --link-color: #7fadff;
+  --block-bg: #2a2a4a;
+}
+
+body { background: var(--bg-color); color: var(--text-color); transition: 0.3s; }
+.wy-nav-content { background: var(--bg-color) !important; color: var(--text-color) !important; }
+.wy-nav-side { background: var(--bg-color) !important; border-color: var(--border-color) !important; }
+.wy-side-nav-search { background: var(--bg-color) !important; }
+.wy-menu-vertical a { color: var(--link-color) !important; }
+
+a { color: var(--link-color) !important; }
+a:hover { color: #0b0080 !important; }
+
+blockquote, .infobox, #quoteOfTheDay {
+  background: var(--block-bg) !important;
   border-color: var(--border-color) !important;
   color: var(--text-color) !important;
 }
-[data-theme="dark"] table th {
+
+table {
+  background: var(--bg-color) !important;
+  border-color: var(--border-color) !important;
+}
+table th {
   background: var(--block-bg) !important;
   color: var(--text-color) !important;
 }
-[data-theme="dark"] table td {
+table td {
   background: var(--bg-color) !important;
   color: var(--text-color) !important;
 }
-[data-theme="dark"] table tr:nth-child(even) {
+table tr:nth-child(even) {
   background: var(--block-bg) !important;
 }
 
-/* Инфобоксы и цитаты */
-[data-theme="dark"] .infobox,
-[data-theme="dark"] blockquote,
-[data-theme="dark"] #quoteOfTheDay {
-  background: var(--block-bg) !important;
-  border-color: var(--border-color) !important;
-  color: var(--text-color) !important;
+button#themeToggle {
+  background: #0645ad;
+  color: white;
+}
+[data-theme="dark"] button#themeToggle {
+  background: #2a4a7f;
+  color: white;
 }
 
-/* Кнопки */
-[data-theme="dark"] button {
-  background: #2a4a7f !important;
-  color: #fff !important;
-}
-[data-theme="dark"] button:hover {
-  background: #3a5a9f !important;
-}
-
-/* Ссылки в тёмной теме (уже есть, но на всякий случай) */
-[data-theme="dark"] a {
-  color: var(--link-color) !important;
-}
-[data-theme="dark"] a:hover {
-  color: #9fcbff !important;
-}
 
 /* Поля ввода (если есть) */
 [data-theme="dark"] input,

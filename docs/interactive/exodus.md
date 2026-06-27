@@ -212,15 +212,13 @@ description: Сделайте выбор и узнайте судьбу Марс
     'use strict';
 
     // ============================================================
-    // 1. ПУТИ К КАРТИНКАМ
+    // 1. ПУТИ К КАРТИНКАМ (исправлены расширения)
     // ============================================================
-    // Для картинок в папке story/
     const IMG_PATH = '/assets/images/story/';
-    // Для существующих картинок в корне images/
     const IMG_ROOT = '/assets/images/';
 
     // ============================================================
-    // 2. ДАННЫЕ ИСТОРИИ
+    // 2. ДАННЫЕ ИСТОРИИ (исправлены расширения и ссылки)
     // ============================================================
     const STORY = {
       nameInput: {
@@ -231,7 +229,7 @@ description: Сделайте выбор и узнайте судьбу Марс
       start: {
         id: 'start',
         text: function(name) {
-          return `<img src="${IMG_PATH}start.jpg" alt="Ацидалийское море" loading="lazy" />
+          return `<img src="${IMG_PATH}start.jpg" alt="Ацидалийское море" loading="lazy" onerror="this.style.display='none'" />
                   Вы — <span class="highlight">${name}</span>. Стоите на обрыве у <span class="highlight">Ацидалийского моря</span>.
                   Ветер доносит запах соли и пыли. Вдалеке видны огни города Окхасен.
                   За спиной — тёмные входы в <span class="highlight">пещеры Фарсиды</span>, где живёт старый хранитель знаний Хевсур.
@@ -243,13 +241,13 @@ description: Сделайте выбор и узнайте судьбу Марс
           { icon: '🌆', text: 'Отправиться в город Окхасен', next: 'okhasen' }
         ],
         progress: '1',
-        sound: 'wind' // звук ветра у моря
+        sound: 'wind'
       },
 
       hevsur: {
         id: 'hevsur',
         text: function(name) {
-          return `<img src="${IMG_PATH}hevsur.jpg" alt="Хевсур в пещерах" loading="lazy" />
+          return `<img src="${IMG_PATH}hevsur.png" alt="Хевсур в пещерах" loading="lazy" onerror="this.style.display='none'" />
                   Вы спускаетесь в пещеры. Воздух становится влажным и прохладным.
                   В глубине мерцает огонь — <span class="highlight">Хевсур</span> сидит у костра, перебирая глиняные таблички.
                   <br><br>Он поднимает голову и смотрит на вас. «Ты прочитал табличку. Что ты хочешь знать, ${name}?»`;
@@ -259,12 +257,12 @@ description: Сделайте выбор и узнайте судьбу Марс
           { icon: '🗣️', text: 'Попросить научить марсианскому языку', next: 'language' }
         ],
         progress: '2',
-        sound: 'fire' // звук огня в пещере
+        sound: 'fire'
       },
 
       prophecy: {
         id: 'prophecy',
-        text: `<img src="${IMG_ROOT}mars_starmap.png" alt="Пророчество" style="max-width:100%; border-radius:8px; margin-bottom:1rem;" />
+        text: `<img src="${IMG_ROOT}mars_starmap.png" alt="Пророчество" style="max-width:100%; border-radius:8px; margin-bottom:1rem;" onerror="this.style.display='none'" />
                Хевсур долго молчит, глядя на огонь. Затем начинает говорить:
                <br><br>«<span class="highlight">Исход</span> — это не конец. Это путь.
                Когда вода уйдёт с Марса, жизнь поднимется к звёздам.
@@ -274,15 +272,15 @@ description: Сделайте выбор и узнайте судьбу Марс
         endIcon: '🌟',
         endTitle: 'Пророчество открыто',
         endText: 'Вы узнали тайну Исхода. Теперь вы — хранитель знания.',
-        endLink: '/history/myths/',
-        endLinkText: '📖 Читать о пророчествах в энциклопедии',
+        endLink: '/history/periodization/',
+        endLinkText: '📖 Читать о периодах марсианской истории',
         progress: '3',
         sound: 'wind'
       },
 
       language: {
         id: 'language',
-        text: `<img src="${IMG_PATH}language.jpg" alt="Изучение языка" loading="lazy" />
+        text: `<img src="${IMG_PATH}language.png" alt="Изучение языка" loading="lazy" onerror="this.style.display='none'" />
                Хевсур улыбается. «Язык — это память. Запомни главное: <span class="highlight">Lān sur</span> — «Глина помнит».
                <br><br>Он учит вас нескольким фразам, и вы чувствуете, как древние слова оживают в вашем сознании.
                <br><br>«Ты — хранитель языка. Не дай ему умереть вместе с нами.»`,
@@ -298,7 +296,7 @@ description: Сделайте выбор и узнайте судьбу Марс
 
       okhasen: {
         id: 'okhasen',
-        text: `<img src="${IMG_PATH}okhasen.jpg" alt="Окхасен" loading="lazy" />
+        text: `<img src="${IMG_PATH}okhasen.jpg" alt="Окхасен" loading="lazy" onerror="this.style.display='none'" />
                Вы идёте по извилистой дороге к <span class="highlight">Окхасену</span>.
                Город встречает вас шумом порта и запахом рыбы. Повсюду снуют марсиане, кто-то торгует, кто-то готовит корабли к отплытию.
                <br><br>Вы стоите на площади. Куда направитесь?`,
@@ -307,12 +305,12 @@ description: Сделайте выбор и узнайте судьбу Марс
           { icon: '🏛️', text: 'Пойти в Академию — там собираются учёные', next: 'academy' }
         ],
         progress: '2',
-        sound: 'city' // звук города
+        sound: 'city'
       },
 
       port: {
         id: 'port',
-        text: `<img src="${IMG_PATH}port.jpg" alt="Порт" loading="lazy" />
+        text: `<img src="${IMG_PATH}port.jpg" alt="Порт" loading="lazy" onerror="this.style.display='none'" />
                В порту кипит жизнь. Капитан корабля «Звёздный ветер» смотрит на вас с усмешкой.
                <br><br>«Мальчик, ты ищешь путь к звёздам? Это не игрушки. Там, за небом, — только холод и тьма.
                Но если ты готов — мы отплываем на рассвете.»
@@ -324,12 +322,12 @@ description: Сделайте выбор и узнайте судьбу Марс
         endLink: '/geography/acidalia-sea/',
         endLinkText: '🌊 Узнать об Ацидалийском море',
         progress: '3',
-        sound: 'sea' // звук моря
+        sound: 'sea'
       },
 
       academy: {
         id: 'academy',
-        text: `<img src="${IMG_PATH}academy.jpg" alt="Академия" loading="lazy" />
+        text: `<img src="${IMG_PATH}academy.jpg" alt="Академия" loading="lazy" onerror="this.style.display='none'" />
                В Академии вы видите молодого учёного, склонившегося над картами. Это <span class="highlight">Талин</span>.
                Он поднимает голову.
                <br><br>«Ах, ты пришёл! Я как раз искал помощника. Знаешь, я думаю, мы можем предсказать, когда наступит Исход.

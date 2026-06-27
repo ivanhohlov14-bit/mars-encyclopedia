@@ -1,13 +1,12 @@
 ---
 title: Конструктор марсианских мелодий
-description: Создавайте мелодии из 7 нот (до, ре, ми, фа, соль, ля, си) со звуком, похожим на гусли
+description: Создавайте мелодии из 7 нот (до, ре, ми, фа, соль, ля, си) с синтезированным звуком гуслей
 ---
 
 # 🎵 Конструктор марсианских мелодий
 
 <div id="mars-melody-app">
   <style>
-    /* Стили (те же, что были) */
     .mm-container {
       max-width: 900px;
       margin: 0 auto;
@@ -204,6 +203,10 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
       background: #4a2a2a;
       border-color: #8a4a4a;
     }
+    .mm-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
     .mm-share-box {
       display: flex;
       gap: 0.5rem;
@@ -258,7 +261,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   <div class="mm-container">
     <div class="mm-title">
       🎵 Конструктор марсианских мелодий
-      <small>Синтезированный звук, похожий на гусли</small>
+      <small>Синтезированный звук, приближенный к гуслям</small>
     </div>
 
     <div class="mm-section">
@@ -331,7 +334,6 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   let isPlaying = false;
   let audioCtx = null;
 
-  // DOM-элементы
   const paletteEl = document.getElementById('mm-note-palette');
   const durGroupEl = document.getElementById('mm-duration-group');
   const editorEl = document.getElementById('mm-editor');
@@ -359,58 +361,123 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   }
 
   // ============================================================
-  // 4. СИНТЕЗ ЗВУКА ГУСЛЕЙ (без сэмплов)
+  // 4. УЛУЧШЕННЫЙ СИНТЕЗ ГУСЛЕЙ
   // ============================================================
   function playSynthesizedGusli(ctx, note, startTime, durationSec) {
-    // Главный выход
     const output = ctx.createGain();
     output.connect(ctx.destination);
 
-    // ----- 1. Основной тон (треугольник) -----
+    // --- Основной тон ---
     const osc1 = ctx.createOscillator();
     osc1.type = 'triangle';
     osc1.frequency.value = note.freq;
 
-    // ----- 2. Обертон (октава выше, тише) -----
+    // --- Обертон октава ---
     const osc2 = ctx.createOscillator();
     osc2.type = 'triangle';
     osc2.frequency.value = note.freq * 2;
+    const gain2 = ctx.createGain();
+    gain2.gain.value = 0.3;
 
-    // ----- 3. Огибающая для основного тона -----
+    // --- Обертон квинта ---
+    const osc3 = ctx.createOscillator();
+    osc3.type = 'sine';
+    osc3.frequency.value = note.freq * 1.5;
+    const gain3 = ctx.createGain();
+    gain3.gain.value = 0.15;
+
+    // --- Шум атаки (имитация щипка) ---
+    const bufferSize = ctx.sampleRate * 0.02;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.3));
+    }
+    const noise = ctx.createBufferSource();
+    noise.buffer = buffer;
+
+    // --- Огибающая основного тона (ADSR) ---
     const env1 = ctx.createGain();
+    const attack = 0.005;
+    const decay = 0.05;
+    const sustain = 0.2;
+    const release = durationSec * 0.7;
     env1.gain.setValueAtTime(0.001, startTime);
-    env1.gain.linearRampToValueAtTime(0.3, startTime + 0.015); // быстрый щипок
-    env1.gain.exponentialRampToValueAtTime(0.001, startTime + durationSec * 0.6); // затухание
+    env1.gain.linearRampToValueAtTime(0.5, startTime + attack);
+    env1.gain.linearRampToValueAtTime(0.3, startTime + attack + decay);
+    env1.gain.setValueAtTime(0.3, startTime + attack + decay);
+    env1.gain.exponentialRampToValueAtTime(0.001, startTime + attack + decay + release);
 
-    // ----- 4. Огибающая для обертона (тише и короче) -----
+    // --- Огибающая для обертонов ---
     const env2 = ctx.createGain();
     env2.gain.setValueAtTime(0.001, startTime);
-    env2.gain.linearRampToValueAtTime(0.12, startTime + 0.01);
-    env2.gain.exponentialRampToValueAtTime(0.001, startTime + durationSec * 0.4);
+    env2.gain.linearRampToValueAtTime(0.2, startTime + 0.01);
+    env2.gain.exponentialRampToValueAtTime(0.001, startTime + durationSec * 0.5);
 
-    // ----- 5. Фильтр низких частот (для теплоты) -----
+    // --- Огибающая для шума ---
+    const envNoise = ctx.createGain();
+    envNoise.gain.setValueAtTime(0.001, startTime);
+    envNoise.gain.linearRampToValueAtTime(0.15, startTime + 0.01);
+    envNoise.gain.exponentialRampToValueAtTime(0.001, startTime + 0.06);
+
+    // --- Фильтр с резонансом ---
     const filter = ctx.createBiquadFilter();
     filter.type = 'lowpass';
-    filter.frequency.value = 1800;
-    filter.Q.value = 1.2;
+    filter.frequency.value = 2000;
+    filter.Q.value = 2.5;
 
-    // ----- 6. Сборка -----
-    // Основной тон → фильтр → выход
+    // --- Микшер ---
+    const sum = ctx.createGain();
     osc1.connect(env1);
-    env1.connect(filter);
-    // Обертон → фильтр → выход
-    osc2.connect(env2);
-    env2.connect(filter);
-    // Фильтр → выход
+    env1.connect(sum);
+
+    osc2.connect(gain2);
+    gain2.connect(env2);
+    env2.connect(sum);
+
+    osc3.connect(gain3);
+    gain3.connect(env2);
+    // уже подключено к env2
+
+    // --- Шум подмешиваем отдельно ---
+    const noiseGain = ctx.createGain();
+    noise.connect(envNoise);
+    envNoise.connect(noiseGain);
+    noiseGain.gain.value = 0.5;
+
+    sum.connect(filter);
     filter.connect(output);
+    noiseGain.connect(output);
 
-    // Запуск и остановка
+    // --- Задержка (реверберация) ---
+    const delay = ctx.createDelay(0.3);
+    delay.delayTime.value = 0.12;
+    const feedback = ctx.createGain();
+    feedback.gain.value = 0.25;
+    const wet = ctx.createGain();
+    wet.gain.value = 0.2;
+    const dry = ctx.createGain();
+    dry.gain.value = 0.8;
+
+    filter.connect(dry);
+    dry.connect(output);
+    filter.connect(delay);
+    delay.connect(feedback);
+    feedback.connect(delay);
+    delay.connect(wet);
+    wet.connect(output);
+
+    // --- Запуск ---
     osc1.start(startTime);
-    osc1.stop(startTime + durationSec + 0.05);
+    osc1.stop(startTime + durationSec + 0.1);
     osc2.start(startTime);
-    osc2.stop(startTime + durationSec + 0.05);
+    osc2.stop(startTime + durationSec + 0.1);
+    osc3.start(startTime);
+    osc3.stop(startTime + durationSec + 0.1);
+    noise.start(startTime);
+    noise.stop(startTime + 0.1);
 
-    return { osc1, osc2, env1, env2, filter, output };
+    return { osc1, osc2, osc3, noise, env1, env2, envNoise, filter, output, delay, feedback };
   }
 
   // ============================================================
@@ -462,10 +529,17 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
           nodes.osc1.disconnect();
           nodes.osc2.stop();
           nodes.osc2.disconnect();
+          nodes.osc3.stop();
+          nodes.osc3.disconnect();
+          nodes.noise.stop();
+          nodes.noise.disconnect();
           nodes.env1.disconnect();
           nodes.env2.disconnect();
+          nodes.envNoise.disconnect();
           nodes.filter.disconnect();
           nodes.output.disconnect();
+          nodes.delay.disconnect();
+          nodes.feedback.disconnect();
         } catch(e) {}
       });
       isPlaying = false;
@@ -483,10 +557,17 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
             nodes.osc1.disconnect();
             nodes.osc2.stop();
             nodes.osc2.disconnect();
+            nodes.osc3.stop();
+            nodes.osc3.disconnect();
+            nodes.noise.stop();
+            nodes.noise.disconnect();
             nodes.env1.disconnect();
             nodes.env2.disconnect();
+            nodes.envNoise.disconnect();
             nodes.filter.disconnect();
             nodes.output.disconnect();
+            nodes.delay.disconnect();
+            nodes.feedback.disconnect();
           } catch(e) {}
         });
         isPlaying = false;
@@ -497,7 +578,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   }
 
   // ============================================================
-  // 6. ОТРИСОВКА ИНТЕРФЕЙСА (без изменений)
+  // 6. ОТРИСОВКА ИНТЕРФЕЙСА
   // ============================================================
   function renderPalette() {
     paletteEl.innerHTML = '';
@@ -610,7 +691,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   }
 
   // ============================================================
-  // 8. ШАРИНГ (кодирование в URL)
+  // 8. ШАРИНГ
   // ============================================================
   function encodeMelody() {
     return melody.map(item => `${item.noteId},${item.duration}`).join(':');
@@ -692,7 +773,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
 
     updateShareLink();
 
-    // Предзагрузка контекста при первом клике
+    // Активируем AudioContext при первом клике
     document.addEventListener('click', ensureAudioContext, { once: true });
   }
 

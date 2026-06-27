@@ -68,14 +68,14 @@
 | 🏔️ **География** | 🚀 **Астрономия** | 📚 **Книги** |
 |:---|:---|:---|
 | [Ацидалийское море](geography/acidalia-sea.md) | [Звёздное небо Марса](astronomy/mars-sky.md) | [«Ацидалийское море»](books/acidalia-sea.md) |
-| [Окхасен](geography/okhasen.md) | [Фобос и Деймос](astronomy/phobos-deimos.md) | [«Там, где спят голоса»](books/tam-gde-spyat-golosa.md) |
-| [Роген-Ария](geography/rogen-aria.md) | [Земля как цель](astronomy/earth-as-target.md) | [«Круги на красном пепле»](books/krugi-na-krasnom-peple.md) |
-| [Фарсида](geography/farsida.md) | [Земля](astronomy/earth.md) | [«Звёздный путь»](books/zvezdnyy-put.md) |
-| [Пещеры под Фарсидой](geography/farsida-caves.md) | | [«Голубая звезда. Колыбель из пепла»](books/golubaya-zvezda-kolybel-iz-pepla.md) |
-| [Эритрея](geography/eritreya.md) | | [«Ксанф. Пиратское королевство»](books/ksanf-piratskoe-korolevstvo.md) |
-| [Утопия](geography/utopiya.md) | | [«Пещерники. Голоса из недр»](books/peshcheriki-golosa-iz-nedr.md) |
-| [Новый Окхасен](geography/noviy-okhasen.md) | | [«Совия. Последняя песнь»](books/soviya-poslednyaya-pesn.md) |
-| [Академия Окхасена](geography/akademiya-okhasena.md) | | [«Харан. Писец из Эллады»](books/kharan-pisets-iz-ellady.md) |
+| [Окхасен](geography/okhasen.md) | [Фобос и Деймос](astronomy/phobos-deimos.md) |
+| [Роген-Ария](geography/rogen-aria.md) | [Земля как цель](astronomy/earth-as-target.md) | 
+| [Фарсида](geography/farsida.md) | [Земля](astronomy/earth.md) | 
+| [Пещеры под Фарсидой](geography/farsida-caves.md) | 
+| [Эритрея](geography/eritreya.md) | 
+| [Утопия](geography/utopiya.md) | 
+| [Новый Окхасен](geography/noviy-okhasen.md) | 
+| [Академия Окхасена](geography/akademiya-okhasena.md) | 
 
 ---
 

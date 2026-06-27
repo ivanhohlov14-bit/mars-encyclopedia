@@ -120,28 +120,90 @@
 <script>
   document.getElementById('randomArticleBtn').addEventListener('click', function() {
     const pages = [
+      // ===== ГЛАВНАЯ =====
       { title: 'Главная', url: '/' },
-      { title: 'Периодизация', url: '/history/periodization/' },
-      { title: 'Хронология', url: '/history/timeline/' },
-      { title: 'Мифы', url: '/history/myths/' },
+      
+      // ===== ИСТОРИЯ =====
+      { title: 'Периодизация истории Марса', url: '/history/periodization/' },
+      { title: 'Хронология событий', url: '/history/timeline/' },
+      { title: 'Мифы и легенды Марса', url: '/history/myths/' },
+      { title: 'Эпоха Основания', url: '/history/epokha-osnovaniya/' },
+      { title: 'Эпоха Расцвета', url: '/history/epokha-rascveta/' },
+      { title: 'Эпоха Умирания', url: '/history/epokha-umiraniya/' },
+      { title: 'Исход', url: '/history/iskhod/' },
+      { title: 'Королевство Ксанф', url: '/history/pirate-kingdom/' },
+      
+      // ===== ГЕОГРАФИЯ =====
       { title: 'Ацидалийское море', url: '/geography/acidalia-sea/' },
       { title: 'Окхасен', url: '/geography/okhasen/' },
+      { title: 'Роген-Ария', url: '/geography/rogen-aria/' },
+      { title: 'Фарсида', url: '/geography/farsida/' },
+      { title: 'Пещеры под Фарсидой', url: '/geography/farsida-caves/' },
+      { title: 'Ксанф (река)', url: '/geography/ksanf-river/' },
+      { title: 'Эритрея', url: '/geography/eritreya/' },
+      { title: 'Утопия', url: '/geography/utopiya/' },
+      { title: 'Эдем', url: '/geography/edem/' },
+      { title: 'Тарсис', url: '/geography/tarsis/' },
+      { title: 'Подземный храм', url: '/geography/podzemniy-khram/' },
+      { title: 'Космодром Фарсиды', url: '/geography/kosmodrom-farsidy/' },
+      { title: 'Новый Окхасен', url: '/geography/noviy-okhasen/' },
+      { title: 'Академия Окхасена', url: '/geography/akademiya-okhasena/' },
+      
+      // ===== АСТРОНОМИЯ =====
+      { title: 'Звёздное небо Марса', url: '/astronomy/mars-sky/' },
       { title: 'Фобос и Деймос', url: '/astronomy/phobos-deimos/' },
-      { title: 'Звёздное небо', url: '/astronomy/mars-sky/' },
+      { title: 'Земля как цель', url: '/astronomy/earth-as-target/' },
+      { title: 'Земля', url: '/astronomy/earth/' },
+      
+      // ===== КУЛЬТУРА И НАУКА =====
+      { title: 'Lān sur', url: '/terms/lan-sur/' },
+      { title: 'Глиняные таблички', url: '/terms/tablichki/' },
+      { title: 'Гемоцианин', url: '/biology/gemotsianin/' },
+      { title: 'Геология Марса', url: '/science/geology/' },
+      
+      // ===== ПЕРСОНАЖИ =====
       { title: 'Хевсур', url: '/people/hevsur/' },
       { title: 'Талин', url: '/people/talin/' },
       { title: 'Элла', url: '/people/ella/' },
-      { title: 'Аратан III', url: '/people/aratan-iii/' },
       { title: 'Йарра', url: '/people/yarra/' },
       { title: 'Алира', url: '/people/alira/' },
+      { title: 'Аратан III', url: '/people/aratan-iii/' },
+      { title: 'Ирайна', url: '/people/irayina/' },
+      { title: 'Миран', url: '/people/miran/' },
+      { title: 'Харан', url: '/people/kharan/' },
+      { title: 'Совия', url: '/people/soviya/' },
+      { title: 'Араш', url: '/people/arash/' },
+      { title: 'Кан', url: '/people/kan/' },
+      { title: 'Сарум II', url: '/people/sarum-ii/' },
+      { title: 'Сарум Великий', url: '/people/sarum-velikiy/' },
+      { title: 'Ксанф (чудовище)', url: '/people/ksanf-monster/' },
+      
+      // ===== БОГИ И МИФОЛОГИЯ =====
+      { title: 'Кхо', url: '/mythology/kho/' },
+      { title: 'Акха', url: '/mythology/akha/' },
+      { title: 'Араксис', url: '/mythology/araksis/' },
+      { title: 'Пророчество Харана', url: '/mythology/prorochestvo-kharana/' },
+      
+      // ===== КНИГИ =====
+      { title: '«Ацидалийское море»', url: '/books/acidalia-sea/' },
+      { title: '«Там, где спят голоса»', url: '/books/tam-gde-spyat-golosa/' },
+      { title: '«Круги на красном пепле»', url: '/books/krugi-na-krasnom-peple/' },
+      { title: '«Звёздный путь»', url: '/books/zvezdnyy-put/' },
+      { title: '«Голубая звезда. Колыбель из пепла»', url: '/books/golubaya-zvezda-kolybel-iz-pepla/' },
+      { title: '«Ксанф. Пиратское королевство»', url: '/books/ksanf-piratskoe-korolevstvo/' },
+      { title: '«Пещерники. Голоса из недр»', url: '/books/peshcheriki-golosa-iz-nedr/' },
+      { title: '«Совия. Последняя песнь»', url: '/books/soviya-poslednyaya-pesn/' },
+      { title: '«Харан. Писец из Эллады»', url: '/books/kharan-pisets-iz-ellady/' },
+      { title: '«Ланой-Кузнец. Последний герой Утопии»', url: '/books/lanoy-kuznets-posledniy-geroy-utopii/' },
+      { title: '«Акхара Великая. Железная жрица»', url: '/books/akhara-velikaya-zheleznaya-zhrtsa/' },
     ];
+    
+    // Исключаем главную страницу из случайного выбора
     const filtered = pages.filter(p => p.url !== '/');
     const random = filtered[Math.floor(Math.random() * filtered.length)];
     window.location.href = random.url;
   });
 </script>
-
----
 
 ### 🗓️ Марсианский календарь
 
@@ -241,22 +303,185 @@
 <script>
   (function() {
     const quotes = [
-      { text: '«Khō mōr, dzen mōr, lān ān mōr» — Огонь умрёт, звезда умрёт, память не умрёт.', source: 'Хевсур' },
-      { text: '«Глина помнит даже то, что мы сами забыли.»', source: 'Хевсур' },
-      { text: '«Смотри на звёзды и помни жизнь.»', source: 'Талин' },
-      { text: '«Lān sur. — Глина помнит.»', source: 'Древняя формула' },
-      { text: '«Я всё записал. Теперь ваша очередь — помнить.»', source: 'Хевсур' },
+      // ===== ХЕВСУР =====
+      {
+        text: '«Khō mōr, dzen mōr, lān ān mōr» — Огонь умрёт, звезда умрёт, память не умрёт.',
+        source: 'Хевсур'
+      },
+      {
+        text: '«Глина помнит даже то, что мы сами забыли.»',
+        source: 'Хевсур'
+      },
+      {
+        text: '«Я всё записал. Теперь ваша очередь — помнить.»',
+        source: 'Хевсур'
+      },
+      {
+        text: '«Мы не победили время, но мы записали его. И это наша победа.»',
+        source: 'Хевсур'
+      },
+      {
+        text: '«Если я перестану писать, то кто расскажет о нас через тысячу лет?»',
+        source: 'Хевсур'
+      },
+      {
+        text: '«Глина не лжёт, и она не умирает. Она ждёт. И когда ты берёшь её в руки, ты берёшь в руки время.»',
+        source: 'Хевсур'
+      },
+      {
+        text: '«Я сижу в пещере и смотрю на воду через трещину в скале. Она не двигается. Она застыла, как глина, которую я уже не могу обжечь. Глина помнит. А море молчит.»',
+        source: 'Хевсур'
+      },
+
+      // ===== ТАЛИН =====
+      {
+        text: '«Смотри на звёзды и помни жизнь.»',
+        source: 'Талин'
+      },
+      {
+        text: '«Мы не бежим. Мы идём туда, где нас ждут. Даже если ждут только пустые скалы, мы высечем на них свои имена.»',
+        source: 'Талин'
+      },
+      {
+        text: '«Глина помнит даже то, что мы сами забыли. Если я потеряю память, пусть она сохранит мою душу.»',
+        source: 'Талин'
+      },
+      {
+        text: '«Я, Талин, сын Эрдана, смотрел на звёзды и помнил жизнь. Теперь я забываю, но глина помнит за меня. Lān sur.»',
+        source: 'Талин'
+      },
+
+      // ===== АРАТАН III =====
+      {
+        text: '«Я правил камнями, но не сумел удержать воду. Пусть те, кто улетают, правят хотя бы памятью.»',
+        source: 'Аратан III'
+      },
+      {
+        text: '«Мы не бежим от богов — мы идём туда, где они ещё не ступали. Если Марс суждено покинуть, пусть мы оставим на нём не только кости, но и память о том, что мы были.»',
+        source: 'Аратан III'
+      },
+
+      // ===== СОВИЯ =====
+      {
+        text: '«Море уходит, но я остаюсь. Вода умирает, но глина помнит.»',
+        source: 'Совия'
+      },
+      {
+        text: '«Я не записываю имена. Я пою их. Когда я умру, мои песни будут жить в тех, кто их слышал.»',
+        source: 'Совия'
+      },
+      {
+        text: '«Ты слышишь? Это не струны плачут. Это море прощается с нами.»',
+        source: 'Совия'
+      },
+      {
+        text: '«Ксанф спит на дне, в Ксанфовой Пасти, и когда он проснётся, море вскипит.»',
+        source: 'Совия'
+      },
+
+      // ===== ДРЕВНИЕ ФОРМУЛЫ =====
+      {
+        text: '«Lān sur. — Глина помнит.»',
+        source: 'Древняя формула'
+      },
+      {
+        text: '«Okh sen ākha, dzen thal marzān» — Город помнит море, смотри на звёзды, марсианин.',
+        source: 'Древняя формула'
+      },
+      {
+        text: '«Ksanf lān, okh ākha thal» — Река помнит, город смотрит на море.',
+        source: 'Древняя формула'
+      },
+
+      // ===== КСАНФ (ПИРАТСКИЙ КОРОЛЬ) =====
+      {
+        text: '«Море кормит нас, море поит нас, море забирает нас, когда приходит время. Мы не боимся смерти, потому что море — наш дом.»',
+        source: 'Ксанф (пиратский король)'
+      },
+      {
+        text: '«Тот, кто украдёт долю брата, будет брошен в воду. Тот, кто предаст брата, будет брошен в воду. Тот, кто забудет имя брата, будет проклят навеки. Море помнит всех. Море не прощает.»',
+        source: 'Ксанф (пиратский король)'
+      },
+
+      // ===== ХАРАН =====
+      {
+        text: '«Глина не лжёт, но она не говорит всего. Тот, кто умеет слушать, услышит и между строк.»',
+        source: 'Харан'
+      },
+      {
+        text: '«Я, Харан, сын Сарума, пишу это в год, когда море отступило от стен нашего города. Мы думали, что это временно. Мы думали, что вода вернётся. Но она не вернулась.»',
+        source: 'Харан'
+      },
+      {
+        text: '«Ты, кто идёт наверх, запомни: мы строили эту лестницу не для себя. Мы строили её для тебя. Чтобы ты мог выйти. Чтобы ты мог рассказать. Не подведи нас.»',
+        source: 'Харан'
+      },
+
+      // ===== ЙАРРА =====
+      {
+        text: '«Вы не запоминаете звёзды. Звёзды запоминают вас. Если вы смотрите на них достаточно долго, они начнут показывать вам путь домой.»',
+        source: 'Йарра'
+      },
+      {
+        text: '«Мы не спасаем мир. Мы спасаем мгновения. Один взгляд, одно слово, одна капля воды... Это и есть жизнь.»',
+        source: 'Йарра'
+      },
+
+      // ===== МИФЫ =====
+      {
+        text: '«Когда Фобос поднимется выше обычного, земля начнёт дрожать. Сначала реки помутнеют, потом высохнут. Потом из трещин пойдёт дым, и небо станет красным, как кровь.»',
+        source: 'Пророчество Харана'
+      },
+      {
+        text: '«Из пепла поднимется голос, и он скажет: "Ищите убежища за пределами своего мира". И те, кто услышат, построят корабли и увидят голубую звезду.»',
+        source: 'Пророчество Харана'
+      },
+      {
+        text: '«Она отняла у нас море, но оставила нам соль, чтобы мы помнили.»',
+        source: 'Плач Акха-Кора'
+      },
+      {
+        text: '«Когда Кхо коснулся Акхи, вскипела вода, и пар поднялся к небу, рождая облака. Когда Акха коснулась Кхо, остыл огонь, и из его застывшего сердца родился камень. Так явились небо и земля.»',
+        source: 'Книга Харан'
+      },
+
+      // ===== ИРАЙНА =====
+      {
+        text: '«Мы не можем изменить планету, но мы можем изменить себя. Это проще и быстрее.»',
+        source: 'Ирайна'
+      },
+      {
+        text: '«Они умерли, чтобы дать жизнь другим. Это не жертва, это — круговорот.»',
+        source: 'Ирайна'
+      },
+
+      // ===== МИРАН =====
+      {
+        text: '«Машины честнее людей. Они не лгут, не предают, не надеются на чудо. Они просто работают — или ломаются. Всё остальное — иллюзия.»',
+        source: 'Миран'
+      },
+      {
+        text: '«Прощай, Талин. Ты был прав. Земля — наша надежда. Помни обо мне... Lān sur.»',
+        source: 'Миран'
+      },
+
+      // ===== ЭЛЛА =====
+      {
+        text: '«Я заметила нечто необычное в пробе, взятой у подводного источника. Эти организмы не похожи на те, что мы видели раньше. Они делятся быстрее и, кажется, используют какой-то неизвестный нам механизм метаболизма.»',
+        source: 'Элла'
+      }
     ];
+
     const now = new Date();
     const start = new Date(now.getFullYear(), 0, 0);
     const diff = (now - start) + (start.getTimezoneOffset() - now.getTimezoneOffset()) * 60000;
     const dayOfYear = Math.floor(diff / 86400000);
     const index = dayOfYear % quotes.length;
     const quote = quotes[index];
+
     document.getElementById('quoteText').innerHTML = `${quote.text}<br><span style="font-style:normal; font-size:0.9rem; color:var(--link-color, #0645ad);">— ${quote.source}</span>`;
   })();
 </script>
-
 ---
 
 ### 🌙 Спутники Марса
@@ -383,26 +608,50 @@
     font-family: 'Georgia', serif;
     border-radius: 4px;
     cursor: pointer;
+    transition: background 0.3s;
   ">
     🌓 Тёмная тема
   </button>
 </div>
 
 <script>
-  const toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function() {
-    const current = document.documentElement.getAttribute('data-theme');
-    if (current === 'dark') {
-      document.documentElement.removeAttribute('data-theme');
-      toggle.textContent = '🌓 Тёмная тема';
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      toggle.textContent = '☀️ Светлая тема';
-    }
-  });
-</script>
+  (function() {
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
 
----
+    // Функция применения темы
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+        toggle.textContent = '☀️ Светлая тема';
+      } else {
+        html.removeAttribute('data-theme');
+        toggle.textContent = '🌓 Тёмная тема';
+      }
+      localStorage.setItem('mars-theme', theme);
+    }
+
+    // Восстановление сохранённой темы
+    const savedTheme = localStorage.getItem('mars-theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      // Если нет сохранённой, можно определить системную тему (опционально)
+      // Здесь оставляем светлую по умолчанию
+      setTheme('light');
+    }
+
+    // Обработчик клика
+    toggle.addEventListener('click', function() {
+      const current = html.getAttribute('data-theme');
+      if (current === 'dark') {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+    });
+  })();
+</script>
 
 ## Примечания
 

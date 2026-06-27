@@ -4,10 +4,15 @@ description: Создавайте мелодии из 7 марсианских �
 ---
 
 # 🎵 Конструктор марсианских мелодий
+---
+title: Конструктор марсианских мелодий
+description: Создавайте мелодии из 7 марсианских нот (до, ре, ми, фа, соль, си, ля) со звуком гуслей
+---
+
+# 🎵 Конструктор марсианских мелодий
 
 <div id="mars-melody-app">
   <style>
-    /* ===== Стили конструктора ===== */
     .mm-container {
       max-width: 900px;
       margin: 0 auto;
@@ -61,7 +66,6 @@ description: Создавайте мелодии из 7 марсианских �
       transition: all 0.15s;
       min-width: 3.5rem;
       text-align: center;
-      position: relative;
     }
     .mm-note-btn:hover {
       background: #2a2a4a;
@@ -205,10 +209,6 @@ description: Создавайте мелодии из 7 марсианских �
       background: #4a2a2a;
       border-color: #8a4a4a;
     }
-    .mm-btn:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
     .mm-share-box {
       display: flex;
       gap: 0.5rem;
@@ -260,25 +260,22 @@ description: Создавайте мелодии из 7 марсианских �
     }
   </style>
 
-  <div class="mm-container" id="mm-app">
+  <div class="mm-container">
     <div class="mm-title">
       🎵 Конструктор марсианских мелодий
-      <small>Составьте мелодию из 7 основных нот (до, ре, ми, фа, соль, си, ля)</small>
+      <small>Составьте мелодию из 7 нот со звуком гуслей</small>
     </div>
 
-    <!-- Палитра нот -->
     <div class="mm-section">
       <div class="mm-section-title">🎵 Выбор ноты</div>
       <div class="mm-note-grid" id="mm-note-palette"></div>
     </div>
 
-    <!-- Длительность -->
     <div class="mm-section">
       <div class="mm-section-title">⏱ Длительность</div>
       <div class="mm-duration-group" id="mm-duration-group"></div>
     </div>
 
-    <!-- Редактор -->
     <div class="mm-section">
       <div class="mm-section-title">📝 Ваша мелодия</div>
       <div class="mm-editor" id="mm-editor">
@@ -286,7 +283,6 @@ description: Создавайте мелодии из 7 марсианских �
       </div>
     </div>
 
-    <!-- Управление -->
     <div class="mm-section">
       <div class="mm-controls">
         <button class="mm-btn primary" id="mm-play-btn">▶ Воспроизвести</button>
@@ -294,10 +290,9 @@ description: Создавайте мелодии из 7 марсианских �
         <button class="mm-btn" id="mm-undo-btn">↩ Отменить</button>
         <button class="mm-btn" id="mm-random-btn">🎲 Случайная</button>
       </div>
-      <div class="mm-stats" id="mm-stats">Нот: <span id="mm-note-count">0</span> | Длительность: <span id="mm-total-dur">0</span> четвертей</div>
+      <div class="mm-stats">Нот: <span id="mm-note-count">0</span> | Длительность: <span id="mm-total-dur">0</span> четвертей</div>
     </div>
 
-    <!-- Шаринг -->
     <div class="mm-section">
       <div class="mm-section-title">🔗 Поделиться</div>
       <div class="mm-share-box">
@@ -314,7 +309,7 @@ description: Создавайте мелодии из 7 марсианских �
   'use strict';
 
   // ============================================================
-  // 1. ДАННЫЕ: 7 основных марсианских нот (из вашего файла)
+  // 1. ДАННЫЕ: 7 нот
   // ============================================================
   const NOTES = [
     { id: 0, symbol: 'Ὸ', name: 'До',   freq: 261.63 },
@@ -322,13 +317,10 @@ description: Создавайте мелодии из 7 марсианских �
     { id: 2, symbol: 'ꝯ', name: 'Ми',   freq: 329.63 },
     { id: 3, symbol: 'Ꝼ', name: 'Фа',   freq: 349.23 },
     { id: 4, symbol: 'Ώ', name: 'Соль', freq: 392.00 },
-    { id: 5, symbol: 'ꓥ', name: 'Ля',   freq: 493.88 },
-    { id: 6, symbol: 'ⴡ', name: 'Си',   freq: 440.00 }
+    { id: 5, symbol: 'ⴡ', name: 'Си',   freq: 493.88 },
+    { id: 6, symbol: 'ꓥ', name: 'Ля',   freq: 440.00 }
   ];
 
-  // ============================================================
-  // 2. ДЛИТЕЛЬНОСТИ
-  // ============================================================
   const DURATIONS = [
     { value: 1,    symbol: '∩', label: 'Целая' },
     { value: 0.5,  symbol: '⌠', label: 'Половинная' },
@@ -337,14 +329,15 @@ description: Создавайте мелодии из 7 марсианских �
   ];
 
   // ============================================================
-  // 3. СОСТОЯНИЕ
+  // 2. СОСТОЯНИЕ
   // ============================================================
   let melody = [];
   let currentDuration = 0.25;
   let isPlaying = false;
-  let audioCtx = null; // Глобальный AudioContext
+  let audioCtx = null;
+  let gusliBuffer = null; // для сэмпла
 
-  // DOM-ссылки
+  // DOM-элементы
   const paletteEl = document.getElementById('mm-note-palette');
   const durGroupEl = document.getElementById('mm-duration-group');
   const editorEl = document.getElementById('mm-editor');
@@ -353,25 +346,160 @@ description: Создавайте мелодии из 7 марсианских �
   const shareInput = document.getElementById('mm-share-input');
 
   // ============================================================
-  // 4. ФУНКЦИЯ АКТИВАЦИИ ЗВУКА (по клику)
+  // 3. ЗАГРУЗКА СЭМПЛА
+  // ============================================================
+  function loadSample() {
+    if (!audioCtx) return;
+    // Укажите путь к вашему файлу!
+    const url = '/assets/sounds/6_str_h_RR1.wav';
+    fetch(url)
+      .then(response => {
+        if (!response.ok) throw new Error('Файл не найден (404)');
+        return response.arrayBuffer();
+      })
+      .then(data => audioCtx.decodeAudioData(data))
+      .then(buffer => {
+        gusliBuffer = buffer;
+        console.log('✅ Сэмпл гуслей загружен!');
+      })
+      .catch(err => {
+        console.warn('⚠️ Не удалось загрузить сэмпл, буду использовать синтез.', err);
+        gusliBuffer = null;
+      });
+  }
+
+  // ============================================================
+  // 4. АКТИВАЦИЯ AUDIOCONTEXT
   // ============================================================
   function ensureAudioContext() {
     if (!audioCtx) {
       try {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        console.log('✅ AudioContext создан, состояние:', audioCtx.state);
+        loadSample(); // загружаем сэмпл после создания контекста
       } catch (e) {
-        console.error('AudioContext не поддерживается:', e);
+        console.error('❌ Ошибка создания AudioContext:', e);
         return null;
       }
     }
     if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
+      audioCtx.resume().catch(e => console.warn('Не удалось возобновить контекст:', e));
     }
     return audioCtx;
   }
 
   // ============================================================
-  // 5. ОТРИСОВКА
+  // 5. ВОСПРОИЗВЕДЕНИЕ ОДНОЙ НОТЫ (с сэмплом или синтезом)
+  // ============================================================
+  function playNote(ctx, note, startTime, durationSec) {
+    if (gusliBuffer) {
+      // Используем сэмпл
+      const source = ctx.createBufferSource();
+      source.buffer = gusliBuffer;
+      // Базовая частота сэмпла – предположим, что это C4 (261.63 Гц)
+      const baseFreq = 261.63;
+      const playbackRate = note.freq / baseFreq;
+      source.playbackRate.value = playbackRate;
+
+      const gain = ctx.createGain();
+      // Огибающая щипка (быстрая атака, плавное затухание)
+      gain.gain.setValueAtTime(0.001, startTime);
+      gain.gain.linearRampToValueAtTime(0.35, startTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + durationSec * 0.7);
+
+      source.connect(gain);
+      gain.connect(ctx.destination);
+
+      source.start(startTime);
+      source.stop(startTime + durationSec + 0.05);
+      return source;
+    } else {
+      // Fallback – синтез осциллятором
+      const osc = ctx.createOscillator();
+      osc.type = 'triangle'; // мягкий тембр
+      osc.frequency.value = note.freq;
+
+      const gain = ctx.createGain();
+      gain.gain.setValueAtTime(0.001, startTime);
+      gain.gain.linearRampToValueAtTime(0.25, startTime + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.001, startTime + durationSec * 0.8);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(startTime);
+      osc.stop(startTime + durationSec + 0.05);
+      return osc;
+    }
+  }
+
+  // ============================================================
+  // 6. ВОСПРОИЗВЕДЕНИЕ МЕЛОДИИ
+  // ============================================================
+  function playMelody() {
+    if (melody.length === 0) {
+      alert('Сначала добавьте хотя бы одну ноту!');
+      return;
+    }
+    if (isPlaying) return;
+
+    const ctx = ensureAudioContext();
+    if (!ctx) {
+      alert('Ваш браузер не поддерживает Web Audio API');
+      return;
+    }
+
+    isPlaying = true;
+    const btn = document.getElementById('mm-play-btn');
+    btn.textContent = '⏹ Остановить';
+
+    const startTime = ctx.currentTime + 0.1;
+    const bpm = 100;
+    const beatDuration = 60 / bpm;
+
+    let scheduled = [];
+
+    melody.forEach((item, index) => {
+      const note = NOTES.find(n => n.id === item.noteId);
+      if (!note) return;
+
+      let timeOffset = 0;
+      for (let i = 0; i < index; i++) {
+        timeOffset += melody[i].duration * beatDuration;
+      }
+      const when = startTime + timeOffset;
+      const durSec = item.duration * beatDuration;
+
+      const source = playNote(ctx, note, when, durSec);
+      scheduled.push(source);
+    });
+
+    const stopBtn = document.getElementById('mm-play-btn');
+    const stopHandler = () => {
+      scheduled.forEach(src => {
+        try { src.stop(); src.disconnect(); } catch(e) {}
+      });
+      isPlaying = false;
+      stopBtn.textContent = '▶ Воспроизвести';
+      stopBtn.removeEventListener('click', stopHandler);
+    };
+    stopBtn.addEventListener('click', stopHandler);
+
+    const totalDuration = melody.reduce((sum, item) => sum + item.duration, 0) * beatDuration + 0.5;
+    setTimeout(() => {
+      if (isPlaying) {
+        scheduled.forEach(src => {
+          try { src.stop(); src.disconnect(); } catch(e) {}
+        });
+        isPlaying = false;
+        stopBtn.textContent = '▶ Воспроизвести';
+        stopBtn.removeEventListener('click', stopHandler);
+      }
+    }, (totalDuration + 0.5) * 1000);
+  }
+
+  // ============================================================
+  // 7. ОТРИСОВКА ИНТЕРФЕЙСА
   // ============================================================
   function renderPalette() {
     paletteEl.innerHTML = '';
@@ -381,7 +509,7 @@ description: Создавайте мелодии из 7 марсианских �
       btn.innerHTML = `${note.symbol}<span class="mm-label">${note.name}</span>`;
       btn.title = `${note.name} (${note.freq.toFixed(1)} Гц)`;
       btn.addEventListener('click', () => {
-        ensureAudioContext(); // активируем звук при первом клике
+        ensureAudioContext();
         addNote(note.id);
       });
       paletteEl.appendChild(btn);
@@ -395,7 +523,7 @@ description: Создавайте мелодии из 7 марсианских �
       btn.className = 'mm-dur-btn' + (dur.value === currentDuration ? ' active' : '');
       btn.innerHTML = `<span class="mm-dur-symbol">${dur.symbol}</span>${dur.label}`;
       btn.addEventListener('click', () => {
-        ensureAudioContext(); // тоже активируем звук
+        ensureAudioContext();
         currentDuration = dur.value;
         renderDurations();
       });
@@ -441,7 +569,7 @@ description: Создавайте мелодии из 7 марсианских �
   }
 
   // ============================================================
-  // 6. ДЕЙСТВИЯ
+  // 8. ДЕЙСТВИЯ С МЕЛОДИЕЙ
   // ============================================================
   function addNote(noteId) {
     if (isPlaying) return;
@@ -471,94 +599,20 @@ description: Создавайте мелодии из 7 марсианских �
     renderEditor();
   }
 
-  // ============================================================
-  // 7. ВОСПРОИЗВЕДЕНИЕ (с использованием глобального AudioContext)
-  // ============================================================
-  function playMelody() {
-    if (melody.length === 0) {
-      alert('Сначала добавьте хотя бы одну ноту!');
-      return;
-    }
+  function generateRandomMelody() {
     if (isPlaying) return;
-
-    // Активируем звук при нажатии на кнопку "Воспроизвести"
-    const ctx = ensureAudioContext();
-    if (!ctx) {
-      alert('Ваш браузер не поддерживает Web Audio API');
-      return;
+    const count = 6 + Math.floor(Math.random() * 10);
+    melody = [];
+    for (let i = 0; i < count; i++) {
+      const noteId = Math.floor(Math.random() * NOTES.length);
+      const dur = DURATIONS[Math.floor(Math.random() * DURATIONS.length)].value;
+      melody.push({ noteId, duration: dur });
     }
-
-    isPlaying = true;
-    const btn = document.getElementById('mm-play-btn');
-    btn.textContent = '⏹ Остановить';
-
-    const startTime = ctx.currentTime + 0.1;
-    const bpm = 100;
-    const beatDuration = 60 / bpm;
-
-    const masterGain = ctx.createGain();
-    masterGain.gain.value = 0.25;
-    masterGain.connect(ctx.destination);
-
-    let scheduledNotes = [];
-
-    melody.forEach((item, index) => {
-      const note = NOTES.find(n => n.id === item.noteId);
-      if (!note) return;
-
-      let timeOffset = 0;
-      for (let i = 0; i < index; i++) {
-        timeOffset += melody[i].duration * beatDuration;
-      }
-      const when = startTime + timeOffset;
-      const durSec = item.duration * beatDuration;
-
-      const osc = ctx.createOscillator();
-      osc.type = 'sawtooth';
-      osc.frequency.value = note.freq;
-
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0.01, when);
-      gain.gain.linearRampToValueAtTime(0.3, when + 0.01);
-      gain.gain.exponentialRampToValueAtTime(0.001, when + durSec * 0.9);
-
-      osc.connect(gain);
-      gain.connect(masterGain);
-
-      osc.start(when);
-      osc.stop(when + durSec + 0.05);
-
-      scheduledNotes.push({ osc, gain, when, durSec });
-    });
-
-    const stopBtn = document.getElementById('mm-play-btn');
-    const stopHandler = () => {
-      scheduledNotes.forEach(({ osc, gain }) => {
-        try { osc.stop(); osc.disconnect(); gain.disconnect(); } catch(e) {}
-      });
-      masterGain.disconnect();
-      isPlaying = false;
-      stopBtn.textContent = '▶ Воспроизвести';
-      stopBtn.removeEventListener('click', stopHandler);
-    };
-    stopBtn.addEventListener('click', stopHandler);
-
-    const totalDuration = melody.reduce((sum, item) => sum + item.duration, 0) * beatDuration + 0.5;
-    setTimeout(() => {
-      if (isPlaying) {
-        scheduledNotes.forEach(({ osc, gain }) => {
-          try { osc.stop(); osc.disconnect(); gain.disconnect(); } catch(e) {}
-        });
-        masterGain.disconnect();
-        isPlaying = false;
-        stopBtn.textContent = '▶ Воспроизвести';
-        stopBtn.removeEventListener('click', stopHandler);
-      }
-    }, (totalDuration + 0.5) * 1000);
+    renderEditor();
   }
 
   // ============================================================
-  // 8. КОДИРОВАНИЕ / ДЕКОДИРОВАНИЕ (для ссылок)
+  // 9. ШАРИНГ (кодирование в URL)
   // ============================================================
   function encodeMelody() {
     return melody.map(item => `${item.noteId},${item.duration}`).join(':');
@@ -604,24 +658,6 @@ description: Создавайте мелодии из 7 марсианских �
     return false;
   }
 
-  // ============================================================
-  // 9. СЛУЧАЙНАЯ МЕЛОДИЯ
-  // ============================================================
-  function generateRandomMelody() {
-    if (isPlaying) return;
-    const count = 6 + Math.floor(Math.random() * 10);
-    melody = [];
-    for (let i = 0; i < count; i++) {
-      const noteId = Math.floor(Math.random() * NOTES.length);
-      const dur = DURATIONS[Math.floor(Math.random() * DURATIONS.length)].value;
-      melody.push({ noteId, duration: dur });
-    }
-    renderEditor();
-  }
-
-  // ============================================================
-  // 10. КОПИРОВАНИЕ ССЫЛКИ
-  // ============================================================
   function copyShareLink() {
     const val = shareInput.value;
     if (!val) {
@@ -638,13 +674,12 @@ description: Создавайте мелодии из 7 марсианских �
   }
 
   // ============================================================
-  // 11. ИНИЦИАЛИЗАЦИЯ
+  // 10. ИНИЦИАЛИЗАЦИЯ
   // ============================================================
   function init() {
     renderPalette();
     renderDurations();
     renderEditor();
-
     loadFromURL();
 
     document.getElementById('mm-play-btn').addEventListener('click', playMelody);
@@ -658,6 +693,9 @@ description: Создавайте мелодии из 7 марсианских �
     });
 
     updateShareLink();
+
+    // Предзагрузка контекста при первом взаимодействии
+    document.addEventListener('click', ensureAudioContext, { once: true });
   }
 
   if (document.readyState === 'loading') {

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест звука</title>
+    <style>
+        body {
+            background: #0d0d0d;
+            color: #d4d4d4;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            background: #3a2a4a;
+            border: 2px solid #6a4a7a;
+            color: white;
+            font-size: 2rem;
+            padding: 1.5rem 3rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        button:hover {
+            background: #4a3a6a;
+            border-color: #8a6aaa;
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        #status {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: #888;
+            text-align: center;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="playBtn">🔊 Нажми, чтобы услышать звук</button>
+        <div id="status">Нажмите на кнопку</div>
+    </div>
+
+    <script>
+        // ============================================================
+        // САМЫЙ ПРОСТОЙ СПОСОБ ВОСПРОИЗВЕДЕНИЯ ЗВУКА
+        // ============================================================
+        const playBtn = document.getElementById('playBtn');
+        const status = document.getElementById('status');
+
+        playBtn.addEventListener('click', function() {
+            try {
+                // 1. Создаём AudioContext
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                status.textContent = '🎵 AudioContext создан: ' + ctx.state;
+                
+                // 2. Если контекст приостановлен — возобновляем
+                if (ctx.state === 'suspended') {
+                    ctx.resume();
+                    status.textContent = '🔄 Возобновляем...';
+                }
+
+                // 3. Создаём осциллятор (генератор звука)
+                const osc = ctx.createOscillator();
+                osc.type = 'sine';  // чистый синус
+                osc.frequency.value = 440; // нота Ля
+
+                // 4. Создаём регулятор громкости
+                const gain = ctx.createGain();
+                gain.gain.setValueAtTime(0.3, ctx.currentTime);
+
+                // 5. Подключаем: осциллятор → громкость → динамики
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                // 6. Запускаем звук
+                osc.start();
+                status.textContent = '🔊 Звук играет! (440 Гц, Ля)';
+
+                // 7. Останавливаем через 1 секунду
+                setTimeout(() => {
+                    osc.stop();
+                    status.textContent = '⏹ Звук остановлен. Нажмите снова.';
+                }, 1000);
+
+                // 8. Небольшая обработка ошибок
+                osc.onended = function() {
+                    status.textContent = '✅ Звук завершён';
+                };
+
+            } catch (error) {
+                status.textContent = '❌ Ошибка: ' + error.message;
+                console.error('Ошибка воспроизведения:', error);
+            }
+        });
+    </script>
+</body>
+</html>

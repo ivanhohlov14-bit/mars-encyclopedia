@@ -120,91 +120,73 @@
 <script>
   document.getElementById('randomArticleBtn').addEventListener('click', function() {
     const pages = [
-      // ===== ГЛАВНАЯ =====
-      { title: 'Главная', url: '/' },
-      
-      // ===== ИСТОРИЯ =====
-      { title: 'Периодизация истории Марса', url: '/history/periodization/' },
-      { title: 'Хронология событий', url: '/history/timeline/' },
-      { title: 'Мифы и легенды Марса', url: '/history/myths/' },
-      { title: 'Эпоха Основания', url: '/history/epokha-osnovaniya/' },
-      { title: 'Эпоха Расцвета', url: '/history/epokha-rascveta/' },
-      { title: 'Эпоха Умирания', url: '/history/epokha-umiraniya/' },
-      { title: 'Исход', url: '/history/iskhod/' },
-      { title: 'Королевство Ксанф', url: '/history/pirate-kingdom/' },
-      
-      // ===== ГЕОГРАФИЯ =====
-      { title: 'Ацидалийское море', url: '/geography/acidalia-sea/' },
-      { title: 'Окхасен', url: '/geography/okhasen/' },
-      { title: 'Роген-Ария', url: '/geography/rogen-aria/' },
-      { title: 'Фарсида', url: '/geography/farsida/' },
-      { title: 'Пещеры под Фарсидой', url: '/geography/farsida-caves/' },
-      { title: 'Ксанф (река)', url: '/geography/ksanf-river/' },
-      { title: 'Эритрея', url: '/geography/eritreya/' },
-      { title: 'Утопия', url: '/geography/utopiya/' },
-      { title: 'Эдем', url: '/geography/edem/' },
-      { title: 'Тарсис', url: '/geography/tarsis/' },
-      { title: 'Подземный храм', url: '/geography/podzemniy-khram/' },
-      { title: 'Космодром Фарсиды', url: '/geography/kosmodrom-farsidy/' },
-      { title: 'Новый Окхасен', url: '/geography/noviy-okhasen/' },
-      { title: 'Академия Окхасена', url: '/geography/akademiya-okhasena/' },
-      
-      // ===== АСТРОНОМИЯ =====
-      { title: 'Звёздное небо Марса', url: '/astronomy/mars-sky/' },
-      { title: 'Фобос и Деймос', url: '/astronomy/phobos-deimos/' },
-      { title: 'Земля как цель', url: '/astronomy/earth-as-target/' },
-      { title: 'Земля', url: '/astronomy/earth/' },
-      
-      // ===== КУЛЬТУРА И НАУКА =====
-      { title: 'Lān sur', url: '/terms/lan-sur/' },
-      { title: 'Глиняные таблички', url: '/terms/tablichki/' },
-      { title: 'Гемоцианин', url: '/biology/gemotsianin/' },
-      { title: 'Геология Марса', url: '/science/geology/' },
-      
-      // ===== ПЕРСОНАЖИ =====
-      { title: 'Хевсур', url: '/people/hevsur/' },
-      { title: 'Талин', url: '/people/talin/' },
-      { title: 'Элла', url: '/people/ella/' },
-      { title: 'Йарра', url: '/people/yarra/' },
-      { title: 'Алира', url: '/people/alira/' },
-      { title: 'Аратан III', url: '/people/aratan-iii/' },
-      { title: 'Ирайна', url: '/people/irayina/' },
-      { title: 'Миран', url: '/people/miran/' },
-      { title: 'Харан', url: '/people/kharan/' },
-      { title: 'Совия', url: '/people/soviya/' },
-      { title: 'Араш', url: '/people/arash/' },
-      { title: 'Кан', url: '/people/kan/' },
-      { title: 'Сарум II', url: '/people/sarum-ii/' },
-      { title: 'Сарум Великий', url: '/people/sarum-velikiy/' },
-      { title: 'Ксанф (чудовище)', url: '/people/ksanf-monster/' },
-      
-      // ===== БОГИ И МИФОЛОГИЯ =====
-      { title: 'Кхо', url: '/mythology/kho/' },
-      { title: 'Акха', url: '/mythology/akha/' },
-      { title: 'Араксис', url: '/mythology/araksis/' },
-      { title: 'Пророчество Харана', url: '/mythology/prorochestvo-kharana/' },
-      
-      // ===== КНИГИ =====
-      { title: '«Ацидалийское море»', url: '/books/acidalia-sea/' },
-      { title: '«Там, где спят голоса»', url: '/books/tam-gde-spyat-golosa/' },
-      { title: '«Круги на красном пепле»', url: '/books/krugi-na-krasnom-peple/' },
-      { title: '«Звёздный путь»', url: '/books/zvezdnyy-put/' },
-      { title: '«Голубая звезда. Колыбель из пепла»', url: '/books/golubaya-zvezda-kolybel-iz-pepla/' },
-      { title: '«Ксанф. Пиратское королевство»', url: '/books/ksanf-piratskoe-korolevstvo/' },
-      { title: '«Пещерники. Голоса из недр»', url: '/books/peshcheriki-golosa-iz-nedr/' },
-      { title: '«Совия. Последняя песнь»', url: '/books/soviya-poslednyaya-pesn/' },
-      { title: '«Харан. Писец из Эллады»', url: '/books/kharan-pisets-iz-ellady/' },
-      { title: '«Ланой-Кузнец. Последний герой Утопии»', url: '/books/lanoy-kuznets-posledniy-geroy-utopii/' },
-      { title: '«Акхара Великая. Железная жрица»', url: '/books/akhara-velikaya-zheleznaya-zhrtsa/' },
+      { title: 'Периодизация истории Марса', url: 'history/periodization.html' },
+      { title: 'Хронология событий', url: 'history/timeline.html' },
+      { title: 'Мифы и легенды Марса', url: 'history/myths.html' },
+      { title: 'Эпоха Основания', url: 'history/epokha-osnovaniya.html' },
+      { title: 'Эпоха Расцвета', url: 'history/epokha-rascveta.html' },
+      { title: 'Эпоха Умирания', url: 'history/epokha-umiraniya.html' },
+      { title: 'Исход', url: 'history/iskhod.html' },
+      { title: 'Королевство Ксанф', url: 'history/pirate-kingdom.html' },
+      { title: 'Ацидалийское море', url: 'geography/acidalia-sea.html' },
+      { title: 'Окхасен', url: 'geography/okhasen.html' },
+      { title: 'Роген-Ария', url: 'geography/rogen-aria.html' },
+      { title: 'Фарсида', url: 'geography/farsida.html' },
+      { title: 'Пещеры под Фарсидой', url: 'geography/farsida-caves.html' },
+      { title: 'Ксанф (река)', url: 'geography/ksanf-river.html' },
+      { title: 'Эритрея', url: 'geography/eritreya.html' },
+      { title: 'Утопия', url: 'geography/utopiya.html' },
+      { title: 'Эдем', url: 'geography/edem.html' },
+      { title: 'Тарсис', url: 'geography/tarsis.html' },
+      { title: 'Подземный храм', url: 'geography/podzemniy-khram.html' },
+      { title: 'Космодром Фарсиды', url: 'geography/kosmodrom-farsidy.html' },
+      { title: 'Новый Окхасен', url: 'geography/noviy-okhasen.html' },
+      { title: 'Академия Окхасена', url: 'geography/akademiya-okhasena.html' },
+      { title: 'Звёздное небо Марса', url: 'astronomy/mars-sky.html' },
+      { title: 'Фобос и Деймос', url: 'astronomy/phobos-deimos.html' },
+      { title: 'Земля как цель', url: 'astronomy/earth-as-target.html' },
+      { title: 'Земля', url: 'astronomy/earth.html' },
+      { title: 'Lān sur', url: 'terms/lan-sur.html' },
+      { title: 'Глиняные таблички', url: 'terms/tablichki.html' },
+      { title: 'Гемоцианин', url: 'biology/gemotsianin.html' },
+      { title: 'Геология Марса', url: 'science/geology.html' },
+      { title: 'Хевсур', url: 'people/hevsur.html' },
+      { title: 'Талин', url: 'people/talin.html' },
+      { title: 'Элла', url: 'people/ella.html' },
+      { title: 'Йарра', url: 'people/yarra.html' },
+      { title: 'Алира', url: 'people/alira.html' },
+      { title: 'Аратан III', url: 'people/aratan-iii.html' },
+      { title: 'Ирайна', url: 'people/irayina.html' },
+      { title: 'Миран', url: 'people/miran.html' },
+      { title: 'Харан', url: 'people/kharan.html' },
+      { title: 'Совия', url: 'people/soviya.html' },
+      { title: 'Араш', url: 'people/arash.html' },
+      { title: 'Кан', url: 'people/kan.html' },
+      { title: 'Сарум II', url: 'people/sarum-ii.html' },
+      { title: 'Сарум Великий', url: 'people/sarum-velikiy.html' },
+      { title: 'Ксанф (чудовище)', url: 'people/ksanf-monster.html' },
+      { title: 'Кхо', url: 'mythology/kho.html' },
+      { title: 'Акха', url: 'mythology/akha.html' },
+      { title: 'Араксис', url: 'mythology/araksis.html' },
+      { title: 'Пророчество Харана', url: 'mythology/prorochestvo-kharana.html' },
+      { title: '«Ацидалийское море»', url: 'books/acidalia-sea.html' },
+      { title: '«Там, где спят голоса»', url: 'books/tam-gde-spyat-golosa.html' },
+      { title: '«Круги на красном пепле»', url: 'books/krugi-na-krasnom-peple.html' },
+      { title: '«Звёздный путь»', url: 'books/zvezdnyy-put.html' },
+      { title: '«Голубая звезда. Колыбель из пепла»', url: 'books/golubaya-zvezda-kolybel-iz-pepla.html' },
+      { title: '«Ксанф. Пиратское королевство»', url: 'books/ksanf-piratskoe-korolevstvo.html' },
+      { title: '«Пещерники. Голоса из недр»', url: 'books/peshcheriki-golosa-iz-nedr.html' },
+      { title: '«Совия. Последняя песнь»', url: 'books/soviya-poslednyaya-pesn.html' },
+      { title: '«Харан. Писец из Эллады»', url: 'books/kharan-pisets-iz-ellady.html' },
+      { title: '«Ланой-Кузнец. Последний герой Утопии»', url: 'books/lanoy-kuznets-posledniy-geroy-utopii.html' },
+      { title: '«Акхара Великая. Железная жрица»', url: 'books/akhara-velikaya-zheleznaya-zhrtsa.html' },
     ];
     
-    // Исключаем главную страницу из случайного выбора
-    const filtered = pages.filter(p => p.url !== '/');
-    const random = filtered[Math.floor(Math.random() * filtered.length)];
+    const random = pages[Math.floor(Math.random() * pages.length)];
     window.location.href = random.url;
   });
 </script>
-
+    
 ### 🗓️ Марсианский календарь
 
 <div id="martianCalendar" style="

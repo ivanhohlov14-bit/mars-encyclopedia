@@ -20,18 +20,45 @@ markdown_extensions:
 
 nav:
   - Главная: index.md
+  
   - История:
       - Периодизация: history/periodization.md
       - Хронология: history/timeline.md
-      - Мифы: history/myths.md
+      - Мифы и легенды: history/myths.md
+      - Эпоха Основания: history/epokha-osnovaniya.md
+      - Эпоха Расцвета: history/epokha-rascveta.md
+      - Эпоха Умирания: history/epokha-umiraniya.md
+      - Исход: history/iskhod.md
+      - Королевство Ксанф: history/pirate-kingdom.md
+  
   - География:
       - Ацидалийское море: geography/acidalia-sea.md
       - Окхасен: geography/okhasen.md
       - Роген-Ария: geography/rogen-aria.md
+      - Фарсида: geography/farsida.md
+      - Пещеры под Фарсидой: geography/farsida-caves.md
+      - Ксанф (река): geography/ksanf-river.md
+      - Эритрея: geography/eritreya.md
+      - Утопия: geography/utopiya.md
+      - Эдем: geography/edem.md
+      - Тарсис: geography/tarsis.md
+      - Подземный храм: geography/podzemniy-khram.md
+      - Космодром Фарсиды: geography/kosmodrom-farsidy.md
+      - Новый Окхасен: geography/noviy-okhasen.md
+      - Академия Окхасена: geography/akademiya-okhasena.md
+  
   - Астрономия:
       - Звёздное небо Марса: astronomy/mars-sky.md
       - Фобос и Деймос: astronomy/phobos-deimos.md
       - Земля как цель: astronomy/earth-as-target.md
+      - Земля: astronomy/earth.md
+  
+  - Культура и наука:
+      - Lān sur: terms/lan-sur.md
+      - Глиняные таблички: terms/tablichki.md
+      - Гемоцианин: biology/gemotsianin.md
+      - Геология Марса: science/geology.md
+  
   - Персонажи:
       - Хевсур: people/hevsur.md
       - Талин: people/talin.md
@@ -39,9 +66,37 @@ nav:
       - Йарра: people/yarra.md
       - Алира: people/alira.md
       - Аратан III: people/aratan-iii.md
+      - Ирайна: people/irayina.md
+      - Миран: people/miran.md
+      - Харан: people/kharan.md
+      - Совия: people/soviya.md
+      - Араш: people/arash.md
+      - Кан: people/kan.md
+      - Сарум II: people/sarum-ii.md
+      - Сарум Великий: people/sarum-velikiy.md
+      - Ксанф: people/ksanf-monster.md
+  
+  - Боги и мифология:
+      - Кхо: mythology/kho.md
+      - Акха: mythology/akha.md
+      - Араксис: mythology/araksis.md
+      - Пророчество Харана: mythology/prorochestvo-kharana.md
+  
   - Книги:
-      - Ацидалийское море: books/acidalia-sea.md
+      - «Ацидалийское море»: books/acidalia-sea.md
+      - «Там, где спят голоса»: books/tam-gde-spyat-golosa.md
+      - «Круги на красном пепле»: books/krugi-na-krasnom-peple.md
+      - «Звёздный путь»: books/zvezdnyy-put.md
+      - «Голубая звезда. Колыбель из пепла»: books/golubaya-zvezda-kolybel-iz-pepla.md
+      - «Ксанф. Пиратское королевство»: books/ksanf-piratskoe-korolevstvo.md
+      - «Пещерники. Голоса из недр»: books/peshcheriki-golosa-iz-nedr.md
+      - «Совия. Последняя песнь»: books/soviya-poslednyaya-pesn.md
+      - «Харан. Писец из Эллады»: books/kharan-pisets-iz-ellady.md
+      - «Ланой-Кузнец. Последний герой Утопии»: books/lanoy-kuznets-posledniy-geroy-utopii.md
+      - «Акхара Великая. Железная жрица»: books/akhara-velikaya-zheleznaya-zhrtsa.md
+  
   - Переводчик: translator.md
   - Лицензия: license.md
+
 extra_css:
   - stylesheets/extra.css

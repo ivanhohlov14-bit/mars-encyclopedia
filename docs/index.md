@@ -619,7 +619,6 @@
     const toggle = document.getElementById('themeToggle');
     const html = document.documentElement;
 
-    // Функция применения темы
     function setTheme(theme) {
       if (theme === 'dark') {
         html.setAttribute('data-theme', 'dark');
@@ -631,17 +630,13 @@
       localStorage.setItem('mars-theme', theme);
     }
 
-    // Восстановление сохранённой темы
-    const savedTheme = localStorage.getItem('mars-theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
+    const saved = localStorage.getItem('mars-theme');
+    if (saved) {
+      setTheme(saved);
     } else {
-      // Если нет сохранённой, можно определить системную тему (опционально)
-      // Здесь оставляем светлую по умолчанию
       setTheme('light');
     }
 
-    // Обработчик клика
     toggle.addEventListener('click', function() {
       const current = html.getAttribute('data-theme');
       if (current === 'dark') {

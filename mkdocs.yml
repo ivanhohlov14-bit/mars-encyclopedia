@@ -41,6 +41,7 @@ nav:
       - Аратан III: people/aratan-iii.md
   - Книги:
       - Ацидалийское море: books/acidalia-sea.md
-
+  - Переводчик: translator.md
+  - Лицензия: license.md
 extra_css:
   - stylesheets/extra.css

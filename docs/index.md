@@ -745,6 +745,65 @@
   })();
 </script>
 
+<!-- ===== КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ (ГАРАНТИРОВАННО РАБОТАЕТ) ===== -->
+<div style="text-align: center; margin: 20px 0;">
+  <button id="themeToggle" style="
+    background: #0645ad;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 1.1rem;
+    font-family: 'Georgia', serif;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  ">
+    🌓 Тёмная тема
+  </button>
+</div>
+
+<script>
+  (function() {
+    var toggle = document.getElementById('themeToggle');
+    var html = document.documentElement;
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+        if (toggle) toggle.textContent = '☀️ Светлая тема';
+      } else {
+        html.removeAttribute('data-theme');
+        if (toggle) toggle.textContent = '🌓 Тёмная тема';
+      }
+      try {
+        localStorage.setItem('mars-theme', theme);
+      } catch (e) {}
+    }
+
+    // Восстанавливаем сохранённую тему
+    var saved = null;
+    try {
+      saved = localStorage.getItem('mars-theme');
+    } catch (e) {}
+    if (saved) {
+      setTheme(saved);
+    } else {
+      setTheme('light');
+    }
+
+    // Обработчик клика
+    if (toggle) {
+      toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        if (current === 'dark') {
+          setTheme('light');
+        } else {
+          setTheme('dark');
+        }
+      });
+    }
+  })();
+</script>
 ---
 
 ## Примечания

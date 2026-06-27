@@ -41,6 +41,7 @@ description: Сделайте выбор и узнайте судьбу Марс
       max-width: 100%;
       border-radius: 8px;
       margin-bottom: 1rem;
+      display: block;
     }
     .story-text .highlight {
       color: #d4a0a0;
@@ -211,23 +212,26 @@ description: Сделайте выбор и узнайте судьбу Марс
     'use strict';
 
     // ============================================================
-    // 1. ДАННЫЕ ИСТОРИИ (с картинками)
+    // 1. ПУТИ К КАРТИНКАМ
     // ============================================================
-    // Базовый путь к картинкам (замените на свои)
+    // Для картинок в папке story/
     const IMG_PATH = '/assets/images/story/';
+    // Для существующих картинок в корне images/
+    const IMG_ROOT = '/assets/images/';
 
+    // ============================================================
+    // 2. ДАННЫЕ ИСТОРИИ
+    // ============================================================
     const STORY = {
-      // --- Экран с именем ---
       nameInput: {
         id: 'nameInput',
         isNameScreen: true
       },
 
-      // --- Начало ---
       start: {
         id: 'start',
         text: function(name) {
-          return `<img src="${IMG_PATH}start.jpg" alt="Ацидалийское море" />
+          return `<img src="${IMG_PATH}start.jpg" alt="Ацидалийское море" loading="lazy" />
                   Вы — <span class="highlight">${name}</span>. Стоите на обрыве у <span class="highlight">Ацидалийского моря</span>.
                   Ветер доносит запах соли и пыли. Вдалеке видны огни города Окхасен.
                   За спиной — тёмные входы в <span class="highlight">пещеры Фарсиды</span>, где живёт старый хранитель знаний Хевсур.
@@ -238,14 +242,14 @@ description: Сделайте выбор и узнайте судьбу Марс
           { icon: '🏔️', text: 'Пойти к Хевсуру в пещеры', next: 'hevsur' },
           { icon: '🌆', text: 'Отправиться в город Окхасен', next: 'okhasen' }
         ],
-        progress: '1'
+        progress: '1',
+        sound: 'wind' // звук ветра у моря
       },
 
-      // --- Ветка 1: Хевсур ---
       hevsur: {
         id: 'hevsur',
         text: function(name) {
-          return `<img src="${IMG_PATH}hevsur.jpg" alt="Хевсур в пещерах" />
+          return `<img src="${IMG_PATH}hevsur.jpg" alt="Хевсур в пещерах" loading="lazy" />
                   Вы спускаетесь в пещеры. Воздух становится влажным и прохладным.
                   В глубине мерцает огонь — <span class="highlight">Хевсур</span> сидит у костра, перебирая глиняные таблички.
                   <br><br>Он поднимает голову и смотрит на вас. «Ты прочитал табличку. Что ты хочешь знать, ${name}?»`;
@@ -254,12 +258,13 @@ description: Сделайте выбор и узнайте судьбу Марс
           { icon: '📜', text: 'Спросить о пророчествах — что такое «Исход»?', next: 'prophecy' },
           { icon: '🗣️', text: 'Попросить научить марсианскому языку', next: 'language' }
         ],
-        progress: '2'
+        progress: '2',
+        sound: 'fire' // звук огня в пещере
       },
 
       prophecy: {
         id: 'prophecy',
-        text: `<img src="${IMG_PATH}prophecy.jpg" alt="Пророчество" />
+        text: `<img src="${IMG_ROOT}mars_starmap.png" alt="Пророчество" style="max-width:100%; border-radius:8px; margin-bottom:1rem;" />
                Хевсур долго молчит, глядя на огонь. Затем начинает говорить:
                <br><br>«<span class="highlight">Исход</span> — это не конец. Это путь.
                Когда вода уйдёт с Марса, жизнь поднимется к звёздам.
@@ -269,14 +274,15 @@ description: Сделайте выбор и узнайте судьбу Марс
         endIcon: '🌟',
         endTitle: 'Пророчество открыто',
         endText: 'Вы узнали тайну Исхода. Теперь вы — хранитель знания.',
-        endLink: '/history/prophecies/',
+        endLink: '/history/myths/',
         endLinkText: '📖 Читать о пророчествах в энциклопедии',
-        progress: '3'
+        progress: '3',
+        sound: 'wind'
       },
 
       language: {
         id: 'language',
-        text: `<img src="${IMG_PATH}language.jpg" alt="Язык" />
+        text: `<img src="${IMG_PATH}language.jpg" alt="Изучение языка" loading="lazy" />
                Хевсур улыбается. «Язык — это память. Запомни главное: <span class="highlight">Lān sur</span> — «Глина помнит».
                <br><br>Он учит вас нескольким фразам, и вы чувствуете, как древние слова оживают в вашем сознании.
                <br><br>«Ты — хранитель языка. Не дай ему умереть вместе с нами.»`,
@@ -284,15 +290,15 @@ description: Сделайте выбор и узнайте судьбу Марс
         endIcon: '📜',
         endTitle: 'Язык обретён',
         endText: 'Вы научились читать марсианские письмена. Глина помнит — и вы помните.',
-        endLink: '/culture/writing/',
+        endLink: '/svitok-e/',
         endLinkText: '📖 Изучить марсианскую письменность',
-        progress: '3'
+        progress: '3',
+        sound: 'fire'
       },
 
-      // --- Ветка 2: Окхасен ---
       okhasen: {
         id: 'okhasen',
-        text: `<img src="${IMG_PATH}okhasen.jpg" alt="Окхасен" />
+        text: `<img src="${IMG_PATH}okhasen.jpg" alt="Окхасен" loading="lazy" />
                Вы идёте по извилистой дороге к <span class="highlight">Окхасену</span>.
                Город встречает вас шумом порта и запахом рыбы. Повсюду снуют марсиане, кто-то торгует, кто-то готовит корабли к отплытию.
                <br><br>Вы стоите на площади. Куда направитесь?`,
@@ -300,12 +306,13 @@ description: Сделайте выбор и узнайте судьбу Марс
           { icon: '⛵', text: 'Пойти в порт — там говорят, есть корабли, уходящие к звёздам', next: 'port' },
           { icon: '🏛️', text: 'Пойти в Академию — там собираются учёные', next: 'academy' }
         ],
-        progress: '2'
+        progress: '2',
+        sound: 'city' // звук города
       },
 
       port: {
         id: 'port',
-        text: `<img src="${IMG_PATH}port.jpg" alt="Порт" />
+        text: `<img src="${IMG_PATH}port.jpg" alt="Порт" loading="lazy" />
                В порту кипит жизнь. Капитан корабля «Звёздный ветер» смотрит на вас с усмешкой.
                <br><br>«Мальчик, ты ищешь путь к звёздам? Это не игрушки. Там, за небом, — только холод и тьма.
                Но если ты готов — мы отплываем на рассвете.»
@@ -316,12 +323,13 @@ description: Сделайте выбор и узнайте судьбу Марс
         endText: 'Вы стоите на пороге великого путешествия. Корабль «Звёздный ветер» ждёт вас.',
         endLink: '/geography/acidalia-sea/',
         endLinkText: '🌊 Узнать об Ацидалийском море',
-        progress: '3'
+        progress: '3',
+        sound: 'sea' // звук моря
       },
 
       academy: {
         id: 'academy',
-        text: `<img src="${IMG_PATH}academy.jpg" alt="Академия" />
+        text: `<img src="${IMG_PATH}academy.jpg" alt="Академия" loading="lazy" />
                В Академии вы видите молодого учёного, склонившегося над картами. Это <span class="highlight">Талин</span>.
                Он поднимает голову.
                <br><br>«Ах, ты пришёл! Я как раз искал помощника. Знаешь, я думаю, мы можем предсказать, когда наступит Исход.
@@ -333,16 +341,103 @@ description: Сделайте выбор и узнайте судьбу Марс
         endText: 'Вы стали учеником великого астронома. Вместе вы будете искать путь к звёздам.',
         endLink: '/people/talin/',
         endLinkText: '👨‍🚀 Узнать о Талине',
-        progress: '3'
+        progress: '3',
+        sound: 'city'
       }
     };
 
     // ============================================================
-    // 2. ЗВУК (атмосфера)
+    // 3. ЗВУКИ
     // ============================================================
     let audioCtx = null;
     let soundEnabled = false;
-    let soundInterval = null;
+    let currentSound = null;
+    let soundNodes = [];
+
+    function getSound(type) {
+      if (!audioCtx) return null;
+
+      const sounds = {
+        wind: function() {
+          const bufferSize = audioCtx.sampleRate * 2;
+          const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            data[i] = (Math.random() * 2 - 1) * 0.08 * Math.sin(i * 0.005) * (1 - i / bufferSize);
+          }
+          return buffer;
+        },
+        fire: function() {
+          const bufferSize = audioCtx.sampleRate * 1.5;
+          const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            const crackle = Math.random() > 0.98 ? (Math.random() * 2 - 1) * 0.3 : 0;
+            data[i] = crackle * Math.exp(-i / bufferSize * 2);
+          }
+          return buffer;
+        },
+        sea: function() {
+          const bufferSize = audioCtx.sampleRate * 3;
+          const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            const wave = Math.sin(i * 0.01) * 0.1;
+            const noise = (Math.random() * 2 - 1) * 0.05;
+            const envelope = 1 - i / bufferSize;
+            data[i] = (wave + noise) * envelope;
+          }
+          return buffer;
+        },
+        city: function() {
+          const bufferSize = audioCtx.sampleRate * 2;
+          const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let i = 0; i < bufferSize; i++) {
+            const murmur = Math.sin(i * 0.02) * 0.05 + Math.sin(i * 0.015) * 0.03;
+            const noise = (Math.random() * 2 - 1) * 0.04;
+            data[i] = (murmur + noise) * (1 - i / bufferSize * 0.5);
+          }
+          return buffer;
+        }
+      };
+
+      return sounds[type] ? sounds[type]() : null;
+    }
+
+    function playAmbientSound(type) {
+      stopAmbientSound();
+
+      if (!soundEnabled || !audioCtx) return;
+
+      const buffer = getSound(type);
+      if (!buffer) return;
+
+      function loop() {
+        if (!soundEnabled || !audioCtx) return;
+        const source = audioCtx.createBufferSource();
+        source.buffer = buffer;
+        const gain = audioCtx.createGain();
+        gain.gain.value = 0.3;
+        source.connect(gain);
+        gain.connect(audioCtx.destination);
+        source.start();
+        soundNodes.push(source, gain);
+        source.onended = () => {
+          if (soundEnabled) {
+            setTimeout(loop, 300);
+          }
+        };
+      }
+      loop();
+    }
+
+    function stopAmbientSound() {
+      soundNodes.forEach(node => {
+        try { node.stop(); node.disconnect(); } catch(e) {}
+      });
+      soundNodes = [];
+    }
 
     function toggleSound() {
       if (!audioCtx) {
@@ -354,49 +449,16 @@ description: Сделайте выбор и узнайте судьбу Марс
         }
       }
       soundEnabled = !soundEnabled;
-      if (soundEnabled) {
-        playAmbientSound();
-        document.getElementById('sound-toggle').textContent = '🔇';
+      document.getElementById('sound-toggle').textContent = soundEnabled ? '🔇' : '🔊';
+      if (soundEnabled && currentSound) {
+        playAmbientSound(currentSound);
       } else {
         stopAmbientSound();
-        document.getElementById('sound-toggle').textContent = '🔊';
       }
-    }
-
-    function playAmbientSound() {
-      if (!audioCtx) return;
-      // Короткий шум ветра (можно заменить на реальный аудиофайл)
-      const bufferSize = audioCtx.sampleRate * 2;
-      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * 0.05 * Math.sin(i * 0.01) * Math.exp(-i / bufferSize);
-      }
-      function loop() {
-        if (!soundEnabled) return;
-        const source = audioCtx.createBufferSource();
-        source.buffer = buffer;
-        const gain = audioCtx.createGain();
-        gain.gain.value = 0.2;
-        source.connect(gain);
-        gain.connect(audioCtx.destination);
-        source.start();
-        source.onended = () => {
-          if (soundEnabled) {
-            setTimeout(loop, 500);
-          }
-        };
-      }
-      loop();
-    }
-
-    function stopAmbientSound() {
-      // Остановка через глобальный флаг
-      soundEnabled = false;
     }
 
     // ============================================================
-    // 3. СОСТОЯНИЕ ИГРЫ
+    // 4. СОСТОЯНИЕ ИГРЫ
     // ============================================================
     let playerName = '';
     let history = [];
@@ -409,10 +471,9 @@ description: Сделайте выбор и узнайте судьбу Марс
     const soundToggle = document.getElementById('sound-toggle');
 
     // ============================================================
-    // 4. ОТРИСОВКА
+    // 5. ОТРИСОВКА
     // ============================================================
     function render() {
-      // Специальный экран: ввод имени
       if (currentId === 'nameInput') {
         contentEl.innerHTML = `
           <div class="story-text" style="text-align:center; border-left-color:#6a6aaa;">
@@ -425,20 +486,12 @@ description: Сделайте выбор и узнайте судьбу Марс
             </div>
           </div>
         `;
-        document.getElementById('name-submit-btn').addEventListener('click', function() {
-          const nameField = document.getElementById('name-input-field');
-          const name = nameField.value.trim() || 'Странник';
-          playerName = name;
-          currentId = 'start';
-          history = ['start'];
-          render();
-        });
-        document.getElementById('name-input-field').addEventListener('keydown', function(e) {
-          if (e.key === 'Enter') {
-            document.getElementById('name-submit-btn').click();
-          }
+        document.getElementById('name-submit-btn').addEventListener('click', submitName);
+        document.getElementById('name-input-field').addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') submitName();
         });
         progressEl.textContent = 'Вступление';
+        stopAmbientSound();
         return;
       }
 
@@ -450,14 +503,11 @@ description: Сделайте выбор и узнайте судьбу Марс
 
       progressEl.textContent = 'Шаг ' + (scene.progress || '?');
 
-      // Генерируем текст (с подстановкой имени, если это функция)
       let text = typeof scene.text === 'function' ? scene.text(playerName) : scene.text;
 
-      // Строим HTML
       let html = `<div class="story-text">${text}</div>`;
 
       if (scene.end) {
-        // --- Конец истории ---
         html += `
           <div class="story-end">
             <div class="end-icon">${scene.endIcon || '🎉'}</div>
@@ -468,7 +518,6 @@ description: Сделайте выбор и узнайте судьбу Марс
         `;
         isFinished = true;
       } else if (scene.choices && scene.choices.length > 0) {
-        // --- Выбор ---
         html += `<div class="story-choices">`;
         scene.choices.forEach(choice => {
           html += `
@@ -484,7 +533,14 @@ description: Сделайте выбор и узнайте судьбу Марс
 
       contentEl.innerHTML = html;
 
-      // Привязываем события к кнопкам выбора
+      // Обновляем звук
+      if (scene.sound && scene.sound !== currentSound) {
+        currentSound = scene.sound;
+        if (soundEnabled) {
+          playAmbientSound(currentSound);
+        }
+      }
+
       if (!scene.end) {
         document.querySelectorAll('.story-choice-btn').forEach(btn => {
           btn.addEventListener('click', function() {
@@ -499,51 +555,33 @@ description: Сделайте выбор и узнайте судьбу Марс
       }
     }
 
+    function submitName() {
+      const nameField = document.getElementById('name-input-field');
+      const name = nameField.value.trim() || 'Странник';
+      playerName = name;
+      currentId = 'start';
+      history = ['start'];
+      render();
+    }
+
     // ============================================================
-    // 5. ПЕРЕЗАПУСК
+    // 6. ПЕРЕЗАПУСК
     // ============================================================
     function restart() {
       currentId = 'nameInput';
       history = [];
       playerName = '';
       isFinished = false;
+      currentSound = null;
+      stopAmbientSound();
       render();
-    }
-
-    // ============================================================
-    // 6. ЗАГРУЗКА ИЗ URL (опционально)
-    // ============================================================
-    function loadFromURL() {
-      const params = new URLSearchParams(window.location.search);
-      const path = params.get('path');
-      const name = params.get('name');
-      if (name) playerName = decodeURIComponent(name);
-      if (path) {
-        const ids = path.split(',');
-        let valid = true;
-        for (const id of ids) {
-          if (!STORY[id] && id !== 'nameInput') { valid = false; break; }
-        }
-        if (valid && ids.length > 0) {
-          currentId = ids[ids.length - 1];
-          history = ids;
-          return true;
-        }
-      }
-      return false;
     }
 
     // ============================================================
     // 7. ИНИЦИАЛИЗАЦИЯ
     // ============================================================
     function init() {
-      if (!loadFromURL()) {
-        currentId = 'nameInput';
-        history = [];
-        playerName = '';
-      }
       render();
-
       restartBtn.addEventListener('click', restart);
       soundToggle.addEventListener('click', toggleSound);
     }

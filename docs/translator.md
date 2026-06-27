@@ -1254,7 +1254,29 @@ const LEXICON_DATA = {
    "язык": { root: "tsan", pos: "noun" },
   "языка": { root: "tsan", pos: "noun" },
   "языку": { root: "tsan", pos: "noun" },
-  "языком": { root: "tsan", pos: "noun" }
+  "языком": { root: "tsan", pos: "noun" },
+  "вода-море": {root: "ākha-thal", pos: "noun"},
+  "трон": {root:"rogen", pos: "noun"},
+  "трону": {root:"rogen", pos: "noun"},
+  "троне": {root:"rogen", pos: "noun"},
+  "у воды":{root:"aria", pos: "noun"},
+  "звёздная": {root:"dzen", pos: "adj"},
+  "звёздный": {root:"dzen", pos: "adj"},
+  "звёздное": {root:"dzen", pos: "adj"},
+  "звёздном": {root:"dzen", pos: "adj"},
+  "звёздную": {root:"dzen", pos: "adj"},
+  "звёздное": {root:"dzen", pos: "adj"},
+  "карта": {root:"thala", pos: "noun"},
+  "карте": {root:"thala", pos: "noun"},
+  "карту": {root:"thala", pos: "noun"},
+  "картой": {root:"thala", pos: "noun"},
+  "небо": {root:"sura", pos: "noun"},
+  "неба": {root:"sura", pos: "noun"},
+  "небу": {root:"sura", pos: "noun"},
+  "небе": {root:"sura", pos: "noun"},
+  "небой": {root:"sura", pos: "noun"},
+  "небесный": {root:"sura", pos: "noun"},
+  "небесная": {root:"sura", pos: "noun"}
 };
 
 // ============================================================

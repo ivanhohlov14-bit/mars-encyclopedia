@@ -37,6 +37,11 @@ description: Сделайте выбор и узнайте судьбу Марс
       border-left: 3px solid #6a4a7a;
       min-height: 120px;
     }
+    .story-text img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
     .story-text .highlight {
       color: #d4a0a0;
       font-weight: bold;
@@ -66,19 +71,8 @@ description: Сделайте выбор и узнайте судьбу Марс
       border-color: #6a6aaa;
       transform: translateX(5px);
     }
-    .story-choice-btn:active {
-      transform: scale(0.98);
-    }
-    .story-choice-btn .choice-icon {
-      font-size: 1.4rem;
-    }
-    .story-choice-btn .choice-text {
-      flex: 1;
-    }
-    .story-choice-btn .choice-link {
-      color: #6a6aaa;
-      font-size: 0.8rem;
-    }
+    .story-choice-btn .choice-icon { font-size: 1.4rem; }
+    .story-choice-btn .choice-text { flex: 1; }
     .story-footer {
       display: flex;
       justify-content: space-between;
@@ -102,9 +96,7 @@ description: Сделайте выбор и узнайте судьбу Марс
       border-color: #5a5a7a;
       color: #fff;
     }
-    .story-progress {
-      color: #444466;
-    }
+    .story-progress { color: #444466; }
     .story-end {
       text-align: center;
       padding: 1rem;
@@ -112,16 +104,11 @@ description: Сделайте выбор и узнайте судьбу Марс
       border-radius: 8px;
       border: 1px solid #3a3a5e;
     }
-    .story-end .end-icon {
-      font-size: 3rem;
-    }
+    .story-end .end-icon { font-size: 3rem; }
     .story-end .end-title {
       font-size: 1.3rem;
       color: #d4a0a0;
       margin: 0.5rem 0;
-    }
-    .story-end .end-text {
-      color: #aaa;
     }
     .story-end .end-link {
       display: inline-block;
@@ -138,240 +125,435 @@ description: Сделайте выбор и узнайте судьбу Марс
       background: #4a3a6a;
       border-color: #8a6aaa;
     }
+    .name-input {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .name-input label {
+      font-size: 1.1rem;
+      color: #aaa;
+    }
+    .name-input input {
+      background: #1a1a2a;
+      border: 1px solid #3a3a5e;
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      color: #d4d4e8;
+      font-size: 1rem;
+      width: 200px;
+      outline: none;
+    }
+    .name-input input:focus {
+      border-color: #6a6aaa;
+    }
+    .name-input button {
+      background: #3a2a4a;
+      border: 1px solid #6a4a7a;
+      border-radius: 6px;
+      padding: 0.6rem 1.5rem;
+      color: #d4d4e8;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .name-input button:hover {
+      background: #4a3a6a;
+      border-color: #8a6aaa;
+    }
+    .sound-toggle {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: #1a1a2a;
+      border: 1px solid #3a3a5e;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      z-index: 100;
+    }
+    .sound-toggle:hover {
+      background: #2a2a3a;
+      border-color: #5a5a7a;
+      color: #fff;
+    }
     @media (max-width: 600px) {
       .story-text { font-size: 1rem; padding: 1rem; }
       .story-choice-btn { font-size: 0.9rem; }
+      .name-input { flex-direction: column; }
     }
   </style>
 
   <div class="story-container" id="story-app">
     <div class="story-title">🪐 «К Исходу»</div>
-    <div id="story-content">
-      <!-- Содержимое будет вставлено через JavaScript -->
-    </div>
+    <div id="story-content"></div>
     <div class="story-footer">
       <span class="story-progress" id="story-progress">Шаг 1</span>
       <button id="story-restart">↺ Начать заново</button>
     </div>
   </div>
-</div>
 
-<script>
-(function() {
-  'use strict';
+  <!-- Кнопка звука -->
+  <button class="sound-toggle" id="sound-toggle" title="Включить/выключить атмосферный звук">🔊</button>
 
-  // ============================================================
-  // 1. ДАННЫЕ ИСТОРИИ
-  // ============================================================
-  const STORY = {
-    // --- Начало ---
-    start: {
-      id: 'start',
-      text: 'Вы — <span class="highlight">Аран</span>, молодой марсианин. Стоите на обрыве у <span class="highlight">Ацидалийского моря</span>. Ветер доносит запах соли и пыли. Вдалеке видны огни города Окхасен. За спиной — тёмные входы в <span class="highlight">пещеры Фарсиды</span>, где живёт старый хранитель знаний Хевсур.<br><br>В руке вы сжимаете глиняную табличку. На ней всего одно слово: <span class="highlight">«Исход»</span>. Что вы сделаете?',
-      choices: [
-        { icon: '🏔️', text: 'Пойти к Хевсуру в пещеры', next: 'hevsur' },
-        { icon: '🌆', text: 'Отправиться в город Окхасен', next: 'okhasen' }
-      ],
-      progress: '1'
-    },
+  <script>
+  (function() {
+    'use strict';
 
-    // --- Ветка 1: Хевсур ---
-    hevsur: {
-      id: 'hevsur',
-      text: 'Вы спускаетесь в пещеры. Воздух становится влажным и прохладным. В глубине мерцает огонь — <span class="highlight">Хевсур</span> сидит у костра, перебирая глиняные таблички.<br><br>Он поднимает голову и смотрит на вас. «Ты прочитал табличку. Что ты хочешь знать, Аран?»',
-      choices: [
-        { icon: '📜', text: 'Спросить о пророчествах — что такое «Исход»?', next: 'prophecy' },
-        { icon: '🗣️', text: 'Попросить научить марсианскому языку', next: 'language' }
-      ],
-      progress: '2'
-    },
+    // ============================================================
+    // 1. ДАННЫЕ ИСТОРИИ (с картинками)
+    // ============================================================
+    // Базовый путь к картинкам (замените на свои)
+    const IMG_PATH = '/assets/images/story/';
 
-    prophecy: {
-      id: 'prophecy',
-      text: 'Хевсур долго молчит, глядя на огонь. Затем начинает говорить:<br><br>«<span class="highlight">Исход</span> — это не конец. Это путь. Когда вода уйдёт с Марса, жизнь поднимется к звёздам. Ты — один из тех, кто должен решить: остаться и помнить, или уйти и нести память дальше.»<br><br>Он протягивает вам табличку с картой звёздного неба.',
-      end: true,
-      endIcon: '🌟',
-      endTitle: 'Пророчество открыто',
-      endText: 'Вы узнали тайну Исхода. Теперь вы — хранитель знания.',
-      endLink: '/history/prophecies/',
-      endLinkText: '📖 Читать о пророчествах в энциклопедии',
-      progress: '3'
-    },
+    const STORY = {
+      // --- Экран с именем ---
+      nameInput: {
+        id: 'nameInput',
+        isNameScreen: true
+      },
 
-    language: {
-      id: 'language',
-      text: 'Хевсур улыбается. «Язык — это память. Запомни главное: <span class="highlight">Lān sur</span> — «Глина помнит».<br><br>Он учит вас нескольким фразам, и вы чувствуете, как древние слова оживают в вашем сознании.<br><br>«Ты — хранитель языка. Не дай ему умереть вместе с нами.»',
-      end: true,
-      endIcon: '📜',
-      endTitle: 'Язык обретён',
-      endText: 'Вы научились читать марсианские письмена. Глина помнит — и вы помните.',
-      endLink: '/culture/writing/',
-      endLinkText: '📖 Изучить марсианскую письменность',
-      progress: '3'
-    },
+      // --- Начало ---
+      start: {
+        id: 'start',
+        text: function(name) {
+          return `<img src="${IMG_PATH}start.jpg" alt="Ацидалийское море" />
+                  Вы — <span class="highlight">${name}</span>. Стоите на обрыве у <span class="highlight">Ацидалийского моря</span>.
+                  Ветер доносит запах соли и пыли. Вдалеке видны огни города Окхасен.
+                  За спиной — тёмные входы в <span class="highlight">пещеры Фарсиды</span>, где живёт старый хранитель знаний Хевсур.
+                  <br><br>В руке вы сжимаете глиняную табличку. На ней всего одно слово: <span class="highlight">«Исход»</span>.
+                  Что вы сделаете?`;
+        },
+        choices: [
+          { icon: '🏔️', text: 'Пойти к Хевсуру в пещеры', next: 'hevsur' },
+          { icon: '🌆', text: 'Отправиться в город Окхасен', next: 'okhasen' }
+        ],
+        progress: '1'
+      },
 
-    // --- Ветка 2: Окхасен ---
-    okhasen: {
-      id: 'okhasen',
-      text: 'Вы идёте по извилистой дороге к <span class="highlight">Окхасену</span>. Город встречает вас шумом порта и запахом рыбы. Повсюду снуют марсиане, кто-то торгует, кто-то готовит корабли к отплытию.<br><br>Вы стоите на площади. Куда направитесь?',
-      choices: [
-        { icon: '⛵', text: 'Пойти в порт — там говорят, есть корабли, уходящие к звёздам', next: 'port' },
-        { icon: '🏛️', text: 'Пойти в Академию — там собираются учёные', next: 'academy' }
-      ],
-      progress: '2'
-    },
+      // --- Ветка 1: Хевсур ---
+      hevsur: {
+        id: 'hevsur',
+        text: function(name) {
+          return `<img src="${IMG_PATH}hevsur.jpg" alt="Хевсур в пещерах" />
+                  Вы спускаетесь в пещеры. Воздух становится влажным и прохладным.
+                  В глубине мерцает огонь — <span class="highlight">Хевсур</span> сидит у костра, перебирая глиняные таблички.
+                  <br><br>Он поднимает голову и смотрит на вас. «Ты прочитал табличку. Что ты хочешь знать, ${name}?»`;
+        },
+        choices: [
+          { icon: '📜', text: 'Спросить о пророчествах — что такое «Исход»?', next: 'prophecy' },
+          { icon: '🗣️', text: 'Попросить научить марсианскому языку', next: 'language' }
+        ],
+        progress: '2'
+      },
 
-    port: {
-      id: 'port',
-      text: 'В порту кипит жизнь. Капитан корабля «Звёздный ветер» смотрит на вас с усмешкой.<br><br>«Мальчик, ты ищешь путь к звёздам? Это не игрушки. Там, за небом, — только холод и тьма. Но если ты готов — мы отплываем на рассвете.»<br><br>Вы смотрите на море, в котором отражается красное небо.',
-      end: true,
-      endIcon: '⛵',
-      endTitle: 'Путь к звёздам',
-      endText: 'Вы стоите на пороге великого путешествия. Корабль «Звёздный ветер» ждёт вас.',
-      endLink: '/geography/acidalia-sea/',
-      endLinkText: '🌊 Узнать об Ацидалийском море',
-      progress: '3'
-    },
+      prophecy: {
+        id: 'prophecy',
+        text: `<img src="${IMG_PATH}prophecy.jpg" alt="Пророчество" />
+               Хевсур долго молчит, глядя на огонь. Затем начинает говорить:
+               <br><br>«<span class="highlight">Исход</span> — это не конец. Это путь.
+               Когда вода уйдёт с Марса, жизнь поднимется к звёздам.
+               Ты — один из тех, кто должен решить: остаться и помнить, или уйти и нести память дальше.»
+               <br><br>Он протягивает вам табличку с картой звёздного неба.`,
+        end: true,
+        endIcon: '🌟',
+        endTitle: 'Пророчество открыто',
+        endText: 'Вы узнали тайну Исхода. Теперь вы — хранитель знания.',
+        endLink: '/history/prophecies/',
+        endLinkText: '📖 Читать о пророчествах в энциклопедии',
+        progress: '3'
+      },
 
-    academy: {
-      id: 'academy',
-      text: 'В Академии вы видите молодого учёного, склонившегося над картами. Это <span class="highlight">Талин</span>. Он поднимает голову.<br><br>«Ах, Аран! Ты пришёл. Я как раз искал помощника. Знаешь, я думаю, мы можем предсказать, когда наступит Исход. Поможешь мне с расчётами?»<br><br>Он протягивает вам древний астролябий.',
-      end: true,
-      endIcon: '🔭',
-      endTitle: 'Встреча с Талином',
-      endText: 'Вы стали учеником великого астронома. Вместе вы будете искать путь к звёздам.',
-      endLink: '/people/talin/',
-      endLinkText: '👨‍🚀 Узнать о Талине',
-      progress: '3'
+      language: {
+        id: 'language',
+        text: `<img src="${IMG_PATH}language.jpg" alt="Язык" />
+               Хевсур улыбается. «Язык — это память. Запомни главное: <span class="highlight">Lān sur</span> — «Глина помнит».
+               <br><br>Он учит вас нескольким фразам, и вы чувствуете, как древние слова оживают в вашем сознании.
+               <br><br>«Ты — хранитель языка. Не дай ему умереть вместе с нами.»`,
+        end: true,
+        endIcon: '📜',
+        endTitle: 'Язык обретён',
+        endText: 'Вы научились читать марсианские письмена. Глина помнит — и вы помните.',
+        endLink: '/culture/writing/',
+        endLinkText: '📖 Изучить марсианскую письменность',
+        progress: '3'
+      },
+
+      // --- Ветка 2: Окхасен ---
+      okhasen: {
+        id: 'okhasen',
+        text: `<img src="${IMG_PATH}okhasen.jpg" alt="Окхасен" />
+               Вы идёте по извилистой дороге к <span class="highlight">Окхасену</span>.
+               Город встречает вас шумом порта и запахом рыбы. Повсюду снуют марсиане, кто-то торгует, кто-то готовит корабли к отплытию.
+               <br><br>Вы стоите на площади. Куда направитесь?`,
+        choices: [
+          { icon: '⛵', text: 'Пойти в порт — там говорят, есть корабли, уходящие к звёздам', next: 'port' },
+          { icon: '🏛️', text: 'Пойти в Академию — там собираются учёные', next: 'academy' }
+        ],
+        progress: '2'
+      },
+
+      port: {
+        id: 'port',
+        text: `<img src="${IMG_PATH}port.jpg" alt="Порт" />
+               В порту кипит жизнь. Капитан корабля «Звёздный ветер» смотрит на вас с усмешкой.
+               <br><br>«Мальчик, ты ищешь путь к звёздам? Это не игрушки. Там, за небом, — только холод и тьма.
+               Но если ты готов — мы отплываем на рассвете.»
+               <br><br>Вы смотрите на море, в котором отражается красное небо.`,
+        end: true,
+        endIcon: '⛵',
+        endTitle: 'Путь к звёздам',
+        endText: 'Вы стоите на пороге великого путешествия. Корабль «Звёздный ветер» ждёт вас.',
+        endLink: '/geography/acidalia-sea/',
+        endLinkText: '🌊 Узнать об Ацидалийском море',
+        progress: '3'
+      },
+
+      academy: {
+        id: 'academy',
+        text: `<img src="${IMG_PATH}academy.jpg" alt="Академия" />
+               В Академии вы видите молодого учёного, склонившегося над картами. Это <span class="highlight">Талин</span>.
+               Он поднимает голову.
+               <br><br>«Ах, ты пришёл! Я как раз искал помощника. Знаешь, я думаю, мы можем предсказать, когда наступит Исход.
+               Поможешь мне с расчётами?»
+               <br><br>Он протягивает вам древний астролябий.`,
+        end: true,
+        endIcon: '🔭',
+        endTitle: 'Встреча с Талином',
+        endText: 'Вы стали учеником великого астронома. Вместе вы будете искать путь к звёздам.',
+        endLink: '/people/talin/',
+        endLinkText: '👨‍🚀 Узнать о Талине',
+        progress: '3'
+      }
+    };
+
+    // ============================================================
+    // 2. ЗВУК (атмосфера)
+    // ============================================================
+    let audioCtx = null;
+    let soundEnabled = false;
+    let soundInterval = null;
+
+    function toggleSound() {
+      if (!audioCtx) {
+        try {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        } catch(e) {
+          alert('Ваш браузер не поддерживает звук');
+          return;
+        }
+      }
+      soundEnabled = !soundEnabled;
+      if (soundEnabled) {
+        playAmbientSound();
+        document.getElementById('sound-toggle').textContent = '🔇';
+      } else {
+        stopAmbientSound();
+        document.getElementById('sound-toggle').textContent = '🔊';
+      }
     }
-  };
 
-  // ============================================================
-  // 2. СОСТОЯНИЕ
-  // ============================================================
-  let history = []; // массив пройденных id
-  let currentId = 'start';
-  let isFinished = false;
-
-  const contentEl = document.getElementById('story-content');
-  const progressEl = document.getElementById('story-progress');
-  const restartBtn = document.getElementById('story-restart');
-
-  // ============================================================
-  // 3. ОТРИСОВКА
-  // ============================================================
-  function render() {
-    const scene = STORY[currentId];
-    if (!scene) {
-      contentEl.innerHTML = '<div class="story-text">❌ Ошибка: сцена не найдена</div>';
-      return;
+    function playAmbientSound() {
+      if (!audioCtx) return;
+      // Короткий шум ветра (можно заменить на реальный аудиофайл)
+      const bufferSize = audioCtx.sampleRate * 2;
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * 0.05 * Math.sin(i * 0.01) * Math.exp(-i / bufferSize);
+      }
+      function loop() {
+        if (!soundEnabled) return;
+        const source = audioCtx.createBufferSource();
+        source.buffer = buffer;
+        const gain = audioCtx.createGain();
+        gain.gain.value = 0.2;
+        source.connect(gain);
+        gain.connect(audioCtx.destination);
+        source.start();
+        source.onended = () => {
+          if (soundEnabled) {
+            setTimeout(loop, 500);
+          }
+        };
+      }
+      loop();
     }
 
-    // Обновляем прогресс
-    progressEl.textContent = 'Шаг ' + scene.progress;
+    function stopAmbientSound() {
+      // Остановка через глобальный флаг
+      soundEnabled = false;
+    }
 
-    // Строим HTML
-    let html = `<div class="story-text">${scene.text}</div>`;
+    // ============================================================
+    // 3. СОСТОЯНИЕ ИГРЫ
+    // ============================================================
+    let playerName = '';
+    let history = [];
+    let currentId = 'nameInput';
+    let isFinished = false;
 
-    if (scene.end) {
-      // --- Конец истории ---
-      html += `
-        <div class="story-end">
-          <div class="end-icon">${scene.endIcon || '🎉'}</div>
-          <div class="end-title">${scene.endTitle || 'Конец'}</div>
-          <div class="end-text">${scene.endText || 'Ваше путешествие завершено.'}</div>
-          ${scene.endLink ? `<a href="${scene.endLink}" class="end-link">${scene.endLinkText || '📖 Читать далее'}</a>` : ''}
-        </div>
-      `;
-      isFinished = true;
-    } else if (scene.choices && scene.choices.length > 0) {
-      // --- Выбор ---
-      html += `<div class="story-choices">`;
-      scene.choices.forEach(choice => {
-        html += `
-          <button class="story-choice-btn" data-next="${choice.next}">
-            <span class="choice-icon">${choice.icon || '➡️'}</span>
-            <span class="choice-text">${choice.text}</span>
-          </button>
+    const contentEl = document.getElementById('story-content');
+    const progressEl = document.getElementById('story-progress');
+    const restartBtn = document.getElementById('story-restart');
+    const soundToggle = document.getElementById('sound-toggle');
+
+    // ============================================================
+    // 4. ОТРИСОВКА
+    // ============================================================
+    function render() {
+      // Специальный экран: ввод имени
+      if (currentId === 'nameInput') {
+        contentEl.innerHTML = `
+          <div class="story-text" style="text-align:center; border-left-color:#6a6aaa;">
+            <div style="font-size:3rem; margin-bottom:1rem;">🪐</div>
+            <p style="font-size:1.2rem; margin-bottom:1rem;">Добро пожаловать в историю «К Исходу».</p>
+            <p style="color:#888;">Как тебя зовут, странник?</p>
+            <div class="name-input">
+              <input type="text" id="name-input-field" placeholder="Введите имя" value="${playerName}" />
+              <button id="name-submit-btn">Начать путешествие</button>
+            </div>
+          </div>
         `;
-      });
-      html += `</div>`;
-      isFinished = false;
-    }
-
-    contentEl.innerHTML = html;
-
-    // Привязываем события к кнопкам выбора
-    if (!scene.end) {
-      document.querySelectorAll('.story-choice-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          const next = this.dataset.next;
-          if (next) {
-            currentId = next;
-            history.push(currentId);
-            render();
+        document.getElementById('name-submit-btn').addEventListener('click', function() {
+          const nameField = document.getElementById('name-input-field');
+          const name = nameField.value.trim() || 'Странник';
+          playerName = name;
+          currentId = 'start';
+          history = ['start'];
+          render();
+        });
+        document.getElementById('name-input-field').addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            document.getElementById('name-submit-btn').click();
           }
         });
-      });
-    }
-  }
-
-  // ============================================================
-  // 4. ПЕРЕЗАПУСК
-  // ============================================================
-  function restart() {
-    currentId = 'start';
-    history = [];
-    isFinished = false;
-    render();
-  }
-
-  // ============================================================
-  // 5. ЗАГРУЗКА ИЗ URL (опционально)
-  // ============================================================
-  function loadFromURL() {
-    const params = new URLSearchParams(window.location.search);
-    const path = params.get('path');
-    if (path) {
-      const ids = path.split(',');
-      // Проверяем, что все id существуют
-      let valid = true;
-      for (const id of ids) {
-        if (!STORY[id]) { valid = false; break; }
+        progressEl.textContent = 'Вступление';
+        return;
       }
-      if (valid && ids.length > 0) {
-        currentId = ids[ids.length - 1];
-        history = ids;
-        return true;
+
+      const scene = STORY[currentId];
+      if (!scene) {
+        contentEl.innerHTML = '<div class="story-text">❌ Ошибка: сцена не найдена</div>';
+        return;
+      }
+
+      progressEl.textContent = 'Шаг ' + (scene.progress || '?');
+
+      // Генерируем текст (с подстановкой имени, если это функция)
+      let text = typeof scene.text === 'function' ? scene.text(playerName) : scene.text;
+
+      // Строим HTML
+      let html = `<div class="story-text">${text}</div>`;
+
+      if (scene.end) {
+        // --- Конец истории ---
+        html += `
+          <div class="story-end">
+            <div class="end-icon">${scene.endIcon || '🎉'}</div>
+            <div class="end-title">${scene.endTitle || 'Конец'}</div>
+            <div class="end-text">${scene.endText || 'Ваше путешествие завершено.'}</div>
+            ${scene.endLink ? `<a href="${scene.endLink}" class="end-link">${scene.endLinkText || '📖 Читать далее'}</a>` : ''}
+          </div>
+        `;
+        isFinished = true;
+      } else if (scene.choices && scene.choices.length > 0) {
+        // --- Выбор ---
+        html += `<div class="story-choices">`;
+        scene.choices.forEach(choice => {
+          html += `
+            <button class="story-choice-btn" data-next="${choice.next}">
+              <span class="choice-icon">${choice.icon || '➡️'}</span>
+              <span class="choice-text">${choice.text}</span>
+            </button>
+          `;
+        });
+        html += `</div>`;
+        isFinished = false;
+      }
+
+      contentEl.innerHTML = html;
+
+      // Привязываем события к кнопкам выбора
+      if (!scene.end) {
+        document.querySelectorAll('.story-choice-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const next = this.dataset.next;
+            if (next && STORY[next]) {
+              currentId = next;
+              history.push(currentId);
+              render();
+            }
+          });
+        });
       }
     }
-    return false;
-  }
 
-  // ============================================================
-  // 6. ИНИЦИАЛИЗАЦИЯ
-  // ============================================================
-  function init() {
-    // Если есть путь в URL — загружаем
-    if (!loadFromURL()) {
-      restart();
-    } else {
+    // ============================================================
+    // 5. ПЕРЕЗАПУСК
+    // ============================================================
+    function restart() {
+      currentId = 'nameInput';
+      history = [];
+      playerName = '';
+      isFinished = false;
       render();
     }
 
-    // Кнопка перезапуска
-    restartBtn.addEventListener('click', restart);
+    // ============================================================
+    // 6. ЗАГРУЗКА ИЗ URL (опционально)
+    // ============================================================
+    function loadFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const path = params.get('path');
+      const name = params.get('name');
+      if (name) playerName = decodeURIComponent(name);
+      if (path) {
+        const ids = path.split(',');
+        let valid = true;
+        for (const id of ids) {
+          if (!STORY[id] && id !== 'nameInput') { valid = false; break; }
+        }
+        if (valid && ids.length > 0) {
+          currentId = ids[ids.length - 1];
+          history = ids;
+          return true;
+        }
+      }
+      return false;
+    }
 
-    // Обновляем URL при изменении (опционально)
-    // Можно добавить, чтобы сохранять путь
-  }
+    // ============================================================
+    // 7. ИНИЦИАЛИЗАЦИЯ
+    // ============================================================
+    function init() {
+      if (!loadFromURL()) {
+        currentId = 'nameInput';
+        history = [];
+        playerName = '';
+      }
+      render();
 
-  // Запускаем
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+      restartBtn.addEventListener('click', restart);
+      soundToggle.addEventListener('click', toggleSound);
+    }
 
-})();
-</script>
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+  })();
+  </script>
+</div>

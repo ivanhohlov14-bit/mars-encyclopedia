@@ -596,10 +596,84 @@
 
 ---
 
-### 🌓 Переключение темы
+<style>
+  /* ===== ПЕРЕКЛЮЧЕНИЕ ТЕМЫ (СТИЛИ ПРЯМО НА СТРАНИЦЕ) ===== */
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #202122;
+    --border-color: #eaecf0;
+    --link-color: #0645ad;
+    --block-bg: #f8f9fa;
+  }
 
-<div style="text-align: center; margin: 10px 0;">
-  <button id="themeToggle" style="
+  [data-theme="dark"] {
+    --bg-color: #1a1a2e;
+    --text-color: #e0e0e0;
+    --border-color: #3a3a5a;
+    --link-color: #7fadff;
+    --block-bg: #2a2a4a;
+  }
+
+  body {
+    background: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .wy-nav-content {
+    background: var(--bg-color) !important;
+    color: var(--text-color) !important;
+  }
+
+  .wy-nav-side {
+    background: var(--bg-color) !important;
+    border-color: var(--border-color) !important;
+  }
+
+  .wy-side-nav-search {
+    background: var(--bg-color) !important;
+  }
+
+  .wy-menu-vertical a {
+    color: var(--link-color) !important;
+  }
+
+  a {
+    color: var(--link-color) !important;
+  }
+  a:hover {
+    color: #0b0080 !important;
+  }
+  [data-theme="dark"] a:hover {
+    color: #9fcbff !important;
+  }
+
+  .infobox,
+  blockquote,
+  #quoteOfTheDay {
+    background: var(--block-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+  }
+
+  table {
+    background: var(--bg-color) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color) !important;
+  }
+  table th {
+    background: var(--block-bg) !important;
+    color: var(--text-color) !important;
+  }
+  table td {
+    background: var(--bg-color) !important;
+    color: var(--text-color) !important;
+  }
+  table tr:nth-child(even) {
+    background: var(--block-bg) !important;
+  }
+
+  button#themeToggle {
     background: #0645ad;
     color: white;
     border: none;
@@ -609,10 +683,29 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background 0.3s;
-  ">
-    🌓 Тёмная тема
-  </button>
-</div>
+  }
+  [data-theme="dark"] button#themeToggle {
+    background: #2a4a7f;
+    color: white;
+  }
+  [data-theme="dark"] button#themeToggle:hover {
+    background: #3a5a9f;
+  }
+
+  [data-theme="dark"] h1,
+  [data-theme="dark"] h2,
+  [data-theme="dark"] h3,
+  [data-theme="dark"] h4 {
+    color: #e0e0e0 !important;
+  }
+
+  [data-theme="dark"] input,
+  [data-theme="dark"] textarea {
+    background: #2a2a4a;
+    color: #e0e0e0;
+    border-color: #3a3a5a;
+  }
+</style>
 
 <script>
   (function() {
@@ -622,10 +715,10 @@
     function setTheme(theme) {
       if (theme === 'dark') {
         html.setAttribute('data-theme', 'dark');
-        toggle.textContent = '☀️ Светлая тема';
+        if (toggle) toggle.textContent = '☀️ Светлая тема';
       } else {
         html.removeAttribute('data-theme');
-        toggle.textContent = '🌓 Тёмная тема';
+        if (toggle) toggle.textContent = '🌓 Тёмная тема';
       }
       localStorage.setItem('mars-theme', theme);
     }
@@ -637,14 +730,16 @@
       setTheme('light');
     }
 
-    toggle.addEventListener('click', function() {
-      const current = html.getAttribute('data-theme');
-      if (current === 'dark') {
-        setTheme('light');
-      } else {
-        setTheme('dark');
-      }
-    });
+    if (toggle) {
+      toggle.addEventListener('click', function() {
+        const current = html.getAttribute('data-theme');
+        if (current === 'dark') {
+          setTheme('light');
+        } else {
+          setTheme('dark');
+        }
+      });
+    }
   })();
 </script>
 

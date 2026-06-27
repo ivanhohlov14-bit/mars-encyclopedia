@@ -131,7 +131,10 @@ blockquote {
 .rst-footer-buttons { display: none !important; }
 .footer { display: none !important; }
 
-/* ===== ПЕРЕКЛЮЧЕНИЕ ТЕМЫ ===== */
+/* ==========================================
+   ПЕРЕКЛЮЧЕНИЕ ТЕМЫ (ИСПРАВЛЕННАЯ ВЕРСИЯ)
+   ========================================== */
+
 :root {
   --bg-color: #ffffff;
   --text-color: #202122;
@@ -148,24 +151,52 @@ blockquote {
   --block-bg: #2a2a4a;
 }
 
-body { background: var(--bg-color); color: var(--text-color); transition: 0.3s; }
-.wy-nav-content { background: var(--bg-color) !important; color: var(--text-color) !important; }
-.wy-nav-side { background: var(--bg-color) !important; border-color: var(--border-color) !important; }
-.wy-side-nav-search { background: var(--bg-color) !important; }
-.wy-menu-vertical a { color: var(--link-color) !important; }
+/* Общие элементы */
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+.wy-nav-content {
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+.wy-nav-side {
+  background: var(--bg-color) !important;
+  border-color: var(--border-color) !important;
+}
+.wy-side-nav-search {
+  background: var(--bg-color) !important;
+}
+.wy-menu-vertical a {
+  color: var(--link-color) !important;
+}
 
-a { color: var(--link-color) !important; }
-a:hover { color: #0b0080 !important; }
+/* Ссылки */
+a {
+  color: var(--link-color) !important;
+}
+a:hover {
+  color: #0b0080 !important;
+}
+[data-theme="dark"] a:hover {
+  color: #9fcbff !important;
+}
 
-blockquote, .infobox, #quoteOfTheDay {
+/* Инфобоксы и цитаты */
+.infobox,
+blockquote,
+#quoteOfTheDay {
   background: var(--block-bg) !important;
   border-color: var(--border-color) !important;
   color: var(--text-color) !important;
 }
 
+/* Таблицы */
 table {
   background: var(--bg-color) !important;
   border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
 }
 table th {
   background: var(--block-bg) !important;
@@ -179,15 +210,33 @@ table tr:nth-child(even) {
   background: var(--block-bg) !important;
 }
 
+/* Кнопка переключения темы */
 button#themeToggle {
   background: #0645ad;
   color: white;
+  border: none;
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-family: 'Georgia', serif;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 [data-theme="dark"] button#themeToggle {
   background: #2a4a7f;
   color: white;
 }
+[data-theme="dark"] button#themeToggle:hover {
+  background: #3a5a9f;
+}
 
+/* Заголовки в тёмной теме */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4 {
+  color: #e0e0e0 !important;
+}
 
 /* Поля ввода (если есть) */
 [data-theme="dark"] input,
@@ -195,26 +244,6 @@ button#themeToggle {
   background: #2a2a4a;
   color: #e0e0e0;
   border-color: #3a3a5a;
-}
-
-/* Логотип и заголовки */
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3,
-[data-theme="dark"] h4 {
-  color: #e0e0e0;
-}
-[data-theme="dark"] .wy-nav-content {
-  background: var(--bg-color) !important;
-}
-[data-theme="dark"] .wy-nav-side {
-  background: var(--bg-color) !important;
-}
-[data-theme="dark"] .wy-side-nav-search {
-  background: var(--bg-color) !important;
-}
-[data-theme="dark"] .wy-menu-vertical a {
-  color: var(--link-color) !important;
 }
 
 /* ===== ИНФОБОКС (как в Википедии) ===== */
@@ -252,8 +281,8 @@ table {
 }
 table th, table td {
   padding: 6px 8px;
-  word-wrap: break-word;      /* перенос длинных слов */
-  white-space: normal;        /* разрешаем перенос строк */
+  word-wrap: break-word;
+  white-space: normal;
 }
 /* Задаём ширину колонок в процентах (пример для 3 колонок) */
 table th:nth-child(1), table td:nth-child(1) { width: 15%; }

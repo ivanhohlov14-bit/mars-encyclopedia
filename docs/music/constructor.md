@@ -1,6 +1,6 @@
 ---
 title: Конструктор марсианских мелодий
-description: Создавайте мелодии из 7 нот (до, ре, ми, фа, соль, ля, си) с синтезированным звуком гуслей
+description: Создавайте мелодии из 7 нот (до, ре, ми, фа, соль, ля, си) с улучшенным синтезом гуслей (вибрато + шум атаки)
 ---
 
 # 🎵 Конструктор марсианских мелодий
@@ -261,7 +261,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   <div class="mm-container">
     <div class="mm-title">
       🎵 Конструктор марсианских мелодий
-      <small>Синтезированный звук, приближенный к гуслям</small>
+      <small>Улучшенный синтез гуслей (вибрато + шум атаки)</small>
     </div>
 
     <div class="mm-section">
@@ -361,16 +361,25 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   }
 
   // ============================================================
-  // 4. УЛУЧШЕННЫЙ СИНТЕЗ ГУСЛЕЙ
+  // 4. УЛУЧШЕННЫЙ СИНТЕЗ ГУСЛЕЙ (вибрато + шум атаки)
   // ============================================================
   function playSynthesizedGusli(ctx, note, startTime, durationSec) {
     const output = ctx.createGain();
     output.connect(ctx.destination);
 
-    // --- Основной тон ---
+    // --- Основной тон с вибрато ---
     const osc1 = ctx.createOscillator();
     osc1.type = 'triangle';
     osc1.frequency.value = note.freq;
+
+    // --- LFO для вибрато ---
+    const lfo = ctx.createOscillator();
+    lfo.type = 'sine';
+    lfo.frequency.value = 5; // 5 Гц
+    const lfoGain = ctx.createGain();
+    lfoGain.gain.value = 3; // глубина вибрато ~3 Гц (примерно 5 центов)
+    lfo.connect(lfoGain);
+    lfoGain.connect(osc1.frequency);
 
     // --- Обертон октава ---
     const osc2 = ctx.createOscillator();
@@ -386,15 +395,22 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
     const gain3 = ctx.createGain();
     gain3.gain.value = 0.15;
 
-    // --- Шум атаки (имитация щипка) ---
-    const bufferSize = ctx.sampleRate * 0.02;
+    // --- Улучшенный шум атаки (с фильтром) ---
+    const bufferSize = ctx.sampleRate * 0.03; // 30 мс
     const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
     const data = buffer.getChannelData(0);
     for (let i = 0; i < bufferSize; i++) {
-      data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.3));
+      // Шум с затухающей амплитудой
+      data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.2));
     }
     const noise = ctx.createBufferSource();
     noise.buffer = buffer;
+
+    // Фильтр для шума (приглушает высокие частоты)
+    const noiseFilter = ctx.createBiquadFilter();
+    noiseFilter.type = 'lowpass';
+    noiseFilter.frequency.value = 3000;
+    noiseFilter.Q.value = 1.0;
 
     // --- Огибающая основного тона (ADSR) ---
     const env1 = ctx.createGain();
@@ -414,13 +430,13 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
     env2.gain.linearRampToValueAtTime(0.2, startTime + 0.01);
     env2.gain.exponentialRampToValueAtTime(0.001, startTime + durationSec * 0.5);
 
-    // --- Огибающая для шума ---
+    // --- Огибающая для шума (короткая) ---
     const envNoise = ctx.createGain();
     envNoise.gain.setValueAtTime(0.001, startTime);
-    envNoise.gain.linearRampToValueAtTime(0.15, startTime + 0.01);
-    envNoise.gain.exponentialRampToValueAtTime(0.001, startTime + 0.06);
+    envNoise.gain.linearRampToValueAtTime(0.2, startTime + 0.005);
+    envNoise.gain.exponentialRampToValueAtTime(0.001, startTime + 0.05);
 
-    // --- Фильтр с резонансом ---
+    // --- Основной фильтр (резонанс) ---
     const filter = ctx.createBiquadFilter();
     filter.type = 'lowpass';
     filter.frequency.value = 2000;
@@ -439,15 +455,17 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
     gain3.connect(env2);
     // уже подключено к env2
 
-    // --- Шум подмешиваем отдельно ---
+    // --- Шум подключаем отдельно, через фильтр и огибающую ---
     const noiseGain = ctx.createGain();
-    noise.connect(envNoise);
+    noise.connect(noiseFilter);
+    noiseFilter.connect(envNoise);
     envNoise.connect(noiseGain);
     noiseGain.gain.value = 0.5;
+    noiseGain.connect(output); // шум идёт минуя основной фильтр
 
+    // Основной сигнал через фильтр
     sum.connect(filter);
     filter.connect(output);
-    noiseGain.connect(output);
 
     // --- Задержка (реверберация) ---
     const delay = ctx.createDelay(0.3);
@@ -474,10 +492,12 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
     osc2.stop(startTime + durationSec + 0.1);
     osc3.start(startTime);
     osc3.stop(startTime + durationSec + 0.1);
+    lfo.start(startTime);
+    lfo.stop(startTime + durationSec + 0.1);
     noise.start(startTime);
-    noise.stop(startTime + 0.1);
+    noise.stop(startTime + 0.06);
 
-    return { osc1, osc2, osc3, noise, env1, env2, envNoise, filter, output, delay, feedback };
+    return { osc1, osc2, osc3, noise, lfo, env1, env2, envNoise, filter, output, delay, feedback };
   }
 
   // ============================================================
@@ -533,6 +553,8 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
           nodes.osc3.disconnect();
           nodes.noise.stop();
           nodes.noise.disconnect();
+          nodes.lfo.stop();
+          nodes.lfo.disconnect();
           nodes.env1.disconnect();
           nodes.env2.disconnect();
           nodes.envNoise.disconnect();
@@ -561,6 +583,8 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
             nodes.osc3.disconnect();
             nodes.noise.stop();
             nodes.noise.disconnect();
+            nodes.lfo.stop();
+            nodes.lfo.disconnect();
             nodes.env1.disconnect();
             nodes.env2.disconnect();
             nodes.envNoise.disconnect();
@@ -773,7 +797,6 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
 
     updateShareLink();
 
-    // Активируем AudioContext при первом клике
     document.addEventListener('click', ensureAudioContext, { once: true });
   }
 

@@ -1276,7 +1276,26 @@ const LEXICON_DATA = {
   "небе": {root:"sura", pos: "noun"},
   "небой": {root:"sura", pos: "noun"},
   "небесный": {root:"sura", pos: "noun"},
-  "небесная": {root:"sura", pos: "noun"}
+  "небесная": {root:"sura", pos: "noun"},
+   // === НОВЫЕ СЛОВА (грусть, помощь, покой, высота, низина) ===
+  // Существительные
+  "грусть": { root: "mōrt", pos: "noun" },
+  "грусти": { root: "mōrt", pos: "noun" },
+  "грустью": { root: "mōrt", pos: "noun" },
+  "помощь": { root: "lānīn", pos: "noun" },
+  "помощи": { root: "lānīn", pos: "noun" },
+  "помощью": { root: "lānīn", pos: "noun" },
+  "покой": { root: "nōkh", pos: "noun" },
+  "покоя": { root: "nōkh", pos: "noun" },
+  "покоем": { root: "nōkh", pos: "noun" },
+  "высота": { root: "dzenur", pos: "noun" },
+  "высоты": { root: "dzenur", pos: "noun" },
+  "высотой": { root: "dzenur", pos: "noun" },
+  "высоту": { root: "dzenur", pos: "noun" },
+  "низина": { root: "kōlur", pos: "noun" },
+  "низины": { root: "kōlur", pos: "noun" },
+  "низиной": { root: "kōlur", pos: "noun" },
+  "низину": { root: "kōlur", pos: "noun" }
 };
 
 // ============================================================

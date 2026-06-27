@@ -86,6 +86,8 @@ nav:
       - «Ацидалийское море»: books/acidalia-sea.md
   
   - Переводчик: translator.md
+  - Музыка:
+      - Конструктор мелодий: music/constructor.md
   - Лицензия: license.md
 
 extra_css:

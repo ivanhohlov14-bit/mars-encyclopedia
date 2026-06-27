@@ -88,6 +88,8 @@ nav:
   - Переводчик: translator.md
   - Музыка:
       - Конструктор мелодий: music/constructor.md
+  - Интерактив:
+    - 🪐 «К Исходу»: interactive/exodus.md
   - Лицензия: license.md
 
 extra_css:

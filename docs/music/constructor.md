@@ -1,18 +1,13 @@
 ---
 title: Конструктор марсианских мелодий
-description: Создавайте мелодии из 7 марсианских нот (до, ре, ми, фа, соль, си, ля)
----
-
-# 🎵 Конструктор марсианских мелодий
----
-title: Конструктор марсианских мелодий
-description: Создавайте мелодии из 7 нот (до, ре, ми, фа, соль, ля, си) со звуком гуслей
+description: Создавайте мелодии из 7 нот (до, ре, ми, фа, соль, ля, си) со звуком, похожим на гусли
 ---
 
 # 🎵 Конструктор марсианских мелодий
 
 <div id="mars-melody-app">
   <style>
+    /* Стили (те же, что были) */
     .mm-container {
       max-width: 900px;
       margin: 0 auto;
@@ -263,7 +258,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   <div class="mm-container">
     <div class="mm-title">
       🎵 Конструктор марсианских мелодий
-      <small>Составьте мелодию из 7 нот (до, ре, ми, фа, соль, ля, си) со звуком гуслей</small>
+      <small>Синтезированный звук, похожий на гусли</small>
     </div>
 
     <div class="mm-section">
@@ -309,7 +304,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   'use strict';
 
   // ============================================================
-  // 1. НОТЫ: До, Ре, Ми, Фа, Соль, Ля, Си (правильный порядок)
+  // 1. НОТЫ: До, Ре, Ми, Фа, Соль, Ля, Си
   // ============================================================
   const NOTES = [
     { id: 0, symbol: 'Ὸ', name: 'До',   freq: 261.63 },
@@ -317,13 +312,10 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
     { id: 2, symbol: 'ꝯ', name: 'Ми',   freq: 329.63 },
     { id: 3, symbol: 'Ꝼ', name: 'Фа',   freq: 349.23 },
     { id: 4, symbol: 'Ώ', name: 'Соль', freq: 392.00 },
-    { id: 5, symbol: 'ꓥ', name: 'Ля',   freq: 440.00 },  // Ля теперь на 5-м месте
-    { id: 6, symbol: 'ⴡ', name: 'Си',   freq: 493.88 }   // Си на 6-м месте
+    { id: 5, symbol: 'ꓥ', name: 'Ля',   freq: 440.00 },
+    { id: 6, symbol: 'ⴡ', name: 'Си',   freq: 493.88 }
   ];
 
-  // ============================================================
-  // 2. ДЛИТЕЛЬНОСТИ
-  // ============================================================
   const DURATIONS = [
     { value: 1,    symbol: '∩', label: 'Целая' },
     { value: 0.5,  symbol: '⌠', label: 'Половинная' },
@@ -332,13 +324,12 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   ];
 
   // ============================================================
-  // 3. СОСТОЯНИЕ
+  // 2. СОСТОЯНИЕ
   // ============================================================
   let melody = [];
   let currentDuration = 0.25;
   let isPlaying = false;
   let audioCtx = null;
-  let gusliBuffer = null;
 
   // DOM-элементы
   const paletteEl = document.getElementById('mm-note-palette');
@@ -349,36 +340,13 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   const shareInput = document.getElementById('mm-share-input');
 
   // ============================================================
-  // 4. ЗАГРУЗКА СЭМПЛА (новый файл)
-  // ============================================================
-  function loadSample() {
-    if (!audioCtx) return;
-    const url = '/assets/sounds/3_str_L_RR2.wav';
-    fetch(url)
-      .then(response => {
-        if (!response.ok) throw new Error('Файл не найден (404)');
-        return response.arrayBuffer();
-      })
-      .then(data => audioCtx.decodeAudioData(data))
-      .then(buffer => {
-        gusliBuffer = buffer;
-        console.log('✅ Сэмпл гуслей загружен!');
-      })
-      .catch(err => {
-        console.warn('⚠️ Не удалось загрузить сэмпл, буду использовать синтез.', err);
-        gusliBuffer = null;
-      });
-  }
-
-  // ============================================================
-  // 5. АКТИВАЦИЯ AUDIOCONTEXT
+  // 3. АКТИВАЦИЯ AUDIOCONTEXT
   // ============================================================
   function ensureAudioContext() {
     if (!audioCtx) {
       try {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        console.log('✅ AudioContext создан, состояние:', audioCtx.state);
-        loadSample();
+        console.log('✅ AudioContext создан');
       } catch (e) {
         console.error('❌ Ошибка создания AudioContext:', e);
         return null;
@@ -391,89 +359,62 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   }
 
   // ============================================================
-  // 6. ВОСПРОИЗВЕДЕНИЕ ОДНОЙ НОТЫ (с эффектами)
+  // 4. СИНТЕЗ ЗВУКА ГУСЛЕЙ (без сэмплов)
   // ============================================================
-  function playNote(ctx, note, startTime, durationSec) {
+  function playSynthesizedGusli(ctx, note, startTime, durationSec) {
+    // Главный выход
     const output = ctx.createGain();
     output.connect(ctx.destination);
 
-    if (gusliBuffer) {
-      const source = ctx.createBufferSource();
-      source.buffer = gusliBuffer;
-      // Базовая частота сэмпла – предположим C4 (261.63 Гц)
-      const baseFreq = 261.63;
-      const playbackRate = note.freq / baseFreq;
-      source.playbackRate.value = playbackRate;
+    // ----- 1. Основной тон (треугольник) -----
+    const osc1 = ctx.createOscillator();
+    osc1.type = 'triangle';
+    osc1.frequency.value = note.freq;
 
-      // Огибающая (быстрый щипок, плавное затухание)
-      const env = ctx.createGain();
-      env.gain.setValueAtTime(0.001, startTime);
-      env.gain.linearRampToValueAtTime(0.35, startTime + 0.02);
-      env.gain.exponentialRampToValueAtTime(0.001, startTime + durationSec * 0.7);
+    // ----- 2. Обертон (октава выше, тише) -----
+    const osc2 = ctx.createOscillator();
+    osc2.type = 'triangle';
+    osc2.frequency.value = note.freq * 2;
 
-      // Фильтр низких частот (делает звук теплее)
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.value = 1800;
-      filter.Q.value = 1.0;
+    // ----- 3. Огибающая для основного тона -----
+    const env1 = ctx.createGain();
+    env1.gain.setValueAtTime(0.001, startTime);
+    env1.gain.linearRampToValueAtTime(0.3, startTime + 0.015); // быстрый щипок
+    env1.gain.exponentialRampToValueAtTime(0.001, startTime + durationSec * 0.6); // затухание
 
-      // Простая реверберация через две задержки (стерео)
-      const delayL = ctx.createDelay(0.5);
-      const delayR = ctx.createDelay(0.5);
-      delayL.delayTime.value = 0.12;
-      delayR.delayTime.value = 0.15;
+    // ----- 4. Огибающая для обертона (тише и короче) -----
+    const env2 = ctx.createGain();
+    env2.gain.setValueAtTime(0.001, startTime);
+    env2.gain.linearRampToValueAtTime(0.12, startTime + 0.01);
+    env2.gain.exponentialRampToValueAtTime(0.001, startTime + durationSec * 0.4);
 
-      const feedback = ctx.createGain();
-      feedback.gain.value = 0.35;
+    // ----- 5. Фильтр низких частот (для теплоты) -----
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 1800;
+    filter.Q.value = 1.2;
 
-      // Сухой и мокрый сигнал
-      const dry = ctx.createGain();
-      dry.gain.value = 0.7;
-      const wet = ctx.createGain();
-      wet.gain.value = 0.3;
+    // ----- 6. Сборка -----
+    // Основной тон → фильтр → выход
+    osc1.connect(env1);
+    env1.connect(filter);
+    // Обертон → фильтр → выход
+    osc2.connect(env2);
+    env2.connect(filter);
+    // Фильтр → выход
+    filter.connect(output);
 
-      // Подключение: source → env → filter
-      source.connect(env);
-      env.connect(filter);
-      filter.connect(dry);
-      dry.connect(output);
+    // Запуск и остановка
+    osc1.start(startTime);
+    osc1.stop(startTime + durationSec + 0.05);
+    osc2.start(startTime);
+    osc2.stop(startTime + durationSec + 0.05);
 
-      // Эффект: фильтр → задержки → обратная связь
-      filter.connect(delayL);
-      filter.connect(delayR);
-      delayL.connect(feedback);
-      delayR.connect(feedback);
-      feedback.connect(delayL);
-      feedback.connect(delayR);
-      delayL.connect(wet);
-      delayR.connect(wet);
-      wet.connect(output);
-
-      source.start(startTime);
-      source.stop(startTime + durationSec + 0.05);
-      return source;
-    } else {
-      // Fallback – синтез осциллятором
-      const osc = ctx.createOscillator();
-      osc.type = 'triangle';
-      osc.frequency.value = note.freq;
-
-      const env = ctx.createGain();
-      env.gain.setValueAtTime(0.001, startTime);
-      env.gain.linearRampToValueAtTime(0.25, startTime + 0.01);
-      env.gain.exponentialRampToValueAtTime(0.001, startTime + durationSec * 0.8);
-
-      osc.connect(env);
-      env.connect(output);
-
-      osc.start(startTime);
-      osc.stop(startTime + durationSec + 0.05);
-      return osc;
-    }
+    return { osc1, osc2, env1, env2, filter, output };
   }
 
   // ============================================================
-  // 7. ВОСПРОИЗВЕДЕНИЕ МЕЛОДИИ
+  // 5. ВОСПРОИЗВЕДЕНИЕ МЕЛОДИИ
   // ============================================================
   function playMelody() {
     if (melody.length === 0) {
@@ -509,14 +450,23 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
       const when = startTime + timeOffset;
       const durSec = item.duration * beatDuration;
 
-      const source = playNote(ctx, note, when, durSec);
-      scheduled.push(source);
+      const nodes = playSynthesizedGusli(ctx, note, when, durSec);
+      scheduled.push(nodes);
     });
 
     const stopBtn = document.getElementById('mm-play-btn');
     const stopHandler = () => {
-      scheduled.forEach(src => {
-        try { src.stop(); src.disconnect(); } catch(e) {}
+      scheduled.forEach(nodes => {
+        try {
+          nodes.osc1.stop();
+          nodes.osc1.disconnect();
+          nodes.osc2.stop();
+          nodes.osc2.disconnect();
+          nodes.env1.disconnect();
+          nodes.env2.disconnect();
+          nodes.filter.disconnect();
+          nodes.output.disconnect();
+        } catch(e) {}
       });
       isPlaying = false;
       stopBtn.textContent = '▶ Воспроизвести';
@@ -527,8 +477,17 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
     const totalDuration = melody.reduce((sum, item) => sum + item.duration, 0) * beatDuration + 0.5;
     setTimeout(() => {
       if (isPlaying) {
-        scheduled.forEach(src => {
-          try { src.stop(); src.disconnect(); } catch(e) {}
+        scheduled.forEach(nodes => {
+          try {
+            nodes.osc1.stop();
+            nodes.osc1.disconnect();
+            nodes.osc2.stop();
+            nodes.osc2.disconnect();
+            nodes.env1.disconnect();
+            nodes.env2.disconnect();
+            nodes.filter.disconnect();
+            nodes.output.disconnect();
+          } catch(e) {}
         });
         isPlaying = false;
         stopBtn.textContent = '▶ Воспроизвести';
@@ -538,7 +497,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   }
 
   // ============================================================
-  // 8. ОТРИСОВКА ИНТЕРФЕЙСА
+  // 6. ОТРИСОВКА ИНТЕРФЕЙСА (без изменений)
   // ============================================================
   function renderPalette() {
     paletteEl.innerHTML = '';
@@ -608,7 +567,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   }
 
   // ============================================================
-  // 9. ДЕЙСТВИЯ С МЕЛОДИЕЙ
+  // 7. ДЕЙСТВИЯ С МЕЛОДИЕЙ
   // ============================================================
   function addNote(noteId) {
     if (isPlaying) return;
@@ -651,7 +610,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   }
 
   // ============================================================
-  // 10. ШАРИНГ (кодирование в URL)
+  // 8. ШАРИНГ (кодирование в URL)
   // ============================================================
   function encodeMelody() {
     return melody.map(item => `${item.noteId},${item.duration}`).join(':');
@@ -713,7 +672,7 @@ description: Создавайте мелодии из 7 нот (до, ре, ми
   }
 
   // ============================================================
-  // 11. ИНИЦИАЛИЗАЦИЯ
+  // 9. ИНИЦИАЛИЗАЦИЯ
   // ============================================================
   function init() {
     renderPalette();

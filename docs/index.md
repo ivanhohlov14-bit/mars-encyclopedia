@@ -119,84 +119,70 @@
 
 <script>
   (function() {
-    // Функция для получения случайной статьи
-    function getRandomArticle() {
-      const pages = [
-        // ИСТОРИЯ
-        '/history/periodization/',
-        '/history/timeline/',
-        '/history/myths/',
-        '/history/epokha-osnovaniya/',
-        '/history/epokha-rascveta/',
-        '/history/epokha-umiraniya/',
-        '/history/iskhod/',
-        '/history/pirate-kingdom/',
-        // ГЕОГРАФИЯ
-        '/geography/acidalia-sea/',
-        '/geography/okhasen/',
-        '/geography/rogen-aria/',
-        '/geography/farsida/',
-        '/geography/farsida-caves/',
-        '/geography/ksanf-river/',
-        '/geography/eritreya/',
-        '/geography/utopiya/',
-        '/geography/edem/',
-        '/geography/tarsis/',
-        '/geography/podzemniy-khram/',
-        '/geography/kosmodrom-farsidy/',
-        '/geography/noviy-okhasen/',
-        '/geography/akademiya-okhasena/',
-        // АСТРОНОМИЯ
-        '/astronomy/mars-sky/',
-        '/astronomy/phobos-deimos/',
-        '/astronomy/earth-as-target/',
-        '/astronomy/earth/',
-        // КУЛЬТУРА И НАУКА
-        '/terms/lan-sur/',
-        '/terms/tablichki/',
-        '/biology/gemotsianin/',
-        '/science/geology/',
-        // ПЕРСОНАЖИ
-        '/people/hevsur/',
-        '/people/talin/',
-        '/people/ella/',
-        '/people/yarra/',
-        '/people/alira/',
-        '/people/aratan-iii/',
-        '/people/irayina/',
-        '/people/miran/',
-        '/people/kharan/',
-        '/people/soviya/',
-        '/people/arash/',
-        '/people/kan/',
-        '/people/sarum-ii/',
-        '/people/sarum-velikiy/',
-        '/people/ksanf-monster/',
-        // БОГИ И МИФОЛОГИЯ
-        '/mythology/kho/',
-        '/mythology/akha/',
-        '/mythology/araksis/',
-        '/mythology/prorochestvo-kharana/',
-        // КНИГИ
-        '/books/acidalia-sea/',
-        '/books/tam-gde-spyat-golosa/',
-        '/books/krugi-na-krasnom-peple/',
-        '/books/zvezdnyy-put/',
-        '/books/golubaya-zvezda-kolybel-iz-pepla/',
-        '/books/ksanf-piratskoe-korolevstvo/',
-        '/books/peshcheriki-golosa-iz-nedr/',
-        '/books/soviya-poslednyaya-pesn/',
-        '/books/kharan-pisets-iz-ellady/',
-        '/books/lanoy-kuznets-posledniy-geroy-utopii/',
-        '/books/akhara-velikaya-zheleznaya-zhrtsa/'
-      ];
-      
-      // Исключаем главную страницу
-      const filtered = pages.filter(url => url !== '/');
-      return filtered[Math.floor(Math.random() * filtered.length)];
-    }
-
-    // Обработчик на кнопку
+    // Список статей (пути без ведущего слеша и без .html)
+    const pages = [
+      'history/periodization/',
+      'history/timeline/',
+      'history/myths/',
+      'history/epokha-osnovaniya/',
+      'history/epokha-rascveta/',
+      'history/epokha-umiraniya/',
+      'history/iskhod/',
+      'history/pirate-kingdom/',
+      'geography/acidalia-sea/',
+      'geography/okhasen/',
+      'geography/rogen-aria/',
+      'geography/farsida/',
+      'geography/farsida-caves/',
+      'geography/ksanf-river/',
+      'geography/eritreya/',
+      'geography/utopiya/',
+      'geography/edem/',
+      'geography/tarsis/',
+      'geography/podzemniy-khram/',
+      'geography/kosmodrom-farsidy/',
+      'geography/noviy-okhasen/',
+      'geography/akademiya-okhasena/',
+      'astronomy/mars-sky/',
+      'astronomy/phobos-deimos/',
+      'astronomy/earth-as-target/',
+      'astronomy/earth/',
+      'terms/lan-sur/',
+      'terms/tablichki/',
+      'biology/gemotsianin/',
+      'science/geology/',
+      'people/hevsur/',
+      'people/talin/',
+      'people/ella/',
+      'people/yarra/',
+      'people/alira/',
+      'people/aratan-iii/',
+      'people/irayina/',
+      'people/miran/',
+      'people/kharan/',
+      'people/soviya/',
+      'people/arash/',
+      'people/kan/',
+      'people/sarum-ii/',
+      'people/sarum-velikiy/',
+      'people/ksanf-monster/',
+      'mythology/kho/',
+      'mythology/akha/',
+      'mythology/araksis/',
+      'mythology/prorochestvo-kharana/',
+      'books/acidalia-sea/',
+      'books/tam-gde-spyat-golosa/',
+      'books/krugi-na-krasnom-peple/',
+      'books/zvezdnyy-put/',
+      'books/golubaya-zvezda-kolybel-iz-pepla/',
+      'books/ksanf-piratskoe-korolevstvo/',
+      'books/peshcheriki-golosa-iz-nedr/',
+      'books/soviya-poslednyaya-pesn/',
+      'books/kharan-pisets-iz-ellady/',
+      'books/lanoy-kuznets-posledniy-geroy-utopii/',
+      'books/akhara-velikaya-zheleznaya-zhrtsa/'
+    ];
+    
     document.addEventListener('DOMContentLoaded', function() {
       const btn = document.getElementById('randomArticleBtn');
       if (!btn) {
@@ -204,10 +190,8 @@
         return;
       }
       btn.addEventListener('click', function() {
-        const url = getRandomArticle();
-        // Если сайт в подкаталоге, добавьте префикс, например '/mars-wiki'
-        // window.location.href = '/mars-wiki' + url;
-        window.location.href = url;
+        const random = pages[Math.floor(Math.random() * pages.length)];
+        window.location.href = random;
       });
     });
   })();

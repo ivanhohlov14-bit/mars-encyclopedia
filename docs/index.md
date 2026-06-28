@@ -119,7 +119,9 @@
 
 <script>
   (function() {
-    // Список статей (пути без ведущего слеша и без .html)
+    // Определяем базовый путь сайта
+    const base = '/mars-encyclopedia/';
+    
     const pages = [
       'history/periodization/',
       'history/timeline/',
@@ -185,13 +187,14 @@
     
     document.addEventListener('DOMContentLoaded', function() {
       const btn = document.getElementById('randomArticleBtn');
-      if (!btn) {
-        console.error('Кнопка "Случайная статья" не найдена!');
-        return;
-      }
+      if (!btn) return;
+      
       btn.addEventListener('click', function() {
         const random = pages[Math.floor(Math.random() * pages.length)];
-        window.location.href = random;
+        const url = base + random;
+        // Отладка: вывести URL в консоль
+        console.log('Переход на:', url);
+        window.location.href = url;
       });
     });
   })();

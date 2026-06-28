@@ -329,11 +329,11 @@ const LEXICON_DATA = {
   "крепость": { root: "gharokh", pos: "noun" },
   "окхасен": { root: "Okhasen", pos: "noun" },
   "ксанф": { root: "Ksanf", pos: "noun" },
-  "город": { root: "okhsen", pos: "noun" },
-  "города": { root: "okhsen", pos: "noun" },
-  "городу": { root: "okhsen", pos: "noun" },
-  "городом": { root: "okhsen", pos: "noun" },
-  "городе": { root: "okhsen", pos: "noun" },
+  "город": { root: "okh", pos: "noun" },
+  "города": { root: "okh", pos: "noun" },
+  "городу": { root: "okh", pos: "noun" },
+  "городом": { root: "okh", pos: "noun" },
+  "городе": { root: "okh", pos: "noun" },
   "побережье": { root: "ākhasen", pos: "noun" },
   "побережья": { root: "ākhasen", pos: "noun" },
   "побережью": { root: "ākhasen", pos: "noun" },
@@ -355,11 +355,11 @@ const LEXICON_DATA = {
   "металлу": { root: "khōs", pos: "noun" },
   "металлом": { root: "khōs", pos: "noun" },
   "металле": { root: "khōs", pos: "noun" },
-  "порт": { root: "port", pos: "noun" },
-  "порта": { root: "port", pos: "noun" },
-  "порту": { root: "port", pos: "noun" },
-  "портом": { root: "port", pos: "noun" },
-  "порте": { root: "port", pos: "noun" },
+  "порт": { root: "sen", pos: "noun" },
+  "порта": { root: "sen", pos: "noun" },
+  "порту": { root: "sen", pos: "noun" },
+  "портом": { root: "sen", pos: "noun" },
+  "порте": { root: "sen", pos: "noun" },
   "глина": { root: "sur", pos: "noun" },
   "глины": { root: "sur", pos: "noun" },
   "глине": { root: "sur", pos: "noun" },
@@ -446,6 +446,10 @@ const LEXICON_DATA = {
   "покой": { root: "nōkh", pos: "noun" },
   "покоя": { root: "nōkh", pos: "noun" },
   "покоем": { root: "nōkh", pos: "noun" },
+  "убежище": { root: "ānsen", pos: "noun" },
+  "убежищу": { root: "ānsen", pos: "noun" },
+  "убежищем": { root: "ānsen", pos: "noun" },
+  "убежища": { root: "ānsen", pos: "noun" },
 
   // ============================================================
   // 2.1 НОВЫЕ ФИЛОСОФСКИЕ ПОНЯТИЯ
@@ -632,7 +636,10 @@ const LEXICON_DATA = {
   "война": { root: "mōrkhō", pos: "noun" },
   "войны": { root: "mōrkhō", pos: "noun" },
   "войной": { root: "mōrkhō", pos: "noun" },
-
+  "трон": { root: "rogen", pos: "noun" },
+  "троне": { root: "rogen", pos: "noun" },
+  "трону": { root: "rogen", pos: "noun" },
+  "трона": { root: "rogen", pos: "noun" },
   // ============================================================
   // 3. ПРИЛАГАТЕЛЬНЫЕ (основные)
   // ============================================================
@@ -1690,7 +1697,448 @@ const LEXICON_DATA = {
   "мор тхалу": { root: "Mōr-thal", pos: "phrase" },
   "мор тхалом": { root: "Mōr-thal", pos: "phrase" },
   "мор тхале": { root: "Mōr-thal", pos: "phrase" },
+  // ============================================================
+  // 15. НОВЫЕ СЛОВА (быт, наука, философия) — добавлено 28.06.2026
+  // ============================================================
 
+  // === ГЛАГОЛЫ (новые) ===
+  // Оставлять — "откладывать, не забирать"
+  "оставлять": { root: "ānxur", pos: "verb" },
+  "оставляю": { root: "ānxur", pos: "verb" },
+  "оставляешь": { root: "ānxur", pos: "verb" },
+  "оставляет": { root: "ānxur", pos: "verb" },
+  "оставляем": { root: "ānxur", pos: "verb" },
+  "оставляете": { root: "ānxur", pos: "verb" },
+  "оставляют": { root: "ānxur", pos: "verb" },
+  "оставил": { root: "ānxur", pos: "verb" },
+  "оставила": { root: "ānxur", pos: "verb" },
+  "оставили": { root: "ānxur", pos: "verb" },
+
+  // Сокращать — "делать короче"
+  "сокращать": { root: "hōr-khalur", pos: "verb" },
+  "сокращаю": { root: "hōr-khalur", pos: "verb" },
+  "сокращаешь": { root: "hōr-khalur", pos: "verb" },
+  "сокращает": { root: "hōr-khalur", pos: "verb" },
+  "сокращаем": { root: "hōr-khalur", pos: "verb" },
+  "сокращаете": { root: "hōr-khalur", pos: "verb" },
+  "сокращают": { root: "hōr-khalur", pos: "verb" },
+  "сократил": { root: "hōr-khalur", pos: "verb" },
+  "сократила": { root: "hōr-khalur", pos: "verb" },
+  "сократили": { root: "hōr-khalur", pos: "verb" },
+
+  // Похищать — "уносить силой"
+  "похищать": { root: "khōs-nur", pos: "verb" },
+  "похищаю": { root: "khōs-nur", pos: "verb" },
+  "похищаешь": { root: "khōs-nur", pos: "verb" },
+  "похищает": { root: "khōs-nur", pos: "verb" },
+  "похищаем": { root: "khōs-nur", pos: "verb" },
+  "похищаете": { root: "khōs-nur", pos: "verb" },
+  "похищают": { root: "khōs-nur", pos: "verb" },
+  "похитил": { root: "khōs-nur", pos: "verb" },
+  "похитила": { root: "khōs-nur", pos: "verb" },
+  "похитили": { root: "khōs-nur", pos: "verb" },
+
+  // Отменять — "аннулировать, делать недействительным"
+  "отменять": { root: "ān-khalur", pos: "verb" },
+  "отменяю": { root: "ān-khalur", pos: "verb" },
+  "отменяешь": { root: "ān-khalur", pos: "verb" },
+  "отменяет": { root: "ān-khalur", pos: "verb" },
+  "отменяем": { root: "ān-khalur", pos: "verb" },
+  "отменяете": { root: "ān-khalur", pos: "verb" },
+  "отменяют": { root: "ān-khalur", pos: "verb" },
+  "отменил": { root: "ān-khalur", pos: "verb" },
+  "отменила": { root: "ān-khalur", pos: "verb" },
+  "отменили": { root: "ān-khalur", pos: "verb" },
+
+  // Ускорять — "увеличивать скорость"
+  "ускорять": { root: "nur-khō", pos: "verb" },
+  "ускоряю": { root: "nur-khō", pos: "verb" },
+  "ускоряешь": { root: "nur-khō", pos: "verb" },
+  "ускоряет": { root: "nur-khō", pos: "verb" },
+  "ускоряем": { root: "nur-khō", pos: "verb" },
+  "ускоряете": { root: "nur-khō", pos: "verb" },
+  "ускоряют": { root: "nur-khō", pos: "verb" },
+  "ускорил": { root: "nur-khō", pos: "verb" },
+  "ускорила": { root: "nur-khō", pos: "verb" },
+  "ускорили": { root: "nur-khō", pos: "verb" },
+
+  // Принимать — "соглашаться, получать"
+  "принимать": { root: "khōs-tsan", pos: "verb" },
+  "принимаю": { root: "khōs-tsan", pos: "verb" },
+  "принимаешь": { root: "khōs-tsan", pos: "verb" },
+  "принимает": { root: "khōs-tsan", pos: "verb" },
+  "принимаем": { root: "khōs-tsan", pos: "verb" },
+  "принимаете": { root: "khōs-tsan", pos: "verb" },
+  "принимают": { root: "khōs-tsan", pos: "verb" },
+  "принял": { root: "khōs-tsan", pos: "verb" },
+  "приняла": { root: "khōs-tsan", pos: "verb" },
+  "приняли": { root: "khōs-tsan", pos: "verb" },
+
+  // Получить доступ — "получить право войти"
+  "получить доступ": { root: "nur-sen", pos: "verb" },
+  "получаю доступ": { root: "nur-sen", pos: "verb" },
+  "получаешь доступ": { root: "nur-sen", pos: "verb" },
+  "получает доступ": { root: "nur-sen", pos: "verb" },
+  "получаем доступ": { root: "nur-sen", pos: "verb" },
+  "получаете доступ": { root: "nur-sen", pos: "verb" },
+  "получают доступ": { root: "nur-sen", pos: "verb" },
+  "получил доступ": { root: "nur-sen", pos: "verb" },
+  "получила доступ": { root: "nur-sen", pos: "verb" },
+  "получили доступ": { root: "nur-sen", pos: "verb" },
+
+  // Достигать — "доходить до цели"
+  "достигать": { root: "thal-dzen", pos: "verb" },
+  "достигаю": { root: "thal-dzen", pos: "verb" },
+  "достигаешь": { root: "thal-dzen", pos: "verb" },
+  "достигает": { root: "thal-dzen", pos: "verb" },
+  "достигаем": { root: "thal-dzen", pos: "verb" },
+  "достигаете": { root: "thal-dzen", pos: "verb" },
+  "достигают": { root: "thal-dzen", pos: "verb" },
+  "достиг": { root: "thal-dzen", pos: "verb" },
+  "достигла": { root: "thal-dzen", pos: "verb" },
+  "достигли": { root: "thal-dzen", pos: "verb" },
+
+  // Действовать — "совершать действие"
+  "действовать": { root: "khalur", pos: "verb" },
+  "действую": { root: "khalur", pos: "verb" },
+  "действуешь": { root: "khalur", pos: "verb" },
+  "действует": { root: "khalur", pos: "verb" },
+  "действуем": { root: "khalur", pos: "verb" },
+  "действуете": { root: "khalur", pos: "verb" },
+  "действуют": { root: "khalur", pos: "verb" },
+  "действовал": { root: "khalur", pos: "verb" },
+  "действовала": { root: "khalur", pos: "verb" },
+  "действовали": { root: "khalur", pos: "verb" },
+
+  // Складывать — "математическое действие +"
+  "складывать": { root: "un-mar", pos: "verb" },
+  "складываю": { root: "un-mar", pos: "verb" },
+  "складываешь": { root: "un-mar", pos: "verb" },
+  "складывает": { root: "un-mar", pos: "verb" },
+  "складываем": { root: "un-mar", pos: "verb" },
+  "складываете": { root: "un-mar", pos: "verb" },
+  "складывают": { root: "un-mar", pos: "verb" },
+  "сложил": { root: "un-mar", pos: "verb" },
+  "сложила": { root: "un-mar", pos: "verb" },
+  "сложили": { root: "un-mar", pos: "verb" },
+
+  // Вычитать — "математическое действие -"
+  "вычитать": { root: "ān-mar", pos: "verb" },
+  "вычитаю": { root: "ān-mar", pos: "verb" },
+  "вычитаешь": { root: "ān-mar", pos: "verb" },
+  "вычитает": { root: "ān-mar", pos: "verb" },
+  "вычитаем": { root: "ān-mar", pos: "verb" },
+  "вычитаете": { root: "ān-mar", pos: "verb" },
+  "вычитают": { root: "ān-mar", pos: "verb" },
+  "вычел": { root: "ān-mar", pos: "verb" },
+  "вычла": { root: "ān-mar", pos: "verb" },
+  "вычли": { root: "ān-mar", pos: "verb" },
+
+  // Умножать — "математическое действие ×"
+  "умножать": { root: "sūr-mar", pos: "verb" },
+  "умножаю": { root: "sūr-mar", pos: "verb" },
+  "умножаешь": { root: "sūr-mar", pos: "verb" },
+  "умножает": { root: "sūr-mar", pos: "verb" },
+  "умножаем": { root: "sūr-mar", pos: "verb" },
+  "умножаете": { root: "sūr-mar", pos: "verb" },
+  "умножают": { root: "sūr-mar", pos: "verb" },
+  "умножил": { root: "sūr-mar", pos: "verb" },
+  "умножила": { root: "sūr-mar", pos: "verb" },
+  "умножили": { root: "sūr-mar", pos: "verb" },
+
+  // Делить — "математическое действие ÷"
+  "делить": { root: "hōr-mar", pos: "verb" },
+  "делю": { root: "hōr-mar", pos: "verb" },
+  "делишь": { root: "hōr-mar", pos: "verb" },
+  "делит": { root: "hōr-mar", pos: "verb" },
+  "делим": { root: "hōr-mar", pos: "verb" },
+  "делите": { root: "hōr-mar", pos: "verb" },
+  "делят": { root: "hōr-mar", pos: "verb" },
+  "делил": { root: "hōr-mar", pos: "verb" },
+  "делила": { root: "hōr-mar", pos: "verb" },
+  "делили": { root: "hōr-mar", pos: "verb" },
+
+  // Обвинять — "возлагать вину"
+  "обвинять": { root: "mōr-tsan", pos: "verb" },
+  "обвиняю": { root: "mōr-tsan", pos: "verb" },
+  "обвиняешь": { root: "mōr-tsan", pos: "verb" },
+  "обвиняет": { root: "mōr-tsan", pos: "verb" },
+  "обвиняем": { root: "mōr-tsan", pos: "verb" },
+  "обвиняете": { root: "mōr-tsan", pos: "verb" },
+  "обвиняют": { root: "mōr-tsan", pos: "verb" },
+  "обвинил": { root: "mōr-tsan", pos: "verb" },
+  "обвинила": { root: "mōr-tsan", pos: "verb" },
+  "обвинили": { root: "mōr-tsan", pos: "verb" },
+
+  // Болеть — "испытывать боль"
+  "болеть": { root: "mōr-mar", pos: "verb" },
+  "болею": { root: "mōr-mar", pos: "verb" },
+  "болеешь": { root: "mōr-mar", pos: "verb" },
+  "болеет": { root: "mōr-mar", pos: "verb" },
+  "болеем": { root: "mōr-mar", pos: "verb" },
+  "болеете": { root: "mōr-mar", pos: "verb" },
+  "болеют": { root: "mōr-mar", pos: "verb" },
+  "болел": { root: "mōr-mar", pos: "verb" },
+  "болела": { root: "mōr-mar", pos: "verb" },
+  "болели": { root: "mōr-mar", pos: "verb" },
+
+  // Сопровождать — "идти вместе"
+  "сопровождать": { root: "nur-tō", pos: "verb" },
+  "сопровождаю": { root: "nur-tō", pos: "verb" },
+  "сопровождаешь": { root: "nur-tō", pos: "verb" },
+  "сопровождает": { root: "nur-tō", pos: "verb" },
+  "сопровождаем": { root: "nur-tō", pos: "verb" },
+  "сопровождаете": { root: "nur-tō", pos: "verb" },
+  "сопровождают": { root: "nur-tō", pos: "verb" },
+  "сопровождал": { root: "nur-tō", pos: "verb" },
+  "сопровождала": { root: "nur-tō", pos: "verb" },
+  "сопровождали": { root: "nur-tō", pos: "verb" },
+
+  // === СУЩЕСТВИТЕЛЬНЫЕ (новые) ===
+  // Живот — часть тела
+  "живот": { root: "marlā", pos: "noun" },
+  "живота": { root: "marlā", pos: "noun" },
+  "животу": { root: "marlā", pos: "noun" },
+  "животом": { root: "marlā", pos: "noun" },
+  "животе": { root: "marlā", pos: "noun" },
+
+  // Способность — возможность делать что-либо
+  "способность": { root: "xur-tsan", pos: "noun" },
+  "способности": { root: "xur-tsan", pos: "noun" },
+  "способностью": { root: "xur-tsan", pos: "noun" },
+
+  // Отмена — аннулирование
+  "отмена": { root: "ān-khalur", pos: "noun" },
+  "отмены": { root: "ān-khalur", pos: "noun" },
+  "отменой": { root: "ān-khalur", pos: "noun" },
+
+  // Абсцесс — гнойное воспаление
+  "абсцесс": { root: "mōr-khōs", pos: "noun" },
+  "абсцесса": { root: "mōr-khōs", pos: "noun" },
+  "абсцессу": { root: "mōr-khōs", pos: "noun" },
+
+  // Отсутствие — недостаток, нехватка
+  "отсутствие": { root: "ān-sen", pos: "noun" },
+  "отсутствия": { root: "ān-sen", pos: "noun" },
+  "отсутствию": { root: "ān-sen", pos: "noun" },
+
+  // Ускорение — увеличение скорости
+  "ускорение": { root: "nur-khō", pos: "noun" },
+  "ускорения": { root: "nur-khō", pos: "noun" },
+  "ускорению": { root: "nur-khō", pos: "noun" },
+
+  // Доступ — право войти
+  "доступ": { root: "nur-sen", pos: "noun" },
+  "доступа": { root: "nur-sen", pos: "noun" },
+  "доступу": { root: "nur-sen", pos: "noun" },
+
+  // Отделение — часть, секция
+  "отделение": { root: "hōr-sen", pos: "noun" },
+  "отделения": { root: "hōr-sen", pos: "noun" },
+  "отделению": { root: "hōr-sen", pos: "noun" },
+
+  // Помещение — комната, пространство
+  "помещение": { root: "okh-sen", pos: "noun" },
+  "помещения": { root: "okh-sen", pos: "noun" },
+  "помещению": { root: "okh-sen", pos: "noun" },
+
+  // Сопровождение — действие идущего вместе
+  "сопровождение": { root: "nur-tō", pos: "noun" },
+  "сопровождения": { root: "nur-tō", pos: "noun" },
+  "сопровождению": { root: "nur-tō", pos: "noun" },
+
+  // Сообщник — тот, кто действует вместе
+  "сообщник": { root: "nur-tō-īn", pos: "noun" },
+  "сообщника": { root: "nur-tō-īn", pos: "noun" },
+  "сообщнику": { root: "nur-tō-īn", pos: "noun" },
+
+  // Отчёт — документ с информацией
+  "отчёт": { root: "sur-thal", pos: "noun" },
+  "отчёта": { root: "sur-thal", pos: "noun" },
+  "отчёту": { root: "sur-thal", pos: "noun" },
+  "отчет": { root: "sur-thal", pos: "noun" },
+  "отчета": { root: "sur-thal", pos: "noun" },
+
+  // Достоверность — степень правдивости
+  "достоверность": { root: "thal-tsan", pos: "noun" },
+  "достоверности": { root: "thal-tsan", pos: "noun" },
+
+  // Обвинение — обвинительный акт
+  "обвинение": { root: "mōr-tsan", pos: "noun" },
+  "обвинения": { root: "mōr-tsan", pos: "noun" },
+  "обвинению": { root: "mōr-tsan", pos: "noun" },
+
+  // Болезнь — состояние боли
+  "болезнь": { root: "mōr-mar", pos: "noun" },
+  "болезни": { root: "mōr-mar", pos: "noun" },
+  "болезнью": { root: "mōr-mar", pos: "noun" },
+
+  // Боль — неприятное ощущение
+  "боль": { root: "mōr", pos: "noun" },
+  "боли": { root: "mōr", pos: "noun" },
+  "болью": { root: "mōr", pos: "noun" },
+
+  // Достижение — результат достигнутой цели
+  "достижение": { root: "thal-dzen", pos: "noun" },
+  "достижения": { root: "thal-dzen", pos: "noun" },
+  "достижению": { root: "thal-dzen", pos: "noun" },
+
+  // Кислота — агрессивная жидкость
+  "кислота": { root: "mōr-ākha", pos: "noun" },
+  "кислоты": { root: "mōr-ākha", pos: "noun" },
+  "кислотой": { root: "mōr-ākha", pos: "noun" },
+
+  // Признание — акт признания
+  "признание": { root: "khōs-tsan", pos: "noun" },
+  "признания": { root: "khōs-tsan", pos: "noun" },
+  "признанию": { root: "khōs-tsan", pos: "noun" },
+
+  // Исполнитель — тот, кто действует
+  "исполнитель": { root: "khalur-īn", pos: "noun" },
+  "исполнителя": { root: "khalur-īn", pos: "noun" },
+  "исполнителю": { root: "khalur-īn", pos: "noun" },
+
+  // Академия — учебное заведение
+  "академия": { root: "tsan-sen", pos: "noun" },
+  "академии": { root: "tsan-sen", pos: "noun" },
+  "академию": { root: "tsan-sen", pos: "noun" },
+
+  // Учебный год — период обучения
+  "учебный год": { root: "tsan-amār", pos: "noun" },
+  "учебного года": { root: "tsan-amār", pos: "noun" },
+
+  // Аксессуар — дополнительный предмет
+  "аксессуар": { root: "hōr-khōs", pos: "noun" },
+  "аксессуара": { root: "hōr-khōs", pos: "noun" },
+  "аксессуару": { root: "hōr-khōs", pos: "noun" },
+
+  // === ПРИЛАГАТЕЛЬНЫЕ (новые) ===
+  // Способный — имеющий способность
+  "способный": { root: "xur-tsan", pos: "adj" },
+  "способная": { root: "xur-tsan", pos: "adj" },
+  "способное": { root: "xur-tsan", pos: "adj" },
+  "способные": { root: "xur-tsan", pos: "adj" },
+  "способного": { root: "xur-tsan", pos: "adj" },
+  "способным": { root: "xur-tsan", pos: "adj" },
+
+  // Приемлемый — соответствующий требованиям
+  "приемлемый": { root: "khōs-tsan", pos: "adj" },
+  "приемлемая": { root: "khōs-tsan", pos: "adj" },
+  "приемлемое": { root: "khōs-tsan", pos: "adj" },
+  "приемлемые": { root: "khōs-tsan", pos: "adj" },
+
+  // Доступный — открытый для использования
+  "доступный": { root: "nur-sen", pos: "adj" },
+  "доступная": { root: "nur-sen", pos: "adj" },
+  "доступное": { root: "nur-sen", pos: "adj" },
+  "доступные": { root: "nur-sen", pos: "adj" },
+  "доступного": { root: "nur-sen", pos: "adj" },
+  "доступным": { root: "nur-sen", pos: "adj" },
+
+  // Ответственный — несущий ответственность
+  "ответственный": { root: "lān-īn", pos: "adj" },
+  "ответственная": { root: "lān-īn", pos: "adj" },
+  "ответственное": { root: "lān-īn", pos: "adj" },
+  "ответственные": { root: "lān-īn", pos: "adj" },
+
+  // Точный — правильный, верный
+  "точный": { root: "thal-tsan", pos: "adj" },
+  "точная": { root: "thal-tsan", pos: "adj" },
+  "точное": { root: "thal-tsan", pos: "adj" },
+  "точные": { root: "thal-tsan", pos: "adj" },
+  "точного": { root: "thal-tsan", pos: "adj" },
+  "точным": { root: "thal-tsan", pos: "adj" },
+
+  // Патологический — болезненный, ненормальный
+  "патологический": { root: "mōr-mar", pos: "adj" },
+  "патологическая": { root: "mōr-mar", pos: "adj" },
+  "патологическое": { root: "mōr-mar", pos: "adj" },
+  "патологические": { root: "mōr-mar", pos: "adj" },
+
+  // Отсутствующий — тот, кого нет
+  "отсутствующий": { root: "ān-sen", pos: "adj" },
+  "отсутствующая": { root: "ān-sen", pos: "adj" },
+  "отсутствующее": { root: "ān-sen", pos: "adj" },
+  "отсутствующие": { root: "ān-sen", pos: "adj" },
+
+  // Рассеянный — невнимательный, разбросанный
+  "рассеянный": { root: "hōr-thal", pos: "adj" },
+  "рассеянная": { root: "hōr-thal", pos: "adj" },
+  "рассеянное": { root: "hōr-thal", pos: "adj" },
+  "рассеянные": { root: "hōr-thal", pos: "adj" },
+
+  // Совершенный — идеальный, полный
+  "совершенный": { root: "suf-tsan", pos: "adj" },
+  "совершенная": { root: "suf-tsan", pos: "adj" },
+  "совершенное": { root: "suf-tsan", pos: "adj" },
+  "совершенные": { root: "suf-tsan", pos: "adj" },
+
+  // Абстрактный — отвлечённый
+  "абстрактный": { root: "thal-lān", pos: "adj" },
+  "абстрактная": { root: "thal-lān", pos: "adj" },
+  "абстрактное": { root: "thal-lān", pos: "adj" },
+  "абстрактные": { root: "thal-lān", pos: "adj" },
+
+  // Абсурдный — нелепый, бессмысленный
+  "абсурдный": { root: "ān-tsan", pos: "adj" },
+  "абсурдная": { root: "ān-tsan", pos: "adj" },
+  "абсурдное": { root: "ān-tsan", pos: "adj" },
+  "абсурдные": { root: "ān-tsan", pos: "adj" },
+
+  // Академический — относящийся к академии
+  "академический": { root: "tsan-sen", pos: "adj" },
+  "академическая": { root: "tsan-sen", pos: "adj" },
+  "академическое": { root: "tsan-sen", pos: "adj" },
+  "академические": { root: "tsan-sen", pos: "adj" },
+
+  // Внезапный — неожиданный
+  "внезапный": { root: "ān-thal", pos: "adj" },
+  "внезапная": { root: "ān-thal", pos: "adj" },
+  "внезапное": { root: "ān-thal", pos: "adj" },
+  "внезапные": { root: "ān-thal", pos: "adj" },
+
+  // Случайный — непреднамеренный
+  "случайный": { root: "hōr-thal", pos: "adj" },
+  "случайная": { root: "hōr-thal", pos: "adj" },
+  "случайное": { root: "hōr-thal", pos: "adj" },
+  "случайные": { root: "hōr-thal", pos: "adj" },
+
+  // === НАРЕЧИЯ (новые) ===
+  "внезапно": { root: "ān-thal", pos: "adv" },
+  "точно": { root: "thal-tsan", pos: "adv" },
+  "случайно": { root: "hōr-thal", pos: "adv" },
+  "совершенно": { root: "suf-tsan", pos: "adv" },
+
+  // === ПРЕДЛОГИ (новые) ===
+  "около": { root: "kōl-sen", pos: "prep" },
+  "над": { root: "dzen-sen", pos: "prep" },
+  "за границей": { root: "rak-sen", pos: "prep" },
+
+  // === СОЮЗЫ (новые) ===
+  "через": { root: "thal-sen", pos: "conj" },
+
+  // === КОНСТРУКЦИИ ===
+  "педаль газа": { root: "nur-khō", pos: "phrase" },
+  "педали газа": { root: "nur-khō", pos: "phrase" },
+  "несчастный случай": { root: "ān-thal-mōr", pos: "phrase" },
+  "несчастного случая": { root: "ān-thal-mōr", pos: "phrase" },
+  "вместить": { root: "okh-sen", pos: "verb" },
+  "вмещаю": { root: "okh-sen", pos: "verb" },
+  "вмещаешь": { root: "okh-sen", pos: "verb" },
+  "вмещает": { root: "okh-sen", pos: "verb" },
+  "вмещаем": { root: "okh-sen", pos: "verb" },
+  "вмещаете": { root: "okh-sen", pos: "verb" },
+  "вмещают": { root: "okh-sen", pos: "verb" },
+  "вместил": { root: "okh-sen", pos: "verb" },
+  "вместила": { root: "okh-sen", pos: "verb" },
+  "вместили": { root: "okh-sen", pos: "verb" },
+
+  "соответственно": { root: "un-thal", pos: "adv" },
+  "аккуратный": { root: "thal-tsan", pos: "adj" },
+  "аккуратная": { root: "thal-tsan", pos: "adj" },
+  "аккуратное": { root: "thal-tsan", pos: "adj" },
+  "аккуратные": { root: "thal-tsan", pos: "adj" },
+  
   // === ДОПОЛНИТЕЛЬНЫЕ ВАРИАНТЫ НАПИСАНИЯ ===
   "пещеры под фарсидой": { root: "Khō-ān-sen", pos: "phrase" },
   "пещер под фарсидой": { root: "Khō-ān-sen", pos: "phrase" }

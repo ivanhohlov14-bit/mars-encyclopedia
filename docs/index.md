@@ -497,11 +497,19 @@
 
 <script>
   (function() {
-    const PHOBOS_PERIOD = 27540;
-    const DEIMOS_PERIOD = 109080;
-    const PHOBOS_INITIAL = 0.55;
-    const DEIMOS_INITIAL = 0.65;
-    const refDate = new Date(Date.UTC(2026, 5, 23, 18, 51, 0));
+    // ---- ТОЧНЫЕ ПЕРИОДЫ ОБРАЩЕНИЯ (сек) ----
+    const PHOBOS_PERIOD = 27540;   // 7.65 часов
+    const DEIMOS_PERIOD = 109080;  // 30.3 часов
+
+    // ---- НАЧАЛЬНАЯ ФАЗА (на 28 июня 2026, 18:17 UT) ----
+    // По данным NASA Horizons:
+    // Фобос: /L (ведёт Солнце) → утренняя видимость → фаза 0.12
+    // Деймос: /T (следует за Солнцем) → вечерняя видимость → фаза 0.62
+    const PHOBOS_INITIAL = 0.12;
+    const DEIMOS_INITIAL = 0.62;
+
+    // ---- ТОЧКА ОТСЧЁТА (28 июня 2026, 18:17 UT) ----
+    const refDate = new Date(Date.UTC(2026, 5, 28, 18, 17, 0));
 
     function getStatus(phase) {
       const p = ((phase % 1) + 1) % 1;
@@ -530,18 +538,23 @@
     function update() {
       const now = new Date();
       const elapsed = (now - refDate) / 1000;
-      const phobosPhase = (PHOBOS_INITIAL + elapsed / PHOBOS_PERIOD);
-      const deimosPhase = (DEIMOS_INITIAL + elapsed / DEIMOS_PERIOD);
+
+      const phobosPhase = (PHOBOS_INITIAL + elapsed / PHOBOS_PERIOD) % 1;
+      const deimosPhase = (DEIMOS_INITIAL + elapsed / DEIMOS_PERIOD) % 1;
+
       document.getElementById('phobosStatus').textContent = getStatus(phobosPhase);
       document.getElementById('deimosStatus').textContent = getStatus(deimosPhase);
-      document.getElementById('phobosTimer').textContent = `⏳ Фобос: ${formatTime(getNextPhaseTime(phobosPhase, PHOBOS_PERIOD))} до смены`;
-      document.getElementById('deimosTimer').textContent = `⏳ Деймос: ${formatTime(getNextPhaseTime(deimosPhase, DEIMOS_PERIOD))} до смены`;
+
+      document.getElementById('phobosTimer').textContent = 
+        `⏳ Фобос: ${formatTime(getNextPhaseTime(phobosPhase, PHOBOS_PERIOD))} до смены`;
+      document.getElementById('deimosTimer').textContent = 
+        `⏳ Деймос: ${formatTime(getNextPhaseTime(deimosPhase, DEIMOS_PERIOD))} до смены`;
     }
+
     update();
     setInterval(update, 1000);
   })();
 </script>
-
 ---
 
 ### 🎵 Звук ветра на Марсе

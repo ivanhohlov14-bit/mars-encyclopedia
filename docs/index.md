@@ -470,6 +470,7 @@
     document.getElementById('quoteText').innerHTML = `${quote.text}<br><span style="font-style:normal; font-size:0.9rem; color:var(--link-color, #0645ad);">— ${quote.source}</span>`;
   })();
 </script>
+
 ---
 
 ### 🌙 Спутники Марса
@@ -494,7 +495,7 @@
     <div id="deimosTimer">⏳</div>
   </div>
   
-  <!-- ===== ВСТАВЬТЕ ЭТОТ КОД ЗДЕСЬ ===== -->
+  <!-- Подпись с данными NASA -->
   <div style="
     margin-top:10px;
     font-size:0.7rem;
@@ -502,11 +503,9 @@
     border-top:1px solid var(--border-color, #eaecf0);
     padding-top:6px;
   ">
-    Данные: NASA Horizons (28 июня 2026, 18:17 UT)
+    Данные: NASA Horizons (28 июня 2026, 14:34 UT)
   </div>
-  <!-- ===== КОНЕЦ ВСТАВКИ ===== -->
-  
-</div>  <!-- ← это закрывающий тег блока moonPhase -->
+</div>
 
 <script>
   (function() {
@@ -514,15 +513,19 @@
     const PHOBOS_PERIOD = 27540;   // 7.65 часов
     const DEIMOS_PERIOD = 109080;  // 30.3 часов
 
-    // ---- НАЧАЛЬНАЯ ФАЗА (на 28 июня 2026, 18:17 UT) ----
-    // По данным NASA Horizons:
-    // Фобос: /L (ведёт Солнце) → утренняя видимость → фаза 0.12
-    // Деймос: /T (следует за Солнцем) → вечерняя видимость → фаза 0.62
-    const PHOBOS_INITIAL = 0.12;
+    // ---- НАЧАЛЬНАЯ ФАЗА (на 28 июня 2026, 14:34 UT) ----
+    // По данным NASA Horizons оба спутника следуют за Солнцем (/T):
+    // Фобос: /T → вечерняя видимость → фаза 0.62
+    // Деймос: /T → вечерняя видимость → фаза 0.62
+    // 
+    // Как определить фазу по данным Horizons:
+    // /L (ведёт Солнце) → утро → фаза 0.0–0.25
+    // /T (следует за Солнцем) → вечер → фаза 0.50–0.75
+    const PHOBOS_INITIAL = 0.62;
     const DEIMOS_INITIAL = 0.62;
 
-    // ---- ТОЧКА ОТСЧЁТА (28 июня 2026, 18:17 UT) ----
-    const refDate = new Date(Date.UTC(2026, 5, 28, 18, 17, 0));
+    // ---- ТОЧКА ОТСЧЁТА (28 июня 2026, 14:34 UT) ----
+    const refDate = new Date(Date.UTC(2026, 5, 28, 14, 34, 0));
 
     function getStatus(phase) {
       const p = ((phase % 1) + 1) % 1;
@@ -568,6 +571,7 @@
     setInterval(update, 1000);
   })();
 </script>
+
 ---
 
 ### 🎵 Звук ветра на Марсе

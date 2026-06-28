@@ -27,13 +27,6 @@ body {
 .wy-side-nav-search {
   padding-top: 0 !important;
   background: #ffffff !important;
-  /* убираем синий фон */
-}
-
-/* Баннер (изображение) поверх белого фона */
-.wy-side-nav-search {
-  background: #ffffff !important;
-  /* если хотите баннер с затемнением, оставьте как есть, но фон будет белый */
 }
 
 .wy-side-nav-search .wy-dropdown,
@@ -65,7 +58,7 @@ body {
   display: none !important;
 }
 
-/* Меню в боковой панели — чёрные ссылки на белом фоне */
+/* Меню в боковой панели — светлая тема */
 .wy-menu-vertical a {
   color: #202122 !important;
   background: #ffffff !important;
@@ -163,7 +156,7 @@ blockquote {
 .footer { display: none !important; }
 
 /* ==========================================
-   ПЕРЕКЛЮЧЕНИЕ ТЕМЫ
+   ПЕРЕКЛЮЧЕНИЕ ТЕМЫ (С БОКОВОЙ ПАНЕЛЬЮ)
    ========================================== */
 
 :root {
@@ -172,6 +165,13 @@ blockquote {
   --border-color: #eaecf0;
   --link-color: #0645ad;
   --block-bg: #f8f9fa;
+  --sidebar-bg: #ffffff;
+  --menu-text: #202122;
+  --menu-hover-bg: #eaecf0;
+  --menu-hover-text: #0645ad;
+  --search-bg: #ffffff;
+  --search-text: #202122;
+  --search-border: #eaecf0;
 }
 
 [data-theme="dark"] {
@@ -180,9 +180,44 @@ blockquote {
   --border-color: #3a3a5a;
   --link-color: #7fadff;
   --block-bg: #2a2a4a;
+  --sidebar-bg: #0d0d1a;
+  --menu-text: #e0e0e0;
+  --menu-hover-bg: #2a2a4a;
+  --menu-hover-text: #7fadff;
+  --search-bg: #2a2a4a;
+  --search-text: #e0e0e0;
+  --search-border: #3a3a5a;
 }
 
-/* Общие элементы */
+/* Боковая панель */
+.wy-nav-side {
+  background: var(--sidebar-bg) !important;
+  border-color: var(--border-color) !important;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.wy-side-nav-search {
+  background: var(--sidebar-bg) !important;
+}
+
+.wy-side-nav-search .wy-dropdown,
+.wy-side-nav-search input[type="text"] {
+  background: var(--search-bg) !important;
+  color: var(--search-text) !important;
+  border-color: var(--search-border) !important;
+}
+
+.wy-menu-vertical a {
+  color: var(--menu-text) !important;
+  background: var(--sidebar-bg) !important;
+  transition: background 0.3s, color 0.3s;
+}
+.wy-menu-vertical a:hover {
+  background: var(--menu-hover-bg) !important;
+  color: var(--menu-hover-text) !important;
+}
+
+/* Основной контент */
 body {
   background: var(--bg-color);
   color: var(--text-color);
@@ -191,16 +226,6 @@ body {
 .wy-nav-content {
   background: var(--bg-color) !important;
   color: var(--text-color) !important;
-}
-.wy-nav-side {
-  background: var(--bg-color) !important;
-  border-color: var(--border-color) !important;
-}
-.wy-side-nav-search {
-  background: var(--bg-color) !important;
-}
-.wy-menu-vertical a {
-  color: var(--link-color) !important;
 }
 
 /* Ссылки */
@@ -214,7 +239,7 @@ a:hover {
   color: #9fcbff !important;
 }
 
-/* Инфобоксы и цитаты */
+/* Инфобоксы, цитаты */
 .infobox,
 blockquote,
 #quoteOfTheDay {
@@ -241,6 +266,22 @@ table tr:nth-child(even) {
   background: var(--block-bg) !important;
 }
 
+/* Заголовки */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4 {
+  color: #e0e0e0 !important;
+}
+
+/* Поля ввода */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+  background: #2a2a4a;
+  color: #e0e0e0;
+  border-color: #3a3a5a;
+}
+
 /* Кнопка переключения темы */
 button#themeToggle {
   background: #0645ad;
@@ -259,22 +300,6 @@ button#themeToggle {
 }
 [data-theme="dark"] button#themeToggle:hover {
   background: #3a5a9f;
-}
-
-/* Заголовки в тёмной теме */
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3,
-[data-theme="dark"] h4 {
-  color: #e0e0e0 !important;
-}
-
-/* Поля ввода (если есть) */
-[data-theme="dark"] input,
-[data-theme="dark"] textarea {
-  background: #2a2a4a;
-  color: #e0e0e0;
-  border-color: #3a3a5a;
 }
 
 /* ===== КОМПАКТНЫЕ ТАБЛИЦЫ ===== */

@@ -296,7 +296,7 @@ button#themeToggle {
 /* ===== БОКОВАЯ ПАНЕЛЬ С БАННЕРОМ ===== */
 .wy-side-nav-search {
   padding-top: 0 !important;
-  background: url('../assets/images/sidebar-banner.png') center/cover no-repeat !important;
+  background: url('../assets/images/cave-bg.png') center/cover no-repeat !important;
   height: 200px !important; /* высота баннера в боковой панели */
 }
 

@@ -1,5 +1,5 @@
 /* ==========================================
-   ВИКИ-СТИЛЬ + БАННЕР + ЛОГОТИП (ЧИСТОВАЯ ВЕРСИЯ)
+   ВИКИ-СТИЛЬ + БАННЕР + ЛОГОТИП
    ========================================== */
 
 body {
@@ -36,7 +36,7 @@ body {
   border: 1px solid #eaecf0;
 }
 
-/* ===== ЛОГОТИП ПОВЕРХ БАННЕРА ===== */
+/* ===== ЛОГОТИП ===== */
 .wy-side-nav-search .icon-home {
   position: relative;
   z-index: 10;
@@ -156,7 +156,7 @@ blockquote {
 .footer { display: none !important; }
 
 /* ==========================================
-   ПЕРЕКЛЮЧЕНИЕ ТЕМЫ (С БОКОВОЙ ПАНЕЛЬЮ)
+   ТЁМНАЯ ТЕМА (ГАРАНТИРОВАННО РАБОТАЕТ)
    ========================================== */
 
 :root {
@@ -168,12 +168,9 @@ blockquote {
   --sidebar-bg: #ffffff;
   --menu-text: #202122;
   --menu-hover-bg: #eaecf0;
-  --menu-hover-text: #0645ad;
-  --search-bg: #ffffff;
-  --search-text: #202122;
-  --search-border: #eaecf0;
 }
 
+/* Тёмная тема — применяется к элементу <html data-theme="dark"> */
 [data-theme="dark"] {
   --bg-color: #1a1a2e;
   --text-color: #e0e0e0;
@@ -183,90 +180,83 @@ blockquote {
   --sidebar-bg: #0d0d1a;
   --menu-text: #e0e0e0;
   --menu-hover-bg: #2a2a4a;
-  --menu-hover-text: #7fadff;
-  --search-bg: #2a2a4a;
-  --search-text: #e0e0e0;
-  --search-border: #3a3a5a;
 }
 
-/* Боковая панель */
-.wy-nav-side {
-  background: var(--sidebar-bg) !important;
-  border-color: var(--border-color) !important;
-  transition: background 0.3s, border-color 0.3s;
-}
-
-.wy-side-nav-search {
-  background: var(--sidebar-bg) !important;
-}
-
-.wy-side-nav-search .wy-dropdown,
-.wy-side-nav-search input[type="text"] {
-  background: var(--search-bg) !important;
-  color: var(--search-text) !important;
-  border-color: var(--search-border) !important;
-}
-
-.wy-menu-vertical a {
-  color: var(--menu-text) !important;
-  background: var(--sidebar-bg) !important;
-  transition: background 0.3s, color 0.3s;
-}
-.wy-menu-vertical a:hover {
-  background: var(--menu-hover-bg) !important;
-  color: var(--menu-hover-text) !important;
-}
-
-/* Основной контент */
-body {
-  background: var(--bg-color);
-  color: var(--text-color);
-  transition: background 0.3s, color 0.3s;
-}
-.wy-nav-content {
+/* Тёмная тема — основной контент */
+[data-theme="dark"] body {
   background: var(--bg-color) !important;
   color: var(--text-color) !important;
 }
 
-/* Ссылки */
-a {
-  color: var(--link-color) !important;
+[data-theme="dark"] .wy-nav-content {
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
 }
-a:hover {
-  color: #0b0080 !important;
+
+/* Тёмная тема — боковая панель */
+[data-theme="dark"] .wy-nav-side {
+  background: var(--sidebar-bg) !important;
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .wy-side-nav-search {
+  background: var(--sidebar-bg) !important;
+}
+
+[data-theme="dark"] .wy-side-nav-search .wy-dropdown,
+[data-theme="dark"] .wy-side-nav-search input[type="text"] {
+  background: #2a2a4a !important;
+  color: #e0e0e0 !important;
+  border-color: #3a3a5a !important;
+}
+
+/* Тёмная тема — меню */
+[data-theme="dark"] .wy-menu-vertical a {
+  color: var(--menu-text) !important;
+  background: var(--sidebar-bg) !important;
+}
+
+[data-theme="dark"] .wy-menu-vertical a:hover {
+  background: var(--menu-hover-bg) !important;
+  color: #7fadff !important;
+}
+
+/* Тёмная тема — ссылки */
+[data-theme="dark"] a {
+  color: var(--link-color) !important;
 }
 [data-theme="dark"] a:hover {
   color: #9fcbff !important;
 }
 
-/* Инфобоксы, цитаты */
-.infobox,
-blockquote,
-#quoteOfTheDay {
+/* Тёмная тема — инфобоксы, цитаты */
+[data-theme="dark"] .infobox,
+[data-theme="dark"] blockquote,
+[data-theme="dark"] #quoteOfTheDay {
   background: var(--block-bg) !important;
   border-color: var(--border-color) !important;
   color: var(--text-color) !important;
 }
 
-/* Таблицы */
-table {
+/* Тёмная тема — таблицы */
+[data-theme="dark"] table {
   background: var(--bg-color) !important;
   border-color: var(--border-color) !important;
   color: var(--text-color) !important;
 }
-table th {
+[data-theme="dark"] table th {
   background: var(--block-bg) !important;
   color: var(--text-color) !important;
 }
-table td {
+[data-theme="dark"] table td {
   background: var(--bg-color) !important;
   color: var(--text-color) !important;
 }
-table tr:nth-child(even) {
+[data-theme="dark"] table tr:nth-child(even) {
   background: var(--block-bg) !important;
 }
 
-/* Заголовки */
+/* Тёмная тема — заголовки */
 [data-theme="dark"] h1,
 [data-theme="dark"] h2,
 [data-theme="dark"] h3,
@@ -274,15 +264,15 @@ table tr:nth-child(even) {
   color: #e0e0e0 !important;
 }
 
-/* Поля ввода */
+/* Тёмная тема — поля ввода */
 [data-theme="dark"] input,
 [data-theme="dark"] textarea {
-  background: #2a2a4a;
-  color: #e0e0e0;
-  border-color: #3a3a5a;
+  background: #2a2a4a !important;
+  color: #e0e0e0 !important;
+  border-color: #3a3a5a !important;
 }
 
-/* Кнопка переключения темы */
+/* ===== КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ ===== */
 button#themeToggle {
   background: #0645ad;
   color: white;
@@ -294,6 +284,7 @@ button#themeToggle {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 [data-theme="dark"] button#themeToggle {
   background: #2a4a7f;
   color: white;
@@ -301,18 +292,3 @@ button#themeToggle {
 [data-theme="dark"] button#themeToggle:hover {
   background: #3a5a9f;
 }
-
-/* ===== КОМПАКТНЫЕ ТАБЛИЦЫ ===== */
-table {
-  font-size: 0.9rem;
-  width: 100%;
-  border-collapse: collapse;
-}
-table th, table td {
-  padding: 6px 8px;
-  word-wrap: break-word;
-  white-space: normal;
-}
-table th:nth-child(1), table td:nth-child(1) { width: 15%; }
-table th:nth-child(2), table td:nth-child(2) { width: 25%; }
-table th:nth-child(3), table td:nth-child(3) { width: 60%; }

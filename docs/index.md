@@ -493,7 +493,20 @@
     <div id="phobosTimer">⏳</div>
     <div id="deimosTimer">⏳</div>
   </div>
-</div>
+  
+  <!-- ===== ВСТАВЬТЕ ЭТОТ КОД ЗДЕСЬ ===== -->
+  <div style="
+    margin-top:10px;
+    font-size:0.7rem;
+    color:var(--text-muted, #888);
+    border-top:1px solid var(--border-color, #eaecf0);
+    padding-top:6px;
+  ">
+    Данные: NASA Horizons (28 июня 2026, 18:17 UT)
+  </div>
+  <!-- ===== КОНЕЦ ВСТАВКИ ===== -->
+  
+</div>  <!-- ← это закрывающий тег блока moonPhase -->
 
 <script>
   (function() {

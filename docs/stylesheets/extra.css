@@ -12,30 +12,35 @@ body {
 
 .wy-nav-content {
   max-width: 1100px !important;
-  background: #ffffff;
+  background: #ffffff !important;
   padding: 2.5rem 3.5rem !important;
   margin: 0 auto;
   border-left: 1px solid #eaecf0;
   border-right: 1px solid #eaecf0;
 }
 
-/* ===== БОКОВАЯ ПАНЕЛЬ С БАННЕРОМ (ФОН) ===== */
-.wy-side-nav-search {
-  padding-top: 0 !important;
-  .wy-side-nav-search {
-  background: url('../assets/images/cave-bg.png') center/cover no-repeat !important;
+/* ===== БОКОВАЯ ПАНЕЛЬ — БЕЛЫЙ ФОН ===== */
+.wy-nav-side {
+  background: #ffffff !important;
 }
 
-/* Затемнение для читаемости текста */
-.wy-side-nav-search::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 0;
-  left: 0;
+.wy-side-nav-search {
+  padding-top: 0 !important;
+  background: #ffffff !important;
+  /* убираем синий фон */
+}
+
+/* Баннер (изображение) поверх белого фона */
+.wy-side-nav-search {
+  background: #ffffff !important;
+  /* если хотите баннер с затемнением, оставьте как есть, но фон будет белый */
+}
+
+.wy-side-nav-search .wy-dropdown,
+.wy-side-nav-search input[type="text"] {
+  background: #ffffff;
+  color: #202122;
+  border: 1px solid #eaecf0;
 }
 
 /* ===== ЛОГОТИП ПОВЕРХ БАННЕРА ===== */
@@ -60,7 +65,17 @@ body {
   display: none !important;
 }
 
-/* ---------- ЗАГОЛОВКИ ---------- */
+/* Меню в боковой панели — чёрные ссылки на белом фоне */
+.wy-menu-vertical a {
+  color: #202122 !important;
+  background: #ffffff !important;
+}
+.wy-menu-vertical a:hover {
+  background: #eaecf0 !important;
+  color: #0645ad !important;
+}
+
+/* ===== ЗАГОЛОВКИ ===== */
 h1 {
   font-weight: normal;
   font-size: 2.6rem;
@@ -78,6 +93,7 @@ h2 {
   color: #000000;
 }
 
+/* ===== ССЫЛКИ ===== */
 a {
   color: #0645ad !important;
   text-decoration: none;
@@ -87,7 +103,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ---------- ТАБЛИЦЫ ---------- */
+/* ===== ТАБЛИЦЫ ===== */
 table {
   border-collapse: collapse;
   margin: 1.5rem 0;
@@ -108,7 +124,7 @@ table tr:nth-child(even) {
   background: #f8f9fa;
 }
 
-/* ---------- ИНФОБОКСЫ ---------- */
+/* ===== ИНФОБОКСЫ ===== */
 .infobox {
   float: right;
   clear: right;
@@ -118,6 +134,21 @@ table tr:nth-child(even) {
   margin: 0 0 1rem 1.5rem;
   width: 280px;
   font-size: 0.9rem;
+  line-height: 1.5;
+}
+.infobox h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #a2a9b1;
+  padding-bottom: 0.3rem;
+}
+.infobox hr {
+  border: none;
+  border-top: 1px solid #a2a9b1;
+  margin: 0.5rem 0;
+}
+.infobox p {
+  margin: 0.3rem 0;
 }
 
 blockquote {
@@ -132,7 +163,7 @@ blockquote {
 .footer { display: none !important; }
 
 /* ==========================================
-   ПЕРЕКЛЮЧЕНИЕ ТЕМЫ (ИСПРАВЛЕННАЯ ВЕРСИЯ)
+   ПЕРЕКЛЮЧЕНИЕ ТЕМЫ
    ========================================== */
 
 :root {
@@ -246,34 +277,7 @@ button#themeToggle {
   border-color: #3a3a5a;
 }
 
-/* ===== ИНФОБОКС (как в Википедии) ===== */
-.infobox {
-  float: right;
-  clear: right;
-  background: #f8f9fa;
-  border: 1px solid #a2a9b1;
-  padding: 0.8rem 1.2rem;
-  margin: 0 0 1rem 1.5rem;
-  width: 280px;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-.infobox h3 {
-  margin-top: 0;
-  font-size: 1.1rem;
-  border-bottom: 1px solid #a2a9b1;
-  padding-bottom: 0.3rem;
-}
-.infobox hr {
-  border: none;
-  border-top: 1px solid #a2a9b1;
-  margin: 0.5rem 0;
-}
-.infobox p {
-  margin: 0.3rem 0;
-}
-
-/* Уменьшаем шрифт и padding таблиц */
+/* ===== КОМПАКТНЫЕ ТАБЛИЦЫ ===== */
 table {
   font-size: 0.9rem;
   width: 100%;
@@ -284,7 +288,6 @@ table th, table td {
   word-wrap: break-word;
   white-space: normal;
 }
-/* Задаём ширину колонок в процентах (пример для 3 колонок) */
 table th:nth-child(1), table td:nth-child(1) { width: 15%; }
 table th:nth-child(2), table td:nth-child(2) { width: 25%; }
 table th:nth-child(3), table td:nth-child(3) { width: 60%; }

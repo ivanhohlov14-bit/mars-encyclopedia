@@ -119,10 +119,9 @@
 
 <script>
   (function() {
-    // Определяем базовый путь сайта
-    const base = '/mars-encyclopedia/';
-    
+    // Только те статьи, которые точно существуют в репозитории
     const pages = [
+      // История
       'history/periodization/',
       'history/timeline/',
       'history/myths/',
@@ -131,6 +130,7 @@
       'history/epokha-umiraniya/',
       'history/iskhod/',
       'history/pirate-kingdom/',
+      // География
       'geography/acidalia-sea/',
       'geography/okhasen/',
       'geography/rogen-aria/',
@@ -145,14 +145,17 @@
       'geography/kosmodrom-farsidy/',
       'geography/noviy-okhasen/',
       'geography/akademiya-okhasena/',
+      // Астрономия
       'astronomy/mars-sky/',
       'astronomy/phobos-deimos/',
       'astronomy/earth-as-target/',
       'astronomy/earth/',
+      // Культура и наука
       'terms/lan-sur/',
       'terms/tablichki/',
       'biology/gemotsianin/',
       'science/geology/',
+      // Персонажи
       'people/hevsur/',
       'people/talin/',
       'people/ella/',
@@ -168,21 +171,13 @@
       'people/sarum-ii/',
       'people/sarum-velikiy/',
       'people/ksanf-monster/',
+      // Боги и мифология
       'mythology/kho/',
       'mythology/akha/',
       'mythology/araksis/',
       'mythology/prorochestvo-kharana/',
-      'books/acidalia-sea/',
-      'books/tam-gde-spyat-golosa/',
-      'books/krugi-na-krasnom-peple/',
-      'books/zvezdnyy-put/',
-      'books/golubaya-zvezda-kolybel-iz-pepla/',
-      'books/ksanf-piratskoe-korolevstvo/',
-      'books/peshcheriki-golosa-iz-nedr/',
-      'books/soviya-poslednyaya-pesn/',
-      'books/kharan-pisets-iz-ellady/',
-      'books/lanoy-kuznets-posledniy-geroy-utopii/',
-      'books/akhara-velikaya-zheleznaya-zhrtsa/'
+      // Книги (только та, что точно есть)
+      'books/acidalia-sea/'
     ];
     
     document.addEventListener('DOMContentLoaded', function() {
@@ -191,10 +186,8 @@
       
       btn.addEventListener('click', function() {
         const random = pages[Math.floor(Math.random() * pages.length)];
-        const url = base + random;
-        // Отладка: вывести URL в консоль
-        console.log('Переход на:', url);
-        window.location.href = url;
+        // Если сайт в подкаталоге, префикс уже учтён в ссылке (относительный путь)
+        window.location.href = random;
       });
     });
   })();

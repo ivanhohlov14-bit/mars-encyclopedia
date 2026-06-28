@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block header %}
+  <!-- ===== БОЛЬШОЙ БАННЕР В ШАПКЕ (НА ВСЮ ШИРИНУ) ===== -->
+  <div style="
+    width: 100%;
+    height: 150px;
+    background: url('/assets/images/header-banner.png') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    border-bottom: 3px solid #a2a9b1;
+  ">
+    <!-- Затемнение для читаемости текста -->
+    <div style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    "></div>
+    <!-- Текст на баннере -->
+    <div style="position: relative; z-index: 10; text-align: center;">
+      <h1 style="color: white; border: none; margin: 0; font-size: 2.8rem;">
+        Марсианская энциклопедия
+      </h1>
+      <p style="margin: 5px 0 0 0; font-size: 1.2rem; opacity: 0.9;">
+        Свободный справочник о мире «Письмо из Красной пыли»
+      </p>
+    </div>
+  </div>
+
+  {{ super() }}
+{% endblock %}

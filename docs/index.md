@@ -42,18 +42,17 @@
 
 ---
 
-## 📌 Знаете ли вы?
+##  <img src="assets/images/stickers/sticker-pin.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  Знаете ли вы?
 
-- 🌟 **Талин** — главный астронавигатор Марса, впервые увидел Землю в телескоп в 2714 году. Его расчёты траектории стали основой для Исхода к Земле[^1].
-- 🌊 **Ацидалийское море** — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет[^2].
-- 📜 **Марсианская письменность** — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках[^3].
-- 🏺 Слово **«Lān sur»** в переводе означает **«Глина помнит»**. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории[^4].
-
+- <img src="assets/images/stickers/sticker-rocket.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Талин** — главный астронавигатор Марса, впервые увидел Землю в телескоп в 2714 году. Его расчёты траектории стали основой для Исхода к Земле[^1].
+- <img src="assets/images/stickers/sticker-waves.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Ацидалийское море** — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет[^2].
+- <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Марсианская письменность** — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках[^3].
+- <img src="assets/images/stickers/sticker-stilos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Слово **«Lān sur»** в переводе означает **«Глина помнит»**. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории[^4].
 ---
 
-## 🗺️ Навигация по энциклопедии
+## <img src="assets/images/stickers/sticker-map.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  Навигация по энциклопедии
 
-| 🌍 **История** | 🏛️ **Персонажи** | 📜 **Культура** |
+|  <img src="assets/images/stickers/sticker-ancient-earth.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **История** | <img src="assets/images/stickers/sticker-temple.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Персонажи** | <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Культура** |
 |:---|:---|:---|
 | [Периодизация](history/periodization.md) | [Хевсур](people/hevsur.md) | [Lān sur](terms/lan-sur.md) |
 | [Хронология](history/timeline.md) | [Талин](people/talin.md) | [Глиняные таблички](terms/tablichki.md) |
@@ -65,7 +64,7 @@
 | [Королевство Ксанф](history/pirate-kingdom.md) | [Харан](people/kharan.md) | |
 | | [Совия](people/soviya.md) | |
 
-| 🏔️ **География** | 🚀 **Астрономия** | 📚 **Книги** |
+| <img src="assets/images/stickers/sticker-farsida.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **География** | <img src="assets/images/stickers/sticker-rocket.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Астрономия** | <img src="assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Книги** |
 |:---|:---|:---|
 | [Ацидалийское море](geography/acidalia-sea.md) | [Звёздное небо Марса](astronomy/mars-sky.md) | [«Ацидалийское море»](books/acidalia-sea.md) |
 | [Окхасен](geography/okhasen.md) | [Фобос и Деймос](astronomy/phobos-deimos.md) |
@@ -79,7 +78,7 @@
 
 ---
 
-## 📚 О цикле книг «Письмо из Красной пыли»
+## <img src="assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О цикле книг «Письмо из Красной пыли»
 
 **«Письмо из Красной пыли»** — цикл романов в жанре твёрдой научной фантастики и планетарной драмы, созданный автором **Mnemis**. Действие происходит на Марсе в последние десятилетия перед гибелью планеты — в Эпоху Умирания. Цикл объединяет научную достоверность с глубокими философскими размышлениями о памяти, надежде и цене выживания.
 
@@ -91,13 +90,13 @@
 
 ---
 
-## 🌌 О проекте
+## <img src="assets/images/stickers/sticker-galaxy.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  О проекте
 
 Марсианская энциклопедия создаётся как независимый справочный ресурс для всех, кто интересуется вселенной «Письма из Красной пыли». Проект открыт для дополнений и уточнений. Если вы хотите внести свой вклад, предложить новую статью или исправить ошибку, свяжитесь с автором по электронной почте: **[mnemis.author@mail.ru](mailto:mnemis.author@mail.ru)**.
 
 ---
 
-## 🌟 Интерактивные элементы
+## <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  Интерактивные элементы
 
 ### 🎲 Случайная статья
 

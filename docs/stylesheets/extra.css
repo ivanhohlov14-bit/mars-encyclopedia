@@ -292,3 +292,37 @@ button#themeToggle {
 [data-theme="dark"] button#themeToggle:hover {
   background: #3a5a9f;
 }
+
+/* ===== СТИКЕРЫ ===== */
+.sticker {
+  display: inline-block;
+  vertical-align: middle;
+  width: 48px;
+  height: 48px;
+  margin: 0 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px;
+  transition: transform 0.2s;
+}
+
+.sticker:hover {
+  transform: scale(1.1);
+}
+
+/* Маленькие стикеры (в тексте) */
+.sticker-sm {
+  width: 32px;
+  height: 32px;
+}
+
+/* Большие стикеры (для галереи) */
+.sticker-lg {
+  width: 80px;
+  height: 80px;
+}
+
+/* Тёмная тема для стикеров */
+[data-theme="dark"] .sticker {
+  background: rgba(255, 255, 255, 0.08);
+}

@@ -33,7 +33,7 @@
 
 ---
 
-## 📖 Избранная статья
+## <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранная статья
 
 ### Хевсур — последний хранитель глины
 
@@ -47,7 +47,7 @@
 - <img src="assets/images/stickers/sticker-rocket.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Талин** — главный астронавигатор Марса, впервые увидел Землю в телескоп в 2714 году. Его расчёты траектории стали основой для Исхода к Земле[^1].
 - <img src="assets/images/stickers/sticker-waves.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Ацидалийское море** — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет[^2].
 - <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Марсианская письменность** — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках[^3].
-- <img src="assets/images/stickers/sticker-stilos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Слово **«Lān sur»** в переводе означает **«Глина помнит»**. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории[^4].
+- <img src="assets/images/stickers/sticker-scales-no.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Слово **«Lān sur»** в переводе означает **«Глина помнит»**. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории[^4].
 ---
 
 ## <img src="assets/images/stickers/sticker-map.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  Навигация по энциклопедии

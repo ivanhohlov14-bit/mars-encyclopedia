@@ -762,18 +762,17 @@
   })();
 </script>
 
-<!-- ===== КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ (ГАРАНТИРОВАННО РАБОТАЕТ) ===== -->
-<div style="text-align: center; margin: 20px 0;">
+<!-- КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ -->
+<div style="text-align: center; margin: 10px 0;">
   <button id="themeToggle" style="
     background: #0645ad;
     color: white;
     border: none;
-    padding: 10px 24px;
-    font-size: 1.1rem;
+    padding: 8px 20px;
+    font-size: 1rem;
     font-family: 'Georgia', serif;
     border-radius: 4px;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   ">
     🌓 Тёмная тема
   </button>
@@ -781,46 +780,41 @@
 
 <script>
   (function() {
-    var toggle = document.getElementById('themeToggle');
-    var html = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
 
+    // Функция применения темы
     function setTheme(theme) {
       if (theme === 'dark') {
-        html.setAttribute('data-theme', 'dark');
-        if (toggle) toggle.textContent = '☀️ Светлая тема';
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggle.textContent = '☀️ Светлая тема';
       } else {
-        html.removeAttribute('data-theme');
-        if (toggle) toggle.textContent = '🌓 Тёмная тема';
+        document.documentElement.removeAttribute('data-theme');
+        toggle.textContent = '🌓 Тёмная тема';
       }
-      try {
-        localStorage.setItem('mars-theme', theme);
-      } catch (e) {}
+      // Сохраняем выбор в localStorage
+      localStorage.setItem('mars-theme', theme);
     }
 
-    // Восстанавливаем сохранённую тему
-    var saved = null;
-    try {
-      saved = localStorage.getItem('mars-theme');
-    } catch (e) {}
-    if (saved) {
-      setTheme(saved);
+    // При загрузке страницы проверяем сохранённую тему
+    const savedTheme = localStorage.getItem('mars-theme');
+    if (savedTheme === 'dark') {
+      setTheme('dark');
     } else {
-      setTheme('light');
+      setTheme('light'); // или просто не применяем тёмную
     }
 
     // Обработчик клика
-    if (toggle) {
-      toggle.addEventListener('click', function() {
-        var current = html.getAttribute('data-theme');
-        if (current === 'dark') {
-          setTheme('light');
-        } else {
-          setTheme('dark');
-        }
-      });
-    }
+    toggle.addEventListener('click', function() {
+      const current = document.documentElement.getAttribute('data-theme');
+      if (current === 'dark') {
+        setTheme('light');
+      } else {
+        setTheme('dark');
+      }
+    });
   })();
 </script>
+
 ---
 
 ## Примечания

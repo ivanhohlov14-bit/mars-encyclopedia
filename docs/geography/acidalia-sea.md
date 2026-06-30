@@ -7,10 +7,10 @@
   <hr>
 
  <div style="text-align: center; margin-bottom: 8px;">
-    <img src="/mars-encyclopedia/assets/images/map/acidalia-planitia-map.png" alt="Карта Ацидалийского моря" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="assets/images/map/acidalia-planitia-map.png" alt="Карта Ацидалийского моря" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение Ацидалийского моря (отмечено синим)</div>
   </div>
-
+ <img src="assets/images/stickers/sticker-rocket.png" 
   <p><b>Латинское название:</b> Acidalia Planitia</p>
   <p><b>Марсианское название:</b> Ākha Thal («Вода-море»)</p>
   <p><b>Размер:</b> около 3360 км в поперечнике</p>

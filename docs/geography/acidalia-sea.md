@@ -5,6 +5,13 @@
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
   <h3 style="margin: 0; text-align: center;">Ацидалийское море</h3>
   <hr>
+
+  <!-- ===== КАРТА ===== -->
+  <div style="text-align: center; margin-bottom: 8px;">
+    <img src="../assets/images/maps/acidalia-planitia-map.png" alt="Карта Ацидалийского моря" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение Ацидалийского моря (отмечено красным)</div>
+  </div>
+
   <p><b>Латинское название:</b> Acidalia Planitia</p>
   <p><b>Марсианское название:</b> Ākha Thal («Вода-море»)</p>
   <p><b>Размер:</b> около 3360 км в поперечнике</p>

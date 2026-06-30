@@ -1,2 +1,2 @@
-mkdocs
-mkdocs-roamlinks-plugin
+mkdocs==1.5.3
+mkdocs-roamlinks-plugin==0.1.0

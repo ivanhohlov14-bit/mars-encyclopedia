@@ -3,11 +3,18 @@
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
   <h3 style="margin: 0; text-align: center;">Королевство Ксанф</h3>
   <hr>
-  <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-pirate-kingdom.png" alt="Королевство Ксанф" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
-   <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг пиратов Ксанфа</div>
-    
+  
+  <div style="text-align: center; margin-bottom: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-kingdom-view.png" alt="Вид на Королевство Ксанф" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Вид на Королевство Ксанф, остров Эритрея</div>
   </div>
+
+  <!-- ===== ФЛАГ ===== -->
+  <div style="text-align: center; margin-bottom: 8px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-pirate-kingdom.png" alt="Флаг пиратов Ксанфа" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Флаг пиратов Ксанфа</div>
+  </div>
+    
   <p><b>Марсианское название:</b> Ksanf Rāk</p>
   <p><b>Столица:</b> Порт Ксанфа (Эритрея)</p>
   <p><b>Крупнейшие города:</b> Порт Ксанфа, Утопия (на окраине)</p>
@@ -23,7 +30,7 @@
   <p><b>Связанные понятия:</b> Ацидалийское море, Эпоха Умирания, Пиратское королевство</p>
 </div>
 
-**Королевство Ксанф** (марс. *Ksanf Rāk* — «Королевство Ксанфа», также известно как **Пиратское королевство**, **Морское братство**) — пиратское государство, существовавшее на острове [Эритрея](eritreya.md) в южной части [Ацидалийского моря](acidalia-sea.md) в период 2700–2735 годов Э.О. В эпопее «Письмо из Красной пыли» Королевство Ксанф выступает как уникальное явление марсианской истории — организованное сообщество морских разбойников, создавшее собственные законы, иерархию и культуру на фоне умирающей планеты. Его основателем и первым королём стал легендарный пират [Ксанф](ksanf-monster.md), чьё имя носило и само государство, и река, впадающая в Ацидалийское море. Королевство пало после того, как море замёрзло, и пираты лишились возможности грабить торговые корабли.
+**Королевство Ксанф** (марс. *Ksanf Rāk* — «Королевство Ксанфа», также известно как **Пиратское королевство**, **Морское братство**) — пиратское государство, существовавшее на полуострове [Эритрея](eritreya.md) в южной части [Ацидалийского моря](acidalia-sea.md) в период 2700–2735 годов Э.О. В эпопее «Письмо из Красной пыли» Королевство Ксанф выступает как уникальное явление марсианской истории — организованное сообщество морских разбойников, создавшее собственные законы, иерархию и культуру на фоне умирающей планеты. Его основателем и первым королём стал легендарный пират [Ксанф](ksanf-monster.md), чьё имя носило и само государство, и река, впадающая в Ацидалийское море. Королевство пало после того, как море замёрзло, и пираты лишились возможности грабить торговые корабли.
 
 
 

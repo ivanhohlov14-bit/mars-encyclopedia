@@ -7,7 +7,7 @@
   <hr>
 
  <div style="text-align: center; margin-bottom: 8px;">
-  <div style="width: 100%; max-width: 250px; height: 180px; background: url('../assets/images/map/acidalia-planitia-map.png') center/contain no-repeat; border: 1px solid #a2a9b1; border-radius: 4px; margin: 0 auto;"></div>
+  <div style="width: 100%; max-width: 250px; height: 180px; background: url('/assets/images/map/acidalia-planitia-map.png') center/contain no-repeat; border: 1px solid #a2a9b1; border-radius: 4px; margin: 0 auto;"></div>
   <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение Ацидалийского моря (отмечено синим)</div>
 </div>
 
@@ -89,11 +89,26 @@
 | 50 | <span style="color: #4a7db5;">+6,6</span> | <span style="color: #4a7db5;">+6,4</span> | <span style="color: #4a7db5;">+6,3</span> | <span style="color: #4a7db5;">+6,6</span> | <span style="color: #4a7db5;">+6,4</span> | <span style="color: #4a7db5;">+6,3</span> | <span style="color: #4a7db5;">+6,4</span> | <span style="color: #4a7db5;">+6,6</span> | <span style="color: #4a7db5;">+6,2</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+6,6</span> | <span style="color: #4a7db5;">+6,8</span> |
 | 100 | <span style="color: #4a7db5;">+7,3</span> | <span style="color: #4a7db5;">+7,4</span> | <span style="color: #4a7db5;">+7,4</span> | <span style="color: #4a7db5;">+7,4</span> | <span style="color: #4a7db5;">+7,3</span> | <span style="color: #4a7db5;">+7,3</span> | <span style="color: #4a7db5;">+7,4</span> | <span style="color: #4a7db5;">+7,3</span> | <span style="color: #4a7db5;">+7,3</span> | <span style="color: #4a7db5;">+7,2</span> | <span style="color: #4a7db5;">+7,3</span> | <span style="color: #4a7db5;">+7,3</span> |
 | 200 | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> | <span style="color: #4a7db5;">+7,7</span> |
-| 500 | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> |
-| 1000 | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+8,0</span> |
-| 1500 | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,1</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> |
+| 300 | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> | <span style="color: #4a7db5;">+7,9</span> |
+| 400 | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> | <span style="color: #4a7db5;">+8,0</span> |
 
-**Примечание:** Названия месяцев даны по марсианскому календарю, принятому в Академии Окхасена. Первые четыре месяца (Ксанф-суф — Ксанф-чеш) соответствуют марсианской весне; месяцы Кхо-суф — Кхо-чеш — лету; Акха-суф — Акха-чеш — осени. Зимние месяцы в таблицу не включены, так как измерения в этот период не проводились из-за тяжёлых погодных условий.
+**Примечания:**
+
+1. **Координаты точки измерения:** 45° ю.ш., 30° в.д. — залив Ульян, близ устья реки Ксанф.
+2. **Период измерений:** 2680–2700 гг. Э.О., до начала катастрофического похолодания.
+3. **Максимальная глубина моря** — 400 м (впадина Ксанфа), поэтому измерения на больших глубинах не проводились.
+4. **Названия месяцев** даны по марсианскому календарю, принятому в Академии Окхасена.
+
+**Сезонное распределение месяцев:**
+- **Ксанф-суф — Ксанф-чеш** (1–4) — марсианская весна
+- **Кхо-суф — Кхо-чеш** (5–8) — марсианское лето
+- **Акха-суф — Акха-чеш** (9–12) — марсианская осень
+
+**Наблюдения гидрологов:**
+- В поверхностном слое (0–30 м) температура сильно меняется по сезонам — от +5,6°C зимой до +22,8°C летом.
+- На глубинах 50–100 м колебания температуры минимальны, вода остаётся холодной круглый год (+6,2…+7,4°C).
+- Начиная с 200 м, температура стабильна — около +7,7…+8,0°C — и не зависит от сезона.
+- Термоклин (слой резкого изменения температуры) расположен на глубине 30–50 м.
  
 ### Течения
 

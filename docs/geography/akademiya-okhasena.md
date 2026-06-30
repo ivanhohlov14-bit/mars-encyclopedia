@@ -3,6 +3,13 @@
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
   <h3 style="margin: 0; text-align: center;">Академия Окхасена</h3>
   <hr>
+  
+  <!-- ===== ФОТО ===== -->
+  <div style="text-align: center; margin-bottom: 8px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Главное здание Академии Окхасена</div>
+  </div>
+  
 <p><b>Марсианское название:</b> Okhasen tsan-sen </p>
 <p><b>Год основания:</b> 712 г. Э.О.</p>
 <p><b>Год закрытия:</b> 2730 г. Э.О.</p>

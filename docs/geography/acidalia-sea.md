@@ -7,9 +7,9 @@
   <hr>
 
  <div style="text-align: center; margin-bottom: 8px;">
-  <div style="width: 100%; max-width: 250px; height: 180px; background: url('/assets/images/map/acidalia-planitia-map.png') center/contain no-repeat; border: 1px solid #a2a9b1; border-radius: 4px; margin: 0 auto;"></div>
-  <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение Ацидалийского моря (отмечено синим)</div>
-</div>
+    <img src="/mars-encyclopedia/assets/images/map/acidalia-planitia-map.png" alt="Карта Ацидалийского моря" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение Ацидалийского моря (отмечено синим)</div>
+  </div>
 
   <p><b>Латинское название:</b> Acidalia Planitia</p>
   <p><b>Марсианское название:</b> Ākha Thal («Вода-море»)</p>

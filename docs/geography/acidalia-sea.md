@@ -7,7 +7,7 @@
   <hr>
 
   <div style="text-align: center; margin-bottom: 8px;">
-    <img src="assets/images/maps/acidalia-planitia-map.png" alt="Карта Ацидалийского моря" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="/mars-encyclopedia/assets/images/map/acidalia-planitia-map.png" alt="Карта Ацидалийского моря" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение Ацидалийского моря (отмечено синим)</div>
   </div>
 

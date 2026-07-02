@@ -24,67 +24,96 @@ nav:
   - История:
       - Периодизация: history/periodization.md
       - Хронология: history/timeline.md
-      - Мифы и легенды: history/myths.md
-      - Эпоха Основания: history/epokha-osnovaniya.md
-      - Эпоха Расцвета: history/epokha-rascveta.md
-      - Эпоха Умирания: history/epokha-umiraniya.md
+      - Мифы: history/myths.md
+      - Эпохи:
+          - Эпоха Основания: history/epokha-osnovaniya.md
+          - Эпоха Расцвета: history/epokha-rascveta.md
+          - Эпоха Умирания: history/epokha-umiraniya.md
       - Исход: history/iskhod.md
       - Королевство Ксанф: history/pirate-kingdom.md
   
   - География:
-      - Ацидалийское море: geography/acidalia-sea.md
-      - Окхасен: geography/okhasen.md
-      - Роген-Ария: geography/rogen-aria.md
-      - Фарсида: geography/farsida.md
-      - Пещеры под Фарсидой: geography/farsida-caves.md
-      - Ксанф (река): geography/ksanf-river.md
-      - Эритрея: geography/eritreya.md
-      - Утопия: geography/utopiya.md
-      - Эдем: geography/edem.md
-      - Тарсис: geography/tarsis.md
-      - Подземный храм: geography/podzemniy-khram.md
-      - Космодром Фарсиды: geography/kosmodrom-farsidy.md
-      - Новый Окхасен: geography/noviy-okhasen.md
-      - Академия Окхасена: geography/akademiya-okhasena.md
+      - Моря:
+          - Ацидалийское море: geography/acidalia-sea.md
+      - Реки:
+          - Ксанф: geography/ksanf-river.md
+      - Города:
+          - Окхасен: geography/okhasen.md
+          - Роген-Ария: geography/rogen-aria.md
+      - Регионы:
+          - Фарсида: geography/farsida.md
+          - Тарсис: geography/tarsis.md
+          - Эдем: geography/edem.md
+          - Утопия: geography/utopiya.md
+      - Острова:
+          - Эритрея: geography/eritreya.md
+      - Достопримечательности:
+          - Пещеры под Фарсидой: geography/farsida-caves.md
+          - Подземный храм: geography/podzemniy-khram.md
+          - Космодром Фарсиды: geography/kosmodrom-farsidy.md
+      - Колонии:
+          - Новый Окхасен: geography/noviy-okhasen.md
+      - Учреждения:
+          - Академия Окхасена: geography/akademiya-okhasena.md
   
   - Астрономия:
-      - Звёздное небо Марса: astronomy/mars-sky.md
-      - Фобос и Деймос: astronomy/phobos-deimos.md
-      - Земля как цель: astronomy/earth-as-target.md
-      - Земля: astronomy/earth.md
+      - Звёздное небо: astronomy/mars-sky.md
+      - Спутники:
+          - Фобос и Деймос: astronomy/phobos-deimos.md
+      - Цели:
+          - Земля как цель: astronomy/earth-as-target.md
+          - Земля: astronomy/earth.md
   
   - Культура и наука:
-      - Lān sur: terms/lan-sur.md
-      - Глиняные таблички: terms/tablichki.md
-      - Гемоцианин: biology/gemotsianin.md
-      - Геология Марса: science/geology.md
+      - Термины:
+          - Lān sur: terms/lan-sur.md
+          - Глиняные таблички: terms/tablichki.md
+      - Биология:
+          - Гемоцианин: biology/gemotsianin.md
+      - Геология:
+          - Геология Марса: science/geology.md
   
   - Персонажи:
-      - Хевсур: people/hevsur.md
-      - Талин: people/talin.md
-      - Элла: people/ella.md
-      - Йарра: people/yarra.md
-      - Алира: people/alira.md
-      - Аратан III: people/aratan-iii.md
-      - Ирайна: people/irayina.md
-      - Миран: people/miran.md
-      - Харан: people/kharan.md
-      - Совия: people/soviya.md
-      - Араш: people/arash.md
-      - Кан: people/kan.md
-      - Сарум II: people/sarum-ii.md
-      - Сарум Великий: people/sarum-velikiy.md
+      - Историки:
+          - Хевсур: people/hevsur.md
+      - Астрономы:
+          - Талин: people/talin.md
+      - Биологи:
+          - Элла: people/ella.md
+          - Ирайна: people/irayina.md
+      - Педагоги:
+          - Йарра: people/yarra.md
+      - Инженеры:
+          - Миран: people/miran.md
+      - Правители:
+          - Сарум II: people/sarum-ii.md
+          - Сарум Великий: people/sarum-velikiy.md
+          - Аратан III: people/aratan-iii.md
+      - Писцы:
+          - Харан: people/kharan.md
+      - Музыканты:
+          - Совия: people/soviya.md
+      - Пираты:
+         
+      - Погонщики:
+          - Араш: people/arash.md
+          - Кан: people/kan.md
+      - Танцовщицы:
+          - Алира: people/alira.md
   
   - Боги и мифология:
-      - Кхо: mythology/kho.md
-      - Акха: mythology/akha.md
-      - Араксис: mythology/araksis.md
-      - Ксанф-монстер: mythology/ksanf-monster.md
-      - Пророчество Харана: mythology/prorochestvo-kharana.md
-  
+      - Боги:
+          - Кхо: mythology/kho.md
+          - Акха: mythology/akha.md
+          - Араксис: mythology/araksis.md
+      - Пророчества:
+          - Пророчество Харана: mythology/prorochestvo-kharana.md
+      - Мифология:
+          - Ксанф (чудовище): mythology/ksanf-monster.md
+   
   - Книги:
       - «Ацидалийское море»: books/acidalia-sea.md
-  
+      
   - Переводчик: translator.md
   - Музыка:
       - Конструктор мелодий: music/constructor.md

@@ -10,9 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+# === ОТМЕНА ЗАВИСШИХ ДЕПЛОЕВ ===
 concurrency:
   group: "pages"
-  cancel-in-progress: true   # ← ИЗМЕНЕНО
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -20,14 +21,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+
+      # === КЕШИРОВАНИЕ ЗАВИСИМОСТЕЙ (ускоряет сборку) ===
+      - name: Cache pip packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
       - name: Build site
-        run: mkdocs build
+        run: mkdocs build --verbose
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

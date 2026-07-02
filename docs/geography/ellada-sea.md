@@ -5,7 +5,7 @@
   <hr>
 
   <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/map/море%20эллада.png" alt="Карта моря Эллады" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/map/more%20ellada.png" alt="Карта моря Эллады" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение моря Эллады (отмечено синим)</div>
   </div>
 

@@ -7,8 +7,8 @@
   <hr>
 
   <div style="text-align: center; margin-bottom: 8px;">
-    <div style="font-size: 0.7rem; color: #999; padding: 10px; border: 1px dashed #ccc; border-radius: 4px;">Изображение карты будет добавлено позже</div>
-    <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Расположение залива Большой Сирт (отмечено красным)</div>
+    <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/map/залв.png" alt="Карта залива Большой Сирт" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение залива Большой Сирт (отмечено синим)</div>
   </div>
 
   <p><b>Латинское название:</b> Syrtis Major Planum</p>

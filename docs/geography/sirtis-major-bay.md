@@ -7,7 +7,7 @@
   <hr>
 
   <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/map/залв.png" alt="Карта залива Большой Сирт" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/map/залв.png" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение залива Большой Сирт (отмечено синим)</div>
   </div>
 

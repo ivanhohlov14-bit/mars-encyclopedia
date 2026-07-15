@@ -1,2 +1,5 @@
 mkdocs==1.5.3
 mkdocs-roamlinks-plugin==0.1.0
+mkdocs-material>=9.0.0
+mkdocs-sitemap-plugin>=1.0.0
+mkdocs-roamlinks-plugin>=1.0.0

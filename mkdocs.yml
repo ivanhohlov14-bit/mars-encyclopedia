@@ -20,68 +20,66 @@ markdown_extensions:
 extra_javascript:
   - javascripts/fix-title.js
   - javascripts/dark-theme.js
-  
-nav:
+
+  nav:
   - Главная: index.md
-  
-  - История:
-      - Периодизация: history/periodization.md
-      - Хронология: history/timeline.md
-      - Мифы: history/myths.md
-      - Эпохи:
-          - Эпоха Основания: history/epokha-osnovaniya.md
-          - Эпоха Расцвета: history/epokha-rascveta.md
-          - Эпоха Умирания: history/epokha-umiraniya.md
-      - Исход: history/iskhod.md
-      - Королевство Ксанф: history/pirate-kingdom.md
-  
-  - География:
-      - Моря:
-          - Ацидалийское море: geography/acidalia-sea.md
-          - Море Эллада: geography/ellada-sea.md
-          - Море Аргира: geography/argir-sea.md
-          - Эритрейское море: geography/eritreya-sea.md
-          - Амазонское море: geography/amazon-sea.md
-          - Зефирийское море: geography/zephyria-sea.md
-          - Залив Большой Сирт: geography/sirtis-major-bay.md
-      - Реки:
-          - Ксанф: geography/ksanf-river.md
-      - Города:
-          - Окхасен: geography/okhasen.md
-          - Роген-Ария: geography/rogen-aria.md
-      - Регионы:
-          - Фарсида: geography/farsida.md
-          - Тарсис: geography/tarsis.md
-          - Эдем: geography/edem.md
-          - Утопия: geography/utopiya.md
-      - Острова:
-          - Эритрея: geography/eritreya.md
-      - Достопримечательности:
-          - Пещеры под Фарсидой: geography/farsida-caves.md
-          - Подземный храм: geography/podzemniy-khram.md
-          - Космодром Фарсиды: geography/kosmodrom-farsidy.md
-      - Колонии:
-          - Новый Окхасен: geography/noviy-okhasen.md
-      - Учреждения:
-          - Академия Окхасена: geography/akademiya-okhasena.md
-  
-  - Астрономия:
-      - Звёздное небо: astronomy/mars-sky.md
-      - Спутники:
-          - Фобос и Деймос: astronomy/phobos-deimos.md
-      - Цели:
-          - Земля как цель: astronomy/earth-as-target.md
-          - Земля: astronomy/earth.md
-  
-  - Культура и наука:
-      - Термины:
-          - Lān sur: terms/lan-sur.md
-          - Глиняные таблички: terms/tablichki.md
-      - Биология:
-          - Гемоцианин: biology/gemotsianin.md
-      - Геология:
-          - Геология Марса: science/geology.md
-  
+
+  - Вселенная Марса:
+      - История:
+          - Периодизация: history/periodization.md
+          - Хронология: history/timeline.md
+          - Мифы: history/myths.md
+          - Эпохи:
+              - Эпоха Основания: history/epokha-osnovaniya.md
+              - Эпоха Расцвета: history/epokha-rascveta.md
+              - Эпоха Умирания: history/epokha-umiraniya.md
+          - Исход: history/iskhod.md
+          - Королевство Ксанф: history/pirate-kingdom.md
+      -  География:
+          - Моря:
+              - Ацидалийское море: geography/acidalia-sea.md
+              - Море Эллада: geography/ellada-sea.md
+              - Море Аргира: geography/argir-sea.md
+              - Эритрейское море: geography/eritreya-sea.md
+              - Амазонское море: geography/amazon-sea.md
+              - Зефирийское море: geography/zephyria-sea.md
+              - Залив Большой Сирт: geography/sirtis-major-bay.md
+          - Реки:
+              - Ксанф: geography/ksanf-river.md
+          - Города:
+              - Окхасен: geography/okhasen.md
+              - Роген-Ария: geography/rogen-aria.md
+          - Регионы:
+              - Фарсида: geography/farsida.md
+              - Тарсис: geography/tarsis.md
+              - Эдем: geography/edem.md
+              - Утопия: geography/utopiya.md
+          - Острова:
+              - Эритрея: geography/eritreya.md
+          - Достопримечательности:
+              - Пещеры под Фарсидой: geography/farsida-caves.md
+              - Подземный храм: geography/podzemniy-khram.md
+              - Космодром Фарсиды: geography/kosmodrom-farsidy.md
+          - Колонии:
+              - Новый Окхасен: geography/noviy-okhasen.md
+          - Учреждения:
+              - Академия Окхасена: geography/akademiya-okhasena.md
+      - Астрономия:
+          - Звёздное небо: astronomy/mars-sky.md
+          - Спутники:
+              - Фобос и Деймос: astronomy/phobos-deimos.md
+          - Цели:
+              - Земля как цель: astronomy/earth-as-target.md
+              - Земля: astronomy/earth.md
+      -  Культура и наука:
+          - Термины:
+              - Lān sur: terms/lan-sur.md
+              - Глиняные таблички: terms/tablichki.md
+          - Биология:
+              - Гемоцианин: biology/gemotsianin.md
+          - Геология:
+              - Геология Марса: science/geology.md
+
   - Персонажи:
       - Историки:
           - Хевсур: people/hevsur.md
@@ -107,7 +105,7 @@ nav:
           - Кан: people/kan.md
       - Танцовщицы:
           - Алира: people/alira.md
-  
+
   - Боги и мифология:
       - Боги:
           - Кхо: mythology/kho.md
@@ -117,16 +115,22 @@ nav:
           - Пророчество Харана: mythology/prorochestvo-kharana.md
       - Мифология:
           - Ксанф (чудовище): mythology/ksanf-monster.md
-   
-  - Книги:
-      - «Ацидалийское море»: books/acidalia-sea book.md
-      
-  - Переводчик: translator.md
-  - Музыка:
-      - Конструктор мелодий: music/constructor.md
-  - Интерактив:
-    - 🪐 «К Исходу»: interactive/exodus.md
-  - Лицензия: license.md
 
+  - Медиатека:
+      - Книги:
+          - «Ацидалийское море»: books/acidalia-sea book.md
+      - Музыка:
+          - Конструктор мелодий: music/constructor.md
+      - Переводчик: translator.md
+
+  - Интерактив:
+      - «К Исходу»: interactive/exodus.md
+
+  - Сообщество:
+      - Одноклассники: https://ok.ru/group/70000050105405
+
+  - О проекте:
+      - Лицензия: license.md
+      
 extra_css:
   - stylesheets/extra.css

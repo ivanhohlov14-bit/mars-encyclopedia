@@ -6,41 +6,17 @@ theme:
   name: readthedocs
   language: ru
   logo: assets/logo.png
-  palette:
-    # Тёмная тема с марсианскими цветами
-    - scheme: slate
-      primary: brown
-      accent: orange
-  features:
-    - navigation.instant        # Мгновенная загрузка страниц
-    - navigation.tracking       # Подсветка текущего раздела
-    - navigation.top            # Кнопка "Наверх"
-    - search.suggest            # Поиск с подсказками
-    - search.highlight          # Подсветка найденного
-    - content.code.copy         # Кнопка копирования для кода
-
-# ========== Плагины ==========
+  toc: true
+  
 plugins:
   - search
   - roamlinks
-  - sitemap                    # ✅ Автоматическая генерация sitemap.xml
 
-# ========== Расширения Markdown ==========
 markdown_extensions:
   - admonition
   - tables
   - attr_list
   - footnotes
-  - pymdownx.highlight          # Для подсветки кода
-  - pymdownx.superfences        # Для вложенных блоков
-  - pymdownx.inlinehilite
-
-# ========== Кастомные стили и скрипты ==========
-extra_css:
-  - stylesheets/extra.css      # Наши марсианские стили
-
-extra_javascript:
-  - javascripts/particles.js   # Эффект "марсианской пыли"
   
 nav:
   - Главная: index.md

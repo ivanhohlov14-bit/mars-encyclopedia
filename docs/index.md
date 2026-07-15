@@ -486,12 +486,24 @@
   font-size: 1rem;
   color: var(--text-color, #202122);
 ">
-  <div style="font-weight:bold; margin-bottom:6px;"> <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса</div>
-  <div><span style="font-weight:bold;"> <img src="assets/images/stickers/sticker-phobos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос:</span> <span id="phobosStatus">загрузка...</span></div>
-  <div><span style="font-weight:bold;"> <img src="assets/images/stickers/sticker-deimos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос:</span> <span id="deimosStatus">загрузка...</span></div>
+  <div style="font-weight:bold; margin-bottom:6px;">
+    <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса
+  </div>
+  <div>
+    <span style="font-weight:bold;">
+      <img src="assets/images/stickers/sticker-phobos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос:
+    </span>
+    <span id="phobosStatus">загрузка...</span>
+  </div>
+  <div>
+    <span style="font-weight:bold;">
+      <img src="assets/images/stickers/sticker-deimos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос:
+    </span>
+    <span id="deimosStatus">загрузка...</span>
+  </div>
   <div style="margin-top:8px; font-size:0.8rem; color:var(--text-muted, #555);">
-    <div id="phobosTimer"><img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"></div>
-    <div id="deimosTimer"><img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"></div>
+    <div id="phobosTimer"></div>
+    <div id="deimosTimer"></div>
   </div>
   
   <!-- Подпись с данными NASA -->
@@ -513,17 +525,10 @@
     const DEIMOS_PERIOD = 109080;  // 30.3 часов
 
     // ---- НАЧАЛЬНАЯ ФАЗА (на 28 июня 2026, 14:34 UT) ----
-    // По данным NASA Horizons оба спутника следуют за Солнцем (/T):
-    // Фобос: /T → вечерняя видимость → фаза 0.62
-    // Деймос: /T → вечерняя видимость → фаза 0.62
-    // 
-    // Как определить фазу по данным Horizons:
-    // /L (ведёт Солнце) → утро → фаза 0.0–0.25
-    // /T (следует за Солнцем) → вечер → фаза 0.50–0.75
     const PHOBOS_INITIAL = 0.62;
     const DEIMOS_INITIAL = 0.62;
 
-    // ---- ТОЧКА ОТСЧЁТА (28 июня 2026, 14:34 UT) ----
+    // ---- ТОЧКА ОТСЧЁТА ----
     const refDate = new Date(Date.UTC(2026, 5, 28, 14, 34, 0));
 
     function getStatus(phase) {
@@ -557,20 +562,21 @@
       const phobosPhase = (PHOBOS_INITIAL + elapsed / PHOBOS_PERIOD) % 1;
       const deimosPhase = (DEIMOS_INITIAL + elapsed / DEIMOS_PERIOD) % 1;
 
-      document.getElementById('phobosStatus').textContent = getStatus(phobosPhase);
-      document.getElementById('deimosStatus').textContent = getStatus(deimosPhase);
+      // Обновляем статусы (через innerHTML, т.к. там HTML-код с иконками)
+      document.getElementById('phobosStatus').innerHTML = getStatus(phobosPhase);
+      document.getElementById('deimosStatus').innerHTML = getStatus(deimosPhase);
 
-      document.getElementById('phobosTimer').textContent = 
-        <img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос: ${formatTime(getNextPhaseTime(phobosPhase, PHOBOS_PERIOD))} до смены`;
-      document.getElementById('deimosTimer').textContent = 
-        <img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос: ${formatTime(getNextPhaseTime(deimosPhase, DEIMOS_PERIOD))} до смены`;
+      // Таймеры с иконкой часов
+      document.getElementById('phobosTimer').innerHTML = 
+        `<img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос: ${formatTime(getNextPhaseTime(phobosPhase, PHOBOS_PERIOD))} до смены`;
+      document.getElementById('deimosTimer').innerHTML = 
+        `<img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос: ${formatTime(getNextPhaseTime(deimosPhase, DEIMOS_PERIOD))} до смены`;
     }
 
     update();
     setInterval(update, 1000);
   })();
 </script>
-
 ---
 
 ### <img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Звук ветра на Марсе

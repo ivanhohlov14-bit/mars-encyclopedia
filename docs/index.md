@@ -486,9 +486,9 @@
   font-size: 1rem;
   color: var(--text-color, #202122);
 ">
-  <div style="font-weight:bold; margin-bottom:6px;"><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса</div>
-  <div><span style="font-weight:bold;"><img src="assets/images/stickers/sticker-phobos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос:</span> <span id="phobosStatus">загрузка...</span></div>
-  <div><span style="font-weight:bold;"><img src="assets/images/stickers/sticker-deimos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос:</span> <span id="deimosStatus">загрузка...</span></div>
+  <div style="font-weight:bold; margin-bottom:6px;"> <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса</div>
+  <div><span style="font-weight:bold;"> <img src="assets/images/stickers/sticker-phobos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос:</span> <span id="phobosStatus">загрузка...</span></div>
+  <div><span style="font-weight:bold;"> <img src="assets/images/stickers/sticker-deimos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос:</span> <span id="deimosStatus">загрузка...</span></div>
   <div style="margin-top:8px; font-size:0.8rem; color:var(--text-muted, #555);">
     <div id="phobosTimer"><img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"></div>
     <div id="deimosTimer"><img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"></div>
@@ -527,12 +527,12 @@
     const refDate = new Date(Date.UTC(2026, 5, 28, 14, 34, 0));
 
     function getStatus(phase) {
-      const p = ((phase % 1) + 1) % 1;
-      if (p < 0.25) return '<img src="assets/images/stickers/sticker-satellites-rise.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> восходит';
-      if (p < 0.50) return '☀️ в зените';
-      if (p < 0.75) return '<img src="assets/images/stickers/sticker-satellites-set.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> заходит';
-      return '<img src="assets/images/stickers/sticker-beyond-horizon.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> за горизонтом';
-    }
+  const p = phase % 1; // дробная часть от 0 до 1
+  if (p < 0.25) return '<img src="assets/images/stickers/sticker-satellites-rise.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> восходит';
+  if (p < 0.50) return '☀️ в зените';
+  if (p < 0.75) return '<img src="assets/images/stickers/sticker-satellites-set.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> заходит';
+  return '<img src="assets/images/stickers/sticker-beyond-horizon.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> за горизонтом';
+}
 
     function getNextPhaseTime(phase, period) {
       const p = ((phase % 1) + 1) % 1;
@@ -561,9 +561,9 @@
       document.getElementById('deimosStatus').textContent = getStatus(deimosPhase);
 
       document.getElementById('phobosTimer').textContent = 
-        `<img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос: ${formatTime(getNextPhaseTime(phobosPhase, PHOBOS_PERIOD))} до смены`;
+        <img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос: ${formatTime(getNextPhaseTime(phobosPhase, PHOBOS_PERIOD))} до смены`;
       document.getElementById('deimosTimer').textContent = 
-        `<img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос: ${formatTime(getNextPhaseTime(deimosPhase, DEIMOS_PERIOD))} до смены`;
+        <img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос: ${formatTime(getNextPhaseTime(deimosPhase, DEIMOS_PERIOD))} до смены`;
     }
 
     update();

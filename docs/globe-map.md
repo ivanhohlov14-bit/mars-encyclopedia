@@ -2,9 +2,9 @@
 
 <div id="globeViz" style="width: 100%; height: 650px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); background: #0a0a1a;"></div>
 
-<!-- Подключаем библиотеку globe.gl с CDN, который точно работает -->
+<!-- Подключаем необходимые библиотеки -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.24.3/dist/globe.gl.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.25.1/dist/globe.gl.min.js"></script>
 
 <script>
   (function() {
@@ -17,7 +17,7 @@
           <div style="font-size:14px;margin-top:8px;max-width:400px;">Проверьте подключение к интернету или временно отключите блокировщик рекламы.</div>
         </div>
       `;
-      console.error('❌ Globe.gl не загрузилась. Проверьте URL скрипта или сеть.');
+      console.error('❌ Globe.gl не загрузилась.');
       return;
     }
 
@@ -38,17 +38,32 @@
     ];
 
     // --- 4. Текстура Марса (гарантированно работает) ---
-    // Используем текстуру с Wikimedia Commons — она точно доступна и разрешает CORS
     const MARS_TEXTURE = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Mars_Valles_Marineris.jpeg/1280px-Mars_Valles_Marineris.jpeg';
 
-    // --- 5. Создаём глобус ---
     try {
-      // Убедимся, что контейнер имеет размеры
-      const width = container.clientWidth || 800;
-      const height = container.clientHeight || 650;
+      // --- 5. Создаём глобус (универсальный способ) ---
+      let myGlobe;
 
-      const myGlobe = Globe()
-        .container(container)
+      // Пытаемся создать экземпляр через конструктор (новый способ)
+      try {
+        myGlobe = new Globe(container);
+      } catch (e) {
+        // Если не получилось, пробуем старый способ через цепочку методов
+        try {
+          myGlobe = Globe().container(container);
+        } catch (e2) {
+          // Если оба способа не работают, выводим ошибку
+          throw new Error('Не удалось создать экземпляр Globe. Проверьте версию библиотеки.');
+        }
+      }
+
+      // Если myGlobe не определён, или не имеет метода globeImageUrl — ошибка
+      if (!myGlobe || typeof myGlobe.globeImageUrl !== 'function') {
+        throw new Error('Созданный объект не является корректным экземпляром Globe.');
+      }
+
+      // --- 6. Настраиваем глобус ---
+      myGlobe
         .globeImageUrl(MARS_TEXTURE)
         .htmlElementsData(locations)
         .htmlElement(d => {
@@ -81,23 +96,20 @@
         .enablePointerInteraction(true)
         .enableZoom(true)
         .enablePan(true)
-        .width(width)
-        .height(height);
+        .width(container.clientWidth || 800)
+        .height(container.clientHeight || 650);
 
-      // Запускаем глобус
-      myGlobe();
-
-      console.log('✅ Глобус Марса запущен!');
+      console.log('✅ Глобус Марса успешно создан!');
       console.log(`📍 Добавлено ${locations.length} маркеров.`);
 
-      // --- 6. Автоматическое вращение ---
+      // --- 7. Автоматическое вращение ---
       let rotationAngle = 0;
       const interval = setInterval(() => {
         rotationAngle += 0.002;
         myGlobe.rotation({ x: 0.2, y: rotationAngle, z: 0.1 });
       }, 30);
 
-      // --- 7. Адаптация при изменении размера ---
+      // --- 8. Адаптация при изменении размера ---
       const resizeObserver = new ResizeObserver(() => {
         const w = container.clientWidth;
         const h = container.clientHeight;
@@ -107,14 +119,14 @@
       });
       resizeObserver.observe(container);
 
-      // Очистка при уходе со страницы (опционально)
+      // Очистка при уходе со страницы
       window.__globeCleanup = function() {
         clearInterval(interval);
         resizeObserver.disconnect();
       };
 
     } catch (error) {
-      console.error('❌ Ошибка:', error);
+      console.error('❌ Ошибка при создании глобуса:', error);
       container.innerHTML = `
         <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;font-family:sans-serif;flex-direction:column;text-align:center;padding:20px;">
           <div style="font-size:48px;margin-bottom:16px;">🛠️</div>

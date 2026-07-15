@@ -7,7 +7,7 @@ theme:
   language: ru
   logo: assets/logo.png
   toc: true
-  
+
 plugins:
   - search
 
@@ -21,7 +21,10 @@ extra_javascript:
   - javascripts/fix-title.js
   - javascripts/dark-theme.js
 
-  nav:
+extra_css:
+  - stylesheets/extra.css
+
+nav:
   - Главная: index.md
 
   - Вселенная Марса:
@@ -35,7 +38,7 @@ extra_javascript:
               - Эпоха Умирания: history/epokha-umiraniya.md
           - Исход: history/iskhod.md
           - Королевство Ксанф: history/pirate-kingdom.md
-      -  География:
+      - География:
           - Моря:
               - Ацидалийское море: geography/acidalia-sea.md
               - Море Эллада: geography/ellada-sea.md
@@ -71,7 +74,7 @@ extra_javascript:
           - Цели:
               - Земля как цель: astronomy/earth-as-target.md
               - Земля: astronomy/earth.md
-      -  Культура и наука:
+      - Культура и наука:
           - Термины:
               - Lān sur: terms/lan-sur.md
               - Глиняные таблички: terms/tablichki.md

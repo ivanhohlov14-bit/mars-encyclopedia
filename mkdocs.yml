@@ -18,7 +18,7 @@ markdown_extensions:
   - footnotes
 
 extra_javascript:
-  - javascripts/theme.js
+  - javascripts/fix-title.js
   
 nav:
   - Главная: index.md

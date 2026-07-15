@@ -527,12 +527,12 @@
     const refDate = new Date(Date.UTC(2026, 5, 28, 14, 34, 0));
 
     function getStatus(phase) {
-  const p = phase % 1; // дробная часть от 0 до 1
-  if (p < 0.25) return '<img src="assets/images/stickers/sticker-satellites-rise.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> восходит';
-  if (p < 0.50) return '☀️ в зените';
-  if (p < 0.75) return '<img src="assets/images/stickers/sticker-satellites-set.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> заходит';
-  return '<img src="assets/images/stickers/sticker-beyond-horizon.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> за горизонтом';
-}
+      const p = ((phase % 1) + 1) % 1;
+      if (p < 0.25) return '<img src="assets/images/stickers/sticker-satellites-rise.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> восходит';
+      if (p < 0.50) return '☀️ в зените';
+      if (p < 0.75) return '<img src="assets/images/stickers/sticker-satellites-set.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> заходит';
+      return '<img src="assets/images/stickers/sticker-beyond-horizon.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> за горизонтом';
+    }
 
     function getNextPhaseTime(phase, period) {
       const p = ((phase % 1) + 1) % 1;

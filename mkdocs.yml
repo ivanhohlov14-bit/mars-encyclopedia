@@ -10,7 +10,6 @@ theme:
   
 plugins:
   - search
-  - roamlinks
 
 markdown_extensions:
   - admonition

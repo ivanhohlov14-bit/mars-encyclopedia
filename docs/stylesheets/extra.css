@@ -156,150 +156,111 @@ blockquote {
 .footer { display: none !important; }
 
 /* ==========================================
-   ГЛОБАЛЬНАЯ ТЁМНАЯ ТЕМА (всегда)
+   ТЁМНАЯ И СВЕТЛАЯ ТЕМА (переключается через data-theme)
    ========================================== */
 
-/* Основной фон и текст */
+/* --- СВЕТЛАЯ ТЕМА (по умолчанию) --- */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #202122;
+  --border-color: #eaecf0;
+  --link-color: #0645ad;
+  --block-bg: #f8f9fa;
+  --sidebar-bg: #ffffff;
+  --menu-text: #202122;
+  --menu-hover-bg: #eaecf0;
+}
+
+/* --- ТЁМНАЯ ТЕМА (при data-theme="dark") --- */
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --text-color: #e0e0e0;
+  --border-color: #3a3a5a;
+  --link-color: #7fadff;
+  --block-bg: #2a2a4a;
+  --sidebar-bg: #0d0d1a;
+  --menu-text: #e0e0e0;
+  --menu-hover-bg: #2a2a4a;
+}
+
+/* Применяем переменные */
 body,
 .wy-nav-content,
 .wy-body-for-nav {
-    background-color: #1a1a2e !important;
-    color: #e0e0e0 !important;
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
 }
 
-/* Боковая панель */
 .wy-nav-side,
 .wy-side-nav-search {
-    background-color: #0d0d1a !important;
-    border-color: #3a3a5a !important;
+  background: var(--sidebar-bg) !important;
+  border-color: var(--border-color) !important;
 }
 
 .wy-side-nav-search .wy-dropdown,
 .wy-side-nav-search input[type="text"] {
-    background: #2a2a4a !important;
-    color: #e0e0e0 !important;
-    border-color: #3a3a5a !important;
+  background: var(--block-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
 }
 
-/* Меню */
 .wy-menu-vertical a {
-    color: #e0e0e0 !important;
-    background: #0d0d1a !important;
+  color: var(--menu-text) !important;
+  background: var(--sidebar-bg) !important;
 }
 .wy-menu-vertical a:hover {
-    background: #2a2a4a !important;
-    color: #7fadff !important;
+  background: var(--menu-hover-bg) !important;
+  color: var(--link-color) !important;
 }
 
-/* Ссылки */
 a {
-    color: #7fadff !important;
+  color: var(--link-color) !important;
 }
 a:hover {
-    color: #9fcbff !important;
+  color: #9fcbff !important;
 }
 
-/* Заголовки */
 h1, h2, h3, h4, h5, h6 {
-    color: #e0e0e0 !important;
+  color: var(--text-color) !important;
 }
 
-/* Инфобоксы, цитаты, блоки */
 .infobox,
 blockquote,
 #quoteOfTheDay,
 .admonition {
-    background: #2a2a4a !important;
-    border-color: #3a3a5a !important;
-    color: #e0e0e0 !important;
+  background: var(--block-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
 }
 
-/* Таблицы */
 table {
-    background: #1a1a2e !important;
-    border-color: #3a3a5a !important;
-    color: #e0e0e0 !important;
+  background: var(--bg-color) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
 }
 table th {
-    background: #2a2a4a !important;
-    color: #e0e0e0 !important;
+  background: var(--block-bg) !important;
+  color: var(--text-color) !important;
 }
 table td {
-    background: #1a1a2e !important;
-    color: #e0e0e0 !important;
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
 }
 table tr:nth-child(even) td {
-    background: #2a2a4a !important;
+  background: var(--block-bg) !important;
 }
 
-/* Поля ввода */
 input,
 textarea {
-    background: #2a2a4a !important;
-    color: #e0e0e0 !important;
-    border-color: #3a3a5a !important;
+  background: var(--block-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
 }
 
-/* Блоки кода */
 pre, code {
-    background: #2a2a4a !important;
-    color: #f8f8f2 !important;
+  background: var(--block-bg) !important;
+  color: var(--text-color) !important;
 }
-/* ===== КНОПКА ПЕРЕКЛЮЧЕНИЯ ТЕМЫ ===== */
-button#themeToggle {
-  background: #0645ad;
-  color: white;
-  border: none;
-  padding: 8px 20px;
-  font-size: 1rem;
-  font-family: 'Georgia', serif;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-[data-theme="dark"] button#themeToggle {
-  background: #2a4a7f;
-  color: white;
-}
-[data-theme="dark"] button#themeToggle:hover {
-  background: #3a5a9f;
-}
-
-/* ===== СТИКЕРЫ ===== */
-.sticker {
-  display: inline-block;
-  vertical-align: middle;
-  width: 48px;
-  height: 48px;
-  margin: 0 6px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 4px;
-  transition: transform 0.2s;
-}
-
-.sticker:hover {
-  transform: scale(1.1);
-}
-
-/* Маленькие стикеры (в тексте) */
-.sticker-sm {
-  width: 32px;
-  height: 32px;
-}
-
-/* Большие стикеры (для галереи) */
-.sticker-lg {
-  width: 80px;
-  height: 80px;
-}
-
-/* Тёмная тема для стикеров */
-[data-theme="dark"] .sticker {
-  background: rgba(255, 255, 255, 0.08);
-}
-
 /* Марсианский фон (старая бумага/глина) */
 .md-main {
     background-color: #f5e6c8;

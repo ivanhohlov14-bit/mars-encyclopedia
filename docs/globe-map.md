@@ -2,15 +2,23 @@
 
 <div id="globeViz" style="width: 100%; height: 650px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); background: #0a0a1a;"></div>
 
-<!-- Подключаем необходимые библиотеки -->
+<!-- Подключаем Three.js (обязательно для globe.gl) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.25.1/dist/globe.gl.min.js"></script>
+<!-- Используем стабильную версию globe.gl, которая гарантированно работает с раздельными вызовами -->
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.20.0/dist/globe.gl.min.js"></script>
 
 <script>
   (function() {
-    // --- 1. Проверяем, загрузилась ли библиотека ---
+    // --- 1. Проверяем наличие контейнера ---
+    const container = document.getElementById('globeViz');
+    if (!container) {
+      console.error('❌ Контейнер #globeViz не найден!');
+      return;
+    }
+
+    // --- 2. Проверяем, загрузилась ли библиотека ---
     if (typeof Globe === 'undefined') {
-      document.getElementById('globeViz').innerHTML = `
+      container.innerHTML = `
         <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;font-family:sans-serif;flex-direction:column;text-align:center;padding:20px;">
           <div style="font-size:48px;margin-bottom:16px;">⚠️</div>
           <div style="font-size:18px;font-weight:bold;color:#ccc;">Библиотека не загрузилась</div>
@@ -18,13 +26,6 @@
         </div>
       `;
       console.error('❌ Globe.gl не загрузилась.');
-      return;
-    }
-
-    // --- 2. Находим контейнер ---
-    const container = document.getElementById('globeViz');
-    if (!container) {
-      console.error('❌ Контейнер #globeViz не найден!');
       return;
     }
 
@@ -41,75 +42,60 @@
     const MARS_TEXTURE = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Mars_Valles_Marineris.jpeg/1280px-Mars_Valles_Marineris.jpeg';
 
     try {
-      // --- 5. Создаём глобус (универсальный способ) ---
-      let myGlobe;
+      // --- 5. Создаём глобус через конструктор ---
+      const myGlobe = new Globe(container);
 
-      // Пытаемся создать экземпляр через конструктор (новый способ)
-      try {
-        myGlobe = new Globe(container);
-      } catch (e) {
-        // Если не получилось, пробуем старый способ через цепочку методов
-        try {
-          myGlobe = Globe().container(container);
-        } catch (e2) {
-          // Если оба способа не работают, выводим ошибку
-          throw new Error('Не удалось создать экземпляр Globe. Проверьте версию библиотеки.');
-        }
-      }
+      // --- 6. Настраиваем глобус (каждый метод вызывается отдельно, без цепочек) ---
+      myGlobe.globeImageUrl(MARS_TEXTURE);
+      myGlobe.htmlElementsData(locations);
+      myGlobe.htmlElement(d => {
+        const el = document.createElement('div');
+        el.innerHTML = `
+          <a href="${d.url}" target="_blank" style="
+            display: inline-block;
+            background: rgba(180, 80, 40, 0.9);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,200,100,0.3);
+            transition: all 0.2s ease;
+            pointer-events: auto;
+            white-space: nowrap;
+          "
+          onmouseover="this.style.transform='scale(1.05)'; this.style.background='rgba(200, 100, 50, 0.95)';"
+          onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(180, 80, 40, 0.9)';"
+          >
+            🔴 ${d.name}
+          </a>
+        `;
+        return el;
+      });
+      myGlobe.enablePointerInteraction(true);
+      myGlobe.enableZoom(true);
+      myGlobe.enablePan(true);
+      myGlobe.width(container.clientWidth || 800);
+      myGlobe.height(container.clientHeight || 650);
 
-      // Если myGlobe не определён, или не имеет метода globeImageUrl — ошибка
-      if (!myGlobe || typeof myGlobe.globeImageUrl !== 'function') {
-        throw new Error('Созданный объект не является корректным экземпляром Globe.');
-      }
-
-      // --- 6. Настраиваем глобус ---
-      myGlobe
-        .globeImageUrl(MARS_TEXTURE)
-        .htmlElementsData(locations)
-        .htmlElement(d => {
-          const el = document.createElement('div');
-          el.innerHTML = `
-            <a href="${d.url}" target="_blank" style="
-              display: inline-block;
-              background: rgba(180, 80, 40, 0.9);
-              color: #fff;
-              padding: 6px 14px;
-              border-radius: 20px;
-              font-size: 13px;
-              font-family: 'Arial', sans-serif;
-              font-weight: bold;
-              text-decoration: none;
-              box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-              border: 1px solid rgba(255,200,100,0.3);
-              transition: all 0.2s ease;
-              pointer-events: auto;
-              white-space: nowrap;
-            "
-            onmouseover="this.style.transform='scale(1.05)'; this.style.background='rgba(200, 100, 50, 0.95)';"
-            onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(180, 80, 40, 0.9)';"
-            >
-              🔴 ${d.name}
-            </a>
-          `;
-          return el;
-        })
-        .enablePointerInteraction(true)
-        .enableZoom(true)
-        .enablePan(true)
-        .width(container.clientWidth || 800)
-        .height(container.clientHeight || 650);
+      // --- 7. Запускаем глобус (он запускается автоматически, но явный вызов не помешает) ---
+      // В некоторых версиях нужно вызвать .render(), но в 2.20.0 конструктор уже рендерит.
+      // Просто оставляем как есть.
 
       console.log('✅ Глобус Марса успешно создан!');
       console.log(`📍 Добавлено ${locations.length} маркеров.`);
 
-      // --- 7. Автоматическое вращение ---
+      // --- 8. Автоматическое вращение ---
       let rotationAngle = 0;
       const interval = setInterval(() => {
         rotationAngle += 0.002;
         myGlobe.rotation({ x: 0.2, y: rotationAngle, z: 0.1 });
       }, 30);
 
-      // --- 8. Адаптация при изменении размера ---
+      // --- 9. Адаптация при изменении размера ---
       const resizeObserver = new ResizeObserver(() => {
         const w = container.clientWidth;
         const h = container.clientHeight;

@@ -98,7 +98,7 @@
 
 ## <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  Интерактивные элементы
 
-### 🎲 Случайная статья
+### <img src="assets/images/stickers/sticker-cube.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Случайная статья
 
 <div style="text-align: center; margin: 1.5rem 0;">
   <button id="randomArticleBtn" style="
@@ -112,7 +112,7 @@
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   ">
-    🎲 Случайная статья
+    <img src="assets/images/stickers/sticker-cube.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Случайная статья
   </button>
 </div>
 
@@ -192,7 +192,7 @@
   })();
 </script>
     
-### 🗓️ Марсианский календарь
+### <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Марсианский календарь
 
 <div id="martianCalendar" style="
   background: var(--block-bg, #f8f9fa);
@@ -204,7 +204,7 @@
   font-family: 'Georgia', serif;
   text-align: center;
 ">
-  <h3 style="margin:0 0 8px 0; color: var(--text-color, #202122);">🗓️ Марсианский календарь</h3>
+  <h3 style="margin:0 0 8px 0; color: var(--text-color, #202122);"><img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Марсианский календарь</h3>
   <div id="martianDate" style="font-size:1.2rem; color: var(--text-color, #202122);">Загрузка...</div>
 </div>
 
@@ -472,7 +472,7 @@
 
 ---
 
-### 🌙 Спутники Марса
+### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса
 
 <div id="moonPhase" style="
   background: var(--block-bg, #f8f9fa);
@@ -486,12 +486,12 @@
   font-size: 1rem;
   color: var(--text-color, #202122);
 ">
-  <div style="font-weight:bold; margin-bottom:6px;">🌙 Спутники Марса</div>
-  <div><span style="font-weight:bold;">🪐 Фобос:</span> <span id="phobosStatus">загрузка...</span></div>
-  <div><span style="font-weight:bold;">🌑 Деймос:</span> <span id="deimosStatus">загрузка...</span></div>
+  <div style="font-weight:bold; margin-bottom:6px;"><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса</div>
+  <div><span style="font-weight:bold;"><img src="assets/images/stickers/sticker-phobos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос:</span> <span id="phobosStatus">загрузка...</span></div>
+  <div><span style="font-weight:bold;"><img src="assets/images/stickers/sticker-deimos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос:</span> <span id="deimosStatus">загрузка...</span></div>
   <div style="margin-top:8px; font-size:0.8rem; color:var(--text-muted, #555);">
-    <div id="phobosTimer">⏳</div>
-    <div id="deimosTimer">⏳</div>
+    <div id="phobosTimer"><img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"></div>
+    <div id="deimosTimer"><img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"></div>
   </div>
   
   <!-- Подпись с данными NASA -->
@@ -528,10 +528,10 @@
 
     function getStatus(phase) {
       const p = ((phase % 1) + 1) % 1;
-      if (p < 0.25) return '🌅 восходит';
+      if (p < 0.25) return '<img src="assets/images/stickers/sticker-satellites-rise.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> восходит';
       if (p < 0.50) return '☀️ в зените';
-      if (p < 0.75) return '🌇 заходит';
-      return '🌙 за горизонтом';
+      if (p < 0.75) return '<img src="assets/images/stickers/sticker-satellites-set.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> заходит';
+      return '<img src="assets/images/stickers/sticker-beyond-horizon.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> за горизонтом';
     }
 
     function getNextPhaseTime(phase, period) {
@@ -561,9 +561,9 @@
       document.getElementById('deimosStatus').textContent = getStatus(deimosPhase);
 
       document.getElementById('phobosTimer').textContent = 
-        `⏳ Фобос: ${formatTime(getNextPhaseTime(phobosPhase, PHOBOS_PERIOD))} до смены`;
+        `<img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос: ${formatTime(getNextPhaseTime(phobosPhase, PHOBOS_PERIOD))} до смены`;
       document.getElementById('deimosTimer').textContent = 
-        `⏳ Деймос: ${formatTime(getNextPhaseTime(deimosPhase, DEIMOS_PERIOD))} до смены`;
+        `<img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос: ${formatTime(getNextPhaseTime(deimosPhase, DEIMOS_PERIOD))} до смены`;
     }
 
     update();
@@ -573,7 +573,7 @@
 
 ---
 
-### 🎵 Звук ветра на Марсе
+### <img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Звук ветра на Марсе
 
 <div style="text-align: center; margin: 10px 0;">
   <button id="windSoundBtn" style="
@@ -587,7 +587,7 @@
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   ">
-    🎵 Включить звук ветра
+    <img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Включить звук ветра
   </button>
 </div>
 
@@ -602,10 +602,10 @@
   btn.addEventListener('click', function() {
     if (playing) {
       audio.pause();
-      btn.textContent = '🎵 Включить звук ветра';
+      btn.textContent = '<img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Включить звук ветра';
     } else {
       audio.play();
-      btn.textContent = '🔇 Выключить звук';
+      btn.textContent = '<img src="assets/images/stickers/sticker-mute.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Выключить звук';
     }
     playing = !playing;
   });

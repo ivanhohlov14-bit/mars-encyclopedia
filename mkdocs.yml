@@ -16,9 +16,6 @@ markdown_extensions:
   - tables
   - attr_list
   - footnotes
-
-extra_javascript:
-  - javascripts/theme.js
   
 nav:
   - Главная: index.md

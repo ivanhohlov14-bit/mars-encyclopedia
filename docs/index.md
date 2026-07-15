@@ -596,19 +596,45 @@
 </audio>
 
 <script>
-  const audio = document.getElementById('windAudio');
-  const btn = document.getElementById('windSoundBtn');
-  let playing = false;
-  btn.addEventListener('click', function() {
-    if (playing) {
-      audio.pause();
-      btn.textContent = '<img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Включить звук ветра';
-    } else {
-      audio.play();
-      btn.textContent = '<img src="assets/images/stickers/sticker-mute.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Выключить звук';
+  (function() {
+    const audio = document.getElementById('windAudio');
+    const btn = document.getElementById('windSoundBtn');
+    let playing = false;
+
+    // Функция для обновления кнопки (используем innerHTML)
+    function updateButton(state) {
+      if (state) {
+        btn.innerHTML = '<img src="assets/images/stickers/sticker-mute.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Выключить звук';
+      } else {
+        btn.innerHTML = '<img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Включить звук ветра';
+      }
     }
-    playing = !playing;
-  });
+
+    btn.addEventListener('click', function() {
+      if (playing) {
+        audio.pause();
+        playing = false;
+        updateButton(false);
+      } else {
+        // Пытаемся воспроизвести
+        audio.play().then(() => {
+          playing = true;
+          updateButton(true);
+        }).catch((err) => {
+          console.warn('Не удалось воспроизвести звук:', err);
+          // Можно показать уведомление пользователю, если нужно
+        });
+      }
+    });
+
+    // Если аудио закончится (не должно, т.к. loop), можно сбросить состояние
+    audio.addEventListener('ended', function() {
+      if (playing) {
+        playing = false;
+        updateButton(false);
+      }
+    });
+  })();
 </script>
 
 ---

@@ -1,179 +1,113 @@
-# 🗺️ Интерактивный глобус Марса
+# 🗺️ Карта Марса
 
-<div id="globeViz" style="width: 100%; height: 650px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); background: #0a0a1a;"></div>
+<div style="position: relative; width: 100%; max-width: 1200px; margin: 0 auto; border: 2px solid #2a2a4a; border-radius: 12px; overflow: hidden; background: #0a0a1a;">
 
-<!-- Загружаем Three.js с проверенного CDN (он почти всегда доступен) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- ===== ФОНОВАЯ КАРТА (ваш файл) ===== -->
+  <img 
+    src="/assets/mars-map.png" 
+    alt="Карта Марса" 
+    style="width: 100%; height: auto; display: block;"
+    id="marsMap"
+  >
 
-<!-- Загружаем globe.gl с нескольких попыток -->
-<script>
-  (function loadGlobe() {
-    // Список возможных URL для загрузки globe.gl
-    const urls = [
-      'https://unpkg.com/globe.gl@2.20.0/dist/globe.gl.min.js',
-      'https://cdn.jsdelivr.net/npm/globe.gl@2.20.0/dist/globe.gl.min.js',
-      '/assets/js/globe.gl.min.js'  // локальный резерв (если вы скачаете файл)
-    ];
+  <!-- ===== КЛИКАБЕЛЬНЫЕ МЕТКИ ===== -->
+  
+  <!-- Окхасен -->
+  <a href="/geography/okhasen" 
+     style="position: absolute; top: 40%; left: 55%; transform: translate(-50%, -50%); 
+            background: rgba(255, 80, 40, 0.85); color: #fff; 
+            padding: 8px 16px; border-radius: 20px; 
+            font-size: 14px; font-weight: bold; text-decoration: none;
+            border: 2px solid #ffaa44; box-shadow: 0 0 20px rgba(255,80,40,0.5);
+            transition: all 0.3s ease; white-space: nowrap;
+            pointer-events: auto; z-index: 10;"
+     onmouseover="this.style.transform='translate(-50%, -50%) scale(1.1)'; this.style.background='rgba(255, 100, 60, 1)';"
+     onmouseout="this.style.transform='translate(-50%, -50%) scale(1)'; this.style.background='rgba(255, 80, 40, 0.85)';">
+    🏛️ Окхасен
+  </a>
 
-    // Пытаемся загрузить по очереди
-    function tryLoad(index) {
-      if (index >= urls.length) {
-        // Все попытки не удались – показываем инструкцию
-        document.getElementById('globeViz').innerHTML = `
-          <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;font-family:sans-serif;flex-direction:column;text-align:center;padding:20px;">
-            <div style="font-size:48px;margin-bottom:16px;">📥</div>
-            <div style="font-size:18px;font-weight:bold;color:#ccc;">Библиотека не загрузилась</div>
-            <div style="font-size:14px;margin-top:8px;max-width:500px;background:#1a1a2e;padding:15px;border-radius:8px;color:#ddd;text-align:left;">
-              <p><b>Чтобы решить проблему:</b></p>
-              <ol style="margin:5px 0;padding-left:20px;">
-                <li>Скачайте файл <b>globe.gl.min.js</b> по ссылке: <br>
-                  <a href="https://unpkg.com/globe.gl@2.20.0/dist/globe.gl.min.js" target="_blank" style="color:#7fadff;">https://unpkg.com/globe.gl@2.20.0/dist/globe.gl.min.js</a>
-                </li>
-                <li>Положите его в папку <b>assets/js/</b> вашего сайта.</li>
-                <li>Обновите страницу.</li>
-              </ol>
-              <p style="margin-top:8px;">Если у вас AdBlock, временно отключите его для этого сайта.</p>
-            </div>
-          </div>
-        `;
-        console.error('❌ Не удалось загрузить globe.gl ни с одного CDN.');
-        return;
-      }
+  <!-- Ацидалийское море -->
+  <a href="/geography/acidalia-sea" 
+     style="position: absolute; top: 35%; left: 30%; transform: translate(-50%, -50%);
+            background: rgba(40, 120, 200, 0.8); color: #fff;
+            padding: 6px 14px; border-radius: 20px;
+            font-size: 13px; font-weight: bold; text-decoration: none;
+            border: 2px solid #66ccff; box-shadow: 0 0 20px rgba(40,120,200,0.4);
+            transition: all 0.3s ease; white-space: nowrap;
+            pointer-events: auto; z-index: 10;"
+     onmouseover="this.style.transform='translate(-50%, -50%) scale(1.1)'; this.style.background='rgba(60, 150, 230, 0.9)';"
+     onmouseout="this.style.transform='translate(-50%, -50%) scale(1)'; this.style.background='rgba(40, 120, 200, 0.8)';">
+    🌊 Ацидалийское море
+  </a>
 
-      const script = document.createElement('script');
-      script.src = urls[index];
-      script.async = true;
-      script.onload = function() {
-        // Проверяем, загрузилась ли библиотека
-        if (typeof Globe !== 'undefined') {
-          console.log('✅ globe.gl загружена с', urls[index]);
-          // Запускаем создание глобуса после загрузки
-          initGlobe();
-        } else {
-          // Если Globe не определена, пробуем следующий URL
-          tryLoad(index + 1);
-        }
-      };
-      script.onerror = function() {
-        // Если скрипт не загрузился, пробуем следующий
-        tryLoad(index + 1);
-      };
-      document.head.appendChild(script);
-    }
+  <!-- Фарсида -->
+  <a href="/geography/farsida" 
+     style="position: absolute; top: 50%; left: 20%; transform: translate(-50%, -50%);
+            background: rgba(180, 100, 40, 0.85); color: #fff;
+            padding: 6px 14px; border-radius: 20px;
+            font-size: 13px; font-weight: bold; text-decoration: none;
+            border: 2px solid #cc8844; box-shadow: 0 0 20px rgba(180,100,40,0.4);
+            transition: all 0.3s ease; white-space: nowrap;
+            pointer-events: auto; z-index: 10;"
+     onmouseover="this.style.transform='translate(-50%, -50%) scale(1.1)'; this.style.background='rgba(200, 120, 50, 0.95)';"
+     onmouseout="this.style.transform='translate(-50%, -50%) scale(1)'; this.style.background='rgba(180, 100, 40, 0.85)';">
+    ⛰️ Фарсида
+  </a>
 
-    // --- Функция, которая создаёт глобус (вызывается после загрузки библиотеки) ---
-    function initGlobe() {
-      const container = document.getElementById('globeViz');
-      if (!container) {
-        console.error('❌ Контейнер #globeViz не найден!');
-        return;
-      }
+  <!-- Эллада -->
+  <a href="/geography/ellada-sea" 
+     style="position: absolute; top: 70%; left: 65%; transform: translate(-50%, -50%);
+            background: rgba(40, 140, 180, 0.8); color: #fff;
+            padding: 6px 14px; border-radius: 20px;
+            font-size: 13px; font-weight: bold; text-decoration: none;
+            border: 2px solid #66ddff; box-shadow: 0 0 20px rgba(40,140,180,0.4);
+            transition: all 0.3s ease; white-space: nowrap;
+            pointer-events: auto; z-index: 10;"
+     onmouseover="this.style.transform='translate(-50%, -50%) scale(1.1)'; this.style.background='rgba(60, 170, 210, 0.9)';"
+     onmouseout="this.style.transform='translate(-50%, -50%) scale(1)'; this.style.background='rgba(40, 140, 180, 0.8)';">
+    🌊 Море Эллада
+  </a>
 
-      // Ваши локации
-      const locations = [
-        { lat: 25.0,  lng: 10.0,  name: 'Окхасен',         url: '/geography/okhasen' },
-        { lat: 45.0,  lng: -30.0, name: 'Ацидалийское море', url: '/geography/acidalia-sea' },
-        { lat: 15.0,  lng: -120.0,name: 'Фарсида',          url: '/geography/farsida' },
-        { lat: -20.0, lng: 70.0,  name: 'Эллада',           url: '/geography/ellada-sea' },
-        { lat: 30.0,  lng: -60.0, name: 'Зефирийское море', url: '/geography/zephyria-sea' },
-      ];
+  <!-- Зефирийское море -->
+  <a href="/geography/zephyria-sea" 
+     style="position: absolute; top: 55%; left: 45%; transform: translate(-50%, -50%);
+            background: rgba(40, 120, 180, 0.8); color: #fff;
+            padding: 6px 14px; border-radius: 20px;
+            font-size: 13px; font-weight: bold; text-decoration: none;
+            border: 2px solid #66ccff; box-shadow: 0 0 20px rgba(40,120,180,0.4);
+            transition: all 0.3s ease; white-space: nowrap;
+            pointer-events: auto; z-index: 10;"
+     onmouseover="this.style.transform='translate(-50%, -50%) scale(1.1)'; this.style.background='rgba(60, 150, 210, 0.9)';"
+     onmouseout="this.style.transform='translate(-50%, -50%) scale(1)'; this.style.background='rgba(40, 120, 180, 0.8)';">
+    🌊 Зефирийское море
+  </a>
 
-      const MARS_TEXTURE = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Mars_Valles_Marineris.jpeg/1280px-Mars_Valles_Marineris.jpeg';
+</div>
 
-      try {
-        const myGlobe = new Globe(container)
-          .globeImageUrl(MARS_TEXTURE)
-          .htmlElementsData(locations)
-          .htmlElement(d => {
-            const el = document.createElement('div');
-            el.innerHTML = `
-              <a href="${d.url}" target="_blank" style="
-                display: inline-block;
-                background: rgba(180, 80, 40, 0.9);
-                color: #fff;
-                padding: 6px 14px;
-                border-radius: 20px;
-                font-size: 13px;
-                font-family: 'Arial', sans-serif;
-                font-weight: bold;
-                text-decoration: none;
-                box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-                border: 1px solid rgba(255,200,100,0.3);
-                transition: all 0.2s ease;
-                pointer-events: auto;
-                white-space: nowrap;
-              "
-              onmouseover="this.style.transform='scale(1.05)'; this.style.background='rgba(200, 100, 50, 0.95)';"
-              onmouseout="this.style.transform='scale(1)'; this.style.background='rgba(180, 80, 40, 0.9)';"
-              >
-                🔴 ${d.name}
-              </a>
-            `;
-            return el;
-          })
-          .enablePointerInteraction(true)
-          .enableZoom(true)
-          .enablePan(true)
-          .width(container.clientWidth || 800)
-          .height(container.clientHeight || 650);
+<!-- ===== ПОДПИСЬ ===== -->
+<div style="text-align: center; color: #888; font-size: 14px; margin-top: 10px; padding: 10px; background: #0a0a1a; border-radius: 8px;">
+  Нажмите на метку, чтобы перейти к статье. Координаты объектов можно настроить, изменяя <code>top</code> и <code>left</code>.
+</div>
 
-        console.log('✅ Глобус Марса успешно создан!');
-        console.log(`📍 Добавлено ${locations.length} маркеров.`);
-
-        // Автоматическое вращение
-        let rotationAngle = 0;
-        const interval = setInterval(() => {
-          rotationAngle += 0.002;
-          myGlobe.rotation({ x: 0.2, y: rotationAngle, z: 0.1 });
-        }, 30);
-
-        // Адаптация размера
-        const resizeObserver = new ResizeObserver(() => {
-          const w = container.clientWidth;
-          const h = container.clientHeight;
-          if (w > 0 && h > 0) {
-            myGlobe.width(w).height(h);
-          }
-        });
-        resizeObserver.observe(container);
-
-        window.__globeCleanup = function() {
-          clearInterval(interval);
-          resizeObserver.disconnect();
-        };
-
-      } catch (error) {
-        console.error('❌ Ошибка при создании глобуса:', error);
-        container.innerHTML = `
-          <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;font-family:sans-serif;flex-direction:column;text-align:center;padding:20px;">
-            <div style="font-size:48px;margin-bottom:16px;">🛠️</div>
-            <div style="font-size:18px;font-weight:bold;color:#ccc;">Ошибка при создании глобуса</div>
-            <div style="font-size:14px;margin-top:8px;max-width:400px;background:#1a1a2e;padding:10px;border-radius:8px;color:#ff6b6b;text-align:left;word-break:break-all;">
-              ${error.message}
-            </div>
-          </div>
-        `;
-      }
-    }
-
-    // --- Запускаем загрузку ---
-    // Проверяем, не загружена ли уже библиотека (например, если скрипт уже был добавлен ранее)
-    if (typeof Globe !== 'undefined') {
-      initGlobe();
-    } else {
-      tryLoad(0);
-    }
-  })();
-</script>
+<!-- ===== ИНСТРУКЦИЯ ПО НАСТРОЙКЕ КООРДИНАТ ===== -->
+<details style="margin-top: 20px; padding: 15px; background: #1a1a2e; border-radius: 8px; border: 1px solid #2a2a4a;">
+  <summary style="cursor: pointer; color: #7fadff; font-weight: bold;">📌 Как настроить метки под вашу карту</summary>
+  <div style="margin-top: 10px; color: #ccc; font-size: 14px; line-height: 1.6;">
+    <p>Для каждой метки есть параметры <code>top</code> и <code>left</code> (в процентах). Они определяют положение метки на карте.</p>
+    <ul>
+      <li><b>top: X%</b> — расстояние от верхнего края карты (0% = самый верх, 100% = самый низ).</li>
+      <li><b>left: Y%</b> — расстояние от левого края карты (0% = самый левый край, 100% = самый правый).</li>
+    </ul>
+    <p>Откройте карту в любом редакторе или даже в браузере, прикиньте на глаз, где находятся объекты, и подберите значения, перезагружая страницу.</p>
+    <p>Чтобы добавить новую метку, скопируйте один из блоков <code>&lt;a href=...&gt;...&lt;/a&gt;</code>, вставьте его перед последним <code>&lt;/a&gt;</code> и измените путь, текст и координаты.</p>
+  </div>
+</details>
 
 <style>
-  #globeViz {
-    background: #0a0a1a;
-    border: 1px solid #2a2a4a;
-    position: relative;
-    min-height: 650px;
-  }
   .md-content {
     background: #0a0a1a !important;
+  }
+  #marsMap {
+    border: none;
   }
 </style>

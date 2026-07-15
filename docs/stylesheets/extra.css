@@ -171,6 +171,23 @@ blockquote {
   --menu-hover-bg: #eaecf0;
 }
 
+/* ==========================================
+   ТЁМНАЯ И СВЕТЛАЯ ТЕМА (переключается через data-theme)
+   ========================================== */
+
+/* --- СВЕТЛАЯ ТЕМА (по умолчанию) --- */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #202122;
+  --border-color: #eaecf0;
+  --link-color: #0645ad;
+  --block-bg: #f8f9fa;
+  --sidebar-bg: #ffffff;
+  --menu-text: #202122;
+  --menu-hover-bg: #eaecf0;
+  --header-color: #202122; /* цвет заголовка сайта */
+}
+
 /* --- ТЁМНАЯ ТЕМА (при data-theme="dark") --- */
 [data-theme="dark"] {
   --bg-color: #1a1a2e;
@@ -181,6 +198,7 @@ blockquote {
   --sidebar-bg: #0d0d1a;
   --menu-text: #e0e0e0;
   --menu-hover-bg: #2a2a4a;
+  --header-color: #e0e0e0;
 }
 
 /* Применяем переменные */
@@ -202,6 +220,11 @@ body,
   background: var(--block-bg) !important;
   color: var(--text-color) !important;
   border-color: var(--border-color) !important;
+}
+
+/* Заголовок сайта в боковой панели */
+.wy-side-nav-search a {
+  color: var(--header-color) !important;
 }
 
 .wy-menu-vertical a {
@@ -261,6 +284,7 @@ pre, code {
   background: var(--block-bg) !important;
   color: var(--text-color) !important;
 }
+
 /* Марсианский фон (старая бумага/глина) */
 .md-main {
     background-color: #f5e6c8;

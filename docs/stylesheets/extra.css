@@ -326,6 +326,6 @@ pre, code {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 /* Название сайта — всегда белое, чтобы читалось на тёмном фоне */
-.wy-side-nav-search a {
+.wy-side-nav-search .icon-home {
     color: #ffffff !important;
 }

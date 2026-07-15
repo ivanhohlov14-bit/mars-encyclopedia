@@ -6,7 +6,7 @@
   </tr>
   <tr>
     <td colspan="2" style="text-align: center; padding: 5px;">
-      <img src="/assets/images/acidalia-cover.jpg.png" alt="Обложка книги «Ацидалийское море»" style="max-width: 200px; height: auto; border-radius: 4px;">
+      <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/acidalia-cover.jpg.png" alt="Обложка книги «Ацидалийское море»" style="max-width: 200px; height: auto; border-radius: 4px;">
     </td>
   </tr>
   <tr><td colspan="2" style="text-align: center; font-size: 0.8rem; color: #555; padding-bottom: 8px;">Обложка первого издания</td></tr>

@@ -2,23 +2,33 @@
 
 <div id="globeViz" style="width: 100%; height: 650px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); background: #0a0a1a;"></div>
 
-<!-- Подключаем библиотеку globe.gl -->
-<script src="https://unpkg.com/globe.gl"></script>
+<!-- Подключаем библиотеку globe.gl с CDN, который точно работает -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.24.3/dist/globe.gl.min.js"></script>
 
 <script>
   (function() {
-    // ============================================================
-    // 1. НАХОДИМ КОНТЕЙНЕР
-    // ============================================================
+    // --- 1. Проверяем, загрузилась ли библиотека ---
+    if (typeof Globe === 'undefined') {
+      document.getElementById('globeViz').innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;font-family:sans-serif;flex-direction:column;text-align:center;padding:20px;">
+          <div style="font-size:48px;margin-bottom:16px;">⚠️</div>
+          <div style="font-size:18px;font-weight:bold;color:#ccc;">Библиотека не загрузилась</div>
+          <div style="font-size:14px;margin-top:8px;max-width:400px;">Проверьте подключение к интернету или временно отключите блокировщик рекламы.</div>
+        </div>
+      `;
+      console.error('❌ Globe.gl не загрузилась. Проверьте URL скрипта или сеть.');
+      return;
+    }
+
+    // --- 2. Находим контейнер ---
     const container = document.getElementById('globeViz');
     if (!container) {
       console.error('❌ Контейнер #globeViz не найден!');
       return;
     }
 
-    // ============================================================
-    // 2. ВАШИ ЛОКАЦИИ
-    // ============================================================
+    // --- 3. Ваши локации ---
     const locations = [
       { lat: 25.0,  lng: 10.0,  name: 'Окхасен',         url: '/geography/okhasen' },
       { lat: 45.0,  lng: -30.0, name: 'Ацидалийское море', url: '/geography/acidalia-sea' },
@@ -27,16 +37,16 @@
       { lat: 30.0,  lng: -60.0, name: 'Зефирийское море', url: '/geography/zephyria-sea' },
     ];
 
-    // ============================================================
-    // 3. ГАРАНТИРОВАННО РАБОТАЮЩАЯ ТЕКСТУРА МАРСА
-    //    Используем текстуру с Wikimedia Commons (100% доступна)
-    // ============================================================
+    // --- 4. Текстура Марса (гарантированно работает) ---
+    // Используем текстуру с Wikimedia Commons — она точно доступна и разрешает CORS
     const MARS_TEXTURE = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Mars_Valles_Marineris.jpeg/1280px-Mars_Valles_Marineris.jpeg';
 
-    // ============================================================
-    // 4. СОЗДАЁМ ГЛОБУС
-    // ============================================================
+    // --- 5. Создаём глобус ---
     try {
+      // Убедимся, что контейнер имеет размеры
+      const width = container.clientWidth || 800;
+      const height = container.clientHeight || 650;
+
       const myGlobe = Globe()
         .container(container)
         .globeImageUrl(MARS_TEXTURE)
@@ -71,29 +81,23 @@
         .enablePointerInteraction(true)
         .enableZoom(true)
         .enablePan(true)
-        .width(container.clientWidth || 800)
-        .height(container.clientHeight || 650);
+        .width(width)
+        .height(height);
 
-      // ============================================================
-      // 5. ЗАПУСКАЕМ
-      // ============================================================
+      // Запускаем глобус
       myGlobe();
 
-      console.log('✅ Интерактивный глобус Марса запущен!');
+      console.log('✅ Глобус Марса запущен!');
       console.log(`📍 Добавлено ${locations.length} маркеров.`);
 
-      // ============================================================
-      // 6. АВТОМАТИЧЕСКОЕ ВРАЩЕНИЕ
-      // ============================================================
+      // --- 6. Автоматическое вращение ---
       let rotationAngle = 0;
       const interval = setInterval(() => {
         rotationAngle += 0.002;
         myGlobe.rotation({ x: 0.2, y: rotationAngle, z: 0.1 });
       }, 30);
 
-      // ============================================================
-      // 7. ПЕРЕСЧЁТ РАЗМЕРОВ ПРИ ИЗМЕНЕНИИ ОКНА
-      // ============================================================
+      // --- 7. Адаптация при изменении размера ---
       const resizeObserver = new ResizeObserver(() => {
         const w = container.clientWidth;
         const h = container.clientHeight;
@@ -103,19 +107,22 @@
       });
       resizeObserver.observe(container);
 
-      // Сохраняем ссылки для очистки (на случай, если страница будет перезагружаться)
+      // Очистка при уходе со страницы (опционально)
       window.__globeCleanup = function() {
         clearInterval(interval);
         resizeObserver.disconnect();
       };
 
     } catch (error) {
-      console.error('❌ Ошибка при создании глобуса:', error);
+      console.error('❌ Ошибка:', error);
       container.innerHTML = `
         <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#888;font-family:sans-serif;flex-direction:column;text-align:center;padding:20px;">
-          <div style="font-size:48px;margin-bottom:16px;">🌍</div>
-          <div style="font-size:18px;font-weight:bold;color:#ccc;">Не удалось загрузить глобус</div>
-          <div style="font-size:14px;margin-top:8px;max-width:400px;">Проверьте консоль браузера (F12) для получения подробной информации об ошибке.</div>
+          <div style="font-size:48px;margin-bottom:16px;">🛠️</div>
+          <div style="font-size:18px;font-weight:bold;color:#ccc;">Ошибка при создании глобуса</div>
+          <div style="font-size:14px;margin-top:8px;max-width:400px;background:#1a1a2e;padding:10px;border-radius:8px;color:#ff6b6b;text-align:left;word-break:break-all;">
+            ${error.message}
+          </div>
+          <div style="font-size:14px;margin-top:12px;color:#888;">Проверьте консоль (F12) для деталей.</div>
         </div>
       `;
     }
@@ -128,6 +135,7 @@
     background: #0a0a1a;
     border: 1px solid #2a2a4a;
     position: relative;
+    min-height: 650px;
   }
   /* Стиль для затемнения фона страницы под глобусом */
   .md-content {

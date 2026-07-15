@@ -1,23 +1,19 @@
 # «Ацидалийское море»
 
-<table class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-collapse: collapse;">
-  <tr>
-    <th colspan="2" style="text-align: center; font-size: 1.2rem; background: #eaecf0; padding: 8px;">«Ацидалийское море»</th>
-  </tr>
-  <tr>
-    <td colspan="2" style="text-align: center; padding: 5px;">
-      <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/acidalia-cover.jpg.png" alt="Обложка книги «Ацидалийское море»" style="max-width: 200px; height: auto; border-radius: 4px;">
-    </td>
-  </tr>
-  <tr><td colspan="2" style="text-align: center; font-size: 0.8rem; color: #555; padding-bottom: 8px;">Обложка первого издания</td></tr>
-  <tr><td style="font-weight: bold;">Автор</td><td><a href="/people/mnemis">Mnemis</a></td></tr>
-  <tr><td style="font-weight: bold;">Жанр</td><td>Твёрдая научная фантастика, планетарная драма</td></tr>
-  <tr><td style="font-weight: bold;">Цикл</td><td>«Письмо из Красной пыли»</td></tr>
-  <tr><td style="font-weight: bold;">Книга</td><td>1</td></tr>
-  <tr><td style="font-weight: bold;">Год издания</td><td>2026</td></tr>
-  <tr><td style="font-weight: bold;">Страниц</td><td>50 (эл. книга)</td></tr>
-  <tr><td style="font-weight: bold;">Издательство</td><td>Литрес (самиздат)</td></tr>
-</table>
+<div class="infobox" style="float: right; width: 250px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; line-height: 1.5; border-collapse: collapse;">
+  <div style="text-align: center; font-size: 1.2rem; font-weight: bold; background: #eaecf0; padding: 8px; margin: -10px -10px 10px -10px;">«Ацидалийское море»</div>
+  <div style="text-align: center; margin-bottom: 8px;">
+    <img src="/assets/images/acidalia-cover.jpg" alt="Обложка книги «Ацидалийское море»" style="max-width: 200px; height: auto; border-radius: 4px;">
+    <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Обложка первого издания</div>
+  </div>
+  <p><b>Автор:</b> <a href="/people/mnemis">Mnemis</a></p>
+  <p><b>Жанр:</b> Твёрдая научная фантастика, планетарная драма</p>
+  <p><b>Цикл:</b> «Письмо из Красной пыли»</p>
+  <p><b>Книга:</b> 1</p>
+  <p><b>Год издания:</b> 2026</p>
+  <p><b>Страниц:</b> 50 (эл. книга)</p>
+  <p><b>Издательство:</b> Литрес (самиздат)</p>
+</div>
 
 **«Ацидалийское море»** (марс. *Ākha Thal* — «Вода-море») — первая книга цикла «Письмо из Красной пыли», написанная **Mnemis** в 2026 году. Роман открывает эпопею, знакомя читателя с миром Марса в Эпоху Умирания — время, когда планета стремительно теряет тепло, атмосферу и воду. Книга закладывает основы вселенной: здесь впервые появляются ключевые персонажи — [Хевсур](hevsur.md), [Талин](talin.md), [Йарра](yarra.md), — описывается жизнь в [Окхасене](okhasen.md), предчувствие катастрофы и начало подготовки к межзвёздному исходу.
 
@@ -113,8 +109,6 @@
 - [Ацидалийское море (география)](acidalia-sea.md)
 
 ## Примечания
-
-<references />
 
 1. Книга «Ацидалийское море» (Mnemis, 2026) — первая в цикле «Письмо из Красной пыли».
 2. Научные данные о Марсе, использованные в книге, основаны на миссиях NASA (Mars Global Surveyor, Mars Odyssey, Mars Express, MRO) и ESA (Mars Express).

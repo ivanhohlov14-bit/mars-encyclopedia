@@ -1,57 +1,59 @@
-// Функция для установки темы
-function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-}
+(function() {
+    const storageKey = 'mars-theme';
 
-// Функция для переключения темы
-function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-}
-
-// При загрузке страницы восстанавливаем сохранённую тему
-document.addEventListener('DOMContentLoaded', function() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        setTheme(savedTheme);
-    } else {
-        // Если тема не сохранена, можно установить светлую по умолчанию
-        setTheme('light');
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem(storageKey, theme);
     }
 
-    // Находим кнопку переключения (если она есть) и вешаем событие
-    // В теме readthedocs переключатель обычно имеет класс .wy-toggle-theme или что-то подобное
-    // Если кнопки нет, мы её создадим позже.
-    const themeToggle = document.querySelector('.wy-toggle-theme'); // или другой селектор
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    } else {
-        // Если кнопки нет, создадим свою в удобном месте (например, в шапке)
-        // Этот код можно адаптировать, но для начала проверим, есть ли кнопка
-        console.log('Кнопка переключения темы не найдена, создадим новую.');
-        createThemeToggle();
+    function getStoredTheme() {
+        return localStorage.getItem(storageKey) || 'light';
     }
-});
 
-// Создаём кнопку переключения, если её нет
-function createThemeToggle() {
-    const nav = document.querySelector('.wy-nav-side');
-    if (!nav) return;
-    
-    const toggleBtn = document.createElement('button');
-    toggleBtn.textContent = 'Переключить тему';
-    toggleBtn.style.cssText = `
-        display: block;
-        margin: 10px auto;
-        padding: 8px 16px;
-        background: #2a2a4a;
-        color: #e0e0e0;
-        border: 1px solid #3a3a5a;
-        border-radius: 4px;
-        cursor: pointer;
-    `;
-    toggleBtn.addEventListener('click', toggleTheme);
-    nav.appendChild(toggleBtn);
-}
+    // Устанавливаем тему сразу (до DOMContentLoaded), чтобы не было мерцания
+    const initialTheme = getStoredTheme();
+    document.documentElement.setAttribute('data-theme', initialTheme);
+
+    // Ждём загрузки DOM, чтобы привязать события
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ищем кнопку переключения темы (в теме readthedocs она может быть с классом .wy-toggle-theme)
+        let toggleBtn = document.querySelector('.wy-toggle-theme') || document.querySelector('#theme-toggle');
+
+        if (toggleBtn) {
+            // Переопределяем обработчик клика
+            toggleBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = (current === 'dark') ? 'light' : 'dark';
+                setTheme(next);
+            });
+        } else {
+            // Если кнопки нет — создаём свою
+            createCustomToggle();
+        }
+    });
+
+    function createCustomToggle() {
+        const nav = document.querySelector('.wy-nav-side');
+        if (!nav) return;
+
+        const btn = document.createElement('button');
+        btn.textContent = 'Сменить тему';
+        btn.style.cssText = `
+            display: block;
+            margin: 10px auto;
+            padding: 8px 16px;
+            background: #2a2a4a;
+            color: #e0e0e0;
+            border: 1px solid #3a3a5a;
+            border-radius: 4px;
+            cursor: pointer;
+        `;
+        btn.addEventListener('click', function() {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = (current === 'dark') ? 'light' : 'dark';
+            setTheme(next);
+        });
+        nav.appendChild(btn);
+    }
+})();

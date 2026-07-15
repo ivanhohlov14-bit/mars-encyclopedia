@@ -1,7 +1,8 @@
 /* ==========================================
-   ВИКИ-СТИЛЬ + БАННЕР + ЛОГОТИП
+   ФИНАЛЬНЫЙ СТИЛЬ ДЛЯ МАРСИАНСКОЙ ЭНЦИКЛОПЕДИИ
    ========================================== */
 
+/* --- БАЗОВЫЕ НАСТРОЙКИ --- */
 body {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-size: 17px;
@@ -19,7 +20,7 @@ body {
   border-right: 1px solid #eaecf0;
 }
 
-/* ===== БОКОВАЯ ПАНЕЛЬ — БЕЛЫЙ ФОН ===== */
+/* --- БОКОВАЯ ПАНЕЛЬ (светлая по умолчанию) --- */
 .wy-nav-side {
   background: #ffffff !important;
 }
@@ -36,7 +37,7 @@ body {
   border: 1px solid #eaecf0;
 }
 
-/* ===== ЛОГОТИП ===== */
+/* --- ЛОГОТИП --- */
 .wy-side-nav-search .icon-home {
   position: relative;
   z-index: 10;
@@ -51,6 +52,7 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
+/* Скрываем стандартный текст "Home" (если есть) */
 .wy-side-nav-search a.icon-home {
   font-size: 0 !important;
 }
@@ -58,7 +60,18 @@ body {
   display: none !important;
 }
 
-/* Меню в боковой панели — светлая тема */
+/* --- НАЗВАНИЕ САЙТА — ВСЕГДА БЕЛОЕ (перебивает всё) --- */
+.wy-side-nav-search a,
+.wy-side-nav-search a:link,
+.wy-side-nav-search a:visited,
+.wy-side-nav-search a:hover,
+.wy-side-nav-search a:active,
+nav.wy-nav-side .wy-side-nav-search a,
+nav.wy-nav-side .wy-side-nav-search a.icon-home {
+    color: #ffffff !important;
+}
+
+/* --- МЕНЮ В БОКОВОЙ ПАНЕЛИ --- */
 .wy-menu-vertical a {
   color: #202122 !important;
   background: #ffffff !important;
@@ -68,15 +81,14 @@ body {
   color: #0645ad !important;
 }
 
-/* ===== ЗАГОЛОВКИ ===== */
+/* --- ЗАГОЛОВКИ (без переопределения цвета, чтобы инлайн-стили работали) --- */
 h1 {
   font-weight: normal;
   font-size: 2.6rem;
   border-bottom: 1px solid #a2a9b1;
   padding-bottom: 0.3rem;
-  color: #000000;
+  /* цвет не задаём — будет браться из инлайн-стиля или из темы */
 }
-
 h2 {
   font-weight: normal;
   font-size: 2rem;
@@ -85,8 +97,11 @@ h2 {
   margin-top: 2rem;
   color: #000000;
 }
+h3, h4, h5, h6 {
+  color: #000000;
+}
 
-/* ===== ССЫЛКИ ===== */
+/* --- ССЫЛКИ --- */
 a {
   color: #0645ad !important;
   text-decoration: none;
@@ -96,7 +111,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ===== ТАБЛИЦЫ ===== */
+/* --- ТАБЛИЦЫ --- */
 table {
   border-collapse: collapse;
   margin: 1.5rem 0;
@@ -117,7 +132,7 @@ table tr:nth-child(even) {
   background: #f8f9fa;
 }
 
-/* ===== ИНФОБОКСЫ ===== */
+/* --- ИНФОБОКСЫ --- */
 .infobox {
   float: right;
   clear: right;
@@ -156,39 +171,9 @@ blockquote {
 .footer { display: none !important; }
 
 /* ==========================================
-   ТЁМНАЯ И СВЕТЛАЯ ТЕМА (переключается через data-theme)
+   ТЁМНАЯ ТЕМА (при data-theme="dark")
    ========================================== */
 
-/* --- СВЕТЛАЯ ТЕМА (по умолчанию) --- */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #202122;
-  --border-color: #eaecf0;
-  --link-color: #0645ad;
-  --block-bg: #f8f9fa;
-  --sidebar-bg: #ffffff;
-  --menu-text: #202122;
-  --menu-hover-bg: #eaecf0;
-}
-
-/* ==========================================
-   ТЁМНАЯ И СВЕТЛАЯ ТЕМА (переключается через data-theme)
-   ========================================== */
-
-/* --- СВЕТЛАЯ ТЕМА (по умолчанию) --- */
-:root {
-  --bg-color: #ffffff;
-  --text-color: #202122;
-  --border-color: #eaecf0;
-  --link-color: #0645ad;
-  --block-bg: #f8f9fa;
-  --sidebar-bg: #ffffff;
-  --menu-text: #202122;
-  --menu-hover-bg: #eaecf0;
-  --header-color: #202122; /* цвет заголовка сайта */
-}
-
-/* --- ТЁМНАЯ ТЕМА (при data-theme="dark") --- */
 [data-theme="dark"] {
   --bg-color: #1a1a2e;
   --text-color: #e0e0e0;
@@ -198,134 +183,90 @@ blockquote {
   --sidebar-bg: #0d0d1a;
   --menu-text: #e0e0e0;
   --menu-hover-bg: #2a2a4a;
-  --header-color: #e0e0e0;
 }
 
-/* Применяем переменные */
-body,
-.wy-nav-content,
-.wy-body-for-nav {
+/* Применяем тёмную тему ко всем элементам */
+[data-theme="dark"] body,
+[data-theme="dark"] .wy-nav-content,
+[data-theme="dark"] .wy-body-for-nav {
   background: var(--bg-color) !important;
   color: var(--text-color) !important;
 }
 
-.wy-nav-side,
-.wy-side-nav-search {
+[data-theme="dark"] .wy-nav-side,
+[data-theme="dark"] .wy-side-nav-search {
   background: var(--sidebar-bg) !important;
   border-color: var(--border-color) !important;
 }
 
-.wy-side-nav-search .wy-dropdown,
-.wy-side-nav-search input[type="text"] {
+[data-theme="dark"] .wy-side-nav-search .wy-dropdown,
+[data-theme="dark"] .wy-side-nav-search input[type="text"] {
   background: var(--block-bg) !important;
   color: var(--text-color) !important;
   border-color: var(--border-color) !important;
 }
 
-/* Заголовок сайта в боковой панели */
-.wy-side-nav-search a {
-  color: var(--header-color) !important;
-}
-
-.wy-menu-vertical a {
+[data-theme="dark"] .wy-menu-vertical a {
   color: var(--menu-text) !important;
   background: var(--sidebar-bg) !important;
 }
-.wy-menu-vertical a:hover {
+[data-theme="dark"] .wy-menu-vertical a:hover {
   background: var(--menu-hover-bg) !important;
   color: var(--link-color) !important;
 }
 
-a {
+[data-theme="dark"] a {
   color: var(--link-color) !important;
 }
-a:hover {
+[data-theme="dark"] a:hover {
   color: #9fcbff !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-color) !important;
+/* Заголовки в тёмной теме — но без !important, чтобы инлайн-стили не перебивались */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text-color);
 }
 
-.infobox,
-blockquote,
-#quoteOfTheDay,
-.admonition {
+[data-theme="dark"] .infobox,
+[data-theme="dark"] blockquote,
+[data-theme="dark"] #quoteOfTheDay,
+[data-theme="dark"] .admonition {
   background: var(--block-bg) !important;
   border-color: var(--border-color) !important;
   color: var(--text-color) !important;
 }
 
-table {
+[data-theme="dark"] table {
   background: var(--bg-color) !important;
   border-color: var(--border-color) !important;
   color: var(--text-color) !important;
 }
-table th {
+[data-theme="dark"] table th {
   background: var(--block-bg) !important;
   color: var(--text-color) !important;
 }
-table td {
+[data-theme="dark"] table td {
   background: var(--bg-color) !important;
   color: var(--text-color) !important;
 }
-table tr:nth-child(even) td {
+[data-theme="dark"] table tr:nth-child(even) td {
   background: var(--block-bg) !important;
 }
 
-input,
-textarea {
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
   background: var(--block-bg) !important;
   color: var(--text-color) !important;
   border-color: var(--border-color) !important;
 }
 
-pre, code {
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
   background: var(--block-bg) !important;
   color: var(--text-color) !important;
-}
-
-/* Марсианский фон (старая бумага/глина) */
-.md-main {
-    background-color: #f5e6c8;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4c3a3' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-/* Ссылки в стиле «обожжённой глины» */
-.md-typeset a {
-    color: #a85a32;
-    text-decoration: none;
-    border-bottom: 2px solid #d4a373;
-    transition: all 0.3s ease;
-}
-.md-typeset a:hover {
-    color: #6b3a1f;
-    border-bottom-color: #a85a32;
-    background-color: rgba(168, 90, 50, 0.1);
-}
-
-/* Заголовки как на глиняных табличках */
-.md-typeset h1 {
-    font-family: 'Georgia', serif;
-    font-weight: 700;
-    color: #5c3a1e;
-    border-bottom: 3px solid #d4a373;
-    padding-bottom: 10px;
-}
-.md-typeset h2 {
-    font-family: 'Georgia', serif;
-    color: #6b3a1f;
-}
-
-/* Карточки с эффектом «стекла» (для заметок) */
-.md-typeset .admonition {
-    background: rgba(255, 248, 235, 0.85);
-    backdrop-filter: blur(5px);
-    border-left: 4px solid #a85a32;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-nav.wy-nav-side .wy-side-nav-search a.icon-home {
-    color: #ffffff !important;
 }

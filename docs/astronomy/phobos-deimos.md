@@ -49,8 +49,6 @@
 
   <h4 style="margin: 10px 0 5px 0; font-size: 1rem; border-bottom: 1px solid #a2a9b1; padding-bottom: 3px;">Атмосфера</h4>
   <p><b>Отсутствует</b></p>
-
-  <p style="margin-top: 10px;"><b>Связанные понятия:</b> <a href="https://mars-wiki.ru/astronomy/deimos/">Деймос</a>, <a href="https://mars-wiki.ru/mythology/prorochestvo-kharana/">Пророчество Харана</a>, <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a>, <a href="https://mars-wiki.ru/people/talin/">Талин</a>, <a href="https://mars-wiki.ru/people/hevsur/">Хевсур</a></p>
 </div>
 
 **Фобос** (от др.-греч. φόβος — «страх») — один из двух естественных спутников Марса, крупнейший и ближайший к планете. Открыт американским астрономом Асафом Холлом 18 августа 1877 года[^8]. Назван в честь Фобоса — сына бога войны Ареса, олицетворявшего страх[^9].

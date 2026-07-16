@@ -5,7 +5,7 @@
   <hr>
 
 <div style="text-align: center; margin: 10px 0;">
-  <img src="/assets/images/mars_starmap.png" alt="Звёздное небо Марса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars_starmap.png" alt="Звёздное небо Марса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Звёздное небо Марса. Видны созвездия Kho-lān, Tren dzen nur и многие другие.</div>
 </div>
   

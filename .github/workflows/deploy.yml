@@ -10,7 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-# === ОТМЕНА ЗАВИСШИХ ДЕПЛОЕВ ===
 concurrency:
   group: "pages"
   cancel-in-progress: true
@@ -27,27 +26,22 @@ jobs:
         with:
           python-version: '3.10'
 
-     # === КЕШИРОВАНИЕ ЗАВИСИМОСТЕЙ (ускоряет сборку) ===
-# - name: Cache pip packages
-#   uses: actions/cache@v3
-#   with:
-#     path: ~/.cache/pip
-#     key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-#     restore-keys: |
-#       ${{ runner.os }}-pip-
-
+      # Если requirements.txt есть — установим зависимости
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install -r requirements.txt
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install mkdocs; fi
 
       - name: Build site
         run: mkdocs build --verbose
 
+      # Загружаем артефакт с уникальным именем
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: site-artifact
           path: site/
+          retention-days: 1   # артефакт хранится недолго, чтобы не засорять
 
   deploy:
     environment:
@@ -59,3 +53,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact-name: site-artifact   # указываем имя артефакта, который мы загрузили

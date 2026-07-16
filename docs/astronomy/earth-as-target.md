@@ -6,19 +6,17 @@
   
  <div style="text-align: center;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-ships-arriving-earth.png" alt="Марсианские корабли прибывают на Землю" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.9rem; color: #555; margin-top: 4px;">Марсианские корабли-ковчеги на подходе к Земле. Художественная визуализация.</div>
+  <div style="font-size: 0.9rem; color: #555; margin-top: 4px;">Марсианские корабли-ковчеги в атмосфере Земли. Художественная визуализация.</div>
 </div>
 
-  <p><b>Марсианское название:</b> Dzen Thal («Звезда-цель»), Mālā Ākha («Малая голубая звезда»)</p>
+  <p><b>Марсианское название:</b> Dzen Thali («Звезда-цель»), Dzen Hōr Xalkōln («Малая голубая звезда»)</p>
   <p><b>Расстояние от Марса:</b> 55–400 млн км (в зависимости от орбиты)</p>
   <p><b>Видимость с Марса:</b> Ярче любой звезды, хорошо различима невооружённым глазом</p>
-  <p><b>Первое упоминание в табличках:</b> ок. 1500 г. Э.О. (<a href="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/kharan.md">Харан</a>)</p>
+  <p><b>Первое упоминание в табличках:</b> ок. 1500 г. Э.О. (<a href="https://mars-wiki.ru/people/kharan/">Харан</a>)</p>
   <p><b>Первое телескопическое наблюдение:</b> 2650 г. Э.О. (Астрономическая башня Роген-Арии)</p>
-  <p><b>Ключевые фигуры:</b> <a href="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/talin.md">Талин</a>, <a href="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/kharan.md">Харан</a>, <a href="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/hevsur.md">Хевсур</a></p>
-  <p><b>Связанные понятия:</b> <a href="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/terms/lan-sur.md">Lān sur</a>, <a href="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/terms/tablichki.md">Глиняные таблички</a>, <a href="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/books/korabli-kovchegi.md">Корабли-ковчеги</a>, <a href="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/mythology/prorochestvo-kharana.md">Пророчество Харана</a></p>
-</div>
+  <p><b>Ключевые фигуры:</b> <a href="https://mars-wiki.ru/people/talin/">Талин</a>, <a href="https://mars-wiki.ru/people/kharan/">Харан</a>, <a href="https://mars-wiki.ru/people/hevsur/">Хевсур</a></p>
 
-**Колонизация Земли** (марс. *Dzen Thal* — «Звезда-цель», *Mālā Ākha* — «Малая голубая звезда») — астрономический и культурный феномен марсианской цивилизации, связанный с наблюдением за планетой Земля и её восприятием как потенциального убежища в Эпоху Умирания. Древние марсиане знали о Земле и называли её «Малой голубой звездой». Координаты Земли, вырезанные на [глиняных табличках](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/terms/tablichki.md) в подземном храме долины [Ксанфа](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/geography/ksanf-river.md), стали основой для межзвёздного перелёта, осуществлённого [Талином](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/talin.md) и его командой в 2740 году.
+**Колонизация Земли** (марс. *Dzen Thali* — «Звезда-цель», *Dzenān Hōr Xalkōln* — «Малая серая звезда») — астрономический и культурный феномен марсианской цивилизации, связанный с наблюдением за планетой Земля и её восприятием как потенциального убежища в Эпоху Умирания. Древние марсиане знали о Земле и называли её «Малой серой звездой». Координаты Земли, вырезанные на [глиняных табличках](https://mars-wiki.ru/terms/tablichki/) в подземном храме долины Аргира, стали основой для межзвёздного перелёта, осуществлённого [Талином](https://mars-wiki.ru/people/talin/) и его командой в 2740 году.
 
 ## Астрономическая видимость Земли с Марса
 
@@ -39,13 +37,13 @@
 
 ### Древнейшие упоминания
 
-Первые письменные свидетельства о наблюдении Земли марсианами относятся к табличкам [Харана](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/kharan.md), датируемым примерно 1500 годом Э.О. В них Земля описывается как *«малая голубая звезда, что движется среди неподвижных»*. Однако, как полагают историки, устные предания о Земле существовали задолго до этого — возможно, ещё в Эпоху Основания[^3].
+Первые письменные свидетельства о наблюдении Земли марсианами относятся к табличкам [Харана](https://mars-wiki.ru/people/kharan/), датируемым примерно 1500 годом Э.О. В них Земля описывается как *«малая голубая звезда, что движется среди неподвижных»*. Однако, как полагают историки, устные предания о Земле существовали задолго до этого — возможно, ещё в Эпоху Основания[^3].
 
-В марсианской мифологии Земля часто ассоциировалась с богиней [Араксис](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/mythology/araksis.md) и считалась «вторым домом воды» — местом, где океаны никогда не замерзают[^4].
+В марсианской мифологии Земля часто ассоциировалась с богиней [Араксис](https://mars-wiki.ru/mythology/araksis/) и считалась «вторым домом воды» — местом, где океаны никогда не замерзают[^4].
 
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
-Настоящий прорыв в наблюдениях Земли произошёл в середине Эпохи Расцвета. Строительство Астрономической башни в [Роген-Арии](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/geography/rogen-aria.md) (около 2550 г. Э.О.) позволило марсианским астрономам впервые провести систематические наблюдения Земли[^5].
+Настоящий прорыв в наблюдениях Земли произошёл в середине Эпохи Расцвета. Строительство Астрономической башни в [Роген-Арии](https://mars-wiki.ru/geography/rogen-aria/) (около 2550 г. Э.О.) позволило марсианским астрономам впервые провести систематические наблюдения Земли[^5].
 
 Используя телескопы, сопоставимые по мощности с земными инструментами XVII века, марсианские учёные смогли:
 
@@ -54,13 +52,13 @@
 - Составить первые карты земных континентов.
 - Вычислить расстояние до Земли с точностью до нескольких процентов.
 
-Эти данные были записаны на глиняных табличках и хранились в архивах Академии [Окхасена](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/geography/okhasen.md) и Королевской библиотеки Роген-Арии[^6].
+Эти данные были записаны на глиняных табличках и хранились в архивах Академии [Окхасена](https://mars-wiki.ru/geography/okhasen/) и Королевской библиотеки Роген-Арии[^6].
 
 ### Эпоха Умирания (2680–2745 гг. Э.О.)
 
-В Эпоху Умирания, когда климат Марса стал стремительно ухудшаться, интерес к Земле приобрёл практическое значение. В 2714 году [Талин](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/talin.md), астроном Академии Окхасена, впервые увидел Землю в телескоп. Его расчёты подтвердили, что Земля имеет пригодную для дыхания атмосферу (хотя и требующую терраформирования), воду и гравитацию, приемлемую для марсиан (0,38g на Марсе против 1g на Земле)[^7].
+В Эпоху Умирания, когда климат Марса стал стремительно ухудшаться, интерес к Земле приобрёл практическое значение. В 2714 году [Талин](https://mars-wiki.ru/people/talin/), астроном Академии Окхасена, впервые увидел Землю в телескоп. Его расчёты подтвердили, что Земля имеет пригодную для дыхания атмосферу (хотя и требующую терраформирования), воду и гравитацию, приемлемую для марсиан (0,38g на Марсе против 1g на Земле)[^7].
 
-В 2734 году [Хевсур](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/hevsur.md), расшифровывая таблички из подземного храма, обнаружил точные координаты Земли, записанные [Хараном](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/kharan.md) за тысячу лет до этого. Эти координаты стали основой для расчёта траектории полёта кораблей-ковчегов[^8].
+В 2734 году [Хевсур](https://mars-wiki.ru/people/hevsur/), расшифровывая таблички из подземного храма, обнаружил точные координаты Земли, записанные [Хараном](https://mars-wiki.ru/people/kharan/) за тысячу лет до этого. Эти координаты стали основой для расчёта траектории полёта кораблей-ковчегов[^8].
 
 ---
 
@@ -68,29 +66,29 @@
 
 ### Мифология
 
-В марсианской мифологии Земля занимала особое место. Она считалась «колыбелью, которая ещё не родила» — местом, где вода никогда не замерзает, а богиня [Араксис](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/mythology/araksis.md) хранит свои самые чистые источники[^9].
+В марсианской мифологии Земля занимала особое место. Она считалась «колыбелью, которая ещё не родила» — местом, где вода никогда не замерзает, а богиня [Араксис](https://mars-wiki.ru/mythology/araksis/) хранит свои самые чистые источники[^9].
 
-В «Песнях [Совии](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/soviya.md)» Земля упоминается как *«Dzen Thal»* — «Звезда-цель», куда однажды отправятся души умерших марсиан, чтобы возродиться в новом теле. Эта идея перекликается с реальным маршрутом колонистов, которые действительно отправились на Землю, чтобы начать новую жизнь[^10].
+В «Песнях [Совии](https://mars-wiki.ru/people/soviya/)» Земля упоминается как *«Dzen Thal»* — «Звезда-цель», куда однажды отправятся души умерших марсиан, чтобы возродиться в новом теле. Эта идея перекликается с реальным маршрутом колонистов, которые действительно отправились на Землю, чтобы начать новую жизнь[^10].
 
 ### Пророчество Харана
 
-В [пророчестве Харана](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/mythology/prorochestvo-kharana.md), записанном около 1 года Э.О., Земля фигурирует как конечная цель спасения:
+В [пророчестве Харана](https://mars-wiki.ru/mythology/prorochestvo-kharana/), записанном около 1 года Э.О., Земля фигурирует как конечная цель спасения:
 
 > *«Из пепла поднимется голос, и он скажет: „Ищите убежища за пределами своего мира“. И те, кто услышат, построят корабли и увидят голубую звезду.»*
 
-Это пророчество, как показал [Хевсур](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/hevsur.md), было не столько мистическим предсказанием, сколько точным астрономическим расчётом, зашифрованным в поэтической форме[^11].
+Это пророчество, как показал [Хевсур](https://mars-wiki.ru/people/hevsur/), было не столько мистическим предсказанием, сколько точным астрономическим расчётом, зашифрованным в поэтической форме[^11].
 
 ---
 
 ## Координаты Земли в подземном храме
 
-Центральным артефактом, связанным с Землёй как целью, являются глиняные таблички, найденные [Хевсуром](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/hevsur.md) в подземном храме долины Ксанфа в 2734 году. На них были вырезаны[^12]:
+Центральным артефактом, связанным с Землёй как целью, являются глиняные таблички, найденные [Хевсуром](https://mars-wiki.ru/people/hevsur/) в подземном храме долины Ксанфа в 2734 году. На них были вырезаны[^12]:
 
 - **Экваториальные координаты Земли** (прямое восхождение и склонение) на момент противостояния.
 - **Орбитальные параметры** (эксцентриситет, наклонение, большая полуось).
 - **Расчётное время полёта** (около 500 марсианских суток при оптимальной траектории).
 
-Эти данные, как позже подтвердил [Талин](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/talin.md), совпадали с его собственными вычислениями с точностью до долей процента. Это свидетельствует о высоком уровне марсианской астрономии, существовавшем задолго до Эпохи Умирания[^13].
+Эти данные, как позже подтвердил [Талин](https://mars-wiki.ru/people/talin/), совпадали с его собственными вычислениями с точностью до долей процента. Это свидетельствует о высоком уровне марсианской астрономии, существовавшем задолго до Эпохи Умирания[^13].
 
 ---
 
@@ -108,18 +106,18 @@
 
 ## Связанные статьи
 
-- [Талин](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/talin.md)
-- [Хевсур](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/hevsur.md)
-- [Харан](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/kharan.md)
-- [Пророчество Харана](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/mythology/prorochestvo-kharana.md)
-- [Глиняные таблички](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/terms/tablichki.md)
-- [Lān sur](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/terms/lan-sur.md)
-- [Корабли-ковчеги](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/books/korabli-kovchegi.md)
-- [Окхасен](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/geography/okhasen.md)
-- [Роген-Ария](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/geography/rogen-aria.md)
-- [Астрономическая башня](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/geography/astronomicheskaya-bashnya.md)
-- [Араксис](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/mythology/araksis.md)
-- [Совия](https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/people/soviya.md)
+- [Талин](https://mars-wiki.ru/people/talin/)
+- [Хевсур](https://mars-wiki.ru/people/hevsur/)
+- [Харан](https://mars-wiki.ru/people/kharan/)
+- [Пророчество Харана](https://mars-wiki.ru/mythology/prorochestvo-kharana/)
+- [Глиняные таблички](https://mars-wiki.ru/terms/tablichki/)
+- [Lān sur](https://mars-wiki.ru/terms/lan-sur/)
+- [Корабли-ковчеги](https://mars-wiki.ru/books/korabli-kovchegi/)
+- [Окхасен](https://mars-wiki.ru/geography/okhasen/)
+- [Роген-Ария](https://mars-wiki.ru/geography/rogen-aria/)
+- [Астрономическая башня](https://mars-wiki.ru/geography/astronomicheskaya-bashnya/)
+- [Араксис](https://mars-wiki.ru/mythology/araksis/)
+- [Совия](https://mars-wiki.ru/people/soviya/)
 
 ---
 

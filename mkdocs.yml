@@ -7,7 +7,11 @@ theme:
   language: ru
   logo: assets/logo.png
   toc: true
-
+  
+extra_head:
+  - <link rel="icon" href="/assets/favicon.png" type="image/png">
+  - <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
+  
 plugins:
   - search
 
@@ -23,9 +27,6 @@ extra_javascript:
 
 extra_css:
   - stylesheets/extra.css
-  
-extra_head:
-  - <link rel="icon" href="/assets/favicon.png" type="image/png">
   
 nav:
   - Заглавная страница: index.md

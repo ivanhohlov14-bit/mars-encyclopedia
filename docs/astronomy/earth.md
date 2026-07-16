@@ -4,8 +4,8 @@
   <h3 style="margin: 0; text-align: center;">Земля</h3>
   <hr>
   
-  <div style="text-align: center; margin: 20px 0;">
-  <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/earth-3.8-billion-years-ago.jpg" alt="Земля 3,8 млрд лет назад" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+ <div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/earth-3.8-billion-years-ago.jpg" alt="Земля 3,8 млрд лет назад" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <div style="font-size: 0.9rem; color: #555; margin-top: 6px;">Земля 3,8 миллиарда лет назад. Окутанная оранжево-серой метановой атмосферой, планета выглядит как «Бледно-оранжевая точка».</div>
 </div>
 
@@ -251,7 +251,7 @@
 ## Поверхность
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/earth-height-map-3.8-billion.png" alt="Топографическая карта Земли 3,8 млрд лет назад" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/earth-height-map-3.8-billion.png" alt="Топографическая карта Земли 3,8 млрд лет назад" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <div style="font-size: 0.9rem; color: #555; margin-top: 6px;">Топографическая карта Земли 3,8 млрд лет назад. Океаны (71%) и вулканические острова (29%).</div>
 </div>
 

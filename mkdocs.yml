@@ -74,7 +74,7 @@ nav:
       - Астрономия:
           - Звёздное небо: astronomy/mars-sky.md
           - Спутники:
-              - Фобос и Деймос: astronomy/phobos-deimos.md
+              - Фобос: astronomy/phobos-deimos.md
           - Цели:
               - Колонизация Земли: astronomy/earth-as-target.md
               - Земля: astronomy/earth.md

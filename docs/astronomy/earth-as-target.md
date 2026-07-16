@@ -4,8 +4,8 @@
   <h3 style="margin: 0; text-align: center;">Земля как цель</h3>
   <hr>
   
-  <div style="text-align: center;">
-  <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/mars-ships-arriving-earth.png" alt="Марсианские корабли прибывают на Землю" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+ <div style="text-align: center;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-ships-arriving-earth.png" alt="Марсианские корабли прибывают на Землю" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.9rem; color: #555; margin-top: 4px;">Марсианские корабли-ковчеги на подходе к Земле. Художественная визуализация.</div>
 </div>
 

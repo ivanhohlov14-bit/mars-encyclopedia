@@ -5,6 +5,12 @@
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
   <h3 style="margin: 0; text-align: center;">Земля как цель</h3>
   <hr>
+  
+  <div style="text-align: center;">
+  <img src="/assets/images/mars-ships-arriving-earth.jpg" alt="Марсианские корабли прибывают на Землю" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.9rem; color: #555; margin-top: 4px;">Марсианские корабли-ковчеги на подходе к Земле. Художественная визуализация.</div>
+</div>
+
   <p><b>Марсианское название:</b> Dzen Thal («Звезда-цель»), Mālā Ākha («Малая голубая звезда»)</p>
   <p><b>Расстояние от Марса:</b> 55–400 млн км (в зависимости от орбиты)</p>
   <p><b>Видимость с Марса:</b> Ярче любой звезды, хорошо различима невооружённым глазом</p>

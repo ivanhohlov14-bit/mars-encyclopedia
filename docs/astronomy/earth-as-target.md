@@ -3,18 +3,17 @@
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
   <h3 style="margin: 0; text-align: center;">Земля как цель</h3>
   <hr>
-  
- <div style="text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-ships-arriving-earth.png" alt="Марсианские корабли прибывают на Землю" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.9rem; color: #555; margin-top: 4px;">Марсианские корабли-ковчеги в атмосфере Земли. Художественная визуализация.</div>
-</div>
-
+  <div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-ships-arriving-earth.png" alt="Марсианские корабли прибывают на Землю" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.9rem; color: #555; margin-top: 4px;">Марсианские корабли-ковчеги в атмосфере Земли. Художественная визуализация.</div>
+  </div>
   <p><b>Марсианское название:</b> Dzen Thali («Звезда-цель»), Dzen Hōr Xalkōln («Малая голубая звезда»)</p>
   <p><b>Расстояние от Марса:</b> 55–400 млн км (в зависимости от орбиты)</p>
   <p><b>Видимость с Марса:</b> Ярче любой звезды, хорошо различима невооружённым глазом</p>
   <p><b>Первое упоминание в табличках:</b> ок. 1500 г. Э.О. (<a href="https://mars-wiki.ru/people/kharan/">Харан</a>)</p>
   <p><b>Первое телескопическое наблюдение:</b> 2650 г. Э.О. (Астрономическая башня Роген-Арии)</p>
   <p><b>Ключевые фигуры:</b> <a href="https://mars-wiki.ru/people/talin/">Талин</a>, <a href="https://mars-wiki.ru/people/kharan/">Харан</a>, <a href="https://mars-wiki.ru/people/hevsur/">Хевсур</a></p>
+</div>
 
 **Колонизация Земли** (марс. *Dzen Thali* — «Звезда-цель», *Dzenān Hōr Xalkōln* — «Малая серая звезда») — астрономический и культурный феномен марсианской цивилизации, связанный с наблюдением за планетой Земля и её восприятием как потенциального убежища в Эпоху Умирания. Древние марсиане знали о Земле и называли её «Малой серой звездой». Координаты Земли, вырезанные на [глиняных табличках](https://mars-wiki.ru/terms/tablichki/) в подземном храме долины Аргира, стали основой для межзвёздного перелёта, осуществлённого [Талином](https://mars-wiki.ru/people/talin/) и его командой в 2740 году.
 

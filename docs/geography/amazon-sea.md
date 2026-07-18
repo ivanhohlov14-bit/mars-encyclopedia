@@ -4,10 +4,10 @@
   <h3 style="margin: 0; text-align: center;">Амазонское море</h3>
   <hr>
 
-  <div style="text-align: center; margin-bottom: 8px;">
-    <div style="font-size: 0.7rem; color: #999; padding: 10px; border: 1px dashed #ccc; border-radius: 4px;">Изображение карты будет добавлено позже</div>
-    <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Расположение Амазонского моря (отмечено красным)</div>
-  </div>
+ <div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/amazon-sea-map.png" alt="Карта Амазонского моря" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <div style="font-size: 0.9rem; color: #555; margin-top: 6px;">Амазонское море. Карта, составленная по данным Академии Окхасена (2650 г. Э.О.).</div>
+</div>
 
   <p><b>Латинское название:</b> Amazonis Planitia</p>
   <p><b>Марсианское название:</b> Amazōnis Thal («Море Амазонки»)</p>

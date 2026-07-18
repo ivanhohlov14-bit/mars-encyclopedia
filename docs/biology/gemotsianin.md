@@ -38,8 +38,6 @@
   <p><a href="https://mars-wiki.ru/people/ella/">Элла</a>, <a href="https://mars-wiki.ru/people/talin/">Талин</a>, <a href="https://mars-wiki.ru/people/hevsur/">Хевсур</a>, <a href="https://mars-wiki.ru/people/irayina/">Ирайна</a></p>
   <p><a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a>, <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></p>
   <p><a href="https://mars-wiki.ru/geography/acidalia-sea/">Ацидалийское море</a>, <a href="https://mars-wiki.ru/geography/farsida/">Фарсида</a></p>
-  
-  <p style="margin-top: 10px;"><b>Связанные статьи:</b> <a href="https://mars-wiki.ru/biology/gemoglobin/">Гемоглобин</a></p>
 </div>
 
 **Гемоцианин** (марс. *Khō-marlān* — «огненная жизнь»; от др.-греч. *αἷμα* — кровь, *κυανoῦς* — голубой) — медьсодержащий дыхательный пигмент, относящийся к группе металлопротеинов. Является функциональным аналогом гемоглобина и служит основой крови марсианской расы, обеспечивая транспорт кислорода в условиях разрежённой атмосферы и пониженного атмосферного давления[^1].

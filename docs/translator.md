@@ -541,10 +541,15 @@ const LEXICON_DATA = {
   "синее": { root: "ākhan", pos: "adj" },
   "синие": { root: "ākhan", pos: "adj" },
 
-  "голубой": { root: "dzenān", pos: "adj" },
-  "голубая": { root: "dzenān", pos: "adj" },
-  "голубое": { root: "dzenān", pos: "adj" },
-  "голубые": { root: "dzenān", pos: "adj" },
+  "голубой": { root: "ākhān", pos: "adj" },
+  "голубая": { root: "ākhān", pos: "adj" },
+  "голубое": { root: "ākhān", pos: "adj" },
+  "голубые": { root: "ākhān", pos: "adj" },
+
+  "звёздный": { root: "dzenān", pos: "adj" },
+  "звёздная": { root: "dzenān", pos: "adj" },
+  "звёздное": { root: "dzenān", pos: "adj" },
+  "звёздные": { root: "dzenān", pos: "adj" },
 
   "зелёный": { root: "marn", pos: "adj" },
   "зелёная": { root: "marn", pos: "adj" },
@@ -2136,12 +2141,1431 @@ const LEXICON_DATA = {
   "вместил": { root: "okh-sen", pos: "verb" },
   "вместила": { root: "okh-sen", pos: "verb" },
   "вместили": { root: "okh-sen", pos: "verb" },
+    // ============================================================
+  // 19. НЕДОСТАЮЩИЕ СЛОВА (древние корни)
+  // ============================================================
+  
+  // === ПРИРОДА И СТИХИИ ===
+  "ветер": { root: "zal", pos: "noun" },
+  "ветра": { root: "zal", pos: "noun" },
+  "ветру": { root: "zal", pos: "noun" },
+  "ветром": { root: "zal", pos: "noun" },
+  "ветре": { root: "zal", pos: "noun" },
+  
+  "песок": { root: "xal", pos: "noun" },
+  "песка": { root: "xal", pos: "noun" },
+  "песку": { root: "xal", pos: "noun" },
+  "песком": { root: "xal", pos: "noun" },
+  
+  "соль": { root: "hem", pos: "noun" },          // египетское "хем" — соль
+  "соли": { root: "hem", pos: "noun" },
+  "солью": { root: "hem", pos: "noun" },
+  
+  "океан": { root: "ākhasuf", pos: "noun" },     // великая вода
+  "океана": { root: "ākhasuf", pos: "noun" },
+  "океану": { root: "ākhasuf", pos: "noun" },
+  "океаном": { root: "ākhasuf", pos: "noun" },
+  "океане": { root: "ākhasuf", pos: "noun" },
+  
+  "берег": { root: "kōlākha", pos: "noun" },     // земля у воды
+  "берега": { root: "kōlākha", pos: "noun" },
+  "берегу": { root: "kōlākha", pos: "noun" },
+  "берегом": { root: "kōlākha", pos: "noun" },
+  "береге": { root: "kōlākha", pos: "noun" },
+  
+  "волна": { root: "volna", pos: "noun" },       // славянское
+  "волны": { root: "volna", pos: "noun" },
+  "волну": { root: "volna", pos: "noun" },
+  "волной": { root: "volna", pos: "noun" },
+  "волне": { root: "volna", pos: "noun" },
+  
+  "прилив": { root: "ākhanur", pos: "noun" },    // вода идёт
+  "прилива": { root: "ākhanur", pos: "noun" },
+  "приливу": { root: "ākhanur", pos: "noun" },
+  "приливом": { root: "ākhanur", pos: "noun" },
+  
+  "отлив": { root: "ākhamōr", pos: "noun" },     // вода уходит
+  "отлива": { root: "ākhamōr", pos: "noun" },
+  "отливу": { root: "ākhamōr", pos: "noun" },
+  "отливом": { root: "ākhamōr", pos: "noun" },
+  
+  "облако": { root: "oblako", pos: "noun" },     // славянское
+  "облака": { root: "oblako", pos: "noun" },
+  "облаку": { root: "oblako", pos: "noun" },
+  "облаком": { root: "oblako", pos: "noun" },
+  "облаке": { root: "oblako", pos: "noun" },
+  
+  "туман": { root: "tuman", pos: "noun" },       // славянское
+  "тумана": { root: "tuman", pos: "noun" },
+  "туману": { root: "tuman", pos: "noun" },
+  "туманом": { root: "tuman", pos: "noun" },
+  "тумане": { root: "tuman", pos: "noun" },
+  
+  "снег": { root: "sneg", pos: "noun" },         // славянское
+  "снега": { root: "sneg", pos: "noun" },
+  "снегу": { root: "sneg", pos: "noun" },
+  "снегом": { root: "sneg", pos: "noun" },
+  "снеге": { root: "sneg", pos: "noun" },
+  
+  "лёд": { root: "led", pos: "noun" },           // славянское
+  "льда": { root: "led", pos: "noun" },
+  "льду": { root: "led", pos: "noun" },
+  "льдом": { root: "led", pos: "noun" },
+  "льде": { root: "led", pos: "noun" },
+  
+  "гром": { root: "grom", pos: "noun" },         // славянское
+  "грома": { root: "grom", pos: "noun" },
+  "грому": { root: "grom", pos: "noun" },
+  "громом": { root: "grom", pos: "noun" },
+  "громе": { root: "grom", pos: "noun" },
+  
+  "молния": { root: "molniya", pos: "noun" },    // славянское
+  "молнии": { root: "molniya", pos: "noun" },
+  "молнию": { root: "molniya", pos: "noun" },
+  "молнией": { root: "molniya", pos: "noun" },
+  
+  // === АСТРОНОМИЯ И КОСМОС ===
+  "планета": { root: "dzenkōl", pos: "noun" },   // звезда-земля
+  "планеты": { root: "dzenkōl", pos: "noun" },
+  "планету": { root: "dzenkōl", pos: "noun" },
+  "планетой": { root: "dzenkōl", pos: "noun" },
+  "планете": { root: "dzenkōl", pos: "noun" },
+  
+  "орбита": { root: "dzennur", pos: "noun" },    // путь звезды
+  "орбиты": { root: "dzennur", pos: "noun" },
+  "орбите": { root: "dzennur", pos: "noun" },
+  "орбиту": { root: "dzennur", pos: "noun" },
+  
+  "спутник": { root: "dzenkhōr", pos: "noun" },  // спутник звезды
+  "спутника": { root: "dzenkhōr", pos: "noun" },
+  "спутнику": { root: "dzenkhōr", pos: "noun" },
+  
+  "комета": { root: "khōdzen", pos: "noun" },    // огненная звезда
+  "кометы": { root: "khōdzen", pos: "noun" },
+  "комету": { root: "khōdzen", pos: "noun" },
+  
+  "астероид": { root: "ghardzen", pos: "noun" }, // каменная звезда
+  "астероида": { root: "ghardzen", pos: "noun" },
+  "астероиду": { root: "ghardzen", pos: "noun" },
+  
+  "галактика": { root: "sūrdzen", pos: "noun" }, // множество звёзд
+  "галактики": { root: "sūrdzen", pos: "noun" },
+  "галактику": { root: "sūrdzen", pos: "noun" },
+  
+  "туманность": { root: "ākhadzen", pos: "noun" }, // водяная звезда (туманность)
+  "туманности": { root: "ākhadzen", pos: "noun" },
+  "туманностью": { root: "ākhadzen", pos: "noun" },
+  
+  "созвездие": { root: "dzenrak", pos: "noun" }, // звёздная граница
+  "созвездия": { root: "dzenrak", pos: "noun" },
+  "созвездию": { root: "dzenrak", pos: "noun" },
+  
+  // === ПРИЛАГАТЕЛЬНЫЕ (новые) ===
+  "сухой": { root: "sukh", pos: "adj" },         // славянское
+  "сухая": { root: "sukh", pos: "adj" },
+  "сухое": { root: "sukh", pos: "adj" },
+  "сухие": { root: "sukh", pos: "adj" },
+  
+  "влажный": { root: "vlaž", pos: "adj" },       // славянское
+  "влажная": { root: "vlaž", pos: "adj" },
+  "влажное": { root: "vlaž", pos: "adj" },
+  "влажные": { root: "vlaž", pos: "adj" },
+  
+  "глубокий": { root: "glub", pos: "adj" },      // славянское
+  "глубокая": { root: "glub", pos: "adj" },
+  "глубокое": { root: "glub", pos: "adj" },
+  "глубокие": { root: "glub", pos: "adj" },
+  
+  "мелкий": { root: "mel", pos: "adj" },         // славянское
+  "мелкая": { root: "mel", pos: "adj" },
+  "мелкое": { root: "mel", pos: "adj" },
+  "мелкие": { root: "mel", pos: "adj" },
+  
+  "мягкий": { root: "myagk", pos: "adj" },       // славянское
+  "мягкая": { root: "myagk", pos: "adj" },
+  "мягкое": { root: "myagk", pos: "adj" },
+  "мягкие": { root: "myagk", pos: "adj" },
+  
+  "твёрдый": { root: "tverd", pos: "adj" },      // славянское
+  "твёрдая": { root: "tverd", pos: "adj" },
+  "твёрдое": { root: "tverd", pos: "adj" },
+  "твёрдые": { root: "tverd", pos: "adj" },
+  
+  "острый": { root: "ostr", pos: "adj" },        // славянское
+  "острая": { root: "ostr", pos: "adj" },
+  "острое": { root: "ostr", pos: "adj" },
+  "острые": { root: "ostr", pos: "adj" },
+  
+  "тупой": { root: "tup", pos: "adj" },          // славянское
+  "тупая": { root: "tup", pos: "adj" },
+  "тупое": { root: "tup", pos: "adj" },
+  "тупые": { root: "tup", pos: "adj" },
+  
+  "высокий": { root: "vys", pos: "adj" },        // славянское
+  "высокая": { root: "vys", pos: "adj" },
+  "высокое": { root: "vys", pos: "adj" },
+  "высокие": { root: "vys", pos: "adj" },
+  
+  "низкий": { root: "niz", pos: "adj" },         // славянское
+  "низкая": { root: "niz", pos: "adj" },
+  "низкое": { root: "niz", pos: "adj" },
+  "низкие": { root: "niz", pos: "adj" },
+  
+  "чистый": { root: "chist", pos: "adj" },       // славянское
+  "чистая": { root: "chist", pos: "adj" },
+  "чистое": { root: "chist", pos: "adj" },
+  "чистые": { root: "chist", pos: "adj" },
+  
+  "грязный": { root: "gryaz", pos: "adj" },      // славянское
+  "грязная": { root: "gryaz", pos: "adj" },
+  "грязное": { root: "gryaz", pos: "adj" },
+  "грязные": { root: "gryaz", pos: "adj" },
+  
+  "тяжёлый": { root: "tyazh", pos: "adj" },      // славянское
+  "тяжёлая": { root: "tyazh", pos: "adj" },
+  "тяжёлое": { root: "tyazh", pos: "adj" },
+  "тяжёлые": { root: "tyazh", pos: "adj" },
+  
+  "лёгкий": { root: "lyogk", pos: "adj" },       // славянское
+  "лёгкая": { root: "lyogk", pos: "adj" },
+  "лёгкое": { root: "lyogk", pos: "adj" },
+  "лёгкие": { root: "lyogk", pos: "adj" },
+  
+  "быстрый": { root: "bystr", pos: "adj" },      // славянское
+  "быстрая": { root: "bystr", pos: "adj" },
+  "быстрое": { root: "bystr", pos: "adj" },
+  "быстрые": { root: "bystr", pos: "adj" },
+  
+  "медленный": { root: "medl", pos: "adj" },     // славянское
+  "медленная": { root: "medl", pos: "adj" },
+  "медленное": { root: "medl", pos: "adj" },
+  "медленные": { root: "medl", pos: "adj" },
+  
+  // === ГЛАГОЛЫ (новые) ===
+  "дуть": { root: "dut", pos: "verb" },          // славянское
+  "дую": { root: "dut", pos: "verb" },
+  "дуешь": { root: "dut", pos: "verb" },
+  "дует": { root: "dut", pos: "verb" },
+  "дуем": { root: "dut", pos: "verb" },
+  "дуете": { root: "dut", pos: "verb" },
+  "дуют": { root: "dut", pos: "verb" },
+  "дул": { root: "dut", pos: "verb" },
+  "дула": { root: "dut", pos: "verb" },
+  "дули": { root: "dut", pos: "verb" },
+  
+  "лить": { root: "lit", pos: "verb" },          // славянское
+  "лью": { root: "lit", pos: "verb" },
+  "льёшь": { root: "lit", pos: "verb" },
+  "льёт": { root: "lit", pos: "verb" },
+  "льём": { root: "lit", pos: "verb" },
+  "льёте": { root: "lit", pos: "verb" },
+  "льют": { root: "lit", pos: "verb" },
+  "лил": { root: "lit", pos: "verb" },
+  "лила": { root: "lit", pos: "verb" },
+  "лили": { root: "lit", pos: "verb" },
+  
+  "ползти": { root: "polzt", pos: "verb" },      // славянское
+  "ползу": { root: "polzt", pos: "verb" },
+  "ползёшь": { root: "polzt", pos: "verb" },
+  "ползёт": { root: "polzt", pos: "verb" },
+  "ползём": { root: "polzt", pos: "verb" },
+  "ползёте": { root: "polzt", pos: "verb" },
+  "ползут": { root: "polzt", pos: "verb" },
+  "полз": { root: "polzt", pos: "verb" },
+  "ползла": { root: "polzt", pos: "verb" },
+  "ползли": { root: "polzt", pos: "verb" },
+  
+  "прыгать": { root: "pryg", pos: "verb" },      // славянское
+  "прыгаю": { root: "pryg", pos: "verb" },
+  "прыгаешь": { root: "pryg", pos: "verb" },
+  "прыгает": { root: "pryg", pos: "verb" },
+  "прыгаем": { root: "pryg", pos: "verb" },
+  "прыгаете": { root: "pryg", pos: "verb" },
+  "прыгают": { root: "pryg", pos: "verb" },
+  "прыгал": { root: "pryg", pos: "verb" },
+  "прыгала": { root: "pryg", pos: "verb" },
+  "прыгали": { root: "pryg", pos: "verb" },
+  
+  "плавать": { root: "plav", pos: "verb" },      // славянское
+  "плаваю": { root: "plav", pos: "verb" },
+  "плаваешь": { root: "plav", pos: "verb" },
+  "плавает": { root: "plav", pos: "verb" },
+  "плаваем": { root: "plav", pos: "verb" },
+  "плаваете": { root: "plav", pos: "verb" },
+  "плавают": { root: "plav", pos: "verb" },
+  "плавал": { root: "plav", pos: "verb" },
+  "плавала": { root: "plav", pos: "verb" },
+  "плавали": { root: "plav", pos: "verb" },
+  
+  "нырять": { root: "nyr", pos: "verb" },        // славянское
+  "ныряю": { root: "nyr", pos: "verb" },
+  "ныряешь": { root: "nyr", pos: "verb" },
+  "ныряет": { root: "nyr", pos: "verb" },
+  "ныряем": { root: "nyr", pos: "verb" },
+  "ныряете": { root: "nyr", pos: "verb" },
+  "ныряют": { root: "nyr", pos: "verb" },
+  "нырял": { root: "nyr", pos: "verb" },
+  "ныряла": { root: "nyr", pos: "verb" },
+  "ныряли": { root: "nyr", pos: "verb" },
+  
+  "кружить": { root: "kruzh", pos: "verb" },     // славянское
+  "кружу": { root: "kruzh", pos: "verb" },
+  "кружишь": { root: "kruzh", pos: "verb" },
+  "кружит": { root: "kruzh", pos: "verb" },
+  "кружим": { root: "kruzh", pos: "verb" },
+  "кружите": { root: "kruzh", pos: "verb" },
+  "кружат": { root: "kruzh", pos: "verb" },
+  "кружил": { root: "kruzh", pos: "verb" },
+  "кружила": { root: "kruzh", pos: "verb" },
+  "кружили": { root: "kruzh", pos: "verb" },
+  
+  "вращаться": { root: "vrasch", pos: "verb" },  // славянское
+  "вращаюсь": { root: "vrasch", pos: "verb" },
+  "вращаешься": { root: "vrasch", pos: "verb" },
+  "вращается": { root: "vrasch", pos: "verb" },
+  "вращаемся": { root: "vrasch", pos: "verb" },
+  "вращаетесь": { root: "vrasch", pos: "verb" },
+  "вращаются": { root: "vrasch", pos: "verb" },
+  "вращался": { root: "vrasch", pos: "verb" },
+  "вращалась": { root: "vrasch", pos: "verb" },
+  "вращались": { root: "vrasch", pos: "verb" },
+  
+  "отражать": { root: "otrazh", pos: "verb" },   // славянское
+  "отражаю": { root: "otrazh", pos: "verb" },
+  "отражаешь": { root: "otrazh", pos: "verb" },
+  "отражает": { root: "otrazh", pos: "verb" },
+  "отражаем": { root: "otrazh", pos: "verb" },
+  "отражаете": { root: "otrazh", pos: "verb" },
+  "отражают": { root: "otrazh", pos: "verb" },
+  "отражал": { root: "otrazh", pos: "verb" },
+  "отражала": { root: "otrazh", pos: "verb" },
+  "отражали": { root: "otrazh", pos: "verb" },
+  
+  "сиять": { root: "siyat", pos: "verb" },       // славянское
+  "сияю": { root: "siyat", pos: "verb" },
+  "сияешь": { root: "siyat", pos: "verb" },
+  "сияет": { root: "siyat", pos: "verb" },
+  "сияем": { root: "siyat", pos: "verb" },
+  "сияете": { root: "siyat", pos: "verb" },
+  "сияют": { root: "siyat", pos: "verb" },
+  "сиял": { root: "siyat", pos: "verb" },
+  "сияла": { root: "siyat", pos: "verb" },
+  "сияли": { root: "siyat", pos: "verb" },
+  
+  "мерцать": { root: "merts", pos: "verb" },     // славянское
+  "мерцаю": { root: "merts", pos: "verb" },
+  "мерцаешь": { root: "merts", pos: "verb" },
+  "мерцает": { root: "merts", pos: "verb" },
+  "мерцаем": { root: "merts", pos: "verb" },
+  "мерцаете": { root: "merts", pos: "verb" },
+  "мерцают": { root: "merts", pos: "verb" },
+  "мерцал": { root: "merts", pos: "verb" },
+  "мерцала": { root: "merts", pos: "verb" },
+  "мерцали": { root: "merts", pos: "verb" },
+  
+  "светить": { root: "svet", pos: "verb" },      // славянское
+  "свечу": { root: "svet", pos: "verb" },
+  "светишь": { root: "svet", pos: "verb" },
+  "светит": { root: "svet", pos: "verb" },
+  "светим": { root: "svet", pos: "verb" },
+  "светите": { root: "svet", pos: "verb" },
+  "светят": { root: "svet", pos: "verb" },
+  "светил": { root: "svet", pos: "verb" },
+  "светила": { root: "svet", pos: "verb" },
+  "светили": { root: "svet", pos: "verb" },
+  
+  "тушить": { root: "tush", pos: "verb" },       // славянское
+  "тушу": { root: "tush", pos: "verb" },
+  "тушишь": { root: "tush", pos: "verb" },
+  "тушит": { root: "tush", pos: "verb" },
+  "тушим": { root: "tush", pos: "verb" },
+  "тушите": { root: "tush", pos: "verb" },
+  "тушат": { root: "tush", pos: "verb" },
+  "тушил": { root: "tush", pos: "verb" },
+  "тушила": { root: "tush", pos: "verb" },
+  "тушили": { root: "tush", pos: "verb" },
+  
+  "течь": { root: "tech", pos: "verb" },         // славянское
+  "теку": { root: "tech", pos: "verb" },
+  "течёшь": { root: "tech", pos: "verb" },
+  "течёт": { root: "tech", pos: "verb" },
+  "течём": { root: "tech", pos: "verb" },
+  "течёте": { root: "tech", pos: "verb" },
+  "текут": { root: "tech", pos: "verb" },
+  "тёк": { root: "tech", pos: "verb" },
+  "текла": { root: "tech", pos: "verb" },
+  "текли": { root: "tech", pos: "verb" },
+  
+  // === МЕСТОИМЕНИЯ (дополнительные) ===
+  "этот": { root: "thalon", pos: "pron" },       // этот (thal + on)
+  "эта": { root: "thalon", pos: "pron" },
+  "это": { root: "thalon", pos: "pron" },
+  "эти": { root: "thalon", pos: "pron" },
+  
+  "тот": { root: "tan", pos: "pron" },
+  "та": { root: "tan", pos: "pron" },
+  "то": { root: "tan", pos: "pron" },
+  "те": { root: "tan", pos: "pron" },
+  
+  "каждый": { root: "ontō", pos: "pron" },       // один-все
+  "каждого": { root: "ontō", pos: "pron" },
+  "каждому": { root: "ontō", pos: "pron" },
+  "каждым": { root: "ontō", pos: "pron" },
+  
+  "никто": { root: "ān-on", pos: "pron" },       // не один
+  "никого": { root: "ān-on", pos: "pron" },
+  "никому": { root: "ān-on", pos: "pron" },
+  
+  // === ЧИСЛИТЕЛЬНЫЕ (новые) ===
+  "сорок": { root: "khen-dzen-on", pos: "num" }, // 4×10
+  "пятьдесят": { root: "phin-dzen-on", pos: "num" }, // 5×10
+  "шестьдесят": { root: "kōl-dzen-on", pos: "num" }, // 6×10
+  "семьдесят": { root: "thōl-dzen-on", pos: "num" }, // 7×10
+  "восемьдесят": { root: "ākha-thōl-dzen-on", pos: "num" }, // 8×10
+  "девяносто": { root: "khan-thōl-dzen-on", pos: "num" }, // 9×10
+  "сто": { root: "sut", pos: "num" },
+  "тысяча": { root: "thos", pos: "num" },
+  "миллион": { root: "mil", pos: "num" },
+  
+  // === КНИЖНЫЕ ТЕРМИНЫ ===
+  "глава": { root: "lānrak", pos: "noun" },      // раздел памяти
+  "главы": { root: "lānrak", pos: "noun" },
+  "главу": { root: "lānrak", pos: "noun" },
+  "глав": { root: "lānrak", pos: "noun" },
+  
+  "страница": { root: "surrak", pos: "noun" },   // глиняная граница
+  "страницы": { root: "surrak", pos: "noun" },
+  "страницу": { root: "surrak", pos: "noun" },
+  
+  "строка": { root: "thōlrak", pos: "noun" },    // ряд
+  "строки": { root: "thōlrak", pos: "noun" },
+  "строку": { root: "thōlrak", pos: "noun" },
+  
+  "буква": { root: "tsanrak", pos: "noun" },     // знак знания
+  "буквы": { root: "tsanrak", pos: "noun" },
+  "букву": { root: "tsanrak", pos: "noun" },
+  
+  "символ": { root: "surtsan", pos: "noun" },    // глиняный знак
+  "символа": { root: "surtsan", pos: "noun" },
+  "символу": { root: "surtsan", pos: "noun" },
+  
+  "алфавит": { root: "tsanrakān", pos: "noun" }, // множество знаков
+  "алфавита": { root: "tsanrakān", pos: "noun" },
+  "алфавиту": { root: "tsanrakān", pos: "noun" },
+  
+  "рукопись": { root: "khōsur", pos: "noun" },   // рукопись на глине
+  "рукописи": { root: "khōsur", pos: "noun" },
+  "рукопись": { root: "khōsur", pos: "noun" },
+  
+  "пергамент": { root: "kōlsur", pos: "noun" },  // земная глина
+  "пергамента": { root: "kōlsur", pos: "noun" },
+  
+  "чернила": { root: "ākhasur", pos: "noun" },   // водная глина
+  "чернил": { root: "ākhasur", pos: "noun" },
+  
+  // === МОРСКАЯ ТЕРМИНОЛОГИЯ ===
+  "корабль": { root: "ākhanur", pos: "noun" },   // водный путь
+  "корабля": { root: "ākhanur", pos: "noun" },
+  "кораблю": { root: "ākhanur", pos: "noun" },
+  "кораблём": { root: "ākhanur", pos: "noun" },
+  
+  "парус": { root: "zalnur", pos: "noun" },      // ветреный путь
+  "паруса": { root: "zalnur", pos: "noun" },
+  "парусу": { root: "zalnur", pos: "noun" },
+  
+  "якорь": { root: "kōlān", pos: "noun" },       // земное удержание
+  "якоря": { root: "kōlān", pos: "noun" },
+  "якорю": { root: "kōlān", pos: "noun" },
+  
+  "мачта": { root: "dzenur", pos: "noun" },      // звездная опора
+  "мачты": { root: "dzenur", pos: "noun" },
+  
+  "капитан": { root: "rōgākha", pos: "noun" },   // король воды
+  "капитана": { root: "rōgākha", pos: "noun" },
+  
+  "моряк": { root: "ākhīn", pos: "noun" },       // человек воды
+  "моряка": { root: "ākhīn", pos: "noun" },
+  
+  "пират": { root: "khōsīn", pos: "noun" },      // воин
+  "пирата": { root: "khōsīn", pos: "noun" },
+  
+  "остров": { root: "kōlhōr", pos: "noun" },     // маленькая земля
+  "острова": { root: "kōlhōr", pos: "noun" },
+  "острову": { root: "kōlhōr", pos: "noun" },
+  
+  // === ФИЛОСОФСКИЕ ПОНЯТИЯ ===
+  "судьба": { root: "thalān", pos: "noun" },      // смотреть вперёд
+  "судьбы": { root: "thalān", pos: "noun" },
+  "судьбой": { root: "thalān", pos: "noun" },
+  
+  "рок": { root: "rakthal", pos: "noun" },        // предел смотрения
+  "рока": { root: "rakthal", pos: "noun" },
+  
+  "случай": { root: "hōrthal", pos: "noun" },     // малый взгляд
+  "случая": { root: "hōrthal", pos: "noun" },
+  "случаю": { root: "hōrthal", pos: "noun" },
+  
+  "время": { root: "amār", pos: "noun" },         // уже есть как год
+  "времени": { root: "amār", pos: "noun" },
+  "временем": { root: "amār", pos: "noun" },
+  
+  "пространство": { root: "dzenkōl", pos: "noun" }, // звёздное поле
+  "пространства": { root: "dzenkōl", pos: "noun" },
+  
+  "материя": { root: "kōlsur", pos: "noun" },     // земная глина
+  "материи": { root: "kōlsur", pos: "noun" },
+  
+  "дух": { root: "khōlān", pos: "noun" },         // огонь памяти
+  "духа": { root: "khōlān", pos: "noun" },
+  "духу": { root: "khōlān", pos: "noun" },
+  "духом": { root: "khōlān", pos: "noun" },
+  
+  "идея": { root: "thaltsan", pos: "noun" },      // смотреть на знание
+  "идеи": { root: "thaltsan", pos: "noun" },
+  
+  "форма": { root: "surrak", pos: "noun" },       // глиняная граница
+  "формы": { root: "surrak", pos: "noun" },
+  
+  // === ДОПОЛНИТЕЛЬНЫЕ БЫТОВЫЕ СЛОВА ===
+  "утро": { root: "dzēn", pos: "noun" },          // утренняя заря
+  "утра": { root: "dzēn", pos: "noun" },
+  "утру": { root: "dzēn", pos: "noun" },
+  
+  "вечер": { root: "khōl", pos: "noun" },         // вечерний огонь
+  "вечера": { root: "khōl", pos: "noun" },
+  "вечеру": { root: "khōl", pos: "noun" },
+  
+  "полдень": { root: "sōldzen", pos: "noun" },    // дневная звезда
+  "полдня": { root: "sōldzen", pos: "noun" },
+  
+  "полночь": { root: "nōkhdzen", pos: "noun" },   // ночная звезда
+  "полночи": { root: "nōkhdzen", pos: "noun" },
+  
+  "закат": { root: "khōmōr", pos: "noun" },       // огонь умирает
+  "заката": { root: "khōmōr", pos: "noun" },
+  
+  "восход": { root: "khōmar", pos: "noun" },      // огонь рождается
+  "восхода": { root: "khōmar", pos: "noun" },
+  
+  "туча": { root: "oblako", pos: "noun" },        // облако (уже есть)
+  "тучи": { root: "oblako", pos: "noun" },
+  
+  "роса": { root: "ākhalān", pos: "noun" },       // водная память (роса)
+  "росы": { root: "ākhalān", pos: "noun" },
+  
+  "иней": { root: "kōlmōr", pos: "noun" },        // замерзшая земля
+  "инея": { root: "kōlmōr", pos: "noun" },
+  
+  "град": { root: "gharkhō", pos: "noun" },       // каменный огонь?
+  "града": { root: "gharkhō", pos: "noun" },
+  
+  // === ДОПОЛНИТЕЛЬНЫЕ ГЛАГОЛЫ ===
+  "сверкать": { root: "dzenur", pos: "verb" },    // звездить
+  "сверкаю": { root: "dzenur", pos: "verb" },
+  "сверкаешь": { root: "dzenur", pos: "verb" },
+  "сверкает": { root: "dzenur", pos: "verb" },
+  
+  "искриться": { root: "khōdzen", pos: "verb" },  // огненная звезда
+  "искрится": { root: "khōdzen", pos: "verb" },
+  
+  "плыть": { root: "ākhaur", pos: "verb" },       // вода-идти
+  "плыву": { root: "ākhaur", pos: "verb" },
+  "плывёшь": { root: "ākhaur", pos: "verb" },
+  "плывёт": { root: "ākhaur", pos: "verb" },
+  
+  "полоть": { root: "marur", pos: "verb" },       // жизнь-работа? или просто "полоть"
+  "полю": { root: "marur", pos: "verb" },
+  
+  "жарить": { root: "khōur", pos: "verb" },       // огонь-действие
+  "жарю": { root: "khōur", pos: "verb" },
+  "жаришь": { root: "khōur", pos: "verb" },
+  
+  "варить": { root: "ākhaur", pos: "verb" },      // вода-действие
+  "варю": { root: "ākhaur", pos: "verb" },
+  
+  // === ПРОЧИЕ ===
+  "цель": { root: "thali", pos: "noun" },         // уже есть
+  "целей": { root: "thali", pos: "noun" },
+  
+  "план": { root: "tsanur", pos: "noun" },        // знание пути
+  "плана": { root: "tsanur", pos: "noun" },
+  
+  "проект": { root: "khalur", pos: "noun" },      // создание
+  "проекта": { root: "khalur", pos: "noun" },
+  
+  "колония": { root: "mārsen", pos: "noun" },     // марсианское место
+  "колонии": { root: "mārsen", pos: "noun" },
+  
+  "база": { root: "okhsen", pos: "noun" },        // дом-место
+  "базы": { root: "okhsen", pos: "noun" },
+  
+  "станция": { root: "senur", pos: "noun" },      // место действия
+  "станции": { root: "senur", pos: "noun" },
 
   "соответственно": { root: "un-thal", pos: "adv" },
   "аккуратный": { root: "thal-tsan", pos: "adj" },
   "аккуратная": { root: "thal-tsan", pos: "adj" },
   "аккуратное": { root: "thal-tsan", pos: "adj" },
   "аккуратные": { root: "thal-tsan", pos: "adj" },
+    // ============================================================
+  // ШУМЕРСКИЕ И ДРЕВНЕЕГИПЕТСКИЕ (только новые)
+  // ============================================================
+  
+  // === ШУМЕРСКИЕ (ок. 3000-2000 гг. до н.э.) ===
+  "небесный": { root: "an", pos: "adj" },
+  "небесная": { root: "an", pos: "adj" },
+  "небесное": { root: "an", pos: "adj" },
+  "небесные": { root: "an", pos: "adj" },
+  
+  "царь": { root: "lugal", pos: "noun" },
+  "царя": { root: "lugal", pos: "noun" },
+  "царю": { root: "lugal", pos: "noun" },
+  "царём": { root: "lugal", pos: "noun" },
+  "царе": { root: "lugal", pos: "noun" },
+  
+  "царица": { root: "lugal", pos: "noun" },
+  "царицы": { root: "lugal", pos: "noun" },
+  "царицу": { root: "lugal", pos: "noun" },
+  "царицей": { root: "lugal", pos: "noun" },
+  
+  "жрец": { root: "en", pos: "noun" },
+  "жреца": { root: "en", pos: "noun" },
+  "жрецу": { root: "en", pos: "noun" },
+  "жрецом": { root: "en", pos: "noun" },
+  "жреце": { root: "en", pos: "noun" },
+  
+  "жрица": { root: "en", pos: "noun" },
+  "жрицы": { root: "en", pos: "noun" },
+  "жрицу": { root: "en", pos: "noun" },
+  "жрицей": { root: "en", pos: "noun" },
+  
+  "владыка": { root: "en", pos: "noun" },
+  "владыки": { root: "en", pos: "noun" },
+  "владыке": { root: "en", pos: "noun" },
+  "владыкой": { root: "en", pos: "noun" },
+  
+  "святыня": { root: "e", pos: "noun" },
+  "святыни": { root: "e", pos: "noun" },
+  "святыню": { root: "e", pos: "noun" },
+  "святыней": { root: "e", pos: "noun" },
+  
+  "алтарь": { root: "e", pos: "noun" },
+  "алтаря": { root: "e", pos: "noun" },
+  "алтарю": { root: "e", pos: "noun" },
+  "алтарём": { root: "e", pos: "noun" },
+  "алтаре": { root: "e", pos: "noun" },
+  
+  "жертва": { root: "dingir", pos: "noun" },
+  "жертвы": { root: "dingir", pos: "noun" },
+  "жертву": { root: "dingir", pos: "noun" },
+  "жертвой": { root: "dingir", pos: "noun" },
+  
+  "поток": { root: "id", pos: "noun" },
+  "потока": { root: "id", pos: "noun" },
+  "потоку": { root: "id", pos: "noun" },
+  "потоком": { root: "id", pos: "noun" },
+  "потоке": { root: "id", pos: "noun" },
+  
+  "ручей": { root: "id", pos: "noun" },
+  "ручья": { root: "id", pos: "noun" },
+  "ручью": { root: "id", pos: "noun" },
+  "ручьём": { root: "id", pos: "noun" },
+  
+  "канал": { root: "id", pos: "noun" },
+  "канала": { root: "id", pos: "noun" },
+  "каналу": { root: "id", pos: "noun" },
+  "каналом": { root: "id", pos: "noun" },
+  
+  "золото": { root: "kug", pos: "noun" },
+  "золота": { root: "kug", pos: "noun" },
+  "золоту": { root: "kug", pos: "noun" },
+  "золотом": { root: "kug", pos: "noun" },
+  
+  "серебро": { root: "kug-babbar", pos: "noun" },
+  "серебра": { root: "kug-babbar", pos: "noun" },
+  "серебру": { root: "kug-babbar", pos: "noun" },
+  
+  "медь": { root: "urud", pos: "noun" },
+  "меди": { root: "urud", pos: "noun" },
+  "медью": { root: "urud", pos: "noun" },
+  
+  "железо": { root: "anbar", pos: "noun" },
+  "железа": { root: "anbar", pos: "noun" },
+  "железу": { root: "anbar", pos: "noun" },
+  "железом": { root: "anbar", pos: "noun" },
+  
+  "раб": { root: "arad", pos: "noun" },
+  "раба": { root: "arad", pos: "noun" },
+  "рабу": { root: "arad", pos: "noun" },
+  "рабом": { root: "arad", pos: "noun" },
+  "рабе": { root: "arad", pos: "noun" },
+  
+  "рабыня": { root: "arad", pos: "noun" },
+  "рабыни": { root: "arad", pos: "noun" },
+  "рабыню": { root: "arad", pos: "noun" },
+  "рабыней": { root: "arad", pos: "noun" },
+  
+  "свободный": { root: "lugal", pos: "adj" },
+  "свободная": { root: "lugal", pos: "adj" },
+  "свободное": { root: "lugal", pos: "adj" },
+  "свободные": { root: "lugal", pos: "adj" },
+  
+  "воин": { root: "ur", pos: "noun" },
+  "воина": { root: "ur", pos: "noun" },
+  "воину": { root: "ur", pos: "noun" },
+  "воином": { root: "ur", pos: "noun" },
+  "воине": { root: "ur", pos: "noun" },
+  
+  "воины": { root: "ur", pos: "noun" },
+  "воинов": { root: "ur", pos: "noun" },
+  
+  "охотник": { root: "ur", pos: "noun" },
+  "охотника": { root: "ur", pos: "noun" },
+  "охотнику": { root: "ur", pos: "noun" },
+  
+  "рыбак": { root: "id", pos: "noun" },
+  "рыбака": { root: "id", pos: "noun" },
+  "рыбаку": { root: "id", pos: "noun" },
+  
+  "месяц": { root: "dzen", pos: "noun" },
+  "месяца": { root: "dzen", pos: "noun" },
+  "месяцу": { root: "dzen", pos: "noun" },
+  
+  "неделя": { root: "thōl", pos: "noun" },
+  "недели": { root: "thōl", pos: "noun" },
+  "неделю": { root: "thōl", pos: "noun" },
+  
+  "час": { root: "dzen", pos: "noun" },
+  "часа": { root: "dzen", pos: "noun" },
+  "часу": { root: "dzen", pos: "noun" },
+  "часом": { root: "dzen", pos: "noun" },
+  
+  "минута": { root: "khō", pos: "noun" },
+  "минуты": { root: "khō", pos: "noun" },
+  "минуту": { root: "khō", pos: "noun" },
+  
+  "секунда": { root: "lān", pos: "noun" },
+  "секунды": { root: "lān", pos: "noun" },
+  
+  // === ДРЕВНЕЕГИПЕТСКИЕ (ок. 3000-1000 гг. до н.э.) ===
+  "божество": { root: "netjer", pos: "noun" },
+  "божества": { root: "netjer", pos: "noun" },
+  "божеству": { root: "netjer", pos: "noun" },
+  "божеством": { root: "netjer", pos: "noun" },
+  
+  "пророк": { root: "hery", pos: "noun" },
+  "пророка": { root: "hery", pos: "noun" },
+  "пророку": { root: "hery", pos: "noun" },
+  
+  "священный": { root: "djeser", pos: "adj" },
+  "священная": { root: "djeser", pos: "adj" },
+  "священное": { root: "djeser", pos: "adj" },
+  "священные": { root: "djeser", pos: "adj" },
+  
+  "гробница": { root: "per-djet", pos: "noun" },
+  "гробницы": { root: "per-djet", pos: "noun" },
+  "гробницу": { root: "per-djet", pos: "noun" },
+  "гробницей": { root: "per-djet", pos: "noun" },
+  
+  "мумия": { root: "sah", pos: "noun" },
+  "мумии": { root: "sah", pos: "noun" },
+  "мумию": { root: "sah", pos: "noun" },
+  "мумией": { root: "sah", pos: "noun" },
+  
+  "нил": { root: "iteru", pos: "noun" },
+  "нила": { root: "iteru", pos: "noun" },
+  "нилу": { root: "iteru", pos: "noun" },
+  
+  "оазис": { root: "wahat", pos: "noun" },
+  "оазиса": { root: "wahat", pos: "noun" },
+  "оазису": { root: "wahat", pos: "noun" },
+  
+  "папирус": { root: "wadj", pos: "noun" },
+  "папируса": { root: "wadj", pos: "noun" },
+  "папирусу": { root: "wadj", pos: "noun" },
+  
+  "лотос": { root: "seshen", pos: "noun" },
+  "лотоса": { root: "seshen", pos: "noun" },
+  
+  "крокодил": { root: "msh", pos: "noun" },
+  "крокодила": { root: "msh", pos: "noun" },
+  
+  "иероглиф": { root: "medu-netjer", pos: "noun" },
+  "иероглифа": { root: "medu-netjer", pos: "noun" },
+  "иероглифу": { root: "medu-netjer", pos: "noun" },
+  "иероглифом": { root: "medu-netjer", pos: "noun" },
+  
+  "свиток": { root: "medjat", pos: "noun" },
+  "свитка": { root: "medjat", pos: "noun" },
+  "свитку": { root: "medjat", pos: "noun" },
+  "свитком": { root: "medjat", pos: "noun" },
+  "свитке": { root: "medjat", pos: "noun" },
+  
+  "правитель": { root: "heqa", pos: "noun" },
+  "правителя": { root: "heqa", pos: "noun" },
+  "правителю": { root: "heqa", pos: "noun" },
+  "правителем": { root: "heqa", pos: "noun" },
+  
+  "везир": { root: "taty", pos: "noun" },
+  "везира": { root: "taty", pos: "noun" },
+  "везиру": { root: "taty", pos: "noun" },
+  
+  "судья": { root: "maat", pos: "noun" },
+  "судьи": { root: "maat", pos: "noun" },
+  "судью": { root: "maat", pos: "noun" },
+  "судьёй": { root: "maat", pos: "noun" },
+  
+  "закон": { root: "hepu", pos: "noun" },
+  "закона": { root: "hepu", pos: "noun" },
+  "закону": { root: "hepu", pos: "noun" },
+  "законом": { root: "hepu", pos: "noun" },
+  
+  "пирамида": { root: "mr", pos: "noun" },
+  "пирамиды": { root: "mr", pos: "noun" },
+  "пирамиду": { root: "mr", pos: "noun" },
+  "пирамидой": { root: "mr", pos: "noun" },
+  
+  "обелиск": { root: "tekhen", pos: "noun" },
+  "обелиска": { root: "tekhen", pos: "noun" },
+  "обелиску": { root: "tekhen", pos: "noun" },
+  
+  "колонна": { root: "djed", pos: "noun" },
+  "колонны": { root: "djed", pos: "noun" },
+  "колонну": { root: "djed", pos: "noun" },
+  "колонной": { root: "djed", pos: "noun" },
+  
+  "дворец": { root: "per-aat", pos: "noun" },
+  "дворца": { root: "per-aat", pos: "noun" },
+  "дворцу": { root: "per-aat", pos: "noun" },
+  "дворцом": { root: "per-aat", pos: "noun" },
+  
+  "наводнение": { root: "akhet", pos: "noun" },
+  "наводнения": { root: "akhet", pos: "noun" },
+  "наводнению": { root: "akhet", pos: "noun" },
+  
+  "засуха": { root: "shemu", pos: "noun" },
+  "засухи": { root: "shemu", pos: "noun" },
+  "засухой": { root: "shemu", pos: "noun" },
+  
+  "урожай": { root: "peret", pos: "noun" },
+  "урожая": { root: "peret", pos: "noun" },
+  "урожаю": { root: "peret", pos: "noun" },
+  
+  "рождение": { root: "mes", pos: "noun" },
+  "рождения": { root: "mes", pos: "noun" },
+  "рождению": { root: "mes", pos: "noun" },
+  "рождением": { root: "mes", pos: "noun" },
+  
+  "народ": { root: "rekhyt", pos: "noun" },
+  "народа": { root: "rekhyt", pos: "noun" },
+  "народу": { root: "rekhyt", pos: "noun" },
+  "народом": { root: "rekhyt", pos: "noun" },
+  
+  "чужой": { root: "khas", pos: "adj" },
+  "чужая": { root: "khas", pos: "adj" },
+  "чужое": { root: "khas", pos: "adj" },
+  "чужие": { root: "khas", pos: "adj" },
+  
+  "родной": { root: "ta", pos: "adj" },
+  "родная": { root: "ta", pos: "adj" },
+  "родное": { root: "ta", pos: "adj" },
+  "родные": { root: "ta", pos: "adj" },
+  
+  "восток": { root: "khenty", pos: "noun" },
+  "востока": { root: "khenty", pos: "noun" },
+  "востоку": { root: "khenty", pos: "noun" },
+  
+  "запад": { root: "imenty", pos: "noun" },
+  "запада": { root: "imenty", pos: "noun" },
+  "западу": { root: "imenty", pos: "noun" },
+  
+  "юг": { root: "resy", pos: "noun" },
+  "юга": { root: "resy", pos: "noun" },
+  "югу": { root: "resy", pos: "noun" },
+    // ============================================================
+  // 20. ПРОФЕССИИ И ЗАНЯТИЯ
+  // ============================================================
+  "учитель": { root: "tsanīn", pos: "noun" },
+  "учителя": { root: "tsanīn", pos: "noun" },
+  "учителю": { root: "tsanīn", pos: "noun" },
+  "учителем": { root: "tsanīn", pos: "noun" },
+  "учителе": { root: "tsanīn", pos: "noun" },
+  
+  "наставник": { root: "tsanīn", pos: "noun" },
+  "наставника": { root: "tsanīn", pos: "noun" },
+  "наставнику": { root: "tsanīn", pos: "noun" },
+  
+  "ученик": { root: "tsanān", pos: "noun" },
+  "ученика": { root: "tsanān", pos: "noun" },
+  "ученику": { root: "tsanān", pos: "noun" },
+  "учеником": { root: "tsanān", pos: "noun" },
+  
+  "ученица": { root: "tsanān", pos: "noun" },
+  "ученицы": { root: "tsanān", pos: "noun" },
+  "ученицу": { root: "tsanān", pos: "noun" },
+  
+  "врач": { root: "marlān", pos: "noun" },
+  "врача": { root: "marlān", pos: "noun" },
+  "врачу": { root: "marlān", pos: "noun" },
+  "врачом": { root: "marlān", pos: "noun" },
+  "враче": { root: "marlān", pos: "noun" },
+  
+  "целитель": { root: "marlān", pos: "noun" },
+  "целителя": { root: "marlān", pos: "noun" },
+  
+  "кузнец": { root: "khōsīn", pos: "noun" },
+  "кузнеца": { root: "khōsīn", pos: "noun" },
+  "кузнецу": { root: "khōsīn", pos: "noun" },
+  "кузнецом": { root: "khōsīn", pos: "noun" },
+  
+  "строитель": { root: "okharīn", pos: "noun" },
+  "строителя": { root: "okharīn", pos: "noun" },
+  "строителю": { root: "okharīn", pos: "noun" },
+  
+  "земледелец": { root: "marīn", pos: "noun" },
+  "земледельца": { root: "marīn", pos: "noun" },
+  
+  "поэт": { root: "thalīn", pos: "noun" },
+  "поэта": { root: "thalīn", pos: "noun" },
+  "поэту": { root: "thalīn", pos: "noun" },
+  "поэтом": { root: "thalīn", pos: "noun" },
+  
+  "поэтесса": { root: "thalīn", pos: "noun" },
+  "поэтессы": { root: "thalīn", pos: "noun" },
+  
+  "певец": { root: "zalkhōīn", pos: "noun" },
+  "певца": { root: "zalkhōīn", pos: "noun" },
+  "певцу": { root: "zalkhōīn", pos: "noun" },
+  
+  "певица": { root: "zalkhōīn", pos: "noun" },
+  "певицы": { root: "zalkhōīn", pos: "noun" },
+
+  // ============================================================
+  // 21. ИНСТРУМЕНТЫ
+  // ============================================================
+  "нож": { root: "khōsrak", pos: "noun" },
+  "ножа": { root: "khōsrak", pos: "noun" },
+  "ножу": { root: "khōsrak", pos: "noun" },
+  "ножом": { root: "khōsrak", pos: "noun" },
+  "ноже": { root: "khōsrak", pos: "noun" },
+  
+  "топор": { root: "khōsūr", pos: "noun" },
+  "топора": { root: "khōsūr", pos: "noun" },
+  "топору": { root: "khōsūr", pos: "noun" },
+  "топором": { root: "khōsūr", pos: "noun" },
+  
+  "молот": { root: "gharur", pos: "noun" },
+  "молота": { root: "gharur", pos: "noun" },
+  "молоту": { root: "gharur", pos: "noun" },
+  "молотом": { root: "gharur", pos: "noun" },
+  
+  "пила": { root: "khōsthal", pos: "noun" },
+  "пилы": { root: "khōsthal", pos: "noun" },
+  "пилу": { root: "khōsthal", pos: "noun" },
+  "пилой": { root: "khōsthal", pos: "noun" },
+  
+  "игла": { root: "thōlrak", pos: "noun" },
+  "иглы": { root: "thōlrak", pos: "noun" },
+  "иглу": { root: "thōlrak", pos: "noun" },
+  "иглой": { root: "thōlrak", pos: "noun" },
+  
+  "верёвка": { root: "zalthōl", pos: "noun" },
+  "верёвки": { root: "zalthōl", pos: "noun" },
+  "верёвку": { root: "zalthōl", pos: "noun" },
+  "верёвкой": { root: "zalthōl", pos: "noun" },
+  
+  "корзина": { root: "kōlrak", pos: "noun" },
+  "корзины": { root: "kōlrak", pos: "noun" },
+  "корзину": { root: "kōlrak", pos: "noun" },
+  "корзиной": { root: "kōlrak", pos: "noun" },
+
+  // ============================================================
+  // 22. БЫТОВЫЕ ПРЕДМЕТЫ
+  // ============================================================
+  "кувшин": { root: "ākharak", pos: "noun" },
+  "кувшина": { root: "ākharak", pos: "noun" },
+  "кувшину": { root: "ākharak", pos: "noun" },
+  "кувшином": { root: "ākharak", pos: "noun" },
+  "кувшине": { root: "ākharak", pos: "noun" },
+  
+  "чаша": { root: "khōrak", pos: "noun" },
+  "чаши": { root: "khōrak", pos: "noun" },
+  "чашу": { root: "khōrak", pos: "noun" },
+  "чашей": { root: "khōrak", pos: "noun" },
+  
+  "тарелка": { root: "surrak", pos: "noun" },
+  "тарелки": { root: "surrak", pos: "noun" },
+  "тарелку": { root: "surrak", pos: "noun" },
+  "тарелкой": { root: "surrak", pos: "noun" },
+  
+  "ложка": { root: "ākhanur", pos: "noun" },
+  "ложки": { root: "ākhanur", pos: "noun" },
+  "ложку": { root: "ākhanur", pos: "noun" },
+  "ложкой": { root: "ākhanur", pos: "noun" },
+  
+  "свеча": { root: "khōlān", pos: "noun" },
+  "свечи": { root: "khōlān", pos: "noun" },
+  "свечу": { root: "khōlān", pos: "noun" },
+  "свечой": { root: "khōlān", pos: "noun" },
+  
+  "факел": { root: "khōnur", pos: "noun" },
+  "факела": { root: "khōnur", pos: "noun" },
+  "факелу": { root: "khōnur", pos: "noun" },
+  "факелом": { root: "khōnur", pos: "noun" },
+
+  // ============================================================
+  // 23. ОДЕЖДА
+  // ============================================================
+  "рубаха": { root: "thōlīn", pos: "noun" },
+  "рубахи": { root: "thōlīn", pos: "noun" },
+  "рубаху": { root: "thōlīn", pos: "noun" },
+  "рубахой": { root: "thōlīn", pos: "noun" },
+  
+  "штаны": { root: "nurthōl", pos: "noun" },
+  "штанов": { root: "nurthōl", pos: "noun" },
+  
+  "сапоги": { root: "kōlnur", pos: "noun" },
+  "сапог": { root: "kōlnur", pos: "noun" },
+  
+  "шляпа": { root: "dzenīn", pos: "noun" },
+  "шляпы": { root: "dzenīn", pos: "noun" },
+  "шляпу": { root: "dzenīn", pos: "noun" },
+  "шляпой": { root: "dzenīn", pos: "noun" },
+  
+  "перчатка": { root: "khōsīn", pos: "noun" },
+  "перчатки": { root: "khōsīn", pos: "noun" },
+  "перчатку": { root: "khōsīn", pos: "noun" },
+  "перчаткой": { root: "khōsīn", pos: "noun" },
+
+  // ============================================================
+  // 24. ЕДА
+  // ============================================================
+  "фрукты": { root: "marōk", pos: "noun" },
+  "фруктов": { root: "marōk", pos: "noun" },
+  
+  "овощи": { root: "kōlmar", pos: "noun" },
+  "овощей": { root: "kōlmar", pos: "noun" },
+  
+  "ягоды": { root: "hōrmar", pos: "noun" },
+  "ягод": { root: "hōrmar", pos: "noun" },
+  
+  "молоко": { root: "lānkōl", pos: "noun" },
+  "молока": { root: "lānkōl", pos: "noun" },
+  "молоку": { root: "lānkōl", pos: "noun" },
+  "молоком": { root: "lānkōl", pos: "noun" },
+  
+  "мёд": { root: "dzenkōl", pos: "noun" },
+  "мёда": { root: "dzenkōl", pos: "noun" },
+  "мёду": { root: "dzenkōl", pos: "noun" },
+  "мёдом": { root: "dzenkōl", pos: "noun" },
+  
+  "сыр": { root: "lānmar", pos: "noun" },
+  "сыра": { root: "lānmar", pos: "noun" },
+  "сыру": { root: "lānmar", pos: "noun" },
+  "сыром": { root: "lānmar", pos: "noun" },
+
+  // ============================================================
+  // 25. ЖИВОТНЫЕ
+  // ============================================================
+  "конь": { root: "nurkhōr", pos: "noun" },
+  "коня": { root: "nurkhōr", pos: "noun" },
+  "коню": { root: "nurkhōr", pos: "noun" },
+  "конём": { root: "nurkhōr", pos: "noun" },
+  "коне": { root: "nurkhōr", pos: "noun" },
+  
+  "лошадь": { root: "nurkhōr", pos: "noun" },
+  "лошади": { root: "nurkhōr", pos: "noun" },
+  
+  "собака": { root: "kōlkhōr", pos: "noun" },
+  "собаки": { root: "kōlkhōr", pos: "noun" },
+  "собаку": { root: "kōlkhōr", pos: "noun" },
+  "собакой": { root: "kōlkhōr", pos: "noun" },
+  
+  "волк": { root: "mōrkhōr", pos: "noun" },
+  "волка": { root: "mōrkhōr", pos: "noun" },
+  "волку": { root: "mōrkhōr", pos: "noun" },
+  "волком": { root: "mōrkhōr", pos: "noun" },
+  
+  "олень": { root: "dzenkhōr", pos: "noun" },
+  "оленя": { root: "dzenkhōr", pos: "noun" },
+
+  // ============================================================
+  // 26. ЧАСТИ ТЕЛА
+  // ============================================================
+  "кровь": { root: "marlān", pos: "noun" },
+  "крови": { root: "marlān", pos: "noun" },
+  "кровью": { root: "marlān", pos: "noun" },
+
+  // ============================================================
+  // 27. ЭМОЦИИ И ЧУВСТВА
+  // ============================================================
+  "удивление": { root: "ānthal", pos: "noun" },
+  "удивления": { root: "ānthal", pos: "noun" },
+  "удивлению": { root: "ānthal", pos: "noun" },
+  
+  "интерес": { root: "thalnur", pos: "noun" },
+  "интереса": { root: "thalnur", pos: "noun" },
+  "интересу": { root: "thalnur", pos: "noun" },
+  
+  "скука": { root: "ānmar", pos: "noun" },
+  "скуки": { root: "ānmar", pos: "noun" },
+  
+  "усталость": { root: "nōkhmar", pos: "noun" },
+  "усталости": { root: "nōkhmar", pos: "noun" },
+  
+  "голод": { root: "mōrmar", pos: "noun" },
+  "голода": { root: "mōrmar", pos: "noun" },
+  "голоду": { root: "mōrmar", pos: "noun" },
+  
+  "жажда": { root: "mōrākha", pos: "noun" },
+  "жажды": { root: "mōrākha", pos: "noun" },
+  "жаждой": { root: "mōrākha", pos: "noun" },
+
+  // ============================================================
+  // 28. КАЧЕСТВА
+  // ============================================================
+  "храбрый": { root: "khōrīn", pos: "adj" },
+  "храбрая": { root: "khōrīn", pos: "adj" },
+  "храброе": { root: "khōrīn", pos: "adj" },
+  "храбрые": { root: "khōrīn", pos: "adj" },
+  
+  "трусливый": { root: "ānkhōr", pos: "adj" },
+  "трусливая": { root: "ānkhōr", pos: "adj" },
+  "трусливое": { root: "ānkhōr", pos: "adj" },
+  "трусливые": { root: "ānkhōr", pos: "adj" },
+  
+  "умный": { root: "tsanīn", pos: "adj" },
+  "умная": { root: "tsanīn", pos: "adj" },
+  "умное": { root: "tsanīn", pos: "adj" },
+  "умные": { root: "tsanīn", pos: "adj" },
+  
+  "глупый": { root: "āntsan", pos: "adj" },
+  "глупая": { root: "āntsan", pos: "adj" },
+  "глупое": { root: "āntsan", pos: "adj" },
+  "глупые": { root: "āntsan", pos: "adj" },
+  
+  "богатый": { root: "sūrkōl", pos: "adj" },
+  "богатая": { root: "sūrkōl", pos: "adj" },
+  "богатое": { root: "sūrkōl", pos: "adj" },
+  "богатые": { root: "sūrkōl", pos: "adj" },
+  
+  "бедный": { root: "hōrkōl", pos: "adj" },
+  "бедная": { root: "hōrkōl", pos: "adj" },
+  "бедное": { root: "hōrkōl", pos: "adj" },
+  "бедные": { root: "hōrkōl", pos: "adj" },
+
+  // ============================================================
+  // 29. МЕБЕЛЬ И ИНТЕРЬЕР
+  // ============================================================
+  "сундук": { root: "okharak", pos: "noun" },
+  "сундука": { root: "okharak", pos: "noun" },
+  "сундуку": { root: "okharak", pos: "noun" },
+  "сундуком": { root: "okharak", pos: "noun" },
+  
+  "шкаф": { root: "thōlrak", pos: "noun" },
+  "шкафа": { root: "thōlrak", pos: "noun" },
+  "шкафу": { root: "thōlrak", pos: "noun" },
+  "шкафом": { root: "thōlrak", pos: "noun" },
+  
+  "зеркало": { root: "thalrak", pos: "noun" },
+  "зеркала": { root: "thalrak", pos: "noun" },
+  "зеркалу": { root: "thalrak", pos: "noun" },
+  "зеркалом": { root: "thalrak", pos: "noun" },
+  
+  "ковёр": { root: "kōlthōl", pos: "noun" },
+  "ковра": { root: "kōlthōl", pos: "noun" },
+  "ковру": { root: "kōlthōl", pos: "noun" },
+  "ковром": { root: "kōlthōl", pos: "noun" },
+
+  // ============================================================
+  // 30. ФИЛОСОФСКИЕ ПОНЯТИЯ
+  // ============================================================
+  "мудрость": { root: "yartsan", pos: "noun" },
+  "мудрости": { root: "yartsan", pos: "noun" },
+  "мудростью": { root: "yartsan", pos: "noun" },
+  
+  "сомнение": { root: "ānkhalmar", pos: "noun" },
+  "сомнения": { root: "ānkhalmar", pos: "noun" },
+  "сомнению": { root: "ānkhalmar", pos: "noun" },
+
+  // ============================================================
+  // 31. РАСТЕНИЯ
+  // ============================================================
+  "цветок": { root: "mardzen", pos: "noun" },
+  "цветка": { root: "mardzen", pos: "noun" },
+  "цветку": { root: "mardzen", pos: "noun" },
+  "цветком": { root: "mardzen", pos: "noun" },
+  
+  "трава": { root: "kōlmar", pos: "noun" },
+  "травы": { root: "kōlmar", pos: "noun" },
+  "траву": { root: "kōlmar", pos: "noun" },
+  "травой": { root: "kōlmar", pos: "noun" },
+  
+  "зерно": { root: "khōmar", pos: "noun" },
+  "зерна": { root: "khōmar", pos: "noun" },
+  "зерну": { root: "khōmar", pos: "noun" },
+  "зерном": { root: "khōmar", pos: "noun" },
+
+  // ============================================================
+  // 32. ПОГОДА И СТИХИИ
+  // ============================================================
+  "молния": { root: "khōdzen", pos: "noun" },
+  "молнии": { root: "khōdzen", pos: "noun" },
+  "молнию": { root: "khōdzen", pos: "noun" },
+  "молнией": { root: "khōdzen", pos: "noun" },
+
+  // ============================================================
+  // 33. СТРОИТЕЛЬСТВО И МАТЕРИАЛЫ
+  // ============================================================
+  "дерево": { root: "gis", pos: "noun" },
+  "дерева": { root: "gis", pos: "noun" },
+  "дереву": { root: "gis", pos: "noun" },
+  "деревом": { root: "gis", pos: "noun" },
+  "дереве": { root: "gis", pos: "noun" },
+  
+  "деревья": { root: "gis", pos: "noun" },
+  "деревьев": { root: "gis", pos: "noun" },
+
+  // ============================================================
+  // 34. ДОПОЛНИТЕЛЬНЫЕ НАРЕЧИЯ
+  // ============================================================
+  "вдруг": { root: "ānthal", pos: "adv" },
+  "внезапно": { root: "ānthal", pos: "adv" },
+  "постепенно": { root: "kōlnur", pos: "adv" },
+  "медленно": { root: "medl", pos: "adv" },
+  "быстро": { root: "bystr", pos: "adv" },
+  "тихо": { root: "nōkh", pos: "adv" },
+  "громко": { root: "khō", pos: "adv" },
+  "аккуратно": { root: "thaltsan", pos: "adv" },
+    // ============================================================
+  // 35. НОВЫЕ СЛОВА (которых нет в словаре)
+  // ============================================================
+  
+  // === ПРИРОДНЫЕ ЯВЛЕНИЯ ===
+  "град": { root: "gharkhō", pos: "noun" },
+  "града": { root: "gharkhō", pos: "noun" },
+  "граду": { root: "gharkhō", pos: "noun" },
+  "градом": { root: "gharkhō", pos: "noun" },
+  
+  // === ТКАНИ И МАТЕРИАЛЫ ===
+  "лён": { root: "lānkōl", pos: "noun" },
+  "льна": { root: "lānkōl", pos: "noun" },
+  "льну": { root: "lānkōl", pos: "noun" },
+  "льном": { root: "lānkōl", pos: "noun" },
+  
+  "шерсть": { root: "khōrthōl", pos: "noun" },
+  "шерсти": { root: "khōrthōl", pos: "noun" },
+  "шерстью": { root: "khōrthōl", pos: "noun" },
+
+  // === БОЛЕЗНИ И СОСТОЯНИЯ ===
+  "рана": { root: "mōrrak", pos: "noun" },
+  "раны": { root: "mōrrak", pos: "noun" },
+  "рану": { root: "mōrrak", pos: "noun" },
+  "раной": { root: "mōrrak", pos: "noun" },
+
+  // === ДОМ И ПОСТРОЙКИ ===
+  "крыша": { root: "dzenokh", pos: "noun" },
+  "крыши": { root: "dzenokh", pos: "noun" },
+  "крышу": { root: "dzenokh", pos: "noun" },
+  "крышей": { root: "dzenokh", pos: "noun" },
+  
+  "пол": { root: "kōlokh", pos: "noun" },
+  "пола": { root: "kōlokh", pos: "noun" },
+  "полу": { root: "kōlokh", pos: "noun" },
+  "полом": { root: "kōlokh", pos: "noun" },
+  
+  "окно": { root: "dzentōkh", pos: "noun" },
+  "окна": { root: "dzentōkh", pos: "noun" },
+  "окну": { root: "dzentōkh", pos: "noun" },
+  "окном": { root: "dzentōkh", pos: "noun" },
+
+  // === СОЦИАЛЬНЫЕ РОЛИ ===
+  "сосед": { root: "kōlsen", pos: "noun" },
+  "соседа": { root: "kōlsen", pos: "noun" },
+  "соседу": { root: "kōlsen", pos: "noun" },
+  "соседом": { root: "kōlsen", pos: "noun" },
+  "соседе": { root: "kōlsen", pos: "noun" },
+
+  // === АБСТРАКТНЫЕ ПОНЯТИЯ ===
+  "сила": { root: "khōlān", pos: "noun" },
+  "силы": { root: "khōlān", pos: "noun" },
+  "силу": { root: "khōlān", pos: "noun" },
+  "силой": { root: "khōlān", pos: "noun" },
+  
+  "смысл": { root: "thaltsan", pos: "noun" },
+  "смысла": { root: "thaltsan", pos: "noun" },
+  "смыслу": { root: "thaltsan", pos: "noun" },
+  "смыслом": { root: "thaltsan", pos: "noun" },
+  
+  "чудо": { root: "ānthal", pos: "noun" },
+  "чуда": { root: "ānthal", pos: "noun" },
+  "чуду": { root: "ānthal", pos: "noun" },
+  "чудом": { root: "ānthal", pos: "noun" },
+  
+  "тайна": { root: "nōkhlān", pos: "noun" },
+  "тайны": { root: "nōkhlān", pos: "noun" },
+  "тайну": { root: "nōkhlān", pos: "noun" },
+  "тайной": { root: "nōkhlān", pos: "noun" },
+
+  // === ПРЕДЛОГИ (недостающие) ===
+  "без": { root: "ān", pos: "prep" },
+  "для": { root: "thal", pos: "prep" },
+  "ради": { root: "thal", pos: "prep" },
+  "кроме": { root: "ān", pos: "prep" },
+  "вместо": { root: "ān", pos: "prep" },
+  "среди": { root: "tō", pos: "prep" },
+  "между": { root: "tō", pos: "prep" },
+  "против": { root: "ān", pos: "prep" },
+  "благодаря": { root: "thal", pos: "prep" },
+
+  // === СОЮЗЫ (недостающие) ===
+  "если": { root: "tsen", pos: "conj" },
+  "чтобы": { root: "thal", pos: "conj" },
+  "пока": { root: "amār", pos: "conj" },
+  "после": { root: "amār", pos: "conj" },
+  "перед": { root: "khān", pos: "conj" },
+  "затем": { root: "amār", pos: "conj" },
+  "иначе": { root: "ān", pos: "conj" },
+  "однако": { root: "kan", pos: "conj" },
+  "поэтому": { root: "tal", pos: "conj" },
+
+  // === ГЛАГОЛЫ (недостающие) ===
+  "пахнуть": { root: "khōlān", pos: "verb" },
+  "пахну": { root: "khōlān", pos: "verb" },
+  "пахнешь": { root: "khōlān", pos: "verb" },
+  "пахнет": { root: "khōlān", pos: "verb" },
+  "пахнем": { root: "khōlān", pos: "verb" },
+  "пахнете": { root: "khōlān", pos: "verb" },
+  "пахнут": { root: "khōlān", pos: "verb" },
+  "пах": { root: "khōlān", pos: "verb" },
+  "пахла": { root: "khōlān", pos: "verb" },
+  "пахли": { root: "khōlān", pos: "verb" },
+  
+  "звенеть": { root: "dzenur", pos: "verb" },
+  "звеню": { root: "dzenur", pos: "verb" },
+  "звенишь": { root: "dzenur", pos: "verb" },
+  "звенит": { root: "dzenur", pos: "verb" },
+  "звеним": { root: "dzenur", pos: "verb" },
+  "звените": { root: "dzenur", pos: "verb" },
+  "звенят": { root: "dzenur", pos: "verb" },
+  "звенел": { root: "dzenur", pos: "verb" },
+  "звенела": { root: "dzenur", pos: "verb" },
+  "звенели": { root: "dzenur", pos: "verb" },
+  
+  "шептать": { root: "nōkhthal", pos: "verb" },
+  "шепчу": { root: "nōkhthal", pos: "verb" },
+  "шепчешь": { root: "nōkhthal", pos: "verb" },
+  "шепчет": { root: "nōkhthal", pos: "verb" },
+  "шепчем": { root: "nōkhthal", pos: "verb" },
+  "шепчете": { root: "nōkhthal", pos: "verb" },
+  "шепчут": { root: "nōkhthal", pos: "verb" },
+  "шептал": { root: "nōkhthal", pos: "verb" },
+  "шептала": { root: "nōkhthal", pos: "verb" },
+  "шептали": { root: "nōkhthal", pos: "verb" },
+  
+  "кричать": { root: "khōthal", pos: "verb" },
+  "кричу": { root: "khōthal", pos: "verb" },
+  "кричишь": { root: "khōthal", pos: "verb" },
+  "кричит": { root: "khōthal", pos: "verb" },
+  "кричим": { root: "khōthal", pos: "verb" },
+  "кричите": { root: "khōthal", pos: "verb" },
+  "кричат": { root: "khōthal", pos: "verb" },
+  "кричал": { root: "khōthal", pos: "verb" },
+  "кричала": { root: "khōthal", pos: "verb" },
+  "кричали": { root: "khōthal", pos: "verb" },
+  
+  "молчать": { root: "ānthal", pos: "verb" },
+  "молчу": { root: "ānthal", pos: "verb" },
+  "молчишь": { root: "ānthal", pos: "verb" },
+  "молчит": { root: "ānthal", pos: "verb" },
+  "молчим": { root: "ānthal", pos: "verb" },
+  "молчите": { root: "ānthal", pos: "verb" },
+  "молчат": { root: "ānthal", pos: "verb" },
+  "молчал": { root: "ānthal", pos: "verb" },
+  "молчала": { root: "ānthal", pos: "verb" },
+  "молчали": { root: "ānthal", pos: "verb" },
+  
+  "вспоминать": { root: "lānthal", pos: "verb" },
+  "вспоминаю": { root: "lānthal", pos: "verb" },
+  "вспоминаешь": { root: "lānthal", pos: "verb" },
+  "вспоминает": { root: "lānthal", pos: "verb" },
+  "вспоминаем": { root: "lānthal", pos: "verb" },
+  "вспоминаете": { root: "lānthal", pos: "verb" },
+  "вспоминают": { root: "lānthal", pos: "verb" },
+  "вспоминал": { root: "lānthal", pos: "verb" },
+  "вспоминала": { root: "lānthal", pos: "verb" },
+  "вспоминали": { root: "lānthal", pos: "verb" },
+  
+  "забывать": { root: "ānlān", pos: "verb" },
+  "забываю": { root: "ānlān", pos: "verb" },
+  "забываешь": { root: "ānlān", pos: "verb" },
+  "забывает": { root: "ānlān", pos: "verb" },
+  "забываем": { root: "ānlān", pos: "verb" },
+  "забываете": { root: "ānlān", pos: "verb" },
+  "забывают": { root: "ānlān", pos: "verb" },
+  "забывал": { root: "ānlān", pos: "verb" },
+  "забывала": { root: "ānlān", pos: "verb" },
+  "забывали": { root: "ānlān", pos: "verb" },
+  
+  "верить": { root: "khalmar", pos: "verb" },
+  "верю": { root: "khalmar", pos: "verb" },
+  "веришь": { root: "khalmar", pos: "verb" },
+  "верит": { root: "khalmar", pos: "verb" },
+  "верим": { root: "khalmar", pos: "verb" },
+  "верите": { root: "khalmar", pos: "verb" },
+  "верят": { root: "khalmar", pos: "verb" },
+  "верил": { root: "khalmar", pos: "verb" },
+  "верила": { root: "khalmar", pos: "verb" },
+  "верили": { root: "khalmar", pos: "verb" },
+  
+  "надеяться": { root: "lānthōl", pos: "verb" },
+  "надеюсь": { root: "lānthōl", pos: "verb" },
+  "надеешься": { root: "lānthōl", pos: "verb" },
+  "надеется": { root: "lānthōl", pos: "verb" },
+  "надеемся": { root: "lānthōl", pos: "verb" },
+  "надеетесь": { root: "lānthōl", pos: "verb" },
+  "надеются": { root: "lānthōl", pos: "verb" },
+  "надеялся": { root: "lānthōl", pos: "verb" },
+  "надеялась": { root: "lānthōl", pos: "verb" },
+  "надеялись": { root: "lānthōl", pos: "verb" },
+  
+  "бояться": { root: "ghōlmar", pos: "verb" },
+  "боюсь": { root: "ghōlmar", pos: "verb" },
+  "боишься": { root: "ghōlmar", pos: "verb" },
+  "боится": { root: "ghōlmar", pos: "verb" },
+  "боимся": { root: "ghōlmar", pos: "verb" },
+  "боитесь": { root: "ghōlmar", pos: "verb" },
+  "боятся": { root: "ghōlmar", pos: "verb" },
+  "боялся": { root: "ghōlmar", pos: "verb" },
+  "боялась": { root: "ghōlmar", pos: "verb" },
+  "боялись": { root: "ghōlmar", pos: "verb" },
+
+  // === ДОПОЛНИТЕЛЬНЫЕ СУЩЕСТВИТЕЛЬНЫЕ ===
+  "след": { root: "kōlnur", pos: "noun" },
+  "следа": { root: "kōlnur", pos: "noun" },
+  "следу": { root: "kōlnur", pos: "noun" },
+  "следом": { root: "kōlnur", pos: "noun" },
+  "следе": { root: "kōlnur", pos: "noun" },
+  
+  "слава": { root: "lānkhō", pos: "noun" },
+  "славы": { root: "lānkhō", pos: "noun" },
+  "славу": { root: "lānkhō", pos: "noun" },
+  "славой": { root: "lānkhō", pos: "noun" },
+  
+  "беда": { root: "mōrthal", pos: "noun" },
+  "беды": { root: "mōrthal", pos: "noun" },
+  "беду": { root: "mōrthal", pos: "noun" },
+  "бедой": { root: "mōrthal", pos: "noun" },
+  
+  "победа": { root: "marlān", pos: "noun" },
+  "победы": { root: "marlān", pos: "noun" },
+  "победу": { root: "marlān", pos: "noun" },
+  "победой": { root: "marlān", pos: "noun" },
+  
+  "поражение": { root: "mōrlān", pos: "noun" },
+  "поражения": { root: "mōrlān", pos: "noun" },
+  "поражению": { root: "mōrlān", pos: "noun" },
+  "поражением": { root: "mōrlān", pos: "noun" },
   
   // === ДОПОЛНИТЕЛЬНЫЕ ВАРИАНТЫ НАПИСАНИЯ ===
   "пещеры под фарсидой": { root: "Khō-ān-sen", pos: "phrase" },
@@ -2330,7 +3754,7 @@ const MARTIAN_ALPHABET = {
   'ē': 'Ƨ̱',        // отзеркаленная F с палкой по середине
 };
 // ============================================================
-// ПРЕОБРАЗОВАНИЕ В ИЕРОГЛИФЫ
+// ПРЕОБРАЗОВАНИЕ В ИЕРОГЛИФЫ (исправлено)
 // ============================================================
 function toGlyphs(text) {
   // Разбиваем текст на слова
@@ -2338,26 +3762,31 @@ function toGlyphs(text) {
   const result = [];
   
   for (let word of words) {
-    // 1. Проверяем, есть ли точное совпадение в словаре иероглифов
-    if (MARTIAN_GLYPHS[word]) {
-      result.push(MARTIAN_GLYPHS[word]);
+    // 1. Нормализуем слово (убираем диакритику для поиска в словаре)
+    const normalized = word.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    
+    // 2. Проверяем точное совпадение в словаре иероглифов (по нормализованному)
+    if (MARTIAN_GLYPHS[normalized]) {
+      result.push(MARTIAN_GLYPHS[normalized]);
       continue;
     }
     
-    // 2. Если точного совпадения нет, транслитерируем по буквам
+    // 3. Если точного совпадения нет, транслитерируем по буквам
     let glyphWord = '';
     let i = 0;
     while (i < word.length) {
       // Проверяем двухбуквенные сочетания (kh, gh, th, dz, ts)
       const twoChars = word.substring(i, i + 2);
-      if (twoChars in MARTIAN_ALPHABET) {
-        glyphWord += MARTIAN_ALPHABET[twoChars];
+      const twoNormalized = twoChars.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      if (MARTIAN_ALPHABET[twoNormalized]) {
+        glyphWord += MARTIAN_ALPHABET[twoNormalized];
         i += 2;
       } else {
         // Проверяем одиночные буквы
         const char = word.charAt(i);
-        if (char in MARTIAN_ALPHABET) {
-          glyphWord += MARTIAN_ALPHABET[char];
+        const charNormalized = char.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        if (MARTIAN_ALPHABET[charNormalized]) {
+          glyphWord += MARTIAN_ALPHABET[charNormalized];
         } else {
           // Если символ не найден, оставляем букву как есть
           glyphWord += char;
@@ -2369,7 +3798,7 @@ function toGlyphs(text) {
   }
   return result.join(' ');
 }
-  
+
 function findInLexicon(word) {
   const norm = normalize(word);
   // Точное совпадение

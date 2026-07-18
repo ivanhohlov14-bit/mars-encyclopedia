@@ -12,6 +12,7 @@ theme:
 extra_head:
   - <link rel="icon" href="/assets/favicon.png" type="image/png">
   - <link rel="shortcut icon" href="/assets/favicon.png" type="image/png">
+  - <link rel="apple-touch-icon" href="/assets/favicon.png" type="image/png">
   
 plugins:
   - search

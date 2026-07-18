@@ -1,4 +1,4 @@
-# <img src="/assets/images/stickers/sticker-ancient-saturn.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> С чего начать?
+# <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/stickers/sticker-ancient-saturn.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> С чего начать?
 
 **Добро пожаловать в Марсианскую энциклопедию!**
 
@@ -8,7 +8,7 @@
 
 ---
 
-## <img src="/assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 1. Прочитай первую книгу
+## <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 1. Прочитай первую книгу
 
 Всё начинается с книги, которая открывает цикл. Именно здесь ты познакомишься с главными героями, узнаешь, что такое Эпоха Умирания, и поймёшь, почему марсиане решили покинуть свою планету.
 
@@ -18,7 +18,7 @@
 
 ---
 
-## <img src="/assets/images/stickers/sticker-map.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 2. Посмотри на карту
+## <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/stickers/sticker-map.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 2. Посмотри на карту
 
 Мир Марса огромен: моря, города, вулканы и пустыни. Чтобы не заблудиться, просто открой карту и посмотри, где что находится.
 
@@ -28,7 +28,7 @@
 
 ---
 
-## <img src="/assets/images/stickers/sticker-pin.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 3. Прочитай эти три статьи
+## <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/stickers/sticker-pin.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 3. Прочитай эти три статьи
 
 Эти три статьи дадут тебе фундамент, без которого остальной материал может показаться запутанным.
 

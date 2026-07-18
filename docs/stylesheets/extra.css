@@ -270,3 +270,138 @@ blockquote {
   background: var(--block-bg) !important;
   color: var(--text-color) !important;
 }
+
+/* ==========================================
+   АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ
+   ========================================== */
+
+/* Планшеты и маленькие ноутбуки (ширина < 1024px) */
+@media (max-width: 1024px) {
+  .wy-nav-content {
+    padding: 1.5rem 2rem !important;
+    max-width: 100% !important;
+  }
+  
+  .infobox {
+    float: none !important;
+    width: 100% !important;
+    margin: 1rem 0 !important;
+  }
+  
+  .infobox img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  table {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* Телефоны (ширина < 768px) */
+@media (max-width: 768px) {
+  /* Основной контент */
+  .wy-nav-content {
+    padding: 1rem 1.2rem !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* Заголовки */
+  h1 {
+    font-size: 1.8rem !important;
+  }
+  h2 {
+    font-size: 1.4rem !important;
+  }
+  h3 {
+    font-size: 1.2rem !important;
+  }
+  
+  /* Инфобокс — на всю ширину и в начале статьи */
+  .infobox {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 1rem 0 !important;
+    padding: 0.8rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+  
+  .infobox img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Таблицы — скролл на маленьких экранах */
+  .wy-table-responsive {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  table {
+    font-size: 0.8rem !important;
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
+  
+  table td, table th {
+    padding: 0.4rem 0.6rem !important;
+  }
+  
+  /* Ссылки внутри инфобокса — уменьшить отступы */
+  .infobox p {
+    margin: 0.2rem 0 !important;
+  }
+  
+  /* Изображения — адаптивны */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Карта и глобус */
+  #globeViz,
+  #marsMap {
+    height: 400px !important;
+  }
+  
+  /* Боковое меню — компактнее */
+  .wy-menu-vertical a {
+    font-size: 14px !important;
+    padding: 6px 12px !important;
+  }
+}
+
+/* Очень маленькие телефоны (ширина < 480px) */
+@media (max-width: 480px) {
+  .wy-nav-content {
+    padding: 0.8rem 1rem !important;
+    font-size: 14px !important;
+  }
+  
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  h2 {
+    font-size: 1.2rem !important;
+  }
+  h3 {
+    font-size: 1.1rem !important;
+  }
+  
+  .infobox {
+    padding: 0.6rem 0.8rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  #globeViz,
+  #marsMap {
+    height: 300px !important;
+  }
+  
+  .wy-menu-vertical a {
+    font-size: 13px !important;
+    padding: 4px 10px !important;
+  }
+}

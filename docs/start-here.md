@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-ancient-saturn.png" style="width: 32px; height: 32px; display: inline; vertical-align: middle; margin-right: 6px;"> С чего начать?
+# <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-ancient-saturn.png" style="width: 40px; height: 32px; display: inline; vertical-align: middle; margin-right: 6px;"> С чего начать?
 
 **Добро пожаловать в Марсианскую энциклопедию!**
 

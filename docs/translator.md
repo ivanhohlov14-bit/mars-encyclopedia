@@ -110,7 +110,7 @@ title: Марсианский переводчик
 </style>
 
 <div class="translator-container">
-  <h2>🌌 Переводчик на марсианский язык</h2>
+  <h2><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-galaxy.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Переводчик на марсианский язык</h2>
   <div class="hint">
     <strong>Как пользоваться:</strong> Введите предложение на русском. Переводчик сам найдёт правильные формы.
     <br>• Поддерживаются падежи, числа, времена, отрицание, вопросы, модальность.
@@ -3679,18 +3679,29 @@ const VERB_LEMMAS = {
 // ============================================================
 const MARTIAN_GLYPHS = {
   // === ОСНОВНЫЕ КОРНИ (ваши иероглифы) ===
-  "ākha": "〰",   // вода (три волнистые линии)
-  "okh": "⌂",       // дом
-  "kōl": "✦",       // земля (почва)
-  "khō": "★",       // огонь (круг с пятью отрезками как звезда)
-  "mar": "⊙",       // жизнь (круг с горизонтальным овалом внутри)
-  "lān": "∞",       // память (знак бесконечности)
-  "thal": "┤",      // смотреть (вертикальная палка с двумя округлыми линиями)
-  "rōg": "▲",       // король (вертикальный треугольник с палкой, как флажок)
-  "khan": "¢",     // река (палка вертикальная с буквой "С" в ней)
-  "sen": "P",       // место (символ похож на букву Р, но с несоприкасающейся линией)
-  "īn": "Λ",        // суффикс мужского рода (треугольник без нижней линии)
-  "dzen": "✦",      // звезда (можно использовать другой символ, если хотите)
+  "ākha": "〰",   // вода
+  "okh": "⌂",     // дом
+  "kōl": "✦",     // земля
+  "khō": "★",     // огонь
+  "mar": "⊙",     // жизнь
+  "lān": "∞",     // память
+  "thal": "┤",    // смотреть
+  "rōg": "▲",     // король
+  "khan": "¢",    // река
+  "sen": "P",     // место
+  "īn": "Λ",      // суффикс мужского рода
+  "dzen": "✦",    // звезда (можно другой символ, но оставлю как есть)
+  "sur": "☰",     // глина (добавил, если нет)
+  "zal": "↯",     // ветер
+  "xar": "⨯",     // стол
+  "ghar": "◆",    // камень
+  "nur": "➤",     // идти
+  "tsan": "✧",    // знание
+  "khal": "◈",    // новый
+  "xal": "◉",     // древний
+  "suf": "⬡",     // великий
+  "ari": "⏣",     // избранный
+  "mōr": "✖",     // смерть
   
   // === СУФФИКСЫ ===
   "zān": "◉",      // вариант множественного числа
@@ -3757,38 +3768,41 @@ const MARTIAN_ALPHABET = {
 // ПРЕОБРАЗОВАНИЕ В ИЕРОГЛИФЫ (исправлено)
 // ============================================================
 function toGlyphs(text) {
-  // Разбиваем текст на слова
+  if (!text) return '';
   const words = text.split(' ');
   const result = [];
-  
   for (let word of words) {
-    // 1. Нормализуем слово (убираем диакритику для поиска в словаре)
-    const normalized = word.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    
-    // 2. Проверяем точное совпадение в словаре иероглифов (по нормализованному)
-    if (MARTIAN_GLYPHS[normalized]) {
-      result.push(MARTIAN_GLYPHS[normalized]);
+    if (!word) continue;
+    // Приводим к нижнему регистру и нормализуем диакритику
+    const lowerWord = word.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    // Проверяем, есть ли точное совпадение в словаре иероглифов
+    if (MARTIAN_GLYPHS[lowerWord]) {
+      result.push(MARTIAN_GLYPHS[lowerWord]);
       continue;
     }
-    
-    // 3. Если точного совпадения нет, транслитерируем по буквам
+    // Если нет, пробуем найти корень без суффиксов (например, "marzān" → "mar")
+    let found = false;
+    for (let key of Object.keys(MARTIAN_GLYPHS)) {
+      if (lowerWord.startsWith(key) && key.length > 1) {
+        result.push(MARTIAN_GLYPHS[key]);
+        found = true;
+        break;
+      }
+    }
+    if (found) continue;
+    // Если всё равно не нашли, транслитерируем по буквам
     let glyphWord = '';
     let i = 0;
     while (i < word.length) {
-      // Проверяем двухбуквенные сочетания (kh, gh, th, dz, ts)
-      const twoChars = word.substring(i, i + 2);
-      const twoNormalized = twoChars.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-      if (MARTIAN_ALPHABET[twoNormalized]) {
-        glyphWord += MARTIAN_ALPHABET[twoNormalized];
+      const twoChars = word.substring(i, i+2).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      if (MARTIAN_ALPHABET[twoChars]) {
+        glyphWord += MARTIAN_ALPHABET[twoChars];
         i += 2;
       } else {
-        // Проверяем одиночные буквы
-        const char = word.charAt(i);
-        const charNormalized = char.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        if (MARTIAN_ALPHABET[charNormalized]) {
-          glyphWord += MARTIAN_ALPHABET[charNormalized];
+        const char = word.charAt(i).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        if (MARTIAN_ALPHABET[char]) {
+          glyphWord += MARTIAN_ALPHABET[char];
         } else {
-          // Если символ не найден, оставляем букву как есть
           glyphWord += char;
         }
         i++;

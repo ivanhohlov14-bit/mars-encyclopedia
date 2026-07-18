@@ -506,7 +506,6 @@
 - [Ацидалийское море](https://mars-wiki.ru/geography/acidalia-sea/)
 - [Фарсида](https://mars-wiki.ru/geography/farsida/)
 - [Академия Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/)
-- [Гемоглобин](https://mars-wiki.ru/biology/gemoglobin/) (если есть такая статья)
 - [Эпоха Расцвета](https://mars-wiki.ru/history/epokha-rascveta/)
 - [Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)
 - [Корабли-ковчеги](https://mars-wiki.ru/books/korabli-kovchegi/)

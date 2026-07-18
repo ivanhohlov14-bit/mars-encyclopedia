@@ -1,8 +1,8 @@
-# <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-ancient-saturn.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> С чего начать?
+# <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-ancient-saturn.png" style="width: 32px; height: 32px; display: inline; vertical-align: middle; margin-right: 6px;"> С чего начать?
 
 **Добро пожаловать в Марсианскую энциклопедию!**
 
-Здесь собраны знания о мире «Письма из Красной пыли» — od географии и истории до персонажей и мифологии. Но с чего начать, если ты здесь впервые?
+Здесь собраны знания о мире «Письма из Красной пыли» — oб географии и истории до персонажей и мифологии. Но с чего начать, если ты здесь впервые?
 
 Мы подготовили для тебя **самый простой путь** — три шага, которые помогут тебе погрузиться в этот мир.
 

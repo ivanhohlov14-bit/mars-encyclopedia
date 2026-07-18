@@ -111,7 +111,7 @@ title: Марсианский переводчик
 
 <div class="translator-container">
   <h2 style="display: flex; align-items: center; gap: 10px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-ancient-saturn.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-galaxy.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
   Переводчик на марсианский язык
 </h2>
   <div class="hint">

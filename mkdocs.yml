@@ -89,6 +89,7 @@ nav:
               - Академия Окхасена: geography/akademiya-okhasena.md
       - Астрономия:
           - Звёздное небо: astronomy/mars-sky.md
+          - Календарь: astronomy/marsian-calendar.md
           - Спутники:
               - Фобос: astronomy/phobos.md
               - Деймос: astronomy/deimos.md

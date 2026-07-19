@@ -26,6 +26,8 @@ extra_head:
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/110849579" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+
+plugins:
   - search
 
 markdown_extensions:

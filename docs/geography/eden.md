@@ -11,7 +11,7 @@
 
 <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap;">
   <div style="text-align: center;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.png" alt="Флаг Королевства Эдем" style="max-width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Королевства Эдем" style="max-width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.6rem; color: #555; margin-top: 2px;">Флаг</div>
   </div>
   <div style="text-align: center;">

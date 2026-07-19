@@ -17,12 +17,12 @@
   <p><b>Високосный день:</b> <i>Lān sen</i> (раз в 4 года)</p>
   <p><b>Счёт лет:</b> от основания Окхасена (1 г. Э.О.)</p>
   <p><b>Количество сезонов:</b> 8</p>
-  <p><b>Использовался:</b> в <a href="https://mars-wiki.ru/geography/arkadia/">Королевстве Эдем</a> и сопредельных землях в <a href="https://mars-wiki.ru/history/epokha-umiraniya/">Эпоху Умирания</a></p>
+  <p><b>Использовался:</b> в <a href="https://mars-wiki.ru/geography/eden.md/">Королевстве Эдем</a> и сопредельных землях в <a href="https://mars-wiki.ru/history/epokha-umiraniya/">Эпоху Умирания</a></p>
   <p><b>Предшественники:</b> календари Серпендиды (18 месяцев) и Эллады (фобосо-звёздный)</p>
   <p><b>Связанные понятия:</b> <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a>, <a href="https://mars-wiki.ru/people/hevsur/">Хевсур</a>, <a href="https://mars-wiki.ru/astronomy/phobos-deimos/">Фобос и Деймос</a></p>
 </div>
 
-**Марсианский календарь** — система летосчисления, использовавшаяся в [Королевстве Эдем](https://mars-wiki.ru/geography/arkadia/) и на большей части обитаемого Марса в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). Основные сведения о нём извлечены из [глиняных табличек](https://mars-wiki.ru/terms/tablichki/), найденных [Хевсуром](https://mars-wiki.ru/people/hevsur/) в подземном храме долины Ксанфа, а также из записей [Академии Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/). Календарь отражает не только астрономические реалии Марса, но и культурные особенности марсианской цивилизации, тесно связанные с концепцией [Lān sur](https://mars-wiki.ru/terms/lan-sur/)[^1].
+**Марсианский календарь** — система летосчисления, использовавшаяся в [Королевстве Эдем](https://mars-wiki.ru/geography/eden.md/) и на большей части обитаемого Марса в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). Основные сведения о нём извлечены из [глиняных табличек](https://mars-wiki.ru/terms/tablichki/), найденных [Хевсуром](https://mars-wiki.ru/people/hevsur/) в подземном храме долины Ксанфа, а также из записей [Академии Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/). Календарь отражает не только астрономические реалии Марса, но и культурные особенности марсианской цивилизации, тесно связанные с концепцией [Lān sur](https://mars-wiki.ru/terms/lan-sur/)[^1].
 
 ---
 

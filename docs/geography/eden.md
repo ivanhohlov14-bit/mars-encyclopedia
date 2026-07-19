@@ -3,10 +3,15 @@
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
   <h3 style="margin: 0; text-align: center;">Королевство Эдем</h3>
   <hr>
+  
+  <div style="text-align: center; margin: 8px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eden-kingdom-map.png" alt="Карта Королевства Эдем" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Эдем. По данным Академии Окхасена (2650 г. Э.О.).</div>
+</div>
   <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.png" alt="Флаг Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Эдема</div>
     </div>
     <div style="text-align: center;">
@@ -14,11 +19,6 @@
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Эдема</div>
     </div>
   </div>
-  
-  <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eden-kingdom-map.png" alt="Карта Королевства Эдем" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Эдем. По данным Академии Окхасена (2650 г. Э.О.).</div>
-</div>
   
   <p><b>Марсианское название:</b> <i>Eden Ariya</i> («Избранный Эдем»)</p>
   <p><b>Тип государства:</b> Королевство</p>

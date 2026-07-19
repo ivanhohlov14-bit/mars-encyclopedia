@@ -3,10 +3,12 @@
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
   <h3 style="margin: 0; text-align: center;">Королевство Эдем</h3>
   <hr>
+  
   <div style="text-align: center; margin: 8px 0;">
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eden-kingdom-map.png" alt="Карта Королевства Эдем" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Эдем. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
+  
   <p><b>Марсианское название:</b> <i>Eden Ariya</i> («Избранный Эдем»)</p>
   <p><b>Тип государства:</b> Королевство</p>
   <p><b>Площадь:</b> ~18 млн км²</p>

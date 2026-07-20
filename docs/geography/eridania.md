@@ -67,7 +67,7 @@
   <p><b>Государства-соседи</b></p>
 <div style="display: flex; flex-wrap: wrap; gap: 2px 4px; margin-top: 2px;">
   <span style="display: inline-flex; align-items: center; gap: 3px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="/geography/arkadia/">Аркадия</a>
   </span><span>, </span>
   <span style="display: inline-flex; align-items: center; gap: 3px;">

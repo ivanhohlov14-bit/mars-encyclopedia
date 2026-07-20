@@ -64,7 +64,29 @@
   <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2620 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b> <a href="/geography/arkadia/">Аркадия</a>, Эритрея, Кхонг, Кимерия, Авсония</p>
+  <p><b>Государства-соседи</b></p>
+<div style="display: flex; flex-wrap: wrap; gap: 2px 4px; margin-top: 2px;">
+  <span style="display: inline-flex; align-items: center; gap: 3px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/arkadia/">Аркадия</a>
+  </span><span>, </span>
+  <span style="display: inline-flex; align-items: center; gap: 3px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/eritrea/">Эритрея</a>
+  </span><span>, </span>
+  <span style="display: inline-flex; align-items: center; gap: 3px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/khong/">Кхонг</a>
+  </span><span>, </span>
+  <span style="display: inline-flex; align-items: center; gap: 3px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/kimeria/">Кимерия</a>
+  </span><span>, </span>
+  <span style="display: inline-flex; align-items: center; gap: 3px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/avsonia/">Авсония</a>
+  </span>
+</div>
   <p><b>Крупнейшие водоёмы</b> <a href="/geography/zephyria-sea/">Зефирийское море</a>, <a href="/geography/argira-sea/">море Аргир</a>, <a href="/geography/gulf-of-great-kings/">залив Великих Королей</a></p>
   <p><b>Крупнейшие реки</b> <a href="/geography/great-current-river/">Великое Течение</a>, <a href="/geography/mangala-river/">Мангалы</a></p>
   <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/geography/argira-temple/">Храм Аргира</a>, <a href="/geography/southern-road/">Южный тракт</a></p>

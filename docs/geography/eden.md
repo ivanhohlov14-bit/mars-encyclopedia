@@ -63,7 +63,29 @@
   <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2600 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b> <a href="/geography/arkadia/">Аркадия</a>, Утопия, Серпендида, Кимерия, Эритрея</p>
+  <p><b>Государства-соседи</b></p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+  <div style="display: inline-flex; align-items: center; gap: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/arkadia/">Аркадия</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/utopia/">Утопия</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/serpentida/">Серпендида</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/kimeria/">Кимерия</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/eritrea/">Эритрея</a>
+  </div>
+</div>
   <p><b>Крупнейшие водоёмы</b> <a href="/geography/acidalia-sea/">Ацидалийское море</a>, залив Горн, залив Ульян, залив Большой Сирт, залив Маринера, Зефирийское море, Эритрейское море</p>
   <p><b>Крупнейшие реки</b> <a href="/geography/ksanf-river/">Ксанф</a>, Агария, Арес, Шалбот, Майа</p>
   <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/books/iskhod/">Исход</a></p>

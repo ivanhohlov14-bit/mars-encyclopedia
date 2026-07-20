@@ -64,7 +64,17 @@
   <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2600 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b> <a href="/geography/eden/">Эдем</a>, Эритрея, Эридания</p>
+ <p><b>Государства-соседи</b></p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+  <div style="display: inline-flex; align-items: center; gap: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/eden/">Эдем</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="/geography/eridania/">Эридания</a>
+  </div>
+</div>
   <p><b>Крупнейшие водоёмы</b> <a href="/geography/acidalia-sea/">Ацидалийское море</a>, <a href="/geography/amazon-sea/">Амазонское море</a>, <a href="/geography/zephyria-sea/">Зефирийское море</a></p>
   <p><b>Крупнейшие реки</b> <a href="/geography/labey-river/">Лабей</a>, <a href="/geography/kho-river/">Кхо</a>, <a href="/geography/araxis-river/">Араксис</a></p>
   <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/mythology/kho/">Кхо</a></p>

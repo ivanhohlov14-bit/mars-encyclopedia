@@ -68,7 +68,7 @@
   <p><b>Государства-соседи</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.jpg" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/avsonia/">Авсония</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
@@ -76,15 +76,15 @@
       <a href="/geography/eridania/">Эридания</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.jpg" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/utopia/">Утопия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.png" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.jpg" alt="Флаг Серпендиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/serpentida/">Серпендида</a>
     </div>
   </div>

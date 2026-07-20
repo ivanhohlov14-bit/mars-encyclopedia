@@ -71,7 +71,7 @@
   <p><b>Государства-соседи</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.jpg" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/arkadia/">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
@@ -91,7 +91,7 @@
       <a href="/geography/serpentida/">Серпендида</a>
     </div>
   </div>
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/argira-sea/">море Аргир</a>, <a href="/geography/mariner-gulf/">залив Маринера</a>, <a href="/geography/eritrean-sea/">Эритрейское море</a>, <a href="/geography/dzen-mar-strait/">пролив Дзен-Мар</a></p>
+  <p><b>Крупнейшие водоёмы</b> <a href="/geography/argir-sea/">море Аргир</a>, <a href="/geography/mariner-gulf/">залив Маринера</a>, <a href="/geography/eritreya-sea/">Эритрейское море</a>, <a href="/geography/dzen-mar-strait/">пролив Дзен-Мар</a></p>
   <p><b>Крупнейшие реки</b> <a href="/geography/eritrea-river/">Эритрей</a>, <a href="/geography/mariner-river/">Маринер</a></p>
   <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/history/pirate-kingdom/">Пиратское королевство</a></p>
 </div>
@@ -199,7 +199,7 @@
 ## Связанные статьи
 
 - [Порт Ксанф](/geography/port-ksanf/)
-- [Эритрейское море](/geography/eritrean-sea/)
+- [Эритрейское море](/geography/eritreya-sea/)
 - [Залив Маринера](/geography/mariner-gulf/)
 - [Пролив Дзен-Мар](/geography/dzen-mar-strait/)
 - [Серпендида](/geography/serpentida/)

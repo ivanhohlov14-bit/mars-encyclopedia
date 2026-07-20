@@ -57,6 +57,7 @@ nav:
               - Эпоха Расцвета: history/epokha-rascveta.md
               - Эпоха Умирания: history/epokha-umiraniya.md
           - Исход: history/iskhod.md
+      - Королевства:
           - Королевство Ксанф: history/pirate-kingdom.md
           - Королевство Эдем: geography/eden.md
           - Королевство Ардакия: geography/arkadia.md
@@ -65,6 +66,7 @@ nav:
           - Королевство Авсония: geography/avsonia.md
           - Королевство Кимерия: geography/kimeria.md
           - Королевство Серпентида: geography/serpentida.md
+          - Королевство Эритрея: geography/eritrea.md
           
       - География:
           - Моря:

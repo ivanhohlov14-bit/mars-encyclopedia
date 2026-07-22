@@ -71,11 +71,11 @@
   <p><b>Государства-соседи</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.jpg" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/arkadia/">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.jpg" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/utopia/">Утопия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
@@ -87,7 +87,7 @@
       <a href="/geography/kimeria/">Кимерия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.jpg" alt="Флаг Эритрея" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eritrea/">Эритрея</a>
     </div>
   </div>
@@ -603,14 +603,16 @@
 
 **Великая война с кочевниками** продолжалась до **2695 года**. В **2690 году** эдемская армия разгромила кочевников в битве у залива Маринера, после чего произошёл перелом в войне. Окончательная победа в войне позволила Эдему присоединить восточное побережье [Эритрейского моря](/geography/eritrean-sea/) и часть южных земель[^9]. На новых землях был город **Аравия-Мар**, куда в **2692 году** переносится часть королевского двора[^10]. В **2695 году** Эдем объявляется **Империей Каналов** (марс. *Khan-ral*) и входит в число великих держав Марса[^11].
 
-В целом реформы Араксиса были направлены на укрепление государства и приобщение элиты к новым технологиям с одновременным усилением абсолютизма. В ходе реформ было преодолено технико-экономическое отставание Эдема от некоторых других марсианских государств, завоёван выход к Эритрейскому морю, проведены преобразования во многих сферах жизни эдемского общества[^12].
-
-Однако достижения правления Араксиса были достигнуты путём насилия над населением, полного его подчинения воле монарха, искоренения всякого инакомыслия. Жёсткие методы, репрессии привели к перенапряжению народных сил. Указ Араксиса о престолонаследии, призванный не допустить сворачивания реформ, привёл к затяжному кризису верховной власти, известному как **«эпоха смены королей»**[^13].
-
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-ark-construction.png" alt="Строительство кораблей-ковчегов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Военный флот Эдема. Реконструкция по табличкам Академии.</div>
 </div>
+
+В целом реформы Араксиса были направлены на укрепление государства и приобщение элиты к новым технологиям с одновременным усилением абсолютизма. В ходе реформ было преодолено технико-экономическое отставание Эдема от некоторых других марсианских государств, завоёван выход к Эритрейскому морю, проведены преобразования во многих сферах жизни эдемского общества[^12].
+
+Однако достижения правления Араксиса были достигнуты путём насилия над населением, полного его подчинения воле монарха, искоренения всякого инакомыслия. Жёсткие методы, репрессии привели к перенапряжению народных сил. Указ Араксиса о престолонаследии, призванный не допустить сворачивания реформ, привёл к затяжному кризису верховной власти, известному как **«эпоха смены королей»**[^13].
+
+
 
 ---
 

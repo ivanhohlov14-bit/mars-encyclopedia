@@ -1,7 +1,101 @@
 # История Эдема
 
-*Основная статья: [История Эдема](/history/edem/)*  
 *См. также: [Хронология Эдема](/history/timeline/), [Список королей Эдема](/history/kings/)*
+
+<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
+  <h3 style="margin: 0; text-align: center;">Королевство Эдем</h3>
+  <hr>
+  
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eden-kingdom-map.png" alt="Карта Королевства Эдем" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Эдем. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
+  <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Эдема</div>
+    </div>
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-eden.png" alt="Герб Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Эдема</div>
+    </div>
+  </div>
+
+  <!-- ИСТОРИЯ (ключевые даты) -->
+  <p><b>История</b></p>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+    <li>• 1 г. Э.О. — основание Окхасена</li>
+    <li>• 47 г. — начало династии Сарумидов</li>
+    <li>• 1500 г. — первое упоминание названия «Эдем»</li>
+    <li>• 2500 г. — провозглашение Королевства Эдем</li>
+    <li>• 2680 г. — начало Эпохи Умирания</li>
+    <li>• 2740 г. — Исход, отлёт кораблей-ковчегов</li>
+  </ul>
+  <hr style="margin: 6px 0;">
+
+  <p><b>Марсианское название</b> <i>Eden Ariya</i> («Избранный Эдем»)</p>
+  <p><b>Тип государства</b> Королевство (федеративная монархия)</p>
+  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a></p>
+  <p><b>Столица</b> <a href="/geography/rogen-aria/">Роген-Ария</a></p>
+  <p><b>Координаты столицы</b> 25° с.ш., 30° в.д.</p>
+  <p><b>Крупнейшие города</b> <a href="/geography/okhasen/">Окхасен</a>, Эрданис, Саксин, Тана-Акха</p>
+  <p><b>Правящая династия</b> Сарумиды (Сарум I — Сарум Великий — Аратан III)</p>
+  <p><b>Годы существования</b> ок. 1500 г. Э.О. — 2745 г. Э.О.</p>
+  <p><b>Гос. религия</b> культ богини <a href="/mythology/araksis/">Араксис</a> (ок. 70 % населения)</p>
+
+  <p><b>Территория</b></p>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+    <li>• Всего ~18 млн км²</li>
+    <li>• % водной поверхности ~18 %</li>
+  </ul>
+
+  <p><b>Население</b></p>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+    <li>• Оценка (2650 г. Э.О.) ~8,5 млн чел.</li>
+    <li>• Плотность ~0,47 чел./км²</li>
+  </ul>
+
+  <p><b>ВВП (ППС)</b></p>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+    <li>• Итого (2650 г.) ~18 млн глиняных талантов</li>
+    <li>• На душу населения ~2,1 таланта</li>
+  </ul>
+
+  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2600 г. Э.О.)</p>
+
+  <hr style="margin: 6px 0;">
+  
+  <p><b>Государства-соседи</b></p>
+  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.jpg" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="/geography/arkadia/">Аркадия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.jpg" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="/geography/utopia/">Утопия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="/geography/serpentida/">Серпендида</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="/geography/kimeria/">Кимерия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.jpg" alt="Флаг Эритрея" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="/geography/eritrea/">Эритрея</a>
+    </div>
+  </div>
+  
+  <p><b>Крупнейшие водоёмы</b> <a href="/geography/acidalia-sea/">Ацидалийское море</a>, залив Горн, залив Ульян, залив Большой Сирт, залив Маринера, Зефирийское море, Эритрейское море</p>
+  <p><b>Крупнейшие реки</b> <a href="/geography/ksanf-river/">Ксанф</a>, Агария, Арес, Шалбот, Майа</p>
+  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/books/iskhod/">Исход</a></p>
+</div>
 
 История Королевства Эдема как государства в марсианской историографии традиционно отсчитывается от **1 года Э.О.** — основания портового города [Окхасен](/geography/okhasen/) переселенцами из древней [Серпендиды](/geography/serpendida/). Однако, согласно табличкам, найденным Хевсуром в подземном храме долины Аргира, первые поселения на восточном берегу [Ацидалийского моря](/geography/acidalia-sea/) возникли ещё в конце I тысячелетия до Э.О., когда рыбацкие племена, почитавшие богиню [Араксис](/mythology/araksis/), обосновались на прибрежных равнинах[^1].
 

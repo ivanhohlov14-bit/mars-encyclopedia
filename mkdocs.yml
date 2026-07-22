@@ -43,13 +43,6 @@ extra_javascript:
 extra_css:
   - stylesheets/extra.css
 
-theme:
-  name: material
-  features:
-    - navigation.tabs
-    - navigation.sections
-  custom_dir: overrides
-  
 nav:
   - Заглавная страница: index.md
   - С чего начать: start-here.md

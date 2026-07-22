@@ -126,11 +126,16 @@
 Согласно табличкам, найденным в долине Ксанфа, вождь переселенцев по имени **Сарум** (позже — Сарум I) объединил разрозненные общины и в **47 году Э.О.**, в 29 день месяца **Пробуждения** (*Ākha-dzen*), основал столицу — [Роген-Арию](/geography/rogen-aria/) («Избранный Король»), расположенную в плодородной долине Эдем. Сарум I погиб в море во время шторма, но его сын, **Сарум II**, завершил строительство дворцов и заложил первый канал, соединивший реку Ксанф с заливам Маринера.
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-sarum-i.png" alt="Сарум I на берегу моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Сарум I на берегу Ацидалийского моря. Реконструкция по табличкам Академии.</div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-rogen-aria-construction.png" alt="Строительство Роген-Арии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство Роген-Арии в 47 году Э.О. Реконструкция по табличкам Академии.</div>
 </div>
 
 В **712 году Э.О.**, в 20 день месяца **Цветения** (*Dzen-ākha*), при короле Термане I была основана [Академия Окхасена](/geography/akademiya-okhasena/) — главное научное учреждение Марса. В ней хранились тысячи глиняных табличек, велись астрономические наблюдения, составлялись карты звёздного неба. Академия быстро стала центром притяжения для учёных со всей планеты. Именно здесь были разработаны календарь, система каналов и основы навигации, позволившие эдемским кораблям достигать самых дальних заливов[^5].
+
+<div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-sarum-i.png" alt="Сарум I на берегу моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Сарум I на берегу Ацидалийского моря. Реконструкция по табличкам Академии.</div>
+</div>
 
 В **891 году**, в 4 день месяца **Зноя** (*Mar-dzen*), на престол взошла **Акхара I** (870-1000) — первая женщина-королева, укрепившая южные рубежи и введшая обычай записывать все законы на глине, чтобы ни один судья не мог их исказить. Её правление стало примером мудрого управления, и до сих пор в летописях её имя упоминается с уважением[^6].
 

@@ -60,7 +60,7 @@ nav:
       - Королевства:
           - Королевство Ксанф: history/pirate-kingdom.md
           - Королевство Эдем: geography/eden.md
-            - История Эдема: history/edem.md
+              - История Эдема: history/edem.md
           - Королевство Ардакия: geography/arkadia.md
           - Королевство Эридания: geography/eridania.md
           - Королевство Кхонг: geography/khong.md

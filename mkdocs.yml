@@ -40,9 +40,6 @@ extra_javascript:
   - javascripts/fix-title.js
   - javascripts/dark-theme.js
 
-extra_css:
-  - stylesheets/extra.css
-
 nav:
   - Заглавная страница: index.md
   - С чего начать: start-here.md

@@ -67,9 +67,8 @@ nav:
           - Королевство Утопия: geography/utopia.md
           - Королевство Эллада: history/hellas.md
           - Королевство Аливасото: geography/alivasoto.md
-       - История Королевств: 
+      - История Королевств:
           - История Эдема: history/edem.md
-
       - География:
           - Моря:
               - Ацидалийское море: geography/acidalia-sea.md
@@ -116,7 +115,6 @@ nav:
               - Гемоцианин: biology/gemotsianin.md
           - Геология:
               - Геология Марса: science/geology.md
-
   - Персонажи:
       - Историки:
           - Хевсур: people/hevsur.md
@@ -142,7 +140,6 @@ nav:
           - Кан: people/kan.md
       - Танцовщицы:
           - Алира: people/alira.md
-
   - Боги и мифология:
       - Боги:
           - Кхо: mythology/kho.md
@@ -152,23 +149,19 @@ nav:
           - Пророчество Харана: mythology/prorochestvo-kharana.md
       - Мифология:
           - Ксанф (чудовище): mythology/ksanf-monster.md
-
   - Медиатека:
       - Книги:
           - «Ацидалийское море»: books/acidalia-sea book.md
       - Музыка:
           - Конструктор мелодий: music/constructor.md
       - Переводчик: translator.md
-
   - Интерактив:
       - «К Исходу»: interactive/exodus.md
       - Карта Марса: globe-map.md
-      
   - Сообщество:
       - Одноклассники: https://ok.ru/group/70000050105405
       - ВКонтакте: https://vk.com/club240289503
       - MAX: https://max.ru/join/UQtDxD4S9FjgltPgm7r22OmtF5iJ-U-NZh1kYxtpZO4
-
   - О проекте:
       - Лицензия: license.md
       

@@ -7,7 +7,6 @@ theme:
   language: ru
   logo: assets/logo.png
   favicon: assets/favicon.png
-  
   features:
     - content.tabs.link
     - navigation.sections

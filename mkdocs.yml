@@ -8,6 +8,16 @@ theme:
   logo: assets/logo.png
   toc: true
   sticky_navigation: true  
+
+theme:
+  name: material
+  features:
+    - content.tabs.link
+    - navigation.sections
+    - toc.follow
+    - navigation.tabs.sticky
+    - navigation.expand
+    - search.share
    
 extra_head:
   - <link rel="icon" href="/assets/favicon.png" type="image/png">

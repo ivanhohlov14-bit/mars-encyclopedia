@@ -1,9 +1,8 @@
 // ==========================================
-// ПЕРЕКЛЮЧЕНИЕ ТЁМНОЙ ТЕМЫ (РАБОТАЕТ НА ВСЕХ СТРАНИЦАХ)
+// ПЕРЕКЛЮЧЕНИЕ ТЁМНОЙ ТЕМЫ
 // ==========================================
 
 (function() {
-  // Функция применения темы
   function setTheme(theme) {
     const html = document.documentElement;
     if (theme === 'dark') {
@@ -13,22 +12,17 @@
       html.removeAttribute('data-theme');
       localStorage.setItem('theme', 'light');
     }
-    // Обновляем кнопку
     updateButton();
   }
 
-  // Функция обновления кнопки
   function updateButton() {
     const btn = document.getElementById('theme-toggle');
     if (!btn) return;
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     btn.textContent = isDark ? '☀️' : '🌙';
-    btn.title = isDark ? 'Переключить на светлую тему' : 'Переключить на тёмную тему';
   }
 
-  // Создаём кнопку
   function createButton() {
-    // Проверяем, есть ли уже кнопка
     if (document.getElementById('theme-toggle')) return;
 
     const btn = document.createElement('button');
@@ -42,11 +36,11 @@
       color: white;
       border: none;
       border-radius: 50%;
-      width: 54px;
-      height: 54px;
-      font-size: 26px;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
@@ -62,20 +56,19 @@
     updateButton();
   }
 
-  // Инициализация при загрузке
+  // Загружаем сохранённую тему
   document.addEventListener('DOMContentLoaded', function() {
-    // Восстанавливаем сохранённую тему
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
     }
     createButton();
   });
 
-  // Переключаем тему на всех страницах, даже при переходе через кнопки "Назад"
+  // Обновляем при возврате на страницу
   window.addEventListener('pageshow', function() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
     } else {
       document.documentElement.removeAttribute('data-theme');

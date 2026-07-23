@@ -1,3 +1,5 @@
+<button onclick="document.querySelector('.md-sidebar--primary').style.display='none'; document.querySelector('.md-content').style.maxWidth='100%';" style="position:fixed;top:10px;left:10px;z-index:1000;background:#2a5c8a;color:white;border:none;border-radius:6px;padding:8px 12px;cursor:pointer;font-size:18px;">📚</button>
+
 # Деймос
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">

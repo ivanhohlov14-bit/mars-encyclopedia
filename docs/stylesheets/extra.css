@@ -405,3 +405,42 @@ blockquote {
     padding: 4px 10px !important;
   }
 }
+
+/* Плашка статуса статьи */
+.article-status {
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.article-status .icon {
+  font-size: 20px;
+}
+
+.article-status.complete {
+  background: #d4edda;
+  border-left: 6px solid #28a745;
+  color: #155724;
+}
+
+.article-status.in-progress {
+  background: #fff3cd;
+  border-left: 6px solid #ffc107;
+  color: #856404;
+}
+
+.article-status.stub {
+  background: #f8d7da;
+  border-left: 6px solid #dc3545;
+  color: #721c24;
+}
+
+.article-status.exemplary {
+  background: #d1ecf1;
+  border-left: 6px solid #17a2b8;
+  color: #0c5460;
+}

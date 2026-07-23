@@ -1,6 +1,9 @@
 /* ==========================================
-   БАЗОВЫЕ СТИЛИ (светлая тема по умолчанию)
+   ФИНАЛЬНЫЙ СТИЛЬ ДЛЯ МАРСИАНСКОЙ ЭНЦИКЛОПЕДИИ
+   С ПОДДЕРЖКОЙ ТЁМНОЙ ТЕМЫ
    ========================================== */
+
+/* --- БАЗОВЫЕ НАСТРОЙКИ (светлая) --- */
 body {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-size: 17px;
@@ -9,43 +12,48 @@ body {
   background: #ffffff;
 }
 
+/* --- ОСНОВНОЙ КОНТЕНТ (светлая) --- */
 .md-content {
   max-width: 1100px !important;
   margin: 0 auto !important;
   padding: 2.5rem 3.5rem !important;
   background: #ffffff !important;
+  color: #202122 !important;
 }
 
-/* --- СВЕТЛАЯ ТЕМА: левое меню --- */
+/* --- БОКОВАЯ ПАНЕЛЬ (светлая) --- */
 .md-sidebar--primary {
   background: #ffffff !important;
   border-right: 1px solid #eaecf0 !important;
 }
+
 .md-sidebar--primary .md-nav {
   background: #ffffff !important;
 }
+
 .md-sidebar--primary .md-nav__link {
   color: #202122 !important;
 }
+
 .md-sidebar--primary .md-nav__link:hover {
   color: #0645ad !important;
   background: #eaecf0 !important;
 }
 
-/* --- СВЕТЛАЯ ТЕМА: поиск --- */
+/* --- ПОИСК (светлая) --- */
 .md-search__input {
   background: #f8f9fa !important;
   border: 1px solid #eaecf0 !important;
   color: #202122 !important;
 }
 
-/* --- ЗАГОЛОВКИ И ТАБЛИЦЫ (светлая) --- */
+/* --- ЗАГОЛОВКИ (светлая) --- */
 h1 {
   font-weight: normal;
   font-size: 2.6rem;
   border-bottom: 1px solid #a2a9b1;
   padding-bottom: 0.3rem;
-  color: #000000;
+  color: #000000 !important;
 }
 h2 {
   font-weight: normal;
@@ -53,11 +61,13 @@ h2 {
   border-bottom: 1px solid #a2a9b1;
   padding-bottom: 0.2rem;
   margin-top: 2rem;
-  color: #000000;
+  color: #000000 !important;
 }
 h3, h4, h5, h6 {
-  color: #000000;
+  color: #000000 !important;
 }
+
+/* --- ССЫЛКИ (светлая) --- */
 a {
   color: #0645ad !important;
   text-decoration: none;
@@ -66,6 +76,8 @@ a:hover {
   color: #0b0080 !important;
   text-decoration: underline;
 }
+
+/* --- ТАБЛИЦЫ (светлая) --- */
 table {
   border-collapse: collapse;
   margin: 1.5rem 0;
@@ -85,6 +97,8 @@ table td {
 table tr:nth-child(even) {
   background: #f8f9fa;
 }
+
+/* --- ИНФОБОКСЫ (светлая) --- */
 .infobox {
   float: right;
   clear: right;
@@ -102,6 +116,16 @@ table tr:nth-child(even) {
   border-bottom: 1px solid #a2a9b1;
   padding-bottom: 0.3rem;
 }
+.infobox hr {
+  border: none;
+  border-top: 1px solid #a2a9b1;
+  margin: 0.5rem 0;
+}
+.infobox p {
+  margin: 0.3rem 0;
+}
+
+/* --- ЦИТАТЫ (светлая) --- */
 blockquote {
   background: #f8f9fa;
   border-left: 4px solid #a2a9b1;
@@ -110,123 +134,7 @@ blockquote {
   color: #404244;
 }
 
-/* ==========================================
-   ТЁМНАЯ ТЕМА (data-theme="dark")
-   ========================================== */
-
-/* Все элементы, которые должны стать тёмными */
-[data-theme="dark"] body,
-[data-theme="dark"] .md-content,
-[data-theme="dark"] .md-container,
-[data-theme="dark"] .md-main,
-[data-theme="dark"] .md-main__inner {
-  background: #1a1a2e !important;
-  color: #e0e0e0 !important;
-}
-
-/* Основной контент */
-[data-theme="dark"] .md-content {
-  background: #1a1a2e !important;
-  color: #e0e0e0 !important;
-}
-
-/* --- ЛЕВОЕ МЕНЮ (тёмное) --- */
-[data-theme="dark"] .md-sidebar--primary {
-  background: #0d0d1a !important;
-  border-right: 1px solid #2a2a4a !important;
-}
-[data-theme="dark"] .md-sidebar--primary .md-nav {
-  background: #0d0d1a !important;
-}
-[data-theme="dark"] .md-sidebar--primary .md-nav__link {
-  color: #e0e0e0 !important;
-}
-[data-theme="dark"] .md-sidebar--primary .md-nav__link:hover {
-  background: #2a2a4a !important;
-  color: #7fadff !important;
-}
-
-/* --- ЛОГОТИП В ТЁМНОЙ ТЕМЕ --- */
-[data-theme="dark"] .md-header,
-[data-theme="dark"] .md-tabs {
-  background: #0d0d1a !important;
-  border-bottom: 1px solid #2a2a4a !important;
-}
-
-[data-theme="dark"] .md-header .md-logo img {
-  filter: brightness(0.8) !important;
-}
-
-/* --- ПОИСК --- */
-[data-theme="dark"] .md-search__input {
-  background: #2a2a4a !important;
-  color: #e0e0e0 !important;
-  border-color: #3a3a5a !important;
-}
-[data-theme="dark"] .md-search__input::placeholder {
-  color: #999 !important;
-}
-
-/* --- ЗАГОЛОВКИ --- */
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3,
-[data-theme="dark"] h4,
-[data-theme="dark"] h5,
-[data-theme="dark"] h6 {
-  color: #e0e0e0 !important;
-}
-[data-theme="dark"] h1 {
-  border-bottom-color: #3a3a5a !important;
-}
-[data-theme="dark"] h2 {
-  border-bottom-color: #3a3a5a !important;
-}
-
-/* --- ССЫЛКИ --- */
-[data-theme="dark"] a {
-  color: #7fadff !important;
-}
-[data-theme="dark"] a:hover {
-  color: #9fcbff !important;
-}
-
-/* --- ТАБЛИЦЫ --- */
-[data-theme="dark"] table {
-  background: #1a1a2e !important;
-  border-color: #3a3a5a !important;
-  color: #e0e0e0 !important;
-}
-[data-theme="dark"] table th {
-  background: #2a2a4a !important;
-  color: #e0e0e0 !important;
-}
-[data-theme="dark"] table td {
-  background: #1a1a2e !important;
-  color: #e0e0e0 !important;
-}
-[data-theme="dark"] table tr:nth-child(even) td {
-  background: #252540 !important;
-}
-
-/* --- ИНФОБОКСЫ --- */
-[data-theme="dark"] .infobox {
-  background: #2a2a4a !important;
-  border-color: #3a3a5a !important;
-  color: #e0e0e0 !important;
-}
-[data-theme="dark"] .infobox h3 {
-  border-bottom-color: #3a3a5a !important;
-}
-
-/* --- ЦИТАТЫ --- */
-[data-theme="dark"] blockquote {
-  background: #2a2a4a !important;
-  border-left-color: #3a3a5a !important;
-  color: #e0e0e0 !important;
-}
-
-/* --- ФУТЕР (скрыт) --- */
+/* --- СКРЫВАЕМ ФУТЕР --- */
 .md-footer__inner {
   display: none !important;
 }
@@ -235,8 +143,146 @@ blockquote {
 }
 
 /* ==========================================
-   АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ
+   ТЁМНАЯ ТЕМА (data-theme="dark")
    ========================================== */
+
+[data-theme="dark"] {
+  --bg-color: #0d1117;
+  --text-color: #e6edf3;
+  --border-color: #30363d;
+  --link-color: #58a6ff;
+  --block-bg: #161b22;
+  --sidebar-bg: #0d1117;
+  --menu-text: #e6edf3;
+  --menu-hover-bg: #21262d;
+  --code-bg: #161b22;
+}
+
+/* --- Фон страницы (тёмная) --- */
+[data-theme="dark"] body {
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* --- ОСНОВНОЙ КОНТЕНТ (тёмная) --- */
+[data-theme="dark"] .md-content {
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* --- БОКОВАЯ ПАНЕЛЬ (тёмная) --- */
+[data-theme="dark"] .md-sidebar--primary {
+  background: var(--sidebar-bg) !important;
+  border-right: 1px solid var(--border-color) !important;
+}
+
+[data-theme="dark"] .md-sidebar--primary .md-nav {
+  background: var(--sidebar-bg) !important;
+}
+
+[data-theme="dark"] .md-sidebar--primary .md-nav__link {
+  color: var(--menu-text) !important;
+}
+
+[data-theme="dark"] .md-sidebar--primary .md-nav__link:hover {
+  background: var(--menu-hover-bg) !important;
+  color: var(--link-color) !important;
+}
+
+/* --- ПОИСК (тёмная) --- */
+[data-theme="dark"] .md-search__input {
+  background: var(--block-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* --- ЗАГОЛОВКИ (тёмная) --- */
+[data-theme="dark"] h1 {
+  color: var(--text-color) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+[data-theme="dark"] h2 {
+  color: var(--text-color) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text-color) !important;
+}
+
+/* --- ССЫЛКИ (тёмная) --- */
+[data-theme="dark"] a {
+  color: var(--link-color) !important;
+}
+[data-theme="dark"] a:hover {
+  color: #79c0ff !important;
+}
+
+/* --- ПАРАГРАФЫ (тёмная) --- */
+[data-theme="dark"] p {
+  color: var(--text-color) !important;
+}
+
+/* --- ТАБЛИЦЫ (тёмная) --- */
+[data-theme="dark"] table {
+  background: var(--bg-color) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+[data-theme="dark"] table th {
+  background: var(--block-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+[data-theme="dark"] table td {
+  background: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+[data-theme="dark"] table tr:nth-child(even) td {
+  background: var(--block-bg) !important;
+}
+
+/* --- ИНФОБОКСЫ (тёмная) --- */
+[data-theme="dark"] .infobox {
+  background: var(--block-bg) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+[data-theme="dark"] .infobox h3 {
+  border-bottom-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* --- ЦИТАТЫ (тёмная) --- */
+[data-theme="dark"] blockquote {
+  background: var(--block-bg) !important;
+  border-left-color: var(--border-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* --- ЛИСТЫ (тёмная) --- */
+[data-theme="dark"] ul,
+[data-theme="dark"] ol {
+  color: var(--text-color) !important;
+}
+[data-theme="dark"] li {
+  color: var(--text-color) !important;
+}
+
+/* --- КОД (тёмная) --- */
+[data-theme="dark"] code,
+[data-theme="dark"] pre {
+  background: var(--code-bg) !important;
+  color: var(--text-color) !important;
+}
+
+/* ==========================================
+   АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ
+   ========================================== */
+
 @media (max-width: 1024px) {
   .md-content {
     padding: 1.5rem 2rem !important;
@@ -246,16 +292,27 @@ blockquote {
     width: 100% !important;
     margin: 1rem 0 !important;
   }
+  .infobox img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
 }
+
 @media (max-width: 768px) {
   .md-content {
     padding: 1rem 1.2rem !important;
     font-size: 15px !important;
     line-height: 1.6 !important;
   }
-  h1 { font-size: 1.8rem !important; }
-  h2 { font-size: 1.4rem !important; }
-  h3 { font-size: 1.2rem !important; }
+  h1 {
+    font-size: 1.8rem !important;
+  }
+  h2 {
+    font-size: 1.4rem !important;
+  }
+  h3 {
+    font-size: 1.2rem !important;
+  }
   .infobox {
     float: none !important;
     width: 100% !important;
@@ -263,16 +320,38 @@ blockquote {
     padding: 0.8rem 1rem !important;
     font-size: 0.85rem !important;
   }
-  table { font-size: 0.8rem !important; }
-  table td, table th { padding: 0.4rem 0.6rem !important; }
+  .infobox img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  table {
+    font-size: 0.8rem !important;
+  }
+  table td, table th {
+    padding: 0.4rem 0.6rem !important;
+  }
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
 }
+
 @media (max-width: 480px) {
   .md-content {
     padding: 0.8rem 1rem !important;
     font-size: 14px !important;
   }
-  h1 { font-size: 1.5rem !important; }
-  h2 { font-size: 1.2rem !important; }
-  h3 { font-size: 1.1rem !important; }
-  .infobox { padding: 0.6rem 0.8rem !important; font-size: 0.8rem !important; }
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  h2 {
+    font-size: 1.2rem !important;
+  }
+  h3 {
+    font-size: 1.1rem !important;
+  }
+  .infobox {
+    padding: 0.6rem 0.8rem !important;
+    font-size: 0.8rem !important;
+  }
 }

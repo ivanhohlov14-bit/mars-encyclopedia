@@ -1,9 +1,7 @@
 /* ==========================================
-   ФИНАЛЬНЫЙ СТИЛЬ ДЛЯ МАРСИАНСКОЙ ЭНЦИКЛОПЕДИИ
-   С ПОДДЕРЖКОЙ ТЁМНОЙ ТЕМЫ
+   БАЗОВЫЕ СТИЛИ ДЛЯ МАРСИАНСКОЙ ЭНЦИКЛОПЕДИИ
    ========================================== */
 
-/* --- БАЗОВЫЕ НАСТРОЙКИ (светлая) --- */
 body {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-size: 17px;
@@ -12,7 +10,7 @@ body {
   background: #ffffff;
 }
 
-/* --- ОСНОВНОЙ КОНТЕНТ (светлая) --- */
+/* --- ОСНОВНОЙ КОНТЕНТ --- */
 .md-content {
   max-width: 1100px !important;
   margin: 0 auto !important;
@@ -21,33 +19,42 @@ body {
   color: #202122 !important;
 }
 
+/* --- ЛОГОТИП (всегда белый фон) --- */
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  background: #ffffff !important;
+  border-radius: 4px !important;
+  padding: 4px !important;
+}
+
 /* --- БОКОВАЯ ПАНЕЛЬ (светлая) --- */
 .md-sidebar--primary {
-  background: #ffffff !important;
+  background: #f8f9fa !important;
   border-right: 1px solid #eaecf0 !important;
 }
 
 .md-sidebar--primary .md-nav {
-  background: #ffffff !important;
+  background: #f8f9fa !important;
 }
 
 .md-sidebar--primary .md-nav__link {
   color: #202122 !important;
 }
 
+/* Убираем подсветку при наведении */
 .md-sidebar--primary .md-nav__link:hover {
-  color: #0645ad !important;
-  background: #eaecf0 !important;
+  background: transparent !important;
+  color: #202122 !important;
 }
 
-/* --- ПОИСК (светлая) --- */
+/* --- ПОИСК --- */
 .md-search__input {
   background: #f8f9fa !important;
   border: 1px solid #eaecf0 !important;
   color: #202122 !important;
 }
 
-/* --- ЗАГОЛОВКИ (светлая) --- */
+/* --- ЗАГОЛОВКИ --- */
 h1 {
   font-weight: normal;
   font-size: 2.6rem;
@@ -67,7 +74,7 @@ h3, h4, h5, h6 {
   color: #000000 !important;
 }
 
-/* --- ССЫЛКИ (светлая) --- */
+/* --- ССЫЛКИ --- */
 a {
   color: #0645ad !important;
   text-decoration: none;
@@ -77,7 +84,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* --- ТАБЛИЦЫ (светлая) --- */
+/* --- ТАБЛИЦЫ --- */
 table {
   border-collapse: collapse;
   margin: 1.5rem 0;
@@ -98,7 +105,7 @@ table tr:nth-child(even) {
   background: #f8f9fa;
 }
 
-/* --- ИНФОБОКСЫ (светлая) --- */
+/* --- ИНФОБОКСЫ --- */
 .infobox {
   float: right;
   clear: right;
@@ -125,7 +132,7 @@ table tr:nth-child(even) {
   margin: 0.3rem 0;
 }
 
-/* --- ЦИТАТЫ (светлая) --- */
+/* --- ЦИТАТЫ --- */
 blockquote {
   background: #f8f9fa;
   border-left: 4px solid #a2a9b1;
@@ -143,140 +150,121 @@ blockquote {
 }
 
 /* ==========================================
-   ТЁМНАЯ ТЕМА (data-theme="dark")
+   ТЁМНАЯ ТЕМА
    ========================================== */
 
 [data-theme="dark"] {
-  --bg-color: #0d1117;
-  --text-color: #e6edf3;
-  --border-color: #30363d;
-  --link-color: #58a6ff;
-  --block-bg: #161b22;
-  --sidebar-bg: #0d1117;
-  --menu-text: #e6edf3;
-  --menu-hover-bg: #21262d;
-  --code-bg: #161b22;
+  --bg-dark: #0d1117;
+  --text-dark: #e6edf3;
+  --border-dark: #30363d;
+  --link-dark: #58a6ff;
+  --block-dark: #161b22;
+  --sidebar-dark: #0d1117;
 }
 
-/* --- Фон страницы (тёмная) --- */
-[data-theme="dark"] body {
-  background: var(--bg-color) !important;
-  color: var(--text-color) !important;
+/* --- ВСЯ СТРАНИЦА (тёмная) --- */
+[data-theme="dark"] body,
+[data-theme="dark"] .md-content,
+[data-theme="dark"] .md-main {
+  background: var(--bg-dark) !important;
+  color: var(--text-dark) !important;
 }
 
-/* --- ОСНОВНОЙ КОНТЕНТ (тёмная) --- */
-[data-theme="dark"] .md-content {
-  background: var(--bg-color) !important;
-  color: var(--text-color) !important;
+/* --- ВЕСЬ ТЕКСТ В СТАТЬЕ (тёмный) --- */
+[data-theme="dark"] .md-content p,
+[data-theme="dark"] .md-content li,
+[data-theme="dark"] .md-content div,
+[data-theme="dark"] .md-content span {
+  color: var(--text-dark) !important;
 }
 
-/* --- БОКОВАЯ ПАНЕЛЬ (тёмная) --- */
-[data-theme="dark"] .md-sidebar--primary {
-  background: var(--sidebar-bg) !important;
-  border-right: 1px solid var(--border-color) !important;
-}
-
-[data-theme="dark"] .md-sidebar--primary .md-nav {
-  background: var(--sidebar-bg) !important;
-}
-
-[data-theme="dark"] .md-sidebar--primary .md-nav__link {
-  color: var(--menu-text) !important;
-}
-
-[data-theme="dark"] .md-sidebar--primary .md-nav__link:hover {
-  background: var(--menu-hover-bg) !important;
-  color: var(--link-color) !important;
-}
-
-/* --- ПОИСК (тёмная) --- */
-[data-theme="dark"] .md-search__input {
-  background: var(--block-bg) !important;
-  color: var(--text-color) !important;
-  border-color: var(--border-color) !important;
-}
-
-/* --- ЗАГОЛОВКИ (тёмная) --- */
-[data-theme="dark"] h1 {
-  color: var(--text-color) !important;
-  border-bottom-color: var(--border-color) !important;
-}
-[data-theme="dark"] h2 {
-  color: var(--text-color) !important;
-  border-bottom-color: var(--border-color) !important;
-}
+/* --- ЗАГОЛОВКИ (тёмные) --- */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
 [data-theme="dark"] h3,
 [data-theme="dark"] h4,
 [data-theme="dark"] h5,
 [data-theme="dark"] h6 {
-  color: var(--text-color) !important;
+  color: var(--text-dark) !important;
+  border-bottom-color: var(--border-dark) !important;
 }
 
-/* --- ССЫЛКИ (тёмная) --- */
+/* --- ССЫЛКИ (тёмные) --- */
 [data-theme="dark"] a {
-  color: var(--link-color) !important;
+  color: var(--link-dark) !important;
 }
 [data-theme="dark"] a:hover {
   color: #79c0ff !important;
 }
 
-/* --- ПАРАГРАФЫ (тёмная) --- */
-[data-theme="dark"] p {
-  color: var(--text-color) !important;
+/* --- БОКОВАЯ ПАНЕЛЬ (тёмная) --- */
+[data-theme="dark"] .md-sidebar--primary {
+  background: var(--sidebar-dark) !important;
+  border-right: 1px solid var(--border-dark) !important;
 }
 
-/* --- ТАБЛИЦЫ (тёмная) --- */
+[data-theme="dark"] .md-sidebar--primary .md-nav {
+  background: var(--sidebar-dark) !important;
+}
+
+[data-theme="dark"] .md-sidebar--primary .md-nav__link {
+  color: var(--text-dark) !important;
+}
+
+[data-theme="dark"] .md-sidebar--primary .md-nav__link:hover {
+  background: transparent !important;
+  color: var(--text-dark) !important;
+}
+
+/* --- ПОИСК (тёмный) --- */
+[data-theme="dark"] .md-search__input {
+  background: var(--block-dark) !important;
+  color: var(--text-dark) !important;
+  border-color: var(--border-dark) !important;
+}
+
+/* --- ЛОГОТИП (всегда белый, даже в тёмной) --- */
+[data-theme="dark"] .md-header__button.md-logo img,
+[data-theme="dark"] .md-header__button.md-logo svg {
+  background: #ffffff !important;
+}
+
+/* --- ТАБЛИЦЫ (тёмные) --- */
 [data-theme="dark"] table {
-  background: var(--bg-color) !important;
-  border-color: var(--border-color) !important;
-  color: var(--text-color) !important;
+  background: var(--bg-dark) !important;
+  border-color: var(--border-dark) !important;
+  color: var(--text-dark) !important;
 }
 [data-theme="dark"] table th {
-  background: var(--block-bg) !important;
-  color: var(--text-color) !important;
-  border-color: var(--border-color) !important;
+  background: var(--block-dark) !important;
+  color: var(--text-dark) !important;
+  border-color: var(--border-dark) !important;
 }
 [data-theme="dark"] table td {
-  background: var(--bg-color) !important;
-  color: var(--text-color) !important;
-  border-color: var(--border-color) !important;
+  background: var(--bg-dark) !important;
+  color: var(--text-dark) !important;
+  border-color: var(--border-dark) !important;
 }
 [data-theme="dark"] table tr:nth-child(even) td {
-  background: var(--block-bg) !important;
+  background: var(--block-dark) !important;
 }
 
-/* --- ИНФОБОКСЫ (тёмная) --- */
+/* --- ИНФОБОКСЫ (тёмные) --- */
 [data-theme="dark"] .infobox {
-  background: var(--block-bg) !important;
-  border-color: var(--border-color) !important;
-  color: var(--text-color) !important;
+  background: var(--block-dark) !important;
+  border-color: var(--border-dark) !important;
+  color: var(--text-dark) !important;
 }
 [data-theme="dark"] .infobox h3 {
-  border-bottom-color: var(--border-color) !important;
-  color: var(--text-color) !important;
+  border-bottom-color: var(--border-dark) !important;
+  color: var(--text-dark) !important;
 }
 
-/* --- ЦИТАТЫ (тёмная) --- */
+/* --- ЦИТАТЫ (тёмные) --- */
 [data-theme="dark"] blockquote {
-  background: var(--block-bg) !important;
-  border-left-color: var(--border-color) !important;
-  color: var(--text-color) !important;
-}
-
-/* --- ЛИСТЫ (тёмная) --- */
-[data-theme="dark"] ul,
-[data-theme="dark"] ol {
-  color: var(--text-color) !important;
-}
-[data-theme="dark"] li {
-  color: var(--text-color) !important;
-}
-
-/* --- КОД (тёмная) --- */
-[data-theme="dark"] code,
-[data-theme="dark"] pre {
-  background: var(--code-bg) !important;
-  color: var(--text-color) !important;
+  background: var(--block-dark) !important;
+  border-left-color: var(--border-dark) !important;
+  color: var(--text-dark) !important;
 }
 
 /* ==========================================

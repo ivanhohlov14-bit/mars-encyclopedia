@@ -3,17 +3,11 @@ site_url: https://mars-wiki.ru/
 site_favicon: assets/favicon.png
 
 theme:
-  name: material
+  name: readthedocs
   language: ru
   logo: assets/logo.png
   favicon: assets/favicon.png
-  features:
-    - content.tabs.link
-    - navigation.sections
-    - toc.follow
-    - navigation.tabs.sticky
-    - navigation.expand
-    - search.share
+  sticky_navigation: true
 
 plugins:
   - search

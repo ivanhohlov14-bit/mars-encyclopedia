@@ -22,6 +22,9 @@ extra_javascript:
   - javascripts/fix-title.js
   - javascripts/dark-theme.js
 
+extra_javascript:
+  - javascripts/dark-theme.js
+
 nav:
   - Заглавная страница: index.md
   - С чего начать: start-here.md

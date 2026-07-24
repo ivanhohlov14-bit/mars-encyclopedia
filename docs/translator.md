@@ -558,6 +558,17 @@ const LEXICON_DATA = {
   "восток": { root: "dzenur", pos: "noun" },
   "востоке": { root: "dzenur", pos: "noun" },
   "заход": { root: "khōmōr", pos: "noun" },
+  "стреле": { root: "stralk", pos: "noun" },
+  "стрела": { root: "stralk", pos: "noun" },
+  "стрелы": { root: "stralk", pos: "noun" },
+  "стрелой": { root: "stralk", pos: "noun" },
+  "стрелу": { root: "stralk", pos: "noun" },
+  "стрелами": { root: "stralk", pos: "noun" },
+  "взглядом": { root: "thal", pos: "noun" },
+  "взгляд": { root: "thal", pos: "noun" },
+  "взгляду": { root: "thal", pos: "noun" },
+  "взгляда": { root: "thal", pos: "noun" },
+  "взгляды": { root: "thal", pos: "noun" },
   "западе": { root: "kōl", pos: "noun" },
   "длящееся": { root: "nur", pos: "verb" },
   "двух": { root: "dōn", pos: "num" },
@@ -608,14 +619,30 @@ const LEXICON_DATA = {
   "огромному": { root: "sūrhōr", pos: "adj" },
   "огромным": { root: "sūrhōr", pos: "adj" },
   "огромной": { root: "sūrhōr", pos: "adj" },
-
+  "застывшая": { root: "okhasing", pos: "adj" },
+  "застывший": { root: "okhasing", pos: "adj" },
+  "застывшое": { root: "okhasing", pos: "adj" },
+  "застывшим": { root: "okhasing", pos: "adj" },
+  "застывшие": { root: "okhasing", pos: "adj" },
+  "быстрее": { root: "bystr", pos: "adv" },
+  "ждёт": { root: "zhal", pos: "verb" },
+  "ждать": { root: "zhal", pos: "verb" },
+  "ожидать": { root: "zhal", pos: "verb" },
+  "пронзает": { root: "nuwa", pos: "verb" },
+  "оставляя": { root: "ānxur", pos: "verb" },
+  "собой": { root: "an", pos: "pron" },
+  "слёз": { root: "ākhas", pos: "noun" }
   // БЕСКОНЕЧНЫЙ (ān + rak)
   "бесконечный": { root: "ānrak", pos: "adj" },
   "бесконечная": { root: "ānrak", pos: "adj" },
   "бесконечное": { root: "ānrak", pos: "adj" },
   "бесконечные": { root: "ānrak", pos: "adj" },
-
-  // ВОЗВРАЩЕНИЕ (thalān)
+  "водный": { root: "ākha", pos: "adj" },
+  "водные": { root: "ākha", pos: "adj" },
+  "водная": { root: "ākha", pos: "adj" },
+  "водное": { root: "ākha", pos: "adj" },
+  "водяной": { root: "ākha", pos: "adj" },
+  "водянистый": { root: "ākha", pos: "adj" },
   "возвращение": { root: "thalān", pos: "noun" },
   "возвращения": { root: "thalān", pos: "noun" },
   "возвращению": { root: "thalān", pos: "noun" },
@@ -632,60 +659,46 @@ const LEXICON_DATA = {
   "красного": { root: "khōn", pos: "adj" },
   "красному": { root: "khōn", pos: "adj" },
   "красным": { root: "khōn", pos: "adj" },
-
   "синий": { root: "ākhan", pos: "adj" },
   "синяя": { root: "ākhan", pos: "adj" },
   "синее": { root: "ākhan", pos: "adj" },
   "синие": { root: "ākhan", pos: "adj" },
-
   "голубой": { root: "ākhān", pos: "adj" },
   "голубая": { root: "ākhān", pos: "adj" },
   "голубое": { root: "ākhān", pos: "adj" },
   "голубые": { root: "ākhān", pos: "adj" },
-
-  // Удалены дублирующиеся ключи "звёздный", "звёздная", "звёздное", "звёздные"
-  // (они есть в разделе 3 с более полным набором форм)
-
   "зелёный": { root: "marn", pos: "adj" },
   "зелёная": { root: "marn", pos: "adj" },
   "зелёное": { root: "marn", pos: "adj" },
   "зелёные": { root: "marn", pos: "adj" },
-
   "жёлтый": { root: "dzenk", pos: "adj" },
   "жёлтая": { root: "dzenk", pos: "adj" },
   "жёлтое": { root: "dzenk", pos: "adj" },
   "жёлтые": { root: "dzenk", pos: "adj" },
-
   "белый": { root: "lānk", pos: "adj" },
   "белая": { root: "lānk", pos: "adj" },
   "белое": { root: "lānk", pos: "adj" },
   "белые": { root: "lānk", pos: "adj" },
-
   "чёрный": { root: "kōln", pos: "adj" },
   "чёрная": { root: "kōln", pos: "adj" },
   "чёрное": { root: "kōln", pos: "adj" },
   "чёрные": { root: "kōln", pos: "adj" },
-
   "фиолетовый": { root: "xaln", pos: "adj" },
   "фиолетовая": { root: "xaln", pos: "adj" },
   "фиолетовое": { root: "xaln", pos: "adj" },
   "фиолетовые": { root: "xaln", pos: "adj" },
-
   "оранжевый": { root: "khōsenk", pos: "adj" },
   "оранжевая": { root: "khōsenk", pos: "adj" },
   "оранжевое": { root: "khōsenk", pos: "adj" },
   "оранжевые": { root: "khōsenk", pos: "adj" },
-
   "розовый": { root: "sōln", pos: "adj" },
   "розовая": { root: "sōln", pos: "adj" },
   "розовое": { root: "sōln", pos: "adj" },
   "розовые": { root: "sōln", pos: "adj" },
-
   "коричневый": { root: "gharn", pos: "adj" },
   "коричневая": { root: "gharn", pos: "adj" },
   "коричневое": { root: "gharn", pos: "adj" },
   "коричневые": { root: "gharn", pos: "adj" },
-
   "серый": { root: "xalkōln", pos: "adj" },
   "серая": { root: "xalkōln", pos: "adj" },
   "серое": { root: "xalkōln", pos: "adj" },

@@ -81,13 +81,22 @@ nav.wy-nav-side .wy-side-nav-search a.icon-home {
   color: #0645ad !important;
 }
 
-/* --- ЗАГОЛОВКИ (без переопределения цвета, чтобы инлайн-стили работали) --- */
+/* --- УБИРАЕМ СИНЮЮ ПОДСВЕТКУ АКТИВНОЙ СТРАНИЦЫ В МЕНЮ --- */
+.wy-menu-vertical li.current a {
+  color: #202122 !important;
+  background: #ffffff !important;
+}
+.wy-menu-vertical li.current a:hover {
+  background: #eaecf0 !important;
+  color: #0645ad !important;
+}
+
+/* --- ЗАГОЛОВКИ --- */
 h1 {
   font-weight: normal;
   font-size: 2.6rem;
   border-bottom: 1px solid #a2a9b1;
   padding-bottom: 0.3rem;
-  /* цвет не задаём — будет браться из инлайн-стиля или из темы */
 }
 h2 {
   font-weight: normal;
@@ -199,14 +208,12 @@ blockquote {
 
 /* Телефоны (ширина < 768px) */
 @media (max-width: 768px) {
-  /* Основной контент */
   .wy-nav-content {
     padding: 1rem 1.2rem !important;
     font-size: 15px !important;
     line-height: 1.6 !important;
   }
   
-  /* Заголовки */
   h1 {
     font-size: 1.8rem !important;
   }
@@ -217,7 +224,6 @@ blockquote {
     font-size: 1.2rem !important;
   }
   
-  /* Инфобокс — на всю ширину и в начале статьи */
   .infobox {
     float: none !important;
     width: 100% !important;
@@ -231,7 +237,6 @@ blockquote {
     height: auto !important;
   }
   
-  /* Таблицы — скролл на маленьких экранах */
   .wy-table-responsive {
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
@@ -248,24 +253,20 @@ blockquote {
     padding: 0.4rem 0.6rem !important;
   }
   
-  /* Ссылки внутри инфобокса — уменьшить отступы */
   .infobox p {
     margin: 0.2rem 0 !important;
   }
   
-  /* Изображения — адаптивны */
   img {
     max-width: 100% !important;
     height: auto !important;
   }
   
-  /* Карта и глобус */
   #globeViz,
   #marsMap {
     height: 400px !important;
   }
   
-  /* Боковое меню — компактнее */
   .wy-menu-vertical a {
     font-size: 14px !important;
     padding: 6px 12px !important;

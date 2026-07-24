@@ -10,8 +10,10 @@
   <p><b>Первооткрыватель:</b> <a href="https://mars-wiki.ru/people/asaph-hall/">Асаф Холл</a></p>
   <p><b>Дата открытия:</b> 11 августа 1877 г.</p>
   <p><b>Назван в честь:</b> Деймоса («Ужас»), сына Ареса</p>
+  <p><b>Марсианское название:</b> <i>Kōl-ghar</i> («земной камень»)<sup>[^16]</sup></p>
+  <p><b>В марсианской мифологии:</b> Связан с богиней воды <a href="https://mars-wiki.ru/mythology/akha/">Акхой</a>, символ надежды<sup>[^36][^43]</sup></p>
 
- <h4 style="margin: 10px 0 5px 0; font-size: 1rem; border-bottom: 1px solid #a2a9b1; padding-bottom: 3px;">Орбитальные характеристики</h4>
+  <h4 style="margin: 10px 0 5px 0; font-size: 1rem; border-bottom: 1px solid #a2a9b1; padding-bottom: 3px;">Орбитальные характеристики</h4>
   <p><b>Эксцентриситет орбиты:</b> 0,0002</p>
   <p><b>Сидерический период обращения:</b> 30 ч 18 мин 43 с</p>
   <p><b>Синодический период обращения:</b> 30 ч 18 мин</p>

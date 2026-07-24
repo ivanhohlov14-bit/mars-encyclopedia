@@ -103,7 +103,7 @@
 
 Фобос — один из самых маленьких спутников в Солнечной системе. Его неправильная форма (27 × 22 × 18 км)[^3] обусловлена тем, что гравитация спутника недостаточно сильна, чтобы придать ему сферическую форму[^20].
 
-<div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+<div style="float: right; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA05553.gif" alt="Орбитальное движение Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Орбитальное движение Фобоса вокруг Марса (анимация).<br>
@@ -135,7 +135,7 @@
 <div style="text-align: center; margin: 8px 0;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-Phobos-MarsMoon Map.png" alt="Топографическая карта Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
-    Топографическая карта Фобоса. Цветовая индикация высот: синий/зелёный — низкие области, красный/оранжевый — высокие.<br>
+    Топографическая карта Фобоса<br>
     <a href="https://commons.wikimedia.org/wiki/File:USGS-Phobos-MarsMoon-Map.png" target="_blank" style="font-size: 0.7rem;">USGS / Wikimedia Commons</a>
   </div>
 </div>

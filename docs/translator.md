@@ -631,7 +631,7 @@ const LEXICON_DATA = {
   "пронзает": { root: "nuwa", pos: "verb" },
   "оставляя": { root: "ānxur", pos: "verb" },
   "собой": { root: "an", pos: "pron" },
-  "слёз": { root: "ākhas", pos: "noun" }
+  "слёз": { root: "ākhas", pos: "noun" },
   // БЕСКОНЕЧНЫЙ (ān + rak)
   "бесконечный": { root: "ānrak", pos: "adj" },
   "бесконечная": { root: "ānrak", pos: "adj" },

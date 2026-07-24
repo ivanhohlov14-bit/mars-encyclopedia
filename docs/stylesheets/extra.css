@@ -1,57 +1,12 @@
 /* ==========================================
-   БАЗОВЫЕ СТИЛИ ДЛЯ МАРСИАНСКОЙ ЭНЦИКЛОПЕДИИ
+   СТИЛИ ДЛЯ МАРСИАНСКОЙ ЭНЦИКЛОПЕДИИ (ТОЛЬКО СВЕТЛАЯ ТЕМА)
    ========================================== */
-
-body {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  font-size: 17px;
-  line-height: 1.7;
-  color: #202122;
-  background: #ffffff;
-}
 
 /* --- ОСНОВНОЙ КОНТЕНТ --- */
 .md-content {
   max-width: 1100px !important;
   margin: 0 auto !important;
   padding: 2.5rem 3.5rem !important;
-  background: #ffffff !important;
-  color: #202122 !important;
-}
-
-/* --- ЛОГОТИП (всегда белый фон) --- */
-.md-header__button.md-logo img,
-.md-header__button.md-logo svg {
-  background: #ffffff !important;
-  border-radius: 4px !important;
-  padding: 4px !important;
-}
-
-/* --- БОКОВАЯ ПАНЕЛЬ (светлая) --- */
-.md-sidebar--primary {
-  background: #f8f9fa !important;
-  border-right: 1px solid #eaecf0 !important;
-}
-
-.md-sidebar--primary .md-nav {
-  background: #f8f9fa !important;
-}
-
-.md-sidebar--primary .md-nav__link {
-  color: #202122 !important;
-}
-
-/* Убираем подсветку при наведении */
-.md-sidebar--primary .md-nav__link:hover {
-  background: transparent !important;
-  color: #202122 !important;
-}
-
-/* --- ПОИСК --- */
-.md-search__input {
-  background: #f8f9fa !important;
-  border: 1px solid #eaecf0 !important;
-  color: #202122 !important;
 }
 
 /* --- ЗАГОЛОВКИ --- */
@@ -60,7 +15,6 @@ h1 {
   font-size: 2.6rem;
   border-bottom: 1px solid #a2a9b1;
   padding-bottom: 0.3rem;
-  color: #000000 !important;
 }
 h2 {
   font-weight: normal;
@@ -68,41 +22,6 @@ h2 {
   border-bottom: 1px solid #a2a9b1;
   padding-bottom: 0.2rem;
   margin-top: 2rem;
-  color: #000000 !important;
-}
-h3, h4, h5, h6 {
-  color: #000000 !important;
-}
-
-/* --- ССЫЛКИ --- */
-a {
-  color: #0645ad !important;
-  text-decoration: none;
-}
-a:hover {
-  color: #0b0080 !important;
-  text-decoration: underline;
-}
-
-/* --- ТАБЛИЦЫ --- */
-table {
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  width: 100%;
-  border: 1px solid #a2a9b1;
-}
-table th {
-  background: #eaecf0;
-  font-weight: bold;
-  padding: 0.6rem 0.8rem;
-  border: 1px solid #a2a9b1;
-}
-table td {
-  padding: 0.5rem 0.8rem;
-  border: 1px solid #a2a9b1;
-}
-table tr:nth-child(even) {
-  background: #f8f9fa;
 }
 
 /* --- ИНФОБОКСЫ --- */
@@ -132,139 +51,12 @@ table tr:nth-child(even) {
   margin: 0.3rem 0;
 }
 
-/* --- ЦИТАТЫ --- */
-blockquote {
-  background: #f8f9fa;
-  border-left: 4px solid #a2a9b1;
-  padding: 0.8rem 1.5rem;
-  font-style: italic;
-  color: #404244;
-}
-
 /* --- СКРЫВАЕМ ФУТЕР --- */
 .md-footer__inner {
   display: none !important;
 }
 .md-footer {
   display: none !important;
-}
-
-/* ==========================================
-   ТЁМНАЯ ТЕМА
-   ========================================== */
-
-[data-theme="dark"] {
-  --bg-dark: #0d1117;
-  --text-dark: #e6edf3;
-  --border-dark: #30363d;
-  --link-dark: #58a6ff;
-  --block-dark: #161b22;
-  --sidebar-dark: #0d1117;
-}
-
-/* --- ВСЯ СТРАНИЦА (тёмная) --- */
-[data-theme="dark"] body,
-[data-theme="dark"] .md-content,
-[data-theme="dark"] .md-main {
-  background: var(--bg-dark) !important;
-  color: var(--text-dark) !important;
-}
-
-/* --- ВЕСЬ ТЕКСТ В СТАТЬЕ (тёмный) --- */
-[data-theme="dark"] .md-content p,
-[data-theme="dark"] .md-content li,
-[data-theme="dark"] .md-content div,
-[data-theme="dark"] .md-content span {
-  color: var(--text-dark) !important;
-}
-
-/* --- ЗАГОЛОВКИ (тёмные) --- */
-[data-theme="dark"] h1,
-[data-theme="dark"] h2,
-[data-theme="dark"] h3,
-[data-theme="dark"] h4,
-[data-theme="dark"] h5,
-[data-theme="dark"] h6 {
-  color: var(--text-dark) !important;
-  border-bottom-color: var(--border-dark) !important;
-}
-
-/* --- ССЫЛКИ (тёмные) --- */
-[data-theme="dark"] a {
-  color: var(--link-dark) !important;
-}
-[data-theme="dark"] a:hover {
-  color: #79c0ff !important;
-}
-
-/* --- БОКОВАЯ ПАНЕЛЬ (тёмная) --- */
-[data-theme="dark"] .md-sidebar--primary {
-  background: var(--sidebar-dark) !important;
-  border-right: 1px solid var(--border-dark) !important;
-}
-
-[data-theme="dark"] .md-sidebar--primary .md-nav {
-  background: var(--sidebar-dark) !important;
-}
-
-[data-theme="dark"] .md-sidebar--primary .md-nav__link {
-  color: var(--text-dark) !important;
-}
-
-[data-theme="dark"] .md-sidebar--primary .md-nav__link:hover {
-  background: transparent !important;
-  color: var(--text-dark) !important;
-}
-
-/* --- ПОИСК (тёмный) --- */
-[data-theme="dark"] .md-search__input {
-  background: var(--block-dark) !important;
-  color: var(--text-dark) !important;
-  border-color: var(--border-dark) !important;
-}
-
-/* --- ЛОГОТИП (всегда белый, даже в тёмной) --- */
-[data-theme="dark"] .md-header__button.md-logo img,
-[data-theme="dark"] .md-header__button.md-logo svg {
-  background: #ffffff !important;
-}
-
-/* --- ТАБЛИЦЫ (тёмные) --- */
-[data-theme="dark"] table {
-  background: var(--bg-dark) !important;
-  border-color: var(--border-dark) !important;
-  color: var(--text-dark) !important;
-}
-[data-theme="dark"] table th {
-  background: var(--block-dark) !important;
-  color: var(--text-dark) !important;
-  border-color: var(--border-dark) !important;
-}
-[data-theme="dark"] table td {
-  background: var(--bg-dark) !important;
-  color: var(--text-dark) !important;
-  border-color: var(--border-dark) !important;
-}
-[data-theme="dark"] table tr:nth-child(even) td {
-  background: var(--block-dark) !important;
-}
-
-/* --- ИНФОБОКСЫ (тёмные) --- */
-[data-theme="dark"] .infobox {
-  background: var(--block-dark) !important;
-  border-color: var(--border-dark) !important;
-  color: var(--text-dark) !important;
-}
-[data-theme="dark"] .infobox h3 {
-  border-bottom-color: var(--border-dark) !important;
-  color: var(--text-dark) !important;
-}
-
-/* --- ЦИТАТЫ (тёмные) --- */
-[data-theme="dark"] blockquote {
-  background: var(--block-dark) !important;
-  border-left-color: var(--border-dark) !important;
-  color: var(--text-dark) !important;
 }
 
 /* ==========================================
@@ -280,17 +72,12 @@ blockquote {
     width: 100% !important;
     margin: 1rem 0 !important;
   }
-  .infobox img {
-    max-width: 100% !important;
-    height: auto !important;
-  }
 }
 
 @media (max-width: 768px) {
   .md-content {
     padding: 1rem 1.2rem !important;
     font-size: 15px !important;
-    line-height: 1.6 !important;
   }
   h1 {
     font-size: 1.8rem !important;
@@ -298,19 +85,12 @@ blockquote {
   h2 {
     font-size: 1.4rem !important;
   }
-  h3 {
-    font-size: 1.2rem !important;
-  }
   .infobox {
     float: none !important;
     width: 100% !important;
     margin: 0 0 1rem 0 !important;
     padding: 0.8rem 1rem !important;
     font-size: 0.85rem !important;
-  }
-  .infobox img {
-    max-width: 100% !important;
-    height: auto !important;
   }
   table {
     font-size: 0.8rem !important;
@@ -334,9 +114,6 @@ blockquote {
   }
   h2 {
     font-size: 1.2rem !important;
-  }
-  h3 {
-    font-size: 1.1rem !important;
   }
   .infobox {
     padding: 0.6rem 0.8rem !important;

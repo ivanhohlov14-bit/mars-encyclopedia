@@ -66,10 +66,10 @@
 У разных народов Марса существовали собственные имена. Жители [Окхасена](https://mars-wiki.ru/geography/okhasen/) называли его **«Тенью земли»** (марс. *Ghōl kōl*), связывая с его медленным движением и тем, что он казался неподвижным на фоне звёзд. В [Роген-Арии](https://mars-wiki.ru/geography/rogen-aria/) его именовали **«Малым стражем»** (марс. *Hōr-strah*)[^16][^18].
  
 <div style="float: left; max-width: 300px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" alt="Прохождение Фобоса мимо Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Orbits_of_Phobos_and_Deimos.gif" alt="Сравнение орбит Фобоса и Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
-    Прохождение Фобоса мимо Деймоса (реальное видео, 2008). Снято камерой HiRISE на Mars Reconnaissance Orbiter.<br>
-    <a href="https://commons.wikimedia.org/wiki/File:PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+    Сравнение орбит Фобоса и Деймоса. Деймос (внешняя орбита) обращается дальше и медленнее.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:Orbits_of_Phobos_and_Deimos.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
   </div>
 </div>
 
@@ -82,10 +82,10 @@
 Деймос обращается вокруг Марса на среднем расстоянии 23 463 км от центра планеты (около 20 068 км над поверхностью)[^3], что примерно в 2,5 раза дальше, чем Фобос. Эксцентриситет орбиты составляет 0,0002[^1], что делает её почти идеально круговой — самой круговой орбитой среди всех спутников Солнечной системы. Наклонение орбиты к марсианскому экватору — 0,93°[^1].
 
 <div style="float: left; max-width: 300px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Orbits_of_Phobos_and_Deimos.gif" alt="Сравнение орбит Фобоса и Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" alt="Прохождение Фобоса мимо Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
-    Сравнение орбит Фобоса и Деймоса. Деймос (внешняя орбита) обращается дальше и медленнее.<br>
-    <a href="https://commons.wikimedia.org/wiki/File:Orbits_of_Phobos_and_Deimos.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+    Прохождение Фобоса мимо Деймоса (реальное видео, 2008). Снято камерой HiRISE на Mars Reconnaissance Orbiter.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
   </div>
 </div>
 
@@ -135,11 +135,11 @@
 
 ### Крупнейшие кратеры
 
-<div style="float: right; max-width: 300px; margin: 0 0 10px 20px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/SwiftCrater.gif" alt="Кратеры Свифт и Вольтер на Деймосе" style="width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px; text-align: left;">
+<div style="float: right; max-width: 300px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/SwiftCrater.gif" alt="Кратер Свифт на Деймосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Кратер Свифт на Деймосе — один из двух крупных кратеров, названный в честь Джонатана Свифта.<br>
-    <a href="https://commons.wikimedia.org/wiki/File:SwiftCrater.gif" target="_blank">NASA / Wikimedia Commons</a>
+    <a href="https://commons.wikimedia.org/wiki/File:SwiftCrater.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
   </div>
 </div>
 

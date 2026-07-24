@@ -299,7 +299,26 @@ blockquote {
   #marsMap {
     height: 300px !important;
   }
-  
+
+   /* --- НАСТРОЙКА ПОИСКА --- */
+.wy-side-nav-search input[type="text"] {
+  background: #ffffff !important;
+  border: 1px solid #a2a9b1 !important;
+  border-radius: 4px !important;
+  padding: 6px 12px !important;
+  font-size: 14px !important;
+  color: #202122 !important;
+  box-shadow: none !important;
+}
+.wy-side-nav-search input[type="text"]:focus {
+  border-color: #0645ad !important;
+  box-shadow: 0 0 0 2px rgba(6,69,173,0.15) !important;
+  outline: none !important;
+}
+.wy-side-nav-search input[type="text"]::placeholder {
+  color: #888888 !important;
+  font-style: italic !important;
+}
   .wy-menu-vertical a {
     font-size: 13px !important;
     padding: 4px 10px !important;

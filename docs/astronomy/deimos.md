@@ -1,7 +1,9 @@
-# Деймос
-
+---
 title: Деймос
-description: Деймос, Деймоса, Деймосу, Деймосом — спутник Марса
+description: Деймос, Деймоса, Деймосу, Деймосом — второй спутник Марса, бог ужаса в марсианской мифологии. Его орбита, происхождение и значение для марсианской культуры в Эпоху Умирания.
+---
+
+# Деймос
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
   <h3 style="margin: 0; text-align: center;">Деймос</h3>

@@ -62,14 +62,12 @@
 <div style="float: left; max-width: 300px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
   
 В марсианской культуре спутник известен под названием **Kōl-ghar** (мар. kōl ghar — «земной камень»), которое отражает его связь с поверхностью Марса и медленное, «земное» движение по небу[^16]. В древних марсианских табличках Деймос также называли **«Спутником-стражем»** (марс. *Dzenkhōr strah*), поскольку его медленное движение позволяло морякам ориентироваться на протяжении нескольких дней[^17].
-
 <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" alt="Прохождение Фобоса мимо Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Прохождение Фобоса мимо Деймоса (реальное видео, 2008). Снято камерой HiRISE на Mars Reconnaissance Orbiter.<br>
     <a href="https://commons.wikimedia.org/wiki/File:PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
   </div>
 </div>
-
 У разных народов Марса существовали собственные имена. Жители [Окхасена](https://mars-wiki.ru/geography/okhasen/) называли его **«Тенью земли»** (марс. *Ghōl kōl*), связывая с его медленным движением и тем, что он казался неподвижным на фоне звёзд. В [Роген-Арии](https://mars-wiki.ru/geography/rogen-aria/) его именовали **«Малым стражем»** (марс. *Hōr-strah*)[^16][^18].
 
 Любопытно, что древние земные астрономы подозревали существование спутников Марса задолго до официального открытия. В 1726 году Джонатан Свифт в романе «Путешествия Гулливера» упомянул о двух спутниках Марса, один из которых «обращается вокруг планеты за 30 часов» — что удивительно близко к реальному периоду обращения Деймоса (30 ч 18 мин)[^19].
@@ -134,6 +132,14 @@
 
 ### Крупнейшие кратеры
 
+<div style="float: right; max-width: 300px; margin: 0 0 10px 20px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/SwiftCrater.gif" alt="Кратеры Свифт и Вольтер на Деймосе" style="width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.8rem; color: #555; margin-top: 4px; text-align: left;">
+    Кратер Свифт на Деймосе — один из двух крупных кратеров, названный в честь Джонатана Свифта.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:SwiftCrater.gif" target="_blank">NASA / Wikimedia Commons</a>
+  </div>
+</div>
+
 | Название | Диаметр (км) | Назван в честь |
 |----------|-------------|----------------|
 | **Свифт** | ~1,0 | Джонатана Свифта, писателя[^28] |
@@ -143,14 +149,6 @@
 | **Суф-Дзен** | ~0,7 | ''Великая звезда'' (марсианское название) |
 | **Тзан-Рак** | ~0,6 | ''Граница знания'' (марсианское название) |
 | **Кол-Тхал** | ~0,5 | ''Земля смотрит'' (марсианское название) |
-
-<div style="float: right; max-width: 300px; margin: 0 0 10px 20px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/SwiftCrater.gif" alt="Кратеры Свифт и Вольтер на Деймосе" style="width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px; text-align: left;">
-    Кратер Свифт на Деймосе — один из двух крупных кратеров, названный в честь Джонатана Свифта.<br>
-    <a href="https://commons.wikimedia.org/wiki/File:SwiftCrater.gif" target="_blank">NASA / Wikimedia Commons</a>
-  </div>
-</div>
 
 Кратер **Свифт** (Swift) — крупнейший ударный кратер на Деймосе, назван в честь Джонатана Свифта, который предсказал существование спутников Марса в 1726 году[^28]. Кратер **Вольтер** (Voltaire) — второй по величине кратер, назван в честь французского философа Вольтера, который также упоминал спутники Марса в своих трудах[^28].
 

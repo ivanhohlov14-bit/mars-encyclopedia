@@ -3,11 +3,17 @@ site_url: https://mars-wiki.ru/
 site_favicon: assets/favicon.png
 
 theme:
-  name: readthedocs
+  name: material
   language: ru
   logo: assets/logo.png
   favicon: assets/favicon.png
-  sticky_navigation: true
+  features:
+    - content.tabs.link
+    - navigation.sections
+    - toc.follow
+    - navigation.tabs.sticky
+    - navigation.expand
+    - search.share
 
 plugins:
   - search
@@ -20,10 +26,9 @@ markdown_extensions:
 
 extra_javascript:
   - javascripts/fix-title.js
-  - javascripts/dark-theme.js
 
-extra_javascript:
-  - javascripts/dark-theme.js
+extra_css:
+  - stylesheets/extra.css
 
 nav:
   - Заглавная страница: index.md
@@ -149,6 +154,3 @@ nav:
       - MAX: https://max.ru/join/UQtDxD4S9FjgltPgm7r22OmtF5iJ-U-NZh1kYxtpZO4
   - О проекте:
       - Лицензия: license.md
-
-extra_css:
-  - stylesheets/extra.css

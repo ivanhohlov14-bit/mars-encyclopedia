@@ -65,13 +65,14 @@
 
 У разных народов Марса существовали собственные имена. Жители [Окхасена](https://mars-wiki.ru/geography/okhasen/) называли его **«Тенью земли»** (марс. *Ghōl kōl*), связывая с его медленным движением и тем, что он казался неподвижным на фоне звёзд. В [Роген-Арии](https://mars-wiki.ru/geography/rogen-aria/) его именовали **«Малым стражем»** (марс. *Hōr-strah*)[^16][^18].
  
-<div style="float: left; max-width: 300px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+<div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Orbits_of_Phobos_and_Deimos.gif" alt="Сравнение орбит Фобоса и Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Сравнение орбит Фобоса и Деймоса. Деймос (внешняя орбита) обращается дальше и медленнее.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Orbits_of_Phobos_and_Deimos.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
   </div>
 </div>
+<div style="clear: both;"></div>
 
 Любопытно, что древние земные астрономы подозревали существование спутников Марса задолго до официального открытия. В 1726 году Джонатан Свифт в романе «Путешествия Гулливера» упомянул о двух спутниках Марса, один из которых «обращается вокруг планеты за 30 часов» — что удивительно близко к реальному периоду обращения Деймоса (30 ч 18 мин)[^19].
 

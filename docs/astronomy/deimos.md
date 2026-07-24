@@ -60,7 +60,6 @@
 
 Название «Деймос» происходит от древнегреческого δείμος («ужас»). В письменных источниках оно впервые встречается в записях Асафа Холла, который дал спутнику имя в честь одного из сыновей Ареса[^8].
 
-<!-- КАРТИНКА 1: СРАВНЕНИЕ ОРБИТ (ВЛЕВО) -->
 <div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Orbits_of_Phobos_and_Deimos.gif" alt="Сравнение орбит Фобоса и Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
@@ -68,7 +67,6 @@
     <a href="https://commons.wikimedia.org/wiki/File:Orbits_of_Phobos_and_Deimos.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
   </div>
 </div>
-<div style="clear: both;"></div>
 
 В марсианской культуре спутник известен под названием **Kōl-ghar** (мар. kōl ghar — «земной камень»), которое отражает его связь с поверхностью Марса и медленное, «земное» движение по небу[^16]. В древних марсианских табличках Деймос также называли **«Спутником-стражем»** (марс. *Dzenkhōr strah*), поскольку его медленное движение позволяло морякам ориентироваться на протяжении нескольких дней[^17].
 
@@ -82,7 +80,6 @@
 
 Деймос обращается вокруг Марса на среднем расстоянии 23 463 км от центра планеты (около 20 068 км над поверхностью)[^3], что примерно в 2,5 раза дальше, чем Фобос. Эксцентриситет орбиты составляет 0,0002[^1], что делает её почти идеально круговой — самой круговой орбитой среди всех спутников Солнечной системы. Наклонение орбиты к марсианскому экватору — 0,93°[^1].
 
-<!-- КАРТИНКА 2: ПРОХОЖДЕНИЕ ФОБОСА (ВЛЕВО) -->
 <div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" alt="Прохождение Фобоса мимо Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
@@ -90,7 +87,6 @@
     <a href="https://commons.wikimedia.org/wiki/File:PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
   </div>
 </div>
-<div style="clear: both;"></div>
 
 Период обращения Деймоса — 30 часов 18 минут 43 секунды[^2], что чуть больше марсианских суток (24 часа 37 минут)[^16]. В результате с поверхности Марса Деймос восходит на востоке и заходит на западе, но его суточное движение медленнее вращения планеты: спутник остаётся видимым на протяжении двух-трёх суток между восходом и заходом[^12][^17].
 
@@ -138,7 +134,6 @@
 
 ### Крупнейшие кратеры
 
-<!-- КАРТИНКА 3: КРАТЕР СВИФТ (ВПРАВО) -->
 <div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/SwiftCrater.gif" alt="Кратер Свифт на Деймосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
@@ -146,7 +141,6 @@
     <a href="https://commons.wikimedia.org/wiki/File:SwiftCrater.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
   </div>
 </div>
-<div style="clear: both;"></div>
 
 | Название | Диаметр (км) | Назван в честь |
 |----------|-------------|----------------|

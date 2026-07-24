@@ -7,8 +7,7 @@ theme:
   language: ru
   logo: assets/logo.png
   favicon: assets/favicon.png
-  toc: true
-  sticky_navigation: true  
+  sticky_navigation: true   
   
   features:
     - content.tabs.link

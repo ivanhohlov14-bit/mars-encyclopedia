@@ -1,27 +1,33 @@
 /* ==========================================
-   СТИЛИ ДЛЯ МАРСИАНСКОЙ ЭНЦИКЛОПЕДИИ (ТОЛЬКО СВЕТЛАЯ ТЕМА)
+   МАРСИАНСКАЯ ЭНЦИКЛОПЕДИЯ — ИДЕАЛЬНЫЙ СТИЛЬ
    ========================================== */
 
+/* --- УБИРАЕМ ПРАВУЮ ПАНЕЛЬ С ОГЛАВЛЕНИЕМ --- */
+.wy-tray-container {
+  display: none !important;
+}
+.rst-versions {
+  display: none !important;
+}
+
 /* --- ОСНОВНОЙ КОНТЕНТ --- */
-.md-content {
+.wy-nav-content {
   max-width: 1100px !important;
-  margin: 0 auto !important;
   padding: 2.5rem 3.5rem !important;
 }
 
-/* --- ЗАГОЛОВКИ --- */
-h1 {
-  font-weight: normal;
-  font-size: 2.6rem;
-  border-bottom: 1px solid #a2a9b1;
-  padding-bottom: 0.3rem;
+/* --- ЛОГОТИП В ЛЕВОЙ ПАНЕЛИ --- */
+.wy-side-nav-search .icon-home img {
+  max-height: 80px !important;
+  width: auto !important;
+  display: block !important;
+  margin: 15px auto !important;
+  border-radius: 4px !important;
 }
-h2 {
-  font-weight: normal;
-  font-size: 2rem;
-  border-bottom: 1px solid #a2a9b1;
-  padding-bottom: 0.2rem;
-  margin-top: 2rem;
+
+/* --- УБИРАЕМ ВЕРХНЮЮ ПЛАШКУ (если она есть) --- */
+.wy-nav-top {
+  display: none !important;
 }
 
 /* --- ИНФОБОКСЫ --- */
@@ -51,20 +57,20 @@ h2 {
   margin: 0.3rem 0;
 }
 
-/* --- СКРЫВАЕМ ФУТЕР --- */
-.md-footer__inner {
+/* --- УБИРАЕМ КНОПКИ НАВИГАЦИИ ВНИЗУ --- */
+.rst-footer-buttons {
   display: none !important;
 }
-.md-footer {
+.footer {
   display: none !important;
 }
 
 /* ==========================================
-   АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ
+   АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ
    ========================================== */
 
 @media (max-width: 1024px) {
-  .md-content {
+  .wy-nav-content {
     padding: 1.5rem 2rem !important;
   }
   .infobox {
@@ -75,7 +81,7 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  .md-content {
+  .wy-nav-content {
     padding: 1rem 1.2rem !important;
     font-size: 15px !important;
   }
@@ -90,22 +96,11 @@ h2 {
     width: 100% !important;
     margin: 0 0 1rem 0 !important;
     padding: 0.8rem 1rem !important;
-    font-size: 0.85rem !important;
-  }
-  table {
-    font-size: 0.8rem !important;
-  }
-  table td, table th {
-    padding: 0.4rem 0.6rem !important;
-  }
-  img {
-    max-width: 100% !important;
-    height: auto !important;
   }
 }
 
 @media (max-width: 480px) {
-  .md-content {
+  .wy-nav-content {
     padding: 0.8rem 1rem !important;
     font-size: 14px !important;
   }
@@ -117,6 +112,5 @@ h2 {
   }
   .infobox {
     padding: 0.6rem 0.8rem !important;
-    font-size: 0.8rem !important;
   }
 }

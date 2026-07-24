@@ -1,5 +1,6 @@
 # Деймос
 
+title: Деймос
 description: Деймос, Деймоса, Деймосу, Деймосом — спутник Марса
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">

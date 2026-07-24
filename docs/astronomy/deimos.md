@@ -12,7 +12,7 @@
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Deimos-MRO.jpg" alt="Деймос" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Деймос, снимок Mars Reconnaissance Orbiter</div>
   </div>
-  <p><b>Первооткрыватель:</b> <a href="https://mars-wiki.ru/people/asaph-hall/">Асаф Холл</a></p>
+  <p><b>Первооткрыватель:</b> Асаф Холл</p>
   <p><b>Дата открытия:</b> 11 августа 1877 г.</p>
   <p><b>Назван в честь:</b> Деймоса («Ужас»), сына Ареса</p>
   <p><b>Марсианское название:</b> <i>Ghar-Kōl</i> («земной камень»)</p>

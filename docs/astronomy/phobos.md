@@ -7,7 +7,7 @@
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/phobos.png" alt="Фобос" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Фобос, снимок Mars Reconnaissance Orbiter (2008)</div>
   </div>
-  <p><b>Первооткрыватель:</b> <a href="https://mars-wiki.ru/people/asaph-hall/">Асаф Холл</a></p>
+  <p><b>Первооткрыватель:</b> Асаф Холл</p>
   <p><b>Дата открытия:</b> 18 августа 1877 г.</p>
   <p><b>Назван в честь:</b> Фобоса («Страх»), сына Ареса</p>
 
@@ -93,13 +93,7 @@
 
 Период обращения Фобоса — 7 часов 39 минут 14 секунд[^2], что значительно меньше периода вращения Марса вокруг своей оси (24 часа 37 минут)[^16]. В результате с поверхности Марса Фобос восходит на западе и заходит на востоке, дважды пересекая небо за марсианские сутки[^12][^17].
 
-<div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA05553.gif" alt="Орбитальное движение Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
-  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
-    Орбитальное движение Фобоса вокруг Марса (анимация).<br>
-    <a href="https://commons.wikimedia.org/wiki/File:PIA05553.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
-  </div>
-</div>
+
 
 Средняя орбитальная скорость Фобоса составляет 2,138 км/с[^1]. Из-за близости к Марсу приливные силы постепенно снижают орбиту спутника: каждые 100 лет Фобос приближается к планете на 1,8 метра[^18][^19]. Через 50 миллионов лет он либо упадёт на Марс, либо разрушится, образовав кольцо[^41][^42].
 
@@ -108,6 +102,14 @@
 ## Физические характеристики
 
 Фобос — один из самых маленьких спутников в Солнечной системе. Его неправильная форма (27 × 22 × 18 км)[^3] обусловлена тем, что гравитация спутника недостаточно сильна, чтобы придать ему сферическую форму[^20].
+
+<div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA05553.gif" alt="Орбитальное движение Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Орбитальное движение Фобоса вокруг Марса (анимация).<br>
+    <a href="https://commons.wikimedia.org/wiki/File:PIA05553.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
 
 | Параметр | Значение |
 |----------|----------|
@@ -131,7 +133,7 @@
 ## Поверхность
 
 <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-Phobos-MarsMoon-Map.png" alt="Топографическая карта Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-Phobos-MarsMoon Map.png" alt="Топографическая карта Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Топографическая карта Фобоса. Цветовая индикация высот: синий/зелёный — низкие области, красный/оранжевый — высокие.<br>
     <a href="https://commons.wikimedia.org/wiki/File:USGS-Phobos-MarsMoon-Map.png" target="_blank" style="font-size: 0.7rem;">USGS / Wikimedia Commons</a>
@@ -150,6 +152,24 @@
 
 Вдоль поверхности Фобоса проходят многочисленные параллельные борозды — длинные впадины шириной до 200 метров и глубиной до 100 метров[^29]. Наиболее вероятное объяснение их происхождения: они образовались в результате удара, создавшего кратер Стикни, когда выброшенные обломки прокатились по поверхности[^27][^30]. Некоторые борозды имеют длину до 12 км[^31] и сконцентрированы в области, противоположной кратеру Стикни[^25].
 
+### Монолит Фобоса
+
+<div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Monolith55103h-crop.jpg" alt="Монолит на Фобосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Монолит на Фобосе — загадочный объект на поверхности спутника (снимок MRO).<br>
+    <a href="https://commons.wikimedia.org/wiki/File:Monolith55103h-crop.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
+
+На поверхности Фобоса находится загадочный объект — **монолит**, представляющий собой вертикальную скалу высотой около 85 метров[^50]. В марсианской культуре он известен как *Ghar-strah* («Камень-страж») и связан с легендой об астрономической станции Эпохи Расцвета.
+
+Согласно хроникам, в 2638 году Э.О. марсианские инженеры установили на Фобосе **обсерваторию дальней связи** для наблюдения за звёздами. Монолит был её **опорной башней**, на которой крепились антенны и приборы[^43].
+
+В 2690 году Э.О. крупный астероид столкнулся с Фобосом, уничтожив станцию: жилой модуль был засыпан реголитом, антенны разрушены, а башня упала, застряв в поверхности спутника[^44].
+
+С тех пор монолит стал символом **«Застывшего взгляда»** (марс. *Lān-thal*) — напоминанием о том, что даже величайшие технологии бессильны перед силами природы[^36].
+
 ### Крупнейшие кратеры
 
 | Название | Диаметр (км) | Назван в честь |
@@ -160,14 +180,6 @@
 | **Галлей** | 1,8 | Эдмунда Галлея, английского астронома |
 | **Кхо** | 1,2 | Бога огня в марсианской мифологии[^36] |
 | **Акха** | 1,1 | Богини воды в марсианской мифологии[^36] |
-
-<div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Monolith55103h-crop.jpg" alt="Монолит на Фобосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
-  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
-    Монолит на Фобосе — загадочный объект на поверхности спутника (снимок MRO).<br>
-    <a href="https://commons.wikimedia.org/wiki/File:Monolith55103h-crop.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
-  </div>
-</div>
 
 ---
 
@@ -304,3 +316,5 @@
 [^47]: Mars Express Phobos — ESA.
 [^48]: MRO Phobos — NASA.
 [^49]: MMX mission — JAXA, 2025.
+[^50]: MRO HiRISE, снимок монолита на Фобосе (2008). Высота объекта оценивается в 85 метров.
+[^51]: Хевсур, «Песни о падении», фрагмент таблички № 88.

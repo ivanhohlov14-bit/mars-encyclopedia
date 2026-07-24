@@ -65,6 +65,14 @@
 
 Название «Фобос» происходит от древнегреческого φόβος («страх»). В письменных источниках оно впервые встречается в записях Асафа Холла, который дал спутнику имя в честь одного из сыновей Ареса[^8].
 
+<div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Orbits_of_Phobos_and_Deimos.gif" alt="Сравнение орбит Фобоса и Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Сравнение орбит Фобоса и Деймоса. Деймос (внешняя орбита) обращается дальше и медленнее.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:Orbits_of_Phobos_and_Deimos.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
+
 В марсианской культуре спутник известен под названием **Ākha-sen** (ˈaː.kxaˈsen — «водный камень»), которое отражает его связь с богиней воды [Акхой](https://mars-wiki.ru/mythology/akha/) в мифологии Эпохи Расцвета[^16]. В древних марсианских табличках Фобос также называли **«Глазом Кхо»** (марс. *Kho Dzen*), поскольку его быстрое движение по небу напоминало блуждающий огонь — символ бога огня [Кхо](https://mars-wiki.ru/mythology/kho/)[^17]. У разных народов Марса существовали собственные имена: жители [Окхасена](https://mars-wiki.ru/geography/okhasen/) называли его **«Серебряной стрелой»** (марс. *Thal ar-akha*), а в [Роген-Арии](https://mars-wiki.ru/geography/rogen-aria/) его именовали **«Тенью Кхо»**[^16][^18].
 
 Любопытно, что древние земные астрономы подозревали существование спутников Марса задолго до официального открытия. В 1726 году Джонатан Свифт в романе «Путешествия Гулливера» упомянул о двух спутниках Марса, один из которых «обращается вокруг планеты за 10 часов» — что удивительно близко к реальному периоду обращения Фобоса (7 ч 39 мин)[^19].
@@ -75,7 +83,23 @@
 
 Фобос обращается вокруг Марса на среднем расстоянии 9 377 км от центра планеты (около 6 006 км над поверхностью)[^3], что более чем в 40 раз меньше расстояния от Земли до Луны[^1][^10]. Эксцентриситет орбиты составляет 0,0151[^1], что делает её почти круговой. Наклонение орбиты к марсианскому экватору — 1,093°[^1].
 
+<div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" alt="Прохождение Фобоса мимо Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Прохождение Фобоса мимо Деймоса (реальное видео, 2008). Снято камерой HiRISE на Mars Reconnaissance Orbiter.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
+
 Период обращения Фобоса — 7 часов 39 минут 14 секунд[^2], что значительно меньше периода вращения Марса вокруг своей оси (24 часа 37 минут)[^16]. В результате с поверхности Марса Фобос восходит на западе и заходит на востоке, дважды пересекая небо за марсианские сутки[^12][^17].
+
+<div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA05553.gif" alt="Орбитальное движение Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Орбитальное движение Фобоса вокруг Марса (анимация).<br>
+    <a href="https://commons.wikimedia.org/wiki/File:PIA05553.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
 
 Средняя орбитальная скорость Фобоса составляет 2,138 км/с[^1]. Из-за близости к Марсу приливные силы постепенно снижают орбиту спутника: каждые 100 лет Фобос приближается к планете на 1,8 метра[^18][^19]. Через 50 миллионов лет он либо упадёт на Марс, либо разрушится, образовав кольцо[^41][^42].
 
@@ -106,6 +130,14 @@
 
 ## Поверхность
 
+<div style="text-align: center; margin: 8px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-Phobos-MarsMoon-Map.png" alt="Топографическая карта Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Топографическая карта Фобоса. Цветовая индикация высот: синий/зелёный — низкие области, красный/оранжевый — высокие.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:USGS-Phobos-MarsMoon-Map.png" target="_blank" style="font-size: 0.7rem;">USGS / Wikimedia Commons</a>
+  </div>
+</div>
+
 ### Общий обзор
 
 Поверхность Фобоса густо усеяна ударными кратерами. Насчитывается около 1300 кратеров диаметром более 200 метров, из них 30 — более 2 километров[^4]. Из-за малой гравитации выбросы от ударов на Фобосе распространяются на гораздо большие расстояния, чем на Земле[^25]. Поверхность можно разделить на два основных типа: старая, густо усеянная кратерами поверхность, покрытая слоем реголита, и области с бороздами — параллельными впадинами, вероятно образовавшимися в результате удара, создавшего кратер Стикни[^27][^29].
@@ -128,6 +160,14 @@
 | **Галлей** | 1,8 | Эдмунда Галлея, английского астронома |
 | **Кхо** | 1,2 | Бога огня в марсианской мифологии[^36] |
 | **Акха** | 1,1 | Богини воды в марсианской мифологии[^36] |
+
+<div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Monolith55103h-crop.jpg" alt="Монолит на Фобосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Монолит на Фобосе — загадочный объект на поверхности спутника (снимок MRO).<br>
+    <a href="https://commons.wikimedia.org/wiki/File:Monolith55103h-crop.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
 
 ---
 

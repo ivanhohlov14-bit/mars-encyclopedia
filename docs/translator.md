@@ -668,7 +668,13 @@ const LEXICON_DATA = {
   "троне": { root: "rogen", pos: "noun" },
   "трону": { root: "rogen", pos: "noun" },
   "трона": { root: "rogen", pos: "noun" },
-
+  "движется": { root: "nur", pos: "verb" },
+  "двигаться": { root: "nur", pos: "verb" },
+  "как": { root: "khas", pos: "conj" },
+  "кто": { root: "ku", pos: "pron" },
+  "что": { root: "sha", pos: "pron" },
+  "иллюзия": { root: "lānthal", pos: "noun" },
+  "иллюзии": { root: "lānthal", pos: "noun" },
   // ============================================================
   // 3. ПРИЛАГАТЕЛЬНЫЕ (основные)
   // ============================================================

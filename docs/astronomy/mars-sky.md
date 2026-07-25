@@ -48,6 +48,14 @@
 
 ## Описание
 
+<div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_violet_sky.jpg" alt="Фиолетовое небо Марса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Фиолетовое небо Марса — редкое явление, вызванное рассеянием света на пылевых частицах.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:Mars_violet_sky.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
+
 В ясную ночь, при отсутствии пылевых бурь и светового загрязнения (которого в Эпоху Умирания на Марсе практически не было), марсианский наблюдатель с хорошим зрением мог увидеть на небосводе до 2–3 тысяч мерцающих точек. Однако из-за разрежённой атмосферы и особенностей марсианского неба это число могло варьироваться в зависимости от региона и сезона.
 
 Список видимых с Марса звёзд был впервые систематизирован марсианскими астрономами [Академии Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) в начале Эпохи Расцвета. По аналогии с земным астрономом Гиппархом, составившим во II веке до нашей эры каталог из 1022 объектов, марсианские учёные выделили около 800 светил, видимых невооружённым глазом, которые были нанесены на глиняные таблички и использовались для навигации и календарных расчётов[^5]. Позднее, в Эпоху Умирания, [Талин](https://mars-wiki.ru/people/talin/) и его предшественники дополнили эти списки, доведя число зафиксированных звёзд до полутора тысяч[^6].
@@ -56,6 +64,14 @@
 
 Для удобства ориентировки звёздное небо Марса разделено на участки, называемые созвездиями. Наблюдением за звёздным небом занималась марсианская астрономия, которая достигла значительных высот в Эпоху Расцвета благодаря строительству [Астрономической башни Роген-Арии](https://mars-wiki.ru/geography/astronomicheskaya-bashnya/).
 
+<div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_sky_at_noon_PIA01546.jpg" alt="Дневное небо Марса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Дневное небо Марса, снятое марсоходом Pathfinder. Характерный розовато-жёлтый оттенок.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:Mars_sky_at_noon_PIA01546.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
+
 С древнейших времён наблюдение звёздного неба помогало марсианским мореплавателям определять стороны света при навигации по [Ацидалийскому морю](https://mars-wiki.ru/geography/acidalia-sea/). Измерение времени видимого годового движения Солнца по созвездиям позволило создать марсианский календарь, имеющий практическую ценность для сельского хозяйства и ритуалов. Даты такого календаря из года в год точно определяли смену климатических сезонов, что было особенно важно для планирования посевов в условиях умирающей планеты[^8].
 
 До 2200 года Э.О. границы между созвездиями на разных звёздных картах не всегда совпадали. Поэтому очертания созвездий на поздних картах не совпадают с их очертаниями, например, на табличках [Харана](https://mars-wiki.ru/people/kharan/), датируемых 1500 годом Э.О.[^9]. Унификация границ созвездий была проведена Академией Окхасена в середине Эпохи Расцвета, что позволило создать единую систему навигации и календаря, использовавшуюся вплоть до Исхода.
@@ -63,6 +79,14 @@
 ---
 
 ## Астрономические особенности
+
+<div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_sunset_PIA00920.jpg" alt="Закат на Марсе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Закат на Марсе, снятый посадочным аппаратом Pathfinder (1997). Голубоватое свечение у горизонта.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:Mars_sunset_PIA00920.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
 
 С поверхности Марса ночное небо выглядит иначе, чем с Земли, из-за особенностей марсианской атмосферы, орбиты и наличия двух спутников.
 
@@ -126,6 +150,14 @@
 
 ### Культурное значение созвездий
 
+<div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_sunset_PIA01547.jpg" alt="Закат на Марсе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Закат на Марсе. Голубоватое свечение вокруг Солнца вызвано рассеянием света на пыли.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:Mars_sunset_PIA01547.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
+
 Каждое созвездие имело не только астрономическое, но и религиозное, календарное, навигационное значение. Жрецы храмов [Араксис](https://mars-wiki.ru/mythology/araksis/) использовали положение созвездий для предсказания разливов рек и сроков посевов. Рыбаки ориентировались на «Kopjo Kho», когда выходили в море. Астрономы Академии Окхасена использовали «Tren dzen nur» для калибровки телескопов[^16].
 
 В Эпоху Умирания, когда море замёрзло и города опустели, звёздное небо осталось единственным неизменным ориентиром. [Талин](https://mars-wiki.ru/people/talin/) и [Хевсур](https://mars-wiki.ru/people/hevsur/) смотрели на одни и те же созвездия, разделённые пространством и временем, но связанные общей памятью[^17].
@@ -133,6 +165,14 @@
 ---
 
 ## Астрономия в марсианском обществе
+
+<div style="float: right; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars_nebo.png" alt="Ночное небо Марса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Ночное небо Марса. Видны звёзды и спутники планеты.<br>
+    <span style="font-size: 0.7rem;">Изображение из репозитория Mars Encyclopedia</span>
+  </div>
+</div>
 
 ### Навигация и мореплавание
 
@@ -148,12 +188,29 @@
 
 ## Научное обоснование
 
+<div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Martian-Sunset-O-de-Goursac-Curiosity-2013.jpg" alt="Закат на Марсе, Curiosity 2013" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
+    Закат на Марсе, снятый марсоходом Curiosity в 2013 году. Голубые и розовые оттенки.<br>
+    <a href="https://commons.wikimedia.org/wiki/File:Martian-Sunset-O-de-Goursac-Curiosity-2013.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
+  </div>
+</div>
+
 Современные данные NASA и ESA подтверждают многие астрономические особенности, описанные в книгах:
 
 - **Цвет марсианского неба.** Днём небо Марса действительно имеет розовато-фиолетовый оттенок из-за рассеяния света на мелкой пыли. Ночью оно темнее земного из-за отсутствия плотной атмосферы[^20].
 - **Видимость звёзд днём.** На Марсе действительно можно увидеть яркие звёзды и планеты даже днём, так как атмосфера тоньше и светорассеяние слабее[^21].
 - **Фобос.** Его орбита действительно нестабильна — спутник медленно приближается к Марсу и в будущем будет разрушен или упадёт на планету. Видимый размер Фобоса с Марса действительно в несколько раз больше, чем Луны с Земли[^22].
 - **Видимость Земли.** Снимки марсоходов подтверждают, что Земля видна с Марса как яркая голубоватая точка, сравнимая с Венерой на земном небе[^23].
+
+<div style="text-align: center; margin: 16px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 8px;">
+  <video src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/videos/mars_nebo_video.mp4" controls style="max-width: 100%; height: auto; border-radius: 4px;">
+    Ваш браузер не поддерживает видео.
+  </video>
+  <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: center;">
+    Вид марсианского неба — анимация или видео.
+  </div>
+</div>
 
 ---
 

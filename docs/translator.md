@@ -474,6 +474,118 @@ const LEXICON_DATA = {
   "убежищу": { root: "ānsen", pos: "noun" },
   "убежищем": { root: "ānsen", pos: "noun" },
   "убежища": { root: "ānsen", pos: "noun" },
+  "Ākha-dzen": { root: "вода-звезда", pos: "phrase" },
+  "Kōl-khan": { root: "земля-река", pos: "phrase" },
+  "Dzen-ākha": { root: "звезда-вода", pos: "phrase" },
+  "Khōsen": { root: "место огня", pos: "phrase" },
+  "Mar-dzen": { root: "жизнь-звезда", pos: "phrase" },
+  "Ariya-mar": { root: "избранная жизнь", pos: "phrase" },
+  "Zal-ākha": { root: "ветер-вода", pos: "phrase" },
+  "Thal-khō": { root: "смотреть-огонь", pos: "phrase" },
+  "Kōl-ghar": { root: "земля-камень", pos: "phrase" },
+  "Mōr-ākha": { root: "смерть-вода", pos: "phrase" },
+  "Dzen-kōl": { root: "звезда-земля", pos: "phrase" },
+  "Xal-mar": { root: "древняя жизнь", pos: "phrase" },
+  "Lān-sen": { root: "память-место", pos: "phrase" },
+  "Khō-mōr": { root: "огонь-смерть", pos: "phrase" },
+  "Ākha-mōr": { root: "вода-смерть", pos: "phrase" },
+  "Kōl-suf": { root: "земля-великая", pos: "phrase" },
+  "Dzen-thal": { root: "звезда-смотреть", pos: "phrase" },
+  "Ghōl-ākha": { root: "тень-вода", pos: "phrase" },
+  "Rōg-ari": { root: "король-избранный", pos: "phrase" },
+  "Mar-lān": { root: "жизнь-память", pos: "phrase" },
+  "Ksanf-suf": { root: "Великая река", pos: "phrase" },
+  "Yar-okh": { root: "старый дом", pos: "phrase" },
+  // ============================================================
+  // МАРСИАНСКИЙ КАЛЕНДАРЬ — НАЗВАНИЯ МЕСЯЦЕВ
+  // ============================================================
+  // 1. Ākha-dzen — «вода-звезда» (весеннее таяние)
+  "акха-дзен": { root: "Ākha-dzen", pos: "noun" },
+  "акха дзен": { root: "Ākha-dzen", pos: "noun" },
+  "акхадзен": { root: "Ākha-dzen", pos: "noun" },
+  // 2. Kōl-khan — «земля-река» (половодье)
+  "кол-хан": { root: "Kōl-khan", pos: "noun" },
+  "кол хан": { root: "Kōl-khan", pos: "noun" },
+  "колхан": { root: "Kōl-khan", pos: "noun" },
+  // 3. Dzen-ākha — «звезда-вода»
+  "дзен-акха": { root: "Dzen-ākha", pos: "noun" },
+  "дзен акха": { root: "Dzen-ākha", pos: "noun" },
+  "дзенакха": { root: "Dzen-ākha", pos: "noun" },
+  // 4. Khōsen — «место огня» (начало жары)
+  "хосен": { root: "Khōsen", pos: "noun" },
+  "хосен (месяц)": { root: "Khōsen", pos: "noun" },
+  // 5. Mar-dzen — «жизнь-звезда» (расцвет)
+  "мар-дзен": { root: "Mar-dzen", pos: "noun" },
+  "мар дзен": { root: "Mar-dzen", pos: "noun" },
+  "мардзен": { root: "Mar-dzen", pos: "noun" },
+  // 6. Ariya-mar — «избранная жизнь» (священный)
+  "ария-мар": { root: "Ariya-mar", pos: "noun" },
+  "ария мар": { root: "Ariya-mar", pos: "noun" },
+  "ариамар": { root: "Ariya-mar", pos: "noun" },
+  // 7. Zal-ākha — «ветер-вода» (сезон дождей)
+  "зал-акха": { root: "Zal-ākha", pos: "noun" },
+  "зал акха": { root: "Zal-ākha", pos: "noun" },
+  "залакха": { root: "Zal-ākha", pos: "noun" },
+  // 8. Thal-khō — «смотреть-огонь» (зной)
+  "тал-хо": { root: "Thal-khō", pos: "noun" },
+  "тал хо": { root: "Thal-khō", pos: "noun" },
+  "талхо": { root: "Thal-khō", pos: "noun" },
+  // 9. Kōl-ghar — «земля-камень» (засуха)
+  "кол-гар": { root: "Kōl-ghar", pos: "noun" },
+  "кол гар": { root: "Kōl-ghar", pos: "noun" },
+  "колгар": { root: "Kōl-ghar", pos: "noun" },
+  // 10. Mōr-ākha — «смерть-вода» (увядание)
+  "мор-акха": { root: "Mōr-ākha", pos: "noun" },
+  "мор акха": { root: "Mōr-ākha", pos: "noun" },
+  "моракха": { root: "Mōr-ākha", pos: "noun" },
+  // 11. Dzen-kōl — «звезда-земля» (перед заморозками)
+  "дзен-кол": { root: "Dzen-kōl", pos: "noun" },
+  "дзен кол": { root: "Dzen-kōl", pos: "noun" },
+  "дзенкол": { root: "Dzen-kōl", pos: "noun" },
+  // 12. Xal-mar — «древняя жизнь» (месяц предков)
+  "хал-мар": { root: "Xal-mar", pos: "noun" },
+  "хал мар": { root: "Xal-mar", pos: "noun" },
+  "халмар": { root: "Xal-mar", pos: "noun" },
+  // 13. Lān-sen — «память-место» (ритуальный)
+  "лан-сен": { root: "Lān-sen", pos: "noun" },
+  "лан сен": { root: "Lān-sen", pos: "noun" },
+  "лансен": { root: "Lān-sen", pos: "noun" },
+  // 14. Khō-mōr — «огонь-смерть» (угасание)
+  "хо-мор": { root: "Khō-mōr", pos: "noun" },
+  "хо мор": { root: "Khō-mōr", pos: "noun" },
+  "хомор": { root: "Khō-mōr", pos: "noun" },
+  // 15. Ākha-mōr — «вода-смерть» (замерзание)
+  "акха-мор": { root: "Ākha-mōr", pos: "noun" },
+  "акха мор": { root: "Ākha-mōr", pos: "noun" },
+  "акхамор": { root: "Ākha-mōr", pos: "noun" },
+  // 16. Kōl-suf — «земля-великая» (ледяной покров)
+  "кол-суф": { root: "Kōl-suf", pos: "noun" },
+  "кол суф": { root: "Kōl-suf", pos: "noun" },
+  "колсуф": { root: "Kōl-suf", pos: "noun" },
+  // 17. Dzen-thal — «звезда-смотреть» (зимнее солнцестояние)
+  "дзен-тал": { root: "Dzen-thal", pos: "noun" },
+  "дзен тал": { root: "Dzen-thal", pos: "noun" },
+  "дзентал": { root: "Dzen-thal", pos: "noun" },
+  // 18. Ghōl-ākha — «тень-вода» (месяц туманов)
+  "гол-акха": { root: "Ghōl-ākha", pos: "noun" },
+  "гол акха": { root: "Ghōl-ākha", pos: "noun" },
+  "голакха": { root: "Ghōl-ākha", pos: "noun" },
+  // 19. Rōg-ari — «король-избранный» (праздничный)
+  "рог-ари": { root: "Rōg-ari", pos: "noun" },
+  "рог ари": { root: "Rōg-ari", pos: "noun" },
+  "рогари": { root: "Rōg-ari", pos: "noun" },
+  // 20. Mar-lān — «жизнь-память» (поминовения)
+  "мар-лан": { root: "Mar-lān", pos: "noun" },
+  "мар лан": { root: "Mar-lān", pos: "noun" },
+  "марлан": { root: "Mar-lān", pos: "noun" },
+  // 21. Ksanf-suf — «Великая река» (паводок)
+  "ксанф-суф": { root: "Ksanf-suf", pos: "noun" },
+  "ксанф суф": { root: "Ksanf-suf", pos: "noun" },
+  "ксанфсуф": { root: "Ksanf-suf", pos: "noun" },
+  // 22. Yar-okh — «старый дом» (месяц возвращения)
+  "яр-ох": { root: "Yar-okh", pos: "noun" },
+  "яр ох": { root: "Yar-okh", pos: "noun" },
+  "ярох": { root: "Yar-okh", pos: "noun" },
 
   // ============================================================
   // 2.1 НОВЫЕ ФИЛОСОФСКИЕ ПОНЯТИЯ

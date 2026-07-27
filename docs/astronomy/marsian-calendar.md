@@ -25,15 +25,11 @@
   <p><b>Использовался:</b> в <a href="https://mars-wiki.ru/geography/eden.md/">Королевстве Эдем</a> и сопредельных землях в <a href="https://mars-wiki.ru/history/epokha-umiraniya/">Эпоху Умирания</a></p>
 <div style="display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; padding: 8px 0; border-top: 1px solid #e0e0e0;">
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-ksanf.png" alt="Флаг Ксанфа" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-    <a href="https://mars-wiki.ru/geography/ksanf.md/">Ксанф</a>
-  </div>
-  <div style="display: inline-flex; align-items: center; gap: 6px;">
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/eden.md/">Эдем</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/arkadia.md/">Аркадия</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">

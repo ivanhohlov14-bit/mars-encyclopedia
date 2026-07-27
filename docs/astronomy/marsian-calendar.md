@@ -1,5 +1,10 @@
 # Марсианский календарь
 
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
+</div>
+
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
   <h3 style="margin: 0; text-align: center;">Марсианский календарь</h3>
   <hr>
@@ -18,8 +23,57 @@
   <p><b>Счёт лет:</b> от основания Окхасена (1 г. Э.О.)</p>
   <p><b>Количество сезонов:</b> 8</p>
   <p><b>Использовался:</b> в <a href="https://mars-wiki.ru/geography/eden.md/">Королевстве Эдем</a> и сопредельных землях в <a href="https://mars-wiki.ru/history/epokha-umiraniya/">Эпоху Умирания</a></p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; padding: 8px 0; border-top: 1px solid #e0e0e0;">
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-ksanf.png" alt="Флаг Ксанфа" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/ksanf.md/">Ксанф</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/eden.md/">Эдем</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/arkadia.md/">Аркадия</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/eridania.md/">Эридания</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/khong.md/">Кхонг</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/avsonia.md/">Авсония</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/kimeria.md/">Кимерия</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/serpentida.md/">Серпентида</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/eritrea.md/">Эритрея</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/utopia.md/">Утопия</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png" alt="Флаг Эллады" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/history/hellas.md/">Эллада</a>
+  </div>
+  <div style="display: inline-flex; align-items: center; gap: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png" alt="Флаг Аливасото" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <a href="https://mars-wiki.ru/geography/alivasoto.md/">Аливасото</a>
+  </div>
+</div>
   <p><b>Предшественники:</b> календари Серпендиды (18 месяцев) и Эллады (фобосо-звёздный)</p>
-  <p><b>Связанные понятия:</b> <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a>, <a href="https://mars-wiki.ru/people/hevsur/">Хевсур</a>, <a href="https://mars-wiki.ru/astronomy/phobos-deimos/">Фобос и Деймос</a></p>
 </div>
 
 **Марсианский календарь** — система летосчисления, использовавшаяся в [Королевстве Эдем](https://mars-wiki.ru/geography/eden.md/) и на большей части обитаемого Марса в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). Основные сведения о нём извлечены из [глиняных табличек](https://mars-wiki.ru/terms/tablichki/), найденных [Хевсуром](https://mars-wiki.ru/people/hevsur/) в подземном храме долины Ксанфа, а также из записей [Академии Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/). Календарь отражает не только астрономические реалии Марса, но и культурные особенности марсианской цивилизации, тесно связанные с концепцией [Lān sur](https://mars-wiki.ru/terms/lan-sur/)[^1].
@@ -28,7 +82,7 @@
 
 ## Общее устройство марсианского года
 
-Марсианский год (на языке *Marzān* — **amār**) продолжается 687 местных суток, которые марсиане называют **солами** (от *kōl*, «земля, день»). По земным меркам это примерно 669 земных суток (так как марсианские сутки длиннее на 39 минут). Однако для самих марсиан это был естественный ритм — смена сезонов, движение звёзд, поведение [Фобоса и Деймоса](https://mars-wiki.ru/astronomy/phobos-deimos/)[^2].
+Марсианский год (на языке *Marzān* — **amār**) продолжается 687 местных суток, которые марсиане называют **солами** (от *kōl*, «земля, день»). По земным меркам это примерно 669 земных суток (так как марсианские сутки длиннее на 39 минут). Однако для самих марсиан это был естественный ритм — смена сезонов, движение звёзд, поведение [Фобоса](https://mars-wiki.ru/astronomy/phobos/) и  [Деймоса](https://mars-wiki.ru/astronomy/deimos/)[^2].
 
 Следует заметить, что продолжительность марсианских суток (сола) не оставалась неизменной на протяжении геологической истории планеты. В Эпоху Умирания вращение Марса было быстрее, и сол был короче — примерно на 15–20 минут. Однако марсиане измеряли год не по продолжительности суток, а по возвращению звёзд на то же место (сидерический год). Количество солов в году (687) оставалось постоянным, хотя сами солы были короче. Календарь, дошедший до нас в табличках, отражает именно эту систему счёта[^3].
 

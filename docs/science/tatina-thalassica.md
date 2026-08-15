@@ -32,15 +32,15 @@
     </div>
     <div style="display: flex; justify-content: center; gap: 6px;">
       <span style="color: #555; font-size: 0.8rem;">Класс:</span>
-      <span style="color: #c0392b; font-weight: bold;">Водные</span>
+      <span style="color: #c0392b; font-weight: bold;">† Водные</span>
     </div>
     <div style="display: flex; justify-content: center; gap: 6px;">
       <span style="color: #555; font-size: 0.8rem;">Отряд:</span>
-      <span style="color: #2980b9; font-weight: bold;">Thalassiformes</span>
+      <span style="color: #2980b9; font-weight: bold;">† Thalassiformes</span>
     </div>
     <div style="display: flex; justify-content: center; gap: 6px;">
       <span style="color: #555; font-size: 0.8rem;">Семейство:</span>
-      <span style="color: #27ae60; font-weight: bold;">Tatīnidae</span>
+      <span style="color: #27ae60; font-weight: bold;">† Tatīnidae</span>
     </div>
     <div style="display: flex; justify-content: center; gap: 6px;">
       <span style="color: #555; font-size: 0.8rem;">Род:</span>
@@ -175,11 +175,11 @@ Tatīna thalassica является вторым описанным видом �
   <div style="font-family: monospace; white-space: pre; line-height: 1.6; font-size: 0.85rem; overflow-x: auto;">
 Silica vita
 ├── Obsidiania
-│   ├── Aquatilia (водные)
-│   │   ├── Tatīnidae
+│   ├── Aquatilia (водные) †
+│   │   ├── Tatīnidae †
 │   │   │   ├── Tatīna thalassica †
-│   │   │   └── Tatīna pelagica (гипотетический, более крупный вид)
-│   │   └── Thalassiformes
+│   │   │   └── Tatīna pelagica (гипотетический, более крупный вид) †
+│   │   └── Thalassiformes †
 │   ├── Tetrapoda (наземные)
 │   │   ├── Masqueradia
 │   │   │   ├── Tatīna kimeriana

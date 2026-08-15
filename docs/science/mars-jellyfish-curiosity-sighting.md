@@ -61,7 +61,7 @@
 Объект расположен на расстоянии около **50–100 метров** от марсохода. Его размер оценивается в **2–3 метра**.
 
 <div style="float: left; margin: 0 1.5rem 0.5rem 0; width: 200px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/curiosity-panorama-gale-crater.jpg" alt="Панорама кратера Гейла" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/curiosity-panorama-gale-crater.webp" alt="Панорама кратера Гейла" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Панорама кратера Гейла, где Curiosity обнаружил загадочный объект. Реконструкция.</div>
 </div>
 

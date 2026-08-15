@@ -1,27 +1,109 @@
-# Tatīna kimeriana — гипотетический вид марсианской фауны
+# Tatīna kimeriana
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Tatīna kimeriana</h3>
-  <hr>
+  
+  <div style="background: #f8e0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Tatīna kimeriana</h3>
+  </div>
+  
   <div style="text-align: center; margin: 8px 0;">
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-concept.jpg" alt="Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Реконструкция внешнего облика Tatīna kimeriana.</div>
   </div>
 
-  <p><b>Тип</b> Кремниевая форма жизни (<i>Silica vita</i>)</p>
-  <p><b>Класс</b> Обсидиановые (<i>Obsidiania</i>)</p>
-  <p><b>Отряд</b> Двуногие стебельные (<i>Bipoda caulis</i>)</p>
-  <p><b>Семейство</b> Маскирующиеся (<i>Masqueradia</i>)</p>
-  <p><b>Род</b> Татина (<i>Tatīna</i>)</p>
-  <p><b>Вид</b> Tatīna kimeriana</p>
-  <p><b>Место обитания</b> Восточное побережье <a href="/geography/zephyria-sea/">Зефирийского моря</a>, лес <a href="/geography/tirrenia-forest/">Тиррения</a></p>
-  <p><b>Период существования</b> Поздний Нойский — ранний Гесперийский (ок. 3,8–3,5 млрд лет назад)</p>
-  <p><b>Размер</b> Высота 2–3 метра</p>
-  <p><b>Масса</b> 80–120 кг</p>
-  <p><b>Покровы</b> Обсидиановая броня с кремниевым эндоскелетом</p>
-  <p><b>Тип питания</b> Хемолитоавтотроф (основной метаболизм) + хищник-засадчик (дополнительный)</p>
+  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Научная классификация
+  </div>
+  
+  <div style="padding: 4px 0; text-align: center; line-height: 1.8;">
+    <div style="display: flex; justify-content: center; gap: 6px;">
+      <span style="color: #555; font-size: 0.8rem;">Домен:</span>
+      <span style="color: #2a7a4a; font-weight: bold;">Эукариоты</span>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 6px;">
+      <span style="color: #555; font-size: 0.8rem;">Царство:</span>
+      <span style="color: #2a7a4a; font-weight: bold;">Кремниевая жизнь</span>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 6px;">
+      <span style="color: #555; font-size: 0.8rem;">Тип:</span>
+      <span style="color: #c0392b; font-weight: bold;">Обсидиановые</span>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 6px;">
+      <span style="color: #555; font-size: 0.8rem;">Класс:</span>
+      <span style="color: #c0392b; font-weight: bold;">Двуногие стебельные</span>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 6px;">
+      <span style="color: #555; font-size: 0.8rem;">Отряд:</span>
+      <span style="color: #2980b9; font-weight: bold;">Маскирующиеся</span>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 6px;">
+      <span style="color: #555; font-size: 0.8rem;">Семейство:</span>
+      <span style="color: #27ae60; font-weight: bold;">Tatīnidae</span>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 6px;">
+      <span style="color: #555; font-size: 0.8rem;">Род:</span>
+      <span style="color: #8e44ad; font-weight: bold;">Tatīna</span>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 6px; font-size: 1.05rem;">
+      <span style="color: #555; font-size: 0.8rem;">Вид:</span>
+      <span style="color: #e74c3c; font-weight: bold; font-style: italic;">Tatīna kimeriana</span>
+    </div>
+  </div>
+
+  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Международное научное название
+  </div>
+  <div style="text-align: center; padding: 4px 0;">
+    <span style="font-style: italic; font-weight: bold;">Tatīna kimeriana</span>
+    <br><span style="font-size: 0.75rem; color: #555;">Akha-ral, 2736 г. Э.О.</span>
+  </div>
+
+  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Синонимы
+  </div>
+  <div style="text-align: center; padding: 4px 0; font-size: 0.8rem; line-height: 1.5;">
+    <div style="font-style: italic;">Obsidiania caulis</div>
+    <div style="font-style: italic;">Bipoda masqueradia</div>
+    <div style="font-style: italic;">Tatīna minor?</div>
+    <div style="font-style: italic;">Silica kimeriana</div>
+  </div>
+
+  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Виды
+  </div>
+  <div style="text-align: center; padding: 4px 0; font-size: 0.85rem; line-height: 1.6;">
+    <div style="font-style: italic; font-weight: bold;">Tatīna kimeriana</div>
+    <div style="font-size: 0.75rem; color: #555;">Akha-ral, 2736 г. Э.О. (типовой)</div>
+    <div style="font-style: italic; font-weight: bold; margin-top: 4px;">Tatīna major?</div>
+    <div style="font-size: 0.75rem; color: #555;">Dalman et al., 2738 г. Э.О.</div>
+  </div>
+
+  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Распространение ископаемых остатков
+  </div>
+  <div style="text-align: center; padding: 4px 0;">
+    <div style="font-size: 0.8rem;">Восточное побережье Зефирийского моря</div>
+    <div style="font-size: 0.75rem; color: #555;">Лес Тиррения, Королевство Кимерия</div>
+  </div>
+  
+  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Геохронология
+  </div>
+  <div style="text-align: center; padding: 4px 0; font-size: 0.85rem; font-weight: bold;">
+    3,8—3,5 млрд лет назад
+  </div>
+  
+  <!-- ОСТАЛЬНЫЕ ДАННЫЕ (без розового фона) -->
   <hr style="margin: 6px 0;">
-  <p><b>Связанные статьи:</b> <a href="/science/mars-chemistry-life-origin/">Химия Марса и зарождение жизни</a>, <a href="/geography/kimeria/">Королевство Кимерия</a>, <a href="/science/silicon-life/">Кремниевая жизнь</a></p>
+  
+  <p><b>Тип</b> Кремниевая форма жизни (<i>Silica vita</i>)</p>
+  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/kimeria/">Королевство Кимерия</a></span></p>
+  <p><b>Местоположение</b> Кратер Гейла, Марс (~5° ю.ш., 138° в.д.)</p>
+  <p><b>Размер</b> Оценочно 2–3 метра (высота)</p>
+  <p><b>Масса</b> Оценочно 80–120 кг</p>
+  <p><b>Материал</b> Предположительно — кремниевый экзоскелет с включениями обсидиана</p>
+  <hr style="margin: 6px 0;">
+  <p><b>Связанные статьи:</b> <a href="/science/mars-jellyfish-kimeria/">Загадка «марсианской медузы»</a>, <a href="/geography/kimeria/">Королевство Кимерия</a>, <a href="/science/mars-chemistry-life-origin/">Химия Марса и зарождение жизни</a></p>
 </div>
 
 **Tatīna kimeriana** (марс. *Tatīna* — «Наблюдательница», от *thal* — «смотреть»; *kimeriana* — от [Королевства Кимерия](/geography/kimeria/)) — гипотетический вид организмов, относящийся к **кремниевой форме жизни** (*Silica vita*), который обитал на территории восточного побережья [Зефирийского моря](/geography/zephyria-sea/) и леса [Тиррения](/geography/tirrenia-forest/) в позднем Нойском — раннем Гесперийском периодах (около 3,8–3,5 миллиардов лет назад)[^1].

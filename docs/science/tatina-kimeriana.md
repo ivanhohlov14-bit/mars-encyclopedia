@@ -51,7 +51,7 @@ Tatīna kimeriana — организм средних размеров. На о�
 Tatīna kimeriana имеет уникальное строение, адаптированное к жизни на поверхности Марса[^8]:
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-anatomy-diagram.jpg" alt="Анатомическая схема Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-anatomy-diagram.png" alt="Анатомическая схема Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Схематическое строение Tatīna kimeriana. Реконструкция.</div>
 </div>
 

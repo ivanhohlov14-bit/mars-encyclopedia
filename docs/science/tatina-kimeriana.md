@@ -96,7 +96,6 @@
 
   <hr style="margin: 6px 0;">
   
-  <p><b>Тип</b> Кремниевая форма жизни (<i>Silica vita</i>)</p>
   <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/kimeria/">Королевство Кимерия</a></span></p>
   <p><b>Местоположение</b> Кратер Гейла, Марс (~5° ю.ш., 138° в.д.)</p>
   <p><b>Размер</b> Оценочно 2–3 метра (высота)</p>

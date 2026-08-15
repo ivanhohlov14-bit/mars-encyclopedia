@@ -30,7 +30,7 @@
     </div>
     <div style="display: flex; justify-content: center; gap: 6px;">
       <span style="color: #555; font-size: 0.8rem;">Класс:</span>
-      <span style="color: #c0392b; font-weight: bold;">Двуногие стебельные</span>
+      <span style="color: #c0392b; font-weight: bold;">Четырёхногие</span>
     </div>
     <div style="display: flex; justify-content: center; gap: 6px;">
       <span style="color: #555; font-size: 0.8rem;">Отряд:</span>
@@ -294,6 +294,25 @@ Tatīna kimeriana демонстрирует ряд уникальных аро�
 | Способность к маскировке | Защита и охота | На Земле маскировка ограничена изменением цвета, а не показателя преломления |
 | Ламеллярное дыхание | Газообмен в разрежённой атмосфере | На Земле аналоги есть у насекомых, но не у крупных животных |
 | Хемосинтез | Энергия без солнечного света | На Земле хемосинтез используют бактерии, но не многоклеточные организмы |
+
+## Систематика
+<div style="background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 16px 0; font-size: 0.9rem; border-radius: 4px;">
+  <div style="text-align: center; font-weight: bold; margin-bottom: 8px;">Кладограмма кремниевой жизни (Silica vita)</div>
+  <div style="font-family: monospace; white-space: pre; line-height: 1.6; font-size: 0.85rem; overflow-x: auto;">
+Silica vita
+├── Obsidiania
+│   ├── Tetrapoda (четырёхногие)
+│   │   ├── Masqueradia (маскирующиеся)
+│   │   │   ├── Tatīna
+│   │   │   │   ├── Tatīna kimeriana
+│   │   │   │   └── Tatīna major (гипотетический, более крупный вид)
+│   │   │   └── Nanotatīna (гипотетический, более мелкий вид)
+│   │   └── Monopoda (гипотетический, одноногий вид)
+│   └── Bipoda caulis (гипотетический, двуногий вид)
+└── Silica flora (гипотетические кремниевые растения)
+  </div>
+  <div style="font-size: 0.7rem; color: #555; margin-top: 6px; text-align: center;">Кладограмма составлена на основе геохимических данных и палеонтологических реконструкций.</div>
+</div>
 
 ---
 

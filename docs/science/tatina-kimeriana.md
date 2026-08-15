@@ -77,31 +77,38 @@
   </div>
 
   <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Распространение ископаемых остатков
-  </div>
-  <div style="text-align: center; padding: 4px 0;">
-    <div style="font-size: 0.8rem;"> Побережье Зефирийского моря</div>
-    <div style="font-size: 0.75rem; color: #555;">Лес Тиррения, Королевство Кимерия, остров Эллизиум</div>
-  </div>
-  
+  Распространение ископаемых остатков
+</div>
+
+<div style="text-align: center; padding: 4px 0;">
+  <div style="font-size: 0.8rem;">Побережье Зефирийского моря</div>
+  <div style="font-size: 0.75rem; color: #555;">Лес Тиррения, Королевство Кимерия, остров Элизиум</div>
+</div>
+
 <div style="text-align: center; padding: 6px 0;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-distribution-map.png" alt="Карта распространения Tatīna kimeriana" style="width: 50%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; display: block; margin: 0 auto;">
   <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Распространение ископаемых остатков Tatīna kimeriana</div>
 </div>
 
-  </div>
-  <div style="text-align: center; padding: 4px 0; font-size: 0.85rem; font-weight: bold;">
-    3,8—3,5 млрд лет назад
-  </div>
-
-  <hr style="margin: 6px 0;">
-  
-  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/kimeria/">Королевство Кимерия</a></span></p>
-  <p><b>Местоположение</b> Кратер Гейла, Марс (~5° ю.ш., 138° в.д.)</p>
-  <p><b>Размер</b> Оценочно 2–3 метра (высота)</p>
-  <p><b>Масса</b> Оценочно 80–120 кг</p>
-  <p><b>Связанные статьи:</b> <a href="/science/mars-jellyfish-kimeria/">Загадка «марсианской медузы»</a>, <a href="/geography/kimeria/">Королевство Кимерия</a>, <a href="/science/mars-chemistry-life-origin/">Химия Марса и зарождение жизни</a></p>
+<!-- ГЕОХРОНОЛОГИЯ -->
+<div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  Геохронология
 </div>
+<div style="text-align: center; padding: 4px 0; font-size: 0.85rem; font-weight: bold;">
+  3,8—3,5 млрд лет назад
+</div>
+
+<hr style="margin: 6px 0;">
+
+<p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/kimeria/">Королевство Кимерия</a></span></p>
+<p><b>Местоположение</b> Кратер Гейла, Марс (~5° ю.ш., 138° в.д.)</p>
+<p><b>Размер</b> Оценочно 2–3 метра (высота)</p>
+<p><b>Масса</b> Оценочно 80–120 кг</p>
+<p><b>Материал</b> Предположительно — кремниевый экзоскелет с включениями обсидиана</p>
+
+<hr style="margin: 6px 0;">
+
+<p><b>Связанные статьи:</b> <a href="/science/mars-jellyfish-kimeria/">Загадка «марсианской медузы»</a>, <a href="/geography/kimeria/">Королевство Кимерия</a>, <a href="/science/mars-chemistry-life-origin/">Химия Марса и зарождение жизни</a></p>
 
 **Tatīna kimeriana** (марс. *Tatīna* — «Наблюдательница», от *thal* — «смотреть»; *kimeriana* — от [Королевства Кимерия](/geography/kimeria/)) — гипотетический вид организмов, относящийся к **кремниевой форме жизни** (*Silica vita*), который обитал на территории восточного побережья [Зефирийского моря](/geography/zephyria-sea/) и леса [Тиррения](/geography/tirrenia-forest/) в позднем Нойском — раннем Гесперийском периодах (около 3,8–3,5 миллиардов лет назад)[^1].
 

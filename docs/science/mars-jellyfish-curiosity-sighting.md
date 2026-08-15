@@ -93,6 +93,7 @@
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-concept.jpg" alt="Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Реконструкция внешнего облика Tatīna kimeriana.</div>
+</div>
 
 Таким образом, перед нами открываются две равновероятные, но не исключающие друг друга гипотезы. Согласно первой, «медуза» — это **артефакт Королевства Кимерия**, обсидиановая конструкция, оставшаяся от древней восточной цивилизации. Согласно второй — это **живый организм**, последний представитель древней марсианской фауны, сумевший пережить климатическую катастрофу и дожить до наших дней.
 

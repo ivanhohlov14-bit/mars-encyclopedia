@@ -82,7 +82,7 @@
 
 <div style="text-align: center; padding: 4px 0;">
   <div style="font-size: 0.8rem;">Побережье Зефирийского моря</div>
-  <div style="font-size: 0.75rem; color: #555;">Лес Тиррения, Королевство Кимерия, остров Элизиум</div>
+  <div style="font-size: 0.75rem; color: #555;">Лес Тиррения (Кимерия), остров Элизиум (Кимерия), остров Храм-Уг (Эллада)</div>
 </div>
 
 <div style="text-align: center; padding: 6px 0;">

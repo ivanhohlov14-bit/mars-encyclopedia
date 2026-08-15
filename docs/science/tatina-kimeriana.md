@@ -38,7 +38,7 @@
     </div>
     <div style="display: flex; justify-content: center; gap: 6px;">
       <span style="color: #555; font-size: 0.8rem;">Семейство:</span>
-      <span style="color: #27ae60; font-weight: bold;">Tatīnidae</span>
+      <span style="color: #27ae60; font-weight: bold;">Masqueradia</span>
     </div>
     <div style="display: flex; justify-content: center; gap: 6px;">
       <span style="color: #555; font-size: 0.8rem;">Род:</span>

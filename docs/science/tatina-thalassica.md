@@ -8,7 +8,7 @@
   </div>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-thalassica-concept.jpg" alt="Tatīna thalassica" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-thalassica-concept.png" alt="Tatīna thalassica" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Реконструкция внешнего облика Tatīna thalassica.</div>
   </div>
 
@@ -48,7 +48,7 @@
     </div>
     <div style="display: flex; justify-content: center; gap: 6px; font-size: 1.05rem;">
       <span style="color: #555; font-size: 0.8rem;">Вид:</span>
-      <span style="color: #e74c3c; font-weight: bold; font-style: italic;">† Tatīna thalassica</span>
+      <span style="color: #e74c3c; font-weight: bold">† Tatīna thalassica</span>
     </div>
   </div>
 
@@ -80,14 +80,19 @@
     <div style="font-size: 0.75rem; color: #555;">Akha-ral, 2736 г. Э.О. (типовой)</div>
   </div>
 
-  <!-- РАСПРОСТРАНЕНИЕ ИСКОПАЕМЫХ ОСТАТКОВ -->
-  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Распространение ископаемых остатков
-  </div>
+<div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  Распространение ископаемых остатков
+</div>
+
   <div style="text-align: center; padding: 4px 0;">
-    <div style="font-size: 0.8rem;">Зефирийское море, Королевство Кимерия</div>
-    <div style="font-size: 0.75rem; color: #555;">Прибрежные воды острова Элизиум</div>
-  </div>
+  <div style="font-size: 0.8rem;">Побережье Зефирийского моря (залив Большой Сирт), моря Эллады</div>
+  <div style="font-size: 0.75rem; color: #555;">Побережья: Лес Тиррения (Кимерия), остров Элизиум (Кимерия, Утопия), остров Храм-Уг (Эллада)</div>
+</div>
+
+<div style="text-align: center; padding: 6px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-thalassica-distribution-map.png" alt="Карта распространения Tatīna kimeriana" style="width: 50%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; display: block; margin: 0 auto;">
+  <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Распространение ископаемых остатков Tatīna thalassica</div>
+</div>
 
   <!-- ГЕОХРОНОЛОГИЯ -->
   <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
@@ -103,7 +108,6 @@
   <p><b>Местоположение</b> Зефирийское море, Марс</p>
   <p><b>Размер</b> Оценочно 2–3 метра (длина)</p>
   <p><b>Масса</b> Оценочно 150–200 кг</p>
-  <p><b>Материал</b> Кремниевый экзоскелет с обсидиановой бронёй</p>
 
   <hr style="margin: 6px 0;">
 

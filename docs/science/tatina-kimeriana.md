@@ -90,7 +90,7 @@
   Распространение ископаемых остатков
 </div>
 <div style="text-align: center; padding: 6px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-distribution-map.png" alt="Карта распространения Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/tatina-kimeriana-distribution-map.png" alt="Карта распространения Tatīna kimeriana" style="width: 50%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; display: block; margin: 0 auto;">
   <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Распространение ископаемых остатков Tatīna kimeriana</div>
 </div>
 

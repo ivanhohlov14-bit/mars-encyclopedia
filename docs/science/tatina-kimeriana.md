@@ -46,12 +46,12 @@
     </div>
     <div style="display: flex; justify-content: center; gap: 6px; font-size: 1.05rem;">
       <span style="color: #555; font-size: 0.8rem;">Вид:</span>
-      <span style="color: #e74c3c; font-weight: bold; font-style: italic;">Tatīna kimeriana</span>
+      <span style="color: #e74c3c; font-weight: bold;">Tatīna kimeriana</span>
     </div>
   </div>
 
   <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Международное научное название
+    Международное марсианское название
   </div>
   <div style="text-align: center; padding: 4px 0;">
     <span style="font-style: italic; font-weight: bold;">Tatīna kimeriana</span>
@@ -63,9 +63,7 @@
   </div>
   <div style="text-align: center; padding: 4px 0; font-size: 0.8rem; line-height: 1.5;">
     <div style="font-style: italic;">Obsidiania caulis</div>
-    <div style="font-style: italic;">Bipoda masqueradia</div>
     <div style="font-style: italic;">Tatīna minor?</div>
-    <div style="font-style: italic;">Silica kimeriana</div>
   </div>
 
   <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
@@ -87,13 +85,20 @@
   </div>
   
   <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Геохронология
+
+<div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  Распространение ископаемых остатков
+</div>
+<div style="text-align: center; padding: 6px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/tatina-kimeriana-distribution-map.png" alt="Карта распространения Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Распространение ископаемых остатков Tatīna kimeriana</div>
+</div>
+
   </div>
   <div style="text-align: center; padding: 4px 0; font-size: 0.85rem; font-weight: bold;">
     3,8—3,5 млрд лет назад
   </div>
-  
-  <!-- ОСТАЛЬНЫЕ ДАННЫЕ (без розового фона) -->
+
   <hr style="margin: 6px 0;">
   
   <p><b>Тип</b> Кремниевая форма жизни (<i>Silica vita</i>)</p>
@@ -101,8 +106,6 @@
   <p><b>Местоположение</b> Кратер Гейла, Марс (~5° ю.ш., 138° в.д.)</p>
   <p><b>Размер</b> Оценочно 2–3 метра (высота)</p>
   <p><b>Масса</b> Оценочно 80–120 кг</p>
-  <p><b>Материал</b> Предположительно — кремниевый экзоскелет с включениями обсидиана</p>
-  <hr style="margin: 6px 0;">
   <p><b>Связанные статьи:</b> <a href="/science/mars-jellyfish-kimeria/">Загадка «марсианской медузы»</a>, <a href="/geography/kimeria/">Королевство Кимерия</a>, <a href="/science/mars-chemistry-life-origin/">Химия Марса и зарождение жизни</a></p>
 </div>
 

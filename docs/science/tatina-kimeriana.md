@@ -108,6 +108,7 @@
 <hr style="margin: 6px 0;">
 
 <p><b>Связанные статьи:</b> <a href="/science/mars-jellyfish-kimeria/">Загадка «марсианской медузы»</a>, <a href="/geography/kimeria/">Королевство Кимерия</a>, <a href="/science/mars-chemistry-life-origin/">Химия Марса и зарождение жизни</a></p>
+</div>
 
 **Tatīna kimeriana** (марс. *Tatīna* — «Наблюдательница», от *thal* — «смотреть»; *kimeriana* — от [Королевства Кимерия](/geography/kimeria/)) — гипотетический вид организмов, относящийся к **кремниевой форме жизни** (*Silica vita*), который обитал на территории восточного побережья [Зефирийского моря](/geography/zephyria-sea/) и леса [Тиррения](/geography/tirrenia-forest/) в позднем Нойском — раннем Гесперийском периодах (около 3,8–3,5 миллиардов лет назад)[^1].
 

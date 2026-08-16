@@ -1,15 +1,15 @@
-# «Квадратная структура» на Марсе: фундамент гигантской статуи богини Араксис?
+# «Квадратная структура» на Марсе
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
   <h3 style="margin: 0; text-align: center;">«Квадратная структура» на Марсе</h3>
   <hr>
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-square-structure.jpg" alt="Квадратная структура на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/esrpic-68bc54355b9801.jpg" alt="Квадратная структура на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Загадочная квадратная структура на поверхности Марса. Снимок сделан Mars Global Surveyor в 2001 году. Источник: NASA/JPL/MSSS</div>
   </div>
 
   <p><b>Тип</b> Неопознанная геологическая формация / артефакт</p>
-  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.png" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/eden/">Королевство Эдем</a></span></p>
+  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/eden/">Королевство Эдем</a></span></p>
   <p><b>Местоположение</b> Кратер Раманатан (Ramanathan Crater), <a href="/geography/arabia-terra/">Земля Аравия</a>, Марс</p>
   <p><b>Координаты</b> 28.088766° с.ш., 27.74899° в.д.</p>
   <p><b>Размер структуры</b> ~235 × 235 метров</p>

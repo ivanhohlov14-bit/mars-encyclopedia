@@ -19,10 +19,9 @@
   <p><b>Длительность культурной эпохи:</b> ~2700 лет (по летосчислению Э.О.)</p>
   <p><b>Конец эпохи:</b> 2745 г. Э.О. (отлёт кораблей)</p>
   <p><b>Источники:</b> <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a>, труды <a href="https://mars-wiki.ru/people/hevsur/">Хевсура</a>, данные с <a href="https://mars-wiki.ru/astronomy/earth/">Земли</a></p>
-  <p><b>Связанные понятия:</b> <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a>, <a href="https://mars-wiki.ru/mythology/araksis/">Араксис</a>, <a href="https://mars-wiki.ru/geography/acidalia-sea/">Ацидалийское море</a></p>
 </div>
 
-**Периодизация истории Марса** — система деления геологической и культурной эволюции Марса на эпохи, разработанная на основе данных современной планетологии, марсианской археологии и расшифрованных табличек из подземного храма долины [Ксанфа](https://mars-wiki.ru/geography/ksanf-river/). В эпопее «Письмо из Красной пыли» эта периодизация служит не только хронологической канвой, но и раскрывает глубокую связь между угасанием геологической активности планеты и гибелью марсианской цивилизации[^1].
+**Периодизация истории Марса** — система деления геологической и культурной эволюции Марса на эпохи, разработанная на основе данных современной планетологии, марсианской археологии и расшифрованных табличек из подземного храма долины Ксанфа и Аргира. В эпопее «Письмо из Красной пыли» эта периодизация служит не только хронологической канвой, но и раскрывает глубокую связь между угасанием геологической активности планеты и гибелью марсианской цивилизации[^1].
 
 ---
 
@@ -68,19 +67,53 @@
 
 В течение нойского периода шло интенсивное образование как больших, так и маленьких кратеров, формирование долин и эрозия. Её темп, хотя и более высокий, чем в последующие времена, всё же был намного ниже относительно даже самых медленных процессов такого рода на Земле[^11]. Климатические условия (по крайней мере эпизодически) благоприятствовали существованию рек и других водоёмов, а также выветриванию, приводившему к образованию филлосиликатов. Происходило отложение сульфатов. Поскольку невозможно представить себе процесс, за счёт которого с поверхности стирались бы только большие кратеры, очевидно, что окончание этого периода — момент, когда были стёрты все кратеры и поверхность была выровнена[^12].
 
-<div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Ridged_Plains_Overlying_Noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
-    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Гребнистые равнины, перекрывающие более древние нойские отложения. Иллюстрирует стратиграфию Марса. Источник: NASA</div>
-  </div>
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 250px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Ridged_Plains_Overlying_Noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 4px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 2px; text-align: center;">Гребнистые равнины, перекрывающие более древние нойские отложения. Иллюстрирует стратиграфию Марса. Источник: NASA</div>
+</div>
 
 В подземном храме, найденном [Хевсуром](https://mars-wiki.ru/people/hevsur/), сохранились таблички, датируемые концом Гесперийской эпохи, где говорится о «первом великом отступлении моря». Это событие, вероятно, совпадает с началом резкого похолодания, которое в книгах описывается как *«гнев Араксис»*[^13].
 
-**Ключевые события Нойской эпохи:**
-- Формирование бассейна Эллада (~4,1 млрд лет назад)
-- Образование нагорья Фарсида (~3,9 млрд лет назад)
-- Возникновение долин Маринера (~3,8 млрд лет назад)
-- Появление первых океанов и рек
-- Возможное наличие магнитного поля
+<h3>Ключевые события Нойской эпохи</h3>
+
+<div style="overflow-x: auto; margin: 16px 0;">
+  <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #fff; border: 1px solid #a2a9b1;">
+    <thead>
+      <tr style="background: #eef2f5;">
+        <th style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: left; font-weight: 600; width: 60px;">№</th>
+        <th style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: left; font-weight: 600;">Событие</th>
+        <th style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: left; font-weight: 600;">Время / Описание</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">1</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Формирование бассейна Эллада</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">~4,1 млрд лет назад — крупнейший ударный бассейн Марса, одно из самых древних образований на планете.</td>
+      </tr>
+      <tr style="background: #f9f9f9;">
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">2</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Образование нагорья Фарсида</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">~3,9 млрд лет назад — формирование гигантского вулканического плато, ставшего центром тектонической активности.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">3</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Возникновение долин Маринера</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">~3,8 млрд лет назад — образование гигантской системы каньонов в результате тектонических разломов и эрозии.</td>
+      </tr>
+      <tr style="background: #f9f9f9;">
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">4</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Появление первых океанов и рек</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Формирование гидросферы — на поверхности существовали обширные водоёмы и разветвлённые речные системы.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">5</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Возможное наличие магнитного поля</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Глобальное магнитное поле, защищавшее атмосферу от солнечного ветра, впоследствии ослабло и исчезло.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 
@@ -90,17 +123,51 @@
 
 На рубеже нойского и гесперийского периодов резко упала интенсивность формирования долин, выветривания, эрозии и столкновений с космическими телами — происходили падения лишь небольших, оставлявших мелкие кратеры. Однако довольно активно продолжались в гесперийский период вулканические процессы, изменившие не менее 30 % поверхности планеты[^15]. Выбросы парниковых газов повлекли кратковременное потепление, сменившееся глобальным похолоданием. Образовывались каньоны. Периодически случались сильные наводнения, сформировавшие каналы оттока. Другие водные процессы практически прекратились (что привело к увеличению объёма криосферы), но не полностью, о чём свидетельствуют отдельные отложения сульфатов, их наличие в грунте, а также присутствие сетей долин, образовавшихся уже именно в это время[^16].
 
-<div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Lava_flow_and_crater_ejecta.jpeg" alt="Лавовый поток и выбросы из кратера на Марсе" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
-    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Лавовый поток и выбросы из ударного кратера. Снимок демонстрирует вулканическую активность Гесперийской эпохи. Источник: NASA</div>
-  </div>
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 250px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Lava_flow_and_crater_ejecta.jpeg" alt="Лавовый поток и выбросы из кратера на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 4px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 2px; text-align: center;">Лавовый поток и выбросы из ударного кратера. Снимок демонстрирует вулканическую активность Гесперийской эпохи. Источник: NASA</div>
+</div>
 
-**Ключевые события Гесперийской эпохи:**
-- Интенсивная вулканическая активность (Фарсида, Элизиум)
-- Формирование системы каналов оттока
-- Начало охлаждения планеты
-- Снижение интенсивности кратерообразования
-- Отложения сульфатов
+<h3>Ключевые события Гесперийской эпохи</h3>
+
+<div style="overflow-x: auto; margin: 16px 0;">
+  <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #fff; border: 1px solid #a2a9b1;">
+    <thead>
+      <tr style="background: #eef2f5;">
+        <th style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: left; font-weight: 600; width: 60px;">№</th>
+        <th style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: left; font-weight: 600;">Событие</th>
+        <th style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: left; font-weight: 600;">Описание</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">1</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Интенсивная вулканическая активность</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Мощные извержения в регионах <a href="https://mars-wiki.ru/geography/farsida/">Фарсида</a> и Элизиум, изменившие более 30% поверхности планеты.</td>
+      </tr>
+      <tr style="background: #f9f9f9;">
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">2</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Формирование системы каналов оттока</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Создание гигантских каналов, по которым вода стекала с поверхности в результате катастрофических наводнений.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">3</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Начало охлаждения планеты</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">После кратковременного потепления, вызванного выбросами парниковых газов, наступило глобальное похолодание.</td>
+      </tr>
+      <tr style="background: #f9f9f9;">
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">4</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Снижение интенсивности кратерообразования</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Резкое падение числа ударов космических тел; формировались лишь мелкие кратеры.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">5</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Отложения сульфатов</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Образование сульфатных отложений в результате испарения водоёмов, свидетельствующих о высыхании планеты.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 
@@ -114,15 +181,61 @@
 
 В течение амазонийского периода, продолжающегося и по настоящий день, кратеры практически не образуются. Некоторые учёные сдвигают границу между гесперийским и амазонийским периодами до времени 2,5–2 млрд лет назад[^22].
 
-**Ключевые события Амазонийской эпохи:**
-- Стирание кратеров в северном полушарии
-- Угасание вулканической активности
-- Исчезновение жидкой воды с поверхности
-- Формирование полярных ледяных шапок
-- Образование ледниковых отложений
-- Возникновение оврагов на крутых склонах
-- Постепенное истончение атмосферы
-- Исчезновение магнитного поля
+<h3>Ключевые события Амазонийской эпохи</h3>
+
+<div style="overflow-x: auto; margin: 16px 0;">
+  <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #fff; border: 1px solid #a2a9b1;">
+    <thead>
+      <tr style="background: #eef2f5;">
+        <th style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: left; font-weight: 600; width: 60px;">№</th>
+        <th style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: left; font-weight: 600;">Событие</th>
+        <th style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: left; font-weight: 600;">Описание</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">1</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Стирание кратеров в северном полушарии</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Вулканические процессы в регионах Фарсида и Элизиум стёрли все кратеры на обширных территориях северного полушария.</td>
+      </tr>
+      <tr style="background: #f9f9f9;">
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">2</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Угасание вулканической активности</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Интенсивность вулканизма снизилась примерно в 10 раз, а затем практически полностью прекратилась.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">3</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Исчезновение жидкой воды с поверхности</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Жидкая вода постепенно ушла с поверхности, наводнения прекратились, планета стала пустыней.</td>
+      </tr>
+      <tr style="background: #f9f9f9;">
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">4</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Формирование полярных ледяных шапок</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">На полюсах начали накапливаться ледяные шапки из замёрзшего углекислого газа и водяного льда.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">5</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Образование ледниковых отложений</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Ледниковые отложения в высоких широтах, лопастные наносные окраины, полосные долинные и концентрические кратерные отложения.</td>
+      </tr>
+      <tr style="background: #f9f9f9;">
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">6</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Возникновение оврагов на крутых склонах</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Большая часть оврагов на крутых склонах образовалась именно в этот период, в достаточно позднюю его эпоху.</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">7</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Постепенное истончение атмосферы</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Из-за ослабления магнитного поля атмосфера начала улетучиваться в космос под воздействием солнечного ветра.</td>
+      </tr>
+      <tr style="background: #f9f9f9;">
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px; text-align: center;">8</td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;"><b>Исчезновение магнитного поля</b></td>
+        <td style="border: 1px solid #a2a9b1; padding: 8px 12px;">Глобальное магнитное поле окончательно исчезло, что сделало атмосферу уязвимой для солнечной радиации.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 ---
 

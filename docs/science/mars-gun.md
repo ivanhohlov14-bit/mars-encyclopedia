@@ -4,7 +4,7 @@
   <h3 style="margin: 0; text-align: center;">«Пистолет» на Марсе</h3>
   <hr>
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/567210f7-e454-42ae-812d-2d7c8ad4f598_flow-1786884146558.png" alt="Загадочный объект на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Screenshot 2026-08-16 161716.png" alt="Загадочный объект на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Загадочный объект на марсианской поверхности. Кадр сделан марсоходом Opportunity в 2014 году и стал сенсацией в июле 2026 года. Источник: NASA/JPL-Caltech</div>
   </div>
 
@@ -35,8 +35,8 @@
 Снимок был сделан **в 2014 году** навигационной камерой марсохода Opportunity в рамках плановой съёмки поверхности Марса в районе **SOL 3773**[^9]. На стандартном изображении пыльного марсианского ландшафта был обнаружен тёмный объект, который при увеличении приобрёл следующие очертания[^10]:
 
 <div style="float: left; margin: 0 1.5rem 0.5rem 0; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/opportunity-sol3773-panorama.jpg" alt="Панорама SOL 3773" style="max-width: 100%; height: auto; border-radius: 2px;">
-  <div style="margin-top: 4px; color: #555;">Панорама области SOL 3773, где Opportunity обнаружил загадочный объект. Источник: NASA/JPL-Caltech</div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA18614.jpg" alt=" Хребет Вдовяк (Wdowiak Ridge)" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <div style="margin-top: 4px; color: #555;">Панорамная камера «Оппортьюнити» (Pancam) сделала снимки для этой мозаики 17 сентября 2014 года. Источник: NASA/JPL-Caltech</div>
 </div>
 
 - **Форма** — вытянутая, напоминающая силуэт пистолета с «дулом» и «рукояткой»;

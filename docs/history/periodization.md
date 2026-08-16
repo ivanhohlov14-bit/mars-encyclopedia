@@ -72,7 +72,9 @@
 
 ### Нойская эпоха (4,1–3,7 млрд лет назад)
 
-Названа по [Земле Ноя](https://ru.wikipedia.org/wiki/Земля_Ноя?action=edit&redlink=1) (Noachis Terra). В основе датировки — образование [бассейна Эллада](https://ru.wikipedia.org/wiki/Равнина_Эллада), [нагорья Фарсида](https://ru.wikipedia.org/wiki/Провинция_Фарсида) и [долин Маринера](https://ru.wikipedia.org/wiki/Долины_Маринер) 3,8–4,1 млрд лет назад. О том, что происходило в донойский период, известно мало. Установлено только, что его характеризовало возможное наличие магнитного поля и многочисленные столкновения с космическими телами, одно из которых, вероятно, повлекло за собой глобальную дихотомию Марса[^10].
+Названа по [Земле Ноя](https://ru.wikipedia.org/wiki/Земля_Ноя?action=edit&redlink=1) (Noachis Terra).
+
+В основе датировки — образование [бассейна Эллада](https://ru.wikipedia.org/wiki/Равнина_Эллада), [нагорья Фарсида](https://ru.wikipedia.org/wiki/Провинция_Фарсида) и [долин Маринера](https://ru.wikipedia.org/wiki/Долины_Маринер) 3,8–4,1 млрд лет назад. О том, что происходило в донойский период, известно мало. Установлено только, что его характеризовало возможное наличие магнитного поля и многочисленные столкновения с космическими телами, одно из которых, вероятно, повлекло за собой глобальную дихотомию Марса[^10].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 250px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Ridged_Plains_Overlying_Noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 4px;">
@@ -251,9 +253,9 @@
 ## Геологическая карта Марса (2014)
 
 <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-sim3292-2014-crop-globe.png" alt="Геологическая карта Марса (USGS, 2014)" style="width: 200%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-sim3292-2014-crop-globe.png" alt="Геологическая карта Марса (USGS, 2014)" style="width: 100%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Глобальная геологическая карта Марса (USGS, 2014). Цвета: нойский (коричневый), гесперийский (зелёный), амазонийский (синий).</div>
-  </div>
+</div>
 
 В 2014 году была создана подробная геологическая карта Марса, которая объединила данные всех предыдущих миссий и позволила уточнить границы геологических периодов[^23]. Эта карта используется до сих пор как основа для планирования новых исследований и интерпретации данных с марсоходов. Она включает детальное описание минералогического состава поверхности и позволяет лучше понять эволюцию планеты[^24].
 

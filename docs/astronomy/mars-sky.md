@@ -1,10 +1,10 @@
 # Звёздное небо Марса
 
-<head>
-  <meta charset="UTF-8">
-  <title>Звёздное небо Марса — Марсианская энциклопедия</title>
-  <meta name="description" content="Звёздное небо Марса: описание, созвездия, спутники Фобос и Деймос, культурное значение для марсианской цивилизации и роль в навигации и календаре.">
-</head>
+---
+title: Звёздное небо Марса
+description: Звёздное небо Марса: описание, созвездия, спутники Фобос и Деймос, культурное значение для марсианской цивилизации и роль в навигации и календаре.
+layout: default
+---
 
 <div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
   <span style="font-size: 20px; color: #b8860b;">⭐</span>

@@ -9,11 +9,7 @@
   </div>
 
   <p><b>Тип</b> Неопознанная геологическая формация / артефакт</p>
-  <p><b>Страна</b>  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
-    <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Эдема</div>
-    </div>
+  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/eden/">Королевство Эдем</a></span></p>
   <p><b>Местоположение</b> <a href="/geography/candor-chasma/">Каньон Кандор (Candor Chasma)</a>, система каньонов <a href="/geography/valles-marineris/">Valles Marineris</a>, Марс</p>
   <p><b>Координаты</b> ~5° ю.ш., 75° з.д. (западная часть Candor Chasma)</p>
   <p><b>Дата первого снимка</b> 2001 год (Mars Global Surveyor)</p>
@@ -24,7 +20,7 @@
   <p><b>Углы наклона граней</b> 120° между гранями</p>
   <p><b>Статус</b> Не идентифицирован NASA (природное образование)</p>
   <hr style="margin: 6px 0;">
-  <p><b>Связанные статьи:</b> <a href="/geography/kimeria/">Королевство Кимерия</a>, <a href="/geography/valles-marineris/">Valles Marineris</a>, <a href="/geography/akademiya-okhasena/">Академия Окхасена</a>, <a href="/people/hevsur/">Хевсур</a>, <a href="/history/epokha-rascveta/">Эпоха Расцвета</a></p>
+  <p><b>Связанные статьи:</b> <a href="/geography/eden/">Королевство Эдем</a>, <a href="/geography/valles-marineris/">Valles Marineris</a>, <a href="/geography/akademiya-okhasena/">Академия Окхасена</a>, <a href="/people/hevsur/">Хевсур</a>, <a href="/history/epokha-rascveta/">Эпоха Расцвета</a></p>
 </div>
 
 **«Пирамида» на Марсе** — загадочный объект, обнаруженный независимым исследователем Китом Лейни (Keith Laney) на снимках NASA Mars Global Surveyor, сделанных в **2001 году** в западной части каньона Кандор (Candor Chasma) — одном из крупнейших каньонов в системе **Valles Marineris**[8†L29-L31][9†L25-L26].

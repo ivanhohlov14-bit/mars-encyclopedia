@@ -40,7 +40,7 @@
 Снимок был сделан **7 мая 2022 года в 07:58:16 UTC** мачтовой камерой (Mastcam) марсохода Curiosity. Это был 3 466-й марсианский день (сол) миссии[^11]. На стандартном изображении скального выступа, получившего название **«Восточные утёсы»** (*East Cliffs*), в центре кадра была обнаружена структура, которая при увеличении приобрела следующие очертания[^12]:
 
 <div style="float: left; margin: 0 1.5rem 0.5rem 0; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-door-closeup.jpg" alt="«Дверь» на Марсе крупным планом" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/847x443_0xac120003_18929646851652372844-640x335.jpeg" alt="«Дверь» на Марсе крупным планом" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Структура крупным планом. Отчётливо видны ровные края и прямоугольная форма. Источник: NASA/JPL-Caltech/MSSS</div>
 </div>
 
@@ -93,7 +93,7 @@
 Независимые исследователи, опираясь на расшифрованные таблички [Академии Окхасена](/geography/akademiya-okhasena/) и летописи [Королевства Эдем](/geography/eden/), предлагают альтернативную версию: **«дверь» может быть вентиляционной шахтой или входом в подземное убежище**, построенным в **Эпоху Умирания (2680–2740 гг. Э.О.)**[^26][^27].
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-underground-shelter-concept.jpg" alt="Концепция подземного убежища" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-underground-shelter-concept.jpeg" alt="Концепция подземного убежища" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция вентиляционной шахты подземного убежища Эпохи Умирания. Реконструкция по данным Академии Окхасена.</div>
 </div>
 

@@ -34,7 +34,7 @@
 
 ---
 
-## <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Дополнительные возможности
+## <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Дополнительные возможности
 
 После ознакомления с базовыми материалами доступны следующие интерактивные разделы:
 
@@ -44,7 +44,7 @@
 
 ---
 
-## <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О научной основе энциклопедии
+## <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О научной основе энциклопедии
 
 Все материалы энциклопедии основаны на реальных научных данных: геологии Марса, астробиологии, климатологии и физике планет. Гипотезы, представленные в проекте, не противоречат современному научному знанию и предлагают читателю не готовые ответы, а пространство для размышлений.
 

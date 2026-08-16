@@ -50,11 +50,11 @@
 
 1 февраля 2025 года популярный подкастер **Джо Роган** в своём шоу прокомментировал находку:
 
-> *«This is f***ing WILD. Look at this! Perfect square on Mars. How does that happen naturally?»*[^11]
+> *«This is f***ing WILD. Look at this! Perfect square on Mars. How does that happen naturally?»* — *«Это просто БЕЗУМНО. Посмотрите на это! Идеальный квадрат на Марсе. Как такое вообще может быть естественным?»*[^11]
 
 На следующий день **Илон Маск**, основатель SpaceX, написал в социальной сети X:
 
-> *«We should send astronauts to Mars to investigate this square structure. It might be something important»*[^12].
+> *«We should send astronauts to Mars to investigate this square structure. It might be something important»* — *«Мы должны отправить астронавтов на Марс, чтобы исследовать эту квадратную структуру. Возможно, это что-то важное»*[^12].
 
 ---
 

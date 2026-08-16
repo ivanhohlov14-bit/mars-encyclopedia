@@ -2,62 +2,53 @@
 
 **Добро пожаловать в Марсианскую энциклопедию!**
 
-Здесь собраны знания о мире «Письма из Красной пыли» — oб географии и истории до персонажей и мифологии. Но с чего начать, если ты здесь впервые?
-
-Мы подготовили для тебя **самый простой путь** — три шага, которые помогут тебе погрузиться в этот мир.
+Настоящий ресурс представляет собой систематизированный свод знаний о мире цикла **«Письмо из Красной пыли»**, охватывающий географию, историю, биологию, культуру и мифологию марсианской цивилизации. Для новых посетителей предлагается следующий порядок ознакомления.
 
 ---
 
-## <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 1. Прочитай первую книгу
+## <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 1. Первая книга цикла
 
-Всё начинается с книги, которая открывает цикл. Именно здесь ты познакомишься с главными героями, узнаешь, что такое Эпоха Умирания, и поймёшь, почему марсиане решили покинуть свою планету.
+Знакомство с миром Эпохи Умирания начинается с первой книги цикла, где читатель впервые встречает главных героев и погружается в атмосферу гибнущего Марса.
 
 👉 **[«Ацидалийское море» — первая книга цикла](https://mars-wiki.ru/books/acidalia-sea%20book/)**
 
-*Если ты хочешь сразу окунуться в атмосферу — начни с неё. Остальное станет понятнее после.*
-
 ---
 
-## <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-map.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 2. Посмотри на карту
+## <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-map.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 2. Географическая карта
 
-Мир Марса огромен: моря, города, вулканы и пустыни. Чтобы не заблудиться, просто открой карту и посмотри, где что находится.
+Для понимания пространственной организации марсианского мира рекомендуется обратиться к интерактивной карте, на которой отмечены ключевые географические объекты: моря, города, вулканы и каньоны.
 
 👉 **[Интерактивная карта Марса](https://mars-wiki.ru/globe-map/)**
 
-*Кликай на метки — каждая ведёт к статье. Так ты сможешь изучать мир в своём темпе.*
+*Метки ведут к соответствующим статьям, что позволяет изучать мир в индивидуальном темпе.*
 
 ---
 
-## <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-pin.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 3. Прочитай эти три статьи
+## <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-pin.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Шаг 3. Базовые статьи
 
-Эти три статьи дадут тебе фундамент, без которого остальной материал может показаться запутанным.
+Для формирования фундаментального понимания марсианского мира рекомендуется ознакомиться со следующими статьями:
 
-1. **[Что такое Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)**  
-   Почему Марс умирает и что это значит для его жителей?
-
-2. **[Кто такой Хевсур](https://mars-wiki.ru/people/hevsur/)**  
-   Историк, который записывал историю на глиняных табличках. Его глазами мы видим этот мир.
-
-3. **[Что такое Lān sur («Глина помнит»)](https://mars-wiki.ru/terms/lan-sur/)**  
-   Главный принцип марсианской культуры — память, записанная в глине.
+1. **[Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)** — исторический период, в рамках которого разворачивается действие цикла.
+2. **[Хевсур](https://mars-wiki.ru/people/hevsur/)** — историк, зафиксировавший на глиняных табличках последние дни марсианской цивилизации.
+3. **[Lān sur («Глина помнит»)](https://mars-wiki.ru/terms/lan-sur/)** — основополагающий принцип марсианской культуры, утверждающий приоритет сохранения памяти.
 
 ---
 
-## 🎵 А что ещё?
+## <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-sun.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Дополнительные возможности
 
-После этих трёх шагов ты уже будешь знать достаточно, чтобы самостоятельно исследовать энциклопедию. Также ты можешь:
+После ознакомления с базовыми материалами доступны следующие интерактивные разделы:
 
-- **[Поиграть в интерактивную игру «К Исходу»](https://mars-wiki.ru/interactive/exodus/)** — принять участие в судьбе марсианской цивилизации
-- **[Воспользоваться переводчиком](https://mars-wiki.ru/translator/)** — чтобы понять язык марсианских табличек
-- **[Послушать музыку Марса](https://mars-wiki.ru/music/constructor/)** — погрузиться в атмосферу Красной планеты через звук
-
----
-
-## ❓ Есть вопросы?
-
-Если ты запутался или не знаешь, что искать — напиши нам:  
-📧 mnemis.author@mail.ru  
+- **[Интерактивная игра «К Исходу»](https://mars-wiki.ru/interactive/exodus/)** — принятие решений, влияющих на судьбу марсианской цивилизации.
+- **[Переводчик с марсианского](https://mars-wiki.ru/translator/)** — инструмент для работы с языком *Marzān*.
+- **[Музыка Марса](https://mars-wiki.ru/music/constructor/)** — звуковая реконструкция атмосферы Красной планеты.
 
 ---
 
-*Марсианская энциклопедия создаётся для всех, кто хочет понять мир «Письма из Красной пыли». Добро пожаловать.*
+## 📧 Контакты
+
+По вопросам, замечаниям и предложениям:  
+**[mnemis.author@mail.ru](mailto:mnemis.author@mail.ru)**
+
+---
+
+*Марсианская энциклопедия создаётся для всех, кто стремится понять мир «Письма из Красной пыли». Добро пожаловать в исследование.*

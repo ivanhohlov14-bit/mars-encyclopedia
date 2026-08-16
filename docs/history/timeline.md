@@ -60,7 +60,7 @@
 
 Первые систематические исследования Марса начались с изобретения телескопа. В 1609 году Галилео Галилей впервые наблюдал Марс в телескоп, а в 1659 году Христиан Гюйгенс составил первую карту поверхности планеты, отметив тёмные и светлые области[^2]. Эти наблюдения положили начало многовековой традиции изучения Красной планеты, которая достигла своего пика в XX–XXI веках с запуском автоматических станций.
 
-<div style="text-align: right; margin: 20px 0;">
+<div style="text-align: center; margin: 20px 0;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_Schiaparelli_MKL_Bd._11_1890_(128500338).jpg" alt="Карта Марса, составленная Джованни Скиапарелли (1890)" style="width: 100%; max-width: 400px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">
     Карта Марса, составленная итальянским астрономом Джованни Скиапарелли (1890 г.). Источник: Wikimedia Commons.
@@ -96,9 +96,9 @@
 
 ## Эпоха Расцвета (2500–2680 гг. Э.О.)
 
-<div style="text-align: right; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_views_001.jpg" alt="Различные виды Марса, составное изображение" style="width: 100%; max-width: 133px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 200px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_views_001.jpg" alt="Различные виды Марса, составное изображение" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Различные виды Марса. Составное изображение. Источник: NASA / ESA.
   </div>
 </div>
@@ -117,9 +117,11 @@
 
 ---
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 100px;">
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 150px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Ridged_Plains_Overlying_Noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Гребнистые равнины, перекрывающие более древние нойские отложения. Иллюстрирует стратиграфию Марса. Источник: NASA</div>
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
+    Гребнистые равнины, перекрывающие более древние нойские отложения. Источник: NASA.
+  </div>
 </div>
 
 Современные исследования Марса с помощью орбитальных аппаратов, таких как Mars Global Surveyor и Mars Reconnaissance Orbiter, подтвердили, что в этот период на планете действительно происходили значительные климатические изменения[^7]. Данные о минералогическом составе поверхности, полученные с помощью спектрометров, свидетельствуют о наличии обширных водных ресурсов и их последующем исчезновении[^8].
@@ -128,12 +130,12 @@
 
 ## Эпоха Умирания (2680–2745 гг. Э.О.)
 
-<div style="text-align: right; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_atmosphere.jpg" alt="Атмосфера Марса, снимок с орбитального аппарата" style="width: 100%; max-width: 133px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;"> 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 200px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_atmosphere.jpg" alt="Атмосфера Марса, снимок с орбитального аппарата" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Атмосфера Марса. Снимок с орбитального аппарата. Источник: NASA.
   </div>
-</div
+</div>
 
 Трагический период, описанный в романах «Письмо из Красной пыли». Характеризуется стремительным ухудшением климата, активизацией вулканов, замерзанием морей и массовым исходом.
 
@@ -180,9 +182,9 @@
 
 ## Заключение
 
-<div style="text-align: left; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_Hubble.jpg" alt="Марс, снимок телескопа Хаббл" style="width: 100%; max-width: 133px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 200px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_Hubble.jpg" alt="Марс, снимок телескопа Хаббл" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Марс, снимок космического телескопа Хаббл. Источник: NASA / ESA.
   </div>
 </div>

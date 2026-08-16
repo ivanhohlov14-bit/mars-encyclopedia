@@ -11,16 +11,17 @@
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Аркадия. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
-  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
+ <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.png" alt="Флаг Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Аркадии</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-arkadia.png" alt="Герб Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/coat-of-arms-of-arkadia.png" alt="Герб Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Аркадии</div>
     </div>
   </div>
+
 
   <p><b>История</b></p>
   <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">

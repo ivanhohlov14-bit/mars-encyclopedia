@@ -59,11 +59,6 @@
 
 Уоринг также утверждает, что **NASA удалило все остальные снимки** этого объекта, чтобы скрыть улики[^19]. *«Сохранилась только одна фотография, остальные удалены NASA»*, — написал он в своём посте[^20].
 
-<div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-jewelry-hammer-concept.png" alt="Концепция ювелирного молотка Аркадии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция ювелирного молотка мастеров Аркадии. Реконструкция по данным Академии Окхасена.</div>
-</div>
-
 Однако эта гипотеза имеет ряд слабых мест[^21]:
 1. **Несоответствие формы** — оружие слишком точно повторяет эргономику человеческой руки. *«Зачем инопланетянам оружие, разработанное для человеческих рук и пальцев?»* — спрашивают пользователи[^22].
 2. **Отсутствие других обломков** — если бы это было оружие, вокруг должны были быть другие фрагменты или следы использования.
@@ -74,6 +69,11 @@
 ## Альтернативная гипотеза: ювелирный молоток Аркадии
 
 Независимые исследователи, опираясь на расшифрованные таблички [Академии Окхасена](/geography/akademiya-okhasena/), предлагают альтернативную версию: объект может быть **ювелирным молотком** или **ручным инструментом** древних марсианских мастеров из [Королевства Аркадия](/geography/arkadia/)[^25].
+
+<div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-jewelry-hammer-concept.png" alt="Концепция ювелирного молотка Аркадии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция ювелирного молотка мастеров Аркадии. Реконструкция по данным Академии Окхасена.</div>
+</div>
 
 ### Почему Аркадия?
 

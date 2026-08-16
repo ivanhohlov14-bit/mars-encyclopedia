@@ -54,34 +54,7 @@
 - <img src="assets/images/stickers/sticker-waves.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Ацидалийское море** — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет[^2].
 - <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Марсианская письменность** — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках[^3].
 - <img src="assets/images/stickers/sticker-scales-no.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Слово **«Lān sur»** в переводе означает **«Глина помнит»**. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории[^4].
----
-
-## <img src="assets/images/stickers/sticker-map.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  Навигация по энциклопедии
-
-|  <img src="assets/images/stickers/sticker-ancient-earth.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **История** | <img src="assets/images/stickers/sticker-temple.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Персонажи** | <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Культура** |
-|:---|:---|:---|
-| [Периодизация](history/periodization.md) | [Хевсур](people/hevsur.md) | [Lān sur](terms/lan-sur.md) |
-| [Хронология](history/timeline.md) | [Талин](people/talin.md) | [Глиняные таблички](terms/tablichki.md) |
-| [Мифы](history/myths.md) | [Эlla](people/ella.md) | [Гемоцианин](biology/gemotsianin.md) |
-| [Эпоха Основания](history/epokha-osnovaniya.md) | [Йарра](people/yarra.md) | [Календарь](history/periodization.md) |
-| [Эпоха Расцвета](history/epokha-rascveta.md) | [Аратан III](people/aratan-iii.md) | |
-| [Эпоха Умирания](history/epokha-umiraniya.md) | [Ирайна](people/irayina.md) | |
-| [Исход](history/iskhod.md) | [Миран](people/miran.md) | |
-| [Королевство Ксанф](history/pirate-kingdom.md) | [Харан](people/kharan.md) | |
-| | [Совия](people/soviya.md) | |
-
-| <img src="assets/images/stickers/sticker-farsida.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **География** | <img src="assets/images/stickers/sticker-rocket.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Астрономия** | <img src="assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Книги** |
-|:---|:---|:---|
-| [Ацидалийское море](geography/acidalia-sea.md) | [Звёздное небо Марса](astronomy/mars-sky.md) | [«Ацидалийское море»](books/acidalia-sea.md) |
-| [Окхасен](geography/okhasen.md) | [Фобос и Деймос](astronomy/phobos-deimos.md) |
-| [Роген-Ария](geography/rogen-aria.md) | [Земля как цель](astronomy/earth-as-target.md) | 
-| [Фарсида](geography/farsida.md) | [Земля](astronomy/earth.md) | 
-| [Пещеры под Фарсидой](geography/farsida-caves.md) | 
-| [Эритрея](geography/eritreya.md) | 
-| [Утопия](geography/utopiya.md) | 
-| [Новый Окхасен](geography/noviy-okhasen.md) | 
-| [Академия Окхасена](geography/akademiya-okhasena.md) | 
-
+- 
 ---
 
 ## <img src="assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О цикле книг «Письмо из Красной пыли»

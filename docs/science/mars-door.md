@@ -187,98 +187,51 @@
 ## Примечания
 ## Примечания
 
-[^1]: NASA, JPL, «Door-Shaped Fracture Spotted by Curiosity at East Cliffs», 18 мая 2022. [https://www.jpl.nasa.gov/images/pia25288-door-shaped-fracture-spotted-by-curiosity-at-east-cliffs/](https://www.jpl.nasa.gov/images/pia25288-door-shaped-fracture-spotted-by-curiosity-at-east-cliffs/)
-
-[^2]: NASA Science, «Curiosity Rover's East Cliffs Panorama», 2022. [https://science.nasa.gov/missions/mars-science-laboratory/curiosity-rover/](https://science.nasa.gov/missions/mars-science-laboratory/curiosity-rover/)
-
-[^3]: Space.com, «'Dog door' on Mars found by Curiosity rover is a rocky 'doorway into the ancient past,' NASA says», 21 мая 2022. [https://www.space.com/mars-curiosity-rover-doorway-fracture](https://www.space.com/mars-curiosity-rover-doorway-fracture)
-
-[^4]: Space.com, «A 'doorway' on Mars? How we see things in space that aren't there», 31 мая 2022. [https://www.space.com/mars-doorway-pareidolia-explained](https://www.space.com/mars-doorway-pareidolia-explained)
-
-[^5]: AP News, «Experts: Mars 'doorway' just small crevice on barren terrain», 19 мая 2022. [https://apnews.com/article/mars-doorway-nasa-curiosity-rover](https://apnews.com/article/mars-doorway-nasa-curiosity-rover)
-
-[^6]: Sky News, «NASA picture of Mars 'doorway' spawns conspiracy theories», 16 мая 2022. [https://news.sky.com/story/nasa-picture-of-mars-doorway-spawns-conspiracy-theories-12614530](https://news.sky.com/story/nasa-picture-of-mars-doorway-spawns-conspiracy-theories-12614530)
-
-[^7]: Daily Mail, «NASA reveals 'doorway' on Mars is just a rocky fracture», 19 мая 2022. [https://www.dailymail.co.uk/sciencetech/article-10833895/NASA-reveals-doorway-Mars-JUST-rocky-fracture.html](https://www.dailymail.co.uk/sciencetech/article-10833895/NASA-reveals-doorway-Mars-JUST-rocky-fracture.html)
-
-[^8]: The Guardian, «Mysterious 'doorway' on Mars sparks wild theories – but Nasa has an explanation», 19 мая 2022. [https://www.theguardian.com/science/2022/may/19/mars-doorway-nasa-curiosity-rover](https://www.theguardian.com/science/2022/may/19/mars-doorway-nasa-curiosity-rover)
-
-[^9]: BBC News, «Mars 'doorway' photo sparks alien theories», 18 мая 2022. [https://www.bbc.com/news/science-environment-61498506](https://www.bbc.com/news/science-environment-61498506)
-
-[^10]: National Geographic, «Why the 'doorway' on Mars has people talking», 17 мая 2022. [https://www.nationalgeographic.com/science/article/mars-doorway-curiosity-rover-pareidolia](https://www.nationalgeographic.com/science/article/mars-doorway-curiosity-rover-pareidolia)
-
-[^11]: NASA JPL, «Mars Science Laboratory Mission Update», 18 мая 2022. [https://www.jpl.nasa.gov/news/mars-science-laboratory-mission-update](https://www.jpl.nasa.gov/news/mars-science-laboratory-mission-update)
-
-[^12]: NASA, Mars Image Explorer, Sol 3466, Mastcam, 7 мая 2022. [https://mars.nasa.gov/msl/multimedia/raw-images/](https://mars.nasa.gov/msl/multimedia/raw-images/)
-
-[^13]: NASA, «Curiosity Rover's View of 'East Cliffs'», 2022. [https://mars.nasa.gov/resources/curiosity-rovers-view-of-east-cliffs/](https://mars.nasa.gov/resources/curiosity-rovers-view-of-east-cliffs/)
-
-[^14]: Twitter, публикация @PPathole, 12 мая 2022. [https://twitter.com/PPathole/status/1524785123456786432](https://twitter.com/PPathole/status/1524785123456786432)
-
-[^15]: Mirror, «Mystery object on Mars could be proof of alien technology», 16 мая 2022. [https://www.mirror.co.uk/news/weird-news/mars-doorway-nasa-curiosity-rover-27012345](https://www.mirror.co.uk/news/weird-news/mars-doorway-nasa-curiosity-rover-27012345)
-
-[^16]: Daily Star, «Alien doorway on Mars sparks frenzy as NASA image reveals 'ancient tomb'», 17 мая 2022. [https://www.dailystar.co.uk/news/weird-news/mars-doorway-nasa-alien-tomb-27014567](https://www.dailystar.co.uk/news/weird-news/mars-doorway-nasa-alien-tomb-27014567)
-
-[^17]: NASA, официальное заявление, 18 мая 2022. [https://www.nasa.gov/press-release/nasa-s-curiosity-rover-spots-door-shaped-fracture-on-mars](https://www.nasa.gov/press-release/nasa-s-curiosity-rover-spots-door-shaped-fracture-on-mars)
-
-[^18]: NASA JPL, «Curiosity Rover Update: East Cliffs Fracture», 18 мая 2022. [https://www.jpl.nasa.gov/news/curiosity-rover-update-east-cliffs-fracture](https://www.jpl.nasa.gov/news/curiosity-rover-update-east-cliffs-fracture)
-
-[^19]: NASA Science, «The Science Behind the 'Doorway' on Mars», 19 мая 2022. [https://science.nasa.gov/mars-science-laboratory/curiosity-rover/doorway-fracture](https://science.nasa.gov/mars-science-laboratory/curiosity-rover/doorway-fracture)
-
-[^20]: Geological Society of America, «Fracture Patterns in Martian Rock Formations», 2020. [https://www.geosociety.org/mars-fractures](https://www.geosociety.org/mars-fractures)
-
-[^21]: NASA, «Wind and Erosion on Mars», 2021. [https://mars.nasa.gov/science/wind-erosion/](https://mars.nasa.gov/science/wind-erosion/)
-
-[^22]: Twitter, команда Curiosity, 18 мая 2022. [https://twitter.com/NASA/status/1527123456789123456](https://twitter.com/NASA/status/1527123456789123456)
-
-[^23]: Imperial College London, профессор Санжив Гупта, комментарий для The Guardian, 19 мая 2022. [https://www.imperial.ac.uk/news/mars-doorway](https://www.imperial.ac.uk/news/mars-doorway)
-
-[^24]: Twitter, команда Curiosity, 18 мая 2022. [https://twitter.com/NASA/status/1527123456789123456](https://twitter.com/NASA/status/1527123456789123456)
-
+[^1]: NASA, JPL, «Door-Shaped Fracture Spotted by Curiosity at East Cliffs», 18 мая 2022.
+[^2]: NASA Science, «Curiosity Rover's East Cliffs Panorama», 2022.
+[^3]: Space.com, «'Dog door' on Mars found by Curiosity rover is a rocky 'doorway into the ancient past,' NASA says», 21 мая 2022.
+[^4]: Space.com, «A 'doorway' on Mars? How we see things in space that aren't there», 31 мая 2022.
+[^5]: AP News, «Experts: Mars 'doorway' just small crevice on barren terrain», 19 мая 2022.
+[^6]: Sky News, «NASA picture of Mars 'doorway' spawns conspiracy theories», 16 мая 2022.
+[^7]: Daily Mail, «NASA reveals 'doorway' on Mars is just a rocky fracture», 19 мая 2022.
+[^8]: The Guardian, «Mysterious 'doorway' on Mars sparks wild theories – but Nasa has an explanation», 19 мая 2022.
+[^9]: BBC News, «Mars 'doorway' photo sparks alien theories», 18 мая 2022.
+[^10]: National Geographic, «Why the 'doorway' on Mars has people talking», 17 мая 2022.
+[^11]: NASA JPL, «Mars Science Laboratory Mission Update», 18 мая 2022.
+[^12]: NASA, Mars Image Explorer, Sol 3466, Mastcam, 7 мая 2022.
+[^13]: NASA, «Curiosity Rover's View of 'East Cliffs'», 2022.
+[^14]: Twitter, публикация @PPathole, 12 мая 2022.
+[^15]: Mirror, «Mystery object on Mars could be proof of alien technology», 16 мая 2022.
+[^16]: Daily Star, «Alien doorway on Mars sparks frenzy as NASA image reveals 'ancient tomb'», 17 мая 2022.
+[^17]: NASA, официальное заявление, 18 мая 2022.
+[^18]: NASA JPL, «Curiosity Rover Update: East Cliffs Fracture», 18 мая 2022.
+[^19]: NASA Science, «The Science Behind the 'Doorway' on Mars», 19 мая 2022.
+[^20]: Geological Society of America, «Fracture Patterns in Martian Rock Formations», 2020.
+[^21]: NASA, «Wind and Erosion on Mars», 2021.
+[^22]: Twitter, команда Curiosity, 18 мая 2022.
+[^23]: Imperial College London, профессор Санжив Гупта, комментарий для The Guardian, 19 мая 2022.
+[^24]: Twitter, команда Curiosity, 18 мая 2022.
 [^25]: Независимый анализ, Академия Окхасена, 2022.
-
 [^26]: Хевсур, «Сказание об убежищах», табличка № 45, пещеры Фарсиды. (Архив Академии Окхасена)
-
 [^27]: Хевсур, табличка № 78, пещеры Фарсиды. (Архив Академии Окхасена)
-
 [^28]: Академия Окхасена, «Инженерные расчёты вентиляционных систем Эпохи Умирания», 2730 г. Э.О.
-
-[^29]: Марсианская энциклопедия, «Greenheugh Pediment», 2025. [https://mars-wiki.ru/geography/greenheugh-pediment/](https://mars-wiki.ru/geography/greenheugh-pediment/)
-
+[^29]: Марсианская энциклопедия, «Greenheugh Pediment», 2025.
 [^30]: Академия Окхасена, «Глубина подземных убежищ Кимерии», табличка № 112.
-
 [^31]: Хевсур, «Архитектура Кимерии», табличка № 201, пещеры Фарсиды.
-
 [^32]: Хевсур, «Сказание об убежищах», табличка № 45, пещеры Фарсиды. (Архив Академии Окхасена)
-
 [^33]: Там же.
-
 [^34]: Хевсур, табличка № 78, пещеры Фарсиды. (Архив Академии Окхасена)
-
 [^35]: Там же.
-
 [^36]: Академия Окхасена, «Геологические изменения Марса за 3,8 млрд лет», 2735 г. Э.О.
-
 [^37]: Эртан, «Геологические модели Марса», 2730 г. Э.О. (Архив Академии Окхасена)
-
 [^38]: Хевсур, «Подземные города Кимерии», табличка № 89, пещеры Фарсиды.
-
-[^39]: Twitter, публикация @PPathole, 12 мая 2022. [https://twitter.com/PPathole/status/1524785123456786432](https://twitter.com/PPathole/status/1524785123456786432)
-
+[^39]: Twitter, публикация @PPathole, 12 мая 2022.
 [^40]: Twitter, комментарии пользователей, 12–16 мая 2022.
-
 [^41]: Reddit, r/aliens, обсуждение «двери» на Марсе, 12–16 мая 2022.
-
-[^42]: The Sun, «Mars 'doorway' is NOT a sign of aliens, NASA confirms», 18 мая 2022. [https://www.thesun.co.uk/tech/mars-doorway-nasa/](https://www.thesun.co.uk/tech/mars-doorway-nasa/)
-
-[^43]: Twitter, Илон Маск, репост 12 мая 2022. [https://twitter.com/elonmusk/status/1524785123456786432](https://twitter.com/elonmusk/status/1524785123456786432)
-
-[^44]: NASA, «Pareidolia: Seeing Familiar Shapes in Martian Rocks», 2022. [https://mars.nasa.gov/pareidolia/](https://mars.nasa.gov/pareidolia/)
-
-[^45]: NASA, «Mars Anomalies: A Historical Review», 2025. [https://mars.nasa.gov/anomalies-review/](https://mars.nasa.gov/anomalies-review/)
-
-[^46]: Марсианская энциклопедия, «Аномалии Марса». [https://mars-wiki.ru/anomalies/](https://mars-wiki.ru/anomalies/)
-
+[^42]: The Sun, «Mars 'doorway' is NOT a sign of aliens, NASA confirms», 18 мая 2022.
+[^43]: Twitter, Илон Маск, репост 12 мая 2022.
+[^44]: NASA, «Pareidolia: Seeing Familiar Shapes in Martian Rocks», 2022.
+[^45]: NASA, «Mars Anomalies: A Historical Review», 2025.
+[^46]: Марсианская энциклопедия, «Аномалии Марса». 
 [^47]: Независимый анализ, Академия Окхасена, 2022.
-
-[^48]: Марсианская энциклопедия, рекомендации по исследованию аномалий. [https://mars-wiki.ru/science/anomalies-research/](https://mars-wiki.ru/science/anomalies-research/)
+[^48]: Марсианская энциклопедия, рекомендации по исследованию аномалий.

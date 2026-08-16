@@ -1,5 +1,10 @@
 # Периодизация истории Марса
 
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">⭐</span>
+  <span style="font-weight: bold; color: #b8860b;">Избранная статья</span>
+</div>
+
 <div class="infobox" style="float: right; width: 300px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem;">
   <h3 style="margin: 0; text-align: center;">Периодизация Марса</h3>
   <hr>

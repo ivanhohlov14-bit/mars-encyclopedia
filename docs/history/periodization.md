@@ -271,6 +271,11 @@
 
 Период зарождения государственности, письменности и первых технологий.
 
+<div style="float: right; margin: 0 1.5rem 1rem 0; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-okhasen-foundation.png" alt="Основание Окхасена" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Окхасена в 1 году Э.О. Реконструкция по табличкам Академии.</div>
+</div>
+
 | Год (Э.О.) | Событие |
 |------------|---------|
 | 1 | Основание [Окхасена](https://mars-wiki.ru/geography/okhasen/) рыбаками |
@@ -287,6 +292,11 @@
 
 Наивысшее могущество марсианской цивилизации, когда города покрывали всё побережье Ацидалийского моря, а инженеры создавали сложные гидротехнические сооружения[^27].
 
+<div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-canals.png" alt="Строительство системы каналов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство системы каналов при Саруме Великом. Реконструкция по табличкам Академии.</div>
+</div>
+
 | Достижение | Описание |
 |------------|----------|
 | **Обсерватории** | Пирамиды в долине Аравия, ориентация по звёздам |
@@ -301,6 +311,11 @@
 ### Эпоха Умирания (2680–2745 гг. Э.О.)
 
 Самый трагический период, описанный в романах. Он характеризуется стремительным ухудшением климата, замерзанием морей, активизацией вулканов и, в конечном счёте, отлётом части населения к [Земле](https://mars-wiki.ru/astronomy/earth/)[^29].
+
+<div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-acidalia-frozen.png" alt="Замёрзшее Ацидалийское море" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Замёрзшее Ацидалийское море зимой 2735 года. Реконструкция по табличкам Хевсура.</div>
+</div>
 
 | Год (Э.О.) | Событие |
 |------------|---------|

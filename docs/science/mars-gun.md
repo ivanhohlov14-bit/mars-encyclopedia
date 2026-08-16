@@ -36,7 +36,7 @@
 
 <div style="float: left; margin: 0 1.5rem 0.5rem 0; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA18614.jpg" alt=" Хребет Вдовяк (Wdowiak Ridge)" style="max-width: 100%; height: auto; border-radius: 2px;">
-  <div style="margin-top: 4px; color: #555;">Панорамная камера «Оппортьюнити» (Pancam) сделала снимки для этой мозаики 17 сентября 2014 года. Источник: NASA/JPL-Caltech</div>
+  <div style="margin-top: 4px; color: #555;"> Хребет Вдовяк (Wdowiak Ridge) Источник: NASA/JPL-Caltech</div>
 </div>
 
 - **Форма** — вытянутая, напоминающая силуэт пистолета с «дулом» и «рукояткой»;
@@ -70,11 +70,6 @@
 
 Независимые исследователи, опираясь на расшифрованные таблички [Академии Окхасена](/geography/akademiya-okhasena/), предлагают альтернативную версию: объект может быть **ювелирным молотком** или **ручным инструментом** древних марсианских мастеров из [Королевства Аркадия](/geography/arkadia/)[^25].
 
-<div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-jewelry-hammer-concept.png" alt="Концепция ювелирного молотка Аркадии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция ювелирного молотка мастеров Аркадии. Реконструкция по данным Академии Окхасена.</div>
-</div>
-
 ### Почему Аркадия?
 
 **Аркадия** — северное королевство, известное своими **рудниками**, **кузнецами** и **ремесленниками**. В отличие от южного Эдема, где процветали земледелие и мореплавание, Аркадия была **индустриальным центром** Марса[^26]. Её жители добывали руду, выплавляли металлы, создавали орудия труда и украшения. В табличках Аркадия упоминается как *«земля, где камень становится металлом»*[^27].
@@ -82,6 +77,11 @@
 В Эпоху Расцвета (2500–2680 гг. Э.О.) аркадийские мастера славились своим искусством обработки **обсидиана**, **меди** и **бронзы**. Они создавали ювелирные украшения, ритуальные предметы и инструменты для тонкой работы[^28].
 
 ### Почему молоток, а не пистолет?
+
+<div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-jewelry-hammer-concept.png" alt="Концепция ювелирного молотка Аркадии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция ювелирного молотка мастеров Аркадии. Реконструкция по данным Академии Окхасена.</div>
+</div>
 
 Форма объекта — вытянутая, с утолщением на одном конце — идеально соответствует **ручному молотку** для тонкой работы[^29]:
 

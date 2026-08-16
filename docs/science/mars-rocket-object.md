@@ -4,7 +4,7 @@
   <h3 style="margin: 0; text-align: center;">«Ракета» на Марсе</h3>
   <hr>
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-rocket-object.jpg" alt="Загадочный объект на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/1088644116695.5575.webp" alt="Загадочный объект на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Загадочный объект на марсианской поверхности. Кадр сделан марсоходом Curiosity в 2026 году. Источник: NASA/JPL-Caltech</div>
   </div>
 
@@ -46,7 +46,7 @@
   - **Скулы** — большие, выпуклые[^7].
 
 <div style="float: left; margin: 0 1.5rem 0.5rem 0; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/curiosity-gale-crater-panorama.jpg" alt="Панорама кратера Гейла" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/curiosity-panorama-gale-crater.webp" alt="Панорама кратера Гейла" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Панорама кратера Гейла, где Curiosity обнаружил загадочный объект. Источник: NASA/JPL-Caltech</div>
 </div>
 
@@ -79,7 +79,7 @@
 Согласно записям, [Королевство Кимерия](/geography/kimeria/) располагалось на восточном побережье [Зефирийского моря](/geography/zephyria-sea/), занимая стратегически важные территории от леса Тиррения до пролива Элизиум-Акха. Столица — [Кимерия](/geography/kimeria/) с координатами **8° с.ш., 105° в.д.** — находилась всего в нескольких градусах от кратера Гейла, что делает объект потенциальной частью палеонтологического наследия кимерийцев[^15].
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/thalassosaurus-skull-concept.jpg" alt="Концепция черепа древнего ящера" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Concept_art_of_a_fossilized_skull_of_an_ancient_Martian_reptile-like_creature_si-0.jpg" alt="Концепция черепа древнего ящера" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Концепция черепа древнего марсианского ящера, возможный аналог «ракеты». Реконструкция по анатомическим деталям.</div>
 </div>
 

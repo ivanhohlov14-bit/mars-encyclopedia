@@ -103,7 +103,7 @@
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 260px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 8px; font-size: 0.85rem; text-align: center; border-radius: 4px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-rocket-artifact-obsidian.jpg" alt="Обсидиановый объект на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="margin-top: 4px; color: #555;">Загадочный объект на поверхности Марса, напоминающий фрагмент ракеты из обсидиана. Кадр сделан марсоходом Curiosity. Источник: NASA/JPL-Caltech</div>
+  <div style="margin-top: 4px; color: #555;">Фрагмент ракеты из обсидиана.</div>
 </div>
 
 Уфолог **Скотт К. Уоринг** (Scott C. Waring), известный своими сенсационными заявлениями, опубликовал видео, в котором заявил, что объект является **неразорвавшейся инопланетной ракетой** и свидетельствует о **древнем военном конфликте**, уничтожившем марсианскую цивилизацию[^20]. По его мнению, форма объекта указывает на технологическое происхождение, а чёрный цвет — на обшивку из высокотемпературных материалов[^21].

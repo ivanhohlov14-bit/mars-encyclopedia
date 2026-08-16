@@ -253,7 +253,7 @@
 ## Геологическая карта Марса (2014)
 
 <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-sim3292-2014-crop-globe.png" alt="Геологическая карта Марса (USGS, 2014)" style="width: 100%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-sim3292-2014-crop-globe.png" alt="Геологическая карта Марса (USGS, 2014)" style="width: 100%; max-width: 1000px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Глобальная геологическая карта Марса (USGS, 2014). Цвета: нойский (коричневый), гесперийский (зелёный), амазонийский (синий).</div>
 </div>
 
@@ -339,7 +339,6 @@
 
 ## Связанные статьи
 
-- [Геология Марса](geology.md)
 - [Ацидалийское море](acidalia-sea.md)
 - [Lān sur](lan-sur.md)
 - [Хевсур](hevsur.md)

@@ -38,7 +38,7 @@
 | **Окисление** | CO₂ (газ) | SiO₂ (твёрдое вещество, песок) |
 
 <div style="clear: both; text-align: center; margin: 20px 0 10px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/silicon-life-macro.jpg" alt="Макро-концепция кремниевой жизни" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/silicon-life-macro.jpg" alt="Макро-концепция кремниевой жизни" style="max-width: 50%; width: 50%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Макро-концепция кремниевой жизни: гипотетическая экосистема на древнем Марсе. Реконструкция по данным Академии Окхасена.</div>
 </div>
 
@@ -92,7 +92,7 @@
 Гипотетическая кремниевая клетка может иметь сложное внутреннее строение, отличное от земных эукариот[^16]:
 
 <div style="clear: both; text-align: center; margin: 20px 0 10px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/silicon-life-concept.png" alt="Концепция кремниевой жизни" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/silicon-life-concept.jpg" alt="Концепция кремниевой жизни" style="max-width: 50%; width: 50%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Концепция кремниевой клетки (Silica vita). Гипотетическая реконструкция по данным Академии Окхасена.</div>
 </div>
 

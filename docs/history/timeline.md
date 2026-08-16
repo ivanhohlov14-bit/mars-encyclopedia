@@ -1,7 +1,12 @@
-# Хронология событий
+# Хронология истории Марса
+
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">⭐</span>
+  <span style="font-weight: bold; color: #b8860b;">Избранная статья</span>
+</div>
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Хронология Марса</h3>
+  <h3 style="margin: 0; text-align: center;">Хронология истории Марса</h3>
   <hr>
 
 <div style="text-align: center; margin: 20px 0;">
@@ -53,7 +58,7 @@
 
 ---
 
-<div style="float: center; margin-left: 20px; margin-bottom: 10px; width: 300px;">
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 300px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Screenshot%202026-08-17%20004717.png" alt="Геологические периоды Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Геологические периоды Марса: Донойский, Нойский, Гесперийский и Амазонийский. Изображение из открытых источников.</div>
 </div>
@@ -117,10 +122,10 @@
 
 ---
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 150px;">
+<div style="float: right; margin-right: 20px; margin-bottom: 10px; width: 150px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Ridged_Plains_Overlying_Noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
-    Гребнистые равнины, перекрывающие более древние нойские отложения. Источник: NASA.
+    Гребнистые равнины. Источник: NASA.
   </div>
 </div>
 
@@ -185,11 +190,15 @@
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 200px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_Hubble.jpg" alt="Марс, снимок телескопа Хаббл" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
-    Марс, снимок космического телескопа Хаббл. Источник: NASA / ESA.
+    Марс (телескопа Хаббл). Источник: NASA / ESA.
   </div>
 </div>
 
-Хронология Марса, восстановленная по крупицам — из научных данных, археологических находок и записей древних писцов, — рисует трагическую, но величественную картину. Мир, который существовал миллиарды лет, и цивилизация, которая просуществовала почти три тысячи лет, оставили после себя не только глину, но и пример упорства перед лицом неизбежного. Как сказал [Хевсур](https://mars-wiki.ru/people/hevsur/) в своей последней табличке:
+Хронология Марса, восстановленная по крупицам — из научных данных, археологических находок и записей древних писцов, — рисует трагическую, но величественную картину. Мир, который существовал миллиарды лет, и цивилизация, которая просуществовала почти три тысячи лет, оставили после себя не только глину, но и пример упорства перед лицом неизбежного.
+
+Каждая табличка, каждый канал, каждая обсерватория — это не просто свидетельство былого величия. Это голос народа, который знал, что его время истекает, но отказался уйти в молчании. Марсиане не победили холод, не остановили вулканы, не вернули моря. Но они создали то, что пережило их самих — память, записанную в глине, способную говорить с теми, кто придёт через миллиарды лет.
+
+В этом смысле хронология Марса — это не просто перечень дат и событий. Это доказательство того, что цивилизация может быть великой не только в расцвете, но и в умирании. Что даже перед лицом неминуемой гибели можно сохранить достоинство, передать знания и оставить след, который не сотрут ни ветры, ни время. Как сказал [Хевсур](https://mars-wiki.ru/people/hevsur/) в своей последней табличке:
 
 > *«Мы не победили время, но мы записали его. И это наша победа»*[^13].
 

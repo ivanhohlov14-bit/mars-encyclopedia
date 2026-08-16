@@ -92,7 +92,7 @@
 ## Перелёт на Землю
 
 <div style="float: left; margin: 0 20px 20px 0; width: 45%;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-earth-trajectory.jpeg" alt="Траектория перелёта Марс — Земля" style="width: 50%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-earth-trajectory.jpeg" alt="Траектория перелёта Марс — Земля" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px; text-align: center;">Траектория перелёта Марс — Земля с гравитационным манёвром у Венеры.</div>
 </div>
 

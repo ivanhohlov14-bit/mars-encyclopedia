@@ -64,7 +64,7 @@
 В течение нойского периода шло интенсивное образование как больших, так и маленьких кратеров, формирование долин и эрозия. Её темп, хотя и более высокий, чем в последующие времена, всё же был намного ниже относительно даже самых медленных процессов такого рода на Земле[^11]. Климатические условия (по крайней мере эпизодически) благоприятствовали существованию рек и других водоёмов, а также выветриванию, приводившему к образованию филлосиликатов. Происходило отложение сульфатов. Поскольку невозможно представить себе процесс, за счёт которого с поверхности стирались бы только большие кратеры, очевидно, что окончание этого периода — момент, когда были стёрты все кратеры и поверхность была выровнена[^12].
 
 <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/timeline/ridged-plains-overlying-noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ridged-plains-overlying-noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Гребнистые равнины, перекрывающие более древние нойские отложения. Иллюстрирует стратиграфию Марса. Источник: NASA</div>
   </div>
 
@@ -86,7 +86,7 @@
 На рубеже нойского и гесперийского периодов резко упала интенсивность формирования долин, выветривания, эрозии и столкновений с космическими телами — происходили падения лишь небольших, оставлявших мелкие кратеры. Однако довольно активно продолжались в гесперийский период вулканические процессы, изменившие не менее 30 % поверхности планеты[^15]. Выбросы парниковых газов повлекли кратковременное потепление, сменившееся глобальным похолоданием. Образовывались каньоны. Периодически случались сильные наводнения, сформировавшие каналы оттока. Другие водные процессы практически прекратились (что привело к увеличению объёма криосферы), но не полностью, о чём свидетельствуют отдельные отложения сульфатов, их наличие в грунте, а также присутствие сетей долин, образовавшихся уже именно в это время[^16].
 
 <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/timeline/lava-flow-and-crater-ejecta.jpg" alt="Лавовый поток и выбросы из кратера на Марсе" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lava-flow-and-crater-ejecta.jpg" alt="Лавовый поток и выбросы из кратера на Марсе" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Лавовый поток и выбросы из ударного кратера. Снимок демонстрирует вулканическую активность Гесперийской эпохи. Источник: NASA</div>
   </div>
 
@@ -124,7 +124,7 @@
 ## Геологическая карта Марса (2014)
 
 <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/timeline/usgs-mars-geologic-map-2014.png" alt="Геологическая карта Марса (USGS, 2014)" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/usgs-mars-geologic-map-2014.png" alt="Геологическая карта Марса (USGS, 2014)" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Глобальная геологическая карта Марса (USGS, 2014). Цвета: нойский (коричневый), гесперийский (зелёный), амазонийский (синий).</div>
   </div>
 

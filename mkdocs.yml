@@ -24,7 +24,7 @@ extra_css:
 nav:
   - Заглавная страница: index.md
   - С чего начать: start-here.md
-  - Пожертвовать: donate.md
+  - Поддержать проект: donate.md
   - Вселенная Марса:
       - История:
           - Периодизация: history/periodization.md

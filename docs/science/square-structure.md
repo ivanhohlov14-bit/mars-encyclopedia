@@ -36,7 +36,7 @@
 Снимок был сделан **в 2001 году** камерой Mars Orbiter Camera (MOC) на борту космического аппарата **Mars Global Surveyor** (NASA) в рамках плановой съёмки поверхности Марса[^7]. На изображении участка кратера Раманатан (Ramanathan Crater) в регионе **Arabia Terra** была обнаружена структура, которая при детальном рассмотрении приобрела следующие характеристики[^8]:
 
 <div style="float: left; margin: 0 1.5rem 0.5rem 0; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-square-structure-closeup.jpg" alt="Квадратная структура крупным планом" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/esrpic-68bc54355b9801.jpg" alt="Квадратная структура крупным планом" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Структура крупным планом. Отчётливо видны прямые углы и ровные линии. Источник: NASA/JPL/MSSS</div>
 </div>
 
@@ -85,7 +85,7 @@
 Независимые исследователи, опираясь на расшифрованные таблички Академии Окхасена, выдвигают гипотезу, что структура является **фундаментом гигантской статуи**, возведённой в честь богини воды и плодородия **Араксис** в **Эпоху Расцвета (2500–2680 гг. Э.О.)**[^17].
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/araksis-statue-concept.jpg" alt="Концепция статуи Араксис" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/araksis-statue-concept.png" alt="Концепция статуи Араксис" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция гигантской статуи богини Араксис. Реконструкция по данным Академии Окхасена.</div>
 </div>
 

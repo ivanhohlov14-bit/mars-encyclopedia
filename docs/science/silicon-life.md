@@ -4,9 +4,9 @@
   <h3 style="margin: 0; text-align: center;">Кремниевая жизнь</h3>
   <hr>
   <div style="text-align: center; margin-bottom: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/silicon-life-concept.jpg" alt="Концепция кремниевой жизни" style="width: 100%; max-width: 200px; border: 1px solid #a2a9b1; border-radius: 4px;">
-    <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Гипотетическая структура кремниевой клетки. Реконструкция.</div>
-  </div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/silicon-life-icon.jpg" alt="Символ кремниевой жизни" style="width: 100%; max-width: 150px; border: 1px solid #a2a9b1; border-radius: 4px;">
+  <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Символ кремниевой жизни (Silica vita)</div>
+</div>
   <p><b>Тип</b> Гипотетическая альтернативная биохимия</p>
   <p><b>Химическая основа</b> Кремний (Si), полисилоксаны</p>
   <p><b>Растворитель</b> Вода с перхлоратами</p>
@@ -36,6 +36,11 @@
 | **Полимеры** | Углеводороды, белки, ДНК | Полисилоксаны (Si–O–Si) |
 | **Растворимость** | Органические растворители | Силанолы (Si–OH) |
 | **Окисление** | CO₂ (газ) | SiO₂ (твёрдое вещество, песок) |
+
+<div style="clear: both; text-align: center; margin: 20px 0 10px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/silicon-life-macro.jpg" alt="Макро-концепция кремниевой жизни" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Макро-концепция кремниевой жизни: гипотетическая экосистема на древнем Марсе. Реконструкция по данным Академии Окхасена.</div>
+</div>
 
 Кремниевые связи с кислородом (Si–O) значительно прочнее, чем углеродные (C–O), что делает кремниевые полимеры более устойчивыми к термической и химической деградации. Это может быть эволюционным преимуществом в условиях высоких температур или агрессивных сред[^5].
 
@@ -85,6 +90,11 @@
 ## Клеточное строение
 
 Гипотетическая кремниевая клетка может иметь сложное внутреннее строение, отличное от земных эукариот[^16]:
+
+<div style="clear: both; text-align: center; margin: 20px 0 10px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/silicon-life-concept.png" alt="Концепция кремниевой жизни" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Концепция кремниевой клетки (Silica vita). Гипотетическая реконструкция по данным Академии Окхасена.</div>
+</div>
 
 - **Ядро** — область, содержащая ПСНК (полисилоксановые нуклеиновые кислоты), окружённую силоксановой мембраной.
 - **Силаплазма** — цитоплазматический матрикс, содержащий рибосомоподобные структуры, ферменты и включения.

@@ -34,7 +34,7 @@
 
 ---
 
-## <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-sun.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Дополнительные возможности
+## <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Дополнительные возможности
 
 После ознакомления с базовыми материалами доступны следующие интерактивные разделы:
 

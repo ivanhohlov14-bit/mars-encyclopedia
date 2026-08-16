@@ -54,7 +54,7 @@
 ---
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 300px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Screenshot_2026-08-17_004717.png" alt="Геологические периоды Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Screenshot%202026-08-17%20004717.png" alt="Геологические периоды Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Геологические периоды Марса: Донойский, Нойский, Гесперийский и Амазонийский. Изображение из открытых источников.</div>
 </div>
 

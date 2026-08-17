@@ -6,19 +6,44 @@
 </div>
 
 <div class="infobox" style="float: right; width: 300px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem;">
-  <h3 style="margin: 0; text-align: center;">Периодизация Марса</h3>
-  <hr>
-  
+
+  <div style="background: #e6f0fa; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Периодизация Марса</h3>
+  </div>
+
   <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eras-timeline-chart.jpg" alt="Временная шкала эпох Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Временная шкала геологической и культурной истории Марса</div>
-</div>
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eras-timeline-chart.jpg" alt="Временная шкала эпох Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
+    <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Временная шкала геологической и культурной истории Марса</div>
+  </div>
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
 
   <p><b>Научные эпохи:</b> <a href="#нойская-эпоха">Нойская</a>, <a href="#гесперийская-эпоха">Гесперийская</a>, <a href="#амазонийская-эпоха">Амазонийская</a></p>
   <p><b>Культурные эпохи:</b> <a href="#эпоха-основания">Основания</a>, <a href="#эпоха-расцвета">Расцвета</a>, <a href="#эпоха-умирания">Умирания</a></p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Хронология
+  </div>
+
   <p><b>Длительность культурной эпохи:</b> ~2700 лет (по летосчислению Э.О.)</p>
   <p><b>Конец эпохи:</b> 2745 г. Э.О. (отлёт кораблей)</p>
-  <p><b>Источники:</b> <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a>, труды <a href="https://mars-wiki.ru/people/hevsur/">Хевсура</a>, данные с <a href="https://mars-wiki.ru/astronomy/earth/">Земли</a></p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Источники
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
+    <li>• Труды <a href="https://mars-wiki.ru/people/hevsur/">Хевсура</a></li>
+    <li>• Данные с <a href="https://mars-wiki.ru/astronomy/earth/">Земли</a></li>
+  </ul>
+
 </div>
 
 **Периодизация истории Марса** — система деления геологической и культурной эволюции Марса на эпохи, разработанная на основе данных современной планетологии, марсианской археологии и расшифрованных табличек из подземных храмов долины Ксанфа и Аргира. В эпопее «Письмо из Красной пыли» эта периодизация служит не только хронологической канвой, но и раскрывает глубокую связь между угасанием геологической активности планеты и гибелью марсианской цивилизации[^1].

@@ -184,7 +184,7 @@
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mythology/santii-seven-truths.jpg" alt="Семь истин Саньтий" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Семь истин, завещанных марсианами своим потомкам.</div>
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Семь истин (отрывок), завещанных марсианами своим потомкам.</div>
 </div>
 
 В эпопее «Письмо из Красной пыли» Саньтии становятся мостом между умирающим Марсом и новой жизнью на Земле. Именно благодаря им колонисты сохраняют связь с родиной и не теряют своей идентичности в чужом мире. Как сказал Хевсур:

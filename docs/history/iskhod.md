@@ -138,6 +138,13 @@
 
 ## Те, кто остался
 
+<div style="text-align: left; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-mars-apocalypse.jpg" alt="Марсиане уходят в огне" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">
+    Рисунок Нары (2740 г. Э.О.). Марсиане уходят на фоне разрушенного города.
+  </div>
+</div>
+
 Исход спас лишь малую часть марсиан — около 470 человек. Миллионы остались на Марсе, чтобы умереть в пепле и холоде. Среди них был [Хевсур](https://mars-wiki.ru/people/hevsur/), который отказался лететь, чтобы завершить летопись[^15].
 
 Хевсур писал в своей последней табличке:
@@ -146,11 +153,25 @@
 
 Те, кто остался, ушли в пещеры под [Фарсидой](https://mars-wiki.ru/geography/farsida/) или умерли на поверхности, глядя на звёзды, пока те не погасли[^17].
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-farewell-grave.jpg" alt="Женщина провожает корабли" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
+    Рисунок Нары (2740 г. Э.О.). Женщина, оставшаяся на Марсе, провожает улетающие корабли. 
+  </div>
+</div>
+
 ---
 
 ## Адаптация к Земле
 
 ### Физиологические вызовы
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-early-earth-island.jpg" alt="Остров на Архейской Земле" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
+    Остров на Архейской Земле — оранжевое небо и зелёные океаны.
+  </div>
+</div>
 
 Марсиане столкнулись с тремя основными проблемами на Земле:
 

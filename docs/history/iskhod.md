@@ -126,10 +126,7 @@
 
 В 2741 году три корабля достигли Земли. Однако планета оказалась совсем не такой, какой её представляли марсиане. Вместо голубой планеты, которую они видели в телескопы, перед ними предстал мир оранжево-мутного неба и зелёных, от растворённого железа, океанов. Это была Архейская Земля — планета, ещё не знавшая кислорода, с атмосферой из углекислого газа, метана и сероводорода[^13].
 
-<div style="float: right; margin: 0 0 10px 20px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-new-okhasen.jpg" alt="Новый Окхасен" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Нового Окхасена — первого марсианского поселения на Земле. Реконструкция.</div>
-</div>
+
 
 Колонисты приземлились на вулканическом острове, который они назвали [Новый Окхасен](https://mars-wiki.ru/geography/noviy-okhasen/). Земля оказалась суровой: атмосфера была ядовитой для марсианских лёгких, гравитация — вдвое выше марсианской, а вода содержала растворённые металлы. Но они выжили. И начали строить новый мир[^14].
 
@@ -138,7 +135,7 @@
 ## Те, кто остался
 
 <div style="text-align: left; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-mars-apocalypse.jpg" alt="Марсиане уходят в огне" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-mars-apocalypse.jpg" alt="Марсиане уходят в огне" style="width: 80%; max-width: 280px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">
     Рисунок Нары (2740 г. Э.О.). Марсиане уходят на фоне разрушенного города.
   </div>
@@ -151,13 +148,6 @@
 > *«Я смотрел, как корабли уходят в небо. Я слышал, как плачут те, кто остался. Я знал, что мы умираем. Но я также знал, что память останется. Глина помнит. А мы — её голос.»*[^16]
 
 Те, кто остался, ушли в пещеры под [Фарсидой](https://mars-wiki.ru/geography/farsida/) или умерли на поверхности, глядя на звёзды, пока те не погасли[^17].
-
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-farewell-grave.jpg" alt="Женщина провожает корабли" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
-    Рисунок Нары (2740 г. Э.О.). Женщина, оставшаяся на Марсе, провожает улетающие корабли. 
-  </div>
-</div>
 
 ---
 
@@ -190,6 +180,13 @@
 
 ### Для марсиан
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-farewell-grave.jpg" alt="Женщина провожает корабли" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
+    Рисунок Нары (2740 г. Э.О.). Женщина, оставшаяся на Марсе, провожает улетающие корабли. 
+  </div>
+</div>
+
 Исход стал актом сохранения цивилизации. Он позволил сохранить не только жизни, но и знания, культуру и память о Марсе. На кораблях находились глиняные таблички, семена водорослей и чертежи, которые помогли колонистам выжить на чужой планете[^22].
 
 В «Песнях Совии» есть строки, посвящённые Исходу:
@@ -198,7 +195,14 @@
 
 ### Для Земли
 
-Исход также изменил Землю. Колонисты принесли с собой марсианскую культуру и память, которые переплелись с земной историей. Они создали Новый Окхасен — город, который стал символом новой жизни и новой надежды[^24].
+<div style="float: right; margin: 0 0 10px 20px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-new-okhasen.jpg" alt="Новый Окхасен" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Нового Окхасена — первого марсианского поселения на Земле. Реконструкция.</div>
+</div>
+
+Исход также изменил Землю. Колонисты принесли с собой марсианскую культуру и память, которые переплелись с земной историей. Они создали [Новый Окхасен](https://mars-wiki.ru/geography/noviy-okhasen/) — город, который стал символом новой жизни и новой надежды[^24].
+
+Первые годы на Земле были временем адаптации и потерь. Но именно там, на чужой планете, марсианская культура обрела второе дыхание. Колонисты воссоздали глиняные библиотеки, переписали таблички, перенесли на Землю язык Marzān, календарь и обычаи. Память о Марсе стала частью земной истории — через мифы, легенды и сакральные тексты, такие как Саньтии Звёздного Пути, которые были переписаны на земные материалы.
 
 ---
 

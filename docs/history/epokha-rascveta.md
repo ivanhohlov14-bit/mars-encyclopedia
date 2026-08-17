@@ -1,5 +1,10 @@
 # Эпоха Расцвета
 
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">⭐</span>
+  <span style="font-weight: bold; color: #b8860b;">Избранная статья</span>
+</div>
+
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
 
   <div style="background: #e6f0fa; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
@@ -95,11 +100,6 @@
 
 ## Научная основа Эпохи Расцвета
 
-<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-arabia-valley.png" alt="Долина Аравия — житница Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Долина Аравия — главная житница Марса в Эпоху Расцвета. Реконструкция по табличкам Академии Окхасена.</div>
-</div>
-
 Хотя Эпоха Расцвета является художественным периодом, её ключевые элементы имеют реальные научные параллели:
 
 | Элемент | Научное обоснование | Источник |
@@ -115,6 +115,11 @@
 ---
 
 ## Общая характеристика
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-arabia-valley.png" alt="Долина Аравия — житница Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Долина Аравия — главная житница Марса в Эпоху Расцвета. Реконструкция по табличкам Академии Окхасена.</div>
+</div>
 
 Эпоха Расцвета стала временем наивысшего подъёма марсианской цивилизации. Города процветали, торговля достигла пика, наука и искусство развивались быстрыми темпами. Марсиане верили, что их мир вечен, и строили планы на тысячелетия вперёд[^2].
 
@@ -134,12 +139,14 @@
 
 ### 2500–2550 гг. — Коронация первого короля Эдема
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-observatory.png" alt="Астрономическая башня в Роген-Арии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Астрономическая башня в Роген-Арии — символ научного могущества Эпохи Расцвета. Реконструкция.</div>
+</div>
+
 В 2500 году, в 22 день месяца **Угасания** (*Kōl-ghar*), после многовековой Эпохи Основания, состоялась **коронация первого короля Эдема** — Сарума Великого. Этот акт ознаменовал официальное начало Королевства Эдем и стал вершиной процесса централизации, начатого ещё Сарумом I в 47 году[^3]. В хрониках этот год назван **«годом коронации»** — символом перехода от разрозненных городов-государств к централизованной империи.
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-observatory.png" alt="Астрономическая башня в Роген-Арии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Астрономическая башня в Роген-Арии — символ научного могущества Эпохи Расцвета. Реконструкция.</div>
-</div>
+
 
 ### 2550–2600 гг. — Расцвет науки
 
@@ -149,12 +156,12 @@
 
 ### 2600–2650 гг. — Строительство каналов
 
-К 2600 году система каналов соединила все крупные реки Марса — [Ксанф](https://mars-wiki.ru/geography/ksanf-river/), Горен и Лабей. Это позволило торговым кораблям проходить от Окхасена до подножия [Фарсиды](https://mars-wiki.ru/geography/farsida/), а земледельцам — орошать поля на сотни километров вокруг[^6].
-
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-medieval-map.png" alt="Карта Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Эдем в Эпоху Расцвета. По данным Академии Окхасена.</div>
 </div>
+
+К 2600 году система каналов соединила все крупные реки Марса — [Ксанф](https://mars-wiki.ru/geography/ksanf-river/), Горен и Лабей. Это позволило торговым кораблям проходить от Окхасена до подножия [Фарсиды](https://mars-wiki.ru/geography/farsida/), а земледельцам — орошать поля на сотни километров вокруг[^6].
 
 Каналы стали символом могущества марсианской цивилизации. Они показывали, что люди способны управлять природой и подчинять её своим целям. Однако именно эти каналы позже станут свидетелями её гибели — когда вода ушла, они превратились в сухие русла[^7].
 
@@ -196,12 +203,12 @@
 
 ### Религия
 
-В Эпоху Расцвета культ [Араксис](https://mars-wiki.ru/mythology/araksis/) достиг пика. Её храмы были построены во всех крупных городах, а жрецы пользовались огромным влиянием. Однако появились и новые культы — особенно культ науки, который постепенно вытеснял религию из общественной жизни[^13].
-
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-acidalia-frozen.png" alt="Ацидалийское море в начале замерзания" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ацидалийское море — первые признаки замерзания. Реконструкция по табличкам Хевсура.</div>
 </div>
+
+В Эпоху Расцвета культ [Араксис](https://mars-wiki.ru/mythology/araksis/) достиг пика. Её храмы были построены во всех крупных городах, а жрецы пользовались огромным влиянием. Однако появились и новые культы — особенно культ науки, который постепенно вытеснял религию из общественной жизни[^13].
 
 ### Искусство
 

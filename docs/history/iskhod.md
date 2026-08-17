@@ -119,9 +119,9 @@
 
 ### Прибытие на Землю
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/earth-3.8-billion-years-ago.jpg" alt="Земля 3,8 млрд лет назад" style="max-width: 300px; width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-  <div style="font-size: 0.9rem; color: #555; margin-top: 6px;">Изображение Земли на основе 173 снимков, полученных зондом "Ковчег-4" 22 Zal-ākha 2690 года.</div>
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 300px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/earth-3.8-billion-years-ago.jpg" alt="Земля 3,8 млрд лет назад" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <div style="font-size: 0.9rem; color: #555; margin-top: 6px; text-align: center;">Изображение Земли на основе 173 снимков, полученных зондом "Ковчег-4" 22 Zal-ākha 2690 года.</div>
 </div>
 
 В 2741 году три корабля достигли Земли. Однако планета оказалась совсем не такой, какой её представляли марсиане. Вместо голубой планеты, которую они видели в телескопы, перед ними предстал мир оранжево-мутного неба и зелёных, от растворённого железа, океанов. Это была Архейская Земля — планета, ещё не знавшая кислорода, с атмосферой из углекислого газа, метана и сероводорода[^13].
@@ -132,7 +132,7 @@
 
 ## Те, кто остался
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 200px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-mars-apocalypse.jpg" alt="Марсиане уходят в огне" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Рисунок Нары (2740 г. Э.О.). Марсиане уходят.
@@ -178,7 +178,7 @@
 
 ### Для марсиан
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 180px;">
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 150px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-farewell-grave.jpg" alt="Женщина провожает корабли" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Рисунок Нары (2740 г. Э.О.). Женщина провожает корабли. 

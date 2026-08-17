@@ -257,7 +257,7 @@
 
 ### Появление письменности и Lān sur (890 г. Э.О.)
 
-<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/clay-memory.webp" alt="Lān sur — глина помнит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Lān sur — глина помнит. Центральный символ марсианской мифологии.</div>
 </div>

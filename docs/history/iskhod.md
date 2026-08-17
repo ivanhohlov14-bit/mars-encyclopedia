@@ -7,9 +7,9 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-ark-silhouette.jpg" alt="Корабли-ковчеги в космосе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Корабли-ковчеги в космосе на пути к Земле</div>
-  </div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-ark-silhouette-v2.jpg" alt="Корабли-ковчеги в космосе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Корабли-ковчеги в космосе на пути к Земле</div>
+</div>
 
   <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
     Основные данные
@@ -97,6 +97,11 @@
 
 ### Подготовка
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-launch-pad.png" alt="Космодром Фарсиды перед стартом" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Космодром Фарсиды перед стартом кораблей. Реконструкция по табличкам Академии.</div>
+</div>
+
 Строительство [космодрома](https://mars-wiki.ru/geography/kosmodrom-farsidy/) и кораблей началось в 2715 году. Работы продолжались 25 лет — каждую секунду, каждый день, каждую ночь. Тысячи людей работали на склонах Фарсиды, строя ворота к звёздам[^6].
 
 Одновременно шёл отбор пассажиров. Корабли могли вместить не более 470 человек — это было меньше, чем население одного квартала Окхасена. Отбор был жёстким и тайным, чтобы избежать паники. Люди не знали, кто полетит, пока списки не были обнародованы за несколько дней до старта[^7].
@@ -104,11 +109,6 @@
 Списки вызвали бунты и протесты. Те, кто не попал в них, проклинали короля и учёных. Но времени на споры не было — планета умирала, и каждый день мог стать последним[^8].
 
 ---
-
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-launch-pad.jpg" alt="Космодром Фарсиды перед стартом" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Космодром Фарсиды перед стартом кораблей. Реконструкция по табличкам Академии.</div>
-</div>
 
 ## Ход Исхода
 
@@ -130,21 +130,21 @@
 
 ### Прибытие на Землю
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/earth-3.8-billion-years-ago.jpg" alt="Земля 3,8 млрд лет назад" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <div style="font-size: 0.9rem; color: #555; margin-top: 6px;"> Изображение Земли на основе 173 снимков, полученных зондом "Ковчег-4" 22 Zal-ākha 2690 года.</div>
+</div>
+
 В 2741 году три корабля достигли Земли. Однако планета оказалась совсем не такой, какой её представляли марсиане. Вместо голубой планеты, которую они видели в телескопы, перед ними предстал мир оранжево-мутного неба и зелёных, от растворённого железа, океанов. Это была Архейская Земля — планета, ещё не знавшая кислорода, с атмосферой из углекислого газа, метана и сероводорода[^13].
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 260px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-early-earth.jpg" alt="Архейская Земля" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Архейская Земля — оранжевое небо и зелёные океаны. Реконструкция по данным NASA.</div>
+<div style="text-align: right; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-new-okhasen.jpg" alt="Новый Окхасен" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Нового Окхасена — первого марсианского поселения на Земле. Реконструкция.</div>
 </div>
 
 Колонисты приземлились на вулканическом острове, который они назвали [Новый Окхасен](https://mars-wiki.ru/geography/noviy-okhasen/). Земля оказалась суровой: атмосфера была ядовитой для марсианских лёгких, гравитация — вдвое выше марсианской, а вода содержала растворённые металлы. Но они выжили. И начали строить новый мир[^14].
 
 ---
-
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-new-okhasen.jpg" alt="Новый Окхасен" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Нового Окхасена — первого марсианского поселения на Земле. Реконструкция.</div>
-</div>
 
 ## Те, кто остался
 

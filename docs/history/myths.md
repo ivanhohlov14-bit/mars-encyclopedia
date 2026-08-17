@@ -6,21 +6,66 @@
 </div>
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Мифы и легенды Марса</h3>
-  <hr>
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-mythology-concept.png" alt="Мифология Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Концепция марсианской мифологии — Кхо и Акха, сотворение мира</div>
-</div>
-  
-<p><b>Верховное божество:</b> <a href="https://mars-wiki.ru/mythology/araksis/">Араксис</a> (богиня воды)</p>
-<p><b>Боги-творцы:</b> <a href="https://mars-wiki.ru/mythology/kho/">Кхо</a> (огонь), <a href="https://mars-wiki.ru/mythology/akha/">Акха</a> (вода)</p>
-<p><b>Главный миф:</b> Космогоническая битва Огня и Воды</p>
-<p><b>Священное животное:</b> <a href="https://mars-wiki.ru/mythology/ksanf-monster/">Ксанф</a> — гигантский ракоскорпион</p>
-<p><b>Пророчества:</b> <a href="https://mars-wiki.ru/people/kharan/">Пророчество Харана</a>, Пророчество о звезде</p>
-<p><b>Священный текст:</b> Саньтии Звёздного Пути</p>
-<p><b>Источники:</b> «Книга Харан», «Песни Совии», таблички храма Араксис, записи Хевсура</p>
+  <div style="background: #e6f0fa; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Мифология Марса</h3>
+  </div>
+
+  <div style="text-align: center; margin: 20px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-mythology-concept.png" alt="Мифология Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
+    <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Концепция марсианской мифологии — Кхо и Акха, сотворение мира</div>
+  </div>
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
+
+  <p><b>Верховное божество:</b> <a href="https://mars-wiki.ru/mythology/araksis/">Араксис</a> (богиня воды)</p>
+  <p><b>Боги-творцы:</b> <a href="https://mars-wiki.ru/mythology/kho/">Кхо</a> (огонь), <a href="https://mars-wiki.ru/mythology/akha/">Акха</a> (вода)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Ключевые элементы
+  </div>
+
+  <p><b>Главный миф:</b> Космогоническая битва Огня и Воды</p>
+  <p><b>Священное животное:</b> <a href="https://mars-wiki.ru/mythology/ksanf-monster/">Ксанф</a> — гигантский ракоскорпион</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Пророчества
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/people/kharan/">Пророчество Харана</a></li>
+    <li>• Пророчество о голубой звезде</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Священные тексты
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• Саньтии Звёздного Пути</li>
+    <li>• «Книга Харан»</li>
+    <li>• «Песни Совии»</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Источники
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• Таблички храма Араксис</li>
+    <li>• Записи Хевсура</li>
+  </ul>
+
 </div>
 
 **Мифы и легенды Марса** — совокупность священных повествований, космогонических преданий и героических саг, созданных марсианской цивилизацией в течение тысячелетий. Эти истории не только объясняли происхождение мира, природные катаклизмы и социальные порядки, но и, как показал анализ [Хевсура](https://mars-wiki.ru/people/hevsur/), содержали зашифрованные знания о реальных геологических и астрономических процессах.

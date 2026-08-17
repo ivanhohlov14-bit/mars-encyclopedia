@@ -7,7 +7,7 @@
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
 
-  <div style="background: #f8e0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+  <div style="background: #e6f0fa; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
     <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Эпоха Основания</h3>
   </div>
 
@@ -16,7 +16,7 @@
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Окхасена в 1 году Э.О.</div>
   </div>
 
-  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
     Основные данные
   </div>
 
@@ -27,7 +27,7 @@
 
   <hr style="margin: 6px 0;">
 
-  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
     Древнейшее государство
   </div>
 
@@ -39,7 +39,7 @@
 
   <hr style="margin: 6px 0;">
 
-  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
     Ключевые государства
   </div>
 
@@ -68,7 +68,7 @@
 
   <hr style="margin: 6px 0;">
 
-  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
     Ключевые события
   </div>
 
@@ -82,7 +82,7 @@
 
   <hr style="margin: 6px 0;">
 
-  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
     Ключевые фигуры
   </div>
 
@@ -94,7 +94,7 @@
 
   <hr style="margin: 6px 0;">
 
-  <div style="background: #f8e0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
     Культурное наследие
   </div>
 
@@ -133,14 +133,16 @@
 
 ### Легендарный период
 
-До 1 года Э.О. письменных источников не сохранилось. Однако устные предания, записанные позже в «Книге Харан», описывают «времена до городов» — период, когда марсиане жили небольшими племенами, кочевали по равнинам и поклонялись силам природы.
-
-Согласно легендам, в те времена мир был другим. Море было теплее, реки полноводнее, а леса — гуще. Люди жили в гармонии с природой, но не умели записывать свои знания. Всё, что они знали, передавалось из уст в уста, из поколения в поколение, как эхо древних голосов.
-
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 260px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/primitive-marsians.png" alt="Первые марсиане" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Первые марсианские поселения. Реконструкция по устным преданиям.</div>
 </div>
+
+До 1 года Э.О. письменных источников не сохранилось. Однако устные предания, записанные позже в «Книге Харан», описывают «времена до городов» — период, когда марсиане жили небольшими племенами, кочевали по равнинам и поклонялись силам природы.
+
+Согласно легендам, в те времена мир был другим. Море было теплее, реки полноводнее, а леса — гуще. Люди жили в гармонии с природой, но не умели записывать свои знания. Всё, что они знали, передавалось из уст в уста, из поколения в поколение, как эхо древних голосов.
+
+
 
 В «Песнях Совии» сохранились строки, описывающие те времена:
 
@@ -168,12 +170,12 @@
 
 ## Хронология Эпохи Основания
 
-### 1–500 гг. Э.О. — Первые города
-
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 260px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/first-trade-routes.jpg" alt="Первые торговые пути" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Первые торговые пути между городами. Реконструкция.</div>
 </div>
+
+### 1–500 гг. Э.О. — Первые города
 
 | Год (Э.О.) | Событие | Источник |
 |------------|---------|----------|
@@ -190,9 +192,9 @@
 ### 500–1500 гг. Э.О. — Формирование государств
 
 <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" style="width: 100%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Главное здание Академии Окхасена</div>
-  </div>
+</div>
 
 | Год (Э.О.) | Событие | Источник |
 |------------|---------|----------|
@@ -240,6 +242,11 @@
 
 ### Основание Академии Окхасена (712 г. Э.О.)
 
+ <div style="text-align: right; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/martian-calendar-first-tablet.png" alt="Первое упоминание марсианского календаря" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <div style="font-size: 0.9rem; color: #555; margin-top: 6px;"> Первая глиняная табличка в архиве Академии (ок. 1500 г. Э.О.).</div>
+</div>
+
 Академия Окхасена была основана в 712 году и стала первым центром систематического знания на Марсе. Здесь изучали астрономию, математику, медицину и письменность. Здесь учились писцы, жрецы и инженеры.
 
 В Академии хранились тысячи глиняных табличек — хозяйственные списки, договоры, законы, гимны. Именно здесь [Хевсур](https://mars-wiki.ru/people/hevsur/) через две тысячи лет начнёт свою работу по сохранению памяти о Марсе[^21].
@@ -249,6 +256,11 @@
 > *«Мы, писцы и мудрецы Окхасена, собираемся здесь, чтобы учить и учиться. Мы записываем знания на глине, чтобы они не ушли с ветром. Мы строим стены из знаний, чтобы они не рухнули.»*[^22]
 
 ### Появление письменности и Lān sur (890 г. Э.О.)
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/clay-memory.webp" alt="Lān sur — глина помнит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Lān sur — глина помнит. Центральный символ марсианской мифологии.</div>
+</div>
 
 В 890 году Э.О. появилась письменность, основанная на клинописи. Это был важнейший шаг в развитии марсианской цивилизации — отныне знания можно было сохранять и передавать через поколения.
 
@@ -264,14 +276,14 @@
 
 ### Религия
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 40%;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/araksis-temple.png" alt="Храм Араксис" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Храм Араксис в Эпоху Основания. Реконструкция.</div>
+</div>
+
 В Эпоху Основания сформировался марсианский пантеон, центром которого стала богиня воды [Араксис](https://mars-wiki.ru/mythology/araksis/). Её культ был особенно силён в прибрежных городах, где вода была основой жизни.
 
 Появились также культы бога огня [Кхо](https://mars-wiki.ru/mythology/kho/) и богини воды [Акхи](https://mars-wiki.ru/mythology/akha/), хотя они были менее популярны. Религия пронизывала все сферы жизни — от сельского хозяйства до политики.
-
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/araksis-temple.png" alt="Храм Араксис" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Храм Араксис в Эпоху Основания. Реконструкция.</div>
-</div>
 
 В каждом городе строились храмы Араксис, где жрецы проводили ритуалы, связанные с водой, урожаем и памятью предков. Именно в этих храмах создавались первые «глиняные библиотеки» — собрания табличек с молитвами, законами и историями.
 
@@ -287,12 +299,12 @@
 
 ### Экономика
 
-Экономика Эпохи Основания была основана на сельском хозяйстве, рыболовстве и торговле. Каналы, прорытые вдоль рек, позволили орошать земли и получать богатые урожаи.
-
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-canals.png" alt="Строительство системы каналов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство системы каналов при Саруме Великом. Реконструкция по табличкам Академии.</div>
 </div>
+
+Экономика Эпохи Основания была основана на сельском хозяйстве, рыболовстве и торговле. Каналы, прорытые вдоль рек, позволили орошать земли и получать богатые урожаи.
 
 Торговля между городами процветала — по каналам и морю перевозили зерно, рыбу, металлы и глиняные таблички. Появились первые монеты и единая система мер.
 

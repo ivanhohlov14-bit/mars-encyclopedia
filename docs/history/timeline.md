@@ -6,25 +6,64 @@
 </div>
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Хронология истории Марса</h3>
-  <hr>
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/timeline-chart.png" alt="Хронология событий Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Ключевые события марсианской истории</div>
-</div>
+  <div style="background: #e6f0fa; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Хронология Марса</h3>
+  </div>
 
-<p><b>Начало летосчисления:</b> 1 г. Э.О. (основание Окхасена)</p>
-<p><b>Длительность письменной истории:</b> ~2745 лет</p>
-<p><b>Ключевой рубеж:</b> 2740 г. — старт кораблей к Земле</p>
-<p><b>Основные источники:</b> труды Хевсура, таблички Харана, астрономические записи Академии, данные марсоходов NASA и ESA</p>
-<p><b>Длительность Эпохи Основания:</b> ~2500 лет</p>
-<p><b>Длительность Эпохи Расцвета:</b> ~180 лет</p>
-<p><b>Длительность Эпохи Умирания:</b> ~65 лет</p>
-<p><b>Население Марса (пик):</b> ~10–15 млн человек</p>
-<p><b>Количество известных городов:</b> более 20</p>
-<p><b>Ключевые артефакты:</b> глиняные таблички, координаты Земли, пророчество Харана</p>
-<p><b>Символ эпохи:</b> Lān sur («Глина помнит»)</p>
+  <div style="text-align: center; margin: 20px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/timeline-chart.png" alt="Хронология событий Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
+    <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Ключевые события марсианской истории</div>
+  </div>
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
+
+  <p><b>Начало летосчисления:</b> 1 г. Э.О. (основание Окхасена)</p>
+  <p><b>Длительность письменной истории:</b> ~2745 лет</p>
+  <p><b>Ключевой рубеж:</b> 2740 г. — старт кораблей к Земле</p>
+  <p><b>Основные источники:</b> труды Хевсура, таблички Харана, астрономические записи Академии, данные марсоходов NASA и ESA</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Длительность эпох
+  </div>
+
+  <p><b>Эпоха Основания:</b> ~2500 лет</p>
+  <p><b>Эпоха Расцвета:</b> ~180 лет</p>
+  <p><b>Эпоха Умирания:</b> ~65 лет</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Демография
+  </div>
+
+  <p><b>Население (пик):</b> ~10–15 млн человек</p>
+  <p><b>Количество городов:</b> более 20</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Артефакты
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• Глиняные таблички</li>
+    <li>• Координаты Земли</li>
+    <li>• Пророчество Харана</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Символ эпохи
+  </div>
+
+  <p style="text-align: center;"><b><a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></b> («Глина помнит»)</p>
+
 </div>
 
 **Хронология истории Марса** — систематизированный перечень датированных событий геологической, астрономической и культурной эволюции планеты, восстановленный по данным современной планетологии, археологическим находкам и расшифрованным [глиняным табличкам](https://mars-wiki.ru/terms/tablichki/) из подземных храмов долины Ксанфа и Аргира. В эпопее «Письмо из Красной пыли» хронология служит не только сюжетной канвой, но и демонстрирует, как реальные климатические изменения — замерзание морей, пробуждение вулканов, истончение атмосферы — становятся двигателем истории, а мифотворчество переплетается с научным знанием.

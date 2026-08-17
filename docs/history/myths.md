@@ -5,7 +5,7 @@
   <hr>
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-mythology-concept.jpg" alt="Мифология Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-mythology-concept.png" alt="Мифология Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Концепция марсианской мифологии — Кхо и Акха, сотворение мира</div>
 </div>
   

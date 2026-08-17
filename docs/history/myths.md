@@ -5,7 +5,7 @@
   <hr>
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mythology/mars-mythology-concept.jpg" alt="Мифология Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-mythology-concept.jpg" alt="Мифология Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Концепция марсианской мифологии — Кхо и Акха, сотворение мира</div>
 </div>
   
@@ -32,7 +32,7 @@
 ### Сотворение мира
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mythology/kho-akha-creation.jpg" alt="Кхо и Акха сотворяют мир" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kho-akha-creation.jpg" alt="Кхо и Акха сотворяют мир" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Кхо (Огонь) и Акха (Вода) сотворяют мир. Реконструкция по табличкам храма Араксис.</div>
 </div>
 
@@ -60,7 +60,7 @@
 ## Миф о Великом отступлении (обратный потоп)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mythology/great-retreat.jpg" alt="Великое отступление моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/great-retreat.jpg" alt="Великое отступление моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Великое отступление — море покидает берега. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -78,7 +78,7 @@
 ## Миф о Ксанфе — морском чудовище
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mythology/ksanf-monster.jpg" alt="Ксанф — морское чудовище" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-monster.jpg" alt="Ксанф — морское чудовище" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ксанф — гигантский ракоскорпион, охраняющий подземный мир. Реконструкция.</div>
 </div>
 
@@ -98,7 +98,7 @@
 ## Пророчество Харана
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mythology/kharan-prophecy.jpg" alt="Харан записывает пророчество" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kharan-prophecy.jpg" alt="Харан записывает пророчество" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Харан записывает пророчество на глиняных табличках. Реконструкция.</div>
 </div>
 
@@ -117,7 +117,7 @@
 ## Миф о голубой звезде (колыбель из пепла)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mythology/blue-star-myth.jpg" alt="Голубая звезда — Земля" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/blue-star-myth.jpg" alt="Голубая звезда — Земля" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Голубая звезда — Земля, новый дом марсиан. Реконструкция.</div>
 </div>
 
@@ -132,7 +132,7 @@
 ## Миф о глине и памяти (Lān sur)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mythology/clay-memory.jpg" alt="Lān sur — глина помнит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/clay-memory.jpg" alt="Lān sur — глина помнит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Lān sur — глина помнит. Центральный символ марсианской мифологии.</div>
 </div>
 
@@ -152,7 +152,7 @@
 ## Саньтии Звёздного Пути — марсианская Библия
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mythology/santii-cover.jpg" alt="Саньтии Звёздного Пути" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/santii-cover.jpg" alt="Саньтии Звёздного Пути" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Саньтии Звёздного Пути — священное писание марсиан. Реконструкция.</div>
 </div>
 
@@ -183,7 +183,7 @@
 7. **Мы не одни во Вселенной** — наши предки смотрят на нас со звёзд.
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mythology/santii-seven-truths.jpg" alt="Семь истин Саньтий" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/santii-seven-truths.jpg" alt="Семь истин Саньтий" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Семь истин (отрывок), завещанных марсианами своим потомкам.</div>
 </div>
 

@@ -631,6 +631,7 @@ const LEXICON_DATA = {
   "которых": { root: "ku", pos: "pron" },
   "умирающего": { root: "mōr", pos: "adj" },
   "умирающий": { root: "mōr", pos: "adj" },
+  "умирающей": { root: "mōr", pos: "adj" },
   "умирающая": { root: "mōr", pos: "adj" },
   "умирающее": { root: "mōr", pos: "adj" },
   "умирающие": { root: "mōr", pos: "adj" },

@@ -1,5 +1,10 @@
 # Исход
 
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">⭐</span>
+  <span style="font-weight: bold; color: #b8860b;">Избранная статья</span>
+</div>
+
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
 
   <div style="background: #e6f0fa; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
@@ -35,19 +40,6 @@
     <li>• <a href="https://mars-wiki.ru/people/irayna/">Ирайна</a> — биолог, создатель гибридных бактерий</li>
   </ul>
 
-  <hr style="margin: 6px 0;">
-
-  <div style="background: #e6f0fa; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Связанные понятия
-  </div>
-
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
-    <li>• <a href="https://mars-wiki.ru/books/korabli-kovchegi/">Корабли-ковчеги</a></li>
-    <li>• <a href="https://mars-wiki.ru/geography/kosmodrom-farsidy/">Космодром Фарсиды</a></li>
-    <li>• <a href="https://mars-wiki.ru/geography/noviy-okhasen/">Новый Окхасен</a></li>
-    <li>• <a href="https://mars-wiki.ru/history/epokha-umiraniya/">Эпоха Умирания</a></li>
-  </ul>
-
 </div>
 
 **Исход** (марс. *Dzen Nur* — «Путь к звёздам», *Mōr Thal* — «Уход от смерти») — массовое переселение марсиан с гибнущего Марса на [Землю](https://mars-wiki.ru/astronomy/earth/), осуществлённое в 2740 году Э.О. на трёх [кораблях-ковчегах](https://mars-wiki.ru/books/korabli-kovchegi/). В эпопее «Письмо из Красной пыли» Исход становится кульминационным событием — точкой, где встречаются надежда и отчаяние, память и забвение, жизнь и смерть. Это не просто перелёт с одной планеты на другую — это акт сохранения цивилизации, её знаний, культуры и памяти, предпринятый ценой невероятных жертв.
@@ -71,8 +63,6 @@
 Эти параллели позволяют рассматривать Исход как **реалистичную модель** того, как могла бы выглядеть попытка спасения цивилизации в условиях Марса, и какие вызовы могли бы ожидать колонистов на ранней Земле.
 
 ---
-
-
 
 ## Предыстория
 
@@ -99,7 +89,7 @@
 
 <div style="text-align: center; margin: 20px 0;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-launch-pad.png" alt="Космодром Фарсиды перед стартом" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Космодром Фарсиды перед стартом кораблей. Реконструкция по табличкам Академии.</div>
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Космодром Фарсиды. Реконструкция по табличкам Академии.</div>
 </div>
 
 Строительство [космодрома](https://mars-wiki.ru/geography/kosmodrom-farsidy/) и кораблей началось в 2715 году. Работы продолжались 25 лет — каждую секунду, каждый день, каждую ночь. Тысячи людей работали на склонах Фарсиды, строя ворота к звёздам[^6].
@@ -131,15 +121,15 @@
 ### Прибытие на Землю
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/earth-3.8-billion-years-ago.jpg" alt="Земля 3,8 млрд лет назад" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-  <div style="font-size: 0.9rem; color: #555; margin-top: 6px;"> Изображение Земли на основе 173 снимков, полученных зондом "Ковчег-4" 22 Zal-ākha 2690 года.</div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/earth-3.8-billion-years-ago.jpg" alt="Земля 3,8 млрд лет назад" style="max-width: 600px; width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <div style="font-size: 0.9rem; color: #555; margin-top: 6px;">Изображение Земли на основе 173 снимков, полученных зондом "Ковчег-4" 22 Zal-ākha 2690 года.</div>
 </div>
 
 В 2741 году три корабля достигли Земли. Однако планета оказалась совсем не такой, какой её представляли марсиане. Вместо голубой планеты, которую они видели в телескопы, перед ними предстал мир оранжево-мутного неба и зелёных, от растворённого железа, океанов. Это была Архейская Земля — планета, ещё не знавшая кислорода, с атмосферой из углекислого газа, метана и сероводорода[^13].
 
-<div style="text-align: right; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-new-okhasen.jpg" alt="Новый Окхасен" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Нового Окхасена — первого марсианского поселения на Земле. Реконструкция.</div>
+<div style="float: right; margin: 0 0 10px 20px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-new-okhasen.jpg" alt="Новый Окхасен" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Нового Окхасена — первого марсианского поселения на Земле. Реконструкция.</div>
 </div>
 
 Колонисты приземлились на вулканическом острове, который они назвали [Новый Окхасен](https://mars-wiki.ru/geography/noviy-okhasen/). Земля оказалась суровой: атмосфера была ядовитой для марсианских лёгких, гравитация — вдвое выше марсианской, а вода содержала растворённые металлы. Но они выжили. И начали строить новый мир[^14].

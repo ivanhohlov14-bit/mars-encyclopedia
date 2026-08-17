@@ -760,6 +760,7 @@ const LEXICON_DATA = {
   "основываю": { root: "othal", pos: "verb" },
   "основывает": { root: "othal", pos: "verb" },
   "основывают": { root: "othal", pos: "verb" },
+  "основания": { root: "othal", pos: "verb" },
   "основатель": { root: "othaln", pos: "noun" },
   "основательница": { root: "othaln", pos: "noun" },
   "основатели": { root: "othaln", pos: "noun" },

@@ -31,9 +31,9 @@
 
 ### Сотворение мира
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kho-akha-creation.jpg" alt="Кхо и Акха сотворяют мир" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Кхо (Огонь) и Акха (Вода) сотворяют мир. Реконструкция по табличкам храма Араксис.</div>
+<div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/araksis-statue-concept.png" alt="Концепция статуи Араксис" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция гигантской статуи богини Араксис. Реконструкция по данным Академии Окхасена.</div>
 </div>
 
 Согласно табличкам, найденным в храме [Араксис](https://mars-wiki.ru/mythology/araksis/) на острове Эллос, в начале не было ничего, кроме Тьмы и Тишины. Из их соединения родилось Желание, а из него — два брата-антагониста: **Кхо** (Огонь) и **Акха** (Вода). Они долго скитались порознь, но одиночество оказалось сильнее страха, и они двинулись навстречу друг другу.
@@ -114,11 +114,12 @@
 
 ---
 
-## Миф о голубой звезде (колыбель из пепла)
+## Миф о звезде (колыбель из пепла)
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/blue-star-myth.jpg" alt="Голубая звезда — Земля" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Голубая звезда — Земля, новый дом марсиан. Реконструкция.</div>
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/earth-3.8-billion-years-ago.jpg" alt="Земля 3,8 млрд лет назад" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <div style="font-size: 0.9rem; color: #555; margin-top: 6px;"> Изображение Земли на основе 173 снимков, полученных зондом "Ковчег-4" 22 Zal-ākha 2690 года.</div>
 </div>
 
 В поздней марсианской мифологии, особенно в записях Академии Окхасена, появляется предание о «голубой звезде» — планете, которая станет новым домом для избранных. В отличие от более древних мифов, этот сюжет возник под влиянием астрономических наблюдений и был подкреплён табличками Харана.

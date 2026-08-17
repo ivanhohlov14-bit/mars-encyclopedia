@@ -74,7 +74,7 @@
 ## Географическое положение
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-sea-coast.jpg" alt="Побережье Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-sea-coast.jpeg" alt="Побережье Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье Эритрейского моря — колыбель пиратского королевства. Реконструкция.</div>
 </div>
 
@@ -96,14 +96,14 @@
 
 ### Эпоха Основания (ок. 600–1200 гг. Э.О.)
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-fleet.jpeg" alt="Флот Эритрея" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Флот Эритрея в период расцвета пиратства. Реконструкция по табличкам Академии.</div>
+</div>
+
 Первые поселения на полуострове Эритрейского моря возникли в середине I тысячелетия Э.О. Письменная история начинается с **основания Эритрея** (ок. 600 г. Э.О.) — города, построенного на полуострове[^10]. В **800 году Э.О.** правитель Эритрея объединил кланы, создав **Королевство Эритрей**[^11].
 
 В **1200 году Э.О.** Эритрей начал войну с Эдемом за **полуостров** возле залива Маринера. Благодаря превосходству в вооружении и тактике, Эритрею удалось **отвоевать полуостров** и расширить свои границы[^12].
-
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-fleet.jpg" alt="Флот Эритрея" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Флот Эритрея в период расцвета пиратства. Реконструкция по табличкам Академии.</div>
-</div>
 
 ### Пиратское королевство (1500–2700 гг. Э.О.)
 
@@ -117,14 +117,16 @@
 
 ### Падение Эритрея и мятеж (2700 г.)
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-king.png" alt="Король Ксанф" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Король Ксанф — предводитель пиратов. Реконструкция по табличкам Академии.</div>
+</div>
+
 К **2700 году** Эритрей оказался в тяжёлом положении. Климатические изменения (Эпоха Умирания) привели к неурожаям, голоду и экономическому кризису[^17]. У королевства **не было союзников**, а население было доведено до отчаяния[^18].
 
 Воспользовавшись хаосом, **пираты** под предводительством **Ксанфа** подняли **вооружённый мятеж**[^19]. Они захватили столицу, убили правителя Эритрея и объявили о создании **Королевства Ксанф**[^20]. Многие жители поддержали мятеж, так как видели в пиратах единственную надежду на выживание[^21].
 
-<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-king.jpg" alt="Король Ксанф" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Король Ксанф — предводитель пиратов. Реконструкция по табличкам Академии.</div>
-</div>
+
 
 ### Война с Серпендидой (2700–2710 гг.)
 
@@ -146,11 +148,6 @@
 
 ### Король
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 260px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/pirate-codex.jpg" alt="Пиратский кодекс" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Пиратский кодекс, записанный на глиняных табличках. Реконструкция.</div>
-</div>
-
 Король Ксанфа был абсолютным монархом. Его власть основывалась на личном авторитете и поддержке капитанов[^30]. Корону из кораллов, символизировавшую власть над морем, он носил как знак своего избранничества[^31].
 
 ### Капитаны
@@ -164,6 +161,11 @@
 ---
 
 ## Экономика
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-sea-frozen.png" alt="Замерзание Эритрейского моря" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Замерзание Эритрейского моря — гибель пиратского королевства. Реконструкция.</div>
+</div>
 
 Основой экономики был **морской грабёж** и **торговля награбленным**[^36]. После войны с Серпендидой экономика пришла в упадок, и к 2735 году королевство полностью обнищало[^37].
 
@@ -189,11 +191,6 @@
 
 ## Военное дело
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/pirate-galleon.jpg" alt="Пиратская галера" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Пиратская галера — основное оружие Ксанфа. Реконструкция по табличкам Академии.</div>
-</div>
-
 Пиратские галеры были легче и быстрее торговых судов[^43]. На вооружении у пиратов были мечи, копья, луки и метательные орудия. Пираты использовали тактику внезапного нападения, налетая на торговые корабли с нескольких сторон[^44].
 
 Каждый пиратский корабль имел команду из 50–100 человек. Капитаны были опытными моряками, которые знали все течения и ветра Эритрейского моря. Их мастерство позволяло им уходить от преследования даже в самых опасных ситуациях[^45].
@@ -209,6 +206,11 @@
 ---
 
 ## Историческое значение
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-last-days.png" alt="Последние дни Ксанфа" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Последние дни Королевства Ксанф. Гравюра Нары (2740 г. Э.О.).</div>
+</div>
 
 Королевство Ксанф стало последним независимым государством на Марсе. Оно показало, что даже в Эпоху Умирания люди способны создавать свои законы и свою власть[^49]. Пираты оставили после себя множество табличек, которые стали важным источником информации о последних десятилетиях марсианской цивилизации[^50].
 

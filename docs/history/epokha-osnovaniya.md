@@ -242,7 +242,7 @@
 
 ### Основание Академии Окхасена (712 г. Э.О.)
 
- <div style="text-align: right; margin: 20px 0;">
+ <div style="float: right; margin-right: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/martian-calendar-first-tablet.png" alt="Первое упоминание марсианского календаря" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <div style="font-size: 0.9rem; color: #555; margin-top: 6px;"> Первая глиняная табличка в архиве Академии (ок. 1500 г. Э.О.).</div>
 </div>
@@ -257,7 +257,7 @@
 
 ### Появление письменности и Lān sur (890 г. Э.О.)
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 140px;">
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/clay-memory.webp" alt="Lān sur — глина помнит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Lān sur — глина помнит. Центральный символ марсианской мифологии.</div>
 </div>

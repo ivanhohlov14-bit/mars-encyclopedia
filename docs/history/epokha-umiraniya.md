@@ -128,11 +128,6 @@
 
 ### 2680–2700 гг. — Первые признаки
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 260px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-ark-construction.png" alt="Строительство кораблей-ковчегов" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство кораблей-ковчегов на космодроме. Реконструкция по табличкам Академии.</div>
-</div>
-
 - **2680 г.** — Начало систематического похолодания. Первые заморозки на побережье Ацидалийского моря. Вулканы Фарсиды проявляют первые признаки активности[^4].
 - **2685 г.** — Уровень моря падает на 1 метр. Рыбаки замечают, что уловы становятся скуднее[^5].
 - **2690 г.** — Глобальная пылевая буря длится почти год, уничтожив посевы в долине Аравия[^6].

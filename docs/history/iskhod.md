@@ -7,7 +7,7 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-ark-silhouette-v2.jpg" alt="Корабли-ковчеги в космосе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-ark-silhouette-v2.jpg" alt="Корабли-ковчеги в космосе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Корабли-ковчеги в космосе на пути к Земле</div>
 </div>
 
@@ -79,7 +79,7 @@
 ### Причины Исхода
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-ark-launch.jpg" alt="Старт кораблей-ковчегов" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-ark-launch.jpg" alt="Старт кораблей-ковчегов" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Старт трёх кораблей-ковчегов с космодрома Фарсиды. Реконструкция по табличкам Академии Окхасена.</div>
 </div>
 
@@ -98,7 +98,7 @@
 ### Подготовка
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-launch-pad.png" alt="Космодром Фарсиды перед стартом" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-launch-pad.png" alt="Космодром Фарсиды перед стартом" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Космодром Фарсиды перед стартом кораблей. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -138,7 +138,7 @@
 В 2741 году три корабля достигли Земли. Однако планета оказалась совсем не такой, какой её представляли марсиане. Вместо голубой планеты, которую они видели в телескопы, перед ними предстал мир оранжево-мутного неба и зелёных, от растворённого железа, океанов. Это была Архейская Земля — планета, ещё не знавшая кислорода, с атмосферой из углекислого газа, метана и сероводорода[^13].
 
 <div style="text-align: right; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/books/iskhod-new-okhasen.jpg" alt="Новый Окхасен" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-new-okhasen.jpg" alt="Новый Окхасен" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Нового Окхасена — первого марсианского поселения на Земле. Реконструкция.</div>
 </div>
 

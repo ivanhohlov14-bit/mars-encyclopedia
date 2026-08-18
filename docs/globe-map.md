@@ -216,6 +216,107 @@ title: 3D-карта Марса
 }
 </script>
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D-карта Марса</title>
+  <style>
+    .map-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #0a0a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+    #mars-globe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #ccc;
+      font-size: 13px;
+      background: rgba(10, 10, 26, 0.8);
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid #2a2a4a;
+      z-index: 10;
+    }
+    .legend span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .legend .city { background: #ff6633; }
+    .legend .sea { background: #3388dd; }
+    .legend .mountain { background: #cc8844; }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 4px 0;
+    }
+    .info-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: #aaa;
+      font-size: 13px;
+      background: rgba(10, 10, 26, 0.8);
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid #2a2a4a;
+      z-index: 10;
+      text-align: right;
+    }
+    @media (max-width: 768px) {
+      .legend, .info-panel { display: none; }
+    }
+    .loading-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #888;
+      font-size: 18px;
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+
+<div class="map-container">
+  <div id="mars-globe">
+    <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><span class="city"></span> Города</div>
+    <div class="legend-item"><span class="sea"></span> Моря</div>
+    <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
+  </div>
+  <div class="info-panel">
+    🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — скрыть/показать метки
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -273,7 +374,6 @@ const marsMaterial = new THREE.MeshPhongMaterial({ color: 0xcc6633 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 
-// ПУТЬ К ВАШЕЙ КАРТЕ (замените при необходимости)
 const mapPath = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
 const marsTexture = textureLoader.load(
   mapPath,
@@ -305,13 +405,12 @@ fillLight.position.set(-3, 0, 4);
 scene.add(fillLight);
 
 // ============================================================
-// 6. МЕТКИ (СПРАЙТЫ)
+// 6. МЕТКИ (СПРАЙТЫ) — УВЕЛИЧЕННЫЙ РАЗМЕР
 // ============================================================
 // ------ НАСТРОЙКА КООРДИНАТ ------
 // Если метки не совпадают с картой, меняйте эти две переменные (в градусах):
 const LON_OFFSET = 0;   // смещение по долготе (положительное = вправо на карте)
 const LAT_OFFSET = 0;   // смещение по широте (положительное = вверх на карте)
-// Пример: если метка Окхасен оказалась в море, попробуйте LON_OFFSET = 5 или -5.
 
 function latLonToPosition(lat, lon, radius = 1.0) {
   lat += LAT_OFFSET;
@@ -329,27 +428,38 @@ function latLonToPosition(lat, lon, radius = 1.0) {
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
 
-  // Canvas для текста (увеличен)
+  // Увеличенный canvas для длинных названий
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = 256;
-  canvas.height = 96;
+  canvas.width = 400;    // было 256
+  canvas.height = 120;   // было 96
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Круглый фон
+  // Прямоугольник с закруглёнными углами (вместо круга — больше места для текста)
+  const radiusBg = 20;
   ctx.beginPath();
-  ctx.arc(128, 48, 40, 0, 2 * Math.PI);
+  ctx.moveTo(radiusBg, 0);
+  ctx.lineTo(canvas.width - radiusBg, 0);
+  ctx.quadraticCurveTo(canvas.width, 0, canvas.width, radiusBg);
+  ctx.lineTo(canvas.width, canvas.height - radiusBg);
+  ctx.quadraticCurveTo(canvas.width, canvas.height, canvas.width - radiusBg, canvas.height);
+  ctx.lineTo(radiusBg, canvas.height);
+  ctx.quadraticCurveTo(0, canvas.height, 0, canvas.height - radiusBg);
+  ctx.lineTo(0, radiusBg);
+  ctx.quadraticCurveTo(0, 0, radiusBg, 0);
+  ctx.closePath();
   ctx.fillStyle = color + '99';
   ctx.fill();
   ctx.strokeStyle = 'rgba(255,255,255,0.6)';
   ctx.lineWidth = 3;
   ctx.stroke();
-  // Текст
+
+  // Текст (увеличенный шрифт)
   ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold 28px Segoe UI, sans-serif';
+  ctx.font = 'bold 32px Segoe UI, sans-serif';  // было 28px
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(text, 128, 50);
+  ctx.fillText(text, canvas.width / 2, canvas.height / 2 + 2);
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
@@ -364,8 +474,8 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
 
   const sprite = new THREE.Sprite(material);
   sprite.position.copy(pos);
-  // Размер спрайта (увеличен)
-  sprite.scale.set(0.15, 0.06, 1);
+  // Увеличенный размер спрайта
+  sprite.scale.set(0.22, 0.07, 1);  // было 0.15, 0.06
 
   sprite.userData = {
     pos: pos.clone(),
@@ -378,29 +488,34 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
 }
 
 // ============================================================
-// 7. СПИСОК МЕТОК (меняйте координаты здесь!)
+// 7. СПИСОК МЕТОК (с координатами и ссылками)
 // ============================================================
-// Формат: [название, широта, долгота, цвет (HEX)]
-// Широта: от -90 (юг) до +90 (север)
-// Долгота: от -180 до +180 (запад/восток)
+// Формат: [название, широта, долгота, цвет (HEX), ссылка]
 const labelData = [
-  ['👑 Северное', 30, 30, '#ffaa00'],
-  ['👑 Южное', -30, 40, '#ffaa00'],
-  ['🌋 Олимп', 18.4, 226, '#cc8844'],
-  ['🏔️ Маринер', -13.9, -59.2, '#cc8844'],
-  ['🧊 Северный полюс', 80, 0, '#88ccff'],
-  ['🌊 Ацидалийское море', 22.2, -21, '#3388dd'],
-  ['🏛️ Окхасен', 44.4, -50, '#ff6633'],
-  // Добавьте свои метки сюда, например:
-  // ['🌾 Равнина Эллада', -42.7, 70.1, '#88aa44'],
+  // --- МОРЯ (с вашими ссылками) ---
+  ['🌊 Ацидалийское море', 22.2, -21, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/'],
+  ['🌊 Море Эллада', 73.6, 70.5, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/'],
+  ['🌊 Море Аргира', -49.7, 43.1, '#3388dd', 'https://mars-wiki.ru/geography/argir-sea/'],
+  ['🌊 Эритрейское море', -24.7, 40, '#3388dd', 'https://mars-wiki.ru/geography/eritreya-sea/'],
+  ['🌊 Амазонское море', 24.7, 147.5, '#3388dd', 'https://mars-wiki.ru/geography/amazon-sea/'],
+  ['🌊 Зефирийское море', 53.0, 155.85, '#3388dd', 'https://mars-wiki.ru/geography/zephyria-sea/'],
+  ['🌊 Залив Сиртис', 24.7, 147.5, '#3388dd', 'https://mars-wiki.ru/geography/sirtis-major-bay/'],
+
+  // --- ДРУГИЕ ОБЪЕКТЫ ---
+  ['👑 Северное королевство', 30, 30, '#ffaa00', '#'],
+  ['👑 Южное королевство', -30, 40, '#ffaa00', '#'],
+  ['🌋 Олимп', 18.4, 226, '#cc8844', '#'],
+  ['🏔️ Долина Маринер', -13.9, -59.2, '#cc8844', '#'],
+  ['🧊 Северный полюс', 80, 0, '#88ccff', '#'],
+  ['🏛️ Окхасен', 44.4, -50, '#ff6633', '#'],
 ];
 
 const labelsGroup = new THREE.Group();
 scene.add(labelsGroup);
 
 const labelSprites = [];
-for (let [text, lat, lon, color] of labelData) {
-  const sprite = createLabelSprite(text, lat, lon, color, '#');
+for (let [text, lat, lon, color, link] of labelData) {
+  const sprite = createLabelSprite(text, lat, lon, color, link);
   labelsGroup.add(sprite);
   labelSprites.push(sprite);
 }
@@ -435,7 +550,6 @@ window.addEventListener('resize', () => {
   renderer.setSize(width, height);
 });
 
-// Клавиша M скрывает/показывает метки
 document.addEventListener('keydown', (e) => {
   if (e.key === 'm' || e.key === 'M') {
     labelsGroup.visible = !labelsGroup.visible;

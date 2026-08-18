@@ -423,7 +423,10 @@
 
 ## Государственное устройство
 
-*Основные статьи: [Государственный строй Аркадии](https://mars-wiki.ru/politics/arkadia-system/), [Внутренняя политика Аркадии](https://mars-wiki.ru/politics/arkadia-internal/)*
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-flag-coat-of-arms.png" alt="Флаг и герб Королевства Аркадия" style="width: 80%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Флаг и герб Королевства Аркадия. Чёрный — символ обсидиана, красный — огня, белый — снега. Орел с молотом и табличкой — символ свободы и знаний.</div>
+</div>
 
 Аркадия была **выборной монархией**, известной как **«Держава Ветра»**. Власть короля («Держателя Ветра») не была наследственной — правителя избирал **Совет старейшин** из числа наиболее знатных родов[^1]. Однако на протяжении почти всей истории престол занимала династия **Терманидов**.
 

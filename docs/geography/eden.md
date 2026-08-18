@@ -45,6 +45,7 @@
   <p><b>Тип государства:</b> Королевство (федеративная монархия)</p>
   <p><b>Официальный язык:</b> <a href="https://mars-wiki.ru/terms/marzan/">Marzān</a></p>
   <p><b>Столица:</b> <a href="https://mars-wiki.ru/geography/rogen-aria/">Роген-Ария</a></p>
+  <p><b>Координаты столицы:</b> 25° с.ш., 30° в.д.</p>
   <p><b>Крупнейшие города:</b> <a href="https://mars-wiki.ru/geography/okhasen/">Окхасен</a>, Эрданис, Саксин, Тана-Акха</p>
   <p><b>Правящая династия:</b> Сарумиды (Сарум I — Сарум Великий — Аратан III)</p>
   <p><b>Годы существования:</b> ок. 1500 г. Э.О. — 2745 г. Э.О.</p>
@@ -53,25 +54,102 @@
   <hr style="margin: 6px 0;">
 
   <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Территория и население
+    Территория
   </div>
 
-  <p><b>Территория:</b> ~18 млн км²</p>
-  <p><b>Население (2650 г.):</b> ~8,5 млн чел.</p>
-  <p><b>Плотность:</b> ~0,47 чел./км²</p>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• Всего ~18 млн км²</li>
+    <li>• % водной поверхности ~18 %</li>
+  </ul>
 
   <hr style="margin: 6px 0;">
 
   <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Связанные понятия
+    Население
   </div>
 
   <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
-    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
-    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
-    <li>• <a href="https://mars-wiki.ru/books/iskhod/">Исход</a></li>
-    <li>• <a href="https://mars-wiki.ru/history/epokha-umiraniya/">Эпоха Умирания</a></li>
-    <li>• <a href="https://mars-wiki.ru/history/epokha-rascveta/">Эпоха Расцвета</a></li>
+    <li>• Оценка (2650 г. Э.О.) ~8,5 млн чел.</li>
+    <li>• Плотность ~0,47 чел./км²</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• Итого (2650 г.) ~18 млн глиняных талантов</li>
+    <li>• На душу населения ~2,1 таланта</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (с 2600 г. Э.О.)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/utopia/">Утопия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/serpentida/">Серпендида</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eritrea/">Эритрея</a>
+    </div>
+  </div>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/acidalia-sea/">Ацидалийское море</a></li>
+    <li>• залив Горн</li>
+    <li>• залив Ульян</li>
+    <li>• залив Большой Сирт</li>
+    <li>• залив Маринера</li>
+    <li>• <a href="https://mars-wiki.ru/geography/zephyria-sea/">Зефирийское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/eritreya-sea/">Эритрейское море</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие реки
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/ksanf-river/">Ксанф</a></li>
+    <li>• Агария</li>
+    <li>• Арес</li>
+    <li>• Шалбот</li>
+    <li>• Майа</li>
   </ul>
 
 </div>

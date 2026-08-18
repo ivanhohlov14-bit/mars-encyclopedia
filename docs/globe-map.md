@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D-карта Марса с Фобосом и Деймосом</title>
+  <title>3D-карта Марса</title>
   <style>
     .map-container {
       position: relative;
@@ -101,7 +101,7 @@
     <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
   </div>
   <div class="info-panel">
-    🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — метки<br>Клавиша <b>O</b> — орбиты
+    🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — метки<br>Клавиша <b>O</b> — орбиты<br>Клавиша <b>P</b> — спутники<br>Клавиша <b>R</b> — вращение спутников
   </div>
   <div id="coords">🪐 наведите на планету</div>
 </div>
@@ -145,7 +145,7 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.rotateSpeed = 0.5;
 controls.minDistance = 1.5;
-controls.maxDistance = 8; // увеличил, чтобы видеть спутники
+controls.maxDistance = 8;
 controls.target.set(0, 0, 0);
 controls.autoRotate = false;
 controls.update();
@@ -204,35 +204,41 @@ fillLight.position.set(-3, 0, 4);
 scene.add(fillLight);
 
 // ============================================================
-// 6. ФОБОС И ДЕЙМОС (спутники)
+// 6. ФОБОС И ДЕЙМОС (с текстурами и управлением)
 // ============================================================
-// Параметры орбит (радиусы в единицах Марса, скорости)
 const PHOBOS_RADIUS = 1.8;
 const DEIMOS_RADIUS = 2.5;
-const PHOBOS_SPEED = 0.8;   // рад/сек
+const PHOBOS_SPEED = 0.8;
 const DEIMOS_SPEED = 0.3;
 
-// Создаём группы для спутников (чтобы вращать их вокруг оси Y)
+// Группы для вращения спутников
 const phobosGroup = new THREE.Group();
 const deimosGroup = new THREE.Group();
 scene.add(phobosGroup);
 scene.add(deimosGroup);
 
-// Фобос (чуть больше, ближе)
-const phobosGeo = new THREE.SphereGeometry(0.06, 16, 16);
-const phobosMat = new THREE.MeshPhongMaterial({ color: 0xaaaaaa, emissive: 0x222222 });
-const phobos = new THREE.Mesh(phobosGeo, phobosMat);
-phobos.position.set(PHOBOS_RADIUS, 0, 0);
+// Функция для создания спутника с текстурой
+function createMoon(radius, texturePath, color = 0xaaaaaa, size = 0.08) {
+  const geo = new THREE.SphereGeometry(size, 24, 24);
+  const mat = new THREE.MeshPhongMaterial({ 
+    map: textureLoader.load(texturePath),
+    color: 0xffffff,
+    emissive: 0x111111
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.position.set(radius, 0, 0);
+  return mesh;
+}
+
+// Фобос
+const phobos = createMoon(PHOBOS_RADIUS, './215.jpg', 0xaaaaaa, 0.08);
 phobosGroup.add(phobos);
 
-// Деймос (меньше, дальше)
-const deimosGeo = new THREE.SphereGeometry(0.04, 16, 16);
-const deimosMat = new THREE.MeshPhongMaterial({ color: 0x888888, emissive: 0x111111 });
-const deimos = new THREE.Mesh(deimosGeo, deimosMat);
-deimos.position.set(DEIMOS_RADIUS, 0, 0);
+// Деймос
+const deimos = createMoon(DEIMOS_RADIUS, './201.jpg', 0x888888, 0.06);
 deimosGroup.add(deimos);
 
-// Орбитальные линии (кольца)
+// Орбиты
 function createOrbit(radius, color = 0x446688) {
   const points = [];
   const segments = 64;
@@ -241,15 +247,18 @@ function createOrbit(radius, color = 0x446688) {
     points.push(new THREE.Vector3(radius * Math.cos(angle), 0, radius * Math.sin(angle)));
   }
   const geometry = new THREE.BufferGeometry().setFromPoints(points);
-  const material = new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.3 });
-  const orbitLine = new THREE.Line(geometry, material);
-  return orbitLine;
+  const material = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.3 });
+  return new THREE.Line(geometry, material);
 }
 
 const phobosOrbit = createOrbit(PHOBOS_RADIUS, 0x88aaff);
 const deimosOrbit = createOrbit(DEIMOS_RADIUS, 0x88aaff);
 scene.add(phobosOrbit);
 scene.add(deimosOrbit);
+
+// Флаги управления
+let satellitesVisible = true;
+let satellitesRotating = true;
 
 // ============================================================
 // 7. МЕТКИ (без изменений)
@@ -392,9 +401,11 @@ renderer.domElement.addEventListener('click', onCanvasClick);
 function animate() {
   requestAnimationFrame(animate);
 
-  // Вращаем спутники вокруг оси Y
-  phobosGroup.rotation.y += PHOBOS_SPEED * 0.01;
-  deimosGroup.rotation.y += DEIMOS_SPEED * 0.01;
+  // Вращение спутников, если включено
+  if (satellitesRotating) {
+    phobosGroup.rotation.y += PHOBOS_SPEED * 0.01;
+    deimosGroup.rotation.y += DEIMOS_SPEED * 0.01;
+  }
 
   // Прозрачность меток
   const cameraDir = camera.position.clone().normalize();
@@ -422,12 +433,26 @@ window.addEventListener('resize', () => {
 });
 
 document.addEventListener('keydown', (e) => {
+  // M – метки
   if (e.key === 'm' || e.key === 'M') {
     labelsGroup.visible = !labelsGroup.visible;
   }
+  // O – орбиты
   if (e.key === 'o' || e.key === 'O') {
     phobosOrbit.visible = !phobosOrbit.visible;
     deimosOrbit.visible = !deimosOrbit.visible;
+  }
+  // P – спутники (показать/скрыть)
+  if (e.key === 'p' || e.key === 'P') {
+    satellitesVisible = !satellitesVisible;
+    phobosGroup.visible = satellitesVisible;
+    deimosGroup.visible = satellitesVisible;
+  }
+  // R – вращение спутников (вкл/выкл)
+  if (e.key === 'r' || e.key === 'R') {
+    satellitesRotating = !satellitesRotating;
+    // Можно добавить визуальный индикатор, но пока просто меняем флаг
+    console.log('Вращение спутников:', satellitesRotating ? 'включено' : 'выключено');
   }
 });
 
@@ -435,7 +460,7 @@ setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
 </script>
 
 <div style="text-align: center; color: #888; font-size: 14px; margin-top: 10px; padding: 10px; background: #0a0a1a; border-radius: 8px;">
-  🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — метки • <b>O</b> — орбиты
+  🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — метки • <b>O</b> — орбиты • <b>P</b> — спутники • <b>R</b> — вращение спутников
 </div>
 
 </body>

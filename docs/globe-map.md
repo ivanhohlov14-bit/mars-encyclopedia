@@ -2,24 +2,38 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D-карта Марса</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>3D-карта Марса с Фобосом и Деймосом</title>
   <style>
+    /* --- ОБЩИЕ СТИЛИ --- */
+    * { box-sizing: border-box; }
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0a0a1a;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
     .map-container {
       position: relative;
       width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
+      height: 100vh; /* на телефоне — весь экран */
+      max-width: 100%;
+      margin: 0;
       background: #0a0a1a;
-      border-radius: 12px;
       overflow: hidden;
-      aspect-ratio: 16 / 9;
     }
+
     #mars-globe {
       width: 100%;
       height: 100%;
       display: block;
     }
+
+    /* --- ЛЕГЕНДА (скрывается на телефоне) --- */
     .legend {
       position: absolute;
       bottom: 20px;
@@ -31,6 +45,7 @@
       border-radius: 8px;
       border: 1px solid #2a2a4a;
       z-index: 10;
+      pointer-events: none;
     }
     .legend span {
       display: inline-block;
@@ -47,6 +62,8 @@
       align-items: center;
       margin: 4px 0;
     }
+
+    /* --- ИНФОРМАЦИОННАЯ ПАНЕЛЬ (скрывается на телефоне) --- */
     .info-panel {
       position: absolute;
       top: 20px;
@@ -59,7 +76,10 @@
       border: 1px solid #2a2a4a;
       z-index: 10;
       text-align: right;
+      pointer-events: none;
     }
+
+    /* --- КООРДИНАТЫ (видны и на телефоне, но чуть меньше) --- */
     #coords {
       position: absolute;
       top: 20px;
@@ -75,9 +95,94 @@
       pointer-events: none;
       user-select: none;
     }
-    @media (max-width: 768px) {
-      .legend, .info-panel, #coords { display: none; }
+
+    /* --- ПЛАВАЮЩИЕ КНОПКИ (только для телефона) --- */
+    .mobile-controls {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 20;
+      pointer-events: none; /* клики по контейнеру не мешают */
     }
+    .mobile-controls button {
+      pointer-events: auto; /* кнопки кликабельны */
+      background: rgba(10, 10, 26, 0.85);
+      border: 1px solid #2a2a4a;
+      color: #fff;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 20px;
+      backdrop-filter: blur(4px);
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+    }
+    .mobile-controls button:active {
+      transform: scale(0.92);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .mobile-controls button.active {
+      border-color: #ff6633;
+      box-shadow: 0 0 15px #ff663366;
+    }
+    .mobile-controls .label {
+      display: none; /* подписи не нужны */
+    }
+
+    /* --- АДАПТИВНОСТЬ (телефоны) --- */
+    @media (max-width: 768px) {
+      .legend, .info-panel {
+        display: none !important;
+      }
+      #coords {
+        font-size: 12px;
+        padding: 6px 12px;
+        top: 12px;
+        left: 12px;
+      }
+      .mobile-controls {
+        bottom: 16px;
+        right: 16px;
+        gap: 8px;
+      }
+      .mobile-controls button {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+      }
+      /* Подпись с пожеланием тоже адаптируем */
+      .footer-message {
+        font-size: 14px !important;
+        padding: 10px !important;
+      }
+      .footer-message .sub {
+        font-size: 11px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mobile-controls button {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+      #coords {
+        font-size: 10px;
+        padding: 4px 10px;
+        top: 8px;
+        left: 8px;
+      }
+    }
+
+    /* --- ЗАГРУЗКА --- */
     .loading-text {
       position: absolute;
       top: 50%;
@@ -95,15 +200,29 @@
   <div id="mars-globe">
     <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
   </div>
+
+  <!-- Легенда (скрывается на телефоне) -->
   <div class="legend">
     <div class="legend-item"><span class="city"></span> Города</div>
     <div class="legend-item"><span class="sea"></span> Моря</div>
     <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
   </div>
+
+  <!-- Инфо-панель (скрывается на телефоне) -->
   <div class="info-panel">
     🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — метки<br>Клавиша <b>O</b> — орбиты<br>Клавиша <b>P</b> — спутники<br>Клавиша <b>R</b> — вращение спутников
   </div>
+
+  <!-- Координаты -->
   <div id="coords">🪐 наведите на планету</div>
+
+  <!-- Плавающие кнопки (видны только на телефоне) -->
+  <div class="mobile-controls" id="mobileControls">
+    <button id="btnM" title="Метки">🏷️</button>
+    <button id="btnO" title="Орбиты">⭕</button>
+    <button id="btnP" title="Спутники">🛰️</button>
+    <button id="btnR" title="Вращение">🔄</button>
+  </div>
 </div>
 
 <script type="importmap">
@@ -206,18 +325,16 @@ scene.add(fillLight);
 // ============================================================
 // 6. ФОБОС И ДЕЙМОС (с текстурами и управлением)
 // ============================================================
-const PHOBOS_RADIUS = 2.8;  // было 1.8
-const DEIMOS_RADIUS = 4.0;  // было 2.5
+const PHOBOS_RADIUS = 2.8;
+const DEIMOS_RADIUS = 4.0;
 const PHOBOS_SPEED = 0.8;
 const DEIMOS_SPEED = 0.3;
 
-// Группы для вращения спутников
 const phobosGroup = new THREE.Group();
 const deimosGroup = new THREE.Group();
 scene.add(phobosGroup);
 scene.add(deimosGroup);
 
-// Функция для создания спутника с текстурой
 function createMoon(radius, texturePath, color = 0xaaaaaa, size = 0.08) {
   const geo = new THREE.SphereGeometry(size, 24, 24);
   const mat = new THREE.MeshPhongMaterial({ 
@@ -230,15 +347,12 @@ function createMoon(radius, texturePath, color = 0xaaaaaa, size = 0.08) {
   return mesh;
 }
 
-// Фобос (исправленный путь)
 const phobos = createMoon(PHOBOS_RADIUS, 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/215.jpg', 0xaaaaaa, 0.08);
 phobosGroup.add(phobos);
 
-// Деймос (исправленный путь)
 const deimos = createMoon(DEIMOS_RADIUS, 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/201.jpg', 0x888888, 0.06);
 deimosGroup.add(deimos);
 
-// Орбиты (их радиусы тоже нужно обновить, чтобы они совпадали с новыми орбитами)
 function createOrbit(radius, color = 0x446688) {
   const points = [];
   const segments = 64;
@@ -256,12 +370,11 @@ const deimosOrbit = createOrbit(DEIMOS_RADIUS, 0x88aaff);
 scene.add(phobosOrbit);
 scene.add(deimosOrbit);
 
-// Флаги управления
 let satellitesVisible = true;
 let satellitesRotating = true;
 
 // ============================================================
-// 7. МЕТКИ (без изменений)
+// 7. МЕТКИ (с адаптивным размером для телефона)
 // ============================================================
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
@@ -287,12 +400,20 @@ function positionToLatLon(pos) {
   return { lat, lon };
 }
 
+// Определяем мобильное устройство по ширине экрана
+const isMobile = window.innerWidth <= 768;
+
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = 400;
-  canvas.height = 120;
+  // Для мобильных увеличиваем холст и шрифт
+  const isMobile = window.innerWidth <= 768;
+  const canvasWidth = isMobile ? 500 : 400;
+  const canvasHeight = isMobile ? 140 : 120;
+  canvas.width = canvasWidth;
+  canvas.height = canvasHeight;
+
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   const radiusBg = 20;
   ctx.beginPath();
@@ -311,13 +432,17 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   ctx.strokeStyle = 'rgba(255,255,255,0.6)';
   ctx.lineWidth = 3;
   ctx.stroke();
+
   ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold 32px Segoe UI, sans-serif';
+  const fontSize = isMobile ? 40 : 32;
+  ctx.font = `bold ${fontSize}px Segoe UI, sans-serif`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText(text, canvas.width / 2, canvas.height / 2 + 2);
+
   const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
+
   const material = new THREE.SpriteMaterial({
     map: texture,
     transparent: true,
@@ -325,9 +450,14 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
     depthWrite: false,
     sizeAttenuation: true,
   });
+
   const sprite = new THREE.Sprite(material);
   sprite.position.copy(pos);
-  sprite.scale.set(0.22, 0.07, 1);
+  // На мобильных делаем метки крупнее
+  const scaleX = isMobile ? 0.30 : 0.22;
+  const scaleY = isMobile ? 0.09 : 0.07;
+  sprite.scale.set(scaleX, scaleY, 1);
+
   sprite.userData = { pos: pos.clone(), color, link, text, lat, lon, isLabel: true };
   return sprite;
 }
@@ -358,15 +488,19 @@ for (let [text, lat, lon, color, link] of labelData) {
 }
 
 // ============================================================
-// 8. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ
+// 8. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ (с поддержкой touch)
 // ============================================================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 function updateCoords(event) {
   const rect = renderer.domElement.getBoundingClientRect();
-  mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-  mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+  const clientX = event.clientX || (event.touches && event.touches[0].clientX);
+  const clientY = event.clientY || (event.touches && event.touches[0].clientY);
+  if (clientX === undefined) return;
+  mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+
   raycaster.setFromCamera(mouse, camera);
   const intersects = raycaster.intersectObject(mars);
   if (intersects.length > 0) {
@@ -377,12 +511,21 @@ function updateCoords(event) {
     coordsDiv.textContent = '🪐 наведите на планету';
   }
 }
-renderer.domElement.addEventListener('mousemove', updateCoords);
 
 function onCanvasClick(event) {
+  event.preventDefault();
   const rect = renderer.domElement.getBoundingClientRect();
-  mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-  mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+  let clientX, clientY;
+  if (event.changedTouches) {
+    clientX = event.changedTouches[0].clientX;
+    clientY = event.changedTouches[0].clientY;
+  } else {
+    clientX = event.clientX;
+    clientY = event.clientY;
+  }
+  mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+
   raycaster.setFromCamera(mouse, camera);
   const intersects = raycaster.intersectObjects(labelSprites);
   if (intersects.length > 0) {
@@ -393,21 +536,23 @@ function onCanvasClick(event) {
     }
   }
 }
+
+renderer.domElement.addEventListener('mousemove', updateCoords);
 renderer.domElement.addEventListener('click', onCanvasClick);
+renderer.domElement.addEventListener('touchstart', updateCoords, { passive: true });
+renderer.domElement.addEventListener('touchend', onCanvasClick, { passive: false });
 
 // ============================================================
-// 9. АНИМАЦИЯ (вращение спутников + прозрачность меток)
+// 9. АНИМАЦИЯ
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
 
-  // Вращение спутников, если включено
   if (satellitesRotating) {
     phobosGroup.rotation.y += PHOBOS_SPEED * 0.01;
     deimosGroup.rotation.y += DEIMOS_SPEED * 0.01;
   }
 
-  // Прозрачность меток
   const cameraDir = camera.position.clone().normalize();
   for (let sprite of labelSprites) {
     const pos = sprite.userData.pos.clone().normalize();
@@ -422,7 +567,50 @@ function animate() {
 animate();
 
 // ============================================================
-// 10. АДАПТИВНОСТЬ И ГОРЯЧИЕ КЛАВИШИ
+// 10. УПРАВЛЕНИЕ ЧЕРЕЗ КЛАВИШИ И КНОПКИ
+// ============================================================
+function toggleLabels() {
+  labelsGroup.visible = !labelsGroup.visible;
+  document.getElementById('btnM').classList.toggle('active');
+}
+function toggleOrbits() {
+  phobosOrbit.visible = !phobosOrbit.visible;
+  deimosOrbit.visible = !deimosOrbit.visible;
+  document.getElementById('btnO').classList.toggle('active');
+}
+function toggleSatellites() {
+  satellitesVisible = !satellitesVisible;
+  phobosGroup.visible = satellitesVisible;
+  deimosGroup.visible = satellitesVisible;
+  document.getElementById('btnP').classList.toggle('active');
+}
+function toggleRotation() {
+  satellitesRotating = !satellitesRotating;
+  document.getElementById('btnR').classList.toggle('active');
+}
+
+// Клавиши
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'm' || e.key === 'M') toggleLabels();
+  if (e.key === 'o' || e.key === 'O') toggleOrbits();
+  if (e.key === 'p' || e.key === 'P') toggleSatellites();
+  if (e.key === 'r' || e.key === 'R') toggleRotation();
+});
+
+// Кнопки на телефоне
+document.getElementById('btnM').addEventListener('click', toggleLabels);
+document.getElementById('btnO').addEventListener('click', toggleOrbits);
+document.getElementById('btnP').addEventListener('click', toggleSatellites);
+document.getElementById('btnR').addEventListener('click', toggleRotation);
+
+// Синхронизируем начальное состояние кнопок (по умолчанию всё активно)
+document.getElementById('btnM').classList.add('active');
+document.getElementById('btnO').classList.add('active');
+document.getElementById('btnP').classList.add('active');
+document.getElementById('btnR').classList.add('active');
+
+// ============================================================
+// 11. АДАПТИВНОСТЬ РАЗМЕРА
 // ============================================================
 window.addEventListener('resize', () => {
   const width = container.clientWidth;
@@ -432,36 +620,13 @@ window.addEventListener('resize', () => {
   renderer.setSize(width, height);
 });
 
-document.addEventListener('keydown', (e) => {
-  // M – метки
-  if (e.key === 'm' || e.key === 'M') {
-    labelsGroup.visible = !labelsGroup.visible;
-  }
-  // O – орбиты
-  if (e.key === 'o' || e.key === 'O') {
-    phobosOrbit.visible = !phobosOrbit.visible;
-    deimosOrbit.visible = !deimosOrbit.visible;
-  }
-  // P – спутники (показать/скрыть)
-  if (e.key === 'p' || e.key === 'P') {
-    satellitesVisible = !satellitesVisible;
-    phobosGroup.visible = satellitesVisible;
-    deimosGroup.visible = satellitesVisible;
-  }
-  // R – вращение спутников (вкл/выкл)
-  if (e.key === 'r' || e.key === 'R') {
-    satellitesRotating = !satellitesRotating;
-    // Можно добавить визуальный индикатор, но пока просто меняем флаг
-    console.log('Вращение спутников:', satellitesRotating ? 'включено' : 'выключено');
-  }
-});
-
 setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
 </script>
 
-<div style="text-align: center; color: #ffaa44; font-size: 18px; margin-top: 10px; padding: 15px; background: #0a0a1a; border-radius: 8px; border: 1px solid #ff6633; font-family: 'Segoe UI', sans-serif;">
+<!-- Подпись с пожеланием (адаптируется) -->
+<div style="text-align: center; color: #ffaa44; font-size: 18px; margin-top: 10px; padding: 15px; background: #0a0a1a; border-radius: 8px; border: 1px solid #ff6633; font-family: 'Segoe UI', sans-serif;" class="footer-message">
   🚀 <span style="color: #ff6633;">Совия</span> — выздоравливай быстрее! 🍫 Желаю тебе шоколадку и марсианского настроения! 🌟<br>
-  <span style="font-size: 14px; color: #888;">
+  <span style="font-size: 14px; color: #888;" class="sub">
     🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — метки • <b>O</b> — орбиты • <b>P</b> — спутники • <b>R</b> — вращение спутников
   </span>
 </div>

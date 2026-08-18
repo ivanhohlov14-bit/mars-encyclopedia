@@ -11,18 +11,19 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 100%;
-      overflow: hidden;
+      min-height: 100vh;
       background: #0a0a1a;
       font-family: 'Segoe UI', sans-serif;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     .map-container {
       position: relative;
       width: 100%;
-      height: 100vh; /* на телефоне — весь экран */
+      height: 90vh; /* карта занимает 90% высоты экрана */
       max-width: 100%;
-      margin: 0;
+      margin: 0 auto;
       background: #0a0a1a;
       overflow: hidden;
     }
@@ -79,7 +80,7 @@
       pointer-events: none;
     }
 
-    /* --- КООРДИНАТЫ (видны и на телефоне, но чуть меньше) --- */
+    /* --- КООРДИНАТЫ --- */
     #coords {
       position: absolute;
       top: 20px;
@@ -96,7 +97,7 @@
       user-select: none;
     }
 
-    /* --- ПЛАВАЮЩИЕ КНОПКИ (только для телефона) --- */
+    /* --- ПЛАВАЮЩИЕ КНОПКИ (для телефона, но видны и на ПК) --- */
     .mobile-controls {
       position: absolute;
       bottom: 20px;
@@ -105,10 +106,10 @@
       flex-direction: column;
       gap: 10px;
       z-index: 20;
-      pointer-events: none; /* клики по контейнеру не мешают */
+      pointer-events: none;
     }
     .mobile-controls button {
-      pointer-events: auto; /* кнопки кликабельны */
+      pointer-events: auto;
       background: rgba(10, 10, 26, 0.85);
       border: 1px solid #2a2a4a;
       color: #fff;
@@ -133,14 +134,14 @@
       border-color: #ff6633;
       box-shadow: 0 0 15px #ff663366;
     }
-    .mobile-controls .label {
-      display: none; /* подписи не нужны */
-    }
 
     /* --- АДАПТИВНОСТЬ (телефоны) --- */
     @media (max-width: 768px) {
       .legend, .info-panel {
         display: none !important;
+      }
+      .map-container {
+        height: 85vh; /* на телефоне чуть меньше */
       }
       #coords {
         font-size: 12px;
@@ -158,7 +159,6 @@
         height: 44px;
         font-size: 18px;
       }
-      /* Подпись с пожеланием тоже адаптируем */
       .footer-message {
         font-size: 14px !important;
         padding: 10px !important;
@@ -192,6 +192,18 @@
       font-size: 18px;
       z-index: 5;
     }
+
+    /* Футер с пожеланием */
+    .footer-message {
+      text-align: center;
+      color: #ffaa44;
+      font-size: 18px;
+      padding: 15px;
+      background: #0a0a1a;
+      border-top: 1px solid #ff6633;
+      font-family: 'Segoe UI', sans-serif;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -216,13 +228,21 @@
   <!-- Координаты -->
   <div id="coords">🪐 наведите на планету</div>
 
-  <!-- Плавающие кнопки (видны только на телефоне) -->
+  <!-- Плавающие кнопки -->
   <div class="mobile-controls" id="mobileControls">
     <button id="btnM" title="Метки">🏷️</button>
     <button id="btnO" title="Орбиты">⭕</button>
     <button id="btnP" title="Спутники">🛰️</button>
     <button id="btnR" title="Вращение">🔄</button>
   </div>
+</div>
+
+<!-- Футер с пожеланием -->
+<div class="footer-message">
+  🚀 <span style="color: #ff6633;">Совия</span> — выздоравливай быстрее! 🍫 Желаю тебе шоколадку и марсианского настроения! 🌟<br>
+  <span style="font-size: 14px; color: #888;" class="sub">
+    🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — метки • <b>O</b> — орбиты • <b>P</b> — спутники • <b>R</b> — вращение спутников
+  </span>
 </div>
 
 <script type="importmap">
@@ -374,7 +394,7 @@ let satellitesVisible = true;
 let satellitesRotating = true;
 
 // ============================================================
-// 7. МЕТКИ (с адаптивным размером для телефона)
+// 7. МЕТКИ
 // ============================================================
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
@@ -400,15 +420,12 @@ function positionToLatLon(pos) {
   return { lat, lon };
 }
 
-// Определяем мобильное устройство по ширине экрана
 const isMobile = window.innerWidth <= 768;
 
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  // Для мобильных увеличиваем холст и шрифт
-  const isMobile = window.innerWidth <= 768;
   const canvasWidth = isMobile ? 500 : 400;
   const canvasHeight = isMobile ? 140 : 120;
   canvas.width = canvasWidth;
@@ -453,7 +470,6 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
 
   const sprite = new THREE.Sprite(material);
   sprite.position.copy(pos);
-  // На мобильных делаем метки крупнее
   const scaleX = isMobile ? 0.30 : 0.22;
   const scaleY = isMobile ? 0.09 : 0.07;
   sprite.scale.set(scaleX, scaleY, 1);
@@ -488,7 +504,7 @@ for (let [text, lat, lon, color, link] of labelData) {
 }
 
 // ============================================================
-// 8. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ (с поддержкой touch)
+// 8. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ
 // ============================================================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -530,9 +546,15 @@ function onCanvasClick(event) {
   const intersects = raycaster.intersectObjects(labelSprites);
   if (intersects.length > 0) {
     const sprite = intersects[0].object;
-    const link = sprite.userData.link;
-    if (link && link !== '#') {
-      window.open(link, '_blank');
+    // Проверяем, видима ли метка (находится перед планетой)
+    const pos = sprite.userData.pos.clone().normalize();
+    const cameraDir = camera.position.clone().normalize();
+    const dot = cameraDir.dot(pos);
+    if (dot > 0) {
+      const link = sprite.userData.link;
+      if (link && link !== '#') {
+        window.open(link, '_blank');
+      }
     }
   }
 }
@@ -543,7 +565,7 @@ renderer.domElement.addEventListener('touchstart', updateCoords, { passive: true
 renderer.domElement.addEventListener('touchend', onCanvasClick, { passive: false });
 
 // ============================================================
-// 9. АНИМАЦИЯ
+// 9. АНИМАЦИЯ (метки за планетой полностью исчезают)
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
@@ -557,8 +579,8 @@ function animate() {
   for (let sprite of labelSprites) {
     const pos = sprite.userData.pos.clone().normalize();
     const dot = cameraDir.dot(pos);
-    const opacity = Math.max(0.15, Math.min(1, (dot + 1) / 2));
-    sprite.material.opacity = opacity;
+    // Полностью скрываем метки на обратной стороне
+    sprite.material.opacity = dot > 0 ? 1 : 0;
   }
 
   controls.update();
@@ -597,13 +619,13 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'r' || e.key === 'R') toggleRotation();
 });
 
-// Кнопки на телефоне
+// Кнопки
 document.getElementById('btnM').addEventListener('click', toggleLabels);
 document.getElementById('btnO').addEventListener('click', toggleOrbits);
 document.getElementById('btnP').addEventListener('click', toggleSatellites);
 document.getElementById('btnR').addEventListener('click', toggleRotation);
 
-// Синхронизируем начальное состояние кнопок (по умолчанию всё активно)
+// Начальное состояние кнопок (активны)
 document.getElementById('btnM').classList.add('active');
 document.getElementById('btnO').classList.add('active');
 document.getElementById('btnP').classList.add('active');
@@ -622,14 +644,6 @@ window.addEventListener('resize', () => {
 
 setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
 </script>
-
-<!-- Подпись с пожеланием (адаптируется) -->
-<div style="text-align: center; color: #ffaa44; font-size: 18px; margin-top: 10px; padding: 15px; background: #0a0a1a; border-radius: 8px; border: 1px solid #ff6633; font-family: 'Segoe UI', sans-serif;" class="footer-message">
-  🚀 <span style="color: #ff6633;">Совия</span> — выздоравливай быстрее! 🍫 Желаю тебе шоколадку и марсианского настроения! 🌟<br>
-  <span style="font-size: 14px; color: #888;" class="sub">
-    🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — метки • <b>O</b> — орбиты • <b>P</b> — спутники • <b>R</b> — вращение спутников
-  </span>
-</div>
 
 </body>
 </html>

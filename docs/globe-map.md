@@ -109,6 +109,113 @@ title: 3D-карта Марса
 }
 </script>
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D-карта Марса</title>
+  <style>
+    .map-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #0a0a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+    #mars-globe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #ccc;
+      font-size: 13px;
+      background: rgba(10, 10, 26, 0.8);
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid #2a2a4a;
+      z-index: 10;
+    }
+    .legend span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .legend .city { background: #ff6633; }
+    .legend .sea { background: #3388dd; }
+    .legend .mountain { background: #cc8844; }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 4px 0;
+    }
+    .info-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: #aaa;
+      font-size: 13px;
+      background: rgba(10, 10, 26, 0.8);
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid #2a2a4a;
+      z-index: 10;
+      text-align: right;
+    }
+    @media (max-width: 768px) {
+      .legend, .info-panel { display: none; }
+    }
+    .loading-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #888;
+      font-size: 18px;
+      z-index: 5;
+    }
+    .error-text {
+      color: #ff6633;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="map-container">
+  <div id="mars-globe">
+    <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><span class="city"></span> Города</div>
+    <div class="legend-item"><span class="sea"></span> Моря</div>
+    <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
+  </div>
+  <div class="info-panel">
+    🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — скрыть/показать метки
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -166,6 +273,7 @@ const marsMaterial = new THREE.MeshPhongMaterial({ color: 0xcc6633 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 
+// ПУТЬ К ВАШЕЙ КАРТЕ (замените при необходимости)
 const mapPath = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
 const marsTexture = textureLoader.load(
   mapPath,
@@ -197,14 +305,15 @@ fillLight.position.set(-3, 0, 4);
 scene.add(fillLight);
 
 // ============================================================
-// 6. МЕТКИ (СПРАЙТЫ) — больше не плавают!
+// 6. МЕТКИ (СПРАЙТЫ)
 // ============================================================
-// Калибровочные поправки (если карта смещена, меняйте эти числа)
-const LON_OFFSET = 0;   // смещение по долготе (градусы)
-const LAT_OFFSET = 0;   // смещение по широте (градусы)
+// ------ НАСТРОЙКА КООРДИНАТ ------
+// Если метки не совпадают с картой, меняйте эти две переменные (в градусах):
+const LON_OFFSET = 0;   // смещение по долготе (положительное = вправо на карте)
+const LAT_OFFSET = 0;   // смещение по широте (положительное = вверх на карте)
+// Пример: если метка Окхасен оказалась в море, попробуйте LON_OFFSET = 5 или -5.
 
 function latLonToPosition(lat, lon, radius = 1.0) {
-  // Применяем калибровку
   lat += LAT_OFFSET;
   lon += LON_OFFSET;
   const phi = (90 - lat) * Math.PI / 180;
@@ -216,69 +325,64 @@ function latLonToPosition(lat, lon, radius = 1.0) {
   );
 }
 
-// Создание текстовой метки как спрайта
+// Создание метки-спрайта (увеличенный размер)
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
 
-  // Создаём canvas для текста
+  // Canvas для текста (увеличен)
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = 128;
-  canvas.height = 64;
+  canvas.width = 256;
+  canvas.height = 96;
 
-  // Прозрачный фон
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // Рисуем круглый фон
+  // Круглый фон
   ctx.beginPath();
-  ctx.arc(64, 32, 28, 0, 2 * Math.PI);
+  ctx.arc(128, 48, 40, 0, 2 * Math.PI);
   ctx.fillStyle = color + '99';
   ctx.fill();
   ctx.strokeStyle = 'rgba(255,255,255,0.6)';
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 3;
   ctx.stroke();
-
-  // Рисуем текст
+  // Текст
   ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold 18px Segoe UI, sans-serif';
+  ctx.font = 'bold 28px Segoe UI, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(text, 64, 34);
+  ctx.fillText(text, 128, 50);
 
-  // Создаём текстуру из canvas
   const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
 
   const material = new THREE.SpriteMaterial({
     map: texture,
     transparent: true,
-    depthTest: false, // чтобы всегда было видно поверх планеты
+    depthTest: false,
     depthWrite: false,
     sizeAttenuation: true,
   });
 
   const sprite = new THREE.Sprite(material);
   sprite.position.copy(pos);
-  sprite.scale.set(0.08, 0.04, 1); // размер метки (подберите под себя)
+  // Размер спрайта (увеличен)
+  sprite.scale.set(0.15, 0.06, 1);
 
-  // Сохраняем для обновления прозрачности
-  sprite.userData = { pos: pos.clone(), color: color, link: link };
-  sprite.userData.canvas = canvas; // для обновления при клике
-
-  // Делаем кликабельным (через raycast)
-  sprite.userData.isLabel = true;
-  sprite.userData.link = link;
-
+  sprite.userData = {
+    pos: pos.clone(),
+    color: color,
+    link: link,
+    canvas: canvas,
+    isLabel: true
+  };
   return sprite;
 }
 
 // ============================================================
-// 7. ДОБАВЛЯЕМ МЕТКИ
+// 7. СПИСОК МЕТОК (меняйте координаты здесь!)
 // ============================================================
-const labelsGroup = new THREE.Group();
-scene.add(labelsGroup);
-
-// Список меток: [название, широта, долгота, цвет]
+// Формат: [название, широта, долгота, цвет (HEX)]
+// Широта: от -90 (юг) до +90 (север)
+// Долгота: от -180 до +180 (запад/восток)
 const labelData = [
   ['👑 Северное', 30, 30, '#ffaa00'],
   ['👑 Южное', -30, 40, '#ffaa00'],
@@ -287,8 +391,12 @@ const labelData = [
   ['🧊 Северный полюс', 80, 0, '#88ccff'],
   ['🌊 Ацидалийское море', 22.2, -21, '#3388dd'],
   ['🏛️ Окхасен', 44.4, -50, '#ff6633'],
-  // Добавьте свои метки сюда
+  // Добавьте свои метки сюда, например:
+  // ['🌾 Равнина Эллада', -42.7, 70.1, '#88aa44'],
 ];
+
+const labelsGroup = new THREE.Group();
+scene.add(labelsGroup);
 
 const labelSprites = [];
 for (let [text, lat, lon, color] of labelData) {
@@ -298,12 +406,11 @@ for (let [text, lat, lon, color] of labelData) {
 }
 
 // ============================================================
-// 8. АНИМАЦИЯ (обновление прозрачности в зависимости от стороны)
+// 8. АНИМАЦИЯ (обновление прозрачности меток)
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
 
-  // Обновляем прозрачность меток в зависимости от стороны
   const cameraDir = camera.position.clone().normalize();
   for (let sprite of labelSprites) {
     const pos = sprite.userData.pos.clone().normalize();
@@ -328,6 +435,7 @@ window.addEventListener('resize', () => {
   renderer.setSize(width, height);
 });
 
+// Клавиша M скрывает/показывает метки
 document.addEventListener('keydown', (e) => {
   if (e.key === 'm' || e.key === 'M') {
     labelsGroup.visible = !labelsGroup.visible;
@@ -337,13 +445,10 @@ document.addEventListener('keydown', (e) => {
 setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
 </script>
 
-<!-- ===== ПОДПИСЬ ===== -->
+<!-- Подпись -->
 <div style="text-align: center; color: #888; font-size: 14px; margin-top: 10px; padding: 10px; background: #0a0a1a; border-radius: 8px;">
-  🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку
+  🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — скрыть метки
 </div>
 
-<style>
-  .md-content {
-    background: #0a0a1a !important;
-  }
-</style>
+</body>
+</html>

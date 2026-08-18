@@ -112,10 +112,9 @@ title: 3D-карта Марса
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 
 // ============================================================
-// 1. СЦЕНА, КАМЕРА, РЕНДЕРЫ
+// 1. СЦЕНА, КАМЕРА, РЕНДЕР
 // ============================================================
 const container = document.getElementById('mars-globe');
 const loadingText = document.getElementById('loadingText');
@@ -130,14 +129,6 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 container.appendChild(renderer.domElement);
-
-const labelRenderer = new CSS2DRenderer();
-labelRenderer.setSize(container.clientWidth, container.clientHeight);
-labelRenderer.domElement.style.position = 'absolute';
-labelRenderer.domElement.style.top = '0';
-labelRenderer.domElement.style.left = '0';
-labelRenderer.domElement.style.pointerEvents = 'none';
-container.appendChild(labelRenderer.domElement);
 
 // ============================================================
 // 2. УПРАВЛЕНИЕ
@@ -167,7 +158,7 @@ const stars = new THREE.Points(starsGeometry, starsMaterial);
 scene.add(stars);
 
 // ============================================================
-// 4. МАРС
+// 4. МАРС (текстура)
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
 const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
@@ -206,11 +197,16 @@ fillLight.position.set(-3, 0, 4);
 scene.add(fillLight);
 
 // ============================================================
-// 6. МЕТКИ (жёстко на поверхности)
+// 6. МЕТКИ (СПРАЙТЫ) — больше не плавают!
 // ============================================================
-const labelItems = [];
+// Калибровочные поправки (если карта смещена, меняйте эти числа)
+const LON_OFFSET = 0;   // смещение по долготе (градусы)
+const LAT_OFFSET = 0;   // смещение по широте (градусы)
 
-function latLonToPosition(lat, lon, radius = 1.0) {  // точно на поверхности
+function latLonToPosition(lat, lon, radius = 1.0) {
+  // Применяем калибровку
+  lat += LAT_OFFSET;
+  lon += LON_OFFSET;
   const phi = (90 - lat) * Math.PI / 180;
   const theta = (lon + 180) * Math.PI / 180;
   return new THREE.Vector3(
@@ -220,77 +216,109 @@ function latLonToPosition(lat, lon, radius = 1.0) {  // точно на пове
   );
 }
 
-function createLabel(text, lat, lon, color = '#ff6633', link = '#') {
+// Создание текстовой метки как спрайта
+function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
-  const div = document.createElement('div');
-  div.textContent = text;
-  div.style.color = '#fff';
-  div.style.backgroundColor = color + '99';
-  div.style.padding = '2px 8px';
-  div.style.borderRadius = '12px';
-  div.style.fontSize = '11px';
-  div.style.fontWeight = 'bold';
-  div.style.border = '1px solid rgba(255,255,255,0.4)';
-  div.style.boxShadow = '0 0 15px ' + color + '66';
-  div.style.cursor = 'pointer';
-  div.style.transition = 'all 0.2s';
-  div.style.pointerEvents = 'auto';
-  div.style.whiteSpace = 'nowrap';
-  div.style.fontFamily = 'Segoe UI, sans-serif';
-  div.onclick = () => { window.location.href = link; };
-  div.onmouseover = () => {
-    div.style.transform = 'scale(1.2)';
-    div.style.backgroundColor = color;
-  };
-  div.onmouseout = () => {
-    div.style.transform = 'scale(1)';
-    div.style.backgroundColor = color + '99';
-  };
-  const label = new CSS2DObject(div);
-  label.position.copy(pos);
-  labelItems.push({
-    label: label,
-    position: pos.clone(),
-    div: div
+
+  // Создаём canvas для текста
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = 128;
+  canvas.height = 64;
+
+  // Прозрачный фон
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Рисуем круглый фон
+  ctx.beginPath();
+  ctx.arc(64, 32, 28, 0, 2 * Math.PI);
+  ctx.fillStyle = color + '99';
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Рисуем текст
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 18px Segoe UI, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(text, 64, 34);
+
+  // Создаём текстуру из canvas
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+
+  const material = new THREE.SpriteMaterial({
+    map: texture,
+    transparent: true,
+    depthTest: false, // чтобы всегда было видно поверх планеты
+    depthWrite: false,
+    sizeAttenuation: true,
   });
-  return label;
+
+  const sprite = new THREE.Sprite(material);
+  sprite.position.copy(pos);
+  sprite.scale.set(0.08, 0.04, 1); // размер метки (подберите под себя)
+
+  // Сохраняем для обновления прозрачности
+  sprite.userData = { pos: pos.clone(), color: color, link: link };
+  sprite.userData.canvas = canvas; // для обновления при клике
+
+  // Делаем кликабельным (через raycast)
+  sprite.userData.isLabel = true;
+  sprite.userData.link = link;
+
+  return sprite;
 }
 
-// --- Добавляем метки (только ключевые) ---
+// ============================================================
+// 7. ДОБАВЛЯЕМ МЕТКИ
+// ============================================================
 const labelsGroup = new THREE.Group();
 scene.add(labelsGroup);
 
-labelsGroup.add(createLabel('👑 Северное', 30, 30, '#ffaa00', '#'));
-labelsGroup.add(createLabel('👑 Южное', -30, 40, '#ffaa00', '#'));
-labelsGroup.add(createLabel('🌋 Олимп', 18.4, 226, '#cc8844', '#'));
-labelsGroup.add(createLabel('🏔️ Маринер', -13.9, -59.2, '#cc8844', '#'));
-labelsGroup.add(createLabel('🧊 Северный полюс', 80, 0, '#88ccff', '#'));
-labelsGroup.add(createLabel('🌊 Ацидалийское море', 22.2, -21, '#3388dd', '#'));
-labelsGroup.add(createLabel('🏛️ Окхасен', 44.4, -50, '#ff6633', '#'));
+// Список меток: [название, широта, долгота, цвет]
+const labelData = [
+  ['👑 Северное', 30, 30, '#ffaa00'],
+  ['👑 Южное', -30, 40, '#ffaa00'],
+  ['🌋 Олимп', 18.4, 226, '#cc8844'],
+  ['🏔️ Маринер', -13.9, -59.2, '#cc8844'],
+  ['🧊 Северный полюс', 80, 0, '#88ccff'],
+  ['🌊 Ацидалийское море', 22.2, -21, '#3388dd'],
+  ['🏛️ Окхасен', 44.4, -50, '#ff6633'],
+  // Добавьте свои метки сюда
+];
+
+const labelSprites = [];
+for (let [text, lat, lon, color] of labelData) {
+  const sprite = createLabelSprite(text, lat, lon, color, '#');
+  labelsGroup.add(sprite);
+  labelSprites.push(sprite);
+}
 
 // ============================================================
-// 7. АНИМАЦИЯ (метки не двигаются)
+// 8. АНИМАЦИЯ (обновление прозрачности в зависимости от стороны)
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
 
-  // Обновление прозрачности в зависимости от стороны
-  const cameraPos = camera.position.clone().normalize();
-  for (let item of labelItems) {
-    const labelDir = item.position.clone().normalize();
-    const dot = cameraPos.dot(labelDir);
-    const opacity = Math.max(0.2, Math.min(1, (dot + 1) / 2));
-    item.div.style.opacity = opacity;
+  // Обновляем прозрачность меток в зависимости от стороны
+  const cameraDir = camera.position.clone().normalize();
+  for (let sprite of labelSprites) {
+    const pos = sprite.userData.pos.clone().normalize();
+    const dot = cameraDir.dot(pos);
+    const opacity = Math.max(0.15, Math.min(1, (dot + 1) / 2));
+    sprite.material.opacity = opacity;
   }
 
   controls.update();
   renderer.render(scene, camera);
-  labelRenderer.render(scene, camera);
 }
 animate();
 
 // ============================================================
-// 8. АДАПТИВНОСТЬ И ГОРЯЧИЕ КЛАВИШИ
+// 9. АДАПТИВНОСТЬ И ГОРЯЧИЕ КЛАВИШИ
 // ============================================================
 window.addEventListener('resize', () => {
   const width = container.clientWidth;
@@ -298,14 +326,11 @@ window.addEventListener('resize', () => {
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
   renderer.setSize(width, height);
-  labelRenderer.setSize(width, height);
 });
 
-// Нажатие 'M' скрывает/показывает метки (для проверки)
 document.addEventListener('keydown', (e) => {
   if (e.key === 'm' || e.key === 'M') {
-    const visible = labelsGroup.visible;
-    labelsGroup.visible = !visible;
+    labelsGroup.visible = !labelsGroup.visible;
   }
 });
 

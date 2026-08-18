@@ -132,7 +132,7 @@ renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 container.appendChild(renderer.domElement);
 
-// CSS2D-рендер для меток
+// CSS2D
 const labelRenderer = new CSS2DRenderer();
 labelRenderer.setSize(container.clientWidth, container.clientHeight);
 labelRenderer.domElement.style.position = 'absolute';
@@ -151,7 +151,7 @@ controls.rotateSpeed = 0.5;
 controls.minDistance = 1.5;
 controls.maxDistance = 6;
 controls.target.set(0, 0, 0);
-controls.autoRotate = false;   // выключено
+controls.autoRotate = false;
 controls.update();
 
 // ============================================================
@@ -173,18 +173,14 @@ scene.add(stars);
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
 const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
-const marsMaterial = new THREE.MeshPhongMaterial({
-  color: 0xcc6633, // запасной цвет
-});
+const marsMaterial = new THREE.MeshPhongMaterial({ color: 0xcc6633 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 
-// Загружаем вашу текстуру
 const mapPath = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
 const marsTexture = textureLoader.load(
   mapPath,
   (texture) => {
-    console.log('Карта загружена!');
     marsMaterial.map = texture;
     marsMaterial.color.set(0xffffff);
     marsMaterial.needsUpdate = true;
@@ -214,9 +210,11 @@ fillLight.position.set(-3, 0, 4);
 scene.add(fillLight);
 
 // ============================================================
-// 6. ФУНКЦИИ ДЛЯ МЕТОК
+// 6. ФУНКЦИИ ДЛЯ МЕТОК (с уменьшенным размером)
 // ============================================================
-function latLonToPosition(lat, lon, radius = 1.05) {
+const labelItems = []; // массив для хранения меток и их данных
+
+function latLonToPosition(lat, lon, radius = 1.001) {
   const phi = (90 - lat) * Math.PI / 180;
   const theta = (lon + 180) * Math.PI / 180;
   return new THREE.Vector3(
@@ -231,70 +229,90 @@ function createLabel(text, lat, lon, color = '#ff6633', link = '#') {
   const div = document.createElement('div');
   div.textContent = text;
   div.style.color = '#fff';
-  div.style.backgroundColor = color + 'cc';
-  div.style.padding = '5px 14px';
-  div.style.borderRadius = '20px';
-  div.style.fontSize = '14px';
+  div.style.backgroundColor = color + '88';
+  div.style.padding = '1px 5px';
+  div.style.borderRadius = '10px';
+  div.style.fontSize = '8px';
   div.style.fontWeight = 'bold';
-  div.style.border = '2px solid #fff';
-  div.style.boxShadow = '0 0 25px ' + color + '66';
+  div.style.border = '1px solid rgba(255,255,255,0.2)';
+  div.style.boxShadow = '0 0 8px ' + color + '44';
   div.style.cursor = 'pointer';
-  div.style.transition = 'all 0.3s';
+  div.style.transition = 'transform 0.2s';
   div.style.pointerEvents = 'auto';
   div.style.whiteSpace = 'nowrap';
   div.style.fontFamily = 'Segoe UI, sans-serif';
   div.onclick = () => { window.location.href = link; };
   div.onmouseover = () => {
-    div.style.transform = 'scale(1.15)';
+    div.style.transform = 'scale(1.3)';
     div.style.backgroundColor = color;
   };
   div.onmouseout = () => {
     div.style.transform = 'scale(1)';
-    div.style.backgroundColor = color + 'cc';
+    div.style.backgroundColor = color + '88';
   };
   const label = new CSS2DObject(div);
   label.position.copy(pos);
+  // Сохраняем метку и её позицию для обновления прозрачности
+  labelItems.push({
+    label: label,
+    position: pos.clone(),
+    div: div
+  });
   return label;
 }
 
 // ============================================================
-// 7. ДОБАВЛЯЕМ НОВЫЕ МЕТКИ (реальные и вымышленные)
+// 7. ДОБАВЛЕНИЕ МЕТОК (ключевые, уменьшенное количество)
 // ============================================================
-const labelsGroup = new THREE.Group(); // группа для всех меток (чтобы вращать вместе с Марсом, если нужно)
+const labelsGroup = new THREE.Group();
 scene.add(labelsGroup);
 
-// --- Существующие метки (из вашего кода) ---
+// Королевства
+labelsGroup.add(createLabel('👑 Северное', 30, 30, '#ffaa00', '/kingdoms/north'));
+labelsGroup.add(createLabel('👑 Южное', -30, 40, '#ffaa00', '/kingdoms/south'));
+labelsGroup.add(createLabel('👑 Восточное', 10, 100, '#ffaa00', '/kingdoms/east'));
+labelsGroup.add(createLabel('👑 Западное', -10, -120, '#ffaa00', '/kingdoms/west'));
+
+// Реальные объекты
+labelsGroup.add(createLabel('🌋 Олимп', 18.4, 226, '#cc8844', '/geography/olympus'));
+labelsGroup.add(createLabel('🏔️ Маринер', -13.9, -59.2, '#cc8844', '/geography/mariner'));
+labelsGroup.add(createLabel('🧊 Северный полюс', 80, 0, '#88ccff', '/geography/north-pole'));
+labelsGroup.add(createLabel('🧊 Южный полюс', -80, 0, '#88ccff', '/geography/south-pole'));
+labelsGroup.add(createLabel('🌾 Эллада', -42.7, 70.1, '#88aa44', '/geography/ellada-plain'));
+labelsGroup.add(createLabel('🌋 Элизий', 24.7, 147.5, '#cc8844', '/geography/elysium'));
+
+// Моря
+labelsGroup.add(createLabel('🌊 Ацидалийское', 22.2, -21, '#3388dd', '/geography/acidalia-sea'));
+labelsGroup.add(createLabel('🌊 Эллада', 73.6, 70.5, '#3388dd', '/geography/ellada-sea'));
+labelsGroup.add(createLabel('🌊 Зефирийское', 53.0, 155.85, '#3388dd', '/geography/zephyria-sea'));
+
+// Город
 labelsGroup.add(createLabel('🏛️ Окхасен', 44.4, -50, '#ff6633', '/geography/okhasen'));
-labelsGroup.add(createLabel('⛰️ Фарсида', 50, -160, '#cc8844', '/geography/farsida'));
-labelsGroup.add(createLabel('🌊 Ацидалийское море', 22.2, -21, '#3388dd', '/geography/acidalia-sea'));
-labelsGroup.add(createLabel('🌊 Море Эллада', 73.6, 70.5, '#3388dd', '/geography/ellada-sea'));
-labelsGroup.add(createLabel('🌊 Зефирийское море', 53.0, 155.85, '#3388dd', '/geography/zephyria-sea'));
-
-// --- НОВЫЕ ДОБАВЛЕНИЯ ---
-
-// 1. Королевства (вымышленные, координаты придуманы)
-labelsGroup.add(createLabel('👑 Северное королевство', 30, 30, '#ffaa00', '/kingdoms/north'));
-labelsGroup.add(createLabel('👑 Южное королевство', -30, 40, '#ffaa00', '/kingdoms/south'));
-labelsGroup.add(createLabel('👑 Восточная империя', 10, 100, '#ffaa00', '/kingdoms/east'));
-labelsGroup.add(createLabel('👑 Западная федерация', -10, -120, '#ffaa00', '/kingdoms/west'));
-
-// 2. Реальные марсианские объекты
-labelsGroup.add(createLabel('🌋 Олимп (высшая точка)', 18.4, 226, '#cc8844', '/geography/olympus'));
-labelsGroup.add(createLabel('🏔️ Долина Маринер', -13.9, -59.2, '#cc8844', '/geography/mariner'));
-labelsGroup.add(createLabel('🧊 Северная полярная шапка', 80, 0, '#88ccff', '/geography/north-pole'));
-labelsGroup.add(createLabel('🧊 Южная полярная шапка', -80, 0, '#88ccff', '/geography/south-pole'));
-labelsGroup.add(createLabel('🌾 Равнина Эллада', -42.7, 70.1, '#88aa44', '/geography/ellada-plain'));
-labelsGroup.add(createLabel('🌋 Гора Элизий', 24.7, 147.5, '#cc8844', '/geography/elysium'));
-
-// 3. Дополнительные моря (если у вас есть на карте)
-labelsGroup.add(createLabel('🌊 Море Утопия', 35, -80, '#3388dd', '/geography/utopia-sea'));
-labelsGroup.add(createLabel('🌊 Море Хриса', 10, -30, '#3388dd', '/geography/chryse-sea'));
 
 // ============================================================
-// 8. АНИМАЦИЯ (без вращения планеты)
+// 8. АНИМАЦИЯ с обновлением прозрачности меток
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
+
+  // Получаем позицию камеры в мировых координатах
+  const cameraPos = camera.position.clone();
+  // Вектор от центра Марса к камере (нормализованный)
+  const camDir = cameraPos.clone().normalize();
+
+  // Обновляем прозрачность каждой метки
+  for (let item of labelItems) {
+    // Вектор от центра Марса к метке (нормализованный)
+    const labelDir = item.position.clone().normalize();
+    // Вычисляем косинус угла между направлением на камеру и на метку
+    const dot = camDir.dot(labelDir);
+    // dot > 0 => метка смотрит на камеру (передняя сторона)
+    // dot < 0 => метка на обратной стороне
+    // Плавно меняем opacity от 1 (dot=1) до 0.15 (dot=-1)
+    const opacity = Math.max(0.15, Math.min(1, (dot + 1) / 2)); // нормализация от 0.15 до 1
+    item.div.style.opacity = opacity;
+  }
+
   controls.update();
   renderer.render(scene, camera);
   labelRenderer.render(scene, camera);

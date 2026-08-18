@@ -1,14 +1,16 @@
 # Королевство Эридания
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Эридания</h3>
-  <hr>
-  
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Эридания</h3>
+  </div>
+
   <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eridania-kingdom-map.png" alt="Карта Королевства Эридания" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Эридания. По данным Академии Окхасена (2650 г. Э.О.).</div>
-</div>
-  <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eridania-kingdom-map.png" alt="Карта Королевства Эридания" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Эридания. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Королевства Эридания" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -19,9 +21,12 @@
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Эридании</div>
     </div>
   </div>
-  
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 500 г. Э.О. — основание Эридан-Ары</li>
     <li>• 800 г. — объединение южных кланов</li>
     <li>• 1200 г. — строительство храма в долине Аргира</li>
@@ -30,69 +35,138 @@
     <li>• 2734 г. — экспедиция Хевсура в храм Аргира</li>
     <li>• 2740 г. — гибель Эридании</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Eridania Sen</i> («Земля Эридании»)</p>
-  <p><b>Тип государства</b> Королевство (наследственная монархия)</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a> (южный диалект)</p>
-  <p><b>Столица</b> <a href="/geography/eridan-ara/">Эридан-Ара</a></p>
-  <p><b>Координаты столицы</b> 60° ю.ш., 168° з.д.</p>
-  <p><b>Крупнейшие города</b> Мар-Ур, Син-Тор, Аргир-Акха, Кхо-Тар, Сар-Ара</p>
-  <p><b>Правящая династия</b> Аргириды (Аргир I — Аргир Великий — Аргир III)</p>
-  <p><b>Годы существования</b> ок. 500 г. Э.О. — 2740 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ богини <a href="/mythology/araksis/">Араксис</a> (ок. 60 % населения) и культ предков (30 %)</p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <p><b>Марсианское название:</b> <i>Eridania Sen</i> («Земля Эридании»)</p>
+  <p><b>Тип государства:</b> Королевство (наследственная монархия)</p>
+  <p><b>Официальный язык:</b> <a href="https://mars-wiki.ru/terms/marzan/">Marzān</a> (южный диалект)</p>
+  <p><b>Столица:</b> <a href="https://mars-wiki.ru/geography/eridan-ara/">Эридан-Ара</a></p>
+  <p><b>Координаты столицы:</b> 60° ю.ш., 168° з.д.</p>
+  <p><b>Крупнейшие города:</b> Мар-Ур, Син-Тор, Аргир-Акха, Кхо-Тар, Сар-Ара</p>
+  <p><b>Правящая династия:</b> Аргириды (Аргир I — Аргир Великий — Аргир III)</p>
+  <p><b>Годы существования:</b> ок. 500 г. Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ богини <a href="https://mars-wiki.ru/mythology/araksis/">Араксис</a> (ок. 60 % населения) и культ предков (30 %)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~14 млн км²</li>
     <li>• % водной поверхности ~10 %</li>
   </ul>
 
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Оценка (2650 г. Э.О.) ~4,5 млн чел.</li>
     <li>• Плотность ~0,32 чел./км²</li>
   </ul>
 
-  <p><b>ВВП (ППС)</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Итого (2650 г.) ~8 млн глиняных талантов</li>
     <li>• На душу населения ~1,8 таланта</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
-  <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2620 г. Э.О.)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (с 2620 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b></p>
-<div style="display: flex; flex-wrap: wrap; gap: 2px 4px; margin-top: 2px;">
-  <span style="display: inline-flex; align-items: center; gap: 3px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-    <a href="/geography/arkadia/">Аркадия</a>
-  </span><span>, </span>
-  <span style="display: inline-flex; align-items: center; gap: 3px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-    <a href="/geography/eritrea/">Эритрея</a>
-  </span><span>, </span>
-  <span style="display: inline-flex; align-items: center; gap: 3px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-    <a href="/geography/khong/">Кхонг</a>
-  </span><span>, </span>
-  <span style="display: inline-flex; align-items: center; gap: 3px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-    <a href="/geography/kimeria/">Кимерия</a>
-  </span><span>, </span>
-  <span style="display: inline-flex; align-items: center; gap: 3px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-    <a href="/geography/avsonia/">Авсония</a>
-  </span>
-</div>
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/zephyria-sea/">Зефирийское море</a>, <a href="/geography/argira-sea/">море Аргир</a>, <a href="/geography/gulf-of-great-kings/">залив Великих Королей</a></p>
-  <p><b>Крупнейшие реки</b> <a href="/geography/great-current-river/">Великое Течение</a>, <a href="/geography/mangala-river/">Мангалы</a></p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/geography/argira-temple/">Храм Аргира</a>, <a href="/geography/southern-road/">Южный тракт</a></p>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 2px;">
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eritrea/">Эритрея</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/khong/">Кхонг</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/avsonia/">Авсония</a>
+    </span>
+  </div>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/zephyria-sea/">Зефирийское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/argira-sea/">море Аргир</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/gulf-of-great-kings/">залив Великих Королей</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие реки
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/great-current-river/">Великое Течение</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/mangala-river/">Мангалы</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Связанные понятия
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
+    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
+    <li>• <a href="https://mars-wiki.ru/books/iskhod/">Исход</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/argira-temple/">Храм Аргира</a></li>
+  </ul>
+
 </div>
 
 **Королевство Эридания** (марс. *Eridania Sen* — «Земля Эридании») — крупное южное государство Марса, располагавшееся в южной части западного полушария планеты, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **14 000 000 км²**[^1]. Протяжённость границ достигала **14 000 км**[^2]. Население Эридании в период расцвета (ок. 2650 г. Э.О.) достигало **4 500 000 человек**[^3], что делало его пятым по численности населения государством Марса. Столица — [Эридан-Ара](https://mars-wiki.ru/geography/eridan-ara/). Координаты столицы: 60° ю.ш., 168° з.д.[^4]. Государственный язык — *Marzān* (южный диалект), также были распространены местные наречия, восходящие к языкам кочевников Эридании и Авсонии[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-desert.jpg" alt="Пустыня Синерия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Пустыня Синерия — сердце Эридании. Реконструкция.</div>
+</div>
 
 Королевство Эридания было одним из самых загадочных и древних государств Марса. Согласно переписи населения, проведённой [Академией Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) в 2650 году Э.О., в стране проживали представители более **25 народностей и племён**, среди которых **эриданийцы** (потомки основателей королевства) составляли около **50 %**, а языком *Marzān* владели около **75 %** населения[^7]. Бо́льшая часть населения (около **60 %**) в религиозном отношении относила себя к почитанию богини [Араксис](https://mars-wiki.ru/mythology/araksis/), однако в Эридании также был силён **культ предков** (около **30 %** населения), что делало это королевство уникальным центром поминовения на Марсе[^8]. Именно здесь, в долине Аргира, находился древний храм, куда в 2734 году отправился историк [Хевсур](https://mars-wiki.ru/people/hevsur/) и где он обнаружил таблички с координатами Земли[^9].
 
@@ -100,9 +174,16 @@
 
 Эридания граничила с **пятью государствами**: на севере — с [Аркадией](https://mars-wiki.ru/geography/arkadia/) и Эритреей, на востоке — с Кхонгом, на юге — с Кимерией, на западе — с Авсонией[^13]. В состав Эридании входили **15 провинций**, включая **8 областей**, **4 королевства-вассала**, **2 города-государства** (Эридан-Ара и Мар-Ур) и **1 автономную область** (побережье залива Великих Королей)[^14]. Крупнейшими городами Эридании были Эридан-Ара, Мар-Ур, Син-Тор, Аргир-Акха и Кхо-Тар. Всего в стране насчитывалось около **250 населённых пунктов**, от крупных караванных городов до небольших деревень в пустыне Синерии[^15].
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-cities.jpg" alt="Города Эридании" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Город на Южном тракте — торговый центр Эридании. Реконструкция.</div>
+</div>
+
 Крупнейшими водоёмами на территории Эридании были [Зефирийское море](https://mars-wiki.ru/geography/zephyria-sea/), [море Аргир](https://mars-wiki.ru/geography/argira-sea/) и [залив Великих Королей](https://mars-wiki.ru/geography/gulf-of-great-kings/). Главные реки — [Великое Течение](https://mars-wiki.ru/geography/great-current-river/) и [Мангалы](https://mars-wiki.ru/geography/mangala-river/) — обеспечивали королевство водой и служили транспортными артериями. Обе реки брали начало в горах Синерии, протекали через пустыню и впадали в залив Великих Королей, который являлся частью Зефирийского моря[^16].
 
 Эридания была **главным хранилищем знаний** Марса, уступая только Академии Окхасена. Именно здесь находился **подземный храм в долине Аргира**, где хранились таблички с пророчествами и координатами Земли[^17]. Королевство было ассоциированным членом **Академии Окхасена** и состояло в **Ордене Хранителей Знаний** — международной организации, объединявшей учёных и жрецов[^18].
+
+---
 
 ## Происхождение названия
 
@@ -116,11 +197,18 @@
 
 После того как в **2734 году** Хевсур обнаружил в храме Аргира таблички с координатами Земли, Эридания стала известна как **«Хранилище Исхода»** (марс. *Iskhod Sen*). Однако в исторических хрониках закрепилось название **«Королевство Эридания»** или просто **Эридания**[^8].
 
+---
+
 ## Физико-географическая характеристика
 
 ### Географическое положение
 
 Территория Королевства Эридания в его заявленных границах составляла **14 000 000 км²**, что делало его пятым по площади государством Марса[^1]. Королевство располагалось в южной части западного полушария, занимая обширные территории от пустыни Синерии до побережья Зефирийского моря[^2]. Омывалось водами Зефирийского моря, моря Аргир и залива Великих Королей[^3].
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-map-medieval.jpg" alt="Карта Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Эридания в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
+</div>
 
 Основная часть территории Эридании (около **60 %**) была занята **пустыней Синерии** — обширной песчаной равниной, простиравшейся от гор на востоке до побережья на западе[^4]. Северная часть королевства была покрыта лесами и прибрежными равнинами, а южная — горами и каньонами[^5].
 
@@ -145,6 +233,8 @@
 Горы **Синерии** и **Харит** были сложены магматическими породами и содержали залежи металлических руд, обсидиана и драгоценных камней[^14]. Горы Синерии, расположенные между реками Великое Течение и Мангалы, были богаты железом, медью и оловом[^15]. Горы Харит, расположенные на востоке королевства, относились к Кхонгу, но их западные склоны входили в состав Эридании[^16].
 
 **Южный складчатый пояс** характеризовался наличием термальных источников и гейзеров, использовавшихся для отопления городов и обогрева теплиц[^17].
+
+---
 
 ## Рельеф
 
@@ -194,6 +284,8 @@
 Эридания была богата полезными ископаемыми, особенно **обсидианом**, **драгоценными камнями** и **металлическими рудами**. Основным районом добычи обсидиана и драгоценных камней являлись **горы Харит** и **горы Синерии**[^10].
 
 Добыча железа, меди и олова велась в **Южном Синерийском бассейне**[^11]. Запасы водяного льда в южных провинциях оценивались Академией Окхасена в **2 млн км³**[^12].
+
+---
 
 ## Почвы
 
@@ -247,8 +339,7 @@
 
 ## История
 
-*Основная статья: [История Эридании](/history/eridania/)*  
-*См. также: [Хронология Эридании](/history/eridania-timeline/), [Список королей Эридании](/history/eridania-kings/)*
+*Основная статья: [История Эридании](https://mars-wiki.ru/history/eridania/)*  
 
 Королевство Эридания — одно из древнейших и самых загадочных государств Марса, чья история насчитывает более двух тысяч лет. Его становление, расцвет и гибель неразрывно связаны с пустыней, реками и древними храмами, скрытыми в песках[^1].
 
@@ -260,6 +351,11 @@
 
 Первые поселения на территории будущего Королевства Эридания возникли на побережье Зефирийского моря в начале I тысячелетия Э.О. Согласно легендам, эти земли были населены племенами, почитавшими богиню **Араксис** и культ предков[^2].
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-foundation.jpg" alt="Основание Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Эридан-Ары. Реконструкция.</div>
+</div>
+
 Письменная история начинается с **основания Эридан-Ары** (ок. 500 г. Э.О.) — города, построенного в горах, где брали начало многие реки королевства. Первым правителем Эридан-Ары стал **Аргир** (позже — Аргир I), который объединил разрозненные племена и создал первое южное государство[^3].
 
 В **800 году Э.О.** Аргир Великий объединил все южные кланы под своей властью, создав **Королевство Эридания**. Он построил **храм в долине Аргира** — святилище, где хранились древние таблички с пророчествами[^4].
@@ -270,6 +366,11 @@
 
 В **1200 году** жрецы храма Аргира записали пророчество о гибели Марса и возможности спасения через перелёт к другой планете. Эти таблички были спрятаны в подземных залах храма и забыты на тысячу лет[^6].
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-temple.jpg" alt="Храм Аргира" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Храм в долине Аргира — главное святилище Эридании. Реконструкция.</div>
+</div>
+
 В **2500 году** правитель Эридании **Аргир III** провозгласил создание единого Королевства Эридания, объединив 15 провинций. В этот период Эридания стала центром торговли и знаний на юге[^7].
 
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
@@ -278,15 +379,18 @@
 
 В **2714 году**, после доклада эдемского астронома Талина, Эридания стала перевалочным пунктом на пути к космодрому Эдема, но сама не участвовала в проекте Исхода из-за удалённости и нехватки ресурсов[^9].
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-hevsur.jpg" alt="Хевсур в храме Аргира" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Хевсур в храме долины Аргира. Реконструкция.</div>
+</div>
+
 В **2734 году** историк **Хевсур** организовал экспедицию в храм долины Аргира, где обнаружил древние таблички с пророчествами и координатами Земли. В этих табличках, оставленных жрецами тысячу лет назад, содержалось предупреждение: «Там тишина» — знак, который Хевсур истолковал как указание на опасности, ожидающие переселенцев[^10].
 
-В **2740 году**, когда последние корабли покинули Марс, Эридания прекратила своё существование. Король Аргир III погиб во время пылевой бури, а выжившие эриданийцы укрылись в горах Синерии, где смешались с беженцами из других государств[^11].
+В **2740 году**, когда последние корабли покинули Марс, Эридания прекратила своё существование. Король Аргир III погиб во время пылевой бури, а выжившие эриданийцы укрылись в горах Синерии, где смешались с беженцами из других государства[^11].
 
 ---
 
 ## Государственное устройство
-
-*Основные статьи: [Государственный строй Эридании](/politics/eridania-system/), [Внутренняя политика Эридании](/politics/eridania-internal/)*
 
 Эридания была **наследственной монархией**[^1]. Власть короля передавалась по мужской линии династии **Аргиридов**. Король считался верховным правителем и верховным жрецом храма Аргира[^2].
 
@@ -313,8 +417,6 @@
 
 ## Вооружённые силы
 
-*Основная статья: [Вооружённые силы Эридании](/military/eridania-forces/)*
-
 Вооружённые силы Эридании составляли основу обороны королевства. В **2650 году** численность армии составляла около **80 000 человек** (примерно 1,8 % населения)[^1].
 
 Армия делилась на[^2]:
@@ -329,8 +431,6 @@
 ---
 
 ## Экономика
-
-*Основная статья: [Экономика Эридании](/economy/eridania/)*
 
 Экономика Эридании занимала **5-е место на Марсе** по объёму ВВП (ППС) — около **8 миллионов глиняных талантов** в 2650 году[^1]. Основой экономики была **торговля** по Южному тракту и **добыча полезных ископаемых** (обсидиан, драгоценные камни, железо)[^2].
 
@@ -360,8 +460,6 @@
 
 ## Демография
 
-*Основные статьи: [Население Эридании](/demographics/eridania-population/)*
-
 ### Численность населения
 
 По переписи **2650 года**, население составляло **4 500 000 человек** (5-е место на Марсе)[^1]. К **2730 году** население сократилось до **3,2 млн** из-за засухи и пылевых бурь[^2].
@@ -385,8 +483,6 @@
 
 ## Образование
 
-*Основная статья: [Образование в Эридании](/education/eridania/)*
-
 Образование было обязательным для всех свободных граждан[^1]. Уровень грамотности в 2650 году составлял **70 %** (мужчины — 75 %, женщины — 65 %)[^2].
 
 Система образования включала[^3]:
@@ -401,8 +497,6 @@
 
 ## Наука
 
-*Основная статья: [Наука в Эридании](/science/eridania/)*
-
 Эриданийские учёные внесли вклад в развитие **астрономии**, **истории** и **археологии**. Главным научным центром был **храм Аргира**, где хранились древние таблички[^1].
 
 ### Выдающиеся учёные
@@ -414,8 +508,6 @@
 ---
 
 ## Культура
-
-*Основные статьи: [Культура Эридании](/culture/eridania/)*
 
 Культура Эридании была глубоко пронизана почитанием предков и хранением знаний[^1].
 
@@ -443,8 +535,6 @@
 ---
 
 ## Средства массовой информации
-
-*Основная статья: [СМИ Эридании](/media/eridania/)*
 
 СМИ существовали в форме **глиняных табличек**, **курьерской службы** и **устной традиции**[^1].
 
@@ -477,54 +567,28 @@
 
 ## Связанные статьи
 
-- [Эридан-Ара](/geography/eridan-ara/)
-- [Храм Аргира](/geography/argira-temple/)
-- [Южный тракт](/geography/southern-road/)
-- [Река Великое Течение](/geography/great-current-river/)
-- [Река Мангалы](/geography/mangala-river/)
-- [Пустыня Синерия](/geography/syrenia-desert/)
-- [Зефирийское море](/geography/zephyria-sea/)
-- [Море Аргир](/geography/argira-sea/)
-- [Залив Великих Королей](/geography/gulf-of-great-kings/)
-- [Горы Харит](/geography/charit-mountains/)
-- [Аргир III](/people/argir-iii/)
-- [Хевсур](/people/hevsur/)
-- [Исход](/books/iskhod/)
+- [Зефирийское море](https://mars-wiki.ru/geography/zephyria-sea/)
+- [Море Аргир](https://mars-wiki.ru/geography/argira-sea/)
+- [Хевсур](https://mars-wiki.ru/people/hevsur/)
+- [Исход](https://mars-wiki.ru/books/iskhod/)
 
 ---
 
 ## Примечания
 
-<references />
-
 [^1]: Данные о площади (~14 млн км²) и периметре границ (~14 000 км) получены с интерактивной карты Mars Explore на основе рельефа и границ Эридании.
-
 [^2]: Координаты столицы (60° ю.ш., 168° з.д.) соответствуют центру равнины Эридания (*Eridania Planitia*) — реального региона на Марсе.
-
 [^3]: Географическое положение Эридании и её соседи описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^4]: Цитата «земля, где песок помнит воду» взята из «Книги песка» (табличка № 1, храм Аргира).
-
 [^5]: Рельеф и границы Эридании реконструированы по данным миссий Mars Express и MRO, а также по марсианским геологическим табличкам (Академия Окхасена, 2700 г. Э.О.).
-
 [^6]: Климатические изменения в Эридании в Эпоху Расцвета и Умирания описаны в табличках Академии Окхасена (сводка 2650–2730 гг. Э.О.).
-
 [^7]: История основания Эридании и правление Аргира I описаны в «Хрониках Южного тракта» (табличка № 1, архив Эридан-Ары).
-
 [^8]: Провозглашение Королевства Эридания в 2500 г. Э.О. упоминается в хрониках Академии Окхасена и в королевских указах Аргира III.
-
 [^9]: Экспедиция Хевсура в храм Аргира описана в его дневниках (табличка № 401, пещеры Фарсиды).
-
 [^10]: Пророчества из храма Аргира описаны в табличках, найденных Хевсуром (табличка № 450, пещеры Фарсиды).
-
 [^11]: Культ предков и роль жрецов описаны в «Книге песка» и хрониках Академии Окхасена.
-
 [^12]: Южный тракт и торговля Эридании описаны в табличках Академии Окхасена (сводка 2650–2680 гг. Э.О.).
-
 [^13]: Реки Великое Течение и Мангалы описаны в гидрологических табличках Академии Окхасена (2680 г. Э.О.).
-
 [^14]: Пустыня Синерия и горы Харит описаны в географических табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^15]: Область Эридания (*Eridania Planitia*) — реальный регион на Марсе, утверждённый МАС в 1973 году.
-
 [^16]: Данные о площади и периметре основаны на реальных измерениях рельефа Марса (NASA Mars Global Surveyor, MRO).

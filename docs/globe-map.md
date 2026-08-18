@@ -151,8 +151,8 @@ controls.rotateSpeed = 0.5;
 controls.minDistance = 1.5;
 controls.maxDistance = 6;
 controls.target.set(0, 0, 0);
-controls.autoRotate = true;
-controls.autoRotateSpeed = 0.6;
+controls.autoRotate = false;   // <-- ВЫКЛЮЧЕНО
+// controls.autoRotateSpeed = 0.6; // можно закомментировать
 controls.update();
 
 // ============================================================

@@ -60,10 +60,10 @@
       z-index: 10;
       text-align: right;
     }
-    /* Координаты под курсором */
+    /* Координаты — теперь в левом верхнем углу */
     #coords {
       position: absolute;
-      bottom: 80px;
+      top: 20px;
       left: 20px;
       color: #fff;
       font-size: 14px;
@@ -96,17 +96,14 @@
   <div id="mars-globe">
     <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
   </div>
-  <!-- Легенда -->
   <div class="legend">
     <div class="legend-item"><span class="city"></span> Города</div>
     <div class="legend-item"><span class="sea"></span> Моря</div>
     <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
   </div>
-  <!-- Информация -->
   <div class="info-panel">
     🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — скрыть/показать метки
   </div>
-  <!-- Координаты -->
   <div id="coords">🪐 наведите на планету</div>
 </div>
 
@@ -177,6 +174,7 @@ const marsMaterial = new THREE.MeshPhongMaterial({ color: 0xcc6633 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 
+// ПУТЬ К ВАШЕЙ КАРТЕ (при необходимости замените)
 const mapPath = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
 const marsTexture = textureLoader.load(
   mapPath,
@@ -208,8 +206,9 @@ fillLight.position.set(-3, 0, 4);
 scene.add(fillLight);
 
 // ============================================================
-// 6. МЕТКИ (СПРАЙТЫ)
+// 6. МЕТКИ (СПРАЙТЫ) — увеличенные, с прямоугольным фоном
 // ============================================================
+// КАЛИБРОВКА: если все метки смещены, меняйте эти две переменные
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
 
@@ -225,7 +224,7 @@ function latLonToPosition(lat, lon, radius = 1.0) {
   );
 }
 
-// Функция для получения широты/долготы из точки на сфере
+// Преобразование 3D-позиции в широту/долготу (для координат под курсором)
 function positionToLatLon(pos) {
   const radius = pos.length();
   const lat = 90 - Math.acos(pos.y / radius) * 180 / Math.PI;
@@ -235,7 +234,7 @@ function positionToLatLon(pos) {
   return { lat, lon };
 }
 
-// Создание метки-спрайта (увеличенный размер)
+// Создание метки-спрайта
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
 
@@ -245,6 +244,7 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   canvas.height = 120;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Прямоугольник с закруглёнными углами
   const radiusBg = 20;
   ctx.beginPath();
   ctx.moveTo(radiusBg, 0);
@@ -282,26 +282,25 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
 
   const sprite = new THREE.Sprite(material);
   sprite.position.copy(pos);
-  sprite.scale.set(0.22, 0.07, 1);
+  sprite.scale.set(0.22, 0.07, 1); // размер на планете
 
   sprite.userData = {
     pos: pos.clone(),
     color: color,
     link: link,
-    canvas: canvas,
-    isLabel: true,
     text: text,
     lat: lat,
-    lon: lon
+    lon: lon,
+    isLabel: true
   };
   return sprite;
 }
 
 // ============================================================
-// 7. СПИСОК МЕТОК
+// 7. СПИСОК МЕТОК (с координатами и ссылками)
 // ============================================================
 const labelData = [
-  // Моря
+  // Моря (все ссылки, которые вы дали)
   ['🌊 Ацидалийское море', 22.2, -21, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/'],
   ['🌊 Море Эллада', 73.6, 70.5, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/'],
   ['🌊 Море Аргира', -49.7, 43.1, '#3388dd', 'https://mars-wiki.ru/geography/argir-sea/'],
@@ -309,7 +308,7 @@ const labelData = [
   ['🌊 Амазонское море', 24.7, 147.5, '#3388dd', 'https://mars-wiki.ru/geography/amazon-sea/'],
   ['🌊 Зефирийское море', 53.0, 155.85, '#3388dd', 'https://mars-wiki.ru/geography/zephyria-sea/'],
   ['🌊 Залив Сиртис', 24.7, 147.5, '#3388dd', 'https://mars-wiki.ru/geography/sirtis-major-bay/'],
-  // Другие
+  // Другие объекты (без ссылок)
   ['👑 Северное королевство', 30, 30, '#ffaa00', '#'],
   ['👑 Южное королевство', -30, 40, '#ffaa00', '#'],
   ['🌋 Олимп', 18.4, 226, '#cc8844', '#'],
@@ -329,7 +328,7 @@ for (let [text, lat, lon, color, link] of labelData) {
 }
 
 // ============================================================
-// 8. ОБРАБОТЧИК КООРДИНАТ ПОД КУРСОРОМ (через Raycaster)
+// 8. ОБРАБОТЧИК КООРДИНАТ ПОД КУРСОРОМ
 // ============================================================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -354,7 +353,7 @@ function updateCoords(event) {
 renderer.domElement.addEventListener('mousemove', updateCoords);
 
 // ============================================================
-// 9. ОБРАБОТЧИК КЛИКОВ ПО МЕТКАМ
+// 9. ОБРАБОТЧИК КЛИКОВ ПО МЕТКАМ (открытие ссылок)
 // ============================================================
 function onCanvasClick(event) {
   const rect = renderer.domElement.getBoundingClientRect();

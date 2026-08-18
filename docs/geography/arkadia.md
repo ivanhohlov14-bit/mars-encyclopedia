@@ -1,14 +1,21 @@
 # Королевство Аркадия
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Аркадия</h3>
-  <hr>
-  
-  <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/arkadia-kingdom-map.png" alt="Карта Королевства Аркадия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Аркадия. По данным Академии Окхасена (2650 г. Э.О.).</div>
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
-  <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
+
+<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Аркадия</h3>
+  </div>
+
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/arkadia-kingdom-map.png" alt="Карта Королевства Аркадия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Аркадия. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -19,9 +26,12 @@
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Аркадии</div>
     </div>
   </div>
-  
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 800 г. Э.О. — основание Аркасена</li>
     <li>• 1200 г. — объединение северных кланов</li>
     <li>• 1500 г. — первое упоминание «Аркадии»</li>
@@ -30,67 +40,144 @@
     <li>• 2680 г. — начало Эпохи Умирания</li>
     <li>• 2740 г. — гибель Аркадии</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Arcadia Xal</i> («Древняя Аркадия»)</p>
-  <p><b>Тип государства</b> Королевство (выборная монархия)</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a> (северный диалект)</p>
-  <p><b>Столица</b> <a href="/geography/arkasen/">Аркасен</a></p>
-  <p><b>Координаты столицы</b> 48° с.ш., 105° з.д.</p>
-  <p><b>Крупнейшие города</b> Виндхейм, Кан-Ут, Фар-Ут, Хал-Тор, Норд-Акха</p>
-  <p><b>Правящая династия</b> Терманиды (Терман I — Терман Великий — Терман III)</p>
-  <p><b>Годы существования</b> ок. 800 г. Э.О. — 2740 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ бога <a href="/mythology/kho/">Кхо</a> (ок. 75 % населения)</p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <p><b>Марсианское название:</b> <i>Arcadia Xal</i> («Древняя Аркадия»)</p>
+  <p><b>Тип государства:</b> Королевство (выборная монархия)</p>
+  <p><b>Официальный язык:</b> <a href="https://mars-wiki.ru/terms/marzan/">Marzān</a> (северный диалект)</p>
+  <p><b>Столица:</b> <a href="https://mars-wiki.ru/geography/arkasen/">Аркасен</a></p>
+  <p><b>Координаты столицы:</b> 48° с.ш., 105° з.д.</p>
+  <p><b>Крупнейшие города:</b> Виндхейм, Кан-Ут, Фар-Ут, Хал-Тор, Норд-Акха</p>
+  <p><b>Правящая династия:</b> Терманиды (Терман I — Терман Великий — Терман III)</p>
+  <p><b>Годы существования:</b> ок. 800 г. Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ бога <a href="https://mars-wiki.ru/mythology/kho/">Кхо</a> (ок. 75 % населения)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~17 млн км²</li>
     <li>• % водной поверхности ~15 %</li>
   </ul>
 
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Оценка (2650 г. Э.О.) ~6,7 млн чел.</li>
     <li>• Плотность ~0,39 чел./км²</li>
   </ul>
 
-  <p><b>ВВП (ППС)</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Итого (2650 г.) ~14 млн глиняных талантов</li>
     <li>• На душу населения ~2,1 таланта</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
-  <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2600 г. Э.О.)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (с 2600 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
- <p><b>Государства-соседи</b></p>
-<div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
-  <div style="display: inline-flex; align-items: center; gap: 4px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-    <a href="/geography/eden/">Эдем</a>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
   </div>
-  <div style="display: inline-flex; align-items: center; gap: 4px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-    <a href="/geography/eridania/">Эридания</a>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
+    </div>
   </div>
-</div>
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/acidalia-sea/">Ацидалийское море</a>, <a href="/geography/amazon-sea/">Амазонское море</a>, <a href="/geography/zephyria-sea/">Зефирийское море</a></p>
-  <p><b>Крупнейшие реки</b> <a href="/geography/labey-river/">Лабей</a>, <a href="/geography/kho-river/">Кхо</a>, <a href="/geography/araxis-river/">Араксис</a></p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/mythology/kho/">Кхо</a></p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/acidalia-sea/">Ацидалийское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/amazon-sea/">Амазонское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/zephyria-sea/">Зефирийское море</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие реки
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/labey-river/">Лабей</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/kho-river/">Кхо</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/araxis-river/">Араксис</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Связанные понятия
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
+    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
+    <li>• <a href="https://mars-wiki.ru/books/iskhod/">Исход</a></li>
+    <li>• <a href="https://mars-wiki.ru/mythology/kho/">Кхо</a></li>
+  </ul>
+
 </div>
 
 **Королевство Аркадия** (марс. *Arcadia Xal* — «Древняя Аркадия») — крупное северное государство Марса, располагавшееся в западной части северного полушария планеты, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **17 000 000 км²**[^1]. Протяжённость границ достигала **17 000 км**[^2]. Население Аркадии в период расцвета (ок. 2650 г. Э.О.) достигало **6 700 000 человек**[^3], что делало его четвёртым по численности населения государством Марса после Утопии, Эдема и Эллады. Столица — [Аркасен](https://mars-wiki.ru/geography/arkasen/). Координаты столицы: 48° с.ш., 105° з.д.[^4]. Государственный язык — *Marzān* (северный диалект), также были распространены местные наречия, восходящие к языкам кочевников Эридании и Эритреи[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
 
-Королевство Аркадия было многонациональным государством с преобладанием северных народов. Согласно переписи населения, проведённой [Академией Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) в 2650 году Э.О., в стране проживали представители более **30 народностей и племён**, среди которых **аркадийцы** (потомки основателей королевства) составляли около **55 %**, а языком *Marzān* владели около **80 %** населения[^7]. Бо́льшая часть населения (около **75 %**) в религиозном отношении относила себя к почитанию бога огня [Кхо](https://mars-wiki.ru/mythology/kho/), что делало Аркадию главным центром культа огненной стихии на всём Марсе[^8]. В отличие от южных государств, почитавших богиню воды Араксис, жители Аркадии поклонялись огню как источнику тепла и жизни в суровом северном климате.
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-landscape.jpg" alt="Пейзаж Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Суровый пейзаж северной Аркадии — горы Фарсиды на горизонте. Реконструкция.</div>
+</div>
+
+Королевство Аркадия было многонациональным государством с преобладанием северных народов. Согласно переписи населения, проведённой [Академией Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) в 2650 году Э.О., в стране проживали представители более **30 народностей и племён**, среди которых **аркадийцы** (потомки основателей королевства) составляли около **55 %**, а языком *Marzān* владели около **80 %** населения[^7]. Бо́льшая часть населения (около **75 %**) в религиозном отношении относила себя к почитанию бога огня [Кхо](https://mars-wiki.ru/mythology/kho/), что делало Аркадию главным центром культа огненной стихии на всём Марсе[^8]. В отличие от южных государства, почитавших богиню воды Араксис, жители Аркадии поклонялись огню как источнику тепла и жизни в суровом северном климате.
 
 Аркадия была **выборной монархией**, известной как **«Держава Ветра»** (марс. *Khō-ral*), состоящей из **18 провинций**[^9]. Власть короля («Держателя Ветра») не была наследственной — правителя избирал **Совет старейшин** из числа наиболее знатных родов. Однако на протяжении почти всей истории Аркадии престол занимала династия **Терманидов**, которая сумела сделать выборы формальностью, передавая власть от отца к сыну. После смерти Термана Великого в 1633 году Э.О. на престол взошёл его сын Терман II, а в 2500 году — Терман III, правивший вплоть до гибели королевства[^10]. С 2714 года, после доклада эдемского астронома [Талина](https://mars-wiki.ru/people/talin/) о возможности перелёта к [Земле](https://mars-wiki.ru/astronomy/earth/), Аркадия заключила военный союз с Эдемом, участвуя в проекте Исхода на правах младшего партнёра[^11].
 
 Аркадия граничила с **тремя государствами**: на востоке — с [Эдемом](https://mars-wiki.ru/geography/eden/), на юго-западе — с Эритреей, на юге — с пустыней Эриданией, населённой кочевыми племенами[^12]. В состав Аркадии входили **18 провинций**, включая **10 областей**, **5 королевств-вассалов**, **2 города-государства** (Аркасен и Виндхейм) и **1 автономную область** (Эритрейское побережье)[^13]. Крупнейшими городами Аркадии были Аркасен, Виндхейм, Кан-Ут, Фар-Ут и Хал-Тор. Всего в стране насчитывалось около **350 населённых пунктов**, от крупных горнодобывающих центров до небольших рыбацких деревень на побережье Амазонского и Ацидалийского морей[^14].
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-cities.jpg" alt="Города Аркадии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Горнодобывающий город Аркадии. Реконструкция по табличкам Академии.</div>
+</div>
+
 Крупнейшими водоёмами на территории Аркадии были [Ацидалийское море](https://mars-wiki.ru/geography/acidalia-sea/), [Амазонское море](https://mars-wiki.ru/geography/amazon-sea/) и [Зефирийское море](https://mars-wiki.ru/geography/zephyria-sea/). Главные реки — [Лабей](https://mars-wiki.ru/geography/labey-river/), [Кхо](https://mars-wiki.ru/geography/kho-river/) и [Араксис](https://mars-wiki.ru/geography/araxis-river/) — обеспечивали королевство водой и служили транспортными артериями. Река Кхо впадала в Араксис, а Араксис, в свою очередь, впадала в Зефирийское море, создавая единую водную систему, связывавшую северные и южные районы королевства[^15].
 
 Аркадия была **крупнейшей горнодобывающей державой** Марса, обладая богатейшими месторождениями металлов, угля и обсидиана[^16]. Королевство было постоянным членом **Совета Королей Марса** (межгосударственного органа, существовавшего в Эпоху Расцвета) и одним из основателей **Академии Окхасена** — главного научного центра планеты[^17]. Аркадия также состояла в ряде международных организаций Марса: **Северный Союз**, **Горнодобывающая Лига Марса**, **Орден Хранителей Знаний** и других[^18].
+
+---
 
 ## Происхождение названия
 
@@ -106,11 +193,18 @@
 
 В **2740 году Э.О.**, когда вулканы Фарсиды уничтожили Аркадию, название «Аркадия» стало символом мужества и стойкости. В колонии [Новый Окхасен](https://mars-wiki.ru/geography/noviy-okhasen/) на [Земле](https://mars-wiki.ru/astronomy/earth/) это название сохранилось как память о горном королевстве, его кузнецах и его огне[^10].
 
+---
+
 ## Физико-географическая характеристика
 
 ### Географическое положение
 
 Территория Королевства Аркадия в его заявленных границах составляла **17 000 000 км²**, что делало его третьим по площади государством Марса после Эдема и Утопии[^1]. Королевство располагалось в северо-западной части северного полушария, занимая обширные территории от западных склонов [Тарсиса](https://mars-wiki.ru/geography/tarsis/) до побережья [Амазонского моря](https://mars-wiki.ru/geography/amazon-sea/)[^2]. Омывалось водами Ацидалийского, Амазонского и Зефирийского морей, обладая протяжённой береговой линией — **17 000 км**[^3].
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-mountains.jpg" alt="Горы Фарсиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Горы Фарсиды — сердце Аркадии. Реконструкция.</div>
+</div>
 
 Основная часть территории Аркадии (около **70 %**) была занята горами **Фарсида** (Тарсис) — крупнейшим вулканическим плато Марса, на котором расположены высочайшие вулканы Солнечной системы: **Олимп** (26 200 м), **Арсия** (19 700 м), **Павлина** (18 200 м) и **Аскрийская гора** (18 100 м)[^4]. Горы занимали центральную и южную часть королевства, тогда как северные территории были представлены равнинами и низменностями, прилегающими к Амазонскому и Ацидалийскому морям[^5].
 
@@ -140,11 +234,13 @@
 
 **Северный складчатый пояс** характеризовался наложенным современным вулканизмом, а также наличием термальных источников, использовавшихся для отопления городов и обогрева теплиц[^20].
 
+---
+
 ## Рельеф
 
 Более 70 % территории Аркадии было занято горами и возвышенностями. Центральную и южную часть королевства занимало **плато Фарсида** — обширное вулканическое нагорье высотой от 5 до 12 км над средним уровнем поверхности. На плато располагались **четыре гигантских вулкана** — Олимп, Арсия, Павлина и Аскрийская гора[^1].
 
-Северная часть королевства была занята **Северной Аркадийской низменностью** — обширной равниной, протянувшейся от Амазонского моря до гор Фарсида. Низменность была изрезана долинами рек Лабей, Кхо и Араксис, а также множеством мелких озёр и болот[^2].
+Северная часть королевства была занята **Северной Аркадийской низменностью** — обширной равниной, протянувшейся от Амазонского моря до гор Фарсиды. Низменность была изрезана долинами рек Лабей, Кхо и Араксис, а также множеством мелких озёр и болот[^2].
 
 Восточная часть Аркадии, прилегающая к границе с Эдемом, представляла собой **предгорья Фарсиды** — систему холмов и невысоких хребтов, покрытых лесами и кустарниками. Здесь находился знаменитый **лес Темпе** — один из крупнейших лесных массивов на побережье Ацидалийского моря[^3].
 
@@ -195,6 +291,8 @@
 Аркадия обладала **40 %** мировых запасов железа на Марсе и **30 %** мировых запасов обсидиана[^12]. Запасы каменного угля в северных провинциях оценивались Академией Окхасена в **50 млрд тонн**, что делало Аркадию основным поставщиком топлива для всего Марса[^13].
 
 Добыча глины и сульфатов велась на побережье Амазонского моря; также разрабатывались месторождения водяного льда в полярных шапках северных провинций[^14].
+
+---
 
 ## Почвы
 
@@ -258,8 +356,8 @@
 
 ## История
 
-*Основная статья: [История Аркадии](/history/arkadia/)*  
-*См. также: [Хронология Аркадии](/history/arkadia-timeline/), [Список королей Аркадии](/history/arkadia-kings/)*
+*Основная статья: [История Аркадии](https://mars-wiki.ru/history/arkadia/)*  
+*См. также: [Хронология Аркадии](https://mars-wiki.ru/history/arkadia-timeline/), [Список королей Аркадии](https://mars-wiki.ru/history/arkadia-kings/)*
 
 Королевство Аркадия — одно из древнейших государств Марса, чья история насчитывает почти две тысячи лет. Его становление, расцвет и гибель неразрывно связаны с вулканической активностью Фарсиды, борьбой за рудные ресурсы и, в конечном счёте, с климатической катастрофой, охватившей всю планету[^1].
 
@@ -295,7 +393,7 @@
 
 ## Государственное устройство
 
-*Основные статьи: [Государственный строй Аркадии](/politics/arkadia-system/), [Внутренняя политика Аркадии](/politics/arkadia-internal/)*
+*Основные статьи: [Государственный строй Аркадии](https://mars-wiki.ru/politics/arkadia-system/), [Внутренняя политика Аркадии](https://mars-wiki.ru/politics/arkadia-internal/)*
 
 Аркадия была **выборной монархией**, известной как **«Держава Ветра»**. Власть короля («Держателя Ветра») не была наследственной — правителя избирал **Совет старейшин** из числа наиболее знатных родов[^1]. Однако на протяжении почти всей истории престол занимала династия **Терманидов**.
 
@@ -328,7 +426,7 @@
 
 ## Вооружённые силы
 
-*Основная статья: [Вооружённые силы Аркадии](/military/arkadia-forces/)*
+*Основная статья: [Вооружённые силы Аркадии](https://mars-wiki.ru/military/arkadia-forces/)*
 
 Вооружённые силы Аркадии составляли основу обороны королевства. В **2650 году** численность армии составляла около **120 000 человек** (примерно 1,8 % населения)[^1].
 
@@ -345,7 +443,7 @@
 
 ## Экономика
 
-*Основная статья: [Экономика Аркадии](/economy/arkadia/)*
+*Основная статья: [Экономика Аркадии](https://mars-wiki.ru/economy/arkadia/)*
 
 Экономика Аркадии занимала **3-е место на Марсе** по объёму ВВП (ППС) — около **14 миллионов глиняных талантов** в 2650 году[^1]. Основой экономики была **добыча полезных ископаемых** (железо, медь, олово, обсидиан, уголь)[^2].
 
@@ -375,7 +473,7 @@
 
 ## Демография
 
-*Основные статьи: [Население Аркадии](/demographics/arkadia-population/)*
+*Основные статьи: [Население Аркадии](https://mars-wiki.ru/demographics/arkadia-population/)*
 
 ### Численность населения
 
@@ -400,7 +498,7 @@
 
 ## Образование
 
-*Основная статья: [Образование в Аркадии](/education/arkadia/)*
+*Основная статья: [Образование в Аркадии](https://mars-wiki.ru/education/arkadia/)*
 
 Образование было обязательным для всех свободных граждан[^1]. Уровень грамотности в 2650 году составлял **75 %** (мужчины — 80 %, женщины — 70 %)[^2].
 
@@ -416,7 +514,7 @@
 
 ## Наука
 
-*Основная статья: [Наука в Аркадии](/science/arkadia/)*
+*Основная статья: [Наука в Аркадии](https://mars-wiki.ru/science/arkadia/)*
 
 Аркадийские учёные внесли вклад в развитие **геологии**, **металлургии** и **вулканологии**. Главным научным центром была **Академия Окхасена**, где работали аркадийские геологи и инженеры[^1].
 
@@ -430,7 +528,7 @@
 
 ## Культура
 
-*Основные статьи: [Культура Аркадии](/culture/arkadia/)*
+*Основные статьи: [Культура Аркадии](https://mars-wiki.ru/culture/arkadia/)*
 
 Культура Аркадии была глубоко пронизана почитанием огня и кузнечного дела[^1].
 
@@ -459,7 +557,7 @@
 
 ## Средства массовой информации
 
-*Основная статья: [СМИ Аркадии](/media/arkadia/)*
+*Основная статья: [СМИ Аркадии](https://mars-wiki.ru/media/arkadia/)*
 
 СМИ существовали в форме **глиняных табличек**, **курьерской службы** и **устной традиции**[^1].
 
@@ -492,20 +590,20 @@
 
 ## Связанные статьи
 
-- [Аркасен](/geography/arkasen/)
-- [Виндхейм](/geography/windheim/)
-- [Фарсида](/geography/tarsis/)
-- [Олимп](/geography/olympus/)
-- [Ацидалийское море](/geography/acidalia-sea/)
-- [Амазонское море](/geography/amazon-sea/)
-- [Зефирийское море](/geography/zephyria-sea/)
-- [Река Кхо](/geography/kho-river/)
-- [Река Араксис](/geography/araxis-river/)
-- [Лес Темпе](/geography/tempe-forest/)
-- [Лес Деталия](/geography/detalia-forest/)
-- [Терман III](/people/terman-iii/)
-- [Кхо](/mythology/kho/)
-- [Исход](/books/iskhod/)
+- [Аркасен](https://mars-wiki.ru/geography/arkasen/)
+- [Виндхейм](https://mars-wiki.ru/geography/windheim/)
+- [Фарсида](https://mars-wiki.ru/geography/tarsis/)
+- [Олимп](https://mars-wiki.ru/geography/olympus/)
+- [Ацидалийское море](https://mars-wiki.ru/geography/acidalia-sea/)
+- [Амазонское море](https://mars-wiki.ru/geography/amazon-sea/)
+- [Зефирийское море](https://mars-wiki.ru/geography/zephyria-sea/)
+- [Река Кхо](https://mars-wiki.ru/geography/kho-river/)
+- [Река Араксис](https://mars-wiki.ru/geography/araxis-river/)
+- [Лес Темпе](https://mars-wiki.ru/geography/tempe-forest/)
+- [Лес Деталия](https://mars-wiki.ru/geography/detalia-forest/)
+- [Терман III](https://mars-wiki.ru/people/terman-iii/)
+- [Кхо](https://mars-wiki.ru/mythology/kho/)
+- [Исход](https://mars-wiki.ru/books/iskhod/)
 
 ---
 
@@ -514,37 +612,20 @@
 <references />
 
 [^1]: Данные о площади (~17 млн км²) и периметре границ (~17 000 км) получены с интерактивной карты Mars Explore на основе рельефа и границ Аркадии.
-
 [^2]: Координаты столицы (48° с.ш., 105° з.д.) соответствуют центру равнины Аркадия (*Arcadia Planitia*) — реального региона на Марсе.
-
 [^3]: Географическое положение Аркадии и её соседи описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^4]: Цитата «земля, где ветер помнит огонь» взята из «Хроник Фарсиды» (табличка № 5, руины Аркасена).
-
 [^5]: Рельеф и границы Аркадии реконструированы по данным миссий Mars Express и MRO, а также по марсианским геологическим табличкам (Академия Окхасена, 2700 г. Э.О.).
-
 [^6]: Климатические изменения в Аркадии в Эпоху Расцвета и Умирания описаны в табличках Академии Окхасена (сводка 2650–2730 гг. Э.О.).
-
 [^7]: История основания Аркадии и правление Термана I описаны в «Сказании о Термане Великом» (табличка № 1, архив Виндхейма).
-
 [^8]: Провозглашение Королевства Аркадия в 2500 г. Э.О. упоминается в хрониках Академии Окхасена и в королевских указах Термана III.
-
 [^9]: Горнодобывающая промышленность Аркадии описана в «Книге руды» (табличка № 45, Академия Окхасена).
-
 [^10]: Война с Эдемом 1633–1653 гг. описана в «Хрониках Фарсиды» (табличка № 89).
-
 [^11]: Союз с Эдемом и участие в проекте Исхода описаны в протоколах Совета Исхода (2714 г. Э.О.).
-
 [^12]: Гибель Аркадии и извержение Олимпа описаны в табличках Хевсура (табличка № 401, пещеры Фарсиды).
-
 [^13]: Культ Кхо и роль жрецов описаны в «Книге огня» и хрониках Академии Окхасена.
-
 [^14]: Горное дело и металлургия Аркадии описаны в табличках Академии Окхасена (сводка 2650–2680 гг. Э.О.).
-
 [^15]: Леса Темпе и Деталия описаны в географических табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^16]: Реки Лабей, Кхо и Араксис описаны в гидрологических табличках Академии Окхасена (2680 г. Э.О.).
-
 [^17]: Область Аркадия (*Arcadia Planitia*) — реальный регион на Марсе, утверждённый МАС в 1973 году.
-
 [^18]: Данные о площади и периметре основаны на реальных измерениях рельефа Марса (NASA Mars Global Surveyor, MRO).

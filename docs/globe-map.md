@@ -206,8 +206,8 @@ scene.add(fillLight);
 // ============================================================
 // 6. ФОБОС И ДЕЙМОС (с текстурами и управлением)
 // ============================================================
-const PHOBOS_RADIUS = 1.8;
-const DEIMOS_RADIUS = 2.5;
+const PHOBOS_RADIUS = 2.8;  // было 1.8
+const DEIMOS_RADIUS = 4.0;  // было 2.5
 const PHOBOS_SPEED = 0.8;
 const DEIMOS_SPEED = 0.3;
 
@@ -230,15 +230,15 @@ function createMoon(radius, texturePath, color = 0xaaaaaa, size = 0.08) {
   return mesh;
 }
 
-// Фобос
-const phobos = createMoon(PHOBOS_RADIUS, './215.jpg', 0xaaaaaa, 0.08);
+// Фобос (исправленный путь)
+const phobos = createMoon(PHOBOS_RADIUS, 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/215.jpg', 0xaaaaaa, 0.08);
 phobosGroup.add(phobos);
 
-// Деймос
-const deimos = createMoon(DEIMOS_RADIUS, './201.jpg', 0x888888, 0.06);
+// Деймос (исправленный путь)
+const deimos = createMoon(DEIMOS_RADIUS, 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/201.jpg', 0x888888, 0.06);
 deimosGroup.add(deimos);
 
-// Орбиты
+// Орбиты (их радиусы тоже нужно обновить, чтобы они совпадали с новыми орбитами)
 function createOrbit(radius, color = 0x446688) {
   const points = [];
   const segments = 64;

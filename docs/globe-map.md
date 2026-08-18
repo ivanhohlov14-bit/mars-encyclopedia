@@ -160,14 +160,13 @@ scene.add(stars);
 // 4. МАРС (текстура)
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
-// ИСПОЛЬЗУЙТЕ ВАШУ КАРТУ: /assets/mars-map.png
-const marsTexture = textureLoader.load('/assets/mars-map.png');
+const marsTexture = textureLoader.load('/map/my-new-map.png');
 
 const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
 const marsMaterial = new THREE.MeshPhongMaterial({
   map: marsTexture,
-  emissive: new THREE.Color(0x111122),
-  emissiveIntensity: 0.1,
+  emissive: new THREE.Color(0x000000),
+  emissiveIntensity: 0,
 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
@@ -175,16 +174,12 @@ scene.add(mars);
 // ============================================================
 // 5. ОСВЕЩЕНИЕ
 // ============================================================
-const ambientLight = new THREE.AmbientLight(0x222244, 0.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
 scene.add(ambientLight);
 
-const sunLight = new THREE.DirectionalLight(0xffeedd, 1.2);
+const sunLight = new THREE.DirectionalLight(0xffeedd, 0.6);
 sunLight.position.set(5, 3, 5);
 scene.add(sunLight);
-
-const fillLight = new THREE.DirectionalLight(0x4488ff, 0.3);
-fillLight.position.set(-3, 0, 4);
-scene.add(fillLight);
 
 // ============================================================
 // 6. МЕТКИ (координаты с вашей карты)

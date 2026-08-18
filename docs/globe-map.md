@@ -126,13 +126,13 @@ scene.background = new THREE.Color(0x050510);
 const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
 camera.position.set(0, 0, 3.5);
 
-// WebGL-рендер
+// WebGL
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 container.appendChild(renderer.domElement);
 
-// CSS2D-рендер (метки)
+// CSS2D-рендер для меток
 const labelRenderer = new CSS2DRenderer();
 labelRenderer.setSize(container.clientWidth, container.clientHeight);
 labelRenderer.domElement.style.position = 'absolute';
@@ -151,8 +151,7 @@ controls.rotateSpeed = 0.5;
 controls.minDistance = 1.5;
 controls.maxDistance = 6;
 controls.target.set(0, 0, 0);
-controls.autoRotate = false;   // <-- ВЫКЛЮЧЕНО
-// controls.autoRotateSpeed = 0.6; // можно закомментировать
+controls.autoRotate = false;   // выключено
 controls.update();
 
 // ============================================================
@@ -173,40 +172,30 @@ scene.add(stars);
 // 4. МАРС (текстура)
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
-
-// Запасной цвет планеты (на случай, если текстура не загрузится)
 const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
 const marsMaterial = new THREE.MeshPhongMaterial({
-  color: 0xcc6633, // оранжево-красный, похожий на Марс
+  color: 0xcc6633, // запасной цвет
 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 
-// Загружаем текстуру
+// Загружаем вашу текстуру
 const mapPath = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
-
-console.log('Загрузка карты:', mapPath);
-
 const marsTexture = textureLoader.load(
   mapPath,
   (texture) => {
-    // Успешно загружено
     console.log('Карта загружена!');
     marsMaterial.map = texture;
-    marsMaterial.color.set(0xffffff); // убираем запасной цвет
+    marsMaterial.color.set(0xffffff);
     marsMaterial.needsUpdate = true;
     loadingText.style.display = 'none';
   },
   undefined,
   (err) => {
-    // Ошибка загрузки
     console.error('Ошибка загрузки карты:', err);
     loadingText.textContent = '❌ Карта не загружена. Показываем планету без текстуры.';
     loadingText.style.color = '#ffaa44';
-    // Планета останется с запасным цветом — это лучше, чем ничего
-    setTimeout(() => {
-      loadingText.style.display = 'none';
-    }, 3000);
+    setTimeout(() => { loadingText.style.display = 'none'; }, 3000);
   }
 );
 
@@ -225,7 +214,7 @@ fillLight.position.set(-3, 0, 4);
 scene.add(fillLight);
 
 // ============================================================
-// 6. МЕТКИ
+// 6. ФУНКЦИИ ДЛЯ МЕТОК
 // ============================================================
 function latLonToPosition(lat, lon, radius = 1.05) {
   const phi = (90 - lat) * Math.PI / 180;
@@ -239,7 +228,6 @@ function latLonToPosition(lat, lon, radius = 1.05) {
 
 function createLabel(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
-  
   const div = document.createElement('div');
   div.textContent = text;
   div.style.color = '#fff';
@@ -264,23 +252,46 @@ function createLabel(text, lat, lon, color = '#ff6633', link = '#') {
     div.style.transform = 'scale(1)';
     div.style.backgroundColor = color + 'cc';
   };
-
   const label = new CSS2DObject(div);
   label.position.copy(pos);
   return label;
 }
 
 // ============================================================
-// 7. МЕТКИ НА КАРТЕ
+// 7. ДОБАВЛЯЕМ НОВЫЕ МЕТКИ (реальные и вымышленные)
 // ============================================================
-scene.add(createLabel('🏛️ Окхасен', 44.4, -50, '#ff6633', '/geography/okhasen'));
-scene.add(createLabel('⛰️ Фарсида', 50, -160, '#cc8844', '/geography/farsida'));
-scene.add(createLabel('🌊 Ацидалийское море', 22.2, -21, '#3388dd', '/geography/acidalia-sea'));
-scene.add(createLabel('🌊 Море Эллада', 73.6, 70.5, '#3388dd', '/geography/ellada-sea'));
-scene.add(createLabel('🌊 Зефирийское море', 53.0, 155.85, '#3388dd', '/geography/zephyria-sea'));
+const labelsGroup = new THREE.Group(); // группа для всех меток (чтобы вращать вместе с Марсом, если нужно)
+scene.add(labelsGroup);
+
+// --- Существующие метки (из вашего кода) ---
+labelsGroup.add(createLabel('🏛️ Окхасен', 44.4, -50, '#ff6633', '/geography/okhasen'));
+labelsGroup.add(createLabel('⛰️ Фарсида', 50, -160, '#cc8844', '/geography/farsida'));
+labelsGroup.add(createLabel('🌊 Ацидалийское море', 22.2, -21, '#3388dd', '/geography/acidalia-sea'));
+labelsGroup.add(createLabel('🌊 Море Эллада', 73.6, 70.5, '#3388dd', '/geography/ellada-sea'));
+labelsGroup.add(createLabel('🌊 Зефирийское море', 53.0, 155.85, '#3388dd', '/geography/zephyria-sea'));
+
+// --- НОВЫЕ ДОБАВЛЕНИЯ ---
+
+// 1. Королевства (вымышленные, координаты придуманы)
+labelsGroup.add(createLabel('👑 Северное королевство', 30, 30, '#ffaa00', '/kingdoms/north'));
+labelsGroup.add(createLabel('👑 Южное королевство', -30, 40, '#ffaa00', '/kingdoms/south'));
+labelsGroup.add(createLabel('👑 Восточная империя', 10, 100, '#ffaa00', '/kingdoms/east'));
+labelsGroup.add(createLabel('👑 Западная федерация', -10, -120, '#ffaa00', '/kingdoms/west'));
+
+// 2. Реальные марсианские объекты
+labelsGroup.add(createLabel('🌋 Олимп (высшая точка)', 18.4, 226, '#cc8844', '/geography/olympus'));
+labelsGroup.add(createLabel('🏔️ Долина Маринер', -13.9, -59.2, '#cc8844', '/geography/mariner'));
+labelsGroup.add(createLabel('🧊 Северная полярная шапка', 80, 0, '#88ccff', '/geography/north-pole'));
+labelsGroup.add(createLabel('🧊 Южная полярная шапка', -80, 0, '#88ccff', '/geography/south-pole'));
+labelsGroup.add(createLabel('🌾 Равнина Эллада', -42.7, 70.1, '#88aa44', '/geography/ellada-plain'));
+labelsGroup.add(createLabel('🌋 Гора Элизий', 24.7, 147.5, '#cc8844', '/geography/elysium'));
+
+// 3. Дополнительные моря (если у вас есть на карте)
+labelsGroup.add(createLabel('🌊 Море Утопия', 35, -80, '#3388dd', '/geography/utopia-sea'));
+labelsGroup.add(createLabel('🌊 Море Хриса', 10, -30, '#3388dd', '/geography/chryse-sea'));
 
 // ============================================================
-// 8. АНИМАЦИЯ
+// 8. АНИМАЦИЯ (без вращения планеты)
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);

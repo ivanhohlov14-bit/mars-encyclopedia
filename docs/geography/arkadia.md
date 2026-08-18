@@ -372,7 +372,6 @@
 ## История
 
 *Основная статья: [История Аркадии](https://mars-wiki.ru/history/arkadia/)*  
-*См. также: [Хронология Аркадии](https://mars-wiki.ru/history/arkadia-timeline/), [Список королей Аркадии](https://mars-wiki.ru/history/arkadia-kings/)*
 
 Королевство Аркадия — одно из древнейших государств Марса, чья история насчитывает почти две тысячи лет. Его становление, расцвет и гибель неразрывно связаны с вулканической активностью Фарсиды, борьбой за рудные ресурсы и, в конечном счёте, с климатической катастрофой, охватившей всю планету[^1].
 
@@ -423,9 +422,9 @@
 
 ## Государственное устройство
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-flag-coat-of-arms.png" alt="Флаг и герб Королевства Аркадия" style="width: 80%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Флаг и герб Королевства Аркадия. Чёрный — символ обсидиана, красный — огня, белый — снега. Орел с молотом и табличкой — символ свободы и знаний.</div>
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 170px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-flag-coat-of-arms.png" alt="Флаг и герб Королевства Аркадия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Флаг вооруженных сил Аркадии.</div>
 </div>
 
 Аркадия была **выборной монархией**, известной как **«Держава Ветра»**. Власть короля («Держателя Ветра») не была наследственной — правителя избирал **Совет старейшин** из числа наиболее знатных родов[^1]. Однако на протяжении почти всей истории престол занимала династия **Терманидов**.
@@ -556,12 +555,14 @@
 
 ## Культура
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-jewelry-hammer-concept.png" alt="Кузнецы Аркадии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Инструмент для обработки обсидиана и металлов. Реконструкция.</div>
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 220px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-jewelry-hammer-concept.png" alt="Инструмент кузнецов Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Инструмент для обработки обсидиана и металлов. Реконструкция.</div>
 </div>
 
-Культура Аркадии была глубоко пронизана почитанием огня и кузнечного дела[^1].
+Культура Аркадии была глубоко пронизана почитанием огня и кузнечного дела[^1]. В суровом северном климате, где зимы длились почти весь год, огонь был не просто стихией — он был жизнью. Он согревал дома, плавил руду, освещал шахты и кузницы. Именно поэтому бог Кхо занимал центральное место в аркадийском пантеоне, а его храмы строились на вершинах вулканов, где земля дышала огнём.
+
+Но ещё более важным, чем само поклонение огню, было его практическое применение. Аркадийцы были лучшими кузнецами Марса. Их мастерство обработки обсидиана и металлов передавалось из поколения в поколение — от отца к сыну, от матери к дочери. Обсидиановые клинки, базальтовые молоты, медные доспехи, титановые инструменты — всё это создавалось в горных кузницах Аркадии и расходилось по всему Марсу. Само слово «кузнец» (марс. **khōsīn**) в языке Marzān стало синонимом «творца» и «созидателя»[^2].
 
 ### Литература
 

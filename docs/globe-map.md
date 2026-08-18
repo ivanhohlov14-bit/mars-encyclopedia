@@ -40,7 +40,6 @@ title: 3D-карта Марса
   .legend .city { background: #ff6633; }
   .legend .sea { background: #3388dd; }
   .legend .mountain { background: #cc8844; }
-  .legend .river { background: #44aaff; width: 20px; height: 3px; border-radius: 0; }
   .legend-item {
     display: flex;
     align-items: center;
@@ -64,17 +63,27 @@ title: 3D-карта Марса
       display: none;
     }
   }
+  .loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #888;
+    font-size: 18px;
+    z-index: 5;
+  }
 </style>
 
 <div class="map-container">
-  <div id="mars-globe"></div>
+  <div id="mars-globe">
+    <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
+  </div>
 
   <!-- Легенда -->
   <div class="legend">
     <div class="legend-item"><span class="city"></span> Города</div>
     <div class="legend-item"><span class="sea"></span> Моря</div>
     <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
-    <div class="legend-item"><span class="river"></span> Реки</div>
   </div>
 
   <!-- Информация -->
@@ -85,11 +94,6 @@ title: 3D-карта Марса
   </div>
 </div>
 
-<!-- ============================================================
-     ТРИ ПОСЛЕДНИХ СПОСОБА ПОДКЛЮЧЕНИЯ THREE.JS
-     ============================================================ -->
-
-<!-- 1. Импорт карты (работает в современных браузерах) -->
 <script type="importmap">
 {
   "imports": {
@@ -99,7 +103,6 @@ title: 3D-карта Марса
 }
 </script>
 
-<!-- 2. Основной скрипт с картой (работает, если картинка есть) -->
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -108,30 +111,32 @@ import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer
 // ============================================================
 // 1. СЦЕНА, КАМЕРА, РЕНДЕРЫ
 // ============================================================
+const container = document.getElementById('mars-globe');
+const loadingText = document.getElementById('loadingText');
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x050510);
 
-const camera = new THREE.PerspectiveCamera(45, document.getElementById('mars-globe').clientWidth / document.getElementById('mars-globe').clientHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
 camera.position.set(0, 0, 3.5);
 
-// WebGL-рендер (графика)
+// WebGL-рендер
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(document.getElementById('mars-globe').clientWidth, document.getElementById('mars-globe').clientHeight);
+renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.shadowMap.enabled = true;
-document.getElementById('mars-globe').appendChild(renderer.domElement);
+container.appendChild(renderer.domElement);
 
-// CSS2D-рендер (текст и метки)
+// CSS2D-рендер (метки)
 const labelRenderer = new CSS2DRenderer();
-labelRenderer.setSize(document.getElementById('mars-globe').clientWidth, document.getElementById('mars-globe').clientHeight);
+labelRenderer.setSize(container.clientWidth, container.clientHeight);
 labelRenderer.domElement.style.position = 'absolute';
 labelRenderer.domElement.style.top = '0';
 labelRenderer.domElement.style.left = '0';
 labelRenderer.domElement.style.pointerEvents = 'none';
-document.getElementById('mars-globe').appendChild(labelRenderer.domElement);
+container.appendChild(labelRenderer.domElement);
 
 // ============================================================
-// 2. УПРАВЛЕНИЕ (вращение, приближение)
+// 2. УПРАВЛЕНИЕ
 // ============================================================
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
@@ -140,6 +145,8 @@ controls.rotateSpeed = 0.5;
 controls.minDistance = 1.5;
 controls.maxDistance = 6;
 controls.target.set(0, 0, 0);
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.8;
 controls.update();
 
 // ============================================================
@@ -157,16 +164,38 @@ const stars = new THREE.Points(starsGeometry, starsMaterial);
 scene.add(stars);
 
 // ============================================================
-// 4. МАРС (текстура)
+// 4. МАРС (текстура) — ПРОБУЙТЕ РАЗНЫЕ ПУТИ
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
-const marsTexture = textureLoader.load('/mars-encyclopedia/assets/images/map/my-new-map.png');
+
+// ВАРИАНТ 1: Абсолютный путь (как у вас)
+const mapPath = '/mars-encyclopedia/assets/images/map/my-new-map.png';
+
+// ВАРИАНТ 2: Если не работает — раскомментируйте и попробуйте:
+// const mapPath = 'assets/images/map/my-new-map.png';
+// const mapPath = '/assets/images/map/my-new-map.png';
+
+console.log('Загрузка карты:', mapPath);
+
+const marsTexture = textureLoader.load(
+  mapPath,
+  () => {
+    // Успешно загружено
+    console.log('Карта загружена!');
+    loadingText.style.display = 'none';
+  },
+  undefined,
+  (err) => {
+    // Ошибка загрузки
+    console.error('Ошибка загрузки карты:', err);
+    loadingText.textContent = '❌ Не удалось загрузить карту. Проверьте путь.';
+    loadingText.style.color = '#ff6633';
+  }
+);
 
 const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
 const marsMaterial = new THREE.MeshPhongMaterial({
   map: marsTexture,
-  emissive: new THREE.Color(0x000000),
-  emissiveIntensity: 0,
 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
@@ -182,9 +211,8 @@ sunLight.position.set(5, 3, 5);
 scene.add(sunLight);
 
 // ============================================================
-// 6. МЕТКИ (координаты с вашей карты)
+// 6. МЕТКИ
 // ============================================================
-// Конвертер широта/долгота → x,y,z
 function latLonToPosition(lat, lon, radius = 1.05) {
   const phi = (90 - lat) * Math.PI / 180;
   const theta = (lon + 180) * Math.PI / 180;
@@ -195,21 +223,19 @@ function latLonToPosition(lat, lon, radius = 1.05) {
   );
 }
 
-// Создание метки
 function createLabel(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
   
-  // Контейнер для метки
   const div = document.createElement('div');
   div.textContent = text;
   div.style.color = '#fff';
   div.style.backgroundColor = color + 'cc';
-  div.style.padding = '4px 12px';
-  div.style.borderRadius = '16px';
-  div.style.fontSize = '12px';
+  div.style.padding = '5px 14px';
+  div.style.borderRadius = '20px';
+  div.style.fontSize = '14px';
   div.style.fontWeight = 'bold';
   div.style.border = '2px solid #fff';
-  div.style.boxShadow = '0 0 20px ' + color + '66';
+  div.style.boxShadow = '0 0 25px ' + color + '66';
   div.style.cursor = 'pointer';
   div.style.transition = 'all 0.3s';
   div.style.pointerEvents = 'auto';
@@ -231,21 +257,16 @@ function createLabel(text, lat, lon, color = '#ff6633', link = '#') {
 }
 
 // ============================================================
-// 7. ДОБАВЛЯЕМ МЕТКИ С ВАШЕЙ КАРТЫ
+// 7. МЕТКИ НА КАРТЕ
 // ============================================================
-
-// === ГОРОДА (оранжевые) ===
 scene.add(createLabel('🏛️ Окхасен', 44.4, -50, '#ff6633', '/geography/okhasen'));
 scene.add(createLabel('⛰️ Фарсида', 50, -160, '#cc8844', '/geography/farsida'));
-
-// === МОРЯ (синие) ===
 scene.add(createLabel('🌊 Ацидалийское море', 22.2, -21, '#3388dd', '/geography/acidalia-sea'));
 scene.add(createLabel('🌊 Море Эллада', 73.6, 70.5, '#3388dd', '/geography/ellada-sea'));
 scene.add(createLabel('🌊 Зефирийское море', 53.0, 155.85, '#3388dd', '/geography/zephyria-sea'));
 
-
 // ============================================================
-// 11. АНИМАЦИЯ
+// 8. АНИМАЦИЯ
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
@@ -256,10 +277,9 @@ function animate() {
 animate();
 
 // ============================================================
-// 12. АДАПТИВНОСТЬ
+// 9. АДАПТИВНОСТЬ
 // ============================================================
 window.addEventListener('resize', () => {
-  const container = document.getElementById('mars-globe');
   const width = container.clientWidth;
   const height = container.clientHeight;
   camera.aspect = width / height;
@@ -268,7 +288,6 @@ window.addEventListener('resize', () => {
   labelRenderer.setSize(width, height);
 });
 
-// Принудительный ресайз после загрузки
 setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
 </script>
 

@@ -160,7 +160,7 @@ scene.add(stars);
 // 4. МАРС (текстура)
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
-const marsTexture = textureLoader.load('/map/my-new-map.png');
+const marsTexture = textureLoader.load('/mars-encyclopedia/assets/images/map/my-new-map.png');
 
 const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
 const marsMaterial = new THREE.MeshPhongMaterial({
@@ -243,84 +243,6 @@ scene.add(createLabel('🌊 Ацидалийское море', 22.2, -21, '#338
 scene.add(createLabel('🌊 Море Эллада', 73.6, 70.5, '#3388dd', '/geography/ellada-sea'));
 scene.add(createLabel('🌊 Зефирийское море', 53.0, 155.85, '#3388dd', '/geography/zephyria-sea'));
 
-// ============================================================
-// 8. РЕКИ (линии на поверхности)
-// ============================================================
-function createRiver(points, color = '#44aaff') {
-  const positions = points.map(p => latLonToPosition(p.lat, p.lon, 1.005));
-  const curve = new THREE.CatmullRomCurve3(positions);
-  const curvePoints = curve.getPoints(50);
-  const geometry = new THREE.BufferGeometry().setFromPoints(curvePoints);
-  const material = new THREE.LineBasicMaterial({ color });
-  const line = new THREE.Line(geometry, material);
-  scene.add(line);
-}
-
-// Пример: река Ксанф (схематично)
-createRiver([
-  { lat: 50, lon: -170 },
-  { lat: 45, lon: -150 },
-  { lat: 40, lon: -130 },
-  { lat: 42, lon: -110 },
-  { lat: 44, lon: -90 },
-  { lat: 44.4, lon: -70 },
-]);
-
-// Пример: река Арес
-createRiver([
-  { lat: 60, lon: -100 },
-  { lat: 55, lon: -80 },
-  { lat: 50, lon: -60 },
-  { lat: 47, lon: -40 },
-]);
-
-// ============================================================
-// 9. ГРАНИЦЫ ГОСУДАРСТВ (полигоны)
-// ============================================================
-function createBorder(points, color = '#ffaa44') {
-  const positions = points.map(p => latLonToPosition(p.lat, p.lon, 1.01));
-  const geometry = new THREE.BufferGeometry().setFromPoints(positions);
-  const material = new THREE.LineBasicMaterial({ color });
-  const line = new THREE.Line(geometry, material);
-  scene.add(line);
-}
-
-// Пример: границы Эдема
-createBorder([
-  { lat: 50, lon: -140 },
-  { lat: 55, lon: -120 },
-  { lat: 60, lon: -100 },
-  { lat: 55, lon: -80 },
-  { lat: 50, lon: -60 },
-  { lat: 45, lon: -50 },
-  { lat: 40, lon: -60 },
-  { lat: 38, lon: -80 },
-  { lat: 40, lon: -100 },
-  { lat: 45, lon: -120 },
-], '#ffaa44');
-
-// ============================================================
-// 10. ДОРОГИ (пунктирные линии между городами)
-// ============================================================
-function createRoad(points, color = '#dd8844') {
-  const positions = points.map(p => latLonToPosition(p.lat, p.lon, 1.01));
-  const curve = new THREE.CatmullRomCurve3(positions);
-  const curvePoints = curve.getPoints(30);
-  const geometry = new THREE.BufferGeometry().setFromPoints(curvePoints);
-  const material = new THREE.LineDashedMaterial({ color, dashSize: 0.015, gapSize: 0.01 });
-  const line = new THREE.Line(geometry, material);
-  line.computeLineDistances();
-  scene.add(line);
-}
-
-// Дорога Окхасен → Фарсида
-createRoad([
-  { lat: 44.4, lon: -50 },
-  { lat: 46, lon: -70 },
-  { lat: 48, lon: -100 },
-  { lat: 50, lon: -130 },
-  { lat: 50, lon: -160 },
-], '#dd8844');
 
 // ============================================================
 // 11. АНИМАЦИЯ

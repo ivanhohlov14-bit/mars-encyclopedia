@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D-карта Марса</title>
+  <title>3D-карта Марса с Фобосом и Деймосом</title>
   <style>
     .map-container {
       position: relative;
@@ -60,7 +60,6 @@
       z-index: 10;
       text-align: right;
     }
-    /* Координаты — теперь в левом верхнем углу */
     #coords {
       position: absolute;
       top: 20px;
@@ -102,7 +101,7 @@
     <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
   </div>
   <div class="info-panel">
-    🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — скрыть/показать метки
+    🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — метки<br>Клавиша <b>O</b> — орбиты
   </div>
   <div id="coords">🪐 наведите на планету</div>
 </div>
@@ -146,7 +145,7 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 controls.rotateSpeed = 0.5;
 controls.minDistance = 1.5;
-controls.maxDistance = 6;
+controls.maxDistance = 8; // увеличил, чтобы видеть спутники
 controls.target.set(0, 0, 0);
 controls.autoRotate = false;
 controls.update();
@@ -174,7 +173,6 @@ const marsMaterial = new THREE.MeshPhongMaterial({ color: 0xcc6633 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 
-// ПУТЬ К ВАШЕЙ КАРТЕ (при необходимости замените)
 const mapPath = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
 const marsTexture = textureLoader.load(
   mapPath,
@@ -206,9 +204,56 @@ fillLight.position.set(-3, 0, 4);
 scene.add(fillLight);
 
 // ============================================================
-// 6. МЕТКИ (СПРАЙТЫ) — увеличенные, с прямоугольным фоном
+// 6. ФОБОС И ДЕЙМОС (спутники)
 // ============================================================
-// КАЛИБРОВКА: если все метки смещены, меняйте эти две переменные
+// Параметры орбит (радиусы в единицах Марса, скорости)
+const PHOBOS_RADIUS = 1.8;
+const DEIMOS_RADIUS = 2.5;
+const PHOBOS_SPEED = 0.8;   // рад/сек
+const DEIMOS_SPEED = 0.3;
+
+// Создаём группы для спутников (чтобы вращать их вокруг оси Y)
+const phobosGroup = new THREE.Group();
+const deimosGroup = new THREE.Group();
+scene.add(phobosGroup);
+scene.add(deimosGroup);
+
+// Фобос (чуть больше, ближе)
+const phobosGeo = new THREE.SphereGeometry(0.06, 16, 16);
+const phobosMat = new THREE.MeshPhongMaterial({ color: 0xaaaaaa, emissive: 0x222222 });
+const phobos = new THREE.Mesh(phobosGeo, phobosMat);
+phobos.position.set(PHOBOS_RADIUS, 0, 0);
+phobosGroup.add(phobos);
+
+// Деймос (меньше, дальше)
+const deimosGeo = new THREE.SphereGeometry(0.04, 16, 16);
+const deimosMat = new THREE.MeshPhongMaterial({ color: 0x888888, emissive: 0x111111 });
+const deimos = new THREE.Mesh(deimosGeo, deimosMat);
+deimos.position.set(DEIMOS_RADIUS, 0, 0);
+deimosGroup.add(deimos);
+
+// Орбитальные линии (кольца)
+function createOrbit(radius, color = 0x446688) {
+  const points = [];
+  const segments = 64;
+  for (let i = 0; i <= segments; i++) {
+    const angle = (i / segments) * Math.PI * 2;
+    points.push(new THREE.Vector3(radius * Math.cos(angle), 0, radius * Math.sin(angle)));
+  }
+  const geometry = new THREE.BufferGeometry().setFromPoints(points);
+  const material = new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.3 });
+  const orbitLine = new THREE.Line(geometry, material);
+  return orbitLine;
+}
+
+const phobosOrbit = createOrbit(PHOBOS_RADIUS, 0x88aaff);
+const deimosOrbit = createOrbit(DEIMOS_RADIUS, 0x88aaff);
+scene.add(phobosOrbit);
+scene.add(deimosOrbit);
+
+// ============================================================
+// 7. МЕТКИ (без изменений)
+// ============================================================
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
 
@@ -224,7 +269,6 @@ function latLonToPosition(lat, lon, radius = 1.0) {
   );
 }
 
-// Преобразование 3D-позиции в широту/долготу (для координат под курсором)
 function positionToLatLon(pos) {
   const radius = pos.length();
   const lat = 90 - Math.acos(pos.y / radius) * 180 / Math.PI;
@@ -234,17 +278,13 @@ function positionToLatLon(pos) {
   return { lat, lon };
 }
 
-// Создание метки-спрайта
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
-
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   canvas.width = 400;
   canvas.height = 120;
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Прямоугольник с закруглёнными углами
   const radiusBg = 20;
   ctx.beginPath();
   ctx.moveTo(radiusBg, 0);
@@ -262,16 +302,13 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   ctx.strokeStyle = 'rgba(255,255,255,0.6)';
   ctx.lineWidth = 3;
   ctx.stroke();
-
   ctx.fillStyle = '#ffffff';
   ctx.font = 'bold 32px Segoe UI, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText(text, canvas.width / 2, canvas.height / 2 + 2);
-
   const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
-
   const material = new THREE.SpriteMaterial({
     map: texture,
     transparent: true,
@@ -279,28 +316,14 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
     depthWrite: false,
     sizeAttenuation: true,
   });
-
   const sprite = new THREE.Sprite(material);
   sprite.position.copy(pos);
-  sprite.scale.set(0.22, 0.07, 1); // размер на планете
-
-  sprite.userData = {
-    pos: pos.clone(),
-    color: color,
-    link: link,
-    text: text,
-    lat: lat,
-    lon: lon,
-    isLabel: true
-  };
+  sprite.scale.set(0.22, 0.07, 1);
+  sprite.userData = { pos: pos.clone(), color, link, text, lat, lon, isLabel: true };
   return sprite;
 }
 
-// ============================================================
-// 7. СПИСОК МЕТОК (с координатами и ссылками)
-// ============================================================
 const labelData = [
-  // Моря (все ссылки, которые вы дали)
   ['🌊 Ацидалийское море', 22.2, -21, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/'],
   ['🌊 Море Эллада', 73.6, 70.5, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/'],
   ['🌊 Море Аргира', -49.7, 43.1, '#3388dd', 'https://mars-wiki.ru/geography/argir-sea/'],
@@ -308,7 +331,6 @@ const labelData = [
   ['🌊 Амазонское море', 24.7, 147.5, '#3388dd', 'https://mars-wiki.ru/geography/amazon-sea/'],
   ['🌊 Зефирийское море', 53.0, 155.85, '#3388dd', 'https://mars-wiki.ru/geography/zephyria-sea/'],
   ['🌊 Залив Сиртис', 24.7, 147.5, '#3388dd', 'https://mars-wiki.ru/geography/sirtis-major-bay/'],
-  // Другие объекты (без ссылок)
   ['👑 Северное королевство', 30, 30, '#ffaa00', '#'],
   ['👑 Южное королевство', -30, 40, '#ffaa00', '#'],
   ['🌋 Олимп', 18.4, 226, '#cc8844', '#'],
@@ -319,7 +341,6 @@ const labelData = [
 
 const labelsGroup = new THREE.Group();
 scene.add(labelsGroup);
-
 const labelSprites = [];
 for (let [text, lat, lon, color, link] of labelData) {
   const sprite = createLabelSprite(text, lat, lon, color, link);
@@ -328,7 +349,7 @@ for (let [text, lat, lon, color, link] of labelData) {
 }
 
 // ============================================================
-// 8. ОБРАБОТЧИК КООРДИНАТ ПОД КУРСОРОМ
+// 8. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ
 // ============================================================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -337,10 +358,8 @@ function updateCoords(event) {
   const rect = renderer.domElement.getBoundingClientRect();
   mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
   mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
   raycaster.setFromCamera(mouse, camera);
   const intersects = raycaster.intersectObject(mars);
-
   if (intersects.length > 0) {
     const point = intersects[0].point;
     const { lat, lon } = positionToLatLon(point);
@@ -349,39 +368,35 @@ function updateCoords(event) {
     coordsDiv.textContent = '🪐 наведите на планету';
   }
 }
-
 renderer.domElement.addEventListener('mousemove', updateCoords);
 
-// ============================================================
-// 9. ОБРАБОТЧИК КЛИКОВ ПО МЕТКАМ (открытие ссылок)
-// ============================================================
 function onCanvasClick(event) {
   const rect = renderer.domElement.getBoundingClientRect();
   mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
   mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-
   raycaster.setFromCamera(mouse, camera);
   const intersects = raycaster.intersectObjects(labelSprites);
-
   if (intersects.length > 0) {
     const sprite = intersects[0].object;
     const link = sprite.userData.link;
     if (link && link !== '#') {
       window.open(link, '_blank');
-    } else {
-      console.log('Метка без ссылки:', sprite.userData.text);
     }
   }
 }
-
 renderer.domElement.addEventListener('click', onCanvasClick);
 
 // ============================================================
-// 10. АНИМАЦИЯ (обновление прозрачности меток)
+// 9. АНИМАЦИЯ (вращение спутников + прозрачность меток)
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
 
+  // Вращаем спутники вокруг оси Y
+  phobosGroup.rotation.y += PHOBOS_SPEED * 0.01;
+  deimosGroup.rotation.y += DEIMOS_SPEED * 0.01;
+
+  // Прозрачность меток
   const cameraDir = camera.position.clone().normalize();
   for (let sprite of labelSprites) {
     const pos = sprite.userData.pos.clone().normalize();
@@ -396,7 +411,7 @@ function animate() {
 animate();
 
 // ============================================================
-// 11. АДАПТИВНОСТЬ И ГОРЯЧИЕ КЛАВИШИ
+// 10. АДАПТИВНОСТЬ И ГОРЯЧИЕ КЛАВИШИ
 // ============================================================
 window.addEventListener('resize', () => {
   const width = container.clientWidth;
@@ -410,14 +425,17 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'm' || e.key === 'M') {
     labelsGroup.visible = !labelsGroup.visible;
   }
+  if (e.key === 'o' || e.key === 'O') {
+    phobosOrbit.visible = !phobosOrbit.visible;
+    deimosOrbit.visible = !deimosOrbit.visible;
+  }
 });
 
 setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
 </script>
 
-<!-- Подпись -->
 <div style="text-align: center; color: #888; font-size: 14px; margin-top: 10px; padding: 10px; background: #0a0a1a; border-radius: 8px;">
-  🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — скрыть метки
+  🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — метки • <b>O</b> — орбиты
 </div>
 
 </body>

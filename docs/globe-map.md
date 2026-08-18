@@ -126,13 +126,11 @@ scene.background = new THREE.Color(0x050510);
 const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
 camera.position.set(0, 0, 3.5);
 
-// WebGL
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 container.appendChild(renderer.domElement);
 
-// CSS2D
 const labelRenderer = new CSS2DRenderer();
 labelRenderer.setSize(container.clientWidth, container.clientHeight);
 labelRenderer.domElement.style.position = 'absolute';
@@ -169,7 +167,7 @@ const stars = new THREE.Points(starsGeometry, starsMaterial);
 scene.add(stars);
 
 // ============================================================
-// 4. МАРС (текстура)
+// 4. МАРС
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
 const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
@@ -189,7 +187,7 @@ const marsTexture = textureLoader.load(
   undefined,
   (err) => {
     console.error('Ошибка загрузки карты:', err);
-    loadingText.textContent = '❌ Карта не загружена. Показываем планету без текстуры.';
+    loadingText.textContent = '❌ Карта не загружена.';
     loadingText.style.color = '#ffaa44';
     setTimeout(() => { loadingText.style.display = 'none'; }, 3000);
   }
@@ -200,21 +198,19 @@ const marsTexture = textureLoader.load(
 // ============================================================
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
 scene.add(ambientLight);
-
 const sunLight = new THREE.DirectionalLight(0xffeedd, 0.8);
 sunLight.position.set(5, 3, 5);
 scene.add(sunLight);
-
 const fillLight = new THREE.DirectionalLight(0x4488ff, 0.3);
 fillLight.position.set(-3, 0, 4);
 scene.add(fillLight);
 
 // ============================================================
-// 6. ФУНКЦИИ ДЛЯ МЕТОК (с уменьшенным размером)
+// 6. МЕТКИ (жёстко на поверхности)
 // ============================================================
-const labelItems = []; // массив для хранения меток и их данных
+const labelItems = [];
 
-function latLonToPosition(lat, lon, radius = 1.001) {
+function latLonToPosition(lat, lon, radius = 1.0) {  // точно на поверхности
   const phi = (90 - lat) * Math.PI / 180;
   const theta = (lon + 180) * Math.PI / 180;
   return new THREE.Vector3(
@@ -229,30 +225,29 @@ function createLabel(text, lat, lon, color = '#ff6633', link = '#') {
   const div = document.createElement('div');
   div.textContent = text;
   div.style.color = '#fff';
-  div.style.backgroundColor = color + '88';
-  div.style.padding = '1px 5px';
-  div.style.borderRadius = '10px';
-  div.style.fontSize = '8px';
+  div.style.backgroundColor = color + '99';
+  div.style.padding = '2px 8px';
+  div.style.borderRadius = '12px';
+  div.style.fontSize = '11px';
   div.style.fontWeight = 'bold';
-  div.style.border = '1px solid rgba(255,255,255,0.2)';
-  div.style.boxShadow = '0 0 8px ' + color + '44';
+  div.style.border = '1px solid rgba(255,255,255,0.4)';
+  div.style.boxShadow = '0 0 15px ' + color + '66';
   div.style.cursor = 'pointer';
-  div.style.transition = 'transform 0.2s';
+  div.style.transition = 'all 0.2s';
   div.style.pointerEvents = 'auto';
   div.style.whiteSpace = 'nowrap';
   div.style.fontFamily = 'Segoe UI, sans-serif';
   div.onclick = () => { window.location.href = link; };
   div.onmouseover = () => {
-    div.style.transform = 'scale(1.3)';
+    div.style.transform = 'scale(1.2)';
     div.style.backgroundColor = color;
   };
   div.onmouseout = () => {
     div.style.transform = 'scale(1)';
-    div.style.backgroundColor = color + '88';
+    div.style.backgroundColor = color + '99';
   };
   const label = new CSS2DObject(div);
   label.position.copy(pos);
-  // Сохраняем метку и её позицию для обновления прозрачности
   labelItems.push({
     label: label,
     position: pos.clone(),
@@ -261,55 +256,30 @@ function createLabel(text, lat, lon, color = '#ff6633', link = '#') {
   return label;
 }
 
-// ============================================================
-// 7. ДОБАВЛЕНИЕ МЕТОК (ключевые, уменьшенное количество)
-// ============================================================
+// --- Добавляем метки (только ключевые) ---
 const labelsGroup = new THREE.Group();
 scene.add(labelsGroup);
 
-// Королевства
-labelsGroup.add(createLabel('👑 Северное', 30, 30, '#ffaa00', '/kingdoms/north'));
-labelsGroup.add(createLabel('👑 Южное', -30, 40, '#ffaa00', '/kingdoms/south'));
-labelsGroup.add(createLabel('👑 Восточное', 10, 100, '#ffaa00', '/kingdoms/east'));
-labelsGroup.add(createLabel('👑 Западное', -10, -120, '#ffaa00', '/kingdoms/west'));
-
-// Реальные объекты
-labelsGroup.add(createLabel('🌋 Олимп', 18.4, 226, '#cc8844', '/geography/olympus'));
-labelsGroup.add(createLabel('🏔️ Маринер', -13.9, -59.2, '#cc8844', '/geography/mariner'));
-labelsGroup.add(createLabel('🧊 Северный полюс', 80, 0, '#88ccff', '/geography/north-pole'));
-labelsGroup.add(createLabel('🧊 Южный полюс', -80, 0, '#88ccff', '/geography/south-pole'));
-labelsGroup.add(createLabel('🌾 Эллада', -42.7, 70.1, '#88aa44', '/geography/ellada-plain'));
-labelsGroup.add(createLabel('🌋 Элизий', 24.7, 147.5, '#cc8844', '/geography/elysium'));
-
-// Моря
-labelsGroup.add(createLabel('🌊 Ацидалийское', 22.2, -21, '#3388dd', '/geography/acidalia-sea'));
-labelsGroup.add(createLabel('🌊 Эллада', 73.6, 70.5, '#3388dd', '/geography/ellada-sea'));
-labelsGroup.add(createLabel('🌊 Зефирийское', 53.0, 155.85, '#3388dd', '/geography/zephyria-sea'));
-
-// Город
-labelsGroup.add(createLabel('🏛️ Окхасен', 44.4, -50, '#ff6633', '/geography/okhasen'));
+labelsGroup.add(createLabel('👑 Северное', 30, 30, '#ffaa00', '#'));
+labelsGroup.add(createLabel('👑 Южное', -30, 40, '#ffaa00', '#'));
+labelsGroup.add(createLabel('🌋 Олимп', 18.4, 226, '#cc8844', '#'));
+labelsGroup.add(createLabel('🏔️ Маринер', -13.9, -59.2, '#cc8844', '#'));
+labelsGroup.add(createLabel('🧊 Северный полюс', 80, 0, '#88ccff', '#'));
+labelsGroup.add(createLabel('🌊 Ацидалийское море', 22.2, -21, '#3388dd', '#'));
+labelsGroup.add(createLabel('🏛️ Окхасен', 44.4, -50, '#ff6633', '#'));
 
 // ============================================================
-// 8. АНИМАЦИЯ с обновлением прозрачности меток
+// 7. АНИМАЦИЯ (метки не двигаются)
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
 
-  // Получаем позицию камеры в мировых координатах
-  const cameraPos = camera.position.clone();
-  // Вектор от центра Марса к камере (нормализованный)
-  const camDir = cameraPos.clone().normalize();
-
-  // Обновляем прозрачность каждой метки
+  // Обновление прозрачности в зависимости от стороны
+  const cameraPos = camera.position.clone().normalize();
   for (let item of labelItems) {
-    // Вектор от центра Марса к метке (нормализованный)
     const labelDir = item.position.clone().normalize();
-    // Вычисляем косинус угла между направлением на камеру и на метку
-    const dot = camDir.dot(labelDir);
-    // dot > 0 => метка смотрит на камеру (передняя сторона)
-    // dot < 0 => метка на обратной стороне
-    // Плавно меняем opacity от 1 (dot=1) до 0.15 (dot=-1)
-    const opacity = Math.max(0.15, Math.min(1, (dot + 1) / 2)); // нормализация от 0.15 до 1
+    const dot = cameraPos.dot(labelDir);
+    const opacity = Math.max(0.2, Math.min(1, (dot + 1) / 2));
     item.div.style.opacity = opacity;
   }
 
@@ -320,7 +290,7 @@ function animate() {
 animate();
 
 // ============================================================
-// 9. АДАПТИВНОСТЬ
+// 8. АДАПТИВНОСТЬ И ГОРЯЧИЕ КЛАВИШИ
 // ============================================================
 window.addEventListener('resize', () => {
   const width = container.clientWidth;
@@ -329,6 +299,14 @@ window.addEventListener('resize', () => {
   camera.updateProjectionMatrix();
   renderer.setSize(width, height);
   labelRenderer.setSize(width, height);
+});
+
+// Нажатие 'M' скрывает/показывает метки (для проверки)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'm' || e.key === 'M') {
+    const visible = labelsGroup.visible;
+    labelsGroup.visible = !visible;
+  }
 });
 
 setTimeout(() => window.dispatchEvent(new Event('resize')), 100);

@@ -459,8 +459,11 @@ document.addEventListener('keydown', (e) => {
 setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
 </script>
 
-<div style="text-align: center; color: #888; font-size: 14px; margin-top: 10px; padding: 10px; background: #0a0a1a; border-radius: 8px;">
-  🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — метки • <b>O</b> — орбиты • <b>P</b> — спутники • <b>R</b> — вращение спутников
+<div style="text-align: center; color: #ffaa44; font-size: 18px; margin-top: 10px; padding: 15px; background: #0a0a1a; border-radius: 8px; border: 1px solid #ff6633; font-family: 'Segoe UI', sans-serif;">
+  🚀 <span style="color: #ff6633;">Совия</span> — выздораливай быстрее! 🍫 Желаю тебе шоколадку и марсианского настроения! 🌟<br>
+  <span style="font-size: 14px; color: #888;">
+    🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — метки • <b>O</b> — орбиты • <b>P</b> — спутники • <b>R</b> — вращение спутников
+  </span>
 </div>
 
 </body>

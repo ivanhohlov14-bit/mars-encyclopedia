@@ -1,5 +1,10 @@
 # Королевство Эдем
 
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
+</div>
+
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
 
   <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
@@ -171,14 +176,12 @@
 
 ## Происхождение названия
 
-Название «Эдем» (марс. *Eden*) впервые встречается в письменных источниках в табличках, найденных в подземном храме долины Ксанфа, датируемых серединой I тысячелетия Э.О. В одном из фрагментов, записанных на древнем языке Серпендиды, говорится о «земле Эдема» (серп. *Ed-en* — «земля, где вода не уходит»)[^1]. Это название, вероятно, восходит к ещё более древнему корню, означавшему «изобилие» или «плодородие», что отражало богатство региона водными ресурсами в Эпоху Расцвета[^2].
-
----
-
 <div style="text-align: center; margin: 20px 0;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-okhasen-foundation.png" alt="Основание Окхасена" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Окхасена в 1 году Э.О. Реконструкция по табличкам Академии.</div>
 </div>
+
+Название «Эдем» (марс. *Eden*) впервые встречается в письменных источниках в табличках, найденных в подземном храме долины Ксанфа, датируемых серединой I тысячелетия Э.О. В одном из фрагментов, записанных на древнем языке Серпендиды, говорится о «земле Эдема» (серп. *Ed-en* — «земля, где вода не уходит»)[^1]. Это название, вероятно, восходит к ещё более древнему корню, означавшему «изобилие» или «плодородие», что отражало богатство региона водными ресурсами в Эпоху Расцвета[^2].
 
 Первое письменное упоминание названия «Эдем» в форме, близкой к современной (марс. *Eden*), датируется **1500 годом Э.О.** и встречается в хрониках Серпендиды, где оно используется для обозначения земель между реками Ксанф и Арес[^3]: *«В 1498 году Э.О. караван из Серпендиды достиг границ Эдема, где вода течёт по каналам, а глина помнит имена предков»*[^4].
 
@@ -188,14 +191,12 @@
 
 ### Географическое положение
 
-Территория Королевства Эдем в его заявленных границах составляла **18 000 000 км²**, что делало его первым по площади государством Марса[^1]. Королевство располагалось полностью в северном полушарии, в центральной и восточной части планеты, занимая обширные территории от западных склонов Тарсиса до возвышенностей Земли Аравия[^2]. Омывалось водами [Ацидалийского моря](https://mars-wiki.ru/geography/acidalia-sea/), Зефирийского моря и Эритрейского моря, обладая одной из самых протяжённых береговых линий на Марсе — **27 000 км**[^3].
-
----
-
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-medieval-map.png" alt="Карта Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Эдема в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
 </div>
+
+Территория Королевства Эдем в его заявленных границах составляла **18 000 000 км²**, что делало его первым по площади государством Марса[^1]. Королевство располагалось полностью в северном полушарии, в центральной и восточной части планеты, занимая обширные территории от западных склонов Тарсиса до возвышенностей Земли Аравия[^2]. Омывалось водами [Ацидалийского моря](https://mars-wiki.ru/geography/acidalia-sea/), Зефирийского моря и Эритрейского моря, обладая одной из самых протяжённых береговых линий на Марсе — **27 000 км**[^3].
 
 Эдем располагался в центральной части северного полушария Марса, занимая почти всю восточную часть Великой равнины Аравии и прилегающие возвышенности. Эритрейское море разделяли королевство на **западную** (около 30 % территории) и **восточную** (около 70 %) части[^4]. При этом отдельно взятые западная и восточная части Эдема являлись крупнейшими по территории среди других государств Марса.
 
@@ -215,25 +216,23 @@
 
 *Основная статья: [История Эдема](https://mars-wiki.ru/history/edem/)*
 
-Королевство Эдем — одно из древнейших государств Марса, чья письменная история охватывает более двух с половиной тысячелетий. В летописях Академии Окхасена выделяют три великие эпохи: **Эпоху Основания** (1–2500 гг. Э.О.), **Эпоху Расцвета** (2500–2680 гг. Э.О.) и **Эпоху Умирания** (2680–2745 гг. Э.О.)[^1].
-
----
-
 <div style="text-align: center; margin: 20px 0;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-sarum-i.png" alt="Сарум I" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Сарум I — первый правитель Окхасена. Реконструкция.</div>
 </div>
 
-### Эпоха Основания (1–2500 гг. Э.О.)
-
-Первые поселения на территории будущего Королевства Эдем возникли на северном побережье [Ацидалийского моря](https://mars-wiki.ru/geography/acidalia-sea/) в конце I тысячелетия до Э.О. Согласно легендам, записанным Хевсуром, эти земли были населены рыбацкими племенами, почитавшими богиню [Араксис](https://mars-wiki.ru/mythology/araksis/) — покровительницу воды и памяти. Однако письменная история начинается в **1 году Э.О.**, когда переселенцы из древней Серпендиды, спасаясь от междоусобных войн и засухи, основали портовый город [Окхасен](https://mars-wiki.ru/geography/okhasen/) на восточном берегу Ацидалийского моря[^2].
+Королевство Эдем — одно из древнейших государств Марса, чья письменная история охватывает более двух с половиной тысячелетий. В летописях Академии Окхасена выделяют три великие эпохи: **Эпоху Основания** (1–2500 гг. Э.О.), **Эпоху Расцвета** (2500–2680 гг. Э.О.) и **Эпоху Умирания** (2680–2745 гг. Э.О.)[^1].
 
 ---
+
+### Эпоха Основания (1–2500 гг. Э.О.)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-rogen-aria-construction.png" alt="Строительство Роген-Арии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство Роген-Арии в 47 году Э.О. Реконструкция.</div>
 </div>
+
+Первые поселения на территории будущего Королевства Эдем возникли на северном побережье [Ацидалийского моря](https://mars-wiki.ru/geography/acidalia-sea/) в конце I тысячелетия до Э.О. Согласно легендам, записанным Хевсуром, эти земли были населены рыбацкими племенами, почитавшими богиню [Араксис](https://mars-wiki.ru/mythology/araksis/) — покровительницу воды и памяти. Однако письменная история начинается в **1 году Э.О.**, когда переселенцы из древней Серпендиды, спасаясь от междоусобных войн и засухи, основали портовый город [Окхасен](https://mars-wiki.ru/geography/okhasen/) на восточном берегу Ацидалийского моря[^2].
 
 Согласно табличкам, найденным в долине Ксанфа, вождь переселенцев по имени **Сарум** (позже — Сарум I) объединил разрозненные общины и в **47 году Э.О.** основал столицу — [Роген-Арию](https://mars-wiki.ru/geography/rogen-aria/) («Врата Солнца»), расположенную в плодородной долине Эдем. Сарум I погиб в море во время шторма, но его сын, **Сарум II**, завершил строительство дворцов и заложил первый канал[^3].
 
@@ -243,14 +242,12 @@
 
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
-Эпоха Расцвета стала золотым веком Эдема. В **2500 году** правитель Окхасена **Сарум Великий** провозгласил создание единого Королевства Эдем, объединив под своей властью 21 провинцию. В его правление была завершена грандиозная система каналов, превративших долину Аравия в главную житницу Марса[^7].
-
----
-
 <div style="text-align: center; margin: 20px 0;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-canals.png" alt="Строительство каналов" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Строительство системы каналов при Саруме Великом. Реконструкция.</div>
 </div>
+
+Эпоха Расцвета стала золотым веком Эдема. В **2500 году** правитель Окхасена **Сарум Великий** провозгласил создание единого Королевства Эдем, объединив под своей властью 21 провинцию. В его правление была завершена грандиозная система каналов, превративших долину Аравия в главную житницу Марса[^7].
 
 Сарум Великий также основал обсерватории в горах Фарсиды, где жрецы-астрономы вели наблюдения за движением Фобоса и Деймоса. В **2520 году** Академия начала систематическое изучение магнитного поля Марса — первые отчёты были тревожными: поле ослабевало, и атмосфера планеты постепенно улетучивалась в космос[^8].
 
@@ -258,14 +255,12 @@
 
 ### Эпоха Умирания (2680–2745 гг. Э.О.)
 
-**2680 год** считается началом Эпохи Умирания. В этом году впервые за всю историю наблюдений река Ксанф обмелела настолько, что по ней перестали ходить торговые суда. В **2690 году** глобальная пылевая буря длилась почти год, уничтожив посевы в долине Аравия[^11].
-
----
-
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/King-Aratan-iii.png" alt="Аратан III" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Король Аратан III — последний правитель Эдема. Реконструкция.</div>
 </div>
+
+**2680 год** считается началом Эпохи Умирания. В этом году впервые за всю историю наблюдений река Ксанф обмелела настолько, что по ней перестали ходить торговые суда. В **2690 году** глобальная пылевая буря длилась почти год, уничтожив посевы в долине Аравия[^11].
 
 В **2703 году** на престол взошёл **Аратан III** — последний король Эдема. Ему досталось королевство, стоящее на грани катастрофы: реки пересыхали, урожаи падали, а из недр планеты начал выделяться сернистый газ[^12].
 
@@ -273,9 +268,9 @@
 
 ---
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-ark-construction.png" alt="Строительство кораблей-ковчегов" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Строительство кораблей-ковчегов на космодроме в долине Ксанфа. Реконструкция.</div>
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-ark-launch.jpg" alt="Старт кораблей-ковчегов" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Старт трёх кораблей-ковчегов с космодрома Фарсиды. Реконструкция по табличкам Академии Окхасена.</div>
 </div>
 
 В **2735 году** Ацидалийское море замёрзло полностью. Начался массовый отбор переселенцев. В списки, утверждённые лично королём, вошли 470 человек[^16].
@@ -304,6 +299,11 @@
 ---
 
 ### Государственная символика
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-flag-coat-of-arms.png" alt="Флаг и герб Королевства Эдем" style="width: 80%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Флаг и герб Королевства Эдем. Символы воды, жизни и вечности.</div>
+</div>
 
 **Флаг** Королевства Эдем представлял собой прямоугольное полотнище, разделённое на три горизонтальные полосы: верхнюю — **синюю** (символ воды и богини Араксис), среднюю — **пурпурную** (символ жизни и плодородия) и нижнюю — **золотую** (символ солнца и вечности). Отношение ширины флага к его длине составляло 2:3[^4].
 
@@ -362,9 +362,19 @@
 
 ## Вооружённые силы
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-army.jpg" alt="Армия Королевства Эдем" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Армия Королевства Эдем. Реконструкция по табличкам Академии.</div>
+</div>
+
 **Вооружённые силы Королевства Эдем** — государственная военная организация, составлявшая основу обороны королевства. В соответствии с военным кодексом, записанным на глиняных табличках **«Кодекса Сарума»** (1500 г. Э.О.), вооружённые силы предназначались для отражения агрессии, защиты целостности и неприкосновенности территории королевства[^1].
 
 Верховным главнокомандующим являлся **король Эдема**[^2]. На **2650 год Э.О.** штатная численность составляла около **150 000 человек** (примерно 1,8 % населения)[^3]. В состав входили **сухопутные войска** (кавалерия, пехота, лучники, инженерные части), **военно-морской флот** и **Королевская гвардия**[^4].
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-warships.jpg" alt="Военно-морской флот Эдема" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Военно-морской флот Королевства Эдема. Реконструкция.</div>
+</div>
 
 Армия делилась на **5 военных округов**: Ацидалийский, Эритрейский, Аравийский, Ксанфский и Фарсидский[^5]. Оснащение включало мечи из закалённой меди, луки, арбалеты, щиты из базальтовых плит и катапульты[^6].
 
@@ -375,6 +385,11 @@
 ---
 
 ## Экономика
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-marketplace.png" alt="Торговля в Эдеме" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Торговля и рынки Королевства Эдем. Реконструкция.</div>
+</div>
 
 Экономика Королевства Эдем занимала **2-е место на Марсе** по объёму ВВП по ППС и **3-е место** по номинальному ВВП[^1]. В **2650 году Э.О.** объём ВВП (ППС) составлял около **18 миллионов глиняных талантов**, номинальный ВВП — **12 миллионов талантов**[^2]. По ВВП на душу населения (ППС) Эдем занимал **4-е место** среди государств Марса[^3].
 
@@ -420,6 +435,11 @@
 ---
 
 ## Транспорт и связь
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-canals-transport.jpg" alt="Каналы Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Система каналов Королевства Эдем. Реконструкция.</div>
+</div>
 
 Транспортная система Королевства Эдем была одной из наиболее развитых на Марсе. Протяжённость территории (свыше 10 000 км с запада на восток и 4 000 км с севера на юг) требовала создания эффективной сети путей сообщения[^1]. Основную роль играл **водный транспорт** — реки, каналы и морские пути, на которые приходилось более **60 %** грузооборота[^2].
 
@@ -518,11 +538,21 @@
 
 ### Академия Окхасена
 
+<div style="text-align: center; margin-bottom: 8px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Главное здание Академии Окхасена</div>
+  </div>
+
 Основана в **712 году Э.О.**[^5]. В 2650 году в Академии работали около **500 учёных** и обучались около **2 000 студентов**[^6]. Факультеты: астрономии, географии, медицины, права, инженерии, истории, жреческих наук[^7]. Библиотека насчитывала более **100 000** глиняных табличек (уничтожена пожаром в 2739 году)[^8].
 
 ---
 
 ## Наука
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-observatory.png" alt="Обсерватория в горах Фарсиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Обсерватория в горах Фарсиды. Реконструкция.</div>
+</div>
 
 Наука как социальный институт возникла с основанием **Академии Окхасена** в 712 году Э.О.[^1]. К **2650 году** Эдем стал главным научным центром Марса (около **500 учёных**)[^2].
 
@@ -546,6 +576,11 @@
 
 ## Культура и искусство
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/clay-memory.webp" alt="Lān sur — глина помнит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Lān sur — глина помнит. Центральный символ марсианской мифологии.</div>
+</div>
+
 Королевство Эдем отличалось высокой степенью этнокультурного многообразия[^1]. Культура была глубоко пронизана идеей **«Lān sur»** («Глина помнит»)[^2].
 
 ### Литература
@@ -558,11 +593,6 @@
 - **«Песнь о замёрзшем море»** (Совия) — поэма о замерзании Ацидалийского моря.
 
 ---
-
-<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-observatory.png" alt="Обсерватория в горах Фарсиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Обсерватория в горах Фарсиды. Реконструкция.</div>
-</div>
 
 ### Музыка
 

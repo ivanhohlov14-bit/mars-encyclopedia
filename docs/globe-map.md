@@ -72,6 +72,12 @@ title: 3D-карта Марса
     font-size: 18px;
     z-index: 5;
   }
+  .error-text {
+    color: #ff6633;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 10px;
+  }
 </style>
 
 <div class="map-container">
@@ -145,7 +151,8 @@ controls.rotateSpeed = 0.5;
 controls.minDistance = 1.5;
 controls.maxDistance = 6;
 controls.target.set(0, 0, 0);
-controls.autoRotate = false; // ОТКЛЮЧАЕМ АВТОВРАЩЕНИЕ
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.6;
 controls.update();
 
 // ============================================================
@@ -167,33 +174,55 @@ scene.add(stars);
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
 
-// Прямая ссылка на файл в репозитории (raw)
+// Запасной цвет планеты (на случай, если текстура не загрузится)
+const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
+const marsMaterial = new THREE.MeshPhongMaterial({
+  color: 0xcc6633, // оранжево-красный, похожий на Марс
+});
+const mars = new THREE.Mesh(marsGeometry, marsMaterial);
+scene.add(mars);
+
+// Загружаем текстуру
 const mapPath = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
 
 console.log('Загрузка карты:', mapPath);
 
 const marsTexture = textureLoader.load(
   mapPath,
-  () => {
+  (texture) => {
+    // Успешно загружено
     console.log('Карта загружена!');
+    marsMaterial.map = texture;
+    marsMaterial.color.set(0xffffff); // убираем запасной цвет
+    marsMaterial.needsUpdate = true;
     loadingText.style.display = 'none';
   },
   undefined,
   (err) => {
+    // Ошибка загрузки
     console.error('Ошибка загрузки карты:', err);
-    loadingText.textContent = '❌ Не удалось загрузить карту. Проверьте путь.';
-    loadingText.style.color = '#ff6633';
+    loadingText.textContent = '❌ Карта не загружена. Показываем планету без текстуры.';
+    loadingText.style.color = '#ffaa44';
+    // Планета останется с запасным цветом — это лучше, чем ничего
+    setTimeout(() => {
+      loadingText.style.display = 'none';
+    }, 3000);
   }
 );
+
 // ============================================================
 // 5. ОСВЕЩЕНИЕ
 // ============================================================
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
 scene.add(ambientLight);
 
-const sunLight = new THREE.DirectionalLight(0xffeedd, 0.6);
+const sunLight = new THREE.DirectionalLight(0xffeedd, 0.8);
 sunLight.position.set(5, 3, 5);
 scene.add(sunLight);
+
+const fillLight = new THREE.DirectionalLight(0x4488ff, 0.3);
+fillLight.position.set(-3, 0, 4);
+scene.add(fillLight);
 
 // ============================================================
 // 6. МЕТКИ

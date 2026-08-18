@@ -1,311 +1,113 @@
----
-title: 3D-карта Марса
----
-
-<style>
-  .map-container {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    background: #0a0a1a;
-    border-radius: 12px;
-    overflow: hidden;
-    aspect-ratio: 16 / 9;
-  }
-  #mars-globe {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  .legend {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: #ccc;
-    font-size: 13px;
-    background: rgba(10, 10, 26, 0.8);
-    padding: 12px 18px;
-    border-radius: 8px;
-    border: 1px solid #2a2a4a;
-    z-index: 10;
-  }
-  .legend span {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 6px;
-  }
-  .legend .city { background: #ff6633; }
-  .legend .sea { background: #3388dd; }
-  .legend .mountain { background: #cc8844; }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    margin: 4px 0;
-  }
-  .info-panel {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #aaa;
-    font-size: 13px;
-    background: rgba(10, 10, 26, 0.8);
-    padding: 12px 18px;
-    border-radius: 8px;
-    border: 1px solid #2a2a4a;
-    z-index: 10;
-    text-align: right;
-  }
-  @media (max-width: 768px) {
-    .legend, .info-panel {
-      display: none;
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D-карта Марса</title>
+  <style>
+    .map-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      background: #0a0a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
     }
-  }
-  .loading-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #888;
-    font-size: 18px;
-    z-index: 5;
-  }
-  .error-text {
-    color: #ff6633;
-    font-size: 14px;
-    text-align: center;
-    margin-top: 10px;
-  }
-</style>
+    #mars-globe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #ccc;
+      font-size: 13px;
+      background: rgba(10, 10, 26, 0.8);
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid #2a2a4a;
+      z-index: 10;
+    }
+    .legend span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .legend .city { background: #ff6633; }
+    .legend .sea { background: #3388dd; }
+    .legend .mountain { background: #cc8844; }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 4px 0;
+    }
+    .info-panel {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: #aaa;
+      font-size: 13px;
+      background: rgba(10, 10, 26, 0.8);
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid #2a2a4a;
+      z-index: 10;
+      text-align: right;
+    }
+    /* Координаты под курсором */
+    #coords {
+      position: absolute;
+      bottom: 80px;
+      left: 20px;
+      color: #fff;
+      font-size: 14px;
+      background: rgba(0,0,0,0.7);
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: 1px solid #444;
+      font-family: monospace;
+      z-index: 10;
+      pointer-events: none;
+      user-select: none;
+    }
+    @media (max-width: 768px) {
+      .legend, .info-panel, #coords { display: none; }
+    }
+    .loading-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #888;
+      font-size: 18px;
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
 
 <div class="map-container">
   <div id="mars-globe">
     <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
   </div>
-
   <!-- Легенда -->
   <div class="legend">
     <div class="legend-item"><span class="city"></span> Города</div>
     <div class="legend-item"><span class="sea"></span> Моря</div>
     <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
   </div>
-
   <!-- Информация -->
   <div class="info-panel">
-    🖱️ Вращайте мышкой<br>
-    🔍 Колесо — приближение<br>
-    👆 Нажмите на метку
-  </div>
-</div>
-
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-  }
-}
-</script>
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D-карта Марса</title>
-  <style>
-    .map-container {
-      position: relative;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      background: #0a0a1a;
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
-    }
-    #mars-globe {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-    .legend {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      color: #ccc;
-      font-size: 13px;
-      background: rgba(10, 10, 26, 0.8);
-      padding: 12px 18px;
-      border-radius: 8px;
-      border: 1px solid #2a2a4a;
-      z-index: 10;
-    }
-    .legend span {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-right: 6px;
-    }
-    .legend .city { background: #ff6633; }
-    .legend .sea { background: #3388dd; }
-    .legend .mountain { background: #cc8844; }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      margin: 4px 0;
-    }
-    .info-panel {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: #aaa;
-      font-size: 13px;
-      background: rgba(10, 10, 26, 0.8);
-      padding: 12px 18px;
-      border-radius: 8px;
-      border: 1px solid #2a2a4a;
-      z-index: 10;
-      text-align: right;
-    }
-    @media (max-width: 768px) {
-      .legend, .info-panel { display: none; }
-    }
-    .loading-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #888;
-      font-size: 18px;
-      z-index: 5;
-    }
-    .error-text {
-      color: #ff6633;
-      font-size: 14px;
-      text-align: center;
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
-
-<div class="map-container">
-  <div id="mars-globe">
-    <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
-  </div>
-  <div class="legend">
-    <div class="legend-item"><span class="city"></span> Города</div>
-    <div class="legend-item"><span class="sea"></span> Моря</div>
-    <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
-  </div>
-  <div class="info-panel">
     🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — скрыть/показать метки
   </div>
-</div>
-
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-  }
-}
-</script>
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3D-карта Марса</title>
-  <style>
-    .map-container {
-      position: relative;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      background: #0a0a1a;
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
-    }
-    #mars-globe {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-    .legend {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      color: #ccc;
-      font-size: 13px;
-      background: rgba(10, 10, 26, 0.8);
-      padding: 12px 18px;
-      border-radius: 8px;
-      border: 1px solid #2a2a4a;
-      z-index: 10;
-    }
-    .legend span {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-right: 6px;
-    }
-    .legend .city { background: #ff6633; }
-    .legend .sea { background: #3388dd; }
-    .legend .mountain { background: #cc8844; }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      margin: 4px 0;
-    }
-    .info-panel {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: #aaa;
-      font-size: 13px;
-      background: rgba(10, 10, 26, 0.8);
-      padding: 12px 18px;
-      border-radius: 8px;
-      border: 1px solid #2a2a4a;
-      z-index: 10;
-      text-align: right;
-    }
-    @media (max-width: 768px) {
-      .legend, .info-panel { display: none; }
-    }
-    .loading-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #888;
-      font-size: 18px;
-      z-index: 5;
-    }
-  </style>
-</head>
-<body>
-
-<div class="map-container">
-  <div id="mars-globe">
-    <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
-  </div>
-  <div class="legend">
-    <div class="legend-item"><span class="city"></span> Города</div>
-    <div class="legend-item"><span class="sea"></span> Моря</div>
-    <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
-  </div>
-  <div class="info-panel">
-    🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — скрыть/показать метки
-  </div>
+  <!-- Координаты -->
+  <div id="coords">🪐 наведите на планету</div>
 </div>
 
 <script type="importmap">
@@ -326,6 +128,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 // ============================================================
 const container = document.getElementById('mars-globe');
 const loadingText = document.getElementById('loadingText');
+const coordsDiv = document.getElementById('coords');
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x050510);
@@ -405,12 +208,10 @@ fillLight.position.set(-3, 0, 4);
 scene.add(fillLight);
 
 // ============================================================
-// 6. МЕТКИ (СПРАЙТЫ) — УВЕЛИЧЕННЫЙ РАЗМЕР
+// 6. МЕТКИ (СПРАЙТЫ)
 // ============================================================
-// ------ НАСТРОЙКА КООРДИНАТ ------
-// Если метки не совпадают с картой, меняйте эти две переменные (в градусах):
-const LON_OFFSET = 0;   // смещение по долготе (положительное = вправо на карте)
-const LAT_OFFSET = 0;   // смещение по широте (положительное = вверх на карте)
+const LON_OFFSET = 0;
+const LAT_OFFSET = 0;
 
 function latLonToPosition(lat, lon, radius = 1.0) {
   lat += LAT_OFFSET;
@@ -424,18 +225,26 @@ function latLonToPosition(lat, lon, radius = 1.0) {
   );
 }
 
+// Функция для получения широты/долготы из точки на сфере
+function positionToLatLon(pos) {
+  const radius = pos.length();
+  const lat = 90 - Math.acos(pos.y / radius) * 180 / Math.PI;
+  let lon = Math.atan2(pos.z, -pos.x) * 180 / Math.PI - 180;
+  if (lon < -180) lon += 360;
+  if (lon > 180) lon -= 360;
+  return { lat, lon };
+}
+
 // Создание метки-спрайта (увеличенный размер)
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
 
-  // Увеличенный canvas для длинных названий
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = 400;    // было 256
-  canvas.height = 120;   // было 96
+  canvas.width = 400;
+  canvas.height = 120;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Прямоугольник с закруглёнными углами (вместо круга — больше места для текста)
   const radiusBg = 20;
   ctx.beginPath();
   ctx.moveTo(radiusBg, 0);
@@ -454,9 +263,8 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   ctx.lineWidth = 3;
   ctx.stroke();
 
-  // Текст (увеличенный шрифт)
   ctx.fillStyle = '#ffffff';
-  ctx.font = 'bold 32px Segoe UI, sans-serif';  // было 28px
+  ctx.font = 'bold 32px Segoe UI, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText(text, canvas.width / 2, canvas.height / 2 + 2);
@@ -474,25 +282,26 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
 
   const sprite = new THREE.Sprite(material);
   sprite.position.copy(pos);
-  // Увеличенный размер спрайта
-  sprite.scale.set(0.22, 0.07, 1);  // было 0.15, 0.06
+  sprite.scale.set(0.22, 0.07, 1);
 
   sprite.userData = {
     pos: pos.clone(),
     color: color,
     link: link,
     canvas: canvas,
-    isLabel: true
+    isLabel: true,
+    text: text,
+    lat: lat,
+    lon: lon
   };
   return sprite;
 }
 
 // ============================================================
-// 7. СПИСОК МЕТОК (с координатами и ссылками)
+// 7. СПИСОК МЕТОК
 // ============================================================
-// Формат: [название, широта, долгота, цвет (HEX), ссылка]
 const labelData = [
-  // --- МОРЯ (с вашими ссылками) ---
+  // Моря
   ['🌊 Ацидалийское море', 22.2, -21, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/'],
   ['🌊 Море Эллада', 73.6, 70.5, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/'],
   ['🌊 Море Аргира', -49.7, 43.1, '#3388dd', 'https://mars-wiki.ru/geography/argir-sea/'],
@@ -500,8 +309,7 @@ const labelData = [
   ['🌊 Амазонское море', 24.7, 147.5, '#3388dd', 'https://mars-wiki.ru/geography/amazon-sea/'],
   ['🌊 Зефирийское море', 53.0, 155.85, '#3388dd', 'https://mars-wiki.ru/geography/zephyria-sea/'],
   ['🌊 Залив Сиртис', 24.7, 147.5, '#3388dd', 'https://mars-wiki.ru/geography/sirtis-major-bay/'],
-
-  // --- ДРУГИЕ ОБЪЕКТЫ ---
+  // Другие
   ['👑 Северное королевство', 30, 30, '#ffaa00', '#'],
   ['👑 Южное королевство', -30, 40, '#ffaa00', '#'],
   ['🌋 Олимп', 18.4, 226, '#cc8844', '#'],
@@ -521,7 +329,56 @@ for (let [text, lat, lon, color, link] of labelData) {
 }
 
 // ============================================================
-// 8. АНИМАЦИЯ (обновление прозрачности меток)
+// 8. ОБРАБОТЧИК КООРДИНАТ ПОД КУРСОРОМ (через Raycaster)
+// ============================================================
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+function updateCoords(event) {
+  const rect = renderer.domElement.getBoundingClientRect();
+  mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObject(mars);
+
+  if (intersects.length > 0) {
+    const point = intersects[0].point;
+    const { lat, lon } = positionToLatLon(point);
+    coordsDiv.textContent = `📍 ${lat.toFixed(2)}° с.ш., ${lon.toFixed(2)}° в.д.`;
+  } else {
+    coordsDiv.textContent = '🪐 наведите на планету';
+  }
+}
+
+renderer.domElement.addEventListener('mousemove', updateCoords);
+
+// ============================================================
+// 9. ОБРАБОТЧИК КЛИКОВ ПО МЕТКАМ
+// ============================================================
+function onCanvasClick(event) {
+  const rect = renderer.domElement.getBoundingClientRect();
+  mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+  const intersects = raycaster.intersectObjects(labelSprites);
+
+  if (intersects.length > 0) {
+    const sprite = intersects[0].object;
+    const link = sprite.userData.link;
+    if (link && link !== '#') {
+      window.open(link, '_blank');
+    } else {
+      console.log('Метка без ссылки:', sprite.userData.text);
+    }
+  }
+}
+
+renderer.domElement.addEventListener('click', onCanvasClick);
+
+// ============================================================
+// 10. АНИМАЦИЯ (обновление прозрачности меток)
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
@@ -540,7 +397,7 @@ function animate() {
 animate();
 
 // ============================================================
-// 9. АДАПТИВНОСТЬ И ГОРЯЧИЕ КЛАВИШИ
+// 11. АДАПТИВНОСТЬ И ГОРЯЧИЕ КЛАВИШИ
 // ============================================================
 window.addEventListener('resize', () => {
   const width = container.clientWidth;

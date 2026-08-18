@@ -145,8 +145,7 @@ controls.rotateSpeed = 0.5;
 controls.minDistance = 1.5;
 controls.maxDistance = 6;
 controls.target.set(0, 0, 0);
-controls.autoRotate = true;
-controls.autoRotateSpeed = 0.8;
+controls.autoRotate = false; // ОТКЛЮЧАЕМ АВТОВРАЩЕНИЕ
 controls.update();
 
 // ============================================================
@@ -164,42 +163,28 @@ const stars = new THREE.Points(starsGeometry, starsMaterial);
 scene.add(stars);
 
 // ============================================================
-// 4. МАРС (текстура) — ПРОБУЙТЕ РАЗНЫЕ ПУТИ
+// 4. МАРС (текстура)
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
 
-// ВАРИАНТ 1: Абсолютный путь (как у вас)
-const mapPath = '/mars-encyclopedia/assets/images/map/my-new-map.png';
-
-// ВАРИАНТ 2: Если не работает — раскомментируйте и попробуйте:
-// const mapPath = 'assets/images/map/my-new-map.png';
-// const mapPath = '/assets/images/map/my-new-map.png';
+// Прямая ссылка на файл в репозитории (raw)
+const mapPath = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
 
 console.log('Загрузка карты:', mapPath);
 
 const marsTexture = textureLoader.load(
   mapPath,
   () => {
-    // Успешно загружено
     console.log('Карта загружена!');
     loadingText.style.display = 'none';
   },
   undefined,
   (err) => {
-    // Ошибка загрузки
     console.error('Ошибка загрузки карты:', err);
     loadingText.textContent = '❌ Не удалось загрузить карту. Проверьте путь.';
     loadingText.style.color = '#ff6633';
   }
 );
-
-const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
-const marsMaterial = new THREE.MeshPhongMaterial({
-  map: marsTexture,
-});
-const mars = new THREE.Mesh(marsGeometry, marsMaterial);
-scene.add(mars);
-
 // ============================================================
 // 5. ОСВЕЩЕНИЕ
 // ============================================================

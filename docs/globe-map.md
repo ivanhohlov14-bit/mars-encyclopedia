@@ -479,19 +479,20 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
 }
 
 const labelData = [
-  ['🌊 Ацидалийское море', 22.2, -21, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/'],
-  ['🌊 Море Эллада', 73.6, 70.5, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/'],
-  ['🌊 Море Аргира', -49.7, 43.1, '#3388dd', 'https://mars-wiki.ru/geography/argir-sea/'],
-  ['🌊 Эритрейское море', -24.7, 40, '#3388dd', 'https://mars-wiki.ru/geography/eritreya-sea/'],
-  ['🌊 Амазонское море', 24.7, 147.5, '#3388dd', 'https://mars-wiki.ru/geography/amazon-sea/'],
-  ['🌊 Зефирийское море', 53.0, 155.85, '#3388dd', 'https://mars-wiki.ru/geography/zephyria-sea/'],
-  ['🌊 Залив Сиртис', 24.7, 147.5, '#3388dd', 'https://mars-wiki.ru/geography/sirtis-major-bay/'],
-  ['👑 Северное королевство', 30, 30, '#ffaa00', '#'],
-  ['👑 Южное королевство', -30, 40, '#ffaa00', '#'],
+  ['🌊 Ацидалийское море', 33.8, -34.4, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/'],
+  ['🌊 Море Эллада', -34.4, 79.4, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/'],
+  ['🌊 Море Аргира', -41.6, -38.8, '#3388dd', 'https://mars-wiki.ru/geography/argir-sea/'],
+  ['🌊 Эритрейское море', 1, -26.8, '#3388dd', 'https://mars-wiki.ru/geography/eritreya-sea/'],
+  ['🌊 Амазонское море', 41.1, -154.2,'#3388dd', 'https://mars-wiki.ru/geography/amazon-sea/'],
+  ['🌊 Зефирийское море', 10.2, 166.5, '#3388dd', 'https://mars-wiki.ru/geography/zephyria-sea/'],
+  ['🌊 Зал. Большой Сирт', 16.7, 90, '#3388dd', 'https://mars-wiki.ru/geography/sirtis-major-bay/'],
+  ['👑 Королевство Эдем', 30.5, 23.6, '#ffaa00', 'https://mars-wiki.ru/geography/eden/'],
+  ['👑 Королевство Аркадия', 44.5, -124.3, '#ffaa00', 'https://mars-wiki.ru/geography/arkadia/'],
   ['🌋 Олимп', 18.4, 226, '#cc8844', '#'],
-  ['🏔️ Долина Маринер', -13.9, -59.2, '#cc8844', '#'],
-  ['🧊 Северный полюс', 80, 0, '#88ccff', '#'],
-  ['🏛️ Окхасен', 44.4, -50, '#ff6633', '#'],
+  ['🏔️ Долина Маринер', -1.3, -74, '#cc8844', '#'],
+  ['🏛️ Окхасен', 15.26, -53.31, '#ff6633', 'https://mars-wiki.ru/geography/okhasen/'],
+  ['🏛️ Роген-Ария', 53.7, 35.7, '#ff6633', 'https://mars-wiki.ru/geography/rogen-aria/'],
+  ['🚀 Космодром Фарсиды', 20.3, -80, '#ff6633', 'https://mars-wiki.ru/geography/kosmodrom-farsidy/'],
 ];
 
 const labelsGroup = new THREE.Group();

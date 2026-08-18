@@ -207,9 +207,9 @@
 
 ## Историческое значение
 
-<div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-last-days.png" alt="Последние дни Ксанфа" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Последние дни Королевства Ксанф. Гравюра Нары (2740 г. Э.О.).</div>
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-last-days.png" alt="Последние дни Ксанфа" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Последние дни Королевства Ксанф. Гравюра Нары (2740 г. Э.О.).</div>
 </div>
 
 Королевство Ксанф стало последним независимым государством на Марсе. Оно показало, что даже в Эпоху Умирания люди способны создавать свои законы и свою власть[^49]. Пираты оставили после себя множество табличек, которые стали важным источником информации о последних десятилетиях марсианской цивилизации[^50].

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -202,12 +201,12 @@ let satellitesVisible = true;
 let satellitesRotating = true;
 
 // ============================================================
-// 7. МЕТКИ (СПРАЙТЫ) — ТАКИЕ ЖЕ, КАК В ИДЕАЛЬНОМ КОДЕ
+// 7. МЕТКИ (СПРАЙТЫ) — УВЕЛИЧЕННЫЕ, КАК В ИДЕАЛЬНОМ КОДЕ
 // ============================================================
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
 
-function latLonToPosition(lat, lon, radius = 1.0) {
+function latLonToPosition(lat, lon, radius = 1.001) {
   lat += LAT_OFFSET;
   lon += LON_OFFSET;
   const phi = (90 - lat) * Math.PI / 180;
@@ -228,36 +227,32 @@ function positionToLatLon(pos) {
   return { lat, lon };
 }
 
-// Функция создания спрайта-метки (маленький размер, без лишнего фона)
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', description = '') {
   const pos = latLonToPosition(lat, lon);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  // Устанавливаем размер холста как в идеальном коде (маленький)
-  const canvasWidth = 128;
-  const canvasHeight = 48;
+  // Размер холста как в идеальном коде (но чуть больше для читаемости)
+  const canvasWidth = 256;
+  const canvasHeight = 64;
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Прозрачный фон, только текст с обводкой
-  ctx.font = 'bold 16px Segoe UI, Arial Unicode MS, sans-serif';
+  // Прозрачный фон, только текст с обводкой и тенью
+  ctx.font = 'bold 22px Segoe UI, Arial Unicode MS, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   // Тень для читаемости
-  ctx.shadowColor = 'rgba(0,0,0,0.8)';
-  ctx.shadowBlur = 8;
+  ctx.shadowColor = 'rgba(0,0,0,0.9)';
+  ctx.shadowBlur = 12;
   ctx.shadowOffsetX = 2;
   ctx.shadowOffsetY = 2;
-  // Рисуем текст
   ctx.fillStyle = '#ffffff';
-  ctx.shadowColor = 'rgba(0,0,0,0.9)';
-  ctx.shadowBlur = 10;
   ctx.fillText(text, canvasWidth/2, canvasHeight/2 + 1);
-  // Добавляем цветную обводку
+  // Цветная обводка
   ctx.shadowBlur = 0;
   ctx.strokeStyle = color;
-  ctx.lineWidth = 2;
+  ctx.lineWidth = 3;
   ctx.strokeText(text, canvasWidth/2, canvasHeight/2 + 1);
 
   const texture = new THREE.CanvasTexture(canvas);
@@ -266,17 +261,16 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', descri
   const material = new THREE.SpriteMaterial({
     map: texture,
     transparent: true,
-    depthTest: true,
+    depthTest: false, // чтобы не скрываться за планетой
     depthWrite: false,
     sizeAttenuation: true,
   });
 
   const sprite = new THREE.Sprite(material);
   sprite.position.copy(pos);
-  // Размер как в идеальном коде (очень маленький)
-  sprite.scale.set(0.04, 0.015, 1);
+  // Размер как в идеальном коде (0.08, 0.025) — видимый и аккуратный
+  sprite.scale.set(0.08, 0.025, 1);
 
-  // Сохраняем данные для клика
   sprite.userData = {
     pos: pos.clone(),
     link: link,
@@ -306,7 +300,6 @@ const labelData = [
   ['🚀 Космодром Фарсиды', 20.3, -80, '#ff6633', 'https://mars-wiki.ru/geography/kosmodrom-farsidy/', 'Главный космический порт Марса.'],
 ];
 
-// Создаём группу для меток
 const labelsGroup = new THREE.Group();
 scene.add(labelsGroup);
 const labelSprites = [];
@@ -345,7 +338,7 @@ function showPopup(title, description, link) {
 }
 
 // ============================================================
-// 9. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ (через Raycaster)
+// 9. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ
 // ============================================================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -384,7 +377,6 @@ function onCanvasClick(event) {
   mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
 
   raycaster.setFromCamera(mouse, camera);
-  // Проверяем пересечение со спрайтами-метками
   const intersects = raycaster.intersectObjects(labelSprites);
   if (intersects.length > 0) {
     const sprite = intersects[0].object;
@@ -407,7 +399,7 @@ renderer.domElement.addEventListener('touchstart', updateCoords, { passive: true
 renderer.domElement.addEventListener('touchend', onCanvasClick, { passive: false });
 
 // ============================================================
-// 10. АНИМАЦИЯ (метки за планетой полностью исчезают)
+// 10. АНИМАЦИЯ
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);

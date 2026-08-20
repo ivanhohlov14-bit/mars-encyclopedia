@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -201,12 +202,12 @@ let satellitesVisible = true;
 let satellitesRotating = true;
 
 // ============================================================
-// 7. МЕТКИ (СПРАЙТЫ) — УВЕЛИЧЕННЫЕ, КАК В ИДЕАЛЬНОМ КОДЕ
+// 7. МЕТКИ (ТОЧНО КАК В ВАШЕМ ИДЕАЛЬНОМ КОДЕ)
 // ============================================================
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
 
-function latLonToPosition(lat, lon, radius = 1.001) {
+function latLonToPosition(lat, lon, radius = 1.0) {
   lat += LAT_OFFSET;
   lon += LON_OFFSET;
   const phi = (90 - lat) * Math.PI / 180;
@@ -227,33 +228,45 @@ function positionToLatLon(pos) {
   return { lat, lon };
 }
 
+const isMobile = window.innerWidth <= 768;
+
+// СОЗДАНИЕ МЕТКИ — ТОЧНО КАК В ВАШЕМ ИДЕАЛЬНОМ КОДЕ
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', description = '') {
   const pos = latLonToPosition(lat, lon);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  // Размер холста как в идеальном коде (но чуть больше для читаемости)
-  const canvasWidth = 256;
-  const canvasHeight = 64;
+  // ТОЧНЫЕ РАЗМЕРЫ ИЗ ВАШЕГО ИДЕАЛЬНОГО КОДА
+  const canvasWidth = isMobile ? 500 : 400;
+  const canvasHeight = isMobile ? 140 : 120;
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Прозрачный фон, только текст с обводкой и тенью
-  ctx.font = 'bold 22px Segoe UI, Arial Unicode MS, sans-serif';
+  const radiusBg = 20;
+  ctx.beginPath();
+  ctx.moveTo(radiusBg, 0);
+  ctx.lineTo(canvas.width - radiusBg, 0);
+  ctx.quadraticCurveTo(canvas.width, 0, canvas.width, radiusBg);
+  ctx.lineTo(canvas.width, canvas.height - radiusBg);
+  ctx.quadraticCurveTo(canvas.width, canvas.height, canvas.width - radiusBg, canvas.height);
+  ctx.lineTo(radiusBg, canvas.height);
+  ctx.quadraticCurveTo(0, canvas.height, 0, canvas.height - radiusBg);
+  ctx.lineTo(0, radiusBg);
+  ctx.quadraticCurveTo(0, 0, radiusBg, 0);
+  ctx.closePath();
+  ctx.fillStyle = color + '99';
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+  ctx.lineWidth = 3;
+  ctx.stroke();
+
+  ctx.fillStyle = '#ffffff';
+  // ТОЧНЫЙ РАЗМЕР ШРИФТА ИЗ ВАШЕГО ИДЕАЛЬНОГО КОДА
+  const fontSize = isMobile ? 40 : 32;
+  ctx.font = `bold ${fontSize}px Segoe UI, sans-serif`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  // Тень для читаемости
-  ctx.shadowColor = 'rgba(0,0,0,0.9)';
-  ctx.shadowBlur = 12;
-  ctx.shadowOffsetX = 2;
-  ctx.shadowOffsetY = 2;
-  ctx.fillStyle = '#ffffff';
-  ctx.fillText(text, canvasWidth/2, canvasHeight/2 + 1);
-  // Цветная обводка
-  ctx.shadowBlur = 0;
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 3;
-  ctx.strokeText(text, canvasWidth/2, canvasHeight/2 + 1);
+  ctx.fillText(text, canvas.width / 2, canvas.height / 2 + 2);
 
   const texture = new THREE.CanvasTexture(canvas);
   texture.needsUpdate = true;
@@ -261,28 +274,33 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', descri
   const material = new THREE.SpriteMaterial({
     map: texture,
     transparent: true,
-    depthTest: false, // чтобы не скрываться за планетой
+    depthTest: false,
     depthWrite: false,
     sizeAttenuation: true,
   });
 
   const sprite = new THREE.Sprite(material);
   sprite.position.copy(pos);
-  // Размер как в идеальном коде (0.08, 0.025) — видимый и аккуратный
-  sprite.scale.set(0.08, 0.025, 1);
+  // ТОЧНЫЙ РАЗМЕР ИЗ ВАШЕГО ИДЕАЛЬНОГО КОДА
+  const scaleX = isMobile ? 0.30 : 0.22;
+  const scaleY = isMobile ? 0.09 : 0.07;
+  sprite.scale.set(scaleX, scaleY, 1);
 
-  sprite.userData = {
-    pos: pos.clone(),
-    link: link,
-    text: text,
-    description: description,
-    isLabel: true
+  // Сохраняем данные для карточки
+  sprite.userData = { 
+    pos: pos.clone(), 
+    color, 
+    link, 
+    text, 
+    lat, 
+    lon, 
+    isLabel: true,
+    description: description
   };
-
   return sprite;
 }
 
-// Данные меток (с описаниями)
+// Данные меток (с описаниями для карточек)
 const labelData = [
   ['🌊 Ацидалийское море', 33.8, -34.4, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/', 'Огромное море в северном полушарии Марса. Берега изрезаны древними каналами.'],
   ['🌊 Море Эллада', -34.4, 79.4, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/', 'Крупнейший ударный бассейн, заполненный водой.'],
@@ -380,14 +398,14 @@ function onCanvasClick(event) {
   const intersects = raycaster.intersectObjects(labelSprites);
   if (intersects.length > 0) {
     const sprite = intersects[0].object;
-    // Проверяем, видима ли метка (находится перед планетой)
     const pos = sprite.userData.pos.clone().normalize();
     const cameraDir = camera.position.clone().normalize();
     const dot = cameraDir.dot(pos);
     if (dot > 0) {
+      // Показываем карточку вместо открытия ссылки напрямую
       const link = sprite.userData.link;
       const text = sprite.userData.text;
-      const description = sprite.userData.description;
+      const description = sprite.userData.description || 'Изучите эту локацию в нашей энциклопедии.';
       showPopup(text, description, link);
     }
   }
@@ -409,7 +427,6 @@ function animate() {
     deimosGroup.rotation.y += DEIMOS_SPEED * 0.01;
   }
 
-  // Скрываем метки на обратной стороне
   const cameraDir = camera.position.clone().normalize();
   for (let sprite of labelSprites) {
     const pos = sprite.userData.pos.clone().normalize();

@@ -150,20 +150,7 @@
     <li>• <a href="https://mars-wiki.ru/geography/great-current-river/">Великое Течение</a></li>
     <li>• <a href="https://mars-wiki.ru/geography/mangala-river/">Мангалы</a></li>
   </ul>
-
-  <hr style="margin: 6px 0;">
-
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Связанные понятия
-  </div>
-
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
-    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
-    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
-    <li>• <a href="https://mars-wiki.ru/books/iskhod/">Исход</a></li>
-    <li>• <a href="https://mars-wiki.ru/geography/argira-temple/">Храм Аргира</a></li>
-  </ul>
-
+  
 </div>
 
 **Королевство Эридания** (марс. *Eridania Sen* — «Земля Эридании») — крупное южное государство Марса, располагавшееся в южной части западного полушария планеты, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **14 000 000 км²**[^1]. Протяжённость границ достигала **14 000 км**[^2]. Население Эридании в период расцвета (ок. 2650 г. Э.О.) достигало **4 500 000 человек**[^3], что делало его пятым по численности населения государством Марса. Столица — [Эридан-Ара](https://mars-wiki.ru/geography/eridan-ara/). Координаты столицы: 60° ю.ш., 168° з.д.[^4]. Государственный язык — *Marzān* (южный диалект), также были распространены местные наречия, восходящие к языкам кочевников Эридании и Авсонии[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
@@ -354,7 +341,7 @@
 
 ## История
 
-*Основная статья: [История Эридании](https://mars-wiki.ru/history/eridania/)*  
+*Основная статья: [История Эридании](https://mars-wiki.ru/history/eridania-history/)*  
 
 Королевство Эридания — одно из древнейших и самых загадочных государств Марса, чья история насчитывает более двух тысяч лет. Его становление, расцвет и гибель неразрывно связаны с пустыней, реками и древними храмами, скрытыми в песках[^1].
 

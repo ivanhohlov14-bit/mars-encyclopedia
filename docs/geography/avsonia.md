@@ -1,14 +1,16 @@
 # Королевство Авсония
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Авсония</h3>
-  <hr>
-  
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Авсония</h3>
+  </div>
+
   <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/avsonia-kingdom-map.png" alt="Карта Королевства Авсония" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Авсония. По данным Академии Окхасена (2650 г. Э.О.).</div>
-</div>
-  <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/avsonia-kingdom-map.png" alt="Карта Королевства Авсония" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Авсония. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Королевства Авсония" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -19,9 +21,12 @@
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Авсонии</div>
     </div>
   </div>
-  
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 500 г. Э.О. — основание Автона</li>
     <li>• 700 г. — объединение кланов</li>
     <li>• 1000 г. — строительство портов</li>
@@ -29,65 +34,134 @@
     <li>• 2500 г. — провозглашение Королевства</li>
     <li>• 2740 г. — гибель Авсонии</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Avsonia Mar</i> («Живая Авсония»)</p>
-  <p><b>Тип государства</b> Королевство (наследственная монархия)</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a> (восточный диалект)</p>
-  <p><b>Столица</b> <a href="/geography/avton/">Автон</a></p>
-  <p><b>Координаты столицы</b> 54° ю.ш., 87° в.д.</p>
-  <p><b>Крупнейшие города</b> Кхон-Мар, Сур-Кхо, Эллос-Акха, Теней-Тор, Автон</p>
-  <p><b>Правящая династия</b> Авсониды (Авсон I — Авсон Великий — Авсон III)</p>
-  <p><b>Годы существования</b> ок. 500 г. Э.О. — 2740 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ богини <a href="/mythology/araksis/">Араксис</a> (ок. 70 % населения) и культ предков (15 %)</p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <p><b>Марсианское название:</b> <i>Avsonia Mar</i> («Живая Авсония»)</p>
+  <p><b>Тип государства:</b> Королевство (наследственная монархия)</p>
+  <p><b>Официальный язык:</b> <a href="https://mars-wiki.ru/terms/marzan/">Marzān</a> (восточный диалект)</p>
+  <p><b>Столица:</b> <a href="https://mars-wiki.ru/geography/avton/">Автон</a></p>
+  <p><b>Координаты столицы:</b> 54° ю.ш., 87° в.д.</p>
+  <p><b>Крупнейшие города:</b> Кхон-Мар, Сур-Кхо, Эллос-Акха, Теней-Тор, Автон</p>
+  <p><b>Правящая династия:</b> Авсониды (Авсон I — Авсон Великий — Авсон III)</p>
+  <p><b>Годы существования:</b> ок. 500 г. Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ богини <a href="https://mars-wiki.ru/mythology/araksis/">Араксис</a> (ок. 70 % населения) и культ предков (15 %)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~5 млн км²</li>
     <li>• % водной поверхности ~12 %</li>
   </ul>
 
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Оценка (2650 г. Э.О.) ~2,5 млн чел.</li>
     <li>• Плотность ~0,5 чел./км²</li>
   </ul>
 
-  <p><b>ВВП (ППС)</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Итого (2650 г.) ~5 млн глиняных талантов</li>
     <li>• На душу населения ~2,0 таланта</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
-  <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2620 г. Э.О.)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (с 2620 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b></p>
-  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/khong/">Кхонг</a>
-    </div>
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eridania/">Эридания</a>
-    </div>
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/serpentida/">Серпендида</a>
-    </div>
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/kimeria/">Кимерия</a>
-    </div>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
   </div>
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/hellas-sea/">море Эллада</a>, <a href="/geography/gulf-of-avsonia/">залив Авсонии</a></p>
-  <p><b>Крупнейшие реки</b> <a href="/geography/calliope-river/">Коллиопа</a>, <a href="/geography/tenei-river/">Теней</a>, <a href="/geography/starvalley-river/">Звёздная долина</a></p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/geography/southern-road/">Южный тракт</a>, <a href="/history/hellas-kingdom/">Королевство Эллада</a></p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 2px;">
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/khong/">Кхонг</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/serpentida/">Серпендида</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
+    </span>
+  </div>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/hellas-sea/">море Эллада</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/gulf-of-avsonia/">залив Авсонии</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие реки
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/calliope-river/">Коллиопа</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/tenei-river/">Теней</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/starvalley-river/">Звёздная долина</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Связанные понятия
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
+    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
+    <li>• <a href="https://mars-wiki.ru/books/iskhod/">Исход</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/southern-road/">Южный тракт</a></li>
+  </ul>
+
 </div>
 
 **Королевство Авсония** (марс. *Avsonia Mar* — «Живая Авсония») — небольшое прибрежное государство Марса, располагавшееся на берегу моря Эллада, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **5 000 000 км²**[^1]. Протяжённость границ достигала **9 500 км**[^2]. Население Авсонии в период расцвета (ок. 2650 г. Э.О.) достигало **2 500 000 человек**[^3], что делало его одним из самых малонаселённых государств Марса. Столица — [Автон](https://mars-wiki.ru/geography/avton/). Координаты столицы: 54° ю.ш., 87° в.д.[^4]. Государственный язык — *Marzān* (восточный диалект), также были распространены местные наречия[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-coast.jpg" alt="Побережье Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье моря Эллада — сердце Авсонии. Реконструкция.</div>
+</div>
 
 Королевство Авсония было прибрежным государством, специализировавшимся на **рыбном промысле** и **морской торговле**. Согласно переписи населения, проведённой [Академией Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) в 2650 году Э.О., в стране проживали представители более **15 народностей и племён**, среди которых **авсонийцы** (потомки основателей королевства) составляли около **60 %**, а языком *Marzān* владели около **75 %** населения[^7]. Бо́льшая часть населения (около **70 %**) в религиозном отношении относила себя к почитанию богини [Араксис](https://mars-wiki.ru/mythology/araksis/), что делало Авсонию частью культового поклонения водной стихии[^8].
 
@@ -95,9 +169,16 @@
 
 Авсония граничила с **четырьмя государствами**: на западе — с [Кхонгом](https://mars-wiki.ru/geography/khong/), на востоке — с [Эриданией](https://mars-wiki.ru/geography/eridania/), на северо-западе — с [Серпендидой](https://mars-wiki.ru/geography/serpentida/) (по акватории моря Эллада), на северо-востоке — с [Кимерией](https://mars-wiki.ru/geography/kimeria/)[^11]. В состав Авсонии входили **7 провинций**, включая **4 области**, **2 города-государства** (Автон, Кхон-Мар) и **1 автономную область** (побережье моря Эллада)[^12]. Крупнейшими городами Авсонии были Автон, Кхон-Мар, Сур-Кхо, Эллос-Акха и Теней-Тор. Всего в стране насчитывалось около **100 населённых пунктов**, от крупных портовых городов до небольших рыбацких деревень на побережье[^13].
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-city.jpg" alt="Город Автон" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Порт Автон — главный город Авсонии. Реконструкция.</div>
+</div>
+
 Крупнейшими водоёмами на территории Авсонии были [море Эллада](https://mars-wiki.ru/geography/hellas-sea/) и [залив Авсонии](https://mars-wiki.ru/geography/gulf-of-avsonia/). Главные реки — [Коллиопа](https://mars-wiki.ru/geography/calliope-river/), [Теней](https://mars-wiki.ru/geography/tenei-river/) и [Звёздная долина](https://mars-wiki.ru/geography/starvalley-river/) — обеспечивали королевство водой и служили транспортными артериями. Река Коллиопа впадала в реку Теней, а та, в свою очередь, впадала в море Эллада[^14].
 
 Авсония была **крупным центром рыболовства** и **торговли** на море Эллада[^15]. Королевство было ассоциированным членом **Ордена Хранителей Знаний** и состояло в **Торговом Содружестве моря Эллада**[^16]. Через территорию Авсонии проходил [Южный тракт](https://mars-wiki.ru/geography/southern-road/) — главная торговая артерия, соединявшая все южные государства[^17].
+
+---
 
 ## Происхождение названия
 
@@ -107,9 +188,16 @@
 
 В **2500 году Э.О.**, после объединения прибрежных кланов, государство стало официально именоваться **Королевством Авсония** (марс. *Avsonia Mar* — «Живая Авсония»)[^4].
 
+---
+
 ## Физико-географическая характеристика
 
 ### Географическое положение
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-map-medieval.jpg" alt="Карта Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Авсония в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
+</div>
 
 Территория Королевства Авсония в его заявленных границах составляла **5 000 000 км²**, что делало его одним из самых компактных государств Марса[^1]. Королевство располагалось на берегу моря Эллада, занимая прибрежные равнины и внутренние горные районы[^2]. Омывалось водами моря Эллада и его заливов[^3].
 
@@ -138,6 +226,11 @@
 
 ### Рельеф
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-hills.jpg" alt="Южные горы Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Южные горы Авсонии. Реконструкция.</div>
+</div>
+
 Авсония имела разнообразный рельеф[^1]:
 
 - **Прибрежные равнины** — вдоль моря Эллада, где была сосредоточена основная часть населения.
@@ -148,6 +241,11 @@
 ---
 
 ### Внутренние воды
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-tenei-river.jpg" alt="Река Теней" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Река Теней — главная водная артерия Авсонии. Реконструкция.</div>
+</div>
 
 Авсония обладала ограниченными водными ресурсами из-за пустынного юга. Поверхностные воды занимали **12 %** территории королевства, при этом **90 %** поверхностных вод были сосредоточены в северных прибрежных районах[^2].
 
@@ -218,7 +316,7 @@
 
 ## История
 
-*Основная статья: [История Авсонии](/history/avsonia/)*
+*Основная статья: [История Авсонии](https://mars-wiki.ru/history/avsonia-history/)*
 
 Королевство Авсония — одно из древнейших прибрежных государств Марса. Его история неразрывно связана с **войнами против древнего Королевства Эллада**, которое существовало ещё до основания Окхасена (до современного марсианского летоисчисления)[^1].
 
@@ -228,11 +326,21 @@
 
 ### Войны против Королевства Эллада
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-hellas-war.jpg" alt="Война с Элладой" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Война с Королевством Эллада — безуспешные битвы за остров Эллос. Реконструкция.</div>
+</div>
+
 До основания Окхасена (1 г. Э.О.) на островах моря Эллада существовало могущественное **Королевство Эллада** — островное государство со столицей **Араксис-Сен** на острове Эллос[^2].
 
 Авсония, располагавшаяся на материке напротив острова Эллос, вела **несколько войн с Элладой**[^3]. Все битвы были **безуспешны** — элладский флот был сильнее, а островная столица оставалась неприступной[^4]. Войны велись за **остров Эллос** — ближайший к Авсонии остров, где находилась столица Эллады[^5].
 
 ### Падение Королевства Эллада
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-ellos-ruins.jpg" alt="Руины Эллос-Акхи" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Руины элладского города Эллос-Акха — наследие древней войны. Реконструкция.</div>
+</div>
 
 Со временем Королевство Эллада **кануло в лету**. Оно было **завоёвано Серпендидой**, которая присвоила себе все острова моря Эллады[^6]. На островах сохранились **древние города, архитектура и храмы Араксис**, некоторые из них были полуразрушены от войн и времени[^7].
 
@@ -248,13 +356,16 @@
 
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-destruction.jpg" alt="Гибель Авсонии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Авсонии — замерзающее море и опустевшие порты. Реконструкция.</div>
+</div>
+
 С началом глобального похолодания рыба ушла из моря Эллада, и экономика Авсонии рухнула. В **2740 году**, когда последние корабли покинули Марс, Авсония прекратила своё существование[^11].
 
 ---
 
 ## Государственное устройство
-
-*Основные статьи: [Государственный строй Авсонии](/politics/avsonia-system/)*
 
 Авсония была **наследственной монархией**[^1]. Власть короля передавалась по мужской линии династии **Авсонидов**[^2].
 
@@ -268,8 +379,6 @@
 
 ## Вооружённые силы
 
-*Основная статья: [Вооружённые силы Авсонии](/military/avsonia-forces/)*
-
 Вооружённые силы Авсонии составляли основу обороны королевства. В **2650 году** численность армии составляла около **40 000 человек** (примерно 1,6 % населения)[^1].
 
 Армия делилась на[^2]:
@@ -280,8 +389,6 @@
 ---
 
 ## Экономика
-
-*Основная статья: [Экономика Авсонии](/economy/avsonia/)*
 
 Экономика Авсонии занимала **7-е место на Марсе** по объёму ВВП (ППС) — около **5 миллионов глиняных талантов** в 2650 году[^1]. Основой экономики был **рыбный промысел** (60 %)[^2].
 
@@ -314,15 +421,11 @@
 
 ## Образование
 
-*Основная статья: [Образование в Авсонии](/education/avsonia/)*
-
 Уровень грамотности в 2650 году составлял **65 %** (мужчины — 70 %, женщины — 60 %)[^1].
 
 ---
 
 ## Культура
-
-*Основные статьи: [Культура Авсонии](/culture/avsonia/)*
 
 Культура Авсонии была глубоко пронизана почитанием **моря** и **богини Араксис**[^1].
 
@@ -338,8 +441,6 @@
 
 ## Средства массовой информации
 
-*Основная статья: [СМИ Авсонии](/media/avsonia/)*
-
 СМИ существовали в форме **глиняных табличек** и **устной традиции**[^1].
 
 ---
@@ -351,42 +452,21 @@
 ---
 
 ## Связанные статьи
-
-- [Автон](/geography/avton/)
-- [Кхон-Мар](/geography/khon-mar/)
-- [Сур-Кхо](/geography/sur-kho/)
-- [Море Эллада](/geography/hellas-sea/)
-- [Река Коллиопа](/geography/calliope-river/)
-- [Река Теней](/geography/tenei-river/)
-- [Река Звёздная долина](/geography/starvalley-river/)
-- [Южный тракт](/geography/southern-road/)
-- [Авсон III](/people/avson-iii/)
-- [Королевство Эллада](/history/hellas-kingdom/)
+- [Море Эллада](https://mars-wiki.ru/geography/hellas-sea/)
+- [Королевство Эллада](https://mars-wiki.ru/history/hellas-kingdom/)
 
 ---
 
 ## Примечания
 
-<references />
-
 [^1]: Данные о площади (~5 млн км²) и периметре границ (~9 500 км) получены с интерактивной карты Mars Explore на основе рельефа и границ Авсонии.
-
 [^2]: Координаты столицы (54° ю.ш., 87° в.д.) соответствуют восточной части реального региона на Марсе.
-
 [^3]: Географическое положение Авсонии и её соседи описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^4]: История войн с Королевством Эллада описана в табличках Эллос-Акхи (архив Автона).
-
 [^5]: Рельеф и границы Авсонии реконструированы по данным миссий Mars Express и MRO.
-
 [^6]: Климатические изменения в Авсонии в Эпоху Умирания описаны в табличках Академии Окхасена.
-
 [^7]: Рыболовство и морская торговля Авсонии описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^8]: Реки Коллиопа, Теней и Звёздная долина описаны в гидрологических табличках Академии Окхасена (2680 г. Э.О.).
-
 [^9]: Культ Араксис в Авсонии описан в хрониках Академии Окхасена.
-
 [^10]: Море Эллада — реальный регион на Марсе, утверждённый МАС в 1973 году.
-
 [^11]: Данные о площади и периметре основаны на реальных измерениях рельефа Марса (NASA Mars Global Surveyor, MRO).

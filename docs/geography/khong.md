@@ -147,19 +147,6 @@
     <li>• <a href="https://mars-wiki.ru/geography/eastern-river/">Восточная</a></li>
   </ul>
 
-  <hr style="margin: 6px 0;">
-
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Связанные понятия
-  </div>
-
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
-    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
-    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
-    <li>• <a href="https://mars-wiki.ru/books/iskhod/">Исход</a></li>
-    <li>• <a href="https://mars-wiki.ru/geography/southern-road/">Южный тракт</a></li>
-  </ul>
-
 </div>
 
 **Королевство Кхонг** (марс. *Khong Ari* — «Избранный Кхонг») — небольшое, но стратегически важное юго-восточное государство Марса, располагавшееся у подножия горной цепи Харит на берегу моря Аргир, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **11 000 000 км²**[^1]. Протяжённость границ достигала **13 000 км**[^2]. Население Кхонга в период расцвета (ок. 2650 г. Э.О.) достигало **3 800 000 человек**[^3], что делало его одним из самых малонаселённых, но экономически развитых государств Марса. Столица — [Кхонг](https://mars-wiki.ru/geography/khong/). Координаты столицы: 63° ю.ш., 48° з.д.[^4]. Государственный язык — *Marzān* (восточный диалект), также были распространены местные наречия горных племён[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].

@@ -1,5 +1,10 @@
 # Королевство Эридания
 
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
+</div>
+
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
 
   <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
@@ -164,7 +169,7 @@
 **Королевство Эридания** (марс. *Eridania Sen* — «Земля Эридании») — крупное южное государство Марса, располагавшееся в южной части западного полушария планеты, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **14 000 000 км²**[^1]. Протяжённость границ достигала **14 000 км**[^2]. Население Эридании в период расцвета (ок. 2650 г. Э.О.) достигало **4 500 000 человек**[^3], что делало его пятым по численности населения государством Марса. Столица — [Эридан-Ара](https://mars-wiki.ru/geography/eridan-ara/). Координаты столицы: 60° ю.ш., 168° з.д.[^4]. Государственный язык — *Marzān* (южный диалект), также были распространены местные наречия, восходящие к языкам кочевников Эридании и Авсонии[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-desert.jpg" alt="Пустыня Синерия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-desert.jpeg" alt="Пустыня Синерия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Пустыня Синерия — сердце Эридании. Реконструкция.</div>
 </div>
 
@@ -175,7 +180,7 @@
 Эридания граничила с **пятью государствами**: на севере — с [Аркадией](https://mars-wiki.ru/geography/arkadia/) и Эритреей, на востоке — с Кхонгом, на юге — с Кимерией, на западе — с Авсонией[^13]. В состав Эридании входили **15 провинций**, включая **8 областей**, **4 королевства-вассала**, **2 города-государства** (Эридан-Ара и Мар-Ур) и **1 автономную область** (побережье залива Великих Королей)[^14]. Крупнейшими городами Эридании были Эридан-Ара, Мар-Ур, Син-Тор, Аргир-Акха и Кхо-Тар. Всего в стране насчитывалось около **250 населённых пунктов**, от крупных караванных городов до небольших деревень в пустыне Синерии[^15].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-cities.jpg" alt="Города Эридании" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-cities.jpeg" alt="Города Эридании" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Город на Южном тракте — торговый центр Эридании. Реконструкция.</div>
 </div>
 
@@ -203,12 +208,12 @@
 
 ### Географическое положение
 
-Территория Королевства Эридания в его заявленных границах составляла **14 000 000 км²**, что делало его пятым по площади государством Марса[^1]. Королевство располагалось в южной части западного полушария, занимая обширные территории от пустыни Синерии до побережья Зефирийского моря[^2]. Омывалось водами Зефирийского моря, моря Аргир и залива Великих Королей[^3].
-
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-map-medieval.jpg" alt="Карта Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-map-medieval.png" alt="Карта Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Эридания в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
 </div>
+
+Территория Королевства Эридания в его заявленных границах составляла **14 000 000 км²**, что делало его пятым по площади государством Марса[^1]. Королевство располагалось в южной части западного полушария, занимая обширные территории от пустыни Синерии до побережья Зефирийского моря[^2]. Омывалось водами Зефирийского моря, моря Аргир и залива Великих Королей[^3].
 
 Основная часть территории Эридании (около **60 %**) была занята **пустыней Синерии** — обширной песчаной равниной, простиравшейся от гор на востоке до побережья на западе[^4]. Северная часть королевства была покрыта лесами и прибрежными равнинами, а южная — горами и каньонами[^5].
 
@@ -238,6 +243,11 @@
 
 ## Рельеф
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Terra_Sirenum.png" alt="Слоистые отложения в Terra Sirenum" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Слоистые отложения в области Terra Sirenum. Источник: NASA / JPL-Caltech / UArizona.</div>
+</div>
+
 Более 60 % территории Эридании было занято **пустыней Синерии** — обширной песчаной равниной, пересечённой сухими руслами рек и каньонами[^1]. Северная часть королевства была занята **прибрежными равнинами** и **лесами**, прилегающими к Зефирийскому морю[^2].
 
 Центральную часть Эридании пересекали **горы Синерии** — невысокий горный хребет, протянувшийся между реками Великое Течение и Мангалы. Здесь брали начало многие реки королевства, которые затем сливались в две крупные реки — Великое Течение и Мангалы[^3].
@@ -249,6 +259,11 @@
 ---
 
 ## Внутренние воды
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-great-current-river.jpg" alt="Река Великое Течение" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Река Великое Течение — главная водная артерия Эридании. Реконструкция.</div>
+</div>
 
 Эридания обладала ограниченными водными ресурсами из-за пустынного климата. Поверхностные воды занимали **10 %** территории королевства, при этом **80 %** поверхностных вод были сосредоточены в северных провинциях, прилегающих к Зефирийскому морю[^6].
 
@@ -367,7 +382,7 @@
 В **1200 году** жрецы храма Аргира записали пророчество о гибели Марса и возможности спасения через перелёт к другой планете. Эти таблички были спрятаны в подземных залах храма и забыты на тысячу лет[^6].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-temple.jpg" alt="Храм Аргира" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-temple.png" alt="Храм Аргира" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Храм в долине Аргира — главное святилище Эридании. Реконструкция.</div>
 </div>
 
@@ -375,14 +390,14 @@
 
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-destruction.png" alt="Гибель Эридании" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Эридании — пылевая буря поглощает город. Реконструкция.</div>
+</div>
+
 С началом глобального похолодания в **2680 году** экономика Эридании начала рушиться. Реки мелели, пустыня наступала, а урожаи в северных лесах сокращались[^8].
 
 В **2714 году**, после доклада эдемского астронома Талина, Эридания стала перевалочным пунктом на пути к космодрому Эдема, но сама не участвовала в проекте Исхода из-за удалённости и нехватки ресурсов[^9].
-
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-hevsur.jpg" alt="Хевсур в храме Аргира" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Хевсур в храме долины Аргира. Реконструкция.</div>
-</div>
 
 В **2734 году** историк **Хевсур** организовал экспедицию в храм долины Аргира, где обнаружил древние таблички с пророчествами и координатами Земли. В этих табличках, оставленных жрецами тысячу лет назад, содержалось предупреждение: «Там тишина» — знак, который Хевсур истолковал как указание на опасности, ожидающие переселенцев[^10].
 

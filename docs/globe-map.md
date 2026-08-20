@@ -5,230 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>3D-карта Марса с Фобосом и Деймосом</title>
   <style>
-    /* --- ОБЩИЕ СТИЛИ --- */
+    /* ... все стили остаются без изменений (я их сократил для компактности) ... */
     * { box-sizing: border-box; }
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100vh;
-      background: #0a0a1a;
-      font-family: 'Segoe UI', sans-serif;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-
-    .map-container {
-      position: relative;
-      width: 100%;
-      height: 90vh; /* карта занимает 90% высоты экрана */
-      max-width: 100%;
-      margin: 0 auto;
-      background: #0a0a1a;
-      overflow: hidden;
-    }
-
-    #mars-globe {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    /* --- ЛЕГЕНДА (скрывается на телефоне) --- */
-    .legend {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      color: #ccc;
-      font-size: 13px;
-      background: rgba(10, 10, 26, 0.8);
-      padding: 12px 18px;
-      border-radius: 8px;
-      border: 1px solid #2a2a4a;
-      z-index: 10;
-      pointer-events: none;
-    }
-    .legend span {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-right: 6px;
-    }
-    .legend .city { background: #ff6633; }
-    .legend .sea { background: #3388dd; }
-    .legend .mountain { background: #cc8844; }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      margin: 4px 0;
-    }
-
-    /* --- ИНФОРМАЦИОННАЯ ПАНЕЛЬ (скрывается на телефоне) --- */
-    .info-panel {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      color: #aaa;
-      font-size: 13px;
-      background: rgba(10, 10, 26, 0.8);
-      padding: 12px 18px;
-      border-radius: 8px;
-      border: 1px solid #2a2a4a;
-      z-index: 10;
-      text-align: right;
-      pointer-events: none;
-    }
-
-    /* --- КООРДИНАТЫ --- */
-    #coords {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      color: #fff;
-      font-size: 14px;
-      background: rgba(0,0,0,0.7);
-      padding: 8px 16px;
-      border-radius: 6px;
-      border: 1px solid #444;
-      font-family: monospace;
-      z-index: 10;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    /* --- ПЛАВАЮЩИЕ КНОПКИ (для телефона, но видны и на ПК) --- */
-    .mobile-controls {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 20;
-      pointer-events: none;
-    }
-    .mobile-controls button {
-      pointer-events: auto;
-      background: rgba(10, 10, 26, 0.85);
-      border: 1px solid #2a2a4a;
-      color: #fff;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      font-size: 20px;
-      backdrop-filter: blur(4px);
-      transition: all 0.2s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      touch-action: manipulation;
-    }
-    .mobile-controls button:active {
-      transform: scale(0.92);
-      background: rgba(255, 255, 255, 0.15);
-    }
-    .mobile-controls button.active {
-      border-color: #ff6633;
-      box-shadow: 0 0 15px #ff663366;
-    }
-
-    /* --- АДАПТИВНОСТЬ (телефоны) --- */
-    @media (max-width: 768px) {
-      .legend, .info-panel {
-        display: none !important;
-      }
-      .map-container {
-        height: 85vh; /* на телефоне чуть меньше */
-      }
-      #coords {
-        font-size: 12px;
-        padding: 6px 12px;
-        top: 12px;
-        left: 12px;
-      }
-      .mobile-controls {
-        bottom: 16px;
-        right: 16px;
-        gap: 8px;
-      }
-      .mobile-controls button {
-        width: 44px;
-        height: 44px;
-        font-size: 18px;
-      }
-      .footer-message {
-        font-size: 14px !important;
-        padding: 10px !important;
-      }
-      .footer-message .sub {
-        font-size: 11px !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .mobile-controls button {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-      }
-      #coords {
-        font-size: 10px;
-        padding: 4px 10px;
-        top: 8px;
-        left: 8px;
-      }
-    }
-
-    /* --- ЗАГРУЗКА --- */
-    .loading-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #888;
-      font-size: 18px;
-      z-index: 5;
-    }
-
-    /* Футер с пожеланием */
-    .footer-message {
-      text-align: center;
-      color: #ffaa44;
-      font-size: 18px;
-      padding: 15px;
-      background: #0a0a1a;
-      border-top: 1px solid #ff6633;
-      font-family: 'Segoe UI', sans-serif;
-      width: 100%;
-    }
+    body, html { margin:0; padding:0; width:100%; min-height:100vh; background:#0a0a1a; font-family:'Segoe UI',sans-serif; overflow-y:auto; overflow-x:hidden; }
+    .map-container { position:relative; width:100%; height:90vh; max-width:100%; margin:0 auto; background:#0a0a1a; overflow:hidden; }
+    #mars-globe { width:100%; height:100%; display:block; }
+    .legend { position:absolute; bottom:20px; left:20px; color:#ccc; font-size:13px; background:rgba(10,10,26,0.8); padding:12px 18px; border-radius:8px; border:1px solid #2a2a4a; z-index:10; pointer-events:none; }
+    .legend span { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:6px; }
+    .legend .city { background:#ff6633; }
+    .legend .sea { background:#3388dd; }
+    .legend .mountain { background:#cc8844; }
+    .legend-item { display:flex; align-items:center; margin:4px 0; }
+    .info-panel { position:absolute; top:20px; right:20px; color:#aaa; font-size:13px; background:rgba(10,10,26,0.8); padding:12px 18px; border-radius:8px; border:1px solid #2a2a4a; z-index:10; text-align:right; pointer-events:none; }
+    #coords { position:absolute; top:20px; left:20px; color:#fff; font-size:14px; background:rgba(0,0,0,0.7); padding:8px 16px; border-radius:6px; border:1px solid #444; font-family:monospace; z-index:10; pointer-events:none; user-select:none; }
+    .mobile-controls { position:absolute; bottom:20px; right:20px; display:flex; flex-direction:column; gap:10px; z-index:20; pointer-events:none; }
+    .mobile-controls button { pointer-events:auto; background:rgba(10,10,26,0.85); border:1px solid #2a2a4a; color:#fff; border-radius:50%; width:48px; height:48px; font-size:20px; backdrop-filter:blur(4px); transition:0.2s; box-shadow:0 4px 12px rgba(0,0,0,0.6); cursor:pointer; display:flex; align-items:center; justify-content:center; touch-action:manipulation; }
+    .mobile-controls button:active { transform:scale(0.92); background:rgba(255,255,255,0.15); }
+    .mobile-controls button.active { border-color:#ff6633; box-shadow:0 0 15px #ff663366; }
+    @media (max-width:768px) { .legend, .info-panel { display:none !important; } .map-container { height:85vh; } #coords { font-size:12px; padding:6px 12px; top:12px; left:12px; } .mobile-controls { bottom:16px; right:16px; gap:8px; } .mobile-controls button { width:44px; height:44px; font-size:18px; } .footer-message { font-size:14px !important; padding:10px !important; } .footer-message .sub { font-size:11px !important; } }
+    @media (max-width:480px) { .mobile-controls button { width:40px; height:40px; font-size:16px; } #coords { font-size:10px; padding:4px 10px; top:8px; left:8px; } }
+    .loading-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#888; font-size:18px; z-index:5; }
+    .footer-message { text-align:center; color:#ffaa44; font-size:18px; padding:15px; background:#0a0a1a; border-top:1px solid #ff6633; font-family:'Segoe UI',sans-serif; width:100%; }
   </style>
 </head>
 <body>
 
 <div class="map-container">
-  <div id="mars-globe">
-    <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
-  </div>
-
-  <!-- Легенда (скрывается на телефоне) -->
+  <div id="mars-globe"><div class="loading-text" id="loadingText">🌍 Загрузка карты...</div></div>
   <div class="legend">
     <div class="legend-item"><span class="city"></span> Города</div>
     <div class="legend-item"><span class="sea"></span> Моря</div>
     <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
   </div>
-
-  <!-- Инфо-панель (скрывается на телефоне) -->
   <div class="info-panel">
     🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — метки<br>Клавиша <b>O</b> — орбиты<br>Клавиша <b>P</b> — спутники<br>Клавиша <b>R</b> — вращение спутников
   </div>
-
-  <!-- Координаты -->
   <div id="coords">🪐 наведите на планету</div>
-
-  <!-- Плавающие кнопки -->
   <div class="mobile-controls" id="mobileControls">
     <button id="btnM" title="Метки">🏷️</button>
     <button id="btnO" title="Орбиты">⭕</button>
@@ -236,11 +48,9 @@
     <button id="btnR" title="Вращение">🔄</button>
   </div>
 </div>
-
-<!-- Футер с пожеланием -->
 <div class="footer-message">
-  🚀 <span style="color: #ff6633;">Совия</span> — выздоравливай быстрее! 🍫 Желаю тебе шоколадку и марсианского настроения! 🌟<br>
-  <span style="font-size: 14px; color: #888;" class="sub">
+  🚀 <span style="color:#ff6633;">Совия</span> — выздоравливай быстрее! 🍫 Желаю тебе шоколадку и марсианского настроения! 🌟<br>
+  <span style="font-size:14px; color:#888;" class="sub">
     🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — метки • <b>O</b> — орбиты • <b>P</b> — спутники • <b>R</b> — вращение спутников
   </span>
 </div>
@@ -257,6 +67,8 @@
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+// Импортируем GLTFLoader для загрузки 3D-моделей (если решите использовать)
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 // ============================================================
 // 1. СЦЕНА, КАМЕРА, РЕНДЕР
@@ -394,7 +206,7 @@ let satellitesVisible = true;
 let satellitesRotating = true;
 
 // ============================================================
-// 7. МЕТКИ
+// 7. МЕТКИ (с кликабельными карточками)
 // ============================================================
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
@@ -451,7 +263,7 @@ function showPopup(data) {
 }
 
 // ============================================================
-// 7.2 СОЗДАНИЕ МЕТКИ
+// 7.2 СОЗДАНИЕ МЕТКИ С ОБРАБОТЧИКОМ
 // ============================================================
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
@@ -507,7 +319,7 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
 
   sprite.userData = { pos: pos.clone(), color, link, text, lat, lon, isLabel: true };
 
-  // Добавляем обработчик клика для попапа
+  // ========== ГЛАВНОЕ: добавляем обработчик клика ==========
   sprite.userData.onClick = function() {
     const text = this.userData.text;
     const link = this.userData.link;
@@ -583,25 +395,41 @@ for (let [text, lat, lon, color, link] of labelData) {
 }
 
 // ============================================================
-// 8. АНИМИРОВАННЫЙ МАРШРУТ
+// 8. АНИМИРОВАННЫЙ МАРШРУТ (с возможностью загрузки 3D-модели)
 // ============================================================
-let routeLine, routePoint;
+let routeLine, routePoint; // routePoint может быть Mesh или Group с моделью
 let routeProgress = 0;
 const ROUTE_SPEED = 0.002;
 
 function createRoute(routeCoords, color = 0xffaa44) {
-  // routeCoords — массив объектов {lat, lon}
   const points = routeCoords.map(c => latLonToPosition(c.lat, c.lon, 1.01));
+  // Линия
   const geometry = new THREE.BufferGeometry().setFromPoints(points);
   const material = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.8 });
   routeLine = new THREE.Line(geometry, material);
   scene.add(routeLine);
 
+  // ========== ВАРИАНТ 1: оранжевая точка (по умолчанию) ==========
   const sphereGeo = new THREE.SphereGeometry(0.025, 8, 8);
   const sphereMat = new THREE.MeshPhongMaterial({ color: 0xff6633, emissive: 0x442211 });
   routePoint = new THREE.Mesh(sphereGeo, sphereMat);
   routePoint.position.copy(points[0]);
   scene.add(routePoint);
+
+  // ========== ВАРИАНТ 2: загрузка 3D-модели (закомментировано) ==========
+  // Раскомментируйте этот блок, если хотите использовать модель.
+  // Замените 'model.glb' на путь к вашей модели (например, шестиногая ящерица).
+  /*
+  const loader = new GLTFLoader();
+  loader.load('model.glb', (gltf) => {
+    routePoint = gltf.scene;
+    routePoint.position.copy(points[0]);
+    routePoint.scale.set(0.01, 0.01, 0.01); // подберите масштаб
+    scene.add(routePoint);
+  }, undefined, (error) => {
+    console.error('Ошибка загрузки модели:', error);
+  });
+  */
 
   routePoint.userData.points = points;
   return { line: routeLine, point: routePoint };
@@ -616,7 +444,7 @@ const routeCoords = [
 createRoute(routeCoords, 0xffaa44);
 
 // ============================================================
-// 9. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ
+// 9. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ (исправлены)
 // ============================================================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -658,12 +486,11 @@ function onCanvasClick(event) {
   const intersects = raycaster.intersectObjects(labelSprites);
   if (intersects.length > 0) {
     const sprite = intersects[0].object;
-    // Проверяем, видима ли метка (находится перед планетой)
     const pos = sprite.userData.pos.clone().normalize();
     const cameraDir = camera.position.clone().normalize();
     const dot = cameraDir.dot(pos);
     if (dot > 0) {
-      // Если есть onClick, вызываем его
+      // ВАЖНО: вызываем onClick, если он есть
       if (sprite.userData.onClick) {
         sprite.userData.onClick();
       } else if (sprite.userData.link && sprite.userData.link !== '#') {
@@ -679,7 +506,7 @@ renderer.domElement.addEventListener('touchstart', updateCoords, { passive: true
 renderer.domElement.addEventListener('touchend', onCanvasClick, { passive: false });
 
 // ============================================================
-// 10. АНИМАЦИЯ (метки за планетой исчезают, маршрут движется)
+// 10. АНИМАЦИЯ
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
@@ -689,7 +516,7 @@ function animate() {
     deimosGroup.rotation.y += DEIMOS_SPEED * 0.01;
   }
 
-  // Прозрачность меток на обратной стороне
+  // Прозрачность меток
   const cameraDir = camera.position.clone().normalize();
   for (let sprite of labelSprites) {
     const pos = sprite.userData.pos.clone().normalize();
@@ -698,7 +525,7 @@ function animate() {
   }
 
   // Анимация маршрута
-  if (routePoint && routePoint.userData.points) {
+  if (routePoint && routePoint.userData && routePoint.userData.points) {
     const points = routePoint.userData.points;
     routeProgress += ROUTE_SPEED;
     if (routeProgress >= 1) routeProgress = 0;
@@ -707,6 +534,7 @@ function animate() {
     const frac = (routeProgress * (points.length - 1)) - index;
     const pos = new THREE.Vector3().lerpVectors(points[index], points[nextIndex], frac);
     routePoint.position.copy(pos);
+    // Если это модель, можно добавить поворот в направлении движения
   }
 
   controls.update();
@@ -715,7 +543,7 @@ function animate() {
 animate();
 
 // ============================================================
-// 11. УПРАВЛЕНИЕ ЧЕРЕЗ КЛАВИШИ И КНОПКИ
+// 11. УПРАВЛЕНИЕ КЛАВИШАМИ И КНОПКАМИ
 // ============================================================
 function toggleLabels() {
   labelsGroup.visible = !labelsGroup.visible;
@@ -737,7 +565,6 @@ function toggleRotation() {
   document.getElementById('btnR').classList.toggle('active');
 }
 
-// Клавиши
 document.addEventListener('keydown', (e) => {
   if (e.key === 'm' || e.key === 'M') toggleLabels();
   if (e.key === 'o' || e.key === 'O') toggleOrbits();
@@ -745,20 +572,18 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'r' || e.key === 'R') toggleRotation();
 });
 
-// Кнопки
 document.getElementById('btnM').addEventListener('click', toggleLabels);
 document.getElementById('btnO').addEventListener('click', toggleOrbits);
 document.getElementById('btnP').addEventListener('click', toggleSatellites);
 document.getElementById('btnR').addEventListener('click', toggleRotation);
 
-// Начальное состояние кнопок (активны)
 document.getElementById('btnM').classList.add('active');
 document.getElementById('btnO').classList.add('active');
 document.getElementById('btnP').classList.add('active');
 document.getElementById('btnR').classList.add('active');
 
 // ============================================================
-// 12. АДАПТИВНОСТЬ РАЗМЕРА
+// 12. АДАПТИВНОСТЬ
 // ============================================================
 window.addEventListener('resize', () => {
   const width = container.clientWidth;

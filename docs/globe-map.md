@@ -25,27 +25,6 @@
     @media (max-width:480px) { .mobile-controls button { width:40px; height:40px; font-size:16px; } #coords { font-size:10px; padding:4px 10px; top:8px; left:8px; } }
     .loading-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#888; font-size:18px; z-index:5; }
     .footer-message { text-align:center; color:#ffaa44; font-size:18px; padding:15px; background:#0a0a1a; border-top:1px solid #ff6633; font-family:'Segoe UI',sans-serif; width:100%; }
-
-    /* Стили для CSS2D-меток (такие же, как в вашем старом коде) */
-    .label-2d {
-      color: #fff;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 14px;
-      font-weight: bold;
-      border: 1px solid rgba(255,255,255,0.4);
-      box-shadow: 0 0 20px rgba(0,0,0,0.8);
-      cursor: pointer;
-      transition: transform 0.2s, background 0.2s;
-      text-shadow: 0 0 10px rgba(0,0,0,0.9);
-      pointer-events: auto;
-      user-select: none;
-      white-space: nowrap;
-      font-family: 'Segoe UI', 'Arial Unicode MS', sans-serif;
-    }
-    .label-2d:hover {
-      transform: scale(1.15);
-    }
   </style>
 </head>
 <body>
@@ -87,10 +66,9 @@
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { CSS2DRenderer, CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
 
 // ============================================================
-// 1. СЦЕНА, КАМЕРА, РЕНДЕРЫ
+// 1. СЦЕНА, КАМЕРА, РЕНДЕР
 // ============================================================
 const container = document.getElementById('mars-globe');
 const loadingText = document.getElementById('loadingText');
@@ -102,20 +80,10 @@ scene.background = new THREE.Color(0x050510);
 const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
 camera.position.set(0, 0, 3.5);
 
-// WebGL
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 container.appendChild(renderer.domElement);
-
-// CSS2D
-const labelRenderer = new CSS2DRenderer();
-labelRenderer.setSize(container.clientWidth, container.clientHeight);
-labelRenderer.domElement.style.position = 'absolute';
-labelRenderer.domElement.style.top = '0';
-labelRenderer.domElement.style.left = '0';
-labelRenderer.domElement.style.pointerEvents = 'none';
-container.appendChild(labelRenderer.domElement);
 
 // ============================================================
 // 2. УПРАВЛЕНИЕ
@@ -234,12 +202,12 @@ let satellitesVisible = true;
 let satellitesRotating = true;
 
 // ============================================================
-// 7. ФУНКЦИИ ДЛЯ МЕТОК (CSS2D)
+// 7. МЕТКИ (СПРАЙТЫ) — ТАКИЕ ЖЕ, КАК В ИДЕАЛЬНОМ КОДЕ
 // ============================================================
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
 
-function latLonToPosition(lat, lon, radius = 1.001) {
+function latLonToPosition(lat, lon, radius = 1.0) {
   lat += LAT_OFFSET;
   lon += LON_OFFSET;
   const phi = (90 - lat) * Math.PI / 180;
@@ -260,22 +228,64 @@ function positionToLatLon(pos) {
   return { lat, lon };
 }
 
-// Создание CSS2D-метки
-function createLabel(text, lat, lon, color = '#ff6633', link = '#', description = '') {
+// Функция создания спрайта-метки (маленький размер, без лишнего фона)
+function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', description = '') {
   const pos = latLonToPosition(lat, lon);
-  const div = document.createElement('div');
-  div.textContent = text;
-  div.style.backgroundColor = color + 'aa';
-  div.className = 'label-2d';
-  div.style.border = `2px solid ${color}`;
-  div.style.boxShadow = `0 0 20px ${color}66`;
-  div.dataset.link = link;
-  div.dataset.description = description;
-  div.dataset.title = text;
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  // Устанавливаем размер холста как в идеальном коде (маленький)
+  const canvasWidth = 128;
+  const canvasHeight = 48;
+  canvas.width = canvasWidth;
+  canvas.height = canvasHeight;
 
-  const label = new CSS2DObject(div);
-  label.position.copy(pos);
-  return label;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // Прозрачный фон, только текст с обводкой
+  ctx.font = 'bold 16px Segoe UI, Arial Unicode MS, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  // Тень для читаемости
+  ctx.shadowColor = 'rgba(0,0,0,0.8)';
+  ctx.shadowBlur = 8;
+  ctx.shadowOffsetX = 2;
+  ctx.shadowOffsetY = 2;
+  // Рисуем текст
+  ctx.fillStyle = '#ffffff';
+  ctx.shadowColor = 'rgba(0,0,0,0.9)';
+  ctx.shadowBlur = 10;
+  ctx.fillText(text, canvasWidth/2, canvasHeight/2 + 1);
+  // Добавляем цветную обводку
+  ctx.shadowBlur = 0;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.strokeText(text, canvasWidth/2, canvasHeight/2 + 1);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+
+  const material = new THREE.SpriteMaterial({
+    map: texture,
+    transparent: true,
+    depthTest: true,
+    depthWrite: false,
+    sizeAttenuation: true,
+  });
+
+  const sprite = new THREE.Sprite(material);
+  sprite.position.copy(pos);
+  // Размер как в идеальном коде (очень маленький)
+  sprite.scale.set(0.04, 0.015, 1);
+
+  // Сохраняем данные для клика
+  sprite.userData = {
+    pos: pos.clone(),
+    link: link,
+    text: text,
+    description: description,
+    isLabel: true
+  };
+
+  return sprite;
 }
 
 // Данные меток (с описаниями)
@@ -296,24 +306,15 @@ const labelData = [
   ['🚀 Космодром Фарсиды', 20.3, -80, '#ff6633', 'https://mars-wiki.ru/geography/kosmodrom-farsidy/', 'Главный космический порт Марса.'],
 ];
 
-// Добавляем метки на сцену
+// Создаём группу для меток
 const labelsGroup = new THREE.Group();
 scene.add(labelsGroup);
-const labelItems = [];
+const labelSprites = [];
 
 for (let [text, lat, lon, color, link, description] of labelData) {
-  const label = createLabel(text, lat, lon, color, link, description);
-  labelsGroup.add(label);
-  // Сохраняем ссылки на DOM-элементы для обработки кликов
-  const div = label.element;
-  div.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const title = div.dataset.title || 'Без названия';
-    const desc = div.dataset.description || 'Изучите эту локацию в нашей энциклопедии.';
-    const linkUrl = div.dataset.link;
-    showPopup(title, desc, linkUrl);
-  });
-  labelItems.push(label);
+  const sprite = createLabelSprite(text, lat, lon, color, link, description);
+  labelsGroup.add(sprite);
+  labelSprites.push(sprite);
 }
 
 // ============================================================
@@ -344,7 +345,7 @@ function showPopup(title, description, link) {
 }
 
 // ============================================================
-// 9. КООРДИНАТЫ ПОД КУРСОРОМ
+// 9. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ (через Raycaster)
 // ============================================================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -368,8 +369,42 @@ function updateCoords(event) {
   }
 }
 
+function onCanvasClick(event) {
+  event.preventDefault();
+  const rect = renderer.domElement.getBoundingClientRect();
+  let clientX, clientY;
+  if (event.changedTouches) {
+    clientX = event.changedTouches[0].clientX;
+    clientY = event.changedTouches[0].clientY;
+  } else {
+    clientX = event.clientX;
+    clientY = event.clientY;
+  }
+  mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+  mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+
+  raycaster.setFromCamera(mouse, camera);
+  // Проверяем пересечение со спрайтами-метками
+  const intersects = raycaster.intersectObjects(labelSprites);
+  if (intersects.length > 0) {
+    const sprite = intersects[0].object;
+    // Проверяем, видима ли метка (находится перед планетой)
+    const pos = sprite.userData.pos.clone().normalize();
+    const cameraDir = camera.position.clone().normalize();
+    const dot = cameraDir.dot(pos);
+    if (dot > 0) {
+      const link = sprite.userData.link;
+      const text = sprite.userData.text;
+      const description = sprite.userData.description;
+      showPopup(text, description, link);
+    }
+  }
+}
+
 renderer.domElement.addEventListener('mousemove', updateCoords);
+renderer.domElement.addEventListener('click', onCanvasClick);
 renderer.domElement.addEventListener('touchstart', updateCoords, { passive: true });
+renderer.domElement.addEventListener('touchend', onCanvasClick, { passive: false });
 
 // ============================================================
 // 10. АНИМАЦИЯ (метки за планетой полностью исчезают)
@@ -382,17 +417,16 @@ function animate() {
     deimosGroup.rotation.y += DEIMOS_SPEED * 0.01;
   }
 
-  // Скрываем метки на обратной стороне (opacity = 0)
+  // Скрываем метки на обратной стороне
   const cameraDir = camera.position.clone().normalize();
-  for (let label of labelItems) {
-    const pos = label.position.clone().normalize();
+  for (let sprite of labelSprites) {
+    const pos = sprite.userData.pos.clone().normalize();
     const dot = cameraDir.dot(pos);
-    label.element.style.opacity = dot > 0 ? 1 : 0;
+    sprite.material.opacity = dot > 0 ? 1 : 0;
   }
 
   controls.update();
   renderer.render(scene, camera);
-  labelRenderer.render(scene, camera);
 }
 animate();
 
@@ -445,7 +479,6 @@ window.addEventListener('resize', () => {
   camera.aspect = width / height;
   camera.updateProjectionMatrix();
   renderer.setSize(width, height);
-  labelRenderer.setSize(width, height);
 });
 
 setTimeout(() => window.dispatchEvent(new Event('resize')), 100);

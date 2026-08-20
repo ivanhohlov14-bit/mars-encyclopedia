@@ -1,14 +1,21 @@
 # Королевство Кхонг
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Кхонг</h3>
-  <hr>
-  
-  <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/khong-kingdom-map.png" alt="Карта Королевства Кхонг" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Кхонг. По данным Академии Окхасена (2650 г. Э.О.).</div>
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
-  <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
+
+<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Кхонг</h3>
+  </div>
+
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/khong-kingdom-map.png" alt="Карта Королевства Кхонг" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Кхонг. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Королевства Кхонг" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -19,9 +26,12 @@
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Кхонга</div>
     </div>
   </div>
-  
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 600 г. Э.О. — основание Кхонга</li>
     <li>• 900 г. — объединение горных кланов</li>
     <li>• 1200 г. — начало разработки рудников</li>
@@ -29,65 +39,135 @@
     <li>• 2500 г. — провозглашение Королевства</li>
     <li>• 2740 г. — гибель Кхонга</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Khong Ari</i> («Избранный Кхонг»)</p>
-  <p><b>Тип государства</b> Королевство (наследственная монархия)</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a> (восточный диалект)</p>
-  <p><b>Столица</b> <a href="/geography/khong/">Кхонг</a></p>
-  <p><b>Координаты столицы</b> 63° ю.ш., 48° з.д.</p>
-  <p><b>Крупнейшие города</b> Дзен-Сур, Харит-Акха, Тор-Кхо, Сар-Аргир, Рудный</p>
-  <p><b>Правящая династия</b> Харитиды (Харит I — Харит Великий — Харит III)</p>
-  <p><b>Годы существования</b> ок. 600 г. Э.О. — 2740 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ бога <a href="/mythology/kho/">Кхо</a> (ок. 50 % населения) и культ горных духов (35 %)</p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <p><b>Марсианское название:</b> <i>Khong Ari</i> («Избранный Кхонг»)</p>
+  <p><b>Тип государства:</b> Королевство (наследственная монархия)</p>
+  <p><b>Официальный язык:</b> <a href="https://mars-wiki.ru/terms/marzan/">Marzān</a> (восточный диалект)</p>
+  <p><b>Столица:</b> <a href="https://mars-wiki.ru/geography/khong/">Кхонг</a></p>
+  <p><b>Координаты столицы:</b> 63° ю.ш., 48° з.д.</p>
+  <p><b>Крупнейшие города:</b> Дзен-Сур, Харит-Акха, Тор-Кхо, Сар-Аргир, Рудный</p>
+  <p><b>Правящая династия:</b> Харитиды (Харит I — Харит Великий — Харит III)</p>
+  <p><b>Годы существования:</b> ок. 600 г. Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ бога <a href="https://mars-wiki.ru/mythology/kho/">Кхо</a> (ок. 50 % населения) и культ горных духов (35 %)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~11 млн км²</li>
     <li>• % водной поверхности ~8 %</li>
   </ul>
 
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Оценка (2650 г. Э.О.) ~3,8 млн чел.</li>
     <li>• Плотность ~0,35 чел./км²</li>
   </ul>
 
-  <p><b>ВВП (ППС)</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Итого (2650 г.) ~7 млн глиняных талантов</li>
     <li>• На душу населения ~1,8 таланта</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
-  <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2610 г. Э.О.)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (с 2610 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b></p>
-  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eridania/">Эридания</a>
-    </div>
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/avsonia/">Авсония</a>
-    </div>
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/serpentida/">Серпендида</a>
-    </div>
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритреи" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eritrea/">Эритрея</a>
-    </div>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
   </div>
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/argira-sea/">море Аргир</a>, <a href="/geography/zephyria-sea/">Зефирийское море</a>, <a href="/geography/hellas-sea/">море Эллада</a></p>
-  <p><b>Крупнейшие реки</b> <a href="/geography/charit-river/">Харит</a>, <a href="/geography/argir-river/">Аргир</a>, <a href="/geography/eastern-river/">Восточная</a></p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/geography/southern-road/">Южный тракт</a>, <a href="/geography/noachida-desert/">пустыня Ноахида</a></p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 2px;">
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/avsonia/">Авсония</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/serpentida/">Серпендида</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритреи" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eritrea/">Эритрея</a>
+    </span>
+  </div>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/argira-sea/">море Аргир</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/zephyria-sea/">Зефирийское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/hellas-sea/">море Эллада</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие реки
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/charit-river/">Харит</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/argir-river/">Аргир</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/eastern-river/">Восточная</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Связанные понятия
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
+    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
+    <li>• <a href="https://mars-wiki.ru/books/iskhod/">Исход</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/southern-road/">Южный тракт</a></li>
+  </ul>
+
 </div>
 
 **Королевство Кхонг** (марс. *Khong Ari* — «Избранный Кхонг») — небольшое, но стратегически важное юго-восточное государство Марса, располагавшееся у подножия горной цепи Харит на берегу моря Аргир, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **11 000 000 км²**[^1]. Протяжённость границ достигала **13 000 км**[^2]. Население Кхонга в период расцвета (ок. 2650 г. Э.О.) достигало **3 800 000 человек**[^3], что делало его одним из самых малонаселённых, но экономически развитых государств Марса. Столица — [Кхонг](https://mars-wiki.ru/geography/khong/). Координаты столицы: 63° ю.ш., 48° з.д.[^4]. Государственный язык — *Marzān* (восточный диалект), также были распространены местные наречия горных племён[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-mountains.jpg" alt="Горы Харит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Горы Харит — сердце Кхонга. Реконструкция.</div>
+</div>
 
 Королевство Кхонг было горным государством, специализировавшимся на **металлургии и горнодобывающей промышленности**. Согласно переписи населения, проведённой [Академией Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) в 2650 году Э.О., в стране проживали представители более **20 народностей и племён**, среди которых **кхонгцы** (потомки основателей королевства) составляли около **55 %**, а языком *Marzān* владели около **70 %** населения[^7]. Бо́льшая часть населения (около **50 %**) в религиозном отношении относила себя к почитанию бога огня [Кхо](https://mars-wiki.ru/mythology/kho/), однако в Кхонге также был силён **культ горных духов** (около **35 %** населения), что отражало зависимость жителей от гор и рудников[^8]. Именно здесь, в горах Харит, добывалась большая часть металлов и драгоценных камней, использовавшихся на всём Марсе.
 
@@ -95,9 +175,16 @@
 
 Кхонг граничил с **четырьмя государствами и двумя морями**: на западе — с [Эриданией](https://mars-wiki.ru/geography/eridania/), на востоке — с Авсонией, на северо-востоке — с Серпендидой, на северо-западе — с Эритреей (по акватории моря Аргир). На юге и юго-востоке королевство омывалось водами **моря Эллада**[^12]. В состав Кхонга входили **9 провинций**, включая **5 областей**, **2 королевства-вассала**, **1 город-государство** (Кхонг) и **1 автономную область** (побережье моря Аргир)[^13]. Крупнейшими городами Кхонга были Кхонг, Дзен-Сур, Харит-Акха, Тор-Кхо и Сар-Аргир. Всего в стране насчитывалось около **150 населённых пунктов**, от крупных горнодобывающих центров до небольших деревушек в пустыне Ноахида[^14].
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-city.jpg" alt="Город Кхонг" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Горнодобывающий город Кхонг у подножия гор Харит. Реконструкция.</div>
+</div>
+
 Крупнейшими водоёмами на территории Кхонга были [море Аргир](https://mars-wiki.ru/geography/argira-sea/), [Зефирийское море](https://mars-wiki.ru/geography/zephyria-sea/) и [море Эллада](https://mars-wiki.ru/geography/hellas-sea/). Главные реки — [Харит](https://mars-wiki.ru/geography/charit-river/) и [Аргир](https://mars-wiki.ru/geography/argir-river/) — обеспечивали королевство водой и служили транспортными артериями, связывая горные районы с побережьем. Кроме того, с восточных склонов гор Харит стекали **малые реки**, впадавшие в море Эллада, обеспечивая водой восточные провинции[^15].
 
 Кхонг был **крупнейшей металлургической державой** Марса, поставляя железо, медь, олово, обсидиан и драгоценные камни во все государства планеты[^16]. Королевство было ассоциированным членом **Горнодобывающей Лиги Марса** и состояло в **Торговом Содружестве моря Аргир**[^17]. Через территорию Кхонга проходил [Южный тракт](https://mars-wiki.ru/geography/southern-road/) — главная торговая артерия, соединявшая все южные государства[^18].
+
+---
 
 ## Происхождение названия
 
@@ -111,9 +198,16 @@
 
 После начала глобального похолодания и подготовки к Исходу, Кхонг стал известен как **«Кузница Марса»** (марс. *Ter Mar*), так как поставлял металлы для строительства кораблей-ковчегов[^7].
 
+---
+
 ## Физико-географическая характеристика
 
 ### Географическое положение
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-map-medieval.png" alt="Карта Кхонга" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Кхонг в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
+</div>
 
 Территория Королевства Кхонг в его заявленных границах составляла **11 000 000 км²**, что делало его одним из самых компактных государств Марса[^1]. Королевство располагалось в юго-восточной части западного полушария, занимая территории от горной цепи Харит до побережья моря Аргир и моря Эллада[^2]. Омывалось водами моря Аргир, Зефирийского моря и моря Эллада[^3].
 
@@ -135,6 +229,11 @@
 
 ### Геологическое строение
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars;_Arsia_Mons_cave_entrance_-MRO.jpg" alt="Вход в пещеру на горе Арсия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Вход в пещеру на горе Арсия (Mars Reconnaissance Orbiter, NASA). Иллюстрирует вулканическое происхождение гор Харит.</div>
+</div>
+
 Кхонг располагался на **Харитской платформе** — древней структуре, сформировавшейся в Нойскую эпоху (ок. 4,1–3,7 млрд лет назад). В её основе залегали магматические и метаморфические породы докембрийского возраста[^13]. Горы Харит были сложены **гранитами**, **гнейсами** и **вулканическими породами**, содержащими богатые месторождения металлических руд[^14].
 
 Пустыня Ноахида была занята **осадочными породами**, сформировавшимися в результате эрозии древних гор и отложения песков[^15].
@@ -143,7 +242,12 @@
 
 ---
 
-### Рельеф
+## Рельеф
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-charit-mountains.jpg" alt="Горы Харит крупным планом" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Горы Харит — главное богатство Кхонга. Реконструкция.</div>
+</div>
 
 Более 60 % территории Кхонга было занято **горами Харит** — высоким горным хребтом, протянувшимся вдоль восточного побережья моря Аргир[^1]. Высота гор достигала **5 000–7 000 м** над уровнем моря, а отдельные вершины поднимались до **8 000 м**[^2]. Горы были изрезаны глубокими каньонами и ущельями, где протекали реки Харит и Аргир[^3].
 
@@ -153,7 +257,12 @@
 
 ---
 
-### Внутренние воды
+## Внутренние воды
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-charit-river.jpg" alt="Река Харит" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Река Харит — главная водная артерия Кхонга. Реконструкция.</div>
+</div>
 
 Кхонг обладал ограниченными водными ресурсами из-за горного и пустынного рельефа. Поверхностные воды занимали **8 %** территории королевства, при этом **90 %** поверхностных вод были сосредоточены в горных районах, прилегающих к морю Аргир[^6].
 
@@ -250,8 +359,7 @@
 
 ## История
 
-*Основная статья: [История Кхонга](/history/khong/)*  
-*См. также: [Хронология Кхонга](/history/khong-timeline/), [Список королей Кхонга](/history/khong-kings/)*
+*Основная статья: [История Кхонга](https://mars-wiki.ru/history/khong-history/)*
 
 Королевство Кхонг — одно из древнейших горных государств Марса, чья история насчитывает почти две тысячи лет. Его становление, расцвет и гибель неразрывно связаны с горами Харит, добычей руды и торговлей металлами[^1].
 
@@ -261,6 +369,11 @@
 
 ### Эпоха Основания (ок. 600–900 гг. Э.О.)
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-foundation.jpg" alt="Основание Кхонга" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Кхонга у подножия гор Харит. Реконструкция.</div>
+</div>
+
 Первые поселения на территории будущего Королевства Кхонг возникли в горах Харит в середине I тысячелетия Э.О. Согласно легендам, эти земли были населены горными племенами, почитавшими бога огня **Кхо** и горных духов[^2].
 
 Письменная история начинается с **основания Кхонга** (ок. 600 г. Э.О.) — города, построенного у подножия горной цепи Харит на берегу моря Аргир. Первым правителем Кхонга стал **Харит** (позже — Харит I), который объединил разрозненные горные кланы и создал первое государство[^3].
@@ -269,6 +382,11 @@
 
 ### Эпоха Расцвета (900–2500 гг. Э.О.)
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-mines.png" alt="Рудники Кхонга" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Рудники в горах Харит — основа экономики Кхонга. Реконструкция.</div>
+</div>
+
 Эпоха Расцвета Кхонга пришлась на период с 900 по 2500 годы Э.О. Королевство достигло пика могущества при **Харите II** (1000–1080 гг. Э.О.), который расширил рудники и наладил торговлю металлами со всеми государствами Марса[^5].
 
 В **1200 году** началась разработка крупнейших месторождений обсидиана и драгоценных камней, что сделало Кхонг главным поставщиком этих ресурсов[^6].
@@ -276,6 +394,11 @@
 В **2500 году** правитель Кхонга **Харит III** провозгласил создание единого Королевства Кхонг, объединив 9 провинций. В этот период Кхонг стал центром металлургии и горнодобывающей промышленности Марса[^7].
 
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-destruction.jpg" alt="Гибель Кхонга" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Кхонга — замерзающие рудники и опустевшие шахты. Реконструкция.</div>
+</div>
 
 С началом глобального похолодания в **2680 году** экономика Кхонга начала рушиться. Рудники замерзали, шахты заполнялись льдом, а транспортировка металлов становилась всё труднее[^8].
 
@@ -288,8 +411,6 @@
 ---
 
 ## Государственное устройство
-
-*Основные статьи: [Государственный строй Кхонга](/politics/khong-system/), [Внутренняя политика Кхонга](/politics/khong-internal/)*
 
 Кхонг был **наследственной монархией**[^1]. Власть короля передавалась по мужской линии династии **Харитидов**. Король считался верховным правителем и верховным жрецом культа горных духов[^2].
 
@@ -312,8 +433,6 @@
 
 ## Вооружённые силы
 
-*Основная статья: [Вооружённые силы Кхонга](/military/khong-forces/)*
-
 Вооружённые силы Кхонга составляли основу обороны королевства. В **2650 году** численность армии составляла около **70 000 человек** (примерно 1,8 % населения)[^1].
 
 Армия делилась на[^2]:
@@ -328,8 +447,6 @@
 ---
 
 ## Экономика
-
-*Основная статья: [Экономика Кхонга](/economy/khong/)*
 
 Экономика Кхонга занимала **6-е место на Марсе** по объёму ВВП (ППС) — около **7 миллионов глиняных талантов** в 2650 году[^1]. Основой экономики была **горнодобывающая промышленность** (железо, медь, олово, обсидиан, драгоценные камни)[^2].
 
@@ -359,8 +476,6 @@
 
 ## Демография
 
-*Основные статьи: [Население Кхонга](/demographics/khong-population/)*
-
 ### Численность населения
 
 По переписи **2650 года**, население составляло **3 800 000 человек** (6-е место на Марсе)[^1]. К **2730 году** население сократилось до **2,5 млн** из-за замерзания рудников и голода[^2].
@@ -384,8 +499,6 @@
 
 ## Образование
 
-*Основная статья: [Образование в Кхонге](/education/khong/)*
-
 Образование было обязательным для всех свободных граждан[^1]. Уровень грамотности в 2650 году составлял **65 %** (мужчины — 70 %, женщины — 60 %)[^2].
 
 Система образования включала[^3]:
@@ -400,9 +513,12 @@
 
 ## Наука
 
-*Основная статья: [Наука в Кхонге](/science/khong/)*
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/NASA Rover Returns Voice and Telephoto Views from Mars.jpg" alt="Марсоход NASA" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Марсоход NASA на поверхности Марса. Иллюстрирует современное изучение планеты.</div>
+</div>
 
-Кхонгские учёные внесли вклад в развитие **геологии**, **металлургии** и **минералогии**. Главным научным центром была **Академия Окхасена**, где работали кхонгские геологи и инженеры[^1].
+Кхонгские учёные внесли вклад в развитие **геологии**, **металлургии** и **минералогии**. Главным научным центром была **Академия Окхасена**, где работали кхонгские геологи и инженеры[^1]. Однако и в самом Кхонге существовали школы при рудниках, где накопленные знания передавались из поколения в поколение. Кхонгские геологи первыми на Марсе составили подробные карты залегания рудных жил. Их методы поиска полезных ископаемых, основанные на изучении структуры горных пород и растительности, считались лучшими на планете. В «Книге руды», написанной в 1200 году Э.О., содержались описания всех известных месторождений Кхонга — от железа до алмазов.
 
 ### Выдающиеся учёные
 
@@ -413,8 +529,6 @@
 ---
 
 ## Культура
-
-*Основные статьи: [Культура Кхонга](/culture/khong/)*
 
 Культура Кхонга была глубоко пронизана почитанием гор, руды и кузнечного дела[^1].
 
@@ -442,8 +556,6 @@
 ---
 
 ## Средства массовой информации
-
-*Основная статья: [СМИ Кхонга](/media/khong/)*
 
 СМИ существовали в форме **глиняных табличек**, **курьерской службы** и **устной традиции**[^1].
 
@@ -476,52 +588,28 @@
 
 ## Связанные статьи
 
-- [Кхонг](/geography/khong/)
-- [Дзен-Сур](/geography/dzen-sur/)
-- [Горы Харит](/geography/charit-mountains/)
-- [Море Аргир](/geography/argira-sea/)
-- [Море Эллада](/geography/hellas-sea/)
-- [Пустыня Ноахида](/geography/noachida-desert/)
-- [Южный тракт](/geography/southern-road/)
-- [Река Харит](/geography/charit-river/)
-- [Река Аргир](/geography/argir-river/)
-- [Харит III](/people/harit-iii/)
-- [Исход](/books/iskhod/)
+- [Кхонг](https://mars-wiki.ru/geography/khong/)
+- [Море Аргир](https://mars-wiki.ru/geography/argira-sea/)
+- [Море Эллада](https://mars-wiki.ru/geography/hellas-sea/)
+- [Исход](https://mars-wiki.ru/books/iskhod/)
 
 ---
 
 ## Примечания
 
-<references />
-
 [^1]: Данные о площади (~11 млн км²) и периметре границ (~13 000 км) получены с интерактивной карты Mars Explore на основе рельефа и границ Кхонга.
-
 [^2]: Координаты столицы (63° ю.ш., 48° з.д.) соответствуют южной части реального региона на Марсе.
-
 [^3]: Географическое положение Кхонга и его соседи описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^4]: Цитата «земля, где камень поёт» взята из «Песни о горах» (табличка № 1, архив Кхонга).
-
 [^5]: Рельеф и границы Кхонга реконструированы по данным миссий Mars Express и MRO, а также по марсианским геологическим табличкам (Академия Окхасена, 2700 г. Э.О.).
-
 [^6]: Климатические изменения в Кхонге в Эпоху Расцвета и Умирания описаны в табличках Академии Окхасена (сводка 2650–2730 гг. Э.О.).
-
 [^7]: История основания Кхонга и правление Харита I описаны в «Сказании о Кхонге» (табличка № 1, архив Кхонга).
-
 [^8]: Провозглашение Королевства Кхонг в 2500 г. Э.О. упоминается в хрониках Академии Окхасена и в королевских указах Харита III.
-
 [^9]: Горнодобывающая промышленность Кхонга описана в «Книге руды» (табличка № 45, Академия Окхасена).
-
 [^10]: Торговля и металлургия Кхонга описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^11]: Гибель Кхонга и замерзание рудников описаны в табличках Хевсура (табличка № 401, пещеры Фарсиды).
-
 [^12]: Горы Харит, пустыня Ноахида и море Эллада описаны в географических табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^13]: Реки Харит, Аргир и Восточная описаны в гидрологических табличках Академии Окхасена (2680 г. Э.О.).
-
 [^14]: Культ горных духов и роль жрецов описаны в «Песни о горах» и хрониках Академии Окхасена.
-
 [^15]: Область Кхонг — реальный регион на Марсе, утверждённый МАС в 1976 году.
-
 [^16]: Данные о площади и периметре основаны на реальных измерениях рельефа Марса (NASA Mars Global Surveyor, MRO).

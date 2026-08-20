@@ -422,6 +422,37 @@ function positionToLatLon(pos) {
 
 const isMobile = window.innerWidth <= 768;
 
+// ============================================================
+// 7.1 ВСПЛЫВАЮЩАЯ КАРТОЧКА
+// ============================================================
+function showPopup(data) {
+  const old = document.getElementById('popup-card');
+  if (old) old.remove();
+
+  const div = document.createElement('div');
+  div.id = 'popup-card';
+  div.style.cssText = `
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(10,10,30,0.95); color: #fff; padding: 20px; border-radius: 16px;
+    border: 2px solid #6a4a7a; max-width: 400px; width: 90%; z-index: 200;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.8); font-family: 'Segoe UI', 'Segoe UI Emoji', sans-serif;
+    pointer-events: auto;
+  `;
+  div.innerHTML = `
+    <h2 style="margin:0 0 10px; color:#d4a0a0;">${data.title}</h2>
+    ${data.image ? `<img src="${data.image}" style="max-width:100%; border-radius:8px; margin-bottom:10px;" />` : ''}
+    <p style="margin:0 0 15px; line-height:1.6;">${data.description}</p>
+    ${data.link && data.link !== '#' ? `<a href="${data.link}" target="_blank" style="color:#88aaff; text-decoration:underline;">Подробнее →</a>` : ''}
+    <br><button id="close-popup" style="margin-top:15px; background:#3a2a4a; border:none; color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer;">Закрыть</button>
+  `;
+  document.body.appendChild(div);
+  document.getElementById('close-popup').addEventListener('click', () => div.remove());
+  div.addEventListener('click', (e) => { if (e.target === div) div.remove(); });
+}
+
+// ============================================================
+// 7.2 СОЗДАНИЕ МЕТКИ
+// ============================================================
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   const pos = latLonToPosition(lat, lon);
   const canvas = document.createElement('canvas');
@@ -475,9 +506,56 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#') {
   sprite.scale.set(scaleX, scaleY, 1);
 
   sprite.userData = { pos: pos.clone(), color, link, text, lat, lon, isLabel: true };
+
+  // Добавляем обработчик клика для попапа
+  sprite.userData.onClick = function() {
+    const text = this.userData.text;
+    const link = this.userData.link;
+    let description = 'Изучите эту локацию в нашей энциклопедии.';
+    // Определяем описание по тексту
+    if (text.includes('Ацидалийское море')) {
+      description = '🌊 Огромное море в северном полушарии Марса. Берега изрезаны древними каналами. Здесь часто бывают штормы.';
+    } else if (text.includes('Море Эллада')) {
+      description = '🌊 Крупнейший ударный бассейн, заполненный водой. Здесь находятся остатки древней жизни и затонувшие города.';
+    } else if (text.includes('Море Аргира')) {
+      description = '🌊 Море на юге Марса, окружённое горами. Считается местом первых марсианских поселений.';
+    } else if (text.includes('Эритрейское море')) {
+      description = '🌊 Море в экваториальной зоне. Здесь часто бывают песчаные бури, но вода прозрачная и бирюзовая.';
+    } else if (text.includes('Амазонское море')) {
+      description = '🌊 Самое молодое море, образовавшееся в результате таяния подлёдных вод. Глубины до сих пор изучаются.';
+    } else if (text.includes('Зефирийское море')) {
+      description = '🌊 Море с бирюзовой водой. На его берегах находятся древние обсерватории и маяки.';
+    } else if (text.includes('Зал. Большой Сирт')) {
+      description = '🌊 Крупный залив, известный своими ветрами и высокими волнами. Любимое место рыбаков и моряков.';
+    } else if (text.includes('Королевство Эдем')) {
+      description = '👑 Центр марсианской цивилизации. Здесь находятся сады, библиотеки и дворцы. Место, где процветает наука и искусство.';
+    } else if (text.includes('Королевство Аркадия')) {
+      description = '👑 Северное королевство, знаменитое своими шахтами и металлургией. Здесь добывают редкие металлы.';
+    } else if (text.includes('Олимп')) {
+      description = '🌋 Самая высокая гора в Солнечной системе (21 км). Вершина покрыта вечными облаками, а склоны — ледниками.';
+    } else if (text.includes('Долина Маринер')) {
+      description = '🏔️ Гигантский каньон, протянувшийся на 4000 км. Здесь можно увидеть слои горных пород, раскрывающие историю Марса.';
+    } else if (text.includes('Окхасен')) {
+      description = '🏛️ Город у Ацидалийского моря. Торговый, научный и культурный центр. Здесь находится знаменитый порт и Академия наук.';
+    } else if (text.includes('Роген-Ария')) {
+      description = '🏛️ Город на севере, известный своими академиями и астрономическими обсерваториями. Здесь изучают звёзды.';
+    } else if (text.includes('Космодром Фарсиды')) {
+      description = '🚀 Главный космический порт Марса. Отсюда стартуют корабли к звёздам. Здесь строят самые быстрые корабли.';
+    }
+    showPopup({
+      title: text,
+      description: description,
+      image: '', // можно добавить картинки
+      link: link
+    });
+  };
+
   return sprite;
 }
 
+// ============================================================
+// 7.3 ДАННЫЕ МЕТОК
+// ============================================================
 const labelData = [
   ['🌊 Ацидалийское море', 33.8, -34.4, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/'],
   ['🌊 Море Эллада', -34.4, 79.4, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/'],
@@ -505,7 +583,40 @@ for (let [text, lat, lon, color, link] of labelData) {
 }
 
 // ============================================================
-// 8. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ
+// 8. АНИМИРОВАННЫЙ МАРШРУТ
+// ============================================================
+let routeLine, routePoint;
+let routeProgress = 0;
+const ROUTE_SPEED = 0.002;
+
+function createRoute(routeCoords, color = 0xffaa44) {
+  // routeCoords — массив объектов {lat, lon}
+  const points = routeCoords.map(c => latLonToPosition(c.lat, c.lon, 1.01));
+  const geometry = new THREE.BufferGeometry().setFromPoints(points);
+  const material = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.8 });
+  routeLine = new THREE.Line(geometry, material);
+  scene.add(routeLine);
+
+  const sphereGeo = new THREE.SphereGeometry(0.025, 8, 8);
+  const sphereMat = new THREE.MeshPhongMaterial({ color: 0xff6633, emissive: 0x442211 });
+  routePoint = new THREE.Mesh(sphereGeo, sphereMat);
+  routePoint.position.copy(points[0]);
+  scene.add(routePoint);
+
+  routePoint.userData.points = points;
+  return { line: routeLine, point: routePoint };
+}
+
+// Создаём маршрут: Окхасен → Космодром Фарсиды → Олимп
+const routeCoords = [
+  { lat: 15.26, lon: -53.31 },  // Окхасен
+  { lat: 20.3, lon: -80 },      // Космодром Фарсиды
+  { lat: 18.4, lon: 226 }       // Олимп
+];
+createRoute(routeCoords, 0xffaa44);
+
+// ============================================================
+// 9. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ
 // ============================================================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -552,9 +663,11 @@ function onCanvasClick(event) {
     const cameraDir = camera.position.clone().normalize();
     const dot = cameraDir.dot(pos);
     if (dot > 0) {
-      const link = sprite.userData.link;
-      if (link && link !== '#') {
-        window.open(link, '_blank');
+      // Если есть onClick, вызываем его
+      if (sprite.userData.onClick) {
+        sprite.userData.onClick();
+      } else if (sprite.userData.link && sprite.userData.link !== '#') {
+        window.open(sprite.userData.link, '_blank');
       }
     }
   }
@@ -566,7 +679,7 @@ renderer.domElement.addEventListener('touchstart', updateCoords, { passive: true
 renderer.domElement.addEventListener('touchend', onCanvasClick, { passive: false });
 
 // ============================================================
-// 9. АНИМАЦИЯ (метки за планетой полностью исчезают)
+// 10. АНИМАЦИЯ (метки за планетой исчезают, маршрут движется)
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
@@ -576,12 +689,24 @@ function animate() {
     deimosGroup.rotation.y += DEIMOS_SPEED * 0.01;
   }
 
+  // Прозрачность меток на обратной стороне
   const cameraDir = camera.position.clone().normalize();
   for (let sprite of labelSprites) {
     const pos = sprite.userData.pos.clone().normalize();
     const dot = cameraDir.dot(pos);
-    // Полностью скрываем метки на обратной стороне
     sprite.material.opacity = dot > 0 ? 1 : 0;
+  }
+
+  // Анимация маршрута
+  if (routePoint && routePoint.userData.points) {
+    const points = routePoint.userData.points;
+    routeProgress += ROUTE_SPEED;
+    if (routeProgress >= 1) routeProgress = 0;
+    const index = Math.floor(routeProgress * (points.length - 1));
+    const nextIndex = Math.min(index + 1, points.length - 1);
+    const frac = (routeProgress * (points.length - 1)) - index;
+    const pos = new THREE.Vector3().lerpVectors(points[index], points[nextIndex], frac);
+    routePoint.position.copy(pos);
   }
 
   controls.update();
@@ -590,7 +715,7 @@ function animate() {
 animate();
 
 // ============================================================
-// 10. УПРАВЛЕНИЕ ЧЕРЕЗ КЛАВИШИ И КНОПКИ
+// 11. УПРАВЛЕНИЕ ЧЕРЕЗ КЛАВИШИ И КНОПКИ
 // ============================================================
 function toggleLabels() {
   labelsGroup.visible = !labelsGroup.visible;
@@ -633,7 +758,7 @@ document.getElementById('btnP').classList.add('active');
 document.getElementById('btnR').classList.add('active');
 
 // ============================================================
-// 11. АДАПТИВНОСТЬ РАЗМЕРА
+// 12. АДАПТИВНОСТЬ РАЗМЕРА
 // ============================================================
 window.addEventListener('resize', () => {
   const width = container.clientWidth;

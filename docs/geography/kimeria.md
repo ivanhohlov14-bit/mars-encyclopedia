@@ -1,14 +1,16 @@
 # Королевство Кимерия
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Кимерия</h3>
-  <hr>
-  
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Кимерия</h3>
+  </div>
+
   <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/kimeria-kingdom-map.png" alt="Карта Королевства Кимерия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Кимерия. По данным Академии Окхасена (2650 г. Э.О.).</div>
-</div>
-  <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/kimeria-kingdom-map.png" alt="Карта Королевства Кимерия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Кимерия. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Королевства Кимерия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -19,9 +21,12 @@
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Кимерии</div>
     </div>
   </div>
-  
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 400 г. Э.О. — основание Кимерии</li>
     <li>• 600 г. — объединение кланов</li>
     <li>• 800 г. — войны с Элладой за остров</li>
@@ -31,69 +36,138 @@
     <li>• 2500 г. — провозглашение Королевства</li>
     <li>• 2740 г. — гибель Кимерии</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Kimeria Xal</i> («Древняя Кимерия»)</p>
-  <p><b>Тип государства</b> Королевство (наследственная монархия)</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a> (восточный диалект)</p>
-  <p><b>Столица</b> <a href="/geography/kimeria/">Кимерия</a></p>
-  <p><b>Координаты столицы</b> 8° с.ш., 105° в.д.</p>
-  <p><b>Крупнейшие города</b> Дао-Тор, Сирт-Акха, Элизиум-Акха, Тиррения, Северный</p>
-  <p><b>Правящая династия</b> Кимериды (Кимер I — Кимер Великий — Кимер III)</p>
-  <p><b>Годы существования</b> ок. 400 г. Э.О. — 2740 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ богини <a href="/mythology/araksis/">Араксис</a> (ок. 60 %) и культ предков (20 %)</p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <p><b>Марсианское название:</b> <i>Kimeria Xal</i> («Древняя Кимерия»)</p>
+  <p><b>Тип государства:</b> Королевство (наследственная монархия)</p>
+  <p><b>Официальный язык:</b> <a href="https://mars-wiki.ru/terms/marzan/">Marzān</a> (восточный диалект)</p>
+  <p><b>Столица:</b> <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a></p>
+  <p><b>Координаты столицы:</b> 8° с.ш., 105° в.д.</p>
+  <p><b>Крупнейшие города:</b> Дао-Тор, Сирт-Акха, Элизиум-Акха, Тиррения, Северный</p>
+  <p><b>Правящая династия:</b> Кимериды (Кимер I — Кимер Великий — Кимер III)</p>
+  <p><b>Годы существования:</b> ок. 400 г. Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ богини <a href="https://mars-wiki.ru/mythology/araksis/">Араксис</a> (ок. 60 %) и культ предков (20 %)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~10,5 млн км²</li>
     <li>• % водной поверхности ~15 %</li>
   </ul>
 
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Оценка (2650 г. Э.О.) ~6,5 млн чел.</li>
     <li>• Плотность ~0,62 чел./км²</li>
   </ul>
 
-  <p><b>ВВП (ППС)</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Итого (2650 г.) ~13 млн глиняных талантов</li>
     <li>• На душу населения ~2,0 таланта</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
-  <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2600 г. Э.О.)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (с 2600 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b></p>
-  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/avsonia/">Авсония</a>
-    </div>
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eridania/">Эридания</a>
-    </div>
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/utopia/">Утопия</a>
-    </div>
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eden/">Эдем</a>
-    </div>
-    <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/serpentida/">Серпендида</a>
-    </div>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
   </div>
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/zephyria-sea/">Зефирийское море</a>, <a href="/geography/gulf-of-sirte/">залив Большой Сирт</a>, <a href="/geography/hellas-sea/">море Эллада</a></p>
-  <p><b>Крупнейшие реки</b> <a href="/geography/dao-river/">Дао</a></p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/geography/elysium-island/">остров Элизиум</a>, <a href="/geography/elysium-akha-strait/">пролив Элизиум-Акха</a></p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 2px;">
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/avsonia/">Авсония</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/utopia/">Утопия</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
+    </span>
+    <span style="display: inline-flex; align-items: center; gap: 3px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/serpentida/">Серпендида</a>
+    </span>
+  </div>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/zephyria-sea/">Зефирийское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/gulf-of-sirte/">залив Большой Сирт</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/hellas-sea/">море Эллада</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие реки
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/dao-river/">Дао</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Связанные понятия
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
+    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
+    <li>• <a href="https://mars-wiki.ru/books/iskhod/">Исход</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/elysium-island/">остров Элизиум</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/elysium-akha-strait/">пролив Элизиум-Акха</a></li>
+  </ul>
+
 </div>
 
 **Королевство Кимерия** (марс. *Kimeria Xal* — «Древняя Кимерия») — крупное восточное государство Марса, располагавшееся на берегу Зефирийского моря, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **10 500 000 км²**[^1]. Протяжённость границ достигала **13 800 км**[^2]. Население Кимерии в период расцвета (ок. 2650 г. Э.О.) достигало **6 500 000 человек**[^3], что делало его третьим по численности населения государством Марса после Утопии и Эдема. Столица — [Кимерия](https://mars-wiki.ru/geography/kimeria/). Координаты столицы: 8° с.ш., 105° в.д.[^4]. Государственный язык — *Marzān* (восточный диалект), также были распространены местные наречия[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-coast.jpg" alt="Побережье Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье Зефирийского моря — сердце Кимерии. Реконструкция.</div>
+</div>
 
 Королевство Кимерия было прибрежным и лесным государством, специализировавшимся на **рыболовстве**, **лесном промысле** и **контроле морских путей**. Согласно переписи населения, проведённой [Академией Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) в 2650 году Э.О., в стране проживали представители более **25 народностей и племён**, среди которых **кимерийцы** (потомки основателей королевства) составляли около **60 %**, а языком *Marzān* владели около **80 %** населения[^7]. Плотность населения была высокой, но немного меньше, чем в Эдеме[^8].
 
@@ -101,9 +175,16 @@
 
 Кимерия граничила с **пятью государствами**: на юге — с [Авсонией](https://mars-wiki.ru/geography/avsonia/), на востоке — с [Эриданией](https://mars-wiki.ru/geography/eridania/), на севере — с [Утопией](https://mars-wiki.ru/geography/utopia/), на западе — с [Эдемом](https://mars-wiki.ru/geography/eden/), на юге — с [Серпендидой](https://mars-wiki.ru/geography/serpentida/)[^11]. В состав Кимерии входили **14 провинций**, включая **8 областей**, **3 королевства-вассала**, **2 города-государства** (Кимерия, Дао-Тор) и **1 автономную область** (побережье залива Большой Сирт)[^12]. Крупнейшими городами Кимерии были Кимерия, Дао-Тор, Сирт-Акха, Элизиум-Акха, Тиррения и Северный. Всего в стране насчитывалось около **300 населённых пунктов**, от крупных портовых городов до небольших рыбацких деревень[^13].
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-city.jpg" alt="Город Кимерия" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Город Кимерия — столица королевства. Реконструкция.</div>
+</div>
+
 Крупнейшими водоёмами на территории Кимерии были [Зефирийское море](https://mars-wiki.ru/geography/zephyria-sea/), [залив Большой Сирт](https://mars-wiki.ru/geography/gulf-of-sirte/) и [море Эллада](https://mars-wiki.ru/geography/hellas-sea/). Главная река — [Дао](https://mars-wiki.ru/geography/dao-river/) — была соединена с Зефирийским морем водным каналом, что открывало прямой путь в море Эллада[^14].
 
 Большая часть территории на юге была покрыта **лесом Тиррения** — обширным лесным массивом на северном берегу моря Эллада[^15]. Кимерия славилась **рыбным промыслом** и **лесным делом**, а также контролем над стратегически важным **проливом Элизиум-Акха**, соединявшим восточные и западные водные пути[^16].
+
+---
 
 ## Происхождение названия
 
@@ -113,9 +194,16 @@
 
 В **2500 году Э.О.**, после объединения всех кланов, государство стало официально именоваться **Королевством Кимерия** (марс. *Kimeria Xal* — «Древняя Кимерия»)[^5].
 
+---
+
 ## Физико-географическая характеристика
 
 ### Географическое положение
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-map-medieval.jpg" alt="Карта Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Кимерия в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
+</div>
 
 Территория Королевства Кимерия в его заявленных границах составляла **10 500 000 км²**, что делало его четвёртым по площади государством Марса[^1]. Королевство располагалось в восточной части планеты, занимая территории от Зефирийского моря до моря Эллада[^2]. Омывалось водами Зефирийского моря, залива Большой Сирт и моря Эллада[^3].
 
@@ -140,6 +228,11 @@
 ---
 
 ### Рельеф
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-forest.jpg" alt="Лес Тиррения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Лес Тиррения — главное богатство Кимерии. Реконструкция.</div>
+</div>
 
 Кимерия имела разнообразный рельеф[^1]:
 
@@ -214,7 +307,7 @@
 
 ## История
 
-*Основная статья: [История Кимерии](https://mars-wiki.ru/history/kimeria-history/)*
+*Основная статья: [История Кимерии](https://mars-wiki.ru/history/kimeria/)*
 
 Королевство Кимерия — одно из древнейших государств восточного Марса. Его история неразрывно связана с **войнами за острова** в Зефирийском море и море Эллада[^1].
 
@@ -224,9 +317,19 @@
 
 ### Войны с Королевством Эллада
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-hellas-war.jpg" alt="Война с Элладой" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Война с Королевством Эллада за северный остров. Реконструкция.</div>
+</div>
+
 В древности Кимерия вела **войны за северный остров моря Эллады** с Королевством Эллада[^2]. После нескольких сражений Кимерии удалось **отвоевать северо-восточную половину острова**[^3].
 
 ### Войны с Утопией за остров Элизиум
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-elysium-war.jpg" alt="Война за Элизиум" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Война с Утопией за остров Элизиум. Реконструкция.</div>
+</div>
 
 После битвы за остров в море Эллада Кимерия вступила в войну с **Утопией** за **остров Элизиум** в Зефирийском море[^4]. Кимерии удалось **отвоевать южную часть острова Элизиум**[^5]. Это дало Кимерии **полный контроль в проливе Элизиум-Акха**, что позволило контролировать водные пути из востока на запад[^6].
 
@@ -235,6 +338,11 @@
 Река Дао была соединена с Зефирийским морем **водным каналом**, что открыло прямой путь в море Эллада[^7].
 
 ### Эпоха Основания (ок. 400–600 гг. Э.О.)
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-foundation.jpg" alt="Основание Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Кимерии. Реконструкция.</div>
+</div>
 
 Письменная история Кимерии начинается с **основания Кимерии** (ок. 400 г. Э.О.) — города, построенного на берегу Зефирийского моря[^8].
 
@@ -245,6 +353,11 @@
 Эпоха Расцвета Кимерии пришлась на период с 600 по 2500 годы Э.О. Королевство достигло пика могущества при **Кимере Великом** (900–980 гг. Э.О.)[^10].
 
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-destruction.jpg" alt="Гибель Кимерии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Кимерии — замерзающее море и умирающий лес. Реконструкция.</div>
+</div>
 
 С началом глобального похолодания рыба ушла из Зефирийского моря, лес Тиррения начал вымирать, и экономика Кимерии рухнула. В **2740 году**, когда последние корабли покинули Марс, Кимерия прекратила своё существование[^11].
 
@@ -338,10 +451,18 @@
 
 ## Связанные статьи
 
-- [Зефирийское море](/geography/zephyria-sea/)
-- [Залив Большой Сирт](/geography/gulf-of-sirte/)
-- [Королевство Эллада](/history/hellas-kingdom/)
-- [Утопия](/geography/utopia/)
+- [Кимерия](https://mars-wiki.ru/geography/kimeria/)
+- [Дао-Тор](https://mars-wiki.ru/geography/dao-tor/)
+- [Лес Тиррения](https://mars-wiki.ru/geography/tirrenia-forest/)
+- [Зефирийское море](https://mars-wiki.ru/geography/zephyria-sea/)
+- [Залив Большой Сирт](https://mars-wiki.ru/geography/gulf-of-sirte/)
+- [Море Эллада](https://mars-wiki.ru/geography/hellas-sea/)
+- [Река Дао](https://mars-wiki.ru/geography/dao-river/)
+- [Остров Элизиум](https://mars-wiki.ru/geography/elysium-island/)
+- [Пролив Элизиум-Акха](https://mars-wiki.ru/geography/elysium-akha-strait/)
+- [Кимер III](https://mars-wiki.ru/people/kimer-iii/)
+- [Королевство Эллада](https://mars-wiki.ru/history/hellas-kingdom/)
+- [Утопия](https://mars-wiki.ru/geography/utopia/)
 
 ---
 

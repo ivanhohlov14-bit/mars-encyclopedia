@@ -1,8 +1,9 @@
 // docs/javascripts/auth-button.js
+
 console.log('✅ auth-button.js загружен');
 
 (function() {
-    // --- Данные Supabase ---
+    // --- ПРАВИЛЬНЫЕ ДАННЫЕ SUPABASE ---
     const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
@@ -22,10 +23,8 @@ console.log('✅ auth-button.js загружен');
 
     // --- Вставляем кнопку в заголовок ---
     function renderButton() {
-        // Для темы readthedocs ищем правильный контейнер
         let container = document.getElementById('auth-btn-container');
         if (container) {
-            // Если контейнер уже существует, обновляем его
             updateAuthUI(container);
             return;
         }
@@ -33,7 +32,6 @@ console.log('✅ auth-button.js загружен');
         // Ищем заголовок (для readthedocs)
         let header = document.querySelector('header');
         if (!header) {
-            // Пробуем найти через класс readthedocs
             header = document.querySelector('.wy-nav-content-wrap');
             if (!header) {
                 console.warn('⚠️ Заголовок не найден, повторная попытка...');
@@ -42,27 +40,21 @@ console.log('✅ auth-button.js загружен');
             }
         }
 
-        // Создаём контейнер для кнопки
         container = document.createElement('div');
         container.id = 'auth-btn-container';
         container.style.cssText = 'display: inline-flex; align-items: center; gap: 8px; float: right; margin-top: 8px; margin-right: 20px;';
 
-        // Вставляем в начало заголовка (чтобы было видно)
         if (header.tagName === 'HEADER') {
-            // Вставляем в конец header
             header.appendChild(container);
         } else {
-            // Вставляем в начало .wy-nav-content-wrap
             header.prepend(container);
         }
 
         console.log('✅ Контейнер для кнопки создан');
-
-        // Обновляем UI
         updateAuthUI(container);
     }
 
-    // --- Обновление UI (проверка пользователя) ---
+    // --- Обновление UI ---
     function updateAuthUI(container) {
         if (!container) {
             container = document.getElementById('auth-btn-container');
@@ -70,9 +62,7 @@ console.log('✅ auth-button.js загружен');
         }
 
         if (!supabaseClient) {
-            container.innerHTML = `
-                <span style="color: #999; font-size: 0.8rem;">Загрузка...</span>
-            `;
+            container.innerHTML = `<span style="color: #999; font-size: 0.8rem;">Загрузка...</span>`;
             return;
         }
 
@@ -90,7 +80,7 @@ console.log('✅ auth-button.js загружен');
                             ${username}
                         </span>
                         <a href="/profile/" style="color: #6C63FF; text-decoration: none; font-size: 0.8rem;">Профиль</a>
-                        <a href="#" onclick="window._supabaseClient = supabaseClient; supabaseClient.auth.signOut(); location.reload(); return false;" 
+                        <a href="#" onclick="if(supabaseClient) { supabaseClient.auth.signOut(); location.reload(); } return false;" 
                            style="color: #c0392b; text-decoration: none; font-size: 0.8rem;">Выйти</a>
                     </div>
                 `;
@@ -104,9 +94,7 @@ console.log('✅ auth-button.js загружен');
             }
         }).catch((error) => {
             console.error('❌ Ошибка проверки сессии:', error);
-            container.innerHTML = `
-                <span style="color: #999; font-size: 0.8rem;">Ошибка</span>
-            `;
+            container.innerHTML = `<span style="color: #999; font-size: 0.8rem;">Ошибка</span>`;
         });
     }
 
@@ -117,10 +105,9 @@ console.log('✅ auth-button.js загружен');
         document.addEventListener('DOMContentLoaded', initSupabase);
     }
 
-    // --- Перепроверяем через 2 секунды (на всякий случай) ---
+    // --- Повторная попытка через 2 секунды ---
     setTimeout(function() {
-        const container = document.getElementById('auth-btn-container');
-        if (!container) {
+        if (!document.getElementById('auth-btn-container')) {
             console.log('🔄 Повторная попытка вставки кнопки...');
             renderButton();
         }

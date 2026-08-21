@@ -2,7 +2,7 @@
 
 (function() {
     // --- Данные Supabase ---
-    const SUPABASE_URL = "https://ncytbgbjfoqmmgfygz.supabase.co";
+   const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
     // --- Загружаем Supabase ---

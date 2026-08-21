@@ -9,6 +9,10 @@ theme:
   favicon: assets/favicon.png
   sticky_navigation: true
 
+theme:
+  name: null
+  custom_dir: docs/overrides
+
 plugins:
   - search
 

@@ -10,7 +10,7 @@ theme:
   sticky_navigation: true
 
 theme:
-  name: null
+  name: material
   custom_dir: docs/overrides
 
 plugins:

@@ -80,7 +80,7 @@ console.log('✅ auth-button.js загружен');
                             ${username}
                         </span>
                         <a href="/profile/" style="color: #6C63FF; text-decoration: none; font-size: 0.8rem;">Профиль</a>
-                        <a href="#" onclick="if(supabaseClient) { supabaseClient.auth.signOut(); location.reload(); } return false;" 
+                        <a href="#" onclick="logoutUser(); return false;" 
                            style="color: #c0392b; text-decoration: none; font-size: 0.8rem;">Выйти</a>
                     </div>
                 `;
@@ -98,6 +98,68 @@ console.log('✅ auth-button.js загружен');
         });
     }
 
+    // --- Функция выхода (исправленная) ---
+    function logoutUser() {
+        console.log('🔄 Попытка выхода...');
+        
+        if (!supabaseClient) {
+            console.warn('⚠️ Supabase не инициализирован, очищаем локальные данные');
+            clearLocalSession();
+            return;
+        }
+
+        // Пытаемся выйти через Supabase
+        supabaseClient.auth.signOut()
+            .then(() => {
+                console.log('✅ Выход выполнен через Supabase');
+                clearLocalSession();
+                location.reload();
+            })
+            .catch((error) => {
+                console.error('❌ Ошибка выхода:', error);
+                
+                // Если ошибка 403 или "user not found" — пользователь уже удалён на сервере
+                if (error?.status === 403 || 
+                    error?.message?.includes('does not exist') ||
+                    error?.message?.includes('not found') ||
+                    error?.message?.includes('invalid')) {
+                    console.log('👤 Пользователь уже удалён, очищаем локальную сессию');
+                    clearLocalSession();
+                    location.reload();
+                } else {
+                    // Другие ошибки — пробуем принудительную очистку
+                    console.warn('⚠️ Неизвестная ошибка, пробуем принудительную очистку');
+                    clearLocalSession();
+                    location.reload();
+                }
+            });
+    }
+
+    // --- Очистка локальной сессии ---
+    function clearLocalSession() {
+        console.log('🧹 Очищаем локальные данные...');
+        
+        // Очищаем все ключи, начинающиеся с supabase
+        const keysToRemove = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            if (key && key.startsWith('supabase')) {
+                keysToRemove.push(key);
+            }
+        }
+        keysToRemove.forEach(key => localStorage.removeItem(key));
+        
+        // Очищаем cookies с токенами
+        document.cookie.split(';').forEach(cookie => {
+            const name = cookie.split('=')[0].trim();
+            if (name && name.startsWith('sb-')) {
+                document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+            }
+        });
+        
+        console.log('✅ Локальные данные очищены');
+    }
+
     // --- Запускаем ---
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
         initSupabase();
@@ -113,8 +175,9 @@ console.log('✅ auth-button.js загружен');
         }
     }, 2000);
 
-    // --- Сохраняем клиент в window для использования в других скриптах ---
+    // --- Делаем функции глобальными ---
     window._supabaseClient = supabaseClient;
+    window.logoutUser = logoutUser;
 
 })();
 

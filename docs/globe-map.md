@@ -11,17 +11,20 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 100%;
+      min-height: 100vh;
       background: #0a0a1a;
       font-family: 'Segoe UI', 'Arial Unicode MS', sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto; /* разрешаем прокрутку */
     }
 
     /* --- КОНТЕЙНЕР КАРТЫ --- */
     #map-container {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 90vh; /* карта занимает 90% высоты экрана, остальное футер */
+      max-width: 100%;
+      margin: 0 auto;
       background: #0a0a1a;
       overflow: hidden;
     }
@@ -32,7 +35,7 @@
       display: block;
     }
 
-    /* --- БОКОВАЯ ПАНЕЛЬ (как в Яндекс Картах) --- */
+    /* --- БОКОВАЯ ПАНЕЛЬ (по умолчанию скрыта) --- */
     .sidebar {
       position: absolute;
       top: 70px;
@@ -48,11 +51,14 @@
       transition: transform 0.3s ease, opacity 0.3s ease;
       color: #ccc;
       pointer-events: auto;
-    }
-    .sidebar.hidden {
-      transform: translateX(-280px);
+      transform: translateX(-280px); /* скрыто по умолчанию */
       opacity: 0;
       pointer-events: none;
+    }
+    .sidebar.visible {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .sidebar-title {
@@ -123,38 +129,37 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: left 0.3s ease, background 0.2s;
       color: #d4d4e8;
       font-size: 22px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      transition: background 0.2s;
     }
     .hamburger:hover {
       background: rgba(40, 40, 60, 0.9);
     }
-    .hamburger.shifted {
-      left: 20px;
-    }
 
-    /* --- ПОИСКОВАЯ СТРОКА (левый верх) --- */
-    .search-container {
+    /* --- ПОИСК + КООРДИНАТЫ (одна строка) --- */
+    .top-left-bar {
       position: absolute;
       top: 20px;
       left: 80px;
       z-index: 25;
       display: flex;
       align-items: center;
-      background: rgba(20, 20, 35, 0.85);
+      gap: 12px;
+      background: rgba(20, 20, 35, 0.7);
       backdrop-filter: blur(8px);
       border: 1px solid #2a2a4a;
       border-radius: 8px;
       padding: 6px 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      width: 260px;
-      transition: width 0.3s;
+      flex-wrap: nowrap;
     }
-    .search-container:focus-within {
-      width: 300px;
-      border-color: #6a6aaa;
+    .search-container {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      min-width: 160px;
     }
     .search-container img {
       width: 24px;
@@ -187,27 +192,22 @@
       display: block;
     }
 
-    /* --- КООРДИНАТЫ (по центру, чуть выше середины) --- */
+    /* Координаты — справа от поиска */
     #coords {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -150%);
       color: #fff;
-      font-size: 14px;
-      background: rgba(0,0,0,0.7);
-      padding: 6px 16px;
-      border-radius: 20px;
+      font-size: 13px;
+      background: rgba(0,0,0,0.5);
+      padding: 4px 12px;
+      border-radius: 16px;
       border: 1px solid #444;
       font-family: monospace;
-      z-index: 10;
       pointer-events: none;
       user-select: none;
-      backdrop-filter: blur(4px);
       white-space: nowrap;
+      margin-left: auto;
     }
 
-    /* --- ПЕРЕКЛЮЧАТЕЛЬ КАРТЫ (правый верхний угол) --- */
+    /* --- ПЕРЕКЛЮЧАТЕЛЬ КАРТЫ (правый верх) --- */
     .map-switcher {
       position: absolute;
       top: 20px;
@@ -248,86 +248,12 @@
       background: #3a2a6a;
       border-left: 3px solid #8a6aaa;
     }
-    .map-switcher .switcher-btn .icon {
-      font-size: 18px;
-    }
-    .map-switcher .switcher-label {
-      display: none;
-    }
-    /* При наведении показываем все кнопки */
-    .map-switcher:hover {
-      min-width: 180px;
-    }
-    .map-switcher:hover .switcher-label {
-      display: inline;
-    }
-    /* Но для мобильных лучше показывать всегда? */
-    @media (max-width: 768px) {
-      .map-switcher {
-        flex-direction: row;
-        flex-wrap: wrap;
-        min-width: 44px;
-        top: 10px;
-        right: 10px;
-      }
-      .map-switcher .switcher-btn {
-        padding: 6px 10px;
-        font-size: 12px;
-      }
-      .map-switcher .switcher-label {
-        display: inline;
-      }
-      .map-switcher:hover {
-        min-width: auto;
-      }
-      .search-container {
-        left: 70px;
-        width: 180px;
-        top: 10px;
-      }
-      .search-container:focus-within {
-        width: 220px;
-      }
-      .hamburger {
-        top: 10px;
-        left: 10px;
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-      }
-      .sidebar {
-        top: 60px;
-        left: 10px;
-        width: 200px;
-        padding: 12px 10px;
-      }
-      #coords {
-        font-size: 12px;
-        padding: 4px 12px;
-        transform: translate(-50%, -200%);
-      }
-    }
-    @media (max-width: 480px) {
-      .search-container {
-        width: 140px;
-        left: 60px;
-      }
-      .search-container:focus-within {
-        width: 180px;
-      }
-      .sidebar {
-        width: 170px;
-        left: 6px;
-        top: 55px;
-      }
-      #coords {
-        font-size: 10px;
-        padding: 3px 10px;
-        transform: translate(-50%, -250%);
-      }
-    }
+    .map-switcher .switcher-btn .icon { font-size: 18px; }
+    .map-switcher .switcher-label { display: none; }
+    .map-switcher:hover { min-width: 180px; }
+    .map-switcher:hover .switcher-label { display: inline; }
 
-    /* --- ОСТАЛЬНЫЕ ЭЛЕМЕНТЫ (легенда, инфо, футер) --- */
+    /* --- ЛЕГЕНДА --- */
     .legend {
       position: absolute;
       bottom: 20px;
@@ -373,21 +299,16 @@
       backdrop-filter: blur(4px);
     }
 
+    /* --- ФУТЕР (под картой) --- */
     .footer-message {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
       text-align: center;
       color: #ffaa44;
       font-size: 15px;
-      padding: 6px;
-      background: rgba(10, 10, 26, 0.6);
-      backdrop-filter: blur(4px);
+      padding: 8px 10px;
+      background: #0a0a1a;
       border-top: 1px solid #ff6633;
       font-family: 'Segoe UI', sans-serif;
-      z-index: 5;
-      pointer-events: none;
+      width: 100%;
     }
     .footer-message .sub {
       font-size: 11px;
@@ -396,7 +317,7 @@
       margin-top: 1px;
     }
 
-    /* --- ПЛАВАЮЩИЕ МОБИЛЬНЫЕ КНОПКИ (дублируют sidebar) --- */
+    /* --- ПЛАВАЮЩИЕ МОБИЛЬНЫЕ КНОПКИ --- */
     .mobile-controls {
       position: absolute;
       bottom: 20px;
@@ -438,6 +359,37 @@
       .mobile-controls { display: none; }
     }
 
+    /* --- АДАПТИВНОСТЬ --- */
+    @media (max-width: 768px) {
+      .map-container { height: 85vh; }
+      .hamburger { top: 10px; left: 10px; width: 40px; height: 40px; font-size: 20px; }
+      .top-left-bar {
+        top: 10px;
+        left: 60px;
+        padding: 4px 8px;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .search-container { min-width: 120px; }
+      .search-container input { font-size: 12px; }
+      #coords { font-size: 11px; padding: 2px 8px; }
+      .sidebar { top: 60px; left: 10px; width: 200px; }
+      .map-switcher { top: 10px; right: 10px; }
+      .map-switcher .switcher-btn { padding: 6px 10px; font-size: 12px; }
+      .map-switcher .switcher-label { display: inline; }
+      .map-switcher:hover { min-width: auto; }
+      .legend, .info-panel { display: none; }
+      .mobile-controls { bottom: 16px; right: 16px; gap: 6px; }
+      .mobile-controls button { width: 40px; height: 40px; font-size: 16px; }
+    }
+    @media (max-width: 480px) {
+      .top-left-bar { left: 50px; gap: 4px; }
+      .search-container { min-width: 90px; }
+      .search-container input { font-size: 11px; }
+      #coords { font-size: 10px; padding: 2px 6px; }
+      .sidebar { width: 170px; left: 6px; top: 55px; }
+    }
+
     /* --- ЗАГРУЗКА --- */
     .loading-text {
       position: absolute;
@@ -457,7 +409,7 @@
     <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
   </div>
 
-  <!-- Боковая панель -->
+  <!-- Боковая панель (скрыта по умолчанию) -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-title">🗺️ Слои карты</div>
     <div class="sidebar-section">
@@ -475,17 +427,17 @@
   </div>
 
   <!-- Кнопка-гамбургер -->
-  <div class="hamburger" id="hamburger" title="Показать/скрыть меню">☰</div>
+  <div class="hamburger" id="hamburger" title="Показать меню">☰</div>
 
-  <!-- Поисковая строка -->
-  <div class="search-container" id="searchContainer">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-galaxy.png" alt="galaxy" />
-    <input type="text" id="searchInput" placeholder="Поиск мест..." />
-    <span class="clear-btn" id="clearSearch">✕</span>
+  <!-- Поиск + координаты -->
+  <div class="top-left-bar">
+    <div class="search-container" id="searchContainer">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-galaxy.png" alt="galaxy" />
+      <input type="text" id="searchInput" placeholder="Поиск мест..." />
+      <span class="clear-btn" id="clearSearch">✕</span>
+    </div>
+    <div id="coords">🪐 наведите на планету</div>
   </div>
-
-  <!-- Координаты -->
-  <div id="coords">🪐 наведите на планету</div>
 
   <!-- Переключатель карты (правый верх) -->
   <div class="map-switcher" id="mapSwitcher">
@@ -506,19 +458,19 @@
     🖱️ Вращайте мышкой<br>🔍 Колесо — приближение
   </div>
 
-  <!-- Плавающие мобильные кнопки -->
+  <!-- Мобильные кнопки -->
   <div class="mobile-controls" id="mobileControls">
     <button id="btnM" title="Метки">🏷️</button>
     <button id="btnO" title="Орбиты">⭕</button>
     <button id="btnP" title="Спутники">🛰️</button>
     <button id="btnR" title="Вращение">🔄</button>
   </div>
+</div>
 
-  <!-- Футер -->
-  <div class="footer-message">
-    🚀 <span style="color:#ff6633;">Совия</span> — выздоравливай быстрее! 🍫 Желаю тебе шоколадку и марсианского настроения! 🌟
-    <span class="sub">🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку</span>
-  </div>
+<!-- Футер -->
+<div class="footer-message">
+  🚀 <span style="color:#ff6633;">Совия</span> — выздоравливай быстрее! 🍫 Желаю тебе шоколадку и марсианского настроения! 🌟
+  <span class="sub">🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку</span>
 </div>
 
 <script type="importmap">
@@ -580,7 +532,7 @@ const stars = new THREE.Points(starsGeometry, starsMaterial);
 scene.add(stars);
 
 // ============================================================
-// 4. МАРС (с возможностью смены текстуры)
+// 4. МАРС (текстуры)
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
 const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
@@ -588,10 +540,10 @@ const marsMaterial = new THREE.MeshPhongMaterial({ color: 0xcc6633 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 
-// Пути к текстурам
+// Пути к текстурам (исправлены)
 const MAP_DARK = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/new-map.png';
 const MAP_SATELLITE = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/mars-satellite.png';
-const MAP_LIGHT = MAP_DARK; // пока дублируем тёмную, замените на свою светлую
+const MAP_LIGHT = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
 
 // Загружаем текстуры
 const textureDark = textureLoader.load(MAP_DARK);
@@ -603,6 +555,19 @@ marsMaterial.map = textureDark;
 marsMaterial.color.set(0xffffff);
 marsMaterial.needsUpdate = true;
 
+// Скрываем загрузку после загрузки основной текстуры (или через таймаут)
+let loadingHidden = false;
+function hideLoading() {
+  if (!loadingHidden) {
+    loadingText.style.display = 'none';
+    loadingHidden = true;
+  }
+}
+// Если текстура загрузилась
+textureDark.addEventListener?.('load', hideLoading);
+// На всякий случай, через 5 секунд тоже скрываем
+setTimeout(hideLoading, 5000);
+
 // Функция переключения слоёв
 function setLayer(layer) {
   if (layer === 'dark') {
@@ -613,7 +578,7 @@ function setLayer(layer) {
     marsMaterial.map = textureLight;
   }
   marsMaterial.needsUpdate = true;
-  // Обновить активную кнопку в меню
+  // Обновить активные кнопки
   document.querySelectorAll('.sidebar-btn[data-layer]').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`.sidebar-btn[data-layer="${layer}"]`)?.classList.add('active');
   document.querySelectorAll('.map-switcher .switcher-btn[data-layer]').forEach(btn => btn.classList.remove('active'));
@@ -683,7 +648,7 @@ let satellitesVisible = true;
 let satellitesRotating = true;
 
 // ============================================================
-// 7. МЕТКИ (ИДЕАЛЬНЫЕ, БЕЗ ИЗМЕНЕНИЙ)
+// 7. МЕТКИ (идеальные, без изменений)
 // ============================================================
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
@@ -907,7 +872,7 @@ animate();
 // ============================================================
 // 11. УПРАВЛЕНИЕ ЧЕРЕЗ ИНТЕРФЕЙС
 // ============================================================
-// Переключение слоёв (кнопки в меню и в switcher)
+// Переключение слоёв
 document.querySelectorAll('.sidebar-btn[data-layer]').forEach(btn => {
   btn.addEventListener('click', () => setLayer(btn.dataset.layer));
 });
@@ -968,14 +933,14 @@ document.getElementById('btnR').classList.add('active');
 // Гамбургер
 const sidebar = document.getElementById('sidebar');
 const hamburger = document.getElementById('hamburger');
-let sidebarVisible = true;
+let sidebarVisible = false; // по умолчанию скрыто
 hamburger.addEventListener('click', () => {
   sidebarVisible = !sidebarVisible;
-  sidebar.classList.toggle('hidden', !sidebarVisible);
-  hamburger.classList.toggle('shifted', !sidebarVisible);
+  sidebar.classList.toggle('visible', sidebarVisible);
+  hamburger.textContent = sidebarVisible ? '✕' : '☰';
 });
 
-// Поиск
+// Поиск + полёт
 const searchInput = document.getElementById('searchInput');
 const clearSearch = document.getElementById('clearSearch');
 searchInput.addEventListener('input', () => {
@@ -993,10 +958,10 @@ searchInput.addEventListener('keydown', (e) => {
     const found = labelData.find(item => item[0].toLowerCase().includes(query));
     if (found) {
       const [text, lat, lon] = found;
-      // Плавный полёт к метке
-      const pos = latLonToPosition(lat, lon, 1.5);
+      // Летим ближе к поверхности (радиус 1.2)
+      const pos = latLonToPosition(lat, lon, 1.2);
       const startPos = camera.position.clone();
-      const endPos = pos.clone().multiplyScalar(1.4);
+      const endPos = pos.clone().multiplyScalar(1.3);
       const duration = 800;
       const startTime = performance.now();
       function fly(time) {

@@ -21,6 +21,9 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/supabase-auth.js
+
 nav:
   - Заглавная страница: index.md
   - С чего начать: start-here.md

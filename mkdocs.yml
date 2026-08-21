@@ -23,6 +23,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/supabase-auth.js
+  - javascripts/auth-ui.js
 
 nav:
   - Заглавная страница: index.md

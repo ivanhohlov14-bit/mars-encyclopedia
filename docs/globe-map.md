@@ -15,14 +15,14 @@
       background: #0a0a1a;
       font-family: 'Segoe UI', 'Arial Unicode MS', sans-serif;
       overflow-x: hidden;
-      overflow-y: auto; /* разрешаем прокрутку */
+      overflow-y: auto;
     }
 
     /* --- КОНТЕЙНЕР КАРТЫ --- */
     #map-container {
       position: relative;
       width: 100%;
-      height: 90vh; /* карта занимает 90% высоты экрана, остальное футер */
+      height: 90vh;
       max-width: 100%;
       margin: 0 auto;
       background: #0a0a1a;
@@ -35,7 +35,7 @@
       display: block;
     }
 
-    /* --- БОКОВАЯ ПАНЕЛЬ (по умолчанию скрыта) --- */
+    /* --- БОКОВАЯ ПАНЕЛЬ (скрыта по умолчанию) --- */
     .sidebar {
       position: absolute;
       top: 70px;
@@ -51,7 +51,7 @@
       transition: transform 0.3s ease, opacity 0.3s ease;
       color: #ccc;
       pointer-events: auto;
-      transform: translateX(-280px); /* скрыто по умолчанию */
+      transform: translateX(-280px);
       opacity: 0;
       pointer-events: none;
     }
@@ -190,6 +190,18 @@
     }
     .search-container .clear-btn.visible {
       display: block;
+    }
+    .search-container .search-btn {
+      background: transparent;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0 4px;
+      transition: color 0.2s;
+    }
+    .search-container .search-btn:hover {
+      color: #fff;
     }
 
     /* Координаты — справа от поиска */
@@ -434,6 +446,7 @@
     <div class="search-container" id="searchContainer">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-galaxy.png" alt="galaxy" />
       <input type="text" id="searchInput" placeholder="Поиск мест..." />
+      <button class="search-btn" id="searchBtn" title="Найти">🔍</button>
       <span class="clear-btn" id="clearSearch">✕</span>
     </div>
     <div id="coords">🪐 наведите на планету</div>
@@ -540,7 +553,7 @@ const marsMaterial = new THREE.MeshPhongMaterial({ color: 0xcc6633 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 
-// Пути к текстурам (исправлены)
+// Пути к текстурам
 const MAP_DARK = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/new-map.png';
 const MAP_SATELLITE = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/mars-satellite.png';
 const MAP_LIGHT = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
@@ -555,7 +568,7 @@ marsMaterial.map = textureDark;
 marsMaterial.color.set(0xffffff);
 marsMaterial.needsUpdate = true;
 
-// Скрываем загрузку после загрузки основной текстуры (или через таймаут)
+// Скрываем загрузку через 2 секунды
 let loadingHidden = false;
 function hideLoading() {
   if (!loadingHidden) {
@@ -563,10 +576,8 @@ function hideLoading() {
     loadingHidden = true;
   }
 }
-// Если текстура загрузилась
-textureDark.addEventListener?.('load', hideLoading);
-// На всякий случай, через 5 секунд тоже скрываем
-setTimeout(hideLoading, 5000);
+// На всякий случай, через 2 секунды скрываем
+setTimeout(hideLoading, 2000);
 
 // Функция переключения слоёв
 function setLayer(layer) {
@@ -578,7 +589,6 @@ function setLayer(layer) {
     marsMaterial.map = textureLight;
   }
   marsMaterial.needsUpdate = true;
-  // Обновить активные кнопки
   document.querySelectorAll('.sidebar-btn[data-layer]').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`.sidebar-btn[data-layer="${layer}"]`)?.classList.add('active');
   document.querySelectorAll('.map-switcher .switcher-btn[data-layer]').forEach(btn => btn.classList.remove('active'));
@@ -648,7 +658,7 @@ let satellitesVisible = true;
 let satellitesRotating = true;
 
 // ============================================================
-// 7. МЕТКИ (идеальные, без изменений)
+// 7. МЕТКИ (С ФОТОГРАФИЯМИ)
 // ============================================================
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
@@ -676,7 +686,7 @@ function positionToLatLon(pos) {
 
 const isMobile = window.innerWidth <= 768;
 
-function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', description = '') {
+function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', description = '', image = '') {
   const pos = latLonToPosition(lat, lon);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -728,41 +738,44 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', descri
   const scaleY = isMobile ? 0.09 : 0.07;
   sprite.scale.set(scaleX, scaleY, 1);
 
-  sprite.userData = { pos: pos.clone(), color, link, text, lat, lon, isLabel: true, description };
+  sprite.userData = { pos: pos.clone(), color, link, text, lat, lon, isLabel: true, description, image };
   return sprite;
 }
 
+// БАЗОВЫЙ ПУТЬ К ИЗОБРАЖЕНИЯМ
+const IMG_BASE = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/';
+
 const labelData = [
-  ['🌊 Ацидалийское море', 33.8, -34.4, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/', 'Огромное море в северном полушарии Марса.'],
-  ['🌊 Море Эллада', -34.4, 79.4, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/', 'Крупнейший ударный бассейн.'],
-  ['🌊 Море Аргира', -41.6, -38.8, '#3388dd', 'https://mars-wiki.ru/geography/argir-sea/', 'Море на юге Марса, окружённое горами.'],
-  ['🌊 Эритрейское море', 1, -26.8, '#3388dd', 'https://mars-wiki.ru/geography/eritreya-sea/', 'Море в экваториальной зоне.'],
-  ['🌊 Амазонское море', 41.1, -154.2,'#3388dd', 'https://mars-wiki.ru/geography/amazon-sea/', 'Самое молодое море.'],
-  ['🌊 Зефирийское море', 10.2, 166.5, '#3388dd', 'https://mars-wiki.ru/geography/zephyria-sea/', 'Море с бирюзовой водой.'],
-  ['🌊 Зал. Большой Сирт', 16.7, 90, '#3388dd', 'https://mars-wiki.ru/geography/sirtis-major-bay/', 'Крупный залив.'],
-  ['👑 Королевство Эдем', 30.5, 23.6, '#ffaa00', 'https://mars-wiki.ru/geography/eden/', 'Центр цивилизации.'],
-  ['👑 Королевство Аркадия', 44.5, -124.3, '#ffaa00', 'https://mars-wiki.ru/geography/arkadia/', 'Северное королевство.'],
-  ['🌋 Олимп', 18.4, 226, '#cc8844', '#', 'Высшая точка Марса, 21 км.'],
-  ['🏔️ Долина Маринер', -1.3, -74, '#cc8844', '#', 'Гигантский каньон 4000 км.'],
-  ['🏛️ Окхасен', 15.26, -53.31, '#ff6633', 'https://mars-wiki.ru/geography/okhasen/', 'Город у моря.'],
-  ['🏛️ Роген-Ария', 53.7, 35.7, '#ff6633', 'https://mars-wiki.ru/geography/rogen-aria/', 'Город на севере.'],
-  ['🚀 Космодром Фарсиды', 20.3, -80, '#ff6633', 'https://mars-wiki.ru/geography/kosmodrom-farsidy/', 'Главный космопорт.'],
+  ['🌊 Ацидалийское море', 33.8, -34.4, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/', 'Огромное море в северном полушарии Марса. Берега изрезаны древними каналами.', IMG_BASE + 'acidalia-sea.png'],
+  ['🌊 Море Эллада', -34.4, 79.4, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/', 'Крупнейший ударный бассейн, заполненный водой. Здесь находятся остатки древней жизни.', IMG_BASE + 'ellada-sea.png'],
+  ['🌊 Море Аргира', -41.6, -38.8, '#3388dd', 'https://mars-wiki.ru/geography/argir-sea/', 'Море на юге Марса, окружённое горами. Считается местом первых марсианских поселений.', IMG_BASE + 'argir-sea.png'],
+  ['🌊 Эритрейское море', 1, -26.8, '#3388dd', 'https://mars-wiki.ru/geography/eritreya-sea/', 'Море в экваториальной зоне. Здесь часто бывают песчаные бури, но вода прозрачная.', IMG_BASE + 'eritreya-sea.jpg'],
+  ['🌊 Амазонское море', 41.1, -154.2,'#3388dd', 'https://mars-wiki.ru/geography/amazon-sea/', 'Самое молодое море, образовавшееся в результате таяния подлёдных вод.', IMG_BASE + 'amazon-sea.jpg'],
+  ['🌊 Зефирийское море', 10.2, 166.5, '#3388dd', 'https://mars-wiki.ru/geography/zephyria-sea/', 'Море с бирюзовой водой. На его берегах находятся древние обсерватории.', IMG_BASE + 'zephyria-sea.png'],
+  ['🌊 Зал. Большой Сирт', 16.7, 90, '#3388dd', 'https://mars-wiki.ru/geography/sirtis-major-bay/', 'Крупный залив, известный своими ветрами и высокими волнами.', IMG_BASE + 'sirtis-major-bay.png'],
+  ['👑 Королевство Эдем', 30.5, 23.6, '#ffaa00', 'https://mars-wiki.ru/geography/eden/', 'Центр марсианской цивилизации. Здесь находятся сады, библиотеки и дворцы.', ''],
+  ['👑 Королевство Аркадия', 44.5, -124.3, '#ffaa00', 'https://mars-wiki.ru/geography/arkadia/', 'Северное королевство, знаменитое своими шахтами и металлургией.', IMG_BASE + 'arkadia-landscape.jpg'],
+  ['🌋 Олимп', 18.4, 226, '#cc8844', '#', 'Высшая точка Марса, 21 км над уровнем моря. Вершина покрыта вечными облаками.', ''],
+  ['🏔️ Долина Маринер', -1.3, -74, '#cc8844', '#', 'Гигантский каньон протяжённостью 4000 км. Здесь можно увидеть слои горных пород.', ''],
+  ['🏛️ Окхасен', 15.26, -53.31, '#ff6633', 'https://mars-wiki.ru/geography/okhasen/', 'Город у Ацидалийского моря. Торговый, научный и культурный центр.', ''],
+  ['🏛️ Роген-Ария', 53.7, 35.7, '#ff6633', 'https://mars-wiki.ru/geography/rogen-aria/', 'Город на севере, известный своими академиями и астрономическими обсерваториями.', ''],
+  ['🚀 Космодром Фарсиды', 20.3, -80, '#ff6633', 'https://mars-wiki.ru/geography/kosmodrom-farsidy/', 'Главный космический порт Марса. Отсюда стартуют корабли к звёздам.', ''],
 ];
 
 const labelsGroup = new THREE.Group();
 scene.add(labelsGroup);
 const labelSprites = [];
 
-for (let [text, lat, lon, color, link, description] of labelData) {
-  const sprite = createLabelSprite(text, lat, lon, color, link, description);
+for (let [text, lat, lon, color, link, description, image] of labelData) {
+  const sprite = createLabelSprite(text, lat, lon, color, link, description, image);
   labelsGroup.add(sprite);
   labelSprites.push(sprite);
 }
 
 // ============================================================
-// 8. ВСПЛЫВАЮЩАЯ КАРТОЧКА
+// 8. ВСПЛЫВАЮЩАЯ КАРТОЧКА (С ИЗОБРАЖЕНИЕМ)
 // ============================================================
-function showPopup(title, description, link) {
+function showPopup(title, description, link, image) {
   const old = document.getElementById('popup-card');
   if (old) old.remove();
 
@@ -771,12 +784,19 @@ function showPopup(title, description, link) {
   div.style.cssText = `
     position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
     background: rgba(10,10,30,0.95); color: #fff; padding: 24px; border-radius: 16px;
-    border: 2px solid #6a4a7a; max-width: 400px; width: 90%; z-index: 200;
+    border: 2px solid #6a4a7a; max-width: 420px; width: 90%; z-index: 200;
     box-shadow: 0 8px 32px rgba(0,0,0,0.8); font-family: 'Segoe UI', 'Segoe UI Emoji', sans-serif;
     pointer-events: auto;
+    max-height: 90vh;
+    overflow-y: auto;
   `;
+  let imageHtml = '';
+  if (image && image !== '') {
+    imageHtml = `<img src="${image}" style="max-width:100%; border-radius:8px; margin-bottom:12px; border:1px solid #444;" />`;
+  }
   div.innerHTML = `
     <h2 style="margin:0 0 10px; color:#d4a0a0;">${title}</h2>
+    ${imageHtml}
     <p style="margin:0 0 15px; line-height:1.6;">${description}</p>
     ${link && link !== '#' ? `<a href="${link}" target="_blank" style="color:#88aaff; text-decoration:underline;">Подробнее →</a>` : ''}
     <br><button id="close-popup" style="margin-top:15px; background:#3a2a4a; border:none; color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer;">Закрыть</button>
@@ -836,7 +856,8 @@ function onCanvasClick(event) {
       const link = sprite.userData.link;
       const text = sprite.userData.text;
       const description = sprite.userData.description || 'Изучите эту локацию в нашей энциклопедии.';
-      showPopup(text, description, link);
+      const image = sprite.userData.image || '';
+      showPopup(text, description, link, image);
     }
   }
 }
@@ -933,7 +954,7 @@ document.getElementById('btnR').classList.add('active');
 // Гамбургер
 const sidebar = document.getElementById('sidebar');
 const hamburger = document.getElementById('hamburger');
-let sidebarVisible = false; // по умолчанию скрыто
+let sidebarVisible = false;
 hamburger.addEventListener('click', () => {
   sidebarVisible = !sidebarVisible;
   sidebar.classList.toggle('visible', sidebarVisible);
@@ -943,6 +964,8 @@ hamburger.addEventListener('click', () => {
 // Поиск + полёт
 const searchInput = document.getElementById('searchInput');
 const clearSearch = document.getElementById('clearSearch');
+const searchBtn = document.getElementById('searchBtn');
+
 searchInput.addEventListener('input', () => {
   clearSearch.classList.toggle('visible', searchInput.value.length > 0);
 });
@@ -951,32 +974,36 @@ clearSearch.addEventListener('click', () => {
   clearSearch.classList.remove('visible');
   searchInput.focus();
 });
-searchInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    const query = searchInput.value.trim().toLowerCase();
-    if (query === '') return;
-    const found = labelData.find(item => item[0].toLowerCase().includes(query));
-    if (found) {
-      const [text, lat, lon] = found;
-      // Летим ближе к поверхности (радиус 1.2)
-      const pos = latLonToPosition(lat, lon, 1.2);
-      const startPos = camera.position.clone();
-      const endPos = pos.clone().multiplyScalar(1.3);
-      const duration = 800;
-      const startTime = performance.now();
-      function fly(time) {
-        const t = Math.min((time - startTime) / duration, 1);
-        const eased = t * t * (3 - 2 * t);
-        camera.position.lerpVectors(startPos, endPos, eased);
-        controls.target.copy(pos);
-        controls.update();
-        if (t < 1) requestAnimationFrame(fly);
-      }
-      requestAnimationFrame(fly);
-    } else {
-      alert('Место не найдено');
+
+function performSearch() {
+  const query = searchInput.value.trim().toLowerCase();
+  if (query === '') return;
+  const found = labelData.find(item => item[0].toLowerCase().includes(query));
+  if (found) {
+    const [text, lat, lon] = found;
+    // Летим очень близко к поверхности (радиус 1.05)
+    const pos = latLonToPosition(lat, lon, 1.05);
+    const startPos = camera.position.clone();
+    const endPos = pos.clone().multiplyScalar(1.15);
+    const duration = 900;
+    const startTime = performance.now();
+    function fly(time) {
+      const t = Math.min((time - startTime) / duration, 1);
+      const eased = t * t * (3 - 2 * t);
+      camera.position.lerpVectors(startPos, endPos, eased);
+      controls.target.copy(pos);
+      controls.update();
+      if (t < 1) requestAnimationFrame(fly);
     }
+    requestAnimationFrame(fly);
+  } else {
+    alert('Место не найдено');
   }
+}
+
+searchBtn.addEventListener('click', performSearch);
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') performSearch();
 });
 
 // ============================================================

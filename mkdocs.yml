@@ -24,11 +24,12 @@ extra_css:
 extra_javascript:
   - javascripts/supabase-auth.js
   - javascripts/auth-ui.js
+  - javascripts/header-auth.js
 
 extra_head:
-  - <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  - <script src="/javascripts/auth-ui.js"></script>
+  - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+  
 nav:
   - Заглавная страница: index.md
   - С чего начать: start-here.md

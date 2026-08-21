@@ -15,6 +15,9 @@
 </form>
 
 <script>
+const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
+const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
+
 document.getElementById('login-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const email = document.getElementById('login-email').value;
@@ -25,16 +28,22 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         return;
     }
 
-    const client = supabase.createClient('https://ncytbgbjfoqmmgfygz.supabase.co', 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D');
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     client.auth.signInWithPassword({ email, password })
         .then(({ data, error }) => {
             if (error) {
                 alert('Ошибка входа: ' + error.message);
+                console.error('❌ Ошибка:', error);
                 return;
             }
             alert('✅ Вход выполнен!');
+            console.log('✅ Пользователь:', data);
             window.location.href = '/profile/';
+        })
+        .catch((err) => {
+            alert('Ошибка сети: ' + err.message);
+            console.error('❌ Сетевая ошибка:', err);
         });
 });
 </script>

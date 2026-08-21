@@ -436,6 +436,13 @@
       <button class="sidebar-btn" id="btnToggleSatellites" style="display:flex; align-items:center; gap:8px;">🛰️ Спутники <span class="status" id="satellitesStatus">вкл</span></button>
       <button class="sidebar-btn" id="btnToggleRotation" style="display:flex; align-items:center; gap:8px;">🔄 Вращение <span class="status" id="rotationStatus">вкл</span></button>
     </div>
+    <!-- НОВЫЕ КНОПКИ -->
+    <div class="sidebar-section" style="border-top:1px solid #2a2a4a; padding-top:10px;">
+      <button class="sidebar-btn" id="btnRuler">📏 Линейка</button>
+      <button class="sidebar-btn" id="btnBookmarks">⭐ Закладки</button>
+      <button class="sidebar-btn" id="btnQuest">🏆 Квест: моря</button>
+      <button class="sidebar-btn" id="btnQuiz">🧠 Викторина</button>
+    </div>
   </div>
 
   <!-- Кнопка-гамбургер -->
@@ -576,7 +583,6 @@ function hideLoading() {
     loadingHidden = true;
   }
 }
-// На всякий случай, через 2 секунды скрываем
 setTimeout(hideLoading, 2000);
 
 // Функция переключения слоёв
@@ -773,9 +779,9 @@ for (let [text, lat, lon, color, link, description, image] of labelData) {
 }
 
 // ============================================================
-// 8. ВСПЛЫВАЮЩАЯ КАРТОЧКА (С ИЗОБРАЖЕНИЕМ)
+// 8. ВСПЛЫВАЮЩАЯ КАРТОЧКА (С ИЗОБРАЖЕНИЕМ И КНОПКОЙ СОХРАНЕНИЯ)
 // ============================================================
-function showPopup(title, description, link, image) {
+function showPopup(title, description, link, image, lat, lon) {
   const old = document.getElementById('popup-card');
   if (old) old.remove();
 
@@ -794,20 +800,275 @@ function showPopup(title, description, link, image) {
   if (image && image !== '') {
     imageHtml = `<img src="${image}" style="max-width:100%; border-radius:8px; margin-bottom:12px; border:1px solid #444;" />`;
   }
+  let saveBtn = '';
+  if (lat !== undefined && lon !== undefined) {
+    saveBtn = `<br><button id="save-bookmark" style="margin-top:10px; background:#ffaa00; border:none; color:#000; padding:8px 20px; border-radius:6px; cursor:pointer; font-weight:bold;">⭐ Сохранить место</button>`;
+  }
   div.innerHTML = `
     <h2 style="margin:0 0 10px; color:#d4a0a0;">${title}</h2>
     ${imageHtml}
     <p style="margin:0 0 15px; line-height:1.6;">${description}</p>
     ${link && link !== '#' ? `<a href="${link}" target="_blank" style="color:#88aaff; text-decoration:underline;">Подробнее →</a>` : ''}
+    ${saveBtn}
     <br><button id="close-popup" style="margin-top:15px; background:#3a2a4a; border:none; color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer;">Закрыть</button>
   `;
   document.body.appendChild(div);
   document.getElementById('close-popup').addEventListener('click', () => div.remove());
   div.addEventListener('click', (e) => { if (e.target === div) div.remove(); });
+  // Обработчик сохранения
+  const saveBtnEl = div.querySelector('#save-bookmark');
+  if (saveBtnEl) {
+    saveBtnEl.addEventListener('click', () => {
+      saveBookmark(title, lat, lon, '#ffaa00');
+    });
+  }
 }
 
 // ============================================================
-// 9. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ
+// 9. ФУНКЦИЯ ПОЛЁТА (используется в поиске и закладках)
+// ============================================================
+function flyTo(lat, lon, radius = 1.15) {
+  const pos = latLonToPosition(lat, lon, radius);
+  const startPos = camera.position.clone();
+  const endPos = pos.clone().multiplyScalar(1.15);
+  const duration = 900;
+  const startTime = performance.now();
+  function fly(time) {
+    const t = Math.min((time - startTime) / duration, 1);
+    const eased = t * t * (3 - 2 * t);
+    camera.position.lerpVectors(startPos, endPos, eased);
+    controls.target.copy(pos);
+    controls.update();
+    if (t < 1) requestAnimationFrame(fly);
+  }
+  requestAnimationFrame(fly);
+}
+
+// ============================================================
+// 10. ГЛОБАЛЬНЫЕ СОСТОЯНИЯ (НОВЫЕ)
+// ============================================================
+let rulerMode = false;
+let rulerPoints = [];
+let rulerLine = null;
+let rulerMarkers = [];
+
+let bookmarks = JSON.parse(localStorage.getItem('mars_bookmarks') || '[]');
+let questProgress = JSON.parse(localStorage.getItem('mars_quest') || '{"found":[], "complete":false}');
+let quizMode = false;
+let quizQuestion = null;
+
+// Список морей для квеста
+const SEA_NAMES = [
+  'Ацидалийское море',
+  'Море Эллада',
+  'Море Аргира',
+  'Эритрейское море',
+  'Амазонское море',
+  'Зефирийское море',
+  'Зал. Большой Сирт'
+];
+
+// Вопросы для викторины
+const QUIZ = [
+  { question: 'Где находится Олимп — высочайшая гора Марса?', answer: 'Олимп', fact: 'Олимп — это вулкан высотой 21,9 км. Это почти в 2,5 раза выше Эвереста!' },
+  { question: 'Где находится Долина Маринер — самый большой каньон?', answer: 'Долина Маринер', fact: 'Долина Маринер имеет длину 4000 км и глубину до 7 км. Она видна даже с Земли.' },
+  { question: 'Какое море считается самым большим на Марсе?', answer: 'Ацидалийское море', fact: 'Ацидалийское море — это крупнейший водоём в северном полушарии Марса.' },
+];
+
+// ============================================================
+// 11. ЛИНЕЙКА
+// ============================================================
+function toggleRuler() {
+  rulerMode = !rulerMode;
+  if (!rulerMode) {
+    clearRuler();
+  }
+  document.getElementById('btnRuler').classList.toggle('active', rulerMode);
+  document.getElementById('btnRuler').textContent = rulerMode ? '📏 Линейка (вкл)' : '📏 Линейка';
+}
+
+function clearRuler() {
+  rulerPoints = [];
+  if (rulerLine) { scene.remove(rulerLine); rulerLine = null; }
+  rulerMarkers.forEach(m => scene.remove(m));
+  rulerMarkers = [];
+}
+
+function addRulerPoint(lat, lon) {
+  const pos = latLonToPosition(lat, lon, 1.005);
+  const sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(0.015, 8, 8),
+    new THREE.MeshPhongMaterial({ color: 0xff3333, emissive: 0x661111 })
+  );
+  sphere.position.copy(pos);
+  scene.add(sphere);
+  rulerMarkers.push(sphere);
+  rulerPoints.push({ lat, lon, pos });
+
+  if (rulerPoints.length === 2) {
+    drawRulerLine();
+  }
+}
+
+function drawRulerLine() {
+  const p1 = rulerPoints[0].pos;
+  const p2 = rulerPoints[1].pos;
+  const points = [p1, p2];
+  const geo = new THREE.BufferGeometry().setFromPoints(points);
+  const mat = new THREE.LineBasicMaterial({ color: 0xff6633, linewidth: 2 });
+  rulerLine = new THREE.Line(geo, mat);
+  scene.add(rulerLine);
+
+  // Расчёт расстояния по дуге (гаверсинус)
+  const R = 3390; // радиус Марса в км
+  const lat1 = rulerPoints[0].lat * Math.PI / 180;
+  const lon1 = rulerPoints[0].lon * Math.PI / 180;
+  const lat2 = rulerPoints[1].lat * Math.PI / 180;
+  const lon2 = rulerPoints[1].lon * Math.PI / 180;
+  const dlat = lat2 - lat1;
+  const dlon = lon2 - lon1;
+  const a = Math.sin(dlat/2)**2 + Math.cos(lat1)*Math.cos(lat2)*Math.sin(dlon/2)**2;
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  const distance = c * R;
+  alert(`📏 Расстояние: ${distance.toFixed(1)} км`);
+}
+
+// ============================================================
+// 12. ЗАКЛАДКИ
+// ============================================================
+function toggleBookmarks() {
+  const panel = document.getElementById('bookmarksPanel');
+  if (panel) {
+    panel.remove();
+    return;
+  }
+  renderBookmarksPanel();
+}
+
+function renderBookmarksPanel() {
+  const old = document.getElementById('bookmarksPanel');
+  if (old) old.remove();
+
+  const div = document.createElement('div');
+  div.id = 'bookmarksPanel';
+  div.style.cssText = `
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: rgba(10,10,30,0.95); color: #fff; padding: 24px; border-radius: 16px;
+    border: 2px solid #6a4a7a; max-width: 400px; width: 90%; z-index: 200;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.8); font-family: 'Segoe UI', sans-serif;
+    pointer-events: auto;
+    max-height: 70vh; overflow-y: auto;
+  `;
+  let html = `<h2 style="margin:0 0 15px; color:#d4a0a0;">⭐ Сохранённые места</h2>`;
+  if (bookmarks.length === 0) {
+    html += `<p style="color:#888;">Нет сохранённых мест. Откройте карточку метки и нажмите "Сохранить".</p>`;
+  } else {
+    html += `<ul style="list-style:none; padding:0;">`;
+    bookmarks.forEach((b, i) => {
+      html += `
+        <li style="padding:8px 0; border-bottom:1px solid #2a2a4a; display:flex; justify-content:space-between; align-items:center;">
+          <span>${b.name}</span>
+          <div>
+            <button data-index="${i}" class="bookmark-fly" style="background:#3a2a4a; border:none; color:#fff; padding:4px 12px; border-radius:6px; cursor:pointer;">Лететь</button>
+            <button data-index="${i}" class="bookmark-delete" style="background:#6a2a2a; border:none; color:#fff; padding:4px 8px; border-radius:6px; cursor:pointer;">✕</button>
+          </div>
+        </li>
+      `;
+    });
+    html += `</ul>`;
+  }
+  html += `<button id="closeBookmarks" style="margin-top:15px; background:#3a2a4a; border:none; color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer;">Закрыть</button>`;
+  div.innerHTML = html;
+  document.body.appendChild(div);
+
+  div.querySelector('#closeBookmarks').addEventListener('click', () => div.remove());
+  div.querySelectorAll('.bookmark-fly').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.index);
+      const b = bookmarks[idx];
+      flyTo(b.lat, b.lon);
+      div.remove();
+    });
+  });
+  div.querySelectorAll('.bookmark-delete').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.index);
+      bookmarks.splice(idx, 1);
+      localStorage.setItem('mars_bookmarks', JSON.stringify(bookmarks));
+      renderBookmarksPanel();
+    });
+  });
+}
+
+function saveBookmark(name, lat, lon, color) {
+  if (bookmarks.find(b => b.lat === lat && b.lon === lon)) {
+    alert('Это место уже сохранено');
+    return;
+  }
+  bookmarks.push({ name, lat, lon, color });
+  localStorage.setItem('mars_bookmarks', JSON.stringify(bookmarks));
+  alert('⭐ Место сохранено!');
+}
+
+// ============================================================
+// 13. КВЕСТ "НАЙДИ ВСЕ МОРЯ"
+// ============================================================
+function toggleQuest() {
+  if (questProgress.complete) {
+    alert('🏆 Вы уже нашли все моря! Вы — Мореплаватель!');
+    return;
+  }
+  const found = questProgress.found || [];
+  const total = SEA_NAMES.length;
+  const msg = `🌊 Квест: Найди все моря (${found.length}/${total})\n\nНайдено: ${found.join(', ') || 'пока ничего'}\n\nКликайте на моря на карте, чтобы отмечать их.`;
+  alert(msg);
+}
+
+function checkQuest(text) {
+  if (questProgress.complete) return;
+  const sea = SEA_NAMES.find(s => text.includes(s));
+  if (!sea) return;
+  if (questProgress.found.includes(sea)) return;
+  questProgress.found.push(sea);
+  localStorage.setItem('mars_quest', JSON.stringify(questProgress));
+  if (questProgress.found.length === SEA_NAMES.length) {
+    questProgress.complete = true;
+    localStorage.setItem('mars_quest', JSON.stringify(questProgress));
+    alert('🏆 ПОЗДРАВЛЯЮ! Вы нашли все моря Марса!\nВы — МОРЕПЛАВАТЕЛЬ! 🌊');
+  } else {
+    alert(`✅ Найдено море: ${sea}\nОсталось: ${SEA_NAMES.length - questProgress.found.length}`);
+  }
+}
+
+// ============================================================
+// 14. ВИКТОРИНА
+// ============================================================
+function toggleQuiz() {
+  quizMode = !quizMode;
+  if (!quizMode) {
+    document.getElementById('btnQuiz').textContent = '🧠 Викторина';
+    return;
+  }
+  const q = QUIZ[Math.floor(Math.random() * QUIZ.length)];
+  quizQuestion = q;
+  alert(`🧠 Вопрос: ${q.question}\n\nКликните на правильную метку на карте.`);
+  document.getElementById('btnQuiz').textContent = '🧠 Викторина (активна)';
+}
+
+function checkQuiz(text) {
+  if (!quizMode || !quizQuestion) return;
+  if (text.includes(quizQuestion.answer)) {
+    alert(`✅ Правильно!\n\n${quizQuestion.fact}`);
+    quizMode = false;
+    quizQuestion = null;
+    document.getElementById('btnQuiz').textContent = '🧠 Викторина';
+  } else {
+    alert('❌ Не угадали. Попробуйте ещё раз.');
+  }
+}
+
+// ============================================================
+// 15. ОБРАБОТЧИКИ КООРДИНАТ И КЛИКОВ (ИЗМЕНЁН)
 // ============================================================
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -853,11 +1114,28 @@ function onCanvasClick(event) {
     const cameraDir = camera.position.clone().normalize();
     const dot = cameraDir.dot(pos);
     if (dot > 0) {
+      // === НОВЫЕ ПРОВЕРКИ ===
+      // 1. Линейка
+      if (rulerMode) {
+        addRulerPoint(sprite.userData.lat, sprite.userData.lon);
+        return;
+      }
+      // 2. Викторина
+      if (quizMode) {
+        checkQuiz(sprite.userData.text);
+        if (!quizMode) return; // если ответ верный, карточку не показываем
+      }
+      // 3. Квест
+      checkQuest(sprite.userData.text);
+
+      // 4. Показ карточки
       const link = sprite.userData.link;
       const text = sprite.userData.text;
       const description = sprite.userData.description || 'Изучите эту локацию в нашей энциклопедии.';
       const image = sprite.userData.image || '';
-      showPopup(text, description, link, image);
+      const lat = sprite.userData.lat;
+      const lon = sprite.userData.lon;
+      showPopup(text, description, link, image, lat, lon);
     }
   }
 }
@@ -868,7 +1146,7 @@ renderer.domElement.addEventListener('touchstart', updateCoords, { passive: true
 renderer.domElement.addEventListener('touchend', onCanvasClick, { passive: false });
 
 // ============================================================
-// 10. АНИМАЦИЯ
+// 16. АНИМАЦИЯ
 // ============================================================
 function animate() {
   requestAnimationFrame(animate);
@@ -891,7 +1169,7 @@ function animate() {
 animate();
 
 // ============================================================
-// 11. УПРАВЛЕНИЕ ЧЕРЕЗ ИНТЕРФЕЙС
+// 17. УПРАВЛЕНИЕ ЧЕРЕЗ ИНТЕРФЕЙС
 // ============================================================
 // Переключение слоёв
 document.querySelectorAll('.sidebar-btn[data-layer]').forEach(btn => {
@@ -961,7 +1239,7 @@ hamburger.addEventListener('click', () => {
   hamburger.textContent = sidebarVisible ? '✕' : '☰';
 });
 
-// Поиск + полёт
+// Поиск
 const searchInput = document.getElementById('searchInput');
 const clearSearch = document.getElementById('clearSearch');
 const searchBtn = document.getElementById('searchBtn');
@@ -981,21 +1259,7 @@ function performSearch() {
   const found = labelData.find(item => item[0].toLowerCase().includes(query));
   if (found) {
     const [text, lat, lon] = found;
-    // Летим очень близко к поверхности (радиус 1.05)
-    const pos = latLonToPosition(lat, lon, 1.05);
-    const startPos = camera.position.clone();
-    const endPos = pos.clone().multiplyScalar(1.15);
-    const duration = 900;
-    const startTime = performance.now();
-    function fly(time) {
-      const t = Math.min((time - startTime) / duration, 1);
-      const eased = t * t * (3 - 2 * t);
-      camera.position.lerpVectors(startPos, endPos, eased);
-      controls.target.copy(pos);
-      controls.update();
-      if (t < 1) requestAnimationFrame(fly);
-    }
-    requestAnimationFrame(fly);
+    flyTo(lat, lon, 1.05);
   } else {
     alert('Место не найдено');
   }
@@ -1006,8 +1270,14 @@ searchInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') performSearch();
 });
 
+// НОВЫЕ КНОПКИ
+document.getElementById('btnRuler').addEventListener('click', toggleRuler);
+document.getElementById('btnBookmarks').addEventListener('click', toggleBookmarks);
+document.getElementById('btnQuest').addEventListener('click', toggleQuest);
+document.getElementById('btnQuiz').addEventListener('click', toggleQuiz);
+
 // ============================================================
-// 12. АДАПТИВНОСТЬ
+// 18. АДАПТИВНОСТЬ
 // ============================================================
 window.addEventListener('resize', () => {
   const width = container.clientWidth;

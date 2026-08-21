@@ -1,5 +1,10 @@
 # Королевство Авсония
 
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
+</div>
+
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
 
   <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
@@ -135,25 +140,12 @@
     Крупнейшие реки
   </div>
 
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
-    <li>• <a href="https://mars-wiki.ru/geography/calliope-river/">Коллиопа</a></li>
-    <li>• <a href="https://mars-wiki.ru/geography/tenei-river/">Теней</a></li>
-    <li>• <a href="https://mars-wiki.ru/geography/starvalley-river/">Звёздная долина</a></li>
-  </ul>
-
-  <hr style="margin: 6px 0;">
-
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Связанные понятия
-  </div>
-
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
-    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
-    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
-    <li>• <a href="https://mars-wiki.ru/books/iskhod/">Исход</a></li>
-    <li>• <a href="https://mars-wiki.ru/geography/southern-road/">Южный тракт</a></li>
-  </ul>
-
+ <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+  <li>• Коллиопа</li>
+  <li>• Теней</li>
+  <li>• Звёздная долина</li>
+</ul>
+  
 </div>
 
 **Королевство Авсония** (марс. *Avsonia Mar* — «Живая Авсония») — небольшое прибрежное государство Марса, располагавшееся на берегу моря Эллада, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **5 000 000 км²**[^1]. Протяжённость границ достигала **9 500 км**[^2]. Население Авсонии в период расцвета (ок. 2650 г. Э.О.) достигало **2 500 000 человек**[^3], что делало его одним из самых малонаселённых государств Марса. Столица — [Автон](https://mars-wiki.ru/geography/avton/). Координаты столицы: 54° ю.ш., 87° в.д.[^4]. Государственный язык — *Marzān* (восточный диалект), также были распространены местные наречия[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
@@ -476,3 +468,9 @@
 [^9]: Культ Араксис в Авсонии описан в хрониках Академии Окхасена.
 [^10]: Море Эллада — реальный регион на Марсе, утверждённый МАС в 1973 году.
 [^11]: Данные о площади и периметре основаны на реальных измерениях рельефа Марса (NASA Mars Global Surveyor, MRO).
+[^12]: Хевсур, «Административное деление Авсонии», табличка № 45, пещеры Фарсиды. (Архив Академии Окхасена)
+[^13]: Академия Окхасена, «Города и поселения Авсонии», 2650 г. Э.О.
+[^14]: Академия Окхасена, «Гидрография Авсонии», 2680 г. Э.О.
+[^15]: Хевсур, «Рыболовство и морская торговля Авсонии», табличка № 46, пещеры Фарсиды.
+[^16]: Орден Хранителей Знаний, «Устав Ордена», 2600 г. Э.О. (Архив Академии Окхасена); Торговое Содружество моря Эллада, «Хартия Содружества», 2550 г. Э.О.
+[^17]: Академия Окхасена, «Южный тракт — торговая артерия юга», 2650 г. Э.О.

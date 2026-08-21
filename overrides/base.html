@@ -1,13 +1,28 @@
-{% extends "base.html" %}
+<!-- docs/overrides/base.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} — {% endif %}Марсианская энциклопедия</title>
+    <link rel="stylesheet" href="{{ base_url }}/css/extra.css">
+</head>
+<body>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #fff; border-bottom: 1px solid #ddd;">
+        <div>
+            <a href="/" style="font-size: 1.2rem; font-weight: bold; text-decoration: none; color: #333;">🌌 Марсианская энциклопедия</a>
+        </div>
+        <div id="auth-container" style="display: flex; align-items: center; gap: 12px;">
+            <!-- Сюда будет вставлен UI от JavaScript -->
+        </div>
+    </div>
 
-{% block extrahead %}
-  {{ super() }}
-  <link rel="icon" href="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/favicon.png" type="image/png">
-  <link rel="shortcut icon" href="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/favicon.png" type="image/png">
-{% endblock %}
+    <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        {{ page.content }}
+    </div>
 
-{% block header %}
-  <h1>Марсианская энциклопедия</h1>
-  <p>Свободный справочник о мире «Письмо из Красной пыли»</p>
-  {{ super() }}
-{% endblock %}
+    <!-- Подключаем Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="{{ base_url }}/javascripts/auth-ui.js"></script>
+</body>
+</html>

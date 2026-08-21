@@ -1,4 +1,5 @@
 // docs/javascripts/auth-button.js
+console.log('✅ auth-button.js загружен');
 
 (function() {
     // --- Данные Supabase ---
@@ -58,3 +59,5 @@
         document.addEventListener('DOMContentLoaded', initSupabase);
     }
 })();
+
+console.log('✅ auth-button.js выполнен');

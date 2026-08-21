@@ -5,53 +5,520 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>3D-карта Марса</title>
   <style>
+    /* --- RESET --- */
     * { box-sizing: border-box; }
-    body, html { margin:0; padding:0; width:100%; min-height:100vh; background:#0a0a1a; font-family:'Segoe UI',sans-serif; overflow-y:auto; overflow-x:hidden; }
-    .map-container { position:relative; width:100%; height:90vh; max-width:100%; margin:0 auto; background:#0a0a1a; overflow:hidden; }
-    #mars-globe { width:100%; height:100%; display:block; }
-    .legend { position:absolute; bottom:20px; left:20px; color:#ccc; font-size:13px; background:rgba(10,10,26,0.8); padding:12px 18px; border-radius:8px; border:1px solid #2a2a4a; z-index:10; pointer-events:none; }
-    .legend span { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:6px; }
-    .legend .city { background:#ff6633; }
-    .legend .sea { background:#3388dd; }
-    .legend .mountain { background:#cc8844; }
-    .legend-item { display:flex; align-items:center; margin:4px 0; }
-    .info-panel { position:absolute; top:20px; right:20px; color:#aaa; font-size:13px; background:rgba(10,10,26,0.8); padding:12px 18px; border-radius:8px; border:1px solid #2a2a4a; z-index:10; text-align:right; pointer-events:none; }
-    #coords { position:absolute; top:20px; left:20px; color:#fff; font-size:14px; background:rgba(0,0,0,0.7); padding:8px 16px; border-radius:6px; border:1px solid #444; font-family:monospace; z-index:10; pointer-events:none; user-select:none; }
-    .mobile-controls { position:absolute; bottom:20px; right:20px; display:flex; flex-direction:column; gap:10px; z-index:20; pointer-events:none; }
-    .mobile-controls button { pointer-events:auto; background:rgba(10,10,26,0.85); border:1px solid #2a2a4a; color:#fff; border-radius:50%; width:48px; height:48px; font-size:20px; backdrop-filter:blur(4px); transition:0.2s; box-shadow:0 4px 12px rgba(0,0,0,0.6); cursor:pointer; display:flex; align-items:center; justify-content:center; touch-action:manipulation; }
-    .mobile-controls button:active { transform:scale(0.92); background:rgba(255,255,255,0.15); }
-    .mobile-controls button.active { border-color:#ff6633; box-shadow:0 0 15px #ff663366; }
-    @media (max-width:768px) { .legend, .info-panel { display:none !important; } .map-container { height:85vh; } #coords { font-size:12px; padding:6px 12px; top:12px; left:12px; } .mobile-controls { bottom:16px; right:16px; gap:8px; } .mobile-controls button { width:44px; height:44px; font-size:18px; } .footer-message { font-size:14px !important; padding:10px !important; } .footer-message .sub { font-size:11px !important; } }
-    @media (max-width:480px) { .mobile-controls button { width:40px; height:40px; font-size:16px; } #coords { font-size:10px; padding:4px 10px; top:8px; left:8px; } }
-    .loading-text { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#888; font-size:18px; z-index:5; }
-    .footer-message { text-align:center; color:#ffaa44; font-size:18px; padding:15px; background:#0a0a1a; border-top:1px solid #ff6633; font-family:'Segoe UI',sans-serif; width:100%; }
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0a1a;
+      font-family: 'Segoe UI', 'Arial Unicode MS', sans-serif;
+      overflow: hidden;
+    }
+
+    /* --- КОНТЕЙНЕР КАРТЫ --- */
+    #map-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: #0a0a1a;
+      overflow: hidden;
+    }
+
+    #mars-globe {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* --- БОКОВАЯ ПАНЕЛЬ (как в Яндекс Картах) --- */
+    .sidebar {
+      position: absolute;
+      top: 70px;
+      left: 20px;
+      width: 240px;
+      background: rgba(20, 20, 35, 0.92);
+      backdrop-filter: blur(12px);
+      border-radius: 12px;
+      border: 1px solid #2a2a4a;
+      padding: 16px 12px;
+      z-index: 30;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      color: #ccc;
+      pointer-events: auto;
+    }
+    .sidebar.hidden {
+      transform: translateX(-280px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .sidebar-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #d4a0a0;
+      margin-bottom: 12px;
+      text-align: center;
+      border-bottom: 1px solid #2a2a4a;
+      padding-bottom: 8px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 12px;
+    }
+    .sidebar-section-label {
+      font-size: 12px;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .sidebar-btn {
+      display: block;
+      width: 100%;
+      background: rgba(40, 40, 60, 0.6);
+      border: 1px solid #3a3a5e;
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: #d4d4e8;
+      font-size: 13px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 4px;
+      font-family: inherit;
+    }
+    .sidebar-btn:hover {
+      background: rgba(60, 60, 90, 0.8);
+      border-color: #6a6aaa;
+    }
+    .sidebar-btn.active {
+      background: #3a2a6a;
+      border-color: #8a6aaa;
+      box-shadow: 0 0 12px rgba(138, 106, 170, 0.3);
+    }
+    .sidebar-btn .icon { margin-right: 8px; }
+    .sidebar-btn .status {
+      float: right;
+      color: #888;
+      font-size: 12px;
+    }
+
+    /* --- КНОПКА-ГАМБУРГЕР --- */
+    .hamburger {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 40;
+      background: rgba(20, 20, 35, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid #2a2a4a;
+      border-radius: 8px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: left 0.3s ease, background 0.2s;
+      color: #d4d4e8;
+      font-size: 22px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .hamburger:hover {
+      background: rgba(40, 40, 60, 0.9);
+    }
+    .hamburger.shifted {
+      left: 20px;
+    }
+
+    /* --- ПОИСКОВАЯ СТРОКА (левый верх) --- */
+    .search-container {
+      position: absolute;
+      top: 20px;
+      left: 80px;
+      z-index: 25;
+      display: flex;
+      align-items: center;
+      background: rgba(20, 20, 35, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid #2a2a4a;
+      border-radius: 8px;
+      padding: 6px 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      width: 260px;
+      transition: width 0.3s;
+    }
+    .search-container:focus-within {
+      width: 300px;
+      border-color: #6a6aaa;
+    }
+    .search-container img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.2));
+    }
+    .search-container input {
+      background: transparent;
+      border: none;
+      color: #d4d4e8;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+      padding: 4px 0;
+      font-family: inherit;
+    }
+    .search-container input::placeholder {
+      color: #666;
+      font-style: italic;
+    }
+    .search-container .clear-btn {
+      color: #666;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 0 4px;
+      display: none;
+    }
+    .search-container .clear-btn.visible {
+      display: block;
+    }
+
+    /* --- КООРДИНАТЫ (по центру, чуть выше середины) --- */
+    #coords {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -150%);
+      color: #fff;
+      font-size: 14px;
+      background: rgba(0,0,0,0.7);
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid #444;
+      font-family: monospace;
+      z-index: 10;
+      pointer-events: none;
+      user-select: none;
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
+    }
+
+    /* --- ПЕРЕКЛЮЧАТЕЛЬ КАРТЫ (правый верхний угол) --- */
+    .map-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 25;
+      background: rgba(20, 20, 35, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid #2a2a4a;
+      border-radius: 8px;
+      padding: 4px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      min-width: 44px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .map-switcher .switcher-btn {
+      background: transparent;
+      border: none;
+      color: #d4d4e8;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+      font-family: inherit;
+      white-space: nowrap;
+      width: 100%;
+    }
+    .map-switcher .switcher-btn:hover {
+      background: rgba(60, 60, 90, 0.6);
+    }
+    .map-switcher .switcher-btn.active {
+      background: #3a2a6a;
+      border-left: 3px solid #8a6aaa;
+    }
+    .map-switcher .switcher-btn .icon {
+      font-size: 18px;
+    }
+    .map-switcher .switcher-label {
+      display: none;
+    }
+    /* При наведении показываем все кнопки */
+    .map-switcher:hover {
+      min-width: 180px;
+    }
+    .map-switcher:hover .switcher-label {
+      display: inline;
+    }
+    /* Но для мобильных лучше показывать всегда? */
+    @media (max-width: 768px) {
+      .map-switcher {
+        flex-direction: row;
+        flex-wrap: wrap;
+        min-width: 44px;
+        top: 10px;
+        right: 10px;
+      }
+      .map-switcher .switcher-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+      .map-switcher .switcher-label {
+        display: inline;
+      }
+      .map-switcher:hover {
+        min-width: auto;
+      }
+      .search-container {
+        left: 70px;
+        width: 180px;
+        top: 10px;
+      }
+      .search-container:focus-within {
+        width: 220px;
+      }
+      .hamburger {
+        top: 10px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+      .sidebar {
+        top: 60px;
+        left: 10px;
+        width: 200px;
+        padding: 12px 10px;
+      }
+      #coords {
+        font-size: 12px;
+        padding: 4px 12px;
+        transform: translate(-50%, -200%);
+      }
+    }
+    @media (max-width: 480px) {
+      .search-container {
+        width: 140px;
+        left: 60px;
+      }
+      .search-container:focus-within {
+        width: 180px;
+      }
+      .sidebar {
+        width: 170px;
+        left: 6px;
+        top: 55px;
+      }
+      #coords {
+        font-size: 10px;
+        padding: 3px 10px;
+        transform: translate(-50%, -250%);
+      }
+    }
+
+    /* --- ОСТАЛЬНЫЕ ЭЛЕМЕНТЫ (легенда, инфо, футер) --- */
+    .legend {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #ccc;
+      font-size: 13px;
+      background: rgba(10, 10, 26, 0.8);
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid #2a2a4a;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .legend span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .legend .city { background: #ff6633; }
+    .legend .sea { background: #3388dd; }
+    .legend .mountain { background: #cc8844; }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 4px 0;
+    }
+
+    .info-panel {
+      position: absolute;
+      bottom: 70px;
+      right: 20px;
+      color: #aaa;
+      font-size: 12px;
+      background: rgba(10, 10, 26, 0.7);
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid #2a2a4a;
+      z-index: 10;
+      text-align: right;
+      pointer-events: none;
+      backdrop-filter: blur(4px);
+    }
+
+    .footer-message {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: #ffaa44;
+      font-size: 15px;
+      padding: 6px;
+      background: rgba(10, 10, 26, 0.6);
+      backdrop-filter: blur(4px);
+      border-top: 1px solid #ff6633;
+      font-family: 'Segoe UI', sans-serif;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .footer-message .sub {
+      font-size: 11px;
+      color: #888;
+      display: block;
+      margin-top: 1px;
+    }
+
+    /* --- ПЛАВАЮЩИЕ МОБИЛЬНЫЕ КНОПКИ (дублируют sidebar) --- */
+    .mobile-controls {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 20;
+      pointer-events: none;
+    }
+    .mobile-controls button {
+      pointer-events: auto;
+      background: rgba(10, 10, 26, 0.85);
+      border: 1px solid #2a2a4a;
+      color: #fff;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 18px;
+      backdrop-filter: blur(4px);
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+    }
+    .mobile-controls button:active {
+      transform: scale(0.92);
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .mobile-controls button.active {
+      border-color: #ff6633;
+      box-shadow: 0 0 15px #ff663366;
+    }
+
+    @media (min-width: 769px) {
+      .mobile-controls { display: none; }
+    }
+
+    /* --- ЗАГРУЗКА --- */
+    .loading-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #888;
+      font-size: 18px;
+      z-index: 5;
+    }
   </style>
 </head>
 <body>
 
-<div class="map-container">
-  <div id="mars-globe"><div class="loading-text" id="loadingText">🌍 Загрузка карты...</div></div>
+<div id="map-container">
+  <div id="mars-globe">
+    <div class="loading-text" id="loadingText">🌍 Загрузка карты...</div>
+  </div>
+
+  <!-- Боковая панель -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-title">🗺️ Слои карты</div>
+    <div class="sidebar-section">
+      <span class="sidebar-section-label">Тип карты</span>
+      <button class="sidebar-btn active" data-layer="dark" id="layerDark">🌙 Тёмная</button>
+      <button class="sidebar-btn" data-layer="satellite" id="layerSatellite">🛰️ Спутник</button>
+      <button class="sidebar-btn" data-layer="light" id="layerLight">☀️ Светлая</button>
+    </div>
+    <div class="sidebar-section" style="border-top:1px solid #2a2a4a; padding-top:10px;">
+      <button class="sidebar-btn" id="btnToggleLabels" style="display:flex; align-items:center; gap:8px;">🏷️ Метки <span class="status" id="labelsStatus">вкл</span></button>
+      <button class="sidebar-btn" id="btnToggleOrbits" style="display:flex; align-items:center; gap:8px;">⭕ Орбиты <span class="status" id="orbitsStatus">вкл</span></button>
+      <button class="sidebar-btn" id="btnToggleSatellites" style="display:flex; align-items:center; gap:8px;">🛰️ Спутники <span class="status" id="satellitesStatus">вкл</span></button>
+      <button class="sidebar-btn" id="btnToggleRotation" style="display:flex; align-items:center; gap:8px;">🔄 Вращение <span class="status" id="rotationStatus">вкл</span></button>
+    </div>
+  </div>
+
+  <!-- Кнопка-гамбургер -->
+  <div class="hamburger" id="hamburger" title="Показать/скрыть меню">☰</div>
+
+  <!-- Поисковая строка -->
+  <div class="search-container" id="searchContainer">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-galaxy.png" alt="galaxy" />
+    <input type="text" id="searchInput" placeholder="Поиск мест..." />
+    <span class="clear-btn" id="clearSearch">✕</span>
+  </div>
+
+  <!-- Координаты -->
+  <div id="coords">🪐 наведите на планету</div>
+
+  <!-- Переключатель карты (правый верх) -->
+  <div class="map-switcher" id="mapSwitcher">
+    <button class="switcher-btn active" data-layer="dark"><span class="icon">🌙</span><span class="switcher-label">Тёмная</span></button>
+    <button class="switcher-btn" data-layer="satellite"><span class="icon">🛰️</span><span class="switcher-label">Спутник</span></button>
+    <button class="switcher-btn" data-layer="light"><span class="icon">☀️</span><span class="switcher-label">Светлая</span></button>
+  </div>
+
+  <!-- Легенда -->
   <div class="legend">
     <div class="legend-item"><span class="city"></span> Города</div>
     <div class="legend-item"><span class="sea"></span> Моря</div>
     <div class="legend-item"><span class="mountain"></span> Горы / Регионы</div>
   </div>
+
+  <!-- Инфо-панель -->
   <div class="info-panel">
-    🖱️ Вращайте мышкой<br>🔍 Колесо — приближение<br>👆 Нажмите на метку<br>Клавиша <b>M</b> — метки<br>Клавиша <b>O</b> — орбиты<br>Клавиша <b>P</b> — спутники<br>Клавиша <b>R</b> — вращение спутников
+    🖱️ Вращайте мышкой<br>🔍 Колесо — приближение
   </div>
-  <div id="coords">🪐 наведите на планету</div>
+
+  <!-- Плавающие мобильные кнопки -->
   <div class="mobile-controls" id="mobileControls">
     <button id="btnM" title="Метки">🏷️</button>
     <button id="btnO" title="Орбиты">⭕</button>
     <button id="btnP" title="Спутники">🛰️</button>
     <button id="btnR" title="Вращение">🔄</button>
   </div>
-</div>
-<div class="footer-message">
-  🚀 <span style="color:#ff6633;">Совия</span> — выздоравливай быстрее! 🍫 Желаю тебе шоколадку и марсианского настроения! 🌟<br>
-  <span style="font-size:14px; color:#888;" class="sub">
-    🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку • <b>M</b> — метки • <b>O</b> — орбиты • <b>P</b> — спутники • <b>R</b> — вращение спутников
-  </span>
+
+  <!-- Футер -->
+  <div class="footer-message">
+    🚀 <span style="color:#ff6633;">Совия</span> — выздоравливай быстрее! 🍫 Желаю тебе шоколадку и марсианского настроения! 🌟
+    <span class="sub">🖱️ Вращайте мышкой • 🔍 Колесо — приближение • 👆 Нажмите на метку</span>
+  </div>
 </div>
 
 <script type="importmap">
@@ -113,7 +580,7 @@ const stars = new THREE.Points(starsGeometry, starsMaterial);
 scene.add(stars);
 
 // ============================================================
-// 4. МАРС (текстура)
+// 4. МАРС (с возможностью смены текстуры)
 // ============================================================
 const textureLoader = new THREE.TextureLoader();
 const marsGeometry = new THREE.SphereGeometry(1, 64, 64);
@@ -121,23 +588,37 @@ const marsMaterial = new THREE.MeshPhongMaterial({ color: 0xcc6633 });
 const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 
-const mapPath = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
-const marsTexture = textureLoader.load(
-  mapPath,
-  (texture) => {
-    marsMaterial.map = texture;
-    marsMaterial.color.set(0xffffff);
-    marsMaterial.needsUpdate = true;
-    loadingText.style.display = 'none';
-  },
-  undefined,
-  (err) => {
-    console.error('Ошибка загрузки карты:', err);
-    loadingText.textContent = '❌ Карта не загружена.';
-    loadingText.style.color = '#ffaa44';
-    setTimeout(() => { loadingText.style.display = 'none'; }, 3000);
+// Пути к текстурам
+const MAP_DARK = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/new-map.png';
+const MAP_SATELLITE = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/mars-satellite.png';
+const MAP_LIGHT = MAP_DARK; // пока дублируем тёмную, замените на свою светлую
+
+// Загружаем текстуры
+const textureDark = textureLoader.load(MAP_DARK);
+const textureSatellite = textureLoader.load(MAP_SATELLITE);
+const textureLight = textureLoader.load(MAP_LIGHT);
+
+// Устанавливаем начальную (тёмную)
+marsMaterial.map = textureDark;
+marsMaterial.color.set(0xffffff);
+marsMaterial.needsUpdate = true;
+
+// Функция переключения слоёв
+function setLayer(layer) {
+  if (layer === 'dark') {
+    marsMaterial.map = textureDark;
+  } else if (layer === 'satellite') {
+    marsMaterial.map = textureSatellite;
+  } else if (layer === 'light') {
+    marsMaterial.map = textureLight;
   }
-);
+  marsMaterial.needsUpdate = true;
+  // Обновить активную кнопку в меню
+  document.querySelectorAll('.sidebar-btn[data-layer]').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.sidebar-btn[data-layer="${layer}"]`)?.classList.add('active');
+  document.querySelectorAll('.map-switcher .switcher-btn[data-layer]').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.map-switcher .switcher-btn[data-layer="${layer}"]`)?.classList.add('active');
+}
 
 // ============================================================
 // 5. ОСВЕЩЕНИЕ
@@ -202,7 +683,7 @@ let satellitesVisible = true;
 let satellitesRotating = true;
 
 // ============================================================
-// 7. МЕТКИ (ТОЧНО КАК В ВАШЕМ ИДЕАЛЬНОМ КОДЕ)
+// 7. МЕТКИ (ИДЕАЛЬНЫЕ, БЕЗ ИЗМЕНЕНИЙ)
 // ============================================================
 const LON_OFFSET = 0;
 const LAT_OFFSET = 0;
@@ -230,12 +711,10 @@ function positionToLatLon(pos) {
 
 const isMobile = window.innerWidth <= 768;
 
-// СОЗДАНИЕ МЕТКИ — ТОЧНО КАК В ВАШЕМ ИДЕАЛЬНОМ КОДЕ
 function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', description = '') {
   const pos = latLonToPosition(lat, lon);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
-  // ТОЧНЫЕ РАЗМЕРЫ ИЗ ВАШЕГО ИДЕАЛЬНОГО КОДА
   const canvasWidth = isMobile ? 500 : 400;
   const canvasHeight = isMobile ? 140 : 120;
   canvas.width = canvasWidth;
@@ -261,7 +740,6 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', descri
   ctx.stroke();
 
   ctx.fillStyle = '#ffffff';
-  // ТОЧНЫЙ РАЗМЕР ШРИФТА ИЗ ВАШЕГО ИДЕАЛЬНОГО КОДА
   const fontSize = isMobile ? 40 : 32;
   ctx.font = `bold ${fontSize}px Segoe UI, sans-serif`;
   ctx.textAlign = 'center';
@@ -281,41 +759,29 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', descri
 
   const sprite = new THREE.Sprite(material);
   sprite.position.copy(pos);
-  // ТОЧНЫЙ РАЗМЕР ИЗ ВАШЕГО ИДЕАЛЬНОГО КОДА
   const scaleX = isMobile ? 0.30 : 0.22;
   const scaleY = isMobile ? 0.09 : 0.07;
   sprite.scale.set(scaleX, scaleY, 1);
 
-  // Сохраняем данные для карточки
-  sprite.userData = { 
-    pos: pos.clone(), 
-    color, 
-    link, 
-    text, 
-    lat, 
-    lon, 
-    isLabel: true,
-    description: description
-  };
+  sprite.userData = { pos: pos.clone(), color, link, text, lat, lon, isLabel: true, description };
   return sprite;
 }
 
-// Данные меток (с описаниями для карточек)
 const labelData = [
-  ['🌊 Ацидалийское море', 33.8, -34.4, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/', 'Огромное море в северном полушарии Марса. Берега изрезаны древними каналами.'],
-  ['🌊 Море Эллада', -34.4, 79.4, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/', 'Крупнейший ударный бассейн, заполненный водой.'],
+  ['🌊 Ацидалийское море', 33.8, -34.4, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/', 'Огромное море в северном полушарии Марса.'],
+  ['🌊 Море Эллада', -34.4, 79.4, '#3388dd', 'https://mars-wiki.ru/geography/ellada-sea/', 'Крупнейший ударный бассейн.'],
   ['🌊 Море Аргира', -41.6, -38.8, '#3388dd', 'https://mars-wiki.ru/geography/argir-sea/', 'Море на юге Марса, окружённое горами.'],
-  ['🌊 Эритрейское море', 1, -26.8, '#3388dd', 'https://mars-wiki.ru/geography/eritreya-sea/', 'Море в экваториальной зоне, часто бывают бури.'],
-  ['🌊 Амазонское море', 41.1, -154.2,'#3388dd', 'https://mars-wiki.ru/geography/amazon-sea/', 'Самое молодое море из подлёдных вод.'],
-  ['🌊 Зефирийское море', 10.2, 166.5, '#3388dd', 'https://mars-wiki.ru/geography/zephyria-sea/', 'Море с бирюзовой водой и древними обсерваториями.'],
-  ['🌊 Зал. Большой Сирт', 16.7, 90, '#3388dd', 'https://mars-wiki.ru/geography/sirtis-major-bay/', 'Крупный залив, известный своими ветрами.'],
-  ['👑 Королевство Эдем', 30.5, 23.6, '#ffaa00', 'https://mars-wiki.ru/geography/eden/', 'Центр марсианской цивилизации, сады и дворцы.'],
-  ['👑 Королевство Аркадия', 44.5, -124.3, '#ffaa00', 'https://mars-wiki.ru/geography/arkadia/', 'Северное королевство, шахты и металлургия.'],
-  ['🌋 Олимп', 18.4, 226, '#cc8844', '#', 'Высшая точка Марса, 21 км над уровнем моря.'],
-  ['🏔️ Долина Маринер', -1.3, -74, '#cc8844', '#', 'Гигантский каньон протяжённостью 4000 км.'],
-  ['🏛️ Окхасен', 15.26, -53.31, '#ff6633', 'https://mars-wiki.ru/geography/okhasen/', 'Город у моря, торговый и научный центр.'],
-  ['🏛️ Роген-Ария', 53.7, 35.7, '#ff6633', 'https://mars-wiki.ru/geography/rogen-aria/', 'Город на севере, академии и обсерватории.'],
-  ['🚀 Космодром Фарсиды', 20.3, -80, '#ff6633', 'https://mars-wiki.ru/geography/kosmodrom-farsidy/', 'Главный космический порт Марса.'],
+  ['🌊 Эритрейское море', 1, -26.8, '#3388dd', 'https://mars-wiki.ru/geography/eritreya-sea/', 'Море в экваториальной зоне.'],
+  ['🌊 Амазонское море', 41.1, -154.2,'#3388dd', 'https://mars-wiki.ru/geography/amazon-sea/', 'Самое молодое море.'],
+  ['🌊 Зефирийское море', 10.2, 166.5, '#3388dd', 'https://mars-wiki.ru/geography/zephyria-sea/', 'Море с бирюзовой водой.'],
+  ['🌊 Зал. Большой Сирт', 16.7, 90, '#3388dd', 'https://mars-wiki.ru/geography/sirtis-major-bay/', 'Крупный залив.'],
+  ['👑 Королевство Эдем', 30.5, 23.6, '#ffaa00', 'https://mars-wiki.ru/geography/eden/', 'Центр цивилизации.'],
+  ['👑 Королевство Аркадия', 44.5, -124.3, '#ffaa00', 'https://mars-wiki.ru/geography/arkadia/', 'Северное королевство.'],
+  ['🌋 Олимп', 18.4, 226, '#cc8844', '#', 'Высшая точка Марса, 21 км.'],
+  ['🏔️ Долина Маринер', -1.3, -74, '#cc8844', '#', 'Гигантский каньон 4000 км.'],
+  ['🏛️ Окхасен', 15.26, -53.31, '#ff6633', 'https://mars-wiki.ru/geography/okhasen/', 'Город у моря.'],
+  ['🏛️ Роген-Ария', 53.7, 35.7, '#ff6633', 'https://mars-wiki.ru/geography/rogen-aria/', 'Город на севере.'],
+  ['🚀 Космодром Фарсиды', 20.3, -80, '#ff6633', 'https://mars-wiki.ru/geography/kosmodrom-farsidy/', 'Главный космопорт.'],
 ];
 
 const labelsGroup = new THREE.Group();
@@ -402,7 +868,6 @@ function onCanvasClick(event) {
     const cameraDir = camera.position.clone().normalize();
     const dot = cameraDir.dot(pos);
     if (dot > 0) {
-      // Показываем карточку вместо открытия ссылки напрямую
       const link = sprite.userData.link;
       const text = sprite.userData.text;
       const description = sprite.userData.description || 'Изучите эту локацию в нашей энциклопедии.';
@@ -440,44 +905,114 @@ function animate() {
 animate();
 
 // ============================================================
-// 11. УПРАВЛЕНИЕ КЛАВИШАМИ И КНОПКАМИ
+// 11. УПРАВЛЕНИЕ ЧЕРЕЗ ИНТЕРФЕЙС
 // ============================================================
-function toggleLabels() {
-  labelsGroup.visible = !labelsGroup.visible;
-  document.getElementById('btnM').classList.toggle('active');
-}
-function toggleOrbits() {
-  phobosOrbit.visible = !phobosOrbit.visible;
-  deimosOrbit.visible = !deimosOrbit.visible;
-  document.getElementById('btnO').classList.toggle('active');
-}
-function toggleSatellites() {
-  satellitesVisible = !satellitesVisible;
-  phobosGroup.visible = satellitesVisible;
-  deimosGroup.visible = satellitesVisible;
-  document.getElementById('btnP').classList.toggle('active');
-}
-function toggleRotation() {
-  satellitesRotating = !satellitesRotating;
-  document.getElementById('btnR').classList.toggle('active');
-}
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'm' || e.key === 'M') toggleLabels();
-  if (e.key === 'o' || e.key === 'O') toggleOrbits();
-  if (e.key === 'p' || e.key === 'P') toggleSatellites();
-  if (e.key === 'r' || e.key === 'R') toggleRotation();
+// Переключение слоёв (кнопки в меню и в switcher)
+document.querySelectorAll('.sidebar-btn[data-layer]').forEach(btn => {
+  btn.addEventListener('click', () => setLayer(btn.dataset.layer));
+});
+document.querySelectorAll('.map-switcher .switcher-btn[data-layer]').forEach(btn => {
+  btn.addEventListener('click', () => setLayer(btn.dataset.layer));
 });
 
+// Toggle меток
+let labelsVisible = true;
+function toggleLabels() {
+  labelsVisible = !labelsVisible;
+  labelsGroup.visible = labelsVisible;
+  document.getElementById('labelsStatus').textContent = labelsVisible ? 'вкл' : 'выкл';
+  document.getElementById('btnM').classList.toggle('active');
+}
+document.getElementById('btnToggleLabels').addEventListener('click', toggleLabels);
 document.getElementById('btnM').addEventListener('click', toggleLabels);
-document.getElementById('btnO').addEventListener('click', toggleOrbits);
-document.getElementById('btnP').addEventListener('click', toggleSatellites);
-document.getElementById('btnR').addEventListener('click', toggleRotation);
-
 document.getElementById('btnM').classList.add('active');
+
+// Toggle орбит
+let orbitsVisible = true;
+function toggleOrbits() {
+  orbitsVisible = !orbitsVisible;
+  phobosOrbit.visible = orbitsVisible;
+  deimosOrbit.visible = orbitsVisible;
+  document.getElementById('orbitsStatus').textContent = orbitsVisible ? 'вкл' : 'выкл';
+  document.getElementById('btnO').classList.toggle('active');
+}
+document.getElementById('btnToggleOrbits').addEventListener('click', toggleOrbits);
+document.getElementById('btnO').addEventListener('click', toggleOrbits);
 document.getElementById('btnO').classList.add('active');
+
+// Toggle спутников
+let satellitesVis = true;
+function toggleSatellites() {
+  satellitesVis = !satellitesVis;
+  phobosGroup.visible = satellitesVis;
+  deimosGroup.visible = satellitesVis;
+  document.getElementById('satellitesStatus').textContent = satellitesVis ? 'вкл' : 'выкл';
+  document.getElementById('btnP').classList.toggle('active');
+}
+document.getElementById('btnToggleSatellites').addEventListener('click', toggleSatellites);
+document.getElementById('btnP').addEventListener('click', toggleSatellites);
 document.getElementById('btnP').classList.add('active');
+
+// Toggle вращения
+let rotating = true;
+function toggleRotation() {
+  rotating = !rotating;
+  satellitesRotating = rotating;
+  document.getElementById('rotationStatus').textContent = rotating ? 'вкл' : 'выкл';
+  document.getElementById('btnR').classList.toggle('active');
+}
+document.getElementById('btnToggleRotation').addEventListener('click', toggleRotation);
+document.getElementById('btnR').addEventListener('click', toggleRotation);
 document.getElementById('btnR').classList.add('active');
+
+// Гамбургер
+const sidebar = document.getElementById('sidebar');
+const hamburger = document.getElementById('hamburger');
+let sidebarVisible = true;
+hamburger.addEventListener('click', () => {
+  sidebarVisible = !sidebarVisible;
+  sidebar.classList.toggle('hidden', !sidebarVisible);
+  hamburger.classList.toggle('shifted', !sidebarVisible);
+});
+
+// Поиск
+const searchInput = document.getElementById('searchInput');
+const clearSearch = document.getElementById('clearSearch');
+searchInput.addEventListener('input', () => {
+  clearSearch.classList.toggle('visible', searchInput.value.length > 0);
+});
+clearSearch.addEventListener('click', () => {
+  searchInput.value = '';
+  clearSearch.classList.remove('visible');
+  searchInput.focus();
+});
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const query = searchInput.value.trim().toLowerCase();
+    if (query === '') return;
+    const found = labelData.find(item => item[0].toLowerCase().includes(query));
+    if (found) {
+      const [text, lat, lon] = found;
+      // Плавный полёт к метке
+      const pos = latLonToPosition(lat, lon, 1.5);
+      const startPos = camera.position.clone();
+      const endPos = pos.clone().multiplyScalar(1.4);
+      const duration = 800;
+      const startTime = performance.now();
+      function fly(time) {
+        const t = Math.min((time - startTime) / duration, 1);
+        const eased = t * t * (3 - 2 * t);
+        camera.position.lerpVectors(startPos, endPos, eased);
+        controls.target.copy(pos);
+        controls.update();
+        if (t < 1) requestAnimationFrame(fly);
+      }
+      requestAnimationFrame(fly);
+    } else {
+      alert('Место не найдено');
+    }
+  }
+});
 
 // ============================================================
 // 12. АДАПТИВНОСТЬ

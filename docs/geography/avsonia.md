@@ -195,13 +195,19 @@
 ### Географическое положение
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-map-medieval.jpg" alt="Карта Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Авсония в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Hellas_Planitia_by_the_Viking_orbiters.jpg" alt="Море Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Море Эллада — реальный снимок с аппарата Viking. Источник: NASA / JPL.</div>
 </div>
 
-Территория Королевства Авсония в его заявленных границах составляла **5 000 000 км²**, что делало его одним из самых компактных государств Марса[^1]. Королевство располагалось на берегу моря Эллада, занимая прибрежные равнины и внутренние горные районы[^2]. Омывалось водами моря Эллада и его заливов[^3].
+Территория Королевства Авсония в его заявленных границах составляла **5 000 000 км²**, что делало его одним из самых компактных государств Марса[^1]. Королевство располагалось на берегу моря Эллада, занимая прибрежные равнины и 
+внутренние горные районы[^2]. Омывалось водами моря Эллада и его заливов[^3].
 
 Основная часть населения была сосредоточена на побережье моря Эллада, так как южнее уже не было воды: там простирались **пустыни** и **горные массивы** (Сухие горы, горы Хаксли, Южные горы)[^4].
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-map-medieval.png" alt="Карта Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Авсония в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
+</div>
 
 Крайней северной точкой Авсонии являлся **мыс Элладский** на побережье моря Эллада (40° ю.ш., 85° в.д.), крайней южной — **мыс Южный** на границе с Эриданией (65° ю.ш., 90° в.д.)[^5]. Протяжённость территории Авсонии с запада на восток составляла около **3 500 км**, с севера на юг — превышала **2 500 км**[^6].
 
@@ -327,7 +333,7 @@
 ### Войны против Королевства Эллада
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-hellas-war.jpg" alt="Война с Элладой" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-hellas-war.png" alt="Война с Элладой" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Война с Королевством Эллада — безуспешные битвы за остров Эллос. Реконструкция.</div>
 </div>
 
@@ -357,7 +363,7 @@
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-destruction.jpg" alt="Гибель Авсонии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-destruction.jpeg" alt="Гибель Авсонии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Авсонии — замерзающее море и опустевшие порты. Реконструкция.</div>
 </div>
 

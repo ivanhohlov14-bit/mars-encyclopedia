@@ -325,24 +325,57 @@ blockquote {
   }
 }
 
-/* Адаптация для мобильных устройств */
+/* ===== АВТОРИЗАЦИЯ В ШАПКЕ ===== */
+
+/* Контейнер с кнопками */
+#auth-btn-container {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    float: right !important;
+    margin-top: 6px !important;
+    margin-right: 10px !important;
+    flex-wrap: wrap !important;
+    max-width: 100% !important;
+    position: relative !important;
+    z-index: 1000 !important; /* чтобы быть поверх других элементов */
+}
+
+/* Ссылки внутри контейнера */
+#auth-btn-container a {
+    font-size: 0.8rem !important;
+    padding: 4px 12px !important;
+    border-radius: 16px !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+}
+
+/* Кнопка "Войти" */
+#auth-btn-container a[href="/login/"] {
+    color: #555 !important;
+}
+
+/* Кнопка "Регистрация" */
+#auth-btn-container a[href="/register/"] {
+    color: #fff !important;
+    background: #6C63FF !important;
+    padding: 4px 14px !important;
+}
+
+/* Для телефонов */
 @media (max-width: 768px) {
     #auth-btn-container {
-        font-size: 0.7rem !important;
         margin-top: 4px !important;
         margin-right: 6px !important;
         gap: 4px !important;
     }
     #auth-btn-container a {
-        font-size: 0.65rem !important;
+        font-size: 0.6rem !important;
         padding: 2px 8px !important;
     }
-    #auth-btn-container .auth-avatar {
-        width: 20px !important;
-        height: 20px !important;
-    }
-    #auth-btn-container .auth-username {
-        max-width: 40px !important;
-        font-size: 0.6rem !important;
+    /* Убеждаемся, что кнопки видны */
+    .wy-nav-side {
+        /* Убедитесь, что боковое меню не перекрывает кнопку */
+        z-index: auto !important;
     }
 }

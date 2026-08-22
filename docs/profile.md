@@ -64,17 +64,27 @@ document.addEventListener('DOMContentLoaded', function() {
             currentProfile = newProfile;
         }
 
-        // Получаем достижения пользователя
-        const { data: userAchievements, error: achError } = await client
-            .from('user_achievements')
-            .select('achievement_id, earned_at, achievements(*)')
-            .eq('user_id', user.id)
-            .join('achievements', 'achievement_id', 'id');
+        // Получаем достижения пользователя (исправленный запрос)
+const { data: userAchievements, error: achError } = await client
+    .from('user_achievements')
+    .select('achievement_id, earned_at')
+    .eq('user_id', user.id);
 
-        let achievementsList = [];
-        if (!achError && userAchievements) {
-            achievementsList = userAchievements.map(item => item.achievements);
-        }
+let achievementsList = [];
+if (!achError && userAchievements && userAchievements.length > 0) {
+    // Получаем ID достижений
+    const achIds = userAchievements.map(item => item.achievement_id);
+    
+    // Загружаем информацию о достижениях
+    const { data: achievementsData, error: achInfoError } = await client
+        .from('achievements')
+        .select('*')
+        .in('id', achIds);
+    
+    if (!achInfoError && achievementsData) {
+        achievementsList = achievementsData;
+    }
+}
 
         // Определяем уровень на основе опыта
         const levelMap = [

@@ -75,8 +75,8 @@
 
 /* Стили для ИИ-чата */
 .chat-container {
-    background: #f8f9fa;
-    border: 1px solid #eaecf0;
+    background: var(--kingdom-bg, #f8f9fa);
+    border: 1px solid var(--kingdom-color, #6C63FF)40;
     border-radius: 8px;
     padding: 12px;
     max-height: 300px;
@@ -336,12 +336,16 @@ document.addEventListener('DOMContentLoaded', function() {
             .order('created_at', { ascending: false })
             .limit(5);
 
-        // --- Получаем лидеров ---
+        // --- Получаем лидеров (ТОП-10) ---
         const { data: leaders, error: leadersError } = await client
             .from('profiles')
             .select('username, display_name, experience, level, avatar_url')
             .order('experience', { ascending: false })
             .limit(10);
+
+        if (leadersError) {
+            console.error('Ошибка загрузки лидеров:', leadersError);
+        }
 
         // --- Уровни и опыт ---
         const levelMap = [
@@ -391,10 +395,24 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
         document.documentElement.style.setProperty('--kingdom-gradient', kingdom.gradient);
 
-        // --- Статистика ---
-        const totalArticles = 106;
-        const readArticles = 0;
-        const commentsCount = 0;
+        // --- Статистика статей по королевствам (привязка) ---
+        const articlesPerKingdom = {
+            'Аркадия': 8,
+            'Ксанф': 10,
+            'Эдем': 12,
+            'Эридания': 9,
+            'Кхонг': 11,
+            'Авсония': 7,
+            'Кимерия': 6,
+            'Серпентида': 5,
+            'Эритрей': 13,
+            'Утопия': 8,
+            'Эллада': 4,
+            'Аливасото': 5,
+            'Общие': 8 // статьи без привязки
+        };
+        const totalArticles = Object.values(articlesPerKingdom).reduce((a, b) => a + b, 0);
+        const readArticles = 0; // пока заглушка
 
         // --- Рендерим профиль ---
         document.getElementById('profile-container').innerHTML = `
@@ -404,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${avatar}" alt="Avatar" 
                          style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid ${kingdom.color}; object-fit: cover;">
                     <span style="position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); 
-                                 background: rgba(108, 99, 255, 0.85); color: #fff; 
+                                 background: ${kingdom.color}; color: #fff; 
                                  border-radius: 20px; padding: 2px 12px; 
                                  font-size: 10px; font-weight: 600; white-space: nowrap;
                                  backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.3);">
@@ -421,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         ⭐ Уровень ${userLevel}
                         <button class="help-trigger" onclick="showHelp('Что такое уровень?', 'Уровень — это ваш ранг на сайте. Он повышается автоматически, когда вы набираете достаточно опыта. Чем выше уровень, тем больше уважения среди других исследователей Марса!')">?</button>
                         • 📊 Опыт: ${currentProfile.experience}
-                        <button class="help-trigger" onclick="showHelp('Что такое опыт?', 'Опыт (XP) — это очки, которые вы получаете за активность: чтение статей (+5 XP), написание комментариев (+10 XP), создание новых материалов (+20 XP) и другие действия. Накопленный опыт определяет ваш уровень.')">?</button>
+                        <button class="help-trigger" onclick="showHelp('Что такое опыт?', 'Опыт (XP) — это очки, которые вы получаете за чтение статей (+5 XP за каждую новую статью). Накопленный опыт определяет ваш уровень.')">?</button>
                     </p>
                     <div style="margin-top: 6px; background: #e9ecef; border-radius: 10px; height: 8px; width: 100%; max-width: 300px; overflow: hidden; position: relative;">
                         <div style="width: ${progressPercent}%; height: 100%; background: ${kingdom.gradient}; border-radius: 10px; transition: width 0.5s;"></div>
@@ -435,15 +453,14 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
 
             <!-- Статистика -->
-            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; background: #f8f9fa; padding: 12px 16px; border-radius: 8px;">
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 12px 16px; border-radius: 8px;">
                 <div><strong>📚 Всего статей:</strong> ${totalArticles}</div>
                 <div><strong>📖 Прочитано:</strong> ${readArticles}</div>
-                <div><strong>💬 Комментариев:</strong> ${commentsCount}</div>
                 <div><strong>📅 Регистрация:</strong> ${new Date(user.created_at).toLocaleDateString('ru-RU')}</div>
             </div>
 
             <!-- Марсианский календарь -->
-            <div id="martianCalendar" style="background: #f8f9fa; border: 1px solid #eaecf0; padding: 16px; border-radius: 8px; max-width: 400px; margin: 20px auto; font-family: 'Georgia', serif; text-align: center;">
+            <div id="martianCalendar" style="background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 16px; border-radius: 8px; max-width: 400px; margin: 20px auto; font-family: 'Georgia', serif; text-align: center;">
                 <h3 style="margin:0 0 8px 0; color: #202122;">
                     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-calendar.png"
                          style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
@@ -454,14 +471,14 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
 
             <!-- Редактирование имени -->
-            <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+            <div style="background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
                 <h3 style="margin: 0 0 8px 0; font-size: 1rem;">👤 Имя пользователя</h3>
                 <p style="margin: 0 0 8px 0; font-size: 0.95rem;">Текущее: <strong id="display-name-text">${displayName}</strong></p>
                 <button onclick="editDisplayName()" style="padding: 4px 16px; background: ${kingdom.color}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Изменить имя</button>
             </div>
 
             <!-- Биография -->
-            <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+            <div style="background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
                 <h3 style="margin: 0 0 8px 0; font-size: 1rem;">
                     📝 О себе
                     <button class="help-trigger" onclick="showHelp('Биография', 'Расскажите о себе: кто вы, почему интересуетесь Марсом, какие у вас цели. Это поможет другим участникам узнать вас лучше.')">?</button>
@@ -506,6 +523,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${kingdom.flag}" alt="Флаг ${kingdomName}" 
                          style="width: 80px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
                     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг ${kingdomName}</div>
+                </div>
+            </div>
+
+            <!-- Статьи по королевствам (привязка) -->
+            <div style="background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+                <h3 style="margin: 0 0 12px 0; font-size: 1rem;">
+                    📚 Статьи по королевствам
+                    <button class="help-trigger" onclick="showHelp('Привязка к королевствам', 'Каждая статья на сайте относится к одному из королевств Марса. Здесь показано общее количество статей для каждого королевства.')">?</button>
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    ${Object.entries(articlesPerKingdom).map(([name, count]) => `
+                        <span style="background: ${KINGDOMS[name] ? KINGDOMS[name].color : '#999'}; color: #fff; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem;">
+                            ${name}: ${count}
+                        </span>
+                    `).join('')}
                 </div>
             </div>
 

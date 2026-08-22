@@ -38,13 +38,12 @@ console.log('✅ auth-button.js загружен');
 
         container = document.createElement('div');
         container.id = 'auth-btn-container';
-        // ОБНОВЛЕННЫЙ СТИЛЬ — теперь flex-wrap и адаптивные отступы
         container.style.cssText = `
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             float: right;
-            margin-top: 8px;
+            margin-top: 6px;
             margin-right: 10px;
             flex-wrap: wrap;
             max-width: 100%;
@@ -60,6 +59,21 @@ console.log('✅ auth-button.js загружен');
         updateAuthUI(container);
     }
 
+    // --- Получение данных профиля из БД ---
+    async function fetchProfile(userId) {
+        if (!supabaseClient) return null;
+        const { data, error } = await supabaseClient
+            .from('profiles')
+            .select('username, avatar_url')
+            .eq('user_id', userId)
+            .single();
+        if (error) {
+            console.warn('⚠️ Не удалось загрузить профиль:', error.message);
+            return null;
+        }
+        return data;
+    }
+
     function updateAuthUI(container) {
         if (!container) {
             container = document.getElementById('auth-btn-container');
@@ -71,16 +85,21 @@ console.log('✅ auth-button.js загружен');
             return;
         }
 
-        supabaseClient.auth.getSession().then(({ data }) => {
+        supabaseClient.auth.getSession().then(async ({ data }) => {
             const user = data?.session?.user;
             console.log('👤 Пользователь:', user ? user.email : 'не авторизован');
 
             if (user) {
-                const username = user.user_metadata?.username || user.email.split('@')[0];
+                // Получаем профиль из БД
+                const profile = await fetchProfile(user.id);
+                const username = profile?.username || user.user_metadata?.username || user.email.split('@')[0];
+                const avatarUrl = profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=6C63FF&color=fff&size=32&rounded=true`;
+
                 container.innerHTML = `
                     <div style="display: flex; align-items: center; gap: 6px; background: #f5f5f5; padding: 4px 10px; border-radius: 20px; flex-wrap: wrap;">
-                        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=6C63FF&color=fff&size=24&rounded=true" 
-                             alt="Avatar" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid #ddd;">
+                        <img src="${avatarUrl}" 
+                             alt="Avatar" 
+                             style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover;">
                         <span style="font-size: 0.75rem; color: #333; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                             ${username}
                         </span>
@@ -158,6 +177,7 @@ console.log('✅ auth-button.js загружен');
 
     window._supabaseClient = supabaseClient;
     window.logoutUser = logoutUser;
+
 })();
 
 console.log('✅ auth-button.js выполнен');

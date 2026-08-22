@@ -91,7 +91,7 @@
     word-wrap: break-word;
 }
 .chat-message.user {
-    background: #6C63FF;
+    background: var(--kingdom-color, #6C63FF);
     color: #fff;
     margin-left: auto;
 }
@@ -114,29 +114,11 @@
 }
 .chat-input-row button {
     padding: 8px 16px;
-    background: #6C63FF;
+    background: var(--kingdom-color, #6C63FF);
     color: #fff;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-}
-
-/* Анимация для достижений */
-.toast {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #2c3e50;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 9999;
-    animation: slideInRight 0.5s ease;
-}
-@keyframes slideInRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
 }
 
 /* Стили для таблицы лидеров */
@@ -146,7 +128,7 @@
     font-size: 0.9rem;
 }
 .leaderboard-table th {
-    background: #6C63FF;
+    background: var(--kingdom-color, #6C63FF);
     color: #fff;
     padding: 8px 12px;
     text-align: left;
@@ -158,6 +140,25 @@
 .leaderboard-table tr:hover {
     background: #f0f0f0;
 }
+
+/* Тема королевства */
+:root {
+    --kingdom-color: #6C63FF;
+    --kingdom-bg: #f0f4ff;
+    --kingdom-gradient: linear-gradient(135deg, #6C63FF, #a29bfe);
+}
+.kingdom-border {
+    border-color: var(--kingdom-color) !important;
+}
+.kingdom-bg {
+    background: var(--kingdom-bg) !important;
+}
+.kingdom-progress {
+    background: var(--kingdom-gradient) !important;
+}
+.kingdom-btn {
+    background: var(--kingdom-color) !important;
+}
 </style>
 
 <div id="profile-container">
@@ -168,6 +169,82 @@
 const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
 const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
+// ===== 12 КОРОЛЕВСТВ МАРСА =====
+const KINGDOMS = {
+    'Аркадия': {
+        color: '#D4A574',
+        bg: '#FDF8F0',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arcadia.png',
+        gradient: 'linear-gradient(135deg, #D4A574, #E8C9A0)'
+    },
+    'Ксанф': {
+        color: '#3D3D3D',
+        bg: '#F5F5F5',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-ksanf.png',
+        gradient: 'linear-gradient(135deg, #3D3D3D, #6B6B6B)'
+    },
+    'Эдем': {
+        color: '#F4A460',
+        bg: '#FFF8F0',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg',
+        gradient: 'linear-gradient(135deg, #F4A460, #F7C98A)'
+    },
+    'Эридания': {
+        color: '#F5D76E',
+        bg: '#FFFDF5',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png',
+        gradient: 'linear-gradient(135deg, #F5D76E, #FAE9A0)'
+    },
+    'Кхонг': {
+        color: '#A9A9A9',
+        bg: '#F8F8F8',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png',
+        gradient: 'linear-gradient(135deg, #A9A9A9, #C8C8C8)'
+    },
+    'Авсония': {
+        color: '#87CEEB',
+        bg: '#F0F8FF',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png',
+        gradient: 'linear-gradient(135deg, #87CEEB, #B0D8EB)'
+    },
+    'Кимерия': {
+        color: '#B19CD9',
+        bg: '#F8F4FF',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png',
+        gradient: 'linear-gradient(135deg, #B19CD9, #D1C4E9)'
+    },
+    'Серпентида': {
+        color: '#E57373',
+        bg: '#FFF5F5',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png',
+        gradient: 'linear-gradient(135deg, #E57373, #F5A0A0)'
+    },
+    'Эритрей': {
+        color: '#64B5F6',
+        bg: '#F0F8FF',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png',
+        gradient: 'linear-gradient(135deg, #64B5F6, #90CAF9)'
+    },
+    'Утопия': {
+        color: '#4DD0E1',
+        bg: '#F0FDFF',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png',
+        gradient: 'linear-gradient(135deg, #4DD0E1, #80DEEA)'
+    },
+    'Эллада': {
+        color: '#FF8A65',
+        bg: '#FFF5F0',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png',
+        gradient: 'linear-gradient(135deg, #FF8A65, #FFAB91)'
+    },
+    'Аливасото': {
+        color: '#81C784',
+        bg: '#F0FFF0',
+        flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png',
+        gradient: 'linear-gradient(135deg, #81C784, #A5D6A7)'
+    }
+};
+
 // ===== АВАТАРКИ =====
 const AVATARS = [
     '/assets/images/авотарка%20девушки.png',
@@ -176,18 +253,15 @@ const AVATARS = [
     '/assets/images/мужчина%203.png',
 ];
 
-// ===== БАЗА ЗНАНИЙ ДЛЯ ИИ-ПОМОЩНИКА =====
-const MARS_KNOWLEDGE = [
-    { keywords: ['привет', 'здравствуй', 'hi'], answer: 'Приветствую, исследователь Марса! Чем могу помочь?' },
-    { keywords: ['погода', 'температура', 'климат'], answer: 'Средняя температура на Марсе около -63°C. Зимой может опускаться до -140°C, летом на экваторе до +20°C.' },
-    { keywords: ['атмосфера', 'воздух', 'дышать'], answer: 'Атмосфера Марса очень разрежена (в 100 раз тоньше земной) и состоит на 95% из углекислого газа. Дышать без скафандра невозможно.' },
-    { keywords: ['гора', 'высочайший', 'олимп'], answer: 'Олимп — высочайшая гора в Солнечной системе (21,9 км). Это вулкан на Марсе.' },
-    { keywords: ['жизнь', 'живой', 'биология'], answer: 'Пока не найдено доказательств существования жизни на Марсе, но учёные находят следы древней воды и органических молекул.' },
-    { keywords: ['спутник', 'фобос', 'деймос'], answer: 'У Марса два спутника: Фобос (страх) и Деймос (ужас). Они небольшие и имеют неправильную форму.' },
-    { keywords: ['день', 'сол', 'сутки'], answer: 'Сутки на Марсе (сол) длятся 24 часа 39 минут — почти как на Земле!' },
-    { keywords: ['год', 'сезон', 'времена'], answer: 'Марсианский год длится 668,6 солов (≈687 земных дней). Времена года есть, но они более длительные.' },
-    { keywords: ['канал', 'вода', 'река'], answer: 'На Марсе обнаружены русла древних рек, что говорит о том, что когда-то на планете была жидкая вода.' },
-    { keywords: ['исследование', 'ровер', 'марсоход'], answer: 'На Марсе работали роверы: Sojourner, Spirit, Opportunity, Curiosity, Perseverance. Сейчас активны Curiosity и Perseverance.' }
+// ===== СПИСОК ЗАПРЕЩЁННЫХ СЛОВ =====
+const BAD_WORDS = [
+    'хуй', 'пизда', 'хуе', 'ебал', 'ебать', 'бля', 'сука',
+    'нахуй', 'пиздец', 'залупа', 'мудила', 'гандон', 'блядь',
+    'пидор', 'гей', 'лох', 'дебил', 'идиот', 'кретин',
+    'секс', 'порно', 'эротика', 'трахать', 'член',
+    'жид', 'ниггер', 'чурка', 'хач',
+    'fuck', 'shit', 'asshole', 'bitch', 'cunt', 'dick', 'pussy',
+    'хуйло', 'еблан', 'мудак', 'урод', 'сволочь', 'тварь'
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -262,10 +336,10 @@ document.addEventListener('DOMContentLoaded', function() {
             .order('created_at', { ascending: false })
             .limit(5);
 
-        // --- Получаем лидеров (топ-10) ---
+        // --- Получаем лидеров ---
         const { data: leaders, error: leadersError } = await client
             .from('profiles')
-            .select('username, experience, level, avatar_url')
+            .select('username, display_name, experience, level, avatar_url')
             .order('experience', { ascending: false })
             .limit(10);
 
@@ -305,14 +379,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const username = currentProfile.username || user.email.split('@')[0];
+        const displayName = currentProfile.display_name || username;
         const avatar = currentProfile.avatar_url || AVATARS[0];
         const bio = currentProfile.bio || '✍️ Ещё ничего не рассказал о себе.';
         const notificationsEnabled = currentProfile.notifications_enabled !== false;
+        const kingdomName = currentProfile.kingdom || 'Эдем';
+        const kingdom = KINGDOMS[kingdomName] || KINGDOMS['Эдем'];
 
-        // --- Формируем статистику ---
-        const totalArticles = 106; // примерно
-        const readArticles = 0; // пока заглушка, можно будет собирать
-        const commentsCount = 0; // пока заглушка
+        // Применяем тему королевства
+        document.documentElement.style.setProperty('--kingdom-color', kingdom.color);
+        document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
+        document.documentElement.style.setProperty('--kingdom-gradient', kingdom.gradient);
+
+        // --- Статистика ---
+        const totalArticles = 106;
+        const readArticles = 0;
+        const commentsCount = 0;
 
         // --- Рендерим профиль ---
         document.getElementById('profile-container').innerHTML = `
@@ -320,7 +402,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;">
                 <div style="position: relative; flex-shrink: 0;">
                     <img src="${avatar}" alt="Avatar" 
-                         style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid #6C63FF; object-fit: cover;">
+                         style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid ${kingdom.color}; object-fit: cover;">
                     <span style="position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); 
                                  background: rgba(108, 99, 255, 0.85); color: #fff; 
                                  border-radius: 20px; padding: 2px 12px; 
@@ -331,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div style="flex: 1; min-width: 150px;">
                     <h2 style="margin: 0; font-size: 1.4rem;">
-                        ${username}
+                        ${displayName}
                         <button class="help-trigger" onclick="showHelp('Имя пользователя', 'Ваше уникальное имя на сайте. Вы можете изменить его в настройках профиля.')">?</button>
                     </h2>
                     <p style="margin: 0; color: #666; font-size: 0.9rem;">${user.email}</p>
@@ -342,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <button class="help-trigger" onclick="showHelp('Что такое опыт?', 'Опыт (XP) — это очки, которые вы получаете за активность: чтение статей (+5 XP), написание комментариев (+10 XP), создание новых материалов (+20 XP) и другие действия. Накопленный опыт определяет ваш уровень.')">?</button>
                     </p>
                     <div style="margin-top: 6px; background: #e9ecef; border-radius: 10px; height: 8px; width: 100%; max-width: 300px; overflow: hidden; position: relative;">
-                        <div style="width: ${progressPercent}%; height: 100%; background: linear-gradient(90deg, #6C63FF, #a29bfe); border-radius: 10px; transition: width 0.5s;"></div>
+                        <div style="width: ${progressPercent}%; height: 100%; background: ${kingdom.gradient}; border-radius: 10px; transition: width 0.5s;"></div>
                         <button class="help-trigger" onclick="showHelp('Шкала опыта', 'Эта шкала показывает, сколько опыта вам осталось набрать до следующего уровня. Чем ближе к 100%, тем скорее вы перейдёте на новый ранг!')" 
                                 style="position: absolute; right: -6px; top: -6px; width: 20px; height: 20px; font-size: 13px;">?</button>
                     </div>
@@ -363,11 +445,19 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Марсианский календарь -->
             <div id="martianCalendar" style="background: #f8f9fa; border: 1px solid #eaecf0; padding: 16px; border-radius: 8px; max-width: 400px; margin: 20px auto; font-family: 'Georgia', serif; text-align: center;">
                 <h3 style="margin:0 0 8px 0; color: #202122;">
-                    <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> 
+                    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-calendar.png"
+                         style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
                     Марсианский календарь
                     <button class="help-trigger" onclick="showHelp('Марсианский календарь', 'Этот календарь основан на марсианском летоисчислении. Год обозначается как «Э.О.» — Эра Освоения. Сезоны: Пробуждение, Цветение, Зной, Ветры, Угасание, Заморозки, Тьма, Ледяной покров.')">?</button>
                 </h3>
                 <div id="martianDate" style="font-size:1.2rem; color: #202122;">Загрузка...</div>
+            </div>
+
+            <!-- Редактирование имени -->
+            <div style="background: #f8f9fa; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
+                <h3 style="margin: 0 0 8px 0; font-size: 1rem;">👤 Имя пользователя</h3>
+                <p style="margin: 0 0 8px 0; font-size: 0.95rem;">Текущее: <strong id="display-name-text">${displayName}</strong></p>
+                <button onclick="editDisplayName()" style="padding: 4px 16px; background: ${kingdom.color}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Изменить имя</button>
             </div>
 
             <!-- Биография -->
@@ -377,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <button class="help-trigger" onclick="showHelp('Биография', 'Расскажите о себе: кто вы, почему интересуетесь Марсом, какие у вас цели. Это поможет другим участникам узнать вас лучше.')">?</button>
                 </h3>
                 <p style="margin: 0; font-size: 0.95rem;" id="bio-text">${bio}</p>
-                <button onclick="editBio()" style="margin-top: 8px; padding: 4px 16px; background: #6C63FF; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Редактировать</button>
+                <button onclick="editBio()" style="margin-top: 8px; padding: 4px 16px; background: ${kingdom.color}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Редактировать</button>
             </div>
 
             <!-- Выбор аватарки -->
@@ -387,18 +477,45 @@ document.addEventListener('DOMContentLoaded', function() {
                     ${AVATARS.map((url, index) => `
                         <img src="${url}" alt="Avatar ${index}" 
                              onclick="selectAvatar('${url}')"
-                             style="width: 48px; height: 48px; border-radius: 50%; cursor: pointer; border: 2px solid ${avatar === url ? '#6C63FF' : '#ddd'}; object-fit: cover;">
+                             style="width: 48px; height: 48px; border-radius: 50%; cursor: pointer; border: 2px solid ${avatar === url ? kingdom.color : '#ddd'}; object-fit: cover;">
                     `).join('')}
                 </div>
             </div>
 
+            <!-- Выбор королевства -->
+            <div style="margin-bottom: 20px; padding: 16px; background: ${kingdom.bg}; border-radius: 8px; border: 2px solid ${kingdom.color};">
+                <h3 style="margin: 0 0 12px 0; font-size: 1rem;">
+                    🏰 Выберите королевство
+                    <button class="help-trigger" onclick="showHelp('Королевства Марса', 'Выберите королевство, к которому вы хотите принадлежать. Цветовая тема профиля изменится в соответствии с выбранным королевством.')">?</button>
+                </h3>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    ${Object.keys(KINGDOMS).map(name => {
+                        const k = KINGDOMS[name];
+                        return `
+                            <button onclick="selectKingdom('${name}')" 
+                                    style="padding: 6px 12px; border: 2px solid ${currentProfile.kingdom === name ? k.color : '#ddd'}; 
+                                           border-radius: 6px; background: ${currentProfile.kingdom === name ? k.color : '#fff'}; 
+                                           color: ${currentProfile.kingdom === name ? '#fff' : '#333'}; 
+                                           cursor: pointer; font-size: 0.75rem; transition: all 0.3s;">
+                                ${name}
+                            </button>
+                        `;
+                    }).join('')}
+                </div>
+                <div style="margin-top: 12px; text-align: center;">
+                    <img src="${kingdom.flag}" alt="Флаг ${kingdomName}" 
+                         style="width: 80px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+                    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг ${kingdomName}</div>
+                </div>
+            </div>
+
             <!-- Настройка уведомлений -->
-            <div style="margin-bottom: 20px; padding: 12px 16px; background: #f0f4ff; border-radius: 8px; border: 1px solid #d0d9ff;">
+            <div style="margin-bottom: 20px; padding: 12px 16px; background: ${kingdom.bg}; border-radius: 8px; border: 1px solid ${kingdom.color}40;">
                 <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 8px; cursor: pointer;">
                     <input type="checkbox" id="notifications-checkbox" 
                            ${notificationsEnabled ? 'checked' : ''}
                            onchange="toggleNotifications()"
-                           style="width: 18px; height: 18px; cursor: pointer;">
+                           style="width: 18px; height: 18px; cursor: pointer; accent-color: ${kingdom.color};">
                     📧 Получать уведомления на email
                 </label>
             </div>
@@ -443,14 +560,14 @@ document.addEventListener('DOMContentLoaded', function() {
             <div style="margin-top: 20px;">
                 <h3 style="margin: 0 0 10px 0; font-size: 1rem;">
                     🤖 Марсианский ИИ-помощник
-                    <button class="help-trigger" onclick="showHelp('ИИ-помощник', 'Задайте вопрос о Марсе, и я постараюсь ответить. Пока я знаю только факты из моей базы знаний, но постоянно учусь!')">?</button>
+                    <button class="help-trigger" onclick="showHelp('ИИ-помощник', 'Задайте вопрос о Марсе, и я постараюсь ответить. Используется нейросеть, которая анализирует ваш вопрос и даёт осмысленный ответ.')">?</button>
                 </h3>
                 <div class="chat-container" id="chatContainer">
                     <div class="chat-message bot">Привет! Я — марсианский ИИ. Спрашивай меня о Марсе! 🪐</div>
                 </div>
                 <div class="chat-input-row">
                     <input type="text" id="chatInput" placeholder="Спросите о Марсе..." onkeypress="if(event.key==='Enter') sendChatMessage()">
-                    <button onclick="sendChatMessage()">Отправить</button>
+                    <button onclick="sendChatMessage()" style="background: ${kingdom.color};">Отправить</button>
                 </div>
             </div>
 
@@ -459,7 +576,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Таблица лидеров -->
             <div style="margin-top: 20px;">
                 <details>
-                    <summary style="cursor: pointer; font-size: 1.1rem; font-weight: bold; color: #6C63FF;">🏆 Таблица лидеров</summary>
+                    <summary style="cursor: pointer; font-size: 1.1rem; font-weight: bold; color: ${kingdom.color};">🏆 Таблица лидеров</summary>
                     ${leaders && leaders.length > 0 ? `
                         <table class="leaderboard-table" style="margin-top: 12px;">
                             <thead>
@@ -471,18 +588,21 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </tr>
                             </thead>
                             <tbody>
-                                ${leaders.map((leader, index) => `
-                                    <tr>
-                                        <td>${index + 1}</td>
-                                        <td>
-                                            <img src="${leader.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(leader.username) + '&background=6C63FF&color=fff&size=32'}" 
-                                                 style="width: 24px; height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;">
-                                            ${leader.username}
-                                        </td>
-                                        <td>${leader.level}</td>
-                                        <td>${leader.experience}</td>
-                                    </tr>
-                                `).join('')}
+                                ${leaders.map((leader, index) => {
+                                    const leaderName = leader.display_name || leader.username;
+                                    return `
+                                        <tr>
+                                            <td>${index + 1}</td>
+                                            <td>
+                                                <img src="${leader.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(leaderName) + '&background=6C63FF&color=fff&size=32'}" 
+                                                     style="width: 24px; height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;">
+                                                ${leaderName}
+                                            </td>
+                                            <td>${leader.level}</td>
+                                            <td>${leader.experience}</td>
+                                        </tr>
+                                    `;
+                                }).join('')}
                             </tbody>
                         </table>
                     ` : '<p style="color: #999; font-size: 0.9rem;">Пока нет данных.</p>'}
@@ -491,7 +611,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <hr>
 
-            <!-- Опасная зона (компактно) -->
+            <!-- Опасная зона -->
             <div style="margin-top: 20px; padding: 8px 12px; background: #fff5f5; border: 1px solid #f5c6cb; border-radius: 6px;">
                 <details>
                     <summary style="cursor: pointer; font-size: 0.8rem; color: #c0392b; font-weight: 500;">⚠️ Опасная зона (удалить аккаунт)</summary>
@@ -505,7 +625,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <hr>
 
-            <p><a href="#" onclick="logoutUser(); return false;" style="color: #6C63FF; font-size: 0.9rem;">Выйти</a></p>
+            <p><a href="#" onclick="logoutUser(); return false;" style="color: ${kingdom.color}; font-size: 0.9rem;">Выйти</a></p>
         `;
 
         // Сохраняем клиент и данные для функций
@@ -513,7 +633,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window._currentUser = user;
         window._currentProfile = currentProfile;
 
-        // ===== Запускаем марсианский календарь =====
+        // ===== Марсианский календарь =====
         (function() {
             const months = [
                 { name: 'Ākha-dzen', days: 31 },
@@ -597,7 +717,7 @@ function showHelp(title, description) {
             <h4>${title}</h4>
             <p>${description}</p>
             <button onclick="this.closest('.help-modal-overlay').remove()" 
-                    style="padding: 6px 20px; background: #6C63FF; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">
+                    style="padding: 6px 20px; background: var(--kingdom-color, #6C63FF); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">
                 Понятно
             </button>
         </div>
@@ -672,40 +792,113 @@ function toggleNotifications() {
         });
 }
 
+// ===== РЕДАКТИРОВАНИЕ ИМЕНИ =====
+function editDisplayName() {
+    const client = window._profileClient;
+    const user = window._currentUser;
+    if (!client || !user) return;
+
+    const currentName = document.getElementById('display-name-text')?.innerText || '';
+    const newName = prompt('Введите новое имя (от 2 до 20 символов, только латиница):', currentName);
+    if (!newName || newName === currentName) return;
+
+    // Проверка длины
+    if (newName.length < 2 || newName.length > 20) {
+        alert('❌ Имя должно быть от 2 до 20 символов.');
+        return;
+    }
+
+    // Проверка: только латиница, цифры, пробелы, дефис, подчёркивание
+    if (!/^[a-zA-Z0-9\s\-_]+$/.test(newName)) {
+        alert('❌ Имя может содержать только латинские буквы, цифры, пробелы, дефис и подчёркивание.');
+        return;
+    }
+
+    // Проверка на плохие слова
+    const lowerName = newName.toLowerCase();
+    for (const badWord of BAD_WORDS) {
+        if (lowerName.includes(badWord)) {
+            alert('❌ Имя содержит недопустимое слово. Пожалуйста, выберите другое имя.');
+            return;
+        }
+    }
+
+    client
+        .from('profiles')
+        .update({ display_name: newName.trim() })
+        .eq('user_id', user.id)
+        .then(({ error }) => {
+            if (error) {
+                alert('❌ Ошибка: ' + error.message);
+                return;
+            }
+            document.getElementById('display-name-text').innerText = newName.trim();
+            alert('✅ Имя обновлено!');
+            location.reload();
+        });
+}
+
+// ===== ВЫБОР КОРОЛЕВСТВА =====
+function selectKingdom(name) {
+    const client = window._profileClient;
+    const user = window._currentUser;
+    if (!client || !user) return;
+
+    const kingdom = KINGDOMS[name];
+    if (!kingdom) return;
+
+    client
+        .from('profiles')
+        .update({ kingdom: name })
+        .eq('user_id', user.id)
+        .then(({ error }) => {
+            if (error) {
+                alert('❌ Ошибка: ' + error.message);
+                return;
+            }
+            alert(`✅ Вы выбрали королевство ${name}!`);
+            location.reload();
+        });
+}
+
 // ===== ИИ-ПОМОЩНИК =====
-function sendChatMessage() {
+async function sendChatMessage() {
     const input = document.getElementById('chatInput');
     const container = document.getElementById('chatContainer');
     const question = input.value.trim();
     if (!question) return;
 
-    // Добавляем сообщение пользователя
     const userMsg = document.createElement('div');
     userMsg.className = 'chat-message user';
     userMsg.textContent = question;
     container.appendChild(userMsg);
+    container.scrollTop = container.scrollHeight;
+    input.value = '';
 
-    // Ищем ответ в базе знаний
-    let answer = 'Извините, я ещё не знаю ответа на этот вопрос. Но я учусь! 🧠';
-    const lowerQuestion = question.toLowerCase();
-    for (const item of MARS_KNOWLEDGE) {
-        if (item.keywords.some(keyword => lowerQuestion.includes(keyword))) {
-            answer = item.answer;
-            break;
-        }
-    }
+    try {
+        const response = await fetch(
+            'https://ncytbgbzfjfoqmmgfygz.supabase.co/functions/v1/ai-chat',
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: question })
+            }
+        );
+        const data = await response.json();
+        const reply = data.reply || data.error || 'Не удалось получить ответ.';
 
-    // Добавляем ответ бота с задержкой (имитация обработки)
-    setTimeout(() => {
         const botMsg = document.createElement('div');
         botMsg.className = 'chat-message bot';
-        botMsg.textContent = answer;
+        botMsg.textContent = reply;
         container.appendChild(botMsg);
         container.scrollTop = container.scrollHeight;
-    }, 300);
-
-    input.value = '';
-    container.scrollTop = container.scrollHeight;
+    } catch (err) {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-message bot';
+        botMsg.textContent = '⚠️ Ошибка соединения с ИИ. Попробуйте позже.';
+        container.appendChild(botMsg);
+        container.scrollTop = container.scrollHeight;
+    }
 }
 window.sendChatMessage = sendChatMessage;
 

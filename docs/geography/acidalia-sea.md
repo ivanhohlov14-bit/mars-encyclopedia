@@ -231,6 +231,40 @@
 - [Глиняные таблички](https://mars-wiki.ru/terms/tablichki/)
 - [Эритрея](https://mars-wiki.ru/geography/eritreya/)
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const client = supabase.createClient(
+        'https://ncytbgbzfjfoqmmgfygz.supabase.co',
+        'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D'
+    );
+    
+    client.auth.getSession().then(({ data }) => {
+        const user = data?.session?.user;
+        if (!user) return;
+        
+        // Ключ для localStorage — уникальный для каждой статьи
+        const pageKey = `read_${window.location.pathname}`;
+        
+        // Проверяем, не получал ли пользователь уже опыт за эту статью
+        if (!localStorage.getItem(pageKey)) {
+            // Начисляем 5 опыта за прочтение
+            if (typeof window.addExperience === 'function') {
+                window.addExperience(user.id, 5);
+                // Запоминаем, что опыт уже начислен
+                localStorage.setItem(pageKey, 'true');
+                console.log('✅ +5 опыта за прочтение статьи!');
+            } else {
+                console.warn('⚠️ Функция addExperience не загружена');
+            }
+        } else {
+            console.log('ℹ️ Опыт за эту статью уже получен');
+        }
+    }).catch(err => {
+        console.error('Ошибка:', err);
+    });
+});
+</script>
+
 ## Примечания
 
 <references />

@@ -872,4 +872,63 @@ function logoutUser() {
         window.location.href = '/';
     });
 }
+    // ===== СИСТЕМА ДРУЗЕЙ =====
+function getCurrentUser() {
+    return window._currentUser;
+}
+
+async function addFriend(friendId) {
+    const user = window._currentUser;
+    if (!user) {
+        alert('⚠️ Вы не авторизованы.');
+        return;
+    }
+
+    if (user.id === friendId) {
+        alert('❌ Нельзя добавить себя в друзья.');
+        return;
+    }
+
+    const client = window._profileClient;
+    if (!client) return;
+
+    // Проверяем, есть ли уже заявка
+    const { data: existing, error: checkError } = await client
+        .from('friends')
+        .select('*')
+        .or(`user_id.eq.${user.id},friend_id.eq.${user.id}`)
+        .or(`user_id.eq.${friendId},friend_id.eq.${friendId}`);
+
+    if (checkError) {
+        alert('❌ Ошибка проверки: ' + checkError.message);
+        return;
+    }
+
+    if (existing && existing.length > 0) {
+        const status = existing[0].status;
+        if (status === 'pending') {
+            alert('⏳ Заявка уже отправлена.');
+        } else if (status === 'accepted') {
+            alert('👥 Вы уже друзья!');
+        } else {
+            alert('❌ Неизвестный статус.');
+        }
+        return;
+    }
+
+    // Отправляем заявку
+    const { error: insertError } = await client
+        .from('friends')
+        .insert([{ user_id: user.id, friend_id: friendId, status: 'pending' }]);
+
+    if (insertError) {
+        alert('❌ Ошибка отправки заявки: ' + insertError.message);
+        return;
+    }
+
+    alert('✅ Заявка в друзья отправлена!');
+}
+
+// Делаем функцию глобальной
+window.addFriend = addFriend;
 </script>

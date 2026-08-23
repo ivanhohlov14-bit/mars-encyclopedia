@@ -1,10 +1,15 @@
 // docs/javascripts/page-tracker.js
-// Начисляет опыт ТОЛЬКО после того, как пользователь прокрутит 90% статьи
+// Начисляет опыт только после полного прочтения статьи (90% прокрутки)
+
+console.log('✅ page-tracker.js загружен');
 
 document.addEventListener('DOMContentLoaded', function() {
     // Исключаем служебные страницы
     const excludePages = ['/profile/', '/login/', '/register/', '/stats/', '/profile-view/'];
-    if (excludePages.includes(window.location.pathname)) return;
+    if (excludePages.includes(window.location.pathname)) {
+        console.log('ℹ️ Страница исключена: ' + window.location.pathname);
+        return;
+    }
 
     // Проверяем авторизацию
     const client = supabase.createClient(
@@ -14,10 +19,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     client.auth.getSession().then(({ data }) => {
         const user = data?.session?.user;
-        if (!user) return;
+        if (!user) {
+            console.log('👤 Пользователь не авторизован');
+            return;
+        }
 
         const pageKey = `read_${window.location.pathname}`;
-        if (localStorage.getItem(pageKey)) return; // Уже получил опыт
+        if (localStorage.getItem(pageKey)) {
+            console.log('ℹ️ Опыт за эту страницу уже получен');
+            return;
+        }
+
+        console.log('📄 Страница: ' + window.location.pathname);
+        console.log('👤 Пользователь: ' + user.email);
 
         let xpAwarded = false;
 
@@ -29,15 +43,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const documentHeight = document.documentElement.scrollHeight;
             const maxScroll = documentHeight - windowHeight;
 
-            // Если страница слишком короткая (не нужно прокручивать) — не даём опыт автоматически
-            if (maxScroll <= 50) {
-                // Можно либо давать опыт за короткую страницу, либо нет — я решил не давать
+            // Если страница слишком короткая (< 100px скролла) — не даём опыт
+            if (maxScroll < 100) {
+                console.log('ℹ️ Страница слишком короткая, опыт не начисляется');
                 return;
             }
 
-            const scrollPercent = (scrollY / maxScroll) * 100;
+            const scrollPercent = Math.round((scrollY / maxScroll) * 100);
+            console.log('📊 Прокручено: ' + scrollPercent + '%');
 
-            // Только если прокрутили 90% и более
             if (scrollPercent >= 90) {
                 awardXP();
             }
@@ -47,14 +61,24 @@ document.addEventListener('DOMContentLoaded', function() {
             if (xpAwarded) return;
             xpAwarded = true;
 
+            console.log('🎉 НАЧИСЛЯЕМ ОПЫТ!');
+            
             if (typeof window.addExperience === 'function') {
                 window.addExperience(user.id, 5);
                 localStorage.setItem(pageKey, 'true');
                 console.log('✅ +5 XP за полное прочтение статьи!');
 
-                if (typeof showExperienceToast === 'function') {
-                    showExperienceToast(5);
+                // === ПОКАЗЫВАЕМ УВЕДОМЛЕНИЕ ===
+                if (typeof window.showExperienceToast === 'function') {
+                    console.log('📢 Вызываем showExperienceToast(5)');
+                    window.showExperienceToast(5);
+                } else {
+                    console.warn('⚠️ window.showExperienceToast не определена!');
+                    // Создаём простое уведомление как fallback
+                    showFallbackToast(5);
                 }
+            } else {
+                console.warn('⚠️ window.addExperience не определена');
             }
 
             // Убираем обработчики
@@ -62,20 +86,44 @@ document.addEventListener('DOMContentLoaded', function() {
             window.removeEventListener('resize', checkScroll);
         }
 
-        // Подписываемся только на события прокрутки и изменения размера
+        // Fallback-уведомление, если showExperienceToast не загружена
+        function showFallbackToast(xpAmount) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 999999;
+                background: rgba(108, 99, 255, 0.95);
+                color: #fff;
+                padding: 20px 40px;
+                border-radius: 16px;
+                font-size: 2rem;
+                font-weight: bold;
+                font-family: 'Segoe UI', Arial, sans-serif;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                pointer-events: none;
+                animation: xpFadeOut 2.5s ease forwards;
+            `;
+            toast.textContent = '⭐ +' + xpAmount + ' XP';
+            document.body.appendChild(toast);
+            setTimeout(function() { if (toast.parentNode) toast.remove(); }, 3000);
+        }
+
+        // Подписываемся на события
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('resize', checkScroll);
 
-        // Также проверяем, если пользователь уже прокрутил страницу до низа при загрузке (например, переход с якорем)
-        // Но делаем это с задержкой, чтобы дать время на прокрутку
-        setTimeout(function() {
-            checkScroll();
-        }, 500);
+        // Проверяем сразу, если страница уже прокручена (например, с якорем)
+        setTimeout(checkScroll, 1000);
 
         // Очистка при уходе
         window.addEventListener('beforeunload', function() {
             window.removeEventListener('scroll', checkScroll);
             window.removeEventListener('resize', checkScroll);
         });
+    }).catch(function(err) {
+        console.error('❌ Ошибка сессии:', err);
     });
 });

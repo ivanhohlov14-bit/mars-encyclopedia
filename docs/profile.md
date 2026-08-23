@@ -131,6 +131,7 @@
 }
 .leaderboard-table tr:hover {
     background: #f0f0f0;
+    cursor: pointer;
 }
 
 :root {
@@ -255,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Получаем лидеров
         const { data: leaders, error: leadersError } = await client
             .from('profiles')
-            .select('username, display_name, experience, level, avatar_url')
+            .select('user_id, username, display_name, experience, level, avatar_url')
             .order('experience', { ascending: false })
             .limit(10);
 
@@ -311,16 +312,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
         document.documentElement.style.setProperty('--kingdom-gradient', kingdom.gradient);
 
-        // Статистика статей по королевствам
-        const articlesPerKingdom = {
-            'Аркадия': 8, 'Ксанф': 10, 'Эдем': 12, 'Эридания': 9,
-            'Кхонг': 11, 'Авсония': 7, 'Кимерия': 6, 'Серпентида': 5,
-            'Эритрей': 13, 'Утопия': 8, 'Эллада': 4, 'Аливасото': 5,
-            'Общие': 8
-        };
-        const totalArticles = Object.values(articlesPerKingdom).reduce((a, b) => a + b, 0);
-        const readArticles = 0;
-
         // --- Рендерим профиль ---
         document.getElementById('profile-container').innerHTML = `
             <!-- Шапка -->
@@ -339,18 +330,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div style="flex: 1; min-width: 150px;">
                     <h2 style="margin: 0; font-size: 1.4rem;">
                         ${displayName}
-                        <button class="help-trigger" onclick="showHelp('Имя пользователя', 'Ваше уникальное имя.')">?</button>
+                        <button class="help-trigger" onclick="showHelp('Имя пользователя', 'Ваше уникальное имя на сайте. Вы можете изменить его в настройках профиля.')">?</button>
                     </h2>
                     <p style="margin: 0; color: #666; font-size: 0.9rem;">${user.email}</p>
                     <p style="margin: 4px 0 0 0; font-size: 0.9rem; color: #555;">
                         ⭐ Уровень ${userLevel}
-                        <button class="help-trigger" onclick="showHelp('Уровень', 'Ваш ранг на сайте.')">?</button>
+                        <button class="help-trigger" onclick="showHelp('Уровень', 'Ваш ранг на сайте. Повышается автоматически при наборе опыта. Чем выше уровень, тем больше уважения среди исследователей Марса.')">?</button>
                         • 📊 Опыт: ${currentProfile.experience}
-                        <button class="help-trigger" onclick="showHelp('Опыт', 'Очки за чтение статей (+5 XP).')">?</button>
+                        <button class="help-trigger" onclick="showHelp('Опыт (XP)', 'Очки, которые вы получаете за чтение статей (+5 XP за каждую новую статью). Накопленный опыт определяет ваш уровень.')">?</button>
                     </p>
                     <div style="margin-top: 6px; background: #e9ecef; border-radius: 10px; height: 8px; width: 100%; max-width: 300px; overflow: hidden; position: relative;">
                         <div style="width: ${progressPercent}%; height: 100%; background: ${kingdom.gradient}; border-radius: 10px; transition: width 0.5s;"></div>
-                        <button class="help-trigger" onclick="showHelp('Шкала опыта', 'Прогресс до следующего уровня.')" 
+                        <button class="help-trigger" onclick="showHelp('Шкала опыта', 'Показывает, сколько опыта вам осталось набрать до следующего уровня. Чем ближе к 100%, тем скорее вы перейдёте на новый ранг!')" 
                                 style="position: absolute; right: -6px; top: -6px; width: 20px; height: 20px; font-size: 13px;">?</button>
                     </div>
                     <p style="margin: 2px 0 0 0; font-size: 0.7rem; color: #999;">
@@ -359,11 +350,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
 
-            <!-- Статистика -->
+            <!-- Статистика (упрощённая) -->
             <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 12px 16px; border-radius: 8px;">
-                <div><strong>📚 Всего статей:</strong> ${totalArticles}</div>
-                <div><strong>📖 Прочитано:</strong> ${readArticles}</div>
                 <div><strong>📅 Регистрация:</strong> ${new Date(user.created_at).toLocaleDateString('ru-RU')}</div>
+                <div><strong>🏅 Достижений:</strong> ${achievementsList.length}</div>
+                <div><strong>📊 Уровень:</strong> ${userLevel}</div>
+                <div><strong>⚡ Опыт:</strong> ${currentProfile.experience}</div>
             </div>
 
             <!-- Марсианский календарь -->
@@ -372,28 +364,37 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-calendar.png"
                          style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
                     Марсианский календарь
-                    <button class="help-trigger" onclick="showHelp('Марсианский календарь', 'Календарь Марса.')">?</button>
+                    <button class="help-trigger" onclick="showHelp('Марсианский календарь', 'Календарь Марса, основанный на марсианском летоисчислении. Год обозначается как «Э.О.» — Эра Освоения. Сезоны: Пробуждение, Цветение, Зной, Ветры, Угасание, Заморозки, Тьма, Ледяной покров.')">?</button>
                 </h3>
                 <div id="martianDate" style="font-size:1.2rem; color: #202122;">Загрузка...</div>
             </div>
 
             <!-- Редактирование имени -->
             <div style="background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-                <h3 style="margin: 0 0 8px 0; font-size: 1rem;">👤 Имя пользователя</h3>
+                <h3 style="margin: 0 0 8px 0; font-size: 1rem;">
+                    👤 Имя пользователя
+                    <button class="help-trigger" onclick="showHelp('Имя пользователя', 'Ваше отображаемое имя. Должно быть уникальным и состоять только из латинских букв, цифр, пробелов, дефисов и подчёркиваний.')">?</button>
+                </h3>
                 <p style="margin: 0 0 8px 0; font-size: 0.95rem;">Текущее: <strong id="display-name-text">${displayName}</strong></p>
                 <button onclick="editDisplayName()" style="padding: 4px 16px; background: ${kingdom.color}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Изменить имя</button>
             </div>
 
             <!-- Биография -->
             <div style="background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-                <h3 style="margin: 0 0 8px 0; font-size: 1rem;">📝 О себе</h3>
+                <h3 style="margin: 0 0 8px 0; font-size: 1rem;">
+                    📝 О себе
+                    <button class="help-trigger" onclick="showHelp('О себе', 'Расскажите о себе: кто вы, почему интересуетесь Марсом, какие у вас цели. Это поможет другим участникам узнать вас лучше.')">?</button>
+                </h3>
                 <p style="margin: 0; font-size: 0.95rem;" id="bio-text">${bio}</p>
                 <button onclick="editBio()" style="margin-top: 8px; padding: 4px 16px; background: ${kingdom.color}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Редактировать</button>
             </div>
 
             <!-- Выбор аватарки -->
             <div style="margin-bottom: 20px;">
-                <h3 style="margin: 0 0 10px 0; font-size: 1rem;">🖼️ Выберите аватар</h3>
+                <h3 style="margin: 0 0 10px 0; font-size: 1rem;">
+                    🖼️ Выберите аватар
+                    <button class="help-trigger" onclick="showHelp('Аватар', 'Выберите изображение, которое будет отображаться рядом с вашим именем на сайте.')">?</button>
+                </h3>
                 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                     ${AVATARS.map((url, index) => `
                         <img src="${url}" alt="Avatar ${index}" 
@@ -405,7 +406,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <!-- Выбор королевства -->
             <div style="margin-bottom: 20px; padding: 16px; background: ${kingdom.bg}; border-radius: 8px; border: 2px solid ${kingdom.color};">
-                <h3 style="margin: 0 0 12px 0; font-size: 1rem;">🏰 Выберите королевство</h3>
+                <h3 style="margin: 0 0 12px 0; font-size: 1rem;">
+                    🏰 Выберите королевство
+                    <button class="help-trigger" onclick="showHelp('Королевства', 'На Марсе существует 12 королевств. Выберите то, к которому вы хотите принадлежать. Цветовая тема профиля изменится в соответствии с выбранным королевством.')">?</button>
+                </h3>
                 <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                     ${Object.keys(KINGDOMS).map(name => {
                         const k = KINGDOMS[name];
@@ -426,19 +430,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
 
-            <!-- Статьи по королевствам -->
-            <div style="background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-                <h3 style="margin: 0 0 12px 0; font-size: 1rem;">📚 Статьи по королевствам</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                    ${Object.entries(articlesPerKingdom).map(([name, count]) => `
-                        <span style="background: ${KINGDOMS[name] ? KINGDOMS[name].color : '#999'}; color: #fff; padding: 2px 10px; border-radius: 12px; font-size: 0.75rem;">
-                            ${name}: ${count}
-                        </span>
-                    `).join('')}
-                </div>
-            </div>
-
-            <!-- Уведомления -->
+            <!-- Уведомления (email) -->
             <div style="margin-bottom: 20px; padding: 12px 16px; background: ${kingdom.bg}; border-radius: 8px; border: 1px solid ${kingdom.color}40;">
                 <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 8px; cursor: pointer;">
                     <input type="checkbox" id="notifications-checkbox" 
@@ -446,11 +438,16 @@ document.addEventListener('DOMContentLoaded', function() {
                            onchange="toggleNotifications()"
                            style="width: 18px; height: 18px; cursor: pointer; accent-color: ${kingdom.color};">
                     📧 Получать уведомления на email
+                    <button class="help-trigger" onclick="showHelp('Уведомления по email', 'Если включено, вы будете получать письма о новых достижениях, повышении уровня и других важных событиях.')">?</button>
                 </label>
             </div>
 
+            <!-- Уведомления -->
             <div style="margin-bottom: 20px;">
-                <h3 style="margin: 0 0 10px 0; font-size: 1rem;">🔔 Последние уведомления</h3>
+                <h3 style="margin: 0 0 10px 0; font-size: 1rem;">
+                    🔔 Последние уведомления
+                    <button class="help-trigger" onclick="showHelp('Уведомления', 'Здесь появляются сообщения о событиях: получении достижений, повышении уровня и других действиях. Уведомления приходят автоматически.')">?</button>
+                </h3>
                 ${notifications && notifications.length > 0 ? `
                     <ul style="list-style: none; padding: 0; margin: 0;">
                         ${notifications.map(n => `
@@ -460,15 +457,18 @@ document.addEventListener('DOMContentLoaded', function() {
                             </li>
                         `).join('')}
                     </ul>
-                ` : '<p style="color: #999; font-size: 0.9rem;">Уведомлений пока нет.</p>'}
+                ` : '<p style="color: #999; font-size: 0.9rem;">Уведомлений пока нет. Они появятся, когда вы получите достижение или повысите уровень.</p>'}
             </div>
 
             <hr>
 
             <!-- Достижения -->
             <div style="margin-top: 20px;">
-                <h3 style="margin: 0 0 12px 0; font-size: 1rem;">🏅 Достижения</h3>
-                ${achievementsList.length === 0 ? '<p style="color: #999; font-size: 0.9rem;">Пока нет достижений.</p>' : ''}
+                <h3 style="margin: 0 0 12px 0; font-size: 1rem;">
+                    🏅 Достижения
+                    <button class="help-trigger" onclick="showHelp('Достижения', 'Особые знаки отличия, которые выдаются за чтение статей и другие действия. Достижения автоматически добавляются при наборе определённого количества опыта.')">?</button>
+                </h3>
+                ${achievementsList.length === 0 ? '<p style="color: #999; font-size: 0.9rem;">Пока нет достижений. Читайте статьи, чтобы получать опыт и открывать достижения!</p>' : ''}
                 <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                     ${achievementsList.map(ach => `
                         <div style="background: #f0f0f0; padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; font-size: 0.85rem;">
@@ -483,9 +483,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <!-- ИИ-помощник -->
             <div style="margin-top: 20px;">
-                <h3 style="margin: 0 0 10px 0; font-size: 1rem;">🤖 Марсианский ИИ-помощник</h3>
+                <h3 style="margin: 0 0 10px 0; font-size: 1rem;">
+                    🤖 Марсианский ИИ-помощник
+                    <button class="help-trigger" onclick="showHelp('ИИ-помощник', 'Задайте вопрос о Марсе, его героях, божествах, географии — я постараюсь ответить! Используется локальная база знаний, созданная на основе статей энциклопедии.')">?</button>
+                </h3>
                 <div class="chat-container" id="chatContainer">
-                    <div class="chat-message bot">Привет! Спрашивай о Марсе! 🪐</div>
+                    <div class="chat-message bot">Привет! Я — марсианский гид. Спрашивай о Марсе, его героях, божествах и географии! 🪐</div>
                 </div>
                 <div class="chat-input-row">
                     <input type="text" id="chatInput" placeholder="Спросите о Марсе..." onkeypress="if(event.key==='Enter') sendChatMessage()">
@@ -498,7 +501,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Таблица лидеров -->
             <div style="margin-top: 20px;">
                 <details>
-                    <summary style="cursor: pointer; font-size: 1.1rem; font-weight: bold; color: ${kingdom.color};">🏆 Таблица лидеров</summary>
+                    <summary style="cursor: pointer; font-size: 1.1rem; font-weight: bold; color: ${kingdom.color};">
+                        🏆 Таблица лидеров
+                        <button class="help-trigger" onclick="showHelp('Таблица лидеров', 'Топ-10 участников по количеству опыта. Нажмите на строку, чтобы посмотреть профиль.')">?</button>
+                    </summary>
                     ${leaders && leaders.length > 0 ? `
                         <table class="leaderboard-table" style="margin-top: 12px;">
                             <thead><tr><th>#</th><th>Участник</th><th>Уровень</th><th>Опыт</th></tr></thead>
@@ -506,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 ${leaders.map((leader, index) => {
                                     const leaderName = leader.display_name || leader.username;
                                     return `
-                                        <tr>
+                                        <tr onclick="viewProfile('${leader.user_id}')" title="Нажмите, чтобы посмотреть профиль">
                                             <td>${index + 1}</td>
                                             <td>
                                                 <img src="${leader.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(leaderName) + '&background=6C63FF&color=fff&size=32'}" 
@@ -530,7 +536,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div style="margin-top: 20px; padding: 8px 12px; background: #fff5f5; border: 1px solid #f5c6cb; border-radius: 6px;">
                 <details>
                     <summary style="cursor: pointer; font-size: 0.8rem; color: #c0392b; font-weight: 500;">⚠️ Опасная зона (удалить аккаунт)</summary>
-                    <p style="font-size: 0.8rem; color: #666; margin: 8px 0 12px 0;">Удаление аккаунта — необратимое действие.</p>
+                    <p style="font-size: 0.8rem; color: #666; margin: 8px 0 12px 0;">Удаление аккаунта — необратимое действие. Все ваши данные будут потеряны.</p>
                     <button onclick="deleteAccount()" 
                             style="padding: 4px 16px; background: #c0392b; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
                         🗑️ Удалить
@@ -540,7 +546,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             <hr>
 
-            <p><a href="/stats/" style="color: ${kingdom.color};">📊 Моя статистика</a> | <a href="#" onclick="logoutUser(); return false;" style="color: ${kingdom.color};">Выйти</a></p>
+            <p>
+                <a href="/stats/" style="color: ${kingdom.color};">📊 Моя статистика</a> | 
+                <a href="#" onclick="logoutUser(); return false;" style="color: ${kingdom.color};">Выйти</a>
+            </p>
         `;
 
         window._profileClient = client;
@@ -631,6 +640,16 @@ function showHelp(title, description) {
     });
 }
 window.showHelp = showHelp;
+
+// ===== ФУНКЦИЯ ПРОСМОТРА ПРОФИЛЯ =====
+function viewProfile(userId) {
+    if (!userId) return;
+    // Пока просто показываем сообщение (в будущем можно сделать переход на страницу профиля)
+    showHelp('Профиль пользователя', `ID: ${userId}\n\nВ будущем здесь будет полная страница профиля с возможностью добавлять в друзья.`);
+}
+window.viewProfile = viewProfile;
+
+// ===== ОСТАЛЬНЫЕ ФУНКЦИИ (без изменений) =====
 
 function editBio() {
     const currentBio = document.getElementById('bio-text')?.innerText || '';

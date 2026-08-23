@@ -1,58 +1,67 @@
 // docs/javascripts/sidebar-toggle.js
 
 (function() {
-    // Ждём загрузки страницы
     document.addEventListener('DOMContentLoaded', function() {
-        // Создаём кнопку-гамбургер
+        // Проверяем, что это ПК (ширина > 768px)
+        const isMobile = window.innerWidth <= 768;
+
+        // На телефонах не вмешиваемся — пусть работает как обычно
+        if (isMobile) return;
+
+        // Находим боковое меню
+        const sidebar = document.querySelector('.wy-nav-side');
+        if (!sidebar) return;
+
+        // Создаём кнопку для сворачивания/разворачивания
         const toggleBtn = document.createElement('button');
-        toggleBtn.id = 'sidebar-toggle';
-        toggleBtn.innerHTML = '☰';
+        toggleBtn.id = 'sidebar-toggle-pc';
+        toggleBtn.innerHTML = '◀';
         toggleBtn.style.cssText = `
             position: fixed;
-            top: 10px;
+            top: 50%;
             left: 10px;
+            transform: translateY(-50%);
             z-index: 1000;
             background: #6C63FF;
             color: #fff;
             border: none;
             border-radius: 4px;
-            padding: 6px 12px;
-            font-size: 20px;
+            padding: 6px 8px;
+            font-size: 16px;
             cursor: pointer;
-            display: none; /* Скрываем на больших экранах */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: left 0.3s;
         `;
 
-        // Добавляем кнопку на страницу
         document.body.prepend(toggleBtn);
 
-        // Находим боковое меню (обычно это .wy-nav-side)
-        const sidebar = document.querySelector('.wy-nav-side');
-        if (!sidebar) return;
+        let isSidebarHidden = false;
 
-        // Функция переключения
         function toggleSidebar() {
-            const isHidden = sidebar.style.display === 'none';
-            sidebar.style.display = isHidden ? '' : 'none';
-            // Меняем иконку
-            toggleBtn.innerHTML = isHidden ? '☰' : '✕';
-        }
-
-        // Обработчик клика
-        toggleBtn.addEventListener('click', toggleSidebar);
-
-        // Показываем кнопку только если ширина экрана меньше 768px (телефоны)
-        function checkWidth() {
-            if (window.innerWidth <= 768) {
-                toggleBtn.style.display = 'block';
-                // На телефонах меню по умолчанию скрыто
+            isSidebarHidden = !isSidebarHidden;
+            if (isSidebarHidden) {
                 sidebar.style.display = 'none';
+                toggleBtn.innerHTML = '▶';
+                toggleBtn.style.left = '10px';
             } else {
-                toggleBtn.style.display = 'none';
                 sidebar.style.display = '';
+                toggleBtn.innerHTML = '◀';
+                toggleBtn.style.left = '10px';
             }
         }
 
-        checkWidth();
-        window.addEventListener('resize', checkWidth);
+        toggleBtn.addEventListener('click', toggleSidebar);
+
+        // При изменении размера окна проверяем, не стало ли оно мобильным
+        window.addEventListener('resize', function() {
+            const nowMobile = window.innerWidth <= 768;
+            if (nowMobile) {
+                // Возвращаем меню в исходное состояние
+                sidebar.style.display = '';
+                toggleBtn.style.display = 'none';
+            } else {
+                toggleBtn.style.display = 'block';
+            }
+        });
     });
 })();

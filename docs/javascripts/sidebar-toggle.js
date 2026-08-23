@@ -1,7 +1,7 @@
 // docs/javascripts/sidebar-toggle.js
 
 (function() {
-    console.log('✅ sidebar-toggle.js загружен (простая версия)');
+    console.log('✅ sidebar-toggle.js загружен');
 
     document.addEventListener('DOMContentLoaded', function() {
         // Работаем только на ПК
@@ -9,15 +9,19 @@
 
         const sidebar = document.querySelector('.wy-nav-side');
         const content = document.querySelector('.wy-nav-content');
+        
         if (!sidebar || !content) {
-            console.warn('⚠️ Элементы не найдены');
+            console.warn('⚠️ Меню не найдено');
             return;
         }
 
-        // Создаём кнопку (всегда видима)
+        // Определяем ширину меню
+        const sidebarWidth = 300;
+
+        // Создаём КНОПКУ — ВИДИМУЮ ВСЕГДА
         const toggleBtn = document.createElement('button');
         toggleBtn.id = 'sidebar-toggle-btn';
-        toggleBtn.innerHTML = '◀';
+        toggleBtn.innerHTML = '◀ Скрыть меню';
         toggleBtn.style.cssText = `
             position: fixed;
             left: 10px;
@@ -26,12 +30,25 @@
             background: #6C63FF;
             color: #fff;
             border: none;
-            border-radius: 4px;
-            padding: 6px 10px;
-            font-size: 16px;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 14px;
+            font-family: 'Segoe UI', Arial, sans-serif;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+            transition: all 0.3s;
+            pointer-events: auto;
+            opacity: 1;
         `;
+
+        toggleBtn.onmouseenter = function() {
+            this.style.background = '#5a52d5';
+            this.style.boxShadow = '0 4px 20px rgba(108,99,255,0.4)';
+        };
+        toggleBtn.onmouseleave = function() {
+            this.style.background = '#6C63FF';
+            this.style.boxShadow = '0 2px 12px rgba(0,0,0,0.25)';
+        };
 
         document.body.prepend(toggleBtn);
 
@@ -40,24 +57,24 @@
         toggleBtn.addEventListener('click', function() {
             isHidden = !isHidden;
             if (isHidden) {
-                sidebar.style.display = 'none';
+                sidebar.style.marginLeft = `-${sidebarWidth}px`;
+                sidebar.style.transition = 'margin-left 0.3s';
                 content.style.marginLeft = '0';
                 content.style.maxWidth = '100%';
-                toggleBtn.innerHTML = '▶';
+                toggleBtn.innerHTML = '☰ Показать меню';
             } else {
-                sidebar.style.display = '';
+                sidebar.style.marginLeft = '0';
                 content.style.marginLeft = '';
                 content.style.maxWidth = '';
-                toggleBtn.innerHTML = '◀';
+                toggleBtn.innerHTML = '◀ Скрыть меню';
             }
         });
 
-        // При изменении размера окна
+        // При изменении размера окна — адаптируемся
         window.addEventListener('resize', function() {
             const nowMobile = window.innerWidth <= 768;
             if (nowMobile) {
-                // Возвращаем всё как было
-                sidebar.style.display = '';
+                sidebar.style.marginLeft = '';
                 content.style.marginLeft = '';
                 content.style.maxWidth = '';
                 toggleBtn.style.display = 'none';
@@ -66,6 +83,6 @@
             }
         });
 
-        console.log('✅ Простая кнопка меню создана');
+        console.log('✅ Кнопка создана (простая версия)');
     });
 })();

@@ -1,11 +1,9 @@
 // docs/javascripts/page-tracker.js
-// ВЕРСИЯ С ГАРАНТИРОВАННЫМ ПОКАЗОМ
+// ИСПРАВЛЕННАЯ ВЕРСИЯ — убрана глобальная проверка sessionStorage
 
 console.log('✅ page-tracker.js ЗАГРУЗИЛСЯ (v3)');
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ DOM загружен');
-
     const excludePages = ['/profile/', '/login/', '/register/', '/stats/', '/profile-view/'];
     if (excludePages.includes(window.location.pathname)) return;
 
@@ -22,6 +20,62 @@ document.addEventListener('DOMContentLoaded', function() {
         if (localStorage.getItem(pageKey)) return;
 
         let xpAwarded = false;
+
+        function showXpToast(xpAmount) {
+            // Проверяем, есть ли уже активное уведомление на странице
+            if (document.getElementById('xp-toast-active')) return;
+
+            console.log('🔥 showXpToast ВЫЗВАНА!');
+
+            const toast = document.createElement('div');
+            toast.id = 'xp-toast-active';
+            toast.textContent = '⭐ +' + xpAmount + ' XP';
+            toast.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 999999;
+                background: #6C63FF;
+                color: white;
+                padding: 20px 40px;
+                border-radius: 16px;
+                font-size: 2rem;
+                font-weight: bold;
+                font-family: 'Segoe UI', Arial, sans-serif;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                pointer-events: none;
+                animation: xpPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+                           xpFadeOut 2.8s ease forwards 0.3s;
+            `;
+
+            if (!document.getElementById('xp-toast-styles-test2')) {
+                const style = document.createElement('style');
+                style.id = 'xp-toast-styles-test2';
+                style.textContent = `
+                    @keyframes xpPop {
+                        0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+                        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+                    }
+                    @keyframes xpFadeOut {
+                        0% { opacity: 1; }
+                        80% { opacity: 1; }
+                        100% { opacity: 0; transform: translate(-50%, -60%); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            document.body.appendChild(toast);
+            console.log('✅ Уведомление добавлено в DOM');
+
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.remove();
+                    console.log('🗑️ Уведомление удалено');
+                }
+            }, 3000);
+        }
 
         function checkScroll() {
             if (xpAwarded) return;
@@ -44,85 +98,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     window.addExperience(user.id, 5);
                     localStorage.setItem(pageKey, 'true');
                     console.log('✅ +5 XP начислено!');
-
-                    // === ПОКАЗЫВАЕМ УВЕДОМЛЕНИЕ (ВСЕГДА) ===
-                    try {
-                        console.log('🔥 ВЫЗЫВАЕМ showXpToast');
-                        // Определяем функцию прямо здесь, чтобы избежать ошибок
-                        showXpToast(5);
-                    } catch (e) {
-                        console.error('Ошибка при показе уведомления:', e);
-                        // Если функция не сработала — используем запасной вариант
-                        alert('⭐ +5 XP! (альтернативное уведомление)');
-                    }
-
-                } else {
-                    console.warn('⚠️ addExperience не определена');
+                    showXpToast(5);
                 }
 
                 window.removeEventListener('scroll', checkScroll);
                 window.removeEventListener('resize', checkScroll);
             }
-        }
-
-        // === ФУНКЦИЯ УВЕДОМЛЕНИЯ (гарантированно работает) ===
-        function showXpToast(xpAmount) {
-            console.log('🔥 showXpToast ВЫЗВАНА!');
-            if (sessionStorage.getItem('xp_toast_shown')) {
-                console.log('ℹ️ Уже показывали');
-                return;
-            }
-
-            console.log('🎨 СОЗДАЁМ УВЕДОМЛЕНИЕ +' + xpAmount);
-            const toast = document.createElement('div');
-            toast.textContent = '⭐ +' + xpAmount + ' XP';
-            toast.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 999999;
-                background: #6C63FF;
-                color: white;
-                padding: 20px 40px;
-                border-radius: 16px;
-                font-size: 2rem;
-                font-weight: bold;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-                pointer-events: none;
-                animation: xpPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-                           xpFadeOut 2.8s ease forwards 0.3s;
-            `;
-
-            // Добавляем стили анимации
-            if (!document.getElementById('xp-toast-styles-final2')) {
-                const style = document.createElement('style');
-                style.id = 'xp-toast-styles-final2';
-                style.textContent = `
-                    @keyframes xpPop {
-                        0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
-                        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-                    }
-                    @keyframes xpFadeOut {
-                        0% { opacity: 1; }
-                        80% { opacity: 1; }
-                        100% { opacity: 0; transform: translate(-50%, -60%); }
-                    }
-                `;
-                document.head.appendChild(style);
-                console.log('✅ Стили добавлены');
-            }
-
-            document.body.appendChild(toast);
-            console.log('✅ Уведомление добавлено в DOM');
-
-            setTimeout(() => {
-                if (toast.parentNode) toast.remove();
-                console.log('🗑️ Уведомление удалено');
-            }, 3200);
-
-            sessionStorage.setItem('xp_toast_shown', 'true');
         }
 
         window.addEventListener('scroll', checkScroll);

@@ -26,10 +26,92 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js
   - javascripts/auth-button.js
   - javascripts/experience.js
-  - javascripts/sidebar-toggle.js 
 
 extra_head:
   - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  - <style>
+    /* Стили для кнопки */
+    #sidebar-toggle-btn {
+        position: fixed;
+        left: 10px;
+        top: 10px;
+        z-index: 99999;
+        background: #6C63FF;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 14px;
+        font-size: 14px;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+        transition: all 0.3s;
+        display: none; /* Скрыта по умолчанию, показываем через JS */
+    }
+    #sidebar-toggle-btn:hover {
+        background: #5a52d5;
+        box-shadow: 0 4px 20px rgba(108,99,255,0.4);
+    }
+    @media (max-width: 768px) {
+        #sidebar-toggle-btn {
+            display: none !important;
+        }
+    }
+  </style>
+  - <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('✅ Встроенный скрипт меню загружен');
+        // Показываем кнопку только на ПК
+        if (window.innerWidth <= 768) return;
+
+        var sidebar = document.querySelector('.wy-nav-side');
+        var content = document.querySelector('.wy-nav-content');
+        if (!sidebar || !content) {
+            console.warn('⚠️ Меню не найдено');
+            return;
+        }
+
+        // Создаём кнопку
+        var btn = document.createElement('button');
+        btn.id = 'sidebar-toggle-btn';
+        btn.innerHTML = '◀ Скрыть меню';
+        btn.style.display = 'block';
+        document.body.prepend(btn);
+
+        var sidebarWidth = 300;
+        var isHidden = false;
+
+        btn.addEventListener('click', function() {
+            isHidden = !isHidden;
+            if (isHidden) {
+                sidebar.style.marginLeft = '-' + sidebarWidth + 'px';
+                sidebar.style.transition = 'margin-left 0.3s';
+                content.style.marginLeft = '0';
+                content.style.maxWidth = '100%';
+                btn.innerHTML = '☰ Показать меню';
+            } else {
+                sidebar.style.marginLeft = '0';
+                content.style.marginLeft = '';
+                content.style.maxWidth = '';
+                btn.innerHTML = '◀ Скрыть меню';
+            }
+        });
+
+        // При изменении размера
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 768) {
+                sidebar.style.marginLeft = '';
+                content.style.marginLeft = '';
+                content.style.maxWidth = '';
+                btn.style.display = 'none';
+            } else {
+                btn.style.display = 'block';
+            }
+        });
+
+        console.log('✅ Кнопка меню добавлена через extra_head');
+    });
+  </script>
 
 copyright: "© 2026 — Марсианская энциклопедия. Все права защищены."
   

@@ -29,17 +29,17 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install mkdocs; fi
+          pip install mkdocs
+          pip install mkdocs-toggle-sidebar-plugin   # <-- добавляем плагин
 
       - name: Build site
         run: mkdocs build --verbose
 
-      # Загружаем артефакт с именем "github-pages" (так ожидает deploy-pages)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: site/
-          retention-days: 1   # артефакт хранится 1 день — не засоряет хранилище
+          retention-days: 1
 
   deploy:
     environment:

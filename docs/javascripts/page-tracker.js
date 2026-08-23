@@ -1,12 +1,12 @@
 // docs/javascripts/page-tracker.js
-// Начисляет опыт только после полного прочтения статьи (прокрутка до конца)
+// Начисляет опыт ТОЛЬКО после того, как пользователь прокрутит 90% статьи
 
 document.addEventListener('DOMContentLoaded', function() {
     // Исключаем служебные страницы
     const excludePages = ['/profile/', '/login/', '/register/', '/stats/', '/profile-view/'];
     if (excludePages.includes(window.location.pathname)) return;
 
-    // Проверяем, авторизован ли пользователь
+    // Проверяем авторизацию
     const client = supabase.createClient(
         'https://ncytbgbzfjfoqmmgfygz.supabase.co',
         'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D'
@@ -17,30 +17,27 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!user) return;
 
         const pageKey = `read_${window.location.pathname}`;
-
-        // Если уже получил опыт за эту статью — выходим
-        if (localStorage.getItem(pageKey)) return;
+        if (localStorage.getItem(pageKey)) return; // Уже получил опыт
 
         let xpAwarded = false;
 
         function checkScroll() {
             if (xpAwarded) return;
 
-            // Вычисляем, сколько процентов страницы прокручено
             const scrollY = window.scrollY;
             const windowHeight = window.innerHeight;
             const documentHeight = document.documentElement.scrollHeight;
             const maxScroll = documentHeight - windowHeight;
 
-            // Если страница слишком короткая, считаем, что она прочитана
-            if (maxScroll <= 0) {
-                awardXP();
+            // Если страница слишком короткая (не нужно прокручивать) — не даём опыт автоматически
+            if (maxScroll <= 50) {
+                // Можно либо давать опыт за короткую страницу, либо нет — я решил не давать
                 return;
             }
 
             const scrollPercent = (scrollY / maxScroll) * 100;
 
-            // Если прокручено 90% и более — начисляем опыт
+            // Только если прокрутили 90% и более
             if (scrollPercent >= 90) {
                 awardXP();
             }
@@ -50,39 +47,35 @@ document.addEventListener('DOMContentLoaded', function() {
             if (xpAwarded) return;
             xpAwarded = true;
 
-            // Начисляем опыт
             if (typeof window.addExperience === 'function') {
                 window.addExperience(user.id, 5);
                 localStorage.setItem(pageKey, 'true');
-                console.log('✅ +5 опыта за полное прочтение статьи!');
+                console.log('✅ +5 XP за полное прочтение статьи!');
 
-                // Показываем анимацию
                 if (typeof showExperienceToast === 'function') {
                     showExperienceToast(5);
                 }
-            } else {
-                console.warn('⚠️ addExperience не загружена');
             }
 
-            // Убираем обработчики, чтобы не срабатывало повторно
+            // Убираем обработчики
             window.removeEventListener('scroll', checkScroll);
             window.removeEventListener('resize', checkScroll);
-            window.removeEventListener('load', checkScroll);
         }
 
-        // Подписываемся на события прокрутки, изменения размера и загрузки (для коротких страниц)
+        // Подписываемся только на события прокрутки и изменения размера
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('resize', checkScroll);
-        window.addEventListener('load', checkScroll);
 
-        // Дополнительная проверка через 3 секунды после загрузки (для коротких страниц, которые уже видны)
-        setTimeout(checkScroll, 3000);
+        // Также проверяем, если пользователь уже прокрутил страницу до низа при загрузке (например, переход с якорем)
+        // Но делаем это с задержкой, чтобы дать время на прокрутку
+        setTimeout(function() {
+            checkScroll();
+        }, 500);
 
-        // Если пользователь покидает страницу, очищаем обработчики
+        // Очистка при уходе
         window.addEventListener('beforeunload', function() {
             window.removeEventListener('scroll', checkScroll);
             window.removeEventListener('resize', checkScroll);
-            window.removeEventListener('load', checkScroll);
         });
     });
 });

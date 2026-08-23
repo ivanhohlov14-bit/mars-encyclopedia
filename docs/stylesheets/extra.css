@@ -436,3 +436,28 @@ footer .footer {
     z-index: 99999 !important;
     display: block !important;
 }
+
+/* ===== Сворачивание меню ===== */
+body.sidebar-hidden .wy-nav-content-wrap {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+}
+
+body.sidebar-hidden .wy-nav-content {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+    padding: 20px 40px !important;
+}
+
+body.sidebar-hidden .wy-nav-side {
+    margin-left: -300px !important;
+    transition: margin-left 0.3s ease;
+}
+
+/* Плавный переход */
+.wy-nav-side,
+.wy-nav-content-wrap,
+.wy-nav-content {
+    transition: margin-left 0.3s ease, max-width 0.3s ease, padding 0.3s ease;
+}

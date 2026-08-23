@@ -395,3 +395,29 @@ footer .footer {
 .wy-nav-content-wrap .wy-nav-content .wy-nav-content {
     padding-bottom: 0 !important;
 }
+
+/* Кнопка сворачивания меню */
+#sidebar-toggle-btn {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+#sidebar-toggle-btn:hover {
+    background: #5a52d5 !important;
+    box-shadow: 2px 0 16px rgba(108, 99, 255, 0.4) !important;
+}
+
+/* Ловушка для появления кнопки */
+#sidebar-hotspot {
+    background: transparent;
+}
+
+/* Анимация контента при сворачивании */
+.wy-nav-content {
+    transition: margin-left 0.3s ease, max-width 0.3s ease;
+}
+
+.wy-nav-side {
+    transition: margin-left 0.3s ease;
+}

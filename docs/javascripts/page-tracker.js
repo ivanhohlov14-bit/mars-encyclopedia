@@ -1,7 +1,7 @@
-// docs/javascripts/page-tracker.js
-// ФИНАЛЬНАЯ ВЕРСИЯ — только DOM-уведомление с анимацией
+// docs/javascripts/xp-toast.js
+// ОТДЕЛЬНЫЙ ФАЙЛ ДЛЯ УВЕДОМЛЕНИЙ ОБ ОПЫТЕ
 
-console.log('✅ page-tracker.js загружен');
+console.log('✅ xp-toast.js загружен');
 
 document.addEventListener('DOMContentLoaded', function() {
     const excludePages = ['/profile/', '/login/', '/register/', '/stats/', '/profile-view/'];
@@ -61,9 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             console.log('🎨 СОЗДАЁМ УВЕДОМЛЕНИЕ');
 
-            // Создаём элемент
             const toast = document.createElement('div');
-            toast.id = 'xp-toast';
             toast.innerHTML = `
                 <div style="
                     background: linear-gradient(135deg, #6C63FF, #a29bfe);
@@ -77,14 +75,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     display: flex;
                     align-items: center;
                     gap: 16px;
-                    animation: xpPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
                 ">
-                    <span style="font-size: 2.8rem; animation: xpStar 1s ease infinite alternate;">⭐</span>
+                    <span style="font-size: 2.8rem;">⭐</span>
                     <span>+${xpAmount} XP</span>
                 </div>
             `;
 
-            // Позиционирование и анимация исчезновения
             toast.style.cssText = `
                 position: fixed;
                 top: 50%;
@@ -92,22 +88,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 transform: translate(-50%, -50%);
                 z-index: 999999;
                 pointer-events: none;
-                animation: xpFadeOut 2.8s ease forwards 0.3s;
+                animation: xpPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+                           xpFadeOut 2.8s ease forwards 0.3s;
             `;
 
             document.body.appendChild(toast);
             console.log('✅ Уведомление добавлено в DOM');
 
-            // Удаляем через 3 секунды
-            setTimeout(() => {
-                if (toast.parentNode) toast.remove();
-                console.log('🗑️ Уведомление удалено');
-            }, 3200);
-
-            // Добавляем стили, если их ещё нет
-            if (!document.getElementById('xp-toast-styles-final')) {
+            if (!document.getElementById('xp-toast-styles-inline')) {
                 const style = document.createElement('style');
-                style.id = 'xp-toast-styles-final';
+                style.id = 'xp-toast-styles-inline';
                 style.textContent = `
                     @keyframes xpPop {
                         0% { transform: scale(0.3) rotate(-5deg); opacity: 0; }
@@ -118,38 +108,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         80% { opacity: 1; transform: scale(1); }
                         100% { opacity: 0; transform: scale(0.9) translateY(-10px); }
                     }
-                    @keyframes xpStar {
-                        0% { transform: scale(1) rotate(0deg); }
-                        100% { transform: scale(1.3) rotate(15deg); }
-                    }
                 `;
                 document.head.appendChild(style);
                 console.log('✅ Стили анимации добавлены');
             }
 
-            sessionStorage.setItem('xp_toast_shown', 'true');
-        }
+            setTimeout(() => {
+                if (toast.parentNode) toast.remove();
+                console.log('🗑️ Уведомление удалено');
+            }, 3200);
 
-        // Добавляем стили сразу (если ещё нет)
-        if (!document.getElementById('xp-toast-styles-final')) {
-            const style = document.createElement('style');
-            style.id = 'xp-toast-styles-final';
-            style.textContent = `
-                @keyframes xpPop {
-                    0% { transform: scale(0.3) rotate(-5deg); opacity: 0; }
-                    100% { transform: scale(1) rotate(0deg); opacity: 1; }
-                }
-                @keyframes xpFadeOut {
-                    0% { opacity: 1; transform: scale(1); }
-                    80% { opacity: 1; transform: scale(1); }
-                    100% { opacity: 0; transform: scale(0.9) translateY(-10px); }
-                }
-                @keyframes xpStar {
-                    0% { transform: scale(1) rotate(0deg); }
-                    100% { transform: scale(1.3) rotate(15deg); }
-                }
-            `;
-            document.head.appendChild(style);
+            sessionStorage.setItem('xp_toast_shown', 'true');
         }
 
         window.addEventListener('scroll', checkScroll);

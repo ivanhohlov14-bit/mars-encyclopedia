@@ -1,47 +1,54 @@
-// docs/javascripts/xp-toast.js
-// УЛЬТРА-ПРОСТАЯ ВЕРСИЯ — без проверок, просто показывает уведомление
+// docs/javascripts/page-tracker.js
+// ВЕРСИЯ С ПРИНУДИТЕЛЬНЫМИ ЛОГАМИ
 
-console.log('✅ xp-toast.js ЗАГРУЗИЛСЯ');
+console.log('✅ page-tracker.js ЗАГРУЗИЛСЯ (v2)');
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ DOM загружен');
+    console.log('✅ DOM загружен, запускаем скрипт...');
 
     const excludePages = ['/profile/', '/login/', '/register/', '/stats/', '/profile-view/'];
-    if (excludePages.includes(window.location.pathname)) {
+    const currentPath = window.location.pathname;
+    console.log('📍 Текущий путь:', currentPath);
+
+    if (excludePages.includes(currentPath)) {
         console.log('ℹ️ Страница исключена');
         return;
     }
+
+    console.log('✅ Страница не исключена, продолжаем...');
 
     const client = supabase.createClient(
         'https://ncytbgbzfjfoqmmgfygz.supabase.co',
         'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D'
     );
 
+    console.log('📡 Запрашиваем сессию...');
+
     client.auth.getSession().then(({ data }) => {
         console.log('✅ Сессия получена');
         const user = data?.session?.user;
         if (!user) {
-            console.log('👤 Не авторизован');
+            console.log('👤 Пользователь не авторизован');
             return;
         }
 
-        const pageKey = `read_${window.location.pathname}`;
-        if (localStorage.getItem(pageKey)) {
-            console.log('ℹ️ Опыт уже получен');
-            return;
-        }
-
-        console.log('📄 Страница:', window.location.pathname);
         console.log('👤 Пользователь:', user.email);
+        const pageKey = `read_${currentPath}`;
+        if (localStorage.getItem(pageKey)) {
+            console.log('ℹ️ Опыт уже получен за эту страницу');
+            return;
+        }
+
+        console.log('📄 Опыт ещё не получен, ждём прокрутку...');
 
         let xpAwarded = false;
 
-        function showToast() {
-            console.log('🔥 ПОКАЗЫВАЕМ УВЕДОМЛЕНИЕ!');
+        function showXpToast(xpAmount) {
+            if (sessionStorage.getItem('xp_toast_shown')) return;
+            console.log('🎨 СОЗДАЁМ УВЕДОМЛЕНИЕ +' + xpAmount);
 
-            // Создаём уведомление
             const toast = document.createElement('div');
-            toast.textContent = '⭐ +5 XP';
+            toast.textContent = '⭐ +' + xpAmount + ' XP';
             toast.style.cssText = `
                 position: fixed;
                 top: 50%;
@@ -61,10 +68,9 @@ document.addEventListener('DOMContentLoaded', function() {
                            xpFadeOut 2.8s ease forwards 0.3s;
             `;
 
-            // Добавляем стили анимации
-            if (!document.getElementById('xp-toast-styles-test')) {
+            if (!document.getElementById('xp-toast-styles-test2')) {
                 const style = document.createElement('style');
-                style.id = 'xp-toast-styles-test';
+                style.id = 'xp-toast-styles-test2';
                 style.textContent = `
                     @keyframes xpPop {
                         0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
@@ -83,11 +89,12 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.appendChild(toast);
             console.log('✅ Уведомление добавлено в DOM');
 
-            // Удаляем через 3 секунды
             setTimeout(() => {
                 if (toast.parentNode) toast.remove();
                 console.log('🗑️ Уведомление удалено');
             }, 3000);
+
+            sessionStorage.setItem('xp_toast_shown', 'true');
         }
 
         function checkScroll() {
@@ -98,17 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const documentHeight = document.documentElement.scrollHeight;
             const maxScroll = documentHeight - windowHeight;
 
-            if (maxScroll < 100) {
-                console.log('ℹ️ Короткая страница');
-                return;
-            }
+            if (maxScroll < 100) return;
 
             const scrollPercent = (scrollY / maxScroll) * 100;
             console.log('📊 Прокручено: ' + Math.round(scrollPercent) + '%');
 
             if (scrollPercent >= 90) {
                 xpAwarded = true;
-                console.log('🎉 УСЛОВИЕ ВЫПОЛНЕНО!');
+                console.log('🎉 УСЛОВИЕ ВЫПОЛНЕНО! Начисляем опыт...');
 
                 if (typeof window.addExperience === 'function') {
                     window.addExperience(user.id, 5);
@@ -116,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('✅ +5 XP начислено!');
 
                     // === ПОКАЗЫВАЕМ УВЕДОМЛЕНИЕ ===
-                    showToast();
+                    showXpToast(5);
 
                 } else {
                     console.warn('⚠️ addExperience не определена');
@@ -130,5 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('resize', checkScroll);
         setTimeout(checkScroll, 1000);
+    }).catch((error) => {
+        console.error('❌ Ошибка получения сессии:', error);
     });
 });

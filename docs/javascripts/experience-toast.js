@@ -1,5 +1,5 @@
 // docs/javascripts/experience-toast.js
-// Уведомление о получении опыта
+// Надёжное уведомление о получении опыта
 
 (function() {
     console.log('✅ experience-toast.js загружен');
@@ -84,3 +84,4 @@
 
     console.log('✅ experience-toast.js готов');
 })();
+

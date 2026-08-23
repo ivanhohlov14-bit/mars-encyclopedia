@@ -1,67 +1,46 @@
 // docs/javascripts/remove-nav-buttons.js
-// МОЩНОЕ УДАЛЕНИЕ КНОПОК "PREVIOUS" И "NEXT"
+// Удаляет кнопки "Previous" и "Next" (включая .rst-versions)
 
 console.log('🗑️ Запускаем удаление навигационных кнопок...');
 
-// Функция удаления
 function removeNavButtons() {
-    console.log('🔍 Ищем кнопки для удаления...');
-
-    // 1. Удаляем по классам
-    const selectors = [
-        '.rst-footer-buttons',
-        '.btn-neutral',
-        '.wy-breadcrumbs + .rst-footer-buttons',
-        'div[role="navigation"] .rst-footer-buttons',
-        'footer .rst-footer-buttons'
-    ];
-    selectors.forEach(selector => {
-        document.querySelectorAll(selector).forEach(el => {
-            el.remove();
-            console.log('🗑️ Удалён по селектору:', selector);
-        });
+    // 1. Удаляем стандартные блоки
+    document.querySelectorAll('.rst-footer-buttons, .btn-neutral').forEach(el => {
+        el.remove();
     });
 
-    // 2. Удаляем ссылки с текстом "Previous" или "Next" (или с символами ‹ ›)
-    document.querySelectorAll('a').forEach(a => {
+    // 2. Удаляем кнопки внутри .rst-versions
+    document.querySelectorAll('.rst-versions a').forEach(a => {
         const text = a.textContent.trim();
         if (text === 'Previous' || text === 'Next' || text.includes('‹') || text.includes('›')) {
-            // Проверяем, что это именно навигационные кнопки (не случайные ссылки)
-            if (a.closest('.rst-footer-buttons') || a.closest('.btn-neutral') || a.closest('.wy-breadcrumbs')) {
-                a.remove();
-                console.log('🗑️ Удалена ссылка:', text);
-            }
+            a.remove();
+            console.log('🗑️ Удалена кнопка из .rst-versions:', text);
         }
     });
 
-    // 3. Удаляем весь блок breadcrumbs (он часто содержит эти кнопки)
-    const breadcrumbs = document.querySelector('.wy-breadcrumbs');
-    if (breadcrumbs) {
-        // Удаляем только если в нём есть кнопки
-        const hasNav = breadcrumbs.querySelector('a[title="Previous"], a[title="Next"]');
-        if (hasNav) {
-            breadcrumbs.remove();
-            console.log('🗑️ Удалён блок breadcrumbs с навигацией');
+    // 3. Если в .rst-versions остались пустые элементы — удаляем их
+    document.querySelectorAll('.rst-versions .rst-current-version span').forEach(span => {
+        if (span.textContent.trim() === '' && span.children.length === 0) {
+            span.remove();
         }
+    });
+
+    // 4. Если блок .rst-versions пустой — скрываем его
+    const versions = document.querySelector('.rst-versions');
+    if (versions && versions.textContent.trim() === '') {
+        versions.style.display = 'none';
+        console.log('🗑️ Скрыт пустой блок .rst-versions');
     }
 }
 
 // Запускаем при загрузке
 document.addEventListener('DOMContentLoaded', function() {
-    // Первая попытка
     removeNavButtons();
-
-    // Вторая попытка через 500 мс (для динамически создаваемых элементов)
     setTimeout(removeNavButtons, 500);
-
-    // Третья попытка через 2 секунды (на всякий случай)
     setTimeout(removeNavButtons, 2000);
-
-    // Четвёртая попытка через 5 секунд (если тема очень медленная)
-    setTimeout(removeNavButtons, 5000);
 });
 
-// Наблюдатель за изменениями DOM (если кнопки появляются после)
+// Наблюдатель за изменениями
 const observer = new MutationObserver(function() {
     removeNavButtons();
 });

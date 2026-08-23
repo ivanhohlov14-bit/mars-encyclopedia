@@ -28,6 +28,8 @@ extra_javascript:
 
 extra_head:
   - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+copyright: "© 2026 — Марсианская энциклопедия. Все права защищены."
   
 nav:
   - Заглавная страница: index.md

@@ -30,21 +30,6 @@ extra_javascript:
 
 extra_head:
   - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  - <script>
-    // Код для сворачивания меню
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('✅ Скрипт меню загружен через extra_head');
-        // Работаем только на ПК
-        if (window.innerWidth <= 768) return;
-        var sidebar = document.querySelector('.wy-nav-side');
-        if (!sidebar) return;
-        var btn = document.createElement('button');
-        btn.innerHTML = '☰';
-        btn.style.cssText = 'position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:1000;background:#6C63FF;color:#fff;border:none;border-radius:0 8px 8px 0;padding:10px 6px;font-size:18px;cursor:pointer;opacity:0;transition:opacity 0.3s;pointer-events:none;';
-        document.body.prepend(btn);
-        // ... остальной код
-    });
-    </script>
 
 copyright: "© 2026 — Марсианская энциклопедия. Все права защищены."
   

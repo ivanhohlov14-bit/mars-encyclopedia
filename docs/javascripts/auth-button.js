@@ -7,12 +7,20 @@ console.log('✅ auth-button.js загружен');
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
     let supabaseClient = null;
+    let authInitialized = false;
 
     function initSupabase() {
         if (typeof supabase !== 'undefined') {
             supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
             console.log('✅ Supabase инициализирован');
+            authInitialized = true;
             renderButton();
+            // Периодически обновляем UI (для синхронизации сессии)
+            setInterval(() => {
+                if (document.getElementById('auth-btn-container')) {
+                    updateAuthUI(document.getElementById('auth-btn-container'));
+                }
+            }, 60000); // каждую минуту
         } else {
             console.log('⏳ Ожидание загрузки Supabase...');
             setTimeout(initSupabase, 500);
@@ -47,6 +55,8 @@ console.log('✅ auth-button.js загружен');
             margin-right: 10px;
             flex-wrap: wrap;
             max-width: 100%;
+            position: relative;
+            z-index: 1000;
         `;
 
         if (header.tagName === 'HEADER') {
@@ -59,19 +69,24 @@ console.log('✅ auth-button.js загружен');
         updateAuthUI(container);
     }
 
-    // --- Получение данных профиля из БД ---
+    // --- Получение данных профиля из БД (с display_name) ---
     async function fetchProfile(userId) {
         if (!supabaseClient) return null;
-        const { data, error } = await supabaseClient
-            .from('profiles')
-            .select('username, avatar_url')
-            .eq('user_id', userId)
-            .single();
-        if (error) {
-            console.warn('⚠️ Не удалось загрузить профиль:', error.message);
+        try {
+            const { data, error } = await supabaseClient
+                .from('profiles')
+                .select('display_name, username, avatar_url')  // <-- добавили display_name
+                .eq('user_id', userId)
+                .single();
+            if (error) {
+                console.warn('⚠️ Не удалось загрузить профиль:', error.message);
+                return null;
+            }
+            return data;
+        } catch (e) {
+            console.warn('⚠️ Ошибка запроса профиля:', e);
             return null;
         }
-        return data;
     }
 
     function updateAuthUI(container) {
@@ -80,46 +95,60 @@ console.log('✅ auth-button.js загружен');
             if (!container) return;
         }
 
-        if (!supabaseClient) {
-            container.innerHTML = `<span style="color: #999; font-size: 0.8rem;">Загрузка...</span>`;
+        if (!supabaseClient || !authInitialized) {
+            container.innerHTML = `<span style="color: #999; font-size: 0.8rem;">⏳ Загрузка...</span>`;
             return;
         }
 
-        supabaseClient.auth.getSession().then(async ({ data }) => {
-            const user = data?.session?.user;
-            console.log('👤 Пользователь:', user ? user.email : 'не авторизован');
+        supabaseClient.auth.getSession()
+            .then(async ({ data }) => {
+                const user = data?.session?.user;
+                console.log('👤 Пользователь:', user ? user.email : 'не авторизован');
 
-            if (user) {
-                // Получаем профиль из БД
-                const profile = await fetchProfile(user.id);
-                const username = profile?.display_name || profile?.username || user.user_metadata?.username || user.email.split('@')[0];
-                const avatarUrl = profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=6C63FF&color=fff&size=32&rounded=true`;
+                if (user) {
+                    // Получаем профиль из БД
+                    const profile = await fetchProfile(user.id);
+                    // Приоритет: display_name, потом username, потом email
+                    const username = profile?.display_name || profile?.username || user.user_metadata?.username || user.email.split('@')[0];
+                    const avatarUrl = profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=6C63FF&color=fff&size=32&rounded=true`;
 
-                container.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 6px; background: #f5f5f5; padding: 4px 10px; border-radius: 20px; flex-wrap: wrap;">
-                        <img src="${avatarUrl}" 
-                             alt="Avatar" 
-                             style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover;">
-                        <span style="font-size: 0.75rem; color: #333; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                            ${username}
-                        </span>
-                        <a href="/profile/" style="color: #6C63FF; text-decoration: none; font-size: 0.75rem; white-space: nowrap;">Профиль</a>
-                        <a href="#" onclick="logoutUser(); return false;" 
-                           style="color: #c0392b; text-decoration: none; font-size: 0.75rem; white-space: nowrap;">Выйти</a>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = `
-                    <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                        <a href="/login/" style="color: #555; text-decoration: none; font-size: 0.8rem; white-space: nowrap;">Войти</a>
-                        <a href="/register/" style="color: #fff; background: #6C63FF; padding: 4px 12px; border-radius: 16px; text-decoration: none; font-size: 0.8rem; white-space: nowrap;">Регистрация</a>
-                    </div>
-                `;
-            }
-        }).catch((error) => {
-            console.error('❌ Ошибка проверки сессии:', error);
-            container.innerHTML = `<span style="color: #999; font-size: 0.8rem;">Ошибка</span>`;
-        });
+                    container.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 6px; background: #f5f5f5; padding: 4px 10px; border-radius: 20px; flex-wrap: wrap;">
+                            <img src="${avatarUrl}" 
+                                 alt="Avatar" 
+                                 style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover;">
+                            <span style="font-size: 0.75rem; color: #333; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                ${username}
+                            </span>
+                            <a href="/profile/" style="color: #6C63FF; text-decoration: none; font-size: 0.75rem; white-space: nowrap;">Профиль</a>
+                            <a href="#" onclick="logoutUser(); return false;" 
+                               style="color: #c0392b; text-decoration: none; font-size: 0.75rem; white-space: nowrap;">Выйти</a>
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                            <a href="/login/" style="color: #555; text-decoration: none; font-size: 0.8rem; white-space: nowrap;">Войти</a>
+                            <a href="/register/" style="color: #fff; background: #6C63FF; padding: 4px 12px; border-radius: 16px; text-decoration: none; font-size: 0.8rem; white-space: nowrap;">Регистрация</a>
+                        </div>
+                    `;
+                }
+            })
+            .catch((error) => {
+                console.error('❌ Ошибка проверки сессии:', error);
+                // Пробуем восстановить сессию
+                if (supabaseClient) {
+                    supabaseClient.auth.refreshSession()
+                        .then(() => {
+                            location.reload();
+                        })
+                        .catch(() => {
+                            container.innerHTML = `<span style="color: #999; font-size: 0.8rem;">Ошибка</span>`;
+                        });
+                } else {
+                    container.innerHTML = `<span style="color: #999; font-size: 0.8rem;">Ошибка</span>`;
+                }
+            });
     }
 
     function logoutUser() {
@@ -127,6 +156,7 @@ console.log('✅ auth-button.js загружен');
         if (!supabaseClient) {
             console.warn('⚠️ Supabase не инициализирован, очищаем локальные данные');
             clearLocalSession();
+            location.reload();
             return;
         }
         supabaseClient.auth.signOut()
@@ -177,7 +207,6 @@ console.log('✅ auth-button.js загружен');
 
     window._supabaseClient = supabaseClient;
     window.logoutUser = logoutUser;
-
 })();
 
 console.log('✅ auth-button.js выполнен');

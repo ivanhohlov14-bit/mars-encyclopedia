@@ -428,3 +428,11 @@ footer .footer {
 .wy-nav-side {
     transition: margin-left 0.3s ease;
 }
+
+#sidebar-toggle-btn {
+    position: fixed !important;
+    left: 10px !important;
+    top: 10px !important;
+    z-index: 99999 !important;
+    display: block !important;
+}

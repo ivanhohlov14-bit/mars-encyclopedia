@@ -1,4 +1,6 @@
 // docs/javascripts/sidebar-toggle.js
+console.log('✅ sidebar-toggle.js ЗАГРУЗИЛСЯ!');
+alert('Скрипт работает!');
 
 (function() {
     document.addEventListener('DOMContentLoaded', function() {

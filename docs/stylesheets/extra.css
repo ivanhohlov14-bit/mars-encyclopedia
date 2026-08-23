@@ -380,7 +380,18 @@ blockquote {
     }
 }
 
-/* Скрываем "Built with MkDocs..." и копирайт */
-.footer {
+/* Скрываем футер с надписью "Built with MkDocs..." */
+footer {
     display: none !important;
+}
+
+/* Если не скрывается — дополнительно */
+.rst-footer-buttons,
+footer .footer {
+    display: none !important;
+}
+
+/* Или более радикально — скрыть весь блок внизу */
+.wy-nav-content-wrap .wy-nav-content .wy-nav-content {
+    padding-bottom: 0 !important;
 }

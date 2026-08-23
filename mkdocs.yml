@@ -25,6 +25,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js
   - javascripts/auth-button.js
   - javascripts/experience.js
+  - javascripts/sidebar-toggle.js
 
 extra_head:
   - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

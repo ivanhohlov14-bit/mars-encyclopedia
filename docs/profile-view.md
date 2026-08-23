@@ -4,18 +4,26 @@
     <p>Загрузка...</p>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
-const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof supabase === 'undefined') {
+        document.getElementById('profile-container').innerHTML = '<p>⚠️ Ошибка загрузки Supabase.</p>';
+        return;
+    }
 
-// Получаем ID пользователя из URL
-const urlParams = new URLSearchParams(window.location.search);
-const userId = urlParams.get('user_id');
-
-if (!userId) {
-    document.getElementById('profile-container').innerHTML = '<p>⚠️ Пользователь не найден.</p>';
-} else {
+    const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
     const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // Получаем ID пользователя из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('user_id');
+
+    if (!userId) {
+        document.getElementById('profile-container').innerHTML = '<p>⚠️ Пользователь не найден.</p>';
+        return;
+    }
 
     // Получаем данные пользователя
     client
@@ -32,7 +40,7 @@ if (!userId) {
             const displayName = profile.display_name || profile.username || 'Аноним';
             const avatar = profile.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(displayName) + '&background=6C63FF&color=fff&size=128';
 
-            // Получаем текущего пользователя для проверки, свой это профиль или чужой
+            // Получаем текущего пользователя
             const { data: session } = await client.auth.getSession();
             const currentUser = session?.session?.user;
             const isOwnProfile = currentUser && currentUser.id === userId;
@@ -92,5 +100,5 @@ if (!userId) {
             console.error('Ошибка загрузки профиля:', error);
             document.getElementById('profile-container').innerHTML = '<p>⚠️ Ошибка загрузки профиля.</p>';
         });
-}
+});
 </script>

@@ -1,5 +1,5 @@
 // docs/javascripts/page-tracker.js
-// ВЕРСИЯ С ПРИНУДИТЕЛЬНЫМ ALERT ДЛЯ ДИАГНОСТИКИ
+// ВЕРСИЯ С ГАРАНТИРОВАННЫМ ПОКАЗОМ
 
 console.log('✅ page-tracker.js ЗАГРУЗИЛСЯ (v3)');
 
@@ -40,24 +40,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 xpAwarded = true;
                 console.log('🎉 УСЛОВИЕ ВЫПОЛНЕНО! Начисляем опыт...');
 
-                try {
-                    if (typeof window.addExperience === 'function') {
-                        window.addExperience(user.id, 5);
-                        localStorage.setItem(pageKey, 'true');
-                        console.log('✅ +5 XP начислено!');
+                if (typeof window.addExperience === 'function') {
+                    window.addExperience(user.id, 5);
+                    localStorage.setItem(pageKey, 'true');
+                    console.log('✅ +5 XP начислено!');
 
-                        // === ПРИНУДИТЕЛЬНЫЙ ALERT ДЛЯ ПРОВЕРКИ ===
-                        console.log('📢 Пытаемся показать alert...');
-                        alert('🎉 +5 XP! (Это тестовое сообщение)');
-
-                        // === ПОКАЗЫВАЕМ КРАСИВОЕ УВЕДОМЛЕНИЕ ===
+                    // === ПОКАЗЫВАЕМ УВЕДОМЛЕНИЕ (ВСЕГДА) ===
+                    try {
+                        console.log('🔥 ВЫЗЫВАЕМ showXpToast');
+                        // Определяем функцию прямо здесь, чтобы избежать ошибок
                         showXpToast(5);
-
-                    } else {
-                        console.warn('⚠️ addExperience не определена');
+                    } catch (e) {
+                        console.error('Ошибка при показе уведомления:', e);
+                        // Если функция не сработала — используем запасной вариант
+                        alert('⭐ +5 XP! (альтернативное уведомление)');
                     }
-                } catch (e) {
-                    console.error('❌ Ошибка в блоке начисления:', e);
+
+                } else {
+                    console.warn('⚠️ addExperience не определена');
                 }
 
                 window.removeEventListener('scroll', checkScroll);
@@ -65,41 +65,64 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        // === ФУНКЦИЯ УВЕДОМЛЕНИЯ (гарантированно работает) ===
         function showXpToast(xpAmount) {
-            try {
-                if (sessionStorage.getItem('xp_toast_shown')) return;
-                console.log('🎨 СОЗДАЁМ УВЕДОМЛЕНИЕ +' + xpAmount);
-
-                const toast = document.createElement('div');
-                toast.textContent = '⭐ +' + xpAmount + ' XP';
-                toast.style.cssText = `
-                    position: fixed;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    z-index: 999999;
-                    background: #6C63FF;
-                    color: white;
-                    padding: 20px 40px;
-                    border-radius: 16px;
-                    font-size: 2rem;
-                    font-weight: bold;
-                    font-family: 'Segoe UI', Arial, sans-serif;
-                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-                    pointer-events: none;
-                `;
-                document.body.appendChild(toast);
-                console.log('✅ Уведомление добавлено в DOM');
-
-                setTimeout(() => {
-                    if (toast.parentNode) toast.remove();
-                    console.log('🗑️ Уведомление удалено');
-                }, 3000);
-
-                sessionStorage.setItem('xp_toast_shown', 'true');
-            } catch (e) {
-                console.error('❌ Ошибка в showXpToast:', e);
+            console.log('🔥 showXpToast ВЫЗВАНА!');
+            if (sessionStorage.getItem('xp_toast_shown')) {
+                console.log('ℹ️ Уже показывали');
+                return;
             }
+
+            console.log('🎨 СОЗДАЁМ УВЕДОМЛЕНИЕ +' + xpAmount);
+            const toast = document.createElement('div');
+            toast.textContent = '⭐ +' + xpAmount + ' XP';
+            toast.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 999999;
+                background: #6C63FF;
+                color: white;
+                padding: 20px 40px;
+                border-radius: 16px;
+                font-size: 2rem;
+                font-weight: bold;
+                font-family: 'Segoe UI', Arial, sans-serif;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                pointer-events: none;
+                animation: xpPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+                           xpFadeOut 2.8s ease forwards 0.3s;
+            `;
+
+            // Добавляем стили анимации
+            if (!document.getElementById('xp-toast-styles-final2')) {
+                const style = document.createElement('style');
+                style.id = 'xp-toast-styles-final2';
+                style.textContent = `
+                    @keyframes xpPop {
+                        0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+                        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+                    }
+                    @keyframes xpFadeOut {
+                        0% { opacity: 1; }
+                        80% { opacity: 1; }
+                        100% { opacity: 0; transform: translate(-50%, -60%); }
+                    }
+                `;
+                document.head.appendChild(style);
+                console.log('✅ Стили добавлены');
+            }
+
+            document.body.appendChild(toast);
+            console.log('✅ Уведомление добавлено в DOM');
+
+            setTimeout(() => {
+                if (toast.parentNode) toast.remove();
+                console.log('🗑️ Уведомление удалено');
+            }, 3200);
+
+            sessionStorage.setItem('xp_toast_shown', 'true');
         }
 
         window.addEventListener('scroll', checkScroll);

@@ -18,22 +18,22 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleBtn.id = 'sidebar-toggle-btn';
     toggleBtn.innerHTML = '◀ Скрыть меню';
     toggleBtn.style.cssText = `
-        position: fixed;
-        left: 10px;
-        top: 10px;
-        z-index: 9999;
-        background: #6C63FF;
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        padding: 8px 14px;
-        font-size: 14px;
-        font-family: 'Segoe UI', Arial, sans-serif;
-        cursor: pointer;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.25);
-        transition: all 0.3s;
-    `;
-
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    z-index: 9999;
+    background: #6C63FF;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    transition: all 0.3s;
+    opacity: 0.3; /* <-- добавляем прозрачность */
+`;
     toggleBtn.onmouseenter = function() {
         this.style.background = '#5a52d5';
         this.style.boxShadow = '0 4px 20px rgba(108,99,255,0.4)';

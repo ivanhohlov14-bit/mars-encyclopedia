@@ -461,3 +461,12 @@ body.sidebar-hidden .wy-nav-side {
 .wy-nav-content {
     transition: margin-left 0.3s ease, max-width 0.3s ease, padding 0.3s ease;
 }
+/* Убрать навигационные кнопки "Next" и "Previous" */
+.rst-footer-buttons {
+    display: none !important;
+}
+
+/* Если остаётся пустое место, можно скрыть весь нижний блок */
+.wy-breadcrumbs {
+    display: none !important;
+}

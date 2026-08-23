@@ -1,17 +1,15 @@
 // docs/javascripts/page-tracker.js
-// Начисляет опыт только после полного прочтения статьи (90% прокрутки)
+// Автоматически начисляет опыт после прочтения любой статьи
 
 console.log('✅ page-tracker.js загружен');
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Исключаем служебные страницы
+    // Исключаем служебные страницы, где опыт не нужен
     const excludePages = ['/profile/', '/login/', '/register/', '/stats/', '/profile-view/'];
     if (excludePages.includes(window.location.pathname)) {
-        console.log('ℹ️ Страница исключена: ' + window.location.pathname);
         return;
     }
 
-    // Проверяем авторизацию
     const client = supabase.createClient(
         'https://ncytbgbzfjfoqmmgfygz.supabase.co',
         'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D'
@@ -19,19 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     client.auth.getSession().then(({ data }) => {
         const user = data?.session?.user;
-        if (!user) {
-            console.log('👤 Пользователь не авторизован');
-            return;
-        }
+        if (!user) return;
 
         const pageKey = `read_${window.location.pathname}`;
-        if (localStorage.getItem(pageKey)) {
-            console.log('ℹ️ Опыт за эту страницу уже получен');
-            return;
-        }
-
-        console.log('📄 Страница: ' + window.location.pathname);
-        console.log('👤 Пользователь: ' + user.email);
+        if (localStorage.getItem(pageKey)) return;
 
         let xpAwarded = false;
 
@@ -43,87 +32,91 @@ document.addEventListener('DOMContentLoaded', function() {
             const documentHeight = document.documentElement.scrollHeight;
             const maxScroll = documentHeight - windowHeight;
 
-            // Если страница слишком короткая (< 100px скролла) — не даём опыт
-            if (maxScroll < 100) {
-                console.log('ℹ️ Страница слишком короткая, опыт не начисляется');
-                return;
-            }
+            if (maxScroll <= 50) return;
 
-            const scrollPercent = Math.round((scrollY / maxScroll) * 100);
-            console.log('📊 Прокручено: ' + scrollPercent + '%');
+            const scrollPercent = (scrollY / maxScroll) * 100;
 
             if (scrollPercent >= 90) {
-                awardXP();
-            }
-        }
+                xpAwarded = true;
 
-        function awardXP() {
-            if (xpAwarded) return;
-            xpAwarded = true;
+                if (typeof window.addExperience === 'function') {
+                    window.addExperience(user.id, 5);
+                    localStorage.setItem(pageKey, 'true');
+                    console.log('✅ +5 XP за прочтение статьи!');
 
-            console.log('🎉 НАЧИСЛЯЕМ ОПЫТ!');
-            
-            if (typeof window.addExperience === 'function') {
-                window.addExperience(user.id, 5);
-                localStorage.setItem(pageKey, 'true');
-                console.log('✅ +5 XP за полное прочтение статьи!');
-
-                // === ПОКАЗЫВАЕМ УВЕДОМЛЕНИЕ ===
-                if (typeof window.showExperienceToast === 'function') {
-                    console.log('📢 Вызываем showExperienceToast(5)');
-                    window.showExperienceToast(5);
-                } else {
-                    console.warn('⚠️ window.showExperienceToast не определена!');
-                    // Создаём простое уведомление как fallback
-                    showFallbackToast(5);
+                    // === ПОКАЗЫВАЕМ УВЕДОМЛЕНИЕ ===
+                    if (typeof window.showExperienceToast === 'function') {
+                        window.showExperienceToast(5);
+                    } else {
+                        // Fallback — встроенное уведомление
+                        showFallbackToast(5);
+                    }
                 }
-            } else {
-                console.warn('⚠️ window.addExperience не определена');
-            }
 
-            // Убираем обработчики
-            window.removeEventListener('scroll', checkScroll);
-            window.removeEventListener('resize', checkScroll);
+                window.removeEventListener('scroll', checkScroll);
+                window.removeEventListener('resize', checkScroll);
+            }
         }
 
-        // Fallback-уведомление, если showExperienceToast не загружена
+        // Fallback-уведомление (если experience-toast.js не загружен)
         function showFallbackToast(xpAmount) {
+            if (sessionStorage.getItem('xp_toast_shown')) return;
+
             const toast = document.createElement('div');
+            toast.innerHTML = `
+                <div style="
+                    background: linear-gradient(135deg, #6C63FF, #a29bfe);
+                    color: #fff;
+                    padding: 20px 40px;
+                    border-radius: 16px;
+                    font-size: 2rem;
+                    font-weight: bold;
+                    font-family: 'Segoe UI', Arial, sans-serif;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    animation: xpPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+                ">
+                    <span style="font-size: 2.8rem;">⭐</span>
+                    <span>+${xpAmount} XP</span>
+                </div>
+            `;
             toast.style.cssText = `
                 position: fixed;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 z-index: 999999;
-                background: rgba(108, 99, 255, 0.95);
-                color: #fff;
-                padding: 20px 40px;
-                border-radius: 16px;
-                font-size: 2rem;
-                font-weight: bold;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
                 pointer-events: none;
                 animation: xpFadeOut 2.5s ease forwards;
             `;
-            toast.textContent = '⭐ +' + xpAmount + ' XP';
             document.body.appendChild(toast);
-            setTimeout(function() { if (toast.parentNode) toast.remove(); }, 3000);
+
+            setTimeout(() => { if (toast.parentNode) toast.remove(); }, 3000);
+            sessionStorage.setItem('xp_toast_shown', 'true');
+
+            // Добавляем стили, если их нет
+            if (!document.getElementById('xp-toast-styles-fallback')) {
+                const style = document.createElement('style');
+                style.id = 'xp-toast-styles-fallback';
+                style.textContent = `
+                    @keyframes xpPop {
+                        0% { transform: scale(0.5); opacity: 0; }
+                        100% { transform: scale(1); opacity: 1; }
+                    }
+                    @keyframes xpFadeOut {
+                        0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+                        70% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+                        100% { opacity: 0; transform: translate(-50%, -60%) scale(0.9); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
         }
 
-        // Подписываемся на события
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('resize', checkScroll);
-
-        // Проверяем сразу, если страница уже прокручена (например, с якорем)
-        setTimeout(checkScroll, 1000);
-
-        // Очистка при уходе
-        window.addEventListener('beforeunload', function() {
-            window.removeEventListener('scroll', checkScroll);
-            window.removeEventListener('resize', checkScroll);
-        });
-    }).catch(function(err) {
-        console.error('❌ Ошибка сессии:', err);
+        setTimeout(checkScroll, 500);
     });
 });

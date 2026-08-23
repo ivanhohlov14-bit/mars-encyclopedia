@@ -379,3 +379,8 @@ blockquote {
         z-index: auto !important;
     }
 }
+
+/* Скрываем "Built with MkDocs..." и копирайт */
+.footer {
+    display: none !important;
+}

@@ -440,34 +440,29 @@ body.sidebar-hidden .wy-nav-side {
   transition: margin-left 0.3s ease;
 }
 
-/* ===== ГАРАНТИРОВАННОЕ СКРЫТИЕ КНОПОК "PREVIOUS" И "NEXT" ===== */
-/* Скрываем все ссылки, которые содержат "Previous" или "Next" в футере */
-.rst-footer-buttons,
-.rst-footer-buttons a,
-.rst-footer-buttons .btn,
-.btn-neutral,
-.wy-breadcrumbs + .rst-footer-buttons,
-div[role="navigation"] .rst-footer-buttons,
-footer .rst-footer-buttons,
-.wy-nav-content .rst-footer-buttons {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  min-height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-}
+/* ===== УБИРАЕМ КНОПКИ "PREVIOUS" И "NEXT" НАВСЕГДА ===== */
 
-/* Также скрываем сами кнопки, если они не в .rst-footer-buttons */
+/* Все возможные контейнеры с этими кнопками */
+.rst-footer-buttons,
+.rst-footer-buttons *,
+.btn-neutral,
+.btn-neutral *,
 a[title="Previous"],
 a[title="Next"],
-a.btn-neutral {
-  display: none !important;
+a.btn-neutral,
+footer .rst-footer-buttons,
+.wy-nav-content .rst-footer-buttons,
+div[role="navigation"] .rst-footer-buttons {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
 }
 
-/* Если есть хлебные крошки (breadcrumbs) — их можно тоже скрыть (опционально) */
-.wy-breadcrumbs {
-  display: none !important;
-}
+/* Скрываем всё, что содержит "Next" или "Previous" в тексте (работает в CSS4, но не везде) */
+/* Для надёжности используем JavaScript (см. ниже) */

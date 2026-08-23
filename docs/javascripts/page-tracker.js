@@ -1,78 +1,61 @@
 // docs/javascripts/page-tracker.js
-// УБРАНА ПРОВЕРКА sessionStorage
+// УБИРАЕМ sessionStorage — уведомление будет всегда
 
-console.log('✅ page-tracker.js ЗАГРУЗИЛСЯ (v3)');
+console.log('✅ page-tracker.js ЗАГРУЗИЛСЯ (v4)');
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ DOM загружен, запускаем скрипт...');
+    console.log('✅ DOM загружен');
 
     const excludePages = ['/profile/', '/login/', '/register/', '/stats/', '/profile-view/'];
-    const currentPath = window.location.pathname;
-    console.log('📍 Текущий путь:', currentPath);
-
-    if (excludePages.includes(currentPath)) {
+    if (excludePages.includes(window.location.pathname)) {
         console.log('ℹ️ Страница исключена');
         return;
     }
-
-    console.log('✅ Страница не исключена, продолжаем...');
 
     const client = supabase.createClient(
         'https://ncytbgbzfjfoqmmgfygz.supabase.co',
         'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D'
     );
 
-    console.log('📡 Запрашиваем сессию...');
-
     client.auth.getSession().then(({ data }) => {
-        console.log('✅ Сессия получена');
         const user = data?.session?.user;
-        if (!user) {
-            console.log('👤 Пользователь не авторизован');
-            return;
-        }
+        if (!user) return;
 
-        console.log('👤 Пользователь:', user.email);
-        const pageKey = `read_${currentPath}`;
-        if (localStorage.getItem(pageKey)) {
-            console.log('ℹ️ Опыт уже получен за эту страницу');
-            return;
-        }
-
-        console.log('📄 Опыт ещё не получен, ждём прокрутку...');
+        const pageKey = `read_${window.location.pathname}`;
+        if (localStorage.getItem(pageKey)) return;
 
         let xpAwarded = false;
 
+        // === ФУНКЦИЯ УВЕДОМЛЕНИЯ (БЕЗ sessionStorage) ===
         function showXpToast(xpAmount) {
-            // УБИРАЕМ ПРОВЕРКУ sessionStorage
-            console.log('🔥 showXpToast ВЫЗВАНА, создаём уведомление +' + xpAmount);
+            console.log('🔥 ПОКАЗЫВАЕМ УВЕДОМЛЕНИЕ +' + xpAmount);
 
             // Создаём уведомление
             const toast = document.createElement('div');
             toast.textContent = '⭐ +' + xpAmount + ' XP';
             toast.style.cssText = `
-                position: fixed !important;
-                top: 50% !important;
-                left: 50% !important;
-                transform: translate(-50%, -50%) !important;
-                z-index: 9999999 !important;
-                background: #6C63FF !important;
-                color: white !important;
-                padding: 20px 40px !important;
-                border-radius: 16px !important;
-                font-size: 2rem !important;
-                font-weight: bold !important;
-                font-family: 'Segoe UI', Arial, sans-serif !important;
-                box-shadow: 0 20px 60px rgba(0,0,0,0.3) !important;
-                pointer-events: none !important;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 999999;
+                background: #6C63FF;
+                color: white;
+                padding: 20px 40px;
+                border-radius: 16px;
+                font-size: 2rem;
+                font-weight: bold;
+                font-family: 'Segoe UI', Arial, sans-serif;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                pointer-events: none;
                 animation: xpPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-                           xpFadeOut 2.8s ease forwards 0.3s !important;
+                           xpFadeOut 2.8s ease forwards 0.3s;
             `;
 
-            // Добавляем стили, если их нет
-            if (!document.getElementById('xp-toast-styles-test3')) {
+            // Добавляем стили анимации (один раз)
+            if (!document.getElementById('xp-toast-styles-final-v4')) {
                 const style = document.createElement('style');
-                style.id = 'xp-toast-styles-test3';
+                style.id = 'xp-toast-styles-final-v4';
                 style.textContent = `
                     @keyframes xpPop {
                         0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
@@ -85,12 +68,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 `;
                 document.head.appendChild(style);
-                console.log('✅ Стили добавлены');
+                console.log('✅ Стили анимации добавлены');
             }
 
             document.body.appendChild(toast);
             console.log('✅ Уведомление добавлено в DOM');
 
+            // Удаляем через 3 секунды
             setTimeout(() => {
                 if (toast.parentNode) toast.remove();
                 console.log('🗑️ Уведомление удалено');
@@ -134,7 +118,5 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('scroll', checkScroll);
         window.addEventListener('resize', checkScroll);
         setTimeout(checkScroll, 1000);
-    }).catch((error) => {
-        console.error('❌ Ошибка получения сессии:', error);
     });
 });

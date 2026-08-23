@@ -641,11 +641,10 @@ function showHelp(title, description) {
 }
 window.showHelp = showHelp;
 
-// ===== ФУНКЦИЯ ПРОСМОТРА ПРОФИЛЯ =====
 function viewProfile(userId) {
     if (!userId) return;
-    // Пока просто показываем сообщение (в будущем можно сделать переход на страницу профиля)
-    showHelp('Профиль пользователя', `ID: ${userId}\n\nВ будущем здесь будет полная страница профиля с возможностью добавлять в друзья.`);
+    // Переход на страницу просмотра профиля
+    window.location.href = `/profile-view/?user_id=${userId}`;
 }
 window.viewProfile = viewProfile;
 

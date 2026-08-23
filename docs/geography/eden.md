@@ -616,46 +616,17 @@
 
 ---
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const client = supabase.createClient(
-        'https://ncytbgbzfjfoqmmgfygz.supabase.co',
-        'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D'
-    );
-    client.auth.getSession().then(({ data }) => {
-        const user = data?.session?.user;
-        if (!user) return;
-        
-        const pageKey = `read_${window.location.pathname}`;
-        if (localStorage.getItem(pageKey)) return;
-
-        let xpAwarded = false;
-
-        function checkScroll() {
-            if (xpAwarded) return;
-            
-            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-            
-            if (scrollPercent >= 90) {
-                xpAwarded = true;
-                window.addExperience(user.id, 5);
-                localStorage.setItem(pageKey, 'true');
-                console.log('✅ +5 опыта за прочтение!');
-                if (typeof showExperienceToast === 'function') {
-                    showExperienceToast(5);
-                }
-                window.removeEventListener('scroll', checkScroll);
-                window.removeEventListener('resize', checkScroll);
-            }
-        }
-
-        window.addEventListener('scroll', checkScroll);
-        window.addEventListener('resize', checkScroll);
-        // Проверяем сразу, если статья уже прокручена
-        setTimeout(checkScroll, 500);
-    });
-});
-</script>
+if (typeof window.showExperienceToast === 'function') {
+    window.showExperienceToast(5);
+} else {
+    console.warn('⚠️ showExperienceToast не определена');
+    // Создаём простое уведомление как fallback
+    const toast = document.createElement('div');
+    toast.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:999999;background:rgba(108,99,255,0.95);color:#fff;padding:20px 40px;border-radius:16px;font-size:2rem;font-weight:bold;font-family:"Segoe UI",Arial,sans-serif;box-shadow:0 20px 60px rgba(0,0,0,0.3);pointer-events:none;animation:xpFadeOut 2.5s ease forwards;';
+    toast.textContent = '⭐ +' + 5 + ' XP';
+    document.body.appendChild(toast);
+    setTimeout(function() { if (toast.parentNode) toast.remove(); }, 3000);
+}
 
 ## Связанные статьи
 

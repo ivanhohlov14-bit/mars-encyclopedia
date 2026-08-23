@@ -421,3 +421,10 @@ footer .footer {
 .wy-nav-side {
     transition: margin-left 0.3s ease;
 }
+/* Расширение контента при скрытии меню */
+.wy-nav-content {
+    transition: margin-left 0.3s ease, max-width 0.3s ease;
+}
+.wy-nav-side {
+    transition: margin-left 0.3s ease;
+}

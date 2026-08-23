@@ -1,5 +1,5 @@
 // docs/javascripts/page-tracker.js
-// МАКСИМАЛЬНО ПРОСТАЯ ВЕРСИЯ — с alert для проверки
+// УЛЬТРА-НАДЁЖНАЯ ВЕРСИЯ — без внешних зависимощей
 
 console.log('✅ page-tracker.js загружен');
 
@@ -38,60 +38,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 xpAwarded = true;
                 console.log('🎉 УСЛОВИЕ ВЫПОЛНЕНО! Начисляем опыт...');
 
-                if (typeof window.addExperience === 'function') {
-                    window.addExperience(user.id, 5);
-                    localStorage.setItem(pageKey, 'true');
-                    console.log('✅ +5 XP начислено!');
+                // === 1. Начисляем опыт ===
+                try {
+                    if (typeof window.addExperience === 'function') {
+                        window.addExperience(user.id, 5);
+                        localStorage.setItem(pageKey, 'true');
+                        console.log('✅ +5 XP начислено!');
+                    } else {
+                        console.warn('⚠️ addExperience не определена');
+                    }
+                } catch (e) {
+                    console.error('❌ Ошибка при начислении опыта:', e);
+                }
 
-                    // === ПРОСТОЕ УВЕДОМЛЕНИЕ (ГАРАНТИРОВАННО ВИДИМОЕ) ===
+                // === 2. Показываем уведомление (максимально просто) ===
+                try {
+                    console.log('📢 ПЫТАЕМСЯ ПОКАЗАТЬ УВЕДОМЛЕНИЕ');
+                    
+                    // Вариант А: alert (если не сработает — перейдём к варианту Б)
                     alert('🎉 +5 XP за прочтение статьи!');
                     
-                    // === ПОПРОБУЕМ КРАСИВОЕ ===
-                    showXpToast(5);
-
-                } else {
-                    console.warn('⚠️ addExperience не определена');
+                    // Вариант Б: простейшее DOM-уведомление
+                    const toast = document.createElement('div');
+                    toast.textContent = '⭐ +5 XP';
+                    toast.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:999999;background:#6C63FF;color:white;padding:20px 40px;border-radius:10px;font-size:2rem;font-weight:bold;font-family:Arial;box-shadow:0 4px 20px rgba(0,0,0,0.3);';
+                    document.body.appendChild(toast);
+                    console.log('✅ DOM-уведомление добавлено');
+                    setTimeout(() => { if (toast.parentNode) toast.remove(); }, 3000);
+                    
+                } catch (e) {
+                    console.error('❌ Ошибка при показе уведомления:', e);
                 }
 
                 window.removeEventListener('scroll', checkScroll);
                 window.removeEventListener('resize', checkScroll);
             }
-        }
-
-        // === ФУНКЦИЯ КРАСИВОГО УВЕДОМЛЕНИЯ ===
-        function showXpToast(xpAmount) {
-            if (sessionStorage.getItem('xp_toast_shown')) return;
-
-            console.log('🎨 СОЗДАЁМ КРАСИВОЕ УВЕДОМЛЕНИЕ');
-            
-            // Создаём элемент
-            const toast = document.createElement('div');
-            toast.textContent = '⭐ +' + xpAmount + ' XP';
-            toast.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                z-index: 999999;
-                background: #6C63FF;
-                color: white;
-                padding: 20px 40px;
-                border-radius: 10px;
-                font-size: 2rem;
-                font-weight: bold;
-                font-family: Arial, sans-serif;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-                pointer-events: none;
-            `;
-            document.body.appendChild(toast);
-            console.log('✅ Уведомление добавлено в DOM');
-
-            setTimeout(() => {
-                if (toast.parentNode) toast.remove();
-                console.log('🗑️ Уведомление удалено');
-            }, 3000);
-
-            sessionStorage.setItem('xp_toast_shown', 'true');
         }
 
         window.addEventListener('scroll', checkScroll);

@@ -92,7 +92,7 @@ console.log('✅ auth-button.js загружен');
             if (user) {
                 // Получаем профиль из БД
                 const profile = await fetchProfile(user.id);
-                const username = profile?.username || user.user_metadata?.username || user.email.split('@')[0];
+                const username = profile?.display_name || profile?.username || user.user_metadata?.username || user.email.split('@')[0];
                 const avatarUrl = profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=6C63FF&color=fff&size=32&rounded=true`;
 
                 container.innerHTML = `

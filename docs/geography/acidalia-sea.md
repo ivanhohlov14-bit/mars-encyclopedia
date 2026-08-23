@@ -218,19 +218,6 @@
 
 Исследования миссий **Mars Express** и **MRO** подтверждают, что вода на Марсе действительно существовала в жидком виде, но её запасы были заключены в глинистых минералах и подповерхностных льдах[^22]. Учёные предполагают, что часть воды могла сохраниться в глубоких подземных резервуарах — возможно, именно эти резервуары вдохновили автора на создание мифа о «подземных водах», которые иссякли вместе с морем, когда богиня Араксис ушла из мира людей.
 
-## Связанные статьи
-
-- [Окхасен](https://mars-wiki.ru/geography/okhasen/)
-- [Ксанф (река)](https://mars-wiki.ru/geography/ksanf-river/)
-- [Ксанф (чудовище)](https://mars-wiki.ru/mythology/ksanf-monster/)
-- [Араксис](https://mars-wiki.ru/mythology/araksis/)
-- [Совия](https://mars-wiki.ru/people/soviya/)
-- [Хевсур](https://mars-wiki.ru/people/hevsur/)
-- [Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)
-- [Фарсида](https://mars-wiki.ru/geography/farsida/)
-- [Глиняные таблички](https://mars-wiki.ru/terms/tablichki/)
-- [Эритрея](https://mars-wiki.ru/geography/eritreya/)
-
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const client = supabase.createClient(
@@ -246,6 +233,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.addExperience(user.id, 5);
                 localStorage.setItem(pageKey, 'true');
                 console.log('✅ +5 опыта за статью!');
+                // === ПОКАЗЫВАЕМ АНИМАЦИЮ ===
+                if (typeof showExperienceToast === 'function') {
+                    showExperienceToast(5);
+                }
             } else {
                 console.warn('⚠️ addExperience не загружена');
             }
@@ -254,6 +245,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+## Связанные статьи
+
+- [Окхасен](https://mars-wiki.ru/geography/okhasen/)
+- [Ксанф (река)](https://mars-wiki.ru/geography/ksanf-river/)
+- [Ксанф (чудовище)](https://mars-wiki.ru/mythology/ksanf-monster/)
+- [Араксис](https://mars-wiki.ru/mythology/araksis/)
+- [Совия](https://mars-wiki.ru/people/soviya/)
+- [Хевсур](https://mars-wiki.ru/people/hevsur/)
+- [Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)
+- [Фарсида](https://mars-wiki.ru/geography/farsida/)
+- [Глиняные таблички](https://mars-wiki.ru/terms/tablichki/)
+- [Эритрея](https://mars-wiki.ru/geography/eritreya/)
 
 ## Примечания
 

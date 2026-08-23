@@ -1,7 +1,7 @@
 // docs/javascripts/page-tracker.js
-// УБИРАЕМ sessionStorage — уведомление будет всегда
+// ФИНАЛЬНАЯ ВЕРСИЯ — уведомление ПОЯВЛЯЕТСЯ ВСЕГДА
 
-console.log('✅ page-tracker.js ЗАГРУЗИЛСЯ (v4)');
+console.log('✅ page-tracker.js ЗАГРУЗИЛСЯ (ФИНАЛ)');
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('✅ DOM загружен');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // === ФУНКЦИЯ УВЕДОМЛЕНИЯ (БЕЗ sessionStorage) ===
         function showXpToast(xpAmount) {
-            console.log('🔥 ПОКАЗЫВАЕМ УВЕДОМЛЕНИЕ +' + xpAmount);
+            console.log('🔥 СОЗДАЁМ УВЕДОМЛЕНИЕ +' + xpAmount);
 
             // Создаём уведомление
             const toast = document.createElement('div');
@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
 
             // Добавляем стили анимации (один раз)
-            if (!document.getElementById('xp-toast-styles-final-v4')) {
+            if (!document.getElementById('xp-toast-styles-final-v5')) {
                 const style = document.createElement('style');
-                style.id = 'xp-toast-styles-final-v4';
+                style.id = 'xp-toast-styles-final-v5';
                 style.textContent = `
                     @keyframes xpPop {
                         0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }

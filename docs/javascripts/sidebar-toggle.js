@@ -1,5 +1,5 @@
 // docs/javascripts/sidebar-toggle.js
-// Расширенная версия — правильно растягивает контент
+// Версия с CSS-классами для гарантированного растягивания
 
 console.log('✅ sidebar-toggle.js загружен');
 
@@ -8,15 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.innerWidth <= 768) return;
 
     const sidebar = document.querySelector('.wy-nav-side');
-    const content = document.querySelector('.wy-nav-content');
-    const contentWrap = document.querySelector('.wy-nav-content-wrap');
-
-    if (!sidebar || !content) {
+    if (!sidebar) {
         console.warn('⚠️ Меню не найдено');
         return;
     }
 
-    // Создаём кнопку (всё как у вас, плюс hover)
+    // Создаём кнопку
     const toggleBtn = document.createElement('button');
     toggleBtn.id = 'sidebar-toggle-btn';
     toggleBtn.innerHTML = '◀ Скрыть меню';
@@ -35,8 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
         cursor: pointer;
         box-shadow: 0 2px 12px rgba(0,0,0,0.25);
         transition: all 0.3s;
-        pointer-events: auto;
-        opacity: 1;
     `;
 
     toggleBtn.onmouseenter = function() {
@@ -51,54 +46,33 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.prepend(toggleBtn);
 
     let isHidden = false;
-    const sidebarWidth = 300;
 
     toggleBtn.addEventListener('click', function() {
         isHidden = !isHidden;
         if (isHidden) {
-            // Скрываем меню
-            sidebar.style.marginLeft = '-' + sidebarWidth + 'px';
+            // Добавляем класс на body
+            document.body.classList.add('sidebar-hidden');
+            sidebar.style.marginLeft = '-300px';
             sidebar.style.transition = 'margin-left 0.3s';
-            // Растягиваем контент на всю ширину (новая часть)
-            content.style.marginLeft = '0';
-            content.style.maxWidth = '100%';
-            content.style.padding = '20px 30px';
-            if (contentWrap) {
-                contentWrap.style.maxWidth = '100%';
-                contentWrap.style.padding = '0';
-            }
             toggleBtn.innerHTML = '☰ Показать меню';
         } else {
-            // Возвращаем как было
+            // Убираем класс
+            document.body.classList.remove('sidebar-hidden');
             sidebar.style.marginLeft = '0';
-            content.style.marginLeft = '';
-            content.style.maxWidth = '';
-            content.style.padding = '';
-            if (contentWrap) {
-                contentWrap.style.maxWidth = '';
-                contentWrap.style.padding = '';
-            }
             toggleBtn.innerHTML = '◀ Скрыть меню';
         }
     });
 
     // При изменении размера окна
     window.addEventListener('resize', function() {
-        const nowMobile = window.innerWidth <= 768;
-        if (nowMobile) {
+        if (window.innerWidth <= 768) {
+            document.body.classList.remove('sidebar-hidden');
             sidebar.style.marginLeft = '';
-            content.style.marginLeft = '';
-            content.style.maxWidth = '';
-            content.style.padding = '';
-            if (contentWrap) {
-                contentWrap.style.maxWidth = '';
-                contentWrap.style.padding = '';
-            }
             toggleBtn.style.display = 'none';
         } else {
             toggleBtn.style.display = 'block';
         }
     });
 
-    console.log('✅ Кнопка создана (с растягиванием контента)');
+    console.log('✅ Кнопка меню создана (с классами)');
 });

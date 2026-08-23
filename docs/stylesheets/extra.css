@@ -440,19 +440,8 @@ body.sidebar-hidden .wy-nav-side {
   transition: margin-left 0.3s ease;
 }
 
-/* ===== УБИРАЕМ КНОПКИ "PREVIOUS" И "NEXT" НАВСЕГДА ===== */
-
-/* Все возможные контейнеры с этими кнопками */
-.rst-footer-buttons,
-.rst-footer-buttons *,
-.btn-neutral,
-.btn-neutral *,
-a[title="Previous"],
-a[title="Next"],
-a.btn-neutral,
-footer .rst-footer-buttons,
-.wy-nav-content .rst-footer-buttons,
-div[role="navigation"] .rst-footer-buttons {
+/* ===== УБИРАЕМ БЛОК С КНОПКАМИ "PREVIOUS" И "NEXT" ===== */
+.rst-versions {
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
@@ -463,30 +452,3 @@ div[role="navigation"] .rst-footer-buttons {
     pointer-events: none !important;
     opacity: 0 !important;
 }
-
-/* Максимально агрессивное скрытие кнопок */
-.rst-footer-buttons,
-.rst-footer-buttons *,
-.btn-neutral,
-.btn-neutral *,
-.wy-breadcrumbs + .rst-footer-buttons,
-div[role="navigation"] .rst-footer-buttons,
-footer .rst-footer-buttons,
-a[title="Previous"],
-a[title="Next"],
-a.btn-neutral {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    width: 0 !important;
-    height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: hidden !important;
-    position: absolute !important;
-    left: -9999px !important;
-}
-
-/* Скрываем всё, что содержит "Next" или "Previous" в тексте (работает в CSS4, но не везде) */
-/* Для надёжности используем JavaScript (см. ниже) */

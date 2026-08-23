@@ -1,5 +1,5 @@
 // docs/javascripts/page-tracker.js
-// ВЕРСИЯ С ПРОСТЫМ ГАРАНТИРОВАННЫМ УВЕДОМЛЕНИЕМ (без анимации)
+// ФИНАЛЬНАЯ ВЕРСИЯ — только DOM-уведомление с анимацией
 
 console.log('✅ page-tracker.js загружен');
 
@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     localStorage.setItem(pageKey, 'true');
                     console.log('✅ +5 XP начислено!');
 
-                    // === ПОКАЗЫВАЕМ ПРОСТОЕ УВЕДОМЛЕНИЕ ===
-                    showSimpleToast(5);
+                    // === ПОКАЗЫВАЕМ УВЕДОМЛЕНИЕ ===
+                    showXpToast(5);
 
                 } else {
                     console.warn('⚠️ addExperience не определена');
@@ -55,46 +55,101 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // === ПРОСТОЕ УВЕДОМЛЕНИЕ (БЕЗ АНИМАЦИИ) ===
-        function showSimpleToast(xpAmount) {
+        // === ФУНКЦИЯ УВЕДОМЛЕНИЯ (с анимацией) ===
+        function showXpToast(xpAmount) {
             if (sessionStorage.getItem('xp_toast_shown')) return;
 
-            console.log('🎨 СОЗДАЁМ ПРОСТОЕ УВЕДОМЛЕНИЕ');
+            console.log('🎨 СОЗДАЁМ УВЕДОМЛЕНИЕ');
 
+            // Создаём элемент
             const toast = document.createElement('div');
-            toast.textContent = '⭐ +' + xpAmount + ' XP';
+            toast.id = 'xp-toast';
+            toast.innerHTML = `
+                <div style="
+                    background: linear-gradient(135deg, #6C63FF, #a29bfe);
+                    color: #fff;
+                    padding: 20px 40px;
+                    border-radius: 16px;
+                    font-size: 2rem;
+                    font-weight: bold;
+                    font-family: 'Segoe UI', Arial, sans-serif;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    animation: xpPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+                ">
+                    <span style="font-size: 2.8rem; animation: xpStar 1s ease infinite alternate;">⭐</span>
+                    <span>+${xpAmount} XP</span>
+                </div>
+            `;
+
+            // Позиционирование и анимация исчезновения
             toast.style.cssText = `
                 position: fixed;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
                 z-index: 999999;
-                background: #6C63FF;
-                color: white;
-                padding: 20px 40px;
-                border-radius: 12px;
-                font-size: 2rem;
-                font-weight: bold;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                box-shadow: 0 8px 30px rgba(0,0,0,0.3);
                 pointer-events: none;
-                opacity: 1;
-                transition: opacity 0.5s;
+                animation: xpFadeOut 2.8s ease forwards 0.3s;
             `;
 
             document.body.appendChild(toast);
-            console.log('✅ Простое уведомление добавлено в DOM');
+            console.log('✅ Уведомление добавлено в DOM');
 
-            // Через 3 секунды скрываем
+            // Удаляем через 3 секунды
             setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => {
-                    if (toast.parentNode) toast.remove();
-                    console.log('🗑️ Уведомление удалено');
-                }, 500);
-            }, 2500);
+                if (toast.parentNode) toast.remove();
+                console.log('🗑️ Уведомление удалено');
+            }, 3200);
+
+            // Добавляем стили, если их ещё нет
+            if (!document.getElementById('xp-toast-styles-final')) {
+                const style = document.createElement('style');
+                style.id = 'xp-toast-styles-final';
+                style.textContent = `
+                    @keyframes xpPop {
+                        0% { transform: scale(0.3) rotate(-5deg); opacity: 0; }
+                        100% { transform: scale(1) rotate(0deg); opacity: 1; }
+                    }
+                    @keyframes xpFadeOut {
+                        0% { opacity: 1; transform: scale(1); }
+                        80% { opacity: 1; transform: scale(1); }
+                        100% { opacity: 0; transform: scale(0.9) translateY(-10px); }
+                    }
+                    @keyframes xpStar {
+                        0% { transform: scale(1) rotate(0deg); }
+                        100% { transform: scale(1.3) rotate(15deg); }
+                    }
+                `;
+                document.head.appendChild(style);
+                console.log('✅ Стили анимации добавлены');
+            }
 
             sessionStorage.setItem('xp_toast_shown', 'true');
+        }
+
+        // Добавляем стили сразу (если ещё нет)
+        if (!document.getElementById('xp-toast-styles-final')) {
+            const style = document.createElement('style');
+            style.id = 'xp-toast-styles-final';
+            style.textContent = `
+                @keyframes xpPop {
+                    0% { transform: scale(0.3) rotate(-5deg); opacity: 0; }
+                    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+                }
+                @keyframes xpFadeOut {
+                    0% { opacity: 1; transform: scale(1); }
+                    80% { opacity: 1; transform: scale(1); }
+                    100% { opacity: 0; transform: scale(0.9) translateY(-10px); }
+                }
+                @keyframes xpStar {
+                    0% { transform: scale(1) rotate(0deg); }
+                    100% { transform: scale(1.3) rotate(15deg); }
+                }
+            `;
+            document.head.appendChild(style);
         }
 
         window.addEventListener('scroll', checkScroll);

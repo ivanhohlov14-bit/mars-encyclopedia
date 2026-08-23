@@ -625,20 +625,34 @@ document.addEventListener('DOMContentLoaded', function() {
     client.auth.getSession().then(({ data }) => {
         const user = data?.session?.user;
         if (!user) return;
+        
         const pageKey = `read_${window.location.pathname}`;
-        if (!localStorage.getItem(pageKey)) {
-            if (typeof window.addExperience === 'function') {
+        if (localStorage.getItem(pageKey)) return;
+
+        let xpAwarded = false;
+
+        function checkScroll() {
+            if (xpAwarded) return;
+            
+            const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            
+            if (scrollPercent >= 90) {
+                xpAwarded = true;
                 window.addExperience(user.id, 5);
                 localStorage.setItem(pageKey, 'true');
-                console.log('✅ +5 опыта за статью!');
-                // === ПОКАЗЫВАЕМ АНИМАЦИЮ ===
+                console.log('✅ +5 опыта за прочтение!');
                 if (typeof showExperienceToast === 'function') {
                     showExperienceToast(5);
                 }
-            } else {
-                console.warn('⚠️ addExperience не загружена');
+                window.removeEventListener('scroll', checkScroll);
+                window.removeEventListener('resize', checkScroll);
             }
         }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('resize', checkScroll);
+        // Проверяем сразу, если статья уже прокручена
+        setTimeout(checkScroll, 500);
     });
 });
 </script>

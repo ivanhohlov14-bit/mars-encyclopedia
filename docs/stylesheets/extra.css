@@ -348,11 +348,43 @@ body.sidebar-hidden .wy-nav-side {
 
 /* Телефоны */
 @media (max-width: 768px) {
-  /* --- СКРЫВАЕМ СИНЮЮ ШАПКУ --- */
+  /* --- 1. ШАПКА: СКРЫВАЕМ СИНИЙ ФОН, НО ОСТАВЛЯЕМ ГАМБУРГЕР --- */
   .wy-nav-top {
+    background: transparent !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9999 !important;
+    height: 50px !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  /* --- 2. КНОПКА ГАМБУРГЕРА (РАБОТАЕТ) --- */
+  .wy-nav-top .wy-nav-side-toggle {
+    display: block !important;
+    position: fixed !important;
+    top: 10px !important;
+    left: 10px !important;
+    z-index: 99999 !important;
+    background: #6C63FF !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    padding: 6px 10px !important;
+    font-size: 20px !important;
+    border: none !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+  }
+  
+  /* --- 3. УБИРАЕМ ТЕКСТ "Марсианская энциклопедия" ИЗ ШАПКИ --- */
+  .wy-nav-top .wy-nav-side-toggle + a {
     display: none !important;
   }
   
+  /* --- 4. КОНТЕНТ --- */
   .wy-nav-content-wrap {
     margin-left: 0 !important;
   }
@@ -362,10 +394,10 @@ body.sidebar-hidden .wy-nav-side {
     font-size: 15px !important;
     line-height: 1.6 !important;
     max-width: 100% !important;
-    margin-top: 50px !important;
+    margin-top: 60px !important;
   }
   
-  /* --- ЗАГОЛОВКИ --- */
+  /* --- 5. ЗАГОЛОВКИ --- */
   h1 {
     font-size: 1.8rem !important;
   }
@@ -376,7 +408,7 @@ body.sidebar-hidden .wy-nav-side {
     font-size: 1.2rem !important;
   }
   
-  /* --- ИНФОБОКСЫ --- */
+  /* --- 6. ИНФОБОКСЫ --- */
   .infobox {
     float: none !important;
     width: 100% !important;
@@ -389,7 +421,7 @@ body.sidebar-hidden .wy-nav-side {
     height: auto !important;
   }
   
-  /* --- ТАБЛИЦЫ --- */
+  /* --- 7. ТАБЛИЦЫ --- */
   .wy-table-responsive {
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
@@ -420,12 +452,12 @@ body.sidebar-hidden .wy-nav-side {
     padding: 6px 12px !important;
   }
 
-  /* --- КНОПКА АВТОРИЗАЦИИ НА ТЕЛЕФОНЕ --- */
+  /* --- 8. КНОПКА АВТОРИЗАЦИИ НА ТЕЛЕФОНЕ --- */
   #auth-btn-container {
     position: fixed !important;
     top: 8px !important;
     right: 10px !important;
-    z-index: 9999 !important;
+    z-index: 99999 !important;
     background: rgba(255,255,255,0.95) !important;
     border-radius: 20px !important;
     padding: 4px 10px !important;
@@ -451,78 +483,27 @@ body.sidebar-hidden .wy-nav-side {
     font-size: 0.6rem !important;
   }
   
-  #auth-btn-container .auth-avatar {
-    width: 22px !important;
-    height: 22px !important;
-  }
-
-  /* --- ГАМБУРГЕР (открытие меню) --- */
-  .wy-nav-top .wy-nav-side-toggle {
-    display: block !important;
-    position: fixed !important;
-    top: 10px !important;
-    left: 10px !important;
-    z-index: 9999 !important;
-    background: #6C63FF !important;
-    color: #fff !important;
-    border-radius: 4px !important;
-    padding: 6px 10px !important;
-    font-size: 18px !important;
-    border: none !important;
-    cursor: pointer !important;
-  }
-  
-  /* --- СКРЫВАЕМ НАШУ КНОПКУ НА ТЕЛЕФОНЕ --- */
+  /* --- 9. СКРЫВАЕМ НАШУ КНОПКУ НА ТЕЛЕФОНЕ --- */
   #sidebar-hotspot,
   #sidebar-toggle-btn {
     display: none !important;
   }
 
-  /* --- МЕНЮ НА ТЕЛЕФОНЕ --- */
+  /* --- 10. БОКОВОЕ МЕНЮ НА ТЕЛЕФОНЕ (СТАНДАРТНОЕ) --- */
   .wy-nav-side {
-    z-index: auto !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     height: 100% !important;
-    width: 280px !important;
+    width: 300px !important;
     z-index: 9998 !important;
     background: #fff !important;
     overflow-y: auto !important;
-    transform: translateX(-100%) !important;
+    transform: translateX(-300px) !important;
     transition: transform 0.3s ease !important;
   }
   
   .wy-nav-side.shift {
     transform: translateX(0) !important;
-  }
-}
-
-/* Очень маленькие телефоны */
-@media (max-width: 480px) {
-  .wy-nav-content {
-    padding: 0.8rem 1rem !important;
-    font-size: 14px !important;
-  }
-  h1 {
-    font-size: 1.5rem !important;
-  }
-  h2 {
-    font-size: 1.2rem !important;
-  }
-  h3 {
-    font-size: 1.1rem !important;
-  }
-  .infobox {
-    padding: 0.6rem 0.8rem !important;
-    font-size: 0.8rem !important;
-  }
-  #globeViz,
-  #marsMap {
-    height: 300px !important;
-  }
-  .wy-menu-vertical a {
-    font-size: 13px !important;
-    padding: 4px 10px !important;
   }
 }

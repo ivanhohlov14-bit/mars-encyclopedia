@@ -1,14 +1,21 @@
 # Королевство Серпентида
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Серпентида</h3>
-  <hr>
-  
-  <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/serpentida-kingdom-map.png" alt="Карта Королевства Серпентида" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Серпентида. По данным Академии Окхасена (2650 г. Э.О.).</div>
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
-  <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
+
+<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Серпентида</h3>
+  </div>
+
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/serpentida-kingdom-map.png" alt="Карта Королевства Серпентида" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Серпентида. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Королевства Серпентида" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -19,9 +26,12 @@
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Серпентиды</div>
     </div>
   </div>
-  
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 300 г. Э.О. — основание Акха-Тара</li>
     <li>• 500 г. — объединение кланов</li>
     <li>• 1000 г. — завоевание Эллады</li>
@@ -30,69 +40,126 @@
     <li>• 2500 г. — провозглашение Королевства</li>
     <li>• 2740 г. — гибель Серпентиды</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Serpentida Xal</i> («Древняя Серпентида»)</p>
-  <p><b>Тип государства</b> Королевство (военная монархия)</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a> (серпендидский диалект)</p>
-  <p><b>Столица</b> <a href="/geography/akha-tar/">Акха-Тар</a></p>
-  <p><b>Координаты столицы</b> 42° ю.ш., 42° в.д.</p>
-  <p><b>Крупнейшие города</b> Серпент-Сен, Аргир-Акха, Эллад-Тор, Кхонг-Мар, Дзен-Сур</p>
-  <p><b>Правящая династия</b> Серпендиды (Серп I — Серп Великий — Серп III)</p>
-  <p><b>Годы существования</b> ок. 300 г. Э.О. — 2740 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ богини <a href="/mythology/araksis/">Араксис</a> (ок. 50 %) и культ воинов (30 %)</p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <p><b>Марсианское название:</b> <i>Serpentida Xal</i> («Древняя Серпентида»)</p>
+  <p><b>Тип государства:</b> Королевство (военная монархия)</p>
+  <p><b>Официальный язык:</b> <a href="https://mars-wiki.ru/terms/marzan/">Marzān</a> (серпендидский диалект)</p>
+  <p><b>Столица:</b> <a href="https://mars-wiki.ru/geography/akha-tar/">Акха-Тар</a></p>
+  <p><b>Координаты столицы:</b> 42° ю.ш., 42° в.д.</p>
+  <p><b>Крупнейшие города:</b> Серпент-Сен, Аргир-Акха, Эллад-Тор, Кхонг-Мар, Дзен-Сур</p>
+  <p><b>Правящая династия:</b> Серпендиды (Серп I — Серп Великий — Серп III)</p>
+  <p><b>Годы существования:</b> ок. 300 г. Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ богини <a href="https://mars-wiki.ru/mythology/araksis/">Араксис</a> (ок. 50 %) и культ воинов (30 %)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~8 млн км²</li>
     <li>• % водной поверхности ~12 %</li>
   </ul>
 
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Оценка (2650 г. Э.О.) ~5,0 млн чел.</li>
     <li>• Плотность ~0,63 чел./км²</li>
   </ul>
 
-  <p><b>ВВП (ППС)</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Итого (2650 г.) ~10 млн глиняных талантов</li>
     <li>• На душу населения ~2,0 таланта</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
-  <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2610 г. Э.О.)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (с 2610 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b></p>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
+  </div>
+
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/khong/">Кхонг</a>
+      <a href="https://mars-wiki.ru/geography/khong/">Кхонг</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eden/">Эдем</a>
+      <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритреи" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eritrea/">Эритрея</a>
+      <a href="https://mars-wiki.ru/geography/eritrea/">Эритрея</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/avsonia/">Авсония</a>
+      <a href="https://mars-wiki.ru/geography/avsonia/">Авсония</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/kimeria/">Кимерия</a>
+      <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
     </div>
   </div>
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/hellas-sea/">море Эллада</a>, <a href="/geography/argira-sea/">море Аргир</a>, <a href="/geography/eritrean-sea/">Эритрейское море</a>, <a href="/geography/dzen-mar-strait/">пролив Дзен-Мар</a></p>
-  <p><b>Крупнейшие реки</b> <a href="/geography/agaria-river/">Агария</a>, <a href="/geography/ares-river/">Арес</a></p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/history/hellas-kingdom/">Королевство Эллада</a>, <a href="/geography/serpents-corps/">Корпус скорпионов</a></p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/hellas-sea/">Море Эллада</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/argira-sea/">Море Аргир</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/eritrean-sea/">Эритрейское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/dzen-mar-strait/">Пролив Дзен-Мар</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие реки
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/agaria-river/">Агария</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/ares-river/">Арес</a></li>
+  </ul>
+
 </div>
 
 **Королевство Серпентида** (марс. *Serpentida Xal* — «Древняя Серпентида») — крупное воинственное южное государство Марса, располагавшееся на западном берегу моря Эллада, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **8 000 000 км²**[^1]. Протяжённость границ достигала **14 000 км**[^2]. Население Серпентиды в период расцвета (ок. 2650 г. Э.О.) достигало **5 000 000 человек**[^3], что делало его пятым по численности населения государством Марса. Столица — [Акха-Тар](https://mars-wiki.ru/geography/akha-tar/). Координаты столицы: 42° ю.ш., 42° в.д.[^4]. Государственный язык — *Marzān* (серпендидский диалект), также были распространены местные наречия[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Akha%E2%80%91Tar-is-the-capital-of-Serpentis..jpg" alt="Акха-Тар — столица Серпентиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Акха-Тар — столица Серпентиды. Реконструкция.</div>
+</div>
 
 Королевство Серпентида было **воинственным государством** с мощными военными традициями. По силе и численности войск оно немного уступало Эритрее, но обладало уникальным преимуществом — **наездниками на приручённых скорпионах**. Эти виды скорпионов водились только на территории Серпентиды и были приручены специально для военных целей[^7]. Согласно переписи населения, проведённой [Академией Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) в 2650 году Э.О., в стране проживали представители более **20 народностей и племён**, среди которых **серпендидцы** (потомки основателей королевства) составляли около **55 %**, а языком *Marzān* владели около **75 %** населения[^8].
 
@@ -100,7 +167,17 @@
 
 Серпентида граничила с **пятью государствами**: на юге — с [Кхонгом](https://mars-wiki.ru/geography/khong/), на северо-востоке — с [Эдемом](https://mars-wiki.ru/geography/eden/), на западе — с [Эритреей](https://mars-wiki.ru/geography/eritrea/), на юго-востоке — с [Авсонией](https://mars-wiki.ru/geography/avsonia/), на юге — с [Кимерией](https://mars-wiki.ru/geography/kimeria/)[^11]. В состав Серпентиды входили **12 провинций**, включая **7 областей**, **3 королевства-вассала**, **1 город-государство** (Акха-Тар) и **1 автономную область** (побережье моря Аргир)[^12]. Крупнейшими городами Серпентиды были Акха-Тар, Серпент-Сен, Аргир-Акха, Эллад-Тор и Кхонг-Мар. Всего в стране насчитывалось около **200 населённых пунктов**[^13].
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Serpentida-Fleet.jpg" alt="Флот Серпентиды" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Флот Серпентиды в море Эллада. Реконструкция.</div>
+</div>
+
 Крупнейшими водоёмами на территории Серпентиды были [море Эллада](https://mars-wiki.ru/geography/hellas-sea/), [море Аргир](https://mars-wiki.ru/geography/argira-sea/) и [Эритрейское море](https://mars-wiki.ru/geography/eritrean-sea/). Между морем Аргир и Эритрейским морем находился стратегически важный [пролив Дзен-Мар](https://mars-wiki.ru/geography/dzen-mar-strait/), который контролировался Серпентидой[^14]. Главные реки — [Агария](https://mars-wiki.ru/geography/agaria-river/) (полностью протекала по территории Серпентиды) и [Арес](https://mars-wiki.ru/geography/ares-river/) (её исток находился близ Серпент-Сена, но основная часть реки текла по территории Эдема)[^15].
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Riders-on-combat-scorpions.jpg" alt="Наездники на боевых скорпионах" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Наездники на боевых скорпионах — уникальное преимущество Серпентиды. Реконструкция.</div>
+</div>
 
 На территории Серпентиды располагалась часть **пустыни Ноахида** на юге, а также **степная зона** (королевство находилось на экваторе)[^16]. В горах на восточном берегу моря Аргир находилась **гора Ноя**[^17].
 
@@ -117,6 +194,11 @@
 ## Физико-географическая характеристика
 
 ### Географическое положение
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-steppe-plains-of-Serpentis.jpg" alt="Степные равнины Серпентиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Степные равнины Серпентиды. Реконструкция.</div>
+</div>
 
 Территория Королевства Серпентида в его заявленных границах составляла **8 000 000 км²**, что делало его шестым по площади государством Марса[^1]. Королевство располагалось в южной части планеты, занимая территории от западного берега моря Эллада до восточного берега моря Аргир[^2]. Омывалось водами моря Эллада, моря Аргир и Эритрейского моря[^3].
 
@@ -208,6 +290,11 @@
 
 ### Животный мир
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/2509gulliesclosenew.jpg" alt="Овраги на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Овраги в южном полушарии Марса. Снимок HiRISE (NASA).</div>
+</div>
+
 Фауна Серпентиды была уникальной благодаря **приручённым скорпионам** — эндемичному виду, водившемуся только на территории королевства. Эти скорпионы были приручены специально для военных целей и использовались как боевые животные[^2].
 
 Наиболее характерными обитателями были:
@@ -220,7 +307,7 @@
 
 ## История
 
-*Основная статья: [История Серпентиды](/history/serpentida/)*
+*Основная статья: [История Серпентиды](https://mars-wiki.ru/history/serpentida-history/)*
 
 Королевство Серпентида — одно из древнейших и самых воинственных государств Марса. Его история неразрывно связана с **завоеванием Королевства Эллада** и **войнами** с соседями[^1].
 
@@ -248,13 +335,16 @@
 
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/25090gullies.jpg" alt="Овраги на Марсе" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Овраги в южном полушарии Марса. Снимок HiRISE (NASA).</div>
+</div>
+
 С началом глобального похолодания экономика Серпентиды рухнула. Скорпионы вымерли от холода, флот замёрз в портах, и в **2740 году** королевство прекратило своё существование[^10].
 
 ---
 
 ## Государственное устройство
-
-*Основные статьи: [Государственный строй Серпентиды](/politics/serpentida-system/)*
 
 Серпентида была **военной монархией**[^1]. Власть короля передавалась по мужской линии династии **Серпендидов**. Король являлся верховным главнокомандующим армии[^2].
 
@@ -268,8 +358,6 @@
 
 ## Вооружённые силы
 
-*Основная статья: [Вооружённые силы Серпентиды](/military/serpentida-forces/)*
-
 Вооружённые силы Серпентиды были одними из самых сильных на Марсе, уступая только Эритрее[^1]. В **2650 году** численность армии составляла около **120 000 человек** (примерно 2,4 % населения)[^2].
 
 Армия делилась на[^3]:
@@ -282,8 +370,6 @@
 ---
 
 ## Экономика
-
-*Основная статья: [Экономика Серпентиды](/economy/serpentida/)*
 
 Экономика Серпентиды занимала **5-е место на Марсе** по объёму ВВП (ППС) — около **10 миллионов глиняных талантов** в 2650 году[^1]. Основой экономики были[^2]:
 
@@ -357,45 +443,23 @@
 
 ## Связанные статьи
 
-- [Акха-Тар](/geography/akha-tar/)
-- [Серпент-Сен](/geography/serpent-sen/)
 - [Море Эллада](/geography/hellas-sea/)
 - [Море Аргир](/geography/argira-sea/)
 - [Эритрейское море](/geography/eritrean-sea/)
-- [Пролив Дзен-Мар](/geography/dzen-mar-strait/)
-- [Река Агария](/geography/agaria-river/)
-- [Река Арес](/geography/ares-river/)
-- [Гора Ноя](/geography/mount-noya/)
-- [Пустыня Ноахида](/geography/noachida-desert/)
-- [Серп III](/people/serp-iii/)
-- [Корпус скорпионов](/geography/serpents-corps/)
 - [Королевство Эллада](/history/hellas-kingdom/)
-- [Тар-Ара](/people/tar-ara/)
 
 ---
 
 ## Примечания
 
-<references />
-
 [^1]: Данные о площади (~8 млн км²) и периметре границ (~14 000 км) получены с интерактивной карты Mars Explore на основе рельефа и границ Серпентиды.
-
 [^2]: Координаты столицы (42° ю.ш., 42° в.д.) соответствуют западной части моря Эллада на Марсе.
-
 [^3]: Географическое положение Серпентиды и её соседи описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^4]: История завоевания Королевства Эллада описана в хрониках Акха-Тара (архив Серпентиды).
-
 [^5]: Скорпионы и Корпус скорпионов описаны в военных табличках Серпентиды.
-
 [^6]: Реки Агария и Арес описаны в гидрологических табличках Академии Окхасена (2680 г. Э.О.).
-
 [^7]: Пролив Дзен-Мар и его стратегическое значение описаны в морских табличках Академии Окхасена.
-
 [^8]: Гора Ноя и Предагарский хребет описаны в географических табличках Академии Окхасена.
-
 [^9]: Вторжение Тар-Ары в 2722 году описано в дневниках Хевсура (табличка № 401, пещеры Фарсиды).
-
 [^10]: Море Эллада — реальный регион на Марсе, утверждённый МАС в 1973 году.
-
 [^11]: Данные о площади и периметре основаны на реальных измерениях рельефа Марса (NASA Mars Global Surveyor, MRO).

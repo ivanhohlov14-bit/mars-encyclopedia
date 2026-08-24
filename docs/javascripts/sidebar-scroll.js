@@ -1,43 +1,63 @@
 // docs/javascripts/sidebar-scroll.js
-// Сохраняет позицию прокрутки меню при переходе по ссылкам
+// Сохраняет позицию меню + плавный скролл к заголовку
 
 (function() {
     console.log('✅ sidebar-scroll.js загружен');
 
-    // Сохраняем позицию меню перед переходом
+    // === 1. СОХРАНЯЕМ ПОЗИЦИЮ МЕНЮ ===
     document.addEventListener('click', function(e) {
         const link = e.target.closest('a');
         if (!link) return;
         
-        // Проверяем, что это ссылка внутри бокового меню
         const sidebar = document.querySelector('.wy-nav-side');
         if (!sidebar) return;
         if (!sidebar.contains(link)) return;
         
-        // Проверяем, что это ссылка на страницу (не внешняя)
         const href = link.getAttribute('href');
         if (!href || href.startsWith('http') || href.startsWith('#')) return;
         
-        // Сохраняем позицию прокрутки меню
         const scrollY = sidebar.scrollTop;
         sessionStorage.setItem('sidebarScrollPosition', scrollY);
-        console.log('💾 Сохранена позиция меню:', scrollY);
+        console.log('💾 Позиция меню сохранена:', scrollY);
     });
 
-    // Восстанавливаем позицию меню после загрузки страницы
+    // === 2. ВОССТАНАВЛИВАЕМ ПОЗИЦИЮ МЕНЮ ===
     document.addEventListener('DOMContentLoaded', function() {
         const savedPosition = sessionStorage.getItem('sidebarScrollPosition');
-        if (savedPosition === null) return;
-        
-        const sidebar = document.querySelector('.wy-nav-side');
-        if (!sidebar) return;
-        
-        // Ждём, пока меню полностью загрузится
-        setTimeout(function() {
-            sidebar.scrollTop = parseInt(savedPosition);
-            console.log('🔄 Восстановлена позиция меню:', savedPosition);
-            // Очищаем сохранённую позицию, чтобы она не применялась повторно
-            sessionStorage.removeItem('sidebarScrollPosition');
-        }, 300);
+        if (savedPosition !== null) {
+            const sidebar = document.querySelector('.wy-nav-side');
+            if (sidebar) {
+                setTimeout(function() {
+                    sidebar.scrollTop = parseInt(savedPosition);
+                    console.log('🔄 Позиция меню восстановлена:', savedPosition);
+                    sessionStorage.removeItem('sidebarScrollPosition');
+                }, 300);
+            }
+        }
+
+        // === 3. ПЛАВНЫЙ СКРОЛЛ К ЗАГОЛОВКУ ===
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                setTimeout(function() {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 500);
+            }
+        }
+
+        // === 4. ПОДСВЕТКА АКТИВНОЙ СТАТЬИ (дополнительно) ===
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('.wy-menu-vertical a').forEach(function(a) {
+            const href = a.getAttribute('href');
+            if (href && href !== '#' && currentPath.endsWith(href)) {
+                a.style.color = '#6C63FF';
+                a.style.fontWeight = '600';
+                const parent = a.closest('li');
+                if (parent) {
+                    parent.style.borderLeft = '3px solid #6C63FF';
+                    parent.style.background = '#f0f0f0';
+                }
+            }
+        });
     });
 })();

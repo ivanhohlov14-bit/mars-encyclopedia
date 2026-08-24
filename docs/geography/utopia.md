@@ -1,14 +1,21 @@
 # Королевство Утопия
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Утопия</h3>
-  <hr>
-  
-  <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/utopia-kingdom-map.png" alt="Карта Королевства Утопия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Утопия. По данным Академии Окхасена (2650 г. Э.О.).</div>
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
-  <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
+
+<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Утопия</h3>
+  </div>
+
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/utopia-map-medieval.png" alt="Карта Королевства Утопия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Утопия. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Королевства Утопия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -19,9 +26,12 @@
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Утопии</div>
     </div>
   </div>
-  
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 500 г. Э.О. — основание Кан-Уга</li>
     <li>• 700 г. — объединение островов</li>
     <li>• 1000 г. — расцвет флота</li>
@@ -30,71 +40,134 @@
     <li>• 2738 г. — появление Великого водоворота</li>
     <li>• 2740 г. — гибель Утопии от цунами</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Utopia Mar</i> («Живая Утопия»)</p>
-  <p><b>Тип государства</b> Королевство (островная монархия)</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a> (утопийский диалект)</p>
-  <p><b>Столица</b> <a href="/geography/kan-ug/">Кан-Уг</a></p>
-  <p><b>Координаты столицы</b> 67° ю.ш., 156° в.д.</p>
-  <p><b>Крупнейшие города</b> Фар-Уг, Кан-Уг, Элизиум-Уг, Северный-Уг, Южный-Уг</p>
-  <p><b>Правящая династия</b> Угиды (Уг I — Уг Великий — Уг III)</p>
-  <p><b>Годы существования</b> ок. 500 г. Э.О. — 2740 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ богини <a href="/mythology/araksis/">Араксис</a> (ок. 60 %) и культ моря (30 %)</p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <p><b>Марсианское название:</b> <i>Utopia Mar</i> («Живая Утопия»)</p>
+  <p><b>Тип государства:</b> Королевство (островная монархия)</p>
+  <p><b>Официальный язык:</b> <a href="https://mars-wiki.ru/terms/marzan/">Marzān</a> (утопийский диалект)</p>
+  <p><b>Столица:</b> <a href="https://mars-wiki.ru/geography/kan-ug/">Кан-Уг</a></p>
+  <p><b>Координаты столицы:</b> 67° ю.ш., 156° в.д.</p>
+  <p><b>Крупнейшие города:</b> Фар-Уг, Кан-Уг, Элизиум-Уг, Северный-Уг, Южный-Уг</p>
+  <p><b>Правящая династия:</b> Угиды (Уг I — Уг Великий — Уг III)</p>
+  <p><b>Годы существования:</b> ок. 500 г. Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ богини <a href="https://mars-wiki.ru/mythology/araksis/">Араксис</a> (ок. 60 %) и культ моря (30 %)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~3 млн км²</li>
     <li>• % водной поверхности ~20 %</li>
   </ul>
 
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Оценка (2650 г. Э.О.) ~2,8 млн чел.</li>
     <li>• Плотность ~0,93 чел./км²</li>
   </ul>
 
-  <p><b>ВВП (ППС)</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Итого (2650 г.) ~8 млн глиняных талантов</li>
     <li>• На душу населения ~2,9 таланта</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
-  <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2600 г. Э.О.)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (с 2600 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b></p>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
+  </div>
+
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/kimeria/">Кимерия</a>
+      <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/arkadia/">Аркадия</a>
+      <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eden/">Эдем</a>
+      <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eridania/">Эридания</a>
+      <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
     </div>
   </div>
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/acidalia-sea/">Ацидалийское море</a>, <a href="/geography/zephyria-sea/">Зефирийское море</a>, <a href="/geography/amazon-sea/">Амазонское море</a>, <a href="/geography/world-ocean/">Мировой океан</a></p>
-  <p><b>Крупнейшие реки</b> (отсутствуют, островное государство)</p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/geography/great-whirlpool/">Великий водоворот</a>, <a href="/history/trade-war/">Торговая война</a></p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/acidalia-sea/">Ацидалийское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/zephyria-sea/">Зефирийское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/amazon-sea/">Амазонское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/world-ocean/">Мировой океан</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Связанные понятия
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
+    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/great-whirlpool/">Великий водоворот</a></li>
+    <li>• <a href="https://mars-wiki.ru/history/trade-war/">Торговая война</a></li>
+  </ul>
+
 </div>
 
 **Королевство Утопия** (марс. *Utopia Mar* — «Живая Утопия») — крупное островное государство Марса, располагавшееся в южной части планеты, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **3 000 000 км²**[^1]. Протяжённость границ достигала **6 300 км**[^2]. Население Утопии в период расцвета (ок. 2650 г. Э.О.) достигало **2 800 000 человек**[^3], что делало её одной из самых плотно населённых стран Марса. Столица — [Кан-Уг](https://mars-wiki.ru/geography/kan-ug/). Координаты столицы: 67° ю.ш., 156° в.д.[^4]. Государственный язык — *Marzān* (утопийский диалект), также были распространены местные наречия[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_cinematic_wide_shot_of_the_Utopia_archipelago_on_ancient_Mars_numerous_isla-0.jpg" alt="Архипелаг Утопии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Архипелаг Утопии. Реконструкция.</div>
+</div>
 
 Королевство Утопия было **островным государством**, состоящим из нескольких крупных и множества мелких островов, разбросанных по южной части Мирового океана[^7]. Утопийцы знали марсианский Мировой океан «как свои шесть пальцев» — их флот был самым большим и самым современным на Марсе[^8].
 
 Удивительной особенностью государства было то, что **все поселения заканчивались на «-Уг»**: Фар-Уг, Кан-Уг, Элизиум-Уг, Северный-Уг, Южный-Уг[^9]. Столица — Кан-Уг — была крупнейшим городом Утопии, расположенным на центральном острове[^10].
 
+
+
 Между островами были построены **большие и малые мосты** для передвижения. Мосты соединяли все острова в единую сеть, позволяя быстро перемещаться между ними без использования кораблей[^11].
+
+
 
 Утопия граничила **сухопутно только с Кимерией** на острове Элизиум. Все остальные границы были **водными**: по Ацидалийскому морю, Зефирийскому морю и Амазонскому морю[^12]. Водные границы проходили с Аркадией (на востоке экватора Амазонского моря), Эдемом (по Ацидалийскому морю) и Эриданией (в Зефирийском море на юго-востоке)[^13].
 
@@ -102,9 +175,21 @@
 
 Утопия имела **самый большой и самый современный военный флот в мире Марса**[^16]. Её корабли были быстрее и лучше вооружены, чем у любых других государств. Утопийцы знали Мировой океан как свои шесть пальцев — они могли предсказывать течения, штормы и находить путь в любую погоду[^17].
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Dramatic_cinematic_scene_of_the_Utopian_fleet_the_largest_and_most_advanced_navy-0.jpg" alt="Утопийский флот" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Утопийский флот — самый мощный на Марсе. Реконструкция.</div>
+</div>
+
 На юге от островов Утопии существовал **небольшой водоворот**, который со временем рос. К **2738 году** он стал настолько огромным, что его можно было наблюдать с орбиты Марса[^18]. Это явление стало одним из первых признаков умирания морей в Эпоху Умирания[^19].
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Dramatic_cinematic_shot_of_the_Great_Whirlpool_of_Utopia_in_2738_on_ancient_Mars-0.jpg" alt="Великий водоворот Утопии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Великий водоворот Утопии (2738 г. Э.О.). Реконструкция.</div>
+</div>
+
 В **2740 году** на страну обрушилась **волна цунами** такой силы, что землю смыло, не говоря уже о постройках. От Утопии осталось ровное место, будто там никогда не было городов, портов, гор и деревень... Вся цивилизация исчезла за один день[^20].
+
+
 
 ## Происхождение названия
 
@@ -165,7 +250,7 @@
 
 ## История
 
-*Основная статья: [История Утопии](/history/utopia/)*
+*Основная статья: [История Утопии](https://mars-wiki.ru/history/utopia-history/)*
 
 Королевство Утопия — одно из древнейших островных государств Марса. Его история неразрывно связана с **морем**, **торговлей** и **пиратством**[^1].
 
@@ -175,15 +260,32 @@
 
 ### Эпоха Основания (ок. 500–700 гг. Э.О.)
 
-Первые поселения на островах Утопии возникли в середине I тысячелетия Э.О. Письменная история начинается с **основания Кан-Уга** (ок. 500 г. Э.О.) — города, построенного на центральном острове[^2].
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_panoramic_view_of_Kan-Ug_the_capital_city_of_Utopia_on_ancient_Mars_built_o-0.jpg" alt="Кан-Уг — столица Утопии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Кан-Уг — столица Утопии. Реконструкция.</div>
+</div>
+
+Первые поселения на островах Утопии возникли в середине I тысячелетия Э.О., когда мореходы с южных берегов Эдема и Кимерии начали осваивать богатые рыбой воды Мирового океана. Они строили небольшие рыбацкие деревни на побережьях, постепенно превращая их в постоянные поселения. К 500 году Э.О. на центральном острове архипелага вырос город Кан-Уг, который стал центром притяжения для всех островитян. Его название происходило от древнего слова kan — «центр» или «сердце», и Ug — имени первого вождя, объединившего племена[^2].
 
 В **700 году Э.О.** правитель Кан-Уга **Уг** объединил все острова, создав **Королевство Утопия**[^3].
 
 ### Эпоха Расцвета (700–1670 гг. Э.О.)
 
-Эпоха Расцвета Утопии пришлась на период с 700 по 1670 годы Э.О. Королевство достигло пика могущества при **Уге Великом** (1000–1080 гг. Э.О.), который построил мощный флот и начал торговлю с другими государствами[^4].
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_cinematic_shot_of_the_massive_bridge_network_of_Utopia_on_ancient_Mars_the_-0.jpg" alt="Мосты Утопии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Мосты Утопии — чудо инженерии. Реконструкция.</div>
+</div>
+
+Настоящий расцвет наступил при **Уге Великом** (годы правления: 1000–1080 гг. Э.О.), который считается самым выдающимся правителем в истории Утопии. Он превратил разрозненные острова в единое государство, построив **мощный военный флот**, насчитывавший к концу его правления более 500 кораблей. При нём были возведены грандиозные мосты, соединившие все крупные острова, а столица Кан-Уг украсилась дворцами, храмами и портовыми сооружениями[^4].
+
+Уг Великий начал активную торговлю с соседними государствами — Эдемом, Кимерией и Аркадией. Утопийские корабли доставляли на материк сушёную рыбу, жемчуг, кораллы, а также уникальную глину для табличек, которую добывали на южных островах. В обмен они получали зерно, металлы и древесину, которых на островах не хватало. Благодаря этой торговле Утопия стала одной из самых богатых стран Марса[^4]
 
 ### Торговая война с Эдемом (1670–1675 гг.)
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_cinematic_battle_scene_of_the_Trade_War_between_Utopia_and_Eden_on_ancient_-0.jpg" alt="Торговая война с Эдемом" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Торговая война Утопии с Эдемом (1670–1675 гг. Э.О.). Реконструкция.</div>
+</div>
 
 В **1670 году** началась **Торговая война с Утопией** — конфликт с Эдемом за контроль над морскими торговыми путями[^5]. Война длилась пять лет и завершилась подписанием мирного договора, по которому Утопия сохранила контроль над своими водами, но пошла на уступки в торговле[^6].
 
@@ -197,13 +299,16 @@
 
 ### Гибель Утопии (2740 г.)
 
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Tragic_epic_cinematic_scene_of_the_destruction_of_Utopia_in_2740_on_ancient_Mars-0.jpg" alt="Гибель Утопии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Утопии — цунами 2740 года. Реконструкция.</div>
+</div>
+
 В **2740 году** на Утопию обрушилась **волна цунами** невиданной силы[^10]. Она смыла всё — города, порты, мосты, деревья, даже землю. От Утопии осталось ровное место, будто там никогда не было городов, портов, гор и деревень[^11]. Вся цивилизация исчезла за один день. Лишь несколько утопийцев, находившихся в море, спаслись и рассказали о гибели их родины[^12].
 
 ---
 
 ## Государственное устройство
-
-*Основные статьи: [Государственный строй Утопии](/politics/utopia-system/)*
 
 Утопия была **островной монархией**[^1]. Власть короля передавалась по мужской линии династии **Угидов**. Король считался верховным главнокомандующим флота[^2].
 
@@ -217,8 +322,6 @@
 
 ## Вооружённые силы
 
-*Основная статья: [Вооружённые силы Утопии](/military/utopia-forces/)*
-
 Вооружённые силы Утопии составляли основу обороны королевства. В **2650 году** численность армии составляла около **80 000 человек** (примерно 2,9 % населения)[^1].
 
 **Флот** Утопии был самым большим и самым современным в мире Марса[^2]. Он насчитывал более **2 000 кораблей** — от небольших рыбацких лодок до огромных военных галер[^3].
@@ -226,8 +329,6 @@
 ---
 
 ## Экономика
-
-*Основная статья: [Экономика Утопии](/economy/utopia/)*
 
 Экономика Утопии занимала **7-е место на Марсе** по объёму ВВП (ППС) — около **8 миллионов глиняных талантов** в 2650 году[^1]. Основой экономики были[^2]:
 
@@ -306,24 +407,23 @@
 
 ## Примечания
 
-<references />
-
 [^1]: Данные о площади (~3 млн км²) и периметре границ (~6 300 км) получены с интерактивной карты Mars Explore на основе рельефа и границ Утопии.
-
 [^2]: Координаты столицы (67° ю.ш., 156° в.д.) соответствуют южной части Утопии на Марсе.
-
 [^3]: Географическое положение Утопии и её соседи описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^4]: История Торговой войны с Эдемом описана в хрониках Утопии (архив Кан-Уга).
-
 [^5]: Великий водоворот и гибель Утопии описаны в дневниках выживших моряков (табличка № 401, пещеры Фарсиды).
-
-[^6]: Мосты Утопии описаны в инженерных табличках Академии Окхасена.
-
-[^7]: Утопийская рыба и морская торговля описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
-[^8]: Флот Утопии описан в военных табличках Академии Окхасена.
-
-[^9]: Равнина Утопия — реальный регион на Марсе, утверждённый МАС в 1973 году.
-
-[^10]: Данные о площади и периметре основаны на реальных измерениях рельефа Марса (NASA Mars Global Surveyor, MRO).
+[^6]: Мосты Утопии и их инженерные особенности описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.) и в хрониках Кан-Уга. Самый большой мост, соединявший Фар-Уг и Кан-Уг, упоминается как одно из семи чудес инженерии Марса.
+[^7]: Утопийская рыба и морская торговля описаны в торговых табличках Академии Окхасена (сводка 2650 г. Э.О.).
+[^8]: Флот Утопии и его превосходство описаны в военных табличках Академии Окхасена.
+[^9]: Традиция называть города на «-Уг» описана в хрониках Утопии и связана с именем первого короля Уга.
+[^10]: Равнина Утопия (*Utopia Planitia*) — реальный регион на Марсе, утверждённый Международным астрономическим союзом (МАС) в 1973 году.
+[^11]: Данные о площади и периметре основаны на реальных измерениях рельефа Марса (NASA Mars Global Surveyor, MRO).
+[^12]: Сухопутная граница Утопии с Кимерией на острове Элизиум описана в географических табличках Академии Окхасена (сводка 2650 г. Э.О.).
+[^13]: Водные границы Утопии по Ацидалийскому, Зефирийскому и Амазонскому морям описаны в морских табличках Академии Окхасена.
+[^14]: Перепись населения Академии Окхасена, 2650 г. Э.О., табличка № 34.
+[^15]: Хевсур, «Языки Утопии», пещеры Фарсиды.
+[^16]: Королевское казначейство Утопии, «Денежная система», табличка № 3.
+[^17]: Хевсур, «Королевская хроника Утопии», табличка № 45, пещеры Фарсиды.
+[^18]: Академия Окхасена, «Административное деление Утопии», 2650 г. Э.О.
+[^19]: Хевсур, «Религия Утопии», пещеры Фарсиды.
+[^20]: Хевсур, «Гибель Утопии», табличка № 402, пещеры Фарсиды.

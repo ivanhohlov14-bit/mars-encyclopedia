@@ -452,3 +452,60 @@ body.sidebar-hidden .wy-nav-side {
     pointer-events: none !important;
     opacity: 0 !important;
 }
+
+/* ===== УБИРАЕМ СИНЮЮ ШАПКУ НА ТЕЛЕФОНАХ ===== */
+@media (max-width: 768px) {
+    /* Скрываем синюю шапку с названием */
+    .wy-nav-top {
+        display: none !important;
+    }
+    
+    /* Убираем отступ, который создавала шапка */
+    .wy-nav-content-wrap {
+        margin-left: 0 !important;
+    }
+    
+    /* Делаем контент на всю ширину */
+    .wy-nav-content {
+        padding: 1rem !important;
+        max-width: 100% !important;
+    }
+    
+    /* Кнопка гамбургера (меню) — делаем меньше и аккуратнее */
+    .wy-nav-top .wy-nav-side-toggle {
+        position: fixed !important;
+        top: 10px !important;
+        left: 10px !important;
+        z-index: 9999 !important;
+        background: #6C63FF !important;
+        color: #fff !important;
+        border-radius: 4px !important;
+        padding: 6px 10px !important;
+        font-size: 18px !important;
+        border: none !important;
+    }
+    
+    /* Кнопка авторизации — смещаем, чтобы не мешала гамбургеру */
+    #auth-btn-container {
+        position: fixed !important;
+        top: 8px !important;
+        right: 10px !important;
+        z-index: 9999 !important;
+        background: rgba(255,255,255,0.95) !important;
+        border-radius: 20px !important;
+        padding: 4px 10px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        margin: 0 !important;
+        float: none !important;
+    }
+    
+    #auth-btn-container a {
+        font-size: 0.7rem !important;
+        padding: 2px 8px !important;
+    }
+    
+    #auth-btn-container img {
+        width: 24px !important;
+        height: 24px !important;
+    }
+}

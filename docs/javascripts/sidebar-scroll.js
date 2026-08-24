@@ -31,7 +31,7 @@
                     sidebar.scrollTop = parseInt(savedPosition);
                     console.log('🔄 Позиция меню восстановлена:', savedPosition);
                     sessionStorage.removeItem('sidebarScrollPosition');
-                }, 300);
+                }, 400);
             }
         }
 
@@ -45,7 +45,7 @@
             }
         }
 
-        // === 4. ПОДСВЕТКА АКТИВНОЙ СТАТЬИ (дополнительно) ===
+        // === 4. ПОДСВЕТКА АКТИВНОЙ СТАТЬИ ===
         const currentPath = window.location.pathname;
         document.querySelectorAll('.wy-menu-vertical a').forEach(function(a) {
             const href = a.getAttribute('href');

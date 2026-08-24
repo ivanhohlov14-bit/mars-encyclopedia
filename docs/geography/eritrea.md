@@ -1,14 +1,21 @@
 # Королевство Эритрей
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Эритрей</h3>
-  <hr>
-  
-  <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eritrea-kingdom-map.png" alt="Карта Королевства Эритрей" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Эритрей. По данным Академии Окхасена (2650 г. Э.О.).</div>
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
-  <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
+
+<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Эритрей</h3>
+  </div>
+
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eritrea-kingdom-map.png" alt="Карта Королевства Эритрей" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Эритрей. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Королевства Эритрей" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -19,9 +26,12 @@
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Эритрея</div>
     </div>
   </div>
-  
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 600 г. Э.О. — основание Эритрея</li>
     <li>• 800 г. — объединение кланов</li>
     <li>• 1200 г. — завоевание полуострова у Эдема</li>
@@ -30,69 +40,126 @@
     <li>• 2700 г. — пиратский мятеж, падение Эритрея</li>
     <li>• 2700 г. — провозглашение Королевства Ксанф</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Eritrea Xal</i> («Древний Эритрей»)</p>
-  <p><b>Тип государства</b> Королевство (военная монархия)</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a> (эритрейский диалект)</p>
-  <p><b>Столица</b> <a href="/geography/eritrea/">Эритрей</a></p>
-  <p><b>Координаты столицы</b> 15° с.ш., 75° з.д.</p>
-  <p><b>Крупнейшие города</b> Маринер-Акха, Дзен-Мар, Аргир-Тор, Оврен (сожжён в 2734 г.)</p>
-  <p><b>Правящая династия</b> Эритреиды (Эритрей I — Эритрей Великий — Эритрей III)</p>
-  <p><b>Годы существования</b> ок. 600 г. Э.О. — 2700 г. Э.О. (продолжилось как <a href="/geography/ksanf/">Королевство Ксанф</a>)</p>
-  <p><b>Гос. религия</b> культ бога <a href="/mythology/kho/">Кхо</a> (ок. 40 %) и культ войны (35 %)</p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <p><b>Марсианское название:</b> <i>Eritrea Xal</i> («Древний Эритрей»)</p>
+  <p><b>Тип государства:</b> Королевство (военная монархия)</p>
+  <p><b>Официальный язык:</b> <a href="https://mars-wiki.ru/terms/marzan/">Marzān</a> (эритрейский диалект)</p>
+  <p><b>Столица:</b> <a href="https://mars-wiki.ru/geography/eritrea/">Эритрей</a></p>
+  <p><b>Координаты столицы:</b> 15° с.ш., 75° з.д.</p>
+  <p><b>Крупнейшие города:</b> Маринер-Акха, Дзен-Мар, Аргир-Тор, Оврен (сожжён в 2734 г.)</p>
+  <p><b>Правящая династия:</b> Эритреиды (Эритрей I — Эритрей Великий — Эритрей III)</p>
+  <p><b>Годы существования:</b> ок. 600 г. Э.О. — 2700 г. Э.О. (продолжилось как <a href="https://mars-wiki.ru/geography/ksanf/">Королевство Ксанф</a>)</p>
+  <p><b>Гос. религия:</b> культ бога <a href="https://mars-wiki.ru/mythology/kho/">Кхо</a> (ок. 40 %) и культ войны (35 %)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~5 млн км²</li>
     <li>• % водной поверхности ~15 %</li>
   </ul>
 
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Оценка (2650 г. Э.О.) ~4,2 млн чел.</li>
     <li>• Плотность ~0,84 чел./км²</li>
   </ul>
 
-  <p><b>ВВП (ППС)</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Итого (2650 г.) ~9 млн глиняных талантов</li>
     <li>• На душу населения ~2,1 таланта</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
-  <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (с 2610 г. Э.О.)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (с 2610 г. Э.О.)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b></p>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
+  </div>
+
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/arkadia/">Аркадия</a>
+      <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eden/">Эдем</a>
+      <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/eridania/">Эридания</a>
+      <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/khong/">Кхонг</a>
+      <a href="https://mars-wiki.ru/geography/khong/">Кхонг</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="/geography/serpentida/">Серпентида</a>
+      <a href="https://mars-wiki.ru/geography/serpentida/">Серпентида</a>
     </div>
   </div>
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/argira-sea/">море Аргир</a>, <a href="/geography/mariner-gulf/">залив Маринера</a>, <a href="/geography/eritrean-sea/">Эритрейское море</a>, <a href="/geography/dzen-mar-strait/">пролив Дзен-Мар</a></p>
-  <p><b>Крупнейшие реки</b> <a href="/geography/eritrea-river/">Эритрей</a>, <a href="/geography/mariner-river/">Маринер</a></p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/history/pirate-kingdom/">Пиратское королевство</a>, <a href="/geography/ovren-village/">деревня Оврен</a>, <a href="/geography/ksanf/">Королевство Ксанф</a></p>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/argira-sea/">Море Аргир</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/mariner-gulf/">Залив Маринера</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/eritrean-sea/">Эритрейское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/dzen-mar-strait/">Пролив Дзен-Мар</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие реки
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="https://mars-wiki.ru/geography/eritrea-river/">Эритрей</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/mariner-river/">Маринер</a></li>
+  </ul>
+  
 </div>
 
-**Королевство Эритрей** (марс. *Eritrea Xal* — «Древний Эритрей») — самое воинственное и сильное по вооружению государство Марса до **2700 года Э.О.**, располагавшееся на западном побережье материка, контролируя стратегически важные проливы и морские пути. В **2700 году** пираты под предводительством Ксанфа подняли вооружённый мятеж, захватили власть и переименовали государство в [Королевство Ксанф](/geography/ksanf/)[^1]. По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **5 000 000 км²**[^2]. Протяжённость границ достигала **10 000 км**[^3]. Население Эритрея в период расцвета (ок. 2650 г. Э.О.) достигало **4 200 000 человек**[^4], что делало его шестым по численности населения государством Марса. Столица — [Эритрей](https://mars-wiki.ru/geography/eritrea/). Координаты столицы: 15° с.ш., 75° з.д.[^5]. Государственный язык — *Marzān* (эритрейский диалект), также были распространены местные наречия[^6]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^7].
+**Королевство Эритрей** (марс. *Eritrea Xal* — «Древний Эритрей») — самое воинственное и сильное по вооружению государство Марса до **2700 года Э.О.**, располагавшееся на западном побережье материка, контролируя стратегически важные проливы и морские пути. В **2700 году** пираты под предводительством Ксанфа подняли вооружённый мятеж, захватили власть и переименовали государство в [Королевство Ксанф](https://mars-wiki.ru/geography/ksanf/)[^1]. По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **5 000 000 км²**[^2]. Протяжённость границ достигала **10 000 км**[^3]. Население Эритрея в период расцвета (ок. 2650 г. Э.О.) достигало **4 200 000 человек**[^4], что делало его шестым по численности населения государством Марса. Столица — [Эритрей](https://mars-wiki.ru/geography/eritrea/). Координаты столицы: 15° с.ш., 75° з.д.[^5]. Государственный язык — *Marzān* (эритрейский диалект), также были распространены местные наречия[^6]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^7].
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Eritrean-Fleet.jpg" alt="Флот Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Флот Эритрея — самый мощный на Марсе. Реконструкция.</div>
+</div>
 
 Королевство Эритрей было самым воинственным государством Марса. По силе и численности войск оно **превосходило все остальные государства**, включая Эдем и Серпентиду[^8]. Согласно переписи населения, проведённой [Академией Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) в 2650 году Э.О., в стране проживали представители более **15 народностей и племён**, среди которых **эритрейцы** (потомки основателей королевства) составляли около **50 %**, а языком *Marzān* владели около **70 %** населения[^9]. Бо́льшая часть населения (около **40 %**) в религиозном отношении относила себя к почитанию бога огня [Кхо](https://mars-wiki.ru/mythology/kho/), однако в Эритрее также был силён **культ войны** (около **35 %** населения), что отражало милитаризованный характер государства[^10].
 
@@ -101,6 +168,11 @@
 Эритрей граничил с **пятью государствами и несколькими морями**: на западе — с [Аркадией](https://mars-wiki.ru/geography/arkadia/), на севере — с [Эдемом](https://mars-wiki.ru/geography/eden/), на юго-западе — с [Эриданией](https://mars-wiki.ru/geography/eridania/), на юге — с [Кхонгом](https://mars-wiki.ru/geography/khong/) (водные границы), на востоке — с [Серпентидой](https://mars-wiki.ru/geography/serpentida/) (водные границы)[^13]. Крупнейшими водоёмами на территории Эритрея были [море Аргир](https://mars-wiki.ru/geography/argira-sea/), [залив Маринера](https://mars-wiki.ru/geography/mariner-gulf/) и [Эритрейское море](https://mars-wiki.ru/geography/eritrean-sea/). Через территорию королевства проходил стратегически важный [пролив Дзен-Мар](https://mars-wiki.ru/geography/dzen-mar-strait/), соединявший море Аргир и Эритрейское море[^14].
 
 Эритрей был **самой сильной военной державой** Марса[^15]. Королевство отвоевало **полуостров у Эдема** возле залива Маринера, расширив свои границы[^16]. Однако постоянные войны истощили ресурсы, и к Эпохе Умирания Эритрей начал терять свою мощь. В 2700 году пираты под предводительством Ксанфа захватили власть, положив конец династии Эритреидов[^17].
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Pirate-Fleet-of-Eritrea.jpg" alt="Пиратский флот Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Пиратский флот Эритрея. Реконструкция.</div>
+</div>
 
 Через территорию Эритрея проходил путь Хевсура в долину Аргир. В **2734 году**, когда Хевсур шёл вместе с караваном в подземный храм, **деревня Оврен** была сожжена, и историк записал это в своих хрониках[^18].
 
@@ -117,6 +189,11 @@
 ### Географическое положение
 
 Территория Королевства Эритрей в его заявленных границах составляла **5 000 000 км²**[^1]. Королевство располагалось в западной части планеты, занимая территории от залива Маринера до Эритрейского моря[^2]. Омывалось водами моря Аргир, залива Маринера и Эритрейского моря[^3].
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Cost-of-Eritrea.jpg" alt="Побережье Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье Эритрейского моря. Реконструкция.</div>
+</div>
 
 Основная часть территории Эритрея была занята **прибрежными равнинами** и **невысокими холмами**. На севере королевства находился **полуостров**, отвоёванный у Эдема[^4].
 
@@ -165,7 +242,7 @@
 
 ## История
 
-*Основная статья: [История Эритрея](/history/eritrea/)*
+*Основная статья: [История Эритрея](https://mars-wiki.ru/history/eridania-history/)*
 
 Королевство Эритрей — одно из самых воинственных государств Марса. Его история неразрывно связана с **завоеваниями**, **войнами** и **пиратством**, которые в итоге привели к его падению в 2700 году[^1].
 
@@ -176,6 +253,11 @@
 ### Эпоха Основания (ок. 600–1200 гг. Э.О.)
 
 Первые поселения на полуострове Эритрейского моря возникли в середине I тысячелетия Э.О. Письменная история начинается с **основания Эритрея** (ок. 600 г. Э.О.) — города, построенного на полуострове[^2]. В **800 году Э.О.** правитель Эритрея объединил кланы, создав **Королевство Эритрей**[^3].
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Founding-of-Eritrea.jpg" alt="Основание Эритрея" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Эритрея. Реконструкция.</div>
+</div>
 
 ### Завоевание полуострова у Эдема (1200 г. Э.О.)
 
@@ -195,9 +277,14 @@
 
 В **2700 году**, воспользовавшись хаосом, пираты под предводительством **Ксанфа** подняли **вооружённый мятеж**[^14]. Они захватили столицу, убили правителя Эритрея III и объявили о создании **Королевства Ксанф**[^15]. Многие жители поддержали мятеж, так как видели в пиратах единственную надежду на выживание[^16].
 
-Серпендида, бывшая в союзе с Эритреем, не признала новую власть и объявила войну пиратам. Война длилась десять лет (2700–2710 гг.) и привела к потере Ксанфом значительных территорий[^17]. Подробнее о событиях после падения Эритрея см. статью [Королевство Ксанф](/geography/ksanf/)[^18].
+Серпендида, бывшая в союзе с Эритреем, не признала новую власть и объявила войну пиратам. Война длилась десять лет (2700–2710 гг.) и привела к потере Ксанфом значительных территорий[^17]. Подробнее о событиях после падения Эритрея см. статью [Королевство Ксанф](https://mars-wiki.ru/geography/ksanf/)[^18].
 
 ### Путь Хевсура через Эритрей (2734 г.)
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Burning-of-Ovren.jpg" alt="Сожжение Оврена" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Сожжение деревни Оврен. Реконструкция.</div>
+</div>
 
 В **2734 году** историк **Хевсур** проходил через территорию бывшего Эритрея (уже Королевства Ксанф) по пути в долину Аргир, где находился подземный храм[^19]. Его караван следовал через **деревню Оврен**, которая в том же году **была сожжена** — возможно, во время одного из военных конфликтов[^20].
 
@@ -206,8 +293,6 @@
 ---
 
 ## Государственное устройство
-
-*Основные статьи: [Государственный строй Эритрея](/politics/eritrea-system/)*
 
 Эритрей был **военной монархией**[^1]. Власть короля передавалась по мужской линии династии **Эритреидов**. Король являлся верховным главнокомандующим армии[^2].
 
@@ -221,8 +306,6 @@
 
 ## Вооружённые силы
 
-*Основная статья: [Вооружённые силы Эритрея](/military/eritrea-forces/)*
-
 Вооружённые силы Эритрея были **самыми сильными на Марсе**, превосходя все остальные государства[^1]. В **2650 году** численность армии составляла около **150 000 человек** (примерно 3,6 % населения)[^2].
 
 Армия делилась на[^3]:
@@ -234,8 +317,6 @@
 ---
 
 ## Экономика
-
-*Основная статья: [Экономика Эритрея](/economy/eritrea/)*
 
 Экономика Эритрея занимала **6-е место на Марсе** по объёму ВВП (ППС) — около **9 миллионов глиняных талантов** в 2650 году[^1]. Основой экономики были[^2]:
 
@@ -294,70 +375,34 @@
 ## Связанные статьи
 
 - [Эритрей](/geography/eritrea/)
-- [Эритрейское море](/geography/eritrean-sea/)
-- [Залив Маринера](/geography/mariner-gulf/)
-- [Море Аргир](/geography/argira-sea/)
-- [Пролив Дзен-Мар](/geography/dzen-mar-strait/)
-- [Пиратское королевство](/history/pirate-kingdom/)
-- [Королевство Ксанф](/geography/ksanf/)
-- [Деревня Оврен](/geography/ovren-village/)
-- [Эритрей III](/people/eritrea-iii/)
-- [Хевсур](/people/hevsur/)
-
+  
 ---
 
 ## Примечания
 
-<references />
-
 [^1]: «Книга Ксанфа», табличка № 1, найденная Хевсуром на полуострове Эритрейского моря.
-
 [^2]: Данные о площади (~5 млн км²) и периметре границ (~10 000 км) получены с интерактивной карты Mars Explore на основе рельефа и границ Эритрея.
-
 [^3]: Координаты столицы (15° с.ш., 75° з.д.) соответствуют западной части Эритрейского моря на Марсе.
-
 [^4]: Перепись населения Академии Окхасена, 2650 г. Э.О., табличка № 34.
-
 [^5]: Географическое положение Эритрея и его соседи описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
-
 [^6]: Хевсур, «Языки Эритрея», пещеры Фарсиды.
-
 [^7]: Королевское казначейство, «Денежная система Эритрея», табличка № 3.
-
 [^8]: Военные таблички Академии Окхасена, сводка 2650 г. Э.О.
-
 [^9]: Перепись населения Академии Окхасена, 2650 г. Э.О., табличка № 41.
-
 [^10]: Хевсур, «Религия Эритрея», пещеры Фарсиды.
-
 [^11]: «Свиток А», раздел «Государственное устройство», табличка № 7.
-
 [^12]: Хевсур, «Королевская хроника», табличка № 45, пещеры Фарсиды.
-
 [^13]: Академия Окхасена, «Границы Эритрея», 2650 г. Э.О.
-
 [^14]: Хевсур, «Пролив Дзен-Мар», пещеры Фарсиды.
-
 [^15]: Военные таблички Академии Окхасена, сводка 2650 г. Э.О.
-
 [^16]: Хроники Эритрея, табличка № 89, архив Академии Окхасена.
-
 [^17]: Хевсур, «Падение Эритрея», табличка № 401, пещеры Фарсиды.
-
 [^18]: Хевсур, «Путь через Оврен», табличка № 402, пещеры Фарсиды.
-
 [^19]: Хевсур, «Экспедиция в храм», табличка № 403, пещеры Фарсиды.
-
 [^20]: Хевсур, «Сожжение Оврена», табличка № 404, пещеры Фарсиды.
-
 [^21]: «Летопись Хевсура», книга II, гл. 4.
-
 [^22]: Хевсур, «Мятеж пиратов», табличка № 405, пещеры Фарсиды.
-
 [^23]: Хевсур, «Провозглашение Ксанфа», табличка № 406, пещеры Фарсиды.
-
 [^24]: Хевсур, «Война с Серпендидой», табличка № 407, пещеры Фарсиды.
-
 [^25]: Эритрейское море — реальный регион на Марсе, утверждённый МАС в 1973 году.
-
 [^26]: Данные о площади и периметре основаны на реальных измерениях рельефа Марса (NASA Mars Global Surveyor, MRO).

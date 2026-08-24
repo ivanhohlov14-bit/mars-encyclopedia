@@ -1,5 +1,5 @@
 // docs/javascripts/comments.js
-// Единый код — комментарии + модерация
+// ИСПРАВЛЕННАЯ ВЕРСИЯ
 
 (function() {
     console.log('✅ comments.js загружен');
@@ -19,7 +19,7 @@
             .from('comments')
             .select('*, profiles!comments_user_id_fkey(username, display_name, avatar_url)')
             .eq('article_slug', articleSlug)
-            .eq('is_hidden', false)  // <-- не показываем скрытые
+            .eq('is_hidden', false)
             .order('created_at', { ascending: true });
 
         if (error) {

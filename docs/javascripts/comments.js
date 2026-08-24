@@ -15,12 +15,13 @@
         const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         // Получаем комментарии (только видимые, не скрытые модератором)
-        const { data: comments, error } = await client
-            .from('comments')
-            .select('*, profiles!comments_user_id_fkey(username, display_name, avatar_url)')
-            .eq('article_slug', articleSlug)
-            .eq('is_hidden', false)
-            .order('created_at', { ascending: true });
+       const { data: comments, error } = await client
+    .from('comments')
+    .select('*, profiles(username, display_name, avatar_url)')
+    .eq('article_slug', articleSlug)
+    .eq('is_hidden', false)
+    .order('created_at', { ascending: true });
+
 
         if (error) {
             console.error('Ошибка загрузки комментариев:', error);

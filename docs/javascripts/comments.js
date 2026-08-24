@@ -15,10 +15,10 @@
 
         // Получаем комментарии для этой статьи
         const { data: comments, error } = await client
-            .from('comments')
-            .select('*, profiles(username, avatar_url, display_name)')
-            .eq('article_slug', articleSlug)
-            .order('created_at', { ascending: true });
+    .from('comments')
+    .select('*')
+    .eq('article_slug', articleSlug)
+    .order('created_at', { ascending: true });
 
         if (error) {
             console.error('Ошибка загрузки комментариев:', error);

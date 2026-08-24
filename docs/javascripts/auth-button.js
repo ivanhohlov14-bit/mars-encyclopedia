@@ -1,5 +1,5 @@
 // docs/javascripts/auth-button.js
-// УНИВЕРСАЛЬНАЯ ВЕРСИЯ — работает на ПК и телефонах
+// ФИНАЛЬНАЯ ВЕРСИЯ — ПК + ТЕЛЕФОН + СОХРАНЕНИЕ СЕССИИ
 
 console.log('✅ auth-button.js загружен');
 
@@ -15,7 +15,6 @@ console.log('✅ auth-button.js загружен');
             supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
             console.log('✅ Supabase инициализирован');
             authInitialized = true;
-            // Даём время на загрузку DOM
             setTimeout(renderButton, 300);
         } else {
             console.log('⏳ Ожидание загрузки Supabase...');
@@ -33,18 +32,16 @@ console.log('✅ auth-button.js загружен');
         const isMobile = window.innerWidth <= 768;
         console.log('📱 Режим:', isMobile ? 'Телефон' : 'ПК');
 
-        // Создаём контейнер
         container = document.createElement('div');
         container.id = 'auth-btn-container';
 
         if (isMobile) {
-            // === ТЕЛЕФОН: вставляем в шапку .wy-nav-top ===
             const header = document.querySelector('.wy-nav-top');
             if (header) {
                 container.style.cssText = `
                     display: flex !important;
                     align-items: center !important;
-                    gap: 4px !important;
+                    gap: 3px !important;
                     margin-left: auto !important;
                     flex-shrink: 0 !important;
                 `;
@@ -55,7 +52,7 @@ console.log('✅ auth-button.js загружен');
             }
         }
 
-        // === ПК: вставляем в header ===
+        // ПК: пробуем header
         let header = document.querySelector('header');
         if (header) {
             container.style.cssText = `
@@ -71,12 +68,33 @@ console.log('✅ auth-button.js загружен');
                 z-index: 1000;
             `;
             header.appendChild(container);
-            console.log('✅ Кнопка вставлена в ПК-шапку');
+            console.log('✅ Кнопка вставлена в header (ПК)');
             updateAuthUI(container);
             return;
         }
 
-        // === Запасной вариант: body ===
+        // ПК: пробуем .wy-nav-content-wrap
+        let wrap = document.querySelector('.wy-nav-content-wrap');
+        if (wrap) {
+            container.style.cssText = `
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                float: right;
+                margin-top: 6px;
+                margin-right: 10px;
+                flex-wrap: wrap;
+                max-width: 100%;
+                position: relative;
+                z-index: 1000;
+            `;
+            wrap.prepend(container);
+            console.log('✅ Кнопка вставлена в .wy-nav-content-wrap (ПК)');
+            updateAuthUI(container);
+            return;
+        }
+
+        // Запасной вариант
         console.warn('⚠️ Шапка не найдена, вставляем в body');
         container.style.cssText = `
             position: fixed !important;
@@ -96,7 +114,6 @@ console.log('✅ auth-button.js загружен');
         updateAuthUI(container);
     }
 
-    // --- Получение данных профиля ---
     async function fetchProfile(userId) {
         if (!supabaseClient) return null;
         try {
@@ -132,6 +149,13 @@ console.log('✅ auth-button.js загружен');
                 const user = data?.session?.user;
                 console.log('👤 Пользователь:', user ? user.email : 'не авторизован');
 
+                // Сохраняем сессию принудительно
+                if (user && data?.session) {
+                    try {
+                        localStorage.setItem('supabase.auth.token', JSON.stringify(data.session));
+                    } catch (e) {}
+                }
+
                 const isMobile = window.innerWidth <= 768;
 
                 if (user) {
@@ -140,16 +164,14 @@ console.log('✅ auth-button.js загружен');
                     const avatarUrl = profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=6C63FF&color=fff&size=32&rounded=true`;
 
                     if (isMobile) {
-                        // === ТЕЛЕФОН: компактно ===
                         container.innerHTML = `
-                            <div style="display: flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.12); border-radius: 20px; padding: 2px 6px 2px 4px; border: 1px solid rgba(255,255,255,0.1);">
-                                <img src="${avatarUrl}" alt="Avatar" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover;">
-                                <a href="/profile/" style="color: #fff; text-decoration: none; font-size: 0.6rem; opacity: 0.9;">Профиль</a>
-                                <a href="#" onclick="logoutUser(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.6rem;">Выйти</a>
+                            <div style="display: flex; align-items: center; gap: 3px; background: rgba(255,255,255,0.12); border-radius: 20px; padding: 2px 6px 2px 4px; border: 1px solid rgba(255,255,255,0.1);">
+                                <img src="${avatarUrl}" alt="Avatar" style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover;">
+                                <a href="/profile/" style="color: #fff; text-decoration: none; font-size: 0.5rem; opacity: 0.9;">Проф</a>
+                                <a href="#" onclick="logoutUser(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.5rem;">Выйти</a>
                             </div>
                         `;
                     } else {
-                        // === ПК: полная версия ===
                         container.innerHTML = `
                             <div style="display: flex; align-items: center; gap: 6px; background: #f5f5f5; padding: 4px 10px; border-radius: 20px; flex-wrap: wrap;">
                                 <img src="${avatarUrl}" alt="Avatar" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover;">
@@ -160,12 +182,24 @@ console.log('✅ auth-button.js загружен');
                         `;
                     }
                 } else {
-                    // === НЕ АВТОРИЗОВАН ===
+                    // Проверяем, есть ли сохранённая сессия в localStorage
+                    try {
+                        const saved = localStorage.getItem('supabase.auth.token');
+                        if (saved) {
+                            const session = JSON.parse(saved);
+                            if (session && session.user) {
+                                // Восстанавливаем сессию
+                                supabaseClient.auth.setSession(session);
+                                return;
+                            }
+                        }
+                    } catch (e) {}
+
                     if (isMobile) {
                         container.innerHTML = `
-                            <div style="display: flex; align-items: center; gap: 4px;">
-                                <a href="/login/" style="color: #fff; text-decoration: none; font-size: 0.65rem; opacity: 0.8;">Войти</a>
-                                <a href="/register/" style="color: #fff; background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 12px; text-decoration: none; font-size: 0.65rem;">Рег</a>
+                            <div style="display: flex; align-items: center; gap: 3px;">
+                                <a href="/login/" style="color: #fff; text-decoration: none; font-size: 0.55rem; opacity: 0.8;">Войти</a>
+                                <a href="/register/" style="color: #fff; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 12px; text-decoration: none; font-size: 0.55rem;">Рег</a>
                             </div>
                         `;
                     } else {
@@ -206,6 +240,9 @@ console.log('✅ auth-button.js загружен');
 
     function clearLocalSession() {
         console.log('🧹 Очищаем локальные данные...');
+        try {
+            localStorage.removeItem('supabase.auth.token');
+        } catch (e) {}
         const keysToRemove = [];
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
@@ -222,7 +259,6 @@ console.log('✅ auth-button.js загружен');
         });
     }
 
-    // Запуск
     if (document.readyState === 'complete' || document.readyState === 'interactive') {
         initSupabase();
     } else {

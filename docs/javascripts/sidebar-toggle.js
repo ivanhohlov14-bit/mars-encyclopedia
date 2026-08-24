@@ -1,18 +1,14 @@
 // docs/javascripts/sidebar-toggle.js
-// Только для ПК — на телефонах не работает
+// Версия с CSS-классами для гарантированного растягивания
 
 console.log('✅ sidebar-toggle.js загружен');
 
-// Если это телефон — выходим
-if (window.innerWidth <= 768) {
-    console.log('📱 Телефон: кнопка сворачивания меню отключена');
-    // Не выполняем код дальше
-    return;
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Ещё раз проверяем на телефоне
-    if (window.innerWidth <= 768) return;
+    // Проверяем телефон уже после загрузки DOM
+    if (window.innerWidth <= 768) {
+        console.log('📱 Телефон: кнопка сворачивания меню отключена');
+        return;
+    }
 
     const sidebar = document.querySelector('.wy-nav-side');
     if (!sidebar) {
@@ -79,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleBtn.style.display = 'none';
         } else {
             toggleBtn.style.display = 'block';
-            // Проверяем, что класс снят при возврате на ПК
+            // Если класс остался — снимаем
             if (document.body.classList.contains('sidebar-hidden')) {
                 document.body.classList.remove('sidebar-hidden');
                 sidebar.style.marginLeft = '0';

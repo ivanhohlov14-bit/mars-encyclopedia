@@ -1,4 +1,5 @@
 // docs/javascripts/comments.js
+// Единый код — комментарии + модерация
 
 (function() {
     console.log('✅ comments.js загружен');
@@ -13,12 +14,13 @@
 
         const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // Получаем комментарии для этой статьи
+        // Получаем комментарии (только видимые, не скрытые модератором)
         const { data: comments, error } = await client
-    .from('comments')
-    .select('*')
-    .eq('article_slug', articleSlug)
-    .order('created_at', { ascending: true });
+            .from('comments')
+            .select('*, profiles!comments_user_id_fkey(username, display_name, avatar_url)')
+            .eq('article_slug', articleSlug)
+            .eq('is_hidden', false)  // <-- не показываем скрытые
+            .order('created_at', { ascending: true });
 
         if (error) {
             console.error('Ошибка загрузки комментариев:', error);
@@ -30,6 +32,17 @@
         const { data: session } = await client.auth.getSession();
         const user = session?.session?.user;
 
+        // Проверяем, не забанен ли пользователь
+        let isBanned = false;
+        if (user) {
+            const { data: profile } = await client
+                .from('profiles')
+                .select('is_banned')
+                .eq('user_id', user.id)
+                .single();
+            isBanned = profile?.is_banned || false;
+        }
+
         // Строим дерево комментариев
         const topComments = comments.filter(c => !c.parent_id);
         const nestedComments = buildCommentTree(comments, user?.id);
@@ -39,7 +52,7 @@
                 <div style="margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px; text-align: center; color: #999;">
                     Пока нет комментариев. Будьте первым!
                 </div>
-                ${await renderCommentForm(articleSlug, containerId)}
+                ${await renderCommentForm(articleSlug, containerId, isBanned)}
             `;
             return;
         }
@@ -50,12 +63,9 @@
                 <div id="comments-list">
                     ${nestedComments}
                 </div>
-                ${await renderCommentForm(articleSlug, containerId)}
+                ${await renderCommentForm(articleSlug, containerId, isBanned)}
             </div>
         `;
-
-        // Добавляем обработчики для лайков и кнопок
-        attachHandlers(containerId, user);
     }
 
     // === ПОСТРОЕНИЕ ДЕРЕВА КОММЕНТАРИЕВ ===
@@ -78,8 +88,9 @@
         });
 
         function renderComment(comment, depth = 0) {
-            const displayName = comment.profiles?.display_name || comment.profiles?.username || 'Аноним';
-            const avatar = comment.profiles?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=6C63FF&color=fff&size=32`;
+            const profile = comment.profiles || {};
+            const displayName = profile.display_name || profile.username || 'Аноним';
+            const avatar = profile.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=6C63FF&color=fff&size=32`;
             const isOwn = userId === comment.user_id;
             const indent = depth * 20;
 
@@ -122,7 +133,7 @@
     }
 
     // === ФОРМА ДОБАВЛЕНИЯ КОММЕНТАРИЯ ===
-    async function renderCommentForm(articleSlug, containerId) {
+    async function renderCommentForm(articleSlug, containerId, isBanned) {
         const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         const { data: session } = await client.auth.getSession();
         const user = session?.session?.user;
@@ -131,6 +142,14 @@
             return `
                 <div style="margin: 16px 0; padding: 16px; background: #f8f9fa; border-radius: 8px; text-align: center;">
                     <a href="/login/" style="color: #6C63FF;">Войдите</a> или <a href="/register/" style="color: #6C63FF;">зарегистрируйтесь</a>, чтобы оставить комментарий.
+                </div>
+            `;
+        }
+
+        if (isBanned) {
+            return `
+                <div style="margin: 16px 0; padding: 16px; background: #fff5f5; border-radius: 8px; text-align: center; border: 1px solid #f5c6cb;">
+                    ⛔ Вы забанены и не можете оставлять комментарии.
                 </div>
             `;
         }
@@ -171,6 +190,19 @@
             return;
         }
 
+        // Проверяем, не забанен ли пользователь
+        const { data: profile } = await client
+            .from('profiles')
+            .select('is_banned')
+            .eq('user_id', user.id)
+            .single();
+
+        if (profile?.is_banned) {
+            status.textContent = '⛔ Вы забанены и не можете оставлять комментарии.';
+            status.style.color = '#c0392b';
+            return;
+        }
+
         const { error } = await client
             .from('comments')
             .insert([{
@@ -189,12 +221,10 @@
         status.style.color = '#27ae60';
         input.value = '';
 
-        // Начисляем опыт за комментарий
         if (typeof window.addExperience === 'function') {
             window.addExperience(user.id, 5);
         }
 
-        // Перезагружаем комментарии
         setTimeout(() => loadComments(articleSlug, containerId), 500);
     }
 
@@ -209,7 +239,6 @@
             return;
         }
 
-        // Проверяем, не ставил ли пользователь уже лайк
         const { data: existing } = await client
             .from('comment_likes')
             .select('like_type')
@@ -222,19 +251,16 @@
                 alert('Вы уже оценили этот комментарий.');
                 return;
             }
-            // Обновляем
             const { error } = await client
                 .from('comment_likes')
                 .update({ like_type: likeType })
                 .eq('user_id', user.id)
                 .eq('comment_id', commentId);
-
             if (error) {
                 console.error('Ошибка обновления лайка:', error);
                 return;
             }
         } else {
-            // Создаём новый лайк
             const { error } = await client
                 .from('comment_likes')
                 .insert([{
@@ -242,14 +268,12 @@
                     comment_id: commentId,
                     like_type: likeType
                 }]);
-
             if (error) {
                 console.error('Ошибка добавления лайка:', error);
                 return;
             }
         }
 
-        // Обновляем счётчик лайков в комментарии
         const { data: likesData } = await client
             .from('comment_likes')
             .select('like_type')
@@ -263,7 +287,6 @@
             .update({ likes, dislikes })
             .eq('id', commentId);
 
-        // Обновляем на странице
         const commentEl = document.querySelector(`[data-comment-id="${commentId}"]`);
         if (commentEl) {
             const likeSpan = commentEl.querySelector('.like-count');
@@ -271,26 +294,6 @@
             if (likeSpan) likeSpan.textContent = likes;
             if (dislikeSpan) dislikeSpan.textContent = dislikes;
         }
-
-        // Обновляем счетчик лайков в таблице
-        await updateCommentLikes(commentId);
-    }
-
-    // === ОБНОВЛЕНИЕ ЛАЙКОВ В ТАБЛИЦЕ ===
-    async function updateCommentLikes(commentId) {
-        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        const { data: likesData } = await client
-            .from('comment_likes')
-            .select('like_type')
-            .eq('comment_id', commentId);
-
-        const likes = likesData?.filter(l => l.like_type === 1).length || 0;
-        const dislikes = likesData?.filter(l => l.like_type === -1).length || 0;
-
-        await client
-            .from('comments')
-            .update({ likes, dislikes })
-            .eq('id', commentId);
     }
 
     // === УДАЛЕНИЕ КОММЕНТАРИЯ ===
@@ -308,7 +311,6 @@
             return;
         }
 
-        // Перезагружаем комментарии
         const container = document.getElementById('comments-container');
         const articleSlug = container?.dataset?.articleSlug;
         if (articleSlug) {
@@ -365,7 +367,18 @@
             return;
         }
 
-        // Находим article_slug родительского комментария
+        const { data: profile } = await client
+            .from('profiles')
+            .select('is_banned')
+            .eq('user_id', user.id)
+            .single();
+
+        if (profile?.is_banned) {
+            status.textContent = '⛔ Вы забанены.';
+            status.style.color = '#c0392b';
+            return;
+        }
+
         const { data: parentComment } = await client
             .from('comments')
             .select('article_slug')
@@ -397,12 +410,10 @@
         status.style.color = '#27ae60';
         input.value = '';
 
-        // Начисляем опыт за комментарий
         if (typeof window.addExperience === 'function') {
             window.addExperience(user.id, 5);
         }
 
-        // Перезагружаем комментарии
         const container = document.getElementById('comments-container');
         const articleSlug = container?.dataset?.articleSlug;
         if (articleSlug) {

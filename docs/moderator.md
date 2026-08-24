@@ -1,7 +1,7 @@
 <h1>🛡️ Панель модерации</h1>
 
 <div id="moderator-container">
-    <p style="text-align: center; color: #999; padding: 40px;">⏳ Загрузка...</p>
+    <p style="text-align: center; color: #999; padding: 40px;">Загрузка...</p>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!user) {
             document.getElementById('moderator-container').innerHTML = `
                 <div style="text-align: center; padding: 40px;">
-                    <p>⚠️ Вы не авторизованы.</p>
+                    <p style="font-size: 1.2rem;">⚠️ Вы не авторизованы.</p>
                     <a href="/login/" style="color: #6C63FF;">Войти</a>
                 </div>
             `;
@@ -40,13 +40,14 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('moderator-container').innerHTML = `
                 <div style="text-align: center; padding: 40px;">
                     <p style="font-size: 1.5rem;">⛔ У вас нет прав модератора.</p>
-                    <a href="/profile/" style="color: #6C63FF;">Вернуться в профиль</a>
+                    <p style="color: #999;">Только модераторы имеют доступ к этой странице.</p>
+                    <a href="/profile/" style="color: #6C63FF; display: inline-block; margin-top: 16px;">← Вернуться в профиль</a>
                 </div>
             `;
             return;
         }
 
-        // Загружаем комментарии (без JOIN)
+        // Загружаем комментарии
         await loadModeratorPanel(client);
     });
 });
@@ -54,28 +55,36 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadModeratorPanel(client) {
     const container = document.getElementById('moderator-container');
 
-    // 1. Получаем ВСЕ комментарии
+    // Получаем все комментарии
     const { data: comments, error } = await client
         .from('comments')
         .select('*')
         .order('created_at', { ascending: false });
 
     if (error) {
-        container.innerHTML = `<p>⚠️ Ошибка загрузки: ${error.message}</p>`;
-        return;
-    }
-
-    if (!comments || comments.length === 0) {
         container.innerHTML = `
             <div style="text-align: center; padding: 40px;">
-                <p style="font-size: 1.2rem;">📭 Комментариев пока нет.</p>
+                <p>⚠️ Ошибка загрузки: ${error.message}</p>
                 <a href="/profile/" style="color: #6C63FF;">← Вернуться в профиль</a>
             </div>
         `;
         return;
     }
 
-    // 2. Получаем профили пользователей отдельно
+    // Если комментариев нет
+    if (!comments || comments.length === 0) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 12px; border: 1px solid #eaecf0;">
+                <p style="font-size: 1.5rem; margin: 0;">📭</p>
+                <p style="font-size: 1.2rem; color: #555; margin: 8px 0;">Комментариев пока нет</p>
+                <p style="color: #999; font-size: 0.9rem;">Когда пользователи оставят комментарии, они появятся здесь.</p>
+                <a href="/profile/" style="color: #6C63FF; display: inline-block; margin-top: 16px;">← Вернуться в профиль</a>
+            </div>
+        `;
+        return;
+    }
+
+    // Получаем профили пользователей
     const userIds = [...new Set(comments.map(c => c.user_id))];
     let profilesMap = {};
     if (userIds.length > 0) {
@@ -89,11 +98,11 @@ async function loadModeratorPanel(client) {
         }
     }
 
-    // 3. Собираем комментарии с профилями
+    // Собираем данные
     const commentsWithProfiles = comments.map(c => ({
         ...c,
-        profiles: profilesMap[c.user_id] || { 
-            display_name: 'Аноним', 
+        profiles: profilesMap[c.user_id] || {
+            display_name: 'Аноним',
             username: 'Аноним',
             avatar_url: null,
             is_banned: false,
@@ -112,7 +121,9 @@ async function loadModeratorPanel(client) {
             <div><strong>📝 Всего комментариев:</strong> ${total}</div>
             <div><strong>👁️ Видимых:</strong> ${visible}</div>
             <div><strong>🚫 Скрытых:</strong> ${hidden}</div>
-            <div><a href="/profile/" style="color: #6C63FF;">← Вернуться в профиль</a></div>
+            <div style="margin-left: auto;">
+                <a href="/profile/" style="color: #6C63FF;">← Вернуться в профиль</a>
+            </div>
         </div>
 
         <!-- Список комментариев -->
@@ -131,7 +142,7 @@ function renderComment(comment) {
     const isModerator = profile.role === 'moderator';
 
     let statusColor = '#27ae60';
-    let statusText = 'Видимый';
+    let statusText = '✅ Видимый';
     if (isHidden) {
         statusColor = '#f39c12';
         statusText = '🚫 Скрыт';
@@ -145,40 +156,58 @@ function renderComment(comment) {
         statusText = '🛡️ Модератор';
     }
 
+    // Если статусов несколько — показываем основной
+    if (isBanned) {
+        statusColor = '#c0392b';
+        statusText = '⛔ Забанен';
+    } else if (isHidden) {
+        statusColor = '#f39c12';
+        statusText = '🚫 Скрыт';
+    } else if (isModerator) {
+        statusColor = '#6C63FF';
+        statusText = '🛡️ Модератор';
+    }
+
+    // Ссылка на статью
+    const articleUrl = comment.article_slug ? `/${comment.article_slug}/` : '#';
+
     return `
         <div style="
             background: ${isHidden ? '#f9f9f9' : '#fff'};
             border: 1px solid ${isHidden ? '#ddd' : '#eaecf0'};
             border-radius: 8px;
-            padding: 12px 16px;
+            padding: 14px 18px;
             ${isHidden ? 'opacity: 0.7;' : ''}
+            transition: all 0.2s;
         ">
             <!-- Шапка -->
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
-                <img src="${avatar}" alt="Avatar" style="width: 28px; height: 28px; border-radius: 50%;">
-                <strong style="font-size: 0.9rem;">${displayName}</strong>
+                <img src="${avatar}" alt="Avatar" style="width: 32px; height: 32px; border-radius: 50%; border: 2px solid #eee;">
+                <strong style="font-size: 0.95rem;">${displayName}</strong>
                 <span style="font-size: 0.75rem; color: #999;">${new Date(comment.created_at).toLocaleString('ru-RU')}</span>
-                <span style="font-size: 0.7rem; background: ${statusColor}; color: #fff; padding: 1px 10px; border-radius: 12px;">${statusText}</span>
-                <span style="font-size: 0.75rem; color: #6C63FF; background: #f0f0ff; padding: 1px 10px; border-radius: 12px;">📄 ${comment.article_slug}</span>
+                <span style="font-size: 0.7rem; background: ${statusColor}; color: #fff; padding: 1px 12px; border-radius: 12px; font-weight: 500;">${statusText}</span>
+                <a href="${articleUrl}" target="_blank" style="font-size: 0.75rem; color: #6C63FF; background: #f0f0ff; padding: 1px 10px; border-radius: 12px; text-decoration: none;">
+                    📄 ${comment.article_slug}
+                </a>
             </div>
             
-            <!-- Текст -->
-            <div style="font-size: 0.95rem; line-height: 1.5; padding-left: 38px; ${isHidden ? 'text-decoration: line-through; color: #999;' : ''}">
+            <!-- Текст комментария -->
+            <div style="font-size: 0.95rem; line-height: 1.6; padding-left: 42px; ${isHidden ? 'text-decoration: line-through; color: #999;' : ''}">
                 ${comment.content}
             </div>
             
-            <!-- Кнопки -->
-            <div style="padding-left: 38px; margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <!-- Кнопки управления -->
+            <div style="padding-left: 42px; margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
                 <button onclick="toggleHideComment('${comment.id}')" 
-                        style="padding: 4px 14px; background: ${isHidden ? '#27ae60' : '#f39c12'}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                        style="padding: 4px 14px; background: ${isHidden ? '#27ae60' : '#f39c12'}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; transition: opacity 0.2s;">
                     ${isHidden ? '👁️ Показать' : '🚫 Скрыть'}
                 </button>
                 <button onclick="deleteComment('${comment.id}')" 
-                        style="padding: 4px 14px; background: #c0392b; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                        style="padding: 4px 14px; background: #c0392b; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; transition: opacity 0.2s;">
                     🗑️ Удалить
                 </button>
                 <button onclick="banUser('${comment.user_id}', '${displayName}')" 
-                        style="padding: 4px 14px; background: ${isBanned ? '#27ae60' : '#c0392b'}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                        style="padding: 4px 14px; background: ${isBanned ? '#27ae60' : '#c0392b'}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem; transition: opacity 0.2s;">
                     ${isBanned ? '✅ Разбанить' : '⛔ Забанить'}
                 </button>
             </div>
@@ -186,10 +215,10 @@ function renderComment(comment) {
     `;
 }
 
-// === УПРАВЛЕНИЕ ===
+// ===== ФУНКЦИИ УПРАВЛЕНИЯ =====
 
 async function toggleHideComment(commentId) {
-    if (!confirm('Скрыть/показать комментарий?')) return;
+    if (!confirm('Скрыть или показать этот комментарий?')) return;
 
     const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const { data: comment } = await client
@@ -214,7 +243,7 @@ async function toggleHideComment(commentId) {
 }
 
 async function deleteComment(commentId) {
-    if (!confirm('Удалить комментарий навсегда?')) return;
+    if (!confirm('Удалить комментарий навсегда? Это действие необратимо.')) return;
 
     const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     const { error } = await client
@@ -256,6 +285,7 @@ async function banUser(userId, username) {
         return;
     }
 
+    // Если забанили — скрываем все его комментарии
     if (newStatus) {
         await client
             .from('comments')
@@ -267,6 +297,7 @@ async function banUser(userId, username) {
     location.reload();
 }
 
+// Делаем функции глобальными
 window.toggleHideComment = toggleHideComment;
 window.deleteComment = deleteComment;
 window.banUser = banUser;

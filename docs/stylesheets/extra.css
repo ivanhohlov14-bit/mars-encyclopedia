@@ -394,52 +394,76 @@ body.sidebar-hidden .wy-nav-side {
     padding: 0 8px !important;
   }
   
-  /* --- 4. КНОПКА АВТОРИЗАЦИИ (СПРАВА) --- */
-  #auth-btn-container {
-    position: static !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    float: none !important;
-    order: 2 !important;
-    flex-shrink: 0 !important;
-    z-index: 99999 !important;
-  }
-  
-  #auth-btn-container a {
-    font-size: 0.7rem !important;
-    padding: 4px 10px !important;
-    border-radius: 16px !important;
-    color: #fff !important;
-  }
-  
-  #auth-btn-container a[href="/login/"] {
-    color: #fff !important;
-    opacity: 0.8 !important;
-  }
-  
-  #auth-btn-container a[href="/register/"] {
-    background: rgba(255,255,255,0.2) !important;
-    color: #fff !important;
-  }
-  
-  #auth-btn-container img {
-    width: 24px !important;
-    height: 24px !important;
-  }
-  
-  #auth-btn-container .user-username {
-    color: #fff !important;
-    max-width: 50px !important;
-    font-size: 0.7rem !important;
-  }
-  
-  #auth-btn-container .user-info {
-    background: rgba(255,255,255,0.15) !important;
-    border-radius: 20px !important;
-    padding: 2px 8px 2px 4px !important;
-  }
+ /* --- 4. КНОПКА АВТОРИЗАЦИИ (СПРАВА) --- */
+#auth-btn-container {
+  position: static !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  float: none !important;
+  order: 2 !important;
+  flex-shrink: 0 !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+#auth-btn-container a {
+  font-size: 0.7rem !important;
+  padding: 4px 10px !important;
+  border-radius: 16px !important;
+  color: #fff !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+
+#auth-btn-container a[href="/login/"] {
+  color: #fff !important;
+  opacity: 0.8 !important;
+}
+
+#auth-btn-container a[href="/register/"] {
+  background: rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+}
+
+#auth-btn-container img {
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  border: 2px solid rgba(255,255,255,0.3) !important;
+}
+
+#auth-btn-container .user-username {
+  color: #fff !important;
+  max-width: 50px !important;
+  font-size: 0.65rem !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#auth-btn-container .user-info {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  background: rgba(255,255,255,0.15) !important;
+  border-radius: 20px !important;
+  padding: 2px 8px 2px 4px !important;
+}
+
+#auth-btn-container .user-info a {
+  color: #fff !important;
+  font-size: 0.65rem !important;
+  padding: 2px 6px !important;
+  text-decoration: none !important;
+}
+
+#auth-btn-container .user-info a:hover {
+  text-decoration: underline !important;
+}
   
   /* --- 5. КОНТЕНТ --- */
   .wy-nav-content-wrap {

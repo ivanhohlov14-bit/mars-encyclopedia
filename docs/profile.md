@@ -328,10 +328,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     </span>
                 </div>
                 <div style="flex: 1; min-width: 150px;">
-                    <h2 style="margin: 0; font-size: 1.4rem;">
-                        ${displayName}
-                        <button class="help-trigger" onclick="showHelp('Имя пользователя', 'Ваше уникальное имя на сайте. Вы можете изменить его в настройках профиля.')">?</button>
-                    </h2>
+                    <h2 style="margin: 0; font-size: 1.4rem; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+    <span>${displayName}</span>
+    ${currentProfile.role === 'moderator' ? `
+        <span style="
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: #fff;
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        ">
+            🛡️ Модератор
+        </span>
+    ` : ''}
+    <button class="help-trigger" onclick="showHelp('Имя пользователя', 'Ваше уникальное имя.')">?</button>
+</h2>
                     <p style="margin: 0; color: #666; font-size: 0.9rem;">${user.email}</p>
                     <p style="margin: 4px 0 0 0; font-size: 0.9rem; color: #555;">
                         ⭐ Уровень ${userLevel}
@@ -547,9 +561,11 @@ document.addEventListener('DOMContentLoaded', function() {
             <hr>
 
             <p>
-                <a href="/stats/" style="color: ${kingdom.color};">📊 Моя статистика</a> | 
-                <a href="#" onclick="logoutUser(); return false;" style="color: ${kingdom.color};">Выйти</a>
-            </p>
+    <a href="/stats/" style="color: ${kingdom.color};">📊 Моя статистика</a>
+    ${currentProfile.role === 'moderator' ? `| <a href="/moderator/" style="color: ${kingdom.color}; font-weight: 600;">🛡️ Панель модератора</a>` : ''}
+    | <a href="#" onclick="logoutUser(); return false;" style="color: ${kingdom.color};">Выйти</a>
+</p>
+
         `;
 
         window._profileClient = client;

@@ -419,7 +419,7 @@
 
 <div style="text-align: center; margin: 20px 0;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Araksis-Temple-in-Cimmeria.png" alt="Храм Араксис в Кимерии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Храм Араксис в Кимерии — святилище богини воды на побережье Зефирийского моря. Реконструкция.</div>
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Храм Араксис — святилище богини воды на побережье моря Эллады. Реконструкция.</div>
 </div>
 
 Типичными сооружениями были[^2]:

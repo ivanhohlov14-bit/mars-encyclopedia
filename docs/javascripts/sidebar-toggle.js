@@ -1,10 +1,17 @@
 // docs/javascripts/sidebar-toggle.js
-// Версия с CSS-классами для гарантированного растягивания
+// Только для ПК — на телефонах не работает
 
 console.log('✅ sidebar-toggle.js загружен');
 
+// Если это телефон — выходим
+if (window.innerWidth <= 768) {
+    console.log('📱 Телефон: кнопка сворачивания меню отключена');
+    // Не выполняем код дальше
+    return;
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Только на ПК
+    // Ещё раз проверяем на телефоне
     if (window.innerWidth <= 768) return;
 
     const sidebar = document.querySelector('.wy-nav-side');
@@ -18,29 +25,32 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleBtn.id = 'sidebar-toggle-btn';
     toggleBtn.innerHTML = '◀ Скрыть меню';
     toggleBtn.style.cssText = `
-    position: fixed;
-    left: 10px;
-    top: 10px;
-    z-index: 9999;
-    background: #6C63FF;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 8px 14px;
-    font-size: 14px;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    cursor: pointer;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
-    transition: all 0.3s;
-    opacity: 0.3; /* <-- добавляем прозрачность */
-`;
+        position: fixed;
+        left: 10px;
+        top: 10px;
+        z-index: 9999;
+        background: #6C63FF;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 14px;
+        font-size: 14px;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        cursor: pointer;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+        transition: all 0.3s;
+        opacity: 0.3;
+    `;
+
     toggleBtn.onmouseenter = function() {
         this.style.background = '#5a52d5';
         this.style.boxShadow = '0 4px 20px rgba(108,99,255,0.4)';
+        this.style.opacity = '1';
     };
     toggleBtn.onmouseleave = function() {
         this.style.background = '#6C63FF';
         this.style.boxShadow = '0 2px 12px rgba(0,0,0,0.25)';
+        this.style.opacity = '0.3';
     };
 
     document.body.prepend(toggleBtn);
@@ -50,13 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleBtn.addEventListener('click', function() {
         isHidden = !isHidden;
         if (isHidden) {
-            // Добавляем класс на body
             document.body.classList.add('sidebar-hidden');
             sidebar.style.marginLeft = '-300px';
             sidebar.style.transition = 'margin-left 0.3s';
             toggleBtn.innerHTML = '☰ Показать меню';
         } else {
-            // Убираем класс
             document.body.classList.remove('sidebar-hidden');
             sidebar.style.marginLeft = '0';
             toggleBtn.innerHTML = '◀ Скрыть меню';
@@ -71,8 +79,14 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleBtn.style.display = 'none';
         } else {
             toggleBtn.style.display = 'block';
+            // Проверяем, что класс снят при возврате на ПК
+            if (document.body.classList.contains('sidebar-hidden')) {
+                document.body.classList.remove('sidebar-hidden');
+                sidebar.style.marginLeft = '0';
+                toggleBtn.innerHTML = '◀ Скрыть меню';
+            }
         }
     });
 
-    console.log('✅ Кнопка меню создана (с классами)');
+    console.log('✅ Кнопка меню создана (ПК)');
 });

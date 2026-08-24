@@ -30,47 +30,34 @@ console.log('✅ auth-button.js загружен');
             return;
         }
 
-        // Ищем куда вставить кнопку
-        let target = null;
-        
-        // 1. Пробуем вставить в шапку (телефон)
-        const header = document.querySelector('.wy-nav-top');
-        if (header) {
-            // Проверяем, есть ли уже контейнер
-            let existing = document.getElementById('auth-btn-container');
-            if (existing) {
-                updateAuthUI(existing);
+        const isMobile = window.innerWidth <= 768;
+        console.log('📱 Режим:', isMobile ? 'Телефон' : 'ПК');
+
+        // Создаём контейнер
+        container = document.createElement('div');
+        container.id = 'auth-btn-container';
+
+        if (isMobile) {
+            // === ТЕЛЕФОН: вставляем в шапку .wy-nav-top ===
+            const header = document.querySelector('.wy-nav-top');
+            if (header) {
+                container.style.cssText = `
+                    display: flex !important;
+                    align-items: center !important;
+                    gap: 4px !important;
+                    margin-left: auto !important;
+                    flex-shrink: 0 !important;
+                `;
+                header.appendChild(container);
+                console.log('✅ Кнопка вставлена в шапку телефона');
+                updateAuthUI(container);
                 return;
             }
-            
-            // Вставляем в шапку телефона (справа)
-            container = document.createElement('div');
-            container.id = 'auth-btn-container';
-            container.style.cssText = `
-                display: flex !important;
-                align-items: center !important;
-                gap: 6px !important;
-                margin-left: auto !important;
-                flex-shrink: 0 !important;
-            `;
-            header.appendChild(container);
-            console.log('✅ Кнопка вставлена в шапку телефона');
-            updateAuthUI(container);
-            return;
         }
 
-        // 2. Если шапки нет — ищем стандартный header (ПК)
-        let pcHeader = document.querySelector('header');
-        if (pcHeader) {
-            // Ищем контейнер
-            let existing = document.getElementById('auth-btn-container');
-            if (existing) {
-                updateAuthUI(existing);
-                return;
-            }
-            
-            container = document.createElement('div');
-            container.id = 'auth-btn-container';
+        // === ПК: вставляем в header ===
+        let header = document.querySelector('header');
+        if (header) {
             container.style.cssText = `
                 display: inline-flex;
                 align-items: center;
@@ -83,21 +70,14 @@ console.log('✅ auth-button.js загружен');
                 position: relative;
                 z-index: 1000;
             `;
-            pcHeader.appendChild(container);
+            header.appendChild(container);
             console.log('✅ Кнопка вставлена в ПК-шапку');
             updateAuthUI(container);
             return;
         }
 
-        // 3. Если ничего не нашли — вставляем в body
+        // === Запасной вариант: body ===
         console.warn('⚠️ Шапка не найдена, вставляем в body');
-        let existing = document.getElementById('auth-btn-container');
-        if (existing) {
-            updateAuthUI(existing);
-            return;
-        }
-        container = document.createElement('div');
-        container.id = 'auth-btn-container';
         container.style.cssText = `
             position: fixed !important;
             top: 10px !important;
@@ -116,6 +96,7 @@ console.log('✅ auth-button.js загружен');
         updateAuthUI(container);
     }
 
+    // --- Получение данных профиля ---
     async function fetchProfile(userId) {
         if (!supabaseClient) return null;
         try {
@@ -151,34 +132,50 @@ console.log('✅ auth-button.js загружен');
                 const user = data?.session?.user;
                 console.log('👤 Пользователь:', user ? user.email : 'не авторизован');
 
+                const isMobile = window.innerWidth <= 768;
+
                 if (user) {
                     const profile = await fetchProfile(user.id);
                     const username = profile?.display_name || profile?.username || user.user_metadata?.username || user.email.split('@')[0];
                     const avatarUrl = profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=6C63FF&color=fff&size=32&rounded=true`;
 
-                    // На телефоне показываем компактно
-                    const isMobile = window.innerWidth <= 768;
-                    const compact = isMobile ? ' style="font-size:0.6rem; padding:2px 6px;"' : '';
-
-                    container.innerHTML = `
-                        <div style="display: flex; align-items: center; gap: 4px;">
-                            <img src="${avatarUrl}" alt="Avatar" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover;">
-                            ${!isMobile ? `<span style="font-size:0.75rem; color:#333; max-width:60px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${username}</span>` : ''}
-                            <a href="/profile/"${compact} style="color: #6C63FF; text-decoration: none;">Профиль</a>
-                            <a href="#" onclick="logoutUser(); return false;"${compact} style="color: #c0392b; text-decoration: none;">Выйти</a>
-                        </div>
-                    `;
+                    if (isMobile) {
+                        // === ТЕЛЕФОН: компактно ===
+                        container.innerHTML = `
+                            <div style="display: flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.12); border-radius: 20px; padding: 2px 6px 2px 4px; border: 1px solid rgba(255,255,255,0.1);">
+                                <img src="${avatarUrl}" alt="Avatar" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover;">
+                                <a href="/profile/" style="color: #fff; text-decoration: none; font-size: 0.6rem; opacity: 0.9;">Профиль</a>
+                                <a href="#" onclick="logoutUser(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.6rem;">Выйти</a>
+                            </div>
+                        `;
+                    } else {
+                        // === ПК: полная версия ===
+                        container.innerHTML = `
+                            <div style="display: flex; align-items: center; gap: 6px; background: #f5f5f5; padding: 4px 10px; border-radius: 20px; flex-wrap: wrap;">
+                                <img src="${avatarUrl}" alt="Avatar" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover;">
+                                <span style="font-size: 0.75rem; color: #333; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${username}</span>
+                                <a href="/profile/" style="color: #6C63FF; text-decoration: none; font-size: 0.75rem; white-space: nowrap;">Профиль</a>
+                                <a href="#" onclick="logoutUser(); return false;" style="color: #c0392b; text-decoration: none; font-size: 0.75rem; white-space: nowrap;">Выйти</a>
+                            </div>
+                        `;
+                    }
                 } else {
-                    // Не авторизован — показываем кнопки входа/регистрации
-                    const isMobile = window.innerWidth <= 768;
-                    const compact = isMobile ? ' style="font-size:0.6rem; padding:2px 6px;"' : '';
-
-                    container.innerHTML = `
-                        <div style="display: flex; align-items: center; gap: 4px; flex-wrap: wrap;">
-                            <a href="/login/"${compact} style="color: #555; text-decoration: none;">Войти</a>
-                            <a href="/register/"${compact} style="color: #fff; background: #6C63FF; padding: 4px 12px; border-radius: 16px; text-decoration: none;">Регистрация</a>
-                        </div>
-                    `;
+                    // === НЕ АВТОРИЗОВАН ===
+                    if (isMobile) {
+                        container.innerHTML = `
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <a href="/login/" style="color: #fff; text-decoration: none; font-size: 0.65rem; opacity: 0.8;">Войти</a>
+                                <a href="/register/" style="color: #fff; background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 12px; text-decoration: none; font-size: 0.65rem;">Рег</a>
+                            </div>
+                        `;
+                    } else {
+                        container.innerHTML = `
+                            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                                <a href="/login/" style="color: #555; text-decoration: none; font-size: 0.8rem; white-space: nowrap;">Войти</a>
+                                <a href="/register/" style="color: #fff; background: #6C63FF; padding: 4px 12px; border-radius: 16px; text-decoration: none; font-size: 0.8rem; white-space: nowrap;">Регистрация</a>
+                            </div>
+                        `;
+                    }
                 }
             })
             .catch((error) => {
@@ -232,7 +229,6 @@ console.log('✅ auth-button.js загружен');
         document.addEventListener('DOMContentLoaded', initSupabase);
     }
 
-    // Дополнительный запуск через 2 секунды (на случай, если что-то пошло не так)
     setTimeout(function() {
         if (!document.getElementById('auth-btn-container')) {
             console.log('🔄 Повторная попытка вставки кнопки...');
@@ -240,7 +236,6 @@ console.log('✅ auth-button.js загружен');
         }
     }, 2000);
 
-    // Делаем функции глобальными
     window._supabaseClient = supabaseClient;
     window.logoutUser = logoutUser;
 })();

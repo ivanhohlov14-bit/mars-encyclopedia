@@ -14,6 +14,7 @@
             '/register/',
             '/stats/',
             '/profile-view/',
+            '/moderator/',  
             '/license/',
             '/support/',
             '/start-here/',

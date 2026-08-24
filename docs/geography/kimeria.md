@@ -1,5 +1,10 @@
 # Королевство Кимерия
 
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
+</div>
+
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
 
   <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
@@ -164,9 +169,9 @@
 
 **Королевство Кимерия** (марс. *Kimeria Xal* — «Древняя Кимерия») — крупное восточное государство Марса, располагавшееся на берегу Зефирийского моря, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **10 500 000 км²**[^1]. Протяжённость границ достигала **13 800 км**[^2]. Население Кимерии в период расцвета (ок. 2650 г. Э.О.) достигало **6 500 000 человек**[^3], что делало его третьим по численности населения государством Марса после Утопии и Эдема. Столица — [Кимерия](https://mars-wiki.ru/geography/kimeria/). Координаты столицы: 8° с.ш., 105° в.д.[^4]. Государственный язык — *Marzān* (восточный диалект), также были распространены местные наречия[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-coast.jpg" alt="Побережье Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье Зефирийского моря — сердце Кимерии. Реконструкция.</div>
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-coast-of-the-Zephyr-Sea.jpg" alt="Побережье Зефирийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье Зефирийского моря. Реконструкция.</div>
 </div>
 
 Королевство Кимерия было прибрежным и лесным государством, специализировавшимся на **рыболовстве**, **лесном промысле** и **контроле морских путей**. Согласно переписи населения, проведённой [Академией Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) в 2650 году Э.О., в стране проживали представители более **25 народностей и племён**, среди которых **кимерийцы** (потомки основателей королевства) составляли около **60 %**, а языком *Marzān* владели около **80 %** населения[^7]. Плотность населения была высокой, но немного меньше, чем в Эдеме[^8].
@@ -201,7 +206,7 @@
 ### Географическое положение
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-map-medieval.jpg" alt="Карта Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-map-medieval.png" alt="Карта Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Кимерия в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
 </div>
 
@@ -245,6 +250,11 @@
 
 ### Внутренние воды
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Tao-River-and-Canal.jpg" alt="Река Дао и канал" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Река Дао и водный канал. Реконструкция.</div>
+</div>
+
 Кимерия обладала значительными водными ресурсами. Поверхностные воды занимали **15 %** территории королевства[^2].
 
 Главная река — **Дао** — была соединена с Зефирийским морем водным каналом, что открывало прямой путь в море Эллада[^3].
@@ -268,6 +278,11 @@
 ---
 
 ## Почвы
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/2509gulliesclosenew.jpg" alt="Овраги на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Овраги в южном полушарии Марса. Снимок HiRISE (NASA).</div>
+</div>
 
 Почвы Кимерии были разнообразными[^1]:
 
@@ -307,7 +322,7 @@
 
 ## История
 
-*Основная статья: [История Кимерии](https://mars-wiki.ru/history/kimeria/)*
+*Основная статья: [История Кимерии](https://mars-wiki.ru/history/kimeria-history/)*
 
 Королевство Кимерия — одно из древнейших государств восточного Марса. Его история неразрывно связана с **войнами за острова** в Зефирийском море и море Эллада[^1].
 
@@ -319,7 +334,7 @@
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-hellas-war.jpg" alt="Война с Элладой" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Война с Королевством Эллада за северный остров. Реконструкция.</div>
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Война с Королевством Эллада. Реконструкция.</div>
 </div>
 
 В древности Кимерия вела **войны за северный остров моря Эллады** с Королевством Эллада[^2]. После нескольких сражений Кимерии удалось **отвоевать северо-восточную половину острова**[^3].
@@ -327,7 +342,7 @@
 ### Войны с Утопией за остров Элизиум
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-elysium-war.jpg" alt="Война за Элизиум" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-elysium-war.jpg" alt="Война с Утопией" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Война с Утопией за остров Элизиум. Реконструкция.</div>
 </div>
 
@@ -340,7 +355,7 @@
 ### Эпоха Основания (ок. 400–600 гг. Э.О.)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-foundation.jpg" alt="Основание Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-foundation.png" alt="Основание Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Кимерии. Реконструкция.</div>
 </div>
 
@@ -452,15 +467,9 @@
 ## Связанные статьи
 
 - [Кимерия](https://mars-wiki.ru/geography/kimeria/)
-- [Дао-Тор](https://mars-wiki.ru/geography/dao-tor/)
-- [Лес Тиррения](https://mars-wiki.ru/geography/tirrenia-forest/)
 - [Зефирийское море](https://mars-wiki.ru/geography/zephyria-sea/)
 - [Залив Большой Сирт](https://mars-wiki.ru/geography/gulf-of-sirte/)
 - [Море Эллада](https://mars-wiki.ru/geography/hellas-sea/)
-- [Река Дао](https://mars-wiki.ru/geography/dao-river/)
-- [Остров Элизиум](https://mars-wiki.ru/geography/elysium-island/)
-- [Пролив Элизиум-Акха](https://mars-wiki.ru/geography/elysium-akha-strait/)
-- [Кимер III](https://mars-wiki.ru/people/kimer-iii/)
 - [Королевство Эллада](https://mars-wiki.ru/history/hellas-kingdom/)
 - [Утопия](https://mars-wiki.ru/geography/utopia/)
 
@@ -478,3 +487,21 @@
 [^8]: Рыболовство и лесное дело Кимерии описаны в табличках Академии Окхасена (сводка 2650 г. Э.О.).
 [^9]: Зефирийское море и залив Большой Сирт — реальные регионы на Марсе, утверждённые МАС.
 [^10]: Данные о площади и периметре основаны на реальных измерениях рельефа Марса (NASA Mars Global Surveyor, MRO).
+[^11]: Соседние государства и границы Кимерии описаны в табличках Академии Окхасена (сводка 2650 года Э.О.).
+[^12]: Состав королевства (14 провинций, 8 областей, 3 вассальных королевства, 2 города-государства и 1 автономная область) реконструирован по административным табличкам из архивов Кимерии.
+[^13]: Крупнейшие города и общее число населённых пунктов (~300) установлены по переписи 2650 года Э.О.
+[^14]: Река Дао, водный канал и их соединение с Зефирийским морем описаны в гидрологических табличках Академии Окхасена (2680 год Э.О.).
+[^15]: Лес Тиррения — обширный лесной массив на северном берегу моря Эллада. Упоминается в географических табличках из Серпендиды и Кимерии.
+[^16]: Пролив Элизиум-Акха — стратегически важный водный путь, соединявший восточные и западные моря. Описан в морских табличках Академии Окхасена.
+[^17]: Рыболовство и лесное дело как основа экономики описаны в торговых табличках Кимерии (архив города Кимерия).
+[^18]: Зефирийское море (*Zephyria Sea*) — реальное образование на Марсе, подтверждённое снимками NASA Mars Global Surveyor и Mars Reconnaissance Orbiter.
+[^19]: Залив Большой Сирт (*Sirte Gulf*) — реальное образование на Марсе, утверждённое Международным астрономическим союзом (МАС). Название происходит от залива Сирт на Земле.
+[^20]: Море Эллада (*Hellas Sea*) — реальный ударный бассейн на Марсе. Снимки NASA подтверждают наличие древних водных отложений и минералов, образовавшихся в водной среде.
+[^21]: Река Дао — название связано с восточной философией, символизирует «путь» воды через королевство.
+[^22]: Остров Элизиум — реальный вулканический регион на Марсе (Elysium Mons). Название происходит от древнегреческой «Элизиум» — место обитания блаженных.
+[^23]: Пролив Элизиум-Акха — расположен между островом Элизиум и материком, соединяет Зефирийское море и море Эллада.
+[^24]: Образовательный уровень (75 % грамотности) основан на данных Академии Окхасена о количестве школ и писцов.
+[^25]: Религия Кимерии была связана с культом богини Араксис (воды) и духами леса Тиррения, о чём свидетельствуют храмовые таблички.
+[^26]: Архитектура Кимерии реконструирована по археологическим находкам (остатки портовых сооружений, базальтовых зданий и храмов Араксис).
+[^27]: Залив Большой Сирт и Зефирийское море — реальные регионы на Марсе, утверждённые МАС. Доказательства наличия воды в прошлом — хлоридные соли и русла рек (данные NASA Mars Global Surveyor, MRO).
+[^28]: Координаты столицы Кимерии (8° с.ш., 105° в.д.) выбраны в восточной части реального региона Зефирия, на основе карт Mars Global Surveyor.

@@ -157,7 +157,7 @@
 **Королевство Эритрей** (марс. *Eritrea Xal* — «Древний Эритрей») — самое воинственное и сильное по вооружению государство Марса до **2700 года Э.О.**, располагавшееся на западном побережье материка, контролируя стратегически важные проливы и морские пути. В **2700 году** пираты под предводительством Ксанфа подняли вооружённый мятеж, захватили власть и переименовали государство в [Королевство Ксанф](https://mars-wiki.ru/geography/ksanf/)[^1]. По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **5 000 000 км²**[^2]. Протяжённость границ достигала **10 000 км**[^3]. Население Эритрея в период расцвета (ок. 2650 г. Э.О.) достигало **4 200 000 человек**[^4], что делало его шестым по численности населения государством Марса. Столица — [Эритрей](https://mars-wiki.ru/geography/eritrea/). Координаты столицы: 15° с.ш., 75° з.д.[^5]. Государственный язык — *Marzān* (эритрейский диалект), также были распространены местные наречия[^6]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^7].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Eritrean-Fleet.jpg" alt="Флот Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_cinematic_wide_shot_of_the_Eritrean_fleet_sailing_across_the_ancient_Martia-0.jpg" alt="Флот Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Флот Эритрея — самый мощный на Марсе. Реконструкция.</div>
 </div>
 
@@ -186,17 +186,22 @@
 
 ## Физико-географическая характеристика
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-map-medieval.png" alt="Карта Королевства Эритрей" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Эритрей в середине II тысячелетия Э.О. По данным Академии Окхасена</div>
+</div>
+
 ### Географическое положение
 
 Территория Королевства Эритрей в его заявленных границах составляла **5 000 000 км²**[^1]. Королевство располагалось в западной части планеты, занимая территории от залива Маринера до Эритрейского моря[^2]. Омывалось водами моря Аргир, залива Маринера и Эритрейского моря[^3].
 
-<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Cost-of-Eritrea.jpg" alt="Побережье Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье Эритрейского моря. Реконструкция.</div>
-</div>
-
 Основная часть территории Эритрея была занята **прибрежными равнинами** и **невысокими холмами**. На севере королевства находился **полуостров**, отвоёванный у Эдема[^4].
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-sea-coast.jpeg" alt="Побережье Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье Эритрейского моря. Реконструкция.</div>
+</div>
+  
 Крайней северной точкой Эритрея являлся **мыс Эдемский** на границе с Эдемом (20° с.ш., 70° з.д.), крайней южной — **мыс Аргирский** на границе с Кхонгом (10° ю.ш., 75° з.д.)[^5]. Протяжённость территории Эритрея с запада на восток составляла около **3 500 км**, с севера на юг — превышала **2 500 км**[^6].
 
 ---
@@ -255,7 +260,7 @@
 Первые поселения на полуострове Эритрейского моря возникли в середине I тысячелетия Э.О. Письменная история начинается с **основания Эритрея** (ок. 600 г. Э.О.) — города, построенного на полуострове[^2]. В **800 году Э.О.** правитель Эритрея объединил кланы, создав **Королевство Эритрей**[^3].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Founding-of-Eritrea.jpg" alt="Основание Эритрея" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Founding-of-Eritrea.png" alt="Основание Эритрея" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Эритрея. Реконструкция.</div>
 </div>
 
@@ -305,6 +310,11 @@
 ---
 
 ## Вооружённые силы
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_portrait_of_a_six-fingered_Martian_warrior_from_the_kingdom_of_Eritrea_wear-0.jpg" alt="Эритрейский воин" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Эритрейский воин в бронзовых доспехах. Реконструкция.</div>
+</div>
 
 Вооружённые силы Эритрея были **самыми сильными на Марсе**, превосходя все остальные государства[^1]. В **2650 году** численность армии составляла около **150 000 человек** (примерно 3,6 % населения)[^2].
 

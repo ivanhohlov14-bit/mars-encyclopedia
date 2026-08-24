@@ -1,5 +1,5 @@
 // docs/javascripts/comments.js
-// ИСПРАВЛЕННАЯ ВЕРСИЯ
+// УПРОЩЁННАЯ ВЕРСИЯ — без JOIN, с отдельным запросом профилей
 
 (function() {
     console.log('✅ comments.js загружен');
@@ -14,14 +14,13 @@
 
         const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // Получаем комментарии (только видимые, не скрытые модератором)
-       const { data: comments, error } = await client
-    .from('comments')
-    .select('*, profiles(username, display_name, avatar_url)')
-    .eq('article_slug', articleSlug)
-    .eq('is_hidden', false)
-    .order('created_at', { ascending: true });
-
+        // 1. Получаем комментарии (без JOIN)
+        const { data: comments, error } = await client
+            .from('comments')
+            .select('*')
+            .eq('article_slug', articleSlug)
+            .eq('is_hidden', false)
+            .order('created_at', { ascending: true });
 
         if (error) {
             console.error('Ошибка загрузки комментариев:', error);
@@ -29,11 +28,35 @@
             return;
         }
 
-        // Получаем текущего пользователя
+        // 2. Получаем профили пользователей отдельно
+        const userIds = [...new Set(comments.map(c => c.user_id))];
+        let profilesMap = {};
+        if (userIds.length > 0) {
+            const { data: profiles, error: profileError } = await client
+                .from('profiles')
+                .select('user_id, username, display_name, avatar_url')
+                .in('user_id', userIds);
+
+            if (!profileError && profiles) {
+                profiles.forEach(p => profilesMap[p.user_id] = p);
+            }
+        }
+
+        // 3. Собираем комментарии с профилями
+        const commentsWithProfiles = comments.map(c => ({
+            ...c,
+            profiles: profilesMap[c.user_id] || { 
+                display_name: 'Аноним', 
+                username: 'Аноним',
+                avatar_url: null 
+            }
+        }));
+
+        // 4. Получаем текущего пользователя
         const { data: session } = await client.auth.getSession();
         const user = session?.session?.user;
 
-        // Проверяем, не забанен ли пользователь
+        // 5. Проверяем бан
         let isBanned = false;
         if (user) {
             const { data: profile } = await client
@@ -44,9 +67,9 @@
             isBanned = profile?.is_banned || false;
         }
 
-        // Строим дерево комментариев
-        const topComments = comments.filter(c => !c.parent_id);
-        const nestedComments = buildCommentTree(comments, user?.id);
+        // 6. Строим дерево комментариев
+        const topComments = commentsWithProfiles.filter(c => !c.parent_id);
+        const nestedComments = buildCommentTree(commentsWithProfiles, user?.id);
 
         if (topComments.length === 0) {
             container.innerHTML = `
@@ -69,7 +92,7 @@
         `;
     }
 
-    // === ПОСТРОЕНИЕ ДЕРЕВА КОММЕНТАРИЕВ ===
+    // === ПОСТРОЕНИЕ ДЕРЕВА ===
     function buildCommentTree(comments, userId) {
         const commentMap = {};
         comments.forEach(c => commentMap[c.id] = c);
@@ -133,7 +156,7 @@
         return roots.map(c => renderComment(c)).join('');
     }
 
-    // === ФОРМА ДОБАВЛЕНИЯ КОММЕНТАРИЯ ===
+    // === ФОРМА ДОБАВЛЕНИЯ ===
     async function renderCommentForm(articleSlug, containerId, isBanned) {
         const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         const { data: session } = await client.auth.getSession();
@@ -166,7 +189,7 @@
         `;
     }
 
-    // === ОТПРАВКА КОММЕНТАРИЯ ===
+    // === ОТПРАВКА ===
     async function submitComment(articleSlug, containerId) {
         const input = document.getElementById(`comment-input-${containerId}`);
         const status = document.getElementById(`comment-status-${containerId}`);
@@ -191,7 +214,6 @@
             return;
         }
 
-        // Проверяем, не забанен ли пользователь
         const { data: profile } = await client
             .from('profiles')
             .select('is_banned')
@@ -199,7 +221,7 @@
             .single();
 
         if (profile?.is_banned) {
-            status.textContent = '⛔ Вы забанены и не можете оставлять комментарии.';
+            status.textContent = '⛔ Вы забанены.';
             status.style.color = '#c0392b';
             return;
         }
@@ -229,7 +251,7 @@
         setTimeout(() => loadComments(articleSlug, containerId), 500);
     }
 
-    // === ЛАЙК КОММЕНТАРИЯ ===
+    // === ЛАЙК ===
     async function likeComment(commentId, likeType) {
         const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         const { data: session } = await client.auth.getSession();
@@ -252,27 +274,19 @@
                 alert('Вы уже оценили этот комментарий.');
                 return;
             }
-            const { error } = await client
+            await client
                 .from('comment_likes')
                 .update({ like_type: likeType })
                 .eq('user_id', user.id)
                 .eq('comment_id', commentId);
-            if (error) {
-                console.error('Ошибка обновления лайка:', error);
-                return;
-            }
         } else {
-            const { error } = await client
+            await client
                 .from('comment_likes')
                 .insert([{
                     user_id: user.id,
                     comment_id: commentId,
                     like_type: likeType
                 }]);
-            if (error) {
-                console.error('Ошибка добавления лайка:', error);
-                return;
-            }
         }
 
         const { data: likesData } = await client
@@ -297,7 +311,7 @@
         }
     }
 
-    // === УДАЛЕНИЕ КОММЕНТАРИЯ ===
+    // === УДАЛЕНИЕ ===
     async function deleteComment(commentId) {
         if (!confirm('Удалить комментарий?')) return;
 
@@ -319,7 +333,7 @@
         }
     }
 
-    // === ПОКАЗАТЬ ФОРМУ ДЛЯ ОТВЕТА ===
+    // === ОТВЕТ ===
     function showReplyForm(commentId) {
         const formContainer = document.getElementById(`reply-form-${commentId}`);
         if (!formContainer) return;
@@ -422,7 +436,6 @@
         }
     }
 
-    // === ДЕЛАЕМ ФУНКЦИИ ГЛОБАЛЬНЫМИ ===
     window.loadComments = loadComments;
     window.submitComment = submitComment;
     window.likeComment = likeComment;
@@ -430,5 +443,5 @@
     window.showReplyForm = showReplyForm;
     window.submitReply = submitReply;
 
-    console.log('✅ comments.js готов');
+    console.log('✅ comments.js готов (упрощённая версия)');
 })();

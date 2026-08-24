@@ -27,6 +27,7 @@ extra_javascript:
   - javascripts/auth-button.js
   - javascripts/experience.js
   - javascripts/sidebar-toggle.js
+  - javascripts/sidebar-scroll.js
   - javascripts/page-tracker.js
   - javascripts/remove-nav-buttons.js
   - javascripts/comments.js

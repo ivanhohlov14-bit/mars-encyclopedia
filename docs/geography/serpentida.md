@@ -336,8 +336,8 @@
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/25090gullies.jpg" alt="Овраги на Марсе" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Овраги в южном полушарии Марса. Снимок HiRISE (NASA).</div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-death-of-Serpentida.png" alt="Гибель Серпентиды" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Серпентиды — замерзающее море Эллада и умирающее королевство. Реконструкция.</div>
 </div>
 
 С началом глобального похолодания экономика Серпентиды рухнула. Скорпионы вымерли от холода, флот замёрз в портах, и в **2740 году** королевство прекратило своё существование[^10].
@@ -416,6 +416,11 @@
 Культура Серпентиды была глубоко пронизана **военными традициями** и почитанием **скорпионов**[^1].
 
 ### Архитектура
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Araksis-Temple-in-Cimmeria.png" alt="Храм Араксис в Кимерии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Храм Араксис в Кимерии — святилище богини воды на побережье Зефирийского моря. Реконструкция.</div>
+</div>
 
 Типичными сооружениями были[^2]:
 

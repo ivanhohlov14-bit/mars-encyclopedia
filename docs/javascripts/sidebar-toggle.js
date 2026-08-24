@@ -1,10 +1,10 @@
 // docs/javascripts/sidebar-toggle.js
-// Версия с CSS-классами для гарантированного растягивания
+// Версия с CSS-классами — только для ПК
 
 console.log('✅ sidebar-toggle.js загружен');
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Проверяем телефон уже после загрузки DOM
+    // Проверяем, что это ПК
     if (window.innerWidth <= 768) {
         console.log('📱 Телефон: кнопка сворачивания меню отключена');
         return;

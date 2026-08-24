@@ -1,5 +1,217 @@
 <h1>🛡️ Панель модерации</h1>
 
+<style>
+/* ===== СТИЛИ ДЛЯ ПАНЕЛИ ===== */
+.moderator-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    background: #f8f9fa;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #eaecf0;
+}
+.moderator-stats .stat-item {
+    text-align: center;
+}
+.moderator-stats .stat-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+.moderator-stats .stat-label {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.moderator-filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    background: #fff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #eaecf0;
+    align-items: center;
+}
+.moderator-filters label {
+    font-size: 0.85rem;
+    color: #555;
+}
+.moderator-filters select,
+.moderator-filters input {
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 0.85rem;
+}
+.moderator-filters .filter-group {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.moderator-filters .filter-result {
+    font-size: 0.85rem;
+    color: #999;
+    margin-left: auto;
+}
+
+.comment-card {
+    background: #fff;
+    border: 1px solid #eaecf0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: all 0.2s;
+}
+.comment-card:hover {
+    border-color: #6C63FF;
+    box-shadow: 0 2px 8px rgba(108, 99, 255, 0.08);
+}
+.comment-card.hidden {
+    opacity: 0.6;
+    background: #f9f9f9;
+}
+.comment-card .comment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+.comment-card .comment-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid #eee;
+}
+.comment-card .comment-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.comment-card .comment-date {
+    font-size: 0.7rem;
+    color: #999;
+}
+.comment-card .comment-status {
+    font-size: 0.65rem;
+    padding: 0 10px;
+    border-radius: 10px;
+    color: #fff;
+}
+.comment-card .comment-article {
+    font-size: 0.7rem;
+    color: #6C63FF;
+    background: #f0f0ff;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+.comment-card .comment-content {
+    font-size: 0.95rem;
+    padding-left: 38px;
+    line-height: 1.5;
+}
+.comment-card .comment-content.hidden-text {
+    text-decoration: line-through;
+    color: #999;
+}
+.comment-card .comment-actions {
+    padding-left: 38px;
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.comment-card .comment-actions button {
+    padding: 3px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: opacity 0.2s;
+}
+.comment-card .comment-actions button:hover {
+    opacity: 0.8;
+}
+
+.top-list {
+    background: #fff;
+    border: 1px solid #eaecf0;
+    border-radius: 8px;
+    padding: 12px 16px;
+}
+.top-list .top-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.top-list .top-item:last-child {
+    border-bottom: none;
+}
+.top-list .top-rank {
+    font-weight: 700;
+    color: #6C63FF;
+    min-width: 30px;
+}
+.top-list .top-name {
+    flex: 1;
+    margin-left: 8px;
+}
+.top-list .top-count {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f8f9fa, #fff);
+    border-radius: 12px;
+    border: 1px solid #eaecf0;
+}
+.empty-state .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 8px;
+}
+.empty-state .empty-title {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 0;
+}
+.empty-state .empty-desc {
+    color: #999;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+    .moderator-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 12px 14px;
+    }
+    .moderator-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .moderator-filters .filter-result {
+        margin-left: 0;
+        text-align: center;
+    }
+    .comment-card .comment-header {
+        gap: 6px;
+    }
+    .comment-card .comment-content {
+        padding-left: 0;
+    }
+    .comment-card .comment-actions {
+        padding-left: 0;
+    }
+}
+</style>
+
 <div id="moderator-container">
     <p style="text-align: center; color: #999; padding: 40px;">⏳ Загрузка...</p>
 </div>
@@ -11,6 +223,8 @@ const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
 let allComments = [];
 let profilesMap = {};
+let moderationLogs = [];
+let bannedWords = ['спам', 'реклама', 'магия', 'порно', 'секс', 'наркотики', 'насилие'];
 
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof supabase === 'undefined') {
@@ -56,7 +270,6 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadModeratorPanel(client) {
     const container = document.getElementById('moderator-container');
 
-    // Загружаем все комментарии
     const { data: comments, error } = await client
         .from('comments')
         .select('*')
@@ -69,7 +282,6 @@ async function loadModeratorPanel(client) {
 
     allComments = comments || [];
 
-    // Загружаем профили
     const userIds = [...new Set(allComments.map(c => c.user_id))];
     profilesMap = {};
     if (userIds.length > 0) {
@@ -82,7 +294,33 @@ async function loadModeratorPanel(client) {
         }
     }
 
+    // Проверяем комментарии на запрещённые слова (авто-скрытие)
+    await autoHideBannedWords(client);
+
     renderPanel();
+}
+
+async function autoHideBannedWords(client) {
+    for (const c of allComments) {
+        if (c.is_hidden) continue;
+        const lower = c.content.toLowerCase();
+        for (const word of bannedWords) {
+            if (lower.includes(word)) {
+                await client
+                    .from('comments')
+                    .update({ is_hidden: true })
+                    .eq('id', c.id);
+                console.log(`🚫 Авто-скрыт комментарий ${c.id} (слово: ${word})`);
+                break;
+            }
+        }
+    }
+    // Перезагружаем комментарии после авто-скрытия
+    const { data: updated } = await client
+        .from('comments')
+        .select('*')
+        .order('created_at', { ascending: false });
+    if (updated) allComments = updated;
 }
 
 function renderPanel() {
@@ -91,18 +329,18 @@ function renderPanel() {
     // Получаем значения фильтров
     const filterStatus = document.getElementById('filter-status')?.value || 'all';
     const searchAuthor = document.getElementById('search-author')?.value?.toLowerCase() || '';
+    const searchArticle = document.getElementById('search-article')?.value?.toLowerCase() || '';
+    const filterDate = document.getElementById('filter-date')?.value || 'all';
 
     // Фильтруем комментарии
     let filtered = [...allComments];
 
-    // Фильтр по статусу
     if (filterStatus === 'visible') {
         filtered = filtered.filter(c => !c.is_hidden);
     } else if (filterStatus === 'hidden') {
         filtered = filtered.filter(c => c.is_hidden);
     }
 
-    // Фильтр по автору
     if (searchAuthor) {
         filtered = filtered.filter(c => {
             const p = profilesMap[c.user_id] || {};
@@ -111,48 +349,143 @@ function renderPanel() {
         });
     }
 
+    if (searchArticle) {
+        filtered = filtered.filter(c => c.article_slug.toLowerCase().includes(searchArticle));
+    }
+
+    if (filterDate === 'today') {
+        const today = new Date().toDateString();
+        filtered = filtered.filter(c => new Date(c.created_at).toDateString() === today);
+    } else if (filterDate === 'week') {
+        const weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        filtered = filtered.filter(c => new Date(c.created_at) >= weekAgo);
+    } else if (filterDate === 'month') {
+        const monthAgo = new Date();
+        monthAgo.setMonth(monthAgo.getMonth() - 1);
+        filtered = filtered.filter(c => new Date(c.created_at) >= monthAgo);
+    }
+
     const total = filtered.length;
     const hidden = filtered.filter(c => c.is_hidden).length;
     const visible = total - hidden;
     const allTotal = allComments.length;
+    const allHidden = allComments.filter(c => c.is_hidden).length;
+
+    // Топ авторов
+    const authorStats = {};
+    allComments.forEach(c => {
+        const id = c.user_id;
+        if (!authorStats[id]) authorStats[id] = { count: 0, name: 'Аноним' };
+        authorStats[id].count++;
+        const p = profilesMap[id] || {};
+        authorStats[id].name = p.display_name || p.username || 'Аноним';
+    });
+    const topAuthors = Object.entries(authorStats)
+        .sort((a, b) => b[1].count - a[1].count)
+        .slice(0, 5);
+
+    // Топ статей
+    const articleStats = {};
+    allComments.forEach(c => {
+        const slug = c.article_slug;
+        if (!articleStats[slug]) articleStats[slug] = 0;
+        articleStats[slug]++;
+    });
+    const topArticles = Object.entries(articleStats)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5);
 
     let html = `
-        <!-- Статистика -->
-        <div style="display:flex;gap:16px;flex-wrap:wrap;background:#f8f9fa;padding:14px 18px;border-radius:8px;margin-bottom:16px;border:1px solid #eaecf0;align-items:center;">
-            <div><strong>📝 Всего:</strong> ${allTotal}</div>
-            <div><strong>👁️ Видимых:</strong> ${allTotal - allComments.filter(c => c.is_hidden).length}</div>
-            <div><strong>🚫 Скрытых:</strong> ${allComments.filter(c => c.is_hidden).length}</div>
-            <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-                <a href="/profile/" style="color:#6C63FF;">← Профиль</a>
+        <!-- СТАТИСТИКА -->
+        <div class="moderator-stats">
+            <div class="stat-item">
+                <div class="stat-number">${allTotal}</div>
+                <div class="stat-label">📝 Всего</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">${allTotal - allHidden}</div>
+                <div class="stat-label">👁️ Видимые</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">${allHidden}</div>
+                <div class="stat-label">🚫 Скрытые</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">${Object.keys(authorStats).length}</div>
+                <div class="stat-label">👤 Авторов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">${Object.keys(articleStats).length}</div>
+                <div class="stat-label">📄 Статей</div>
             </div>
         </div>
 
-        <!-- Фильтры -->
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;background:#fff;padding:12px 16px;border-radius:8px;border:1px solid #eaecf0;">
-            <div>
-                <label style="font-size:0.85rem;color:#555;">Статус:</label>
-                <select id="filter-status" onchange="renderPanel()" style="padding:4px 8px;border-radius:4px;border:1px solid #ccc;">
+        <!-- ФИЛЬТРЫ -->
+        <div class="moderator-filters">
+            <div class="filter-group">
+                <label>Статус:</label>
+                <select id="filter-status" onchange="renderPanel()">
                     <option value="all">Все</option>
                     <option value="visible">✅ Видимые</option>
                     <option value="hidden">🚫 Скрытые</option>
                 </select>
             </div>
-            <div>
-                <label style="font-size:0.85rem;color:#555;">Автор:</label>
-                <input id="search-author" type="text" placeholder="Имя автора..." oninput="renderPanel()" style="padding:4px 8px;border-radius:4px;border:1px solid #ccc;width:150px;">
+            <div class="filter-group">
+                <label>Дата:</label>
+                <select id="filter-date" onchange="renderPanel()">
+                    <option value="all">Всё время</option>
+                    <option value="today">Сегодня</option>
+                    <option value="week">Неделя</option>
+                    <option value="month">Месяц</option>
+                </select>
             </div>
-            <div style="font-size:0.85rem;color:#999;margin-left:auto;">
-                Найдено: ${total}
+            <div class="filter-group">
+                <label>Автор:</label>
+                <input id="search-author" type="text" placeholder="Имя..." oninput="renderPanel()">
+            </div>
+            <div class="filter-group">
+                <label>Статья:</label>
+                <input id="search-article" type="text" placeholder="slug..." oninput="renderPanel()">
+            </div>
+            <div class="filter-result">
+                Найдено: <strong>${total}</strong>
+            </div>
+        </div>
+
+        <!-- ТОП АВТОРОВ И СТАТЕЙ -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div class="top-list">
+                <h4 style="margin:0 0 8px 0;font-size:0.95rem;">🏆 Топ авторов</h4>
+                ${topAuthors.map(([id, data], i) => `
+                    <div class="top-item">
+                        <span class="top-rank">#${i + 1}</span>
+                        <span class="top-name">${data.name}</span>
+                        <span class="top-count">${data.count}</span>
+                    </div>
+                `).join('')}
+                ${topAuthors.length === 0 ? '<div style="color:#999;font-size:0.85rem;text-align:center;">Нет данных</div>' : ''}
+            </div>
+            <div class="top-list">
+                <h4 style="margin:0 0 8px 0;font-size:0.95rem;">📄 Топ статей</h4>
+                ${topArticles.map(([slug, count], i) => `
+                    <div class="top-item">
+                        <span class="top-rank">#${i + 1}</span>
+                        <span class="top-name">${slug}</span>
+                        <span class="top-count">${count}</span>
+                    </div>
+                `).join('')}
+                ${topArticles.length === 0 ? '<div style="color:#999;font-size:0.85rem;text-align:center;">Нет данных</div>' : ''}
             </div>
         </div>
     `;
 
     if (total === 0) {
         html += `
-            <div style="text-align:center;padding:40px 20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:12px;border:1px solid #eaecf0;">
-                <div style="font-size:3rem;margin-bottom:8px;">🔍</div>
-                <h3 style="margin:0;color:#555;">Ничего не найдено</h3>
-                <p style="color:#999;font-size:0.9rem;">Попробуйте изменить фильтры.</p>
+            <div class="empty-state">
+                <div class="empty-icon">🔍</div>
+                <p class="empty-title">Ничего не найдено</p>
+                <p class="empty-desc">Попробуйте изменить фильтры</p>
             </div>
         `;
     } else {
@@ -181,20 +514,31 @@ function renderComment(c) {
     else if (isModerator) { statusColor = '#6C63FF'; statusText = '🛡️ Модератор'; }
 
     return `
-        <div style="background:#fff;border:1px solid ${isHidden ? '#ddd' : '#eaecf0'};border-radius:8px;padding:12px 16px;${isHidden ? 'opacity:0.7;' : ''}">
-            <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px;">
-                <img src="${avatar}" style="width:28px;height:28px;border-radius:50%;border:2px solid #eee;">
-                <strong style="font-size:0.95rem;">${name}</strong>
-                <span style="font-size:0.7rem;color:#999;">${new Date(c.created_at).toLocaleString('ru-RU')}</span>
-                <span style="font-size:0.65rem;background:${statusColor};color:#fff;padding:0 10px;border-radius:10px;">${statusText}</span>
-                <span style="font-size:0.7rem;color:#6C63FF;background:#f0f0ff;padding:0 10px;border-radius:10px;">📄 ${c.article_slug}</span>
+        <div class="comment-card ${isHidden ? 'hidden' : ''}">
+            <div class="comment-header">
+                <img class="comment-avatar" src="${avatar}" alt="Avatar">
+                <span class="comment-name">${name}</span>
+                <span class="comment-date">${new Date(c.created_at).toLocaleString('ru-RU')}</span>
+                <span class="comment-status" style="background:${statusColor};">${statusText}</span>
+                <span class="comment-article">📄 ${c.article_slug}</span>
             </div>
-            <div style="font-size:0.95rem;padding-left:38px;${isHidden ? 'text-decoration:line-through;color:#999;' : ''}">${c.content}</div>
-            <div style="padding-left:38px;margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
-                <button onclick="toggleHide('${c.id}')" style="padding:3px 14px;background:${isHidden ? '#27ae60' : '#f39c12'};color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.75rem;">${isHidden ? '👁️ Показать' : '🚫 Скрыть'}</button>
-                <button onclick="deleteCom('${c.id}')" style="padding:3px 14px;background:#c0392b;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.75rem;">🗑️ Удалить</button>
-                <button onclick="banUser('${c.user_id}','${name}')" style="padding:3px 14px;background:${isBanned ? '#27ae60' : '#c0392b'};color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.75rem;">${isBanned ? '✅ Разбанить' : '⛔ Забанить'}</button>
-                <button onclick="showUserComments('${c.user_id}','${name}')" style="padding:3px 14px;background:#6C63FF;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.75rem;">📋 Все комменты</button>
+            <div class="comment-content ${isHidden ? 'hidden-text' : ''}">
+                ${c.content}
+            </div>
+            <div class="comment-actions">
+                <button onclick="toggleHide('${c.id}')" style="background:${isHidden ? '#27ae60' : '#f39c12'};color:#fff;">
+                    ${isHidden ? '👁️ Показать' : '🚫 Скрыть'}
+                </button>
+                <button onclick="deleteCom('${c.id}')" style="background:#c0392b;color:#fff;">
+                    🗑️ Удалить
+                </button>
+                <button onclick="banUser('${c.user_id}','${name}')" style="background:${isBanned ? '#27ae60' : '#c0392b'};color:#fff;">
+                    ${isBanned ? '✅ Разбанить' : '⛔ Забанить'}
+                </button>
+                <button onclick="showUserComments('${c.user_id}','${name}')" style="background:#6C63FF;color:#fff;">
+                    📋 Все комменты
+                </button>
+                ${isHidden ? `<button onclick="deleteAllUserComments('${c.user_id}','${name}')" style="background:#8e44ad;color:#fff;">⚡ Удалить всё</button>` : ''}
             </div>
         </div>
     `;
@@ -238,7 +582,7 @@ async function showUserComments(userId, name) {
         .order('created_at', { ascending: false });
 
     if (!comments || comments.length === 0) {
-        alert(`У пользователя ${name} нет комментариев.`);
+        alert(`📋 У пользователя ${name} нет комментариев.`);
         return;
     }
 
@@ -246,17 +590,25 @@ async function showUserComments(userId, name) {
         `📄 ${c.article_slug} | ${new Date(c.created_at).toLocaleString('ru-RU')}\n${c.content}`
     ).join('\n\n---\n\n');
 
-    // Показываем в модальном окне (с ограничением длины)
     if (msg.length > 2000) {
-        alert(`📋 Комментарии пользователя ${name} (${comments.length} шт.):\n\n${msg.substring(0, 2000)}...\n\n(показано не всё)`);
+        alert(`📋 Комментарии ${name} (${comments.length} шт.):\n\n${msg.substring(0, 2000)}...\n\n(показано не всё)`);
     } else {
-        alert(`📋 Комментарии пользователя ${name} (${comments.length} шт.):\n\n${msg}`);
+        alert(`📋 Комментарии ${name} (${comments.length} шт.):\n\n${msg}`);
     }
+}
+
+async function deleteAllUserComments(userId, name) {
+    if (!confirm(`Удалить ВСЕ комментарии пользователя ${name}? Это необратимо!`)) return;
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    await client.from('comments').delete().eq('user_id', userId);
+    alert(`✅ Все комментарии ${name} удалены!`);
+    location.reload();
 }
 
 window.toggleHide = toggleHide;
 window.deleteCom = deleteCom;
 window.banUser = banUser;
 window.showUserComments = showUserComments;
+window.deleteAllUserComments = deleteAllUserComments;
 window.renderPanel = renderPanel;
 </script>

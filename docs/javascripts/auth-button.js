@@ -1,5 +1,5 @@
 // docs/javascripts/auth-button.js
-// ФИНАЛЬНАЯ ВЕРСИЯ — ПК + ТЕЛЕФОН + СОХРАНЕНИЕ СЕССИИ
+// УНИВЕРСАЛЬНАЯ ВЕРСИЯ — ПК + ТЕЛЕФОН
 
 console.log('✅ auth-button.js загружен');
 
@@ -23,36 +23,85 @@ console.log('✅ auth-button.js загружен');
     }
 
     function renderButton() {
+        const isMobile = window.innerWidth <= 768;
+        console.log('📱 Режим:', isMobile ? 'Телефон' : 'ПК');
+
+        // Проверяем, есть ли уже контейнер
         let container = document.getElementById('auth-btn-container');
         if (container) {
             updateAuthUI(container);
             return;
         }
 
-        const isMobile = window.innerWidth <= 768;
-        console.log('📱 Режим:', isMobile ? 'Телефон' : 'ПК');
-
         container = document.createElement('div');
         container.id = 'auth-btn-container';
 
         if (isMobile) {
-            const header = document.querySelector('.wy-nav-top');
-            if (header) {
-                container.style.cssText = `
-                    display: flex !important;
-                    align-items: center !important;
-                    gap: 3px !important;
-                    margin-left: auto !important;
-                    flex-shrink: 0 !important;
-                `;
-                header.appendChild(container);
-                console.log('✅ Кнопка вставлена в шапку телефона');
-                updateAuthUI(container);
-                return;
+            // --- ТЕЛЕФОН: создаём свою шапку ---
+            // Находим старую шапку и скрываем её
+            const oldTop = document.querySelector('.wy-nav-top');
+            if (oldTop) {
+                oldTop.style.display = 'none';
             }
+
+            // Создаём свою шапку
+            const customHeader = document.createElement('div');
+            customHeader.id = 'custom-mobile-header';
+            customHeader.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 50px;
+                background: #6C63FF;
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                padding: 0 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                gap: 6px;
+            `;
+
+            // Гамбургер
+            const hamburger = document.createElement('button');
+            hamburger.id = 'mobile-hamburger';
+            hamburger.textContent = '☰';
+            hamburger.style.cssText = `
+                background: transparent;
+                border: none;
+                color: #fff;
+                font-size: 22px;
+                cursor: pointer;
+                padding: 6px 8px;
+                flex-shrink: 0;
+                line-height: 1;
+            `;
+            hamburger.onclick = function() {
+                const sidebar = document.querySelector('.wy-nav-side');
+                if (sidebar) {
+                    sidebar.classList.toggle('shift');
+                }
+            };
+
+            // Контейнер для кнопки авторизации (вставляем в шапку)
+            container.style.cssText = `
+                display: flex !important;
+                align-items: center !important;
+                gap: 4px !important;
+                margin-left: auto !important;
+                flex-shrink: 0 !important;
+            `;
+
+            customHeader.appendChild(hamburger);
+            customHeader.appendChild(container);
+            document.body.prepend(customHeader);
+
+            console.log('✅ Создана собственная шапка для телефона');
+            updateAuthUI(container);
+            return;
         }
 
-        // ПК: пробуем header
+        // --- ПК: вставляем в header ---
         let header = document.querySelector('header');
         if (header) {
             container.style.cssText = `
@@ -69,27 +118,6 @@ console.log('✅ auth-button.js загружен');
             `;
             header.appendChild(container);
             console.log('✅ Кнопка вставлена в header (ПК)');
-            updateAuthUI(container);
-            return;
-        }
-
-        // ПК: пробуем .wy-nav-content-wrap
-        let wrap = document.querySelector('.wy-nav-content-wrap');
-        if (wrap) {
-            container.style.cssText = `
-                display: inline-flex;
-                align-items: center;
-                gap: 6px;
-                float: right;
-                margin-top: 6px;
-                margin-right: 10px;
-                flex-wrap: wrap;
-                max-width: 100%;
-                position: relative;
-                z-index: 1000;
-            `;
-            wrap.prepend(container);
-            console.log('✅ Кнопка вставлена в .wy-nav-content-wrap (ПК)');
             updateAuthUI(container);
             return;
         }
@@ -149,26 +177,24 @@ console.log('✅ auth-button.js загружен');
                 const user = data?.session?.user;
                 console.log('👤 Пользователь:', user ? user.email : 'не авторизован');
 
-                // Сохраняем сессию принудительно
-                if (user && data?.session) {
+                if (user) {
+                    // Сохраняем сессию
                     try {
                         localStorage.setItem('supabase.auth.token', JSON.stringify(data.session));
                     } catch (e) {}
-                }
 
-                const isMobile = window.innerWidth <= 768;
-
-                if (user) {
                     const profile = await fetchProfile(user.id);
                     const username = profile?.display_name || profile?.username || user.user_metadata?.username || user.email.split('@')[0];
                     const avatarUrl = profile?.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=6C63FF&color=fff&size=32&rounded=true`;
 
+                    const isMobile = window.innerWidth <= 768;
+
                     if (isMobile) {
                         container.innerHTML = `
-                            <div style="display: flex; align-items: center; gap: 3px; background: rgba(255,255,255,0.12); border-radius: 20px; padding: 2px 6px 2px 4px; border: 1px solid rgba(255,255,255,0.1);">
-                                <img src="${avatarUrl}" alt="Avatar" style="width: 22px; height: 22px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover;">
-                                <a href="/profile/" style="color: #fff; text-decoration: none; font-size: 0.5rem; opacity: 0.9;">Проф</a>
-                                <a href="#" onclick="logoutUser(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.5rem;">Выйти</a>
+                            <div style="display: flex; align-items: center; gap: 3px; background: rgba(255,255,255,0.15); border-radius: 20px; padding: 2px 6px 2px 4px; border: 1px solid rgba(255,255,255,0.1);">
+                                <img src="${avatarUrl}" alt="Avatar" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover;">
+                                <a href="/profile/" style="color: #fff; text-decoration: none; font-size: 0.6rem; opacity: 0.9;">Проф</a>
+                                <a href="#" onclick="logoutUser(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.6rem;">Выйти</a>
                             </div>
                         `;
                     } else {
@@ -182,24 +208,13 @@ console.log('✅ auth-button.js загружен');
                         `;
                     }
                 } else {
-                    // Проверяем, есть ли сохранённая сессия в localStorage
-                    try {
-                        const saved = localStorage.getItem('supabase.auth.token');
-                        if (saved) {
-                            const session = JSON.parse(saved);
-                            if (session && session.user) {
-                                // Восстанавливаем сессию
-                                supabaseClient.auth.setSession(session);
-                                return;
-                            }
-                        }
-                    } catch (e) {}
-
+                    // Не авторизован
+                    const isMobile = window.innerWidth <= 768;
                     if (isMobile) {
                         container.innerHTML = `
                             <div style="display: flex; align-items: center; gap: 3px;">
-                                <a href="/login/" style="color: #fff; text-decoration: none; font-size: 0.55rem; opacity: 0.8;">Войти</a>
-                                <a href="/register/" style="color: #fff; background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 12px; text-decoration: none; font-size: 0.55rem;">Рег</a>
+                                <a href="/login/" style="color: #fff; text-decoration: none; font-size: 0.7rem; opacity: 0.8;">Войти</a>
+                                <a href="/register/" style="color: #fff; background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 12px; text-decoration: none; font-size: 0.7rem;">Регистрация</a>
                             </div>
                         `;
                     } else {

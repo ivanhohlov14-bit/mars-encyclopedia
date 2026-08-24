@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Загружаем комментарии
+        // Загружаем комментарии (без JOIN)
         await loadModeratorPanel(client);
     });
 });
@@ -54,10 +54,10 @@ document.addEventListener('DOMContentLoaded', function() {
 async function loadModeratorPanel(client) {
     const container = document.getElementById('moderator-container');
 
-    // Загружаем ВСЕ комментарии с профилями
+    // 1. Получаем ВСЕ комментарии
     const { data: comments, error } = await client
         .from('comments')
-        .select('*, profiles!comments_user_id_fkey(username, display_name, avatar_url, is_banned, role)')
+        .select('*')
         .order('created_at', { ascending: false });
 
     if (error) {
@@ -75,9 +75,35 @@ async function loadModeratorPanel(client) {
         return;
     }
 
+    // 2. Получаем профили пользователей отдельно
+    const userIds = [...new Set(comments.map(c => c.user_id))];
+    let profilesMap = {};
+    if (userIds.length > 0) {
+        const { data: profiles, error: profileError } = await client
+            .from('profiles')
+            .select('user_id, username, display_name, avatar_url, is_banned, role')
+            .in('user_id', userIds);
+
+        if (!profileError && profiles) {
+            profiles.forEach(p => profilesMap[p.user_id] = p);
+        }
+    }
+
+    // 3. Собираем комментарии с профилями
+    const commentsWithProfiles = comments.map(c => ({
+        ...c,
+        profiles: profilesMap[c.user_id] || { 
+            display_name: 'Аноним', 
+            username: 'Аноним',
+            avatar_url: null,
+            is_banned: false,
+            role: 'user'
+        }
+    }));
+
     // Статистика
-    const total = comments.length;
-    const hidden = comments.filter(c => c.is_hidden).length;
+    const total = commentsWithProfiles.length;
+    const hidden = commentsWithProfiles.filter(c => c.is_hidden).length;
     const visible = total - hidden;
 
     container.innerHTML = `
@@ -91,12 +117,12 @@ async function loadModeratorPanel(client) {
 
         <!-- Список комментариев -->
         <div style="display: flex; flex-direction: column; gap: 12px;">
-            ${comments.map(c => renderComment(c, client)).join('')}
+            ${commentsWithProfiles.map(c => renderComment(c)).join('')}
         </div>
     `;
 }
 
-function renderComment(comment, client) {
+function renderComment(comment) {
     const profile = comment.profiles || {};
     const displayName = profile.display_name || profile.username || 'Аноним';
     const avatar = profile.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=6C63FF&color=fff&size=32`;
@@ -104,8 +130,7 @@ function renderComment(comment, client) {
     const isBanned = profile.is_banned || false;
     const isModerator = profile.role === 'moderator';
 
-    // Определяем цвет статуса
-    let statusColor = '#27ae60'; // зелёный
+    let statusColor = '#27ae60';
     let statusText = 'Видимый';
     if (isHidden) {
         statusColor = '#f39c12';
@@ -127,9 +152,8 @@ function renderComment(comment, client) {
             border-radius: 8px;
             padding: 12px 16px;
             ${isHidden ? 'opacity: 0.7;' : ''}
-            transition: all 0.2s;
         ">
-            <!-- Шапка комментария -->
+            <!-- Шапка -->
             <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
                 <img src="${avatar}" alt="Avatar" style="width: 28px; height: 28px; border-radius: 50%;">
                 <strong style="font-size: 0.9rem;">${displayName}</strong>
@@ -138,12 +162,12 @@ function renderComment(comment, client) {
                 <span style="font-size: 0.75rem; color: #6C63FF; background: #f0f0ff; padding: 1px 10px; border-radius: 12px;">📄 ${comment.article_slug}</span>
             </div>
             
-            <!-- Текст комментария -->
+            <!-- Текст -->
             <div style="font-size: 0.95rem; line-height: 1.5; padding-left: 38px; ${isHidden ? 'text-decoration: line-through; color: #999;' : ''}">
                 ${comment.content}
             </div>
             
-            <!-- Кнопки управления -->
+            <!-- Кнопки -->
             <div style="padding-left: 38px; margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap;">
                 <button onclick="toggleHideComment('${comment.id}')" 
                         style="padding: 4px 14px; background: ${isHidden ? '#27ae60' : '#f39c12'}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
@@ -162,15 +186,12 @@ function renderComment(comment, client) {
     `;
 }
 
-// === ФУНКЦИИ УПРАВЛЕНИЯ ===
+// === УПРАВЛЕНИЕ ===
 
 async function toggleHideComment(commentId) {
     if (!confirm('Скрыть/показать комментарий?')) return;
 
     const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    const { data: session } = await client.auth.getSession();
-    const user = session?.session?.user;
-
     const { data: comment } = await client
         .from('comments')
         .select('is_hidden')
@@ -181,11 +202,7 @@ async function toggleHideComment(commentId) {
 
     const { error } = await client
         .from('comments')
-        .update({
-            is_hidden: newHidden,
-            hidden_by: user.id,
-            hidden_at: new Date().toISOString()
-        })
+        .update({ is_hidden: newHidden })
         .eq('id', commentId);
 
     if (error) {
@@ -228,14 +245,10 @@ async function banUser(userId, username) {
     if (!confirm(`Вы уверены, что хотите ${action} пользователя ${username}?`)) return;
 
     const newStatus = !isBanned;
-    const reason = newStatus ? prompt('Введите причину бана (необязательно):') : '';
 
     const { error } = await client
         .from('profiles')
-        .update({
-            is_banned: newStatus,
-            ban_reason: reason || null
-        })
+        .update({ is_banned: newStatus })
         .eq('user_id', userId);
 
     if (error) {
@@ -254,7 +267,6 @@ async function banUser(userId, username) {
     location.reload();
 }
 
-// Делаем функции глобальными
 window.toggleHideComment = toggleHideComment;
 window.deleteComment = deleteComment;
 window.banUser = banUser;

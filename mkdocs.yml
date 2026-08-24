@@ -29,7 +29,8 @@ extra_javascript:
   - javascripts/sidebar-toggle.js
   - javascripts/page-tracker.js
   - javascripts/remove-nav-buttons.js
-  - javascripts/comments.js   
+  - javascripts/comments.js
+  - javascripts/comments-loader.js 
 
 extra_head:
   - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

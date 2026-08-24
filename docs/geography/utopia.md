@@ -137,19 +137,6 @@
     <li>• <a href="https://mars-wiki.ru/geography/world-ocean/">Мировой океан</a></li>
   </ul>
 
-  <hr style="margin: 6px 0;">
-
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
-    Связанные понятия
-  </div>
-
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
-    <li>• <a href="https://mars-wiki.ru/terms/lan-sur/">Lān sur</a></li>
-    <li>• <a href="https://mars-wiki.ru/terms/tablichki/">Глиняные таблички</a></li>
-    <li>• <a href="https://mars-wiki.ru/geography/great-whirlpool/">Великий водоворот</a></li>
-    <li>• <a href="https://mars-wiki.ru/history/trade-war/">Торговая война</a></li>
-  </ul>
-
 </div>
 
 **Королевство Утопия** (марс. *Utopia Mar* — «Живая Утопия») — крупное островное государство Марса, располагавшееся в южной части планеты, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **3 000 000 км²**[^1]. Протяжённость границ достигала **6 300 км**[^2]. Население Утопии в период расцвета (ок. 2650 г. Э.О.) достигало **2 800 000 человек**[^3], что делало её одной из самых плотно населённых стран Марса. Столица — [Кан-Уг](https://mars-wiki.ru/geography/kan-ug/). Координаты столицы: 67° ю.ш., 156° в.д.[^4]. Государственный язык — *Marzān* (утопийский диалект), также были распространены местные наречия[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].

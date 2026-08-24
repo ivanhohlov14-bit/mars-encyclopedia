@@ -378,20 +378,22 @@ body.sidebar-hidden .wy-nav-side {
     flex-shrink: 0 !important;
   }
   
-  /* --- 3. НАЗВАНИЕ САЙТА (ПО ЦЕНТРУ) — В 2 РАЗА МЕНЬШЕ --- */
+   /* --- 3. НАЗВАНИЕ САЙТА (ПО ЦЕНТРУ) — МАЛЕНЬКОЕ, БЕЗ ССЫЛКИ --- */
   .wy-nav-top .wy-nav-side-toggle + a {
     display: block !important;
     color: #fff !important;
-    font-size: 0.65rem !important;  /* было 0.8rem — уменьшили */
+    font-size: 0.6rem !important;  /* ещё меньше */
     font-weight: 600 !important;
     text-decoration: none !important;
+    pointer-events: none !important; /* убираем кликабельность */
     flex: 1 !important;
     text-align: center !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     padding: 0 4px !important;
-    max-width: 100px !important;
+    max-width: 80px !important;
+    cursor: default !important;
   }
   
   /* --- 4. КНОПКА АВТОРИЗАЦИИ (СПРАВА) — УПРОЩЁННАЯ --- */

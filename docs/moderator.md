@@ -9,6 +9,9 @@
 const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
 const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
+let allComments = [];
+let profilesMap = {};
+
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof supabase === 'undefined') {
         document.getElementById('moderator-container').innerHTML = '<p style="text-align:center;color:#999;">⚠️ Ошибка загрузки</p>';
@@ -64,9 +67,11 @@ async function loadModeratorPanel(client) {
         return;
     }
 
-    // Получаем профили пользователей
-    const userIds = [...new Set(comments.map(c => c.user_id))];
-    let profilesMap = {};
+    allComments = comments || [];
+
+    // Загружаем профили
+    const userIds = [...new Set(allComments.map(c => c.user_id))];
+    profilesMap = {};
     if (userIds.length > 0) {
         const { data: profiles } = await client
             .from('profiles')
@@ -77,46 +82,83 @@ async function loadModeratorPanel(client) {
         }
     }
 
-    const commentsWithProfiles = comments.map(c => ({
-        ...c,
-        profiles: profilesMap[c.user_id] || { display_name: 'Аноним', avatar_url: null, is_banned: false, role: 'user' }
-    }));
+    renderPanel();
+}
 
-    const total = commentsWithProfiles.length;
-    const hidden = commentsWithProfiles.filter(c => c.is_hidden).length;
+function renderPanel() {
+    const container = document.getElementById('moderator-container');
 
-    // === ФОРМИРУЕМ СТРАНИЦУ ===
+    // Получаем значения фильтров
+    const filterStatus = document.getElementById('filter-status')?.value || 'all';
+    const searchAuthor = document.getElementById('search-author')?.value?.toLowerCase() || '';
+
+    // Фильтруем комментарии
+    let filtered = [...allComments];
+
+    // Фильтр по статусу
+    if (filterStatus === 'visible') {
+        filtered = filtered.filter(c => !c.is_hidden);
+    } else if (filterStatus === 'hidden') {
+        filtered = filtered.filter(c => c.is_hidden);
+    }
+
+    // Фильтр по автору
+    if (searchAuthor) {
+        filtered = filtered.filter(c => {
+            const p = profilesMap[c.user_id] || {};
+            const name = (p.display_name || p.username || '').toLowerCase();
+            return name.includes(searchAuthor);
+        });
+    }
+
+    const total = filtered.length;
+    const hidden = filtered.filter(c => c.is_hidden).length;
+    const visible = total - hidden;
+    const allTotal = allComments.length;
+
     let html = `
-        <!-- Статистика (всегда видна) -->
-        <div style="display:flex;gap:20px;flex-wrap:wrap;background:#f8f9fa;padding:16px 20px;border-radius:8px;margin-bottom:24px;border:1px solid #eaecf0;">
-            <div><strong>📝 Всего комментариев:</strong> ${total}</div>
-            <div><strong>👁️ Видимых:</strong> ${total - hidden}</div>
-            <div><strong>🚫 Скрытых:</strong> ${hidden}</div>
-            <div style="margin-left:auto;">
-                <a href="/profile/" style="color:#6C63FF;">← Вернуться в профиль</a>
+        <!-- Статистика -->
+        <div style="display:flex;gap:16px;flex-wrap:wrap;background:#f8f9fa;padding:14px 18px;border-radius:8px;margin-bottom:16px;border:1px solid #eaecf0;align-items:center;">
+            <div><strong>📝 Всего:</strong> ${allTotal}</div>
+            <div><strong>👁️ Видимых:</strong> ${allTotal - allComments.filter(c => c.is_hidden).length}</div>
+            <div><strong>🚫 Скрытых:</strong> ${allComments.filter(c => c.is_hidden).length}</div>
+            <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                <a href="/profile/" style="color:#6C63FF;">← Профиль</a>
+            </div>
+        </div>
+
+        <!-- Фильтры -->
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;background:#fff;padding:12px 16px;border-radius:8px;border:1px solid #eaecf0;">
+            <div>
+                <label style="font-size:0.85rem;color:#555;">Статус:</label>
+                <select id="filter-status" onchange="renderPanel()" style="padding:4px 8px;border-radius:4px;border:1px solid #ccc;">
+                    <option value="all">Все</option>
+                    <option value="visible">✅ Видимые</option>
+                    <option value="hidden">🚫 Скрытые</option>
+                </select>
+            </div>
+            <div>
+                <label style="font-size:0.85rem;color:#555;">Автор:</label>
+                <input id="search-author" type="text" placeholder="Имя автора..." oninput="renderPanel()" style="padding:4px 8px;border-radius:4px;border:1px solid #ccc;width:150px;">
+            </div>
+            <div style="font-size:0.85rem;color:#999;margin-left:auto;">
+                Найдено: ${total}
             </div>
         </div>
     `;
 
-    // Если комментариев нет — показываем красивую заглушку
     if (total === 0) {
         html += `
-            <div style="text-align:center;padding:60px 20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:12px;border:1px solid #eaecf0;">
-                <div style="font-size:4rem;margin-bottom:12px;">📭</div>
-                <h3 style="margin:0;color:#555;">Нет комментариев для модерации</h3>
-                <p style="color:#999;font-size:0.95rem;margin-top:8px;">Когда пользователи оставят комментарии, они появятся здесь.</p>
-                <div style="display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
-                    <span style="padding:6px 16px;background:#27ae60;color:#fff;border-radius:20px;font-size:0.8rem;">✅ Видимые: 0</span>
-                    <span style="padding:6px 16px;background:#f39c12;color:#fff;border-radius:20px;font-size:0.8rem;">🚫 Скрытые: 0</span>
-                    <span style="padding:6px 16px;background:#6C63FF;color:#fff;border-radius:20px;font-size:0.8rem;">🛡️ Модератор</span>
-                </div>
+            <div style="text-align:center;padding:40px 20px;background:linear-gradient(135deg,#f8f9fa,#fff);border-radius:12px;border:1px solid #eaecf0;">
+                <div style="font-size:3rem;margin-bottom:8px;">🔍</div>
+                <h3 style="margin:0;color:#555;">Ничего не найдено</h3>
+                <p style="color:#999;font-size:0.9rem;">Попробуйте изменить фильтры.</p>
             </div>
         `;
     } else {
-        // Список комментариев
         html += `
             <div style="display:flex;flex-direction:column;gap:12px;">
-                ${commentsWithProfiles.map(c => renderComment(c)).join('')}
+                ${filtered.map(c => renderComment(c)).join('')}
             </div>
         `;
     }
@@ -125,7 +167,7 @@ async function loadModeratorPanel(client) {
 }
 
 function renderComment(c) {
-    const p = c.profiles || {};
+    const p = profilesMap[c.user_id] || {};
     const name = p.display_name || p.username || 'Аноним';
     const avatar = p.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=6C63FF&color=fff&size=32`;
     const isHidden = c.is_hidden || false;
@@ -139,7 +181,7 @@ function renderComment(c) {
     else if (isModerator) { statusColor = '#6C63FF'; statusText = '🛡️ Модератор'; }
 
     return `
-        <div style="background:#fff;border:1px solid ${isHidden ? '#ddd' : '#eaecf0'};border-radius:8px;padding:14px 18px;${isHidden ? 'opacity:0.7;' : ''}">
+        <div style="background:#fff;border:1px solid ${isHidden ? '#ddd' : '#eaecf0'};border-radius:8px;padding:12px 16px;${isHidden ? 'opacity:0.7;' : ''}">
             <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px;">
                 <img src="${avatar}" style="width:28px;height:28px;border-radius:50%;border:2px solid #eee;">
                 <strong style="font-size:0.95rem;">${name}</strong>
@@ -152,6 +194,7 @@ function renderComment(c) {
                 <button onclick="toggleHide('${c.id}')" style="padding:3px 14px;background:${isHidden ? '#27ae60' : '#f39c12'};color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.75rem;">${isHidden ? '👁️ Показать' : '🚫 Скрыть'}</button>
                 <button onclick="deleteCom('${c.id}')" style="padding:3px 14px;background:#c0392b;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.75rem;">🗑️ Удалить</button>
                 <button onclick="banUser('${c.user_id}','${name}')" style="padding:3px 14px;background:${isBanned ? '#27ae60' : '#c0392b'};color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.75rem;">${isBanned ? '✅ Разбанить' : '⛔ Забанить'}</button>
+                <button onclick="showUserComments('${c.user_id}','${name}')" style="padding:3px 14px;background:#6C63FF;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:0.75rem;">📋 Все комменты</button>
             </div>
         </div>
     `;
@@ -186,7 +229,34 @@ async function banUser(id, name) {
     location.reload();
 }
 
+async function showUserComments(userId, name) {
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const { data: comments } = await client
+        .from('comments')
+        .select('*')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: false });
+
+    if (!comments || comments.length === 0) {
+        alert(`У пользователя ${name} нет комментариев.`);
+        return;
+    }
+
+    const msg = comments.map(c => 
+        `📄 ${c.article_slug} | ${new Date(c.created_at).toLocaleString('ru-RU')}\n${c.content}`
+    ).join('\n\n---\n\n');
+
+    // Показываем в модальном окне (с ограничением длины)
+    if (msg.length > 2000) {
+        alert(`📋 Комментарии пользователя ${name} (${comments.length} шт.):\n\n${msg.substring(0, 2000)}...\n\n(показано не всё)`);
+    } else {
+        alert(`📋 Комментарии пользователя ${name} (${comments.length} шт.):\n\n${msg}`);
+    }
+}
+
 window.toggleHide = toggleHide;
 window.deleteCom = deleteCom;
 window.banUser = banUser;
+window.showUserComments = showUserComments;
+window.renderPanel = renderPanel;
 </script>

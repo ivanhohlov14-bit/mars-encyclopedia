@@ -456,18 +456,18 @@ body {
 <script>
 // ===== КОРОЛЕВСТВА =====
 const KINGDOMS = [
-  { name: 'Аркадия', flag: '/assets/images/map/flag-of-arcadia.png', bonus: 'knowledge', desc: 'Древние руины и артефакты' },
-  { name: 'Ксанф', flag: '/assets/images/coat-of-arms-of-ksanf.png', bonus: 'iron', desc: 'Подземные шахты и крепости' },
-  { name: 'Эдем', flag: '/assets/images/map/flag-of-eden.png', bonus: 'clay', desc: 'Плодородные сады и оранжереи' },
-  { name: 'Эридания', flag: '/assets/images/map/flag-of-eridania.png', bonus: 'water', desc: 'Озёра и древние каналы' },
-  { name: 'Кхонг', flag: '/assets/images/map/flag-of-khong.png', bonus: 'iron', desc: 'Пустыни и глубокие шахты' },
-  { name: 'Авсония', flag: '/assets/images/map/flag-of-avsonia.png', bonus: 'water', desc: 'Ледяные пещеры и кристаллы' },
-  { name: 'Кимерия', flag: '/assets/images/map/flag-of-kimeria.png', bonus: 'knowledge', desc: 'Вулканические плато' },
-  { name: 'Серпентида', flag: '/assets/images/map/flag-of-serpentida.png', bonus: 'clay', desc: 'Змеевидные каньоны' },
-  { name: 'Эритрей', flag: '/assets/images/map/flag-of-eritrea.png', bonus: 'water', desc: 'Обсерватории и каньоны' },
-  { name: 'Утопия', flag: '/assets/images/map/flag-of-utopia.png', bonus: 'knowledge', desc: 'Равнины и кратеры' },
-  { name: 'Эллада', flag: '/assets/images/map/flag-of-hellas.png', bonus: 'clay', desc: 'Термальные источники' },
-  { name: 'Аливасото', flag: '/assets/images/map/flag-of-alivasoto.png', bonus: 'iron', desc: 'Марсианские "леса"' }
+  { name: 'Аркадия', flag: '/assets/images/map/flag-of-arcadia.png', bonus: '+5 к знаниям', desc: 'Подземные шахты и крепости' },
+  { name: 'Ксанф', flag: '/assets/images/coat-of-arms-of-ksanf.png', bonus: '+5 к железу', desc: 'Древние руины и артефакты' },
+  { name: 'Эдем', flag: '/assets/images/flag-of-eden.jpg', bonus: '+5 к глине', desc: 'Плодородные сады и оранжереи' },
+  { name: 'Эридания', flag: '/assets/images/flag-of-eridania.png', bonus: '+5 к воде', desc: 'Озёра и древние каналы' },
+  { name: 'Кхонг', flag: '/assets/images/flag-of-khong.png', bonus: '+5 к железу', desc: 'Пустыни и глубокие шахты' },
+  { name: 'Авсония', flag: '/assets/images/flag-of-avsonia.png', bonus: '+5 к воде', desc: 'Вулканические плато' },
+  { name: 'Кимерия', flag: '/assets/images/flag-of-kimeria.png', bonus: '+5 к знаниям', desc: 'Марсианские леса' },
+  { name: 'Серпентида', flag: '/assets/images/flag-of-serpentida.png', bonus: '+5 к глине', desc: 'Змеевидные каньоны' },
+  { name: 'Эритрей', flag: '/assets/images/flag-of-eritrea.png', bonus: '+5 к воде', desc: 'Обсерватории и каньоны' },
+  { name: 'Утопия', flag: '/assets/images/flag-of-utopia.png', bonus: '+5 к знаниям', desc: 'Равнины и кратеры' },
+  { name: 'Эллада', flag: '/assets/images/flag-of-hellas.png', bonus: '+5 к глине', desc: 'Термальные источники' },
+  { name: 'Аливасото', flag: '/assets/images/flag-of-alivasoto.png', bonus: '+5 к железу', desc: 'Ледяные пещеры и кристаллы'  }
 ];
 
 // ===== СОСТОЯНИЕ ИГРЫ =====

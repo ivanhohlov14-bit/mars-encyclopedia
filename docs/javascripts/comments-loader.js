@@ -13,6 +13,7 @@
             '/login/',
             '/register/',
             '/stats/',
+            '/game/', 
             '/profile-view/',
             '/moderator/',  
             '/license/',

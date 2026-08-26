@@ -453,10 +453,8 @@ body {
 <!-- ==========================================
    JAVASCRIPT
    ========================================== -->
-<script>
-// ===== КОРОЛЕВСТВА =====
 const KINGDOMS = [
-  { name: 'Аркадия', flag: '/assets/images/map/flag-of-arcadia.png', bonus: '+5 к знаниям', desc: 'Подземные шахты и крепости' },
+  { name: 'Аркадия', flag: '/assets/images/map/flag-of-arkadia.png', bonus: '+5 к знаниям', desc: 'Подземные шахты и крепости' },
   { name: 'Ксанф', flag: '/assets/images/coat-of-arms-of-ksanf.png', bonus: '+5 к железу', desc: 'Древние руины и артефакты' },
   { name: 'Эдем', flag: '/assets/images/flag-of-eden.jpg', bonus: '+5 к глине', desc: 'Плодородные сады и оранжереи' },
   { name: 'Эридания', flag: '/assets/images/flag-of-eridania.png', bonus: '+5 к воде', desc: 'Озёра и древние каналы' },
@@ -467,7 +465,7 @@ const KINGDOMS = [
   { name: 'Эритрей', flag: '/assets/images/flag-of-eritrea.png', bonus: '+5 к воде', desc: 'Обсерватории и каньоны' },
   { name: 'Утопия', flag: '/assets/images/flag-of-utopia.png', bonus: '+5 к знаниям', desc: 'Равнины и кратеры' },
   { name: 'Эллада', flag: '/assets/images/flag-of-hellas.png', bonus: '+5 к глине', desc: 'Термальные источники' },
-  { name: 'Аливасото', flag: '/assets/images/flag-of-alivasoto.png', bonus: '+5 к железу', desc: 'Ледяные пещеры и кристаллы'  }
+  { name: 'Аливасото', flag: '/assets/images/flag-of-alivasoto.png', bonus: '+5 к железу', desc: 'Ледяные пещеры и кристаллы' }
 ];
 
 // ===== СОСТОЯНИЕ ИГРЫ =====

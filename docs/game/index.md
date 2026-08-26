@@ -207,115 +207,146 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 #game-bg {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
-/* ===== ИНТЕРФЕЙС ИГРЫ ===== */
-.game-ui-top {
+/* ===== ВЕРХНЯЯ ПЛАШКА С РЕСУРСАМИ ===== */
+#top-bar {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  z-index: 10;
-  pointer-events: none;
-}
-.game-ui-top > * { pointer-events: auto; }
-
-.game-panel {
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(8px);
-  padding: 8px 14px;
-  border-radius: 10px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  padding: 8px 20px;
+  border-radius: 12px;
   border: 1px solid rgba(200,150,100,0.15);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   flex-wrap: wrap;
+  z-index: 20;
+  justify-content: center;
+  width: 95%;
+  max-width: 700px;
 }
-
-.game-panel .kingdom-name {
-  font-size: 1.1rem;
+#top-bar .kingdom-name {
+  font-size: 1rem;
   font-weight: 600;
   color: #e8d5c0;
+  white-space: nowrap;
 }
-.game-panel .kingdom-label {
-  font-size: 0.6rem;
-  opacity: 0.5;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.resources {
+#top-bar .resources {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
-.resource-item {
+#top-bar .resource-item {
   display: flex;
   align-items: center;
   gap: 3px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #d4c5b5;
 }
-.resource-item .icon { font-size: 1rem; }
-.resource-item .value { font-weight: 600; color: #e8d5c0; }
-
-.population {
+#top-bar .resource-item .icon { font-size: 0.9rem; }
+#top-bar .resource-item .value { font-weight: 600; color: #e8d5c0; }
+#top-bar .population {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #d4c5b5;
   border-left: 1px solid rgba(200,150,100,0.15);
   padding-left: 10px;
 }
 
-/* ===== КНОПКИ СТРОИТЕЛЬСТВА ===== */
-.game-build-menu {
+/* ===== КНОПКИ ВКЛАДОК ===== */
+#tabs {
   position: absolute;
-  bottom: 20px;
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  background: rgba(0,0,0,0.8);
+  gap: 6px;
+  z-index: 15;
+  background: rgba(0,0,0,0.7);
   backdrop-filter: blur(8px);
-  padding: 12px 16px;
+  padding: 8px 12px;
   border-radius: 12px;
   border: 1px solid rgba(200,150,100,0.15);
-  z-index: 10;
-  max-width: 95%;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.build-btn {
-  padding: 8px 14px;
-  background: rgba(192,57,43,0.5);
-  color: #e8d5c0;
-  border: 1px solid rgba(200,150,100,0.2);
-  border-radius: 8px;
+.tab-btn {
+  padding: 6px 14px;
+  background: rgba(192,57,43,0.3);
+  color: #d4c5b5;
+  border: 1px solid rgba(200,150,100,0.1);
+  border-radius: 6px;
   cursor: pointer;
   font-family: 'Georgia', serif;
   font-size: 0.75rem;
+  transition: all 0.3s;
+}
+.tab-btn:hover {
+  background: rgba(192,57,43,0.6);
+  color: #e8d5c0;
+}
+.tab-btn.active {
+  background: rgba(192,57,43,0.8);
+  color: #fff;
+  border-color: #c0392b;
+}
+.tab-btn .icon { margin-right: 4px; }
+
+/* ===== ПАНЕЛЬ ПОСТРОЕК ===== */
+#build-panel {
+  position: absolute;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(200,150,100,0.15);
+  display: none;
+  z-index: 14;
+  width: 95%;
+  max-width: 600px;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+#build-panel.active { display: flex; }
+
+.build-btn {
+  padding: 8px 12px;
+  background: rgba(192,57,43,0.4);
+  color: #e8d5c0;
+  border: 1px solid rgba(200,150,100,0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  font-size: 0.7rem;
   transition: all 0.3s;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
   min-width: 60px;
+  flex: 1;
+  max-width: 90px;
 }
 .build-btn:hover {
-  background: rgba(192,57,43,0.8);
+  background: rgba(192,57,43,0.7);
   transform: scale(1.05);
   border-color: #c0392b;
 }
@@ -332,58 +363,43 @@ body {
   color: #f39c12;
 }
 
-/* ===== КНОПКА ЗАКРЫТЬ ===== */
-#close-game {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(0,0,0,0.6);
+/* ===== ГЛОБАЛЬНАЯ КАРТА ===== */
+#global-map-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 9999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#global-map-overlay.active { display: flex; }
+#global-map-overlay img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
   border: 1px solid rgba(200,150,100,0.2);
-  color: #e8d5c0;
-  padding: 4px 12px;
+}
+#global-map-overlay .close-map {
+  margin-top: 16px;
+  padding: 8px 24px;
+  background: rgba(192,57,43,0.6);
+  color: #fff;
+  border: none;
   border-radius: 6px;
   cursor: pointer;
   font-family: 'Georgia', serif;
-  font-size: 0.75rem;
-  z-index: 11;
-  transition: all 0.3s;
-}
-#close-game:hover {
-  background: rgba(192,57,43,0.6);
-  border-color: #c0392b;
-}
-
-/* ===== ИНФОРМАЦИЯ О ПОСТРОЙКЕ ===== */
-#building-info {
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(8px);
-  padding: 12px 20px;
-  border-radius: 10px;
-  border: 1px solid rgba(200,150,100,0.15);
-  color: #d4c5b5;
-  font-size: 0.85rem;
-  text-align: center;
-  z-index: 9;
-  max-width: 90%;
-  display: none;
-}
-#building-info .title {
-  color: #e8d5c0;
-  font-weight: 600;
   font-size: 1rem;
 }
-#building-info .details {
-  font-size: 0.75rem;
-  opacity: 0.7;
-  margin-top: 4px;
+#global-map-overlay .close-map:hover {
+  background: rgba(192,57,43,0.9);
 }
 
 /* ==========================================
-   УВЕДОМЛЕНИЯ (TOAST)
+   УВЕДОМЛЕНИЯ
    ========================================== */
 .toast-container {
   position: fixed;
@@ -424,27 +440,14 @@ body {
    АДАПТАЦИЯ
    ========================================== */
 @media (max-width: 768px) {
-  #loader-title { font-size: 1.2rem; letter-spacing: 3px; }
-  #play-btn { padding: 12px 32px; font-size: 1rem; }
-  .kingdom-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  #kingdom-screen h2 { font-size: 1.4rem; letter-spacing: 4px; }
-  .game-ui-top { flex-direction: column; align-items: stretch; gap: 4px; }
-  .game-panel { padding: 6px 10px; flex-wrap: wrap; }
-  .resources { gap: 6px; }
-  .resource-item { font-size: 0.75rem; }
-  .game-build-menu { bottom: 12px; padding: 8px 10px; gap: 4px; width: 98%; }
-  .build-btn { padding: 4px 8px; font-size: 0.65rem; min-width: 45px; }
-  .game-panel .kingdom-name { font-size: 0.9rem; }
-  #close-game { top: 8px; right: 8px; padding: 4px 8px; font-size: 0.65rem; }
-  .toast { font-size: 0.75rem; padding: 6px 12px; }
-  #building-info { bottom: 80px; padding: 8px 14px; font-size: 0.75rem; }
-  .population { font-size: 0.75rem; padding-left: 6px; }
-}
-@media (max-width: 480px) {
-  .kingdom-grid { grid-template-columns: 1fr 1fr; }
-  .kingdom-card { padding: 10px; }
-  #loader-screen video { max-height: 50vh; }
-  .build-btn .cost { font-size: 0.45rem; }
+  #top-bar { padding: 6px 12px; gap: 8px; }
+  #top-bar .kingdom-name { font-size: 0.8rem; }
+  #top-bar .resource-item { font-size: 0.7rem; }
+  #tabs { bottom: 70px; padding: 6px 10px; }
+  .tab-btn { font-size: 0.65rem; padding: 4px 10px; }
+  #build-panel { bottom: 120px; padding: 8px 10px; gap: 4px; }
+  .build-btn { font-size: 0.6rem; padding: 6px 8px; min-width: 50px; }
+  #play-btn { padding: 10px 24px; font-size: 1rem; }
 }
 </style>
 </head>
@@ -469,76 +472,75 @@ body {
 
 <!-- ===== ИГРОВОЙ ЭКРАН ===== -->
 <div id="game-screen">
-  <button id="close-game" onclick="closeGame()">✕ Выйти</button>
   <div id="game-container">
     <img id="game-bg" src="/assets/images/mars-field.jpg" alt="Марс">
     
-    <!-- Верхняя панель -->
-    <div class="game-ui-top">
-      <div class="game-panel">
-        <div>
-          <div class="kingdom-label">Королевство</div>
-          <div class="kingdom-name" id="game-kingdom-name">—</div>
-        </div>
-        <div class="population">
-          <span>👥</span>
-          <span id="population-count">2</span>
-          <span style="font-size:0.6rem;opacity:0.5;">(1 вождь, 1 рабочий)</span>
-        </div>
+    <!-- Верхняя плашка с ресурсами -->
+    <div id="top-bar">
+      <span class="kingdom-name" id="game-kingdom-name">—</span>
+      <div class="resources">
+        <span class="resource-item"><span class="icon">🌲</span> <span class="value" id="res-wood">20</span></span>
+        <span class="resource-item"><span class="icon">🍖</span> <span class="value" id="res-food">15</span></span>
+        <span class="resource-item"><span class="icon">🪨</span> <span class="value" id="res-basalt">5</span></span>
+        <span class="resource-item"><span class="icon">📜</span> <span class="value" id="res-tablets">0</span></span>
       </div>
-      <div class="game-panel">
-        <div class="resources">
-          <div class="resource-item"><span class="icon">🌲</span> <span class="value" id="res-wood">20</span></div>
-          <div class="resource-item"><span class="icon">🍖</span> <span class="value" id="res-food">15</span></div>
-          <div class="resource-item"><span class="icon">🪨</span> <span class="value" id="res-basalt">5</span></div>
-          <div class="resource-item"><span class="icon">📜</span> <span class="value" id="res-tablets">0</span></div>
-        </div>
-      </div>
+      <span class="population">👥 <span id="population-count">2</span></span>
     </div>
 
-    <!-- Информация о постройке -->
-    <div id="building-info">
-      <div class="title" id="building-title">Шахта</div>
-      <div class="details" id="building-details">Добывает базальт</div>
+    <!-- Вкладки -->
+    <div id="tabs">
+      <button class="tab-btn active" onclick="switchTab('build')"><span class="icon">🏗️</span> Постройки</button>
+      <button class="tab-btn" onclick="switchTab('map')"><span class="icon">🗺️</span> Карта</button>
+      <button class="tab-btn" onclick="switchTab('army')"><span class="icon">⚔️</span> Армия</button>
+      <button class="tab-btn" onclick="openGlobalMap()"><span class="icon">🌍</span> Глобальная карта</button>
     </div>
 
-    <!-- Меню строительства -->
-    <div class="game-build-menu">
-      <button class="build-btn" onclick="buildBuilding('mine')" onmouseenter="showBuildingInfo('mine')" onmouseleave="hideBuildingInfo()">
+    <!-- Панель построек -->
+    <div id="build-panel" class="active">
+      <button class="build-btn" onclick="buildBuilding('mine')">
         ⛏️ Шахта
         <span class="cost">🌲5 🍖3</span>
         <span class="level" id="mine-level">Ур.0</span>
         <span class="time">⏱ 5с</span>
       </button>
-      <button class="build-btn" onclick="buildBuilding('forge')" onmouseenter="showBuildingInfo('forge')" onmouseleave="hideBuildingInfo()">
+      <button class="build-btn" onclick="buildBuilding('forge')">
         ⚒️ Кузница
         <span class="cost">🌲8 🪨3</span>
         <span class="level" id="forge-level">Ур.0</span>
         <span class="time">⏱ 8с</span>
       </button>
-      <button class="build-btn" onclick="buildBuilding('house')" onmouseenter="showBuildingInfo('house')" onmouseleave="hideBuildingInfo()">
+      <button class="build-btn" onclick="buildBuilding('house')">
         🏠 Дом
         <span class="cost">🌲10 🍖5</span>
         <span class="level" id="house-level">Ур.0</span>
         <span class="time">⏱ 6с</span>
       </button>
-      <button class="build-btn" onclick="buildBuilding('farm')" onmouseenter="showBuildingInfo('farm')" onmouseleave="hideBuildingInfo()">
+      <button class="build-btn" onclick="buildBuilding('farm')">
         🌾 Ферма
         <span class="cost">🌲6 🍖4</span>
         <span class="level" id="farm-level">Ур.0</span>
         <span class="time">⏱ 4с</span>
       </button>
-      <button class="build-btn" onclick="createTablet()" style="background:rgba(192,57,43,0.7);" onmouseenter="showBuildingInfo('tablet')" onmouseleave="hideBuildingInfo()">
+      <button class="build-btn" onclick="buildBuilding('mill')">
+        🌾 Мельница
+        <span class="cost">🌲8 🍖6</span>
+        <span class="level" id="mill-level">Ур.0</span>
+        <span class="time">⏱ 7с</span>
+      </button>
+      <button class="build-btn" onclick="createTablet()" style="background:rgba(192,57,43,0.6);">
         📜 Табличка
         <span class="cost">🌲2 🍖1 🪨1</span>
         <span class="level" style="color:#f39c12;">+10 опыта</span>
       </button>
-      <button class="build-btn" onclick="collectResources()" style="background:rgba(46,204,113,0.3);">
-        📦 Сбор
-        <span class="cost">каждые 10с</span>
-      </button>
     </div>
   </div>
+</div>
+
+<!-- ===== ГЛОБАЛЬНАЯ КАРТА ===== -->
+<div id="global-map-overlay">
+  <h2 style="color:#e8d5c0;margin-bottom:16px;">🗺️ Глобальная карта Марса</h2>
+  <img src="/assets/images/mars-map.png" alt="Глобальная карта Марса" id="global-map-img">
+  <button class="close-map" onclick="closeGlobalMap()">✕ Закрыть карту</button>
 </div>
 
 <!-- ===== КОНТЕЙНЕР ДЛЯ УВЕДОМЛЕНИЙ ===== -->
@@ -560,7 +562,7 @@ const KINGDOMS = [
   { name: 'Серпентида', flag: '/assets/images/flag-of-serpentida.png', bonus: '+5 к базальту', desc: 'Змеевидные каньоны' },
   { name: 'Эритрей', flag: '/assets/images/flag-of-eritrea.png', bonus: '+5 к дереву', desc: 'Обсерватории и каньоны' },
   { name: 'Утопия', flag: '/assets/images/flag-of-utopia.png', bonus: '+5 к еде', desc: 'Равнины и кратеры' },
-  { name: 'Элла达', flag: '/assets/images/flag-of-hellas.png', bonus: '+5 к базальту', desc: 'Термальные источники' },
+  { name: 'Эллада', flag: '/assets/images/flag-of-hellas.png', bonus: '+5 к базальту', desc: 'Термальные источники' },
   { name: 'Аливасото', flag: '/assets/images/flag-of-alivasoto.png', bonus: '+5 к дереву', desc: 'Марсианские "леса"' }
 ];
 
@@ -568,20 +570,11 @@ const KINGDOMS = [
 let gameState = {
   kingdom: null,
   resources: { wood: 20, food: 15, basalt: 5, tablets: 0 },
-  buildings: { mine: 0, forge: 0, house: 0, farm: 0 },
-  buildingLevels: { mine: 0, forge: 0, house: 0, farm: 0 },
+  buildings: { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 },
+  buildingLevels: { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 },
   population: 2,
   userId: null,
   lastCollect: Date.now()
-};
-
-// ===== ИНФОРМАЦИЯ О ПОСТРОЙКАХ =====
-const BUILDING_INFO = {
-  mine: { title: '⛏️ Шахта', desc: 'Добывает базальт. Уровень влияет на добычу.' },
-  forge: { title: '⚒️ Кузница', desc: 'Перерабатывает базальт в глиняные таблички.' },
-  house: { title: '🏠 Дом', desc: 'Увеличивает численность рабочих.' },
-  farm: { title: '🌾 Ферма', desc: 'Производит еду для населения.' },
-  tablet: { title: '📜 Глиняная табличка', desc: 'Даёт +10 опыта и продвигает историю.' }
 };
 
 // ===== ЗАГРУЗОЧНЫЙ ЭКРАН =====
@@ -630,7 +623,6 @@ function showKingdoms() {
 function selectKingdom(kingdom) {
   gameState.kingdom = kingdom.name;
   
-  // Бонус за выбор
   const bonusMap = {
     'базальту': 'basalt',
     'дереву': 'wood',
@@ -646,21 +638,35 @@ function selectKingdom(kingdom) {
   
   updateUI();
   saveGame();
-  showToast(`👑 Добро пожаловать в ${kingdom.name}! Бонус получен!`, 'success');
+  showToast(`👑 Добро пожаловать в ${kingdom.name}!`, 'success');
 }
 
-// ===== ИНФОРМАЦИЯ О ПОСТРОЙКЕ =====
-function showBuildingInfo(type) {
-  const info = BUILDING_INFO[type];
-  if (!info) return;
-  const el = document.getElementById('building-info');
-  document.getElementById('building-title').textContent = info.title;
-  document.getElementById('building-details').textContent = info.desc;
-  el.style.display = 'block';
+// ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    if (b.textContent.includes('Постройки') && tab === 'build') b.classList.add('active');
+    if (b.textContent.includes('Карта') && tab === 'map') b.classList.add('active');
+    if (b.textContent.includes('Армия') && tab === 'army') b.classList.add('active');
+  });
+  
+  const panel = document.getElementById('build-panel');
+  panel.classList.toggle('active', tab === 'build');
+  
+  if (tab === 'map') {
+    showToast('🗺️ Карта королевства будет доступна в следующем обновлении!', 'info');
+  }
+  if (tab === 'army') {
+    showToast('⚔️ Армия будет доступна в следующем обновлении!', 'info');
+  }
 }
 
-function hideBuildingInfo() {
-  document.getElementById('building-info').style.display = 'none';
+// ===== ГЛОБАЛЬНАЯ КАРТА =====
+function openGlobalMap() {
+  document.getElementById('global-map-overlay').classList.add('active');
+}
+function closeGlobalMap() {
+  document.getElementById('global-map-overlay').classList.remove('active');
 }
 
 // ===== ОБНОВЛЕНИЕ ИНТЕРФЕЙСА =====
@@ -672,11 +678,11 @@ function updateUI() {
   document.getElementById('res-tablets').textContent = Math.floor(r.tablets);
   document.getElementById('population-count').textContent = gameState.population;
   
-  // Уровни построек
   document.getElementById('mine-level').textContent = `Ур.${gameState.buildingLevels.mine}`;
   document.getElementById('forge-level').textContent = `Ур.${gameState.buildingLevels.forge}`;
   document.getElementById('house-level').textContent = `Ур.${gameState.buildingLevels.house}`;
   document.getElementById('farm-level').textContent = `Ур.${gameState.buildingLevels.farm}`;
+  document.getElementById('mill-level').textContent = `Ур.${gameState.buildingLevels.mill}`;
 }
 
 // ===== СТРОИТЕЛЬСТВО =====
@@ -685,7 +691,8 @@ function buildBuilding(type) {
     mine: { wood: 5, food: 3, basalt: 0 },
     forge: { wood: 8, basalt: 3, food: 0 },
     house: { wood: 10, food: 5, basalt: 0 },
-    farm: { wood: 6, food: 4, basalt: 0 }
+    farm: { wood: 6, food: 4, basalt: 0 },
+    mill: { wood: 8, food: 6, basalt: 0 }
   };
   
   const cost = costs[type];
@@ -705,18 +712,13 @@ function buildBuilding(type) {
   gameState.buildings[type] += 1;
   gameState.buildingLevels[type] += 1;
   
-  // Если построили дом — добавляем рабочего
   if (type === 'house') {
     gameState.population += 1;
     showToast(`👷 Новый рабочий прибыл! Население: ${gameState.population}`, 'success');
   }
   
-  const names = { mine: 'Шахта', forge: 'Кузница', house: 'Дом', farm: 'Ферма' };
+  const names = { mine: 'Шахта', forge: 'Кузница', house: 'Дом', farm: 'Ферма', mill: 'Мельница' };
   showToast(`🏗️ Построена ${names[type]}! Уровень: ${gameState.buildingLevels[type]}`, 'success');
-  
-  if (typeof window.addExperience === 'function' && gameState.userId) {
-    window.addExperience(gameState.userId, 5);
-  }
   
   updateUI();
   saveGame();
@@ -738,59 +740,16 @@ function createTablet() {
   }
   
   gameState.resources.tablets += 1;
-  
   if (typeof window.addExperience === 'function' && gameState.userId) {
     window.addExperience(gameState.userId, 10);
   }
   
-  showToast(`📜 Создана глиняная табличка! (+10 опыта)`, 'success');
+  showToast(`📜 Создана табличка! (+10 опыта)`, 'success');
   updateUI();
   saveGame();
 }
 
-// ===== СБОР РЕСУРСОВ =====
-function collectResources() {
-  const now = Date.now();
-  const elapsed = (now - gameState.lastCollect) / 1000;
-  if (elapsed < 5) {
-    showToast(`⏳ Подождите ${Math.ceil(5 - elapsed)}с до следующего сбора`, 'info');
-    return;
-  }
-  
-  const b = gameState.buildings;
-  const r = gameState.resources;
-  
-  // Добыча от построек
-  r.wood += b.farm * 1 + b.house * 0.5;
-  r.food += b.farm * 2 + b.house * 1;
-  r.basalt += b.mine * 2 + b.forge * 0.5;
-  
-  // Бонус от населения
-  r.wood += Math.floor(gameState.population / 3);
-  r.food += Math.floor(gameState.population / 2);
-  
-  showToast(`📦 Собрано: 🌲${Math.floor(r.wood)} 🍖${Math.floor(r.food)} 🪨${Math.floor(r.basalt)}`, 'success');
-  gameState.lastCollect = now;
-  updateUI();
-  saveGame();
-}
-
-// ===== АВТОМАТИЧЕСКАЯ ДОБЫЧА =====
-setInterval(() => {
-  if (!gameState.kingdom) return;
-  
-  const b = gameState.buildings;
-  const r = gameState.resources;
-  const levelBonus = (type) => gameState.buildingLevels[type] * 0.2;
-  
-  r.wood += b.mine * 0.2 + b.farm * 0.3 + levelBonus('mine');
-  r.food += b.farm * 0.4 + levelBonus('farm');
-  r.basalt += b.mine * 0.3 + b.forge * 0.1 + levelBonus('forge');
-  
-  updateUI();
-}, 10000);
-
-// ===== СОХРАНЕНИЕ В SUPABASE =====
+// ===== СОХРАНЕНИЕ =====
 async function saveGame() {
   if (!gameState.userId) {
     const client = supabase.createClient(
@@ -810,25 +769,22 @@ async function saveGame() {
       'https://ncytbgbzfjfoqmmgfygz.supabase.co',
       'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D'
     );
-    
     const { error } = await client
       .from('profiles')
       .update({ game_data: gameState })
       .eq('user_id', gameState.userId);
-      
     if (error) console.warn('⚠️ Ошибка сохранения:', error);
   } catch (e) {
     console.warn('⚠️ Ошибка сохранения:', e);
   }
 }
 
-// ===== ЗАГРУЗКА ИГРЫ =====
+// ===== ЗАГРУЗКА =====
 async function loadGame() {
   const client = supabase.createClient(
     'https://ncytbgbzfjfoqmmgfygz.supabase.co',
     'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D'
   );
-  
   const { data } = await client.auth.getSession();
   if (!data?.session?.user) return;
   
@@ -845,8 +801,8 @@ async function loadGame() {
       const saved = profile.game_data;
       gameState.kingdom = saved.kingdom || null;
       gameState.resources = saved.resources || { wood: 20, food: 15, basalt: 5, tablets: 0 };
-      gameState.buildings = saved.buildings || { mine: 0, forge: 0, house: 0, farm: 0 };
-      gameState.buildingLevels = saved.buildingLevels || { mine: 0, forge: 0, house: 0, farm: 0 };
+      gameState.buildings = saved.buildings || { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 };
+      gameState.buildingLevels = saved.buildingLevels || { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 };
       gameState.population = saved.population || 2;
       
       if (gameState.kingdom) {
@@ -863,17 +819,7 @@ async function loadGame() {
   }
 }
 
-// ===== ВЫХОД ИЗ ИГРЫ =====
-function closeGame() {
-  if (confirm('Вы уверены, что хотите выйти из игры?')) {
-    saveGame();
-    document.getElementById('game-screen').classList.remove('active');
-    document.getElementById('kingdom-screen').classList.add('active');
-    showToast('💾 Прогресс сохранён!', 'info');
-  }
-}
-
-// ===== УВЕДОМЛЕНИЯ (TOAST) =====
+// ===== УВЕДОМЛЕНИЯ =====
 function showToast(message, type = 'info') {
   const container = document.getElementById('toast-container');
   const toast = document.createElement('div');
@@ -894,16 +840,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 window.buildBuilding = buildBuilding;
 window.createTablet = createTablet;
-window.collectResources = collectResources;
 window.showKingdoms = showKingdoms;
 window.selectKingdom = selectKingdom;
 window.closeGame = closeGame;
 window.saveGame = saveGame;
 window.updateUI = updateUI;
 window.showToast = showToast;
-window.showBuildingInfo = showBuildingInfo;
-window.hideBuildingInfo = hideBuildingInfo;
 window.skipLoading = skipLoading;
+window.switchTab = switchTab;
+window.openGlobalMap = openGlobalMap;
+window.closeGlobalMap = closeGlobalMap;
 </script>
 </body>
 </html>

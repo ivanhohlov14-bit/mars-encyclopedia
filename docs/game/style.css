@@ -1,0 +1,234 @@
+/* docs/game/style.css */
+
+#game-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: #faf8f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Шапка */
+#game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e0d6c8;
+  margin-bottom: 20px;
+}
+
+#game-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+#game-resources {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.resource {
+  background: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #e0d6c8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.95rem;
+}
+
+.resource .icon {
+  font-size: 1.2rem;
+}
+
+#save-btn {
+  background: #6C63FF;
+  color: #fff;
+  border: none;
+  padding: 6px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+#save-btn:hover {
+  background: #5a52d5;
+}
+
+/* Карта */
+#game-map {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e0d6c8;
+  margin-bottom: 20px;
+}
+
+#game-map h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+#kingdoms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.kingdom-card {
+  background: #f5f0ea;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+.kingdom-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.kingdom-card.selected {
+  border-color: #6C63FF;
+  background: #f0edff;
+}
+.kingdom-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.kingdom-card .kingdom-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+.kingdom-card .kingdom-color {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.kingdom-card .kingdom-status {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+/* Строительство */
+#game-buildings {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e0d6c8;
+  margin-bottom: 20px;
+}
+
+#game-buildings h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+#buildings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.building-card {
+  background: #f5f0ea;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid #e0d6c8;
+}
+.building-card:hover {
+  background: #ede7df;
+  transform: translateY(-2px);
+}
+.building-card .icon {
+  font-size: 1.8rem;
+  display: block;
+}
+.building-card .cost {
+  font-size: 0.8rem;
+  color: #888;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Лог */
+#game-log {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e0d6c8;
+  margin-bottom: 20px;
+}
+
+#game-log h3 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+#log-messages {
+  max-height: 120px;
+  overflow-y: auto;
+  font-size: 0.95rem;
+  color: #444;
+}
+#log-messages p {
+  margin: 4px 0;
+  padding: 4px 8px;
+  border-bottom: 1px solid #f0ece6;
+}
+#log-messages p:last-child {
+  border-bottom: none;
+}
+
+/* Кнопка создания таблички */
+#game-actions {
+  text-align: center;
+}
+
+#create-tablet-btn {
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 10px 32px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#create-tablet-btn:hover {
+  background: #a93226;
+}
+
+/* Адаптация для телефона */
+@media (max-width: 768px) {
+  #game-container {
+    padding: 12px;
+  }
+  #game-title {
+    font-size: 1.4rem;
+  }
+  .resource {
+    font-size: 0.8rem;
+    padding: 2px 10px;
+  }
+  #kingdoms-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  #buildings-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}

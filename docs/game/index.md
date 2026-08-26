@@ -12,7 +12,7 @@ hide:
 <title>Марсианская империя</title>
 <style>
 /* ==========================================
-   ОБЩИЕ СТИЛИ
+   БАЗОВЫЕ СТИЛИ
    ========================================== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -48,7 +48,6 @@ body {
   max-width: 90vw;
   max-height: 70vh;
   border-radius: 16px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.7);
   border: 1px solid rgba(200,150,100,0.15);
   object-fit: cover;
 }
@@ -214,10 +213,10 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
-/* ===== ВЕРХНЯЯ ПЛАШКА С РЕСУРСАМИ ===== */
+/* ===== ВЕРХНЯЯ ПЛАШКА ===== */
 #top-bar {
   position: absolute;
   top: 10px;
@@ -267,101 +266,172 @@ body {
   padding-left: 10px;
 }
 
-/* ===== КНОПКИ ВКЛАДОК ===== */
-#tabs {
+/* ===== ИГРОВОЕ ПОЛЕ (СЕТКА) ===== */
+#game-map-grid {
   position: absolute;
-  bottom: 80px;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  width: 90%;
+  max-width: 600px;
+  z-index: 5;
+  padding: 10px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(200,150,100,0.1);
+}
+.cell {
+  aspect-ratio: 1;
+  background: rgba(60,40,30,0.6);
+  border: 1px solid rgba(200,150,100,0.1);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  min-height: 50px;
+}
+.cell:hover {
+  background: rgba(192,57,43,0.3);
+  transform: scale(1.05);
+  border-color: #c0392b;
+}
+.cell .building { font-size: 1.8rem; }
+.cell .resource-icon { font-size: 1.8rem; animation: pulse 2s infinite; }
+.cell .cell-label {
+  position: absolute;
+  bottom: 2px;
+  font-size: 0.4rem;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* ===== НИЖНЕЕ МЕНЮ (ПОСТРОЙКИ) ===== */
+#bottom-menu {
+  position: absolute;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 6px;
+  align-items: flex-end;
+  gap: 8px;
   z-index: 15;
+  width: 95%;
+  max-width: 700px;
+  justify-content: center;
+  flex-wrap: wrap;
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(8px);
-  padding: 8px 12px;
-  border-radius: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
   border: 1px solid rgba(200,150,100,0.15);
-  flex-wrap: wrap;
-  justify-content: center;
 }
-.tab-btn {
-  padding: 6px 14px;
-  background: rgba(192,57,43,0.3);
-  color: #d4c5b5;
-  border: 1px solid rgba(200,150,100,0.1);
-  border-radius: 6px;
+
+/* ===== КРУГЛАЯ КНОПКА ГЛОБАЛЬНОЙ КАРТЫ ===== */
+#global-map-btn {
+  position: absolute;
+  bottom: 90px;
+  left: 20px;
+  z-index: 20;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #6C63FF, #3a2f8a);
+  border: 2px solid rgba(255,255,255,0.15);
+  box-shadow: 0 4px 30px rgba(108,99,255,0.4);
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  font-family: 'Georgia', serif;
+}
+#global-map-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 40px rgba(108,99,255,0.6);
+}
+#global-map-btn:active {
+  transform: scale(0.95);
+}
+#global-map-btn .label {
+  position: absolute;
+  bottom: -18px;
+  font-size: 0.5rem;
+  color: #887a6e;
+  white-space: nowrap;
+  letter-spacing: 2px;
+}
+
+/* ===== КНОПКА СБОРА ===== */
+#collect-btn {
+  position: absolute;
+  bottom: 90px;
+  right: 20px;
+  z-index: 15;
+  padding: 12px 16px;
+  background: rgba(46,204,113,0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(46,204,113,0.2);
+  border-radius: 12px;
+  color: #e8d5c0;
   cursor: pointer;
   font-family: 'Georgia', serif;
   font-size: 0.75rem;
   transition: all 0.3s;
+  text-align: center;
+  min-width: 60px;
 }
-.tab-btn:hover {
-  background: rgba(192,57,43,0.6);
-  color: #e8d5c0;
+#collect-btn:hover {
+  background: rgba(46,204,113,0.4);
+  transform: scale(1.05);
 }
-.tab-btn.active {
-  background: rgba(192,57,43,0.8);
-  color: #fff;
-  border-color: #c0392b;
-}
-.tab-btn .icon { margin-right: 4px; }
+#collect-btn .icon { font-size: 1.2rem; display: block; }
 
-/* ===== ПАНЕЛЬ ПОСТРОЕК ===== */
-#build-panel {
-  position: absolute;
-  bottom: 130px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(10px);
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(200,150,100,0.15);
-  display: none;
-  z-index: 14;
-  width: 95%;
-  max-width: 600px;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-}
-#build-panel.active { display: flex; }
-
+/* ===== КНОПКИ ПОСТРОЕК В НИЖНЕМ МЕНЮ ===== */
 .build-btn {
-  padding: 8px 12px;
-  background: rgba(192,57,43,0.4);
-  color: #e8d5c0;
+  padding: 6px 10px;
+  background: rgba(40,25,20,0.8);
+  color: #d4c5b5;
   border: 1px solid rgba(200,150,100,0.15);
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   font-family: 'Georgia', serif;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   transition: all 0.3s;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  min-width: 60px;
+  gap: 1px;
+  min-width: 50px;
   flex: 1;
-  max-width: 90px;
+  max-width: 70px;
 }
 .build-btn:hover {
-  background: rgba(192,57,43,0.7);
-  transform: scale(1.05);
+  background: rgba(192,57,43,0.4);
+  transform: translateY(-3px);
   border-color: #c0392b;
 }
 .build-btn .cost {
-  font-size: 0.5rem;
+  font-size: 0.4rem;
   opacity: 0.6;
 }
 .build-btn .level {
-  font-size: 0.5rem;
+  font-size: 0.4rem;
   color: #b8a088;
 }
-.build-btn .time {
-  font-size: 0.5rem;
-  color: #f39c12;
-}
+.build-btn .icon-big { font-size: 1.2rem; }
 
 /* ===== ГЛОБАЛЬНАЯ КАРТА ===== */
 #global-map-overlay {
@@ -369,7 +439,7 @@ body {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.92);
   z-index: 9999;
   flex-direction: column;
   align-items: center;
@@ -379,7 +449,7 @@ body {
 #global-map-overlay.active { display: flex; }
 #global-map-overlay img {
   max-width: 100%;
-  max-height: 80vh;
+  max-height: 70vh;
   border-radius: 12px;
   border: 1px solid rgba(200,150,100,0.2);
 }
@@ -396,6 +466,13 @@ body {
 }
 #global-map-overlay .close-map:hover {
   background: rgba(192,57,43,0.9);
+}
+#global-map-overlay .region-info {
+  color: #e8d5c0;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: center;
+  opacity: 0.7;
 }
 
 /* ==========================================
@@ -417,11 +494,11 @@ body {
   background: rgba(0,0,0,0.85);
   backdrop-filter: blur(8px);
   color: #e8d5c0;
-  padding: 8px 18px;
+  padding: 6px 16px;
   border-radius: 8px;
   border: 1px solid rgba(200,150,100,0.15);
   font-family: 'Georgia', serif;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   animation: toastAnim 2.5s ease forwards;
   pointer-events: auto;
 }
@@ -437,17 +514,34 @@ body {
 }
 
 /* ==========================================
-   АДАПТАЦИЯ
+   АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНА
    ========================================== */
 @media (max-width: 768px) {
-  #top-bar { padding: 6px 12px; gap: 8px; }
-  #top-bar .kingdom-name { font-size: 0.8rem; }
-  #top-bar .resource-item { font-size: 0.7rem; }
-  #tabs { bottom: 70px; padding: 6px 10px; }
-  .tab-btn { font-size: 0.65rem; padding: 4px 10px; }
-  #build-panel { bottom: 120px; padding: 8px 10px; gap: 4px; }
-  .build-btn { font-size: 0.6rem; padding: 6px 8px; min-width: 50px; }
+  #top-bar { padding: 4px 10px; gap: 4px; font-size: 0.6rem; }
+  #top-bar .kingdom-name { font-size: 0.6rem; }
+  #top-bar .resource-item { font-size: 0.55rem; gap: 2px; }
+  #game-map-grid { top: 55px; padding: 6px; gap: 3px; width: 95%; }
+  .cell { min-height: 40px; font-size: 1.2rem; }
+  .cell .building { font-size: 1.4rem; }
+  .cell .resource-icon { font-size: 1.4rem; }
+  #bottom-menu { bottom: 12px; padding: 6px 8px; gap: 4px; }
+  .build-btn { font-size: 0.5rem; padding: 4px 6px; min-width: 40px; max-width: 55px; }
+  .build-btn .icon-big { font-size: 1rem; }
+  #global-map-btn { width: 50px; height: 50px; font-size: 1.4rem; bottom: 70px; left: 10px; }
+  #collect-btn { bottom: 70px; right: 10px; padding: 8px 10px; font-size: 0.6rem; min-width: 50px; }
   #play-btn { padding: 10px 24px; font-size: 1rem; }
+  .kingdom-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  #kingdom-screen h2 { font-size: 1.4rem; letter-spacing: 4px; }
+}
+@media (max-width: 480px) {
+  #game-map-grid { grid-template-columns: repeat(5, 1fr); gap: 2px; padding: 4px; }
+  .cell { min-height: 30px; font-size: 1rem; }
+  #bottom-menu { padding: 4px 6px; }
+  .build-btn { font-size: 0.45rem; min-width: 35px; }
+  .build-btn .icon-big { font-size: 0.8rem; }
+  #global-map-btn { width: 40px; height: 40px; font-size: 1.2rem; bottom: 60px; left: 8px; }
+  #collect-btn { bottom: 60px; right: 8px; padding: 6px 8px; font-size: 0.5rem; min-width: 40px; }
+  #top-bar .resource-item .icon { font-size: 0.7rem; }
 }
 </style>
 </head>
@@ -475,7 +569,7 @@ body {
   <div id="game-container">
     <img id="game-bg" src="/assets/images/mars-field.jpg" alt="Марс">
     
-    <!-- Верхняя плашка с ресурсами -->
+    <!-- Верхняя плашка -->
     <div id="top-bar">
       <span class="kingdom-name" id="game-kingdom-name">—</span>
       <div class="resources">
@@ -487,48 +581,50 @@ body {
       <span class="population">👥 <span id="population-count">2</span></span>
     </div>
 
-    <!-- Вкладки -->
-    <div id="tabs">
-      <button class="tab-btn active" onclick="switchTab('build')"><span class="icon">🏗️</span> Постройки</button>
-      <button class="tab-btn" onclick="switchTab('map')"><span class="icon">🗺️</span> Карта</button>
-      <button class="tab-btn" onclick="switchTab('army')"><span class="icon">⚔️</span> Армия</button>
-      <button class="tab-btn" onclick="openGlobalMap()"><span class="icon">🌍</span> Глобальная карта</button>
-    </div>
+    <!-- КРУГЛАЯ КНОПКА ГЛОБАЛЬНОЙ КАРТЫ -->
+    <button id="global-map-btn" onclick="openGlobalMap()">
+      🌍
+      <span class="label">КАРТА</span>
+    </button>
 
-    <!-- Панель построек -->
-    <div id="build-panel" class="active">
+    <!-- КНОПКА СБОРА -->
+    <button id="collect-btn" onclick="collectResources()">
+      <span class="icon">📦</span>
+      Собрать
+    </button>
+
+    <!-- ИГРОВОЕ ПОЛЕ -->
+    <div id="game-map-grid"></div>
+
+    <!-- НИЖНЕЕ МЕНЮ -->
+    <div id="bottom-menu">
       <button class="build-btn" onclick="buildBuilding('mine')">
-        ⛏️ Шахта
+        <span class="icon-big">⛏️</span> Шахта
         <span class="cost">🌲5 🍖3</span>
         <span class="level" id="mine-level">Ур.0</span>
-        <span class="time">⏱ 5с</span>
       </button>
       <button class="build-btn" onclick="buildBuilding('forge')">
-        ⚒️ Кузница
+        <span class="icon-big">⚒️</span> Кузница
         <span class="cost">🌲8 🪨3</span>
         <span class="level" id="forge-level">Ур.0</span>
-        <span class="time">⏱ 8с</span>
       </button>
       <button class="build-btn" onclick="buildBuilding('house')">
-        🏠 Дом
+        <span class="icon-big">🏠</span> Дом
         <span class="cost">🌲10 🍖5</span>
         <span class="level" id="house-level">Ур.0</span>
-        <span class="time">⏱ 6с</span>
       </button>
       <button class="build-btn" onclick="buildBuilding('farm')">
-        🌾 Ферма
+        <span class="icon-big">🌾</span> Ферма
         <span class="cost">🌲6 🍖4</span>
         <span class="level" id="farm-level">Ур.0</span>
-        <span class="time">⏱ 4с</span>
       </button>
       <button class="build-btn" onclick="buildBuilding('mill')">
-        🌾 Мельница
+        <span class="icon-big">🌾</span> Мельница
         <span class="cost">🌲8 🍖6</span>
         <span class="level" id="mill-level">Ур.0</span>
-        <span class="time">⏱ 7с</span>
       </button>
-      <button class="build-btn" onclick="createTablet()" style="background:rgba(192,57,43,0.6);">
-        📜 Табличка
+      <button class="build-btn" onclick="createTablet()" style="background:rgba(192,57,43,0.3); border-color:rgba(192,57,43,0.2);">
+        <span class="icon-big">📜</span> Табличка
         <span class="cost">🌲2 🍖1 🪨1</span>
         <span class="level" style="color:#f39c12;">+10 опыта</span>
       </button>
@@ -539,7 +635,8 @@ body {
 <!-- ===== ГЛОБАЛЬНАЯ КАРТА ===== -->
 <div id="global-map-overlay">
   <h2 style="color:#e8d5c0;margin-bottom:16px;">🗺️ Глобальная карта Марса</h2>
-  <img src="/assets/images/mars-map.png" alt="Глобальная карта Марса" id="global-map-img">
+  <img src="/assets/images/mars-map.png" alt="Глобальная карта Марса" id="global-map-img" onerror="this.src='/assets/images/placeholder-map.png'">
+  <div class="region-info" id="region-info">🌍 Кликните по региону для сбора ресурсов</div>
   <button class="close-map" onclick="closeGlobalMap()">✕ Закрыть карту</button>
 </div>
 
@@ -574,8 +671,85 @@ let gameState = {
   buildingLevels: { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 },
   population: 2,
   userId: null,
-  lastCollect: Date.now()
+  lastCollect: Date.now(),
+  grid: []
 };
+
+// ===== ИНИЦИАЛИЗАЦИЯ ПОЛЯ =====
+const RESOURCES = ['🌲', '🪨', '🍖', '🌲', '🪨', '🌲'];
+const GRID_SIZE = 6;
+
+function initGrid() {
+  const grid = document.getElementById('game-map-grid');
+  grid.innerHTML = '';
+  gameState.grid = [];
+  
+  for (let i = 0; i < GRID_SIZE * GRID_SIZE; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.dataset.index = i;
+    
+    if (i < 12) {
+      const resource = RESOURCES[i % RESOURCES.length];
+      cell.innerHTML = `<span class="resource-icon">${resource}</span>`;
+      cell.dataset.resource = resource;
+      gameState.grid.push({ type: 'resource', icon: resource });
+    } else {
+      gameState.grid.push({ type: 'empty', icon: null });
+    }
+    
+    cell.onclick = () => onCellClick(i);
+    grid.appendChild(cell);
+  }
+}
+
+// ===== КЛИК ПО ЯЧЕЙКЕ =====
+function onCellClick(index) {
+  const cellData = gameState.grid[index];
+  if (!cellData) return;
+  
+  if (cellData.type === 'resource') {
+    collectResource(index);
+  } else if (cellData.type === 'empty') {
+    showToast('🏗️ Выберите здание внизу и постройте его на свободной ячейке!', 'info');
+  }
+}
+
+// ===== СБОР РЕСУРСА =====
+function collectResource(index) {
+  const cellData = gameState.grid[index];
+  if (!cellData || cellData.type !== 'resource') return;
+  
+  const resourceMap = { '🌲': 'wood', '🪨': 'basalt', '🍖': 'food' };
+  const resKey = resourceMap[cellData.icon];
+  if (!resKey) return;
+  
+  const amount = Math.floor(Math.random() * 3) + 2;
+  gameState.resources[resKey] += amount;
+  
+  gameState.grid[index] = { type: 'empty', icon: null };
+  const cell = document.querySelector(`.cell[data-index="${index}"]`);
+  if (cell) {
+    cell.innerHTML = '';
+    cell.dataset.resource = '';
+  }
+  
+  showToast(`✅ Собрано +${amount} ${resKey}!`, 'success');
+  updateUI();
+  saveGame();
+  
+  setTimeout(() => {
+    if (gameState.grid[index]?.type === 'empty') {
+      const newResource = RESOURCES[Math.floor(Math.random() * RESOURCES.length)];
+      gameState.grid[index] = { type: 'resource', icon: newResource };
+      const cellEl = document.querySelector(`.cell[data-index="${index}"]`);
+      if (cellEl) {
+        cellEl.innerHTML = `<span class="resource-icon">${newResource}</span>`;
+        cellEl.dataset.resource = newResource;
+      }
+    }
+  }, 15000 + Math.random() * 10000);
+}
 
 // ===== ЗАГРУЗОЧНЫЙ ЭКРАН =====
 const video = document.getElementById('loader-video');
@@ -609,7 +783,7 @@ function showKingdoms() {
     const card = document.createElement('div');
     card.className = 'kingdom-card';
     card.innerHTML = `
-      <img src="${k.flag}" alt="${k.name}" loading="lazy" onerror="this.src='/assets/images/placeholder-flag.png'">
+      <img src="${k.flag}" alt="${k.name}" loading="lazy" onerror="this.style.display='none'">
       <div class="name">${k.name}</div>
       <div class="bonus">${k.bonus}</div>
       <div class="desc">${k.desc}</div>
@@ -623,12 +797,7 @@ function showKingdoms() {
 function selectKingdom(kingdom) {
   gameState.kingdom = kingdom.name;
   
-  const bonusMap = {
-    'базальту': 'basalt',
-    'дереву': 'wood',
-    'еде': 'food',
-    'железу': 'basalt'
-  };
+  const bonusMap = { 'базальту': 'basalt', 'дереву': 'wood', 'еде': 'food', 'железу': 'basalt' };
   const bonusKey = bonusMap[kingdom.bonus.replace('+5 к ', '')] || 'basalt';
   gameState.resources[bonusKey] += 5;
 
@@ -636,37 +805,10 @@ function selectKingdom(kingdom) {
   document.getElementById('game-screen').classList.add('active');
   document.getElementById('game-kingdom-name').textContent = kingdom.name;
   
+  initGrid();
   updateUI();
   saveGame();
-  showToast(`👑 Добро пожаловать в ${kingdom.name}!`, 'success');
-}
-
-// ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
-function switchTab(tab) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => {
-    if (b.textContent.includes('Постройки') && tab === 'build') b.classList.add('active');
-    if (b.textContent.includes('Карта') && tab === 'map') b.classList.add('active');
-    if (b.textContent.includes('Армия') && tab === 'army') b.classList.add('active');
-  });
-  
-  const panel = document.getElementById('build-panel');
-  panel.classList.toggle('active', tab === 'build');
-  
-  if (tab === 'map') {
-    showToast('🗺️ Карта королевства будет доступна в следующем обновлении!', 'info');
-  }
-  if (tab === 'army') {
-    showToast('⚔️ Армия будет доступна в следующем обновлении!', 'info');
-  }
-}
-
-// ===== ГЛОБАЛЬНАЯ КАРТА =====
-function openGlobalMap() {
-  document.getElementById('global-map-overlay').classList.add('active');
-}
-function closeGlobalMap() {
-  document.getElementById('global-map-overlay').classList.remove('active');
+  showToast(`👑 Добро пожаловать в ${kingdom.name}! Бонус получен!`, 'success');
 }
 
 // ===== ОБНОВЛЕНИЕ ИНТЕРФЕЙСА =====
@@ -744,9 +886,52 @@ function createTablet() {
     window.addExperience(gameState.userId, 10);
   }
   
-  showToast(`📜 Создана табличка! (+10 опыта)`, 'success');
+  showToast(`📜 Создана глиняная табличка! (+10 опыта)`, 'success');
   updateUI();
   saveGame();
+}
+
+// ===== СБОР РЕСУРСОВ =====
+function collectResources() {
+  const now = Date.now();
+  const elapsed = (now - gameState.lastCollect) / 1000;
+  if (elapsed < 5) {
+    showToast(`⏳ Подождите ${Math.ceil(5 - elapsed)}с`, 'info');
+    return;
+  }
+  
+  const b = gameState.buildings;
+  const r = gameState.resources;
+  
+  r.wood += b.farm * 1 + b.house * 0.5 + b.mill * 0.3;
+  r.food += b.farm * 2 + b.house * 1 + b.mill * 0.5;
+  r.basalt += b.mine * 2 + b.forge * 0.5;
+  r.wood += Math.floor(gameState.population / 3);
+  r.food += Math.floor(gameState.population / 2);
+  
+  showToast(`📦 Собрано: 🌲${Math.floor(r.wood)} 🍖${Math.floor(r.food)} 🪨${Math.floor(r.basalt)}`, 'success');
+  gameState.lastCollect = now;
+  updateUI();
+  saveGame();
+}
+
+// ===== АВТОМАТИЧЕСКАЯ ДОБЫЧА =====
+setInterval(() => {
+  if (!gameState.kingdom) return;
+  const b = gameState.buildings;
+  const r = gameState.resources;
+  r.wood += b.mine * 0.2 + b.farm * 0.3 + b.mill * 0.2;
+  r.food += b.farm * 0.4 + b.mill * 0.3;
+  r.basalt += b.mine * 0.3 + b.forge * 0.1;
+  updateUI();
+}, 10000);
+
+// ===== ГЛОБАЛЬНАЯ КАРТА =====
+function openGlobalMap() {
+  document.getElementById('global-map-overlay').classList.add('active');
+}
+function closeGlobalMap() {
+  document.getElementById('global-map-overlay').classList.remove('active');
 }
 
 // ===== СОХРАНЕНИЕ =====
@@ -769,11 +954,10 @@ async function saveGame() {
       'https://ncytbgbzfjfoqmmgfygz.supabase.co',
       'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D'
     );
-    const { error } = await client
+    await client
       .from('profiles')
       .update({ game_data: gameState })
       .eq('user_id', gameState.userId);
-    if (error) console.warn('⚠️ Ошибка сохранения:', error);
   } catch (e) {
     console.warn('⚠️ Ошибка сохранения:', e);
   }
@@ -810,6 +994,7 @@ async function loadGame() {
         document.getElementById('game-screen').classList.add('active');
         document.getElementById('kingdom-screen').classList.remove('active');
         document.getElementById('loader-screen').classList.add('hidden');
+        initGrid();
         updateUI();
         showToast(`👑 Добро пожаловать обратно в ${gameState.kingdom}!`, 'info');
       }
@@ -838,8 +1023,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// Глобальные функции для HTML
 window.buildBuilding = buildBuilding;
 window.createTablet = createTablet;
+window.collectResources = collectResources;
 window.showKingdoms = showKingdoms;
 window.selectKingdom = selectKingdom;
 window.closeGame = closeGame;
@@ -847,9 +1034,9 @@ window.saveGame = saveGame;
 window.updateUI = updateUI;
 window.showToast = showToast;
 window.skipLoading = skipLoading;
-window.switchTab = switchTab;
 window.openGlobalMap = openGlobalMap;
 window.closeGlobalMap = closeGlobalMap;
+window.onCellClick = onCellClick;
 </script>
 </body>
 </html>

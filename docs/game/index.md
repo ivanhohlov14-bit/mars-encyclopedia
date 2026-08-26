@@ -12,7 +12,7 @@ hide:
 <title>Марсианская империя</title>
 <style>
 /* ==========================================
-   БАЗОВЫЕ СТИЛИ
+   ВСЕ СТИЛИ
    ========================================== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -24,9 +24,7 @@ body {
   user-select: none;
 }
 
-/* ==========================================
-   ЗАГРУЗОЧНЫЙ ЭКРАН
-   ========================================== */
+/* ===== ЗАГРУЗОЧНЫЙ ЭКРАН ===== */
 #loader-screen {
   position: fixed;
   top: 0; left: 0;
@@ -113,9 +111,7 @@ body {
   border-color: rgba(200,150,100,0.3);
 }
 
-/* ==========================================
-   ВЫБОР КОРОЛЕВСТВА
-   ========================================== */
+/* ===== ВЫБОР КОРОЛЕВСТВА ===== */
 #kingdom-screen {
   position: fixed;
   top: 0; left: 0;
@@ -189,9 +185,7 @@ body {
   line-height: 1.3;
 }
 
-/* ==========================================
-   ИГРОВОЙ ЭКРАН
-   ========================================== */
+/* ===== ИГРОВОЙ ЭКРАН ===== */
 #game-screen {
   display: none;
   position: fixed;
@@ -266,7 +260,7 @@ body {
   padding-left: 10px;
 }
 
-/* ===== ИГРОВОЕ ПОЛЕ (СЕТКА) ===== */
+/* ===== ИГРОВОЕ ПОЛЕ ===== */
 #game-map-grid {
   position: absolute;
   top: 70px;
@@ -303,7 +297,10 @@ body {
   border-color: #c0392b;
 }
 .cell .building { font-size: 1.8rem; }
-.cell .resource-icon { font-size: 1.8rem; animation: pulse 2s infinite; }
+.cell .resource-icon {
+  font-size: 1.8rem;
+  animation: pulse 2s infinite;
+}
 .cell .cell-label {
   position: absolute;
   bottom: 2px;
@@ -316,28 +313,47 @@ body {
   50% { transform: scale(1.1); opacity: 1; }
 }
 
-/* ===== НИЖНЕЕ МЕНЮ (ПОСТРОЙКИ) ===== */
-#bottom-menu {
+/* ===== ПРОГРЕСС К ЦЕЛИ ===== */
+#progress-container {
   position: absolute;
-  bottom: 20px;
+  bottom: 160px;
   left: 50%;
   transform: translateX(-50%);
+  width: 80%;
+  max-width: 400px;
+  z-index: 12;
+  background: rgba(0,0,0,0.5);
+  border-radius: 20px;
+  padding: 6px 12px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(200,150,100,0.1);
   display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  z-index: 15;
-  width: 95%;
-  max-width: 700px;
-  justify-content: center;
-  flex-wrap: wrap;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(8px);
-  padding: 10px 12px;
-  border-radius: 14px;
-  border: 1px solid rgba(200,150,100,0.15);
+  align-items: center;
+  gap: 10px;
+}
+#progress-bar {
+  height: 6px;
+  flex: 1;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+#progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #f39c12, #f1c40f);
+  border-radius: 4px;
+  transition: width 0.5s;
+}
+#progress-text {
+  font-size: 0.7rem;
+  color: #b8a088;
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: right;
 }
 
-/* ===== КРУГЛАЯ КНОПКА ГЛОБАЛЬНОЙ КАРТЫ ===== */
+/* ===== КРУГЛАЯ КНОПКА КАРТЫ ===== */
 #global-map-btn {
   position: absolute;
   bottom: 90px;
@@ -399,7 +415,85 @@ body {
 }
 #collect-btn .icon { font-size: 1.2rem; display: block; }
 
-/* ===== КНОПКИ ПОСТРОЕК В НИЖНЕМ МЕНЮ ===== */
+/* ===== ПАНЕЛИ ДИПЛОМАТИИ И АРМИИ ===== */
+.diplomacy-panel {
+  position: absolute;
+  bottom: 200px;
+  right: 20px;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.diplomacy-btn {
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(200,150,100,0.15);
+  border-radius: 8px;
+  color: #d4c5b5;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  font-size: 0.6rem;
+  transition: all 0.3s;
+  text-align: left;
+  min-width: 100px;
+}
+.diplomacy-btn:hover {
+  background: rgba(192,57,43,0.3);
+  border-color: #c0392b;
+}
+.diplomacy-btn .icon { margin-right: 4px; }
+
+.army-panel {
+  position: absolute;
+  bottom: 200px;
+  left: 20px;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.army-btn {
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(200,150,100,0.15);
+  border-radius: 8px;
+  color: #d4c5b5;
+  cursor: pointer;
+  font-family: 'Georgia', serif;
+  font-size: 0.6rem;
+  transition: all 0.3s;
+  text-align: left;
+  min-width: 100px;
+}
+.army-btn:hover {
+  background: rgba(192,57,43,0.3);
+  border-color: #c0392b;
+}
+.army-btn .icon { margin-right: 4px; }
+
+/* ===== НИЖНЕЕ МЕНЮ ===== */
+#bottom-menu {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  z-index: 15;
+  width: 95%;
+  max-width: 700px;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(200,150,100,0.15);
+}
 .build-btn {
   padding: 6px 10px;
   background: rgba(40,25,20,0.8);
@@ -475,9 +569,52 @@ body {
   opacity: 0.7;
 }
 
-/* ==========================================
-   УВЕДОМЛЕНИЯ
-   ========================================== */
+/* ===== ЭКРАН ПОБЕДЫ ===== */
+#victory-screen {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 99999;
+  background: rgba(0,0,0,0.9);
+  backdrop-filter: blur(10px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+#victory-screen.active { display: flex; }
+#victory-screen .title {
+  font-size: 3rem;
+  color: #f1c40f;
+  text-shadow: 0 0 60px rgba(241,196,15,0.3);
+  margin-bottom: 10px;
+}
+#victory-screen .subtitle {
+  font-size: 1.2rem;
+  color: #e8d5c0;
+  opacity: 0.7;
+  max-width: 500px;
+}
+#victory-screen .restart-btn {
+  margin-top: 30px;
+  padding: 14px 48px;
+  background: rgba(192,57,43,0.8);
+  color: #e8d5c0;
+  border: 1px solid rgba(200,150,100,0.3);
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-family: 'Georgia', serif;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#victory-screen .restart-btn:hover {
+  background: rgba(192,57,43,1);
+  transform: scale(1.05);
+}
+
+/* ===== УВЕДОМЛЕНИЯ ===== */
 .toast-container {
   position: fixed;
   top: 80px;
@@ -513,9 +650,7 @@ body {
   100% { opacity: 0; transform: translateY(-20px) scale(0.95); }
 }
 
-/* ==========================================
-   АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНА
-   ========================================== */
+/* ===== АДАПТАЦИЯ ===== */
 @media (max-width: 768px) {
   #top-bar { padding: 4px 10px; gap: 4px; font-size: 0.6rem; }
   #top-bar .kingdom-name { font-size: 0.6rem; }
@@ -529,6 +664,10 @@ body {
   .build-btn .icon-big { font-size: 1rem; }
   #global-map-btn { width: 50px; height: 50px; font-size: 1.4rem; bottom: 70px; left: 10px; }
   #collect-btn { bottom: 70px; right: 10px; padding: 8px 10px; font-size: 0.6rem; min-width: 50px; }
+  .diplomacy-panel, .army-panel { bottom: 140px; }
+  .diplomacy-btn, .army-btn { font-size: 0.5rem; padding: 4px 8px; min-width: 70px; }
+  #victory-screen .title { font-size: 2rem; }
+  #progress-container { bottom: 120px; width: 90%; }
   #play-btn { padding: 10px 24px; font-size: 1rem; }
   .kingdom-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   #kingdom-screen h2 { font-size: 1.4rem; letter-spacing: 4px; }
@@ -541,7 +680,6 @@ body {
   .build-btn .icon-big { font-size: 0.8rem; }
   #global-map-btn { width: 40px; height: 40px; font-size: 1.2rem; bottom: 60px; left: 8px; }
   #collect-btn { bottom: 60px; right: 8px; padding: 6px 8px; font-size: 0.5rem; min-width: 40px; }
-  #top-bar .resource-item .icon { font-size: 0.7rem; }
 }
 </style>
 </head>
@@ -569,7 +707,6 @@ body {
   <div id="game-container">
     <img id="game-bg" src="/assets/images/mars-field.jpg" alt="Марс">
     
-    <!-- Верхняя плашка -->
     <div id="top-bar">
       <span class="kingdom-name" id="game-kingdom-name">—</span>
       <div class="resources">
@@ -581,22 +718,34 @@ body {
       <span class="population">👥 <span id="population-count">2</span></span>
     </div>
 
-    <!-- КРУГЛАЯ КНОПКА ГЛОБАЛЬНОЙ КАРТЫ -->
+    <div id="progress-container">
+      <span style="font-size:0.7rem;">🏆</span>
+      <div id="progress-bar"><div id="progress-fill"></div></div>
+      <span id="progress-text">0 / 100</span>
+    </div>
+
     <button id="global-map-btn" onclick="openGlobalMap()">
       🌍
       <span class="label">КАРТА</span>
     </button>
 
-    <!-- КНОПКА СБОРА -->
+    <div class="diplomacy-panel">
+      <button class="diplomacy-btn" onclick="makeAlliance()"><span class="icon">🤝</span> Союз</button>
+      <button class="diplomacy-btn" onclick="tradeResources()"><span class="icon">🔄</span> Торговля</button>
+    </div>
+
+    <div class="army-panel">
+      <button class="army-btn" onclick="recruitArmy()"><span class="icon">⚔️</span> Набор армии</button>
+      <button class="army-btn" onclick="attackRegion()"><span class="icon">🗡️</span> Захват региона</button>
+    </div>
+
     <button id="collect-btn" onclick="collectResources()">
       <span class="icon">📦</span>
       Собрать
     </button>
 
-    <!-- ИГРОВОЕ ПОЛЕ -->
     <div id="game-map-grid"></div>
 
-    <!-- НИЖНЕЕ МЕНЮ -->
     <div id="bottom-menu">
       <button class="build-btn" onclick="buildBuilding('mine')">
         <span class="icon-big">⛏️</span> Шахта
@@ -623,7 +772,7 @@ body {
         <span class="cost">🌲8 🍖6</span>
         <span class="level" id="mill-level">Ур.0</span>
       </button>
-      <button class="build-btn" onclick="createTablet()" style="background:rgba(192,57,43,0.3); border-color:rgba(192,57,43,0.2);">
+      <button class="build-btn" onclick="createTablet()" style="background:rgba(192,57,43,0.3);">
         <span class="icon-big">📜</span> Табличка
         <span class="cost">🌲2 🍖1 🪨1</span>
         <span class="level" style="color:#f39c12;">+10 опыта</span>
@@ -638,6 +787,13 @@ body {
   <img src="/assets/images/mars-map.png" alt="Глобальная карта Марса" id="global-map-img" onerror="this.src='/assets/images/placeholder-map.png'">
   <div class="region-info" id="region-info">🌍 Кликните по региону для сбора ресурсов</div>
   <button class="close-map" onclick="closeGlobalMap()">✕ Закрыть карту</button>
+</div>
+
+<!-- ===== ЭКРАН ПОБЕДЫ ===== -->
+<div id="victory-screen">
+  <div class="title">🏆 ПОБЕДА!</div>
+  <div class="subtitle">Вы создали 100 глиняных табличек и сохранили знания Марса для будущих поколений! Ваше королевство станет легендой.</div>
+  <button class="restart-btn" onclick="resetGame()">🔄 Начать заново</button>
 </div>
 
 <!-- ===== КОНТЕЙНЕР ДЛЯ УВЕДОМЛЕНИЙ ===== -->
@@ -670,9 +826,13 @@ let gameState = {
   buildings: { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 },
   buildingLevels: { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 },
   population: 2,
+  army: 0,
+  alliances: 0,
+  regions: 0,
   userId: null,
   lastCollect: Date.now(),
-  grid: []
+  grid: [],
+  gameStarted: false
 };
 
 // ===== ИНИЦИАЛИЗАЦИЯ ПОЛЯ =====
@@ -707,15 +867,14 @@ function initGrid() {
 function onCellClick(index) {
   const cellData = gameState.grid[index];
   if (!cellData) return;
-  
   if (cellData.type === 'resource') {
     collectResource(index);
-  } else if (cellData.type === 'empty') {
+  } else {
     showToast('🏗️ Выберите здание внизу и постройте его на свободной ячейке!', 'info');
   }
 }
 
-// ===== СБОР РЕСУРСА =====
+// ===== СБОР РЕСУРСА С КАРТЫ =====
 function collectResource(index) {
   const cellData = gameState.grid[index];
   if (!cellData || cellData.type !== 'resource') return;
@@ -732,6 +891,8 @@ function collectResource(index) {
   if (cell) {
     cell.innerHTML = '';
     cell.dataset.resource = '';
+    cell.style.animation = 'none';
+    setTimeout(() => cell.style.animation = '', 10);
   }
   
   showToast(`✅ Собрано +${amount} ${resKey}!`, 'success');
@@ -796,6 +957,7 @@ function showKingdoms() {
 // ===== ВЫБОР КОРОЛЕВСТВА =====
 function selectKingdom(kingdom) {
   gameState.kingdom = kingdom.name;
+  gameState.gameStarted = true;
   
   const bonusMap = { 'базальту': 'basalt', 'дереву': 'wood', 'еде': 'food', 'железу': 'basalt' };
   const bonusKey = bonusMap[kingdom.bonus.replace('+5 к ', '')] || 'basalt';
@@ -825,6 +987,19 @@ function updateUI() {
   document.getElementById('house-level').textContent = `Ур.${gameState.buildingLevels.house}`;
   document.getElementById('farm-level').textContent = `Ур.${gameState.buildingLevels.farm}`;
   document.getElementById('mill-level').textContent = `Ур.${gameState.buildingLevels.mill}`;
+  
+  updateProgress();
+}
+
+function updateProgress() {
+  const tablets = gameState.resources.tablets || 0;
+  const progress = Math.min((tablets / 100) * 100, 100);
+  document.getElementById('progress-fill').style.width = progress + '%';
+  document.getElementById('progress-text').textContent = `${Math.floor(tablets)} / 100`;
+  
+  if (tablets >= 100 && gameState.gameStarted) {
+    document.getElementById('victory-screen').classList.add('active');
+  }
 }
 
 // ===== СТРОИТЕЛЬСТВО =====
@@ -861,6 +1036,26 @@ function buildBuilding(type) {
   
   const names = { mine: 'Шахта', forge: 'Кузница', house: 'Дом', farm: 'Ферма', mill: 'Мельница' };
   showToast(`🏗️ Построена ${names[type]}! Уровень: ${gameState.buildingLevels[type]}`, 'success');
+  
+  // Прикольный эффект: случайное событие при строительстве
+  if (Math.random() < 0.15) {
+    const events = [
+      '💎 Найден древний артефакт! +5 базальта',
+      '🌪️ Песчаная буря! -2 еды',
+      '📡 Обнаружен сигнал! +3 дерева',
+      '⚡ Энергетический всплеск! +2 табличек'
+    ];
+    const event = events[Math.floor(Math.random() * events.length)];
+    setTimeout(() => {
+      showToast(`✨ Случайное событие: ${event}`, 'info');
+      if (event.includes('базальта')) gameState.resources.basalt += 5;
+      else if (event.includes('еды')) gameState.resources.food = Math.max(0, gameState.resources.food - 2);
+      else if (event.includes('дерева')) gameState.resources.wood += 3;
+      else if (event.includes('табличек')) gameState.resources.tablets += 2;
+      updateUI();
+      saveGame();
+    }, 500);
+  }
   
   updateUI();
   saveGame();
@@ -909,6 +1104,13 @@ function collectResources() {
   r.wood += Math.floor(gameState.population / 3);
   r.food += Math.floor(gameState.population / 2);
   
+  // Бонус за союзы
+  if (gameState.alliances > 0) {
+    r.wood *= (1 + gameState.alliances * 0.05);
+    r.food *= (1 + gameState.alliances * 0.05);
+    r.basalt *= (1 + gameState.alliances * 0.05);
+  }
+  
   showToast(`📦 Собрано: 🌲${Math.floor(r.wood)} 🍖${Math.floor(r.food)} 🪨${Math.floor(r.basalt)}`, 'success');
   gameState.lastCollect = now;
   updateUI();
@@ -923,8 +1125,67 @@ setInterval(() => {
   r.wood += b.mine * 0.2 + b.farm * 0.3 + b.mill * 0.2;
   r.food += b.farm * 0.4 + b.mill * 0.3;
   r.basalt += b.mine * 0.3 + b.forge * 0.1;
+  if (gameState.alliances > 0) {
+    r.wood *= (1 + gameState.alliances * 0.02);
+    r.food *= (1 + gameState.alliances * 0.02);
+    r.basalt *= (1 + gameState.alliances * 0.02);
+  }
   updateUI();
 }, 10000);
+
+// ===== ДИПЛОМАТИЯ =====
+function makeAlliance() {
+  if (gameState.resources.tablets < 10) {
+    showToast('❌ Нужно 10 табличек для союза!', 'error');
+    return;
+  }
+  gameState.resources.tablets -= 10;
+  gameState.alliances += 1;
+  showToast(`🤝 Заключён союз! (+${gameState.alliances * 5}% к добыче)`, 'success');
+  updateUI();
+  saveGame();
+}
+
+function tradeResources() {
+  if (gameState.resources.wood < 10 || gameState.resources.food < 10) {
+    showToast('❌ Нужно 10 дерева и 10 еды для торговли!', 'error');
+    return;
+  }
+  gameState.resources.wood -= 10;
+  gameState.resources.food -= 10;
+  gameState.resources.basalt += 15;
+  showToast(`🔄 Торговля прошла успешно! (+15 базальта)`, 'success');
+  updateUI();
+  saveGame();
+}
+
+// ===== АРМИЯ =====
+function recruitArmy() {
+  if (gameState.resources.food < 15 || gameState.resources.basalt < 10) {
+    showToast('❌ Нужно 15 еды и 10 базальта для набора армии!', 'error');
+    return;
+  }
+  gameState.resources.food -= 15;
+  gameState.resources.basalt -= 10;
+  gameState.army += 1;
+  showToast(`⚔️ Армия набрана! (${gameState.army} отрядов)`, 'success');
+  updateUI();
+  saveGame();
+}
+
+function attackRegion() {
+  if (gameState.army < 1) {
+    showToast('❌ Нужна армия для захвата региона!', 'error');
+    return;
+  }
+  gameState.army -= 1;
+  gameState.regions += 1;
+  const bonus = Math.floor(Math.random() * 10) + 5;
+  gameState.resources.basalt += bonus;
+  showToast(`🗡️ Регион захвачен! (+${bonus} базальта)`, 'success');
+  updateUI();
+  saveGame();
+}
 
 // ===== ГЛОБАЛЬНАЯ КАРТА =====
 function openGlobalMap() {
@@ -932,6 +1193,23 @@ function openGlobalMap() {
 }
 function closeGlobalMap() {
   document.getElementById('global-map-overlay').classList.remove('active');
+}
+
+// ===== ПЕРЕЗАПУСК =====
+function resetGame() {
+  document.getElementById('victory-screen').classList.remove('active');
+  gameState.resources = { wood: 20, food: 15, basalt: 5, tablets: 0 };
+  gameState.buildings = { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 };
+  gameState.buildingLevels = { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 };
+  gameState.population = 2;
+  gameState.army = 0;
+  gameState.alliances = 0;
+  gameState.regions = 0;
+  gameState.lastCollect = Date.now();
+  initGrid();
+  updateUI();
+  saveGame();
+  showToast('🔄 Игра перезапущена!', 'info');
 }
 
 // ===== СОХРАНЕНИЕ =====
@@ -988,6 +1266,9 @@ async function loadGame() {
       gameState.buildings = saved.buildings || { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 };
       gameState.buildingLevels = saved.buildingLevels || { mine: 0, forge: 0, house: 0, farm: 0, mill: 0 };
       gameState.population = saved.population || 2;
+      gameState.army = saved.army || 0;
+      gameState.alliances = saved.alliances || 0;
+      gameState.regions = saved.regions || 0;
       
       if (gameState.kingdom) {
         document.getElementById('game-kingdom-name').textContent = gameState.kingdom;
@@ -1001,6 +1282,16 @@ async function loadGame() {
     }
   } catch (e) {
     console.warn('⚠️ Ошибка загрузки:', e);
+  }
+}
+
+// ===== ВЫХОД ИЗ ИГРЫ =====
+function closeGame() {
+  if (confirm('Вы уверены, что хотите выйти из игры?')) {
+    saveGame();
+    document.getElementById('game-screen').classList.remove('active');
+    document.getElementById('kingdom-screen').classList.add('active');
+    showToast('💾 Прогресс сохранён!', 'info');
   }
 }
 
@@ -1023,7 +1314,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Глобальные функции для HTML
 window.buildBuilding = buildBuilding;
 window.createTablet = createTablet;
 window.collectResources = collectResources;
@@ -1037,6 +1327,11 @@ window.skipLoading = skipLoading;
 window.openGlobalMap = openGlobalMap;
 window.closeGlobalMap = closeGlobalMap;
 window.onCellClick = onCellClick;
+window.makeAlliance = makeAlliance;
+window.tradeResources = tradeResources;
+window.recruitArmy = recruitArmy;
+window.attackRegion = attackRegion;
+window.resetGame = resetGame;
 </script>
 </body>
 </html>

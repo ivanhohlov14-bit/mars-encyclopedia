@@ -215,8 +215,8 @@ hide:
 <script>
 // ===== КОРОЛЕВСТВА =====
 const KINGDOMS = [
-  { name: 'Аркадия', flag: '/assets/images/flag-of-arcadia.png', bonus: '+5 к знаниям', desc: 'Древние руины и артефакты' },
-  { name: 'Ксанф', flag: '/assets/images/flag-of-ksanf.png', bonus: '+5 к железу', desc: 'Подземные шахты и крепости' },
+  { name: 'Аркадия', flag: '/assets/images/map/flag-of-arcadia.png', bonus: '+5 к знаниям', desc: 'Древние руины и артефакты' },
+  { name: 'Ксанф', flag: '/assets/images/coat-of-arms-of-ksanf.png', bonus: '+5 к железу', desc: 'Подземные шахты и крепости' },
   { name: 'Эдем', flag: '/assets/images/flag-of-eden.jpg', bonus: '+5 к глине', desc: 'Плодородные сады и оранжереи' },
   { name: 'Эридания', flag: '/assets/images/flag-of-eridania.png', bonus: '+5 к воде', desc: 'Озёра и древние каналы' },
   { name: 'Кхонг', flag: '/assets/images/flag-of-khong.png', bonus: '+5 к железу', desc: 'Пустыни и глубокие шахты' },

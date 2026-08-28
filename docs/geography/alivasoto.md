@@ -1,14 +1,25 @@
 # Королевство Аливасото
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Аливасото</h3>
-  <hr>
-  
-  <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/alivasoto-kingdom-map.png" alt="Карта Королевства Аливасото" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Карта Королевства Аливасото. По данным Академии Окхасена (2650 г. Э.О.).</div>
+<!-- Блок "Хорошая статья" (как в статье Эдема) -->
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
-  <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
+
+<!-- Новый инфобокс в стиле Эдема -->
+<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Аливасото</h3>
+  </div>
+
+  <!-- Карта -->
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/alivasoto-kingdom-map.png" alt="Карта Королевства Аливасото" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Аливасото. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
+  <!-- Флаг и герб -->
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png" alt="Флаг Королевства Аливасото" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -19,9 +30,12 @@
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Аливасото</div>
     </div>
   </div>
-  
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+
+  <!-- История -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 800 г. Э.О. — первые поселения</li>
     <li>• 1000 г. — объединение островов</li>
     <li>• 1500 г. — открытие камней лисот</li>
@@ -30,41 +44,71 @@
     <li>• 2735 г. — замерзание моря</li>
     <li>• 2740 г. — цунами, гибель Аливасото</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Alivasoto Mar</i> («Живой Аливасото»)</p>
-  <p><b>Тип государства</b> Королевство (островная монархия)</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a> (островной диалект)</p>
-  <p><b>Столица</b> <a href="/geography/alivasoto-city/">Аливасото</a></p>
-  <p><b>Координаты столицы</b> 30° ю.ш., 120° в.д.</p>
-  <p><b>Крупнейшие города</b> Аливасото (у подножия горы), Деревня на Малом острове</p>
-  <p><b>Правящая династия</b> Аливасиды (Аливас I — Аливас Великий — Аливас III)</p>
-  <p><b>Годы существования</b> ок. 800 г. Э.О. — 2740 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ богини <a href="/mythology/araksis/">Араксис</a> (ок. 60 %) и культ горы (30 %)</p>
+  <!-- Основные данные -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
+  <p><b>Марсианское название:</b> <i>Alivasoto Mar</i> («Живой Аливасото»)</p>
+  <p><b>Тип государства:</b> Королевство (островная монархия)</p>
+  <p><b>Официальный язык:</b> <a href="/terms/marzan/">Marzān</a> (островной диалект)</p>
+  <p><b>Столица:</b> <a href="/geography/alivasoto-city/">Аливасото</a></p>
+  <p><b>Координаты столицы:</b> 30° ю.ш., 120° в.д.</p>
+  <p><b>Крупнейшие города:</b> Аливасото (у подножия горы), Деревня на Малом острове</p>
+  <p><b>Правящая династия:</b> Аливасиды (Аливас I — Аливас Великий — Аливас III)</p>
+  <p><b>Годы существования:</b> ок. 800 г. Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ богини <a href="/mythology/araksis/">Араксис</a> (ок. 60 %) и культ горы (30 %)</p>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <!-- Территория -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~500 000 км²</li>
     <li>• % водной поверхности ~20 %</li>
   </ul>
 
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <!-- Население -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Оценка (2650 г. Э.О.) ~15 000 чел.</li>
     <li>• Плотность ~0,03 чел./км²</li>
   </ul>
 
-  <p><b>ВВП (ППС)</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <!-- ВВП (ППС) -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Итого (2650 г.) ~1 млн глиняных талантов</li>
     <li>• На душу населения ~66,7 таланта</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
-  <p><b>Всепланетная сеть</b> <a href="/terms/marsset/">Marsset</a> (отсутствовала)</p>
+  <hr style="margin: 6px 0;">
+
+  <!-- Экономика -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="/terms/marsset/">Marsset</a> (отсутствовала)</p>
 
   <hr style="margin: 6px 0;">
-  <p><b>Государства-соседи</b></p>
+
+  <!-- Государства-соседи -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
+  </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.jpg" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
@@ -83,10 +127,180 @@
       <a href="/geography/eden/">Эдем</a>
     </div>
   </div>
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/zephyria-sea/">Зефирийское море</a></p>
-  <p><b>Крупнейшие реки</b> (отсутствуют, островное государство)</p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a>, <a href="/geography/mount-alivasoto/">гора Аливасото</a>, <a href="/geography/lisot-stones/">камни лисот</a></p>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Крупнейшие водоёмы -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="/geography/zephyria-sea/">Зефирийское море</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Крупнейшие реки -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие реки
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• (отсутствуют, островное государство)</li>
+  </ul>
+
 </div>
+
+<!-- Блок "Хорошая статья" -->
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
+</div>
+
+<!-- Новый инфобокс в стиле Эдема -->
+<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Аливасото</h3>
+  </div>
+
+  <!-- Карта -->
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/alivasoto-kingdom-map.png" alt="Карта Королевства Аливасото" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Аливасото. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
+  <!-- Флаг и герб -->
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png" alt="Флаг Королевства Аливасото" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Аливасото</div>
+    </div>
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-alivasoto.png" alt="Герб Королевства Аливасото" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Аливасото</div>
+    </div>
+  </div>
+
+  <!-- История -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• ок. 800 г. Э.О. — первые поселения</li>
+    <li>• 1000 г. — объединение островов</li>
+    <li>• 1500 г. — открытие камней лисот</li>
+    <li>• 2000 г. — расцвет торговли</li>
+    <li>• 2500 г. — провозглашение Королевства</li>
+    <li>• 2735 г. — замерзание моря</li>
+    <li>• 2740 г. — цунами, гибель Аливасото</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Основные данные -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
+  <p><b>Марсианское название:</b> <i>Alivasoto Mar</i> («Живой Аливасото»)</p>
+  <p><b>Тип государства:</b> Королевство (островная монархия)</p>
+  <p><b>Официальный язык:</b> <a href="/terms/marzan/">Marzān</a> (островной диалект)</p>
+  <p><b>Столица:</b> <a href="/geography/alivasoto-city/">Аливасото</a></p>
+  <p><b>Координаты столицы:</b> 30° ю.ш., 120° в.д.</p>
+  <p><b>Крупнейшие города:</b> Аливасото (у подножия горы), Деревня на Малом острове</p>
+  <p><b>Правящая династия:</b> Аливасиды (Аливас I — Аливас Великий — Аливас III)</p>
+  <p><b>Годы существования:</b> ок. 800 г. Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ богини <a href="/mythology/araksis/">Араксис</a> (ок. 60 %) и культ горы (30 %)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Территория -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• Всего ~500 000 км²</li>
+    <li>• % водной поверхности ~20 %</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Население -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• Оценка (2650 г. Э.О.) ~15 000 чел.</li>
+    <li>• Плотность ~0,03 чел./км²</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- ВВП (ППС) -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    ВВП (ППС)
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• Итого (2650 г.) ~1 млн глиняных талантов</li>
+    <li>• На душу населения ~66,7 таланта</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Экономика -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
+  <p><b>Всепланетная сеть:</b> <a href="/terms/marsset/">Marsset</a> (отсутствовала)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Государства-соседи -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.jpg" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="/geography/arkadia/">Аркадия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="/geography/eridania/">Эридания</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="/geography/kimeria/">Кимерия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="/geography/eden/">Эдем</a>
+    </div>
+  </div>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Крупнейшие водоёмы -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие водоёмы
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• <a href="/geography/zephyria-sea/">Зефирийское море</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Крупнейшие реки -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Крупнейшие реки
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• (отсутствуют, островное государство)</li>
+  </ul>
+
+</div>
+
+<!-- НАЧАЛО ТЕКСТА СТАТЬИ -->
 
 **Королевство Аливасото** (марс. *Alivasoto Mar* — «Живой Аливасото») — небольшое мирное островное государство, располагавшееся на двух островах в южной части [Зефирийского моря](https://mars-wiki.ru/geography/zephyria-sea/): большом острове с горой Аливасото и Малом острове[^1]. По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **500 000 км²**[^2]. Протяжённость границ достигала **2 700 км**[^3]. Население Аливасото в период расцвета (ок. 2650 г. Э.О.) достигало **15 000 человек**[^4], что делало его одним из самых малонаселённых государств Марса. Столица — [Аливасото](https://mars-wiki.ru/geography/alivasoto-city/). Координаты столицы: 30° ю.ш., 120° в.д.[^5]. Государственный язык — *Marzān* (островной диалект)[^6]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^7].
 
@@ -100,9 +314,27 @@
 
 ## География
 
+<!-- Вставка карты Аливасото (общий вид) -->
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/карта аливасото.png" alt="Карта Королевства Аливасото" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Аливасото. По данным Академии Окхасена.</div>
+</div>
+
 ### Большой остров Аливасото
 
+<!-- Вставка изображения Большого острова (справа) -->
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/аливасото-остров.jpg" alt="Большой остров Аливасото" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Большой остров Аливасото. Реконструкция.</div>
+</div>
+
 Большой остров, давший название королевству, был гористым и покрытым густыми лесами. В центре острова возвышалась **гора Аливасото** — потухший вулкан высотой около **3 500 м** над уровнем моря[^16]. Склоны горы были покрыты лесами из пурпурных и фиолетовых деревьев[^17]. В недрах горы находились месторождения **камней лисот** — редчайших драгоценных минералов[^18].
+
+<!-- Вставка изображения горы Аливасото (слева) -->
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/аливасото-гора.jpg" alt="Гора Аливасото" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Гора Аливасото — потухший вулкан. Реконструкция.</div>
+</div>
 
 На южном побережье острова, у подножия горы, располагалась столица — город **Аливасото**[^19].
 
@@ -117,6 +349,12 @@
 ---
 
 ## Камни лисот
+
+<!-- Вставка изображения камней лисот -->
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/аливасото-камни.jpg" alt="Камни лисот" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Камни лисот — главное богатство Аливасото. Реконструкция.</div>
+</div>
 
 ### Происхождение
 
@@ -161,6 +399,12 @@
 С началом глобального похолодания добыча камней стала невозможной — пещеры замерзали, а шахтёры гибли от холода[^7]. В **2735 году** Зефирийское море сковало льдом, и торговля прекратилась[^8].
 
 ### Гибель Аливасото (2740 г.)
+
+<!-- Вставка изображения цунами -->
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/аливасото-цунами.jpg" alt="Цунами, уничтожившее Аливасото" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Цунами 2740 года, уничтожившее Аливасото. Реконструкция.</div>
+</div>
 
 В **2740 году** на Аливасото обрушилась **волна цунами** невиданной силы[^9]. Она смыла всё — города, леса, гору, даже землю. От королевства не осталось ничего[^10]. Последние жители погибли, и острова исчезли с лица Марса[^11].
 

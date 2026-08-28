@@ -1,8 +1,8 @@
 # Ацидалийское море
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Ацидалийское море</h3>
-  <hr>
+<div class="infobox" style="float: right; width: 280px; background: #e6f2ff; border: 2px solid #8db8d6; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+  <h3 style="margin: 0; text-align: center; color: #1a3b5c; font-size: 1.2rem;">Ацидалийское море</h3>
+  <hr style="border-color: #b0cce0;">
 
   <!-- ===== КАРТА ===== -->
   <div style="text-align: center; margin-bottom: 8px;">
@@ -30,6 +30,10 @@
 
 **Ацидалийское море** (лат. *Mare Acidalium*, марс. *Ākha Thal* — «Вода-море») — крупнейший водоём Марса в Эпоху Умирания, занимавший центральную часть северного полушария планеты. Море входит в бассейн Мирового марсианского океана, соединяясь с ним через систему проливов и каналов. С запада в море вдаётся залив **Горен**, расположенный на плато Темпе; с южной стороны море омывает залив Ульян, находящийся близ города Окхасен в устье реки Ксанф. С востока в море глубоко врезается полуостров с лесом голосеменных растений **Моав**. Ацидалийское море выступает не только как географический объект, но и как символ уходящей жизни, колыбель марсианской цивилизации и главный свидетель её гибели. По поверхности Ацидалийского моря проходит водная граница между государствами Аркадия, Утопией и Эдемом. Согласно табличкам [Хевсура](https://mars-wiki.ru/people/hevsur/), именно на его берегах были основаны первые города — [Окхасен](https://mars-wiki.ru/geography/okhasen/), Эрданис, Роген-Ария и Курсан, — и именно в его замерзающие воды смотрели последние марсиане перед отлётом к [Земле](https://mars-wiki.ru/astronomy/earth/).
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_breathtaking_cinematic_landscape_of_the_Acidalia_Sea_on_ancient_Mars_during_th-0.jpg" alt="Ацидалийское море в Эпоху Расцвета" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ацидалийское море в Эпоху Расцвета. Реконструкция.</div>
+</div>
 
 ## Этимология
 
@@ -60,6 +64,11 @@
 
 ### Острова
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_wide_panoramic_view_of_a_volcanic_island_in_the_Acidalia_Sea_on_ancient_Mars_w-0.jpg" alt="Остров в Ацидалийском море" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Остров в Ацидалийском море. Реконструкция.</div>
+</div>
+
 В водах Ацидалийского моря, согласно марсианским табличкам и хроникам, существовало несколько островов, игравших важную роль в истории цивилизации и в мифологии Марса.
 
 Крупнейшим из них был **Кан-Уг** — вулканический остров в северо-восточной части моря, ставший в Эпоху Умирания пиратской базой. Его чёрные базальтовые скалы поднимались из воды на высоту до 100 метров, делая остров почти неприступным для врагов[^5]. В более поздние времена остров перешёл под контроль Королевства Утопия, которое использовало его как стратегический форпост для контроля над северными торговыми путями. На острове сохранились руины крепостей и портовых сооружений, свидетельствующих о его военном значении.
@@ -71,6 +80,11 @@
 Существовали и более мелкие острова, имевшие локальное значение: **Три Сестры** — три скалистых пика у впадения Ксанфа, служившие маяками для моряков; **Остров Черепахи** — место гнездования морских ящеров, где добывали яйца и панцири; и **Белый Остров** — названный так из-за белоснежных скал, сложенных из осадочных пород, содержащих редкие минералы. Все они были затоплены или покрылись льдом к концу Эпохи Умирания, и их названия сохранились лишь в табличках и легендах.
 
 ### Гидрология
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/карта круговорот воды в ацидалисйком море.png" alt="Круговорот воды в Ацидалийском море" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Круговорот воды в Ацидалийском море. Схема.</div>
+</div>
 
 Море питалось шестью крупными реками, образовывавшими разветвлённую гидрографическую сеть: [Ксанф](https://mars-wiki.ru/geography/ksanf-river/) (западный приток), Горен (северный), Лабей (северный), Арес (восточный), Агария (южный) и Шалбак (западный). В Эпоху Расцвета (2500–2680 гг. Э.О.) система каналов соединила эти реки в единую гидросеть, позволяя кораблям проходить от Окхасена до моря Эллады и подножия Фарсиды[^3], создавая тем самым единое транспортное пространство, охватывавшее большую часть Марса.
 
@@ -146,6 +160,11 @@
 
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_majestic_and_bustling_scene_of_the_port_of_Okhasen_on_the_Acidalia_Sea_during_-0.jpg" alt="Порт Окхасена в Эпоху Расцвета" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Порт Окхасена в Эпоху Расцвета. Реконструкция.</div>
+</div>
+
 Это время стало золотым веком Ацидалийского моря. Его воды бороздили торговые галеры, военные корабли и рыбацкие суда всех размеров. В Окхасене, столице западных земель, был построен гигантский порт, способный одновременно принимать до пятидесяти кораблей[^3], а вдоль побережья выросли десятки городов и поселений, связанных единой системой каналов и дорог. Ацидалийское море имело важное стратегическое и военное значение: в Эрданисе, лесах Моав, на плато Темпе и на безымянных островах располагались основные военные базы Ацидалийского флота Эдема и Утопии.
 
 Однако уже в 2650 году географы Академии зафиксировали первую тревогу: уровень моря начал падать. Причины были двоякими: с одной стороны, всё более холодный климат превращал осадки в снег, который больше не таял, сокращая приток воды в реки; с другой — ослабление геотермальной активности сокращало приток подземных вод, питавших море. Как писал один из хроникёров:
@@ -154,6 +173,11 @@
 > — Из «Летописи Окхасена» (табличка № 89)
 
 ### Эпоха Умирания (2680–2745 гг. Э.О.)
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_melancholic_and_desolate_view_of_the_Acidalia_Sea_during_the_Dying_Era_on_Mars-0.jpg" alt="Ацидалийское море в Эпоху Умирания" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ацидалийское море в Эпоху Умирания. Реконструкция.</div>
+</div>
 
 К 2680 году падение уровня моря стало катастрофическим. Береговая линия отступила на десятки километров, порты Окхасена оказались в глубине суши, а рыболовецкие лодки превратились в бесполезные реликвии, оставленные на месте, где когда-то плескались волны. К 2720 году море сократилось до половины своей прежней площади[^13]. В 2732 году, вопреки всем прогнозам, море вновь набрало свою полноту, и береговая линия временно вернулась к портам городов. С чем связано такое событие, до сих пор остаётся загадкой для учёных — возможно, это было вызвано кратковременным усилением геотермальной активности или изменением подземных течений.
 
@@ -167,6 +191,11 @@
 
 ### Биологическое разнообразие
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_An_underwater_view_of_the_Acidalia_Sea_on_ancient_Mars_during_its_prime._A_diver-0.jpg" alt="Подводный мир Ацидалийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир Ацидалийского моря. Реконструкция.</div>
+</div>
+
 В Эпоху Расцвета море было домом для тысяч видов организмов, приспособленных к марсианским условиям — низкой гравитации, высокому содержанию солей и минимальному количеству кислорода[^14]:
 
 | Группа организмов | Представители | Особенности |
@@ -178,6 +207,11 @@
 
 ### Гибель экосистемы
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_tragic_and_haunting_scene_of_a_dead_Martian_sea._The_seabed_is_exposed_covered-0.jpg" alt="Гибель экосистемы Ацидалийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Гибель экосистемы Ацидалийского моря. Реконструкция.</div>
+</div>
+
 С падением уровня воды и замерзанием моря экосистема рухнула. Рыбы вымерли, водоросли замёрзли, ракоскорпионы ушли на глубину, где ещё сохранялась жидкая вода. Последние записи о жизни в море относятся к 2734 году[^15], когда учёные Академии зафиксировали гибель последних колоний фиолетовых водорослей.
 
 В книгах цикла экосистема моря играет важную сюжетную роль: исчезновение рыбы становится первым признаком грядущей катастрофы, а замерзание водорослей лишает марсиан последнего источника пищи и кислорода, ускоряя гибель цивилизации.
@@ -186,7 +220,17 @@
 
 ### В мифологии
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/акха-миф-ацидалийское-море.png" alt="Миф о рождении Ацидалийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Миф о рождении Ацидалийского моря. Реконструкция.</div>
+</div>
+
 Ацидалийское море занимает центральное место в марсианской мифологии. Его воды считались священными, а богиня [Араксис](https://mars-wiki.ru/mythology/araksis/), покровительница воды, почиталась как главное божество прибрежных городов[^16]. Каждый год весной проводились ритуалы «омовения», когда жрецы бросали в море глиняные таблички с именами умерших, чтобы богиня приняла их в свои воды.
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ацидалийское-море-традиции.png" alt="Традиции на Ацидалийском море" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Традиции на Ацидалийском море. Реконструкция.</div>
+</div>
 
 Согласно легендам, море было сотворено из слезы Араксис, которую она пролила, узнав о грядущей гибели мира. Именно поэтому вода в море была солёной — это были слёзы богини, оплакивающей судьбу своего народа. В «Песнях Совии» есть строки:
 
@@ -208,9 +252,19 @@
 
 ## Современное состояние
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_realistic_depiction_of_the_Acidalia_Planitia_today_or_in_the_near_future_a_vas-0.jpg" alt="Ацидалийская равнина сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ацидалийская равнина сегодня. Фотореалистичная реконструкция.</div>
+</div>
+
 В настоящее время Ацидалийское море представляет собой пустыню, покрытую тёмным песком и пылью, пересечённую дюнами и соляными равнинами. Однако исследования показывают, что под поверхностью сохраняются огромные запасы льда и воды. Некоторые учёные предполагают, что вода может сохраняться в жидком виде на глубине[^19], образуя подповерхностные озёра, скрытые от глаз.
 
 В книгах цикла, по состоянию на 2743 год, море полностью замёрзло и покрыто слоем пепла, выпавшим после извержений Фарсиды. Его поверхность используется беженцами как дорога, но подо льдом сохраняется память о том, что когда-то здесь плескались волны[^20], и эта память живёт в песнях и легендах, передаваемых из поколения в поколение.
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_цунами_на_ацидалийском_море._реалистичный_т-0.jpg" alt="Цунами на Ацидалийском море" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Цунами на Ацидалийском море. Реконструкция.</div>
+</div>
 
 ## Научное обоснование
 

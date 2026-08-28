@@ -13,7 +13,7 @@
 
   <!-- Карта -->
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/acidalia-sea-map.png" alt="Карта Ацидалийского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/acidalia-planitia-map.png" alt="Карта Ацидалийского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
     <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Ацидалийского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 

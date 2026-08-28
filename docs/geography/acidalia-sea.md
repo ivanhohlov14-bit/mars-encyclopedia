@@ -5,125 +5,114 @@
   <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
+<div class="infobox" style="float: right; width: 280px; background: #dce8ef; border: 1px solid #8daebf; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
 
-  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
-    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Ацидалийское море</h3>
+  <div style="background: #b8ced9; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; border-radius: 8px 8px 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #1a3a4a;">Ацидалийское море</h3>
   </div>
 
-  <!-- Карта моря (замените src на реальное изображение) -->
+  <!-- Карта -->
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/acidalia-sea-map.png" alt="Карта Ацидалийского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Ацидалийского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/acidalia-sea-map.png" alt="Карта Ацидалийского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Ацидалийского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
-  <!-- Вместо флага/герба – спутниковый снимок или батиметрия (опционально) -->
+  <!-- Батиметрия -->
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/acidalia-bathymetry.png" alt="Батиметрия моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Батиметрическая карта</div>
-    </div>
-    <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/acidalia-satellite.png" alt="Спутниковый снимок" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-      <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Спутниковый снимок</div>
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/acidalia-bathymetry.png" alt="Батиметрия моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
     </div>
   </div>
 
-  <!-- Раздел "История" -->
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <!-- История -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     История
   </div>
-
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
     <li>• ок. 1200 г. Э.О. — образование моря в результате тектонических процессов</li>
     <li>• 1530 г. — первое картографическое описание экспедицией Сарумидов</li>
     <li>• 2100 г. — начало активного судоходства</li>
     <li>• 2600 г. — включение в единую гидрографическую сеть Marsset</li>
   </ul>
 
-  <hr style="margin: 6px 0;">
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
   <!-- Основные данные -->
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Основные данные
   </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Марсианское название:</b> <i>Acidalia Mare</i></p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Тип водоёма:</b> внутреннее море (солёное)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Площадь:</b> ≈ 1 200 000 км²</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Максимальная глубина:</b> 3 800 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Средняя глубина:</b> 1 200 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Солёность:</b> 35 ‰</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Температура поверхности:</b> от +2 °C до +18 °C (сезонная)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Координаты:</b> 25° с.ш., 30° в.д.</p>
 
-  <p><b>Марсианское название:</b> <i>Acidalia Mare</i></p>
-  <p><b>Тип водоёма:</b> внутреннее море (солёное)</p>
-  <p><b>Площадь:</b> «≈ 1 200 000 км²»</p>
-  <p><b>Максимальная глубина:</b> «3 800 м»</p>
-  <p><b>Средняя глубина:</b> «1 200 м»</p>
-  <p><b>Солёность:</b> «35 ‰»</p>
-  <p><b>Температура поверхности:</b> «от +2 °C до +18 °C» (сезонная)</p>
-  <p><b>Координаты:</b> «25° с.ш., 30° в.д.»</p>
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <hr style="margin: 6px 0;">
-
-  <!-- Гидрология / бассейн -->
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <!-- Гидрология -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Гидрология
   </div>
-
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
-    <li>• Впадающие реки: «Аргента, Флегра, Тарсис»</li>
-    <li>• Соединение с океаном: через «пролив Горн»</li>
-    <li>• Крупнейшие заливы: «залив Ульян, залив Большой Сирт»</li>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Впадающие реки: Аргента, Флегра, Тарсис</li>
+    <li>• Соединение с океаном: через пролив Горн</li>
+    <li>• Крупнейшие заливы: залив Ульян, залив Большой Сирт</li>
   </ul>
 
-  <hr style="margin: 6px 0;">
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <!-- Острова и архипелаги -->
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <!-- Острова -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Острова
   </div>
-
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
-    <li>• «Архипелаг Сарум» (7 крупных островов)</li>
-    <li>• «остров Эрданис»</li>
-    <li>• «остров Саксин»</li>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Архипелаг Сарум (7 крупных островов)</li>
+    <li>• остров Эрданис</li>
+    <li>• остров Саксин</li>
   </ul>
 
-  <hr style="margin: 6px 0;">
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
   <!-- Экономика -->
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Экономическое значение
   </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Основные промыслы:</b> рыболовство, добыча соли, судоходство</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Крупнейшие порты:</b> Окхасен, Роген-Ария, Тана-Акха</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Транспортные артерии:</b> <a href="https://mars-wiki.ru/terms/marsset/" style="color: #1a3a4a; text-decoration: underline;">Marsset</a> (морские маршруты)</p>
 
-  <p><b>Основные промыслы:</b> рыболовство, добыча соли, судоходство</p>
-  <p><b>Крупнейшие порты:</b> «Окхасен, Роген-Ария, Тана-Акха»</p>
-  <p><b>Транспортные артерии:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (морские маршруты)</p>
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <hr style="margin: 6px 0;">
-
-  <!-- Прилегающие территории -->
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <!-- Омываемые государства -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Омываемые государства
   </div>
-
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-eden.png" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eden/" style="color: #1a3a4a; text-decoration: underline;">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/arkadia/" style="color: #1a3a4a; text-decoration: underline;">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
-      <a href="https://mars-wiki.ru/geography/utopia/">Утопия</a>
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/utopia/" style="color: #1a3a4a; text-decoration: underline;">Утопия</a>
     </div>
   </div>
 
-  <hr style="margin: 6px 0;">
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <!-- Примечания или дополнительная информация -->
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <!-- Факты -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Факты
   </div>
-
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
     <li>• Входит в топ‑3 крупнейших водоёмов Марса</li>
     <li>• Является местом нереста многих эндемичных видов</li>
     <li>• На дне обнаружены гидротермальные источники</li>
@@ -133,14 +122,17 @@
 
 **Ацидалийское море** (лат. *Mare Acidalium*, марс. *Ākha Thal* — «Вода-море») — крупнейший водоём Марса в Эпоху Умирания, занимавший центральную часть северного полушария планеты. Море входит в бассейн Мирового марсианского океана, соединяясь с ним через систему проливов и каналов. С запада в море вдаётся залив **Горен**, расположенный на плато Темпе; с южной стороны море омывает залив Ульян, находящийся близ города Окхасен в устье реки Ксанф. С востока в море глубоко врезается полуостров с лесом голосеменных растений **Моав**. Ацидалийское море выступает не только как географический объект, но и как символ уходящей жизни, колыбель марсианской цивилизации и главный свидетель её гибели. По поверхности Ацидалийского моря проходит водная граница между государствами Аркадия, Утопией и Эдемом. Согласно табличкам [Хевсура](https://mars-wiki.ru/people/hevsur/), именно на его берегах были основаны первые города — [Окхасен](https://mars-wiki.ru/geography/okhasen/), Эрданис, Роген-Ария и Курсан, — и именно в его замерзающие воды смотрели последние марсиане перед отлётом к [Земле](https://mars-wiki.ru/astronomy/earth/).
 
+## Этимология
+
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_breathtaking_cinematic_landscape_of_the_Acidalia_Sea_on_ancient_Mars_during_th-0.jpg" alt="Ацидалийское море в Эпоху Расцвета" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ацидалийское море в Эпоху Расцвета. Реконструкция.</div>
 </div>
 
-## Этимология
+Своё название море получило от древнемарсианского словосочетания *Ākha Thal* (акха-таль), которое в дословном переводе означает *«Вода-море»*. Этот тавтологический оборот — не случайность: в языке марсиан-основателей корень *ākha* обозначал не просто воду как физическую субстанцию, но живую, движущуюся, обладающую памятью воду, а thal — обширное водное пространство, которое воспринималось как самостоятельное существо. Таким образом, название фиксировало двойственную природу водоёма: он был и источником жизни, и самостоятельным миром, границы которого простирались за горизонт.
 
-Своё название море получило от марсианского *Ākha Thal*, что дословно переводится как «Вода-море». Эта этимология отражает ключевую роль водоёма в культуре и истории марсианской цивилизации, для которой вода была не просто ресурсом, но и сакральной субстанцией, связывающей мир живых с миром предков. В марсианских табличках море также именуют *«глазом Араксис»* — по имени богини воды и памяти, которая, согласно легендам, сотворила море из своей слезы, оплакивая грядущую гибель мира. В позднейших источниках, особенно в записях Академии Окхасена, закрепилось также название *«Зеркало Кхо»* — в противовес огненной природе бога, отражающее водную стихию.
+Лингвистический анализ табличек Академии Окхасена показывает, что в архаичных диалектах (особенно в записях жрецов Храма Араксис) слово Ākha часто заменялось на Sūr — «солёная», «горькая», подчёркивая несъедобность морской воды и её связь со слезами. В бытовой речи рыбаков и торговцев укрепилось сокращение Akhal, которое со временем трансформировалось в позднемарсианское Achal — именно от него, по мнению некоторых исследователей, происходит современное земное название «Ацидалий» (через греческую транслитерацию). Однако сами марсиане никогда не называли море «Ацидалией» — это уже земной ономастический след, закреплённый Скиапарелли и последующими картографами.
+
 
 ## Географическая характеристика
 
@@ -328,16 +320,35 @@
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Миф о рождении Ацидалийского моря. Реконструкция.</div>
 </div>
 
-Ацидалийское море занимает центральное место в марсианской мифологии. Его воды считались священными, а богиня [Араксис](https://mars-wiki.ru/mythology/araksis/), покровительница воды, почиталась как главное божество прибрежных городов[^16]. Каждый год весной проводились ритуалы «омовения», когда жрецы бросали в море глиняные таблички с именами умерших, чтобы богиня приняла их в свои воды.
+Ацидалийское море занимало центральное место в марсианском пантеоне, будучи не просто географическим объектом, но сакральным пространством, соединяющим мир живых, мир мёртвых и мир богов. Его воды считались субстанцией, в которой запечатлена память всех поколений, — именно поэтому море называли «Книгой Араксис»: считалось, что каждая волна хранит в себе голос ушедших, а прибрежный прибой — это их шёпот, обращённый к живым.
+
+Богиня [Араксис](https://mars-wiki.ru/mythology/araksis/) — покровительница воды, памяти и судьбы — почиталась как верховное божество всех прибрежных городов, от Окхасена до Роген-Арии. Её храмы строились прямо на утёсах, обращённых к морю, так чтобы жрецы могли ежедневно созерцать водную гладь и читать знаки, которые она посылала. Араксис изображалась в виде женщины с волосами, струящимися подобно волнам, и с глазами, в которых отражались все времена — прошлое, настоящее и будущее. Её главным атрибутом был глиняный кувшин, из которого она выливала воду, даруя жизнь, или, в гневе, забирала её обратно, насылая засуху.
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ацидалийское-море-традиции.png" alt="Традиции на Ацидалийском море" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Традиции на Ацидалийском море. Реконструкция.</div>
 </div>
 
-Согласно легендам, море было сотворено из слезы Араксис, которую она пролила, узнав о грядущей гибели мира. Именно поэтому вода в море была солёной — это были слёзы богини, оплакивающей судьбу своего народа. В «Песнях Совии» есть строки:
+Согласно космогоническому мифу, записанному на табличках Храма Эрданиса, в начале времён существовали только два божества: **Араксис** (Вода-Память) и **Кхо** (Огонь-Забвение). Они вели вечную борьбу за душу Марса. Когда Кхо попытался испепелить первый город, Араксис пролила слезу — не от слабости, а от сострадания к обречённым смертным. Эта слеза упала в северную низменность и разлилась морем, создав барьер между огнём и жизнью. Именно поэтому вода в море была солёной — это была не просто слеза, а солёная кровь сердца богини, как гласит одна из песен Совии. Легенда также объясняла, почему море со временем замёрзло: когда Араксис увидела, что её жертва не спасла мир, она перестала плакать, и её слёзы обратились в лёд, став «молчаливой памятью», которая сохранит правду о гибели цивилизации до прихода новых существ.
 
-> *«Она плакала, и её слёзы стали морем. Море помнит её печаль, и когда оно замерзает, оно забирает её боль с собой.»*
+Ежегодно, в день весеннего равноденствия, во всех приморских городах проводился главный ритуал — **«Омовение имён»** (Ushar-Ākha). Жрецы вырезали на свежих глиняных табличках имена всех умерших за прошедший год, а затем, с восходом Солнца, торжественно бросали их в море с высоких скал. Считалось, что таблички не тонут, а уходят вглубь, и богиня читает каждое имя, принимая душу в свои воды. Если табличка оставалась на поверхности или разбивалась о камни — это было дурным предзнаменованием, означавшим, что душа не обрела покоя. В такие годы жрецы проводили дополнительные церемонии с песнопениями и жертвоприношениями из рыб и раковин, чтобы умилостивить богиню. Ритуал сопровождался всеобщим постом и молчанием, которое нарушалось лишь звуками кахан — длинных морских рогов, которые, как верили, могли достичь слуха Араксис даже под водой.
+
+Другим важным праздником был **«Возвращение волны»** (Thal-Rev), отмечаемый в начале лета, когда уровень воды в море поднимался из-за таяния ледников. В этот день корабли украшались фиолетовыми водорослями, а капитаны приносили клятву верности морю, произнося древнюю формулу: «Как волна приходит и уходит, так и я приду и уйду, но море останется». Этот праздник также был временем брачных обрядов: пары, желающие зачать ребёнка, прыгали в море с лодок, держась за руки, полагая, что вода богини подарит им плодовитость.
+
+В мифологии море часто противопоставлялось огненной природе Кхо, бога недр и вулканов. Если Кхо олицетворял хаос и разрушение, то Араксис — порядок и непрерывность рода. В «Книге Харан» описывается, как боги однажды сошлись в споре: Кхо утверждал, что вода — лишь временное явление, которое исчезнет, когда он раскалит планету; Араксис же отвечала, что огонь без воды — это безумие, и что даже пар, поднимающийся из горячих источников, есть её дыхание. Этот дуализм нашёл отражение в архитектуре: храмы Араксис всегда строились из светлого камня с синими и зелёными инкрустациями, тогда как капища Кхо — из чёрного обсидиана с красными прожилками. Береговые города возводили свои святилища так, чтобы они были обращены лицом к морю, спиной к вулканам Тарсиса, символически отвергая огненную угрозу.
+
+Особое место занимали морские духи — **Уль-Акха**, или «дети волн». Считалось, что это души рыбаков и моряков, утонувших в море и принятых в свиту Араксис. Они могли являться живым в виде дельфиноподобных существ или светящихся огней на поверхности воды. Перед бурей или отливом рыбаки часто видели такие огни и знали, что надо немедленно возвращаться в порт, иначе духи заманят их в пучину. В честь Уль-Акха на побережье ставили небольшие каменные пирамидки — акха-тулы, — куда каждый проходящий клал камешек или ракушку, чтобы задобрить духов и просить безопасного плавания. Эти пирамидки сохранились даже в Эпоху Умирания, хотя вода уже отступила далеко, и они стояли на сухом дне, как немые свидетели ушедшей эпохи.
+
+С ухудшением климата и замерзанием моря мифология претерпела изменения: Араксис стала восприниматься как скорбящая мать, которая закрыла свои воды ото всех, чтобы они не видели гибели её детей. Лёд трактовался как «белая пелена траура», а треск замерзающей воды — как стенания богини. В песнях Совии, записанных в **2740 году**, появляются новые строки, ставшие пророческими:
+
+> *«Она плакала, и её слёзы стали морем.
+Море помнит её печаль, и когда оно замерзает,
+оно забирает её боль с собой,
+чтобы однажды, когда огонь погаснет,
+слёзы растаяли и вернули жизнь.»*
+
+Этот эсхатологический миф о том, что море замёрзло не навсегда, а лишь до времени, когда Кхо ослабнет, давал надежду последним марсианам. В некоторых отдалённых общинах даже проводились обряды «прощания с водой», во время которых люди пили по глотку солёной воды из замерзающих луж, произнося: *«Мы уходим, но ты останешься. Когда мы вернёмся — ты встретишь нас»*. Эти обряды стали последними следами великого культа, который когда-то объединял миллионы марсиан вокруг священного моря.
+
 
 ### Легенды
 
@@ -366,7 +377,7 @@
 
 <div style="text-align: center; margin: 20px 0;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_цунами_на_ацидалийском_море._реалистичный_т-0.jpg" alt="Цунами на Ацидалийском море" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Цунами на Ацидалийском море. Реконструкция.</div>
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Ацидалийское море. Реконструкция.</div>
 </div>
 
 ## Научное обоснование

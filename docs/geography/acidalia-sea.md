@@ -1,31 +1,134 @@
 # Ацидалийское море
 
-<div class="infobox" style="float: right; width: 280px; background: #e6f2ff; border: 2px solid #8db8d6; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-  <h3 style="margin: 0; text-align: center; color: #1a3b5c; font-size: 1.2rem;">Ацидалийское море</h3>
-  <hr style="border-color: #b0cce0;">
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
+</div>
 
-  <!-- ===== КАРТА ===== -->
-  <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/acidalia-planitia-map.png" alt="Карта Ацидалийского моря" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
-    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение Ацидалийского моря (отмечено синим)</div>
+<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
+
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Ацидалийское море</h3>
   </div>
 
- <p><b>Латинское название:</b> Acidalia Planitia</p>
-  <p><b>Марсианское название:</b> Ākha Thal («Вода-море»)</p>
-  <p><b>Размер:</b> около 3360 км в поперечнике</p>
-  <p><b>Координаты центра:</b> 50° с.ш., 339° в.д.</p>
-  <p><b>Расположение:</b> Северное полушарие Марса, между плато Тарсис и Землёй Аравия</p>
-  <p><b>Высота:</b> 4–5 км ниже марсианского уровня отсчёта</p>
-  <p><b>Площадь (в 2680 г.):</b> ~5,6 млн км² (сократилась на 50% к 2740 г.)</p>
-  <p><b>Солёность:</b> 35–40 ‰</p>
-  <p><b>Средняя глубина:</b> 150–200 м</p>
-  <p><b>Максимальная глубина:</b> до 400 м (впадина Ксанфа)</p>
-  <p><b>Температура (лето):</b> +15°C (к 2730 г. упала до −5°C)</p>
-  <p><b>Температура (зима):</b> −5°C (к 2730 г. упала до −20°C)</p>
-  <p><b>Объём воды:</b> ~1,0 млн км³</p>
-  <p><b>Впадающие крупные реки:</b> Ксанф, Горен, Лабей, Шалбок, Арес, Агария</p>
-  <p><b>Ключевые города:</b> Окхасен, Роген-Ария, Эрданис, Курсан</p>
-  <p><b>Связанные понятия:</b> Араксис, Ксанф, Эпоха Умирания</p>
+  <!-- Карта моря (замените src на реальное изображение) -->
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/acidalia-sea-map.png" alt="Карта Ацидалийского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Ацидалийского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
+  <!-- Вместо флага/герба – спутниковый снимок или батиметрия (опционально) -->
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/acidalia-bathymetry.png" alt="Батиметрия моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Батиметрическая карта</div>
+    </div>
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/acidalia-satellite.png" alt="Спутниковый снимок" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Спутниковый снимок</div>
+    </div>
+  </div>
+
+  <!-- Раздел "История" -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• ок. 1200 г. Э.О. — образование моря в результате тектонических процессов</li>
+    <li>• 1530 г. — первое картографическое описание экспедицией Сарумидов</li>
+    <li>• 2100 г. — начало активного судоходства</li>
+    <li>• 2600 г. — включение в единую гидрографическую сеть Marsset</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Основные данные -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
+
+  <p><b>Марсианское название:</b> <i>Acidalia Mare</i></p>
+  <p><b>Тип водоёма:</b> внутреннее море (солёное)</p>
+  <p><b>Площадь:</b> «≈ 1 200 000 км²»</p>
+  <p><b>Максимальная глубина:</b> «3 800 м»</p>
+  <p><b>Средняя глубина:</b> «1 200 м»</p>
+  <p><b>Солёность:</b> «35 ‰»</p>
+  <p><b>Температура поверхности:</b> «от +2 °C до +18 °C» (сезонная)</p>
+  <p><b>Координаты:</b> «25° с.ш., 30° в.д.»</p>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Гидрология / бассейн -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Гидрология
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• Впадающие реки: «Аргента, Флегра, Тарсис»</li>
+    <li>• Соединение с океаном: через «пролив Горн»</li>
+    <li>• Крупнейшие заливы: «залив Ульян, залив Большой Сирт»</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Острова и архипелаги -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Острова
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• «Архипелаг Сарум» (7 крупных островов)</li>
+    <li>• «остров Эрданис»</li>
+    <li>• «остров Саксин»</li>
+  </ul>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Экономика -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономическое значение
+  </div>
+
+  <p><b>Основные промыслы:</b> рыболовство, добыча соли, судоходство</p>
+  <p><b>Крупнейшие порты:</b> «Окхасен, Роген-Ария, Тана-Акха»</p>
+  <p><b>Транспортные артерии:</b> <a href="https://mars-wiki.ru/terms/marsset/">Marsset</a> (морские маршруты)</p>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Прилегающие территории -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Омываемые государства
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-eden.png" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/utopia/">Утопия</a>
+    </div>
+  </div>
+
+  <hr style="margin: 6px 0;">
+
+  <!-- Примечания или дополнительная информация -->
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Факты
+  </div>
+
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• Входит в топ‑3 крупнейших водоёмов Марса</li>
+    <li>• Является местом нереста многих эндемичных видов</li>
+    <li>• На дне обнаружены гидротермальные источники</li>
+  </ul>
+
 </div>
 
 **Ацидалийское море** (лат. *Mare Acidalium*, марс. *Ākha Thal* — «Вода-море») — крупнейший водоём Марса в Эпоху Умирания, занимавший центральную часть северного полушария планеты. Море входит в бассейн Мирового марсианского океана, соединяясь с ним через систему проливов и каналов. С запада в море вдаётся залив **Горен**, расположенный на плато Темпе; с южной стороны море омывает залив Ульян, находящийся близ города Окхасен в устье реки Ксанф. С востока в море глубоко врезается полуостров с лесом голосеменных растений **Моав**. Ацидалийское море выступает не только как географический объект, но и как символ уходящей жизни, колыбель марсианской цивилизации и главный свидетель её гибели. По поверхности Ацидалийского моря проходит водная граница между государствами Аркадия, Утопией и Эдемом. Согласно табличкам [Хевсура](https://mars-wiki.ru/people/hevsur/), именно на его берегах были основаны первые города — [Окхасен](https://mars-wiki.ru/geography/okhasen/), Эрданис, Роген-Ария и Курсан, — и именно в его замерзающие воды смотрели последние марсиане перед отлётом к [Земле](https://mars-wiki.ru/astronomy/earth/).

@@ -52,15 +52,17 @@
 
     function initStarField() {
         const enabled = localStorage.getItem(STARS_KEY) === 'true';
-        if (enabled) createStarField();
+        if (enabled) createStarField(false);
         createStarsToggle();
     }
 
-    function createStarField() {
+    function createStarField(playSound) {
         if (starsCanvas) return;
 
         document.body.classList.add('mars-stars-on');
         document.documentElement.classList.add('mars-stars-on');
+
+        if (playSound === true) playStarsSound();
 
         starsCanvas = document.createElement('canvas');
         starsCanvas.id = 'mars-stars-canvas';
@@ -234,17 +236,79 @@
             if (currentlyEnabled) {
                 localStorage.setItem(STARS_KEY, 'false');
                 removeStarField();
+                playStarsOffSound();
                 btn.innerHTML = '⭐';
                 btn.title = 'Включить звёздное небо';
             } else {
                 localStorage.setItem(STARS_KEY, 'true');
-                createStarField();
+                createStarField(true);
                 btn.innerHTML = '🌟';
                 btn.title = 'Выключить звёздное небо';
             }
         });
 
         document.body.appendChild(btn);
+    }
+
+    // ============================================================
+    // 🎵 КОСМИЧЕСКИЕ ЗВУКИ
+    // ============================================================
+    function playStarsSound() {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const now = ctx.currentTime;
+
+            // Восходящее арпеджио — «звёзды зажигаются»
+            const notes = [220, 277.18, 329.63, 440, 554.37];
+            notes.forEach((freq, i) => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+
+                const t = now + i * 0.13;
+                gain.gain.setValueAtTime(0, t);
+                gain.gain.linearRampToValueAtTime(0.12, t + 0.04);
+                gain.gain.exponentialRampToValueAtTime(0.001, t + 1.6);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(t);
+                osc.stop(t + 1.6);
+            });
+
+            // Мерцание — высокий тихий слой
+            const shimmer = ctx.createOscillator();
+            const shimmerGain = ctx.createGain();
+            shimmer.type = 'triangle';
+            shimmer.frequency.setValueAtTime(880, now);
+            shimmer.frequency.linearRampToValueAtTime(1760, now + 1.5);
+            shimmerGain.gain.setValueAtTime(0, now);
+            shimmerGain.gain.linearRampToValueAtTime(0.045, now + 0.3);
+            shimmerGain.gain.exponentialRampToValueAtTime(0.001, now + 2);
+            shimmer.connect(shimmerGain);
+            shimmerGain.connect(ctx.destination);
+            shimmer.start(now);
+            shimmer.stop(now + 2);
+        } catch(e) {}
+    }
+
+    function playStarsOffSound() {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const now = ctx.currentTime;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(554.37, now);
+            osc.frequency.exponentialRampToValueAtTime(110, now + 0.9);
+            gain.gain.setValueAtTime(0.1, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.9);
+        } catch(e) {}
     }
 
     // ============================================================
@@ -597,7 +661,7 @@
     }
 
     // ============================================================
-    // 6. АНИМАЦИИ + ТЁМНАЯ ТЕМА (ЖЁСТКАЯ СПЕЦИФИЧНОСТЬ)
+    // 6. АНИМАЦИИ + ТЁМНАЯ ТЕМА
     // ============================================================
     function addAnimations() {
         if (document.getElementById('mars-anim-style')) return;
@@ -704,7 +768,6 @@
                 font-weight: 700 !important;
             }
 
-            /* Поиск в меню */
             html body.mars-stars-on .wy-side-nav-search,
             html body.mars-stars-on .md-search__inner,
             html body.mars-stars-on .md-search__form {
@@ -737,7 +800,7 @@
             }
 
             /* ============================================================
-               КОНТЕНТ — ТЁМНЫЙ ФОН
+               КОНТЕНТ
                ============================================================ */
             html body.mars-stars-on .md-content,
             html body.mars-stars-on .md-content__inner,
@@ -806,7 +869,7 @@
             }
 
             /* ============================================================
-               ИНФОБОКСЫ — ЛЮБЫЕ ВАРИАНТЫ
+               ИНФОБОКСЫ
                ============================================================ */
             html body.mars-stars-on .infobox,
             html body.mars-stars-on .infobox-table,
@@ -864,7 +927,6 @@
                 border-bottom-color: rgba(108, 99, 255, 0.3) !important;
             }
 
-            /* Только параграфы и списки — без «коврового» div! */
             html body.mars-stars-on p,
             html body.mars-stars-on li,
             html body.mars-stars-on dd,
@@ -1007,7 +1069,7 @@
 
         console.log('%c🎬 Easter eggs готовы!', 'color: #6C63FF; font-size: 14px; font-weight: bold;');
         console.log('%c☄️  Набери "LANSUR" → секретная страница', 'color: #f39c12;');
-        console.log('%c🌟  Кнопка ⭐ в углу → звёздное небо', 'color: #A29BFE;');
+        console.log('%c🌟  Кнопка ⭐ в углу → звёздное небо + мелодия', 'color: #A29BFE;');
         console.log('%c💬  Тройной клик по пустому месту → пословица', 'color: #27ae60;');
     }
 

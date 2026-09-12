@@ -1,7 +1,17 @@
 // article-tools.js — компактный блок ПЕРЕД комментариями (ReadTheDocs)
 (function() {
     'use strict';
-
+// Страницы, где НЕ показываем лайки и закладки
+const EXCLUDED_PATHS = [
+    '/', '/index/', '/profile/', '/login/', '/register/',
+    '/stats/', '/game/', '/profile-view/', '/moderator/',
+    '/license/', '/support/', '/start-here/', '/globe-map/',
+    '/interactive/exodus/', '/music/constructor/', '/interactive/',
+    '/translator/', '/bookmarks/', '/top/', '/quest-map/',
+    '/achievements/', '/feed/', '/guilds/', '/quests/',
+    '/horoscope/', '/scrolls/', '/forum/', '/link-device/',
+    '/en/', '/en/index/'
+];
     const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 

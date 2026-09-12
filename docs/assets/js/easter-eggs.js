@@ -1,4 +1,4 @@
-// easter-eggs.js — пасхалки и эффекты сайта (mobile-aware v2)
+// easter-eggs.js — пасхалки и эффекты сайта
 (function() {
     'use strict';
 
@@ -6,245 +6,11 @@
     const STARS_KEY = 'mars_stars_enabled';
 
     // ============================================================
-    // 📱 ОПРЕДЕЛЕНИЕ МОБИЛЬНОГО
-    // ============================================================
-    const IS_MOBILE =
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-        (navigator.maxTouchPoints && navigator.maxTouchPoints > 1 && window.innerWidth < 1024);
-
-    // ============================================================
-    // 🔗 БАЗОВЫЙ ПУТЬ
-    // ============================================================
-    function getBasePath() {
-        return window.location.pathname.replace(/\/[^\/]*$/, '/').replace(/\/$/, '');
-    }
-
-    // ============================================================
-    // 🔊 АУДИО
-    // ============================================================
-    let audioCtx = null;
-    function getAudioCtx() {
-        if (!audioCtx) {
-            try {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            } catch(e) { return null; }
-        }
-        if (audioCtx && audioCtx.state === 'suspended') {
-            audioCtx.resume().catch(() => {});
-        }
-        return audioCtx;
-    }
-
-    function unlockAudioOnFirstTouch() {
-        const unlock = () => {
-            const ctx = getAudioCtx();
-            if (ctx && ctx.state === 'suspended') ctx.resume();
-            document.removeEventListener('touchstart', unlock);
-            document.removeEventListener('click', unlock);
-        };
-        document.addEventListener('touchstart', unlock, { passive: true });
-        document.addEventListener('click', unlock);
-    }
-
-    function showToast(text, color) {
-        const toast = document.createElement('div');
-        toast.style.cssText = `
-            position: fixed;
-            left: 50%;
-            bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-            transform: translateX(-50%) translateY(20px);
-            background: ${color || '#6C63FF'};
-            color: #fff;
-            padding: 12px 20px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            z-index: 9999999;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            opacity: 0;
-            transition: all 0.3s;
-            max-width: 90vw;
-            text-align: center;
-            pointer-events: none;
-            font-family: inherit;
-        `;
-        toast.textContent = text;
-        document.body.appendChild(toast);
-        requestAnimationFrame(() => {
-            toast.style.opacity = '1';
-            toast.style.transform = 'translateX(-50%) translateY(0)';
-        });
-        setTimeout(() => {
-            toast.style.opacity = '0';
-            toast.style.transform = 'translateX(-50%) translateY(20px)';
-            setTimeout(() => toast.remove(), 300);
-        }, 2500);
-    }
-
-    function vibrate(pattern) {
-        try {
-            if (navigator.vibrate) navigator.vibrate(pattern);
-        } catch(e) {}
-    }
-
-    // ============================================================
-    // 🎯 ФИКС МОБИЛЬНОГО МЕНЮ (Read the Docs + Material)
-    // ============================================================
-    function fixMobileDrawer() {
-        if (!IS_MOBILE) return;
-
-        // Сброс сдвига контента
-        function resetContentShift() {
-            // Убираем overflow у body/html
-            document.body.style.overflow = '';
-            document.documentElement.style.overflow = '';
-
-            // Снимаем сдвиги со всех возможных контейнеров
-            const selectors = [
-                '.wy-nav-content-wrap',
-                '.wy-nav-content',
-                '.md-container',
-                '.md-main',
-                '.md-main__inner',
-                '.md-content',
-                '.md-content__inner'
-            ];
-
-            selectors.forEach(sel => {
-                document.querySelectorAll(sel).forEach(el => {
-                    // Не трогаем, если элемент всё ещё в активном состоянии меню
-                    const insideMenu = el.closest('.wy-nav-side.shift, .md-sidebar--primary[data-md-state="active"]');
-                    if (insideMenu) return;
-
-                    el.style.transform = '';
-                    el.style.marginLeft = '';
-                    el.style.paddingLeft = '';
-                });
-            });
-
-            // Read the Docs: класс .shift на content-wrap
-            document.querySelectorAll('.wy-nav-content-wrap.shift').forEach(el => {
-                const sideNav = document.querySelector('.wy-nav-side');
-                if (!sideNav || !sideNav.classList.contains('shift')) {
-                    el.classList.remove('shift');
-                }
-            });
-
-            // Material: снимаем активные состояния
-            document.querySelectorAll('.md-sidebar--primary[data-md-state="active"]').forEach(el => {
-                // Если drawer закрыт (нет overlay), снимаем состояние
-                const hasOverlay = document.querySelector('.md-overlay[data-md-state="active"]');
-                if (!hasOverlay) {
-                    el.removeAttribute('data-md-state');
-                }
-            });
-        }
-
-        // 1. Клик вне меню или по ссылке в меню — сбрасываем через паузу
-        document.addEventListener('click', function(e) {
-            const insideMenu = e.target.closest('.wy-nav-side, .md-sidebar--primary');
-            const isHamburger = e.target.closest('.wy-nav-top, .md-header__button, .md-header__button[for="__drawer"]');
-            const isMenuLink = e.target.closest('.wy-menu-vertical a, .md-nav__link');
-            const isOverlay = e.target.closest('.md-overlay, .wy-overlay');
-
-            // Если клик был по ссылке в меню или по оверлею — сбрасываем через паузу
-            if (isMenuLink || isOverlay || (!insideMenu && !isHamburger)) {
-                setTimeout(resetContentShift, 80);
-                setTimeout(resetContentShift, 350); // на случай медленной анимации
-            }
-        }, true);
-
-        // 2. Наблюдаем за изменениями классов на body/sidebar
-        const observer = new MutationObserver(() => {
-            const sideNav = document.querySelector('.wy-nav-side, .md-sidebar--primary');
-            const overlay = document.querySelector('.md-overlay[data-md-state="active"]');
-            if (!sideNav) return;
-
-            const isShifted =
-                sideNav.classList.contains('shift') ||
-                sideNav.hasAttribute('data-md-state') ||
-                overlay;
-
-            if (!isShifted) {
-                setTimeout(resetContentShift, 100);
-            }
-        });
-
-        observer.observe(document.body, {
-            attributes: true,
-            attributeFilter: ['class', 'style'],
-            subtree: true
-        });
-
-        // 3. После загрузки страницы тоже сбросим
-        setTimeout(resetContentShift, 500);
-        window.addEventListener('orientationchange', () => setTimeout(resetContentShift, 300));
-    }
-
-    // ============================================================
-    // 👤 МОБИЛЬНАЯ КНОПКА РЕГИСТРАЦИИ (правый верхний угол)
-    // ============================================================
-    function initMobileRegisterButton() {
-        if (!IS_MOBILE) return;
-        if (document.getElementById('mobile-register-btn')) return;
-
-        // Не показываем на страницах /secret/, /secret-2/
-        if (/\/secret(-2)?\//.test(window.location.pathname)) return;
-
-        const base = getBasePath();
-        const isProfilePage = /\/profile\//.test(window.location.pathname);
-
-        const btn = document.createElement('a');
-        btn.id = 'mobile-register-btn';
-        btn.href = base + '/profile/';
-        btn.innerHTML = isProfilePage ? '👤 Профиль' : '👤 Войти';
-        btn.setAttribute('aria-label', 'Регистрация или вход');
-
-        btn.style.cssText = `
-            position: fixed;
-            top: calc(8px + env(safe-area-inset-top, 0px));
-            right: calc(10px + env(safe-area-inset-right, 0px));
-            z-index: 99998;
-            padding: 8px 14px;
-            background: linear-gradient(135deg, #6C63FF, #A29BFE);
-            color: #ffffff;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-decoration: none;
-            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.55);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: inherit;
-            letter-spacing: 0.3px;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-            transition: transform 0.15s ease;
-            white-space: nowrap;
-            max-width: 60vw;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        `;
-
-        btn.addEventListener('touchstart', () => {
-            btn.style.transform = 'scale(0.95)';
-        }, { passive: true });
-        btn.addEventListener('touchend', () => {
-            btn.style.transform = 'scale(1)';
-        }, { passive: true });
-        btn.addEventListener('click', () => {
-            vibrate(15);
-        });
-
-        document.body.appendChild(btn);
-    }
-
-    // ============================================================
-    // 1. КУРСОР-ПЛАНЕТА МАРС (только ПК)
+    // 1. КУРСОР-ПЛАНЕТА МАРС
     // ============================================================
     function initMarsCursor() {
-        if (IS_MOBILE) return;
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+        if (isMobile) return;
 
         const style = document.createElement('style');
         style.textContent = `
@@ -311,26 +77,18 @@
         document.body.appendChild(starsCanvas);
 
         const ctx = starsCanvas.getContext('2d');
-        const dpr = Math.min(window.devicePixelRatio || 1, IS_MOBILE ? 1.5 : 2);
         let stars = [];
         let shootingStars = [];
 
         function resize() {
-            const w = window.innerWidth;
-            const h = window.innerHeight;
-            starsCanvas.width = w * dpr;
-            starsCanvas.height = h * dpr;
-            starsCanvas.style.width = w + 'px';
-            starsCanvas.style.height = h + 'px';
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
+            starsCanvas.width = window.innerWidth;
+            starsCanvas.height = window.innerHeight;
             stars = [];
-            const divisor = IS_MOBILE ? 15000 : 6000;
-            const count = Math.floor((w * h) / divisor);
+            const count = Math.floor((window.innerWidth * window.innerHeight) / 6000);
             for (let i = 0; i < count; i++) {
                 stars.push({
-                    x: Math.random() * w,
-                    y: Math.random() * h,
+                    x: Math.random() * starsCanvas.width,
+                    y: Math.random() * starsCanvas.height,
                     r: Math.random() * 1.8 + 0.4,
                     alpha: Math.random() * 0.7 + 0.3,
                     speed: Math.random() * 0.02 + 0.005,
@@ -341,7 +99,7 @@
 
         function spawnShootingStar() {
             shootingStars.push({
-                x: Math.random() * window.innerWidth * 0.8,
+                x: Math.random() * starsCanvas.width * 0.8,
                 y: -50,
                 len: 80 + Math.random() * 100,
                 speed: 6 + Math.random() * 8,
@@ -352,9 +110,7 @@
 
         function draw() {
             if (!starsCanvas) return;
-            const w = window.innerWidth;
-            const h = window.innerHeight;
-            ctx.clearRect(0, 0, w, h);
+            ctx.clearRect(0, 0, starsCanvas.width, starsCanvas.height);
 
             stars.forEach(s => {
                 s.twinkle += s.speed;
@@ -407,14 +163,15 @@
                     spawnShootingStar();
                     loopShootingStars();
                 }
-            }, 4000 + Math.random() * 6000);
+            }, 3000 + Math.random() * 5000);
         }
 
         resize();
         window.addEventListener('resize', resize);
-        window.addEventListener('orientationchange', () => setTimeout(resize, 200));
         draw();
         loopShootingStars();
+
+        console.log('🌟 Звёздное небо включено');
     }
 
     function removeStarField() {
@@ -433,6 +190,7 @@
             }, 300);
             starsCanvas = null;
         }
+        console.log('⭐ Звёздное небо выключено');
     }
 
     function createStarsToggle() {
@@ -440,58 +198,305 @@
 
         const btn = document.createElement('button');
         btn.id = 'mars-stars-toggle';
-        btn.setAttribute('aria-label', 'Звёздное небо');
         const enabled = localStorage.getItem(STARS_KEY) === 'true';
         btn.innerHTML = enabled ? '🌟' : '⭐';
-
-        const size = IS_MOBILE ? 56 : 52;
-        const bottom = IS_MOBILE ? 'calc(80px + env(safe-area-inset-bottom, 0px))' : '90px';
-        const right = IS_MOBILE ? 'calc(16px + env(safe-area-inset-right, 0px))' : '20px';
-
+        btn.title = enabled ? 'Выключить звёздное небо' : 'Включить звёздное небо';
         btn.style.cssText = `
             position: fixed;
-            bottom: ${bottom};
-            right: ${right};
-            width: ${size}px;
-            height: ${size}px;
+            bottom: 90px;
+            right: 20px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             border: 2px solid #6C63FF;
             color: #fff;
-            font-size: ${IS_MOBILE ? '1.6rem' : '1.5rem'};
+            font-size: 1.5rem;
             cursor: pointer;
             z-index: 99999;
             box-shadow: 0 8px 24px rgba(108,99,255,0.5);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
         `;
 
-        if (!IS_MOBILE) {
-            btn.addEventListener('mouseenter', () => {
-                btn.style.transform = 'scale(1.1) translateY(-3px)';
-                btn.style.boxShadow = '0 12px 32px rgba(108,99,255,0.7)';
-            });
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'scale(1) translateY(0)';
-                btn.style.boxShadow = '0 8px 24px rgba(108,99,255,0.5)';
-            });
-        }
+        btn.addEventListener('mouseenter', () => {
+            btn.style.transform = 'scale(1.1) translateY(-3px)';
+            btn.style.boxShadow = '0 12px 32px rgba(108,99,255,0.7)';
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'scale(1) translateY(0)';
+            btn.style.boxShadow = '0 8px 24px rgba(108,99,255,0.5)';
+        });
 
-        let lastTap = 0;
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const now = Date.now();
-            if (now - lastTap < 400) return;
-            lastTap = now;
-
-            vibrate(20);
-
+        btn.addEventListener('click', () => {
             const currentlyEnabled = localStorage.getItem(STARS_KEY) === 'true';
             if (currentlyEnabled) {
                 localStorage.setItem(STARS_KEY, 'false');
-                removeSta
+                removeStarField();
+                playStarsOffSound();
+                btn.innerHTML = '⭐';
+                btn.title = 'Включить звёздное небо';
+            } else {
+                localStorage.setItem(STARS_KEY, 'true');
+                createStarField(true);
+                btn.innerHTML = '🌟';
+                btn.title = 'Выключить звёздное небо';
+            }
+        });
+
+        document.body.appendChild(btn);
+    }
+
+    // ============================================================
+    // 🎵 КОСМИЧЕСКИЕ ЗВУКИ
+    // ============================================================
+    function playStarsSound() {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const now = ctx.currentTime;
+
+            // Восходящее арпеджио — «звёзды зажигаются»
+            const notes = [220, 277.18, 329.63, 440, 554.37];
+            notes.forEach((freq, i) => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+
+                const t = now + i * 0.13;
+                gain.gain.setValueAtTime(0, t);
+                gain.gain.linearRampToValueAtTime(0.12, t + 0.04);
+                gain.gain.exponentialRampToValueAtTime(0.001, t + 1.6);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(t);
+                osc.stop(t + 1.6);
+            });
+
+            // Мерцание — высокий тихий слой
+            const shimmer = ctx.createOscillator();
+            const shimmerGain = ctx.createGain();
+            shimmer.type = 'triangle';
+            shimmer.frequency.setValueAtTime(880, now);
+            shimmer.frequency.linearRampToValueAtTime(1760, now + 1.5);
+            shimmerGain.gain.setValueAtTime(0, now);
+            shimmerGain.gain.linearRampToValueAtTime(0.045, now + 0.3);
+            shimmerGain.gain.exponentialRampToValueAtTime(0.001, now + 2);
+            shimmer.connect(shimmerGain);
+            shimmerGain.connect(ctx.destination);
+            shimmer.start(now);
+            shimmer.stop(now + 2);
+        } catch(e) {}
+    }
+
+    function playStarsOffSound() {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const now = ctx.currentTime;
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(554.37, now);
+            osc.frequency.exponentialRampToValueAtTime(110, now + 0.9);
+            gain.gain.setValueAtTime(0.1, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.9);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.9);
+        } catch(e) {}
+    }
+
+    // ============================================================
+    // 3. ПАСХАЛКА "LANSUR"
+    // ============================================================
+    function initEasterEgg() {
+        let buffer = '';
+        const SECRET = 'LANSUR';
+
+        document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+            buffer += e.key.toUpperCase();
+            if (buffer.length > SECRET.length) {
+                buffer = buffer.slice(-SECRET.length);
+            }
+
+            if (buffer === SECRET) {
+                buffer = '';
+                triggerMeteorShower();
+            }
+        });
+
+        let touchStartY = 0;
+        document.addEventListener('touchstart', function(e) {
+            if (e.touches.length === 3) touchStartY = e.touches[0].clientY;
+        });
+        document.addEventListener('touchend', function(e) {
+            if (e.changedTouches.length === 3 && touchStartY) {
+                const endY = e.changedTouches[0].clientY;
+                if (touchStartY - endY > 100) triggerMeteorShower();
+                touchStartY = 0;
+            }
+        });
+    }
+
+    function triggerMeteorShower() {
+        console.log('☄️ Пасхалка активирована! LĀN SUR!');
+        localStorage.setItem(STORAGE_KEY, 'true');
+        playEasterSound();
+
+        const meteorCount = 40;
+        const container = document.createElement('div');
+        container.style.cssText = `position:fixed;inset:0;pointer-events:none;z-index:99998;overflow:hidden;`;
+        document.body.appendChild(container);
+
+        for (let i = 0; i < meteorCount; i++) {
+            setTimeout(() => createMeteor(container), i * 80);
+        }
+
+        showEasterText();
+        setTimeout(() => container.remove(), 8000);
+    }
+
+    function createMeteor(container) {
+        const meteor = document.createElement('div');
+        const startX = Math.random() * window.innerWidth * 1.2 - window.innerWidth * 0.1;
+        const startY = -100 - Math.random() * 200;
+        const duration = 1.5 + Math.random() * 1.5;
+        const size = 3 + Math.random() * 4;
+
+        meteor.style.cssText = `
+            position: absolute;
+            left: ${startX}px;
+            top: ${startY}px;
+            width: ${size}px;
+            height: ${size}px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 ${size * 3}px ${size}px rgba(255,255,255,0.9),
+                        0 0 ${size * 6}px ${size * 2}px rgba(255,200,100,0.6);
+            animation: meteorFall ${duration}s linear forwards;
+        `;
+
+        const tail = document.createElement('div');
+        tail.style.cssText = `
+            position: absolute;
+            top: 50%; right: 0;
+            width: ${50 + Math.random() * 80}px;
+            height: 2px;
+            background: linear-gradient(270deg, rgba(255,255,255,0.9), rgba(255,200,100,0.6), transparent);
+            transform: translateY(-50%);
+            border-radius: 2px;
+        `;
+        meteor.appendChild(tail);
+        container.appendChild(meteor);
+    }
+
+    function showEasterText() {
+        const text = document.createElement('div');
+        text.style.cssText = `
+            position: fixed; top: 40%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(2rem, 8vw, 5rem);
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 20px #6C63FF, 0 0 40px #6C63FF, 0 0 60px #e74c3c, 0 4px 8px rgba(0,0,0,0.5);
+            letter-spacing: 8px;
+            z-index: 99999;
+            pointer-events: none;
+            animation: easterTextIn 4s ease-out forwards;
+            font-family: 'Georgia', serif;
+            white-space: nowrap;
+        `;
+        text.textContent = 'LĀN SUR';
+        document.body.appendChild(text);
+
+        const subtitle = document.createElement('div');
+        subtitle.style.cssText = `
+            position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(0.9rem, 3vw, 1.4rem);
+            font-weight: 600;
+            color: #A29BFE;
+            text-shadow: 0 0 20px rgba(162,155,254,0.8);
+            letter-spacing: 4px;
+            z-index: 99999;
+            pointer-events: none;
+            animation: easterTextIn 4s ease-out 0.3s forwards;
+            opacity: 0;
+        `;
+        subtitle.textContent = '— ГЛИНА ПОМНИТ —';
+        document.body.appendChild(subtitle);
+
+        setTimeout(() => {
+            text.remove();
+            subtitle.remove();
+        }, 4500);
+
+        const unlock = document.createElement('div');
+        unlock.id = 'secret-unlock-banner';
+        unlock.style.cssText = `
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999999;
+            background: linear-gradient(135deg, #6C63FF, #A29BFE);
+            color: #fff;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            box-shadow: 0 20px 60px rgba(108,99,255,0.6), 0 0 40px rgba(108,99,255,0.4);
+            animation: secretBannerIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            user-select: none;
+            max-width: 90vw;
+        `;
+        unlock.innerHTML = `
+            <span style="font-size: 1.6rem; animation: secFloat 2s ease-in-out infinite;">🗝️</span>
+            <span>Открыта секретная страница!</span>
+            <span style="background: rgba(255,255,255,0.25); padding: 6px 14px; border-radius: 30px; font-size: 0.85rem; white-space: nowrap;">Перейти →</span>
+        `;
+        unlock.onclick = function() {
+            window.location.href = '/secret/';
+        };
+
+        document.body.appendChild(unlock);
+
+        setTimeout(() => {
+            if (unlock.parentNode) {
+                unlock.style.transition = 'all 0.5s';
+                unlock.style.opacity = '0';
+                unlock.style.transform = 'translate(-50%, -30px)';
+                setTimeout(() => unlock.remove(), 500);
+            }
+        }, 20000);
+    }
+
+    function playEasterSound() {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const notes = [261.63, 329.63, 392.00, 523.25];
+            notes.forEach((freq, i) => {
+                setTimeout(() => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start();
+               

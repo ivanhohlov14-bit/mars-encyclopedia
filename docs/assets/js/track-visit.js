@@ -5,60 +5,133 @@
     const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
-    // Ждём, пока Supabase загрузится (он подключён на страницах)
+    // ============================================================
+    // 1. ТОЧНАЯ КАРТА: конкретный ID статьи → её тип
+    // ============================================================
+    // Здесь перечислите все статьи, для которых нужен точный тип
+    const PLACE_TYPES = {
+        // --- Моря ---
+        'acidalia-sea': 'sea',
+        'argida': 'sea',
+        
+        // --- Города ---
+        'okhasen': 'city',
+        'rogen-aria': 'city',
+        'akkha-kor': 'city',
+        
+        // --- Храмы ---
+        'ksanf-temple': 'temple',
+        
+        // --- Пещеры ---
+        'farsida-caves': 'cave',
+        
+        // --- Персонажи ---
+        'hevsur': 'character',
+        'talin': 'character',
+        'ella': 'character',
+        'aratan-iii': 'character',
+        'yarra': 'character',
+        'alira': 'character',
+        'miran': 'character',
+        'irayna': 'character',
+        
+        // --- История ---
+        'periodization': 'history',
+        'timeline': 'history',
+        'myths': 'myth',
+        'dying-era': 'history',
+        'kingdoms-history': 'history',   // ← добавь свой ID
+        
+        // --- География ---
+        'valles-marineris': 'geography',
+        'water-on-mars': 'geography',
+        
+        // --- Религия ---
+        'pantheon': 'religion',
+        'prophecies': 'religion',
+        
+        // --- Астрономия ---
+        'phobos-deimos': 'astronomy',
+        'mars-sky': 'astronomy',
+        'earth-as-target': 'astronomy',
+        
+        // --- Прочее ---
+        'svitok-e': 'writing'
+    };
+
+    // ============================================================
+    // 2. ЗАПАСНАЯ КАРТА: раздел (папка) → тип
+    // ============================================================
+    // Если ID нет в точной карте, определяем по родительской папке
+    const SECTION_TYPES = {
+        'geography': 'geography',   // ← теперь не "sea", а нейтрально
+        'history': 'history',
+        'people': 'character',
+        'culture': 'culture',
+        'astronomy': 'astronomy',
+        'religion': 'religion',
+        'technology': 'tech',
+        'biology': 'biology',
+        'books': 'book',
+        'music': 'music'
+    };
+
+    // ============================================================
+    // 3. ОПРЕДЕЛЕНИЕ ТИПА
+    // ============================================================
+    function getPlaceInfo() {
+        const path = window.location.pathname;
+        const parts = path.replace(/^\/|\/$/g, '').split('/');
+        const last = parts[parts.length - 1] || 'home';
+        const parent = parts[parts.length - 2] || '';
+
+        // 3.1. Приоритет 1: тип задан вручную в <meta> статьи
+        const metaType = document.querySelector('meta[name="place-type"]');
+        if (metaType && metaType.content) {
+            return { place_id: last, place_type: metaType.content };
+        }
+
+        // 3.2. Приоритет 2: точная карта по ID
+        if (PLACE_TYPES[last]) {
+            return { place_id: last, place_type: PLACE_TYPES[last] };
+        }
+
+        // 3.3. Приоритет 3: карта по разделу
+        if (SECTION_TYPES[parent]) {
+            return { place_id: last, place_type: SECTION_TYPES[parent] };
+        }
+
+        // 3.4. Fallback
+        return { place_id: last, place_type: 'other' };
+    }
+
+    // ============================================================
+    // 4. ЗАПИСЬ ПОСЕЩЕНИЯ
+    // ============================================================
     function waitForSupabase(callback, attempts = 0) {
         if (window.supabase && window.supabase.createClient) {
             callback();
         } else if (attempts < 30) {
             setTimeout(() => waitForSupabase(callback, attempts + 1), 200);
         } else {
-            console.warn('Supabase не загрузился — пропускаю запись посещения');
+            console.warn('Supabase не загрузился — пропускаю запись');
         }
     }
 
-    // Определяем type по URL
-    function getPlaceInfo(path) {
-        // Пример пути: /mars-encyclopedia/geography/acidalia-sea/
-        const parts = path.replace(/^\/|\/$/g, '').split('/');
-        const last = parts[parts.length - 1] || 'home';
-        const parent = parts[parts.length - 2] || '';
-
-        // Маппинг разделов → типы
-        const typeMap = {
-            'geography': 'sea',
-            'people': 'character',
-            'history': 'history',
-            'culture': 'culture',
-            'astronomy': 'astronomy',
-            'religion': 'temple',
-            'technology': 'tech',
-            'biology': 'biology'
-        };
-
-        return {
-            place_id: last,
-            place_type: typeMap[parent] || 'other'
-        };
-    }
-
-    // Записываем посещение
     function recordVisit() {
         waitForSupabase(() => {
             const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
             client.auth.getSession().then(({ data }) => {
                 const user = data?.session?.user;
-                if (!user) return; // неавторизованные не пишем
+                if (!user) return;
 
-                const info = getPlaceInfo(window.location.pathname);
+                const info = getPlaceInfo();
 
-                // Проверяем, не записывали ли уже сегодня
+                // Не дублируем в один день
                 const today = new Date().toISOString().slice(0, 10);
                 const storageKey = `visited_${info.place_id}_${today}`;
-
-                if (localStorage.getItem(storageKey)) {
-                    return; // уже посещали сегодня — не дублируем
-                }
+                if (localStorage.getItem(storageKey)) return;
 
                 client.from('user_visits').insert({
                     user_id: user.id,
@@ -77,7 +150,6 @@
         });
     }
 
-    // Запускаем после загрузки DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', recordVisit);
     } else {

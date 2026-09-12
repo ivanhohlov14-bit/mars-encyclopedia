@@ -1,9 +1,8 @@
-// easter-eggs.js — пасхалки и эффекты сайта (полная версия)
+// easter-eggs.js — пасхалки и эффекты сайта
 (function() {
     'use strict';
 
     const STORAGE_KEY = 'mars_secret_unlocked';
-    const STARS_KEY = 'mars_stars_enabled';
 
     // ============================================================
     // 1. КУРСОР-ПЛАНЕТА МАРС
@@ -45,214 +44,7 @@
     }
 
     // ============================================================
-    // 2. ЗВЁЗДНЫЙ ФОН (с тёмной темой)
-    // ============================================================
-    let starsCanvas = null;
-    let starsAnimFrame = null;
-
-    function initStarField() {
-        const enabled = localStorage.getItem(STARS_KEY) === 'true';
-        if (enabled) createStarField();
-        createStarsToggle();
-    }
-
-    function createStarField() {
-        if (starsCanvas) return;
-
-        // Добавляем класс тёмной темы
-        document.body.classList.add('mars-stars-on');
-        document.documentElement.classList.add('mars-stars-on');
-
-        starsCanvas = document.createElement('canvas');
-        starsCanvas.id = 'mars-stars-canvas';
-        starsCanvas.style.cssText = `
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 1;
-        `;
-        document.body.appendChild(starsCanvas);
-
-        const ctx = starsCanvas.getContext('2d');
-        let stars = [];
-        let shootingStars = [];
-
-        function resize() {
-            starsCanvas.width = window.innerWidth;
-            starsCanvas.height = window.innerHeight;
-            stars = [];
-            const count = Math.floor((window.innerWidth * window.innerHeight) / 6000);
-            for (let i = 0; i < count; i++) {
-                stars.push({
-                    x: Math.random() * starsCanvas.width,
-                    y: Math.random() * starsCanvas.height,
-                    r: Math.random() * 1.8 + 0.4,
-                    alpha: Math.random() * 0.7 + 0.3,
-                    speed: Math.random() * 0.02 + 0.005,
-                    twinkle: Math.random() * Math.PI * 2
-                });
-            }
-        }
-
-        function spawnShootingStar() {
-            shootingStars.push({
-                x: Math.random() * starsCanvas.width * 0.8,
-                y: -50,
-                len: 80 + Math.random() * 100,
-                speed: 6 + Math.random() * 8,
-                angle: Math.PI / 4 + (Math.random() * 0.2 - 0.1),
-                life: 1
-            });
-        }
-
-        function draw() {
-            if (!starsCanvas) return;
-            ctx.clearRect(0, 0, starsCanvas.width, starsCanvas.height);
-
-            stars.forEach(s => {
-                s.twinkle += s.speed;
-                const alpha = s.alpha * (0.5 + 0.5 * Math.sin(s.twinkle));
-                // Свечение
-                if (s.r > 1) {
-                    ctx.beginPath();
-                    ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(162, 155, 254, ${alpha * 0.15})`;
-                    ctx.fill();
-                }
-                // Звезда
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-                ctx.fill();
-            });
-
-            shootingStars = shootingStars.filter(ss => ss.life > 0);
-            shootingStars.forEach(ss => {
-                ss.x += Math.cos(ss.angle) * ss.speed;
-                ss.y += Math.sin(ss.angle) * ss.speed;
-                ss.life -= 0.01;
-
-                const tailX = ss.x - Math.cos(ss.angle) * ss.len;
-                const tailY = ss.y - Math.sin(ss.angle) * ss.len;
-
-                const grad = ctx.createLinearGradient(tailX, tailY, ss.x, ss.y);
-                grad.addColorStop(0, 'rgba(255, 255, 255, 0)');
-                grad.addColorStop(1, `rgba(255, 255, 200, ${ss.life})`);
-
-                ctx.beginPath();
-                ctx.moveTo(tailX, tailY);
-                ctx.lineTo(ss.x, ss.y);
-                ctx.strokeStyle = grad;
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                ctx.beginPath();
-                ctx.arc(ss.x, ss.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 200, ${ss.life})`;
-                ctx.fill();
-            });
-
-            starsAnimFrame = requestAnimationFrame(draw);
-        }
-
-        function loopShootingStars() {
-            if (!starsCanvas) return;
-            setTimeout(() => {
-                if (starsCanvas) {
-                    spawnShootingStar();
-                    loopShootingStars();
-                }
-            }, 3000 + Math.random() * 5000);
-        }
-
-        resize();
-        window.addEventListener('resize', resize);
-        draw();
-        loopShootingStars();
-
-        console.log('🌟 Звёздное небо включено');
-    }
-
-    function removeStarField() {
-        // Убираем тёмную тему
-        document.body.classList.remove('mars-stars-on');
-        document.documentElement.classList.remove('mars-stars-on');
-
-        if (starsAnimFrame) {
-            cancelAnimationFrame(starsAnimFrame);
-            starsAnimFrame = null;
-        }
-        if (starsCanvas) {
-            const canvas = starsCanvas;
-            canvas.style.opacity = '0';
-            setTimeout(() => {
-                if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
-            }, 300);
-            starsCanvas = null;
-        }
-        console.log('⭐ Звёздное небо выключено');
-    }
-
-    function createStarsToggle() {
-        if (document.getElementById('mars-stars-toggle')) return;
-
-        const btn = document.createElement('button');
-        btn.id = 'mars-stars-toggle';
-        const enabled = localStorage.getItem(STARS_KEY) === 'true';
-        btn.innerHTML = enabled ? '🌟' : '⭐';
-        btn.title = enabled ? 'Выключить звёздное небо' : 'Включить звёздное небо';
-        btn.style.cssText = `
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border: 2px solid #6C63FF;
-            color: #fff;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 99999;
-            box-shadow: 0 8px 24px rgba(108,99,255,0.5);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-        `;
-
-        btn.addEventListener('mouseenter', () => {
-            btn.style.transform = 'scale(1.1) translateY(-3px)';
-            btn.style.boxShadow = '0 12px 32px rgba(108,99,255,0.7)';
-        });
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = 'scale(1) translateY(0)';
-            btn.style.boxShadow = '0 8px 24px rgba(108,99,255,0.5)';
-        });
-
-        btn.addEventListener('click', () => {
-            const currentlyEnabled = localStorage.getItem(STARS_KEY) === 'true';
-            if (currentlyEnabled) {
-                localStorage.setItem(STARS_KEY, 'false');
-                removeStarField();
-                btn.innerHTML = '⭐';
-                btn.title = 'Включить звёздное небо';
-            } else {
-                localStorage.setItem(STARS_KEY, 'true');
-                createStarField();
-                btn.innerHTML = '🌟';
-                btn.title = 'Выключить звёздное небо';
-            }
-        });
-
-        document.body.appendChild(btn);
-    }
-
-    // ============================================================
-    // 3. ПАСХАЛКА "LANSUR"
+    // 2. ПАСХАЛКА "LANSUR"
     // ============================================================
     function initEasterEgg() {
         let buffer = '';
@@ -452,68 +244,7 @@
     }
 
     // ============================================================
-    // 4. ЛЕТАЮЩИЙ АСТРОНАВТ
-    // ============================================================
-    function initAstronaut() {
-        if (localStorage.getItem(STARS_KEY) !== 'true') return;
-
-        function spawnAstronaut() {
-            if (localStorage.getItem(STARS_KEY) !== 'true') return;
-
-            const astro = document.createElement('div');
-            const fromLeft = Math.random() > 0.5;
-            const duration = 25 + Math.random() * 15;
-            const top = 15 + Math.random() * 60;
-
-            astro.style.cssText = `
-                position: fixed;
-                top: ${top}%;
-                ${fromLeft ? 'left: -80px;' : 'right: -80px;'}
-                font-size: 2.5rem;
-                z-index: 1;
-                pointer-events: none;
-                opacity: 0.7;
-                filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
-            `;
-            astro.textContent = '🚀';
-            document.body.appendChild(astro);
-
-            const distance = window.innerWidth + 160;
-            let start = null;
-
-            function fly(now) {
-                if (!start) start = now;
-                const elapsed = now - start;
-                const progress = Math.min(elapsed / (duration * 1000), 1);
-
-                const x = fromLeft
-                    ? -80 + distance * progress
-                    : -80 + distance * (1 - progress);
-
-                const y = Math.sin(progress * Math.PI * 2) * 20;
-
-                astro.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${fromLeft ? '-15deg' : '15deg'})`;
-
-                if (progress < 1) {
-                    requestAnimationFrame(fly);
-                } else {
-                    astro.remove();
-                }
-            }
-
-            requestAnimationFrame(fly);
-        }
-
-        setTimeout(() => {
-            spawnAstronaut();
-            setInterval(spawnAstronaut, 60000 + Math.random() * 30000);
-        }, 30000);
-
-        console.log('🚀 Астронавт готов к запуску');
-    }
-
-    // ============================================================
-    // 5. МАРСИАНСКИЕ ПОСЛОВИЦЫ (тройной клик)
+    // 3. МАРСИАНСКИЕ ПОСЛОВИЦЫ (тройной клик)
     // ============================================================
     const PROVERBS = [
         { martian: 'Lān sur.', russian: 'Глина помнит.' },
@@ -596,7 +327,7 @@
     }
 
     // ============================================================
-    // 6. СЕЗОННЫЙ ЭФФЕКТ
+    // 4. СЕЗОННЫЙ ЭФФЕКТ
     // ============================================================
     function initSeasonalEffect() {
         const month = new Date().getMonth();
@@ -668,7 +399,7 @@
     }
 
     // ============================================================
-    // 7. ОБЩИЕ АНИМАЦИИ
+    // 5. АНИМАЦИИ
     // ============================================================
     function addAnimations() {
         if (document.getElementById('mars-anim-style')) return;
@@ -704,151 +435,6 @@
                 10% { opacity: 0.9; }
                 100% { transform: translate(var(--sway), ${window.innerHeight + 100}px) rotate(var(--rot)); opacity: 0; }
             }
-
-            /* ============================================================
-               ТЁМНАЯ ТЕМА ЗВЁЗДНОГО НЕБА
-               ============================================================ */
-            html.mars-stars-on,
-            body.mars-stars-on {
-                background: linear-gradient(180deg, #0a0a14 0%, #15152a 50%, #1a1a2e 100%) !important;
-                background-attachment: fixed !important;
-            }
-
-            body.mars-stars-on .md-content,
-            body.mars-stars-on .rst-content,
-            body.mars-stars-on .wy-nav-content,
-            body.mars-stars-on .md-content__inner,
-            body.mars-stars-on .document,
-            body.mars-stars-on .section {
-                background-color: rgba(15, 15, 30, 0.75) !important;
-                color: #d4d4e4 !important;
-            }
-
-            body.mars-stars-on .wy-nav-side,
-            body.mars-stars-on .md-sidebar,
-            body.mars-stars-on .wy-side-nav-search {
-                background-color: rgba(10, 10, 25, 0.9) !important;
-            }
-
-            body.mars-stars-on .wy-menu-vertical li a,
-            body.mars-stars-on .md-nav__link,
-            body.mars-stars-on .md-nav__title {
-                color: #c4c4d4 !important;
-            }
-
-            body.mars-stars-on .wy-menu-vertical li a:hover,
-            body.mars-stars-on .md-nav__link:hover {
-                color: #A29BFE !important;
-                background-color: rgba(108, 99, 255, 0.15) !important;
-            }
-
-            body.mars-stars-on .wy-menu-vertical li.current > a,
-            body.mars-stars-on .md-nav__link--active {
-                color: #A29BFE !important;
-                background-color: rgba(108, 99, 255, 0.2) !important;
-            }
-
-            body.mars-stars-on .md-header,
-            body.mars-stars-on .wy-nav-top {
-                background-color: rgba(10, 10, 25, 0.9) !important;
-                border-bottom: 1px solid rgba(108, 99, 255, 0.3) !important;
-            }
-
-            body.mars-stars-on h1,
-            body.mars-stars-on h2,
-            body.mars-stars-on h3,
-            body.mars-stars-on h4,
-            body.mars-stars-on h5,
-            body.mars-stars-on h6 {
-                color: #f0f0ff !important;
-            }
-
-            body.mars-stars-on p,
-            body.mars-stars-on li,
-            body.mars-stars-on span,
-            body.mars-stars-on td,
-            body.mars-stars-on th,
-            body.mars-stars-on div {
-                color: #d4d4e4 !important;
-            }
-
-            body.mars-stars-on a {
-                color: #A29BFE !important;
-            }
-
-            body.mars-stars-on a:hover {
-                color: #6C63FF !important;
-            }
-
-            body.mars-stars-on table {
-                background-color: rgba(20, 20, 40, 0.6) !important;
-            }
-
-            body.mars-stars-on th {
-                background-color: rgba(108, 99, 255, 0.2) !important;
-                color: #f0f0ff !important;
-            }
-
-            body.mars-stars-on td {
-                border-color: rgba(108, 99, 255, 0.15) !important;
-            }
-
-            body.mars-stars-on code,
-            body.mars-stars-on pre {
-                background-color: rgba(20, 20, 40, 0.8) !important;
-                color: #A29BFE !important;
-                border: 1px solid rgba(108, 99, 255, 0.2) !important;
-            }
-
-            body.mars-stars-on .admonition {
-                background-color: rgba(20, 20, 40, 0.6) !important;
-                border-color: rgba(108, 99, 255, 0.3) !important;
-            }
-
-            body.mars-stars-on .pf-card,
-            body.mars-stars-on .pf-quick-card,
-            body.mars-stars-on .pf-ach,
-            body.mars-stars-on .pf-note,
-            body.mars-stars-on .pf-tabs,
-            body.mars-stars-on .pf-note-form,
-            body.mars-stars-on .pf-stat,
-            body.mars-stars-on .pf-day,
-            body.mars-stars-on .pf-history-item {
-                background: rgba(20, 20, 40, 0.85) !important;
-                border-color: rgba(108, 99, 255, 0.3) !important;
-            }
-
-            body.mars-stars-on .pf-card-title,
-            body.mars-stars-on .pf-quick-title,
-            body.mars-stars-on .pf-ach-name,
-            body.mars-stars-on .pf-note-title {
-                color: #e0e0e0 !important;
-            }
-
-            body.mars-stars-on .pf-tab {
-                color: #aaa !important;
-            }
-
-            body.mars-stars-on input,
-            body.mars-stars-on textarea,
-            body.mars-stars-on select {
-                background-color: rgba(20, 20, 40, 0.6) !important;
-                color: #e0e0e0 !important;
-                border-color: rgba(108, 99, 255, 0.3) !important;
-            }
-
-            body.mars-stars-on input::placeholder,
-            body.mars-stars-on textarea::placeholder {
-                color: #666688 !important;
-            }
-
-            body,
-            .md-content,
-            .wy-nav-content,
-            .md-header,
-            .wy-nav-side {
-                transition: background-color 0.5s ease, color 0.5s ease;
-            }
         `;
         document.head.appendChild(style);
     }
@@ -859,17 +445,24 @@
     function init() {
         addAnimations();
         initMarsCursor();
-        initStarField();
         initEasterEgg();
-        initAstronaut();
         initProverbs();
         initSeasonalEffect();
 
+        // Убираем старые следы звёзд (если остались)
+        try {
+            localStorage.removeItem('mars_stars_enabled');
+            document.body.classList.remove('mars-stars-on');
+            document.documentElement.classList.remove('mars-stars-on');
+            const oldCanvas = document.getElementById('mars-stars-canvas');
+            if (oldCanvas) oldCanvas.remove();
+            const oldBtn = document.getElementById('mars-stars-toggle');
+            if (oldBtn) oldBtn.remove();
+        } catch(e) {}
+
         console.log('%c🎬 Easter eggs готовы!', 'color: #6C63FF; font-size: 14px; font-weight: bold;');
         console.log('%c☄️  Набери "LANSUR" → секретная страница', 'color: #f39c12;');
-        console.log('%c🌟  Кнопка ⭐ в углу → звёздное небо', 'color: #A29BFE;');
         console.log('%c💬  Тройной клик по пустому месту → пословица', 'color: #27ae60;');
-        console.log('%c🚀  Астронавт прилетит через 30 секунд (если звёзды включены)', 'color: #e74c3c;');
     }
 
     if (document.readyState === 'loading') {

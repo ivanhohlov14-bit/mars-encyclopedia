@@ -5,50 +5,49 @@
     const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
-    // Страницы, где НЕ показываем лайки/закладки
-    const EXCLUDED = [
-        '', 'index', 'profile', 'login', 'register', 'stats',
-        'game', 'profile-view', 'moderator', 'license', 'support',
-        'start-here', 'globe-map', 'interactive', 'translator',
-        'bookmarks', 'top', 'quest-map'
+    // Список путей, где НЕ показываем лайки и закладки.
+    // Скрипт проверяет полный путь (например, '/license/').
+    const EXCLUDED_PATHS = [
+        '/profile/', '/login/', '/register/', '/stats/', '/game/',
+        '/profile-view/', '/moderator/', '/license/', '/support/',
+        '/start-here/', '/globe-map/', '/interactive/exodus/',
+        '/music/constructor/', '/interactive/', '/translator/',
+        '/bookmarks/', '/top/', '/quest-map/',
+        // Добавляем главную и индексную страницы
+        '/', '/index/'
     ];
 
     let client = null;
     let currentUser = null;
 
-    // ============================================================
-    // Получить полный путь (например, geography/acidalia-sea)
-    // ============================================================
+    /**
+     * Возвращает полный путь текущей страницы, например "geography/okhasen".
+     * Это значение будет использоваться как уникальный идентификатор статьи.
+     */
     function getFullPath() {
         return window.location.pathname.replace(/^\/|\/$/g, '');
     }
 
-    function getLastSegment() {
-        const path = getFullPath();
-        const parts = path.split('/');
-        return parts[parts.length - 1] || '';
-    }
-
+    /**
+     * Проверяет, находится ли текущая страница в списке исключений.
+     */
     function isExcluded() {
-        const last = getLastSegment();
-        const path = getFullPath();
-        return EXCLUDED.includes(last) || EXCLUDED.includes(path);
+        const path = window.location.pathname;
+        return EXCLUDED_PATHS.includes(path);
     }
 
-    // ============================================================
-    // Заголовок статьи (с русского H1 или front matter)
-    // ============================================================
+    /**
+     * Получает заголовок статьи. Сначала ищет H1, затем meta-тег, и только потом
+     * использует путь как запасной вариант.
+     */
     function getArticleTitle() {
-        // 1. Пробуем H1
         const h1 = document.querySelector('.md-content h1, article h1, h1');
         if (h1 && h1.textContent.trim()) {
             return h1.textContent.trim().replace(/^#+\s*/, '').substring(0, 200);
         }
-        // 2. Пробуем meta title
         const metaTitle = document.querySelector('meta[property="og:title"]');
         if (metaTitle) return metaTitle.content.substring(0, 200);
-        // 3. Fallback
-        return document.title.split(' - ')[0].substring(0, 200) || getLastSegment();
+        return document.title.split(' - ')[0].substring(0, 200) || getFullPath();
     }
 
     // ============================================================
@@ -111,6 +110,7 @@
             showToast('Войдите, чтобы добавлять в закладки', 'warning');
             return;
         }
+        // ИСПОЛЬЗУЕМ ПОЛНЫЙ ПУТЬ КАК УНИКАЛЬНЫЙ ИДЕНТИФИКАТОР
         const slug = getFullPath();
         const title = getArticleTitle();
         const exists = await isBookmarked(slug, currentUser.id);
@@ -168,20 +168,18 @@
     }
 
     // ============================================================
-    // Верхний виджет — закладка справа от H1
+    // Верхний виджет — кнопка "В закладки" справа от заголовка H1
     // ============================================================
     async function renderTopWidget() {
         const h1 = document.querySelector('.md-content h1, article h1, h1');
         if (!h1) return;
 
-        // Удаляем старый
         const old = document.getElementById('article-top-tools');
         if (old) old.remove();
 
-        const slug = getFullPath();
+        const slug = getFullPath(); // Используем полный путь
         const bookmarked = currentUser ? await isBookmarked(slug, currentUser.id) : false;
 
-        // Обернём H1 в flex-контейнер
         let wrapper = h1.parentNode.querySelector('.h1-wrapper');
         if (!wrapper) {
             wrapper = document.createElement('div');
@@ -224,10 +222,9 @@
     }
 
     // ============================================================
-    // Нижний виджет — лайки/дизлайки рядом с комментариями
+    // Нижний виджет — лайки/дизлайки
     // ============================================================
     async function renderBottomWidget(slug) {
-        // Удаляем старый
         const old = document.getElementById('article-bottom-tools');
         if (old) old.remove();
 
@@ -281,7 +278,6 @@
             </button>
         `;
 
-        // Вставляем перед комментариями (если есть) или в конец контента
         const comments = document.querySelector('#comments, .comments, #disqus_thread, .giscus, .md-comments');
         const content = document.querySelector('.md-content__inner, article, .md-content');
 
@@ -293,7 +289,6 @@
             document.body.appendChild(widget);
         }
 
-        // Обработчики
         widget.querySelector('#like-btn').onclick = () => rateArticle(slug, 1);
         widget.querySelector('#dislike-btn').onclick = () => rateArticle(slug, -1);
     }
@@ -314,7 +309,6 @@
 
         const slug = getFullPath();
 
-        // Ждём H1 (Material иногда долго грузит)
         let attempts = 0;
         const waitH1 = setInterval(async () => {
             const h1 = document.querySelector('.md-content h1, article h1, h1');

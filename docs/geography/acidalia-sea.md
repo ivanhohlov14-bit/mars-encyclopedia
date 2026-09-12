@@ -386,31 +386,6 @@
 
 Исследования миссий **Mars Express** и **MRO** подтверждают, что вода на Марсе действительно существовала в жидком виде, но её запасы были заключены в глинистых минералах и подповерхностных льдах[^22]. Учёные предполагают, что часть воды могла сохраниться в глубоких подземных резервуарах — возможно, именно эти резервуары вдохновили автора на создание мифа о «подземных водах», которые иссякли вместе с морем, когда богиня Араксис ушла из мира людей.
 
-<script>
-  // Запись посещения страницы "Ацидалийское море"
-  const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
-  
-  // Используем уже загруженный клиент, если он есть
-  const client = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
-  
-  if (client) {
-    client.auth.getSession().then(({ data }) => {
-      const user = data?.session?.user;
-      if (user) {
-        client.from('user_visits').insert({
-          user_id: user.id,
-          place_id: 'acidalia-sea',      // Уникальный ID статьи
-          place_type: 'sea',             // Тип: sea, city, temple, cave, character
-          visited_at: new Date().toISOString()
-        }).then(({ error }) => {
-          if (error) console.error('Ошибка записи посещения:', error);
-        });
-      }
-    });
-  }
-</script>
-
 ## Связанные статьи
 
 - [Окхасен](https://mars-wiki.ru/geography/okhasen/)

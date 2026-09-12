@@ -17,67 +17,35 @@
     }
 
     // ============================================================
-    // ЗАГРУЗКА QR-БИБЛИОТЕКИ С FALLBACK
-    // Пробуем несколько CDN по очереди
+    // ЗАГРУЗКА QR-БИБЛИОТЕКИ (ЛОКАЛЬНО — без CDN)
     // ============================================================
-    const QR_CDNS = [
-        'https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js',
-        'https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js',
-        'https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js'
-    ];
-
-    let currentCdnIndex = 0;
-
     function loadQR(cb) {
-        // Если уже загружено — сразу вызываем
-        if (window.QRCode && window.QRCode.toCanvas) { cb(); return; }
-        if (window.QRCode && window.QRCode.toDataURL) { cb(); return; }
-
-        // Пробуем по очереди
-        function tryNext() {
-            if (currentCdnIndex >= QR_CDNS.length) {
-                console.error('❌ Все CDN для QR недоступны');
-                // Fallback: рисуем "ручной" QR с URL через простой генератор
-                if (window.QRCodeGenerator) { cb(); return; }
-                alert(
-                    '⚠️ Не удалось загрузить библиотеку QR-кодов.\n\n' +
-                    'Возможные причины:\n' +
-                    '• Провайдер блокирует CDN\n' +
-                    '• Нет доступа к интернету\n\n' +
-                    'Попробуйте:\n' +
-                    '1. Обновить страницу (Ctrl+Shift+R)\n' +
-                    '2. Включить VPN\n' +
-                    '3. Использовать ручную ссылку (она будет показана ниже)'
-                );
-                cb(true); // передаём флаг "ошибка"
-                return;
-            }
-
-            const url = QR_CDNS[currentCdnIndex];
-            currentCdnIndex++;
-            console.log('🔄 Пробуем загрузить QR с:', url);
-
-            const s = document.createElement('script');
-            s.src = url;
-            s.onload = () => {
-                console.log('✅ QR-библиотека загружена:', url);
-                cb();
-            };
-            s.onerror = () => {
-                console.warn('⚠️ Не удалось:', url);
-                tryNext();
-            };
-            // Таймаут на загрузку (10 секунд)
-            setTimeout(() => {
-                if (!window.QRCode && currentCdnIndex <= QR_CDNS.length) {
-                    tryNext();
-                }
-            }, 10000);
-            document.head.appendChild(s);
+        // 1. Если библиотека уже загружена — используем её
+        if (window.QRCode) {
+            console.log('✅ QR-библиотека уже загружена');
+            cb();
+            return;
         }
 
-        tryNext();
+        // 2. Если нет — грузим локальный файл
+        console.log('📦 Загружаем локальную QR-библиотеку...');
+        const s = document.createElement('script');
+        s.src = '/assets/js/qrcode.min.js';
+        s.onload = () => {
+            if (window.QRCode) {
+                console.log('✅ QR-библиотека загружена локально');
+                cb();
+            } else {
+                console.error('❌ Файл загружен, но QRCode не определён');
+                cb(true);
+            }
+        };
+        s.onerror = () => {
+            console.error('❌ Не удалось загрузить /assets/js/qrcode.min.js');
+            console.error('   Проверьте, что файл лежит в docs/assets/js/');
+            cb(true);
+        };
+        document.head.appendChild(s);
     }
 
     // ============================================================

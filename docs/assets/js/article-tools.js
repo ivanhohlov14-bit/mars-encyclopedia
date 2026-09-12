@@ -11,7 +11,7 @@
         '/stats/', '/game/', '/profile-view/', '/moderator/',
         '/license/', '/support/', '/start-here/', '/globe-map/',
         '/interactive/exodus/', '/music/constructor/', '/interactive/',
-        '/translator/'
+        '/translator/', '/top/', '/bookmarks/', '/quest-map/', 
     ];
 
     let client = null;

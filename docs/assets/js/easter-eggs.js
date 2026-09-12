@@ -47,15 +47,14 @@
     // ============================================================
     // 2. ЗВЁЗДНЫЙ ФОН
     // ============================================================
+    let starsCanvas = null;
+    let starsAnimFrame = null;
+
     function initStarField() {
         const enabled = localStorage.getItem(STARS_KEY) === 'true';
         if (enabled) createStarField();
-        // Кнопка создаётся всегда
         createStarsToggle();
     }
-
-    let starsCanvas = null;
-    let starsAnimFrame = null;
 
     function createStarField() {
         if (starsCanvas) return;
@@ -109,7 +108,6 @@
             if (!starsCanvas) return;
             ctx.clearRect(0, 0, starsCanvas.width, starsCanvas.height);
 
-            // Обычные звёзды
             stars.forEach(s => {
                 s.twinkle += s.speed;
                 const alpha = s.alpha * (0.6 + 0.4 * Math.sin(s.twinkle));
@@ -119,7 +117,6 @@
                 ctx.fill();
             });
 
-            // Падающие звёзды
             shootingStars = shootingStars.filter(ss => ss.life > 0);
             shootingStars.forEach(ss => {
                 ss.x += Math.cos(ss.angle) * ss.speed;
@@ -273,7 +270,6 @@
     function triggerMeteorShower() {
         console.log('☄️ Пасхалка активирована! LĀN SUR!');
 
-        // Разблокируем секретную страницу
         localStorage.setItem(STORAGE_KEY, 'true');
 
         playEasterSound();
@@ -325,6 +321,386 @@
         container.appendChild(meteor);
     }
 
+    function showEasterText() {
+        const text = document.createElement('div');
+        text.style.cssText = `
+            position: fixed; top: 40%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(2rem, 8vw, 5rem);
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 20px #6C63FF, 0 0 40px #6C63FF, 0 0 60px #e74c3c, 0 4px 8px rgba(0,0,0,0.5);
+            letter-spacing: 8px;
+            z-index: 99999;
+            pointer-events: none;
+            animation: easterTextIn 4s ease-out forwards;
+            font-family: 'Georgia', serif;
+            white-space: nowrap;
+        `;
+        text.textContent = 'LĀN SUR';
+        document.body.appendChild(text);
+
+        const subtitle = document.createElement('div');
+        subtitle.style.cssText = `
+            position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(0.9rem, 3vw, 1.4rem);
+            font-weight: 600;
+            color: #A29BFE;
+            text-shadow: 0 0 20px rgba(162,155,254,0.8);
+            letter-spacing: 4px;
+            z-index: 99999;
+            pointer-events: none;
+            animation: easterTextIn 4s ease-out 0.3s forwards;
+            opacity: 0;
+        `;
+        subtitle.textContent = '— ГЛИНА ПОМНИТ —';
+        document.body.appendChild(subtitle);
+
+        setTimeout(() => {
+            text.remove();
+            subtitle.remove();
+        }, 4500);
+
+        // ============================================================
+        // КЛИКАБЕЛЬНАЯ ПЛАШКА СО ССЫЛКОЙ (видна 20 секунд)
+        // ============================================================
+        const unlock = document.createElement('div');
+        unlock.id = 'secret-unlock-banner';
+        unlock.style.cssText = `
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999999;
+            background: linear-gradient(135deg, #6C63FF, #A29BFE);
+            color: #fff;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            box-shadow: 0 20px 60px rgba(108,99,255,0.6), 0 0 40px rgba(108,99,255,0.4);
+            animation: secretBannerIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            user-select: none;
+            max-width: 90vw;
+        `;
+        unlock.innerHTML = `
+            <span style="font-size: 1.6rem; animation: secFloat 2s ease-in-out infinite;">🗝️</span>
+            <span>Открыта секретная страница!</span>
+            <span style="background: rgba(255,255,255,0.25); padding: 6px 14px; border-radius: 30px; font-size: 0.85rem; white-space: nowrap;">Перейти →</span>
+        `;
+        unlock.onclick = function() {
+            window.location.href = '/secret/';
+        };
+
+        if (!document.getElementById('secret-banner-style')) {
+            const s = document.createElement('style');
+            s.id = 'secret-banner-style';
+            s.textContent = `
+                @keyframes secretBannerIn {
+                    from { opacity: 0; transform: translate(-50%, -30px); }
+                    to { opacity: 1; transform: translate(-50%, 0); }
+                }
+                @keyframes secFloat {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-5px); }
+                }
+            `;
+            document.head.appendChild(s);
+        }
+
+        document.body.appendChild(unlock);
+
+        setTimeout(() => {
+            if (unlock.parentNode) {
+                unlock.style.transition = 'all 0.5s';
+                unlock.style.opacity = '0';
+                unlock.style.transform = 'translate(-50%, -30px)';
+                setTimeout(() => unlock.remove(), 500);
+            }
+        }, 20000);
+    }
+
+    function playEasterSound() {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const notes = [261.63, 329.63, 392.00, 523.25];
+            notes.forEach((freq, i) => {
+                setTimeout(() => {
+                    const osc = ctx.createOscillator();
+                    const gain = ctx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+                    osc.connect(gain);
+                    gain.connect(ctx.destination);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.8);
+                }, i * 120);
+            });
+        } catch(e) {}
+    }
+
+    // ============================================================
+    // 4. ЛЕТАЮЩИЙ АСТРОНАВТ
+    // ============================================================
+    function initAstronaut() {
+        // Только если включены звёзды
+        if (localStorage.getItem(STARS_KEY) !== 'true') return;
+
+        function spawnAstronaut() {
+            if (localStorage.getItem(STARS_KEY) !== 'true') return;
+
+            const astro = document.createElement('div');
+            const fromLeft = Math.random() > 0.5;
+            const duration = 25 + Math.random() * 15;
+            const top = 15 + Math.random() * 60;
+
+            astro.style.cssText = `
+                position: fixed;
+                top: ${top}%;
+                ${fromLeft ? 'left: -80px;' : 'right: -80px;'}
+                font-size: 2.5rem;
+                z-index: 1;
+                pointer-events: none;
+                opacity: 0.7;
+                filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
+                transition: none;
+                transform: rotate(${fromLeft ? '-15deg' : '15deg'});
+            `;
+            astro.textContent = '🚀';
+            document.body.appendChild(astro);
+
+            // Анимация полёта
+            const distance = window.innerWidth + 160;
+            let start = null;
+            const startTime = performance.now();
+
+            function fly(now) {
+                if (!start) start = now;
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / (duration * 1000), 1);
+
+                const x = fromLeft
+                    ? -80 + distance * progress
+                    : -80 + distance * (1 - progress);
+
+                const y = Math.sin(progress * Math.PI * 2) * 20;
+
+                astro.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${fromLeft ? '-15deg' : '15deg'})`;
+
+                if (progress < 1) {
+                    requestAnimationFrame(fly);
+                } else {
+                    astro.remove();
+                }
+            }
+
+            requestAnimationFrame(fly);
+        }
+
+        // Первый запуск через 30 секунд, потом каждые 60-90 секунд
+        setTimeout(() => {
+            spawnAstronaut();
+            setInterval(spawnAstronaut, 60000 + Math.random() * 30000);
+        }, 30000);
+
+        console.log('🚀 Астронавт готов к запуску');
+    }
+
+    // ============================================================
+    // 5. МАРСИАНСКИЕ ПОСЛОВИЦЫ (тройной клик)
+    // ============================================================
+    const PROVERBS = [
+        { martian: 'Lān sur.', russian: 'Глина помнит.' },
+        { martian: 'Ākha kōl lān.', russian: 'Вода помнит землю.' },
+        { martian: 'Dzen thal, mar mōr ān.', russian: 'Смотри на звёзды — жизнь не умирает.' },
+        { martian: 'Khō mōr, dzen mōr, lān ān mōr.', russian: 'Огонь умирает, звёзды умирают, память — нет.' },
+        { martian: 'Marzān dzen thal.', russian: 'Марсиане смотрят на звёзды.' },
+        { martian: 'Ariya mar lān.', russian: 'Помни жизнь избранных.' },
+        { martian: 'Kōl ghar, dzen suf.', russian: 'Земля — камень, звезда — велика.' },
+        { martian: 'Xalmar dzen thal nu.', russian: 'Древние смотрели на звёзды.' },
+        { martian: 'Tsen mar mōr, lān mar.', russian: 'Когда жизнь умирает, память живёт.' },
+        { martian: 'Rōg okh thal.', russian: 'Король смотрит на свой дом.' }
+    ];
+
+    function initProverbs() {
+        let clickCount = 0;
+        let clickTimer = null;
+
+        document.addEventListener('click', function(e) {
+            // Игнорируем клики по ссылкам, кнопкам, полям
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' ||
+                e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' ||
+                e.target.closest('a') || e.target.closest('button') ||
+                e.target.closest('nav') || e.target.closest('header')) {
+                return;
+            }
+
+            clickCount++;
+
+            if (clickTimer) clearTimeout(clickTimer);
+
+            if (clickCount >= 3) {
+                clickCount = 0;
+                showProverb();
+            } else {
+                clickTimer = setTimeout(() => {
+                    clickCount = 0;
+                }, 600);
+            }
+        });
+    }
+
+    function showProverb() {
+        const proverb = PROVERBS[Math.floor(Math.random() * PROVERBS.length)];
+
+        const popup = document.createElement('div');
+        popup.style.cssText = `
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            padding: 32px 40px;
+            border-radius: 20px;
+            border: 2px solid #6C63FF;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(108,99,255,0.4);
+            z-index: 999999;
+            text-align: center;
+            max-width: 90vw;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        `;
+        popup.innerHTML = `
+            <div style="font-size: 0.8rem; color: #A29BFE; letter-spacing: 3px; margin-bottom: 12px;">МАРСИАНСКАЯ МУДРОСТЬ</div>
+            <div style="font-size: 1.5rem; font-weight: 900; font-family: 'Georgia', serif; letter-spacing: 2px; color: #fff; margin-bottom: 12px;">${proverb.martian}</div>
+            <div style="font-size: 0.95rem; color: #A29BFE; font-style: italic;">${proverb.russian}</div>
+        `;
+        document.body.appendChild(popup);
+
+        requestAnimationFrame(() => {
+            popup.style.opacity = '1';
+            popup.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+
+        setTimeout(() => {
+            popup.style.opacity = '0';
+            popup.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            setTimeout(() => popup.remove(), 400);
+        }, 3500);
+    }
+
+    // ============================================================
+    // 6. СЕЗОННЫЙ ЭФФЕКТ
+    // ============================================================
+    function initSeasonalEffect() {
+        const month = new Date().getMonth(); // 0-11
+        let emoji, count;
+
+        // Зима: декабрь-февраль (11, 0, 1) → снежинки
+        // Весна: март-май (2, 3, 4) → цветы
+        // Лето: июнь-август (5, 6, 7) → солнечные искры
+        // Осень: сентябрь-ноябрь (8, 9, 10) → листья
+
+        if (month === 11 || month === 0 || month === 1) {
+            emoji = '❄️';
+            count = 25;
+        } else if (month >= 2 && month <= 4) {
+            emoji = '🌸';
+            count = 20;
+        } else if (month >= 5 && month <= 7) {
+            emoji = '☀️';
+            count = 15;
+        } else {
+            emoji = '🍂';
+            count = 25;
+        }
+
+        // Показываем эффект только раз в день
+        const todayKey = 'seasonal_' + new Date().toDateString();
+        if (sessionStorage.getItem(todayKey)) return;
+
+        setTimeout(() => {
+            if (sessionStorage.getItem(todayKey)) return;
+            sessionStorage.setItem(todayKey, 'true');
+            showSeasonalEffect(emoji, count);
+        }, 3000);
+    }
+
+    function showSeasonalEffect(emoji, count) {
+        const container = document.createElement('div');
+        container.style.cssText = `
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9998;
+            overflow: hidden;
+        `;
+        document.body.appendChild(container);
+
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                const particle = document.createElement('div');
+                const startX = Math.random() * window.innerWidth;
+                const duration = 5 + Math.random() * 5;
+                const size = 14 + Math.random() * 10;
+                const sway = Math.random() * 100 - 50;
+                const rotSpeed = Math.random() * 360 + 180;
+
+                particle.style.cssText = `
+                    position: absolute;
+                    top: -50px;
+                    left: ${startX}px;
+                    font-size: ${size}px;
+                    opacity: 0.85;
+                    animation: seasonalFall ${duration}s linear forwards;
+                    --sway: ${sway}px;
+                    --rot: ${rotSpeed}deg;
+                `;
+                particle.textContent = emoji;
+
+                container.appendChild(particle);
+
+                setTimeout(() => particle.remove(), duration * 1000 + 100);
+            }, i * 200);
+        }
+
+        if (!document.getElementById('seasonal-style')) {
+            const style = document.createElement('style');
+            style.id = 'seasonal-style';
+            style.textContent = `
+                @keyframes seasonalFall {
+                    0% {
+                        transform: translate(0, 0) rotate(0deg);
+                        opacity: 0;
+                    }
+                    10% {
+                        opacity: 0.9;
+                    }
+                    100% {
+                        transform: translate(var(--sway), ${window.innerHeight + 100}px) rotate(var(--rot));
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        setTimeout(() => container.remove(), 12000);
+    }
+
+    // ============================================================
+    // 7. ОБЩИЕ АНИМАЦИИ
+    // ============================================================
     function addMeteorAnimation() {
         if (document.getElementById('meteor-anim-style')) return;
         const style = document.createElement('style');
@@ -350,87 +726,6 @@
         document.head.appendChild(style);
     }
 
-    function showEasterText() {
-        const text = document.createElement('div');
-        text.style.cssText = `
-            position: fixed; top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(2rem, 8vw, 5rem);
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 0 0 20px #6C63FF, 0 0 40px #6C63FF, 0 0 60px #e74c3c, 0 4px 8px rgba(0,0,0,0.5);
-            letter-spacing: 8px;
-            z-index: 99999;
-            pointer-events: none;
-            animation: easterTextIn 4s ease-out forwards;
-            font-family: 'Georgia', serif;
-            white-space: nowrap;
-        `;
-        text.textContent = 'LĀN SUR';
-        document.body.appendChild(text);
-
-        const subtitle = document.createElement('div');
-        subtitle.style.cssText = `
-            position: fixed; top: 60%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(0.9rem, 3vw, 1.4rem);
-            font-weight: 600;
-            color: #A29BFE;
-            text-shadow: 0 0 20px rgba(162,155,254,0.8);
-            letter-spacing: 4px;
-            z-index: 99999;
-            pointer-events: none;
-            animation: easterTextIn 4s ease-out 0.3s forwards;
-            opacity: 0;
-        `;
-        subtitle.textContent = '— ГЛИНА ПОМНИТ —';
-        document.body.appendChild(subtitle);
-
-        const hint = document.createElement('div');
-        hint.style.cssText = `
-            position: fixed; top: 70%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(0.75rem, 2.5vw, 0.95rem);
-            font-weight: 600;
-            color: #f39c12;
-            text-shadow: 0 0 15px rgba(243,156,18,0.9);
-            letter-spacing: 2px;
-            z-index: 99999;
-            pointer-events: none;
-            animation: easterTextIn 5s ease-out 0.6s forwards;
-            opacity: 0;
-        `;
-        hint.innerHTML = '✨ Открыта страница: <a href="/secret/" style="color: #fff; text-decoration: underline; pointer-events: auto; cursor: pointer;">/secret/</a>';
-        document.body.appendChild(hint);
-
-        setTimeout(() => {
-            text.remove();
-            subtitle.remove();
-            hint.remove();
-        }, 5500);
-    }
-
-    function playEasterSound() {
-        try {
-            const ctx = new (window.AudioContext || window.webkitAudioContext)();
-            const notes = [261.63, 329.63, 392.00, 523.25];
-            notes.forEach((freq, i) => {
-                setTimeout(() => {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.type = 'triangle';
-                    osc.frequency.value = freq;
-                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
-                    osc.connect(gain);
-                    gain.connect(ctx.destination);
-                    osc.start();
-                    osc.stop(ctx.currentTime + 0.8);
-                }, i * 120);
-            });
-        } catch(e) {}
-    }
-
     // ============================================================
     // ЗАПУСК
     // ============================================================
@@ -439,8 +734,15 @@
         initMarsCursor();
         initStarField();
         initEasterEgg();
-        console.log('🎬 Easter eggs готовы. Набери "LANSUR" для сюрприза!');
-        console.log('🌟 Звёздный фон:', localStorage.getItem(STARS_KEY) === 'true' ? 'включён' : 'выключен');
+        initAstronaut();
+        initProverbs();
+        initSeasonalEffect();
+
+        console.log('%c🎬 Easter eggs готовы!', 'color: #6C63FF; font-size: 14px; font-weight: bold;');
+        console.log('%c☄️  Набери "LANSUR" → секретная страница', 'color: #f39c12;');
+        console.log('%c🌟  Кнопка ⭐ в углу → звёздное небо', 'color: #A29BFE;');
+        console.log('%c💬  Тройной клик по пустому месту → пословица', 'color: #27ae60;');
+        console.log('%c🚀  Астронавт прилетит через 30 секунд (если звёзды включены)', 'color: #e74c3c;');
     }
 
     if (document.readyState === 'loading') {

@@ -1,34 +1,29 @@
-// article-tools.js — компактный блок ПЕРЕД комментариями (с MutationObserver)
+// article-tools.js — компактный блок ПЕРЕД комментариями (ReadTheDocs)
 (function() {
     'use strict';
 
     const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
+    // Те же исключения, что и в comments-loader.js
     const EXCLUDED_PATHS = [
         '/', '/index/', '/profile/', '/login/', '/register/',
         '/stats/', '/game/', '/profile-view/', '/moderator/',
         '/license/', '/support/', '/start-here/', '/globe-map/',
         '/interactive/exodus/', '/music/constructor/', '/interactive/',
-        '/translator/', '/bookmarks/', '/top/', '/quest-map/'
+        '/translator/'
     ];
 
     let client = null;
     let currentUser = null;
 
-    function getFullPath() {
-        return window.location.pathname.replace(/^\/|\/$/g, '');
-    }
+    const getFullPath = () => window.location.pathname.replace(/^\/|\/$/g, '');
+    const isExcluded = () => EXCLUDED_PATHS.includes(window.location.pathname);
 
-    function isExcluded() {
-        return EXCLUDED_PATHS.includes(window.location.pathname);
-    }
-
-    function getArticleTitle() {
-        const h1 = document.querySelector('.md-content h1, article h1, h1');
-        if (h1 && h1.textContent.trim()) return h1.textContent.trim().substring(0, 200);
-        return document.title.split(' - ')[0].substring(0, 200) || getFullPath();
-    }
+    const getArticleTitle = () => {
+        const h1 = document.querySelector('.rst-content h1, .wy-nav-content h1, h1');
+        return h1 ? h1.textContent.trim().substring(0, 200) : (document.title.split(' - ')[0] || getFullPath());
+    };
 
     // ============================================================
     // Данные
@@ -40,19 +35,20 @@
             dislikes: (data || []).filter(r => r.rating === -1).length
         };
     }
-
     async function getUserRating(slug, userId) {
-        const { data } = await client.from('article_ratings')
-            .select('rating').eq('user_id', userId).eq('article_slug', slug).maybeSingle();
+        const { data } = await client.from('article_ratings').select('rating')
+            .eq('user_id', userId).eq('article_slug', slug).maybeSingle();
         return data?.rating || 0;
     }
-
     async function isBookmarked(slug, userId) {
-        const { data } = await client.from('bookmarks')
-            .select('id').eq('user_id', userId).eq('article_slug', slug).maybeSingle();
+        const { data } = await client.from('bookmarks').select('id')
+            .eq('user_id', userId).eq('article_slug', slug).maybeSingle();
         return !!data;
     }
 
+    // ============================================================
+    // Тост
+    // ============================================================
     function showToast(message, type = 'info') {
         const colors = {
             success: 'linear-gradient(135deg, #27ae60, #16a085)',
@@ -60,17 +56,7 @@
             warning: 'linear-gradient(135deg, #e67e22, #d35400)'
         };
         const toast = document.createElement('div');
-        toast.style.cssText = `
-            position: fixed; bottom: 30px; left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: ${colors[type] || colors.info};
-            color: #fff; padding: 10px 22px; border-radius: 30px;
-            font-weight: 600; font-size: 0.85rem;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
-            z-index: 99999;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            pointer-events: none;
-        `;
+        toast.style.cssText = `position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:${colors[type] || colors.info};color:#fff;padding:10px 22px;border-radius:30px;font-weight:600;font-size:0.85rem;box-shadow:0 12px 32px rgba(0,0,0,0.3);z-index:99999;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);pointer-events:none;`;
         toast.textContent = message;
         document.body.appendChild(toast);
         requestAnimationFrame(() => { toast.style.transform = 'translateX(-50%) translateY(0)'; });
@@ -114,9 +100,57 @@
     }
 
     // ============================================================
-    // Виджет
+    // Ожидание #comments-container (создаётся comments-loader.js)
     // ============================================================
-    async function renderWidget(slug, commentsEl) {
+    function waitForCommentsContainer(maxWait = 8000) {
+        return new Promise((resolve) => {
+            const check = () => document.getElementById('comments-container');
+
+            const immediate = check();
+            if (immediate) { resolve(immediate); return; }
+
+            const observer = new MutationObserver(() => {
+                const el = check();
+                if (el) {
+                    observer.disconnect();
+                    resolve(el);
+                }
+            });
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            setTimeout(() => {
+                observer.disconnect();
+                resolve(check()); // вернёт null, если не появился
+            }, maxWait);
+        });
+    }
+
+    // ============================================================
+    // Вставка виджета ПЕРЕД комментариями
+    // ============================================================
+    function insertBeforeComments(widget, commentsContainer) {
+        // Ищем <hr> или <h2> перед #comments-container
+        // comments-loader.js добавляет: <hr> → <h2>💬 Комментарии</h2> → <div#comments-container>
+        let target = commentsContainer;
+        let node = commentsContainer.previousElementSibling;
+
+        // Проходим назад до <hr> или <h2>
+        while (node) {
+            if (node.tagName === 'HR' || node.tagName === 'H2') {
+                target = node;
+                break;
+            }
+            node = node.previousElementSibling;
+        }
+
+        target.parentNode.insertBefore(widget, target);
+        console.log('✅ article-tools: вставлен перед комментариями');
+    }
+
+    // ============================================================
+    // Рендер виджета
+    // ============================================================
+    async function renderWidget(slug, commentsContainer) {
         const old = document.getElementById('article-tools-widget');
         if (old) old.remove();
 
@@ -143,84 +177,30 @@
         `;
 
         widget.innerHTML = `
-            <span style="color: #666; margin-right: 4px;">Оцените:</span>
+            <span style="color:#666;margin-right:4px;">Оцените:</span>
             <button id="like-btn" style="display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:20px;border:1px solid ${userRating===1?'#27ae60':'rgba(0,0,0,0.1)'};background:${userRating===1?'#27ae60':'transparent'};color:${userRating===1?'#fff':'#555'};font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">👍 ${stats.likes}</button>
             <button id="dislike-btn" style="display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:20px;border:1px solid ${userRating===-1?'#e74c3c':'rgba(0,0,0,0.1)'};background:${userRating===-1?'#e74c3c':'transparent'};color:${userRating===-1?'#fff':'#555'};font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">👎 ${stats.dislikes}</button>
             <button id="bookmark-btn" style="display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:20px;border:1px solid var(--kingdom-color,#6C63FF);background:${bookmarked?'var(--kingdom-color,#6C63FF)':'transparent'};color:${bookmarked?'#fff':'var(--kingdom-color,#6C63FF)'};font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;margin-left:auto;">${bookmarked?'✓ В закладках':'🔖 В закладки'}</button>
         `;
 
-        // ============================================================
-        // ВСТАВКА
-        // ============================================================
-        if (commentsEl && commentsEl.parentNode) {
-            // Вставляем ПЕРЕД комментариями
-            commentsEl.parentNode.insertBefore(widget, commentsEl);
-            console.log('✅ article-tools: вставлен перед комментариями');
+        // Вставляем ПЕРЕД комментариями
+        if (commentsContainer && commentsContainer.parentNode) {
+            insertBeforeComments(widget, commentsContainer);
         } else {
-            // Fallback: вставляем ПОСЛЕ .md-content__inner (не внутрь!)
-            const content = document.querySelector('.md-content__inner');
-            if (content && content.parentNode) {
-                content.parentNode.insertBefore(widget, content.nextSibling);
-                console.log('⚠️ article-tools: комментарии не найдены, вставлен после статьи');
+            // Fallback: в самый конец .wy-nav-content
+            const content = document.querySelector('.wy-nav-content');
+            if (content) {
+                content.appendChild(widget);
+                console.log('⚠️ article-tools: комментарии не найдены, вставлен в конец контента');
             } else {
                 document.body.appendChild(widget);
-                console.log('⚠️ article-tools: вставлен в body');
             }
         }
 
+        // Навешиваем обработчики
         widget.querySelector('#like-btn').onclick = () => rateArticle(slug, 1);
         widget.querySelector('#dislike-btn').onclick = () => rateArticle(slug, -1);
         widget.querySelector('#bookmark-btn').onclick = () => toggleBookmark(slug, title);
-    }
-
-    // ============================================================
-    // Поиск комментариев через MutationObserver
-    // ============================================================
-    function findComments() {
-        const selectors = [
-            '#comments', '.comments', '#disqus_thread',
-            '.giscus', '.giscus-frame', '[class*="giscus"]',
-            '.utterances', '.md-comments', '.article-comments',
-            'iframe[src*="giscus"]', 'iframe[src*="disqus"]',
-            '[id*="comments"]', '[class*="comment"]'
-        ];
-        for (const sel of selectors) {
-            const el = document.querySelector(sel);
-            if (el) return el;
-        }
-        return null;
-    }
-
-    function waitForCommentsAndRender(slug, maxWait = 6000) {
-        // 1. Проверяем сразу
-        const immediate = findComments();
-        if (immediate) {
-            renderWidget(slug, immediate);
-            return;
-        }
-
-        // 2. MutationObserver — ждём появления
-        let done = false;
-        const observer = new MutationObserver(() => {
-            if (done) return;
-            const el = findComments();
-            if (el) {
-                done = true;
-                observer.disconnect();
-                clearTimeout(timeout);
-                renderWidget(slug, el);
-            }
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
-
-        // 3. Таймаут — вставляем без комментариев
-        const timeout = setTimeout(() => {
-            if (done) return;
-            done = true;
-            observer.disconnect();
-            renderWidget(slug, null);
-        }, maxWait);
     }
 
     // ============================================================
@@ -239,16 +219,20 @@
 
         const slug = getFullPath();
 
-        // Ждём загрузки основного контента
-        let attempts = 0;
-        const waitContent = setInterval(() => {
-            const content = document.querySelector('.md-content__inner');
-            if (content || attempts > 25) {
-                clearInterval(waitContent);
-                waitForCommentsAndRender(slug);
-            }
-            attempts++;
-        }, 200);
+        // Ждём появления #comments-container
+        const commentsContainer = await waitForCommentsContainer(6000);
+
+        if (!commentsContainer) {
+            console.log('ℹ️ article-tools: #comments-container не найден, виджет не вставлен');
+            return;
+        }
+
+        console.log('✅ article-tools: #comments-container найден, вставляем виджет');
+
+        // Задержка 100 мс для стабильности
+        setTimeout(() => {
+            renderWidget(slug, commentsContainer);
+        }, 100);
     }
 
     if (document.readyState === 'loading') {

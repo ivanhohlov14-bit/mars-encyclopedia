@@ -40,6 +40,7 @@ extra_javascript:
   - assets/js/daily-reward.js
   - assets/js/streak-widget.js
   - assets/js/intro.js
+  - assets/js/device-link.js
   - assets/js/supabase-client.js
   - assets/js/qr-scanner.js
 

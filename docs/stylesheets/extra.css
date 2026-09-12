@@ -550,7 +550,171 @@ body.sidebar-hidden .wy-nav-side {
   .wy-nav-side.shift {
     transform: translateX(0) !important;
   }
-  
+
+   /* ============================================================
+   ЗВЁЗДНОЕ НЕБО — ТЁМНАЯ ТЕМА
+   ============================================================ */
+html.mars-stars-on,
+body.mars-stars-on {
+    background: linear-gradient(180deg, #0a0a14 0%, #15152a 50%, #1a1a2e 100%) !important;
+    background-attachment: fixed !important;
+}
+
+/* Контентные блоки — полупрозрачный тёмный фон */
+body.mars-stars-on .md-content,
+body.mars-stars-on .rst-content,
+body.mars-stars-on .wy-nav-content,
+body.mars-stars-on .md-content__inner {
+    background-color: rgba(15, 15, 30, 0.75) !important;
+    color: #d4d4e4 !important;
+    backdrop-filter: blur(4px);
+}
+
+/* Боковая панель */
+body.mars-stars-on .wy-nav-side,
+body.mars-stars-on .md-sidebar,
+body.mars-stars-on .wy-side-nav-search {
+    background-color: rgba(10, 10, 25, 0.9) !important;
+}
+
+body.mars-stars-on .wy-menu-vertical li a,
+body.mars-stars-on .md-nav__link,
+body.mars-stars-on .md-nav__title {
+    color: #c4c4d4 !important;
+}
+
+body.mars-stars-on .wy-menu-vertical li a:hover,
+body.mars-stars-on .md-nav__link:hover {
+    color: #A29BFE !important;
+    background-color: rgba(108, 99, 255, 0.15) !important;
+}
+
+body.mars-stars-on .wy-menu-vertical li.current > a,
+body.mars-stars-on .md-nav__link--active {
+    color: #A29BFE !important;
+    background-color: rgba(108, 99, 255, 0.2) !important;
+}
+
+/* Верхняя панель */
+body.mars-stars-on .md-header,
+body.mars-stars-on .wy-nav-top {
+    background-color: rgba(10, 10, 25, 0.9) !important;
+    border-bottom: 1px solid rgba(108, 99, 255, 0.3) !important;
+}
+
+/* Заголовки и текст */
+body.mars-stars-on h1,
+body.mars-stars-on h2,
+body.mars-stars-on h3,
+body.mars-stars-on h4,
+body.mars-stars-on h5,
+body.mars-stars-on h6 {
+    color: #f0f0ff !important;
+}
+
+body.mars-stars-on p,
+body.mars-stars-on li,
+body.mars-stars-on span,
+body.mars-stars-on div,
+body.mars-stars-on td,
+body.mars-stars-on th {
+    color: #d4d4e4 !important;
+}
+
+/* Ссылки */
+body.mars-stars-on a {
+    color: #A29BFE !important;
+}
+
+body.mars-stars-on a:hover {
+    color: #6C63FF !important;
+}
+
+/* Таблицы */
+body.mars-stars-on table {
+    background-color: rgba(20, 20, 40, 0.6) !important;
+}
+
+body.mars-stars-on th {
+    background-color: rgba(108, 99, 255, 0.2) !important;
+    color: #f0f0ff !important;
+}
+
+body.mars-stars-on td {
+    border-color: rgba(108, 99, 255, 0.15) !important;
+}
+
+/* Код */
+body.mars-stars-on code,
+body.mars-stars-on pre {
+    background-color: rgba(20, 20, 40, 0.8) !important;
+    color: #A29BFE !important;
+    border: 1px solid rgba(108, 99, 255, 0.2) !important;
+}
+
+/* Блоки admonition (заметки, предупреждения) */
+body.mars-stars-on .admonition {
+    background-color: rgba(20, 20, 40, 0.6) !important;
+    border-color: rgba(108, 99, 255, 0.3) !important;
+}
+
+/* Кнопки */
+body.mars-stars-on .md-button,
+body.mars-stars-on button:not(.mars-stars-toggle):not(.mm-btn) {
+    background-color: rgba(108, 99, 255, 0.2) !important;
+    color: #f0f0ff !important;
+    border-color: rgba(108, 99, 255, 0.4) !important;
+}
+
+/* Профиль — карточки */
+body.mars-stars-on .pf-card,
+body.mars-stars-on .pf-quick-card,
+body.mars-stars-on .pf-ach,
+body.mars-stars-on .pf-note,
+body.mars-stars-on .pf-tabs,
+body.mars-stars-on .pf-note-form {
+    background: rgba(20, 20, 40, 0.85) !important;
+    border-color: rgba(108, 99, 255, 0.3) !important;
+}
+
+body.mars-stars-on .pf-card-title,
+body.mars-stars-on .pf-quick-title,
+body.mars-stars-on .pf-ach-name,
+body.mars-stars-on .pf-note-title,
+body.mars-stars-on .pf-display-name {
+    color: #e0e0e0 !important;
+}
+
+body.mars-stars-on .pf-tab {
+    color: #aaa !important;
+}
+
+body.mars-stars-on .pf-tab.active {
+    color: #fff !important;
+}
+
+/* Формы */
+body.mars-stars-on input,
+body.mars-stars-on textarea,
+body.mars-stars-on select {
+    background-color: rgba(20, 20, 40, 0.6) !important;
+    color: #e0e0e0 !important;
+    border-color: rgba(108, 99, 255, 0.3) !important;
+}
+
+body.mars-stars-on input::placeholder,
+body.mars-stars-on textarea::placeholder {
+    color: #666688 !important;
+}
+
+/* Плавный переход */
+body,
+.md-content,
+.wy-nav-content,
+.md-header,
+.wy-nav-side {
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
   /* --- 11. ПОИСК В ШАПКЕ ТЕЛЕФОНА --- */
   .wy-nav-top .wy-side-nav-search {
     display: none !important;

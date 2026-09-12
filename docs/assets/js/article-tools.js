@@ -6,13 +6,13 @@
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
     // Те же исключения, что и в comments-loader.js
-    const EXCLUDED_PATHS = [
-        '/', '/index/', '/profile/', '/login/', '/register/',
-        '/stats/', '/game/', '/profile-view/', '/moderator/',
-        '/license/', '/support/', '/start-here/', '/globe-map/',
-        '/interactive/exodus/', '/music/constructor/', '/interactive/',
-        '/translator/', '/top/', '/bookmarks/', '/quest-map/'
-    ];
+   const excludePages = [
+    '/', '/index/', '/profile/', '/login/', '/register/',
+    '/stats/', '/game/', '/profile-view/', '/moderator/',
+    '/license/', '/support/', '/start-here/', '/globe-map/',
+    '/interactive/exodus/', '/music/constructor/', '/interactive/',
+    '/translator/', '/top/', '/bookmarks/', '/quest-map/'
+];
 
     let client = null;
     let currentUser = null;

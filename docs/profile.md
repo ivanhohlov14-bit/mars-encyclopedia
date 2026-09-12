@@ -1,950 +1,1377 @@
-<h1>Мой профиль</h1>
+---
+title: Мой профиль
+comments: false
+---
+
+<div id="profile-app" style="max-width: 1000px; margin: 0 auto; font-family: 'Segoe UI', -apple-system, sans-serif; padding: 0 8px;">
+    <div style="text-align:center; padding: 60px 20px;">
+        <div style="display:inline-block; width: 48px; height: 48px; border: 3px solid #6C63FF; border-top-color: transparent; border-radius: 50%; animation: pfSpin 0.8s linear infinite;"></div>
+        <p style="color: #999; margin-top: 16px;">Загрузка профиля...</p>
+    </div>
+</div>
 
 <style>
-.help-trigger {
+:root {
+    --kingdom-color: #6C63FF;
+    --kingdom-bg: #F0F4FF;
+    --kingdom-light: #A29BFE;
+    --kingdom-shadow: rgba(108, 99, 255, 0.25);
+}
+
+@keyframes pfSpin { to { transform: rotate(360deg); } }
+@keyframes pfFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pfPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes pfFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@keyframes pfSlideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+
+.pf-fade { animation: pfFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+#profile-app a { text-decoration: none !important; border-bottom: none !important; }
+
+/* ============================================================
+   HERO-БЛОК (главная карточка профиля)
+   ============================================================ */
+.pf-hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--kingdom-color), var(--kingdom-light));
+    border-radius: 24px;
+    padding: 36px 32px;
+    color: #fff;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px -12px var(--kingdom-shadow);
+}
+
+.pf-hero::before {
+    content: '';
+    position: absolute;
+    top: -60%; right: -10%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+    border-radius: 50%;
+    animation: pfFloat 8s ease-in-out infinite;
+}
+
+.pf-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60%; left: -10%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+    border-radius: 50%;
+    animation: pfFloat 10s ease-in-out infinite reverse;
+}
+
+.pf-hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.pf-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+    animation: pfPulse 3s ease-in-out infinite;
+}
+
+.pf-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.4);
+    object-fit: cover;
+    background: #fff;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+
+.pf-level-badge {
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.95);
+    color: var(--kingdom-color);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 2px solid rgba(255,255,255,0.5);
+}
+
+.pf-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.pf-name {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 6px 0;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    letter-spacing: -0.5px;
+}
+
+.pf-role-badge {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4);
+}
+
+.pf-email {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin: 0 0 16px 0;
+}
+
+.pf-stats-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.pf-stat-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.pf-stat-mini .pf-sm-label {
+    font-size: 0.72rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 600;
+}
+
+.pf-stat-mini .pf-sm-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.pf-progress {
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    height: 12px;
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(8px);
+    margin-bottom: 6px;
+}
+
+.pf-progress-bar {
+    height: 100%;
+    background: #fff;
+    border-radius: 12px;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 12px rgba(255,255,255,0.6);
+}
+
+.pf-progress-text {
+    font-size: 0.78rem;
+    opacity: 0.9;
+}
+
+/* ============================================================
+   БЫСТРЫЕ ССЫЛКИ (плитки)
+   ============================================================ */
+.pf-quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.pf-quick-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 22px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    border: 2px solid transparent;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.pf-quick-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, var(--kingdom-color) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 0;
+}
+
+.pf-quick-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--kingdom-color);
+    box-shadow: 0 16px 40px -8px var(--kingdom-shadow);
+}
+
+.pf-quick-card:hover::before { opacity: 0.08; }
+
+.pf-quick-card > * { position: relative; z-index: 1; }
+
+.pf-quick-icon {
+    font-size: 2.2rem;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    transition: transform 0.3s;
+}
+
+.pf-quick-card:hover .pf-quick-icon {
+    transform: scale(1.2) rotate(-8deg);
+}
+
+.pf-quick-body { flex: 1; min-width: 0; }
+.pf-quick-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+}
+.pf-quick-desc {
+    font-size: 0.75rem;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ============================================================
+   ВКЛАДКИ
+   ============================================================ */
+.pf-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    padding: 6px;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.pf-tabs::-webkit-scrollbar { height: 4px; }
+.pf-tabs::-webkit-scrollbar-thumb { background: var(--kingdom-color); border-radius: 2px; }
+
+.pf-tab {
+    flex-shrink: 0;
+    padding: 10px 20px;
+    border: none;
+    background: transparent;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pf-tab:hover {
+    background: rgba(0,0,0,0.04);
+    color: #333;
+}
+
+.pf-tab.active {
+    background: var(--kingdom-color);
+    color: #fff;
+    box-shadow: 0 6px 16px -4px var(--kingdom-shadow);
+}
+
+.pf-tab-content {
+    display: none;
+    animation: pfFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pf-tab-content.active { display: block; }
+
+/* ============================================================
+   КАРТОЧКИ
+   ============================================================ */
+.pf-card {
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.pf-card:hover {
+    box-shadow: 0 12px 32px -8px var(--kingdom-shadow);
+}
+
+.pf-card-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pf-card-title .pf-ct-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+}
+
+/* Кнопки */
+.pf-btn {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #e0e0e0;
-    color: #555;
-    font-size: 12px;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: 2px solid var(--kingdom-color);
+    background: var(--kingdom-color);
+    color: #fff;
     font-weight: 700;
+    font-size: 0.9rem;
     cursor: pointer;
-    margin-left: 6px;
-    user-select: none;
-    transition: background 0.2s, transform 0.2s;
-    border: none;
-    padding: 0;
-    line-height: 1;
+    transition: all 0.25s;
+    font-family: inherit;
 }
-.help-trigger:hover { background: #bdbdbd; transform: scale(1.1); }
-.help-trigger:active { transform: scale(0.95); }
 
-.help-modal-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(2px);
+.pf-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px var(--kingdom-shadow);
+}
+
+.pf-btn-outline {
+    background: transparent;
+    color: var(--kingdom-color);
+}
+
+.pf-btn-outline:hover {
+    background: var(--kingdom-color);
+    color: #fff;
+}
+
+.pf-btn-danger {
+    background: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.pf-btn-danger:hover {
+    box-shadow: 0 8px 20px -4px rgba(231, 76, 60, 0.4);
+}
+
+/* Аватары */
+.pf-avatar-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.pf-avatar-option {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    object-fit: cover;
+    transition: all 0.25s;
+}
+
+.pf-avatar-option:hover {
+    transform: scale(1.1);
+    border-color: var(--kingdom-color);
+}
+
+.pf-avatar-option.selected {
+    border-color: var(--kingdom-color);
+    box-shadow: 0 0 0 4px var(--kingdom-shadow);
+}
+
+/* Королевства */
+.pf-kingdom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+}
+
+.pf-kingdom-btn {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 2px solid rgba(0,0,0,0.1);
+    background: rgba(255,255,255,0.6);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.25s;
+    font-family: inherit;
+    color: #333;
+}
+
+.pf-kingdom-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+.pf-kingdom-btn.selected {
+    color: #fff;
+    box-shadow: 0 6px 16px -4px var(--kingdom-shadow);
+}
+
+/* Достижения */
+.pf-ach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.pf-ach {
     display: flex;
     align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    animation: fadeIn 0.2s ease;
-}
-.help-modal {
-    background: #fff;
-    max-width: 400px;
-    width: 90%;
-    padding: 24px 28px;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    position: relative;
-    animation: slideUp 0.25s ease;
-}
-.help-modal h4 { margin: 0 0 8px 0; color: #2c3e50; }
-.help-modal p { margin: 0 0 12px 0; font-size: 0.95rem; line-height: 1.5; color: #444; }
-.help-modal .close-btn {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    background: none;
-    border: none;
-    font-size: 22px;
-    cursor: pointer;
-    color: #999;
-}
-.help-modal .close-btn:hover { color: #333; }
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    gap: 12px;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+    border-radius: 14px;
+    border: 2px solid rgba(0,0,0,0.06);
+    transition: all 0.25s;
 }
 
-.chat-container {
-    background: var(--kingdom-bg, #f8f9fa);
-    border: 1px solid var(--kingdom-color, #6C63FF)40;
-    border-radius: 8px;
-    padding: 12px;
-    max-height: 300px;
-    overflow-y: auto;
-    margin: 12px 0;
+.pf-ach:hover {
+    transform: translateY(-3px);
+    border-color: var(--kingdom-color);
+    box-shadow: 0 12px 28px -8px var(--kingdom-shadow);
 }
-.chat-message {
-    margin: 6px 0;
-    padding: 8px 12px;
+
+.pf-ach .pf-ach-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+    flex-shrink: 0;
+}
+
+.pf-ach .pf-ach-body { min-width: 0; }
+.pf-ach .pf-ach-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+}
+.pf-ach .pf-ach-date {
+    font-size: 0.72rem;
+    color: #888;
+}
+
+/* Уведомления */
+.pf-notif {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
     border-radius: 12px;
+    background: rgba(0,0,0,0.03);
+    margin-bottom: 8px;
+    transition: all 0.2s;
+}
+
+.pf-notif:hover { background: rgba(0,0,0,0.05); }
+
+.pf-notif-icon { font-size: 1.4rem; }
+.pf-notif-body { flex: 1; }
+.pf-notif-text { font-size: 0.9rem; color: #333; margin-bottom: 2px; }
+.pf-notif-date { font-size: 0.72rem; color: #999; }
+
+/* Чат */
+.pf-chat {
+    background: linear-gradient(135deg, var(--kingdom-bg), rgba(255,255,255,0.6));
+    border-radius: 14px;
+    padding: 16px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 12px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.pf-chat-msg {
+    margin: 8px 0;
+    padding: 10px 14px;
+    border-radius: 14px;
     max-width: 80%;
     word-wrap: break-word;
-}
-.chat-message.user {
-    background: var(--kingdom-color, #6C63FF);
-    color: #fff;
-    margin-left: auto;
-}
-.chat-message.bot {
-    background: #e9ecef;
-    color: #333;
-    margin-right: auto;
-}
-.chat-input-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-}
-.chat-input-row input {
-    flex: 1;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
     font-size: 0.9rem;
-}
-.chat-input-row button {
-    padding: 8px 16px;
-    background: var(--kingdom-color, #6C63FF);
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
+    line-height: 1.5;
 }
 
-.leaderboard-table {
+.pf-chat-msg.user {
+    background: var(--kingdom-color);
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.pf-chat-msg.bot {
+    background: #fff;
+    color: #333;
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.pf-chat-input {
+    display: flex;
+    gap: 8px;
+}
+
+.pf-chat-input input {
+    flex: 1;
+    padding: 12px 18px;
+    border: 2px solid rgba(0,0,0,0.1);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+    background: rgba(255,255,255,0.9);
+}
+
+.pf-chat-input input:focus {
+    border-color: var(--kingdom-color);
+}
+
+.pf-chat-input button {
+    padding: 12px 24px;
+    background: var(--kingdom-color);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.pf-chat-input button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px var(--kingdom-shadow);
+}
+
+/* Таблица лидеров */
+.pf-leaderboard {
     width: 100%;
     border-collapse: collapse;
     font-size: 0.9rem;
 }
-.leaderboard-table th {
-    background: var(--kingdom-color, #6C63FF);
-    color: #fff;
-    padding: 8px 12px;
+
+.pf-leaderboard th {
     text-align: left;
-}
-.leaderboard-table td {
-    padding: 6px 12px;
-    border-bottom: 1px solid #eaecf0;
-}
-.leaderboard-table tr:hover {
-    background: #f0f0f0;
-    cursor: pointer;
+    padding: 12px 14px;
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-bottom: 2px solid var(--kingdom-color);
 }
 
-:root {
-    --kingdom-color: #6C63FF;
-    --kingdom-bg: #f0f4ff;
-    --kingdom-gradient: linear-gradient(135deg, #6C63FF, #a29bfe);
+.pf-leaderboard td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.pf-leaderboard tr {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pf-leaderboard tr:hover {
+    background: var(--kingdom-color);
+    color: #fff;
+}
+
+.pf-leaderboard tr:hover td { border-bottom-color: transparent; }
+
+.pf-lb-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 8px;
+    border: 2px solid var(--kingdom-color);
+    object-fit: cover;
+}
+
+/* Календарь */
+.pf-calendar {
+    text-align: center;
+    padding: 24px;
+    background: linear-gradient(135deg, var(--kingdom-bg), rgba(255,255,255,0.4));
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.pf-cal-month {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--kingdom-color);
+    margin-bottom: 6px;
+}
+
+.pf-cal-day {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    line-height: 1;
+    margin: 8px 0;
+}
+
+.pf-cal-year {
+    font-size: 0.95rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.pf-cal-season {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 18px;
+    background: var(--kingdom-color);
+    color: #fff;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Опасная зона */
+.pf-danger {
+    background: rgba(231, 76, 60, 0.05);
+    border: 2px solid rgba(231, 76, 60, 0.2);
+    border-radius: 14px;
+    padding: 16px 20px;
+}
+
+/* Тёмная тема */
+@media (prefers-color-scheme: dark) {
+    .pf-card, .pf-quick-card { background: rgba(30, 30, 46, 0.9); }
+    .pf-card-title, .pf-quick-title, .pf-ach-name, .pf-name { color: #e0e0e0; }
+    .pf-tab { color: #aaa; }
+    .pf-tab:hover { background: rgba(255,255,255,0.05); color: #fff; }
+    .pf-chat { background: rgba(30, 30, 46, 0.6); }
+    .pf-chat-msg.bot { background: rgba(255,255,255,0.08); color: #e0e0e0; }
+    .pf-chat-input input { background: rgba(30, 30, 46, 0.8); color: #e0e0e0; }
+    .pf-kingdom-btn { background: rgba(30, 30, 46, 0.6); color: #e0e0e0; }
+    .pf-notif { background: rgba(255,255,255,0.03); }
+    .pf-notif-text { color: #d0d0d0; }
+    .pf-cal-day { color: #e0e0e0; }
+    .pf-calendar { background: rgba(30, 30, 46, 0.5); }
+}
+
+@media (max-width: 600px) {
+    .pf-hero { padding: 24px 20px; }
+    .pf-avatar { width: 90px; height: 90px; }
+    .pf-name { font-size: 1.4rem; }
+    .pf-tabs { padding: 4px; }
+    .pf-tab { padding: 8px 14px; font-size: 0.82rem; }
+    .pf-card { padding: 18px 16px; }
+    .pf-avatar-option { width: 52px; height: 52px; }
+    .pf-quick-grid { grid-template-columns: 1fr; }
 }
 </style>
 
-<div id="profile-container">
-    <p>Загрузка...</p>
-</div>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
-const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
+(function() {
+    const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
-const KINGDOMS = {
-    'Аркадия': { color: '#D4A574', bg: '#FDF8F0', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arcadia.png', gradient: 'linear-gradient(135deg, #D4A574, #E8C9A0)' },
-    'Ксанф': { color: '#3D3D3D', bg: '#F5F5F5', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-ksanf.png', gradient: 'linear-gradient(135deg, #3D3D3D, #6B6B6B)' },
-    'Эдем': { color: '#F4A460', bg: '#FFF8F0', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg', gradient: 'linear-gradient(135deg, #F4A460, #F7C98A)' },
-    'Эридания': { color: '#F5D76E', bg: '#FFFDF5', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png', gradient: 'linear-gradient(135deg, #F5D76E, #FAE9A0)' },
-    'Кхонг': { color: '#A9A9A9', bg: '#F8F8F8', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png', gradient: 'linear-gradient(135deg, #A9A9A9, #C8C8C8)' },
-    'Авсония': { color: '#87CEEB', bg: '#F0F8FF', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png', gradient: 'linear-gradient(135deg, #87CEEB, #B0D8EB)' },
-    'Кимерия': { color: '#B19CD9', bg: '#F8F4FF', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png', gradient: 'linear-gradient(135deg, #B19CD9, #D1C4E9)' },
-    'Серпентида': { color: '#E57373', bg: '#FFF5F5', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png', gradient: 'linear-gradient(135deg, #E57373, #F5A0A0)' },
-    'Эритрей': { color: '#64B5F6', bg: '#F0F8FF', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png', gradient: 'linear-gradient(135deg, #64B5F6, #90CAF9)' },
-    'Утопия': { color: '#4DD0E1', bg: '#F0FDFF', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png', gradient: 'linear-gradient(135deg, #4DD0E1, #80DEEA)' },
-    'Эллада': { color: '#FF8A65', bg: '#FFF5F0', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png', gradient: 'linear-gradient(135deg, #FF8A65, #FFAB91)' },
-    'Аливасото': { color: '#81C784', bg: '#F0FFF0', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png', gradient: 'linear-gradient(135deg, #81C784, #A5D6A7)' }
-};
+    const KINGDOMS = {
+        'Аркадия':    { color: '#D4A574', bg: '#FDF8F0', light: '#E8C9A0', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arcadia.png' },
+        'Ксанф':      { color: '#3D3D3D', bg: '#F5F5F5', light: '#6B6B6B', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-ksanf.png' },
+        'Эдем':       { color: '#F4A460', bg: '#FFF8F0', light: '#F7C98A', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg' },
+        'Эридания':   { color: '#F5D76E', bg: '#FFFDF5', light: '#FAE9A0', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png' },
+        'Кхонг':      { color: '#A9A9A9', bg: '#F8F8F8', light: '#C8C8C8', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png' },
+        'Авсония':    { color: '#87CEEB', bg: '#F0F8FF', light: '#B0D8EB', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png' },
+        'Кимерия':    { color: '#B19CD9', bg: '#F8F4FF', light: '#D1C4E9', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png' },
+        'Серпентида': { color: '#E57373', bg: '#FFF5F5', light: '#F5A0A0', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png' },
+        'Эритрей':    { color: '#64B5F6', bg: '#F0F8FF', light: '#90CAF9', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png' },
+        'Утопия':     { color: '#4DD0E1', bg: '#F0FDFF', light: '#80DEEA', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png' },
+        'Эллада':     { color: '#FF8A65', bg: '#FFF5F0', light: '#FFAB91', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png' },
+        'Аливасото':  { color: '#81C784', bg: '#F0FFF0', light: '#A5D6A7', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png' }
+    };
 
-const AVATARS = [
-    '/assets/images/авотарка%20девушки.png',
-    '/assets/images/мужчина.png',
-    '/assets/images/мужчина2.png',
-    '/assets/images/мужчина%203.png'
-];
+    const AVATARS = [
+        '/assets/images/авотарка%20девушки.png',
+        '/assets/images/мужчина.png',
+        '/assets/images/мужчина2.png',
+        '/assets/images/мужчина%203.png'
+    ];
 
-const BAD_WORDS = [
-    'хуй', 'пизда', 'хуе', 'ебал', 'ебать', 'бля', 'сука',
-    'нахуй', 'пиздец', 'залупа', 'мудила', 'гандон', 'блядь',
-    'пидор', 'гей', 'лох', 'дебил', 'идиот', 'кретин',
-    'секс', 'порно', 'эротика', 'трахать', 'член',
-    'жид', 'ниггер', 'чурка', 'хач',
-    'fuck', 'shit', 'asshole', 'bitch', 'cunt', 'dick', 'pussy',
-    'хуйло', 'еблан', 'мудак', 'урод', 'сволочь', 'тварь'
-];
+    const BAD_WORDS = [
+        'хуй','пизда','хуе','ебал','ебать','бля','сука','нахуй','пиздец','залупа','мудила',
+        'гандон','блядь','пидор','гей','лох','дебил','идиот','кретин','секс','порно','эротика',
+        'трахать','член','жид','ниггер','чурка','хач','fuck','shit','asshole','bitch','cunt',
+        'dick','pussy','хуйло','еблан','мудак','урод','сволочь','тварь'
+    ];
 
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof supabase === 'undefined') {
-        document.getElementById('profile-container').innerHTML = '<p>⚠️ Ошибка загрузки Supabase.</p>';
-        return;
+    const LEVEL_MAP = [
+        { level: 1, xp: 0, title: '🌱 Новый поселенец' },
+        { level: 2, xp: 50, title: '🔭 Исследователь' },
+        { level: 3, xp: 150, title: '🚀 Первопроходец' },
+        { level: 4, xp: 350, title: '🏠 Колонизатор' },
+        { level: 5, xp: 700, title: '⚡ Командир базы' },
+        { level: 6, xp: 1200, title: '👑 Легенда Марса' }
+    ];
+
+    // ============================================================
+    // Утилиты
+    // ============================================================
+    function getLevelInfo(exp) {
+        let result = { level: 1, title: '🌱 Новый поселенец', current: 0, next: 50, percent: 0 };
+        for (let i = LEVEL_MAP.length - 1; i >= 0; i--) {
+            if (exp >= LEVEL_MAP[i].xp) {
+                result.level = LEVEL_MAP[i].level;
+                result.title = LEVEL_MAP[i].title;
+                result.current = LEVEL_MAP[i].xp;
+                result.next = (i < LEVEL_MAP.length - 1) ? LEVEL_MAP[i + 1].xp : exp + 50;
+                break;
+            }
+        }
+        const range = result.next - result.current;
+        result.percent = range > 0 ? Math.min(((exp - result.current) / range) * 100, 100) : 100;
+        return result;
     }
 
+    function getMartianDate() {
+        const months = [
+            { name: 'Ākha-dzen', days: 31 }, { name: 'Kōl-khan', days: 30 },
+            { name: 'Dzen-ākha', days: 32 }, { name: 'Khōsen', days: 31 },
+            { name: 'Mar-dzen', days: 33 }, { name: 'Ariya-mar', days: 30 },
+            { name: 'Zal-ākha', days: 31 }, { name: 'Thal-khō', days: 32 },
+            { name: 'Kōl-ghar', days: 29 }, { name: 'Mōr-ākha', days: 31 },
+            { name: 'Dzen-kōl', days: 30 }, { name: 'Xal-mar', days: 28 },
+            { name: 'Lān-sen', days: 29 }, { name: 'Khō-mōr', days: 31 },
+            { name: 'Ākha-mōr', days: 32 }, { name: 'Kōl-suf', days: 33 },
+            { name: 'Dzen-thal', days: 31 }, { name: 'Ghōl-ākha', days: 30 },
+            { name: 'Rōg-ari', days: 29 }, { name: 'Mar-lān', days: 31 },
+            { name: 'Ksanf-suf', days: 32 }, { name: 'Yar-okh', days: 33 }
+        ];
+        const MARTIAN_YEAR_DAYS = months.reduce((s, m) => s + m.days, 0);
+        const EARTH_DAYS_IN_MARTIAN_YEAR = 668.6;
+        const BOOK_REF_YEAR = 2740;
+        const BOOK_REF_DAYS_AGO = 3798000000;
+
+        const now = new Date();
+        const earthDaysFromStart = (now - new Date(2026, 0, 1)) / (1000 * 60 * 60 * 24);
+        const martianYearsOffset = earthDaysFromStart / EARTH_DAYS_IN_MARTIAN_YEAR;
+        const year = Math.floor(BOOK_REF_DAYS_AGO + BOOK_REF_YEAR + martianYearsOffset);
+        const dayOfYear = Math.floor((earthDaysFromStart * (MARTIAN_YEAR_DAYS / EARTH_DAYS_IN_MARTIAN_YEAR)) % MARTIAN_YEAR_DAYS);
+        let remaining = dayOfYear, monthIndex = 0;
+        for (let i = 0; i < months.length; i++) {
+            if (remaining < months[i].days) { monthIndex = i; break; }
+            remaining -= months[i].days;
+        }
+        const seasons = ['Пробуждение', 'Цветение', 'Зной', 'Ветры', 'Угасание', 'Заморозки', 'Тьма', 'Ледяной покров'];
+        return {
+            year: year.toLocaleString(),
+            month: months[monthIndex].name,
+            day: remaining + 1,
+            season: seasons[Math.floor(monthIndex / 2) % seasons.length]
+        };
+    }
+
+    function showToast(msg, type = 'info') {
+        const colors = {
+            success: 'linear-gradient(135deg,#27ae60,#16a085)',
+            info: 'linear-gradient(135deg,#3498db,#2980b9)',
+            warning: 'linear-gradient(135deg,#e67e22,#d35400)',
+            error: 'linear-gradient(135deg,#e74c3c,#c0392b)'
+        };
+        const t = document.createElement('div');
+        t.style.cssText = `position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:${colors[type]||colors.info};color:#fff;padding:12px 26px;border-radius:30px;font-weight:600;font-size:0.9rem;box-shadow:0 12px 32px rgba(0,0,0,0.3);z-index:99999;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);pointer-events:none;`;
+        t.textContent = msg;
+        document.body.appendChild(t);
+        requestAnimationFrame(() => { t.style.transform = 'translateX(-50%) translateY(0)'; });
+        setTimeout(() => {
+            t.style.transform = 'translateX(-50%) translateY(100px)';
+            setTimeout(() => t.remove(), 400);
+        }, 2200);
+    }
+
+    // ============================================================
+    // ОСНОВНАЯ ЛОГИКА
+    // ============================================================
+    const container = document.getElementById('profile-app');
     const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    client.auth.getSession().then(async ({ data }) => {
-        const user = data?.session?.user;
+    let currentUser = null;
+    let currentProfile = null;
+    let achievementsList = [];
+    let kingdom = KINGDOMS['Эдем'];
+
+    async function init() {
+        const { data: { session } } = await client.auth.getSession();
+        const user = session?.user;
+
         if (!user) {
-            document.getElementById('profile-container').innerHTML = `
-                <p>⚠️ Вы не авторизованы.</p>
-                <a href="/login/">Войти</a>
+            container.innerHTML = `
+                <div class="pf-card" style="text-align:center;padding:60px 20px;">
+                    <div style="font-size:4rem;margin-bottom:16px;">🔒</div>
+                    <h2 style="margin:0 0 12px 0;">Вы не авторизованы</h2>
+                    <p style="color:#888;margin-bottom:20px;">Войдите, чтобы увидеть свой профиль</p>
+                    <a href="/login/" class="pf-btn">Войти</a>
+                </div>
             `;
             return;
         }
 
-        // Получаем профиль
-        const { data: profile, error } = await client
-            .from('profiles')
-            .select('*')
-            .eq('user_id', user.id)
-            .single();
+        currentUser = user;
 
-        if (error && error.code !== 'PGRST116') {
-            console.error('Ошибка загрузки профиля:', error);
-            document.getElementById('profile-container').innerHTML = '<p>⚠️ Ошибка загрузки профиля.</p>';
-            return;
-        }
-
-        let currentProfile = profile;
-        if (!profile) {
-            const { data: newProfile, error: insertError } = await client
-                .from('profiles')
-                .insert([{ user_id: user.id, username: user.email.split('@')[0] }])
-                .select()
-                .single();
-            if (insertError) {
-                console.error('Ошибка создания профиля:', insertError);
-                document.getElementById('profile-container').innerHTML = '<p>⚠️ Ошибка создания профиля.</p>';
-                return;
-            }
-            currentProfile = newProfile;
-        }
-
-        // Получаем достижения
-        const { data: userAchievements, error: achError } = await client
-            .from('user_achievements')
-            .select('achievement_id, earned_at')
-            .eq('user_id', user.id);
-
-        let achievementsList = [];
-        if (!achError && userAchievements && userAchievements.length > 0) {
-            const achIds = userAchievements.map(item => item.achievement_id);
-            const { data: achievementsData, error: achInfoError } = await client
-                .from('achievements')
-                .select('*')
-                .in('id', achIds);
-            if (!achInfoError && achievementsData) {
-                achievementsList = achievementsData;
-            }
-        }
-
-        // Получаем уведомления
-        const { data: notifications, error: notifError } = await client
-            .from('notifications')
-            .select('*')
-            .eq('user_id', user.id)
-            .order('created_at', { ascending: false })
-            .limit(5);
-
-        // Получаем лидеров
-        const { data: leaders, error: leadersError } = await client
-            .from('profiles')
-            .select('user_id, username, display_name, experience, level, avatar_url')
-            .order('experience', { ascending: false })
-            .limit(10);
-
-        if (leadersError) {
-            console.error('Ошибка загрузки лидеров:', leadersError);
-        }
-
-        // Уровни
-        const levelMap = [
-            { level: 1, xp: 0, title: '🌱 Новый поселенец' },
-            { level: 2, xp: 50, title: '🔭 Исследователь' },
-            { level: 3, xp: 150, title: '🚀 Первопроходец' },
-            { level: 4, xp: 350, title: '🏠 Колонизатор' },
-            { level: 5, xp: 700, title: '⚡ Командир базы' },
-            { level: 6, xp: 1200, title: '👑 Легенда Марса' }
-        ];
-
-        let userLevel = 1;
-        let levelTitle = '🌱 Новый поселенец';
-        let nextLevelXp = 50;
-        let currentLevelXp = 0;
-        let progressPercent = 0;
-
-        for (let i = levelMap.length - 1; i >= 0; i--) {
-            if (currentProfile.experience >= levelMap[i].xp) {
-                userLevel = levelMap[i].level;
-                levelTitle = levelMap[i].title;
-                currentLevelXp = levelMap[i].xp;
-                nextLevelXp = (i < levelMap.length - 1) ? levelMap[i + 1].xp : currentProfile.experience + 50;
-                break;
-            }
-        }
-
-        if (nextLevelXp > currentLevelXp) {
-            progressPercent = Math.min(
-                ((currentProfile.experience - currentLevelXp) / (nextLevelXp - currentLevelXp)) * 100,
-                100
-            );
+        const { data: profile } = await client.from('profiles').select('*').eq('user_id', user.id).single();
+        if (profile) {
+            currentProfile = profile;
         } else {
-            progressPercent = 100;
+            const { data: np } = await client.from('profiles')
+                .insert([{ user_id: user.id, username: user.email.split('@')[0] }])
+                .select().single();
+            currentProfile = np;
         }
 
-        const username = currentProfile.username || user.email.split('@')[0];
-        const displayName = currentProfile.display_name || username;
-        const avatar = currentProfile.avatar_url || AVATARS[0];
-        const bio = currentProfile.bio || '✍️ Ещё ничего не рассказал о себе.';
-        const notificationsEnabled = currentProfile.notifications_enabled !== false;
-        const kingdomName = currentProfile.kingdom || 'Эдем';
-        const kingdom = KINGDOMS[kingdomName] || KINGDOMS['Эдем'];
+        kingdom = KINGDOMS[currentProfile.kingdom] || KINGDOMS['Эдем'];
 
-        // Применяем тему
+        // Достижения
+        const { data: ua } = await client.from('user_achievements')
+            .select('achievement_id, earned_at').eq('user_id', user.id).order('earned_at', { ascending: false });
+        if (ua && ua.length > 0) {
+            const ids = ua.map(x => x.achievement_id);
+            const { data: meta } = await client.from('achievements').select('*').in('id', ids);
+            const metaMap = {};
+            (meta || []).forEach(m => { metaMap[m.id] = m; });
+            achievementsList = ua.map(x => ({
+                ...metaMap[x.achievement_id],
+                earned_at: x.earned_at
+            })).filter(x => x.id);
+        }
+
+        // Уведомления
+        const { data: notifications } = await client.from('notifications')
+            .select('*').eq('user_id', user.id)
+            .order('created_at', { ascending: false }).limit(10);
+
+        // Лидеры
+        const { data: leaders } = await client.from('profiles')
+            .select('user_id, username, display_name, experience, level, avatar_url')
+            .order('experience', { ascending: false }).limit(10);
+
+        // Тема
         document.documentElement.style.setProperty('--kingdom-color', kingdom.color);
         document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
-        document.documentElement.style.setProperty('--kingdom-gradient', kingdom.gradient);
+        document.documentElement.style.setProperty('--kingdom-light', kingdom.light);
+        document.documentElement.style.setProperty('--kingdom-shadow', kingdom.color + '40');
+        document.body.style.background = kingdom.bg;
+        document.body.style.backgroundAttachment = 'fixed';
 
-        // --- Рендерим профиль ---
-        document.getElementById('profile-container').innerHTML = `
-            <!-- Шапка -->
-            <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;">
-                <div style="position: relative; flex-shrink: 0;">
-                    <img src="${avatar}" alt="Avatar" 
-                         style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid ${kingdom.color}; object-fit: cover;">
-                    <span style="position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); 
-                                 background: ${kingdom.color}; color: #fff; 
-                                 border-radius: 20px; padding: 2px 12px; 
-                                 font-size: 10px; font-weight: 600; white-space: nowrap;
-                                 backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.3);">
-                        ${levelTitle}
-                    </span>
-                </div>
-                <div style="flex: 1; min-width: 150px;">
-                    <h2 style="margin: 0; font-size: 1.4rem; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-    <span>${displayName}</span>
-    ${currentProfile.role === 'moderator' ? `
-        <span style="
-            background: linear-gradient(135deg, #f39c12, #e67e22);
-            color: #fff;
-            padding: 2px 14px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        ">
-            🛡️ Модератор
-        </span>
-    ` : ''}
-    <button class="help-trigger" onclick="showHelp('Имя пользователя', 'Ваше уникальное имя.')">?</button>
-</h2>
-                    <p style="margin: 0; color: #666; font-size: 0.9rem;">${user.email}</p>
-                    <p style="margin: 4px 0 0 0; font-size: 0.9rem; color: #555;">
-                        ⭐ Уровень ${userLevel}
-                        <button class="help-trigger" onclick="showHelp('Уровень', 'Ваш ранг на сайте. Повышается автоматически при наборе опыта. Чем выше уровень, тем больше уважения среди исследователей Марса.')">?</button>
-                        • 📊 Опыт: ${currentProfile.experience}
-                        <button class="help-trigger" onclick="showHelp('Опыт (XP)', 'Очки, которые вы получаете за чтение статей (+5 XP за каждую новую статью). Накопленный опыт определяет ваш уровень.')">?</button>
-                    </p>
-                    <div style="margin-top: 6px; background: #e9ecef; border-radius: 10px; height: 8px; width: 100%; max-width: 300px; overflow: hidden; position: relative;">
-                        <div style="width: ${progressPercent}%; height: 100%; background: ${kingdom.gradient}; border-radius: 10px; transition: width 0.5s;"></div>
-                        <button class="help-trigger" onclick="showHelp('Шкала опыта', 'Показывает, сколько опыта вам осталось набрать до следующего уровня. Чем ближе к 100%, тем скорее вы перейдёте на новый ранг!')" 
-                                style="position: absolute; right: -6px; top: -6px; width: 20px; height: 20px; font-size: 13px;">?</button>
+        render(notifications, leaders);
+    }
+
+    // ============================================================
+    // РЕНДЕР
+    // ============================================================
+    function render(notifications, leaders) {
+        const lvl = getLevelInfo(currentProfile.experience || 0);
+        const displayName = currentProfile.display_name || currentProfile.username || currentUser.email.split('@')[0];
+        const avatar = currentProfile.avatar_url || AVATARS[0];
+        const bio = currentProfile.bio || '✍️ Ещё ничего не рассказал о себе.';
+        const notifEnabled = currentProfile.notifications_enabled !== false;
+        const isModerator = currentProfile.role === 'moderator';
+        const martianDate = getMartianDate();
+
+        container.innerHTML = `
+            <!-- HERO -->
+            <div class="pf-hero pf-fade">
+                <div class="pf-hero-content">
+                    <div class="pf-avatar-wrap">
+                        <img src="${avatar}" alt="Avatar" class="pf-avatar">
+                        <div class="pf-level-badge">${lvl.title}</div>
                     </div>
-                    <p style="margin: 2px 0 0 0; font-size: 0.7rem; color: #999;">
-                        до следующего уровня: ${nextLevelXp - currentProfile.experience} XP
-                    </p>
-                </div>
-            </div>
-
-            <!-- Статистика (упрощённая) -->
-            <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 12px 16px; border-radius: 8px;">
-                <div><strong>📅 Регистрация:</strong> ${new Date(user.created_at).toLocaleDateString('ru-RU')}</div>
-                <div><strong>🏅 Достижений:</strong> ${achievementsList.length}</div>
-                <div><strong>📊 Уровень:</strong> ${userLevel}</div>
-                <div><strong>⚡ Опыт:</strong> ${currentProfile.experience}</div>
-            </div>
-
-            <!-- Марсианский календарь -->
-            <div id="martianCalendar" style="background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 16px; border-radius: 8px; max-width: 400px; margin: 20px auto; font-family: 'Georgia', serif; text-align: center;">
-                <h3 style="margin:0 0 8px 0; color: #202122;">
-                    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-calendar.png"
-                         style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
-                    Марсианский календарь
-                    <button class="help-trigger" onclick="showHelp('Марсианский календарь', 'Календарь Марса, основанный на марсианском летоисчислении. Год обозначается как «Э.О.» — Эра Освоения. Сезоны: Пробуждение, Цветение, Зной, Ветры, Угасание, Заморозки, Тьма, Ледяной покров.')">?</button>
-                </h3>
-                <div id="martianDate" style="font-size:1.2rem; color: #202122;">Загрузка...</div>
-            </div>
-
-            <!-- Редактирование имени -->
-            <div style="background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-                <h3 style="margin: 0 0 8px 0; font-size: 1rem;">
-                    👤 Имя пользователя
-                    <button class="help-trigger" onclick="showHelp('Имя пользователя', 'Ваше отображаемое имя. Должно быть уникальным и состоять только из латинских букв, цифр, пробелов, дефисов и подчёркиваний.')">?</button>
-                </h3>
-                <p style="margin: 0 0 8px 0; font-size: 0.95rem;">Текущее: <strong id="display-name-text">${displayName}</strong></p>
-                <button onclick="editDisplayName()" style="padding: 4px 16px; background: ${kingdom.color}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Изменить имя</button>
-            </div>
-
-            <!-- Биография -->
-            <div style="background: ${kingdom.bg}; border: 1px solid ${kingdom.color}40; padding: 16px; border-radius: 8px; margin-bottom: 20px;">
-                <h3 style="margin: 0 0 8px 0; font-size: 1rem;">
-                    📝 О себе
-                    <button class="help-trigger" onclick="showHelp('О себе', 'Расскажите о себе: кто вы, почему интересуетесь Марсом, какие у вас цели. Это поможет другим участникам узнать вас лучше.')">?</button>
-                </h3>
-                <p style="margin: 0; font-size: 0.95rem;" id="bio-text">${bio}</p>
-                <button onclick="editBio()" style="margin-top: 8px; padding: 4px 16px; background: ${kingdom.color}; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">Редактировать</button>
-            </div>
-
-            <!-- Выбор аватарки -->
-            <div style="margin-bottom: 20px;">
-                <h3 style="margin: 0 0 10px 0; font-size: 1rem;">
-                    🖼️ Выберите аватар
-                    <button class="help-trigger" onclick="showHelp('Аватар', 'Выберите изображение, которое будет отображаться рядом с вашим именем на сайте.')">?</button>
-                </h3>
-                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                    ${AVATARS.map((url, index) => `
-                        <img src="${url}" alt="Avatar ${index}" 
-                             onclick="selectAvatar('${url}')"
-                             style="width: 48px; height: 48px; border-radius: 50%; cursor: pointer; border: 2px solid ${avatar === url ? kingdom.color : '#ddd'}; object-fit: cover;">
-                    `).join('')}
-                </div>
-            </div>
-
-            <!-- Выбор королевства -->
-            <div style="margin-bottom: 20px; padding: 16px; background: ${kingdom.bg}; border-radius: 8px; border: 2px solid ${kingdom.color};">
-                <h3 style="margin: 0 0 12px 0; font-size: 1rem;">
-                    🏰 Выберите королевство
-                    <button class="help-trigger" onclick="showHelp('Королевства', 'На Марсе существует 12 королевств. Выберите то, к которому вы хотите принадлежать. Цветовая тема профиля изменится в соответствии с выбранным королевством.')">?</button>
-                </h3>
-                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                    ${Object.keys(KINGDOMS).map(name => {
-                        const k = KINGDOMS[name];
-                        return `
-                            <button onclick="selectKingdom('${name}')" 
-                                    style="padding: 6px 12px; border: 2px solid ${currentProfile.kingdom === name ? k.color : '#ddd'}; 
-                                           border-radius: 6px; background: ${currentProfile.kingdom === name ? k.color : '#fff'}; 
-                                           color: ${currentProfile.kingdom === name ? '#fff' : '#333'}; 
-                                           cursor: pointer; font-size: 0.75rem;">
-                                ${name}
-                            </button>
-                        `;
-                    }).join('')}
-                </div>
-                <div style="margin-top: 12px; text-align: center;">
-                    <img src="${kingdom.flag}" alt="Флаг ${kingdomName}" style="width: 80px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-                    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг ${kingdomName}</div>
-                </div>
-            </div>
-
-            <!-- Уведомления (email) -->
-            <div style="margin-bottom: 20px; padding: 12px 16px; background: ${kingdom.bg}; border-radius: 8px; border: 1px solid ${kingdom.color}40;">
-                <label style="font-size: 0.9rem; display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                    <input type="checkbox" id="notifications-checkbox" 
-                           ${notificationsEnabled ? 'checked' : ''}
-                           onchange="toggleNotifications()"
-                           style="width: 18px; height: 18px; cursor: pointer; accent-color: ${kingdom.color};">
-                    📧 Получать уведомления на email
-                    <button class="help-trigger" onclick="showHelp('Уведомления по email', 'Если включено, вы будете получать письма о новых достижениях, повышении уровня и других важных событиях.')">?</button>
-                </label>
-            </div>
-
-            <!-- Уведомления -->
-            <div style="margin-bottom: 20px;">
-                <h3 style="margin: 0 0 10px 0; font-size: 1rem;">
-                    🔔 Последние уведомления
-                    <button class="help-trigger" onclick="showHelp('Уведомления', 'Здесь появляются сообщения о событиях: получении достижений, повышении уровня и других действиях. Уведомления приходят автоматически.')">?</button>
-                </h3>
-                ${notifications && notifications.length > 0 ? `
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        ${notifications.map(n => `
-                            <li style="padding: 6px 0; border-bottom: 1px solid #eaecf0; font-size: 0.9rem; display: flex; justify-content: space-between;">
-                                <span>${n.message}</span>
-                                <span style="color: #999; font-size: 0.75rem;">${new Date(n.created_at).toLocaleDateString('ru-RU')}</span>
-                            </li>
-                        `).join('')}
-                    </ul>
-                ` : '<p style="color: #999; font-size: 0.9rem;">Уведомлений пока нет. Они появятся, когда вы получите достижение или повысите уровень.</p>'}
-            </div>
-
-            <hr>
-
-            <!-- Достижения -->
-            <div style="margin-top: 20px;">
-                <h3 style="margin: 0 0 12px 0; font-size: 1rem;">
-                    🏅 Достижения
-                    <button class="help-trigger" onclick="showHelp('Достижения', 'Особые знаки отличия, которые выдаются за чтение статей и другие действия. Достижения автоматически добавляются при наборе определённого количества опыта.')">?</button>
-                </h3>
-                ${achievementsList.length === 0 ? '<p style="color: #999; font-size: 0.9rem;">Пока нет достижений. Читайте статьи, чтобы получать опыт и открывать достижения!</p>' : ''}
-                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                    ${achievementsList.map(ach => `
-                        <div style="background: #f0f0f0; padding: 6px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; font-size: 0.85rem;">
-                            <span>${ach.icon || '🏅'}</span>
-                            <span>${ach.name}</span>
+                    <div class="pf-info">
+                        <h1 class="pf-name">
+                            ${displayName}
+                            ${isModerator ? '<span class="pf-role-badge">🛡️ Модератор</span>' : ''}
+                        </h1>
+                        <p class="pf-email">${currentUser.email}</p>
+                        <div class="pf-stats-row">
+                            <div class="pf-stat-mini">
+                                <span class="pf-sm-label">Уровень</span>
+                                <span class="pf-sm-value">⭐ ${lvl.level}</span>
+                            </div>
+                            <div class="pf-stat-mini">
+                                <span class="pf-sm-label">Опыт</span>
+                                <span class="pf-sm-value">💎 ${currentProfile.experience || 0}</span>
+                            </div>
+                            <div class="pf-stat-mini">
+                                <span class="pf-sm-label">Достижений</span>
+                                <span class="pf-sm-value">🏆 ${achievementsList.length}</span>
+                            </div>
                         </div>
-                    `).join('')}
+                        <div class="pf-progress">
+                            <div class="pf-progress-bar" style="width: ${lvl.percent}%;"></div>
+                        </div>
+                        <div class="pf-progress-text">До уровня ${lvl.level + 1}: ${Math.max(lvl.next - (currentProfile.experience || 0), 0)} XP</div>
+                    </div>
                 </div>
             </div>
 
-            <hr>
+            <!-- БЫСТРЫЕ ССЫЛКИ -->
+            <div class="pf-quick-grid pf-fade" style="animation-delay: 0.1s;">
+                <a href="/stats/" class="pf-quick-card">
+                    <div class="pf-quick-icon">📊</div>
+                    <div class="pf-quick-body">
+                        <div class="pf-quick-title">Моя статистика</div>
+                        <div class="pf-quick-desc">Подробный дашборд</div>
+                    </div>
+                </a>
+                <a href="/bookmarks/" class="pf-quick-card">
+                    <div class="pf-quick-icon">📚</div>
+                    <div class="pf-quick-body">
+                        <div class="pf-quick-title">Мои закладки</div>
+                        <div class="pf-quick-desc">Сохранённые статьи</div>
+                    </div>
+                </a>
+                <a href="/top/" class="pf-quick-card">
+                    <div class="pf-quick-icon">🏆</div>
+                    <div class="pf-quick-body">
+                        <div class="pf-quick-title">Топ статей</div>
+                        <div class="pf-quick-desc">Популярное у читателей</div>
+                    </div>
+                </a>
+                <a href="/quest-map/" class="pf-quick-card">
+                    <div class="pf-quick-icon">🗺️</div>
+                    <div class="pf-quick-body">
+                        <div class="pf-quick-title">Квест-карта</div>
+                        <div class="pf-quick-desc">Прогресс исследования</div>
+                    </div>
+                </a>
+                <a href="/interactive/" class="pf-quick-card">
+                    <div class="pf-quick-icon">🎮</div>
+                    <div class="pf-quick-body">
+                        <div class="pf-quick-title">Интерактив</div>
+                        <div class="pf-quick-desc">Игры и викторины</div>
+                    </div>
+                </a>
+                ${isModerator ? `
+                <a href="/moderator/" class="pf-quick-card">
+                    <div class="pf-quick-icon">🛡️</div>
+                    <div class="pf-quick-body">
+                        <div class="pf-quick-title">Модерация</div>
+                        <div class="pf-quick-desc">Панель управления</div>
+                    </div>
+                </a>` : ''}
+            </div>
 
-            <!-- ИИ-помощник -->
-            <div style="margin-top: 20px;">
-                <h3 style="margin: 0 0 10px 0; font-size: 1rem;">
-                    🤖 Марсианский ИИ-помощник
-                    <button class="help-trigger" onclick="showHelp('ИИ-помощник', 'Задайте вопрос о Марсе, его героях, божествах, географии — я постараюсь ответить! Используется локальная база знаний, созданная на основе статей энциклопедии.')">?</button>
-                </h3>
-                <div class="chat-container" id="chatContainer">
-                    <div class="chat-message bot">Привет! Я — марсианский гид. Спрашивай о Марсе, его героях, божествах и географии! 🪐</div>
+            <!-- ВКЛАДКИ -->
+            <div class="pf-tabs pf-fade" style="animation-delay: 0.15s;">
+                <button class="pf-tab active" data-tab="overview">👤 Обзор</button>
+                <button class="pf-tab" data-tab="achievements">🏅 Достижения</button>
+                <button class="pf-tab" data-tab="notifications">🔔 Уведомления</button>
+                <button class="pf-tab" data-tab="friends">👥 Друзья</button>
+                <button class="pf-tab" data-tab="ai">🤖 ИИ-гид</button>
+                <button class="pf-tab" data-tab="leaderboard">🏆 Лидеры</button>
+                <button class="pf-tab" data-tab="settings">⚙️ Настройки</button>
+            </div>
+
+            <!-- ВКЛАДКА: ОБЗОР -->
+            <div class="pf-tab-content active" data-content="overview">
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> О себе</h3>
+                    <p style="margin:0 0 12px 0;color:#555;font-size:0.95rem;line-height:1.6;" id="bio-text">${bio}</p>
+                    <button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button>
                 </div>
-                <div class="chat-input-row">
-                    <input type="text" id="chatInput" placeholder="Спросите о Марсе..." onkeypress="if(event.key==='Enter') sendChatMessage()">
-                    <button onclick="sendChatMessage()" style="background: ${kingdom.color};">Отправить</button>
+
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>
+                    <div class="pf-calendar">
+                        <div class="pf-cal-month">${martianDate.month}</div>
+                        <div class="pf-cal-day">${martianDate.day}</div>
+                        <div class="pf-cal-year">Год ${martianDate.year} Э.О.</div>
+                        <div class="pf-cal-season">${martianDate.season}</div>
+                    </div>
                 </div>
             </div>
 
-            <hr>
+            <!-- ВКЛАДКА: ДОСТИЖЕНИЯ -->
+            <div class="pf-tab-content" data-content="achievements">
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Ваши достижения (${achievementsList.length})</h3>
+                    ${achievementsList.length === 0 ? `
+                        <p style="text-align:center;color:#888;padding:40px 20px;">
+                            Пока нет достижений. Читайте статьи, проходите викторины — и они появятся!
+                        </p>
+                    ` : `
+                        <div class="pf-ach-grid">
+                            ${achievementsList.map(a => `
+                                <div class="pf-ach">
+                                    <div class="pf-ach-icon">${a.icon || '🏅'}</div>
+                                    <div class="pf-ach-body">
+                                        <div class="pf-ach-name">${a.name || 'Достижение'}</div>
+                                        <div class="pf-ach-date">${a.earned_at ? new Date(a.earned_at).toLocaleDateString('ru-RU') : ''}</div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `}
+                </div>
+            </div>
 
-            <!-- Таблица лидеров -->
-            <div style="margin-top: 20px;">
-                <details>
-                    <summary style="cursor: pointer; font-size: 1.1rem; font-weight: bold; color: ${kingdom.color};">
-                        🏆 Таблица лидеров
-                        <button class="help-trigger" onclick="showHelp('Таблица лидеров', 'Топ-10 участников по количеству опыта. Нажмите на строку, чтобы посмотреть профиль.')">?</button>
-                    </summary>
+            <!-- ВКЛАДКА: УВЕДОМЛЕНИЯ -->
+            <div class="pf-tab-content" data-content="notifications">
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Последние уведомления</h3>
+                    ${notifications && notifications.length > 0 ? notifications.map(n => `
+                        <div class="pf-notif">
+                            <div class="pf-notif-icon">📬</div>
+                            <div class="pf-notif-body">
+                                <div class="pf-notif-text">${n.message}</div>
+                                <div class="pf-notif-date">${new Date(n.created_at).toLocaleDateString('ru-RU')}</div>
+                            </div>
+                        </div>
+                    `).join('') : `
+                        <p style="text-align:center;color:#888;padding:40px 20px;">
+                            Уведомлений пока нет. Они появятся при получении достижений и повышении уровня.
+                        </p>
+                    `}
+                </div>
+            </div>
+
+            <!-- ВКЛАДКА: ДРУЗЬЯ -->
+            <div class="pf-tab-content" data-content="friends">
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Друзья</h3>
+                    <p style="color:#888;font-size:0.9rem;margin:0 0 16px 0;">
+                        Находите других исследователей Марса и добавляйте в друзья.
+                    </p>
+                    <div id="friends-list" style="margin-bottom:16px;">
+                        <p style="text-align:center;color:#999;padding:20px;">Загрузка...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ВКЛАДКА: ИИ-ГИД -->
+            <div class="pf-tab-content" data-content="ai">
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">🤖</span> Марсианский ИИ-гид</h3>
+                    <div class="pf-chat" id="pfChatContainer">
+                        <div class="pf-chat-msg bot">Привет! Я — марсианский гид. Спрашивай о Марсе, его героях, божествах и географии! 🪐</div>
+                    </div>
+                    <div class="pf-chat-input">
+                        <input type="text" id="pfChatInput" placeholder="Спросите о Марсе..." onkeypress="if(event.key==='Enter') pfSendChat()">
+                        <button onclick="pfSendChat()">Отправить</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ВКЛАДКА: ЛИДЕРЫ -->
+            <div class="pf-tab-content" data-content="leaderboard">
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">🏆</span> Топ-10 исследователей</h3>
                     ${leaders && leaders.length > 0 ? `
-                        <table class="leaderboard-table" style="margin-top: 12px;">
+                        <table class="pf-leaderboard">
                             <thead><tr><th>#</th><th>Участник</th><th>Уровень</th><th>Опыт</th></tr></thead>
                             <tbody>
-                                ${leaders.map((leader, index) => {
-                                    const leaderName = leader.display_name || leader.username;
+                                ${leaders.map((l, i) => {
+                                    const name = l.display_name || l.username || 'Аноним';
+                                    const medals = ['🥇','🥈','🥉'];
+                                    const isMe = l.user_id === currentUser.id;
                                     return `
-                                        <tr onclick="viewProfile('${leader.user_id}')" title="Нажмите, чтобы посмотреть профиль">
-                                            <td>${index + 1}</td>
-                                            <td>
-                                                <img src="${leader.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(leaderName) + '&background=6C63FF&color=fff&size=32'}" 
-                                                     style="width: 24px; height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px;">
-                                                ${leaderName}
-                                            </td>
-                                            <td>${leader.level}</td>
-                                            <td>${leader.experience}</td>
+                                        <tr onclick="pfViewProfile('${l.user_id}')" style="${isMe?'background:'+kingdom.color+';color:#fff;font-weight:700;':''}">
+                                            <td>${medals[i] || (i+1)}</td>
+                                            <td><img src="${l.avatar_url || 'https://ui-avatars.com/api/?name='+encodeURIComponent(name)+'&background=6C63FF&color=fff&size=64'}" class="pf-lb-avatar">${name}${isMe?' (вы)':''}</td>
+                                            <td>${l.level || 1}</td>
+                                            <td><b>${l.experience || 0}</b></td>
                                         </tr>
                                     `;
                                 }).join('')}
                             </tbody>
                         </table>
-                    ` : '<p style="color: #999; font-size: 0.9rem;">Пока нет данных.</p>'}
-                </details>
+                    ` : '<p style="text-align:center;color:#888;padding:20px;">Пока нет данных</p>'}
+                </div>
             </div>
 
-            <hr>
+            <!-- ВКЛАДКА: НАСТРОЙКИ -->
+            <div class="pf-tab-content" data-content="settings">
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя пользователя</h3>
+                    <p style="color:#555;margin:0 0 12px 0;">Текущее: <b id="pfDisplayName">${displayName}</b></p>
+                    <button class="pf-btn pf-btn-outline" onclick="pfEditName()">✏️ Изменить</button>
+                </div>
 
-            <!-- Опасная зона -->
-            <div style="margin-top: 20px; padding: 8px 12px; background: #fff5f5; border: 1px solid #f5c6cb; border-radius: 6px;">
-                <details>
-                    <summary style="cursor: pointer; font-size: 0.8rem; color: #c0392b; font-weight: 500;">⚠️ Опасная зона (удалить аккаунт)</summary>
-                    <p style="font-size: 0.8rem; color: #666; margin: 8px 0 12px 0;">Удаление аккаунта — необратимое действие. Все ваши данные будут потеряны.</p>
-                    <button onclick="deleteAccount()" 
-                            style="padding: 4px 16px; background: #c0392b; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
-                        🗑️ Удалить
-                    </button>
-                </details>
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">🖼️</span> Аватар</h3>
+                    <div class="pf-avatar-grid">
+                        ${AVATARS.map(url => `
+                            <img src="${url}" alt="avatar" class="pf-avatar-option ${avatar===url?'selected':''}" onclick="pfSelectAvatar('${url}')">
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">🏰</span> Королевство</h3>
+                    <div class="pf-kingdom-grid">
+                        ${Object.entries(KINGDOMS).map(([name, k]) => `
+                            <button class="pf-kingdom-btn ${currentProfile.kingdom===name?'selected':''}" 
+                                    style="${currentProfile.kingdom===name?'background:'+k.color+';border-color:'+k.color+';':''}" 
+                                    onclick="pfSelectKingdom('${name}')">${name}</button>
+                        `).join('')}
+                    </div>
+                    <div style="text-align:center;margin-top:16px;">
+                        <img src="${kingdom.flag}" alt="Флаг" style="width:90px;border-radius:6px;border:1px solid #a2a9b1;">
+                        <div style="font-size:0.75rem;color:#666;margin-top:4px;">Флаг ${currentProfile.kingdom || 'Эдем'}</div>
+                    </div>
+                </div>
+
+                <div class="pf-card">
+                    <h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Уведомления</h3>
+                    <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:0.95rem;">
+                        <input type="checkbox" id="pfNotifToggle" ${notifEnabled?'checked':''} onchange="pfToggleNotif()" style="width:20px;height:20px;cursor:pointer;accent-color:var(--kingdom-color);">
+                        Получать уведомления на email
+                    </label>
+                </div>
+
+                <div class="pf-card pf-danger">
+                    <h3 class="pf-card-title" style="color:#c0392b;"><span class="pf-ct-icon">⚠️</span> Опасная зона</h3>
+                    <p style="color:#888;font-size:0.9rem;margin:0 0 16px 0;">
+                        Удаление аккаунта необратимо. Все данные будут потеряны.
+                    </p>
+                    <button class="pf-btn pf-btn-danger" onclick="pfDeleteAccount()">🗑️ Удалить аккаунт</button>
+                </div>
+
+                <div class="pf-card">
+                    <button class="pf-btn pf-btn-outline" onclick="pfLogout()" style="width:100%;justify-content:center;">🚪 Выйти из аккаунта</button>
+                </div>
             </div>
-
-            <hr>
-
-            <p>
-    <a href="/stats/" style="color: ${kingdom.color};">📊 Моя статистика</a>
-    ${currentProfile.role === 'moderator' ? `| <a href="/moderator/" style="color: ${kingdom.color}; font-weight: 600;">🛡️ Панель модератора</a>` : ''}
-    | <a href="#" onclick="logoutUser(); return false;" style="color: ${kingdom.color};">Выйти</a>
-</p>
-
         `;
 
-        window._profileClient = client;
-        window._currentUser = user;
-        window._currentProfile = currentProfile;
-
-        // Марсианский календарь
-        (function() {
-            const months = [
-                { name: 'Ākha-dzen', days: 31 }, { name: 'Kōl-khan', days: 30 },
-                { name: 'Dzen-ākha', days: 32 }, { name: 'Khōsen', days: 31 },
-                { name: 'Mar-dzen', days: 33 }, { name: 'Ariya-mar', days: 30 },
-                { name: 'Zal-ākha', days: 31 }, { name: 'Thal-khō', days: 32 },
-                { name: 'Kōl-ghar', days: 29 }, { name: 'Mōr-ākha', days: 31 },
-                { name: 'Dzen-kōl', days: 30 }, { name: 'Xal-mar', days: 28 },
-                { name: 'Lān-sen', days: 29 }, { name: 'Khō-mōr', days: 31 },
-                { name: 'Ākha-mōr', days: 32 }, { name: 'Kōl-suf', days: 33 },
-                { name: 'Dzen-thal', days: 31 }, { name: 'Ghōl-ākha', days: 30 },
-                { name: 'Rōg-ari', days: 29 }, { name: 'Mar-lān', days: 31 },
-                { name: 'Ksanf-suf', days: 32 }, { name: 'Yar-okh', days: 33 }
-            ];
-            const MARTIAN_YEAR_DAYS = months.reduce((sum, m) => sum + m.days, 0);
-            const EARTH_DAYS_IN_MARTIAN_YEAR = 668.6;
-            const BOOK_REF_YEAR = 2740;
-            const BOOK_REF_DAYS_AGO = 3798000000;
-
-            function getMartianDate() {
-                const now = new Date();
-                const earthDaysFromStart = (now.getTime() - new Date(2026, 0, 1).getTime()) / (1000 * 60 * 60 * 24);
-                const martianYearsOffset = earthDaysFromStart / EARTH_DAYS_IN_MARTIAN_YEAR;
-                const baseYear = BOOK_REF_DAYS_AGO + BOOK_REF_YEAR;
-                const year = Math.floor(baseYear + martianYearsOffset);
-                const dayOfYear = Math.floor((earthDaysFromStart * (MARTIAN_YEAR_DAYS / EARTH_DAYS_IN_MARTIAN_YEAR)) % MARTIAN_YEAR_DAYS);
-                let remaining = dayOfYear;
-                let monthIndex = 0;
-                for (let i = 0; i < months.length; i++) {
-                    if (remaining < months[i].days) {
-                        monthIndex = i;
-                        break;
-                    }
-                    remaining -= months[i].days;
-                }
-                const day = remaining + 1;
-                const seasonNames = ['Пробуждение', 'Цветение', 'Зной', 'Ветры', 'Угасание', 'Заморозки', 'Тьма', 'Ледяной покров'];
-                const season = seasonNames[Math.floor(monthIndex / 2) % seasonNames.length];
-                return { year: year.toLocaleString(), month: months[monthIndex].name, day, season };
-            }
-
-            const date = getMartianDate();
-            const el = document.getElementById('martianDate');
-            if (el) {
-                el.innerHTML = `
-                    <div><strong>${date.month}</strong> ${date.day}‑й день</div>
-                    <div>Год ${date.year} Э.О.</div>
-                    <div style="font-size:0.9rem; color:#555; margin-top:4px;">${date.season}</div>
-                `;
-            }
-        })();
-
-    }).catch((error) => {
-        console.error('❌ Ошибка:', error);
-        document.getElementById('profile-container').innerHTML = '<p>⚠️ Ошибка загрузки профиля.</p>';
-    });
-});
-
-// ===== ФУНКЦИИ =====
-
-function showHelp(title, description) {
-    const oldOverlay = document.querySelector('.help-modal-overlay');
-    if (oldOverlay) oldOverlay.remove();
-
-    const overlay = document.createElement('div');
-    overlay.className = 'help-modal-overlay';
-    overlay.innerHTML = `
-        <div class="help-modal">
-            <button class="close-btn" onclick="this.closest('.help-modal-overlay').remove()">✕</button>
-            <h4>${title}</h4>
-            <p>${description}</p>
-            <button onclick="this.closest('.help-modal-overlay').remove()" 
-                    style="padding: 6px 20px; background: var(--kingdom-color, #6C63FF); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem;">
-                Понятно
-            </button>
-        </div>
-    `;
-    document.body.appendChild(overlay);
-    overlay.addEventListener('click', function(e) {
-        if (e.target === overlay) overlay.remove();
-    });
-}
-window.showHelp = showHelp;
-
-function viewProfile(userId) {
-    if (!userId) return;
-    // Переход на страницу просмотра профиля
-    window.location.href = `/profile-view/?user_id=${userId}`;
-}
-window.viewProfile = viewProfile;
-
-// ===== ОСТАЛЬНЫЕ ФУНКЦИИ (без изменений) =====
-
-function editBio() {
-    const currentBio = document.getElementById('bio-text')?.innerText || '';
-    const newBio = prompt('Введите вашу биографию:', currentBio);
-    if (newBio === null) return;
-
-    const client = window._profileClient;
-    const user = window._currentUser;
-    if (!client || !user) return;
-
-    client
-        .from('profiles')
-        .update({ bio: newBio.trim() })
-        .eq('user_id', user.id)
-        .then(({ error }) => {
-            if (error) {
-                alert('❌ Ошибка сохранения: ' + error.message);
-                return;
-            }
-            document.getElementById('bio-text').innerText = newBio.trim();
-            alert('✅ Биография обновлена!');
+        // Обработчики вкладок
+        document.querySelectorAll('.pf-tab').forEach(tab => {
+            tab.onclick = () => {
+                document.querySelectorAll('.pf-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.pf-tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                const content = document.querySelector(`.pf-tab-content[data-content="${tab.dataset.tab}"]`);
+                if (content) content.classList.add('active');
+                if (tab.dataset.tab === 'friends') loadFriends();
+            };
         });
-}
 
-function selectAvatar(url) {
-    const client = window._profileClient;
-    const user = window._currentUser;
-    if (!client || !user) return;
+        // Экспортируем функции
+        window.pfEditBio = () => editBio();
+        window.pfEditName = () => editName();
+        window.pfSelectAvatar = (url) => selectAvatar(url);
+        window.pfSelectKingdom = (name) => selectKingdom(name);
+        window.pfToggleNotif = () => toggleNotif();
+        window.pfDeleteAccount = () => deleteAccount();
+        window.pfLogout = () => logout();
+        window.pfSendChat = () => sendChat();
+        window.pfViewProfile = (id) => { window.location.href = `/profile-view/?user_id=${id}`; };
+        window.pfAddFriend = (id) => addFriend(id);
 
-    client
-        .from('profiles')
-        .update({ avatar_url: url })
-        .eq('user_id', user.id)
-        .then(({ error }) => {
-            if (error) {
-                alert('❌ Ошибка: ' + error.message);
-                return;
-            }
-            const avatarImg = document.querySelector('#profile-container img[style*="width: 100px;"]');
-            if (avatarImg) avatarImg.src = url;
-            alert('✅ Аватар обновлён!');
-            location.reload();
-        });
-}
-
-function toggleNotifications() {
-    const client = window._profileClient;
-    const user = window._currentUser;
-    const checked = document.getElementById('notifications-checkbox').checked;
-    if (!client || !user) return;
-
-    client
-        .from('profiles')
-        .update({ notifications_enabled: checked })
-        .eq('user_id', user.id)
-        .then(({ error }) => {
-            if (error) {
-                alert('❌ Ошибка: ' + error.message);
-                return;
-            }
-            alert('✅ Настройка сохранена!');
-        });
-}
-
-function editDisplayName() {
-    const client = window._profileClient;
-    const user = window._currentUser;
-    if (!client || !user) return;
-
-    const currentName = document.getElementById('display-name-text')?.innerText || '';
-    const newName = prompt('Введите новое имя (от 2 до 20 символов, только латиница):', currentName);
-    if (!newName || newName === currentName) return;
-
-    if (newName.length < 2 || newName.length > 20) {
-        alert('❌ Имя должно быть от 2 до 20 символов.');
-        return;
+        window._pf = { client, user: currentUser };
     }
 
-    if (!/^[a-zA-Z0-9\s\-_]+$/.test(newName)) {
-        alert('❌ Только латинские буквы, цифры, пробелы, дефис и подчёркивание.');
-        return;
+    // ============================================================
+    // ФУНКЦИИ
+    // ============================================================
+    async function editBio() {
+        const current = document.getElementById('bio-text')?.innerText || '';
+        const newBio = prompt('Введите вашу биографию:', current);
+        if (newBio === null) return;
+        const { error } = await client.from('profiles').update({ bio: newBio.trim() }).eq('user_id', currentUser.id);
+        if (error) { showToast('Ошибка: ' + error.message, 'error'); return; }
+        document.getElementById('bio-text').innerText = newBio.trim();
+        showToast('✅ Биография обновлена!', 'success');
     }
 
-    const lowerName = newName.toLowerCase();
-    for (const badWord of BAD_WORDS) {
-        if (lowerName.includes(badWord)) {
-            alert('❌ Имя содержит недопустимое слово.');
-            return;
+    async function editName() {
+        const current = document.getElementById('pfDisplayName')?.innerText || '';
+        const newName = prompt('Новое имя (2-20 символов, латиница):', current);
+        if (!newName || newName === current) return;
+        if (newName.length < 2 || newName.length > 20) { showToast('Имя должно быть 2-20 символов', 'warning'); return; }
+        if (!/^[a-zA-Z0-9\s\-_]+$/.test(newName)) { showToast('Только латиница, цифры, пробел, дефис, _', 'warning'); return; }
+        const lower = newName.toLowerCase();
+        for (const bad of BAD_WORDS) if (lower.includes(bad)) { showToast('Имя содержит недопустимое слово', 'error'); return; }
+        const { error } = await client.from('profiles').update({ display_name: newName.trim() }).eq('user_id', currentUser.id);
+        if (error) { showToast('Ошибка: ' + error.message, 'error'); return; }
+        showToast('✅ Имя обновлено!', 'success');
+        setTimeout(() => location.reload(), 800);
+    }
+
+    async function selectAvatar(url) {
+        const { error } = await client.from('profiles').update({ avatar_url: url }).eq('user_id', currentUser.id);
+        if (error) { showToast('Ошибка: ' + error.message, 'error'); return; }
+        showToast('✅ Аватар обновлён!', 'success');
+        setTimeout(() => location.reload(), 800);
+    }
+
+    async function selectKingdom(name) {
+        const { error } = await client.from('profiles').update({ kingdom: name }).eq('user_id', currentUser.id);
+        if (error) { showToast('Ошибка: ' + error.message, 'error'); return; }
+        showToast(`✅ Выбрано королевство ${name}!`, 'success');
+        setTimeout(() => location.reload(), 800);
+    }
+
+    async function toggleNotif() {
+        const checked = document.getElementById('pfNotifToggle').checked;
+        const { error } = await client.from('profiles').update({ notifications_enabled: checked }).eq('user_id', currentUser.id);
+        if (error) { showToast('Ошибка: ' + error.message, 'error'); return; }
+        showToast('✅ Настройка сохранена!', 'success');
+    }
+
+    async function deleteAccount() {
+        if (!confirm('⚠️ Вы уверены? Это необратимо!')) return;
+        const email = prompt('Введите ваш email для подтверждения:');
+        if (!email || email !== currentUser.email) { showToast('Email не совпадает', 'error'); return; }
+        const { data } = await client.auth.getSession();
+        const token = data?.session?.access_token;
+        if (!token) { showToast('Не удалось получить токен', 'error'); return; }
+        try {
+            const res = await fetch(`${SUPABASE_URL}/functions/v1/delete-user`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }
+            });
+            const json = await res.json();
+            if (json.error) throw new Error(json.error);
+            showToast('Аккаунт удалён', 'success');
+            localStorage.clear();
+            setTimeout(() => window.location.href = '/', 800);
+        } catch (e) {
+            showToast('Ошибка: ' + e.message, 'error');
         }
     }
 
-    client
-        .from('profiles')
-        .update({ display_name: newName.trim() })
-        .eq('user_id', user.id)
-        .then(({ error }) => {
-            if (error) {
-                alert('❌ Ошибка: ' + error.message);
-                return;
-            }
-            document.getElementById('display-name-text').innerText = newName.trim();
-            alert('✅ Имя обновлено!');
-            location.reload();
-        });
-}
+    async function logout() {
+        await client.auth.signOut();
+        localStorage.clear();
+        window.location.href = '/';
+    }
 
-function selectKingdom(name) {
-    const client = window._profileClient;
-    const user = window._currentUser;
-    if (!client || !user) return;
+    async function sendChat() {
+        const input = document.getElementById('pfChatInput');
+        const containerEl = document.getElementById('pfChatContainer');
+        const question = input.value.trim();
+        if (!question) return;
 
-    const kingdom = KINGDOMS[name];
-    if (!kingdom) return;
+        const userMsg = document.createElement('div');
+        userMsg.className = 'pf-chat-msg user';
+        userMsg.textContent = question;
+        containerEl.appendChild(userMsg);
+        containerEl.scrollTop = containerEl.scrollHeight;
+        input.value = '';
 
-    client
-        .from('profiles')
-        .update({ kingdom: name })
-        .eq('user_id', user.id)
-        .then(({ error }) => {
-            if (error) {
-                alert('❌ Ошибка: ' + error.message);
-                return;
-            }
-            alert(`✅ Вы выбрали королевство ${name}!`);
-            location.reload();
-        });
-}
-
-async function sendChatMessage() {
-    const input = document.getElementById('chatInput');
-    const container = document.getElementById('chatContainer');
-    const question = input.value.trim();
-    if (!question) return;
-
-    const userMsg = document.createElement('div');
-    userMsg.className = 'chat-message user';
-    userMsg.textContent = question;
-    container.appendChild(userMsg);
-    container.scrollTop = container.scrollHeight;
-    input.value = '';
-
-    try {
-        const response = await fetch(
-            'https://ncytbgbzfjfoqmmgfygz.supabase.co/functions/v1/ai-chat',
-            {
+        try {
+            const res = await fetch(`${SUPABASE_URL}/functions/v1/ai-chat`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: question })
-            }
-        );
-        const data = await response.json();
-        const reply = data.reply || data.error || 'Не удалось получить ответ.';
-
-        const botMsg = document.createElement('div');
-        botMsg.className = 'chat-message bot';
-        botMsg.textContent = reply;
-        container.appendChild(botMsg);
-        container.scrollTop = container.scrollHeight;
-    } catch (err) {
-        const botMsg = document.createElement('div');
-        botMsg.className = 'chat-message bot';
-        botMsg.textContent = '⚠️ Ошибка соединения с ИИ. Попробуйте позже.';
-        container.appendChild(botMsg);
-        container.scrollTop = container.scrollHeight;
-    }
-}
-window.sendChatMessage = sendChatMessage;
-
-function deleteAccount() {
-    if (!confirm('⚠️ Вы уверены?')) return;
-    const email = prompt('Введите ваш email:');
-    if (!email) return;
-
-    const client = window._profileClient;
-    const user = window._currentUser;
-    if (!client || !user) return;
-
-    if (email !== user.email) {
-        alert('❌ Email не совпадает.');
-        return;
+            });
+            const data = await res.json();
+            const reply = data.reply || data.error || 'Не удалось получить ответ';
+            const botMsg = document.createElement('div');
+            botMsg.className = 'pf-chat-msg bot';
+            botMsg.textContent = reply;
+            containerEl.appendChild(botMsg);
+            containerEl.scrollTop = containerEl.scrollHeight;
+        } catch (e) {
+            const err = document.createElement('div');
+            err.className = 'pf-chat-msg bot';
+            err.textContent = '⚠️ Ошибка соединения с ИИ';
+            containerEl.appendChild(err);
+        }
     }
 
-    client.auth.getSession().then(({ data }) => {
-        const accessToken = data?.session?.access_token;
-        if (!accessToken) {
-            alert('❌ Не удалось получить токен.');
+    async function loadFriends() {
+        const el = document.getElementById('friends-list');
+        if (!el) return;
+        const { data: friends } = await client.from('friends')
+            .select('*')
+            .or(`user_id.eq.${currentUser.id},friend_id.eq.${currentUser.id}`);
+
+        if (!friends || friends.length === 0) {
+            el.innerHTML = '<p style="text-align:center;color:#999;padding:20px;">Пока нет друзей. Найдите других исследователей в таблице лидеров!</p>';
             return;
         }
 
-        fetch('https://ncytbgbzfjfoqmmgfygz.supabase.co/functions/v1/delete-user', {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.error) throw new Error(data.error);
-            alert('✅ Аккаунт удалён.');
-            localStorage.clear();
-            sessionStorage.clear();
-            window.location.href = '/';
-        })
-        .catch(err => {
-            alert('❌ Ошибка: ' + err.message);
-        });
-    });
-}
+        const ids = new Set();
+        friends.forEach(f => { ids.add(f.user_id); ids.add(f.friend_id); });
+        ids.delete(currentUser.id);
+        const { data: profiles } = await client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', [...ids]);
 
-function logoutUser() {
-    const client = window._profileClient;
-    if (!client) return;
-    client.auth.signOut().then(() => {
-        localStorage.clear();
-        sessionStorage.clear();
-        window.location.href = '/';
-    }).catch(() => {
-        localStorage.clear();
-        sessionStorage.clear();
-        window.location.href = '/';
-    });
-}
-    // ===== СИСТЕМА ДРУЗЕЙ =====
-function getCurrentUser() {
-    return window._currentUser;
-}
+        const profileMap = {};
+        (profiles || []).forEach(p => { profileMap[p.user_id] = p; });
 
-async function addFriend(friendId) {
-    const user = window._currentUser;
-    if (!user) {
-        alert('⚠️ Вы не авторизованы.');
-        return;
+        el.innerHTML = friends.map(f => {
+            const otherId = f.user_id === currentUser.id ? f.friend_id : f.user_id;
+            const p = profileMap[otherId] || {};
+            const name = p.display_name || p.username || 'Аноним';
+            const avatar = p.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=6C63FF&color=fff&size=64`;
+            const status = f.status === 'accepted' ? '👥 Друзья' : '⏳ Заявка';
+            return `
+                <div class="pf-notif">
+                    <img src="${avatar}" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--kingdom-color);">
+                    <div class="pf-notif-body">
+                        <div class="pf-notif-text"><b>${name}</b></div>
+                        <div class="pf-notif-date">${status}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
     }
 
-    if (user.id === friendId) {
-        alert('❌ Нельзя добавить себя в друзья.');
-        return;
-    }
-
-    const client = window._profileClient;
-    if (!client) return;
-
-    // Проверяем, есть ли уже заявка
-    const { data: existing, error: checkError } = await client
-        .from('friends')
-        .select('*')
-        .or(`user_id.eq.${user.id},friend_id.eq.${user.id}`)
-        .or(`user_id.eq.${friendId},friend_id.eq.${friendId}`);
-
-    if (checkError) {
-        alert('❌ Ошибка проверки: ' + checkError.message);
-        return;
-    }
-
-    if (existing && existing.length > 0) {
-        const status = existing[0].status;
-        if (status === 'pending') {
-            alert('⏳ Заявка уже отправлена.');
-        } else if (status === 'accepted') {
-            alert('👥 Вы уже друзья!');
-        } else {
-            alert('❌ Неизвестный статус.');
+    async function addFriend(friendId) {
+        if (friendId === currentUser.id) { showToast('Нельзя добавить себя', 'warning'); return; }
+        const { data: existing } = await client.from('friends')
+            .select('*')
+            .or(`and(user_id.eq.${currentUser.id},friend_id.eq.${friendId}),and(user_id.eq.${friendId},friend_id.eq.${currentUser.id})`);
+        if (existing && existing.length > 0) {
+            showToast('Заявка уже существует', 'info');
+            return;
         }
-        return;
+        const { error } = await client.from('friends').insert([{
+            user_id: currentUser.id, friend_id: friendId, status: 'pending'
+        }]);
+        if (error) { showToast('Ошибка: ' + error.message, 'error'); return; }
+        showToast('✅ Заявка отправлена!', 'success');
     }
 
-    // Отправляем заявку
-    const { error: insertError } = await client
-        .from('friends')
-        .insert([{ user_id: user.id, friend_id: friendId, status: 'pending' }]);
+    // Экспорт в window для onclick из HTML
+    window.pfAddFriend = addFriend;
 
-    if (insertError) {
-        alert('❌ Ошибка отправки заявки: ' + insertError.message);
-        return;
+    // Запуск
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
     }
-
-    alert('✅ Заявка в друзья отправлена!');
-}
-
-// Делаем функцию глобальной
-window.addFriend = addFriend;
+})();
 </script>

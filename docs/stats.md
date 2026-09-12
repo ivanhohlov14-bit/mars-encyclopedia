@@ -81,7 +81,7 @@
     .goal-link {
         display: flex; align-items: center; gap: 12px;
         padding: 16px 20px; border-radius: 12px;
-        background: linear-gradient(135deg, #6C63FF, #a29bfe);
+        background: linear-gradient(135deg, var(--kingdom-color, #6C63FF), var(--kingdom-color-light, #a29bfe));
         color: #fff; text-decoration: none;
         margin-bottom: 28px;
         transition: transform 0.2s, box-shadow 0.2s;
@@ -91,6 +91,37 @@
     .goal-link .goal-arrow { margin-left: auto; font-size: 1.5rem; transition: transform 0.2s; }
     .goal-link:hover .goal-arrow { transform: translateX(4px); }
 
+    /* ==== СТИЛИ ДЛЯ БЛОКА "ИНТЕРАКТИВ" ==== */
+    .interactive-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+    }
+    .interactive-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 16px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+        border: 1px solid #eaecf0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        cursor: pointer;
+    }
+    .interactive-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        border-color: var(--kingdom-color, #6C63FF);
+    }
+    .interactive-card .ic-icon { font-size: 2.5rem; margin-bottom: 8px; }
+    .interactive-card .ic-title { font-size: 1rem; font-weight: 600; color: #2c3e50; margin-bottom: 4px; }
+    .interactive-card .ic-desc { font-size: 0.8rem; color: #888; line-height: 1.4; }
+
     @media (prefers-color-scheme: dark) {
         .stat-card { background: rgba(30, 30, 46, 0.92); border-color: #2a2a3a; }
         .heatmap-cell { background: #2a2a3a; }
@@ -99,6 +130,8 @@
         .heatmap-cell[data-level="3"] { background: #26a641; }
         .heatmap-cell[data-level="4"] { background: #39d353; }
         .achievement-item { background: rgba(30,30,46,0.6); }
+        .interactive-card { background: rgba(30, 30, 46, 0.92); border-color: #2a2a3a; }
+        .interactive-card .ic-title { color: #e0e0e0; }
     }
 </style>
 
@@ -108,7 +141,25 @@ const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
 const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
 // ============================================================
-// 1. УРОВНИ И РАНГИ (твоя система, без изменений)
+// 1. КОРОЛЕВСТВА (тема оформления)
+// ============================================================
+const KINGDOMS = {
+    'Аркадия':    { color: '#D4A574', bg: '#FDF8F0', light: '#E8C9A0' },
+    'Ксанф':      { color: '#3D3D3D', bg: '#F5F5F5', light: '#6B6B6B' },
+    'Эдем':       { color: '#F4A460', bg: '#FFF8F0', light: '#F7C98A' },
+    'Эридания':   { color: '#F5D76E', bg: '#FFFDF5', light: '#FAE9A0' },
+    'Кхонг':      { color: '#A9A9A9', bg: '#F8F8F8', light: '#C8C8C8' },
+    'Авсония':    { color: '#87CEEB', bg: '#F0F8FF', light: '#B0D8EB' },
+    'Кимерия':    { color: '#B19CD9', bg: '#F8F4FF', light: '#D1C4E9' },
+    'Серпентида': { color: '#E57373', bg: '#FFF5F5', light: '#F5A0A0' },
+    'Эритрей':    { color: '#64B5F6', bg: '#F0F8FF', light: '#90CAF9' },
+    'Утопия':     { color: '#4DD0E1', bg: '#F0FDFF', light: '#80DEEA' },
+    'Эллада':     { color: '#FF8A65', bg: '#FFF5F0', light: '#FFAB91' },
+    'Аливасото':  { color: '#81C784', bg: '#F0FFF0', light: '#A5D6A7' }
+};
+
+// ============================================================
+// 2. УРОВНИ И РАНГИ
 // ============================================================
 const levelMap = [
     { level: 1, xp: 0,    title: '🌱 Новый поселенец', gradient: ['#95a5a6', '#7f8c8d'], icon: '🌱' },
@@ -116,7 +167,7 @@ const levelMap = [
     { level: 3, xp: 150,  title: '🚀 Первопроходец',    gradient: ['#27ae60', '#229954'], icon: '🚀' },
     { level: 4, xp: 350,  title: '🏠 Колонизатор',      gradient: ['#16a085', '#138d75'], icon: '🏠' },
     { level: 5, xp: 700,  title: '⚡ Командир базы',    gradient: ['#f39c12', '#d68910'], icon: '⚡' },
-    { level: 6, xp: 1200, title: '🏅 Марсианин',    gradient: ['#e74c3c', '#c0392b'], icon: '🏅' }
+    { level: 6, xp: 1200, title: '👑 Легенда Марса',    gradient: ['#e74c3c', '#c0392b'], icon: '👑' }
 ];
 
 function getRankByXp(xp) {
@@ -128,24 +179,14 @@ function getRankByXp(xp) {
 }
 
 // ============================================================
-// 2. НАЗВАНИЯ ДОСТИЖЕНИЙ (впиши свои ID и названия)
+// 3. ЛОКАЛЬНЫЙ СЛОВАРЬ ДОСТИЖЕНИЙ (резервный)
 // ============================================================
 const ACHIEVEMENT_NAMES = {
-    1: '🌱 Первые шаги',
-    2: '📖 Читатель',
-    3: '🧠 Знаток',
-    4: '🏠 Колонизатор',
-    5: '⚡ Командир базы',
-    6: '🏅 Марсианин',
-    7: '🌊 Мореплаватель',
-    8: '📚 Эрудит',
-    9: '🔥 Постоянный',
-    10: '🌟 Хранитель знаний',
-    11: '🚀 Первопроходец',
-    12: '📜 Хранитель свитков',
-    13: '💎 Богач',
-    14: '🎯 Снайпер',
-    15: '👑 Легенда Марса' 
+    1: '🌱 Первые шаги', 2: '📖 Читатель', 3: '🧠 Знаток',
+    4: '🏠 Колонизатор', 5: '⚡ Командир базы', 6: '🏅 Марсианин',
+    7: '🌊 Мореплаватель', 8: '📚 Эрудит', 9: '🔥 Постоянный',
+    10: '🌟 Хранитель знаний', 11: '🚀 Первопроходец', 12: '📜 Хранитель свитков',
+    13: '💎 Богач', 14: '🎯 Снайпер', 15: '👑 Легенда Марса'
 };
 
 function getAchievementName(id, metaMap) {
@@ -156,7 +197,7 @@ function getAchievementName(id, metaMap) {
 }
 
 // ============================================================
-// 3. ПОДСКАЗКИ
+// 4. ПОДСКАЗКИ
 // ============================================================
 const HELP_TEXTS = {
     level: '⭐ <b>Уровень</b><br>Растёт при накоплении опыта. Каждый уровень открывает новое звание и достижения.',
@@ -172,7 +213,7 @@ const HELP_TEXTS = {
 };
 
 // ============================================================
-// 4. ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+// 5. ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
 // ============================================================
 function animateValue(el, start, end, duration = 800) {
     if (!el || typeof end !== 'number') return;
@@ -258,7 +299,7 @@ function formatReadingTime(minutes) {
 }
 
 // ============================================================
-// 5. ЛЕНТА СОБЫТИЙ
+// 6. ЛЕНТА СОБЫТИЙ
 // ============================================================
 function buildAchievementsFeed(profile, achievements, visits, rank, metaMap) {
     const feed = [];
@@ -302,7 +343,7 @@ function buildAchievementsFeed(profile, achievements, visits, rank, metaMap) {
 }
 
 // ============================================================
-// 6. ОСНОВНАЯ ЛОГИКА
+// 7. ОСНОВНАЯ ЛОГИКА
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof supabase === 'undefined') {
@@ -338,43 +379,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // ============================================================
-        // ФОН ИЗ ПРОФИЛЯ
+        // ТЕМА КОРОЛЕВСТВА
         // ============================================================
-        console.log('📋 ВСЕ ПОЛЯ ПРОФИЛЯ:', profile);
+        const kingdomName = profile.kingdom || 'Эдем';
+        const kingdom = KINGDOMS[kingdomName] || KINGDOMS['Эдем'];
 
-        // Ищем любое поле, в названии которого есть "back", "bg", "cover", "wall", "theme", "color"
-        let bgValue = null;
-        for (const key of Object.keys(profile)) {
-            const lower = key.toLowerCase();
-            if (lower.includes('back') || lower.includes('bg') || lower.includes('cover') || lower.includes('wall') || lower.includes('theme') || lower.includes('color')) {
-                if (profile[key]) {
-                    console.log(`🎨 Найдено поле с фоном: ${key} = ${profile[key]}`);
-                    bgValue = profile[key];
-                    break;
-                }
-            }
+        document.documentElement.style.setProperty('--kingdom-color', kingdom.color);
+        document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
+        document.documentElement.style.setProperty('--kingdom-color-light', kingdom.light);
+
+        // Применяем фон ко всей странице
+        document.body.style.background = kingdom.bg;
+        document.body.style.backgroundAttachment = 'fixed';
+
+        // Красим заголовок страницы
+        const h1 = document.querySelector('h1');
+        if (h1) {
+            h1.style.color = kingdom.color;
+            h1.style.textShadow = `0 2px 4px ${kingdom.color}40`;
         }
 
-        if (bgValue) {
-            // Если это HEX-цвет или rgb/hsl — применяем как background
-            if (/^#|^rgb|^hsl/.test(bgValue)) {
-                document.body.style.background = bgValue;
-                document.body.style.backgroundAttachment = 'fixed';
-                console.log('✅ Применён цвет:', bgValue);
-            } else {
-                // Иначе — картинка
-                const cleanUrl = bgValue.replace(/^url\(|\)$/g, '').replace(/['"]/g, '');
-                document.body.style.backgroundImage = `url('${cleanUrl}')`;
-                document.body.style.backgroundSize = 'cover';
-                document.body.style.backgroundPosition = 'center';
-                document.body.style.backgroundAttachment = 'fixed';
-                document.body.style.backgroundRepeat = 'no-repeat';
-                console.log('✅ Применена картинка:', cleanUrl);
-            }
-        } else {
-            console.warn('⚠️ Фон не найден. Проверьте поля в таблице profiles.');
-            console.log('💡 Доступные поля:', Object.keys(profile));
-        }
+        console.log('👑 Королевство:', kingdomName, '→ фон:', kingdom.bg);
 
         // ---- Достижения ----
         const { data: achievements } = await client
@@ -508,6 +533,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Рендер
         // ============================================================
         document.getElementById('stats-container').innerHTML = `
+            <!-- Шапка с рангом -->
             <div style="background: linear-gradient(135deg, ${rank.gradient[0]}, ${rank.gradient[1]}); padding: 24px; border-radius: 12px; margin-bottom: 24px; text-align: center; color: #fff; position: relative; overflow: hidden;">
                 <div style="position: absolute; top: -30px; right: -20px; font-size: 9rem; opacity: 0.15;">${rank.icon}</div>
                 <h2 style="margin: 0; color: #fff; position: relative;">${displayName}</h2>
@@ -518,6 +544,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
 
+            <!-- Стрик -->
             ${streak > 1 ? `
             <div style="background: linear-gradient(135deg, #e74c3c, #f39c12); padding: 14px 20px; border-radius: 12px; margin-bottom: 24px; color: #fff; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);">
                 <span style="font-size: 2rem;">🔥</span>
@@ -527,6 +554,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>` : ''}
 
+            <!-- Цифры -->
             <h3 style="color: #555; margin: 0 0 12px 0; font-size: 1.1rem;">🎯 Ваши достижения</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 28px;">
                 ${card('level', '⭐', stats.level, 'Уровень', '#6C63FF', 'level')}
@@ -541,6 +569,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ${card('time', '⏱️', formatReadingTime(readingTime), 'Время чтения', '#2c3e50', 'time')}
             </div>
 
+            <!-- Прогресс уровня -->
             <div style="background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 20px 24px; border-radius: 12px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #eaecf0;">
                 <div style="display: flex; justify-content: space-between; font-size: 0.9rem; color: #555; margin-bottom: 6px;">
                     <span>Прогресс до ${levelMap.find(l => l.level === rank.level + 1)?.title || 'следующего уровня'}</span>
@@ -554,6 +583,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </p>
             </div>
 
+            <!-- Лента событий -->
             <div style="background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 20px 24px; border-radius: 12px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #eaecf0;">
                 <h3 style="margin: 0 0 16px 0; font-size: 1.1rem; color: #2c3e50;">🏅 Последние события</h3>
                 ${achFeed.map(a => `
@@ -565,6 +595,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 `).join('')}
             </div>
 
+            <!-- Следующая цель -->
             <a href="${nextGoal.link}" class="goal-link">
                 <span style="font-size: 1.8rem;">${nextGoal.icon}</span>
                 <div>
@@ -574,12 +605,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="goal-arrow">→</span>
             </a>
 
+            <!-- Тепловая карта -->
             <div style="background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 20px 24px; border-radius: 12px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #eaecf0;">
                 <h3 style="margin: 0 0 4px 0; font-size: 1.1rem; color: #2c3e50;">🔥 Карта активности</h3>
                 <p style="font-size: 0.8rem; color: #999; margin: 0 0 16px 0;">Каждый квадратик — один день за последний год</p>
                 ${renderHeatmap(activityMap)}
             </div>
 
+            <!-- Графики -->
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 24px;">
                 <div style="background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 20px 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #eaecf0;">
                     <h3 style="margin: 0 0 16px 0; font-size: 1.1rem; color: #2c3e50;">📈 Общие показатели</h3>
@@ -591,11 +624,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
 
+            <!-- ==== БЛОК "ИНТЕРАКТИВ" ==== -->
+            <h3 style="color: #555; margin: 0 0 16px 0; font-size: 1.1rem;">🎮 Интерактив</h3>
+            <div class="interactive-grid" style="margin-bottom: 28px;">
+                <a href="/game/" class="interactive-card">
+                    <span class="ic-icon">🏛️</span>
+                    <span class="ic-title">Марсианская империя</span>
+                    <span class="ic-desc">Управляйте колонией, стройте базы и исследуйте планету</span>
+                </a>
+                <a href="/globe-map/" class="interactive-card">
+                    <span class="ic-icon">🗺️</span>
+                    <span class="ic-title">Карта Марса</span>
+                    <span class="ic-desc">Интерактивный глобус с метками мест из энциклопедии</span>
+                </a>
+                <a href="/interactive/exodus/" class="interactive-card">
+                    <span class="ic-icon">🪐</span>
+                    <span class="ic-title">К Исходу</span>
+                    <span class="ic-desc">Сюжетная игра с выбором пути и последствиями</span>
+                </a>
+                <a href="/translator/" class="interactive-card">
+                    <span class="ic-icon">🗣️</span>
+                    <span class="ic-title">Переводчик</span>
+                    <span class="ic-desc">Переводите слова на марсианский язык и обратно</span>
+                </a>
+                <a href="/music/constructor/" class="interactive-card">
+                    <span class="ic-icon">🎵</span>
+                    <span class="ic-title">Конструктор мелодий</span>
+                    <span class="ic-desc">Создавайте музыку из 7 нот марсианского звукоряда</span>
+                </a>
+            </div>
+
+            <!-- Ссылки -->
             <p style="margin-top: 20px; text-align: center;">
-                <a href="/profile/" style="color: #6C63FF; text-decoration: none;">← Вернуться в профиль</a>
+                <a href="/profile/" style="color: ${kingdom.color}; text-decoration: none;">← Вернуться в профиль</a>
             </p>
         `;
 
+        // ============================================================
+        // Анимация счётчиков
+        // ============================================================
         animateValue(document.getElementById('stat-level'), 0, stats.level);
         animateValue(document.getElementById('stat-xp'), 0, stats.experience);
         animateValue(document.getElementById('stat-ach'), 0, stats.achievements);
@@ -606,6 +673,9 @@ document.addEventListener('DOMContentLoaded', function() {
         animateValue(document.getElementById('stat-days'), 0, daysOnSite);
         animateValue(document.getElementById('stat-actions'), 0, totalActions);
 
+        // ============================================================
+        // Графики
+        // ============================================================
         new Chart(document.getElementById('statsChart').getContext('2d'), {
             type: 'bar',
             data: {
@@ -643,6 +713,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<p style="text-align:center;color:#999;padding:40px 0;">Пока нет данных для отображения</p>';
         }
 
+        // ============================================================
+        // Мобильные подсказки
+        // ============================================================
         document.querySelectorAll('.help-icon').forEach(icon => {
             icon.addEventListener('click', (e) => {
                 e.stopPropagation();

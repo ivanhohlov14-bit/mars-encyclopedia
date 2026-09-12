@@ -151,7 +151,7 @@ const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
 const KINGDOMS = {
     'Аркадия': { color: '#D4A574', bg: '#FDF8F0', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arcadia.png', gradient: 'linear-gradient(135deg, #D4A574, #E8C9A0)' },
-    'Ксанф': { color: '#3D3D3D', bg: '#F5F5F5', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-ksanf.png', gradient: 'linear-gradient(135deg, #3D3D3D, #6B6B6B)' },
+    'Ксанф': { color: '#3D3D3D', bg: '#F5F5F5', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-ksanf.png', gradient: 'linear-gradient(135deg, #3D3D3D, #6B6B6B)' },
     'Эдем': { color: '#F4A460', bg: '#FFF8F0', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg', gradient: 'linear-gradient(135deg, #F4A460, #F7C98A)' },
     'Эридания': { color: '#F5D76E', bg: '#FFFDF5', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png', gradient: 'linear-gradient(135deg, #F5D76E, #FAE9A0)' },
     'Кхонг': { color: '#A9A9A9', bg: '#F8F8F8', flag: 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png', gradient: 'linear-gradient(135deg, #A9A9A9, #C8C8C8)' },

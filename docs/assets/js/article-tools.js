@@ -1,4 +1,4 @@
-// article-tools.js — компактный блок внизу, перед комментариями
+// article-tools.js — компактный блок ПЕРЕД комментариями (с MutationObserver)
 (function() {
     'use strict';
 
@@ -26,9 +26,7 @@
 
     function getArticleTitle() {
         const h1 = document.querySelector('.md-content h1, article h1, h1');
-        if (h1 && h1.textContent.trim()) {
-            return h1.textContent.trim().substring(0, 200);
-        }
+        if (h1 && h1.textContent.trim()) return h1.textContent.trim().substring(0, 200);
         return document.title.split(' - ')[0].substring(0, 200) || getFullPath();
     }
 
@@ -36,10 +34,7 @@
     // Данные
     // ============================================================
     async function getStats(slug) {
-        const { data } = await client
-            .from('article_ratings')
-            .select('rating')
-            .eq('article_slug', slug);
+        const { data } = await client.from('article_ratings').select('rating').eq('article_slug', slug);
         return {
             likes: (data || []).filter(r => r.rating === 1).length,
             dislikes: (data || []).filter(r => r.rating === -1).length
@@ -47,28 +42,17 @@
     }
 
     async function getUserRating(slug, userId) {
-        const { data } = await client
-            .from('article_ratings')
-            .select('rating')
-            .eq('user_id', userId)
-            .eq('article_slug', slug)
-            .maybeSingle();
+        const { data } = await client.from('article_ratings')
+            .select('rating').eq('user_id', userId).eq('article_slug', slug).maybeSingle();
         return data?.rating || 0;
     }
 
     async function isBookmarked(slug, userId) {
-        const { data } = await client
-            .from('bookmarks')
-            .select('id')
-            .eq('user_id', userId)
-            .eq('article_slug', slug)
-            .maybeSingle();
+        const { data } = await client.from('bookmarks')
+            .select('id').eq('user_id', userId).eq('article_slug', slug).maybeSingle();
         return !!data;
     }
 
-    // ============================================================
-    // Тост
-    // ============================================================
     function showToast(message, type = 'info') {
         const colors = {
             success: 'linear-gradient(135deg, #27ae60, #16a085)',
@@ -89,9 +73,7 @@
         `;
         toast.textContent = message;
         document.body.appendChild(toast);
-        requestAnimationFrame(() => {
-            toast.style.transform = 'translateX(-50%) translateY(0)';
-        });
+        requestAnimationFrame(() => { toast.style.transform = 'translateX(-50%) translateY(0)'; });
         setTimeout(() => {
             toast.style.transform = 'translateX(-50%) translateY(100px)';
             setTimeout(() => toast.remove(), 400);
@@ -109,9 +91,7 @@
                 .eq('user_id', currentUser.id).eq('article_slug', slug);
         } else {
             await client.from('article_ratings').upsert({
-                user_id: currentUser.id,
-                article_slug: slug,
-                rating: rating
+                user_id: currentUser.id, article_slug: slug, rating: rating
             }, { onConflict: 'user_id,article_slug' });
         }
         renderWidget(slug);
@@ -126,9 +106,7 @@
             showToast('Удалено из закладок', 'info');
         } else {
             await client.from('bookmarks').insert({
-                user_id: currentUser.id,
-                article_slug: slug,
-                article_title: title
+                user_id: currentUser.id, article_slug: slug, article_title: title
             });
             showToast('✓ Добавлено в закладки', 'success');
         }
@@ -136,9 +114,9 @@
     }
 
     // ============================================================
-    // Компактный виджет (маленький, внизу)
+    // Виджет
     // ============================================================
-    async function renderWidget(slug) {
+    async function renderWidget(slug, commentsEl) {
         const old = document.getElementById('article-tools-widget');
         if (old) old.remove();
 
@@ -150,7 +128,7 @@
         const widget = document.createElement('div');
         widget.id = 'article-tools-widget';
         widget.style.cssText = `
-            margin: 24px 0 16px 0;
+            margin: 32px 0 20px 0;
             padding: 12px 16px;
             background: rgba(255,255,255,0.85);
             backdrop-filter: blur(12px);
@@ -166,75 +144,27 @@
 
         widget.innerHTML = `
             <span style="color: #666; margin-right: 4px;">Оцените:</span>
-            <button id="like-btn" style="
-                display: inline-flex; align-items: center; gap: 4px;
-                padding: 5px 12px; border-radius: 20px;
-                border: 1px solid ${userRating === 1 ? '#27ae60' : 'rgba(0,0,0,0.1)'};
-                background: ${userRating === 1 ? '#27ae60' : 'transparent'};
-                color: ${userRating === 1 ? '#fff' : '#555'};
-                font-weight: 600; font-size: 0.8rem; cursor: pointer;
-                transition: all 0.2s;
-            ">
-                👍 ${stats.likes}
-            </button>
-            <button id="dislike-btn" style="
-                display: inline-flex; align-items: center; gap: 4px;
-                padding: 5px 12px; border-radius: 20px;
-                border: 1px solid ${userRating === -1 ? '#e74c3c' : 'rgba(0,0,0,0.1)'};
-                background: ${userRating === -1 ? '#e74c3c' : 'transparent'};
-                color: ${userRating === -1 ? '#fff' : '#555'};
-                font-weight: 600; font-size: 0.8rem; cursor: pointer;
-                transition: all 0.2s;
-            ">
-                👎 ${stats.dislikes}
-            </button>
-            <button id="bookmark-btn" style="
-                display: inline-flex; align-items: center; gap: 4px;
-                padding: 5px 12px; border-radius: 20px;
-                border: 1px solid var(--kingdom-color, #6C63FF);
-                background: ${bookmarked ? 'var(--kingdom-color, #6C63FF)' : 'transparent'};
-                color: ${bookmarked ? '#fff' : 'var(--kingdom-color, #6C63FF)'};
-                font-weight: 600; font-size: 0.8rem; cursor: pointer;
-                transition: all 0.2s;
-                margin-left: auto;
-            ">
-                ${bookmarked ? '✓ В закладках' : '🔖 В закладки'}
-            </button>
+            <button id="like-btn" style="display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:20px;border:1px solid ${userRating===1?'#27ae60':'rgba(0,0,0,0.1)'};background:${userRating===1?'#27ae60':'transparent'};color:${userRating===1?'#fff':'#555'};font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">👍 ${stats.likes}</button>
+            <button id="dislike-btn" style="display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:20px;border:1px solid ${userRating===-1?'#e74c3c':'rgba(0,0,0,0.1)'};background:${userRating===-1?'#e74c3c':'transparent'};color:${userRating===-1?'#fff':'#555'};font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;">👎 ${stats.dislikes}</button>
+            <button id="bookmark-btn" style="display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:20px;border:1px solid var(--kingdom-color,#6C63FF);background:${bookmarked?'var(--kingdom-color,#6C63FF)':'transparent'};color:${bookmarked?'#fff':'var(--kingdom-color,#6C63FF)'};font-weight:600;font-size:0.8rem;cursor:pointer;transition:all 0.2s;margin-left:auto;">${bookmarked?'✓ В закладках':'🔖 В закладки'}</button>
         `;
 
-        // Ищем контейнер комментариев (более широкий поиск)
-        const commentSelectors = [
-            '#comments', '.comments', '#disqus_thread',
-            '.giscus', '.utterances', '.md-comments',
-            '[data-comments]', '.comments-container',
-            '#giscus-container', '.giscus-frame',
-            '.md-comments-container', '.article-comments'
-        ];
-
-        let commentsEl = null;
-        for (const sel of commentSelectors) {
-            commentsEl = document.querySelector(sel);
-            if (commentsEl) break;
-        }
-
-        // Пробуем найти блок с комментариями через iframe (Giscus/Disqus)
-        if (!commentsEl) {
-            const iframes = document.querySelectorAll('iframe[src*="giscus"], iframe[src*="disqus"]');
-            if (iframes.length > 0) {
-                commentsEl = iframes[0].parentElement;
-            }
-        }
-
+        // ============================================================
+        // ВСТАВКА
+        // ============================================================
         if (commentsEl && commentsEl.parentNode) {
             // Вставляем ПЕРЕД комментариями
             commentsEl.parentNode.insertBefore(widget, commentsEl);
+            console.log('✅ article-tools: вставлен перед комментариями');
         } else {
-            // Если комментариев нет — вставляем в конец контента
-            const content = document.querySelector('.md-content__inner, article, .md-content');
-            if (content) {
-                content.appendChild(widget);
+            // Fallback: вставляем ПОСЛЕ .md-content__inner (не внутрь!)
+            const content = document.querySelector('.md-content__inner');
+            if (content && content.parentNode) {
+                content.parentNode.insertBefore(widget, content.nextSibling);
+                console.log('⚠️ article-tools: комментарии не найдены, вставлен после статьи');
             } else {
                 document.body.appendChild(widget);
+                console.log('⚠️ article-tools: вставлен в body');
             }
         }
 
@@ -244,21 +174,53 @@
     }
 
     // ============================================================
-    // Ожидание появления комментариев (они грузятся асинхронно)
+    // Поиск комментариев через MutationObserver
     // ============================================================
-    function waitForComments(maxWait = 5000) {
-        return new Promise(resolve => {
-            const start = Date.now();
-            const check = setInterval(() => {
-                const found =
-                    document.querySelector('#comments, .comments, #disqus_thread, .giscus, .utterances, .md-comments') ||
-                    document.querySelector('iframe[src*="giscus"], iframe[src*="disqus"]');
-                if (found || Date.now() - start > maxWait) {
-                    clearInterval(check);
-                    resolve(found);
-                }
-            }, 200);
+    function findComments() {
+        const selectors = [
+            '#comments', '.comments', '#disqus_thread',
+            '.giscus', '.giscus-frame', '[class*="giscus"]',
+            '.utterances', '.md-comments', '.article-comments',
+            'iframe[src*="giscus"]', 'iframe[src*="disqus"]',
+            '[id*="comments"]', '[class*="comment"]'
+        ];
+        for (const sel of selectors) {
+            const el = document.querySelector(sel);
+            if (el) return el;
+        }
+        return null;
+    }
+
+    function waitForCommentsAndRender(slug, maxWait = 6000) {
+        // 1. Проверяем сразу
+        const immediate = findComments();
+        if (immediate) {
+            renderWidget(slug, immediate);
+            return;
+        }
+
+        // 2. MutationObserver — ждём появления
+        let done = false;
+        const observer = new MutationObserver(() => {
+            if (done) return;
+            const el = findComments();
+            if (el) {
+                done = true;
+                observer.disconnect();
+                clearTimeout(timeout);
+                renderWidget(slug, el);
+            }
         });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        // 3. Таймаут — вставляем без комментариев
+        const timeout = setTimeout(() => {
+            if (done) return;
+            done = true;
+            observer.disconnect();
+            renderWidget(slug, null);
+        }, maxWait);
     }
 
     // ============================================================
@@ -277,20 +239,13 @@
 
         const slug = getFullPath();
 
-        // Ждём загрузки контента
+        // Ждём загрузки основного контента
         let attempts = 0;
-        const waitContent = setInterval(async () => {
-            const content = document.querySelector('.md-content__inner, article, .md-content');
-            if (content || attempts > 20) {
+        const waitContent = setInterval(() => {
+            const content = document.querySelector('.md-content__inner');
+            if (content || attempts > 25) {
                 clearInterval(waitContent);
-
-                // Ждём появления комментариев
-                await waitForComments(3000);
-
-                // Небольшая задержка чтобы комментарии точно встали на место
-                setTimeout(() => {
-                    renderWidget(slug);
-                }, 300);
+                waitForCommentsAndRender(slug);
             }
             attempts++;
         }, 200);

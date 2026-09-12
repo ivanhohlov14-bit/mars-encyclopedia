@@ -1,11 +1,10 @@
-// article-tools.js — закладки + лайки внизу, перед комментариями
+// article-tools.js — компактный блок внизу, перед комментариями
 (function() {
     'use strict';
 
     const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
-    // Страницы, где НЕ показываем блок
     const EXCLUDED_PATHS = [
         '/', '/index/', '/profile/', '/login/', '/register/',
         '/stats/', '/game/', '/profile-view/', '/moderator/',
@@ -34,7 +33,7 @@
     }
 
     // ============================================================
-    // Данные из БД
+    // Данные
     // ============================================================
     async function getStats(slug) {
         const { data } = await client
@@ -81,8 +80,8 @@
             position: fixed; bottom: 30px; left: 50%;
             transform: translateX(-50%) translateY(100px);
             background: ${colors[type] || colors.info};
-            color: #fff; padding: 14px 28px; border-radius: 30px;
-            font-weight: 600; font-size: 0.95rem;
+            color: #fff; padding: 10px 22px; border-radius: 30px;
+            font-weight: 600; font-size: 0.85rem;
             box-shadow: 0 12px 32px rgba(0,0,0,0.3);
             z-index: 99999;
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -96,7 +95,7 @@
         setTimeout(() => {
             toast.style.transform = 'translateX(-50%) translateY(100px)';
             setTimeout(() => toast.remove(), 400);
-        }, 2200);
+        }, 2000);
     }
 
     // ============================================================
@@ -137,7 +136,7 @@
     }
 
     // ============================================================
-    // Единый виджет: закладка + лайки внизу
+    // Компактный виджет (маленький, внизу)
     // ============================================================
     async function renderWidget(slug) {
         const old = document.getElementById('article-tools-widget');
@@ -151,76 +150,115 @@
         const widget = document.createElement('div');
         widget.id = 'article-tools-widget';
         widget.style.cssText = `
-            margin: 40px 0 24px 0;
-            padding: 24px 28px;
+            margin: 24px 0 16px 0;
+            padding: 12px 16px;
             background: rgba(255,255,255,0.85);
             backdrop-filter: blur(12px);
-            border-radius: 16px;
-            border: 2px solid var(--kingdom-color, #6C63FF);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            border-radius: 12px;
+            border: 1px solid var(--kingdom-color, #6C63FF);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 8px;
             flex-wrap: wrap;
+            font-size: 0.85rem;
         `;
 
         widget.innerHTML = `
-            <div style="font-size: 1rem; font-weight: 700; color: #1a1a1a; margin-right: auto;">
-                Понравилась статья?
-            </div>
+            <span style="color: #666; margin-right: 4px;">Оцените:</span>
             <button id="like-btn" style="
-                display: inline-flex; align-items: center; gap: 8px;
-                padding: 12px 22px; border-radius: 30px;
-                border: 2px solid ${userRating === 1 ? '#27ae60' : 'rgba(0,0,0,0.1)'};
-                background: ${userRating === 1 ? 'linear-gradient(135deg, #27ae60, #16a085)' : 'rgba(255,255,255,0.9)'};
-                color: ${userRating === 1 ? '#fff' : '#333'};
-                font-weight: 700; font-size: 1rem; cursor: pointer;
-                transition: all 0.3s;
+                display: inline-flex; align-items: center; gap: 4px;
+                padding: 5px 12px; border-radius: 20px;
+                border: 1px solid ${userRating === 1 ? '#27ae60' : 'rgba(0,0,0,0.1)'};
+                background: ${userRating === 1 ? '#27ae60' : 'transparent'};
+                color: ${userRating === 1 ? '#fff' : '#555'};
+                font-weight: 600; font-size: 0.8rem; cursor: pointer;
+                transition: all 0.2s;
             ">
-                <span style="font-size: 1.3rem;">👍</span>
-                <span>${stats.likes}</span>
+                👍 ${stats.likes}
             </button>
             <button id="dislike-btn" style="
-                display: inline-flex; align-items: center; gap: 8px;
-                padding: 12px 22px; border-radius: 30px;
-                border: 2px solid ${userRating === -1 ? '#e74c3c' : 'rgba(0,0,0,0.1)'};
-                background: ${userRating === -1 ? 'linear-gradient(135deg, #e74c3c, #c0392b)' : 'rgba(255,255,255,0.9)'};
-                color: ${userRating === -1 ? '#fff' : '#333'};
-                font-weight: 700; font-size: 1rem; cursor: pointer;
-                transition: all 0.3s;
+                display: inline-flex; align-items: center; gap: 4px;
+                padding: 5px 12px; border-radius: 20px;
+                border: 1px solid ${userRating === -1 ? '#e74c3c' : 'rgba(0,0,0,0.1)'};
+                background: ${userRating === -1 ? '#e74c3c' : 'transparent'};
+                color: ${userRating === -1 ? '#fff' : '#555'};
+                font-weight: 600; font-size: 0.8rem; cursor: pointer;
+                transition: all 0.2s;
             ">
-                <span style="font-size: 1.3rem;">👎</span>
-                <span>${stats.dislikes}</span>
+                👎 ${stats.dislikes}
             </button>
             <button id="bookmark-btn" style="
-                display: inline-flex; align-items: center; gap: 8px;
-                padding: 12px 22px; border-radius: 30px;
-                border: 2px solid var(--kingdom-color, #6C63FF);
-                background: ${bookmarked ? 'var(--kingdom-color, #6C63FF)' : 'rgba(255,255,255,0.9)'};
+                display: inline-flex; align-items: center; gap: 4px;
+                padding: 5px 12px; border-radius: 20px;
+                border: 1px solid var(--kingdom-color, #6C63FF);
+                background: ${bookmarked ? 'var(--kingdom-color, #6C63FF)' : 'transparent'};
                 color: ${bookmarked ? '#fff' : 'var(--kingdom-color, #6C63FF)'};
-                font-weight: 700; font-size: 0.95rem; cursor: pointer;
-                transition: all 0.3s;
+                font-weight: 600; font-size: 0.8rem; cursor: pointer;
+                transition: all 0.2s;
+                margin-left: auto;
             ">
-                <span style="font-size: 1.2rem;">${bookmarked ? '✓' : '🔖'}</span>
-                <span>${bookmarked ? 'В закладках' : 'В закладки'}</span>
+                ${bookmarked ? '✓ В закладках' : '🔖 В закладки'}
             </button>
         `;
 
-        // Вставляем перед комментариями или в конец контента
-        const comments = document.querySelector('#comments, .comments, #disqus_thread, .giscus, .md-comments');
-        const content = document.querySelector('.md-content__inner, article, .md-content');
+        // Ищем контейнер комментариев (более широкий поиск)
+        const commentSelectors = [
+            '#comments', '.comments', '#disqus_thread',
+            '.giscus', '.utterances', '.md-comments',
+            '[data-comments]', '.comments-container',
+            '#giscus-container', '.giscus-frame',
+            '.md-comments-container', '.article-comments'
+        ];
 
-        if (comments && comments.parentNode) {
-            comments.parentNode.insertBefore(widget, comments);
-        } else if (content) {
-            content.appendChild(widget);
+        let commentsEl = null;
+        for (const sel of commentSelectors) {
+            commentsEl = document.querySelector(sel);
+            if (commentsEl) break;
+        }
+
+        // Пробуем найти блок с комментариями через iframe (Giscus/Disqus)
+        if (!commentsEl) {
+            const iframes = document.querySelectorAll('iframe[src*="giscus"], iframe[src*="disqus"]');
+            if (iframes.length > 0) {
+                commentsEl = iframes[0].parentElement;
+            }
+        }
+
+        if (commentsEl && commentsEl.parentNode) {
+            // Вставляем ПЕРЕД комментариями
+            commentsEl.parentNode.insertBefore(widget, commentsEl);
         } else {
-            document.body.appendChild(widget);
+            // Если комментариев нет — вставляем в конец контента
+            const content = document.querySelector('.md-content__inner, article, .md-content');
+            if (content) {
+                content.appendChild(widget);
+            } else {
+                document.body.appendChild(widget);
+            }
         }
 
         widget.querySelector('#like-btn').onclick = () => rateArticle(slug, 1);
         widget.querySelector('#dislike-btn').onclick = () => rateArticle(slug, -1);
         widget.querySelector('#bookmark-btn').onclick = () => toggleBookmark(slug, title);
+    }
+
+    // ============================================================
+    // Ожидание появления комментариев (они грузятся асинхронно)
+    // ============================================================
+    function waitForComments(maxWait = 5000) {
+        return new Promise(resolve => {
+            const start = Date.now();
+            const check = setInterval(() => {
+                const found =
+                    document.querySelector('#comments, .comments, #disqus_thread, .giscus, .utterances, .md-comments') ||
+                    document.querySelector('iframe[src*="giscus"], iframe[src*="disqus"]');
+                if (found || Date.now() - start > maxWait) {
+                    clearInterval(check);
+                    resolve(found);
+                }
+            }, 200);
+        });
     }
 
     // ============================================================
@@ -245,7 +283,14 @@
             const content = document.querySelector('.md-content__inner, article, .md-content');
             if (content || attempts > 20) {
                 clearInterval(waitContent);
-                await renderWidget(slug);
+
+                // Ждём появления комментариев
+                await waitForComments(3000);
+
+                // Небольшая задержка чтобы комментарии точно встали на место
+                setTimeout(() => {
+                    renderWidget(slug);
+                }, 300);
             }
             attempts++;
         }, 200);

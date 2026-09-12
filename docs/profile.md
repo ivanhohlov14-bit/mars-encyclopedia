@@ -31,7 +31,6 @@ comments: false
 .pf-name{font-size:2rem;font-weight:800;margin:0 0 6px 0;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;letter-spacing:-.5px}
 .pf-role-badge{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;box-shadow:0 4px 12px rgba(243,156,18,.4)}
 .pf-guild-badge{background:rgba(255,255,255,.25);backdrop-filter:blur(8px);color:#fff;padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;display:inline-flex;align-items:center;gap:4px;border:1px solid rgba(255,255,255,.3);cursor:pointer}
-.pf-guild-badge:hover{background:rgba(255,255,255,.35)}
 .pf-email{font-size:.9rem;opacity:.85;margin:0 0 16px 0}
 .pf-stats-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px}
 .pf-stat-mini{display:flex;flex-direction:column;gap:2px}
@@ -41,11 +40,8 @@ comments: false
 .pf-progress-bar{height:100%;background:#fff;border-radius:12px;transition:width 1.2s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(255,255,255,.6)}
 .pf-progress-text{font-size:.78rem;opacity:.9}
 .pf-quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
-.pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s cubic-bezier(.16,1,.3,1);box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer;position:relative;overflow:hidden}
-.pf-quick-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,var(--kingdom-color) 0,transparent 70%);opacity:0;transition:opacity .3s;z-index:0}
+.pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s cubic-bezier(.16,1,.3,1);box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer}
 .pf-quick-card:hover{transform:translateY(-4px);border-color:var(--kingdom-color);box-shadow:0 12px 32px -8px var(--kingdom-shadow)}
-.pf-quick-card:hover::before{opacity:.08}
-.pf-quick-card>*{position:relative;z-index:1}
 .pf-quick-icon{font-size:1.8rem;filter:drop-shadow(0 3px 6px rgba(0,0,0,.15));transition:transform .3s}
 .pf-quick-card:hover .pf-quick-icon{transform:scale(1.15) rotate(-6deg)}
 .pf-quick-body{flex:1;min-width:0}
@@ -104,13 +100,13 @@ comments: false
 .pf-cal-day{font-size:2.5rem;font-weight:900;color:#1a1a1a;line-height:1;margin:6px 0}
 .pf-cal-year{font-size:.9rem;color:#666;font-weight:600}
 .pf-cal-season{display:inline-block;margin-top:12px;padding:5px 16px;background:var(--kingdom-color);color:#fff;border-radius:20px;font-size:.78rem;font-weight:700}
-.pf-guild-hero{background:linear-gradient(135deg,var(--guild-color,var(--kingdom-color)),rgba(255,255,255,.1));border-radius:16px;padding:24px 26px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:0 12px 32px -8px var(--guild-color,var(--kingdom-shadow))}
+.pf-guild-hero{background:linear-gradient(135deg,var(--guild-color,var(--kingdom-color)),rgba(255,255,255,.1));border-radius:16px;padding:24px 26px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .pf-guild-icon{width:70px;height:70px;border-radius:16px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:2.4rem;border:2px solid rgba(255,255,255,.4);flex-shrink:0}
 .pf-guild-info{flex:1;min-width:150px}
 .pf-guild-name{font-size:1.4rem;font-weight:800;margin:0 0 4px 0}
 .pf-guild-meta{font-size:.82rem;opacity:.9;display:flex;gap:12px;flex-wrap:wrap}
 .pf-notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
-.pf-note{background:#fff;border-radius:12px;padding:16px;border-left:4px solid var(--note-color,var(--kingdom-color));box-shadow:0 4px 12px rgba(0,0,0,.06);transition:all .25s;cursor:pointer;position:relative;min-height:120px;display:flex;flex-direction:column}
+.pf-note{background:#fff;border-radius:12px;padding:16px;border-left:4px solid var(--note-color,var(--kingdom-color));box-shadow:0 4px 12px rgba(0,0,0,.06);transition:all .25s;cursor:pointer;min-height:120px;display:flex;flex-direction:column}
 .pf-note:hover{transform:translateY(-3px);box-shadow:0 12px 28px -8px var(--kingdom-shadow)}
 .pf-note.pinned{box-shadow:0 8px 24px -4px rgba(243,156,18,.4);border-left-color:#f39c12}
 .pf-note-title{font-weight:800;font-size:.95rem;color:#1a1a1a;margin-bottom:6px}
@@ -156,6 +152,24 @@ comments: false
 (function(){
     'use strict';
 
+    // ============================================================
+    // РАЗБЛОКИРОВКА СКРОЛЛА (очень важно!)
+    // ============================================================
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.height = '';
+
+    // Проверка каждые 2 сек — если какой-то модал забыл разблокировать скролл
+    setInterval(function(){
+        if(document.body.style.overflow === 'hidden'){
+            var hasModal = document.querySelector('#mars-intro-overlay, #dl-overlay, #daily-modal-overlay');
+            if(!hasModal){
+                document.body.style.overflow = '';
+            }
+        }
+    }, 2000);
+
     var SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     var SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
@@ -183,8 +197,6 @@ comments: false
 
     var NOTE_COLORS = ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63'];
     var THEME_COLORS = ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63','#34495e','#e67e22'];
-
-    var BAD_WORDS = ['хуй','пизда','хуе','ебал','ебать','бля','сука','нахуй','пиздец','залупа','мудила','гандон','блядь','пидор','гей','лох','дебил','идиот','кретин','секс','порно','эротика','трахать','член','fuck','shit','asshole','bitch','cunt','dick','pussy'];
 
     var LEVEL_MAP = [
         {level:1,xp:0,title:'🌱 Новый поселенец'},
@@ -300,7 +312,7 @@ comments: false
     async function getSessionSafe(maxAttempts){
         maxAttempts=maxAttempts||20;
         for(var i=0;i<maxAttempts;i++){
-            if(window.marsSession&&window.marsSession.ready){
+            if(window.marsSession&&window.marsSession.ready&&window.marsSession.user){
                 return {user:window.marsSession.user};
             }
             await new Promise(function(r){setTimeout(r,200);});
@@ -441,8 +453,7 @@ comments: false
         var streakBlock=streak>0?'<div class="pf-stat-mini"><span class="pf-sm-label">Серия</span><span class="pf-sm-value">🔥 '+streak+'</span></div>':'';
 
         var html='';
-        html+='<div class="pf-hero pf-fade">';
-        html+='<div class="pf-hero-content">';
+        html+='<div class="pf-hero pf-fade"><div class="pf-hero-content">';
         html+='<div class="pf-avatar-wrap"><img src="'+avatar+'" alt="" class="pf-avatar"><div class="pf-level-badge">'+lvl.title+'</div></div>';
         html+='<div class="pf-info">';
         html+='<h1 class="pf-name">'+escapeHtml(displayName)+' '+roleBadge+' '+guildBadge+'</h1>';
@@ -512,7 +523,7 @@ comments: false
             html+='<div class="pf-guild-hero" style="--guild-color:'+(guild.color||'var(--kingdom-color)')+';">';
             html+='<div class="pf-guild-icon">'+(guild.icon||'🏰')+'</div>';
             html+='<div class="pf-guild-info"><h2 class="pf-guild-name">'+escapeHtml(guild.name)+'</h2>';
-            html+='<div class="pf-guild-meta"><span>👥 '+guildMembers.length+' участников</span><span>👑 '+((guildMembers.find(function(m){return m.role==='leader';})||{}).profile||{}).display_name||'Лидер'+'</span></div></div></div>';
+            html+='<div class="pf-guild-meta"><span>👥 '+guildMembers.length+' участников</span></div></div></div>';
             html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📜</span> Описание</h3><p style="margin:0;color:#555;line-height:1.6;">'+escapeHtml(guild.description||'Без описания')+'</p></div>';
             html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Участники</h3>';
             guildMembers.forEach(function(m){
@@ -606,18 +617,16 @@ comments: false
 
         // БЕЗОПАСНОСТЬ
         html+='<div class="pf-tab-content" data-content="security">';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email-двухфакторная аутентификация</h3>';
+        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email-2FA</h3>';
         html+='<p style="color:#666;font-size:.9rem;line-height:1.6;margin:0 0 16px 0;">При входе с <b>нового устройства</b> вам на почту придёт код из 6 цифр.</p>';
         html+='<div id="pf-2fa-status" style="margin-bottom:20px;"></div>';
         html+='<div class="pf-toggle"><div><div class="pf-toggle-label">🔐 Email-2FA</div><div class="pf-toggle-desc">Запрашивать код при входе с новых устройств</div></div><div class="pf-switch" id="pf-switch-2fa" onclick="pfToggle2FA()"></div></div>';
         html+='</div>';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📱</span> Доверенные устройства</h3>';
-        html+='<p style="color:#666;font-size:.9rem;line-height:1.6;margin:0 0 16px 0;">Устройства, где вы уже подтвердили вход.</p>';
         html+='<div id="pf-trusted-devices"><p style="color:#888;">Загрузка...</p></div>';
         html+='<button class="pf-btn pf-btn-outline" onclick="pfClearTrustedDevices()" style="margin-top:12px;">🗑️ Удалить все устройства</button>';
         html+='</div>';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔑</span> Смена пароля</h3>';
-        html+='<p style="color:#666;font-size:.9rem;line-height:1.6;margin:0 0 16px 0;">Регулярно меняйте пароль для безопасности.</p>';
         html+='<button class="pf-btn" onclick="pfChangePassword()">🔐 Сменить пароль</button>';
         html+='</div></div>';
 
@@ -659,10 +668,8 @@ comments: false
         html+='<div style="text-align:center;margin-top:16px;"><img src="'+kingdom.flag+'" alt="" style="width:80px;border-radius:6px;border:1px solid #a2a9b1;"><div style="font-size:.72rem;color:#666;margin-top:4px;">Флаг '+(currentProfile.kingdom||'Эдем')+'</div></div>';
         html+='</div>';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📤</span> Экспорт данных</h3>';
-        html+='<p style="color:#666;font-size:.9rem;margin:0 0 12px 0;">Скачайте все свои данные в формате JSON.</p>';
         html+='<button class="pf-btn pf-btn-outline" onclick="pfExportData()">📥 Скачать данные</button></div>';
         html+='<div class="pf-card pf-danger"><h3 class="pf-card-title" style="color:#c0392b;"><span class="pf-ct-icon">⚠️</span> Опасная зона</h3>';
-        html+='<p style="color:#888;font-size:.9rem;margin:0 0 16px 0;">Удаление аккаунта необратимо.</p>';
         html+='<button class="pf-btn pf-btn-danger" onclick="pfDeleteAccount()">🗑️ Удалить аккаунт</button></div>';
         html+='<div class="pf-card"><button class="pf-btn pf-btn-outline" onclick="pfLogout()" style="width:100%;justify-content:center;">🚪 Выйти</button></div>';
         html+='</div>';
@@ -677,9 +684,6 @@ comments: false
 
         renderNoteColors();
         renderThemeColors();
-        if(document.querySelector('.pf-tab[data-tab="security"]').classList.contains('active')){
-            render2FATab();
-        }
 
         document.querySelectorAll('.pf-tab').forEach(function(tab){
             tab.onclick=function(){pfSetTab(tab.dataset.tab);};
@@ -719,7 +723,7 @@ comments: false
                 var devices=devRes.data||[];
                 if(devices.length>0){
                     devicesEl.innerHTML=devices.map(function(d){
-                        var isPhone=d.device_name&&(d.device_name.includes('iPhone')||d.device_name.includes('Android'));
+                        var isPhone=d.device_name&&(d.device_name.indexOf('iPhone')>=0||d.device_name.indexOf('Android')>=0);
                         return '<div class="pf-notif"><div class="pf-notif-icon">'+(isPhone?'📱':'💻')+'</div><div style="flex:1;"><div class="pf-notif-text"><b>'+escapeHtml(d.device_name||'Устройство')+'</b></div><div class="pf-notif-date">Последний раз: '+new Date(d.last_used).toLocaleString('ru-RU')+'</div></div><button class="pf-note-btn danger" onclick="pfRemoveDevice('+d.id+')">✕</button></div>';
                     }).join('');
                 }else{
@@ -855,23 +859,23 @@ comments: false
     window.pfViewProfile=function(id){window.location.href='/profile-view/?user_id='+id;};
 
     window.pfEditBio=async function(){
-        var cur=document.getElementById('bio-text')?document.getElementById('bio-text').innerText:'';
+        var el=document.getElementById('bio-text');
+        var cur=el?el.innerText:'';
         var nb=prompt('Введите биографию:',cur);
         if(nb===null) return;
         var res=await client.from('profiles').update({bio:nb.trim()}).eq('user_id',currentUser.id);
         if(res.error){showToast('Ошибка: '+res.error.message,'error');return;}
-        document.getElementById('bio-text').innerText=nb.trim();
+        if(el) el.innerText=nb.trim();
         showToast('✅ Биография обновлена!','success');
     };
 
     window.pfEditName=async function(){
-        var cur=document.getElementById('pf-display-name')?document.getElementById('pf-display-name').innerText:'';
+        var el=document.getElementById('pf-display-name');
+        var cur=el?el.innerText:'';
         var nn=prompt('Новое имя (2-20 символов, латиница):',cur);
         if(!nn||nn===cur) return;
         if(nn.length<2||nn.length>20){showToast('Имя 2-20 символов','warning');return;}
         if(!/^[a-zA-Z0-9\s\-_]+$/.test(nn)){showToast('Только латиница','warning');return;}
-        var lower=nn.toLowerCase();
-        for(var i=0;i<BAD_WORDS.length;i++) if(lower.indexOf(BAD_WORDS[i])>=0){showToast('Недопустимое слово','error');return;}
         var res=await client.from('profiles').update({display_name:nn.trim()}).eq('user_id',currentUser.id);
         if(res.error){showToast('Ошибка: '+res.error.message,'error');return;}
         showToast('✅ Имя обновлено!','success');

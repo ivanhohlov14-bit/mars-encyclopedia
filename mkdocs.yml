@@ -39,6 +39,7 @@ extra_javascript:
   - assets/js/article-tools.js
   - assets/js/daily-reward.js
   - assets/js/streak-widget.js
+  - assets/js/intro.js
 
 extra_head:
   - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

@@ -5,13 +5,10 @@
 </div>
 
 <style>
-    /* ============================================================
-       БАЗОВЫЕ СТИЛИ
-       ============================================================ */
     .stat-card {
         background: rgba(255, 255, 255, 0.92);
         backdrop-filter: blur(8px);
-        padding: 20px;
+        padding: 20px 16px;
         border-radius: 12px;
         text-align: center;
         box-shadow: 0 2px 8px rgba(0,0,0,0.06);
@@ -24,27 +21,25 @@
         box-shadow: 0 6px 16px rgba(0,0,0,0.1);
     }
     .stat-card .stat-value {
-        font-size: 2rem;
+        font-size: 1.9rem;
         font-weight: 700;
         line-height: 1.1;
     }
     .stat-card .stat-label {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         color: #888;
         margin-top: 4px;
     }
     .stat-card .stat-icon {
-        font-size: 1.4rem;
-        margin-bottom: 6px;
+        font-size: 1.3rem;
+        margin-bottom: 4px;
     }
 
-    /* ============================================================
-       ИКОНКА ВОПРОСА С ПОДСКАЗКОЙ
-       ============================================================ */
+    /* Иконка вопроса */
     .help-icon {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        top: 8px;
+        right: 8px;
         width: 18px;
         height: 18px;
         border-radius: 50%;
@@ -58,54 +53,47 @@
         cursor: help;
         opacity: 0.7;
         transition: opacity 0.2s, transform 0.2s;
+        z-index: 10;
     }
-    .help-icon:hover {
-        opacity: 1;
-        transform: scale(1.15);
-    }
+    .help-icon:hover { opacity: 1; transform: scale(1.15); }
     .tooltip {
         position: absolute;
         top: 100%;
-        right: 0;
+        right: -10px;
         margin-top: 8px;
         background: #2c3e50;
         color: #fff;
         padding: 10px 14px;
         border-radius: 8px;
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         line-height: 1.5;
-        width: 240px;
+        width: 230px;
         z-index: 100;
         opacity: 0;
         visibility: hidden;
         transform: translateY(-5px);
         transition: all 0.2s;
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        pointer-events: none;
+        text-align: left;
+        font-weight: normal;
     }
     .tooltip::before {
         content: '';
         position: absolute;
         top: -6px;
-        right: 12px;
-        width: 0;
-        height: 0;
+        right: 15px;
         border-left: 6px solid transparent;
         border-right: 6px solid transparent;
         border-bottom: 6px solid #2c3e50;
     }
     .help-icon:hover .tooltip,
-    .help-icon:focus .tooltip,
     .help-icon.active .tooltip {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
-        pointer-events: auto;
     }
 
-    /* ============================================================
-       ТЕПЛОВАЯ КАРТА
-       ============================================================ */
+    /* Тепловая карта */
     .heatmap-wrapper { overflow-x: auto; padding: 8px 0; }
     .heatmap-grid {
         display: grid;
@@ -115,74 +103,41 @@
         min-width: 780px;
     }
     .heatmap-cell {
-        width: 12px;
-        height: 12px;
+        width: 12px; height: 12px;
         border-radius: 2px;
         background: #ebedf0;
         transition: transform 0.1s;
     }
-    .heatmap-cell:hover {
-        transform: scale(1.4);
-        outline: 1px solid #333;
-    }
+    .heatmap-cell:hover { transform: scale(1.4); outline: 1px solid #333; }
     .heatmap-cell[data-level="1"] { background: #c6e48b; }
     .heatmap-cell[data-level="2"] { background: #7bc96f; }
     .heatmap-cell[data-level="3"] { background: #239a3b; }
     .heatmap-cell[data-level="4"] { background: #196127; }
-
     .heatmap-legend {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 4px;
-        font-size: 0.75rem;
-        color: #999;
-        margin-top: 8px;
+        display: flex; align-items: center; justify-content: flex-end;
+        gap: 4px; font-size: 0.75rem; color: #999; margin-top: 8px;
     }
     .heatmap-legend .cell { width: 10px; height: 10px; border-radius: 2px; }
 
-    /* ============================================================
-       РАНГ
-       ============================================================ */
     .rank-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 20px;
-        border-radius: 30px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        background: linear-gradient(135deg, #f39c12, #e74c3c);
+        display: inline-flex; align-items: center; gap: 10px;
+        padding: 10px 20px; border-radius: 30px;
+        font-size: 1.1rem; font-weight: 600;
+        background: rgba(255,255,255,0.2);
         color: #fff;
-        box-shadow: 0 4px 16px rgba(243, 156, 18, 0.4);
     }
     .rank-badge .rank-icon { font-size: 1.6rem; }
 
-    /* ============================================================
-       ЛЕНТА ДОСТИЖЕНИЙ
-       ============================================================ */
     .achievement-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 10px 14px;
-        border-radius: 8px;
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 14px; border-radius: 8px;
         background: rgba(255,255,255,0.6);
         border-left: 3px solid #6C63FF;
         margin-bottom: 8px;
     }
     .achievement-item .ach-icon { font-size: 1.4rem; }
     .achievement-item .ach-text { flex: 1; font-size: 0.9rem; }
-    .achievement-item .ach-date { font-size: 0.75rem; color: #999; }
-
-    /* ============================================================
-       АНИМАЦИИ
-       ============================================================ */
-    @keyframes pulseGlow {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.6); }
-        50% { box-shadow: 0 0 20px 4px rgba(108, 99, 255, 0.4); }
-    }
-    .level-pulse { animation: pulseGlow 2s infinite; }
+    .achievement-item .ach-date { font-size: 0.75rem; color: #999; white-space: nowrap; }
 
     @keyframes fadeInUp {
         from { opacity: 0; transform: translateY(10px); }
@@ -190,35 +145,38 @@
     }
     .fade-in { animation: fadeInUp 0.5s ease; }
 
-    /* ============================================================
-       ТЁМНАЯ ТЕМА
-       ============================================================ */
+    /* Ссылка-цель */
+    .goal-link {
+        display: flex; align-items: center; gap: 12px;
+        padding: 16px 20px; border-radius: 12px;
+        background: linear-gradient(135deg, #6C63FF, #a29bfe);
+        color: #fff; text-decoration: none;
+        margin-bottom: 28px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+    }
+    .goal-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        color: #fff;
+    }
+    .goal-link .goal-arrow {
+        margin-left: auto; font-size: 1.5rem;
+        transition: transform 0.2s;
+    }
+    .goal-link:hover .goal-arrow { transform: translateX(4px); }
+
     @media (prefers-color-scheme: dark) {
         .stat-card {
             background: rgba(30, 30, 46, 0.92);
             border-color: #2a2a3a;
         }
-        .stat-card .stat-label { color: #888; }
         .heatmap-cell { background: #2a2a3a; }
         .heatmap-cell[data-level="1"] { background: #0e4429; }
         .heatmap-cell[data-level="2"] { background: #006d32; }
         .heatmap-cell[data-level="3"] { background: #26a641; }
         .heatmap-cell[data-level="4"] { background: #39d353; }
         .achievement-item { background: rgba(30,30,46,0.6); }
-    }
-
-    /* ============================================================
-       ФОН СТРАНИЦЫ (подстраивается под профиль)
-       ============================================================ */
-    #stats-bg-overlay {
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        z-index: 0;
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        opacity: 0.25;
-        pointer-events: none;
     }
 </style>
 
@@ -228,17 +186,17 @@ const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
 const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
 // ============================================================
-// 1. РАНГИ ПО УРОВНЮ
+// 1. РАНГИ (исправлены пороги — Легенда Марса с 6 уровня)
 // ============================================================
 const RANKS = [
-    { minLevel: 1, icon: '🥚', name: 'Новичок',     color: '#95a5a6', gradient: ['#95a5a6', '#7f8c8d'] },
-    { minLevel: 2, icon: '🚀', name: 'Исследователь',color: '#3498db', gradient: ['#3498db', '#2980b9'] },
-    { minLevel: 3, icon: '⛏️', name: 'Поселенец',   color: '#27ae60', gradient: ['#27ae60', '#229954'] },
-    { minLevel: 4, icon: '🏠', name: 'Колонизатор',  color: '#16a085', gradient: ['#16a085', '#138d75'] },
-    { minLevel: 5, icon: '⚡', name: 'Командир базы',color: '#f39c12', gradient: ['#f39c12', '#d68910'] },
-    { minLevel: 6, icon: '🌟', name: 'Хранитель',    color: '#9b59b6', gradient: ['#9b59b6', '#7d3c98'] },
-    { minLevel: 8, icon: '👑', name: 'Легенда Марса',color: '#e74c3c', gradient: ['#e74c3c', '#c0392b'] },
-    { minLevel: 10, icon: '🔥', name: 'Бессмертный', color: '#e67e22', gradient: ['#e67e22', '#ca6f1e'] }
+    { minLevel: 1,  icon: '🥚', name: 'Новичок',       gradient: ['#95a5a6', '#7f8c8d'] },
+    { minLevel: 2,  icon: '🚀', name: 'Исследователь', gradient: ['#3498db', '#2980b9'] },
+    { minLevel: 3,  icon: '⛏️', name: 'Поселенец',     gradient: ['#27ae60', '#229954'] },
+    { minLevel: 4,  icon: '🏠', name: 'Колонизатор',   gradient: ['#16a085', '#138d75'] },
+    { minLevel: 5,  icon: '⚡', name: 'Командир базы', gradient: ['#f39c12', '#d68910'] },
+    { minLevel: 6,  icon: '👑', name: 'Легенда Марса', gradient: ['#e74c3c', '#c0392b'] },
+    { minLevel: 8,  icon: '🌟', name: 'Хранитель',     gradient: ['#9b59b6', '#7d3c98'] },
+    { minLevel: 10, icon: '🔥', name: 'Бессмертный',   gradient: ['#e67e22', '#ca6f1e'] }
 ];
 
 function getRank(level) {
@@ -250,15 +208,19 @@ function getRank(level) {
 }
 
 // ============================================================
-// 2. ТЕКСТЫ ПОДСКАЗОК
+// 2. ПОДСКАЗКИ
 // ============================================================
 const HELP_TEXTS = {
-    level: '⭐ <b>Уровень</b><br>Растёт автоматически при накоплении опыта. Каждый новый уровень открывает новый ранг и достижения.',
+    level: '⭐ <b>Уровень</b><br>Растёт при накоплении опыта. Каждый уровень открывает новый ранг и достижения.',
     xp: '💎 <b>Опыт (XP)</b><br>Начисляется за:<br>• чтение статей (+5 XP)<br>• прохождение викторин (+20 XP)<br>• посещение новых мест (+10 XP)<br>• ежедневный вход (+2 XP)',
-    achievements: '🏆 <b>Достижения</b><br>Выдаются автоматически за:<br>• достижение уровней<br>• прохождение викторин<br>• исследование новых территорий<br>• серии посещений',
-    places: '📍 <b>Посещено мест</b><br>Считаются уникальные статьи, которые вы открыли. За каждое новое место +10 XP.',
-    seas: '🌊 <b>Найдено морей</b><br>Все водоёмы Марса: Ацидалийское, Аргида и другие. Найди их все, чтобы получить достижение «Мореплаватель».',
-    quiz: '🧠 <b>Пройдено викторин</b><br>Викторины находятся в разделе «Интерактив». За каждую пройденную викторину +20 XP и шанс получить редкое достижение.'
+    achievements: '🏆 <b>Достижения</b><br>Выдаются за уровни, викторины, исследование территорий и серии посещений.',
+    places: '📍 <b>Посещено мест</b><br>Уникальные статьи, которые вы открыли. За каждое новое место +10 XP.',
+    articles: '📖 <b>Прочитано статей</b><br>Общее количество открытий статей (включая повторные). Чем чаще читаете — тем больше опыта!',
+    quiz: '🧠 <b>Пройдено викторин</b><br>Викторины в разделе «Интерактив». За каждую +20 XP и шанс получить редкое достижение.',
+    streak: '🔥 <b>Серия дней</b><br>Сколько дней подряд вы заходите на сайт. Не прерывайте серию — за 7 дней подряд дают достижение!',
+    days: '📅 <b>Дней на сайте</b><br>Сколько дней прошло с момента регистрации. Чем дольше вы с нами — тем больше бонусов.',
+    actions: '🎯 <b>Всего действий</b><br>Сумма всех ваших действий: визиты, достижения, викторины. Показатель вашей активности.',
+    time: '⏱️ <b>Время чтения</b><br>Примерное время, проведённое за чтением статей (по 1.5 минуты на статью).'
 };
 
 // ============================================================
@@ -292,7 +254,6 @@ function renderHeatmap(activityMap) {
     const start = new Date(today);
     start.setDate(start.getDate() - 364);
     start.setDate(start.getDate() - start.getDay());
-
     const days = [];
     const cursor = new Date(start);
     while (cursor <= today) {
@@ -300,21 +261,16 @@ function renderHeatmap(activityMap) {
         days.push({ date: key, count: activityMap[key] || 0 });
         cursor.setDate(cursor.getDate() + 1);
     }
-
     const maxCount = Math.max(1, ...days.map(d => d.count));
     const grid = days.map(d => {
         const level = d.count === 0 ? 0
             : d.count <= maxCount * 0.25 ? 1
             : d.count <= maxCount * 0.5 ? 2
-            : d.count <= maxCount * 0.75 ? 3
-            : 4;
+            : d.count <= maxCount * 0.75 ? 3 : 4;
         return `<div class="heatmap-cell" data-level="${level}" title="${d.date}: ${d.count} действий"></div>`;
     }).join('');
-
     return `
-        <div class="heatmap-wrapper">
-            <div class="heatmap-grid">${grid}</div>
-        </div>
+        <div class="heatmap-wrapper"><div class="heatmap-grid">${grid}</div></div>
         <div class="heatmap-legend">
             <span>Меньше</span>
             <div class="cell" style="background:#ebedf0;"></div>
@@ -327,7 +283,6 @@ function renderHeatmap(activityMap) {
     `;
 }
 
-// Подсчёт стрика (дней подряд)
 function calcStreak(activityMap) {
     let streak = 0;
     const today = new Date();
@@ -341,44 +296,69 @@ function calcStreak(activityMap) {
     return streak;
 }
 
-// Формирование ленты достижений
-function buildAchievementsFeed(profile, achievements, visits) {
-    const feed = [];
-    const rank = getRank(profile.level);
+function daysSince(dateStr) {
+    const d = new Date(dateStr);
+    const now = new Date();
+    return Math.floor((now - d) / (1000 * 60 * 60 * 24));
+}
 
-    // Текущий ранг
+// Форматирование времени чтения
+function formatReadingTime(minutes) {
+    if (minutes < 60) return minutes + ' мин';
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
+    return h + ' ч' + (m > 0 ? ' ' + m + ' мин' : '');
+}
+
+// ============================================================
+// 4. ПОСТРОЕНИЕ ЛЕНТЫ СОБЫТИЙ (из реальных данных)
+// ============================================================
+function buildAchievementsFeed(profile, achievements, visits, rank) {
+    const feed = [];
+
+    // 1. Текущий ранг
     feed.push({
         icon: rank.icon,
-        text: `${rank.name}!`,
+        text: `Текущее звание: <b>${rank.name}</b>`,
         date: new Date().toLocaleDateString('ru-RU'),
         highlight: true
     });
 
-    // Повышения уровня
-    if (profile.level >= 5) feed.push({ icon: '⚡', text: 'Вы достигли 5 уровня — <b>Командир базы!</b>', date: '—' });
-    if (profile.level >= 4) feed.push({ icon: '🏠', text: 'Вы достигли 4 уровня — <b>Колонизатор!</b>', date: '—' });
-    if (profile.level >= 3) feed.push({ icon: '⛏️', text: 'Вы достигли 3 уровня — <b>Поселенец!</b>', date: '—' });
-    if (profile.level >= 2) feed.push({ icon: '🚀', text: 'Вы достигли 2 уровня — <b>Исследователь!</b>', date: '—' });
-
-    // Достижения из БД
-    (achievements || []).slice(0, 3).forEach(a => {
+    // 2. Все достижения из БД (по дате получения)
+    (achievements || []).forEach(a => {
         feed.push({
             icon: '🏅',
             text: `Получено достижение: <b>${a.achievement_id}</b>`,
-            date: new Date(a.earned_at).toLocaleDateString('ru-RU')
+            date: a.earned_at ? new Date(a.earned_at).toLocaleDateString('ru-RU') : ''
         });
     });
 
-    // Достижение «Марсианин»
-    if (visits.length >= 5) {
-        feed.push({ icon: '🏆', text: 'Получено достижение: <b>Марсианин!</b>', date: '—' });
+    // 3. Недавние посещения (последние 2)
+    const recentVisits = [...(visits || [])]
+        .sort((a, b) => new Date(b.visited_at) - new Date(a.visited_at))
+        .slice(0, 2);
+    recentVisits.forEach(v => {
+        feed.push({
+            icon: '📍',
+            text: `Изучено: <b>${v.place_id}</b>`,
+            date: new Date(v.visited_at).toLocaleDateString('ru-RU')
+        });
+    });
+
+    // 4. Если совсем пусто — заглушка
+    if (feed.length === 1) {
+        feed.push({
+            icon: '🌟',
+            text: 'Начните исследовать энциклопедию — события появятся здесь!',
+            date: ''
+        });
     }
 
     return feed.slice(0, 6);
 }
 
 // ============================================================
-// 4. ОСНОВНАЯ ЛОГИКА
+// 5. ОСНОВНАЯ ЛОГИКА
 // ============================================================
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof supabase === 'undefined') {
@@ -413,14 +393,44 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // ---- ФОН ИЗ ПРОФИЛЯ ----
-        // Поддерживаемые поля: background_url, background, bg_image, theme_background
-        const bgUrl = profile.background_url || profile.background || profile.bg_image || null;
-        if (bgUrl) {
-            const overlay = document.createElement('div');
-            overlay.id = 'stats-bg-overlay';
-            overlay.style.backgroundImage = `url('${bgUrl}')`;
-            document.body.appendChild(overlay);
+        // ============================================================
+        // ФОН ИЗ ПРОФИЛЯ — проверяем все возможные поля
+        // ============================================================
+        console.log('📋 Поля профиля:', Object.keys(profile));
+
+        const bgCandidates = [
+            profile.background_url,
+            profile.background,
+            profile.bg_image,
+            profile.bg_url,
+            profile.theme_background,
+            profile.cover_url,
+            profile.profile_background,
+            profile.wallpaper
+        ].filter(Boolean);
+
+        console.log('🎨 Найденные фоны:', bgCandidates);
+
+        if (bgCandidates.length > 0) {
+            const bg = bgCandidates[0];
+
+            // Если это цвет (начинается с # или rgb или слово)
+            if (bg.startsWith('#') || bg.startsWith('rgb') || bg.startsWith('hsl')) {
+                document.body.style.background = bg;
+                document.body.style.backgroundAttachment = 'fixed';
+            } else {
+                // Иначе — URL картинки
+                // Убираем возможные лишние кавычки
+                const cleanUrl = bg.replace(/^url\(|\)$/g, '').replace(/['"]/g, '');
+                document.body.style.backgroundImage = `url('${cleanUrl}')`;
+                document.body.style.backgroundSize = 'cover';
+                document.body.style.backgroundPosition = 'center';
+                document.body.style.backgroundAttachment = 'fixed';
+                document.body.style.backgroundRepeat = 'no-repeat';
+            }
+            console.log('✅ Фон применён:', bg);
+        } else {
+            console.warn('⚠️ Фон не найден в профиле. Проверьте поля в таблице profiles.');
         }
 
         // ---- Достижения ----
@@ -436,7 +446,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const { data: v } = await client
                 .from('user_visits')
                 .select('place_id, place_type, visited_at')
-                .eq('user_id', user.id);
+                .eq('user_id', user.id)
+                .order('visited_at', { ascending: false });
             visits = v || [];
         } catch (e) { console.warn('user_visits недоступна', e); }
 
@@ -455,12 +466,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Подсчёты
         // ============================================================
         const displayName = profile.display_name || profile.username || user.email.split('@')[0];
+        const uniquePlaces = new Set(visits.map(v => v.place_id)).size;
+
         const stats = {
             experience: profile.experience || 0,
             level: profile.level || 1,
             achievements: achievements?.length || 0,
-            placesVisited: new Set(visits.map(v => v.place_id)).size,
-            seasFound: new Set(visits.filter(v => v.place_type === 'sea').map(v => v.place_id)).size,
+            placesVisited: uniquePlaces,
+            articlesRead: visits.length,          // ← все визиты
             quizzesPassed: quizzes.length,
             registration: new Date(user.created_at).toLocaleDateString('ru-RU')
         };
@@ -482,11 +495,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Ранг
         const rank = getRank(stats.level);
+        console.log('👑 Уровень:', stats.level, '→ Ранг:', rank.name);
 
         // Тепловая карта + стрик
         const allActivity = [...(achievements || []), ...visits];
         const activityMap = groupByDate(allActivity);
         const streak = calcStreak(activityMap);
+        const daysOnSite = daysSince(user.created_at);
+        const readingTime = Math.round(visits.length * 1.5);
+        const totalActions = visits.length + (achievements?.length || 0) + quizzes.length;
 
         // Распределение интересов
         const interestMap = {};
@@ -511,18 +528,24 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
 
         // Лента достижений
-        const achFeed = buildAchievementsFeed({ level: stats.level }, achievements, visits);
+        const achFeed = buildAchievementsFeed(profile, achievements, visits, rank);
 
-        // Следующее достижение
-        let nextAchHint = 'Продолжайте исследовать Марс!';
-        if (stats.quizzesPassed === 0) nextAchHint = '🧠 Пройдите первую викторину — получите достижение «Знаток»!';
-        else if (stats.placesVisited < 10) nextAchHint = `📍 Посетите ещё ${10 - stats.placesVisited} мест — откроется «Путешественник»!`;
-        else if (stats.seasFound < 3) nextAchHint = `🌊 Найдите ещё ${3 - stats.seasFound} моря — получите «Мореплаватель»!`;
-        else if (stats.level < 5) nextAchHint = `⭐ Достигните 5 уровня — станете «Командиром базы»!`;
-        else nextAchHint = '👑 Вы на пути к званию «Легенда Марса»!';
+        // Следующая цель + ссылка
+        let nextGoal = { text: 'Продолжайте исследовать Марс!', link: '/', icon: '🚀' };
+        if (stats.quizzesPassed === 0) {
+            nextGoal = { text: 'Пройдите первую викторину — получите «Знаток»!', link: '/interactive/', icon: '🧠' };
+        } else if (stats.placesVisited < 10) {
+            nextGoal = { text: `Посетите ещё ${10 - stats.placesVisited} мест — откроется «Путешественник»!`, link: '/geography/', icon: '📍' };
+        } else if (stats.level < 6) {
+            nextGoal = { text: `Достигните 6 уровня — станете «Легендой Марса»!`, link: '/', icon: '👑' };
+        } else if (stats.achievements < 5) {
+            nextGoal = { text: `Получите ещё ${5 - stats.achievements} достижений!`, link: '/', icon: '🏆' };
+        } else {
+            nextGoal = { text: 'Вы на пути к званию «Бессмертный»!', link: '/', icon: '🔥' };
+        }
 
         // ============================================================
-        // HTML-шаблон карточки
+        // HTML-карточка
         // ============================================================
         function card(id, icon, value, label, color, helpKey) {
             return `
@@ -541,12 +564,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Рендер
         // ============================================================
         document.getElementById('stats-container').innerHTML = `
-            <!-- Приветствие с рангом -->
+            <!-- Шапка с рангом -->
             <div style="background: linear-gradient(135deg, ${rank.gradient[0]}, ${rank.gradient[1]}); padding: 24px; border-radius: 12px; margin-bottom: 24px; text-align: center; color: #fff; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: -20px; right: -20px; font-size: 8rem; opacity: 0.15;">${rank.icon}</div>
+                <div style="position: absolute; top: -30px; right: -20px; font-size: 9rem; opacity: 0.15;">${rank.icon}</div>
                 <h2 style="margin: 0; color: #fff; position: relative;">${displayName}</h2>
                 <p style="margin: 4px 0 12px 0; opacity: 0.85; position: relative;">${user.email}</p>
-                <div class="rank-badge" style="background: rgba(255,255,255,0.2); box-shadow: none; position: relative;">
+                <div class="rank-badge" style="position: relative;">
                     <span class="rank-icon">${rank.icon}</span>
                     <span>${rank.name}</span>
                 </div>
@@ -557,20 +580,24 @@ document.addEventListener('DOMContentLoaded', function() {
             <div style="background: linear-gradient(135deg, #e74c3c, #f39c12); padding: 14px 20px; border-radius: 12px; margin-bottom: 24px; color: #fff; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);">
                 <span style="font-size: 2rem;">🔥</span>
                 <div>
-                    <div style="font-size: 1.1rem; font-weight: 700;">${streak} ${streak < 5 ? 'дня' : 'дней'} подряд!</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Продолжайте заходить каждый день — получите достижение «Постоянный»</div>
+                    <div style="font-size: 1.1rem; font-weight: 700;">${streak} ${streak === 1 ? 'день' : streak < 5 ? 'дня' : 'дней'} подряд!</div>
+                    <div style="font-size: 0.85rem; opacity: 0.9;">Не прерывайте серию — получите достижение «Постоянный»</div>
                 </div>
             </div>` : ''}
 
-            <!-- Крупные цифры -->
+            <!-- Цифры -->
             <h3 style="color: #555; margin: 0 0 12px 0; font-size: 1.1rem;">🎯 Ваши достижения</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 28px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 28px;">
                 ${card('level', '⭐', stats.level, 'Уровень', '#6C63FF', 'level')}
                 ${card('xp', '💎', stats.experience, 'Опыт (XP)', '#f39c12', 'xp')}
                 ${card('ach', '🏆', stats.achievements, 'Достижений', '#27ae60', 'achievements')}
-                ${card('places', '📍', stats.placesVisited, 'Посещено мест', '#e74c3c', 'places')}
-                ${card('seas', '🌊', stats.seasFound, 'Найдено морей', '#3498db', 'seas')}
-                ${card('quiz', '🧠', stats.quizzesPassed, 'Пройдено викторин', '#8e44ad', 'quiz')}
+                ${card('places', '📍', stats.placesVisited, 'Мест посещено', '#e74c3c', 'places')}
+                ${card('articles', '📖', stats.articlesRead, 'Статей прочитано', '#3498db', 'articles')}
+                ${card('quiz', '🧠', stats.quizzesPassed, 'Викторин пройдено', '#8e44ad', 'quiz')}
+                ${card('streak', '🔥', streak, 'Серия дней', '#e67e22', 'streak')}
+                ${card('days', '📅', daysOnSite, 'Дней на сайте', '#16a085', 'days')}
+                ${card('actions', '🎯', totalActions, 'Всего действий', '#c0392b', 'actions')}
+                ${card('time', '⏱️', formatReadingTime(readingTime), 'Время чтения', '#2c3e50', 'time')}
             </div>
 
             <!-- Прогресс уровня -->
@@ -587,11 +614,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 </p>
             </div>
 
-            <!-- Последние достижения -->
+            <!-- Лента событий -->
             <div style="background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 20px 24px; border-radius: 12px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #eaecf0;">
                 <h3 style="margin: 0 0 16px 0; font-size: 1.1rem; color: #2c3e50;">🏅 Последние события</h3>
                 ${achFeed.map(a => `
-                    <div class="achievement-item">
+                    <div class="achievement-item" style="${a.highlight ? 'border-left-color: ' + rank.gradient[0] + '; background: rgba(108,99,255,0.08);' : ''}">
                         <span class="ach-icon">${a.icon}</span>
                         <span class="ach-text">${a.text}</span>
                         <span class="ach-date">${a.date}</span>
@@ -599,14 +626,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 `).join('')}
             </div>
 
-            <!-- Следующее достижение -->
-            <div style="background: linear-gradient(135deg, #6C63FF, #a29bfe); padding: 16px 20px; border-radius: 12px; margin-bottom: 28px; color: #fff; display: flex; align-items: center; gap: 12px;">
-                <span style="font-size: 1.8rem;">🎯</span>
+            <!-- Следующая цель (кликабельная) -->
+            <a href="${nextGoal.link}" class="goal-link">
+                <span style="font-size: 1.8rem;">${nextGoal.icon}</span>
                 <div>
-                    <div style="font-size: 0.85rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 1px;">Следующая цель</div>
-                    <div style="font-size: 1rem; font-weight: 600;">${nextAchHint}</div>
+                    <div style="font-size: 0.8rem; opacity: 0.85; text-transform: uppercase; letter-spacing: 1px;">Следующая цель</div>
+                    <div style="font-size: 1rem; font-weight: 600;">${nextGoal.text}</div>
                 </div>
-            </div>
+                <span class="goal-arrow">→</span>
+            </a>
 
             <!-- Тепловая карта -->
             <div style="background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); padding: 20px 24px; border-radius: 12px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border: 1px solid #eaecf0;">
@@ -632,27 +660,26 @@ document.addEventListener('DOMContentLoaded', function() {
             </p>
         `;
 
-        // ============================================================
-        // Анимация счётчиков
-        // ============================================================
+        // Анимация счётчиков (без времени, оно уже строка)
         animateValue(document.getElementById('stat-level'), 0, stats.level);
         animateValue(document.getElementById('stat-xp'), 0, stats.experience);
         animateValue(document.getElementById('stat-ach'), 0, stats.achievements);
         animateValue(document.getElementById('stat-places'), 0, stats.placesVisited);
-        animateValue(document.getElementById('stat-seas'), 0, stats.seasFound);
+        animateValue(document.getElementById('stat-articles'), 0, stats.articlesRead);
         animateValue(document.getElementById('stat-quiz'), 0, stats.quizzesPassed);
+        animateValue(document.getElementById('stat-streak'), 0, streak);
+        animateValue(document.getElementById('stat-days'), 0, daysOnSite);
+        animateValue(document.getElementById('stat-actions'), 0, totalActions);
 
-        // ============================================================
-        // Графики
-        // ============================================================
+        // График 1
         new Chart(document.getElementById('statsChart').getContext('2d'), {
             type: 'bar',
             data: {
-                labels: ['Уровень', 'Опыт', 'Достижения', 'Места'],
+                labels: ['Уровень', 'Опыт', 'Достижения', 'Места', 'Статьи'],
                 datasets: [{
                     label: 'Ваши показатели',
-                    data: [stats.level, stats.experience, stats.achievements, stats.placesVisited],
-                    backgroundColor: ['#6C63FF', '#f39c12', '#27ae60', '#e74c3c'],
+                    data: [stats.level, stats.experience, stats.achievements, stats.placesVisited, stats.articlesRead],
+                    backgroundColor: ['#6C63FF', '#f39c12', '#27ae60', '#e74c3c', '#3498db'],
                     borderRadius: 6
                 }]
             },
@@ -663,6 +690,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
+        // График 2
         if (interestKeys.length > 0) {
             new Chart(document.getElementById('interestChart').getContext('2d'), {
                 type: 'doughnut',
@@ -688,9 +716,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<p style="text-align:center;color:#999;padding:40px 0;">Пока нет данных для отображения</p>';
         }
 
-        // ============================================================
-        // Мобильные подсказки (клик вместо hover)
-        // ============================================================
+        // Мобильные подсказки
         document.querySelectorAll('.help-icon').forEach(icon => {
             icon.addEventListener('click', (e) => {
                 e.stopPropagation();

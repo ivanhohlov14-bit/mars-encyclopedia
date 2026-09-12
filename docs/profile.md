@@ -19,7 +19,6 @@ comments: false
 @keyframes pfPulseOpacity{0%,100%{opacity:.3}50%{opacity:.6}}
 .pf-fade{animation:pfFadeIn .5s cubic-bezier(.16,1,.3,1) both}
 #profile-app a{text-decoration:none!important;border-bottom:none!important}
-.pf-skeleton{animation:pfPulseOpacity 1.5s ease-in-out infinite}
 .pf-hero{position:relative;background:linear-gradient(135deg,var(--kingdom-color),var(--kingdom-light));border-radius:24px;padding:36px 32px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 20px 60px -12px var(--kingdom-shadow)}
 .pf-hero::before{content:'';position:absolute;top:-60%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);border-radius:50%;animation:pfFloat 8s ease-in-out infinite}
 .pf-hero::after{content:'';position:absolute;bottom:-60%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 70%);border-radius:50%;animation:pfFloat 10s ease-in-out infinite reverse}
@@ -42,7 +41,7 @@ comments: false
 .pf-quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
 .pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s;box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer}
 .pf-quick-card:hover{transform:translateY(-4px);border-color:var(--kingdom-color);box-shadow:0 12px 32px -8px var(--kingdom-shadow)}
-.pf-quick-icon{font-size:1.8rem;filter:drop-shadow(0 3px 6px rgba(0,0,0,.15));transition:transform .3s}
+.pf-quick-icon{font-size:1.8rem;transition:transform .3s}
 .pf-quick-card:hover .pf-quick-icon{transform:scale(1.15) rotate(-6deg)}
 .pf-quick-body{flex:1;min-width:0}
 .pf-quick-title{font-size:.9rem;font-weight:800;color:#1a1a1a;margin-bottom:2px}
@@ -152,22 +151,13 @@ comments: false
 (function(){
     'use strict';
 
-    // ============================================================
-    // РАЗБЛОКИРОВКА СКРОЛЛА
-    // ============================================================
-    document.body.style.overflow = '';
-    document.body.style.position = '';
-    document.documentElement.style.overflow = '';
-    document.documentElement.style.height = '';
-
-    setInterval(function(){
-        if(document.body.style.overflow === 'hidden'){
-            var hasModal = document.querySelector('#mars-intro-overlay, #dl-overlay, #daily-modal-overlay');
-            if(!hasModal){
-                document.body.style.overflow = '';
-            }
-        }
-    }, 2000);
+    // Разблокировка скролла — один раз при загрузке
+    try {
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.documentElement.style.overflow = '';
+        document.documentElement.style.height = '';
+    } catch(e) {}
 
     var SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     var SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
@@ -241,7 +231,7 @@ comments: false
         type = type || 'info';
         var colors = { success:'linear-gradient(135deg,#27ae60,#16a085)', info:'linear-gradient(135deg,#3498db,#2980b9)', warning:'linear-gradient(135deg,#e67e22,#d35400)', error:'linear-gradient(135deg,#e74c3c,#c0392b)' };
         var t = document.createElement('div');
-        t.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:' + (colors[type] || colors.info) + ';color:#fff;padding:12px 26px;border-radius:30px;font-weight:600;font-size:.9rem;box-shadow:0 12px 32px rgba(0,0,0,.3);z-index:99999;transition:transform .4s cubic-bezier(.16,1,.3,1);pointer-events:none;';
+        t.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:' + (colors[type] || colors.info) + ';color:#fff;padding:12px 26px;border-radius:30px;font-weight:600;font-size:.9rem;box-shadow:0 12px 32px rgba(0,0,0,.3);z-index:99999;transition:transform .4s;pointer-events:none;';
         t.textContent = msg;
         document.body.appendChild(t);
         requestAnimationFrame(function(){ t.style.transform = 'translateX(-50%) translateY(0)'; });
@@ -284,18 +274,18 @@ comments: false
     }
 
     // ============================================================
-    // ЗАГРУЗКА ДАННЫХ — БЫСТРО
+    // ЗАГРУЗКА ДАННЫХ
     // ============================================================
     async function loadAllData(user){
         var startTime = performance.now();
-        console.log('⏱️ Загрузка профиля...');
+        console.log('⏱️ Загрузка...');
 
-        // Кэш — показываем сразу
+        // Кэш
         try{
             var cached = localStorage.getItem('pf_cache_' + user.id);
             if(cached){
                 var d = JSON.parse(cached);
-                currentProfile = d.currentProfile || currentProfile;
+                currentProfile = d.currentProfile || null;
                 if(currentProfile && currentProfile.kingdom && KINGDOMS[currentProfile.kingdom]) kingdom = KINGDOMS[currentProfile.kingdom];
                 achievementsList = d.achievementsList || [];
                 notifications = d.notifications || [];
@@ -307,14 +297,11 @@ comments: false
                 streak = d.streak || 0;
                 privacy = d.privacy || {};
                 preferences = d.preferences || {};
-                console.log('⚡ Из кэша');
-                render();
+                if(currentProfile) render();
             }
         }catch(e){}
 
-        // ============================================================
-        // Загружаем ТОЛЬКО профиль
-        // ============================================================
+        // Профиль
         try {
             var profileRes = await Promise.race([
                 client.from('profiles').select('*').eq('user_id', user.id).single(),
@@ -324,135 +311,108 @@ comments: false
                 currentProfile = profileRes.data;
                 if (currentProfile.kingdom && KINGDOMS[currentProfile.kingdom]) kingdom = KINGDOMS[currentProfile.kingdom];
             }
-        } catch(e) {
-            console.warn('Профиль не загружен:', e.message);
-        }
+        } catch(e) { console.warn('Профиль:', e.message); }
 
-        // Если профиль есть — сразу рендерим
-        if (currentProfile) {
-            console.log('✅ Профиль готов за', Math.round(performance.now() - startTime), 'мс');
-            render();
-            document.body.style.overflow = '';
-            document.documentElement.style.overflow = '';
-        } else {
+        if (!currentProfile) {
             console.warn('❌ Профиль не получен');
+            container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;"><div style="font-size:4rem;margin-bottom:16px;">⚠️</div><h2>Не удалось загрузить</h2><p style="color:#888;">Профиль не найден</p><a href="/login/" style="display:inline-block;margin-top:16px;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
             return;
         }
 
-        // Фоновая догрузка
-        loadRestInBackground(user);
-    }
+        console.log('✅ Профиль за ' + Math.round(performance.now() - startTime) + ' мс');
+        render();
 
-    async function loadRestInBackground(user){
+        // Всё остальное — параллельно
         var timeout = function(ms){ return new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, ms); }); };
 
-        // Достижения
         try {
-            var uaRes = await Promise.race([ client.from('user_achievements').select('achievement_id, earned_at').eq('user_id', user.id).order('earned_at', { ascending: false }), timeout(5000) ]);
-            if (uaRes && uaRes.data && uaRes.data.length > 0) {
+            var results = await Promise.all([
+                Promise.race([client.from('user_achievements').select('achievement_id, earned_at').eq('user_id', user.id).order('earned_at', { ascending: false }), timeout(6000)]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('user_notes').select('*').eq('user_id', user.id).order('pinned', { ascending: false }).order('updated_at', { ascending: false }), timeout(6000)]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('notifications').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(10), timeout(6000)]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('profiles').select('user_id, username, display_name, experience, level, avatar_url').order('experience', { ascending: false }).limit(10), timeout(6000)]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('daily_logins').select('streak').eq('user_id', user.id).order('login_date', { ascending: false }).limit(1), timeout(5000)]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('user_privacy').select('*').eq('user_id', user.id).maybeSingle(), timeout(5000)]).catch(function(){ return {data:null}; }),
+                Promise.race([client.from('user_preferences').select('*').eq('user_id', user.id).maybeSingle(), timeout(5000)]).catch(function(){ return {data:null}; }),
+                Promise.race([client.from('guild_members').select('guild_id').eq('user_id', user.id).maybeSingle(), timeout(5000)]).catch(function(){ return {data:null}; }),
+                Promise.race([client.from('friends').select('*').or('user_id.eq.' + user.id + ',friend_id.eq.' + user.id), timeout(5000)]).catch(function(){ return {data:[]}; })
+            ]);
+
+            var uaRes = results[0], notesRes = results[1], notifRes = results[2], leadersRes = results[3];
+            var streakRes = results[4], privacyRes = results[5], prefsRes = results[6], guildRes = results[7], friendsRes = results[8];
+
+            // Достижения
+            if(uaRes && uaRes.data && uaRes.data.length > 0){
                 var ids = uaRes.data.map(function(x){ return x.achievement_id; });
-                var metaRes = await Promise.race([ client.from('achievements').select('*').in('id', ids), timeout(5000) ]);
+                var metaRes = await Promise.race([client.from('achievements').select('*').in('id', ids), timeout(5000)]).catch(function(){ return {data:[]}; });
                 var map = {};
                 (metaRes.data || []).forEach(function(m){ map[m.id] = m; });
                 achievementsList = uaRes.data.map(function(x){ return Object.assign({}, map[x.achievement_id], { earned_at: x.earned_at }); }).filter(function(x){ return x.id; });
-                render();
             }
-        } catch(e) { console.warn('Достижения:', e.message); }
 
-        // Заметки
-        try {
-            var notesRes = await Promise.race([ client.from('user_notes').select('*').eq('user_id', user.id).order('pinned', { ascending: false }).order('updated_at', { ascending: false }), timeout(5000) ]);
-            if (notesRes && notesRes.data) { notes = notesRes.data; render(); }
-        } catch(e) { console.warn('Заметки:', e.message); }
+            notes = (notesRes && notesRes.data) || [];
+            notifications = (notifRes && notifRes.data) || [];
+            leaders = (leadersRes && leadersRes.data) || [];
+            streak = (streakRes && streakRes.data && streakRes.data[0]) ? streakRes.data[0].streak : 0;
+            privacy = (privacyRes && privacyRes.data) || {};
+            preferences = (prefsRes && prefsRes.data) || {};
 
-        // Уведомления
-        try {
-            var notifRes = await Promise.race([ client.from('notifications').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(10), timeout(5000) ]);
-            if (notifRes && notifRes.data) { notifications = notifRes.data; render(); }
-        } catch(e) { console.warn('Уведомления:', e.message); }
-
-        // Лидеры
-        try {
-            var leadersRes = await Promise.race([ client.from('profiles').select('user_id, username, display_name, experience, level, avatar_url').order('experience', { ascending: false }).limit(10), timeout(5000) ]);
-            if (leadersRes && leadersRes.data) { leaders = leadersRes.data; render(); }
-        } catch(e) { console.warn('Лидеры:', e.message); }
-
-        // Стрик
-        try {
-            var streakRes = await Promise.race([ client.from('daily_logins').select('streak').eq('user_id', user.id).order('login_date', { ascending: false }).limit(1), timeout(5000) ]);
-            if (streakRes && streakRes.data && streakRes.data[0]) { streak = streakRes.data[0].streak; render(); }
-        } catch(e) { console.warn('Стрик:', e.message); }
-
-        // Приватность
-        try {
-            var privRes = await Promise.race([ client.from('user_privacy').select('*').eq('user_id', user.id).maybeSingle(), timeout(5000) ]);
-            if (privRes && privRes.data) privacy = privRes.data;
-        } catch(e) { console.warn('Приватность:', e.message); }
-
-        // Настройки
-        try {
-            var prefsRes = await Promise.race([ client.from('user_preferences').select('*').eq('user_id', user.id).maybeSingle(), timeout(5000) ]);
-            if (prefsRes && prefsRes.data) preferences = prefsRes.data;
-        } catch(e) { console.warn('Настройки:', e.message); }
-
-        // Гильдия
-        try {
-            var guildRes = await Promise.race([ client.from('guild_members').select('guild_id').eq('user_id', user.id).maybeSingle(), timeout(5000) ]);
-            if (guildRes && guildRes.data && guildRes.data.guild_id) {
-                var gRes = await Promise.race([ client.from('guilds').select('*').eq('id', guildRes.data.guild_id).single(), timeout(5000) ]);
+            // Гильдия
+            if(guildRes && guildRes.data && guildRes.data.guild_id){
+                var gRes = await Promise.race([client.from('guilds').select('*').eq('id', guildRes.data.guild_id).single(), timeout(5000)]).catch(function(){ return {data:null}; });
                 guild = gRes.data;
-                if (guild) {
-                    var mRes = await Promise.race([ client.from('guild_members').select('user_id, role, joined_at').eq('guild_id', guild.id).order('joined_at', { ascending: true }).limit(50), timeout(5000) ]);
-                    if (mRes.data && mRes.data.length > 0) {
+                if(guild){
+                    var mRes = await Promise.race([client.from('guild_members').select('user_id, role, joined_at').eq('guild_id', guild.id).order('joined_at', { ascending: true }).limit(50), timeout(5000)]).catch(function(){ return {data:[]}; });
+                    if(mRes.data && mRes.data.length > 0){
                         var mids = mRes.data.map(function(m){ return m.user_id; });
-                        var pRes = await Promise.race([ client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', mids), timeout(5000) ]);
+                        var pRes = await Promise.race([client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', mids), timeout(5000)]).catch(function(){ return {data:[]}; });
                         var pmap = {};
                         (pRes.data || []).forEach(function(p){ pmap[p.user_id] = p; });
                         guildMembers = mRes.data.map(function(m){ return Object.assign({}, m, { profile: pmap[m.user_id] || {} }); });
-                        render();
                     }
                 }
             }
-        } catch(e) { console.warn('Гильдия:', e.message); }
 
-        // Друзья
-        try {
-            var friendsRes = await Promise.race([ client.from('friends').select('*').or('user_id.eq.' + user.id + ',friend_id.eq.' + user.id), timeout(5000) ]);
-            if (friendsRes && friendsRes.data && friendsRes.data.length > 0) {
+            // Друзья
+            if(friendsRes && friendsRes.data && friendsRes.data.length > 0){
                 var fids = {};
                 friendsRes.data.forEach(function(f){ fids[f.user_id] = true; fids[f.friend_id] = true; });
                 delete fids[user.id];
                 var idArr = Object.keys(fids);
-                if (idArr.length > 0) {
-                    var fpRes = await Promise.race([ client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', idArr), timeout(5000) ]);
+                if(idArr.length > 0){
+                    var fpRes = await Promise.race([client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', idArr), timeout(5000)]).catch(function(){ return {data:[]}; });
                     var fmap = {};
                     (fpRes.data || []).forEach(function(p){ fmap[p.user_id] = p; });
                     friends = friendsRes.data.map(function(f){
                         var otherId = f.user_id === user.id ? f.friend_id : f.user_id;
                         return Object.assign({}, f, { other: fmap[otherId] || { user_id: otherId } });
                     });
-                    render();
                 }
             }
-        } catch(e) { console.warn('Друзья:', e.message); }
 
-        // Кэш
-        try {
-            localStorage.setItem('pf_cache_' + user.id, JSON.stringify({
-                currentProfile: currentProfile, achievementsList: achievementsList, notifications: notifications,
-                leaders: leaders, guild: guild, guildMembers: guildMembers, friends: friends, notes: notes,
-                streak: streak, privacy: privacy, preferences: preferences, cachedAt: Date.now()
-            }));
-        } catch(e) {}
+            // Финальный рендер — только ОДИН раз
+            render();
 
-        console.log('✅ Всё догружено за', Math.round(performance.now() - startTime), 'мс');
+            // Кэш
+            try {
+                localStorage.setItem('pf_cache_' + user.id, JSON.stringify({
+                    currentProfile: currentProfile, achievementsList: achievementsList, notifications: notifications,
+                    leaders: leaders, guild: guild, guildMembers: guildMembers, friends: friends, notes: notes,
+                    streak: streak, privacy: privacy, preferences: preferences, cachedAt: Date.now()
+                }));
+            } catch(e) {}
+
+            console.log('✅ Всё загружено за ' + Math.round(performance.now() - startTime) + ' мс');
+        } catch(e) {
+            console.warn('Ошибка фоновой загрузки:', e);
+        }
     }
 
     // ============================================================
     // РЕНДЕР
     // ============================================================
     function render(){
-        if(!currentProfile) return;
+        if(!currentProfile || !currentUser) return;
         document.documentElement.style.setProperty('--kingdom-color', kingdom.color);
         document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
         document.documentElement.style.setProperty('--kingdom-light', kingdom.light);
@@ -505,7 +465,7 @@ comments: false
         });
         html += '</div>';
 
-        html += '<div id="pf-qr-wrapper" style="display:none;"><button class="pf-qr-btn pf-fade" onclick="if(window.pfOpenQR)window.pfOpenQR()"><span style="font-size:1.5rem;">📱</span><span>Привязать телефон (вход по QR)</span></button></div>';
+        html += '<div id="pf-qr-wrapper" style="display:none;"><button class="pf-qr-btn pf-fade" onclick="if(window.pfOpenQR)window.pfOpenQR()"><span style="font-size:1.5rem;">📱</span><span>Привязать телефон</span></button></div>';
 
         html += '<div class="pf-tabs pf-fade" style="animation-delay:.1s;">';
         html += '<button class="pf-tab active" data-tab="overview">👤 Обзор</button>';
@@ -544,26 +504,19 @@ comments: false
             html += '<div class="pf-guild-info"><h2 class="pf-guild-name">' + escapeHtml(guild.name) + '</h2>';
             html += '<div class="pf-guild-meta"><span>👥 ' + guildMembers.length + ' участников</span></div></div></div>';
             html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📜</span> Описание</h3><p style="margin:0;color:#555;line-height:1.6;">' + escapeHtml(guild.description || 'Без описания') + '</p></div>';
-            html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Участники</h3>';
-            guildMembers.forEach(function(m){
-                var name = m.profile.display_name || m.profile.username || 'Аноним';
-                var av = m.profile.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=6C63FF&color=fff&size=64';
-                html += '<div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(0,0,0,.03);border-radius:10px;margin-bottom:6px;"><img src="' + av + '" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--kingdom-color);"><div style="flex:1;"><div style="font-weight:700;font-size:.9rem;">' + escapeHtml(name) + '</div><div style="font-size:.72rem;color:#888;">' + (m.role === 'leader' ? '👑 Лидер' : '👤 Участник') + '</div></div></div>';
-            });
-            html += '</div>';
             html += '<div class="pf-card"><a href="/guilds/" class="pf-btn pf-btn-outline">🏰 Перейти в гильдии</a>';
             if(guild.leader_id === currentUser.id) html += '<button class="pf-btn pf-btn-danger" style="margin-left:8px;" onclick="pfDeleteGuild()">🗑️ Удалить</button>';
             html += '</div>';
         } else {
-            html += '<div class="pf-card" style="text-align:center;padding:50px 20px;"><div style="font-size:4rem;margin-bottom:12px;">🏰</div><h3 style="margin:0 0 8px 0;">Вы пока не в гильдии</h3><p style="color:#888;margin:0 0 20px 0;">Присоединяйтесь к другим исследователям!</p><a href="/guilds/" class="pf-btn">🔍 Найти гильдию</a></div>';
+            html += '<div class="pf-card" style="text-align:center;padding:50px 20px;"><div style="font-size:4rem;margin-bottom:12px;">🏰</div><h3 style="margin:0 0 8px 0;">Вы пока не в гильдии</h3><a href="/guilds/" class="pf-btn">🔍 Найти гильдию</a></div>';
         }
         html += '</div>';
 
         // ДОСТИЖЕНИЯ
         html += '<div class="pf-tab-content" data-content="achievements">';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Ваши достижения (' + achievementsList.length + ')</h3>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Достижения (' + achievementsList.length + ')</h3>';
         if(achievementsList.length === 0){
-            html += '<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет достижений. Читайте статьи, проходите викторины!</p>';
+            html += '<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет достижений.</p>';
         } else {
             html += '<div class="pf-ach-grid">';
             achievementsList.forEach(function(a){
@@ -571,11 +524,11 @@ comments: false
             });
             html += '</div>';
         }
-        html += '<div style="margin-top:16px;"><a href="/achievements/" class="pf-btn pf-btn-outline">🎁 Все достижения</a></div></div></div>';
+        html += '</div></div>';
 
         // ЗАМЕТКИ
         html += '<div class="pf-tab-content" data-content="notes">';
-        html += '<div class="pf-card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;"><h3 class="pf-card-title" style="margin:0;"><span class="pf-ct-icon">📝</span> Мои заметки (' + notes.length + ')</h3><button class="pf-btn" onclick="pfOpenNoteForm()">➕ Новая</button></div>';
+        html += '<div class="pf-card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;"><h3 class="pf-card-title" style="margin:0;"><span class="pf-ct-icon">📝</span> Заметки (' + notes.length + ')</h3><button class="pf-btn" onclick="pfOpenNoteForm()">➕ Новая</button></div>';
         html += '<div class="pf-note-form" id="pf-note-form"><input type="text" class="pf-note-input title" id="pf-note-title" placeholder="Заголовок" maxlength="100"><textarea class="pf-note-input content" id="pf-note-content" placeholder="Текст..." maxlength="5000"></textarea><div style="font-size:.8rem;color:#888;margin-bottom:6px;">Цвет:</div><div class="pf-note-colors" id="pf-note-colors"></div><div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="pf-btn" onclick="pfSaveNote()" id="pf-note-save-btn">💾 Сохранить</button><button class="pf-btn pf-btn-outline" onclick="pfCloseNoteForm()">Отмена</button></div></div>';
         if(notes.length === 0){
             html += '<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет заметок.</p>';
@@ -637,13 +590,12 @@ comments: false
         // БЕЗОПАСНОСТЬ
         html += '<div class="pf-tab-content" data-content="security">';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email-2FA</h3>';
-        html += '<p style="color:#666;font-size:.9rem;line-height:1.6;margin:0 0 16px 0;">При входе с <b>нового устройства</b> вам на почту придёт код из 6 цифр.</p>';
         html += '<div id="pf-2fa-status" style="margin-bottom:20px;"></div>';
         html += '<div class="pf-toggle"><div><div class="pf-toggle-label">🔐 Email-2FA</div><div class="pf-toggle-desc">Запрашивать код при входе с новых устройств</div></div><div class="pf-switch" id="pf-switch-2fa" onclick="pfToggle2FA()"></div></div>';
         html += '</div>';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📱</span> Доверенные устройства</h3>';
         html += '<div id="pf-trusted-devices"><p style="color:#888;">Загрузка...</p></div>';
-        html += '<button class="pf-btn pf-btn-outline" onclick="pfClearTrustedDevices()" style="margin-top:12px;">🗑️ Удалить все устройства</button>';
+        html += '<button class="pf-btn pf-btn-outline" onclick="pfClearTrustedDevices()" style="margin-top:12px;">🗑️ Удалить все</button>';
         html += '</div>';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔑</span> Смена пароля</h3>';
         html += '<button class="pf-btn" onclick="pfChangePassword()">🔐 Сменить пароль</button>';
@@ -651,27 +603,21 @@ comments: false
 
         // КАСТОМИЗАЦИЯ
         html += '<div class="pf-tab-content" data-content="customize">';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🎨</span> Цветовая тема профиля</h3>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🎨</span> Тема профиля</h3>';
         html += '<div class="pf-theme-colors" id="pf-theme-colors"></div></div>';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Звуки и уведомления</h3>';
-        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Звуки уведомлений</div><div class="pf-toggle-desc">Проигрывать звук при действиях</div></div><div class="pf-switch' + (preferences.notification_sound ? ' on' : '') + '" id="pf-switch-notification_sound" onclick="pfTogglePref(\'notification_sound\')"></div></div>';
-        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Email-уведомления</div><div class="pf-toggle-desc">Получать письма о достижениях</div></div><div class="pf-switch' + (notifEnabled ? ' on' : '') + '" id="pf-switch-email" onclick="pfToggleEmail()"></div></div>';
-        html += '</div>';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔒</span> Приватность</h3>';
-        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Показывать опыт</div></div><div class="pf-switch' + (privacy.show_experience !== false ? ' on' : '') + '" onclick="pfTogglePrivacy(\'show_experience\')"></div></div>';
-        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Показывать достижения</div></div><div class="pf-switch' + (privacy.show_achievements !== false ? ' on' : '') + '" onclick="pfTogglePrivacy(\'show_achievements\')"></div></div>';
-        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Показывать гильдию</div></div><div class="pf-switch' + (privacy.show_guild !== false ? ' on' : '') + '" onclick="pfTogglePrivacy(\'show_guild\')"></div></div>';
-        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Заявки в друзья</div></div><div class="pf-switch' + (privacy.allow_friend_requests !== false ? ' on' : '') + '" onclick="pfTogglePrivacy(\'allow_friend_requests\')"></div></div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Звуки</h3>';
+        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Звуки уведомлений</div></div><div class="pf-switch' + (preferences.notification_sound ? ' on' : '') + '" id="pf-switch-notification_sound" onclick="pfTogglePref(\'notification_sound\')"></div></div>';
+        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Email-уведомления</div></div><div class="pf-switch' + (notifEnabled ? ' on' : '') + '" id="pf-switch-email" onclick="pfToggleEmail()"></div></div>';
         html += '</div></div>';
 
         // НАСТРОЙКИ
         html += '<div class="pf-tab-content" data-content="settings">';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя пользователя</h3>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя</h3>';
         html += '<p style="color:#555;margin:0 0 12px 0;">Текущее: <b id="pf-display-name">' + escapeHtml(displayName) + '</b></p>';
         html += '<button class="pf-btn pf-btn-outline" onclick="pfEditName()">✏️ Изменить</button></div>';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email</h3>';
         html += '<p style="color:#555;margin:0 0 12px 0;">Текущий: <b>' + currentUser.email + '</b></p>';
-        html += '<button class="pf-btn pf-btn-outline" onclick="pfChangeEmail()">✏️ Сменить email</button></div>';
+        html += '<button class="pf-btn pf-btn-outline" onclick="pfChangeEmail()">✏️ Сменить</button></div>';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🖼️</span> Аватар</h3>';
         html += '<div class="pf-avatar-grid">';
         AVATARS.forEach(function(url){ html += '<img src="' + url + '" alt="" class="pf-avatar-option ' + (avatar === url ? 'selected' : '') + '" onclick="pfSelectAvatar(\'' + url + '\')">'; });
@@ -686,8 +632,8 @@ comments: false
         html += '</div>';
         html += '<div style="text-align:center;margin-top:16px;"><img src="' + kingdom.flag + '" alt="" style="width:80px;border-radius:6px;border:1px solid #a2a9b1;"><div style="font-size:.72rem;color:#666;margin-top:4px;">Флаг ' + (currentProfile.kingdom || 'Эдем') + '</div></div>';
         html += '</div>';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📤</span> Экспорт данных</h3>';
-        html += '<button class="pf-btn pf-btn-outline" onclick="pfExportData()">📥 Скачать данные</button></div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📤</span> Экспорт</h3>';
+        html += '<button class="pf-btn pf-btn-outline" onclick="pfExportData()">📥 Скачать</button></div>';
         html += '<div class="pf-card pf-danger"><h3 class="pf-card-title" style="color:#c0392b;"><span class="pf-ct-icon">⚠️</span> Опасная зона</h3>';
         html += '<button class="pf-btn pf-btn-danger" onclick="pfDeleteAccount()">🗑️ Удалить аккаунт</button></div>';
         html += '<div class="pf-card"><button class="pf-btn pf-btn-outline" onclick="pfLogout()" style="width:100%;justify-content:center;">🚪 Выйти</button></div>';
@@ -742,16 +688,14 @@ comments: false
                 var devices = devRes.data || [];
                 if(devices.length > 0){
                     devicesEl.innerHTML = devices.map(function(d){
-                        var isPhone = d.device_name && (d.device_name.indexOf('iPhone') >= 0 || d.device_name.indexOf('Android') >= 0);
-                        return '<div class="pf-notif"><div class="pf-notif-icon">' + (isPhone ? '📱' : '💻') + '</div><div style="flex:1;"><div class="pf-notif-text"><b>' + escapeHtml(d.device_name || 'Устройство') + '</b></div><div class="pf-notif-date">Последний раз: ' + new Date(d.last_used).toLocaleString('ru-RU') + '</div></div><button class="pf-note-btn danger" onclick="pfRemoveDevice(' + d.id + ')">✕</button></div>';
+                        return '<div class="pf-notif"><div class="pf-notif-icon">💻</div><div style="flex:1;"><div class="pf-notif-text"><b>' + escapeHtml(d.device_name || 'Устройство') + '</b></div><div class="pf-notif-date">' + new Date(d.last_used).toLocaleString('ru-RU') + '</div></div><button class="pf-note-btn danger" onclick="pfRemoveDevice(' + d.id + ')">✕</button></div>';
                     }).join('');
                 } else {
-                    devicesEl.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">Нет доверенных устройств</p>';
+                    devicesEl.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">Нет устройств</p>';
                 }
             }
         } catch(e){
-            console.warn('Ошибка 2FA:', e);
-            statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Ошибка загрузки</div>';
+            statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Ошибка</div>';
         }
     }
 
@@ -759,117 +703,83 @@ comments: false
         try{
             var twofaRes = await client.from('user_2fa').select('*').eq('user_id', currentUser.id).maybeSingle();
             var newVal = !(twofaRes.data && twofaRes.data.email_2fa_enabled);
-            if(newVal){
-                if(!confirm('Включить Email-2FA?\n\nПри входе с нового устройства на вашу почту будет приходить код из 6 цифр.')) return;
-            } else {
-                if(!confirm('Выключить Email-2FA?\n\nАккаунт станет менее защищённым.')) return;
-            }
-            var upRes = await client.from('user_2fa').upsert({ user_id: currentUser.id, email_2fa_enabled: newVal, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
-            if(upRes.error) throw upRes.error;
+            if(!confirm(newVal ? 'Включить Email-2FA?' : 'Выключить Email-2FA?')) return;
+            await client.from('user_2fa').upsert({ user_id: currentUser.id, email_2fa_enabled: newVal, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
             if(newVal){
                 await client.from('trusted_devices').upsert({ user_id: currentUser.id, device_id: getDeviceId(), device_name: getDeviceName(), last_used: new Date().toISOString() }, { onConflict: 'user_id,device_id' });
             }
-            showToast(newVal ? '✅ Email-2FA включена!' : '🔓 Email-2FA выключена', newVal ? 'success' : 'info');
-            playSound(newVal ? 'success' : 'info');
+            showToast(newVal ? '✅ Включена!' : '🔓 Выключена', newVal ? 'success' : 'info');
             setTimeout(function(){ location.reload(); }, 800);
-        } catch(e){
-            showToast('Ошибка: ' + e.message, 'error');
-        }
+        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
     };
 
     window.pfRemoveDevice = async function(id){
-        if(!confirm('Удалить это устройство?')) return;
+        if(!confirm('Удалить?')) return;
         await client.from('trusted_devices').delete().eq('id', id);
-        showToast('🗑️ Устройство удалено', 'info');
+        showToast('🗑️ Удалено', 'info');
         render2FATab();
     };
 
     window.pfClearTrustedDevices = async function(){
-        if(!confirm('Удалить все доверенные устройства?')) return;
+        if(!confirm('Удалить все?')) return;
         await client.from('trusted_devices').delete().eq('user_id', currentUser.id);
-        showToast('🗑️ Все устройства удалены', 'info');
+        showToast('🗑️ Удалено', 'info');
         render2FATab();
     };
 
     window.pfSelectThemeColor = async function(color){
         preferences.theme_color = color;
-        try{
-            await client.from('user_preferences').upsert({ user_id: currentUser.id, theme_color: color, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
-            showToast('🎨 Цвет сохранён!', 'success');
-            setTimeout(function(){ location.reload(); }, 600);
-        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
+        await client.from('user_preferences').upsert({ user_id: currentUser.id, theme_color: color, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
+        showToast('🎨 Сохранено', 'success');
     };
 
     window.pfTogglePref = async function(key){
         var newVal = !preferences[key];
         preferences[key] = newVal;
-        try{
-            var obj = { user_id: currentUser.id, updated_at: new Date().toISOString() };
-            obj[key] = newVal;
-            await client.from('user_preferences').upsert(obj, { onConflict: 'user_id' });
-            var el = document.getElementById('pf-switch-' + key);
-            if(el) el.classList.toggle('on', newVal);
-            showToast(newVal ? '🔊 Включено' : '🔇 Выключено', 'info');
-        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
+        var obj = { user_id: currentUser.id, updated_at: new Date().toISOString() };
+        obj[key] = newVal;
+        await client.from('user_preferences').upsert(obj, { onConflict: 'user_id' });
+        var el = document.getElementById('pf-switch-' + key);
+        if(el) el.classList.toggle('on', newVal);
     };
 
     window.pfToggleEmail = async function(){
         var newVal = currentProfile.notifications_enabled === false;
-        try{
-            await client.from('profiles').update({ notifications_enabled: newVal }).eq('user_id', currentUser.id);
-            currentProfile.notifications_enabled = newVal;
-            document.getElementById('pf-switch-email').classList.toggle('on', newVal);
-            showToast(newVal ? '📧 Email включены' : '📭 Email выключены', 'info');
-        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
-    };
-
-    window.pfTogglePrivacy = async function(key){
-        var newVal = !privacy[key];
-        privacy[key] = newVal;
-        try{
-            var obj = { user_id: currentUser.id, updated_at: new Date().toISOString() };
-            obj[key] = newVal;
-            await client.from('user_privacy').upsert(obj, { onConflict: 'user_id' });
-            showToast('🔒 Сохранено', 'success');
-        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
+        await client.from('profiles').update({ notifications_enabled: newVal }).eq('user_id', currentUser.id);
+        currentProfile.notifications_enabled = newVal;
+        document.getElementById('pf-switch-email').classList.toggle('on', newVal);
     };
 
     window.pfExportData = async function(){
         try{
-            var exportData = {
+            var data = {
                 exported_at: new Date().toISOString(),
-                user: { id: currentUser.id, email: currentUser.email, created_at: currentUser.created_at },
+                user: { id: currentUser.id, email: currentUser.email },
                 profile: currentProfile, achievements: achievementsList, notes: notes,
                 friends: friends.map(function(f){ return { status: f.status, friend: f.other }; }),
-                guild: guild ? { name: guild.name, icon: guild.icon } : null,
-                privacy: privacy, preferences: preferences, streak: streak
+                guild: guild ? { name: guild.name } : null
             };
-            var blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+            var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
             var url = URL.createObjectURL(blob);
             var a = document.createElement('a');
-            a.href = url; a.download = 'mars-profile-' + currentUser.id.slice(0, 8) + '-' + Date.now() + '.json';
-            document.body.appendChild(a); a.click();
-            document.body.removeChild(a); URL.revokeObjectURL(url);
-            showToast('📥 Данные скачаны!', 'success');
-            playSound('success');
-        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
+            a.href = url; a.download = 'mars-profile-' + currentUser.id.slice(0, 8) + '.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('📥 Скачано!', 'success');
+        } catch(e){ showToast('Ошибка', 'error'); }
     };
 
     window.pfChangePassword = async function(){
-        var newPassword = prompt('Введите новый пароль (минимум 6 символов):');
-        if(!newPassword || newPassword.length < 6){ showToast('Пароль минимум 6 символов', 'warning'); return; }
-        try{
-            var res = await client.auth.updateUser({ password: newPassword });
-            if(res.error) throw res.error;
-            showToast('🔐 Пароль обновлён!', 'success');
-            playSound('success');
-        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
+        var np = prompt('Новый пароль (мин. 6 символов):');
+        if(!np || np.length < 6){ showToast('Минимум 6 символов', 'warning'); return; }
+        var res = await client.auth.updateUser({ password: np });
+        if(res.error){ showToast('Ошибка: ' + res.error.message, 'error'); return; }
+        showToast('🔐 Пароль обновлён!', 'success');
     };
 
     window.pfSetTab = function(tab){
         document.querySelectorAll('.pf-tab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab === tab); });
         document.querySelectorAll('.pf-tab-content').forEach(function(c){ c.classList.toggle('active', c.dataset.content === tab); });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
         if(tab === 'security') render2FATab();
     };
 
@@ -881,62 +791,57 @@ comments: false
         var nb = prompt('Введите биографию:', cur);
         if(nb === null) return;
         var res = await client.from('profiles').update({ bio: nb.trim() }).eq('user_id', currentUser.id);
-        if(res.error){ showToast('Ошибка: ' + res.error.message, 'error'); return; }
+        if(res.error){ showToast('Ошибка', 'error'); return; }
         if(el) el.innerText = nb.trim();
-        showToast('✅ Биография обновлена!', 'success');
+        showToast('✅ Обновлено!', 'success');
     };
 
     window.pfEditName = async function(){
         var el = document.getElementById('pf-display-name');
         var cur = el ? el.innerText : '';
-        var nn = prompt('Новое имя (2-20 символов, латиница):', cur);
+        var nn = prompt('Новое имя:', cur);
         if(!nn || nn === cur) return;
-        if(nn.length < 2 || nn.length > 20){ showToast('Имя 2-20 символов', 'warning'); return; }
+        if(nn.length < 2 || nn.length > 20){ showToast('2-20 символов', 'warning'); return; }
         if(!/^[a-zA-Z0-9\s\-_]+$/.test(nn)){ showToast('Только латиница', 'warning'); return; }
         var res = await client.from('profiles').update({ display_name: nn.trim() }).eq('user_id', currentUser.id);
-        if(res.error){ showToast('Ошибка: ' + res.error.message, 'error'); return; }
-        showToast('✅ Имя обновлено!', 'success');
+        if(res.error){ showToast('Ошибка', 'error'); return; }
+        showToast('✅ Обновлено!', 'success');
         setTimeout(function(){ location.reload(); }, 800);
     };
 
     window.pfChangeEmail = async function(){
         var ne = prompt('Введите новый email:');
         if(!ne || ne === currentUser.email) return;
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ne)){ showToast('Некорректный email', 'warning'); return; }
-        showToast('Отправка...', 'info');
         var res = await client.auth.updateUser({ email: ne });
         if(res.error){ showToast('Ошибка: ' + res.error.message, 'error'); return; }
         showToast('📧 Письмо отправлено!', 'success');
     };
 
     window.pfSelectAvatar = async function(url){
-        var res = await client.from('profiles').update({ avatar_url: url }).eq('user_id', currentUser.id);
-        if(res.error){ showToast('Ошибка', 'error'); return; }
-        showToast('✅ Аватар обновлён!', 'success');
-        setTimeout(function(){ location.reload(); }, 800);
+        await client.from('profiles').update({ avatar_url: url }).eq('user_id', currentUser.id);
+        showToast('✅ Обновлено!', 'success');
+        setTimeout(function(){ location.reload(); }, 600);
     };
 
     window.pfSelectKingdom = async function(name){
-        var res = await client.from('profiles').update({ kingdom: name }).eq('user_id', currentUser.id);
-        if(res.error){ showToast('Ошибка', 'error'); return; }
+        await client.from('profiles').update({ kingdom: name }).eq('user_id', currentUser.id);
         showToast('✅ ' + name + '!', 'success');
-        setTimeout(function(){ location.reload(); }, 800);
+        setTimeout(function(){ location.reload(); }, 600);
     };
 
     window.pfDeleteAccount = async function(){
-        if(!confirm('⚠️ Удалить аккаунт? Необратимо!')) return;
-        var email = prompt('Введите email для подтверждения:');
-        if(!email || email !== currentUser.email){ showToast('Email не совпадает', 'error'); return; }
+        if(!confirm('Удалить аккаунт? Необратимо!')) return;
+        var email = prompt('Введите email:');
+        if(!email || email !== currentUser.email){ showToast('Не совпадает', 'error'); return; }
         var sRes = await client.auth.getSession();
         var token = sRes.data && sRes.data.session ? sRes.data.session.access_token : null;
-        if(!token){ showToast('Ошибка токена', 'error'); return; }
+        if(!token){ showToast('Ошибка', 'error'); return; }
         try{
-            var res = await fetch(SUPABASE_URL + '/functions/v1/delete-user', { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' } });
+            var res = await fetch(SUPABASE_URL + '/functions/v1/delete-user', { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + token } });
             var json = await res.json();
             if(json.error) throw new Error(json.error);
-            showToast('Аккаунт удалён', 'success');
             localStorage.clear();
-            setTimeout(function(){ window.location.href = '/'; }, 800);
+            window.location.href = '/';
         } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
     };
 
@@ -949,8 +854,7 @@ comments: false
     window.pfDeleteGuild = async function(){
         if(!guild || !confirm('Удалить гильдию?')) return;
         await client.from('guilds').delete().eq('id', guild.id);
-        showToast('Гильдия удалена', 'info');
-        setTimeout(function(){ location.reload(); }, 800);
+        setTimeout(function(){ location.reload(); }, 500);
     };
 
     window.pfOpenNoteForm = function(id){
@@ -964,13 +868,11 @@ comments: false
                 document.getElementById('pf-note-title').value = n.title || '';
                 document.getElementById('pf-note-content').value = n.content;
                 selectedNoteColor = n.color || '#6C63FF';
-                document.getElementById('pf-note-save-btn').textContent = '💾 Обновить';
             }
         } else {
             document.getElementById('pf-note-title').value = '';
             document.getElementById('pf-note-content').value = '';
             selectedNoteColor = '#6C63FF';
-            document.getElementById('pf-note-save-btn').textContent = '💾 Сохранить';
         }
         renderNoteColors();
     };
@@ -987,18 +889,13 @@ comments: false
         var title = document.getElementById('pf-note-title').value.trim();
         var content = document.getElementById('pf-note-content').value.trim();
         if(!content){ showToast('Введите текст', 'warning'); return; }
-        var error;
         if(editingNoteId){
-            var r = await client.from('user_notes').update({ title: title, content: content, color: selectedNoteColor, updated_at: new Date().toISOString() }).eq('id', editingNoteId);
-            error = r.error;
+            await client.from('user_notes').update({ title: title, content: content, color: selectedNoteColor, updated_at: new Date().toISOString() }).eq('id', editingNoteId);
         } else {
-            var r2 = await client.from('user_notes').insert({ user_id: currentUser.id, title: title, content: content, color: selectedNoteColor });
-            error = r2.error;
+            await client.from('user_notes').insert({ user_id: currentUser.id, title: title, content: content, color: selectedNoteColor });
         }
-        if(error){ showToast('Ошибка: ' + error.message, 'error'); return; }
-        showToast('✅ Заметка сохранена!', 'success');
-        playSound('success');
-        setTimeout(function(){ location.reload(); }, 700);
+        showToast('✅ Сохранено!', 'success');
+        setTimeout(function(){ location.reload(); }, 600);
     };
 
     window.pfEditNote = function(id){ pfOpenNoteForm(id); };
@@ -1007,15 +904,13 @@ comments: false
         var n = notes.find(function(x){ return x.id === id; });
         if(!n) return;
         await client.from('user_notes').update({ pinned: !n.pinned }).eq('id', id);
-        showToast(n.pinned ? '📍 Откреплено' : '📌 Закреплено', 'success');
-        setTimeout(function(){ location.reload(); }, 500);
+        setTimeout(function(){ location.reload(); }, 400);
     };
 
     window.pfDeleteNote = async function(id){
-        if(!confirm('Удалить заметку?')) return;
+        if(!confirm('Удалить?')) return;
         await client.from('user_notes').delete().eq('id', id);
-        showToast('Удалено', 'info');
-        setTimeout(function(){ location.reload(); }, 500);
+        setTimeout(function(){ location.reload(); }, 400);
     };
 
     window.pfSendChat = async function(){
@@ -1045,111 +940,65 @@ comments: false
     // ИНИЦИАЛИЗАЦИЯ
     // ============================================================
     async function init(){
-        container.innerHTML = '<div style="max-width:1000px;margin:0 auto;">'
-            + '<div style="background:linear-gradient(135deg,#6C63FF,#A29BFE);border-radius:24px;padding:36px 32px;margin-bottom:24px;min-height:180px;opacity:.4;animation:pfPulseOpacity 1.5s infinite;"></div>'
-            + '<div style="text-align:center;padding:40px;color:#888;">'
-            + '<div style="display:inline-block;width:40px;height:40px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin .8s linear infinite;"></div>'
-            + '<p style="margin-top:16px;">Загрузка профиля...</p></div></div>';
+        container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="display:inline-block;width:40px;height:40px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin .8s linear infinite;"></div><p style="margin-top:16px;color:#888;">Загрузка...</p></div>';
 
-        var finished = false;
-        var globalTimeout = setTimeout(function(){
-            if(finished) return;
-            finished = true;
-            container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
-                + '<div style="font-size:4rem;margin-bottom:16px;">⚠️</div>'
-                + '<h2 style="margin:0 0 8px 0;">Не удалось загрузить</h2>'
-                + '<p style="color:#888;margin:0 0 20px 0;">Попробуйте войти заново</p>'
-                + '<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
-        }, 15000);
-
-        try {
-            // Ждём клиента
-            for (var i = 0; i < 30; i++) {
-                if (window.supabaseClient) break;
-                await new Promise(function(r){ setTimeout(r, 200); });
-            }
-
-            client = window.supabaseClient;
-
-            if (!client) {
-                clearTimeout(globalTimeout); finished = true;
-                container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="font-size:3rem;">⚠️</div><h2>Supabase не загружен</h2><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button></div>';
-                return;
-            }
-
-            // Ищем сессию
-            var user = null;
-
-            if (window.marsSession && window.marsSession.user) {
-                user = window.marsSession.user;
-                console.log('✅ marsSession');
-            }
-
-            if (!user) {
-                try {
-                    var r1 = await Promise.race([ client.auth.getSession(), new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); }) ]);
-                    if (r1 && r1.data && r1.data.session && r1.data.session.user) {
-                        user = r1.data.session.user;
-                        console.log('✅ getSession');
-                    }
-                } catch(e) { console.warn('getSession:', e.message); }
-            }
-
-            if (!user) {
-                try {
-                    var r2 = await Promise.race([ client.auth.refreshSession(), new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); }) ]);
-                    if (r2 && r2.data && r2.data.session && r2.data.session.user) {
-                        user = r2.data.session.user;
-                        console.log('✅ refreshSession');
-                    }
-                } catch(e) { console.warn('refreshSession:', e.message); }
-            }
-
-            if (!user) {
-                try {
-                    var correctKey = 'sb-ncytbgbzfjfoqmmgfygz-auth-token';
-                    var stored = localStorage.getItem(correctKey);
-                    if (stored) {
-                        var val = JSON.parse(stored);
-                        if (val && val.access_token && val.refresh_token) {
-                            var st = await Promise.race([ client.auth.setSession({ access_token: val.access_token, refresh_token: val.refresh_token }), new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); }) ]);
-                            if (st && st.data && st.data.user) {
-                                user = st.data.user;
-                                console.log('✅ localStorage');
-                            }
-                        }
-                    }
-                } catch(e) { console.warn('localStorage:', e.message); }
-            }
-
-            clearTimeout(globalTimeout); finished = true;
-
-            if (user) {
-                currentUser = user;
-                console.log('✅ Профиль: пользователь', user.email);
-                document.body.style.overflow = '';
-                document.documentElement.style.overflow = '';
-                try {
-                    await loadAllData(user);
-                } catch(e) {
-                    console.error('loadAllData:', e);
-                    container.innerHTML = '<div style="text-align:center;padding:60px;background:#fff;border-radius:16px;max-width:400px;margin:0 auto;"><h2>⚠️ Ошибка</h2><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button></div>';
-                }
-                return;
-            }
-
-            // Не авторизован
-            container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
-                + '<div style="font-size:4rem;margin-bottom:16px;">🔒</div>'
-                + '<h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2>'
-                + '<p style="color:#888;margin:0 0 20px 0;line-height:1.6;">Войдите, чтобы увидеть профиль</p>'
-                + '<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
-
-        } catch (err) {
-            clearTimeout(globalTimeout); finished = true;
-            console.error('Фатальная ошибка:', err);
-            container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="font-size:3rem;">⚠️</div><h2>Ошибка</h2><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button></div>';
+        // Ждём клиента (макс. 6 сек)
+        for (var i = 0; i < 30; i++) {
+            if (window.supabaseClient) break;
+            await new Promise(function(r){ setTimeout(r, 200); });
         }
+        client = window.supabaseClient;
+
+        if(!client){
+            container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><h2>⚠️ Ошибка загрузки</h2><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button></div>';
+            return;
+        }
+
+        // Ищем сессию 4 способами
+        var user = null;
+        if(window.marsSession && window.marsSession.user) user = window.marsSession.user;
+
+        if(!user){
+            try {
+                var r = await client.auth.getSession();
+                if(r.data && r.data.session && r.data.session.user) user = r.data.session.user;
+            } catch(e) {}
+        }
+
+        if(!user){
+            try {
+                var r2 = await client.auth.refreshSession();
+                if(r2.data && r2.data.session && r2.data.session.user) user = r2.data.session.user;
+            } catch(e) {}
+        }
+
+        if(!user){
+            try {
+                var key = 'sb-ncytbgbzfjfoqmmgfygz-auth-token';
+                var stored = localStorage.getItem(key);
+                if(stored){
+                    var val = JSON.parse(stored);
+                    if(val && val.access_token && val.refresh_token){
+                        var st = await client.auth.setSession({ access_token: val.access_token, refresh_token: val.refresh_token });
+                        if(st.data && st.data.user) user = st.data.user;
+                    }
+                }
+            } catch(e) {}
+        }
+
+        if(user){
+            currentUser = user;
+            console.log('✅ Профиль: пользователь', user.email);
+            await loadAllData(user);
+            return;
+        }
+
+        // Не авторизован
+        container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
+            + '<div style="font-size:4rem;margin-bottom:16px;">🔒</div>'
+            + '<h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2>'
+            + '<p style="color:#888;margin:0 0 20px 0;">Войдите, чтобы увидеть профиль</p>'
+            + '<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

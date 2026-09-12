@@ -781,434 +781,127 @@ comments: false
         el.innerHTML=THEME_COLORS.map(c=>`<div class="pf-theme-color ${c===current?'selected':''}" style="background:${c};" onclick="pfSelectThemeColor('${c}')"></div>`).join('');
     }
 
+       // ============================================================
+    // 🔐 EMAIL-2FA
     // ============================================================
-    // 🔐 2FA
-    // ============================================================
-    async function render2FA(){
-        const statusEl=document.getElementById('pf-2fa-status');
-        const actionsEl=document.getElementById('pf-2fa-actions');
-        if(!statusEl||!actionsEl) return;
+    function getDeviceId() {
+        let did = localStorage.getItem('mars_device_id');
+        if (!did) {
+            did = 'dev_' + Math.random().toString(36).slice(2, 12) + Date.now().toString(36);
+            localStorage.setItem('mars_device_id', did);
+        }
+        return did;
+    }
 
-        try{
-            const {data:factors}=await client.auth.mfa.listFactors();
-            const totpFactor=factors?.totp?.find(f=>f.status==='verified');
+    function getDeviceName() {
+        const ua = navigator.userAgent;
+        if (/Android/i.test(ua)) return 'Android-устройство';
+        if (/iPhone|iPad|iPod/i.test(ua)) return 'iPhone / iPad';
+        if (/Windows/i.test(ua)) return 'Windows ПК';
+        if (/Mac/i.test(ua)) return 'Mac';
+        if (/Linux/i.test(ua)) return 'Linux';
+        return 'Неизвестное устройство';
+    }
 
-            if(totpFactor){
-                statusEl.innerHTML=`<div class="pf-badge-2fa">✅ 2FA включена</div>`;
-                actionsEl.innerHTML=`<button class="pf-btn pf-btn-danger" onclick="pfDisable2FA('${totpFactor.id}')">🔓 Отключить 2FA</button>`;
-            }else{
-                statusEl.innerHTML=`<div class="pf-badge-2fa off">⚠️ 2FA не настроена</div>`;
-                actionsEl.innerHTML=`<button class="pf-btn" onclick="pfSetup2FA()">🔐 Включить 2FA</button>`;
+    async function render2FATab() {
+        const statusEl = document.getElementById('pf-2fa-status');
+        const switchEl = document.getElementById('pf-switch-2fa');
+        const devicesEl = document.getElementById('pf-trusted-devices');
+
+        if (!statusEl) return;
+
+        try {
+            const { data: twofa } = await client.from('user_2fa')
+                .select('*').eq('user_id', currentUser.id).maybeSingle();
+
+            const enabled = twofa?.email_2fa_enabled || false;
+
+            if (enabled) {
+                statusEl.innerHTML = `<div class="pf-badge-2fa">✅ Email-2FA включена</div>`;
+                if (switchEl) switchEl.classList.add('on');
+            } else {
+                statusEl.innerHTML = `<div class="pf-badge-2fa off">⚠️ Email-2FA выключена</div>`;
+                if (switchEl) switchEl.classList.remove('on');
             }
-        }catch(e){
-            console.warn('2FA недоступна:',e);
-            statusEl.innerHTML=`<div class="pf-badge-2fa off">⚠️ 2FA недоступна</div>`;
-            actionsEl.innerHTML=`<p style="color:#888;font-size:.85rem;">Функция 2FA не активирована в вашем проекте Supabase. Включите её в <b>Authentication → Providers → MFA</b>.</p>`;
+
+            if (devicesEl) {
+                const { data: devices } = await client.from('trusted_devices')
+                    .select('*').eq('user_id', currentUser.id)
+                    .order('last_used', { ascending: false });
+
+                if (devices && devices.length > 0) {
+                    devicesEl.innerHTML = devices.map(d => {
+                        const isPhone = d.device_name?.includes('iPhone') || d.device_name?.includes('Android');
+                        return `
+                            <div class="pf-notif">
+                                <div class="pf-notif-icon">${isPhone ? '📱' : '💻'}</div>
+                                <div style="flex:1;">
+                                    <div class="pf-notif-text"><b>${escapeHtml(d.device_name || 'Устройство')}</b></div>
+                                    <div class="pf-notif-date">Последний раз: ${new Date(d.last_used).toLocaleString('ru-RU')}</div>
+                                </div>
+                                <button class="pf-note-btn danger" onclick="pfRemoveDevice(${d.id})">✕</button>
+                            </div>
+                        `;
+                    }).join('');
+                } else {
+                    devicesEl.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">Нет доверенных устройств</p>';
+                }
+            }
+        } catch (e) {
+            console.warn('Ошибка 2FA:', e);
+            statusEl.innerHTML = `<div class="pf-badge-2fa off">⚠️ Ошибка загрузки</div>`;
         }
     }
 
-    window.pfSetup2FA=async function(){
-        const setupEl=document.getElementById('pf-2fa-setup');
-        if(!setupEl) return;
-        setupEl.style.display='block';
-        setupEl.innerHTML=`
-            <div style="text-align:center;padding:20px;">
-                <div style="display:inline-block;width:40px;height:40px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin .8s linear infinite;"></div>
-                <p style="margin-top:12px;color:#888;">Настройка 2FA...</p>
-            </div>
-        `;
+    window.pfToggle2FA = async function() {
+        try {
+            const { data: twofa } = await client.from('user_2fa')
+                .select('*').eq('user_id', currentUser.id).maybeSingle();
 
-        try{
-            const {data,error}=await client.auth.mfa.enroll({
-                factorType:'totp',
-                friendlyName:'Mars Encyclopedia 2FA'
-            });
+            const newVal = !(twofa?.email_2fa_enabled || false);
 
-            if(error) throw error;
-
-            const qrCode=data.totp.qr_code;
-            const secret=data.totp.secret;
-            const factorId=data.id;
-
-            setupEl.innerHTML=`
-                <h4 style="margin:0 0 8px 0;">Шаг 1: Отсканируйте QR</h4>
-                <p style="color:#666;font-size:.88rem;margin:0 0 12px 0;">Откройте Google Authenticator или Authy и отсканируйте код:</p>
-                <div style="text-align:center;margin-bottom:20px;">
-                    <img src="${qrCode}" alt="QR" style="max-width:220px;width:100%;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.15);">
-                </div>
-                <details style="margin-bottom:20px;">
-                    <summary style="cursor:pointer;color:#666;font-size:.85rem;">Не работает камера? Ввести код вручную</summary>
-                    <div style="background:#f0f4ff;padding:12px;border-radius:8px;margin-top:8px;font-family:monospace;font-size:.85rem;color:#6C63FF;font-weight:700;word-break:break-all;user-select:all;">${secret}</div>
-                </details>
-
-                <h4 style="margin:0 0 8px 0;">Шаг 2: Введите код из приложения</h4>
-                <input type="text" id="pf-2fa-code" placeholder="000000" maxlength="6" style="width:100%;padding:14px;border:2px solid rgba(0,0,0,.1);border-radius:10px;font-size:1.2rem;text-align:center;letter-spacing:8px;font-family:monospace;margin-bottom:12px;box-sizing:border-box;">
-
-                <div style="display:flex;gap:8px;flex-wrap:wrap;">
-                    <button class="pf-btn" onclick="pfVerify2FA('${factorId}')">✅ Подтвердить</button>
-                    <button class="pf-btn pf-btn-outline" onclick="pfCancel2FA('${factorId}')">Отмена</button>
-                </div>
-            `;
-        }catch(e){
-            console.error('Ошибка 2FA:',e);
-            setupEl.innerHTML=`<p style="color:#c0392b;">Ошибка: ${e.message}</p>`;
-        }
-    };
-
-    window.pfVerify2FA=async function(factorId){
-        const code=document.getElementById('pf-2fa-code').value.trim();
-        if(code.length!==6){showToast('Введите 6-значный код','warning');return;}
-
-        try{
-            const {data:challenge,error:errChallenge}=await client.auth.mfa.challenge({factorId});
-            if(errChallenge) throw errChallenge;
-
-            const {error:errVerify}=await client.auth.mfa.verify({
-                factorId,challengeId:challenge.id,code
-            });
-            if(errVerify) throw errVerify;
-
-            showToast('✅ 2FA включена!','success');
-            playSound('success');
-            setTimeout(()=>location.reload(),1000);
-        }catch(e){
-            showToast('Неверный код: '+e.message,'error');
-        }
-    };
-
-    window.pfCancel2FA=async function(factorId){
-        try{await client.auth.mfa.unenroll({factorId});}catch(e){}
-        document.getElementById('pf-2fa-setup').style.display='none';
-    };
-
-    window.pfDisable2FA=async function(factorId){
-        if(!confirm('Отключить 2FA? Аккаунт станет менее защищённым.')) return;
-        try{
-            const {error}=await client.auth.mfa.unenroll({factorId});
-            if(error) throw error;
-            showToast('🔓 2FA отключена','info');
-            setTimeout(()=>location.reload(),800);
-        }catch(e){
-            showToast('Ошибка: '+e.message,'error');
-        }
-    };
-
-    // ============================================================
-    // КАСТОМИЗАЦИЯ И ПРИВАТНОСТЬ
-    // ============================================================
-    window.pfSelectThemeColor=async function(color){
-        preferences.theme_color=color;
-        try{
-            await client.from('user_preferences').upsert({
-                user_id:currentUser.id,theme_color:color,updated_at:new Date().toISOString()
-            },{onConflict:'user_id'});
-            showToast('🎨 Цвет сохранён!','success');
-            setTimeout(()=>location.reload(),600);
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
-    };
-
-    window.pfTogglePref=async function(key){
-        const newVal=!preferences[key];
-        preferences[key]=newVal;
-        try{
-            await client.from('user_preferences').upsert({
-                user_id:currentUser.id,[key]:newVal,updated_at:new Date().toISOString()
-            },{onConflict:'user_id'});
-            const el=document.getElementById('pf-switch-'+key.replace('notification_',''));
-            if(el) el.classList.toggle('on',newVal);
-            showToast(newVal?'🔊 Включено':'🔇 Выключено','info');
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
-    };
-
-    window.pfToggleEmail=async function(){
-        const newVal=currentProfile.notifications_enabled===false;
-        try{
-            await client.from('profiles').update({notifications_enabled:newVal}).eq('user_id',currentUser.id);
-            currentProfile.notifications_enabled=newVal;
-            document.getElementById('pf-switch-email').classList.toggle('on',newVal);
-            showToast(newVal?'📧 Email включены':'📭 Email выключены','info');
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
-    };
-
-    window.pfTogglePrivacy=async function(key){
-        const newVal=!privacy[key];
-        privacy[key]=newVal;
-        try{
-            await client.from('user_privacy').upsert({
-                user_id:currentUser.id,[key]:newVal,updated_at:new Date().toISOString()
-            },{onConflict:'user_id'});
-            showToast('🔒 Настройка сохранена','success');
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
-    };
-
-    // ============================================================
-    // ЭКСПОРТ ДАННЫХ
-    // ============================================================
-    window.pfExportData=async function(){
-        try{
-            const exportData={
-                exported_at:new Date().toISOString(),
-                user:{id:currentUser.id,email:currentUser.email,created_at:currentUser.created_at},
-                profile:currentProfile,
-                achievements:achievementsList,
-                notes:notes,
-                friends:friends.map(f=>({status:f.status,friend:f.other})),
-                guild:guild?{name:guild.name,icon:guild.icon}:null,
-                privacy,preferences,streak
-            };
-
-            const blob=new Blob([JSON.stringify(exportData,null,2)],{type:'application/json'});
-            const url=URL.createObjectURL(blob);
-            const a=document.createElement('a');
-            a.href=url;a.download=`mars-profile-${currentUser.id.slice(0,8)}-${Date.now()}.json`;
-            document.body.appendChild(a);a.click();
-            document.body.removeChild(a);URL.revokeObjectURL(url);
-
-            showToast('📥 Данные скачаны!','success');
-            playSound('success');
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
-    };
-
-    // ============================================================
-    // СМЕНА ПАРОЛЯ
-    // ============================================================
-    window.pfChangePassword=async function(){
-        const currentPassword=prompt('Введите текущий пароль:');
-        if(!currentPassword) return;
-        const newPassword=prompt('Введите новый пароль (минимум 6 символов):');
-        if(!newPassword||newPassword.length<6){showToast('Пароль минимум 6 символов','warning');return;}
-
-        try{
-            const {error}=await client.auth.updateUser({password:newPassword});
-            if(error) throw error;
-            showToast('🔐 Пароль обновлён!','success');
-            playSound('success');
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
-    };
-
-    // ============================================================
-    // ЭКСПОРТ ОСТАЛЬНЫХ ФУНКЦИЙ
-    // ============================================================
-    window.pfSetTab=function(tab){
-        document.querySelectorAll('.pf-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
-        document.querySelectorAll('.pf-tab-content').forEach(c=>c.classList.toggle('active',c.dataset.content===tab));
-        window.scrollTo({top:0,behavior:'smooth'});
-    };
-
-    window.pfViewProfile=function(id){window.location.href='/profile-view/?user_id='+id;};
-
-    window.pfEditBio=async function(){
-        const cur=document.getElementById('bio-text')?.innerText||'';
-        const nb=prompt('Введите биографию:',cur);
-        if(nb===null) return;
-        const {error}=await client.from('profiles').update({bio:nb.trim()}).eq('user_id',currentUser.id);
-        if(error){showToast('Ошибка: '+error.message,'error');return;}
-        document.getElementById('bio-text').innerText=nb.trim();
-        showToast('✅ Биография обновлена!','success');
-    };
-
-    window.pfEditName=async function(){
-        const cur=document.getElementById('pf-display-name')?.innerText||'';
-        const nn=prompt('Новое имя (2-20 символов, латиница):',cur);
-        if(!nn||nn===cur) return;
-        if(nn.length<2||nn.length>20){showToast('Имя 2-20 символов','warning');return;}
-        if(!/^[a-zA-Z0-9\s\-_]+$/.test(nn)){showToast('Только латиница','warning');return;}
-        const lower=nn.toLowerCase();
-        for(const b of BAD_WORDS) if(lower.includes(b)){showToast('Недопустимое слово','error');return;}
-        const {error}=await client.from('profiles').update({display_name:nn.trim()}).eq('user_id',currentUser.id);
-        if(error){showToast('Ошибка: '+error.message,'error');return;}
-        showToast('✅ Имя обновлено!','success');
-        setTimeout(()=>location.reload(),800);
-    };
-
-    window.pfChangeEmail=async function(){
-        const ne=prompt('Введите новый email:');
-        if(!ne||ne===currentUser.email) return;
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ne)){showToast('Некорректный email','warning');return;}
-        showToast('Отправка...','info');
-        const {error}=await client.auth.updateUser({email:ne});
-        if(error){showToast('Ошибка: '+error.message,'error');return;}
-        showToast('📧 Письмо отправлено!','success');
-    };
-
-    window.pfSelectAvatar=async function(url){
-        const {error}=await client.from('profiles').update({avatar_url:url}).eq('user_id',currentUser.id);
-        if(error){showToast('Ошибка','error');return;}
-        showToast('✅ Аватар обновлён!','success');
-        setTimeout(()=>location.reload(),800);
-    };
-
-    window.pfSelectKingdom=async function(name){
-        const {error}=await client.from('profiles').update({kingdom:name}).eq('user_id',currentUser.id);
-        if(error){showToast('Ошибка','error');return;}
-        showToast(`✅ ${name}!`,'success');
-        setTimeout(()=>location.reload(),800);
-    };
-
-    window.pfDeleteAccount=async function(){
-        if(!confirm('⚠️ Удалить аккаунт? Необратимо!')) return;
-        const email=prompt('Введите email для подтверждения:');
-        if(!email||email!==currentUser.email){showToast('Email не совпадает','error');return;}
-        const {data}=await client.auth.getSession();
-        const token=data?.session?.access_token;
-        if(!token){showToast('Ошибка токена','error');return;}
-        try{
-            const res=await fetch(`${SUPABASE_URL}/functions/v1/delete-user`,{
-                method:'DELETE',headers:{'Authorization':`Bearer ${token}`,'Content-Type':'application/json'}
-            });
-            const json=await res.json();
-            if(json.error) throw new Error(json.error);
-            showToast('Аккаунт удалён','success');
-            localStorage.clear();
-            setTimeout(()=>window.location.href='/',800);
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
-    };
-
-    window.pfLogout=async function(){
-        await client.auth.signOut();
-        localStorage.clear();
-        window.location.href='/';
-    };
-
-    window.pfDeleteGuild=async function(){
-        if(!guild||!confirm('Удалить гильдию?')) return;
-        await client.from('guilds').delete().eq('id',guild.id);
-        showToast('Гильдия удалена','info');
-        setTimeout(()=>location.reload(),800);
-    };
-
-    // ЗАМЕТКИ
-    window.pfOpenNoteForm=function(id=null){
-        editingNoteId=id;
-        const form=document.getElementById('pf-note-form');
-        if(!form) return;
-        form.classList.add('open');
-        if(id){
-            const n=notes.find(x=>x.id===id);
-            if(n){
-                document.getElementById('pf-note-title').value=n.title||'';
-                document.getElementById('pf-note-content').value=n.content;
-                selectedNoteColor=n.color||'#6C63FF';
-                document.getElementById('pf-note-save-btn').textContent='💾 Обновить';
+            if (newVal) {
+                if (!confirm('Включить Email-2FA?\n\nПри входе с нового устройства на вашу почту будет приходить код из 6 цифр.')) return;
+            } else {
+                if (!confirm('Выключить Email-2FA?\n\nАккаунт станет менее защищённым.')) return;
             }
-        }else{
-            document.getElementById('pf-note-title').value='';
-            document.getElementById('pf-note-content').value='';
-            selectedNoteColor='#6C63FF';
-            document.getElementById('pf-note-save-btn').textContent='💾 Сохранить';
-        }
-        renderNoteColors();
-    };
 
-    window.pfCloseNoteForm=function(){
-        document.getElementById('pf-note-form')?.classList.remove('open');
-        editingNoteId=null;
-    };
+            const { error } = await client.from('user_2fa').upsert({
+                user_id: currentUser.id,
+                email_2fa_enabled: newVal,
+                updated_at: new Date().toISOString()
+            }, { onConflict: 'user_id' });
 
-    window.pfSelectNoteColor=function(c){selectedNoteColor=c;renderNoteColors();};
+            if (error) throw error;
 
-    window.pfSaveNote=async function(){
-        const title=document.getElementById('pf-note-title').value.trim();
-        const content=document.getElementById('pf-note-content').value.trim();
-        if(!content){showToast('Введите текст','warning');return;}
-        let error;
-        if(editingNoteId){
-            const r=await client.from('user_notes').update({title,content,color:selectedNoteColor,updated_at:new Date().toISOString()}).eq('id',editingNoteId);
-            error=r.error;
-        }else{
-            const r=await client.from('user_notes').insert({user_id:currentUser.id,title,content,color:selectedNoteColor});
-            error=r.error;
-        }
-        if(error){showToast('Ошибка: '+error.message,'error');return;}
-        showToast('✅ Заметка сохранена!','success');
-        playSound('success');
-        setTimeout(()=>location.reload(),700);
-    };
+            if (newVal) {
+                await client.from('trusted_devices').upsert({
+                    user_id: currentUser.id,
+                    device_id: getDeviceId(),
+                    device_name: getDeviceName(),
+                    last_used: new Date().toISOString()
+                }, { onConflict: 'user_id,device_id' });
+            }
 
-    window.pfEditNote=function(id){pfOpenNoteForm(id);};
+            showToast(newVal ? '✅ Email-2FA включена!' : '🔓 Email-2FA выключена', newVal ? 'success' : 'info');
+            if (typeof playSound === 'function') playSound(newVal ? 'success' : 'info');
+            setTimeout(() => location.reload(), 800);
 
-    window.pfPinNote=async function(id){
-        const n=notes.find(x=>x.id===id);
-        if(!n) return;
-        await client.from('user_notes').update({pinned:!n.pinned}).eq('id',id);
-        showToast(n.pinned?'📍 Откреплено':'📌 Закреплено','success');
-        setTimeout(()=>location.reload(),500);
-    };
-
-    window.pfDeleteNote=async function(id){
-        if(!confirm('Удалить заметку?')) return;
-        await client.from('user_notes').delete().eq('id',id);
-        showToast('Удалено','info');
-        setTimeout(()=>location.reload(),500);
-    };
-
-    // ЧАТ
-    window.pfSendChat=async function(){
-        const input=document.getElementById('pf-chat-input');
-        const chatEl=document.getElementById('pf-chat-container');
-        const q=input.value.trim();
-        if(!q) return;
-        const userMsg=document.createElement('div');
-        userMsg.className='pf-chat-msg user';userMsg.textContent=q;
-        chatEl.appendChild(userMsg);chatEl.scrollTop=chatEl.scrollHeight;
-        input.value='';
-        try{
-            const res=await fetch(`${SUPABASE_URL}/functions/v1/ai-chat`,{
-                method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q})
-            });
-            const data=await res.json();
-            const botMsg=document.createElement('div');
-            botMsg.className='pf-chat-msg bot';
-            botMsg.textContent=data.reply||data.error||'Нет ответа';
-            chatEl.appendChild(botMsg);chatEl.scrollTop=chatEl.scrollHeight;
-        }catch(e){
-            const err=document.createElement('div');
-            err.className='pf-chat-msg bot';err.textContent='⚠️ Ошибка';
-            chatEl.appendChild(err);
+        } catch (e) {
+            showToast('Ошибка: ' + e.message, 'error');
         }
     };
 
-    // ============================================================
-    // ИНИЦИАЛИЗАЦИЯ
-    // ============================================================
-    async function init(){
-        // Скелетон
-        container.innerHTML=`
-            <div style="max-width:1000px;margin:0 auto;">
-                <div class="pf-skeleton" style="background:linear-gradient(135deg,#6C63FF,#A29BFE);border-radius:24px;padding:36px 32px;margin-bottom:24px;min-height:180px;"></div>
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px;">
-                    ${Array(6).fill(0).map(()=>'<div class="pf-skeleton" style="background:#fff;border-radius:16px;height:80px;"></div>').join('')}
-                </div>
-                <div style="text-align:center;padding:40px;color:#888;">
-                    <div style="display:inline-block;width:40px;height:40px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin .8s linear infinite;"></div>
-                    <p style="margin-top:16px;">Загрузка профиля...</p>
-                </div>
-            </div>
-        `;
+    window.pfRemoveDevice = async function(id) {
+        if (!confirm('Удалить это устройство?')) return;
+        await client.from('trusted_devices').delete().eq('id', id);
+        showToast('🗑️ Устройство удалено', 'info');
+        render2FATab();
+    };
 
-        await waitForClient();
-        if(!client){container.innerHTML='<div style="text-align:center;padding:60px;"><h2>⚠️ Ошибка загрузки</h2></div>';return;}
-
-        const session=await getSessionSafe();
-        currentUser=session.user;
-
-        if(!currentUser){
-            container.innerHTML=`
-                <div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">
-                    <div style="font-size:4rem;margin-bottom:16px;">🔒</div>
-                    <h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2>
-                    <p style="color:#888;margin:0 0 20px 0;">Войдите, чтобы увидеть профиль</p>
-                    <a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">Войти</a>
-                </div>
-            `;
-            return;
-        }
-
-        console.log('✅ Профиль: пользователь',currentUser.email);
-        await loadAllData(currentUser);
-    }
-
-    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
-    else init();
-})();
-</script>
+    window.pfClearTrustedDevices = async function() {
+        if (!confirm('Удалить все доверенные устройства?\n\nПри следующем входе с любого устройства потребуется код.')) return;
+        await client.from('trusted_devices').delete().eq('user_id', currentUser.id);
+        showToast('🗑️ Все устройства удалены', 'info');
+        render2FATab();
+    };

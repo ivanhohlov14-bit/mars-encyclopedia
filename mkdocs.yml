@@ -44,6 +44,7 @@ extra_javascript:
   - assets/js/device-link.js
   - assets/js/supabase-client.js
   - assets/js/qr-scanner.js
+  - assets/js/easter-eggs.js
 
 extra_head:
   - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

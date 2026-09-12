@@ -22,7 +22,8 @@
             '/globe-map/',
             '/interactive/exodus/',
             '/music/constructor/',
-            '/interactive/', 
+            '/interactive/',
+            '/achievements/',
             '/translator/'
         ];
 

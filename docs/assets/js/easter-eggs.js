@@ -1,4 +1,4 @@
-// easter-eggs.js — пасхалки и эффекты сайта
+// easter-eggs.js — пасхалки и эффекты сайта (полная версия)
 (function() {
     'use strict';
 
@@ -45,7 +45,7 @@
     }
 
     // ============================================================
-    // 2. ЗВЁЗДНЫЙ ФОН
+    // 2. ЗВЁЗДНЫЙ ФОН (с тёмной темой)
     // ============================================================
     let starsCanvas = null;
     let starsAnimFrame = null;
@@ -59,6 +59,10 @@
     function createStarField() {
         if (starsCanvas) return;
 
+        // Добавляем класс тёмной темы
+        document.body.classList.add('mars-stars-on');
+        document.documentElement.classList.add('mars-stars-on');
+
         starsCanvas = document.createElement('canvas');
         starsCanvas.id = 'mars-stars-canvas';
         starsCanvas.style.cssText = `
@@ -66,11 +70,10 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             pointer-events: none;
-            z-index: 0;
-            opacity: 0.9;
-            transition: opacity 0.5s;
+            z-index: 1;
+            opacity: 1;
         `;
-        document.body.insertBefore(starsCanvas, document.body.firstChild);
+        document.body.appendChild(starsCanvas);
 
         const ctx = starsCanvas.getContext('2d');
         let stars = [];
@@ -80,13 +83,13 @@
             starsCanvas.width = window.innerWidth;
             starsCanvas.height = window.innerHeight;
             stars = [];
-            const count = Math.floor((window.innerWidth * window.innerHeight) / 8000);
+            const count = Math.floor((window.innerWidth * window.innerHeight) / 6000);
             for (let i = 0; i < count; i++) {
                 stars.push({
                     x: Math.random() * starsCanvas.width,
                     y: Math.random() * starsCanvas.height,
-                    r: Math.random() * 1.5 + 0.3,
-                    alpha: Math.random() * 0.6 + 0.4,
+                    r: Math.random() * 1.8 + 0.4,
+                    alpha: Math.random() * 0.7 + 0.3,
                     speed: Math.random() * 0.02 + 0.005,
                     twinkle: Math.random() * Math.PI * 2
                 });
@@ -110,7 +113,15 @@
 
             stars.forEach(s => {
                 s.twinkle += s.speed;
-                const alpha = s.alpha * (0.6 + 0.4 * Math.sin(s.twinkle));
+                const alpha = s.alpha * (0.5 + 0.5 * Math.sin(s.twinkle));
+                // Свечение
+                if (s.r > 1) {
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r * 3, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(162, 155, 254, ${alpha * 0.15})`;
+                    ctx.fill();
+                }
+                // Звезда
                 ctx.beginPath();
                 ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
                 ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
@@ -160,21 +171,28 @@
         window.addEventListener('resize', resize);
         draw();
         loopShootingStars();
+
+        console.log('🌟 Звёздное небо включено');
     }
 
     function removeStarField() {
+        // Убираем тёмную тему
+        document.body.classList.remove('mars-stars-on');
+        document.documentElement.classList.remove('mars-stars-on');
+
         if (starsAnimFrame) {
             cancelAnimationFrame(starsAnimFrame);
             starsAnimFrame = null;
         }
         if (starsCanvas) {
-            starsCanvas.style.opacity = '0';
             const canvas = starsCanvas;
+            canvas.style.opacity = '0';
             setTimeout(() => {
                 if (canvas.parentNode) canvas.parentNode.removeChild(canvas);
-            }, 500);
+            }, 300);
             starsCanvas = null;
         }
+        console.log('⭐ Звёздное небо выключено');
     }
 
     function createStarsToggle() {
@@ -189,29 +207,30 @@
             position: fixed;
             bottom: 90px;
             right: 20px;
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             background: linear-gradient(135deg, #1a1a2e, #16213e);
             border: 2px solid #6C63FF;
             color: #fff;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            z-index: 9999;
-            box-shadow: 0 8px 24px rgba(108,99,255,0.4);
+            z-index: 99999;
+            box-shadow: 0 8px 24px rgba(108,99,255,0.5);
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 0;
         `;
 
         btn.addEventListener('mouseenter', () => {
             btn.style.transform = 'scale(1.1) translateY(-3px)';
-            btn.style.boxShadow = '0 12px 32px rgba(108,99,255,0.6)';
+            btn.style.boxShadow = '0 12px 32px rgba(108,99,255,0.7)';
         });
         btn.addEventListener('mouseleave', () => {
             btn.style.transform = 'scale(1) translateY(0)';
-            btn.style.boxShadow = '0 8px 24px rgba(108,99,255,0.4)';
+            btn.style.boxShadow = '0 8px 24px rgba(108,99,255,0.5)';
         });
 
         btn.addEventListener('click', () => {
@@ -363,7 +382,7 @@
         }, 4500);
 
         // ============================================================
-        // КЛИКАБЕЛЬНАЯ ПЛАШКА СО ССЫЛКОЙ (видна 20 секунд)
+        // КЛИКАБЕЛЬНАЯ ПЛАШКА СО ССЫЛКОЙ (20 секунд)
         // ============================================================
         const unlock = document.createElement('div');
         unlock.id = 'secret-unlock-banner';
@@ -398,22 +417,6 @@
         unlock.onclick = function() {
             window.location.href = '/secret/';
         };
-
-        if (!document.getElementById('secret-banner-style')) {
-            const s = document.createElement('style');
-            s.id = 'secret-banner-style';
-            s.textContent = `
-                @keyframes secretBannerIn {
-                    from { opacity: 0; transform: translate(-50%, -30px); }
-                    to { opacity: 1; transform: translate(-50%, 0); }
-                }
-                @keyframes secFloat {
-                    0%, 100% { transform: translateY(0); }
-                    50% { transform: translateY(-5px); }
-                }
-            `;
-            document.head.appendChild(s);
-        }
 
         document.body.appendChild(unlock);
 
@@ -452,7 +455,6 @@
     // 4. ЛЕТАЮЩИЙ АСТРОНАВТ
     // ============================================================
     function initAstronaut() {
-        // Только если включены звёзды
         if (localStorage.getItem(STARS_KEY) !== 'true') return;
 
         function spawnAstronaut() {
@@ -472,16 +474,12 @@
                 pointer-events: none;
                 opacity: 0.7;
                 filter: drop-shadow(0 0 10px rgba(255,255,255,0.6));
-                transition: none;
-                transform: rotate(${fromLeft ? '-15deg' : '15deg'});
             `;
             astro.textContent = '🚀';
             document.body.appendChild(astro);
 
-            // Анимация полёта
             const distance = window.innerWidth + 160;
             let start = null;
-            const startTime = performance.now();
 
             function fly(now) {
                 if (!start) start = now;
@@ -506,7 +504,6 @@
             requestAnimationFrame(fly);
         }
 
-        // Первый запуск через 30 секунд, потом каждые 60-90 секунд
         setTimeout(() => {
             spawnAstronaut();
             setInterval(spawnAstronaut, 60000 + Math.random() * 30000);
@@ -536,7 +533,6 @@
         let clickTimer = null;
 
         document.addEventListener('click', function(e) {
-            // Игнорируем клики по ссылкам, кнопкам, полям
             if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' ||
                 e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' ||
                 e.target.closest('a') || e.target.closest('button') ||
@@ -603,13 +599,8 @@
     // 6. СЕЗОННЫЙ ЭФФЕКТ
     // ============================================================
     function initSeasonalEffect() {
-        const month = new Date().getMonth(); // 0-11
+        const month = new Date().getMonth();
         let emoji, count;
-
-        // Зима: декабрь-февраль (11, 0, 1) → снежинки
-        // Весна: март-май (2, 3, 4) → цветы
-        // Лето: июнь-август (5, 6, 7) → солнечные искры
-        // Осень: сентябрь-ноябрь (8, 9, 10) → листья
 
         if (month === 11 || month === 0 || month === 1) {
             emoji = '❄️';
@@ -625,7 +616,6 @@
             count = 25;
         }
 
-        // Показываем эффект только раз в день
         const todayKey = 'seasonal_' + new Date().toDateString();
         if (sessionStorage.getItem(todayKey)) return;
 
@@ -674,37 +664,16 @@
             }, i * 200);
         }
 
-        if (!document.getElementById('seasonal-style')) {
-            const style = document.createElement('style');
-            style.id = 'seasonal-style';
-            style.textContent = `
-                @keyframes seasonalFall {
-                    0% {
-                        transform: translate(0, 0) rotate(0deg);
-                        opacity: 0;
-                    }
-                    10% {
-                        opacity: 0.9;
-                    }
-                    100% {
-                        transform: translate(var(--sway), ${window.innerHeight + 100}px) rotate(var(--rot));
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-
         setTimeout(() => container.remove(), 12000);
     }
 
     // ============================================================
     // 7. ОБЩИЕ АНИМАЦИИ
     // ============================================================
-    function addMeteorAnimation() {
-        if (document.getElementById('meteor-anim-style')) return;
+    function addAnimations() {
+        if (document.getElementById('mars-anim-style')) return;
         const style = document.createElement('style');
-        style.id = 'meteor-anim-style';
+        style.id = 'mars-anim-style';
         style.textContent = `
             @keyframes meteorFall {
                 0% { transform: translate(0, 0) rotate(45deg); opacity: 0; }
@@ -722,6 +691,164 @@
                 70% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
                 100% { opacity: 0; transform: translate(-50%, -50%) scale(1.3); }
             }
+            @keyframes secretBannerIn {
+                from { opacity: 0; transform: translate(-50%, -30px); }
+                to { opacity: 1; transform: translate(-50%, 0); }
+            }
+            @keyframes secFloat {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-5px); }
+            }
+            @keyframes seasonalFall {
+                0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+                10% { opacity: 0.9; }
+                100% { transform: translate(var(--sway), ${window.innerHeight + 100}px) rotate(var(--rot)); opacity: 0; }
+            }
+
+            /* ============================================================
+               ТЁМНАЯ ТЕМА ЗВЁЗДНОГО НЕБА
+               ============================================================ */
+            html.mars-stars-on,
+            body.mars-stars-on {
+                background: linear-gradient(180deg, #0a0a14 0%, #15152a 50%, #1a1a2e 100%) !important;
+                background-attachment: fixed !important;
+            }
+
+            body.mars-stars-on .md-content,
+            body.mars-stars-on .rst-content,
+            body.mars-stars-on .wy-nav-content,
+            body.mars-stars-on .md-content__inner,
+            body.mars-stars-on .document,
+            body.mars-stars-on .section {
+                background-color: rgba(15, 15, 30, 0.75) !important;
+                color: #d4d4e4 !important;
+            }
+
+            body.mars-stars-on .wy-nav-side,
+            body.mars-stars-on .md-sidebar,
+            body.mars-stars-on .wy-side-nav-search {
+                background-color: rgba(10, 10, 25, 0.9) !important;
+            }
+
+            body.mars-stars-on .wy-menu-vertical li a,
+            body.mars-stars-on .md-nav__link,
+            body.mars-stars-on .md-nav__title {
+                color: #c4c4d4 !important;
+            }
+
+            body.mars-stars-on .wy-menu-vertical li a:hover,
+            body.mars-stars-on .md-nav__link:hover {
+                color: #A29BFE !important;
+                background-color: rgba(108, 99, 255, 0.15) !important;
+            }
+
+            body.mars-stars-on .wy-menu-vertical li.current > a,
+            body.mars-stars-on .md-nav__link--active {
+                color: #A29BFE !important;
+                background-color: rgba(108, 99, 255, 0.2) !important;
+            }
+
+            body.mars-stars-on .md-header,
+            body.mars-stars-on .wy-nav-top {
+                background-color: rgba(10, 10, 25, 0.9) !important;
+                border-bottom: 1px solid rgba(108, 99, 255, 0.3) !important;
+            }
+
+            body.mars-stars-on h1,
+            body.mars-stars-on h2,
+            body.mars-stars-on h3,
+            body.mars-stars-on h4,
+            body.mars-stars-on h5,
+            body.mars-stars-on h6 {
+                color: #f0f0ff !important;
+            }
+
+            body.mars-stars-on p,
+            body.mars-stars-on li,
+            body.mars-stars-on span,
+            body.mars-stars-on td,
+            body.mars-stars-on th,
+            body.mars-stars-on div {
+                color: #d4d4e4 !important;
+            }
+
+            body.mars-stars-on a {
+                color: #A29BFE !important;
+            }
+
+            body.mars-stars-on a:hover {
+                color: #6C63FF !important;
+            }
+
+            body.mars-stars-on table {
+                background-color: rgba(20, 20, 40, 0.6) !important;
+            }
+
+            body.mars-stars-on th {
+                background-color: rgba(108, 99, 255, 0.2) !important;
+                color: #f0f0ff !important;
+            }
+
+            body.mars-stars-on td {
+                border-color: rgba(108, 99, 255, 0.15) !important;
+            }
+
+            body.mars-stars-on code,
+            body.mars-stars-on pre {
+                background-color: rgba(20, 20, 40, 0.8) !important;
+                color: #A29BFE !important;
+                border: 1px solid rgba(108, 99, 255, 0.2) !important;
+            }
+
+            body.mars-stars-on .admonition {
+                background-color: rgba(20, 20, 40, 0.6) !important;
+                border-color: rgba(108, 99, 255, 0.3) !important;
+            }
+
+            body.mars-stars-on .pf-card,
+            body.mars-stars-on .pf-quick-card,
+            body.mars-stars-on .pf-ach,
+            body.mars-stars-on .pf-note,
+            body.mars-stars-on .pf-tabs,
+            body.mars-stars-on .pf-note-form,
+            body.mars-stars-on .pf-stat,
+            body.mars-stars-on .pf-day,
+            body.mars-stars-on .pf-history-item {
+                background: rgba(20, 20, 40, 0.85) !important;
+                border-color: rgba(108, 99, 255, 0.3) !important;
+            }
+
+            body.mars-stars-on .pf-card-title,
+            body.mars-stars-on .pf-quick-title,
+            body.mars-stars-on .pf-ach-name,
+            body.mars-stars-on .pf-note-title {
+                color: #e0e0e0 !important;
+            }
+
+            body.mars-stars-on .pf-tab {
+                color: #aaa !important;
+            }
+
+            body.mars-stars-on input,
+            body.mars-stars-on textarea,
+            body.mars-stars-on select {
+                background-color: rgba(20, 20, 40, 0.6) !important;
+                color: #e0e0e0 !important;
+                border-color: rgba(108, 99, 255, 0.3) !important;
+            }
+
+            body.mars-stars-on input::placeholder,
+            body.mars-stars-on textarea::placeholder {
+                color: #666688 !important;
+            }
+
+            body,
+            .md-content,
+            .wy-nav-content,
+            .md-header,
+            .wy-nav-side {
+                transition: background-color 0.5s ease, color 0.5s ease;
+            }
         `;
         document.head.appendChild(style);
     }
@@ -730,7 +857,7 @@
     // ЗАПУСК
     // ============================================================
     function init() {
-        addMeteorAnimation();
+        addAnimations();
         initMarsCursor();
         initStarField();
         initEasterEgg();

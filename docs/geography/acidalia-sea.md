@@ -387,30 +387,28 @@
 Исследования миссий **Mars Express** и **MRO** подтверждают, что вода на Марсе действительно существовала в жидком виде, но её запасы были заключены в глинистых минералах и подповерхностных льдах[^22]. Учёные предполагают, что часть воды могла сохраниться в глубоких подземных резервуарах — возможно, именно эти резервуары вдохновили автора на создание мифа о «подземных водах», которые иссякли вместе с морем, когда богиня Араксис ушла из мира людей.
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const client = supabase.createClient(
-        'https://ncytbgbzfjfoqmmgfygz.supabase.co',
-        'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D'
-    );
+  // Запись посещения страницы "Ацидалийское море"
+  const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
+  
+  // Используем уже загруженный клиент, если он есть
+  const client = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+  
+  if (client) {
     client.auth.getSession().then(({ data }) => {
-        const user = data?.session?.user;
-        if (!user) return;
-        const pageKey = `read_${window.location.pathname}`;
-        if (!localStorage.getItem(pageKey)) {
-            if (typeof window.addExperience === 'function') {
-                window.addExperience(user.id, 5);
-                localStorage.setItem(pageKey, 'true');
-                console.log('✅ +5 опыта за статью!');
-                // === ПОКАЗЫВАЕМ АНИМАЦИЮ ===
-                if (typeof showExperienceToast === 'function') {
-                    showExperienceToast(5);
-                }
-            } else {
-                console.warn('⚠️ addExperience не загружена');
-            }
-        }
+      const user = data?.session?.user;
+      if (user) {
+        client.from('user_visits').insert({
+          user_id: user.id,
+          place_id: 'acidalia-sea',      // Уникальный ID статьи
+          place_type: 'sea',             // Тип: sea, city, temple, cave, character
+          visited_at: new Date().toISOString()
+        }).then(({ error }) => {
+          if (error) console.error('Ошибка записи посещения:', error);
+        });
+      }
     });
-});
+  }
 </script>
 
 ## Связанные статьи

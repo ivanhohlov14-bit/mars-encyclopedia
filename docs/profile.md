@@ -1,5 +1,5 @@
 ---
-title: Мой профиль
+title:  Мой профиль
 comments: false
 ---
 
@@ -16,7 +16,6 @@ comments: false
 @keyframes pfFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pfPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 @keyframes pfFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes pfPulseOpacity{0%,100%{opacity:.3}50%{opacity:.6}}
 .pf-fade{animation:pfFadeIn .5s cubic-bezier(.16,1,.3,1) both}
 #profile-app a{text-decoration:none!important;border-bottom:none!important}
 .pf-hero{position:relative;background:linear-gradient(135deg,var(--kingdom-color),var(--kingdom-light));border-radius:24px;padding:36px 32px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 20px 60px -12px var(--kingdom-shadow)}
@@ -116,7 +115,7 @@ comments: false
 .pf-note-btn:hover{background:var(--kingdom-color);color:#fff}
 .pf-note-btn.danger:hover{background:#e74c3c;color:#fff}
 .pf-note-form{background:#fff;border-radius:14px;padding:20px;margin-bottom:16px;border:2px solid var(--kingdom-color);box-shadow:0 8px 24px -8px var(--kingdom-shadow);display:none}
-.pf-note-form.open{display:block;animation:pfFadeIn .3s ease}
+.pf-note-form.open{display:block}
 .pf-note-input{width:100%;padding:12px 16px;border-radius:10px;border:2px solid rgba(0,0,0,.08);font-size:.9rem;font-family:inherit;outline:none;background:#fafafa;margin-bottom:10px;box-sizing:border-box}
 .pf-note-input:focus{border-color:var(--kingdom-color);background:#fff}
 .pf-note-input.title{font-weight:700}
@@ -126,8 +125,6 @@ comments: false
 .pf-note-color:hover{transform:scale(1.15)}
 .pf-note-color.selected{border-color:#333;transform:scale(1.15)}
 .pf-danger{background:rgba(231,76,60,.05);border:2px solid rgba(231,76,60,.2);border-radius:14px;padding:16px 20px}
-.pf-qr-btn{width:100%;padding:18px 24px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border:none;border-radius:16px;font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 12px 32px -8px rgba(108,99,255,.5);display:flex;align-items:center;justify-content:center;gap:12px;transition:all .3s;margin-bottom:20px}
-.pf-qr-btn:hover{transform:translateY(-3px);box-shadow:0 20px 40px -8px rgba(108,99,255,.6)}
 .pf-toggle{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05)}
 .pf-toggle:last-child{border-bottom:none}
 .pf-toggle-label{font-size:.9rem;color:#333;font-weight:600}
@@ -138,11 +135,6 @@ comments: false
 .pf-switch.on::after{left:25px}
 .pf-badge-2fa{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:700;background:linear-gradient(135deg,#27ae60,#16a085);color:#fff}
 .pf-badge-2fa.off{background:rgba(0,0,0,.08);color:#666}
-.pf-theme-colors{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-.pf-theme-color{width:40px;height:40px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .2s;box-shadow:0 4px 12px rgba(0,0,0,.15)}
-.pf-theme-color:hover{transform:scale(1.1)}
-.pf-theme-color.selected{border-color:#1a1a1a;transform:scale(1.15)}
-@media(prefers-color-scheme:dark){.pf-card,.pf-quick-card,.pf-ach,.pf-note,.pf-note-form{background:rgba(30,30,46,.9)}.pf-card-title,.pf-quick-title,.pf-ach-name,.pf-name,.pf-note-title{color:#e0e0e0}.pf-tab{color:#aaa}.pf-tab:hover{background:rgba(255,255,255,.05);color:#fff}.pf-chat{background:rgba(30,30,46,.6)}.pf-chat-msg.bot{background:rgba(255,255,255,.08);color:#e0e0e0}.pf-chat-input input{background:rgba(30,30,46,.8);color:#e0e0e0}.pf-kingdom-btn{background:rgba(30,30,46,.6);color:#e0e0e0}.pf-notif{background:rgba(255,255,255,.03)}.pf-notif-text{color:#d0d0d0}.pf-cal-day,.pf-note-content{color:#e0e0e0}.pf-calendar{background:rgba(30,30,46,.5)}.pf-note-input{background:rgba(30,30,46,.6);color:#e0e0e0}.pf-note-btn{background:rgba(255,255,255,.08);color:#aaa}.pf-toggle-label{color:#d0d0d0}}
 @media(max-width:600px){.pf-hero{padding:24px 20px}.pf-avatar{width:90px;height:90px}.pf-name{font-size:1.4rem}.pf-tabs{padding:4px}.pf-tab{padding:8px 12px;font-size:.78rem}.pf-card{padding:18px 16px}.pf-quick-grid{grid-template-columns:1fr}.pf-avatar-option{width:52px;height:52px}}
 </style>
 
@@ -151,12 +143,10 @@ comments: false
 (function(){
     'use strict';
 
-    // Разблокировка скролла — один раз при загрузке
+    // Разблокировка скролла
     try {
         document.body.style.overflow = '';
-        document.body.style.position = '';
         document.documentElement.style.overflow = '';
-        document.documentElement.style.height = '';
     } catch(e) {}
 
     var SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
@@ -179,7 +169,6 @@ comments: false
 
     var AVATARS = ['/assets/images/авотарка%20девушки.png','/assets/images/мужчина.png','/assets/images/мужчина2.png','/assets/images/мужчина%203.png'];
     var NOTE_COLORS = ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63'];
-    var THEME_COLORS = ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63','#34495e','#e67e22'];
 
     var LEVEL_MAP = [
         {level:1,xp:0,title:'🌱 Новый поселенец'},
@@ -274,11 +263,11 @@ comments: false
     }
 
     // ============================================================
-    // ЗАГРУЗКА ДАННЫХ
+    // ЗАГРУЗКА ДАННЫХ — ОДИН РЕНДЕР
     // ============================================================
     async function loadAllData(user){
         var startTime = performance.now();
-        console.log('⏱️ Загрузка...');
+        console.log('⏱️ Загрузка профиля...');
 
         // Кэш
         try{
@@ -297,90 +286,110 @@ comments: false
                 streak = d.streak || 0;
                 privacy = d.privacy || {};
                 preferences = d.preferences || {};
-                if(currentProfile) render();
             }
         }catch(e){}
 
-        // Профиль
+        var timeout = function(ms){ return new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, ms); }); };
+
+        // Загружаем всё параллельно
+        var results;
         try {
-            var profileRes = await Promise.race([
-                client.from('profiles').select('*').eq('user_id', user.id).single(),
-                new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 6000); })
+            results = await Promise.all([
+                Promise.race([client.from('profiles').select('*').eq('user_id', user.id).single(), timeout(12000)]).catch(function(){ return {data:null}; }),
+                Promise.race([client.from('user_achievements').select('achievement_id, earned_at').eq('user_id', user.id).order('earned_at', { ascending: false }), timeout(12000)]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('user_notes').select('*').eq('user_id', user.id).order('pinned', { ascending: false }).order('updated_at', { ascending: false }), timeout(12000)]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('notifications').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(10), timeout(12000)]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('profiles').select('user_id, username, display_name, experience, level, avatar_url').order('experience', { ascending: false }).limit(10), timeout(12000)]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('daily_logins').select('streak').eq('user_id', user.id).order('login_date', { ascending: false }).limit(1), timeout(12000)]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('user_privacy').select('*').eq('user_id', user.id).maybeSingle(), timeout(12000)]).catch(function(){ return {data:null}; }),
+                Promise.race([client.from('user_preferences').select('*').eq('user_id', user.id).maybeSingle(), timeout(12000)]).catch(function(){ return {data:null}; }),
+                Promise.race([client.from('guild_members').select('guild_id').eq('user_id', user.id).maybeSingle(), timeout(12000)]).catch(function(){ return {data:null}; }),
+                Promise.race([client.from('friends').select('*').or('user_id.eq.' + user.id + ',friend_id.eq.' + user.id), timeout(12000)]).catch(function(){ return {data:[]}; })
             ]);
-            if (profileRes && profileRes.data) {
-                currentProfile = profileRes.data;
-                if (currentProfile.kingdom && KINGDOMS[currentProfile.kingdom]) kingdom = KINGDOMS[currentProfile.kingdom];
-            }
-        } catch(e) { console.warn('Профиль:', e.message); }
+        } catch(e) {
+            console.error('Общая ошибка:', e);
+            results = [];
+        }
+
+        var profileRes = results[0] || {data:null};
+        var uaRes = results[1] || {data:[]};
+        var notesRes = results[2] || {data:[]};
+        var notifRes = results[3] || {data:[]};
+        var leadersRes = results[4] || {data:[]};
+        var streakRes = results[5] || {data:[]};
+        var privacyRes = results[6] || {data:null};
+        var prefsRes = results[7] || {data:null};
+        var guildRes = results[8] || {data:null};
+        var friendsRes = results[9] || {data:[]};
+
+        if (profileRes && profileRes.data) {
+            currentProfile = profileRes.data;
+            if (currentProfile.kingdom && KINGDOMS[currentProfile.kingdom]) kingdom = KINGDOMS[currentProfile.kingdom];
+        }
+
+        // Если профиль не найден — создаём
+        if (!currentProfile) {
+            console.log('Создаём профиль...');
+            try {
+                var newProfileRes = await client.from('profiles').insert([{
+                    user_id: user.id,
+                    username: user.email.split('@')[0],
+                    display_name: user.email.split('@')[0]
+                }]).select().single();
+                if (newProfileRes.data) currentProfile = newProfileRes.data;
+            } catch(e) { console.warn('Не удалось создать:', e); }
+        }
 
         if (!currentProfile) {
-            console.warn('❌ Профиль не получен');
-            container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;"><div style="font-size:4rem;margin-bottom:16px;">⚠️</div><h2>Не удалось загрузить</h2><p style="color:#888;">Профиль не найден</p><a href="/login/" style="display:inline-block;margin-top:16px;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
+            container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="font-size:4rem;">⚠️</div><h2>Профиль не найден</h2><a href="/login/" style="display:inline-block;margin-top:16px;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
             return;
         }
 
-        console.log('✅ Профиль за ' + Math.round(performance.now() - startTime) + ' мс');
-        render();
-
-        // Всё остальное — параллельно
-        var timeout = function(ms){ return new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, ms); }); };
-
-        try {
-            var results = await Promise.all([
-                Promise.race([client.from('user_achievements').select('achievement_id, earned_at').eq('user_id', user.id).order('earned_at', { ascending: false }), timeout(6000)]).catch(function(){ return {data:[]}; }),
-                Promise.race([client.from('user_notes').select('*').eq('user_id', user.id).order('pinned', { ascending: false }).order('updated_at', { ascending: false }), timeout(6000)]).catch(function(){ return {data:[]}; }),
-                Promise.race([client.from('notifications').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(10), timeout(6000)]).catch(function(){ return {data:[]}; }),
-                Promise.race([client.from('profiles').select('user_id, username, display_name, experience, level, avatar_url').order('experience', { ascending: false }).limit(10), timeout(6000)]).catch(function(){ return {data:[]}; }),
-                Promise.race([client.from('daily_logins').select('streak').eq('user_id', user.id).order('login_date', { ascending: false }).limit(1), timeout(5000)]).catch(function(){ return {data:[]}; }),
-                Promise.race([client.from('user_privacy').select('*').eq('user_id', user.id).maybeSingle(), timeout(5000)]).catch(function(){ return {data:null}; }),
-                Promise.race([client.from('user_preferences').select('*').eq('user_id', user.id).maybeSingle(), timeout(5000)]).catch(function(){ return {data:null}; }),
-                Promise.race([client.from('guild_members').select('guild_id').eq('user_id', user.id).maybeSingle(), timeout(5000)]).catch(function(){ return {data:null}; }),
-                Promise.race([client.from('friends').select('*').or('user_id.eq.' + user.id + ',friend_id.eq.' + user.id), timeout(5000)]).catch(function(){ return {data:[]}; })
-            ]);
-
-            var uaRes = results[0], notesRes = results[1], notifRes = results[2], leadersRes = results[3];
-            var streakRes = results[4], privacyRes = results[5], prefsRes = results[6], guildRes = results[7], friendsRes = results[8];
-
-            // Достижения
-            if(uaRes && uaRes.data && uaRes.data.length > 0){
+        // Обрабатываем остальное
+        if (uaRes && uaRes.data && uaRes.data.length > 0) {
+            try {
                 var ids = uaRes.data.map(function(x){ return x.achievement_id; });
-                var metaRes = await Promise.race([client.from('achievements').select('*').in('id', ids), timeout(5000)]).catch(function(){ return {data:[]}; });
+                var metaRes = await client.from('achievements').select('*').in('id', ids);
                 var map = {};
                 (metaRes.data || []).forEach(function(m){ map[m.id] = m; });
                 achievementsList = uaRes.data.map(function(x){ return Object.assign({}, map[x.achievement_id], { earned_at: x.earned_at }); }).filter(function(x){ return x.id; });
-            }
+            } catch(e) { console.warn('Достижения:', e); }
+        }
 
-            notes = (notesRes && notesRes.data) || [];
-            notifications = (notifRes && notifRes.data) || [];
-            leaders = (leadersRes && leadersRes.data) || [];
-            streak = (streakRes && streakRes.data && streakRes.data[0]) ? streakRes.data[0].streak : 0;
-            privacy = (privacyRes && privacyRes.data) || {};
-            preferences = (prefsRes && prefsRes.data) || {};
+        notes = (notesRes && notesRes.data) || [];
+        notifications = (notifRes && notifRes.data) || [];
+        leaders = (leadersRes && leadersRes.data) || [];
+        streak = (streakRes && streakRes.data && streakRes.data[0]) ? streakRes.data[0].streak : 0;
+        privacy = (privacyRes && privacyRes.data) || {};
+        preferences = (prefsRes && prefsRes.data) || {};
 
-            // Гильдия
-            if(guildRes && guildRes.data && guildRes.data.guild_id){
-                var gRes = await Promise.race([client.from('guilds').select('*').eq('id', guildRes.data.guild_id).single(), timeout(5000)]).catch(function(){ return {data:null}; });
+        // Гильдия
+        if (guildRes && guildRes.data && guildRes.data.guild_id) {
+            try {
+                var gRes = await client.from('guilds').select('*').eq('id', guildRes.data.guild_id).single();
                 guild = gRes.data;
-                if(guild){
-                    var mRes = await Promise.race([client.from('guild_members').select('user_id, role, joined_at').eq('guild_id', guild.id).order('joined_at', { ascending: true }).limit(50), timeout(5000)]).catch(function(){ return {data:[]}; });
-                    if(mRes.data && mRes.data.length > 0){
+                if (guild) {
+                    var mRes = await client.from('guild_members').select('user_id, role, joined_at').eq('guild_id', guild.id).order('joined_at', { ascending: true }).limit(50);
+                    if (mRes.data && mRes.data.length > 0) {
                         var mids = mRes.data.map(function(m){ return m.user_id; });
-                        var pRes = await Promise.race([client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', mids), timeout(5000)]).catch(function(){ return {data:[]}; });
+                        var pRes = await client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', mids);
                         var pmap = {};
                         (pRes.data || []).forEach(function(p){ pmap[p.user_id] = p; });
                         guildMembers = mRes.data.map(function(m){ return Object.assign({}, m, { profile: pmap[m.user_id] || {} }); });
                     }
                 }
-            }
+            } catch(e) { console.warn('Гильдия:', e); }
+        }
 
-            // Друзья
-            if(friendsRes && friendsRes.data && friendsRes.data.length > 0){
+        // Друзья
+        if (friendsRes && friendsRes.data && friendsRes.data.length > 0) {
+            try {
                 var fids = {};
                 friendsRes.data.forEach(function(f){ fids[f.user_id] = true; fids[f.friend_id] = true; });
                 delete fids[user.id];
                 var idArr = Object.keys(fids);
-                if(idArr.length > 0){
-                    var fpRes = await Promise.race([client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', idArr), timeout(5000)]).catch(function(){ return {data:[]}; });
+                if (idArr.length > 0) {
+                    var fpRes = await client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', idArr);
                     var fmap = {};
                     (fpRes.data || []).forEach(function(p){ fmap[p.user_id] = p; });
                     friends = friendsRes.data.map(function(f){
@@ -388,24 +397,22 @@ comments: false
                         return Object.assign({}, f, { other: fmap[otherId] || { user_id: otherId } });
                     });
                 }
-            }
-
-            // Финальный рендер — только ОДИН раз
-            render();
-
-            // Кэш
-            try {
-                localStorage.setItem('pf_cache_' + user.id, JSON.stringify({
-                    currentProfile: currentProfile, achievementsList: achievementsList, notifications: notifications,
-                    leaders: leaders, guild: guild, guildMembers: guildMembers, friends: friends, notes: notes,
-                    streak: streak, privacy: privacy, preferences: preferences, cachedAt: Date.now()
-                }));
-            } catch(e) {}
-
-            console.log('✅ Всё загружено за ' + Math.round(performance.now() - startTime) + ' мс');
-        } catch(e) {
-            console.warn('Ошибка фоновой загрузки:', e);
+            } catch(e) { console.warn('Друзья:', e); }
         }
+
+        // ЕДИНСТВЕННЫЙ РЕНДЕР
+        render();
+
+        // Кэш
+        try {
+            localStorage.setItem('pf_cache_' + user.id, JSON.stringify({
+                currentProfile: currentProfile, achievementsList: achievementsList, notifications: notifications,
+                leaders: leaders, guild: guild, guildMembers: guildMembers, friends: friends, notes: notes,
+                streak: streak, privacy: privacy, preferences: preferences, cachedAt: Date.now()
+            }));
+        } catch(e) {}
+
+        console.log('✅ Профиль загружен за ' + Math.round(performance.now() - startTime) + ' мс');
     }
 
     // ============================================================
@@ -413,12 +420,14 @@ comments: false
     // ============================================================
     function render(){
         if(!currentProfile || !currentUser) return;
-        document.documentElement.style.setProperty('--kingdom-color', kingdom.color);
-        document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
-        document.documentElement.style.setProperty('--kingdom-light', kingdom.light);
-        document.documentElement.style.setProperty('--kingdom-shadow', kingdom.color + '40');
-        document.body.style.background = kingdom.bg;
-        document.body.style.backgroundAttachment = 'fixed';
+        try {
+            document.documentElement.style.setProperty('--kingdom-color', kingdom.color);
+            document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
+            document.documentElement.style.setProperty('--kingdom-light', kingdom.light);
+            document.documentElement.style.setProperty('--kingdom-shadow', kingdom.color + '40');
+            document.body.style.background = kingdom.bg;
+            document.body.style.backgroundAttachment = 'fixed';
+        } catch(e) {}
 
         var lvl = getLevelInfo(currentProfile.experience || 0);
         var displayName = currentProfile.display_name || currentProfile.username || currentUser.email.split('@')[0];
@@ -465,8 +474,6 @@ comments: false
         });
         html += '</div>';
 
-        html += '<div id="pf-qr-wrapper" style="display:none;"><button class="pf-qr-btn pf-fade" onclick="if(window.pfOpenQR)window.pfOpenQR()"><span style="font-size:1.5rem;">📱</span><span>Привязать телефон</span></button></div>';
-
         html += '<div class="pf-tabs pf-fade" style="animation-delay:.1s;">';
         html += '<button class="pf-tab active" data-tab="overview">👤 Обзор</button>';
         html += '<button class="pf-tab" data-tab="guild">🏰 Гильдия</button>';
@@ -477,7 +484,6 @@ comments: false
         html += '<button class="pf-tab" data-tab="ai">🤖 ИИ</button>';
         html += '<button class="pf-tab" data-tab="leaderboard">🏆 Лидеры</button>';
         html += '<button class="pf-tab" data-tab="security">🔐 Безопасность</button>';
-        html += '<button class="pf-tab" data-tab="customize">🎨 Кастомизация</button>';
         html += '<button class="pf-tab" data-tab="settings">⚙️ Настройки</button>';
         html += '</div>';
 
@@ -488,13 +494,7 @@ comments: false
         html += '<button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button></div>';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>';
         html += '<div class="pf-calendar"><div class="pf-cal-month">' + martianDate.month + '</div><div class="pf-cal-day">' + martianDate.day + '</div><div class="pf-cal-year">Год ' + martianDate.year + ' Э.О.</div><div class="pf-cal-season">' + martianDate.season + '</div></div></div>';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📊</span> Статистика</h3>';
-        html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;">';
-        html += '<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">' + achievementsList.length + '</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;margin-top:4px;">Достижений</div></div>';
-        html += '<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">' + notes.length + '</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;margin-top:4px;">Заметок</div></div>';
-        html += '<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">' + friends.length + '</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;margin-top:4px;">Друзей</div></div>';
-        html += '<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">' + streak + '</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;margin-top:4px;">Серия</div></div>';
-        html += '</div></div></div>';
+        html += '</div>';
 
         // ГИЛЬДИЯ
         html += '<div class="pf-tab-content" data-content="guild">';
@@ -529,7 +529,7 @@ comments: false
         // ЗАМЕТКИ
         html += '<div class="pf-tab-content" data-content="notes">';
         html += '<div class="pf-card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;"><h3 class="pf-card-title" style="margin:0;"><span class="pf-ct-icon">📝</span> Заметки (' + notes.length + ')</h3><button class="pf-btn" onclick="pfOpenNoteForm()">➕ Новая</button></div>';
-        html += '<div class="pf-note-form" id="pf-note-form"><input type="text" class="pf-note-input title" id="pf-note-title" placeholder="Заголовок" maxlength="100"><textarea class="pf-note-input content" id="pf-note-content" placeholder="Текст..." maxlength="5000"></textarea><div style="font-size:.8rem;color:#888;margin-bottom:6px;">Цвет:</div><div class="pf-note-colors" id="pf-note-colors"></div><div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="pf-btn" onclick="pfSaveNote()" id="pf-note-save-btn">💾 Сохранить</button><button class="pf-btn pf-btn-outline" onclick="pfCloseNoteForm()">Отмена</button></div></div>';
+        html += '<div class="pf-note-form" id="pf-note-form"><input type="text" class="pf-note-input title" id="pf-note-title" placeholder="Заголовок" maxlength="100"><textarea class="pf-note-input content" id="pf-note-content" placeholder="Текст..." maxlength="5000"></textarea><div style="font-size:.8rem;color:#888;margin-bottom:6px;">Цвет:</div><div class="pf-note-colors" id="pf-note-colors"></div><div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="pf-btn" onclick="pfSaveNote()">💾 Сохранить</button><button class="pf-btn pf-btn-outline" onclick="pfCloseNoteForm()">Отмена</button></div></div>';
         if(notes.length === 0){
             html += '<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет заметок.</p>';
         } else {
@@ -601,15 +601,6 @@ comments: false
         html += '<button class="pf-btn" onclick="pfChangePassword()">🔐 Сменить пароль</button>';
         html += '</div></div>';
 
-        // КАСТОМИЗАЦИЯ
-        html += '<div class="pf-tab-content" data-content="customize">';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🎨</span> Тема профиля</h3>';
-        html += '<div class="pf-theme-colors" id="pf-theme-colors"></div></div>';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Звуки</h3>';
-        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Звуки уведомлений</div></div><div class="pf-switch' + (preferences.notification_sound ? ' on' : '') + '" id="pf-switch-notification_sound" onclick="pfTogglePref(\'notification_sound\')"></div></div>';
-        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Email-уведомления</div></div><div class="pf-switch' + (notifEnabled ? ' on' : '') + '" id="pf-switch-email" onclick="pfToggleEmail()"></div></div>';
-        html += '</div></div>';
-
         // НАСТРОЙКИ
         html += '<div class="pf-tab-content" data-content="settings">';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя</h3>';
@@ -632,8 +623,6 @@ comments: false
         html += '</div>';
         html += '<div style="text-align:center;margin-top:16px;"><img src="' + kingdom.flag + '" alt="" style="width:80px;border-radius:6px;border:1px solid #a2a9b1;"><div style="font-size:.72rem;color:#666;margin-top:4px;">Флаг ' + (currentProfile.kingdom || 'Эдем') + '</div></div>';
         html += '</div>';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📤</span> Экспорт</h3>';
-        html += '<button class="pf-btn pf-btn-outline" onclick="pfExportData()">📥 Скачать</button></div>';
         html += '<div class="pf-card pf-danger"><h3 class="pf-card-title" style="color:#c0392b;"><span class="pf-ct-icon">⚠️</span> Опасная зона</h3>';
         html += '<button class="pf-btn pf-btn-danger" onclick="pfDeleteAccount()">🗑️ Удалить аккаунт</button></div>';
         html += '<div class="pf-card"><button class="pf-btn pf-btn-outline" onclick="pfLogout()" style="width:100%;justify-content:center;">🚪 Выйти</button></div>';
@@ -641,14 +630,7 @@ comments: false
 
         container.innerHTML = html;
 
-        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-        if(!isMobile){
-            var qrWrap = document.getElementById('pf-qr-wrapper');
-            if(qrWrap) qrWrap.style.display = 'block';
-        }
-
         renderNoteColors();
-        renderThemeColors();
 
         document.querySelectorAll('.pf-tab').forEach(function(tab){
             tab.onclick = function(){ pfSetTab(tab.dataset.tab); };
@@ -661,13 +643,6 @@ comments: false
         el.innerHTML = NOTE_COLORS.map(function(c){ return '<div class="pf-note-color ' + (c === selectedNoteColor ? 'selected' : '') + '" style="background:' + c + ';" onclick="pfSelectNoteColor(\'' + c + '\')"></div>'; }).join('');
     }
 
-    function renderThemeColors(){
-        var el = document.getElementById('pf-theme-colors');
-        if(!el) return;
-        var current = preferences.theme_color || '#6C63FF';
-        el.innerHTML = THEME_COLORS.map(function(c){ return '<div class="pf-theme-color ' + (c === current ? 'selected' : '') + '" style="background:' + c + ';" onclick="pfSelectThemeColor(\'' + c + '\')"></div>'; }).join('');
-    }
-
     async function render2FATab(){
         var statusEl = document.getElementById('pf-2fa-status');
         var switchEl = document.getElementById('pf-switch-2fa');
@@ -677,10 +652,10 @@ comments: false
             var twofaRes = await client.from('user_2fa').select('*').eq('user_id', currentUser.id).maybeSingle();
             var enabled = twofaRes.data && twofaRes.data.email_2fa_enabled;
             if(enabled){
-                statusEl.innerHTML = '<div class="pf-badge-2fa">✅ Email-2FA включена</div>';
+                statusEl.innerHTML = '<div class="pf-badge-2fa">✅ Включена</div>';
                 if(switchEl) switchEl.classList.add('on');
             } else {
-                statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Email-2FA выключена</div>';
+                statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Выключена</div>';
                 if(switchEl) switchEl.classList.remove('on');
             }
             if(devicesEl){
@@ -703,7 +678,7 @@ comments: false
         try{
             var twofaRes = await client.from('user_2fa').select('*').eq('user_id', currentUser.id).maybeSingle();
             var newVal = !(twofaRes.data && twofaRes.data.email_2fa_enabled);
-            if(!confirm(newVal ? 'Включить Email-2FA?' : 'Выключить Email-2FA?')) return;
+            if(!confirm(newVal ? 'Включить Email-2FA?' : 'Выключить?')) return;
             await client.from('user_2fa').upsert({ user_id: currentUser.id, email_2fa_enabled: newVal, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
             if(newVal){
                 await client.from('trusted_devices').upsert({ user_id: currentUser.id, device_id: getDeviceId(), device_name: getDeviceName(), last_used: new Date().toISOString() }, { onConflict: 'user_id,device_id' });
@@ -725,56 +700,6 @@ comments: false
         await client.from('trusted_devices').delete().eq('user_id', currentUser.id);
         showToast('🗑️ Удалено', 'info');
         render2FATab();
-    };
-
-    window.pfSelectThemeColor = async function(color){
-        preferences.theme_color = color;
-        await client.from('user_preferences').upsert({ user_id: currentUser.id, theme_color: color, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
-        showToast('🎨 Сохранено', 'success');
-    };
-
-    window.pfTogglePref = async function(key){
-        var newVal = !preferences[key];
-        preferences[key] = newVal;
-        var obj = { user_id: currentUser.id, updated_at: new Date().toISOString() };
-        obj[key] = newVal;
-        await client.from('user_preferences').upsert(obj, { onConflict: 'user_id' });
-        var el = document.getElementById('pf-switch-' + key);
-        if(el) el.classList.toggle('on', newVal);
-    };
-
-    window.pfToggleEmail = async function(){
-        var newVal = currentProfile.notifications_enabled === false;
-        await client.from('profiles').update({ notifications_enabled: newVal }).eq('user_id', currentUser.id);
-        currentProfile.notifications_enabled = newVal;
-        document.getElementById('pf-switch-email').classList.toggle('on', newVal);
-    };
-
-    window.pfExportData = async function(){
-        try{
-            var data = {
-                exported_at: new Date().toISOString(),
-                user: { id: currentUser.id, email: currentUser.email },
-                profile: currentProfile, achievements: achievementsList, notes: notes,
-                friends: friends.map(function(f){ return { status: f.status, friend: f.other }; }),
-                guild: guild ? { name: guild.name } : null
-            };
-            var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            var url = URL.createObjectURL(blob);
-            var a = document.createElement('a');
-            a.href = url; a.download = 'mars-profile-' + currentUser.id.slice(0, 8) + '.json';
-            a.click();
-            URL.revokeObjectURL(url);
-            showToast('📥 Скачано!', 'success');
-        } catch(e){ showToast('Ошибка', 'error'); }
-    };
-
-    window.pfChangePassword = async function(){
-        var np = prompt('Новый пароль (мин. 6 символов):');
-        if(!np || np.length < 6){ showToast('Минимум 6 символов', 'warning'); return; }
-        var res = await client.auth.updateUser({ password: np });
-        if(res.error){ showToast('Ошибка: ' + res.error.message, 'error'); return; }
-        showToast('🔐 Пароль обновлён!', 'success');
     };
 
     window.pfSetTab = function(tab){
@@ -940,8 +865,6 @@ comments: false
     // ИНИЦИАЛИЗАЦИЯ
     // ============================================================
     async function init(){
-        container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="display:inline-block;width:40px;height:40px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin .8s linear infinite;"></div><p style="margin-top:16px;color:#888;">Загрузка...</p></div>';
-
         // Ждём клиента (макс. 6 сек)
         for (var i = 0; i < 30; i++) {
             if (window.supabaseClient) break;
@@ -954,9 +877,12 @@ comments: false
             return;
         }
 
-        // Ищем сессию 4 способами
+        // Ищем сессию
         var user = null;
-        if(window.marsSession && window.marsSession.user) user = window.marsSession.user;
+
+        if(window.marsSession && window.marsSession.user) {
+            user = window.marsSession.user;
+        }
 
         if(!user){
             try {
@@ -988,12 +914,11 @@ comments: false
 
         if(user){
             currentUser = user;
-            console.log('✅ Профиль: пользователь', user.email);
+            console.log('✅ Профиль:', user.email);
             await loadAllData(user);
             return;
         }
 
-        // Не авторизован
         container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
             + '<div style="font-size:4rem;margin-bottom:16px;">🔒</div>'
             + '<h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2>'

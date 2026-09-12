@@ -45,7 +45,7 @@
     }
 
     // ============================================================
-    // 2. ЗВЁЗДНЫЙ ФОН (с тёмной темой)
+    // 2. ЗВЁЗДНЫЙ ФОН
     // ============================================================
     let starsCanvas = null;
     let starsAnimFrame = null;
@@ -597,7 +597,7 @@
     }
 
     // ============================================================
-    // 6. АНИМАЦИИ + ТЁМНАЯ ТЕМА
+    // 6. АНИМАЦИИ + ТЁМНАЯ ТЕМА (ЖЁСТКАЯ СПЕЦИФИЧНОСТЬ)
     // ============================================================
     function addAnimations() {
         if (document.getElementById('mars-anim-style')) return;
@@ -635,269 +635,360 @@
             }
 
             /* ============================================================
-               ТЁМНАЯ ТЕМА ЗВЁЗДНОГО НЕБА
+               ФОН ВСЕГО САЙТА
                ============================================================ */
-            html.mars-stars-on,
-            body.mars-stars-on {
-                background: linear-gradient(180deg, #0a0a14 0%, #15152a 50%, #1a1a2e 100%) !important;
+            html body.mars-stars-on {
+                background-color: #0a0a14 !important;
+                background-image:
+                    radial-gradient(ellipse at top, #1a1a2e 0%, transparent 60%),
+                    radial-gradient(ellipse at bottom, #16213e 0%, transparent 60%) !important;
                 background-attachment: fixed !important;
-                color: #e0e0f0 !important;
+                --md-default-bg-color: #0a0a14 !important;
+                --md-default-bg-color--light: #15152a !important;
+                --md-default-bg-color--lighter: #1a1a2e !important;
+                --md-default-fg-color: #e0e0f0 !important;
+                --md-default-fg-color--light: #b0b0c8 !important;
+                --md-default-fg-color--lighter: #8888a8 !important;
+                --md-typeset-color: #e0e0f0 !important;
+                --md-typeset-a-color: #A29BFE !important;
+                --md-code-bg-color: #15152a !important;
+                --md-code-fg-color: #A29BFE !important;
             }
 
-            /* ЛЕВОЕ МЕНЮ — ЧЁРНЫЙ ФОН С БЕЛЫМИ БУКВАМИ */
-            body.mars-stars-on .wy-nav-side,
-            body.mars-stars-on .md-sidebar,
-            body.mars-stars-on .md-sidebar--primary,
-            body.mars-stars-on .wy-side-nav-search {
+            /* ============================================================
+               ЛЕВОЕ МЕНЮ — ЧЁРНЫЙ ФОН, БЕЛЫЕ БУКВЫ
+               ============================================================ */
+            html body.mars-stars-on .wy-nav-side,
+            html body.mars-stars-on .md-sidebar,
+            html body.mars-stars-on .md-sidebar--primary,
+            html body.mars-stars-on .wy-side-nav-search,
+            html body.mars-stars-on .md-nav,
+            html body.mars-stars-on .md-nav__list,
+            html body.mars-stars-on .md-nav__item {
                 background-color: #000000 !important;
-                border-right: 1px solid rgba(108, 99, 255, 0.3) !important;
+                background-image: none !important;
             }
 
-            body.mars-stars-on .wy-menu-vertical li a,
-            body.mars-stars-on .wy-menu-vertical li span,
-            body.mars-stars-on .md-nav__link,
-            body.mars-stars-on .md-nav__title,
-            body.mars-stars-on .md-nav__item,
-            body.mars-stars-on .md-nav__list,
-            body.mars-stars-on .caption,
-            body.mars-stars-on .wy-menu-vertical header {
-                color: #ffffff !important;
+            html body.mars-stars-on .wy-nav-side,
+            html body.mars-stars-on .md-sidebar--primary {
+                border-right: 1px solid rgba(108, 99, 255, 0.35) !important;
+            }
+
+            html body.mars-stars-on .wy-menu-vertical a,
+            html body.mars-stars-on .wy-menu-vertical span,
+            html body.mars-stars-on .wy-menu-vertical li,
+            html body.mars-stars-on .wy-menu-vertical header,
+            html body.mars-stars-on .wy-menu-vertical .caption,
+            html body.mars-stars-on .md-nav__link,
+            html body.mars-stars-on .md-nav__title,
+            html body.mars-stars-on .md-nav__item > a,
+            html body.mars-stars-on .md-nav__item > span,
+            html body.mars-stars-on .md-nav__item--nested > .md-nav__link {
                 background-color: transparent !important;
+                color: #ffffff !important;
             }
 
-            body.mars-stars-on .wy-menu-vertical li a:hover,
-            body.mars-stars-on .md-nav__link:hover {
+            html body.mars-stars-on .wy-menu-vertical a:hover,
+            html body.mars-stars-on .md-nav__link:hover {
                 color: #A29BFE !important;
-                background-color: rgba(108, 99, 255, 0.15) !important;
+                background-color: rgba(108, 99, 255, 0.18) !important;
             }
 
-            body.mars-stars-on .wy-menu-vertical li.current > a,
-            body.mars-stars-on .wy-menu-vertical li.current a:hover,
-            body.mars-stars-on .md-nav__link--active {
+            html body.mars-stars-on .wy-menu-vertical li.current > a,
+            html body.mars-stars-on .wy-menu-vertical li.current > a:hover,
+            html body.mars-stars-on .md-nav__link--active,
+            html body.mars-stars-on .md-nav__item .md-nav__link--active {
                 color: #A29BFE !important;
-                background-color: rgba(108, 99, 255, 0.25) !important;
+                background-color: rgba(108, 99, 255, 0.28) !important;
                 border-left: 3px solid #6C63FF !important;
                 font-weight: 700 !important;
             }
 
-            body.mars-stars-on .wy-side-nav-search input[type="text"],
-            body.mars-stars-on .wy-side-nav-search input {
-                background-color: rgba(255, 255, 255, 0.1) !important;
-                color: #fff !important;
-                border-color: rgba(108, 99, 255, 0.4) !important;
+            /* Поиск в меню */
+            html body.mars-stars-on .wy-side-nav-search,
+            html body.mars-stars-on .md-search__inner,
+            html body.mars-stars-on .md-search__form {
+                background-color: #000000 !important;
             }
 
-            body.mars-stars-on .wy-side-nav-search input::placeholder {
-                color: #aaa !important;
+            html body.mars-stars-on .wy-side-nav-search input,
+            html body.mars-stars-on .md-search__input {
+                background-color: rgba(255, 255, 255, 0.08) !important;
+                color: #ffffff !important;
+                border: 1px solid rgba(108, 99, 255, 0.4) !important;
             }
 
-            body.mars-stars-on .wy-side-nav-search > a,
-            body.mars-stars-on .wy-side-nav-search .wy-dropdown > a,
-            body.mars-stars-on .wy-side-nav-search > div.version {
-                color: #fff !important;
+            html body.mars-stars-on .wy-side-nav-search input::placeholder,
+            html body.mars-stars-on .md-search__input::placeholder {
+                color: #9999bb !important;
             }
 
-            /* КОНТЕНТ */
-            body.mars-stars-on .md-content,
-            body.mars-stars-on .rst-content,
-            body.mars-stars-on .wy-nav-content,
-            body.mars-stars-on .md-content__inner,
-            body.mars-stars-on .document,
-            body.mars-stars-on .section,
-            body.mars-stars-on article {
-                background-color: rgba(15, 15, 30, 0.75) !important;
+            html body.mars-stars-on .wy-side-nav-search > a,
+            html body.mars-stars-on .wy-side-nav-search > div.version,
+            html body.mars-stars-on .wy-side-nav-search .icon {
+                color: #ffffff !important;
+            }
+
+            html body.mars-stars-on .md-nav__title,
+            html body.mars-stars-on .md-nav__title[for="__drawer"] {
+                background-color: #000000 !important;
+                color: #ffffff !important;
+                box-shadow: none !important;
+            }
+
+            /* ============================================================
+               КОНТЕНТ — ТЁМНЫЙ ФОН
+               ============================================================ */
+            html body.mars-stars-on .md-content,
+            html body.mars-stars-on .md-content__inner,
+            html body.mars-stars-on .rst-content,
+            html body.mars-stars-on .wy-nav-content,
+            html body.mars-stars-on .wy-nav-content-wrap,
+            html body.mars-stars-on .document,
+            html body.mars-stars-on .section,
+            html body.mars-stars-on article,
+            html body.mars-stars-on .md-typeset {
+                background-color: #0f0f1e !important;
                 color: #e0e0f0 !important;
             }
 
-            /* ТАБЛИЦЫ — ТЁМНЫЙ ФОН */
-            body.mars-stars-on table,
-            body.mars-stars-on table.docutils,
-            body.mars-stars-on .rst-content table.docutils,
-            body.mars-stars-on .wy-table,
-            body.mars-stars-on .wy-table-responsive table {
-                background-color: rgba(20, 20, 40, 0.9) !important;
+            /* ============================================================
+               ТАБЛИЦЫ
+               ============================================================ */
+            html body.mars-stars-on table,
+            html body.mars-stars-on table.docutils,
+            html body.mars-stars-on .rst-content table,
+            html body.mars-stars-on .rst-content table.docutils,
+            html body.mars-stars-on .wy-table,
+            html body.mars-stars-on .wy-table-responsive,
+            html body.mars-stars-on .wy-table-responsive table,
+            html body.mars-stars-on .md-typeset table:not([class]),
+            html body.mars-stars-on .md-typeset table {
+                background-color: #14142a !important;
                 color: #e0e0f0 !important;
-                border: 1px solid rgba(108, 99, 255, 0.3) !important;
+                border: 1px solid rgba(108, 99, 255, 0.35) !important;
                 border-collapse: collapse !important;
             }
 
-            body.mars-stars-on table th,
-            body.mars-stars-on table.docutils th,
-            body.mars-stars-on .wy-table th,
-            body.mars-stars-on .wy-table-responsive th {
-                background-color: rgba(108, 99, 255, 0.25) !important;
+            html body.mars-stars-on table thead,
+            html body.mars-stars-on table thead tr {
+                background-color: #1c1c38 !important;
+            }
+
+            html body.mars-stars-on table th,
+            html body.mars-stars-on table.docutils th,
+            html body.mars-stars-on .wy-table th,
+            html body.mars-stars-on .wy-table-responsive th,
+            html body.mars-stars-on .md-typeset table th {
+                background-color: #252550 !important;
                 color: #ffffff !important;
-                border: 1px solid rgba(108, 99, 255, 0.4) !important;
+                border: 1px solid rgba(108, 99, 255, 0.45) !important;
                 font-weight: 700 !important;
             }
 
-            body.mars-stars-on table td,
-            body.mars-stars-on table.docutils td,
-            body.mars-stars-on .wy-table td,
-            body.mars-stars-on .wy-table-responsive td {
-                background-color: rgba(20, 20, 40, 0.7) !important;
+            html body.mars-stars-on table td,
+            html body.mars-stars-on table.docutils td,
+            html body.mars-stars-on .wy-table td,
+            html body.mars-stars-on .wy-table-responsive td,
+            html body.mars-stars-on .md-typeset table td {
+                background-color: #14142a !important;
                 color: #d4d4e4 !important;
                 border: 1px solid rgba(108, 99, 255, 0.2) !important;
             }
 
-            body.mars-stars-on table tr:nth-child(even) td,
-            body.mars-stars-on .wy-table tr:nth-child(even) td {
-                background-color: rgba(30, 30, 55, 0.7) !important;
+            html body.mars-stars-on table tbody tr:nth-child(even) td,
+            html body.mars-stars-on .wy-table tbody tr:nth-child(even) td {
+                background-color: #1a1a30 !important;
             }
 
-            body.mars-stars-on table tr:hover td {
-                background-color: rgba(108, 99, 255, 0.15) !important;
+            html body.mars-stars-on table tbody tr:hover td {
+                background-color: rgba(108, 99, 255, 0.18) !important;
             }
 
-            /* ИНФОБОКСЫ */
-            body.mars-stars-on .infobox,
-            body.mars-stars-on .infobox-table,
-            body.mars-stars-on table.infobox,
-            body.mars-stars-on .wiki-infobox,
-            body.mars-stars-on .md-typeset .infobox,
-            body.mars-stars-on [class*="infobox"] {
-                background-color: rgba(20, 20, 40, 0.9) !important;
+            /* ============================================================
+               ИНФОБОКСЫ — ЛЮБЫЕ ВАРИАНТЫ
+               ============================================================ */
+            html body.mars-stars-on .infobox,
+            html body.mars-stars-on .infobox-table,
+            html body.mars-stars-on table.infobox,
+            html body.mars-stars-on .wiki-infobox,
+            html body.mars-stars-on .md-typeset .infobox,
+            html body.mars-stars-on div[class*="infobox"],
+            html body.mars-stars-on table[class*="infobox"],
+            html body.mars-stars-on aside[class*="infobox"],
+            html body.mars-stars-on section[class*="infobox"] {
+                background-color: #14142a !important;
                 color: #e0e0f0 !important;
-                border: 2px solid rgba(108, 99, 255, 0.4) !important;
+                border: 2px solid rgba(108, 99, 255, 0.45) !important;
             }
 
-            body.mars-stars-on .infobox th,
-            body.mars-stars-on .infobox td,
-            body.mars-stars-on table.infobox th,
-            body.mars-stars-on table.infobox td,
-            body.mars-stars-on [class*="infobox"] th,
-            body.mars-stars-on [class*="infobox"] td {
-                background-color: rgba(30, 30, 55, 0.8) !important;
+            html body.mars-stars-on .infobox th,
+            html body.mars-stars-on .infobox td,
+            html body.mars-stars-on table.infobox th,
+            html body.mars-stars-on table.infobox td,
+            html body.mars-stars-on div[class*="infobox"] th,
+            html body.mars-stars-on div[class*="infobox"] td,
+            html body.mars-stars-on div[class*="infobox"] > div,
+            html body.mars-stars-on table[class*="infobox"] th,
+            html body.mars-stars-on table[class*="infobox"] td,
+            html body.mars-stars-on aside[class*="infobox"] > * {
+                background-color: #1c1c38 !important;
                 color: #e0e0f0 !important;
-                border: 1px solid rgba(108, 99, 255, 0.25) !important;
+                border-color: rgba(108, 99, 255, 0.25) !important;
             }
 
-            body.mars-stars-on .infobox th,
-            body.mars-stars-on table.infobox th,
-            body.mars-stars-on [class*="infobox"] th {
-                background-color: rgba(108, 99, 255, 0.3) !important;
-                color: #fff !important;
+            html body.mars-stars-on .infobox th,
+            html body.mars-stars-on table.infobox th,
+            html body.mars-stars-on div[class*="infobox"] th,
+            html body.mars-stars-on table[class*="infobox"] th,
+            html body.mars-stars-on .infobox-title,
+            html body.mars-stars-on .infobox caption {
+                background-color: #252550 !important;
+                color: #ffffff !important;
+                font-weight: 700 !important;
             }
 
-            /* ЗАГОЛОВКИ, ТЕКСТ, ССЫЛКИ */
-            body.mars-stars-on h1,
-            body.mars-stars-on h2,
-            body.mars-stars-on h3,
-            body.mars-stars-on h4,
-            body.mars-stars-on h5,
-            body.mars-stars-on h6 {
+            /* ============================================================
+               ЗАГОЛОВКИ, ТЕКСТ, ССЫЛКИ
+               ============================================================ */
+            html body.mars-stars-on h1,
+            html body.mars-stars-on h2,
+            html body.mars-stars-on h3,
+            html body.mars-stars-on h4,
+            html body.mars-stars-on h5,
+            html body.mars-stars-on h6,
+            html body.mars-stars-on .md-typeset h1,
+            html body.mars-stars-on .md-typeset h2,
+            html body.mars-stars-on .md-typeset h3 {
                 color: #f0f0ff !important;
                 border-bottom-color: rgba(108, 99, 255, 0.3) !important;
             }
 
-            body.mars-stars-on p,
-            body.mars-stars-on li,
-            body.mars-stars-on span,
-            body.mars-stars-on div,
-            body.mars-stars-on label,
-            body.mars-stars-on dd,
-            body.mars-stars-on dt {
+            /* Только параграфы и списки — без «коврового» div! */
+            html body.mars-stars-on p,
+            html body.mars-stars-on li,
+            html body.mars-stars-on dd,
+            html body.mars-stars-on dt,
+            html body.mars-stars-on label {
                 color: #d4d4e4 !important;
             }
 
-            body.mars-stars-on a {
+            html body.mars-stars-on a {
                 color: #A29BFE !important;
             }
 
-            body.mars-stars-on a:hover {
+            html body.mars-stars-on a:hover {
                 color: #6C63FF !important;
             }
 
-            body.mars-stars-on blockquote {
-                background-color: rgba(20, 20, 40, 0.5) !important;
-                border-left-color: #6C63FF !important;
+            html body.mars-stars-on strong,
+            html body.mars-stars-on b {
+                color: #ffffff !important;
+            }
+
+            html body.mars-stars-on blockquote {
+                background-color: rgba(20, 20, 40, 0.6) !important;
+                border-left: 4px solid #6C63FF !important;
                 color: #d4d4e4 !important;
             }
 
-            body.mars-stars-on code,
-            body.mars-stars-on pre,
-            body.mars-stars-on .highlight {
-                background-color: rgba(10, 10, 25, 0.9) !important;
+            html body.mars-stars-on code,
+            html body.mars-stars-on pre,
+            html body.mars-stars-on .highlight,
+            html body.mars-stars-on .md-typeset code {
+                background-color: #15152a !important;
                 color: #A29BFE !important;
                 border: 1px solid rgba(108, 99, 255, 0.25) !important;
             }
 
-            body.mars-stars-on .admonition,
-            body.mars-stars-on .note,
-            body.mars-stars-on .warning,
-            body.mars-stars-on .tip,
-            body.mars-stars-on .info {
-                background-color: rgba(20, 20, 40, 0.7) !important;
-                border-color: rgba(108, 99, 255, 0.3) !important;
+            html body.mars-stars-on .admonition,
+            html body.mars-stars-on .note,
+            html body.mars-stars-on .warning,
+            html body.mars-stars-on .tip,
+            html body.mars-stars-on .info,
+            html body.mars-stars-on .md-typeset .admonition {
+                background-color: #1a1a30 !important;
+                border-color: rgba(108, 99, 255, 0.35) !important;
                 color: #d4d4e4 !important;
             }
 
-            body.mars-stars-on .admonition-title {
-                background-color: rgba(108, 99, 255, 0.25) !important;
-                color: #fff !important;
+            html body.mars-stars-on .admonition-title,
+            html body.mars-stars-on .admonition > .admonition-title {
+                background-color: rgba(108, 99, 255, 0.3) !important;
+                color: #ffffff !important;
             }
 
-            /* ВЕРХНЯЯ ПАНЕЛЬ */
-            body.mars-stars-on .md-header,
-            body.mars-stars-on .wy-nav-top {
-                background-color: rgba(5, 5, 15, 0.95) !important;
+            /* ============================================================
+               ВЕРХНЯЯ ПАНЕЛЬ
+               ============================================================ */
+            html body.mars-stars-on .md-header,
+            html body.mars-stars-on .wy-nav-top,
+            html body.mars-stars-on .md-header__inner {
+                background-color: #050510 !important;
                 border-bottom: 1px solid rgba(108, 99, 255, 0.3) !important;
             }
 
-            body.mars-stars-on .md-header__title,
-            body.mars-stars-on .md-header-nav__title,
-            body.mars-stars-on .wy-nav-top a {
-                color: #fff !important;
+            html body.mars-stars-on .md-header__title,
+            html body.mars-stars-on .md-header-nav__title,
+            html body.mars-stars-on .wy-nav-top a,
+            html body.mars-stars-on .md-header__topic {
+                color: #ffffff !important;
             }
 
-            /* ПРОФИЛЬ */
-            body.mars-stars-on .pf-card,
-            body.mars-stars-on .pf-quick-card,
-            body.mars-stars-on .pf-ach,
-            body.mars-stars-on .pf-note,
-            body.mars-stars-on .pf-tabs,
-            body.mars-stars-on .pf-note-form,
-            body.mars-stars-on .pf-stat,
-            body.mars-stars-on .pf-day,
-            body.mars-stars-on .pf-history-item {
-                background: rgba(20, 20, 40, 0.85) !important;
-                border-color: rgba(108, 99, 255, 0.3) !important;
+            /* ============================================================
+               ПРОФИЛЬ
+               ============================================================ */
+            html body.mars-stars-on .pf-card,
+            html body.mars-stars-on .pf-quick-card,
+            html body.mars-stars-on .pf-ach,
+            html body.mars-stars-on .pf-note,
+            html body.mars-stars-on .pf-tabs,
+            html body.mars-stars-on .pf-note-form,
+            html body.mars-stars-on .pf-stat,
+            html body.mars-stars-on .pf-day,
+            html body.mars-stars-on .pf-history-item {
+                background: #14142a !important;
+                border-color: rgba(108, 99, 255, 0.35) !important;
+                color: #e0e0f0 !important;
             }
 
-            body.mars-stars-on .pf-card-title,
-            body.mars-stars-on .pf-quick-title,
-            body.mars-stars-on .pf-ach-name,
-            body.mars-stars-on .pf-note-title {
-                color: #e0e0e0 !important;
+            html body.mars-stars-on .pf-card-title,
+            html body.mars-stars-on .pf-quick-title,
+            html body.mars-stars-on .pf-ach-name,
+            html body.mars-stars-on .pf-note-title {
+                color: #e0e0f0 !important;
             }
 
-            body.mars-stars-on .pf-tab {
-                color: #aaa !important;
+            html body.mars-stars-on .pf-tab {
+                color: #9999bb !important;
             }
 
-            body.mars-stars-on input,
-            body.mars-stars-on textarea,
-            body.mars-stars-on select {
-                background-color: rgba(20, 20, 40, 0.6) !important;
-                color: #e0e0e0 !important;
-                border-color: rgba(108, 99, 255, 0.3) !important;
+            html body.mars-stars-on input,
+            html body.mars-stars-on textarea,
+            html body.mars-stars-on select {
+                background-color: #15152a !important;
+                color: #e0e0f0 !important;
+                border-color: rgba(108, 99, 255, 0.35) !important;
             }
 
-            body.mars-stars-on input::placeholder,
-            body.mars-stars-on textarea::placeholder {
+            html body.mars-stars-on input::placeholder,
+            html body.mars-stars-on textarea::placeholder {
                 color: #666688 !important;
             }
 
+            /* ============================================================
+               ПЛАВНЫЕ ПЕРЕХОДЫ
+               ============================================================ */
             body,
             .md-content,
             .wy-nav-content,
             .md-header,
             .wy-nav-side,
-            .wy-menu-vertical,
+            .md-nav,
             table,
             table th,
             table td {
-                transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+                transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
             }
         `;
         document.head.appendChild(style);

@@ -24,9 +24,40 @@ description: Игры, викторины, карты и инструменты 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-@keyframes glow { 0%, 100% { box-shadow: 0 0 20px var(--kingdom-shadow); } 50% { box-shadow: 0 0 40px var(--kingdom-shadow); } }
 
 .fade-in { animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ==== ФИКС: убрать подчёркивание ==== */
+#interactive-container a,
+#interactive-container a:hover,
+#interactive-container a:focus,
+#interactive-container a:visited,
+.interactive-card {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    -webkit-tap-highlight-color: transparent;
+}
+.md-content #interactive-container a {
+    border-bottom: none !important;
+}
+
+/* ==== ФИКС: чёрные заголовки ==== */
+.block h3 {
+    margin: 0 0 16px 0;
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.task-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+    color: #1a1a1a;
+}
 
 #interactive-title {
     background: linear-gradient(135deg, var(--kingdom-color), var(--kingdom-light));
@@ -50,7 +81,7 @@ description: Игры, викторины, карты и инструменты 
     backdrop-filter: blur(16px);
     border: 2px solid transparent;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    text-decoration: none; color: inherit;
+    color: inherit;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer; position: relative; overflow: hidden;
     min-height: 240px; justify-content: center;
@@ -98,7 +129,6 @@ description: Игры, викторины, карты и инструменты 
     transition: box-shadow 0.3s;
 }
 .block:hover { box-shadow: 0 12px 32px -8px var(--kingdom-shadow); }
-.block h3 { margin: 0 0 16px 0; font-size: 1.2rem; color: var(--kingdom-color); font-weight: 700; display: flex; align-items: center; gap: 10px; }
 
 /* Рейтинг */
 .rating-table { width: 100%; border-collapse: collapse; }
@@ -114,7 +144,6 @@ description: Игры, викторины, карты и инструменты 
 .rating-table tr { transition: all 0.2s; }
 .rating-table tr:hover { background: var(--kingdom-color); color: #fff; }
 .rating-table tr:hover td { border-bottom-color: transparent; }
-.rating-table tr:hover .rank-medal { filter: brightness(1.3); }
 .rank-medal { font-size: 1.4rem; margin-right: 8px; }
 .rank-avatar { width: 32px; height: 32px; border-radius: 50%; vertical-align: middle; margin-right: 10px; object-fit: cover; border: 2px solid var(--kingdom-color); }
 
@@ -125,7 +154,6 @@ description: Игры, викторины, карты и инструменты 
     background: linear-gradient(135deg, #27ae60, #16a085);
     color: #fff; box-shadow: 0 8px 24px rgba(39, 174, 96, 0.3);
     margin-bottom: 24px;
-    animation: glow 3s ease-in-out infinite;
 }
 .live-dot {
     width: 12px; height: 12px; border-radius: 50%; background: #fff;
@@ -150,35 +178,34 @@ description: Игры, викторины, карты и инструменты 
 }
 .task-icon { font-size: 1.6rem; }
 .task-body { flex: 1; }
-.task-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
 .task-reward { font-size: 0.78rem; color: var(--kingdom-color); font-weight: 700; }
 .task-status { font-size: 1.2rem; }
 
-/* Мини-игра */
-.mini-game {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-radius: 16px; padding: 28px; color: #fff;
-    text-align: center; margin-bottom: 24px;
-    position: relative; overflow: hidden;
+/* Викторина */
+.quiz-block {
+    background: linear-gradient(135deg, var(--kingdom-color), var(--kingdom-light));
+    border-radius: 16px; padding: 24px; color: #fff;
+    margin-bottom: 24px;
 }
-.mini-game::before {
-    content: ''; position: absolute; top: -50%; right: -20%;
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
-    border-radius: 50%;
-}
-.mini-game > * { position: relative; z-index: 1; }
-.mg-options { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
-.mg-btn {
-    padding: 12px 24px; border-radius: 10px;
-    background: rgba(255,255,255,0.25);
-    border: 2px solid rgba(255,255,255,0.4);
-    color: #fff; font-size: 1rem; font-weight: 600;
+.quiz-question { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+.quiz-options { display: grid; gap: 10px; }
+.quiz-option {
+    padding: 14px 18px; border-radius: 10px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: #fff; font-size: 0.95rem;
     cursor: pointer; transition: all 0.25s;
+    text-align: left;
 }
-.mg-btn:hover { background: rgba(255,255,255,0.4); transform: scale(1.05); }
-.mg-btn.correct { background: #27ae60; border-color: #27ae60; }
-.mg-btn.wrong { background: #e74c3c; border-color: #e74c3c; }
+.quiz-option:hover { background: rgba(255,255,255,0.35); transform: translateX(4px); }
+.quiz-option.correct { background: #27ae60; border-color: #27ae60; }
+.quiz-option.wrong { background: #e74c3c; border-color: #e74c3c; }
+.quiz-result { margin-top: 16px; text-align: center; font-weight: 700; }
+.quiz-restart {
+    display: inline-block; margin-top: 12px; padding: 10px 24px;
+    background: rgba(255,255,255,0.25); border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 30px; color: #fff; cursor: pointer; font-weight: 600;
+}
 
 /* Тёмная тема */
 @media (prefers-color-scheme: dark) {
@@ -186,7 +213,8 @@ description: Игры, викторины, карты и инструменты 
     .interactive-card .ic-title { color: #e0e0e0; }
     .interactive-card .ic-desc { color: #aaa; }
     .task-item { background: rgba(30, 30, 46, 0.5); }
-    .rating-table tr:hover { background: var(--kingdom-color); }
+    .block h3 { color: #e0e0e0; }
+    .task-title { color: #e0e0e0; }
 }
 
 @media (max-width: 600px) {
@@ -230,28 +258,63 @@ description: Игры, викторины, карты и инструменты 
         { icon: '📊', title: 'Моя статистика', desc: 'Следите за достижениями, опытом и прогрессом', link: '/stats/', badge: 'Прогресс' }
     ];
 
-    // Викторины (пока заглушка - список викторин)
-    const QUIZZES = [
-        { icon: '🏛️', title: 'История Марса', desc: 'Проверьте знания о периодах и событиях', link: '/quiz/history/', count: 10 },
-        { icon: '🗺️', title: 'География', desc: 'Моря, города, горы и пещеры', link: '/quiz/geography/', count: 10 },
-        { icon: '👤', title: 'Персонажи', desc: 'Хевсур, Талин, Йарра и другие герои', link: '/quiz/characters/', count: 10 },
-        { icon: '🗣️', title: 'Марсианский язык', desc: 'Слова и фразы из энциклопедии', link: '/quiz/language/', count: 10 }
-    ];
+    // ============================================================
+    // ВИКТОРИНЫ (на основе контента энциклопедии)
+    // ============================================================
+    const QUIZZES = {
+        history: {
+            title: '🏛️ История Марса',
+            questions: [
+                { q: 'Как называется эпоха, в которой происходит действие книг?', options: ['Эпоха Расцвета', 'Эпоха Умирания', 'Эпоха Освоения', 'Эпоха Льдов'], correct: 1 },
+                { q: 'Сколько лет длится марсианский год?', options: ['365 солов', '687 солов', '22 месяца', '668 солов'], correct: 1 },
+                { q: 'Как называется столица Марса?', options: ['Окхасен', 'Роген-Ария', 'Акха-Кор', 'Ксанф'], correct: 1 },
+                { q: 'С какого года ведётся марсианское летосчисление?', options: ['2696', '2741', '2729', '2690'], correct: 0 },
+                { q: 'Сколько королевств существует на Марсе?', options: ['8', '10', '12', '15'], correct: 2 }
+            ]
+        },
+        geography: {
+            title: '🗺️ География',
+            questions: [
+                { q: 'Как называется море, у которого стоит Окхасен?', options: ['Аргида', 'Ацидалийское', 'Эритрейское', 'Море Ксанфа'], correct: 1 },
+                { q: 'Где живёт старый хранитель знаний Хевсур?', options: ['В Академии', 'В пещерах Фарсиды', 'На дне моря', 'В храме Ксанфа'], correct: 1 },
+                { q: 'Как называется самая большая река Марса?', options: ['Ксанф', 'Аргида', 'Титан', 'Марсианка'], correct: 0 },
+                { q: 'Какой город является портом на Ацидалийском море?', options: ['Роген-Ария', 'Окхасен', 'Акха-Кор', 'Эдем'], correct: 1 },
+                { q: 'Как называется подземный храм?', options: ['Храм Ксанфа', 'Храм Эллады', 'Храм Окхасена', 'Храм Фарсиды'], correct: 0 }
+            ]
+        },
+        characters: {
+            title: '👤 Персонажи',
+            questions: [
+                { q: 'Кто такой Хевсур?', options: ['Молодой астроном', 'Старый хранитель знаний', 'Капитан корабля', 'Король Марса'], correct: 1 },
+                { q: 'Как зовут молодого учёного из Академии?', options: ['Талин', 'Хевсур', 'Аратан', 'Ксанф'], correct: 0 },
+                { q: 'Кто такая Йарра?', options: ['Принцесса', 'Мудрая женщина', 'Жрица', 'Воин'], correct: 1 },
+                { q: 'Как зовут короля Марса?', options: ['Аратан III', 'Роген', 'Ксанф', 'Талин'], correct: 0 },
+                { q: 'Кто такая Алира?', options: ['Певица', 'Повелительница морей', 'Учёный', 'Хранительница'], correct: 1 }
+            ]
+        },
+        language: {
+            title: '🗣️ Марсианский язык',
+            questions: [
+                { q: 'Что означает слово «Lān»?', options: ['Жизнь', 'Помнить', 'Вода', 'Звезда'], correct: 1 },
+                { q: 'Как сказать «звезда» на марсианском?', options: ['Dzen', 'Ākha', 'Kōl', 'Mar'], correct: 0 },
+                { q: 'Что означает фраза «Lān sur»?', options: ['Жизнь — звезда', 'Глина помнит', 'Вода умирает', 'Смотри на звёзды'], correct: 1 },
+                { q: 'Какое слово означает «вода»?', options: ['Kōl', 'Ākha', 'Dzen', 'Khō'], correct: 1 },
+                { q: 'Как переводится «Mar dzen»?', options: ['Жизнь — звезда', 'Марс — дом', 'Звёздный ветер', 'Смерть воды'], correct: 0 }
+            ]
+        }
+    };
 
-    const container = document.getElementById('interactive-container');
-    const titleEl = document.getElementById('interactive-title');
-
-    let kingdom = KINGDOMS['Эдем'];
-    let user = null;
+    let currentQuiz = null;
+    let currentQuestionIndex = 0;
+    let currentScore = 0;
 
     // ============================================================
-    // Вспомогательные функции
+    // Ежедневные задания
     // ============================================================
     function getDailyTasks(userId) {
         const today = new Date().toISOString().slice(0, 10);
         const saved = localStorage.getItem(`daily_tasks_${userId}_${today}`);
         if (saved) return JSON.parse(saved);
-
         return [
             { id: 'read_article', icon: '📖', title: 'Прочитать статью', reward: '+5 XP', done: false },
             { id: 'visit_place', icon: '📍', title: 'Посетить новое место', reward: '+10 XP', done: false },
@@ -260,13 +323,8 @@ description: Игры, викторины, карты и инструменты 
         ];
     }
 
-    function saveDailyTasks(userId, tasks) {
-        const today = new Date().toISOString().slice(0, 10);
-        localStorage.setItem(`daily_tasks_${userId}_${today}`, JSON.stringify(tasks));
-    }
-
     // ============================================================
-    // Мини-игра: угадай символ
+    // Мини-игра: угадай символ (для разнообразия)
     // ============================================================
     const MINI_GAME_DATA = [
         { symbol: 'Ὸ', answer: 'До' },
@@ -278,7 +336,7 @@ description: Игры, викторины, карты и инструменты 
         { symbol: 'ꓥ', answer: 'Ля' }
     ];
 
-    let currentGame = null;
+    let miniGameCurrent = null;
 
     function newMiniGame() {
         const item = MINI_GAME_DATA[Math.floor(Math.random() * MINI_GAME_DATA.length)];
@@ -288,18 +346,18 @@ description: Игры, викторины, карты и инструменты 
             if (!options.includes(other)) options.push(other);
         }
         options.sort(() => Math.random() - 0.5);
-        currentGame = { ...item, options };
+        miniGameCurrent = { ...item, options };
         renderMiniGame();
     }
 
     function renderMiniGame() {
         const el = document.getElementById('mini-game-body');
-        if (!el || !currentGame) return;
+        if (!el || !miniGameCurrent) return;
         el.innerHTML = `
-            <div style="font-size: 3.5rem; margin: 12px 0; font-family: 'Segoe UI', sans-serif;">${currentGame.symbol}</div>
+            <div style="font-size: 3.5rem; margin: 12px 0; font-family: 'Segoe UI', sans-serif;">${miniGameCurrent.symbol}</div>
             <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 8px;">Как называется эта нота?</div>
             <div class="mg-options">
-                ${currentGame.options.map(opt => `
+                ${miniGameCurrent.options.map(opt => `
                     <button class="mg-btn" onclick="checkMiniGameAnswer('${opt}')">${opt}</button>
                 `).join('')}
             </div>
@@ -310,29 +368,110 @@ description: Игры, викторины, карты и инструменты 
         const btns = document.querySelectorAll('.mg-btn');
         btns.forEach(btn => {
             btn.disabled = true;
-            if (btn.textContent === currentGame.answer) btn.classList.add('correct');
-            else if (btn.textContent === answer && answer !== currentGame.answer) btn.classList.add('wrong');
+            if (btn.textContent === miniGameCurrent.answer) btn.classList.add('correct');
+            else if (btn.textContent === answer && answer !== miniGameCurrent.answer) btn.classList.add('wrong');
         });
         setTimeout(newMiniGame, 1500);
     };
 
     // ============================================================
-    // Загрузка данных
+    // Викторина
+    // ============================================================
+    function startQuiz(quizKey) {
+        currentQuiz = QUIZZES[quizKey];
+        currentQuestionIndex = 0;
+        currentScore = 0;
+        renderQuiz();
+    }
+
+    function renderQuiz() {
+        const el = document.getElementById('quiz-body');
+        if (!el || !currentQuiz) return;
+        if (currentQuestionIndex >= currentQuiz.questions.length) {
+            el.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 3rem;">🎉</div>
+                    <div style="font-size: 1.3rem; font-weight: 800; margin: 12px 0;">Результат: ${currentScore} из ${currentQuiz.questions.length}</div>
+                    <div style="opacity: 0.9; margin-bottom: 16px;">${currentScore === currentQuiz.questions.length ? 'Идеально! Ты — Легенда Марса!' : currentScore >= currentQuiz.questions.length / 2 ? 'Хороший результат!' : 'Попробуй ещё раз!'}</div>
+                    <button class="quiz-restart" onclick="startQuiz('${Object.keys(QUIZZES).find(k => QUIZZES[k] === currentQuiz)}')">Пройти заново</button>
+                </div>
+            `;
+            return;
+        }
+        const q = currentQuiz.questions[currentQuestionIndex];
+        el.innerHTML = `
+            <div class="quiz-question">${currentQuestionIndex + 1}. ${q.q}</div>
+            <div class="quiz-options">
+                ${q.options.map((opt, i) => `
+                    <div class="quiz-option" onclick="answerQuiz(${i})">${opt}</div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    window.answerQuiz = function(index) {
+        const q = currentQuiz.questions[currentQuestionIndex];
+        const options = document.querySelectorAll('.quiz-option');
+        options.forEach((opt, i) => {
+            opt.style.pointerEvents = 'none';
+            if (i === q.correct) opt.classList.add('correct');
+            else if (i === index && index !== q.correct) opt.classList.add('wrong');
+        });
+        if (index === q.correct) currentScore++;
+        setTimeout(() => {
+            currentQuestionIndex++;
+            renderQuiz();
+        }, 1200);
+    };
+
+    // ============================================================
+    // ОСНОВНАЯ ЛОГИКА
     // ============================================================
     (async function init() {
+        const container = document.getElementById('interactive-container');
+        const titleEl = document.getElementById('interactive-title');
+
+        let kingdom = KINGDOMS['Эдем'];
+        let user = null;
+        let onlineCount = 0;
+        let topPlayers = [];
+
         try {
             const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+            // ---- Realtime Presence для счётчика онлайн ----
+            const channel = client.channel('online-users', {
+                config: { presence: { key: 'anonymous' } }
+            });
+
+            channel
+                .on('presence', { event: 'sync' }, () => {
+                    const state = channel.presenceState();
+                    onlineCount = Object.keys(state).length;
+                    const counterEl = document.getElementById('online-count');
+                    if (counterEl) counterEl.textContent = onlineCount;
+                    const counterTextEl = document.getElementById('online-text');
+                    if (counterTextEl) {
+                        counterTextEl.textContent = onlineCount === 1 ? 'исследователь' : onlineCount < 5 ? 'исследователя' : 'исследователей';
+                    }
+                })
+                .subscribe(async (status) => {
+                    if (status === 'SUBSCRIBED') {
+                        await channel.track({ online_at: new Date().toISOString() });
+                    }
+                });
+
+            // ---- Авторизация ----
             const { data: { session } } = await client.auth.getSession();
             user = session?.user || null;
 
-            let topPlayers = [];
             if (user) {
                 const { data: profile } = await client
                     .from('profiles').select('kingdom').eq('user_id', user.id).single();
                 if (profile?.kingdom && KINGDOMS[profile.kingdom]) kingdom = KINGDOMS[profile.kingdom];
             }
 
-            // Топ-10 игроков
+            // ---- Топ-10 ----
             const { data: leaders } = await client
                 .from('profiles')
                 .select('user_id, username, display_name, experience, level, avatar_url')
@@ -340,163 +479,125 @@ description: Игры, викторины, карты и инструменты 
                 .limit(10);
             topPlayers = leaders || [];
 
-            // Применяем тему
-            document.documentElement.style.setProperty('--kingdom-color', kingdom.color);
-            document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
-            document.documentElement.style.setProperty('--kingdom-light', kingdom.light);
-            document.documentElement.style.setProperty('--kingdom-shadow', kingdom.color + '40');
-            document.body.style.background = kingdom.bg;
-            document.body.style.backgroundAttachment = 'fixed';
+        } catch (e) {
+            console.warn('Ошибка Supabase:', e);
+        }
 
-            // Применяем стили заголовка
+        // ---- Применяем тему ----
+        document.documentElement.style.setProperty('--kingdom-color', kingdom.color);
+        document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
+        document.documentElement.style.setProperty('--kingdom-light', kingdom.light);
+        document.documentElement.style.setProperty('--kingdom-shadow', kingdom.color + '40');
+        document.body.style.background = kingdom.bg;
+        document.body.style.backgroundAttachment = 'fixed';
+        if (titleEl) {
             titleEl.style.color = kingdom.color;
             titleEl.style.textShadow = `0 2px 12px ${kingdom.color}40`;
+        }
 
-            // ============================================================
-            // Задания
-            // ============================================================
-            const dailyTasks = user ? getDailyTasks(user.id) : [];
-            const doneTasks = dailyTasks.filter(t => t.done).length;
+        // ---- Ежедневные задания ----
+        const dailyTasks = user ? getDailyTasks(user.id) : [];
+        const doneTasks = dailyTasks.filter(t => t.done).length;
 
-            // ============================================================
-            // Случайное число игроков онлайн
-            // ============================================================
-            const baseOnline = 3 + Math.floor(Math.random() * 8);
-            const onlineNow = user ? baseOnline + 1 : baseOnline;
-
-            // ============================================================
-            // РЕНДЕР
-            // ============================================================
-            container.innerHTML = `
-                <!-- Живой счётчик -->
-                <div class="live-counter fade-in">
-                    <div class="live-dot"></div>
-                    <div style="flex: 1;">
-                        <div style="font-size: 1.05rem; font-weight: 700;">Сейчас на сайте: ${onlineNow} ${onlineNow === 1 ? 'исследователь' : onlineNow < 5 ? 'исследователя' : 'исследователей'}</div>
-                        <div style="font-size: 0.82rem; opacity: 0.9;">Обновляется каждые 30 секунд</div>
-                    </div>
+        // ---- Рендер ----
+        container.innerHTML = `
+            <!-- Живой счётчик -->
+            <div class="live-counter fade-in">
+                <div class="live-dot"></div>
+                <div style="flex: 1;">
+                    <div style="font-size: 1.05rem; font-weight: 700;">Сейчас на сайте: <span id="online-count">${onlineCount}</span> <span id="online-text">${onlineCount === 1 ? 'исследователь' : onlineCount < 5 ? 'исследователя' : 'исследователей'}</span></div>
+                    <div style="font-size: 0.82rem; opacity: 0.9;">Обновляется в реальном времени</div>
                 </div>
+            </div>
 
-                <!-- Карточки интерактива -->
-                <h3 style="color: var(--kingdom-color); margin: 0 0 16px 0;">🎮 Режимы и инструменты</h3>
-                <div class="interactive-grid">
-                    ${INTERACTIVE_ITEMS.map((item, i) => `
-                        <a href="${item.link}" class="interactive-card fade-in" style="animation-delay: ${i * 0.08}s;">
-                            <span class="ic-icon">${item.icon}</span>
-                            <span class="ic-title">${item.title}</span>
-                            <span class="ic-desc">${item.desc}</span>
-                            <span class="ic-badge">${item.badge}</span>
-                        </a>
+            <!-- Карточки интерактива -->
+            <h3 style="color: #1a1a1a; margin: 0 0 16px 0; font-weight: 800;">🎮 Режимы и инструменты</h3>
+            <div class="interactive-grid">
+                ${INTERACTIVE_ITEMS.map((item, i) => `
+                    <a href="${item.link}" class="interactive-card fade-in" style="animation-delay: ${i * 0.08}s;">
+                        <span class="ic-icon">${item.icon}</span>
+                        <span class="ic-title">${item.title}</span>
+                        <span class="ic-desc">${item.desc}</span>
+                        <span class="ic-badge">${item.badge}</span>
+                    </a>
+                `).join('')}
+            </div>
+
+            <!-- Викторины -->
+            <div class="block fade-in">
+                <h3>🧠 Викторины</h3>
+                <p style="font-size: 0.88rem; color: #555; margin: 0 0 16px 0; font-weight: 500;">
+                    Проверьте знания о Марсе. Каждая викторина — <b style="color: var(--kingdom-color);">+20 XP</b>.
+                </p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;">
+                    ${Object.keys(QUIZZES).map(key => `
+                        <button class="quiz-restart" style="background: var(--kingdom-color); border-color: var(--kingdom-color); color: #fff;" onclick="startQuiz('${key}')">${QUIZZES[key].title}</button>
                     `).join('')}
                 </div>
+                <div id="quiz-body" style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; min-height: 200px;">
+                    <p style="text-align: center; color: #888;">Выберите викторину выше</p>
+                </div>
+            </div>
 
-                <!-- Викторины -->
-                <div class="block fade-in">
-                    <h3>🧠 Викторины</h3>
-                    <p style="font-size: 0.88rem; color: #777; margin: 0 0 16px 0;">
-                        Проверьте знания о Марсе и заработайте опыт. Каждая викторина — <b style="color: var(--kingdom-color);">+20 XP</b>.
-                    </p>
-                    <div class="interactive-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                        ${QUIZZES.map(q => `
-                            <a href="${q.link}" class="interactive-card" style="min-height: 180px; padding: 22px 16px;">
-                                <span class="ic-icon" style="font-size: 2.5rem;">${q.icon}</span>
-                                <span class="ic-title" style="font-size: 1rem;">${q.title}</span>
-                                <span class="ic-desc">${q.desc}</span>
-                                <span class="ic-badge">${q.count} вопросов</span>
-                            </a>
-                        `).join('')}
+            <!-- Топ-10 -->
+            <div class="block fade-in">
+                <h3>🏆 Топ-10 исследователей</h3>
+                ${topPlayers.length > 0 ? `
+                    <table class="rating-table">
+                        <thead>
+                            <tr><th style="width: 60px;">#</th><th>Игрок</th><th style="text-align: right;">Уровень</th><th style="text-align: right;">Опыт</th></tr>
+                        </thead>
+                        <tbody>
+                            ${topPlayers.map((p, i) => {
+                                const name = p.display_name || p.username || 'Аноним';
+                                const medals = ['🥇', '🥈', '🥉'];
+                                const medal = medals[i] || `${i + 1}`;
+                                const isMe = user && p.user_id === user.id;
+                                return `
+                                    <tr style="${isMe ? 'background: var(--kingdom-color); color: #fff; font-weight: 700;' : ''}">
+                                        <td><span class="rank-medal">${medal}</span></td>
+                                        <td><img src="${p.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=6C63FF&color=fff&size=64'}" class="rank-avatar">${name}${isMe ? ' (вы)' : ''}</td>
+                                        <td style="text-align: right;">${p.level || 1}</td>
+                                        <td style="text-align: right;"><b>${p.experience || 0}</b></td>
+                                    </tr>
+                                `;
+                            }).join('')}
+                        </tbody>
+                    </table>
+                ` : '<p style="text-align: center; color: #999; padding: 20px;">Пока нет данных</p>'}
+            </div>
+
+            <!-- Ежедневные задания -->
+            <div class="block fade-in">
+                <h3 style="color: #1a1a1a !important;">🎯 Ежедневные задания <span style="font-size: 0.8rem; color: #666; font-weight: 500;">(${doneTasks}/${dailyTasks.length} выполнено)</span></h3>
+                ${user ? dailyTasks.map(t => `
+                    <div class="task-item ${t.done ? 'done' : ''}">
+                        <span class="task-icon">${t.icon}</span>
+                        <div class="task-body">
+                            <div class="task-title">${t.title}</div>
+                            <div class="task-reward">Награда: ${t.reward}</div>
+                        </div>
+                        <span class="task-status">${t.done ? '✅' : '⏳'}</span>
                     </div>
-                </div>
+                `).join('') : `
+                    <p style="text-align: center; color: #666; padding: 16px;">
+                        <a href="/login/" style="color: var(--kingdom-color); font-weight: 600;">Войдите</a>, чтобы получить ежедневные задания
+                    </p>
+                `}
+            </div>
 
-                <!-- Топ-10 игроков -->
-                <div class="block fade-in">
-                    <h3>🏆 Топ-10 исследователей</h3>
-                    ${topPlayers.length > 0 ? `
-                        <table class="rating-table">
-                            <thead>
-                                <tr>
-                                    <th style="width: 60px;">#</th>
-                                    <th>Игрок</th>
-                                    <th style="text-align: right;">Уровень</th>
-                                    <th style="text-align: right;">Опыт</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                ${topPlayers.map((p, i) => {
-                                    const name = p.display_name || p.username || 'Аноним';
-                                    const medals = ['🥇', '🥈', '🥉'];
-                                    const medal = medals[i] || `${i + 1}`;
-                                    const isMe = user && p.user_id === user.id;
-                                    return `
-                                        <tr style="${isMe ? 'background: var(--kingdom-color); color: #fff; font-weight: 700;' : ''}">
-                                            <td><span class="rank-medal">${medal}</span></td>
-                                            <td>
-                                                <img src="${p.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=6C63FF&color=fff&size=64'}" class="rank-avatar">
-                                                ${name}${isMe ? ' (вы)' : ''}
-                                            </td>
-                                            <td style="text-align: right;">${p.level || 1}</td>
-                                            <td style="text-align: right;"><b>${p.experience || 0}</b></td>
-                                        </tr>
-                                    `;
-                                }).join('')}
-                            </tbody>
-                        </table>
-                    ` : '<p style="text-align: center; color: #999; padding: 20px;">Пока нет данных</p>'}
-                </div>
+            <!-- Мини-игра -->
+            <div class="block fade-in" style="background: linear-gradient(135deg, #667eea, #764ba2); border-color: #667eea; color: #fff;">
+                <h3 style="color: #fff !important;">🎲 Мини-игра: угадай ноту</h3>
+                <div id="mini-game-body"></div>
+            </div>
 
-                <!-- Ежедневные задания -->
-                <div class="block fade-in">
-                    <h3>🎯 Ежедневные задания <span style="font-size: 0.8rem; color: #888; font-weight: 400;">(${doneTasks}/${dailyTasks.length} выполнено)</span></h3>
-                    ${user ? (
-                        dailyTasks.length > 0 ? dailyTasks.map(t => `
-                            <div class="task-item ${t.done ? 'done' : ''}">
-                                <span class="task-icon">${t.icon}</span>
-                                <div class="task-body">
-                                    <div class="task-title">${t.title}</div>
-                                    <div class="task-reward">Награда: ${t.reward}</div>
-                                </div>
-                                <span class="task-status">${t.done ? '✅' : '⏳'}</span>
-                            </div>
-                        `).join('') : ''
-                    ) : `
-                        <p style="text-align: center; color: #888; padding: 16px;">
-                            <a href="/login/" style="color: var(--kingdom-color); font-weight: 600;">Войдите</a>, чтобы получить ежедневные задания
-                        </p>
-                    `}
-                </div>
+            <p style="margin-top: 24px; text-align: center;">
+                <a href="/" style="color: var(--kingdom-color); text-decoration: none; font-weight: 600;">← На главную</a>
+            </p>
+        `;
 
-                <!-- Мини-игра -->
-                <div class="mini-game fade-in">
-                    <div style="font-size: 1.3rem; font-weight: 800; margin-bottom: 4px;">🎲 Мини-игра</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9;">Угадай марсианскую ноту</div>
-                    <div id="mini-game-body"></div>
-                </div>
-
-                <!-- Возврат -->
-                <p style="margin-top: 24px; text-align: center;">
-                    <a href="/" style="color: var(--kingdom-color); text-decoration: none; font-weight: 600;">← На главную</a>
-                </p>
-            `;
-
-            // Запускаем мини-игру
-            newMiniGame();
-
-            // Обновление счётчика онлайн каждые 30 сек
-            setInterval(() => {
-                const newOnline = 3 + Math.floor(Math.random() * 8) + (user ? 1 : 0);
-                const counterEl = document.querySelector('.live-counter');
-                if (counterEl) {
-                    const textEl = counterEl.querySelector('div > div:first-child');
-                    if (textEl) {
-                        textEl.textContent = `Сейчас на сайте: ${newOnline} ${newOnline === 1 ? 'исследователь' : newOnline < 5 ? 'исследователя' : 'исследователей'}`;
-                    }
-                }
-            }, 30000);
-
-        } catch (e) {
-            console.error('❌ Ошибка:', e);
-            container.innerHTML = '<p style="text-align:center; padding: 40px;">⚠️ Не удалось загрузить интерактив.</p>';
-        }
+        newMiniGame();
     })();
 })();
 </script>

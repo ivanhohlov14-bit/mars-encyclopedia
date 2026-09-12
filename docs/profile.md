@@ -29,7 +29,7 @@ comments: false
 .pf-level-badge{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.95);color:var(--kingdom-color);padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:800;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.15);border:2px solid rgba(255,255,255,.5)}
 .pf-info{flex:1;min-width:200px}
 .pf-name{font-size:2rem;font-weight:800;margin:0 0 6px 0;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;letter-spacing:-.5px}
-.pf-role-badge{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;box-shadow:0 4px 12px rgba(243,156,18,.4)}
+.pf-role-badge{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
 .pf-guild-badge{background:rgba(255,255,255,.25);backdrop-filter:blur(8px);color:#fff;padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;display:inline-flex;align-items:center;gap:4px;border:1px solid rgba(255,255,255,.3);cursor:pointer}
 .pf-email{font-size:.9rem;opacity:.85;margin:0 0 16px 0}
 .pf-stats-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px}
@@ -40,7 +40,7 @@ comments: false
 .pf-progress-bar{height:100%;background:#fff;border-radius:12px;transition:width 1.2s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(255,255,255,.6)}
 .pf-progress-text{font-size:.78rem;opacity:.9}
 .pf-quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
-.pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s cubic-bezier(.16,1,.3,1);box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer}
+.pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s;box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer}
 .pf-quick-card:hover{transform:translateY(-4px);border-color:var(--kingdom-color);box-shadow:0 12px 32px -8px var(--kingdom-shadow)}
 .pf-quick-icon{font-size:1.8rem;filter:drop-shadow(0 3px 6px rgba(0,0,0,.15));transition:transform .3s}
 .pf-quick-card:hover .pf-quick-icon{transform:scale(1.15) rotate(-6deg)}
@@ -125,7 +125,7 @@ comments: false
 .pf-note-colors{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .pf-note-color{width:32px;height:32px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .2s}
 .pf-note-color:hover{transform:scale(1.15)}
-.pf-note-color.selected{border-color:#333;transform:scale(1.15);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.pf-note-color.selected{border-color:#333;transform:scale(1.15)}
 .pf-danger{background:rgba(231,76,60,.05);border:2px solid rgba(231,76,60,.2);border-radius:14px;padding:16px 20px}
 .pf-qr-btn{width:100%;padding:18px 24px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border:none;border-radius:16px;font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;box-shadow:0 12px 32px -8px rgba(108,99,255,.5);display:flex;align-items:center;justify-content:center;gap:12px;transition:all .3s;margin-bottom:20px}
 .pf-qr-btn:hover{transform:translateY(-3px);box-shadow:0 20px 40px -8px rgba(108,99,255,.6)}
@@ -137,12 +137,12 @@ comments: false
 .pf-switch.on{background:var(--kingdom-color)}
 .pf-switch::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:all .3s;box-shadow:0 2px 4px rgba(0,0,0,.2)}
 .pf-switch.on::after{left:25px}
-.pf-badge-2fa{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:700;background:linear-gradient(135deg,#27ae60,#16a085);color:#fff;box-shadow:0 4px 12px rgba(39,174,96,.3)}
-.pf-badge-2fa.off{background:rgba(0,0,0,.08);color:#666;box-shadow:none}
+.pf-badge-2fa{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:700;background:linear-gradient(135deg,#27ae60,#16a085);color:#fff}
+.pf-badge-2fa.off{background:rgba(0,0,0,.08);color:#666}
 .pf-theme-colors{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .pf-theme-color{width:40px;height:40px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .2s;box-shadow:0 4px 12px rgba(0,0,0,.15)}
 .pf-theme-color:hover{transform:scale(1.1)}
-.pf-theme-color.selected{border-color:#1a1a1a;transform:scale(1.15);box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.pf-theme-color.selected{border-color:#1a1a1a;transform:scale(1.15)}
 @media(prefers-color-scheme:dark){.pf-card,.pf-quick-card,.pf-ach,.pf-note,.pf-note-form{background:rgba(30,30,46,.9)}.pf-card-title,.pf-quick-title,.pf-ach-name,.pf-name,.pf-note-title{color:#e0e0e0}.pf-tab{color:#aaa}.pf-tab:hover{background:rgba(255,255,255,.05);color:#fff}.pf-chat{background:rgba(30,30,46,.6)}.pf-chat-msg.bot{background:rgba(255,255,255,.08);color:#e0e0e0}.pf-chat-input input{background:rgba(30,30,46,.8);color:#e0e0e0}.pf-kingdom-btn{background:rgba(30,30,46,.6);color:#e0e0e0}.pf-notif{background:rgba(255,255,255,.03)}.pf-notif-text{color:#d0d0d0}.pf-cal-day,.pf-note-content{color:#e0e0e0}.pf-calendar{background:rgba(30,30,46,.5)}.pf-note-input{background:rgba(30,30,46,.6);color:#e0e0e0}.pf-note-btn{background:rgba(255,255,255,.08);color:#aaa}.pf-toggle-label{color:#d0d0d0}}
 @media(max-width:600px){.pf-hero{padding:24px 20px}.pf-avatar{width:90px;height:90px}.pf-name{font-size:1.4rem}.pf-tabs{padding:4px}.pf-tab{padding:8px 12px;font-size:.78rem}.pf-card{padding:18px 16px}.pf-quick-grid{grid-template-columns:1fr}.pf-avatar-option{width:52px;height:52px}}
 </style>
@@ -153,14 +153,13 @@ comments: false
     'use strict';
 
     // ============================================================
-    // РАЗБЛОКИРОВКА СКРОЛЛА (очень важно!)
+    // РАЗБЛОКИРОВКА СКРОЛЛА
     // ============================================================
     document.body.style.overflow = '';
     document.body.style.position = '';
     document.documentElement.style.overflow = '';
     document.documentElement.style.height = '';
 
-    // Проверка каждые 2 сек — если какой-то модал забыл разблокировать скролл
     setInterval(function(){
         if(document.body.style.overflow === 'hidden'){
             var hasModal = document.querySelector('#mars-intro-overlay, #dl-overlay, #daily-modal-overlay');
@@ -188,13 +187,7 @@ comments: false
         'Аливасото':{color:'#81C784',bg:'#F0FFF0',light:'#A5D6A7',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png'}
     };
 
-    var AVATARS = [
-        '/assets/images/авотарка%20девушки.png',
-        '/assets/images/мужчина.png',
-        '/assets/images/мужчина2.png',
-        '/assets/images/мужчина%203.png'
-    ];
-
+    var AVATARS = ['/assets/images/авотарка%20девушки.png','/assets/images/мужчина.png','/assets/images/мужчина2.png','/assets/images/мужчина%203.png'];
     var NOTE_COLORS = ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63'];
     var THEME_COLORS = ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63','#34495e','#e67e22'];
 
@@ -215,76 +208,73 @@ comments: false
     var editingNoteId = null, selectedNoteColor = '#6C63FF';
 
     function getLevelInfo(exp){
-        var r={level:1,title:'🌱 Новый поселенец',current:0,next:50,percent:0};
-        for(var i=LEVEL_MAP.length-1;i>=0;i--){
-            if(exp>=LEVEL_MAP[i].xp){
-                r.level=LEVEL_MAP[i].level;r.title=LEVEL_MAP[i].title;
-                r.current=LEVEL_MAP[i].xp;
-                r.next=(i<LEVEL_MAP.length-1)?LEVEL_MAP[i+1].xp:exp+50;
+        var r = {level:1,title:'🌱 Новый поселенец',current:0,next:50,percent:0};
+        for(var i = LEVEL_MAP.length - 1; i >= 0; i--){
+            if(exp >= LEVEL_MAP[i].xp){
+                r.level = LEVEL_MAP[i].level; r.title = LEVEL_MAP[i].title;
+                r.current = LEVEL_MAP[i].xp;
+                r.next = (i < LEVEL_MAP.length - 1) ? LEVEL_MAP[i+1].xp : exp + 50;
                 break;
             }
         }
-        var range=r.next-r.current;
-        r.percent=range>0?Math.min(((exp-r.current)/range)*100,100):100;
+        var range = r.next - r.current;
+        r.percent = range > 0 ? Math.min(((exp - r.current) / range) * 100, 100) : 100;
         return r;
     }
 
     function getMartianDate(){
-        var months=['Ākha-dzen','Kōl-khan','Dzen-ākha','Khōsen','Mar-dzen','Ariya-mar','Zal-ākha','Thal-khō','Kōl-ghar','Mōr-ākha','Dzen-kōl','Xal-mar','Lān-sen','Khō-mōr','Ākha-mōr','Kōl-suf','Dzen-thal','Ghōl-ākha','Rōg-ari','Mar-lān','Ksanf-suf','Yar-okh'];
-        var days=[31,30,32,31,33,30,31,32,29,31,30,28,29,31,32,33,31,30,29,31,32,33];
-        var MD=days.reduce(function(s,d){return s+d;},0);
-        var EY=668.6;
-        var now=new Date();
-        var daysFrom=(now-new Date(2026,0,1))/86400000;
-        var year=Math.floor(3798000000+2740+daysFrom/EY);
-        var dayOfYear=Math.floor((daysFrom*(MD/EY))%MD);
-        var rem=dayOfYear,mi=0;
-        for(var i=0;i<days.length;i++){if(rem<days[i]){mi=i;break;}rem-=days[i];}
-        var seasons=['Пробуждение','Цветение','Зной','Ветры','Угасание','Заморозки','Тьма','Ледяной покров'];
-        return{year:year.toLocaleString(),month:months[mi],day:rem+1,season:seasons[Math.floor(mi/2)%seasons.length]};
+        var months = ['Ākha-dzen','Kōl-khan','Dzen-ākha','Khōsen','Mar-dzen','Ariya-mar','Zal-ākha','Thal-khō','Kōl-ghar','Mōr-ākha','Dzen-kōl','Xal-mar','Lān-sen','Khō-mōr','Ākha-mōr','Kōl-suf','Dzen-thal','Ghōl-ākha','Rōg-ari','Mar-lān','Ksanf-suf','Yar-okh'];
+        var days = [31,30,32,31,33,30,31,32,29,31,30,28,29,31,32,33,31,30,29,31,32,33];
+        var MD = days.reduce(function(s,d){return s+d;},0);
+        var EY = 668.6;
+        var now = new Date();
+        var daysFrom = (now - new Date(2026,0,1)) / 86400000;
+        var year = Math.floor(3798000000 + 2740 + daysFrom / EY);
+        var dayOfYear = Math.floor((daysFrom * (MD / EY)) % MD);
+        var rem = dayOfYear, mi = 0;
+        for(var i = 0; i < days.length; i++){ if(rem < days[i]){ mi = i; break; } rem -= days[i]; }
+        var seasons = ['Пробуждение','Цветение','Зной','Ветры','Угасание','Заморозки','Тьма','Ледяной покров'];
+        return { year: year.toLocaleString(), month: months[mi], day: rem + 1, season: seasons[Math.floor(mi/2) % seasons.length] };
     }
 
-    function showToast(msg,type){
-        type=type||'info';
-        var colors={success:'linear-gradient(135deg,#27ae60,#16a085)',info:'linear-gradient(135deg,#3498db,#2980b9)',warning:'linear-gradient(135deg,#e67e22,#d35400)',error:'linear-gradient(135deg,#e74c3c,#c0392b)'};
-        var t=document.createElement('div');
-        t.style.cssText='position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:'+(colors[type]||colors.info)+';color:#fff;padding:12px 26px;border-radius:30px;font-weight:600;font-size:.9rem;box-shadow:0 12px 32px rgba(0,0,0,.3);z-index:99999;transition:transform .4s cubic-bezier(.16,1,.3,1);pointer-events:none;';
-        t.textContent=msg;
+    function showToast(msg, type){
+        type = type || 'info';
+        var colors = { success:'linear-gradient(135deg,#27ae60,#16a085)', info:'linear-gradient(135deg,#3498db,#2980b9)', warning:'linear-gradient(135deg,#e67e22,#d35400)', error:'linear-gradient(135deg,#e74c3c,#c0392b)' };
+        var t = document.createElement('div');
+        t.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:' + (colors[type] || colors.info) + ';color:#fff;padding:12px 26px;border-radius:30px;font-weight:600;font-size:.9rem;box-shadow:0 12px 32px rgba(0,0,0,.3);z-index:99999;transition:transform .4s cubic-bezier(.16,1,.3,1);pointer-events:none;';
+        t.textContent = msg;
         document.body.appendChild(t);
-        requestAnimationFrame(function(){t.style.transform='translateX(-50%) translateY(0)';});
-        setTimeout(function(){t.style.transform='translateX(-50%) translateY(100px)';setTimeout(function(){t.remove();},400);},2400);
+        requestAnimationFrame(function(){ t.style.transform = 'translateX(-50%) translateY(0)'; });
+        setTimeout(function(){ t.style.transform = 'translateX(-50%) translateY(100px)'; setTimeout(function(){ t.remove(); }, 400); }, 2400);
     }
 
     function escapeHtml(s){
-        return String(s||'').replace(/[&<>"']/g,function(m){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m];});
+        return String(s || '').replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; });
     }
 
     function playSound(type){
         if(!preferences.notification_sound) return;
         try{
-            var ctx=new (window.AudioContext||window.webkitAudioContext)();
-            var osc=ctx.createOscillator();
-            var gain=ctx.createGain();
-            osc.type='sine';
-            osc.frequency.value=type==='success'?880:440;
-            gain.gain.setValueAtTime(.15,ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.3);
-            osc.connect(gain);gain.connect(ctx.destination);
-            osc.start();osc.stop(ctx.currentTime+.3);
+            var ctx = new (window.AudioContext || window.webkitAudioContext)();
+            var osc = ctx.createOscillator();
+            var gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = type === 'success' ? 880 : 440;
+            gain.gain.setValueAtTime(.15, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + .3);
+            osc.connect(gain); gain.connect(ctx.destination);
+            osc.start(); osc.stop(ctx.currentTime + .3);
         }catch(e){}
     }
 
     function getDeviceId(){
-        var did=localStorage.getItem('mars_device_id');
-        if(!did){
-            did='dev_'+Math.random().toString(36).slice(2,12)+Date.now().toString(36);
-            localStorage.setItem('mars_device_id',did);
-        }
+        var did = localStorage.getItem('mars_device_id');
+        if(!did){ did = 'dev_' + Math.random().toString(36).slice(2,12) + Date.now().toString(36); localStorage.setItem('mars_device_id', did); }
         return did;
     }
 
     function getDeviceName(){
-        var ua=navigator.userAgent;
+        var ua = navigator.userAgent;
         if(/Android/i.test(ua)) return 'Android-устройство';
         if(/iPhone|iPad|iPod/i.test(ua)) return 'iPhone / iPad';
         if(/Windows/i.test(ua)) return 'Windows ПК';
@@ -293,188 +283,217 @@ comments: false
         return 'Неизвестное устройство';
     }
 
-    function waitForClient(maxAttempts){
-        maxAttempts=maxAttempts||50;
-        return new Promise(function(resolve){
-            var attempts=0;
-            var check=setInterval(function(){
-                attempts++;
-                if(window.supabaseClient){
-                    clearInterval(check);client=window.supabaseClient;
-                    console.log('✅ Профиль: клиент получен');resolve(client);
-                }else if(attempts>maxAttempts){
-                    clearInterval(check);console.error('❌ Профиль: клиент не загрузился');resolve(null);
-                }
-            },100);
-        });
-    }
-
-    async function getSessionSafe(maxAttempts){
-        maxAttempts=maxAttempts||20;
-        for(var i=0;i<maxAttempts;i++){
-            if(window.marsSession&&window.marsSession.ready&&window.marsSession.user){
-                return {user:window.marsSession.user};
-            }
-            await new Promise(function(r){setTimeout(r,200);});
-        }
-        if(!client) return {user:null};
-        var res=await client.auth.getSession();
-        return {user:res.data&&res.data.session?res.data.session.user:null};
-    }
-
+    // ============================================================
+    // ЗАГРУЗКА ДАННЫХ — БЫСТРО
+    // ============================================================
     async function loadAllData(user){
-        var startTime=performance.now();
+        var startTime = performance.now();
         console.log('⏱️ Загрузка профиля...');
 
+        // Кэш — показываем сразу
         try{
-            var cached=localStorage.getItem('pf_cache_'+user.id);
+            var cached = localStorage.getItem('pf_cache_' + user.id);
             if(cached){
-                var d=JSON.parse(cached);
-                currentProfile=d.currentProfile||currentProfile;
-                if(currentProfile&&currentProfile.kingdom&&KINGDOMS[currentProfile.kingdom]) kingdom=KINGDOMS[currentProfile.kingdom];
-                achievementsList=d.achievementsList||[];
-                notifications=d.notifications||[];
-                leaders=d.leaders||[];
-                guild=d.guild||null;
-                guildMembers=d.guildMembers||[];
-                friends=d.friends||[];
-                notes=d.notes||[];
-                streak=d.streak||0;
-                privacy=d.privacy||{};
-                preferences=d.preferences||{};
-                console.log('⚡ Из кэша за',Math.round(performance.now()-startTime),'мс');
+                var d = JSON.parse(cached);
+                currentProfile = d.currentProfile || currentProfile;
+                if(currentProfile && currentProfile.kingdom && KINGDOMS[currentProfile.kingdom]) kingdom = KINGDOMS[currentProfile.kingdom];
+                achievementsList = d.achievementsList || [];
+                notifications = d.notifications || [];
+                leaders = d.leaders || [];
+                guild = d.guild || null;
+                guildMembers = d.guildMembers || [];
+                friends = d.friends || [];
+                notes = d.notes || [];
+                streak = d.streak || 0;
+                privacy = d.privacy || {};
+                preferences = d.preferences || {};
+                console.log('⚡ Из кэша');
                 render();
             }
         }catch(e){}
 
-        var timeout=function(ms){return new Promise(function(_,rej){setTimeout(function(){rej(new Error('timeout'));},ms);});};
-
-        try{
-            var results=await Promise.all([
-                Promise.race([client.from('profiles').select('*').eq('user_id',user.id).single(),timeout(8000)]).catch(function(){return{data:null};}),
-                Promise.race([client.from('user_achievements').select('achievement_id, earned_at').eq('user_id',user.id).order('earned_at',{ascending:false}),timeout(8000)]).catch(function(){return{data:[]};}),
-                Promise.race([client.from('notifications').select('*').eq('user_id',user.id).order('created_at',{ascending:false}).limit(10),timeout(8000)]).catch(function(){return{data:[]};}),
-                Promise.race([client.from('profiles').select('user_id, username, display_name, experience, level, avatar_url').order('experience',{ascending:false}).limit(10),timeout(8000)]).catch(function(){return{data:[]};}),
-                Promise.race([client.from('guild_members').select('guild_id').eq('user_id',user.id).maybeSingle(),timeout(8000)]).catch(function(){return{data:null};}),
-                Promise.race([client.from('friends').select('*').or('user_id.eq.'+user.id+',friend_id.eq.'+user.id),timeout(8000)]).catch(function(){return{data:[]};}),
-                Promise.race([client.from('user_notes').select('*').eq('user_id',user.id).order('pinned',{ascending:false}).order('updated_at',{ascending:false}),timeout(8000)]).catch(function(){return{data:[]};}),
-                Promise.race([client.from('daily_logins').select('streak').eq('user_id',user.id).order('login_date',{ascending:false}).limit(1),timeout(5000)]).catch(function(){return{data:[]};}),
-                Promise.race([client.from('user_privacy').select('*').eq('user_id',user.id).maybeSingle(),timeout(5000)]).catch(function(){return{data:null};}),
-                Promise.race([client.from('user_preferences').select('*').eq('user_id',user.id).maybeSingle(),timeout(5000)]).catch(function(){return{data:null};})
+        // ============================================================
+        // Загружаем ТОЛЬКО профиль
+        // ============================================================
+        try {
+            var profileRes = await Promise.race([
+                client.from('profiles').select('*').eq('user_id', user.id).single(),
+                new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 6000); })
             ]);
-
-            var profileRes=results[0],uaRes=results[1],notifRes=results[2],leadersRes=results[3];
-            var guildRes=results[4],friendsRes=results[5],notesRes=results[6],streakRes=results[7];
-            var privacyRes=results[8],prefsRes=results[9];
-
-            if(profileRes&&profileRes.data){
-                currentProfile=profileRes.data;
-                if(currentProfile.kingdom&&KINGDOMS[currentProfile.kingdom]) kingdom=KINGDOMS[currentProfile.kingdom];
+            if (profileRes && profileRes.data) {
+                currentProfile = profileRes.data;
+                if (currentProfile.kingdom && KINGDOMS[currentProfile.kingdom]) kingdom = KINGDOMS[currentProfile.kingdom];
             }
+        } catch(e) {
+            console.warn('Профиль не загружен:', e.message);
+        }
 
-            if(uaRes&&uaRes.data&&uaRes.data.length>0){
-                var ids=uaRes.data.map(function(x){return x.achievement_id;});
-                var metaRes=await client.from('achievements').select('*').in('id',ids);
-                var map={};
-                (metaRes.data||[]).forEach(function(m){map[m.id]=m;});
-                achievementsList=uaRes.data.map(function(x){return Object.assign({},map[x.achievement_id],{earned_at:x.earned_at});}).filter(function(x){return x.id;});
+        // Если профиль есть — сразу рендерим
+        if (currentProfile) {
+            console.log('✅ Профиль готов за', Math.round(performance.now() - startTime), 'мс');
+            render();
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+        } else {
+            console.warn('❌ Профиль не получен');
+            return;
+        }
+
+        // Фоновая догрузка
+        loadRestInBackground(user);
+    }
+
+    async function loadRestInBackground(user){
+        var timeout = function(ms){ return new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, ms); }); };
+
+        // Достижения
+        try {
+            var uaRes = await Promise.race([ client.from('user_achievements').select('achievement_id, earned_at').eq('user_id', user.id).order('earned_at', { ascending: false }), timeout(5000) ]);
+            if (uaRes && uaRes.data && uaRes.data.length > 0) {
+                var ids = uaRes.data.map(function(x){ return x.achievement_id; });
+                var metaRes = await Promise.race([ client.from('achievements').select('*').in('id', ids), timeout(5000) ]);
+                var map = {};
+                (metaRes.data || []).forEach(function(m){ map[m.id] = m; });
+                achievementsList = uaRes.data.map(function(x){ return Object.assign({}, map[x.achievement_id], { earned_at: x.earned_at }); }).filter(function(x){ return x.id; });
+                render();
             }
+        } catch(e) { console.warn('Достижения:', e.message); }
 
-            notifications=(notifRes&&notifRes.data)||[];
-            leaders=(leadersRes&&leadersRes.data)||[];
-            notes=(notesRes&&notesRes.data)||[];
-            streak=(streakRes&&streakRes.data&&streakRes.data[0])?streakRes.data[0].streak:0;
-            privacy=(privacyRes&&privacyRes.data)||{};
-            preferences=(prefsRes&&prefsRes.data)||{};
+        // Заметки
+        try {
+            var notesRes = await Promise.race([ client.from('user_notes').select('*').eq('user_id', user.id).order('pinned', { ascending: false }).order('updated_at', { ascending: false }), timeout(5000) ]);
+            if (notesRes && notesRes.data) { notes = notesRes.data; render(); }
+        } catch(e) { console.warn('Заметки:', e.message); }
 
-            if(guildRes&&guildRes.data&&guildRes.data.guild_id){
-                var gRes=await client.from('guilds').select('*').eq('id',guildRes.data.guild_id).single();
-                guild=gRes.data;
-                if(guild){
-                    var mRes=await client.from('guild_members').select('user_id, role, joined_at').eq('guild_id',guild.id).order('joined_at',{ascending:true}).limit(50);
-                    if(mRes.data&&mRes.data.length>0){
-                        var mids=mRes.data.map(function(m){return m.user_id;});
-                        var pRes=await client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id',mids);
-                        var pmap={};
-                        (pRes.data||[]).forEach(function(p){pmap[p.user_id]=p;});
-                        guildMembers=mRes.data.map(function(m){return Object.assign({},m,{profile:pmap[m.user_id]||{}});});
+        // Уведомления
+        try {
+            var notifRes = await Promise.race([ client.from('notifications').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(10), timeout(5000) ]);
+            if (notifRes && notifRes.data) { notifications = notifRes.data; render(); }
+        } catch(e) { console.warn('Уведомления:', e.message); }
+
+        // Лидеры
+        try {
+            var leadersRes = await Promise.race([ client.from('profiles').select('user_id, username, display_name, experience, level, avatar_url').order('experience', { ascending: false }).limit(10), timeout(5000) ]);
+            if (leadersRes && leadersRes.data) { leaders = leadersRes.data; render(); }
+        } catch(e) { console.warn('Лидеры:', e.message); }
+
+        // Стрик
+        try {
+            var streakRes = await Promise.race([ client.from('daily_logins').select('streak').eq('user_id', user.id).order('login_date', { ascending: false }).limit(1), timeout(5000) ]);
+            if (streakRes && streakRes.data && streakRes.data[0]) { streak = streakRes.data[0].streak; render(); }
+        } catch(e) { console.warn('Стрик:', e.message); }
+
+        // Приватность
+        try {
+            var privRes = await Promise.race([ client.from('user_privacy').select('*').eq('user_id', user.id).maybeSingle(), timeout(5000) ]);
+            if (privRes && privRes.data) privacy = privRes.data;
+        } catch(e) { console.warn('Приватность:', e.message); }
+
+        // Настройки
+        try {
+            var prefsRes = await Promise.race([ client.from('user_preferences').select('*').eq('user_id', user.id).maybeSingle(), timeout(5000) ]);
+            if (prefsRes && prefsRes.data) preferences = prefsRes.data;
+        } catch(e) { console.warn('Настройки:', e.message); }
+
+        // Гильдия
+        try {
+            var guildRes = await Promise.race([ client.from('guild_members').select('guild_id').eq('user_id', user.id).maybeSingle(), timeout(5000) ]);
+            if (guildRes && guildRes.data && guildRes.data.guild_id) {
+                var gRes = await Promise.race([ client.from('guilds').select('*').eq('id', guildRes.data.guild_id).single(), timeout(5000) ]);
+                guild = gRes.data;
+                if (guild) {
+                    var mRes = await Promise.race([ client.from('guild_members').select('user_id, role, joined_at').eq('guild_id', guild.id).order('joined_at', { ascending: true }).limit(50), timeout(5000) ]);
+                    if (mRes.data && mRes.data.length > 0) {
+                        var mids = mRes.data.map(function(m){ return m.user_id; });
+                        var pRes = await Promise.race([ client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', mids), timeout(5000) ]);
+                        var pmap = {};
+                        (pRes.data || []).forEach(function(p){ pmap[p.user_id] = p; });
+                        guildMembers = mRes.data.map(function(m){ return Object.assign({}, m, { profile: pmap[m.user_id] || {} }); });
+                        render();
                     }
                 }
             }
+        } catch(e) { console.warn('Гильдия:', e.message); }
 
-            if(friendsRes&&friendsRes.data&&friendsRes.data.length>0){
-                var fids={};
-                friendsRes.data.forEach(function(f){fids[f.user_id]=true;fids[f.friend_id]=true;});
+        // Друзья
+        try {
+            var friendsRes = await Promise.race([ client.from('friends').select('*').or('user_id.eq.' + user.id + ',friend_id.eq.' + user.id), timeout(5000) ]);
+            if (friendsRes && friendsRes.data && friendsRes.data.length > 0) {
+                var fids = {};
+                friendsRes.data.forEach(function(f){ fids[f.user_id] = true; fids[f.friend_id] = true; });
                 delete fids[user.id];
-                var idArr=Object.keys(fids);
-                var fpRes=await client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id',idArr);
-                var fmap={};
-                (fpRes.data||[]).forEach(function(p){fmap[p.user_id]=p;});
-                friends=friendsRes.data.map(function(f){
-                    var otherId=f.user_id===user.id?f.friend_id:f.user_id;
-                    return Object.assign({},f,{other:fmap[otherId]||{user_id:otherId}});
-                });
+                var idArr = Object.keys(fids);
+                if (idArr.length > 0) {
+                    var fpRes = await Promise.race([ client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', idArr), timeout(5000) ]);
+                    var fmap = {};
+                    (fpRes.data || []).forEach(function(p){ fmap[p.user_id] = p; });
+                    friends = friendsRes.data.map(function(f){
+                        var otherId = f.user_id === user.id ? f.friend_id : f.user_id;
+                        return Object.assign({}, f, { other: fmap[otherId] || { user_id: otherId } });
+                    });
+                    render();
+                }
             }
+        } catch(e) { console.warn('Друзья:', e.message); }
 
-            try{
-                localStorage.setItem('pf_cache_'+user.id,JSON.stringify({
-                    currentProfile:currentProfile,achievementsList:achievementsList,
-                    notifications:notifications,leaders:leaders,guild:guild,
-                    guildMembers:guildMembers,friends:friends,notes:notes,streak:streak,
-                    privacy:privacy,preferences:preferences,cachedAt:Date.now()
-                }));
-            }catch(e){}
+        // Кэш
+        try {
+            localStorage.setItem('pf_cache_' + user.id, JSON.stringify({
+                currentProfile: currentProfile, achievementsList: achievementsList, notifications: notifications,
+                leaders: leaders, guild: guild, guildMembers: guildMembers, friends: friends, notes: notes,
+                streak: streak, privacy: privacy, preferences: preferences, cachedAt: Date.now()
+            }));
+        } catch(e) {}
 
-            console.log('✅ Профиль загружен за',Math.round(performance.now()-startTime),'мс');
-            render();
-        }catch(e){
-            console.error('❌ Ошибка:',e);
-        }
+        console.log('✅ Всё догружено за', Math.round(performance.now() - startTime), 'мс');
     }
 
+    // ============================================================
+    // РЕНДЕР
+    // ============================================================
     function render(){
         if(!currentProfile) return;
-        document.documentElement.style.setProperty('--kingdom-color',kingdom.color);
-        document.documentElement.style.setProperty('--kingdom-bg',kingdom.bg);
-        document.documentElement.style.setProperty('--kingdom-light',kingdom.light);
-        document.documentElement.style.setProperty('--kingdom-shadow',kingdom.color+'40');
-        document.body.style.background=kingdom.bg;
-        document.body.style.backgroundAttachment='fixed';
+        document.documentElement.style.setProperty('--kingdom-color', kingdom.color);
+        document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
+        document.documentElement.style.setProperty('--kingdom-light', kingdom.light);
+        document.documentElement.style.setProperty('--kingdom-shadow', kingdom.color + '40');
+        document.body.style.background = kingdom.bg;
+        document.body.style.backgroundAttachment = 'fixed';
 
-        var lvl=getLevelInfo(currentProfile.experience||0);
-        var displayName=currentProfile.display_name||currentProfile.username||currentUser.email.split('@')[0];
-        var avatar=currentProfile.avatar_url||AVATARS[0];
-        var isModerator=currentProfile.role==='moderator';
-        var martianDate=getMartianDate();
-        var notifEnabled=currentProfile.notifications_enabled!==false;
+        var lvl = getLevelInfo(currentProfile.experience || 0);
+        var displayName = currentProfile.display_name || currentProfile.username || currentUser.email.split('@')[0];
+        var avatar = currentProfile.avatar_url || AVATARS[0];
+        var isModerator = currentProfile.role === 'moderator';
+        var martianDate = getMartianDate();
+        var notifEnabled = currentProfile.notifications_enabled !== false;
 
-        var guildBadge=guild?'<span class="pf-guild-badge" onclick="pfSetTab(\'guild\')">'+(guild.icon||'🏰')+' '+escapeHtml(guild.name)+'</span>':'';
-        var roleBadge=isModerator?'<span class="pf-role-badge">🛡️ Модератор</span>':'';
-        var streakBlock=streak>0?'<div class="pf-stat-mini"><span class="pf-sm-label">Серия</span><span class="pf-sm-value">🔥 '+streak+'</span></div>':'';
+        var guildBadge = guild ? '<span class="pf-guild-badge" onclick="pfSetTab(\'guild\')">' + (guild.icon || '🏰') + ' ' + escapeHtml(guild.name) + '</span>' : '';
+        var roleBadge = isModerator ? '<span class="pf-role-badge">🛡️ Модератор</span>' : '';
+        var streakBlock = streak > 0 ? '<div class="pf-stat-mini"><span class="pf-sm-label">Серия</span><span class="pf-sm-value">🔥 ' + streak + '</span></div>' : '';
 
-        var html='';
-        html+='<div class="pf-hero pf-fade"><div class="pf-hero-content">';
-        html+='<div class="pf-avatar-wrap"><img src="'+avatar+'" alt="" class="pf-avatar"><div class="pf-level-badge">'+lvl.title+'</div></div>';
-        html+='<div class="pf-info">';
-        html+='<h1 class="pf-name">'+escapeHtml(displayName)+' '+roleBadge+' '+guildBadge+'</h1>';
-        html+='<p class="pf-email">'+currentUser.email+'</p>';
-        html+='<div class="pf-stats-row">';
-        html+='<div class="pf-stat-mini"><span class="pf-sm-label">Уровень</span><span class="pf-sm-value">⭐ '+lvl.level+'</span></div>';
-        html+='<div class="pf-stat-mini"><span class="pf-sm-label">Опыт</span><span class="pf-sm-value">💎 '+(currentProfile.experience||0)+'</span></div>';
-        html+='<div class="pf-stat-mini"><span class="pf-sm-label">Достижений</span><span class="pf-sm-value">🏆 '+achievementsList.length+'</span></div>';
-        html+=streakBlock;
-        html+='</div>';
-        html+='<div class="pf-progress"><div class="pf-progress-bar" style="width:'+lvl.percent+'%;"></div></div>';
-        html+='<div class="pf-progress-text">До уровня '+(lvl.level+1)+': '+Math.max(lvl.next-(currentProfile.experience||0),0)+' XP</div>';
-        html+='</div></div></div>';
+        var html = '';
+        html += '<div class="pf-hero pf-fade"><div class="pf-hero-content">';
+        html += '<div class="pf-avatar-wrap"><img src="' + avatar + '" alt="" class="pf-avatar"><div class="pf-level-badge">' + lvl.title + '</div></div>';
+        html += '<div class="pf-info">';
+        html += '<h1 class="pf-name">' + escapeHtml(displayName) + ' ' + roleBadge + ' ' + guildBadge + '</h1>';
+        html += '<p class="pf-email">' + currentUser.email + '</p>';
+        html += '<div class="pf-stats-row">';
+        html += '<div class="pf-stat-mini"><span class="pf-sm-label">Уровень</span><span class="pf-sm-value">⭐ ' + lvl.level + '</span></div>';
+        html += '<div class="pf-stat-mini"><span class="pf-sm-label">Опыт</span><span class="pf-sm-value">💎 ' + (currentProfile.experience || 0) + '</span></div>';
+        html += '<div class="pf-stat-mini"><span class="pf-sm-label">Достижений</span><span class="pf-sm-value">🏆 ' + achievementsList.length + '</span></div>';
+        html += streakBlock;
+        html += '</div>';
+        html += '<div class="pf-progress"><div class="pf-progress-bar" style="width:' + lvl.percent + '%;"></div></div>';
+        html += '<div class="pf-progress-text">До уровня ' + (lvl.level + 1) + ': ' + Math.max(lvl.next - (currentProfile.experience || 0), 0) + ' XP</div>';
+        html += '</div></div></div>';
 
-        html+='<div class="pf-quick-grid pf-fade" style="animation-delay:.05s;">';
-        var quicks=[
+        html += '<div class="pf-quick-grid pf-fade" style="animation-delay:.05s;">';
+        var quicks = [
             {href:'/stats/',icon:'📊',title:'Статистика',desc:'Дашборд'},
             {href:'/achievements/',icon:'🎁',title:'Достижения',desc:'Все награды'},
             {href:'/bookmarks/',icon:'📚',title:'Закладки',desc:'Сохранённое'},
             {href:'/quests/',icon:'🗺️',title:'Квесты',desc:'Задания'},
-            {href:'/guilds/',icon:'🏰',title:'Гильдии',desc:guild?escapeHtml(guild.name):'Найти'},
+            {href:'/guilds/',icon:'🏰',title:'Гильдии',desc: guild ? escapeHtml(guild.name) : 'Найти'},
             {href:'/interactive/',icon:'🎮',title:'Интерактив',desc:'Игры'},
             {href:'/horoscope/',icon:'🔮',title:'Гороскоп',desc:'Судьба'},
             {href:'/scrolls/',icon:'📜',title:'Свитки',desc:'Библиотека'},
@@ -482,584 +501,569 @@ comments: false
             {href:'/feed/',icon:'📰',title:'Лента',desc:'Активность'}
         ];
         quicks.forEach(function(q){
-            html+='<a href="'+q.href+'" class="pf-quick-card"><div class="pf-quick-icon">'+q.icon+'</div><div class="pf-quick-body"><div class="pf-quick-title">'+q.title+'</div><div class="pf-quick-desc">'+q.desc+'</div></div></a>';
+            html += '<a href="' + q.href + '" class="pf-quick-card"><div class="pf-quick-icon">' + q.icon + '</div><div class="pf-quick-body"><div class="pf-quick-title">' + q.title + '</div><div class="pf-quick-desc">' + q.desc + '</div></div></a>';
         });
-        html+='</div>';
+        html += '</div>';
 
-        html+='<div id="pf-qr-wrapper" style="display:none;"><button class="pf-qr-btn pf-fade" onclick="pfOpenQR()"><span style="font-size:1.5rem;">📱</span><span>Привязать телефон (вход по QR)</span></button></div>';
+        html += '<div id="pf-qr-wrapper" style="display:none;"><button class="pf-qr-btn pf-fade" onclick="if(window.pfOpenQR)window.pfOpenQR()"><span style="font-size:1.5rem;">📱</span><span>Привязать телефон (вход по QR)</span></button></div>';
 
-        html+='<div class="pf-tabs pf-fade" style="animation-delay:.1s;">';
-        html+='<button class="pf-tab active" data-tab="overview">👤 Обзор</button>';
-        html+='<button class="pf-tab" data-tab="guild">🏰 Гильдия</button>';
-        html+='<button class="pf-tab" data-tab="achievements">🏅 Достижения</button>';
-        html+='<button class="pf-tab" data-tab="notes">📝 Заметки'+(notes.length?' ('+notes.length+')':'')+'</button>';
-        html+='<button class="pf-tab" data-tab="notifications">🔔 Уведомления</button>';
-        html+='<button class="pf-tab" data-tab="friends">👥 Друзья'+(friends.length?' ('+friends.length+')':'')+'</button>';
-        html+='<button class="pf-tab" data-tab="ai">🤖 ИИ</button>';
-        html+='<button class="pf-tab" data-tab="leaderboard">🏆 Лидеры</button>';
-        html+='<button class="pf-tab" data-tab="security">🔐 Безопасность</button>';
-        html+='<button class="pf-tab" data-tab="customize">🎨 Кастомизация</button>';
-        html+='<button class="pf-tab" data-tab="settings">⚙️ Настройки</button>';
-        html+='</div>';
+        html += '<div class="pf-tabs pf-fade" style="animation-delay:.1s;">';
+        html += '<button class="pf-tab active" data-tab="overview">👤 Обзор</button>';
+        html += '<button class="pf-tab" data-tab="guild">🏰 Гильдия</button>';
+        html += '<button class="pf-tab" data-tab="achievements">🏅 Достижения</button>';
+        html += '<button class="pf-tab" data-tab="notes">📝 Заметки' + (notes.length ? ' (' + notes.length + ')' : '') + '</button>';
+        html += '<button class="pf-tab" data-tab="notifications">🔔 Уведомления</button>';
+        html += '<button class="pf-tab" data-tab="friends">👥 Друзья' + (friends.length ? ' (' + friends.length + ')' : '') + '</button>';
+        html += '<button class="pf-tab" data-tab="ai">🤖 ИИ</button>';
+        html += '<button class="pf-tab" data-tab="leaderboard">🏆 Лидеры</button>';
+        html += '<button class="pf-tab" data-tab="security">🔐 Безопасность</button>';
+        html += '<button class="pf-tab" data-tab="customize">🎨 Кастомизация</button>';
+        html += '<button class="pf-tab" data-tab="settings">⚙️ Настройки</button>';
+        html += '</div>';
 
         // ОБЗОР
-        html+='<div class="pf-tab-content active" data-content="overview">';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> О себе</h3>';
-        html+='<p style="margin:0 0 12px 0;color:#555;font-size:.95rem;line-height:1.6;" id="bio-text">'+escapeHtml(currentProfile.bio||'✍️ Ещё ничего не рассказал о себе.')+'</p>';
-        html+='<button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button></div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>';
-        html+='<div class="pf-calendar"><div class="pf-cal-month">'+martianDate.month+'</div><div class="pf-cal-day">'+martianDate.day+'</div><div class="pf-cal-year">Год '+martianDate.year+' Э.О.</div><div class="pf-cal-season">'+martianDate.season+'</div></div></div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📊</span> Статистика</h3>';
-        html+='<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;">';
-        html+='<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">'+achievementsList.length+'</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-top:4px;">Достижений</div></div>';
-        html+='<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">'+notes.length+'</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-top:4px;">Заметок</div></div>';
-        html+='<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">'+friends.length+'</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-top:4px;">Друзей</div></div>';
-        html+='<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">'+streak+'</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.5px;margin-top:4px;">Серия</div></div>';
-        html+='</div></div></div>';
+        html += '<div class="pf-tab-content active" data-content="overview">';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> О себе</h3>';
+        html += '<p style="margin:0 0 12px 0;color:#555;font-size:.95rem;line-height:1.6;" id="bio-text">' + escapeHtml(currentProfile.bio || '✍️ Ещё ничего не рассказал о себе.') + '</p>';
+        html += '<button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button></div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>';
+        html += '<div class="pf-calendar"><div class="pf-cal-month">' + martianDate.month + '</div><div class="pf-cal-day">' + martianDate.day + '</div><div class="pf-cal-year">Год ' + martianDate.year + ' Э.О.</div><div class="pf-cal-season">' + martianDate.season + '</div></div></div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📊</span> Статистика</h3>';
+        html += '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;">';
+        html += '<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">' + achievementsList.length + '</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;margin-top:4px;">Достижений</div></div>';
+        html += '<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">' + notes.length + '</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;margin-top:4px;">Заметок</div></div>';
+        html += '<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">' + friends.length + '</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;margin-top:4px;">Друзей</div></div>';
+        html += '<div style="text-align:center;padding:16px;background:rgba(0,0,0,.03);border-radius:12px;"><div style="font-size:1.8rem;font-weight:800;color:var(--kingdom-color);">' + streak + '</div><div style="font-size:.72rem;color:#888;text-transform:uppercase;margin-top:4px;">Серия</div></div>';
+        html += '</div></div></div>';
 
         // ГИЛЬДИЯ
-        html+='<div class="pf-tab-content" data-content="guild">';
+        html += '<div class="pf-tab-content" data-content="guild">';
         if(guild){
-            html+='<div class="pf-guild-hero" style="--guild-color:'+(guild.color||'var(--kingdom-color)')+';">';
-            html+='<div class="pf-guild-icon">'+(guild.icon||'🏰')+'</div>';
-            html+='<div class="pf-guild-info"><h2 class="pf-guild-name">'+escapeHtml(guild.name)+'</h2>';
-            html+='<div class="pf-guild-meta"><span>👥 '+guildMembers.length+' участников</span></div></div></div>';
-            html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📜</span> Описание</h3><p style="margin:0;color:#555;line-height:1.6;">'+escapeHtml(guild.description||'Без описания')+'</p></div>';
-            html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Участники</h3>';
+            html += '<div class="pf-guild-hero" style="--guild-color:' + (guild.color || 'var(--kingdom-color)') + ';">';
+            html += '<div class="pf-guild-icon">' + (guild.icon || '🏰') + '</div>';
+            html += '<div class="pf-guild-info"><h2 class="pf-guild-name">' + escapeHtml(guild.name) + '</h2>';
+            html += '<div class="pf-guild-meta"><span>👥 ' + guildMembers.length + ' участников</span></div></div></div>';
+            html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📜</span> Описание</h3><p style="margin:0;color:#555;line-height:1.6;">' + escapeHtml(guild.description || 'Без описания') + '</p></div>';
+            html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Участники</h3>';
             guildMembers.forEach(function(m){
-                var name=m.profile.display_name||m.profile.username||'Аноним';
-                var av=m.profile.avatar_url||'https://ui-avatars.com/api/?name='+encodeURIComponent(name)+'&background=6C63FF&color=fff&size=64';
-                html+='<div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(0,0,0,.03);border-radius:10px;margin-bottom:6px;"><img src="'+av+'" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--kingdom-color);"><div style="flex:1;"><div style="font-weight:700;font-size:.9rem;">'+escapeHtml(name)+'</div><div style="font-size:.72rem;color:#888;">'+(m.role==='leader'?'👑 Лидер':'👤 Участник')+'</div></div></div>';
+                var name = m.profile.display_name || m.profile.username || 'Аноним';
+                var av = m.profile.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=6C63FF&color=fff&size=64';
+                html += '<div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(0,0,0,.03);border-radius:10px;margin-bottom:6px;"><img src="' + av + '" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--kingdom-color);"><div style="flex:1;"><div style="font-weight:700;font-size:.9rem;">' + escapeHtml(name) + '</div><div style="font-size:.72rem;color:#888;">' + (m.role === 'leader' ? '👑 Лидер' : '👤 Участник') + '</div></div></div>';
             });
-            html+='</div>';
-            html+='<div class="pf-card"><a href="/guilds/" class="pf-btn pf-btn-outline">🏰 Перейти в гильдии</a>';
-            if(guild.leader_id===currentUser.id) html+='<button class="pf-btn pf-btn-danger" style="margin-left:8px;" onclick="pfDeleteGuild()">🗑️ Удалить</button>';
-            html+='</div>';
-        }else{
-            html+='<div class="pf-card" style="text-align:center;padding:50px 20px;"><div style="font-size:4rem;margin-bottom:12px;">🏰</div><h3 style="margin:0 0 8px 0;">Вы пока не в гильдии</h3><p style="color:#888;margin:0 0 20px 0;">Присоединяйтесь к другим исследователям!</p><a href="/guilds/" class="pf-btn">🔍 Найти гильдию</a></div>';
+            html += '</div>';
+            html += '<div class="pf-card"><a href="/guilds/" class="pf-btn pf-btn-outline">🏰 Перейти в гильдии</a>';
+            if(guild.leader_id === currentUser.id) html += '<button class="pf-btn pf-btn-danger" style="margin-left:8px;" onclick="pfDeleteGuild()">🗑️ Удалить</button>';
+            html += '</div>';
+        } else {
+            html += '<div class="pf-card" style="text-align:center;padding:50px 20px;"><div style="font-size:4rem;margin-bottom:12px;">🏰</div><h3 style="margin:0 0 8px 0;">Вы пока не в гильдии</h3><p style="color:#888;margin:0 0 20px 0;">Присоединяйтесь к другим исследователям!</p><a href="/guilds/" class="pf-btn">🔍 Найти гильдию</a></div>';
         }
-        html+='</div>';
+        html += '</div>';
 
         // ДОСТИЖЕНИЯ
-        html+='<div class="pf-tab-content" data-content="achievements">';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Ваши достижения ('+achievementsList.length+')</h3>';
-        if(achievementsList.length===0){
-            html+='<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет достижений. Читайте статьи, проходите викторины!</p>';
-        }else{
-            html+='<div class="pf-ach-grid">';
+        html += '<div class="pf-tab-content" data-content="achievements">';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Ваши достижения (' + achievementsList.length + ')</h3>';
+        if(achievementsList.length === 0){
+            html += '<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет достижений. Читайте статьи, проходите викторины!</p>';
+        } else {
+            html += '<div class="pf-ach-grid">';
             achievementsList.forEach(function(a){
-                html+='<div class="pf-ach"><div class="pf-ach-icon">'+(a.icon||'🏅')+'</div><div><div class="pf-ach-name">'+escapeHtml(a.name||'Достижение')+'</div><div class="pf-ach-date">'+(a.earned_at?new Date(a.earned_at).toLocaleDateString('ru-RU'):'')+'</div></div></div>';
+                html += '<div class="pf-ach"><div class="pf-ach-icon">' + (a.icon || '🏅') + '</div><div><div class="pf-ach-name">' + escapeHtml(a.name || 'Достижение') + '</div><div class="pf-ach-date">' + (a.earned_at ? new Date(a.earned_at).toLocaleDateString('ru-RU') : '') + '</div></div></div>';
             });
-            html+='</div>';
+            html += '</div>';
         }
-        html+='<div style="margin-top:16px;"><a href="/achievements/" class="pf-btn pf-btn-outline">🎁 Все достижения</a></div></div></div>';
+        html += '<div style="margin-top:16px;"><a href="/achievements/" class="pf-btn pf-btn-outline">🎁 Все достижения</a></div></div></div>';
 
         // ЗАМЕТКИ
-        html+='<div class="pf-tab-content" data-content="notes">';
-        html+='<div class="pf-card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;"><h3 class="pf-card-title" style="margin:0;"><span class="pf-ct-icon">📝</span> Мои заметки ('+notes.length+')</h3><button class="pf-btn" onclick="pfOpenNoteForm()">➕ Новая</button></div>';
-        html+='<div class="pf-note-form" id="pf-note-form"><input type="text" class="pf-note-input title" id="pf-note-title" placeholder="Заголовок" maxlength="100"><textarea class="pf-note-input content" id="pf-note-content" placeholder="Текст..." maxlength="5000"></textarea><div style="font-size:.8rem;color:#888;margin-bottom:6px;">Цвет:</div><div class="pf-note-colors" id="pf-note-colors"></div><div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="pf-btn" onclick="pfSaveNote()" id="pf-note-save-btn">💾 Сохранить</button><button class="pf-btn pf-btn-outline" onclick="pfCloseNoteForm()">Отмена</button></div></div>';
-        if(notes.length===0){
-            html+='<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет заметок.</p>';
-        }else{
-            html+='<div class="pf-notes-grid">';
+        html += '<div class="pf-tab-content" data-content="notes">';
+        html += '<div class="pf-card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;"><h3 class="pf-card-title" style="margin:0;"><span class="pf-ct-icon">📝</span> Мои заметки (' + notes.length + ')</h3><button class="pf-btn" onclick="pfOpenNoteForm()">➕ Новая</button></div>';
+        html += '<div class="pf-note-form" id="pf-note-form"><input type="text" class="pf-note-input title" id="pf-note-title" placeholder="Заголовок" maxlength="100"><textarea class="pf-note-input content" id="pf-note-content" placeholder="Текст..." maxlength="5000"></textarea><div style="font-size:.8rem;color:#888;margin-bottom:6px;">Цвет:</div><div class="pf-note-colors" id="pf-note-colors"></div><div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="pf-btn" onclick="pfSaveNote()" id="pf-note-save-btn">💾 Сохранить</button><button class="pf-btn pf-btn-outline" onclick="pfCloseNoteForm()">Отмена</button></div></div>';
+        if(notes.length === 0){
+            html += '<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет заметок.</p>';
+        } else {
+            html += '<div class="pf-notes-grid">';
             notes.forEach(function(n){
-                html+='<div class="pf-note'+(n.pinned?' pinned':'')+'" style="--note-color:'+n.color+';" onclick="pfEditNote('+n.id+')"><div class="pf-note-title">'+(n.pinned?'📌 ':'')+escapeHtml(n.title||'Заметка')+'</div><div class="pf-note-content">'+escapeHtml(n.content)+'</div><div class="pf-note-date">'+new Date(n.updated_at).toLocaleString('ru-RU',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</div><div class="pf-note-actions" onclick="event.stopPropagation();"><button class="pf-note-btn" onclick="pfPinNote('+n.id+')">'+(n.pinned?'📍':'📌')+'</button><button class="pf-note-btn" onclick="pfEditNote('+n.id+')">✏️</button><button class="pf-note-btn danger" onclick="pfDeleteNote('+n.id+')">🗑️</button></div></div>';
+                html += '<div class="pf-note' + (n.pinned ? ' pinned' : '') + '" style="--note-color:' + n.color + ';" onclick="pfEditNote(' + n.id + ')"><div class="pf-note-title">' + (n.pinned ? '📌 ' : '') + escapeHtml(n.title || 'Заметка') + '</div><div class="pf-note-content">' + escapeHtml(n.content) + '</div><div class="pf-note-date">' + new Date(n.updated_at).toLocaleString('ru-RU', { day:'numeric', month:'short', hour:'2-digit', minute:'2-digit' }) + '</div><div class="pf-note-actions" onclick="event.stopPropagation();"><button class="pf-note-btn" onclick="pfPinNote(' + n.id + ')">' + (n.pinned ? '📍' : '📌') + '</button><button class="pf-note-btn" onclick="pfEditNote(' + n.id + ')">✏️</button><button class="pf-note-btn danger" onclick="pfDeleteNote(' + n.id + ')">🗑️</button></div></div>';
             });
-            html+='</div>';
+            html += '</div>';
         }
-        html+='</div></div>';
+        html += '</div></div>';
 
         // УВЕДОМЛЕНИЯ
-        html+='<div class="pf-tab-content" data-content="notifications">';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Уведомления</h3>';
-        if(notifications.length===0){
-            html+='<p style="text-align:center;color:#888;padding:40px 20px;">Уведомлений пока нет.</p>';
-        }else{
+        html += '<div class="pf-tab-content" data-content="notifications">';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Уведомления</h3>';
+        if(notifications.length === 0){
+            html += '<p style="text-align:center;color:#888;padding:40px 20px;">Уведомлений пока нет.</p>';
+        } else {
             notifications.forEach(function(n){
-                html+='<div class="pf-notif"><div class="pf-notif-icon">📬</div><div><div class="pf-notif-text">'+escapeHtml(n.message||n.text||'')+'</div><div class="pf-notif-date">'+new Date(n.created_at).toLocaleDateString('ru-RU')+'</div></div></div>';
+                html += '<div class="pf-notif"><div class="pf-notif-icon">📬</div><div><div class="pf-notif-text">' + escapeHtml(n.message || n.text || '') + '</div><div class="pf-notif-date">' + new Date(n.created_at).toLocaleDateString('ru-RU') + '</div></div></div>';
             });
         }
-        html+='</div></div>';
+        html += '</div></div>';
 
         // ДРУЗЬЯ
-        html+='<div class="pf-tab-content" data-content="friends">';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Друзья ('+friends.length+')</h3>';
-        if(friends.length===0){
-            html+='<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет друзей.</p>';
-        }else{
+        html += '<div class="pf-tab-content" data-content="friends">';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Друзья (' + friends.length + ')</h3>';
+        if(friends.length === 0){
+            html += '<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет друзей.</p>';
+        } else {
             friends.forEach(function(f){
-                var name=f.other.display_name||f.other.username||'Аноним';
-                var av=f.other.avatar_url||'https://ui-avatars.com/api/?name='+encodeURIComponent(name)+'&background=6C63FF&color=fff&size=64';
-                var status=f.status==='accepted'?'👥 Друзья':'⏳ Заявка';
-                html+='<div class="pf-notif" onclick="pfViewProfile(\''+f.other.user_id+'\')" style="cursor:pointer;"><img src="'+av+'" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--kingdom-color);"><div style="flex:1;"><div style="font-weight:700;">'+escapeHtml(name)+'</div><div style="font-size:.78rem;color:#888;">'+status+'</div></div></div>';
+                var name = f.other.display_name || f.other.username || 'Аноним';
+                var av = f.other.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=6C63FF&color=fff&size=64';
+                var status = f.status === 'accepted' ? '👥 Друзья' : '⏳ Заявка';
+                html += '<div class="pf-notif" onclick="pfViewProfile(\'' + f.other.user_id + '\')" style="cursor:pointer;"><img src="' + av + '" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--kingdom-color);"><div style="flex:1;"><div style="font-weight:700;">' + escapeHtml(name) + '</div><div style="font-size:.78rem;color:#888;">' + status + '</div></div></div>';
             });
         }
-        html+='</div></div>';
+        html += '</div></div>';
 
         // ИИ
-        html+='<div class="pf-tab-content" data-content="ai">';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🤖</span> ИИ-гид</h3>';
-        html+='<div class="pf-chat" id="pf-chat-container"><div class="pf-chat-msg bot">Привет! Спрашивай о Марсе! 🪐</div></div>';
-        html+='<div class="pf-chat-input"><input type="text" id="pf-chat-input" placeholder="Спросите..." onkeypress="if(event.key===\'Enter\')pfSendChat()"><button onclick="pfSendChat()">Отправить</button></div>';
-        html+='</div></div>';
+        html += '<div class="pf-tab-content" data-content="ai">';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🤖</span> ИИ-гид</h3>';
+        html += '<div class="pf-chat" id="pf-chat-container"><div class="pf-chat-msg bot">Привет! Спрашивай о Марсе! 🪐</div></div>';
+        html += '<div class="pf-chat-input"><input type="text" id="pf-chat-input" placeholder="Спросите..." onkeypress="if(event.key===\'Enter\')pfSendChat()"><button onclick="pfSendChat()">Отправить</button></div>';
+        html += '</div></div>';
 
         // ЛИДЕРЫ
-        html+='<div class="pf-tab-content" data-content="leaderboard">';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏆</span> Топ-10</h3>';
-        html+='<table class="pf-leaderboard"><thead><tr><th>#</th><th>Участник</th><th style="text-align:right;">Ур.</th><th style="text-align:right;">XP</th></tr></thead><tbody>';
-        leaders.forEach(function(l,i){
-            var name=l.display_name||l.username||'Аноним';
-            var medals=['🥇','🥈','🥉'];
-            var isMe=l.user_id===currentUser.id;
-            html+='<tr onclick="pfViewProfile(\''+l.user_id+'\')" style="'+(isMe?'background:'+kingdom.color+';color:#fff;font-weight:700;':'')+'"><td>'+(medals[i]||(i+1))+'</td><td><img src="'+(l.avatar_url||'https://ui-avatars.com/api/?name='+encodeURIComponent(name)+'&background=6C63FF&color=fff&size=64')+'" class="pf-lb-avatar">'+escapeHtml(name)+(isMe?' (вы)':'')+'</td><td style="text-align:right;">'+(l.level||1)+'</td><td style="text-align:right;"><b>'+(l.experience||0)+'</b></td></tr>';
+        html += '<div class="pf-tab-content" data-content="leaderboard">';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏆</span> Топ-10</h3>';
+        html += '<table class="pf-leaderboard"><thead><tr><th>#</th><th>Участник</th><th style="text-align:right;">Ур.</th><th style="text-align:right;">XP</th></tr></thead><tbody>';
+        leaders.forEach(function(l, i){
+            var name = l.display_name || l.username || 'Аноним';
+            var medals = ['🥇','🥈','🥉'];
+            var isMe = l.user_id === currentUser.id;
+            html += '<tr onclick="pfViewProfile(\'' + l.user_id + '\')" style="' + (isMe ? 'background:' + kingdom.color + ';color:#fff;font-weight:700;' : '') + '"><td>' + (medals[i] || (i+1)) + '</td><td><img src="' + (l.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=6C63FF&color=fff&size=64') + '" class="pf-lb-avatar">' + escapeHtml(name) + (isMe ? ' (вы)' : '') + '</td><td style="text-align:right;">' + (l.level || 1) + '</td><td style="text-align:right;"><b>' + (l.experience || 0) + '</b></td></tr>';
         });
-        html+='</tbody></table></div></div>';
+        html += '</tbody></table></div></div>';
 
         // БЕЗОПАСНОСТЬ
-        html+='<div class="pf-tab-content" data-content="security">';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email-2FA</h3>';
-        html+='<p style="color:#666;font-size:.9rem;line-height:1.6;margin:0 0 16px 0;">При входе с <b>нового устройства</b> вам на почту придёт код из 6 цифр.</p>';
-        html+='<div id="pf-2fa-status" style="margin-bottom:20px;"></div>';
-        html+='<div class="pf-toggle"><div><div class="pf-toggle-label">🔐 Email-2FA</div><div class="pf-toggle-desc">Запрашивать код при входе с новых устройств</div></div><div class="pf-switch" id="pf-switch-2fa" onclick="pfToggle2FA()"></div></div>';
-        html+='</div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📱</span> Доверенные устройства</h3>';
-        html+='<div id="pf-trusted-devices"><p style="color:#888;">Загрузка...</p></div>';
-        html+='<button class="pf-btn pf-btn-outline" onclick="pfClearTrustedDevices()" style="margin-top:12px;">🗑️ Удалить все устройства</button>';
-        html+='</div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔑</span> Смена пароля</h3>';
-        html+='<button class="pf-btn" onclick="pfChangePassword()">🔐 Сменить пароль</button>';
-        html+='</div></div>';
+        html += '<div class="pf-tab-content" data-content="security">';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email-2FA</h3>';
+        html += '<p style="color:#666;font-size:.9rem;line-height:1.6;margin:0 0 16px 0;">При входе с <b>нового устройства</b> вам на почту придёт код из 6 цифр.</p>';
+        html += '<div id="pf-2fa-status" style="margin-bottom:20px;"></div>';
+        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">🔐 Email-2FA</div><div class="pf-toggle-desc">Запрашивать код при входе с новых устройств</div></div><div class="pf-switch" id="pf-switch-2fa" onclick="pfToggle2FA()"></div></div>';
+        html += '</div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📱</span> Доверенные устройства</h3>';
+        html += '<div id="pf-trusted-devices"><p style="color:#888;">Загрузка...</p></div>';
+        html += '<button class="pf-btn pf-btn-outline" onclick="pfClearTrustedDevices()" style="margin-top:12px;">🗑️ Удалить все устройства</button>';
+        html += '</div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔑</span> Смена пароля</h3>';
+        html += '<button class="pf-btn" onclick="pfChangePassword()">🔐 Сменить пароль</button>';
+        html += '</div></div>';
 
         // КАСТОМИЗАЦИЯ
-        html+='<div class="pf-tab-content" data-content="customize">';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🎨</span> Цветовая тема профиля</h3>';
-        html+='<div class="pf-theme-colors" id="pf-theme-colors"></div></div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Звуки и уведомления</h3>';
-        html+='<div class="pf-toggle"><div><div class="pf-toggle-label">Звуки уведомлений</div><div class="pf-toggle-desc">Проигрывать звук при действиях</div></div><div class="pf-switch'+(preferences.notification_sound?' on':'')+'" id="pf-switch-notification_sound" onclick="pfTogglePref(\'notification_sound\')"></div></div>';
-        html+='<div class="pf-toggle"><div><div class="pf-toggle-label">Email-уведомления</div><div class="pf-toggle-desc">Получать письма о достижениях</div></div><div class="pf-switch'+(notifEnabled?' on':'')+'" id="pf-switch-email" onclick="pfToggleEmail()"></div></div>';
-        html+='</div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔒</span> Приватность</h3>';
-        html+='<div class="pf-toggle"><div><div class="pf-toggle-label">Показывать опыт</div></div><div class="pf-switch'+(privacy.show_experience!==false?' on':'')+'" onclick="pfTogglePrivacy(\'show_experience\')"></div></div>';
-        html+='<div class="pf-toggle"><div><div class="pf-toggle-label">Показывать достижения</div></div><div class="pf-switch'+(privacy.show_achievements!==false?' on':'')+'" onclick="pfTogglePrivacy(\'show_achievements\')"></div></div>';
-        html+='<div class="pf-toggle"><div><div class="pf-toggle-label">Показывать гильдию</div></div><div class="pf-switch'+(privacy.show_guild!==false?' on':'')+'" onclick="pfTogglePrivacy(\'show_guild\')"></div></div>';
-        html+='<div class="pf-toggle"><div><div class="pf-toggle-label">Заявки в друзья</div></div><div class="pf-switch'+(privacy.allow_friend_requests!==false?' on':'')+'" onclick="pfTogglePrivacy(\'allow_friend_requests\')"></div></div>';
-        html+='</div></div>';
+        html += '<div class="pf-tab-content" data-content="customize">';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🎨</span> Цветовая тема профиля</h3>';
+        html += '<div class="pf-theme-colors" id="pf-theme-colors"></div></div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Звуки и уведомления</h3>';
+        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Звуки уведомлений</div><div class="pf-toggle-desc">Проигрывать звук при действиях</div></div><div class="pf-switch' + (preferences.notification_sound ? ' on' : '') + '" id="pf-switch-notification_sound" onclick="pfTogglePref(\'notification_sound\')"></div></div>';
+        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Email-уведомления</div><div class="pf-toggle-desc">Получать письма о достижениях</div></div><div class="pf-switch' + (notifEnabled ? ' on' : '') + '" id="pf-switch-email" onclick="pfToggleEmail()"></div></div>';
+        html += '</div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔒</span> Приватность</h3>';
+        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Показывать опыт</div></div><div class="pf-switch' + (privacy.show_experience !== false ? ' on' : '') + '" onclick="pfTogglePrivacy(\'show_experience\')"></div></div>';
+        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Показывать достижения</div></div><div class="pf-switch' + (privacy.show_achievements !== false ? ' on' : '') + '" onclick="pfTogglePrivacy(\'show_achievements\')"></div></div>';
+        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Показывать гильдию</div></div><div class="pf-switch' + (privacy.show_guild !== false ? ' on' : '') + '" onclick="pfTogglePrivacy(\'show_guild\')"></div></div>';
+        html += '<div class="pf-toggle"><div><div class="pf-toggle-label">Заявки в друзья</div></div><div class="pf-switch' + (privacy.allow_friend_requests !== false ? ' on' : '') + '" onclick="pfTogglePrivacy(\'allow_friend_requests\')"></div></div>';
+        html += '</div></div>';
 
         // НАСТРОЙКИ
-        html+='<div class="pf-tab-content" data-content="settings">';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя пользователя</h3>';
-        html+='<p style="color:#555;margin:0 0 12px 0;">Текущее: <b id="pf-display-name">'+escapeHtml(displayName)+'</b></p>';
-        html+='<button class="pf-btn pf-btn-outline" onclick="pfEditName()">✏️ Изменить</button></div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email</h3>';
-        html+='<p style="color:#555;margin:0 0 12px 0;">Текущий: <b>'+currentUser.email+'</b></p>';
-        html+='<button class="pf-btn pf-btn-outline" onclick="pfChangeEmail()">✏️ Сменить email</button></div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🖼️</span> Аватар</h3>';
-        html+='<div class="pf-avatar-grid">';
-        AVATARS.forEach(function(url){html+='<img src="'+url+'" alt="" class="pf-avatar-option '+(avatar===url?'selected':'')+'" onclick="pfSelectAvatar(\''+url+'\')">';});
-        html+='</div></div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏰</span> Королевство</h3>';
-        html+='<div class="pf-kingdom-grid">';
+        html += '<div class="pf-tab-content" data-content="settings">';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя пользователя</h3>';
+        html += '<p style="color:#555;margin:0 0 12px 0;">Текущее: <b id="pf-display-name">' + escapeHtml(displayName) + '</b></p>';
+        html += '<button class="pf-btn pf-btn-outline" onclick="pfEditName()">✏️ Изменить</button></div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email</h3>';
+        html += '<p style="color:#555;margin:0 0 12px 0;">Текущий: <b>' + currentUser.email + '</b></p>';
+        html += '<button class="pf-btn pf-btn-outline" onclick="pfChangeEmail()">✏️ Сменить email</button></div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🖼️</span> Аватар</h3>';
+        html += '<div class="pf-avatar-grid">';
+        AVATARS.forEach(function(url){ html += '<img src="' + url + '" alt="" class="pf-avatar-option ' + (avatar === url ? 'selected' : '') + '" onclick="pfSelectAvatar(\'' + url + '\')">'; });
+        html += '</div></div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏰</span> Королевство</h3>';
+        html += '<div class="pf-kingdom-grid">';
         Object.keys(KINGDOMS).forEach(function(name){
-            var k=KINGDOMS[name];
-            var sel=currentProfile.kingdom===name;
-            html+='<button class="pf-kingdom-btn'+(sel?' selected':'')+'" style="'+(sel?'background:'+k.color+';border-color:'+k.color+';':'')+'" onclick="pfSelectKingdom(\''+name+'\')">'+name+'</button>';
+            var k = KINGDOMS[name];
+            var sel = currentProfile.kingdom === name;
+            html += '<button class="pf-kingdom-btn' + (sel ? ' selected' : '') + '" style="' + (sel ? 'background:' + k.color + ';border-color:' + k.color + ';' : '') + '" onclick="pfSelectKingdom(\'' + name + '\')">' + name + '</button>';
         });
-        html+='</div>';
-        html+='<div style="text-align:center;margin-top:16px;"><img src="'+kingdom.flag+'" alt="" style="width:80px;border-radius:6px;border:1px solid #a2a9b1;"><div style="font-size:.72rem;color:#666;margin-top:4px;">Флаг '+(currentProfile.kingdom||'Эдем')+'</div></div>';
-        html+='</div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📤</span> Экспорт данных</h3>';
-        html+='<button class="pf-btn pf-btn-outline" onclick="pfExportData()">📥 Скачать данные</button></div>';
-        html+='<div class="pf-card pf-danger"><h3 class="pf-card-title" style="color:#c0392b;"><span class="pf-ct-icon">⚠️</span> Опасная зона</h3>';
-        html+='<button class="pf-btn pf-btn-danger" onclick="pfDeleteAccount()">🗑️ Удалить аккаунт</button></div>';
-        html+='<div class="pf-card"><button class="pf-btn pf-btn-outline" onclick="pfLogout()" style="width:100%;justify-content:center;">🚪 Выйти</button></div>';
-        html+='</div>';
+        html += '</div>';
+        html += '<div style="text-align:center;margin-top:16px;"><img src="' + kingdom.flag + '" alt="" style="width:80px;border-radius:6px;border:1px solid #a2a9b1;"><div style="font-size:.72rem;color:#666;margin-top:4px;">Флаг ' + (currentProfile.kingdom || 'Эдем') + '</div></div>';
+        html += '</div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📤</span> Экспорт данных</h3>';
+        html += '<button class="pf-btn pf-btn-outline" onclick="pfExportData()">📥 Скачать данные</button></div>';
+        html += '<div class="pf-card pf-danger"><h3 class="pf-card-title" style="color:#c0392b;"><span class="pf-ct-icon">⚠️</span> Опасная зона</h3>';
+        html += '<button class="pf-btn pf-btn-danger" onclick="pfDeleteAccount()">🗑️ Удалить аккаунт</button></div>';
+        html += '<div class="pf-card"><button class="pf-btn pf-btn-outline" onclick="pfLogout()" style="width:100%;justify-content:center;">🚪 Выйти</button></div>';
+        html += '</div>';
 
-        container.innerHTML=html;
+        container.innerHTML = html;
 
-        var isMobile=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)||window.innerWidth<768;
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
         if(!isMobile){
-            var qrWrap=document.getElementById('pf-qr-wrapper');
-            if(qrWrap) qrWrap.style.display='block';
+            var qrWrap = document.getElementById('pf-qr-wrapper');
+            if(qrWrap) qrWrap.style.display = 'block';
         }
 
         renderNoteColors();
         renderThemeColors();
 
         document.querySelectorAll('.pf-tab').forEach(function(tab){
-            tab.onclick=function(){pfSetTab(tab.dataset.tab);};
+            tab.onclick = function(){ pfSetTab(tab.dataset.tab); };
         });
     }
 
     function renderNoteColors(){
-        var el=document.getElementById('pf-note-colors');
+        var el = document.getElementById('pf-note-colors');
         if(!el) return;
-        el.innerHTML=NOTE_COLORS.map(function(c){return '<div class="pf-note-color '+(c===selectedNoteColor?'selected':'')+'" style="background:'+c+';" onclick="pfSelectNoteColor(\''+c+'\')"></div>';}).join('');
+        el.innerHTML = NOTE_COLORS.map(function(c){ return '<div class="pf-note-color ' + (c === selectedNoteColor ? 'selected' : '') + '" style="background:' + c + ';" onclick="pfSelectNoteColor(\'' + c + '\')"></div>'; }).join('');
     }
 
     function renderThemeColors(){
-        var el=document.getElementById('pf-theme-colors');
+        var el = document.getElementById('pf-theme-colors');
         if(!el) return;
-        var current=preferences.theme_color||'#6C63FF';
-        el.innerHTML=THEME_COLORS.map(function(c){return '<div class="pf-theme-color '+(c===current?'selected':'')+'" style="background:'+c+';" onclick="pfSelectThemeColor(\''+c+'\')"></div>';}).join('');
+        var current = preferences.theme_color || '#6C63FF';
+        el.innerHTML = THEME_COLORS.map(function(c){ return '<div class="pf-theme-color ' + (c === current ? 'selected' : '') + '" style="background:' + c + ';" onclick="pfSelectThemeColor(\'' + c + '\')"></div>'; }).join('');
     }
 
     async function render2FATab(){
-        var statusEl=document.getElementById('pf-2fa-status');
-        var switchEl=document.getElementById('pf-switch-2fa');
-        var devicesEl=document.getElementById('pf-trusted-devices');
+        var statusEl = document.getElementById('pf-2fa-status');
+        var switchEl = document.getElementById('pf-switch-2fa');
+        var devicesEl = document.getElementById('pf-trusted-devices');
         if(!statusEl) return;
         try{
-            var twofaRes=await client.from('user_2fa').select('*').eq('user_id',currentUser.id).maybeSingle();
-            var enabled=twofaRes.data&&twofaRes.data.email_2fa_enabled;
+            var twofaRes = await client.from('user_2fa').select('*').eq('user_id', currentUser.id).maybeSingle();
+            var enabled = twofaRes.data && twofaRes.data.email_2fa_enabled;
             if(enabled){
-                statusEl.innerHTML='<div class="pf-badge-2fa">✅ Email-2FA включена</div>';
+                statusEl.innerHTML = '<div class="pf-badge-2fa">✅ Email-2FA включена</div>';
                 if(switchEl) switchEl.classList.add('on');
-            }else{
-                statusEl.innerHTML='<div class="pf-badge-2fa off">⚠️ Email-2FA выключена</div>';
+            } else {
+                statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Email-2FA выключена</div>';
                 if(switchEl) switchEl.classList.remove('on');
             }
             if(devicesEl){
-                var devRes=await client.from('trusted_devices').select('*').eq('user_id',currentUser.id).order('last_used',{ascending:false});
-                var devices=devRes.data||[];
-                if(devices.length>0){
-                    devicesEl.innerHTML=devices.map(function(d){
-                        var isPhone=d.device_name&&(d.device_name.indexOf('iPhone')>=0||d.device_name.indexOf('Android')>=0);
-                        return '<div class="pf-notif"><div class="pf-notif-icon">'+(isPhone?'📱':'💻')+'</div><div style="flex:1;"><div class="pf-notif-text"><b>'+escapeHtml(d.device_name||'Устройство')+'</b></div><div class="pf-notif-date">Последний раз: '+new Date(d.last_used).toLocaleString('ru-RU')+'</div></div><button class="pf-note-btn danger" onclick="pfRemoveDevice('+d.id+')">✕</button></div>';
+                var devRes = await client.from('trusted_devices').select('*').eq('user_id', currentUser.id).order('last_used', { ascending: false });
+                var devices = devRes.data || [];
+                if(devices.length > 0){
+                    devicesEl.innerHTML = devices.map(function(d){
+                        var isPhone = d.device_name && (d.device_name.indexOf('iPhone') >= 0 || d.device_name.indexOf('Android') >= 0);
+                        return '<div class="pf-notif"><div class="pf-notif-icon">' + (isPhone ? '📱' : '💻') + '</div><div style="flex:1;"><div class="pf-notif-text"><b>' + escapeHtml(d.device_name || 'Устройство') + '</b></div><div class="pf-notif-date">Последний раз: ' + new Date(d.last_used).toLocaleString('ru-RU') + '</div></div><button class="pf-note-btn danger" onclick="pfRemoveDevice(' + d.id + ')">✕</button></div>';
                     }).join('');
-                }else{
-                    devicesEl.innerHTML='<p style="color:#888;text-align:center;padding:20px;">Нет доверенных устройств</p>';
+                } else {
+                    devicesEl.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">Нет доверенных устройств</p>';
                 }
             }
-        }catch(e){
-            console.warn('Ошибка 2FA:',e);
-            statusEl.innerHTML='<div class="pf-badge-2fa off">⚠️ Ошибка загрузки</div>';
+        } catch(e){
+            console.warn('Ошибка 2FA:', e);
+            statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Ошибка загрузки</div>';
         }
     }
 
-    window.pfToggle2FA=async function(){
+    window.pfToggle2FA = async function(){
         try{
-            var twofaRes=await client.from('user_2fa').select('*').eq('user_id',currentUser.id).maybeSingle();
-            var newVal=!(twofaRes.data&&twofaRes.data.email_2fa_enabled);
+            var twofaRes = await client.from('user_2fa').select('*').eq('user_id', currentUser.id).maybeSingle();
+            var newVal = !(twofaRes.data && twofaRes.data.email_2fa_enabled);
             if(newVal){
                 if(!confirm('Включить Email-2FA?\n\nПри входе с нового устройства на вашу почту будет приходить код из 6 цифр.')) return;
-            }else{
+            } else {
                 if(!confirm('Выключить Email-2FA?\n\nАккаунт станет менее защищённым.')) return;
             }
-            var upRes=await client.from('user_2fa').upsert({user_id:currentUser.id,email_2fa_enabled:newVal,updated_at:new Date().toISOString()},{onConflict:'user_id'});
+            var upRes = await client.from('user_2fa').upsert({ user_id: currentUser.id, email_2fa_enabled: newVal, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
             if(upRes.error) throw upRes.error;
             if(newVal){
-                await client.from('trusted_devices').upsert({user_id:currentUser.id,device_id:getDeviceId(),device_name:getDeviceName(),last_used:new Date().toISOString()},{onConflict:'user_id,device_id'});
+                await client.from('trusted_devices').upsert({ user_id: currentUser.id, device_id: getDeviceId(), device_name: getDeviceName(), last_used: new Date().toISOString() }, { onConflict: 'user_id,device_id' });
             }
-            showToast(newVal?'✅ Email-2FA включена!':'🔓 Email-2FA выключена',newVal?'success':'info');
-            playSound(newVal?'success':'info');
-            setTimeout(function(){location.reload();},800);
-        }catch(e){
-            showToast('Ошибка: '+e.message,'error');
+            showToast(newVal ? '✅ Email-2FA включена!' : '🔓 Email-2FA выключена', newVal ? 'success' : 'info');
+            playSound(newVal ? 'success' : 'info');
+            setTimeout(function(){ location.reload(); }, 800);
+        } catch(e){
+            showToast('Ошибка: ' + e.message, 'error');
         }
     };
 
-    window.pfRemoveDevice=async function(id){
+    window.pfRemoveDevice = async function(id){
         if(!confirm('Удалить это устройство?')) return;
-        await client.from('trusted_devices').delete().eq('id',id);
-        showToast('🗑️ Устройство удалено','info');
+        await client.from('trusted_devices').delete().eq('id', id);
+        showToast('🗑️ Устройство удалено', 'info');
         render2FATab();
     };
 
-    window.pfClearTrustedDevices=async function(){
+    window.pfClearTrustedDevices = async function(){
         if(!confirm('Удалить все доверенные устройства?')) return;
-        await client.from('trusted_devices').delete().eq('user_id',currentUser.id);
-        showToast('🗑️ Все устройства удалены','info');
+        await client.from('trusted_devices').delete().eq('user_id', currentUser.id);
+        showToast('🗑️ Все устройства удалены', 'info');
         render2FATab();
     };
 
-    window.pfSelectThemeColor=async function(color){
-        preferences.theme_color=color;
+    window.pfSelectThemeColor = async function(color){
+        preferences.theme_color = color;
         try{
-            await client.from('user_preferences').upsert({user_id:currentUser.id,theme_color:color,updated_at:new Date().toISOString()},{onConflict:'user_id'});
-            showToast('🎨 Цвет сохранён!','success');
-            setTimeout(function(){location.reload();},600);
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
+            await client.from('user_preferences').upsert({ user_id: currentUser.id, theme_color: color, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
+            showToast('🎨 Цвет сохранён!', 'success');
+            setTimeout(function(){ location.reload(); }, 600);
+        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
     };
 
-    window.pfTogglePref=async function(key){
-        var newVal=!preferences[key];
-        preferences[key]=newVal;
+    window.pfTogglePref = async function(key){
+        var newVal = !preferences[key];
+        preferences[key] = newVal;
         try{
-            var obj={user_id:currentUser.id,updated_at:new Date().toISOString()};
-            obj[key]=newVal;
-            await client.from('user_preferences').upsert(obj,{onConflict:'user_id'});
-            var el=document.getElementById('pf-switch-'+key);
-            if(el) el.classList.toggle('on',newVal);
-            showToast(newVal?'🔊 Включено':'🔇 Выключено','info');
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
+            var obj = { user_id: currentUser.id, updated_at: new Date().toISOString() };
+            obj[key] = newVal;
+            await client.from('user_preferences').upsert(obj, { onConflict: 'user_id' });
+            var el = document.getElementById('pf-switch-' + key);
+            if(el) el.classList.toggle('on', newVal);
+            showToast(newVal ? '🔊 Включено' : '🔇 Выключено', 'info');
+        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
     };
 
-    window.pfToggleEmail=async function(){
-        var newVal=currentProfile.notifications_enabled===false;
+    window.pfToggleEmail = async function(){
+        var newVal = currentProfile.notifications_enabled === false;
         try{
-            await client.from('profiles').update({notifications_enabled:newVal}).eq('user_id',currentUser.id);
-            currentProfile.notifications_enabled=newVal;
-            document.getElementById('pf-switch-email').classList.toggle('on',newVal);
-            showToast(newVal?'📧 Email включены':'📭 Email выключены','info');
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
+            await client.from('profiles').update({ notifications_enabled: newVal }).eq('user_id', currentUser.id);
+            currentProfile.notifications_enabled = newVal;
+            document.getElementById('pf-switch-email').classList.toggle('on', newVal);
+            showToast(newVal ? '📧 Email включены' : '📭 Email выключены', 'info');
+        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
     };
 
-    window.pfTogglePrivacy=async function(key){
-        var newVal=!privacy[key];
-        privacy[key]=newVal;
+    window.pfTogglePrivacy = async function(key){
+        var newVal = !privacy[key];
+        privacy[key] = newVal;
         try{
-            var obj={user_id:currentUser.id,updated_at:new Date().toISOString()};
-            obj[key]=newVal;
-            await client.from('user_privacy').upsert(obj,{onConflict:'user_id'});
-            showToast('🔒 Сохранено','success');
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
+            var obj = { user_id: currentUser.id, updated_at: new Date().toISOString() };
+            obj[key] = newVal;
+            await client.from('user_privacy').upsert(obj, { onConflict: 'user_id' });
+            showToast('🔒 Сохранено', 'success');
+        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
     };
 
-    window.pfExportData=async function(){
+    window.pfExportData = async function(){
         try{
-            var exportData={
-                exported_at:new Date().toISOString(),
-                user:{id:currentUser.id,email:currentUser.email,created_at:currentUser.created_at},
-                profile:currentProfile,
-                achievements:achievementsList,
-                notes:notes,
-                friends:friends.map(function(f){return{status:f.status,friend:f.other};}),
-                guild:guild?{name:guild.name,icon:guild.icon}:null,
-                privacy:privacy,preferences:preferences,streak:streak
+            var exportData = {
+                exported_at: new Date().toISOString(),
+                user: { id: currentUser.id, email: currentUser.email, created_at: currentUser.created_at },
+                profile: currentProfile, achievements: achievementsList, notes: notes,
+                friends: friends.map(function(f){ return { status: f.status, friend: f.other }; }),
+                guild: guild ? { name: guild.name, icon: guild.icon } : null,
+                privacy: privacy, preferences: preferences, streak: streak
             };
-            var blob=new Blob([JSON.stringify(exportData,null,2)],{type:'application/json'});
-            var url=URL.createObjectURL(blob);
-            var a=document.createElement('a');
-            a.href=url;a.download='mars-profile-'+currentUser.id.slice(0,8)+'-'+Date.now()+'.json';
-            document.body.appendChild(a);a.click();
-            document.body.removeChild(a);URL.revokeObjectURL(url);
-            showToast('📥 Данные скачаны!','success');
+            var blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url; a.download = 'mars-profile-' + currentUser.id.slice(0, 8) + '-' + Date.now() + '.json';
+            document.body.appendChild(a); a.click();
+            document.body.removeChild(a); URL.revokeObjectURL(url);
+            showToast('📥 Данные скачаны!', 'success');
             playSound('success');
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
+        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
     };
 
-    window.pfChangePassword=async function(){
-        var newPassword=prompt('Введите новый пароль (минимум 6 символов):');
-        if(!newPassword||newPassword.length<6){showToast('Пароль минимум 6 символов','warning');return;}
+    window.pfChangePassword = async function(){
+        var newPassword = prompt('Введите новый пароль (минимум 6 символов):');
+        if(!newPassword || newPassword.length < 6){ showToast('Пароль минимум 6 символов', 'warning'); return; }
         try{
-            var res=await client.auth.updateUser({password:newPassword});
+            var res = await client.auth.updateUser({ password: newPassword });
             if(res.error) throw res.error;
-            showToast('🔐 Пароль обновлён!','success');
+            showToast('🔐 Пароль обновлён!', 'success');
             playSound('success');
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
+        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
     };
 
-    window.pfSetTab=function(tab){
-        document.querySelectorAll('.pf-tab').forEach(function(t){t.classList.toggle('active',t.dataset.tab===tab);});
-        document.querySelectorAll('.pf-tab-content').forEach(function(c){c.classList.toggle('active',c.dataset.content===tab);});
-        window.scrollTo({top:0,behavior:'smooth'});
-        if(tab==='security') render2FATab();
+    window.pfSetTab = function(tab){
+        document.querySelectorAll('.pf-tab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab === tab); });
+        document.querySelectorAll('.pf-tab-content').forEach(function(c){ c.classList.toggle('active', c.dataset.content === tab); });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if(tab === 'security') render2FATab();
     };
 
-    window.pfViewProfile=function(id){window.location.href='/profile-view/?user_id='+id;};
+    window.pfViewProfile = function(id){ window.location.href = '/profile-view/?user_id=' + id; };
 
-    window.pfEditBio=async function(){
-        var el=document.getElementById('bio-text');
-        var cur=el?el.innerText:'';
-        var nb=prompt('Введите биографию:',cur);
-        if(nb===null) return;
-        var res=await client.from('profiles').update({bio:nb.trim()}).eq('user_id',currentUser.id);
-        if(res.error){showToast('Ошибка: '+res.error.message,'error');return;}
-        if(el) el.innerText=nb.trim();
-        showToast('✅ Биография обновлена!','success');
+    window.pfEditBio = async function(){
+        var el = document.getElementById('bio-text');
+        var cur = el ? el.innerText : '';
+        var nb = prompt('Введите биографию:', cur);
+        if(nb === null) return;
+        var res = await client.from('profiles').update({ bio: nb.trim() }).eq('user_id', currentUser.id);
+        if(res.error){ showToast('Ошибка: ' + res.error.message, 'error'); return; }
+        if(el) el.innerText = nb.trim();
+        showToast('✅ Биография обновлена!', 'success');
     };
 
-    window.pfEditName=async function(){
-        var el=document.getElementById('pf-display-name');
-        var cur=el?el.innerText:'';
-        var nn=prompt('Новое имя (2-20 символов, латиница):',cur);
-        if(!nn||nn===cur) return;
-        if(nn.length<2||nn.length>20){showToast('Имя 2-20 символов','warning');return;}
-        if(!/^[a-zA-Z0-9\s\-_]+$/.test(nn)){showToast('Только латиница','warning');return;}
-        var res=await client.from('profiles').update({display_name:nn.trim()}).eq('user_id',currentUser.id);
-        if(res.error){showToast('Ошибка: '+res.error.message,'error');return;}
-        showToast('✅ Имя обновлено!','success');
-        setTimeout(function(){location.reload();},800);
+    window.pfEditName = async function(){
+        var el = document.getElementById('pf-display-name');
+        var cur = el ? el.innerText : '';
+        var nn = prompt('Новое имя (2-20 символов, латиница):', cur);
+        if(!nn || nn === cur) return;
+        if(nn.length < 2 || nn.length > 20){ showToast('Имя 2-20 символов', 'warning'); return; }
+        if(!/^[a-zA-Z0-9\s\-_]+$/.test(nn)){ showToast('Только латиница', 'warning'); return; }
+        var res = await client.from('profiles').update({ display_name: nn.trim() }).eq('user_id', currentUser.id);
+        if(res.error){ showToast('Ошибка: ' + res.error.message, 'error'); return; }
+        showToast('✅ Имя обновлено!', 'success');
+        setTimeout(function(){ location.reload(); }, 800);
     };
 
-    window.pfChangeEmail=async function(){
-        var ne=prompt('Введите новый email:');
-        if(!ne||ne===currentUser.email) return;
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ne)){showToast('Некорректный email','warning');return;}
-        showToast('Отправка...','info');
-        var res=await client.auth.updateUser({email:ne});
-        if(res.error){showToast('Ошибка: '+res.error.message,'error');return;}
-        showToast('📧 Письмо отправлено!','success');
+    window.pfChangeEmail = async function(){
+        var ne = prompt('Введите новый email:');
+        if(!ne || ne === currentUser.email) return;
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(ne)){ showToast('Некорректный email', 'warning'); return; }
+        showToast('Отправка...', 'info');
+        var res = await client.auth.updateUser({ email: ne });
+        if(res.error){ showToast('Ошибка: ' + res.error.message, 'error'); return; }
+        showToast('📧 Письмо отправлено!', 'success');
     };
 
-    window.pfSelectAvatar=async function(url){
-        var res=await client.from('profiles').update({avatar_url:url}).eq('user_id',currentUser.id);
-        if(res.error){showToast('Ошибка','error');return;}
-        showToast('✅ Аватар обновлён!','success');
-        setTimeout(function(){location.reload();},800);
+    window.pfSelectAvatar = async function(url){
+        var res = await client.from('profiles').update({ avatar_url: url }).eq('user_id', currentUser.id);
+        if(res.error){ showToast('Ошибка', 'error'); return; }
+        showToast('✅ Аватар обновлён!', 'success');
+        setTimeout(function(){ location.reload(); }, 800);
     };
 
-    window.pfSelectKingdom=async function(name){
-        var res=await client.from('profiles').update({kingdom:name}).eq('user_id',currentUser.id);
-        if(res.error){showToast('Ошибка','error');return;}
-        showToast('✅ '+name+'!','success');
-        setTimeout(function(){location.reload();},800);
+    window.pfSelectKingdom = async function(name){
+        var res = await client.from('profiles').update({ kingdom: name }).eq('user_id', currentUser.id);
+        if(res.error){ showToast('Ошибка', 'error'); return; }
+        showToast('✅ ' + name + '!', 'success');
+        setTimeout(function(){ location.reload(); }, 800);
     };
 
-    window.pfDeleteAccount=async function(){
+    window.pfDeleteAccount = async function(){
         if(!confirm('⚠️ Удалить аккаунт? Необратимо!')) return;
-        var email=prompt('Введите email для подтверждения:');
-        if(!email||email!==currentUser.email){showToast('Email не совпадает','error');return;}
-        var sRes=await client.auth.getSession();
-        var token=sRes.data&&sRes.data.session?sRes.data.session.access_token:null;
-        if(!token){showToast('Ошибка токена','error');return;}
+        var email = prompt('Введите email для подтверждения:');
+        if(!email || email !== currentUser.email){ showToast('Email не совпадает', 'error'); return; }
+        var sRes = await client.auth.getSession();
+        var token = sRes.data && sRes.data.session ? sRes.data.session.access_token : null;
+        if(!token){ showToast('Ошибка токена', 'error'); return; }
         try{
-            var res=await fetch(SUPABASE_URL+'/functions/v1/delete-user',{method:'DELETE',headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'}});
-            var json=await res.json();
+            var res = await fetch(SUPABASE_URL + '/functions/v1/delete-user', { method: 'DELETE', headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' } });
+            var json = await res.json();
             if(json.error) throw new Error(json.error);
-            showToast('Аккаунт удалён','success');
+            showToast('Аккаунт удалён', 'success');
             localStorage.clear();
-            setTimeout(function(){window.location.href='/';},800);
-        }catch(e){showToast('Ошибка: '+e.message,'error');}
+            setTimeout(function(){ window.location.href = '/'; }, 800);
+        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
     };
 
-    window.pfLogout=async function(){
+    window.pfLogout = async function(){
         await client.auth.signOut();
         localStorage.clear();
-        window.location.href='/';
+        window.location.href = '/';
     };
 
-    window.pfDeleteGuild=async function(){
-        if(!guild||!confirm('Удалить гильдию?')) return;
-        await client.from('guilds').delete().eq('id',guild.id);
-        showToast('Гильдия удалена','info');
-        setTimeout(function(){location.reload();},800);
+    window.pfDeleteGuild = async function(){
+        if(!guild || !confirm('Удалить гильдию?')) return;
+        await client.from('guilds').delete().eq('id', guild.id);
+        showToast('Гильдия удалена', 'info');
+        setTimeout(function(){ location.reload(); }, 800);
     };
 
-    window.pfOpenNoteForm=function(id){
-        editingNoteId=id||null;
-        var form=document.getElementById('pf-note-form');
+    window.pfOpenNoteForm = function(id){
+        editingNoteId = id || null;
+        var form = document.getElementById('pf-note-form');
         if(!form) return;
         form.classList.add('open');
         if(id){
-            var n=notes.find(function(x){return x.id===id;});
+            var n = notes.find(function(x){ return x.id === id; });
             if(n){
-                document.getElementById('pf-note-title').value=n.title||'';
-                document.getElementById('pf-note-content').value=n.content;
-                selectedNoteColor=n.color||'#6C63FF';
-                document.getElementById('pf-note-save-btn').textContent='💾 Обновить';
+                document.getElementById('pf-note-title').value = n.title || '';
+                document.getElementById('pf-note-content').value = n.content;
+                selectedNoteColor = n.color || '#6C63FF';
+                document.getElementById('pf-note-save-btn').textContent = '💾 Обновить';
             }
-        }else{
-            document.getElementById('pf-note-title').value='';
-            document.getElementById('pf-note-content').value='';
-            selectedNoteColor='#6C63FF';
-            document.getElementById('pf-note-save-btn').textContent='💾 Сохранить';
+        } else {
+            document.getElementById('pf-note-title').value = '';
+            document.getElementById('pf-note-content').value = '';
+            selectedNoteColor = '#6C63FF';
+            document.getElementById('pf-note-save-btn').textContent = '💾 Сохранить';
         }
         renderNoteColors();
     };
 
-    window.pfCloseNoteForm=function(){
-        var f=document.getElementById('pf-note-form');
+    window.pfCloseNoteForm = function(){
+        var f = document.getElementById('pf-note-form');
         if(f) f.classList.remove('open');
-        editingNoteId=null;
+        editingNoteId = null;
     };
 
-    window.pfSelectNoteColor=function(c){selectedNoteColor=c;renderNoteColors();};
+    window.pfSelectNoteColor = function(c){ selectedNoteColor = c; renderNoteColors(); };
 
-    window.pfSaveNote=async function(){
-        var title=document.getElementById('pf-note-title').value.trim();
-        var content=document.getElementById('pf-note-content').value.trim();
-        if(!content){showToast('Введите текст','warning');return;}
+    window.pfSaveNote = async function(){
+        var title = document.getElementById('pf-note-title').value.trim();
+        var content = document.getElementById('pf-note-content').value.trim();
+        if(!content){ showToast('Введите текст', 'warning'); return; }
         var error;
         if(editingNoteId){
-            var r=await client.from('user_notes').update({title:title,content:content,color:selectedNoteColor,updated_at:new Date().toISOString()}).eq('id',editingNoteId);
-            error=r.error;
-        }else{
-            var r2=await client.from('user_notes').insert({user_id:currentUser.id,title:title,content:content,color:selectedNoteColor});
-            error=r2.error;
+            var r = await client.from('user_notes').update({ title: title, content: content, color: selectedNoteColor, updated_at: new Date().toISOString() }).eq('id', editingNoteId);
+            error = r.error;
+        } else {
+            var r2 = await client.from('user_notes').insert({ user_id: currentUser.id, title: title, content: content, color: selectedNoteColor });
+            error = r2.error;
         }
-        if(error){showToast('Ошибка: '+error.message,'error');return;}
-        showToast('✅ Заметка сохранена!','success');
+        if(error){ showToast('Ошибка: ' + error.message, 'error'); return; }
+        showToast('✅ Заметка сохранена!', 'success');
         playSound('success');
-        setTimeout(function(){location.reload();},700);
+        setTimeout(function(){ location.reload(); }, 700);
     };
 
-    window.pfEditNote=function(id){pfOpenNoteForm(id);};
+    window.pfEditNote = function(id){ pfOpenNoteForm(id); };
 
-    window.pfPinNote=async function(id){
-        var n=notes.find(function(x){return x.id===id;});
+    window.pfPinNote = async function(id){
+        var n = notes.find(function(x){ return x.id === id; });
         if(!n) return;
-        await client.from('user_notes').update({pinned:!n.pinned}).eq('id',id);
-        showToast(n.pinned?'📍 Откреплено':'📌 Закреплено','success');
-        setTimeout(function(){location.reload();},500);
+        await client.from('user_notes').update({ pinned: !n.pinned }).eq('id', id);
+        showToast(n.pinned ? '📍 Откреплено' : '📌 Закреплено', 'success');
+        setTimeout(function(){ location.reload(); }, 500);
     };
 
-    window.pfDeleteNote=async function(id){
+    window.pfDeleteNote = async function(id){
         if(!confirm('Удалить заметку?')) return;
-        await client.from('user_notes').delete().eq('id',id);
-        showToast('Удалено','info');
-        setTimeout(function(){location.reload();},500);
+        await client.from('user_notes').delete().eq('id', id);
+        showToast('Удалено', 'info');
+        setTimeout(function(){ location.reload(); }, 500);
     };
 
-    window.pfSendChat=async function(){
-        var input=document.getElementById('pf-chat-input');
-        var chatEl=document.getElementById('pf-chat-container');
-        var q=input.value.trim();
+    window.pfSendChat = async function(){
+        var input = document.getElementById('pf-chat-input');
+        var chatEl = document.getElementById('pf-chat-container');
+        var q = input.value.trim();
         if(!q) return;
-        var userMsg=document.createElement('div');
-        userMsg.className='pf-chat-msg user';userMsg.textContent=q;
-        chatEl.appendChild(userMsg);chatEl.scrollTop=chatEl.scrollHeight;
-        input.value='';
+        var userMsg = document.createElement('div');
+        userMsg.className = 'pf-chat-msg user'; userMsg.textContent = q;
+        chatEl.appendChild(userMsg); chatEl.scrollTop = chatEl.scrollHeight;
+        input.value = '';
         try{
-            var res=await fetch(SUPABASE_URL+'/functions/v1/ai-chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q})});
-            var data=await res.json();
-            var botMsg=document.createElement('div');
-            botMsg.className='pf-chat-msg bot';
-            botMsg.textContent=data.reply||data.error||'Нет ответа';
-            chatEl.appendChild(botMsg);chatEl.scrollTop=chatEl.scrollHeight;
-        }catch(e){
-            var err=document.createElement('div');
-            err.className='pf-chat-msg bot';err.textContent='⚠️ Ошибка';
+            var res = await fetch(SUPABASE_URL + '/functions/v1/ai-chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: q }) });
+            var data = await res.json();
+            var botMsg = document.createElement('div');
+            botMsg.className = 'pf-chat-msg bot';
+            botMsg.textContent = data.reply || data.error || 'Нет ответа';
+            chatEl.appendChild(botMsg); chatEl.scrollTop = chatEl.scrollHeight;
+        } catch(e){
+            var err = document.createElement('div');
+            err.className = 'pf-chat-msg bot'; err.textContent = '⚠️ Ошибка';
             chatEl.appendChild(err);
         }
     };
 
-        async function init(){
-        // ============================================================
-        // СКЕЛЕТОН
-        // ============================================================
-        container.innerHTML='<div style="max-width:1000px;margin:0 auto;">'
-            +'<div style="background:linear-gradient(135deg,#6C63FF,#A29BFE);border-radius:24px;padding:36px 32px;margin-bottom:24px;min-height:180px;opacity:.4;animation:pfPulseOpacity 1.5s infinite;"></div>'
-            +'<div style="text-align:center;padding:40px;color:#888;">'
-            +'<div style="display:inline-block;width:40px;height:40px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin .8s linear infinite;"></div>'
-            +'<p style="margin-top:16px;">Загрузка профиля...</p>'
-            +'<p id="pf-debug" style="margin-top:20px;font-size:12px;color:#bbb;font-family:monospace;"></p>'
-            +'</div></div>';
+    // ============================================================
+    // ИНИЦИАЛИЗАЦИЯ
+    // ============================================================
+    async function init(){
+        container.innerHTML = '<div style="max-width:1000px;margin:0 auto;">'
+            + '<div style="background:linear-gradient(135deg,#6C63FF,#A29BFE);border-radius:24px;padding:36px 32px;margin-bottom:24px;min-height:180px;opacity:.4;animation:pfPulseOpacity 1.5s infinite;"></div>'
+            + '<div style="text-align:center;padding:40px;color:#888;">'
+            + '<div style="display:inline-block;width:40px;height:40px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin .8s linear infinite;"></div>'
+            + '<p style="margin-top:16px;">Загрузка профиля...</p></div></div>';
 
-        var dbg = document.getElementById('pf-debug');
-        function setDbg(msg){ if(dbg) dbg.textContent = msg; }
-
-        // ============================================================
-        // ГЛОБАЛЬНЫЙ ТАЙМАУТ (15 секунд)
-        // ============================================================
         var finished = false;
         var globalTimeout = setTimeout(function(){
             if(finished) return;
-            console.warn('⏰ Глобальный таймаут');
-            container.innerHTML='<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
-                +'<div style="font-size:4rem;margin-bottom:16px;">⚠️</div>'
-                +'<h2 style="margin:0 0 8px 0;">Не удалось загрузить</h2>'
-                +'<p style="color:#888;margin:0 0 20px 0;line-height:1.6;">Что-то пошло не так на телефоне.<br>Попробуйте войти заново.</p>'
-                +'<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a>'
-                +'<p style="color:#bbb;font-size:.78rem;margin-top:20px;"><a href="" style="color:#6C63FF;">Обновить страницу</a></p>'
-                +'</div>';
+            finished = true;
+            container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
+                + '<div style="font-size:4rem;margin-bottom:16px;">⚠️</div>'
+                + '<h2 style="margin:0 0 8px 0;">Не удалось загрузить</h2>'
+                + '<p style="color:#888;margin:0 0 20px 0;">Попробуйте войти заново</p>'
+                + '<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
         }, 15000);
 
         try {
-            // ============================================================
-            // ЖДЁМ КЛИЕНТА (макс. 6 секунд)
-            // ============================================================
-            setDbg('Ожидание Supabase...');
+            // Ждём клиента
             for (var i = 0; i < 30; i++) {
                 if (window.supabaseClient) break;
                 await new Promise(function(r){ setTimeout(r, 200); });
@@ -1068,152 +1072,87 @@ comments: false
             client = window.supabaseClient;
 
             if (!client) {
-                clearTimeout(globalTimeout);
-                finished = true;
-                console.error('❌ supabaseClient не загрузился');
-                container.innerHTML='<div style="text-align:center;padding:60px 20px;">'
-                    +'<div style="font-size:3rem;">⚠️</div>'
-                    +'<h2>Supabase не загружен</h2>'
-                    +'<p style="color:#888;">Проверьте интернет-соединение</p>'
-                    +'<button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button>'
-                    +'</div>';
+                clearTimeout(globalTimeout); finished = true;
+                container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="font-size:3rem;">⚠️</div><h2>Supabase не загружен</h2><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button></div>';
                 return;
             }
 
-            setDbg('Клиент OK, ищем сессию...');
-            console.log('✅ Клиент получен');
-
-            // ============================================================
-            // ПОИСК СЕССИИ — 4 СПОСОБА
-            // ============================================================
+            // Ищем сессию
             var user = null;
 
-            // Способ 1: marsSession
             if (window.marsSession && window.marsSession.user) {
                 user = window.marsSession.user;
-                setDbg('Сессия из marsSession: ' + (user.email || 'OK'));
+                console.log('✅ marsSession');
             }
 
-            // Способ 2: getSession
             if (!user) {
-                setDbg('getSession...');
                 try {
-                    var r1 = await Promise.race([
-                        client.auth.getSession(),
-                        new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); })
-                    ]);
+                    var r1 = await Promise.race([ client.auth.getSession(), new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); }) ]);
                     if (r1 && r1.data && r1.data.session && r1.data.session.user) {
                         user = r1.data.session.user;
-                        setDbg('Сессия из getSession: ' + (user.email || 'OK'));
+                        console.log('✅ getSession');
                     }
-                } catch(e) {
-                    console.warn('getSession:', e.message);
-                    setDbg('getSession ошибка: ' + e.message);
-                }
+                } catch(e) { console.warn('getSession:', e.message); }
             }
 
-            // Способ 3: refreshSession
             if (!user) {
-                setDbg('refreshSession...');
                 try {
-                    var r2 = await Promise.race([
-                        client.auth.refreshSession(),
-                        new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); })
-                    ]);
+                    var r2 = await Promise.race([ client.auth.refreshSession(), new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); }) ]);
                     if (r2 && r2.data && r2.data.session && r2.data.session.user) {
                         user = r2.data.session.user;
-                        setDbg('Сессия из refreshSession: ' + (user.email || 'OK'));
+                        console.log('✅ refreshSession');
                     }
-                } catch(e) {
-                    console.warn('refreshSession:', e.message);
-                    setDbg('refresh ошибка: ' + e.message);
-                }
+                } catch(e) { console.warn('refreshSession:', e.message); }
             }
 
-            // Способ 4: localStorage вручную
             if (!user) {
-                setDbg('localStorage...');
                 try {
-                    var keys = Object.keys(localStorage).filter(function(k){ return k.indexOf('auth-token') >= 0; });
-                    console.log('🔑 Ключи:', keys);
-                    for (var k = 0; k < keys.length; k++) {
-                        try {
-                            var val = JSON.parse(localStorage.getItem(keys[k]));
-                            if (val && val.user && val.access_token && val.refresh_token) {
-                                var st = await Promise.race([
-                                    client.auth.setSession({ access_token: val.access_token, refresh_token: val.refresh_token }),
-                                    new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); })
-                                ]);
-                                if (st && st.data && st.data.user) {
-                                    user = st.data.user;
-                                    setDbg('Сессия из localStorage: ' + (user.email || 'OK'));
-                                    break;
-                                }
+                    var correctKey = 'sb-ncytbgbzfjfoqmmgfygz-auth-token';
+                    var stored = localStorage.getItem(correctKey);
+                    if (stored) {
+                        var val = JSON.parse(stored);
+                        if (val && val.access_token && val.refresh_token) {
+                            var st = await Promise.race([ client.auth.setSession({ access_token: val.access_token, refresh_token: val.refresh_token }), new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); }) ]);
+                            if (st && st.data && st.data.user) {
+                                user = st.data.user;
+                                console.log('✅ localStorage');
                             }
-                        } catch(e) {}
+                        }
                     }
-                } catch(e) {
-                    setDbg('localStorage: ' + e.message);
-                }
+                } catch(e) { console.warn('localStorage:', e.message); }
             }
 
-            clearTimeout(globalTimeout);
-            finished = true;
+            clearTimeout(globalTimeout); finished = true;
 
-            // ============================================================
-            // ЕСЛИ НАШЛИ — ЗАГРУЖАЕМ
-            // ============================================================
             if (user) {
                 currentUser = user;
                 console.log('✅ Профиль: пользователь', user.email);
-                setDbg('Загрузка данных для ' + user.email + '...');
-
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
                 try {
                     await loadAllData(user);
                 } catch(e) {
-                    console.error('loadAllData ошибка:', e);
-                    container.innerHTML='<div style="text-align:center;padding:60px;background:#fff;border-radius:16px;max-width:400px;margin:0 auto;">'
-                        +'<h2>⚠️ Ошибка загрузки</h2>'
-                        +'<p style="color:#888;font-size:.85rem;">' + (e.message || 'Неизвестная ошибка') + '</p>'
-                        +'<button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button>'
-                        +'</div>';
+                    console.error('loadAllData:', e);
+                    container.innerHTML = '<div style="text-align:center;padding:60px;background:#fff;border-radius:16px;max-width:400px;margin:0 auto;"><h2>⚠️ Ошибка</h2><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button></div>';
                 }
                 return;
             }
 
-            // ============================================================
-            // НЕ НАШЛИ — ЭКРАН ВХОДА
-            // ============================================================
-            console.warn('❌ Сессия не найдена');
-            var allKeys = Object.keys(localStorage);
-            console.log('📦 Все ключи localStorage:', allKeys);
-            
-            container.innerHTML='<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
-                +'<div style="font-size:4rem;margin-bottom:16px;">🔒</div>'
-                +'<h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2>'
-                +'<p style="color:#888;margin:0 0 20px 0;line-height:1.6;">На телефоне сессия могла потеряться.<br>Войдите заново — данные сохранятся.</p>'
-                +'<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(108,99,255,.4);">🔐 Войти</a>'
-                +'<div style="margin-top:24px;font-size:11px;color:#ccc;font-family:monospace;word-break:break-all;text-align:left;background:#f8f9fb;padding:12px;border-radius:8px;">'
-                +'Keys: ' + allKeys.length + '<br>'
-                +'Auth keys: ' + allKeys.filter(function(k){ return k.indexOf('auth') >= 0; }).length + '<br>'
-                +'marsSession: ' + (window.marsSession ? 'есть' : 'нет') + '<br>'
-                +'user: ' + (window.marsSession && window.marsSession.user ? window.marsSession.user.email : 'пусто')
-                +'</div>'
-                +'</div>';
+            // Не авторизован
+            container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
+                + '<div style="font-size:4rem;margin-bottom:16px;">🔒</div>'
+                + '<h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2>'
+                + '<p style="color:#888;margin:0 0 20px 0;line-height:1.6;">Войдите, чтобы увидеть профиль</p>'
+                + '<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
+
         } catch (err) {
-            clearTimeout(globalTimeout);
-            finished = true;
-            console.error('❌ Фатальная ошибка init:', err);
-            container.innerHTML='<div style="text-align:center;padding:60px 20px;">'
-                +'<div style="font-size:3rem;">⚠️</div>'
-                +'<h2>Ошибка загрузки</h2>'
-                +'<p style="color:#888;font-size:.85rem;">' + (err.message || 'Неизвестная ошибка') + '</p>'
-                +'<button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button>'
-                +'</div>';
+            clearTimeout(globalTimeout); finished = true;
+            console.error('Фатальная ошибка:', err);
+            container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="font-size:3rem;">⚠️</div><h2>Ошибка</h2><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button></div>';
         }
     }
 
-    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
     else init();
 })();
 </script>

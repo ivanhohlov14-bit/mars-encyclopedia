@@ -30,8 +30,7 @@
                 persistSession: true,
                 autoRefreshToken: true,
                 detectSessionInUrl: true,
-                storage: window.localStorage,
-                storageKey: 'mars-auth-token'
+                storage: window.localStorage
             }
         });
 

@@ -24,10 +24,11 @@ description: Игры, викторины, карты и инструменты 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
 
 .fade-in { animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-/* ==== ФИКС: убрать подчёркивание ==== */
+/* ==== Убираем подчёркивание ==== */
 #interactive-container a,
 #interactive-container a:hover,
 #interactive-container a:focus,
@@ -37,11 +38,9 @@ description: Игры, викторины, карты и инструменты 
     border-bottom: none !important;
     -webkit-tap-highlight-color: transparent;
 }
-.md-content #interactive-container a {
-    border-bottom: none !important;
-}
+.md-content #interactive-container a { border-bottom: none !important; }
 
-/* ==== ФИКС: чёрные заголовки ==== */
+/* ==== Чёрные заголовки ==== */
 .block h3 {
     margin: 0 0 16px 0;
     font-size: 1.2rem;
@@ -52,12 +51,7 @@ description: Игры, викторины, карты и инструменты 
     align-items: center;
     gap: 10px;
 }
-.task-title {
-    font-weight: 700;
-    font-size: 0.95rem;
-    margin-bottom: 2px;
-    color: #1a1a1a;
-}
+.task-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 2px; color: #1a1a1a; }
 
 #interactive-title {
     background: linear-gradient(135deg, var(--kingdom-color), var(--kingdom-light));
@@ -171,41 +165,98 @@ description: Игры, викторины, карты и инструменты 
     transition: all 0.25s;
 }
 .task-item:hover { background: rgba(0,0,0,0.06); transform: translateX(4px); }
-.task-item.done {
-    opacity: 0.6;
-    border-left-color: #27ae60;
-    text-decoration: line-through;
-}
+.task-item.done { opacity: 0.6; border-left-color: #27ae60; text-decoration: line-through; }
 .task-icon { font-size: 1.6rem; }
 .task-body { flex: 1; }
 .task-reward { font-size: 0.78rem; color: var(--kingdom-color); font-weight: 700; }
 .task-status { font-size: 1.2rem; }
 
-/* Викторина */
-.quiz-block {
-    background: linear-gradient(135deg, var(--kingdom-color), var(--kingdom-light));
-    border-radius: 16px; padding: 24px; color: #fff;
-    margin-bottom: 24px;
+/* Викторины */
+.quiz-restart {
+    display: inline-block; padding: 12px 24px;
+    background: rgba(255,255,255,0.25);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 30px; color: #fff;
+    cursor: pointer; font-weight: 700; font-size: 0.9rem;
+    transition: all 0.3s;
 }
-.quiz-question { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+.quiz-restart:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+
+.quiz-question { font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; color: #fff; }
 .quiz-options { display: grid; gap: 10px; }
 .quiz-option {
-    padding: 14px 18px; border-radius: 10px;
+    padding: 14px 20px; border-radius: 10px;
     background: rgba(255,255,255,0.2);
     border: 2px solid rgba(255,255,255,0.3);
     color: #fff; font-size: 0.95rem;
     cursor: pointer; transition: all 0.25s;
-    text-align: left;
+    text-align: left; font-weight: 500;
 }
 .quiz-option:hover { background: rgba(255,255,255,0.35); transform: translateX(4px); }
-.quiz-option.correct { background: #27ae60; border-color: #27ae60; }
-.quiz-option.wrong { background: #e74c3c; border-color: #e74c3c; }
-.quiz-result { margin-top: 16px; text-align: center; font-weight: 700; }
-.quiz-restart {
-    display: inline-block; margin-top: 12px; padding: 10px 24px;
-    background: rgba(255,255,255,0.25); border: 2px solid rgba(255,255,255,0.4);
-    border-radius: 30px; color: #fff; cursor: pointer; font-weight: 600;
+.quiz-option.correct { background: #27ae60; border-color: #2ecc71; transform: scale(1.02); }
+.quiz-option.wrong { background: #e74c3c; border-color: #ec7063; animation: shake 0.4s; }
+
+/* ============================================================
+   МИНИ-ИГРА
+   ============================================================ */
+.mini-game {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 20px;
+    padding: 32px 24px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 40px -8px rgba(102, 126, 234, 0.4);
 }
+.mini-game::before {
+    content: '';
+    position: absolute; top: -50%; right: -20%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+.mini-game::after {
+    content: '';
+    position: absolute; bottom: -50%; left: -20%;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(255,255,255,0.12), transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+.mini-game > * { position: relative; z-index: 1; }
+.mini-game .mg-header { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; letter-spacing: 0.5px; }
+.mini-game .mg-subtitle { font-size: 0.85rem; opacity: 0.9; margin-bottom: 20px; }
+.mini-game .mg-symbol {
+    font-size: 5rem; margin: 20px 0;
+    font-family: 'Segoe UI', 'Arial Unicode MS', sans-serif;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+    animation: pulse 2s ease-in-out infinite;
+    display: inline-block;
+}
+.mini-game .mg-question { font-size: 1rem; opacity: 0.95; margin-bottom: 16px; font-weight: 500; }
+.mg-options { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+.mg-btn {
+    padding: 14px 32px; border-radius: 12px;
+    background: rgba(255,255,255,0.22);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255,255,255,0.4);
+    color: #fff; font-size: 1rem; font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    min-width: 100px; letter-spacing: 0.5px;
+}
+.mg-btn:hover:not(:disabled) {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+.mg-btn:disabled { cursor: default; }
+.mg-btn.correct { background: #27ae60; border-color: #2ecc71; transform: scale(1.08); box-shadow: 0 8px 24px rgba(39, 174, 96, 0.5); }
+.mg-btn.wrong { background: #e74c3c; border-color: #ec7063; animation: shake 0.4s; }
+.mg-score { margin-top: 16px; font-size: 0.85rem; opacity: 0.9; }
 
 /* Тёмная тема */
 @media (prefers-color-scheme: dark) {
@@ -225,6 +276,8 @@ description: Игры, викторины, карты и инструменты 
     .block { padding: 18px 16px; }
     .rating-table td, .rating-table th { padding: 8px 10px; font-size: 0.8rem; }
     .rank-avatar { width: 26px; height: 26px; }
+    .mini-game .mg-symbol { font-size: 3.5rem; }
+    .mg-btn { padding: 12px 20px; min-width: 80px; font-size: 0.9rem; }
 }
 </style>
 
@@ -259,14 +312,14 @@ description: Игры, викторины, карты и инструменты 
     ];
 
     // ============================================================
-    // ВИКТОРИНЫ (на основе контента энциклопедии)
+    // ВИКТОРИНЫ
     // ============================================================
     const QUIZZES = {
         history: {
             title: '🏛️ История Марса',
             questions: [
                 { q: 'Как называется эпоха, в которой происходит действие книг?', options: ['Эпоха Расцвета', 'Эпоха Умирания', 'Эпоха Освоения', 'Эпоха Льдов'], correct: 1 },
-                { q: 'Сколько лет длится марсианский год?', options: ['365 солов', '687 солов', '22 месяца', '668 солов'], correct: 1 },
+                { q: 'Сколько длится марсианский год?', options: ['365 солов', '687 солов', '22 месяца', '668 солов'], correct: 1 },
                 { q: 'Как называется столица Марса?', options: ['Окхасен', 'Роген-Ария', 'Акха-Кор', 'Ксанф'], correct: 1 },
                 { q: 'С какого года ведётся марсианское летосчисление?', options: ['2696', '2741', '2729', '2690'], correct: 0 },
                 { q: 'Сколько королевств существует на Марсе?', options: ['8', '10', '12', '15'], correct: 2 }
@@ -304,27 +357,8 @@ description: Игры, викторины, карты и инструменты 
         }
     };
 
-    let currentQuiz = null;
-    let currentQuestionIndex = 0;
-    let currentScore = 0;
-
     // ============================================================
-    // Ежедневные задания
-    // ============================================================
-    function getDailyTasks(userId) {
-        const today = new Date().toISOString().slice(0, 10);
-        const saved = localStorage.getItem(`daily_tasks_${userId}_${today}`);
-        if (saved) return JSON.parse(saved);
-        return [
-            { id: 'read_article', icon: '📖', title: 'Прочитать статью', reward: '+5 XP', done: false },
-            { id: 'visit_place', icon: '📍', title: 'Посетить новое место', reward: '+10 XP', done: false },
-            { id: 'pass_quiz', icon: '🧠', title: 'Пройти викторину', reward: '+20 XP', done: false },
-            { id: 'use_translator', icon: '🗣️', title: 'Перевести слово', reward: '+5 XP', done: false }
-        ];
-    }
-
-    // ============================================================
-    // Мини-игра: угадай символ (для разнообразия)
+    // МИНИ-ИГРА
     // ============================================================
     const MINI_GAME_DATA = [
         { symbol: 'Ὸ', answer: 'До' },
@@ -337,7 +371,106 @@ description: Игры, викторины, карты и инструменты 
     ];
 
     let miniGameCurrent = null;
+    let miniGameScore = 0;
 
+    // ============================================================
+    // ВИКТОРИНА (глобальные функции)
+    // ============================================================
+    let currentQuiz = null;
+    let currentQuizKey = null;
+    let currentQuestionIndex = 0;
+    let currentScore = 0;
+
+    window.startQuiz = function(quizKey) {
+        currentQuiz = QUIZZES[quizKey];
+        currentQuizKey = quizKey;
+        currentQuestionIndex = 0;
+        currentScore = 0;
+        window.renderQuiz();
+    };
+
+    window.renderQuiz = function() {
+        const el = document.getElementById('quiz-body');
+        if (!el || !currentQuiz) return;
+
+        if (currentQuestionIndex >= currentQuiz.questions.length) {
+            const percent = Math.round((currentScore / currentQuiz.questions.length) * 100);
+            const emoji = percent === 100 ? '🏆' : percent >= 60 ? '🎉' : '💪';
+            const msg = percent === 100 ? 'Идеально! Ты — Легенда Марса!' :
+                        percent >= 60 ? 'Хороший результат!' :
+                        'Попробуй ещё раз — у тебя получится!';
+            el.innerHTML = `
+                <div style="text-align: center; padding: 32px 20px;">
+                    <div style="font-size: 4rem; margin-bottom: 12px;">${emoji}</div>
+                    <div style="font-size: 1.6rem; font-weight: 800; color: #fff; margin-bottom: 8px;">
+                        ${currentScore} / ${currentQuiz.questions.length}
+                    </div>
+                    <div style="font-size: 1rem; color: rgba(255,255,255,0.9); margin-bottom: 24px;">${msg}</div>
+                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-bottom: 20px;">
+                        Награда: <b>+${currentScore * 4} XP</b>
+                    </div>
+                    <button class="quiz-restart" onclick="startQuiz('${currentQuizKey}')">🔄 Пройти заново</button>
+                    <button class="quiz-restart" onclick="closeQuiz()" style="margin-left: 8px;">← К списку</button>
+                </div>
+            `;
+            return;
+        }
+
+        const q = currentQuiz.questions[currentQuestionIndex];
+        const progress = (currentQuestionIndex / currentQuiz.questions.length) * 100;
+
+        el.innerHTML = `
+            <div style="margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: rgba(255,255,255,0.8); margin-bottom: 6px;">
+                    <span>Вопрос ${currentQuestionIndex + 1} из ${currentQuiz.questions.length}</span>
+                    <span>Очки: ${currentScore}</span>
+                </div>
+                <div style="background: rgba(255,255,255,0.15); border-radius: 8px; height: 6px; overflow: hidden;">
+                    <div style="width: ${progress}%; height: 100%; background: #fff; border-radius: 8px; transition: width 0.4s;"></div>
+                </div>
+            </div>
+            <div class="quiz-question">${q.q}</div>
+            <div class="quiz-options">
+                ${q.options.map((opt, i) => `
+                    <div class="quiz-option" onclick="answerQuiz(${i})">${opt}</div>
+                `).join('')}
+            </div>
+        `;
+    };
+
+    window.answerQuiz = function(index) {
+        const q = currentQuiz.questions[currentQuestionIndex];
+        const options = document.querySelectorAll('.quiz-option');
+        options.forEach((opt, i) => {
+            opt.style.pointerEvents = 'none';
+            if (i === q.correct) opt.classList.add('correct');
+            else if (i === index && index !== q.correct) opt.classList.add('wrong');
+        });
+        if (index === q.correct) currentScore++;
+        setTimeout(() => {
+            currentQuestionIndex++;
+            window.renderQuiz();
+        }, 1200);
+    };
+
+    window.closeQuiz = function() {
+        const el = document.getElementById('quiz-body');
+        if (el) {
+            el.innerHTML = `
+                <div style="text-align: center; padding: 40px 20px;">
+                    <div style="font-size: 3rem; margin-bottom: 12px;">🧠</div>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1rem;">Выберите викторину выше</p>
+                </div>
+            `;
+        }
+        currentQuiz = null;
+        currentQuestionIndex = 0;
+        currentScore = 0;
+    };
+
+    // ============================================================
+    // МИНИ-ИГРА (функции)
+    // ============================================================
     function newMiniGame() {
         const item = MINI_GAME_DATA[Math.floor(Math.random() * MINI_GAME_DATA.length)];
         const options = [item.answer];
@@ -354,13 +487,14 @@ description: Игры, викторины, карты и инструменты 
         const el = document.getElementById('mini-game-body');
         if (!el || !miniGameCurrent) return;
         el.innerHTML = `
-            <div style="font-size: 3.5rem; margin: 12px 0; font-family: 'Segoe UI', sans-serif;">${miniGameCurrent.symbol}</div>
-            <div style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 8px;">Как называется эта нота?</div>
+            <div class="mg-symbol">${miniGameCurrent.symbol}</div>
+            <div class="mg-question">Как называется эта нота?</div>
             <div class="mg-options">
                 ${miniGameCurrent.options.map(opt => `
                     <button class="mg-btn" onclick="checkMiniGameAnswer('${opt}')">${opt}</button>
                 `).join('')}
             </div>
+            <div class="mg-score">Правильных ответов: <b>${miniGameScore}</b></div>
         `;
     }
 
@@ -371,58 +505,24 @@ description: Игры, викторины, карты и инструменты 
             if (btn.textContent === miniGameCurrent.answer) btn.classList.add('correct');
             else if (btn.textContent === answer && answer !== miniGameCurrent.answer) btn.classList.add('wrong');
         });
+        if (answer === miniGameCurrent.answer) miniGameScore++;
         setTimeout(newMiniGame, 1500);
     };
 
     // ============================================================
-    // Викторина
+    // ЕЖЕДНЕВНЫЕ ЗАДАНИЯ
     // ============================================================
-    function startQuiz(quizKey) {
-        currentQuiz = QUIZZES[quizKey];
-        currentQuestionIndex = 0;
-        currentScore = 0;
-        renderQuiz();
+    function getDailyTasks(userId) {
+        const today = new Date().toISOString().slice(0, 10);
+        const saved = localStorage.getItem(`daily_tasks_${userId}_${today}`);
+        if (saved) return JSON.parse(saved);
+        return [
+            { id: 'read_article', icon: '📖', title: 'Прочитать статью', reward: '+5 XP', done: false },
+            { id: 'visit_place', icon: '📍', title: 'Посетить новое место', reward: '+10 XP', done: false },
+            { id: 'pass_quiz', icon: '🧠', title: 'Пройти викторину', reward: '+20 XP', done: false },
+            { id: 'use_translator', icon: '🗣️', title: 'Перевести слово', reward: '+5 XP', done: false }
+        ];
     }
-
-    function renderQuiz() {
-        const el = document.getElementById('quiz-body');
-        if (!el || !currentQuiz) return;
-        if (currentQuestionIndex >= currentQuiz.questions.length) {
-            el.innerHTML = `
-                <div style="text-align: center; padding: 20px;">
-                    <div style="font-size: 3rem;">🎉</div>
-                    <div style="font-size: 1.3rem; font-weight: 800; margin: 12px 0;">Результат: ${currentScore} из ${currentQuiz.questions.length}</div>
-                    <div style="opacity: 0.9; margin-bottom: 16px;">${currentScore === currentQuiz.questions.length ? 'Идеально! Ты — Легенда Марса!' : currentScore >= currentQuiz.questions.length / 2 ? 'Хороший результат!' : 'Попробуй ещё раз!'}</div>
-                    <button class="quiz-restart" onclick="startQuiz('${Object.keys(QUIZZES).find(k => QUIZZES[k] === currentQuiz)}')">Пройти заново</button>
-                </div>
-            `;
-            return;
-        }
-        const q = currentQuiz.questions[currentQuestionIndex];
-        el.innerHTML = `
-            <div class="quiz-question">${currentQuestionIndex + 1}. ${q.q}</div>
-            <div class="quiz-options">
-                ${q.options.map((opt, i) => `
-                    <div class="quiz-option" onclick="answerQuiz(${i})">${opt}</div>
-                `).join('')}
-            </div>
-        `;
-    }
-
-    window.answerQuiz = function(index) {
-        const q = currentQuiz.questions[currentQuestionIndex];
-        const options = document.querySelectorAll('.quiz-option');
-        options.forEach((opt, i) => {
-            opt.style.pointerEvents = 'none';
-            if (i === q.correct) opt.classList.add('correct');
-            else if (i === index && index !== q.correct) opt.classList.add('wrong');
-        });
-        if (index === q.correct) currentScore++;
-        setTimeout(() => {
-            currentQuestionIndex++;
-            renderQuiz();
-        }, 1200);
-    };
 
     // ============================================================
     // ОСНОВНАЯ ЛОГИКА
@@ -439,21 +539,19 @@ description: Игры, викторины, карты и инструменты 
         try {
             const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-            // ---- Realtime Presence для счётчика онлайн ----
+            // Realtime Presence
             const channel = client.channel('online-users', {
-                config: { presence: { key: 'anonymous' } }
+                config: { presence: { key: 'user-' + Math.random().toString(36).slice(2, 10) } }
             });
 
             channel
                 .on('presence', { event: 'sync' }, () => {
                     const state = channel.presenceState();
                     onlineCount = Object.keys(state).length;
-                    const counterEl = document.getElementById('online-count');
-                    if (counterEl) counterEl.textContent = onlineCount;
-                    const counterTextEl = document.getElementById('online-text');
-                    if (counterTextEl) {
-                        counterTextEl.textContent = onlineCount === 1 ? 'исследователь' : onlineCount < 5 ? 'исследователя' : 'исследователей';
-                    }
+                    const cEl = document.getElementById('online-count');
+                    if (cEl) cEl.textContent = onlineCount;
+                    const tEl = document.getElementById('online-text');
+                    if (tEl) tEl.textContent = onlineCount === 1 ? 'исследователь' : onlineCount < 5 ? 'исследователя' : 'исследователей';
                 })
                 .subscribe(async (status) => {
                     if (status === 'SUBSCRIBED') {
@@ -461,7 +559,7 @@ description: Игры, викторины, карты и инструменты 
                     }
                 });
 
-            // ---- Авторизация ----
+            // Авторизация
             const { data: { session } } = await client.auth.getSession();
             user = session?.user || null;
 
@@ -471,7 +569,7 @@ description: Игры, викторины, карты и инструменты 
                 if (profile?.kingdom && KINGDOMS[profile.kingdom]) kingdom = KINGDOMS[profile.kingdom];
             }
 
-            // ---- Топ-10 ----
+            // Топ-10
             const { data: leaders } = await client
                 .from('profiles')
                 .select('user_id, username, display_name, experience, level, avatar_url')
@@ -483,7 +581,7 @@ description: Игры, викторины, карты и инструменты 
             console.warn('Ошибка Supabase:', e);
         }
 
-        // ---- Применяем тему ----
+        // Тема королевства
         document.documentElement.style.setProperty('--kingdom-color', kingdom.color);
         document.documentElement.style.setProperty('--kingdom-bg', kingdom.bg);
         document.documentElement.style.setProperty('--kingdom-light', kingdom.light);
@@ -495,17 +593,20 @@ description: Игры, викторины, карты и инструменты 
             titleEl.style.textShadow = `0 2px 12px ${kingdom.color}40`;
         }
 
-        // ---- Ежедневные задания ----
         const dailyTasks = user ? getDailyTasks(user.id) : [];
         const doneTasks = dailyTasks.filter(t => t.done).length;
 
-        // ---- Рендер ----
+        // ============================================================
+        // РЕНДЕР
+        // ============================================================
         container.innerHTML = `
             <!-- Живой счётчик -->
             <div class="live-counter fade-in">
                 <div class="live-dot"></div>
                 <div style="flex: 1;">
-                    <div style="font-size: 1.05rem; font-weight: 700;">Сейчас на сайте: <span id="online-count">${onlineCount}</span> <span id="online-text">${onlineCount === 1 ? 'исследователь' : onlineCount < 5 ? 'исследователя' : 'исследователей'}</span></div>
+                    <div style="font-size: 1.05rem; font-weight: 700;">
+                        Сейчас на сайте: <span id="online-count">${onlineCount}</span> <span id="online-text">${onlineCount === 1 ? 'исследователь' : onlineCount < 5 ? 'исследователя' : 'исследователей'}</span>
+                    </div>
                     <div style="font-size: 0.82rem; opacity: 0.9;">Обновляется в реальном времени</div>
                 </div>
             </div>
@@ -529,13 +630,16 @@ description: Игры, викторины, карты и инструменты 
                 <p style="font-size: 0.88rem; color: #555; margin: 0 0 16px 0; font-weight: 500;">
                     Проверьте знания о Марсе. Каждая викторина — <b style="color: var(--kingdom-color);">+20 XP</b>.
                 </p>
-                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;">
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
                     ${Object.keys(QUIZZES).map(key => `
                         <button class="quiz-restart" style="background: var(--kingdom-color); border-color: var(--kingdom-color); color: #fff;" onclick="startQuiz('${key}')">${QUIZZES[key].title}</button>
                     `).join('')}
                 </div>
-                <div id="quiz-body" style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; min-height: 200px;">
-                    <p style="text-align: center; color: #888;">Выберите викторину выше</p>
+                <div id="quiz-body" style="background: linear-gradient(135deg, var(--kingdom-color), var(--kingdom-light)); border-radius: 16px; padding: 28px; min-height: 260px; display: flex; align-items: center; justify-content: center; color: #fff; box-shadow: 0 8px 24px -8px var(--kingdom-shadow);">
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <div style="font-size: 3rem; margin-bottom: 12px;">🧠</div>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 1rem;">Выберите викторину выше</p>
+                    </div>
                 </div>
             </div>
 
@@ -587,8 +691,9 @@ description: Игры, викторины, карты и инструменты 
             </div>
 
             <!-- Мини-игра -->
-            <div class="block fade-in" style="background: linear-gradient(135deg, #667eea, #764ba2); border-color: #667eea; color: #fff;">
-                <h3 style="color: #fff !important;">🎲 Мини-игра: угадай ноту</h3>
+            <div class="mini-game fade-in">
+                <div class="mg-header">🎲 Мини-игра</div>
+                <div class="mg-subtitle">Угадай марсианскую ноту</div>
                 <div id="mini-game-body"></div>
             </div>
 

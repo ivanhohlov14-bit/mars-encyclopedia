@@ -202,7 +202,6 @@ nav:
   - 📚 Мои закладки: bookmarks/index.md
   - 🗺️ Квест-карта: quest-map/index.md
   - 🎮 Интерактив: interactive/index.md
-  - 📊 Статистика: stats/index.md
   - О проекте:
       - Лицензия: license.md
 site_url: https://mars-wiki.ru/

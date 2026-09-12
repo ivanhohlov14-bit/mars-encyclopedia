@@ -1,16 +1,34 @@
-// supabase-client.js — ЕДИНЫЙ клиент для всего сайта
-// + перехват createClient, чтобы старые скрипты не дублировали клиент
+// supabase-client.js — ЕДИНЫЙ клиент с надёжной сессией
 (function() {
     'use strict';
 
-    // Защита от повторной загрузки
     if (window.__marsSupabaseSetup) return;
     window.__marsSupabaseSetup = true;
 
     const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
 
-    // Ждём загрузки Supabase SDK
+    // ============================================================
+    // Определяем надёжное хранилище
+    // ============================================================
+    function getSafeStorage() {
+        try {
+            // Сначала localStorage
+            const test = '__storage_test__';
+            localStorage.setItem(test, test);
+            localStorage.removeItem(test);
+            return window.localStorage;
+        } catch (e) {
+            console.warn('⚠️ localStorage недоступен, используем sessionStorage');
+            try {
+                return window.sessionStorage;
+            } catch (e2) {
+                console.error('❌ Хранилище недоступно');
+                return null;
+            }
+        }
+    }
+
     function waitForSDK(callback, attempts = 0) {
         if (typeof supabase !== 'undefined' && supabase.createClient) {
             callback();
@@ -22,44 +40,37 @@
     }
 
     waitForSDK(() => {
-        // ============================================================
-        // 1. Создаём ЕДИНСТВЕННЫЙ клиент
-        // ============================================================
+        const storage = getSafeStorage();
+
+        // Единый клиент
         const singleClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
             auth: {
                 persistSession: true,
                 autoRefreshToken: true,
                 detectSessionInUrl: true,
-                storage: window.localStorage
+                storage: storage,
+                storageKey: 'sb-ncytbgbzfjfoqmmgfygz-auth-token'
             }
         });
 
-        // ============================================================
-        // 2. ПЕРЕХВАТ: любые createClient возвращают этот же клиент
-        // ============================================================
+        // Перехват createClient
         const originalCreateClient = supabase.createClient;
         supabase.createClient = function(url, key, options) {
-            // Если URL и ключ совпадают — отдаём единый клиент
             if (url === SUPABASE_URL && key === SUPABASE_KEY) {
-                // Один раз логируем, что перехватили
                 if (!window.__marsClientLogged) {
                     window.__marsClientLogged = true;
                     console.log('🔒 createClient перехвачен — используется единый клиент');
                 }
                 return singleClient;
             }
-            // Если другой проект — создаём отдельный клиент
             return originalCreateClient.call(this, url, key, options);
         };
 
-        // ============================================================
-        // 3. Экспортируем клиент глобально
-        // ============================================================
         window.supabaseClient = singleClient;
         window.getSupabase = () => singleClient;
 
         // ============================================================
-        // 4. Кэш сессии (для быстрого доступа)
+        // Кэш сессии с автообновлением
         // ============================================================
         window.marsSession = {
             user: null,
@@ -68,25 +79,25 @@
             listeners: [],
 
             async init() {
-                const { data } = await singleClient.auth.getSession();
-                this.user = data?.session?.user || null;
+                try {
+                    const { data } = await singleClient.auth.getSession();
+                    this.user = data?.session?.user || null;
 
-                if (this.user) {
-                    try {
+                    if (this.user) {
                         const { data: profile } = await singleClient
                             .from('profiles')
                             .select('*')
                             .eq('user_id', this.user.id)
-                            .single();
+                            .maybeSingle();
                         this.profile = profile;
-                    } catch (e) {
-                        console.warn('Профиль не загружен:', e);
                     }
+                } catch (e) {
+                    console.warn('Ошибка init сессии:', e);
                 }
 
                 this.ready = true;
                 this.listeners.forEach(fn => {
-                    try { fn(this); } catch (e) { console.warn(e); }
+                    try { fn(this); } catch (e) {}
                 });
                 return this;
             },
@@ -94,19 +105,53 @@
             onChange(fn) {
                 if (this.ready) fn(this);
                 else this.listeners.push(fn);
+            },
+
+            async refresh() {
+                try {
+                    const { data } = await singleClient.auth.refreshSession();
+                    if (data?.session?.user) {
+                        this.user = data.session.user;
+                    }
+                } catch (e) {}
+                return this.user;
             }
         };
 
         // Следим за авторизацией
-        singleClient.auth.onAuthStateChange((event, session) => {
+        singleClient.auth.onAuthStateChange(async (event, session) => {
             window.marsSession.user = session?.user || null;
-            if (!session) window.marsSession.profile = null;
-            console.log('🔐 Auth event:', event);
+            if (!session) {
+                window.marsSession.profile = null;
+            } else {
+                // Обновляем профиль
+                try {
+                    const { data: profile } = await singleClient
+                        .from('profiles')
+                        .select('*')
+                        .eq('user_id', session.user.id)
+                        .maybeSingle();
+                    window.marsSession.profile = profile;
+                } catch (e) {}
+            }
+            console.log('🔐 Auth event:', event, session?.user?.email || '');
         });
 
         // Запускаем init
         window.marsSession.init();
 
-        console.log('✅ Единый Supabase клиент готов (createClient перехвачен)');
+        // ============================================================
+        // АВТООБНОВЛЕНИЕ каждые 5 минут (для мобильных)
+        // ============================================================
+        setInterval(async () => {
+            if (window.marsSession.user) {
+                try {
+                    await singleClient.auth.refreshSession();
+                } catch (e) {}
+            }
+        }, 5 * 60 * 1000);
+
+        console.log('✅ Единый Supabase клиент готов');
+        console.log('💾 Хранилище:', storage === window.localStorage ? 'localStorage' : 'sessionStorage');
     });
 })();

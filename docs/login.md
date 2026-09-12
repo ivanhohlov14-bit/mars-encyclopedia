@@ -728,7 +728,6 @@ comments: false
                         <div class="lg-field">
                             <label for="login-email">Email</label>
                             <div class="lg-input-wrap">
-                                <span class="lg-input-icon">📧</span>
                                 <input
                                     type="email"
                                     id="login-email"
@@ -745,7 +744,6 @@ comments: false
                         <div class="lg-field">
                             <label for="login-password">Пароль</label>
                             <div class="lg-input-wrap">
-                                <span class="lg-input-icon">🔒</span>
                                 <input
                                     type="password"
                                     id="login-password"
@@ -778,7 +776,6 @@ comments: false
                         <div class="lg-field">
                             <label for="reg-email">Email</label>
                             <div class="lg-input-wrap">
-                                <span class="lg-input-icon">📧</span>
                                 <input
                                     type="email"
                                     id="reg-email"
@@ -794,7 +791,6 @@ comments: false
                         <div class="lg-field">
                             <label for="reg-password">Пароль</label>
                             <div class="lg-input-wrap">
-                                <span class="lg-input-icon">🔒</span>
                                 <input
                                     type="password"
                                     id="reg-password"
@@ -811,7 +807,6 @@ comments: false
                         <div class="lg-field">
                             <label for="reg-password2">Подтвердите пароль</label>
                             <div class="lg-input-wrap">
-                                <span class="lg-input-icon">🔐</span>
                                 <input
                                     type="password"
                                     id="reg-password2"

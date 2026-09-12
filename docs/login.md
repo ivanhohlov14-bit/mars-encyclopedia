@@ -983,14 +983,36 @@ comments: false
                 return;
             }
 
-            // ✅ Успех
+            // ✅ Вход выполнен
             console.log('✅ Вход выполнен:', data.user?.email);
-            showToast('Добро пожаловать!', 'success');
-
-            // Показываем красивый экран успеха и редиректим
+            const userId = data.user?.id;
+            const userEmail = data.user?.email;
             const redirectUrl = new URLSearchParams(window.location.search).get('redirect') || '/profile/';
-            showSuccess(data.user?.email, redirectUrl);
 
+            // 🔐 Проверка Email-2FA
+            if (userId) {
+                try {
+                    const { data: twofa } = await client.from('user_2fa')
+                        .select('email_2fa_enabled').eq('user_id', userId).maybeSingle();
+
+                    if (twofa?.email_2fa_enabled) {
+                        const deviceId = getDeviceId();
+                        const { data: trusted } = await client.from('trusted_devices')
+                            .select('id').eq('user_id', userId).eq('device_id', deviceId).maybeSingle();
+
+                        if (!trusted) {
+                            // Новое устройство — показываем форму ввода кода
+                            const ok = await show2FAForm(userId, userEmail, deviceId);
+                            if (!ok) return;
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Ошибка 2FA:', e);
+                }
+            }
+
+            showToast('Добро пожаловать!', 'success');
+            showSuccess(userEmail, redirectUrl);
         } catch (err) {
             btn.classList.remove('loading');
             btn.disabled = false;
@@ -1116,5 +1138,172 @@ comments: false
 
         render();
     });
+
+    // ============================================================
+    // EMAIL-2FA — помощники
+    // ============================================================
+    function getDeviceId() {
+        let did = localStorage.getItem('mars_device_id');
+        if (!did) {
+            did = 'dev_' + Math.random().toString(36).slice(2, 12) + Date.now().toString(36);
+            localStorage.setItem('mars_device_id', did);
+        }
+        return did;
+    }
+
+    function getDeviceName() {
+        const ua = navigator.userAgent;
+        if (/Android/i.test(ua)) return 'Android-устройство';
+        if (/iPhone|iPad|iPod/i.test(ua)) return 'iPhone / iPad';
+        if (/Windows/i.test(ua)) return 'Windows ПК';
+        if (/Mac/i.test(ua)) return 'Mac';
+        if (/Linux/i.test(ua)) return 'Linux';
+        return 'Неизвестное устройство';
+    }
+
+    function generate6Code() {
+        return String(Math.floor(100000 + Math.random() * 900000));
+    }
+
+    async function show2FAForm(userId, email, deviceId) {
+        return new Promise(async (resolve) => {
+            const code = generate6Code();
+
+            try {
+                const res = await fetch('https://ncytbgbzfjfoqmmgfygz.supabase.co/functions/v1/send-2fa-code', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user_id: userId, email, code, device_id: deviceId })
+                });
+                if (!res.ok) {
+                    const err = await res.json();
+                    alert('Не удалось отправить код: ' + (err.error || 'ошибка'));
+                    resolve(false);
+                    return;
+                }
+            } catch (e) {
+                alert('Ошибка отправки кода: ' + e.message);
+                resolve(false);
+                return;
+            }
+
+            const overlay = document.createElement('div');
+            overlay.style.cssText = `position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,0.75);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:20px;`;
+            overlay.innerHTML = `
+                <div style="background:#fff;max-width:420px;width:100%;padding:32px 28px;border-radius:24px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.5);">
+                    <div style="font-size:3rem;margin-bottom:8px;">📧</div>
+                    <h2 style="margin:0 0 8px 0;color:#1a1a2e;font-size:1.4rem;font-weight:800;">Проверьте почту</h2>
+                    <p style="color:#888;font-size:.9rem;margin:0 0 20px 0;line-height:1.5;">
+                        Код из 6 цифр отправлен на<br><b style="color:#6C63FF;">${email}</b>
+                    </p>
+
+                    <input type="text" id="2fa-code-input" placeholder="000000" maxlength="6" inputmode="numeric"
+                        style="width:100%;padding:18px;border:2px solid rgba(0,0,0,.1);border-radius:12px;font-size:2rem;text-align:center;letter-spacing:12px;font-family:'Courier New',monospace;font-weight:700;margin-bottom:12px;box-sizing:border-box;outline:none;">
+
+                    <button id="2fa-verify-btn" style="width:100%;padding:16px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:800;cursor:pointer;font-family:inherit;margin-bottom:10px;">
+                        ✅ Подтвердить
+                    </button>
+
+                    <label style="display:flex;align-items:center;gap:8px;font-size:.85rem;color:#666;justify-content:center;cursor:pointer;margin-bottom:12px;">
+                        <input type="checkbox" id="2fa-trust-device" checked style="width:18px;height:18px;accent-color:#6C63FF;">
+                        Доверять этому устройству
+                    </label>
+
+                    <div style="display:flex;gap:8px;justify-content:center;">
+                        <button id="2fa-resend-btn" style="padding:8px 16px;background:transparent;color:#6C63FF;border:2px solid #6C63FF;border-radius:20px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;">📧 Отправить снова</button>
+                        <button id="2fa-cancel-btn" style="padding:8px 16px;background:transparent;color:#888;border:2px solid #eee;border-radius:20px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit;">Отмена</button>
+                    </div>
+
+                    <p id="2fa-status" style="font-size:.82rem;color:#888;margin-top:16px;"></p>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+
+            const input = overlay.querySelector('#2fa-code-input');
+            const statusEl = overlay.querySelector('#2fa-status');
+            const trustCb = overlay.querySelector('#2fa-trust-device');
+
+            setTimeout(() => input.focus(), 200);
+
+            const verify = async () => {
+                const entered = input.value.trim();
+                if (entered.length !== 6) {
+                    statusEl.textContent = '⚠️ Введите 6 цифр';
+                    statusEl.style.color = '#e67e22';
+                    return;
+                }
+
+                statusEl.textContent = '⏳ Проверка...';
+
+                const client = window.supabaseClient;
+                const { data: stored } = await client.from('email_2fa_codes')
+                    .select('*').eq('user_id', userId).eq('code', entered).maybeSingle();
+
+                if (!stored) {
+                    statusEl.textContent = '❌ Неверный код';
+                    statusEl.style.color = '#e74c3c';
+                    input.value = '';
+                    input.focus();
+                    return;
+                }
+
+                if (new Date(stored.expires_at) < new Date()) {
+                    statusEl.textContent = '⏰ Код истёк';
+                    statusEl.style.color = '#e74c3c';
+                    return;
+                }
+
+                statusEl.textContent = '✅ Готово!';
+                statusEl.style.color = '#27ae60';
+
+                if (trustCb.checked) {
+                    try {
+                        await client.from('trusted_devices').upsert({
+                            user_id: userId, device_id: deviceId,
+                            device_name: getDeviceName(),
+                            last_used: new Date().toISOString()
+                        }, { onConflict: 'user_id,device_id' });
+                    } catch(e) {}
+                }
+
+                try {
+                    await client.from('email_2fa_codes').delete().eq('id', stored.id);
+                } catch(e) {}
+
+                setTimeout(() => { overlay.remove(); resolve(true); }, 600);
+            };
+
+            overlay.querySelector('#2fa-verify-btn').onclick = verify;
+            input.addEventListener('keypress', e => { if (e.key === 'Enter') verify(); });
+            input.addEventListener('input', () => {
+                input.value = input.value.replace(/\D/g, '').slice(0, 6);
+            });
+
+            overlay.querySelector('#2fa-resend-btn').onclick = async () => {
+                const newCode = generate6Code();
+                try {
+                    await fetch('https://ncytbgbzfjfoqmmgfygz.supabase.co/functions/v1/send-2fa-code', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ user_id: userId, email, code: newCode, device_id: deviceId })
+                    });
+                    statusEl.textContent = '📧 Новый код отправлен';
+                    statusEl.style.color = '#27ae60';
+                    input.value = '';
+                    input.focus();
+                } catch(e) {
+                    statusEl.textContent = '❌ Не удалось';
+                }
+            };
+
+            overlay.querySelector('#2fa-cancel-btn').onclick = async () => {
+                const client = window.supabaseClient;
+                if (client) await client.auth.signOut();
+                overlay.remove();
+                resolve(false);
+            };
+        });
+    }
+    
 })();
 </script>

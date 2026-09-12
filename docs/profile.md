@@ -1024,22 +1024,117 @@ comments: false
         }
     };
 
-    async function init(){
+       async function init(){
         container.innerHTML='<div style="max-width:1000px;margin:0 auto;"><div class="pf-skeleton" style="background:linear-gradient(135deg,#6C63FF,#A29BFE);border-radius:24px;padding:36px 32px;margin-bottom:24px;min-height:180px;"></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px;">'+Array(6).fill(0).map(function(){return '<div class="pf-skeleton" style="background:#fff;border-radius:16px;height:80px;"></div>';}).join('')+'</div><div style="text-align:center;padding:40px;color:#888;"><div style="display:inline-block;width:40px;height:40px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin .8s linear infinite;"></div><p style="margin-top:16px;">Загрузка профиля...</p></div></div>';
 
         await waitForClient();
-        if(!client){container.innerHTML='<div style="text-align:center;padding:60px;"><h2>⚠️ Ошибка загрузки</h2></div>';return;}
-
-        var session=await getSessionSafe();
-        currentUser=session.user;
-
-        if(!currentUser){
-            container.innerHTML='<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;"><div style="font-size:4rem;margin-bottom:16px;">🔒</div><h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2><p style="color:#888;margin:0 0 20px 0;">Войдите, чтобы увидеть профиль</p><a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">Войти</a></div>';
+        if(!client){
+            container.innerHTML='<div style="text-align:center;padding:60px;"><h2>⚠️ Ошибка загрузки</h2><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button></div>';
             return;
         }
 
-        console.log('✅ Профиль: пользователь',currentUser.email);
-        await loadAllData(currentUser);
+        console.log('🔍 Ищу сессию...');
+        var user = null;
+
+        // СПОСОБ 1: window.marsSession
+        if(window.marsSession && window.marsSession.user){
+            user = window.marsSession.user;
+            console.log('✅ Способ 1: marsSession.user');
+        }
+
+        // СПОСОБ 2: Прямой getSession
+        if(!user){
+            try{
+                var r1 = await client.auth.getSession();
+                if(r1.data && r1.data.session && r1.data.session.user){
+                    user = r1.data.session.user;
+                    console.log('✅ Способ 2: getSession');
+                }
+            }catch(e){console.warn('Способ 2 ошибка:',e);}
+        }
+
+        // СПОСОБ 3: refreshSession (важно для телефона)
+        if(!user){
+            try{
+                console.log('🔄 Способ 3: refreshSession...');
+                var r2 = await client.auth.refreshSession();
+                if(r2.data && r2.data.session && r2.data.session.user){
+                    user = r2.data.session.user;
+                    console.log('✅ Способ 3: refreshSession');
+                }
+            }catch(e){console.warn('Способ 3 ошибка:',e);}
+        }
+
+        // СПОСОБ 4: Ручное чтение из localStorage
+        if(!user){
+            try{
+                var keys = Object.keys(localStorage).filter(function(k){return k.indexOf('auth-token')>=0;});
+                console.log('🔑 Ключи в localStorage:', keys);
+                for(var i=0;i<keys.length;i++){
+                    try{
+                        var val = JSON.parse(localStorage.getItem(keys[i]));
+                        if(val && val.user && val.access_token && val.refresh_token){
+                            var st = await client.auth.setSession({
+                                access_token: val.access_token,
+                                refresh_token: val.refresh_token
+                            });
+                            if(st.data && st.data.user){
+                                user = st.data.user;
+                                console.log('✅ Способ 4: из localStorage');
+                                break;
+                            }
+                        }
+                    }catch(e){}
+                }
+            }catch(e){console.warn('Способ 4 ошибка:',e);}
+        }
+
+        // СПОСОБ 5: Ручное чтение из sessionStorage
+        if(!user){
+            try{
+                var keys2 = Object.keys(sessionStorage).filter(function(k){return k.indexOf('auth-token')>=0;});
+                console.log('🔑 Ключи в sessionStorage:', keys2);
+                for(var j=0;j<keys2.length;j++){
+                    try{
+                        var val2 = JSON.parse(sessionStorage.getItem(keys2[j]));
+                        if(val2 && val2.user && val2.access_token && val2.refresh_token){
+                            var st2 = await client.auth.setSession({
+                                access_token: val2.access_token,
+                                refresh_token: val2.refresh_token
+                            });
+                            if(st2.data && st2.data.user){
+                                user = st2.data.user;
+                                console.log('✅ Способ 5: из sessionStorage');
+                                break;
+                            }
+                        }
+                    }catch(e){}
+                }
+            }catch(e){console.warn('Способ 5 ошибка:',e);}
+        }
+
+        // Нашли пользователя — рендерим профиль
+        if(user){
+            currentUser = user;
+            console.log('✅ Профиль: пользователь', currentUser.email);
+            try{
+                await loadAllData(currentUser);
+            }catch(e){
+                console.error('Ошибка загрузки данных:', e);
+                container.innerHTML='<div style="text-align:center;padding:60px;background:#fff;border-radius:16px;"><h2>⚠️ Ошибка загрузки</h2><p style="color:#888;">Попробуйте обновить страницу</p><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button></div>';
+            }
+            return;
+        }
+
+        // Не нашли — экран входа
+        console.warn('❌ Сессия не найдена');
+        container.innerHTML='<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'+
+            '<div style="font-size:4rem;margin-bottom:16px;">🔒</div>'+
+            '<h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2>'+
+            '<p style="color:#888;margin:0 0 20px 0;line-height:1.6;">На телефоне сессия могла потеряться.<br>Войдите заново — данные сохранятся.</p>'+
+            '<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:0 8px 24px rgba(108,99,255,.4);">🔐 Войти</a>'+
+            '<p style="color:#bbb;font-size:.78rem;margin-top:20px;">Войдите, чтобы оставлять комментарии и лайки</p>'+
+            '</div>';
     }
 
     if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);

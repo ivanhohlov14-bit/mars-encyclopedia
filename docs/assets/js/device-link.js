@@ -57,7 +57,7 @@
 
         // Показываем модалку
         loadQR(() => {
-            const baseUrl = window.location.origin + '/mars-encyclopedia/link-device/';
+            const baseUrl = window.location.origin + '/link-device/';
             const url = baseUrl + '?code=' + code;
 
             const overlay = document.createElement('div');
@@ -191,4 +191,6 @@
             window._dlChannel = null;
         }
     };
+// Экспорт функции для вызова из профиля
+window.pfOpenQR = window.dlOpenQR;
 })();

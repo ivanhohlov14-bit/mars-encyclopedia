@@ -1,0 +1,213 @@
+/* scroll-mode.css — режим чтения "древний свиток" */
+
+html.scroll-mode {
+    background: #d4c5a0 !important;
+    background-image:
+        radial-gradient(ellipse at 20% 30%, rgba(139, 107, 58, 0.15), transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(100, 70, 30, 0.2), transparent 50%),
+        repeating-linear-gradient(0deg,
+            rgba(80, 50, 20, 0.03) 0px,
+            rgba(80, 50, 20, 0.03) 1px,
+            transparent 1px,
+            transparent 3px),
+        repeating-linear-gradient(90deg,
+            rgba(80, 50, 20, 0.02) 0px,
+            rgba(80, 50, 20, 0.02) 1px,
+            transparent 1px,
+            transparent 4px);
+    background-attachment: fixed !important;
+}
+
+html.scroll-mode body {
+    font-family: 'Georgia', 'Times New Roman', serif !important;
+    color: #2b1f0f !important;
+}
+
+/* Затемнённые края — эффект старого свитка */
+html.scroll-mode body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    background: radial-gradient(ellipse at center,
+        transparent 40%,
+        rgba(60, 30, 5, 0.15) 70%,
+        rgba(30, 15, 0, 0.4) 100%);
+}
+
+/* Весь контент на пергаменте */
+html.scroll-mode .md-content,
+html.scroll-mode .rst-content,
+html.scroll-mode .wy-nav-content,
+html.scroll-mode .md-content__inner,
+html.scroll-mode article,
+html.scroll-mode .document,
+html.scroll-mode .section {
+    background: transparent !important;
+    color: #2b1f0f !important;
+}
+
+/* Заголовки как в древних рукописях */
+html.scroll-mode h1,
+html.scroll-mode h2,
+html.scroll-mode h3,
+html.scroll-mode h4 {
+    font-family: 'Palatino', 'Georgia', serif !important;
+    color: #5c2a09 !important;
+    text-shadow: 1px 1px 0 rgba(255, 240, 200, 0.4);
+    letter-spacing: 0.5px;
+}
+
+html.scroll-mode h1 {
+    border-bottom: 2px solid #8b6b3a !important;
+    padding-bottom: 12px;
+}
+
+html.scroll-mode h2 {
+    border-bottom: 1px solid #a88858 !important;
+}
+
+/* Текст */
+html.scroll-mode p,
+html.scroll-mode li,
+html.scroll-mode td,
+html.scroll-mode th {
+    color: #2b1f0f !important;
+    line-height: 1.85 !important;
+}
+
+html.scroll-mode strong {
+    color: #4a2410 !important;
+    font-weight: 700;
+}
+
+html.scroll-mode em {
+    color: #6b3a10 !important;
+}
+
+/* Ссылки */
+html.scroll-mode a {
+    color: #8b4a0e !important;
+    text-decoration: underline !important;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+}
+
+html.scroll-mode a:hover {
+    color: #b85c14 !important;
+}
+
+/* Таблицы */
+html.scroll-mode table {
+    background: rgba(240, 225, 190, 0.6) !important;
+    border: 1px solid #8b6b3a !important;
+}
+
+html.scroll-mode th {
+    background: rgba(200, 175, 120, 0.7) !important;
+    color: #3a1f05 !important;
+    border-color: #8b6b3a !important;
+}
+
+html.scroll-mode td {
+    border-color: #a88858 !important;
+}
+
+/* Блоки кода и цитаты */
+html.scroll-mode code,
+html.scroll-mode pre {
+    background: rgba(220, 200, 160, 0.5) !important;
+    color: #4a2410 !important;
+    border: 1px solid #a88858 !important;
+    font-family: 'Courier New', monospace !important;
+}
+
+html.scroll-mode blockquote {
+    background: rgba(220, 200, 160, 0.4) !important;
+    border-left: 4px solid #8b4a0e !important;
+    color: #3a1f05 !important;
+    font-style: italic;
+}
+
+/* Левое меню — тоже пергамент */
+html.scroll-mode .wy-nav-side,
+html.scroll-mode .md-sidebar--primary {
+    background: #c9b88f !important;
+    border-right: 2px solid #8b6b3a !important;
+}
+
+html.scroll-mode .md-nav__link,
+html.scroll-mode .wy-menu-vertical a {
+    color: #4a2410 !important;
+    font-family: 'Georgia', serif !important;
+}
+
+html.scroll-mode .md-nav__link--active,
+html.scroll-mode .wy-menu-vertical li.current > a {
+    color: #8b4a0e !important;
+    background: rgba(200, 175, 120, 0.4) !important;
+}
+
+/* Верхняя панель */
+html.scroll-mode .md-header,
+html.scroll-mode .wy-nav-top {
+    background: #b89e6c !important;
+    border-bottom: 2px solid #8b6b3a !important;
+}
+
+html.scroll-mode .md-header__title,
+html.scroll-mode .md-header__topic {
+    color: #3a1f05 !important;
+}
+
+/* Инфобоксы — как каменные таблички */
+html.scroll-mode .infobox,
+html.scroll-mode .wiki-infobox,
+html.scroll-mode div[class*="infobox"] {
+    background: #d4c5a0 !important;
+    border: 2px solid #6b4a20 !important;
+    box-shadow: 2px 2px 8px rgba(60, 30, 5, 0.3) !important;
+}
+
+html.scroll-mode .infobox-header,
+html.scroll-mode .infobox-section {
+    background: #b89e6c !important;
+    color: #2b1f0f !important;
+}
+
+/* Кнопка переключения */
+#scroll-mode-toggle {
+    position: fixed;
+    bottom: 200px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b4a0e, #b88a3a);
+    border: 2px solid #5c2a09;
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 99999;
+    box-shadow: 0 8px 24px rgba(60, 30, 5, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: transform 0.2s;
+    touch-action: manipulation;
+}
+
+#scroll-mode-toggle:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+@media (max-width: 768px) {
+    #scroll-mode-toggle {
+        bottom: 140px;
+        right: 16px;
+        width: 56px;
+        height: 56px;
+    }
+}

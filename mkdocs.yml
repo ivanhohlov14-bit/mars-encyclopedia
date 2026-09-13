@@ -23,6 +23,7 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
   - assets/css/mars-theme.css
+  - assets/css/wikipedia-footer.css
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js
@@ -47,6 +48,7 @@ extra_javascript:
   - assets/js/qr-scanner.js
   - assets/js/easter-eggs.js
   - assets/js/mobile.js
+  - assets/js/wikipedia-footer.js
  # - assets/js/mobile-debug.js
 
 extra_head:

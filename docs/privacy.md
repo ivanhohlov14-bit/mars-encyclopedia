@@ -8,15 +8,17 @@ comments: false
     <span>Если вы ищете информацию о самой планете — см. <a href="/">главную страницу</a>.</span>
 </div>
 
-<div class="infobox">
+<div class="infobox" style="float: right; width: 300px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
 
-  <div class="infobox-header">
-    <h3>Политика конфиденциальности</h3>
+  <div style="background: #eaecf0; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.1rem;">Политика конфиденциальности</h3>
   </div>
 
-  <div class="infobox-section">Основные данные</div>
+  <div style="background: #eaecf0; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.85rem;">
+    Основные данные
+  </div>
 
-  <ul class="infobox-list">
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.82rem; line-height: 1.6; list-style: none;">
     <li><b>Тип документа:</b> Юридический</li>
     <li><b>Регулирует:</b> Обработку персональных данных</li>
     <li><b>Дата вступления в силу:</b> 21 августа 2026 года</li>
@@ -24,50 +26,31 @@ comments: false
     <li><b>Применимое право:</b> Российская Федерация</li>
   </ul>
 
-  <div class="infobox-section">Хранение данных</div>
+  <div style="background: #eaecf0; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.85rem;">
+    Хранение данных
+  </div>
 
-  <ul class="infobox-list">
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.82rem; line-height: 1.6; list-style: none;">
     <li><b>Провайдер:</b> Supabase</li>
     <li><b>Регион:</b> ЕС (Франкфурт, Германия)</li>
     <li><b>Стандарты:</b> ISO 27001, SOC 2 Type II</li>
     <li><b>Шифрование:</b> HTTPS/TLS 1.3, bcrypt</li>
   </ul>
 
-  <div class="infobox-section">Контакт</div>
+  <div style="background: #eaecf0; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.85rem;">
+    Контакт
+  </div>
 
-  <ul class="infobox-list">
-    <li><b>Email:</b> <a href="mailto:mnemis.author@mail.ru">mnemis.author@mail.ru</a></li>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.82rem; line-height: 1.6; list-style: none;">
+    <li><b>Email:</b> mnemis.author@mail.ru</li>
     <li><b>Срок ответа:</b> до 3 рабочих дней</li>
   </ul>
 
 </div>
 
-# Политика конфиденциальности
-
 **Политика конфиденциальности** — публичный документ «Марсианской энциклопедии», описывающий, какие персональные данные собирает проект, как они хранятся, обрабатываются и защищаются, а также какие права сохраняет за собой пользователь. Политика применяется ко всем посетителям сайта [mars-wiki.ru](/) — как к анонимным читателям, так и к зарегистрированным участникам.
 
 Политика вступает в силу с **21 августа 2026 года** и может быть обновлена в будущем. О существенных изменениях пользователи будут уведомлены через сайт или электронную почту.
-
----
-
-## Содержание
-
-<div class="wiki-toc">
-
-1. [Общие положения](#1-общие-положения)
-2. [Какие данные мы собираем](#2-какие-данные-мы-собираем)
-3. [Как мы используем данные](#3-как-мы-используем-данные)
-4. [Правовые основания обработки](#4-правовые-основания-обработки)
-5. [Хранение и защита данных](#5-хранение-и-защита-данных)
-6. [Передача данных третьим лицам](#6-передача-данных-третьим-лицам)
-7. [Файлы cookie и локальное хранилище](#7-файлы-cookie-и-локальное-хранилище)
-8. [Права пользователя](#8-права-пользователя)
-9. [Удаление аккаунта](#9-удаление-аккаунта)
-10. [Дети и несовершеннолетние](#10-дети-и-несовершеннолетние)
-11. [Изменения в политике](#11-изменения-в-политике)
-12. [Контакты](#12-контакты)
-
-</div>
 
 ---
 
@@ -78,6 +61,8 @@ comments: false
 Оператором персональных данных является команда проекта «Марсианская энциклопедия» (далее — «Администрация»). Политика разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и учитывает принципы Общего регламента по защите данных (GDPR) Европейского союза.
 
 Используя Сайт, вы подтверждаете, что ознакомились с настоящей Политикой и принимаете её условия. Если вы не согласны с условиями — пожалуйста, прекратите использование Сайта.
+
+---
 
 ## 2. Какие данные мы собираем
 
@@ -95,9 +80,9 @@ comments: false
 
 При посещении Сайта автоматически фиксируются технические сведения:
 
-- **IP-адрес** — для предотвращения злоупотреблений и DDoS-атак.
-- **Тип браузера и устройства** — для корректного отображения интерфейса.
-- **Дата и время визита** — для статистики посещаемости.
+- **IP-адрес** — для предотвращения злоупотреблений и DDoS-атак;
+- **Тип браузера и устройства** — для корректного отображения интерфейса;
+- **Дата и время визита** — для статистики посещаемости;
 - **Просмотренные страницы** — для улучшения навигации и рекомендаций.
 
 Эти данные **не позволяют идентифицировать** конкретного пользователя и используются в обезличенном виде.
@@ -112,6 +97,8 @@ comments: false
 - Медицинскую информацию;
 - Данные о политических и религиозных убеждениях;
 - Геолокацию с точностью выше города.
+
+---
 
 ## 3. Как мы используем данные
 
@@ -138,6 +125,8 @@ comments: false
 
 **Мы не используем данные для рекламы, маркетинга или профилирования пользователей.**
 
+---
+
 ## 4. Правовые основания обработки
 
 Обработка персональных данных осуществляется на следующих правовых основаниях:
@@ -148,6 +137,8 @@ comments: false
 - **Соблюдение закона** — исполнение требований российского законодательства.
 
 Пользователь вправе **отозвать согласие** в любой момент, удалив аккаунт или обратившись к Администрации.
+
+---
 
 ## 5. Хранение и защита данных
 
@@ -169,6 +160,8 @@ comments: false
 
 Персональные данные хранятся **до момента удаления аккаунта** пользователем или **до отзыва согласия**. После удаления данные безвозвратно стираются в течение **30 дней**, за исключением случаев, когда закон требует более длительного хранения.
 
+---
+
 ## 6. Передача данных третьим лицам
 
 Администрация **не продаёт**, **не сдаёт в аренду** и **не передаёт** персональные данные пользователей третьим лицам, за исключением следующих случаев:
@@ -181,6 +174,8 @@ comments: false
 
 Все сторонние сервисы, привлекаемые к работе Сайта, обязуются соблюдать конфиденциальность данных не ниже уровня настоящей Политики.
 
+---
+
 ## 7. Файлы cookie и локальное хранилище
 
 ### 7.1 Что такое cookie
@@ -189,8 +184,8 @@ comments: false
 
 ### 7.2 Какие cookie мы используем
 
-- **Необходимые cookie** — обеспечивают базовые функции: вход в аккаунт, сохранение темы оформления. Без них Сайт не может работать корректно.
-- **Аналитические cookie** — помогают понять, какие страницы наиболее популярны. Данные собираются в обезличенном виде.
+- **Необходимые cookie** — обеспечивают базовые функции: вход в аккаунт, сохранение темы оформления. Без них Сайт не может работать корректно;
+- **Аналитические cookie** — помогают понять, какие страницы наиболее популярны. Данные собираются в обезличенном виде;
 - **Функциональные cookie** — запоминают ваши предпочтения (например, включённое звёздное небо или выбранный язык).
 
 ### 7.3 LocalStorage
@@ -200,6 +195,8 @@ comments: false
 ### 7.4 Как отключить cookie
 
 Вы можете отключить cookie в настройках браузера. Однако учтите: **без необходимых cookie вход в аккаунт и сохранение настроек работать не будут**.
+
+---
 
 ## 8. Права пользователя
 
@@ -212,7 +209,9 @@ comments: false
 - **Право на возражение** — возразить против обработки данных в отдельных случаях;
 - **Право на переносимость** — получить свои данные в машиночитаемом формате.
 
-Для реализации любого из этих прав напишите на адрес <a href="mailto:mnemis.author@mail.ru">mnemis.author@mail.ru</a>. Администрация обработает запрос в течение **30 календарных дней**.
+Для реализации любого из этих прав напишите на адрес **mnemis.author@mail.ru**. Администрация обработает запрос в течение **30 календарных дней**.
+
+---
 
 ## 9. Удаление аккаунта
 
@@ -224,7 +223,7 @@ comments: false
 
 ### Способ 2 — через обращение
 
-Напишите письмо с адреса, привязанного к аккаунту, на <a href="mailto:mnemis.author@mail.ru">mnemis.author@mail.ru</a> с темой «Удаление аккаунта». Мы подтвердим удаление в течение **3 рабочих дней**.
+Напишите письмо с адреса, привязанного к аккаунту, на **mnemis.author@mail.ru** с темой «Удаление аккаунта». Мы подтвердим удаление в течение **3 рабочих дней**.
 
 **После удаления аккаунта:**
 
@@ -233,6 +232,8 @@ comments: false
 - Публичные материалы, созданные вами, могут быть сохранены в обезличенном виде;
 - Резервные копии удаляются в течение **30 дней**.
 
+---
+
 ## 10. Дети и несовершеннолетние
 
 Сайт **не предназначен для детей младше 13 лет**. Администрация сознательно не собирает данные лиц, не достигших указанного возраста.
@@ -240,6 +241,8 @@ comments: false
 Если вам стало известно, что ребёнок младше 13 лет зарегистрировался на Сайте без согласия родителей, свяжитесь с нами — мы удалим аккаунт и связанные с ним данные.
 
 Пользователи в возрасте от 13 до 18 лет могут использовать Сайт только с согласия родителей или законных представителей.
+
+---
 
 ## 11. Изменения в политике
 
@@ -253,382 +256,18 @@ comments: false
 
 Продолжая использовать Сайт после внесения изменений, вы подтверждаете согласие с новой редакцией Политики.
 
+---
+
 ## 12. Контакты
 
-По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться:
+По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться по адресу:
 
-- **Email:** <a href="mailto:mnemis.author@mail.ru">mnemis.author@mail.ru</a>
+- **Email:** mnemis.author@mail.ru
 
 Мы стараемся отвечать на все обращения в течение **3 рабочих дней**.
 
 ---
 
-<div class="wiki-footer-note">
-    <p><em>Дата вступления в силу: 21 августа 2026 года.</em></p>
-    <p><em>Последнее обновление: 13 сентября 2026 года.</em></p>
-    <p>См. также: <a href="/license/">Условия использования</a> · <a href="/about/">О проекте</a> · <a href="/">Главная страница</a></p>
-</div>
+*Дата вступления в силу: 21 августа 2026 года.*
 
-<style>
-/* ============================================================
-   ИНФОБОКС — серый, в стиле Wikipedia
-   ============================================================ */
-.infobox {
-    float: right;
-    clear: right;
-    width: 300px;
-    background: #f8f9fa;
-    border: 1px solid #a2a9b1;
-    padding: 0;
-    margin: 0 0 1rem 1.5rem;
-    font-size: 0.85rem;
-    line-height: 1.6;
-    color: #202122;
-    border-radius: 2px;
-}
-
-.infobox-header {
-    background: #eaecf0;
-    padding: 8px 12px;
-    border-bottom: 1px solid #a2a9b1;
-    text-align: center;
-    border-radius: 2px 2px 0 0;
-}
-
-.infobox-header h3 {
-    margin: 0;
-    padding: 0;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: #202122;
-    border: none;
-    line-height: 1.3;
-}
-
-.infobox-section {
-    background: #eaecf0;
-    padding: 6px 10px;
-    margin: 0;
-    border-top: 1px solid #a2a9b1;
-    border-bottom: 1px solid #a2a9b1;
-    text-align: center;
-    font-weight: 700;
-    font-size: 0.82rem;
-    color: #202122;
-    letter-spacing: 0.3px;
-}
-
-.infobox-list {
-    margin: 0;
-    padding: 10px 12px 12px 28px;
-    list-style: none;
-    font-size: 0.82rem;
-    line-height: 1.6;
-}
-
-.infobox-list li {
-    margin: 4px 0;
-    padding: 0;
-    color: #202122;
-    position: relative;
-}
-
-.infobox-list li::before {
-    content: '•';
-    position: absolute;
-    left: -14px;
-    color: #54595d;
-    font-weight: 700;
-}
-
-.infobox-list b {
-    color: #202122;
-    font-weight: 600;
-}
-
-.infobox-list a {
-    color: #3366cc !important;
-    text-decoration: none !important;
-    border-bottom: none !important;
-    word-break: break-all;
-}
-
-.infobox-list a:hover {
-    text-decoration: underline !important;
-}
-
-/* ============================================================
-   ШАПКА-ПРИМЕЧАНИЕ
-   ============================================================ */
-.wiki-hatnote {
-    font-style: italic;
-    color: #54595d;
-    font-size: 0.88rem;
-    padding: 6px 12px 6px 16px;
-    margin: 0 0 18px 0;
-    border-left: 3px solid #c8ccd1;
-    background: rgba(200, 204, 209, 0.08);
-    line-height: 1.6;
-}
-.wiki-hatnote span { display: block; }
-.wiki-hatnote a { color: #3366cc; text-decoration: none; }
-.wiki-hatnote a:hover { text-decoration: underline; }
-
-/* ============================================================
-   ОГЛАВЛЕНИЕ
-   ============================================================ */
-.wiki-toc {
-    display: inline-block;
-    padding: 12px 18px 12px 24px;
-    background: #f8f9fa;
-    border: 1px solid #a2a9b1;
-    border-radius: 2px;
-    font-size: 0.9rem;
-    margin: 12px 0 24px 0;
-    min-width: 240px;
-    max-width: 100%;
-}
-.wiki-toc ol {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    counter-reset: toc-counter;
-}
-.wiki-toc ol li {
-    counter-increment: toc-counter;
-    margin: 4px 0;
-    padding-left: 0;
-    line-height: 1.5;
-}
-.wiki-toc ol li::before {
-    content: counter(toc-counter) ". ";
-    color: #54595d;
-    font-weight: 500;
-    margin-right: 2px;
-}
-.wiki-toc a {
-    color: #3366cc !important;
-    text-decoration: none !important;
-    border-bottom: none !important;
-}
-.wiki-toc a:hover {
-    text-decoration: underline !important;
-}
-
-/* ============================================================
-   ЗАГОЛОВКИ
-   ============================================================ */
-h1 {
-    font-size: 1.85rem;
-    font-weight: 700;
-    color: #000;
-    margin: 0 0 16px 0;
-    padding: 0 0 6px 0;
-    border-bottom: 1px solid #a2a9b1;
-    font-family: 'Linux Libertine', Georgia, 'Times New Roman', serif;
-    line-height: 1.25;
-}
-
-h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #000;
-    margin: 32px 0 14px 0;
-    padding-bottom: 6px;
-    border-bottom: 1px solid #a2a9b1;
-    line-height: 1.3;
-    font-family: 'Linux Libertine', Georgia, 'Times New Roman', serif;
-}
-
-h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #202122;
-    margin: 20px 0 10px 0;
-    padding: 0;
-    border: none;
-    font-family: 'Linux Libertine', Georgia, 'Times New Roman', serif;
-}
-
-/* ============================================================
-   ОСНОВНОЙ ТЕКСТ
-   ============================================================ */
-p {
-    margin: 0 0 14px 0;
-    line-height: 1.75;
-    color: #202122;
-}
-
-ul, ol {
-    margin: 0 0 14px 0;
-    padding-left: 24px;
-}
-li {
-    margin: 4px 0;
-    line-height: 1.7;
-    color: #202122;
-}
-
-strong { color: #000; font-weight: 700; }
-em { color: #54595d; }
-
-a {
-    color: #3366cc !important;
-    text-decoration: none !important;
-    border-bottom: none !important;
-}
-a:hover {
-    text-decoration: underline !important;
-}
-
-/* ============================================================
-   ТАБЛИЦЫ
-   ============================================================ */
-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 12px 0 18px 0;
-    font-size: 0.9rem;
-    background: #f8f9fa;
-    border: 1px solid #a2a9b1;
-}
-th {
-    background: #eaecf0;
-    color: #202122;
-    padding: 8px 12px;
-    text-align: left;
-    border: 1px solid #a2a9b1;
-    font-weight: 700;
-}
-td {
-    padding: 8px 12px;
-    border: 1px solid #a2a9b1;
-    color: #202122;
-    background: #fff;
-}
-
-hr {
-    border: none;
-    border-top: 1px solid #eaecf0;
-    margin: 24px 0;
-}
-
-/* ============================================================
-   НИЖНЯЯ СНОСКА
-   ============================================================ */
-.wiki-footer-note {
-    margin-top: 32px;
-    padding-top: 18px;
-    border-top: 1px solid #eaecf0;
-    font-size: 0.85rem;
-    color: #54595d;
-    line-height: 1.6;
-    clear: both;
-}
-.wiki-footer-note p { margin: 0 0 4px 0; }
-.wiki-footer-note a {
-    color: #3366cc !important;
-    text-decoration: none !important;
-    border-bottom: none !important;
-}
-.wiki-footer-note a:hover { text-decoration: underline !important; }
-
-/* ============================================================
-   МОБИЛЬНАЯ АДАПТАЦИЯ
-   ============================================================ */
-@media (max-width: 700px) {
-    .infobox {
-        float: none;
-        width: 100%;
-        margin: 0 0 18px 0;
-    }
-    h1 { font-size: 1.5rem; }
-    h2 { font-size: 1.2rem; margin-top: 26px; }
-    h3 { font-size: 1rem; }
-    .wiki-toc { width: 100%; font-size: 0.85rem; }
-    table { font-size: 0.82rem; }
-    th, td { padding: 6px 8px; }
-    .wiki-hatnote { font-size: 0.82rem; }
-}
-
-/* ============================================================
-   ТЁМНАЯ ТЕМА — ЗВЁЗДНОЕ НЕБО
-   ============================================================ */
-html body.mars-stars-on h1,
-html body.mars-stars-on h2,
-html body.mars-stars-on h3,
-html body.mars-stars-on p,
-html body.mars-stars-on li {
-    color: #e0e0f0 !important;
-}
-html body.mars-stars-on strong { color: #ffffff !important; }
-html body.mars-stars-on em { color: #b0b0c8 !important; }
-
-html body.mars-stars-on .wiki-hatnote {
-    color: #b0b0c8 !important;
-    background: rgba(108, 99, 255, 0.08);
-    border-left-color: #6C63FF;
-}
-html body.mars-stars-on .wiki-hatnote a,
-html body.mars-stars-on a,
-html body.mars-stars-on .wiki-toc a,
-html body.mars-stars-on .wiki-footer-note a,
-html body.mars-stars-on .infobox-list a {
-    color: #A29BFE !important;
-}
-
-html body.mars-stars-on .infobox {
-    background: #14142a !important;
-    border-color: rgba(108, 99, 255, 0.4) !important;
-    color: #e0e0f0 !important;
-}
-html body.mars-stars-on .infobox-header,
-html body.mars-stars-on .infobox-section {
-    background: #252550 !important;
-    color: #ffffff !important;
-    border-color: rgba(108, 99, 255, 0.4) !important;
-}
-html body.mars-stars-on .infobox-header h3 {
-    color: #ffffff !important;
-}
-html body.mars-stars-on .infobox-list li,
-html body.mars-stars-on .infobox-list b {
-    color: #e0e0f0 !important;
-}
-html body.mars-stars-on .infobox-list li::before {
-    color: #A29BFE;
-}
-
-html body.mars-stars-on .wiki-toc {
-    background: #14142a !important;
-    border-color: rgba(108, 99, 255, 0.4) !important;
-}
-
-html body.mars-stars-on h1,
-html body.mars-stars-on h2 {
-    color: #f0f0ff !important;
-    border-bottom-color: rgba(108, 99, 255, 0.35) !important;
-}
-html body.mars-stars-on hr {
-    border-top-color: rgba(108, 99, 255, 0.2) !important;
-}
-html body.mars-stars-on .wiki-footer-note {
-    color: #8888a8 !important;
-    border-top-color: rgba(108, 99, 255, 0.25) !important;
-}
-
-html body.mars-stars-on table {
-    background: #14142a !important;
-    border-color: rgba(108, 99, 255, 0.35) !important;
-}
-html body.mars-stars-on th {
-    background: #252550 !important;
-    color: #ffffff !important;
-    border-color: rgba(108, 99, 255, 0.4) !important;
-}
-html body.mars-stars-on td {
-    background: #1a1a30 !important;
-    color: #e0e0f0 !important;
-    border-color: rgba(108, 99, 255, 0.2) !important;
-}
-</style>
+*Последнее обновление: 13 сентября 2026 года.*

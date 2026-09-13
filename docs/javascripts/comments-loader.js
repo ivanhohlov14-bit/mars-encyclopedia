@@ -24,6 +24,21 @@
             '/music/constructor/',
             '/interactive/',
             '/achievements/',
+            '/privacy/',
+            '/about/',
+            '/contact/',
+            '/code-of-conduct/',
+            '/statistics/',
+            '/quest-map/',
+            '/bookmarks/',
+            '/feed/',
+            '/quests/',
+            '/top/',
+            '/horoscope/',
+            '/scrolls/',
+            '/forum/',
+            '/guilds/',
+            '/names/',
             '/translator/'
         ];
 

@@ -1,0 +1,124 @@
+/* ============================================================
+   wikipedia-footer.css — футер в стиле Wikipedia
+   ============================================================ */
+
+.wiki-footer {
+    margin-top: 60px;
+    padding: 24px 20px;
+    border-top: 1px solid rgba(160, 160, 180, 0.3);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+    background: transparent;
+}
+
+.wiki-footer p {
+    margin: 0 0 10px 0;
+    color: #555 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.6 !important;
+}
+
+.wiki-footer .wiki-footer-note {
+    font-style: italic;
+    color: #777 !important;
+    font-size: 0.78rem !important;
+}
+
+.wiki-footer .wiki-footer-links {
+    margin-top: 14px;
+    font-size: 0.78rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    align-items: center;
+}
+
+.wiki-footer .wiki-footer-links a,
+.wiki-footer .wiki-footer-links span {
+    color: #0645ad !important;
+    text-decoration: none;
+    font-size: 0.78rem !important;
+    padding: 0 6px;
+    border-right: 1px solid rgba(160, 160, 180, 0.4);
+    line-height: 1.2;
+}
+
+.wiki-footer .wiki-footer-links a:last-child,
+.wiki-footer .wiki-footer-links span:last-child {
+    border-right: none;
+}
+
+.wiki-footer .wiki-footer-links a:hover {
+    text-decoration: underline;
+    color: #0b0080 !important;
+}
+
+.wiki-footer .wiki-footer-brand {
+    margin-top: 12px;
+    font-size: 0.75rem;
+    color: #777 !important;
+    line-height: 1.5;
+}
+
+.wiki-footer .wiki-footer-brand strong {
+    color: #333 !important;
+    font-weight: 600;
+}
+
+/* ============================================================
+   Тёмная тема (звёздное небо)
+   ============================================================ */
+html body.mars-stars-on .wiki-footer {
+    border-top-color: rgba(108, 99, 255, 0.35) !important;
+}
+
+html body.mars-stars-on .wiki-footer p,
+html body.mars-stars-on .wiki-footer .wiki-footer-note {
+    color: #b0b0c8 !important;
+}
+
+html body.mars-stars-on .wiki-footer .wiki-footer-links a,
+html body.mars-stars-on .wiki-footer .wiki-footer-links span {
+    color: #A29BFE !important;
+    border-right-color: rgba(108, 99, 255, 0.35) !important;
+}
+
+html body.mars-stars-on .wiki-footer .wiki-footer-links a:hover {
+    color: #6C63FF !important;
+}
+
+html body.mars-stars-on .wiki-footer .wiki-footer-brand {
+    color: #9999bb !important;
+}
+
+html body.mars-stars-on .wiki-footer .wiki-footer-brand strong {
+    color: #ffffff !important;
+}
+
+/* ============================================================
+   Мобильная адаптация
+   ============================================================ */
+@media (max-width: 600px) {
+    .wiki-footer {
+        margin-top: 40px;
+        padding: 20px 14px;
+        font-size: 0.75rem;
+    }
+    .wiki-footer p {
+        font-size: 0.75rem !important;
+    }
+    .wiki-footer .wiki-footer-note {
+        font-size: 0.72rem !important;
+    }
+    .wiki-footer .wiki-footer-links {
+        font-size: 0.72rem;
+        gap: 2px 0;
+    }
+    .wiki-footer .wiki-footer-links a,
+    .wiki-footer .wiki-footer-links span {
+        font-size: 0.72rem !important;
+        padding: 2px 5px;
+    }
+}

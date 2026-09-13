@@ -49,6 +49,7 @@ extra_javascript:
   - assets/js/easter-eggs.js
   - assets/js/mobile.js
   - assets/js/wikipedia-footer.js
+  - assets/js/language-switcher.js
  # - assets/js/mobile-debug.js
 
 extra_head:

@@ -47,7 +47,7 @@ extra_javascript:
   - assets/js/qr-scanner.js
   - assets/js/easter-eggs.js
   - assets/js/mobile.js
-  # - assets/js/mobile-debug.js
+  - assets/js/mobile-debug.js
 
 extra_head:
   - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

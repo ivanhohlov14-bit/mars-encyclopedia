@@ -3,13 +3,13 @@ title: Контакты
 comments: false
 ---
 
+# Контакты
+
 <div style="background: #f8f9fa; border: 1px solid #a2a9b1; border-left: 4px solid #6C63FF; padding: 10px 16px; margin: 0 0 20px 0; border-radius: 3px; font-size: 0.88rem; line-height: 1.6; color: #54595d; font-style: italic;">
 
 На этой странице собраны способы связи с командой «Марсианской энциклопедии» — для читателей, авторов, исследователей и партнёров.
 
 </div>
-
-# Контакты
 
 <div class="infobox" style="float: right; width: 300px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
 

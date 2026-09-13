@@ -24,6 +24,7 @@ extra_css:
   - stylesheets/extra.css
   - assets/css/mars-theme.css
   - assets/css/wikipedia-footer.css
+  - assets/css/scroll-mode.css
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js
@@ -52,6 +53,8 @@ extra_javascript:
   - assets/js/mobile.js
   - assets/js/wikipedia-footer.js
   - assets/js/language-switcher.js
+  - assets/js/mars-tts.js
+  - assets/js/scroll-mode.js
  # - assets/js/mobile-debug.js
 
 extra_head:
@@ -212,7 +215,7 @@ nav:
       - «К Исходу»: interactive/exodus.md
       - Карта Марса: globe-map.md
       - Марсианская империя: game/index.md
-  - Слова: tools/mars-dict/index.md
+  - 🏛️ Музей: museum/index.md
   - 🏰 Гильдии: guilds/index.md
   - 🔤 Марсианское имя: names/index.md
   - 💬 Форум: forum/index.md

@@ -1,9 +1,4 @@
 
----
-title: О проекте
-comments: false
----
-
 # О проекте
  
 <div style="background: #f8f9fa; border: 1px solid #a2a9b1; border-left: 4px solid #6C63FF; padding: 10px 16px; margin: 0 0 20px 0; border-radius: 3px; font-size: 0.88rem; line-height: 1.6; color: #54595d; font-style: italic;">
@@ -11,8 +6,6 @@ comments: false
 Эта страница описывает цели, принципы и структуру «Марсианской энциклопедии» — научно-художественного справочного проекта по вселенной цикла романов «Письмо из Красной пыли».
 
 </div>
-
-# О проекте
 
 <div class="infobox" style="float: right; width: 300px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
 
@@ -135,15 +128,11 @@ comments: false
 
 ## 7. Правовая информация
 
-<div style="background: #f8f9fa; border: 1px solid #a2a9b1; padding: 12px 16px; margin: 16px 0; border-radius: 3px; font-size: 0.88rem; line-height: 1.6; color: #54595d;">
-
 **Авторские права.** Мир Марса, персонажи и события, описанные в цикле «Письмо из Красной пыли», являются интеллектуальной собственностью **Mnemis**. «Марсианская энциклопедия» не претендует на права на эти материалы.
 
 **Лицензия.** Текст энциклопедии распространяется по лицензии **Creative Commons «Attribution-NonCommercial-NoDerivs» (BY-NC-ND) 4.0**. Это означает, что вы можете свободно читать, копировать и распространять материалы **без изменений** и **без коммерческого использования**, при условии указания авторства.
 
 **Отказ от ответственности.** Администрация не несёт ответственности за использование материалов третьими лицами. Все сведения предоставляются «как есть».
-
-</div>
 
 ---
 

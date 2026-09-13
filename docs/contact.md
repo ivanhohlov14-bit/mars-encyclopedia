@@ -167,7 +167,3 @@ comments: false
 | Пресса и СМИ | «Пресса» | до 3 рабочих дней |
 
 **Единый адрес для всех обращений:** [mnemis.author@mail.ru](mailto:mnemis.author@mail.ru)
-
----
-
-*Lān sur. — Глина помнит.*

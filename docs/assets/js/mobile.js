@@ -12,15 +12,13 @@
     if (!IS_MOBILE) return;
 
     // ============================================================
-    // 🔧 НАСТРОЙКИ — URL'ы от корня домена mars-wiki.ru
+    // 🔧 НАСТРОЙКИ
     // ============================================================
     var CONFIG = {
-        loginUrl:   '/login/',      // ← просто /login/
-        profileUrl: '/profile/',    // ← просто /profile/
+        loginUrl:   '/login/',
+        profileUrl: '/profile/',
         loginText: 'Войти',
         profileText: 'Профиль',
-        loginIcon: '👤',
-        profileIcon: '👤',
         hideOnPages: ['/secret/', '/secret-2/', '/login/']
     };
 
@@ -35,109 +33,124 @@
         if (document.getElementById('mobile-register-btn')) return;
 
         var path = window.location.pathname;
-
-        // Скрываем на некоторых страницах
         for (var i = 0; i < CONFIG.hideOnPages.length; i++) {
             if (path.indexOf(CONFIG.hideOnPages[i]) !== -1) return;
         }
 
         var onProfile = path.indexOf('/profile/') !== -1;
-
-        // ✅ ПРОСТО АБСОЛЮТНЫЙ URL — никакого base path
         var targetUrl = onProfile ? CONFIG.profileUrl : CONFIG.loginUrl;
         var labelText = onProfile ? CONFIG.profileText : CONFIG.loginText;
-        var iconChar  = onProfile ? CONFIG.profileIcon : CONFIG.loginIcon;
 
         var btn = document.createElement('a');
         btn.id = 'mobile-register-btn';
         btn.href = targetUrl;
         btn.setAttribute('aria-label', labelText);
-        btn.innerHTML = '<span class="mrbtn-icon">' + iconChar + '</span>' +
-                        '<span class="mrbtn-text">' + labelText + '</span>';
-
-        btn.style.cssText =
-            'position:fixed;' +
-            'top:calc(8px + env(safe-area-inset-top,0px));' +
-            'right:calc(10px + env(safe-area-inset-right,0px));' +
-            'z-index:99998;' +
-            'height:36px;' +
-            'padding:0 12px;' +
-            'background:linear-gradient(135deg,#6C63FF,#A29BFE);' +
-            'color:#ffffff !important;' +
-            'border-radius:18px;' +
-            'font-size:0.82rem;' +
-            'font-weight:800;' +
-            'text-decoration:none !important;' +
-            'box-shadow:0 4px 14px rgba(108,99,255,0.55);' +
-            'display:inline-flex;' +
-            'align-items:center;' +
-            'gap:5px;' +
-            'font-family:inherit;' +
-            'letter-spacing:0.2px;' +
-            'touch-action:manipulation;' +
-            '-webkit-tap-highlight-color:transparent;' +
-            'transition:transform 0.15s ease, box-shadow 0.15s ease;' +
-            'white-space:nowrap;' +
-            'line-height:1;' +
-            'box-sizing:border-box;';
-
-        btn.addEventListener('touchstart', function() {
-            btn.style.transform = 'scale(0.94)';
-            btn.style.boxShadow = '0 2px 8px rgba(108,99,255,0.7)';
-        }, { passive: true });
-
-        btn.addEventListener('touchend', function() {
-            btn.style.transform = 'scale(1)';
-            btn.style.boxShadow = '0 4px 14px rgba(108,99,255,0.55)';
-        }, { passive: true });
-
-        btn.addEventListener('click', function() {
-            vibrate(15);
-        });
+        // ✅ Только текст, без иконки — надёжнее
+        btn.textContent = labelText;
 
         document.body.appendChild(btn);
 
-        // CSS: отступ у заголовка, адаптив кнопки
+        // CSS через отдельный style, чтобы правила точно применились
         var style = document.createElement('style');
         style.id = 'mobile-register-style';
         style.textContent = `
+            /* ==========================================================
+               КНОПКА «ВОЙТИ» — правый верхний угол
+               ========================================================== */
+            #mobile-register-btn {
+                position: fixed !important;
+                top: calc(8px + env(safe-area-inset-top, 0px)) !important;
+                right: calc(10px + env(safe-area-inset-right, 0px)) !important;
+                z-index: 99998 !important;
+                padding: 8px 14px !important;
+                background: linear-gradient(135deg, #6C63FF, #A29BFE) !important;
+                color: #ffffff !important;
+                border-radius: 18px !important;
+                font-size: 0.85rem !important;
+                font-weight: 800 !important;
+                text-decoration: none !important;
+                box-shadow: 0 4px 14px rgba(108,99,255,0.55) !important;
+                display: inline-block !important;
+                font-family: inherit !important;
+                letter-spacing: 0.3px !important;
+                touch-action: manipulation !important;
+                -webkit-tap-highlight-color: transparent !important;
+                white-space: nowrap !important;
+                line-height: 1.2 !important;
+                box-sizing: border-box !important;
+                min-width: 70px !important;
+                text-align: center !important;
+            }
+            #mobile-register-btn:active {
+                transform: scale(0.94) !important;
+                box-shadow: 0 2px 8px rgba(108,99,255,0.7) !important;
+            }
+
+            /* ==========================================================
+               ШАПКА САЙТА — уменьшаем шрифт, чтобы поместился заголовок
+               ========================================================== */
             @media screen and (max-width: 1024px) {
+                /* Заголовок сайта — уменьшаем шрифт, чтобы влезло название */
                 .md-header__title,
                 .md-header-nav__title,
-                .wy-nav-top .title,
-                .wy-nav-top > a:not(.icon):not(.menu-toggle) {
-                    padding-right: 100px !important;
-                    max-width: calc(100vw - 120px) !important;
-                    overflow: hidden !important;
-                    text-overflow: ellipsis !important;
-                    white-space: nowrap !important;
-                }
                 .md-header__topic,
                 .md-header__title .md-header__topic,
-                .md-header-nav__title,
-                .wy-nav-top .title {
+                .wy-nav-top .title,
+                .wy-nav-top > a:not(.icon):not(.menu-toggle) {
+                    font-size: 0.95rem !important;
+                    letter-spacing: -0.2px !important;
+                    padding-right: 90px !important;
+                    max-width: calc(100vw - 110px) !important;
                     overflow: hidden !important;
                     text-overflow: ellipsis !important;
                     white-space: nowrap !important;
-                    max-width: 100% !important;
+                    line-height: 1.2 !important;
                 }
-                #mobile-register-btn .mrbtn-icon { font-size: 0.95rem; line-height: 1; }
-                #mobile-register-btn .mrbtn-text { font-size: 0.8rem; line-height: 1; }
+
+                /* Ещё меньше на средних экранах */
+                @media (max-width: 600px) {
+                    .md-header__title,
+                    .md-header-nav__title,
+                    .md-header__topic,
+                    .md-header__title .md-header__topic,
+                    .wy-nav-top .title,
+                    .wy-nav-top > a:not(.icon):not(.menu-toggle) {
+                        font-size: 0.82rem !important;
+                        padding-right: 85px !important;
+                        max-width: calc(100vw - 105px) !important;
+                    }
+                }
+
+                /* Совсем маленькие экраны — ещё мельче */
+                @media (max-width: 400px) {
+                    .md-header__title,
+                    .md-header-nav__title,
+                    .md-header__topic,
+                    .md-header__title .md-header__topic,
+                    .wy-nav-top .title,
+                    .wy-nav-top > a:not(.icon):not(.menu-toggle) {
+                        font-size: 0.72rem !important;
+                        padding-right: 80px !important;
+                        max-width: calc(100vw - 100px) !important;
+                    }
+                    #mobile-register-btn {
+                        padding: 7px 10px !important;
+                        font-size: 0.78rem !important;
+                        min-width: 62px !important;
+                    }
+                }
             }
-            @media (max-width: 400px) {
-                #mobile-register-btn { padding: 0 10px !important; }
-                #mobile-register-btn .mrbtn-text { display: none !important; }
-                #mobile-register-btn .mrbtn-icon { font-size: 1.15rem !important; }
-                .md-header__title,
-                .md-header-nav__title,
-                .wy-nav-top .title,
-                .wy-nav-top > a:not(.icon):not(.menu-toggle) {
-                    padding-right: 70px !important;
-                    max-width: calc(100vw - 90px) !important;
-                }
+
+            /* На тёмной теме — кнопка и заголовок белые */
+            html body.mars-stars-on .md-header__title,
+            html body.mars-stars-on .md-header__topic,
+            html body.mars-stars-on .md-header-nav__title {
+                color: #ffffff !important;
             }
         `;
         document.head.appendChild(style);
+
+        console.log('👤 Кнопка «Войти» →', targetUrl);
     }
 
     // ============================================================

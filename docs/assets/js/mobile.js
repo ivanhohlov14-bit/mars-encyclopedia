@@ -1,7 +1,6 @@
 // ============================================================
-// mobile.js — мобильные фиксы для сайта
-// Подключается отдельно в mkdocs.yml
-// На ПК вообще не делает ничего (сразу выходит)
+// mobile.js — мобильные фиксы и кнопка регистрации
+// Работает только на телефонах. На ПК ничего не делает.
 // ============================================================
 
 (function() {
@@ -10,35 +9,33 @@
     // ============================================================
     // 📱 ПРОВЕРКА: только мобильные
     // ============================================================
-    const IS_MOBILE =
+    var IS_MOBILE =
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
         (navigator.maxTouchPoints && navigator.maxTouchPoints > 1 && window.innerWidth < 1024);
 
-    if (!IS_MOBILE) return; // на ПК ничего не делаем
+    if (!IS_MOBILE) return;
 
     // ============================================================
-    // 🔧 НАСТРОЙКИ (меняй под себя)
+    // 🔧 НАСТРОЙКИ
     // ============================================================
-    const CONFIG = {
-        registerUrl: '/profile/',      // куда ведёт кнопка регистрации
-        registerText: '👤 Войти',      // текст на главной и др. страницах
-        registerTextOnProfile: '👤 Профиль', // текст на самой странице профиля
-        hideOnPages: ['/secret/', '/secret-2/'] // где не показывать кнопку
+    var CONFIG = {
+        registerUrl: '/login/',             // куда ведёт кнопка «Войти»
+        profileUrl: '/profile/',            // куда ведёт, если уже на профиле
+        registerText: 'Войти',
+        registerTextOnProfile: 'Профиль',
+        registerIcon: '👤',
+        hideOnPages: ['/secret/', '/secret-2/', '/login/']
     };
 
     // ============================================================
-    // 🔗 БАЗОВЫЙ ПУТЬ (для GitHub Pages / подпапок)
+    // 🔗 БАЗОВЫЙ ПУТЬ (для GitHub Pages в подпапке)
     // ============================================================
     function getBasePath() {
-        // Пример: /mars-encyclopedia/some-page/ → /mars-encyclopedia
-        const path = window.location.pathname;
-        // Если URL заканчивается на /something/ или /something.html
-        // Убираем последний сегмент
-        return path.replace(/\/[^\/]*\/?$/, '') || '';
+        return window.location.pathname.replace(/\/[^\/]*\/?$/, '') || '';
     }
 
     // ============================================================
-    // 📳 ВИБРАЦИЯ (если поддерживается)
+    // 📳 ВИБРАЦИЯ
     // ============================================================
     function vibrate(pattern) {
         try {
@@ -47,87 +44,156 @@
     }
 
     // ============================================================
-    // 👤 КНОПКА РЕГИСТРАЦИИ (правый верхний угол)
+    // 👤 КНОПКА РЕГИСТРАЦИИ (правый верхний угол, не перекрывает заголовок)
     // ============================================================
     function initMobileRegisterButton() {
         if (document.getElementById('mobile-register-btn')) return;
 
-        // Проверяем, не скрыта ли кнопка на этой странице
-        const path = window.location.pathname;
-        for (const hide of CONFIG.hideOnPages) {
-            if (path.indexOf(hide) !== -1) return;
+        var path = window.location.pathname;
+
+        // Скрываем на некоторых страницах
+        for (var i = 0; i < CONFIG.hideOnPages.length; i++) {
+            if (path.indexOf(CONFIG.hideOnPages[i]) !== -1) return;
         }
 
-        const base = getBasePath();
-        const fullUrl = base + CONFIG.registerUrl;
-        const isProfilePage = path.indexOf(CONFIG.registerUrl) !== -1;
+        var base = getBasePath();
+        var onProfile = path.indexOf(CONFIG.profileUrl) !== -1;
+        var targetUrl = base + (onProfile ? CONFIG.profileUrl : CONFIG.registerUrl);
+        var labelText = onProfile ? CONFIG.registerTextOnProfile : CONFIG.registerText;
 
-        const btn = document.createElement('a');
+        var btn = document.createElement('a');
         btn.id = 'mobile-register-btn';
-        btn.href = fullUrl;
-        btn.setAttribute('aria-label', 'Регистрация / Профиль');
-        btn.innerHTML = isProfilePage ? CONFIG.registerTextOnProfile : CONFIG.registerText;
+        btn.href = targetUrl;
+        btn.setAttribute('aria-label', onProfile ? 'Профиль' : 'Войти');
+        btn.innerHTML = '<span class="mrbtn-icon">' + CONFIG.registerIcon + '</span>' +
+                        '<span class="mrbtn-text">' + labelText + '</span>';
 
-        // 🎨 Стили с учётом safe-area (не уезжает под чёлку iPhone)
-        btn.style.cssText = `
-            position: fixed;
-            top: calc(8px + env(safe-area-inset-top, 0px));
-            right: calc(10px + env(safe-area-inset-right, 0px));
-            z-index: 99998;
-            padding: 8px 14px;
-            background: linear-gradient(135deg, #6C63FF, #A29BFE);
-            color: #ffffff !important;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-decoration: none;
-            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.55);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: inherit;
-            letter-spacing: 0.3px;
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-            transition: transform 0.15s ease;
-            white-space: nowrap;
-            max-width: 55vw;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.2;
-        `;
+        // Стили — компактные, с safe-area для iPhone
+        btn.style.cssText =
+            'position:fixed;' +
+            'top:calc(8px + env(safe-area-inset-top,0px));' +
+            'right:calc(10px + env(safe-area-inset-right,0px));' +
+            'z-index:99998;' +
+            'height:36px;' +
+            'padding:0 12px;' +
+            'background:linear-gradient(135deg,#6C63FF,#A29BFE);' +
+            'color:#ffffff !important;' +
+            'border-radius:18px;' +
+            'font-size:0.82rem;' +
+            'font-weight:800;' +
+            'text-decoration:none !important;' +
+            'box-shadow:0 4px 14px rgba(108,99,255,0.55);' +
+            'display:inline-flex;' +
+            'align-items:center;' +
+            'gap:5px;' +
+            'font-family:inherit;' +
+            'letter-spacing:0.2px;' +
+            'touch-action:manipulation;' +
+            '-webkit-tap-highlight-color:transparent;' +
+            'transition:transform 0.15s ease, box-shadow 0.15s ease;' +
+            'white-space:nowrap;' +
+            'line-height:1;' +
+            'box-sizing:border-box;';
 
-        // Отклик на тап
-        btn.addEventListener('touchstart', () => {
-            btn.style.transform = 'scale(0.95)';
+        btn.addEventListener('touchstart', function() {
+            btn.style.transform = 'scale(0.94)';
+            btn.style.boxShadow = '0 2px 8px rgba(108,99,255,0.7)';
         }, { passive: true });
 
-        btn.addEventListener('touchend', () => {
+        btn.addEventListener('touchend', function() {
             btn.style.transform = 'scale(1)';
+            btn.style.boxShadow = '0 4px 14px rgba(108,99,255,0.55)';
         }, { passive: true });
 
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', function() {
             vibrate(15);
         });
 
         document.body.appendChild(btn);
 
-        console.log('👤 Мобильная кнопка регистрации добавлена →', fullUrl);
+        // Добавляем CSS для отступа названия (чтобы кнопка не перекрывала заголовок)
+        var style = document.createElement('style');
+        style.id = 'mobile-register-style';
+        style.textContent = `
+            @media screen and (max-width: 1024px) {
+                /* Отступ справа у заголовка — чтобы название не заезжало под кнопку */
+                .md-header__title,
+                .md-header-nav__title,
+                .wy-nav-top .title,
+                .wy-nav-top > a:not(.icon):not(.menu-toggle) {
+                    padding-right: 110px !important;
+                    max-width: calc(100vw - 130px) !important;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis !important;
+                    white-space: nowrap !important;
+                }
+
+                /* Само название — обрезаем многоточием если не влезает */
+                .md-header__topic,
+                .md-header__title .md-header__topic,
+                .md-header-nav__title,
+                .wy-nav-top .title {
+                    overflow: hidden !important;
+                    text-overflow: ellipsis !important;
+                    white-space: nowrap !important;
+                    max-width: 100% !important;
+                }
+
+                /* Иконка и текст кнопки */
+                #mobile-register-btn .mrbtn-icon {
+                    font-size: 0.95rem;
+                    line-height: 1;
+                }
+                #mobile-register-btn .mrbtn-text {
+                    font-size: 0.8rem;
+                    line-height: 1;
+                }
+
+                /* На очень узких экранах — показываем только иконку */
+                @media (max-width: 380px) {
+                    #mobile-register-btn {
+                        padding: 0 10px !important;
+                    }
+                    #mobile-register-btn .mrbtn-text {
+                        display: none !important;
+                    }
+                    #mobile-register-btn .mrbtn-icon {
+                        font-size: 1.1rem !important;
+                    }
+                    .md-header__title,
+                    .md-header-nav__title,
+                    .wy-nav-top .title,
+                    .wy-nav-top > a:not(.icon):not(.menu-toggle) {
+                        padding-right: 70px !important;
+                        max-width: calc(100vw - 90px) !important;
+                    }
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        console.log('👤 Кнопка регистрации добавлена →', targetUrl);
     }
 
     // ============================================================
     // 🍔 ФИКС МОБИЛЬНОГО МЕНЮ (drawer)
-    // Проблема: после закрытия меню контент остаётся сжатым
     // ============================================================
     function fixMobileDrawer() {
-        // Сбрасываем все возможные сдвиги/классы от темы
         function resetContentShift() {
-            // 1. Убираем overflow у body/html
+            // 1. Убираем overflow
             document.body.style.overflow = '';
             document.documentElement.style.overflow = '';
 
-            // 2. Убираем сдвиги с контейнеров (Read the Docs + Material)
-            const containerSelectors = [
+            // 2. Проверяем, открыто ли меню
+            var menuOpen =
+                document.querySelector('.wy-nav-side.shift') ||
+                document.querySelector('.md-sidebar--primary[data-md-state="active"]') ||
+                document.querySelector('.md-overlay[data-md-state="active"]') ||
+                document.querySelector('.md-toggle--drawer:checked');
+            if (menuOpen) return;
+
+            // 3. Сбрасываем сдвиги у контейнеров
+            var selectors = [
                 '.wy-nav-content-wrap',
                 '.wy-nav-content',
                 '.md-container',
@@ -136,58 +202,62 @@
                 '.md-content',
                 '.md-content__inner'
             ];
-
-            containerSelectors.forEach(sel => {
-                document.querySelectorAll(sel).forEach(el => {
-                    // Не трогаем, если меню всё ещё открыто
-                    const menuOpen =
-                        document.querySelector('.wy-nav-side.shift') ||
-                        document.querySelector('.md-sidebar--primary[data-md-state="active"]') ||
-                        document.querySelector('.md-overlay[data-md-state="active"]');
-                    if (menuOpen) return;
-
+            selectors.forEach(function(sel) {
+                document.querySelectorAll(sel).forEach(function(el) {
                     el.style.transform = '';
                     el.style.marginLeft = '';
                     el.style.paddingLeft = '';
                 });
             });
 
-            // 3. Read the Docs: убираем класс .shift если меню закрыто
-            const sideNav = document.querySelector('.wy-nav-side');
+            // 4. Read the Docs: убираем класс shift
+            var sideNav = document.querySelector('.wy-nav-side');
             if (sideNav && !sideNav.classList.contains('shift')) {
-                document.querySelectorAll('.wy-nav-content-wrap.shift').forEach(el => {
+                document.querySelectorAll('.wy-nav-content-wrap.shift').forEach(function(el) {
                     el.classList.remove('shift');
                 });
             }
 
-            // 4. Material: убираем активное состояние drawer
-            const hasOverlay = document.querySelector('.md-overlay[data-md-state="active"]');
+            // 5. Material: снимаем активные состояния
+            var hasOverlay = document.querySelector('.md-overlay[data-md-state="active"]');
             if (!hasOverlay) {
-                document.querySelectorAll('.md-sidebar--primary[data-md-state="active"]').forEach(el => {
+                document.querySelectorAll('.md-sidebar--primary[data-md-state="active"]').forEach(function(el) {
+                    el.removeAttribute('data-md-state');
+                });
+                document.querySelectorAll('.md-nav--primary[data-md-state="active"]').forEach(function(el) {
                     el.removeAttribute('data-md-state');
                 });
             }
+
+            // 6. Убираем блокировку скролла у body если меню закрыто
+            if (!menuOpen) {
+                document.body.classList.remove('md-scroll-lock');
+                if (document.body.style.position === 'fixed') {
+                    document.body.style.position = '';
+                    document.body.style.top = '';
+                    document.body.style.width = '';
+                }
+            }
         }
 
-        // Отслеживаем клики
+        // Клики
         document.addEventListener('click', function(e) {
-            const insideMenu = e.target.closest('.wy-nav-side, .md-sidebar--primary, .md-sidebar');
-            const isHamburger = e.target.closest('.wy-nav-top, .md-header__button, .md-header__button[for="__drawer"], .md-header__button[for="__toc"]');
-            const isMenuLink = e.target.closest('.wy-menu-vertical a, .md-nav__link');
-            const isOverlay = e.target.closest('.md-overlay, .wy-overlay');
+            var insideMenu = e.target.closest('.wy-nav-side, .md-sidebar--primary, .md-sidebar');
+            var isHamburger = e.target.closest('.wy-nav-top, .md-header__button, .md-header__button[for="__drawer"], .md-header__button[for="__toc"], label[for="__drawer"], label[for="__toc"]');
+            var isMenuLink = e.target.closest('.wy-menu-vertical a, .md-nav__link');
+            var isOverlay = e.target.closest('.md-overlay, .wy-overlay');
 
-            // Если клик по ссылке в меню / оверлею / вне меню — сбрасываем
             if (isMenuLink || isOverlay || (!insideMenu && !isHamburger)) {
-                // Двойная задержка — на случай анимации закрытия
                 setTimeout(resetContentShift, 80);
                 setTimeout(resetContentShift, 350);
+                setTimeout(resetContentShift, 700);
             }
         }, true);
 
-        // MutationObserver — следим за классами/стилями на body и sidebar
+        // MutationObserver
         try {
-            const observer = new MutationObserver(() => {
-                const menuOpen =
+            var observer = new MutationObserver(function() {
+                var menuOpen =
                     document.querySelector('.wy-nav-side.shift') ||
                     document.querySelector('.md-sidebar--primary[data-md-state="active"]') ||
                     document.querySelector('.md-overlay[data-md-state="active"]');
@@ -202,9 +272,16 @@
             });
         } catch(e) {}
 
-        // При загрузке и повороте экрана — тоже сброс
+        // При загрузке и повороте — сброс
         setTimeout(resetContentShift, 500);
-        window.addEventListener('orientationchange', () => setTimeout(resetContentShift, 300));
+        window.addEventListener('orientationchange', function() {
+            setTimeout(resetContentShift, 300);
+        });
+
+        // При смене размера окна (например, поворот планшета)
+        window.addEventListener('resize', function() {
+            setTimeout(resetContentShift, 200);
+        });
 
         console.log('🍔 Фикс мобильного меню активен');
     }

@@ -55,6 +55,7 @@ extra_javascript:
   - assets/js/language-switcher.js
   - assets/js/mars-tts.js
   - assets/js/scroll-mode.js
+  - assets/js/effects-menu.js   
  # - assets/js/mobile-debug.js
 
 extra_head:

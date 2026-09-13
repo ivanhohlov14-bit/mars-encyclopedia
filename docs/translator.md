@@ -4236,342 +4236,353 @@ function toGlyphs(text) {
   return result.join(' ');
 }
 
-function findInLexicon(word) {
-  const norm = normalize(word);
-  // Точное совпадение
-  if (lexicon[norm]) {
-    return { found: true, entry: lexicon[norm], lemma: norm };
-  }
-  // Лемматизация глагола
-  if (VERB_LEMMAS[norm]) {
-    const inf = VERB_LEMMAS[norm];
-    if (lexicon[inf]) {
-      return { found: true, entry: lexicon[inf], lemma: inf };
-    }
-  }
-  // Убираем окончания для существительных (падежи)
-  if (norm.endsWith('ы') && norm.length > 2) {
-    const try1 = norm.slice(0, -1) + 'а';
-    if (lexicon[try1]) return { found: true, entry: lexicon[try1], lemma: try1 };
-  }
-  if (norm.endsWith('и') && norm.length > 2) {
-    const try2 = norm.slice(0, -1) + 'а';
-    if (lexicon[try2]) return { found: true, entry: lexicon[try2], lemma: try2 };
-  }
-  if (norm.endsWith('е') && norm.length > 2) {
-    const try3 = norm.slice(0, -1) + 'о';
-    if (lexicon[try3]) return { found: true, entry: lexicon[try3], lemma: try3 };
-  }
-  return { found: false };
-}
-  
+<script>
 // ============================================================
-// 2.5 ОБРАБОТКА ФРАЗ-ПРИВЕТСТВИЙ
+// ПЕРЕВОДЧИК С АВТО-ГЕНЕРАЦИЕЙ СЛОВ
 // ============================================================
-function checkPhrases(text) {
-  const lower = text.toLowerCase();
-  const phraseMap = {
-    "привет": "Mar dzen",
-    "здравствуй": "Mar dzen",
-    "здравствуйте": "Mar dzen",
-    "добрый день": "Mar dzen",
-    "до свидания": "Lān mar",
-    "прощай": "Lān mar",
-    "прощайте": "Ariya lān",
-    "очень приятно": "Tsan lān",
-    "спасибо": "Tsan lān",
-    "глина помнит": "Lān sur",
-    "письмо из красной пыли": "Khalur khō sur",
-    "марсианская энциклопедия": "Tsankhō Marzān",
-    "красная пыль": "Khō sur",
-    "мнемис": "Lānīn"
-  };
-  for (let key in phraseMap) {
-    if (lower.includes(key)) {
-      return { found: true, translation: phraseMap[key] };
-    }
-  }
-  return { found: false };
-}
+let lexicon = window.MARTIAN_LEXICON || {};
+let VERB_LEMMAS = window.MARTIAN_VERB_LEMMAS || {};
+let showGlyphs = false;
+
+const PREPOSITIONS = window.MARTIAN_PREPOSITIONS || ['на','в','у','к','от','из','для','без','через','по','о','об','с','со','за','под','над','перед','между','возле','около','мимо','вокруг'];
+const PLURAL_WORDS = window.MARTIAN_PLURAL_WORDS || [];
 
 // ============================================================
-// ПЕРЕКЛЮЧЕНИЕ РЕЖИМА ИЕРОГЛИФОВ
+// 🧬 МОРФЕМЫ
 // ============================================================
-function toggleGlyphs() {
-  showGlyphs = !showGlyphs;
-  const button = document.getElementById('glyphToggle');
-  if (showGlyphs) {
-    button.textContent = '📝 Латиница';
-    button.style.background = '#e67e22';
-    document.getElementById('translation').classList.add('glyph-mode');
-  } else {
-    button.textContent = '🔮 Иероглифы';
-    button.style.background = '#6c7a8a';
-    document.getElementById('translation').classList.remove('glyph-mode');
-  }
-  // Если есть текст, обновляем перевод
-  const input = document.getElementById('inputText').value.trim();
-  if (input) {
-    translateText();
-  }
-}
-  
-// ============================================================
-// 3. ОСНОВНАЯ ЛОГИКА ПЕРЕВОДА
-// ============================================================
-const PREPOSITIONS = ['на','в','у','к','от','из','для','без','через','по','о','об','с','со','за','под','над','перед','между','возле','около','мимо','вокруг'];
-const PLURAL_WORDS = [
-  'звёзды','звезды','звёзд','звезд','воды','вод','реки','рек','горы','гор',
-  'люди','людей','марсиане','марсиан','дома','домов','столы','столов','стулья','стульев',
-  'кровати','кроватей','леса','лесов','поля','полей','дети','детей','глаза','глаз'
+const MORPHEMES = {
+    'вод':'ākha','аква':'ākha','земл':'kōl','терр':'kōl','грунт':'kōl',
+    'огн':'khō','план':'khō','звезд':'dzen','звёзд':'dzen','косм':'dzen','астр':'dzen','неб':'dzen',
+    'жизн':'mar','био':'mar','смерт':'mōr','мер':'mōr','гиб':'mōr',
+    'памят':'lān','помн':'lān','зна':'lān',
+    'дом':'okh','город':'okh','посел':'okh',
+    'корол':'rōg','царь':'rōg','правит':'rōg','власт':'rōg',
+    'мест':'sen','помещ':'sen','здан':'sen','храм':'sen',
+    'человек':'mārīn','люд':'mārīn','марсиан':'marzān','марс':'marzān',
+    'камн':'ghar','камен':'ghar','гор':'ghar','скал':'ghar',
+    'тен':'ghōl','мрак':'ghōl','тьм':'ghōl',
+    'свет':'dzēn','ярк':'dzēn','сия':'dzēn',
+    'знан':'tsan','наук':'tsan','учен':'tsan','мудр':'tsan',
+    'хран':'lānīn','защит':'lānīn','глин':'sur','пыл':'sur','пес':'sur',
+    'движ':'nur','путь':'nur','дорог':'nur','ход':'nur',
+    'смотр':'thal','гляд':'thal','вид':'thal','наблюд':'thal',
+    'говор':'thal','реч':'thal','язык':'thal',
+    'велик':'suf','огромн':'suf','больш':'suf',
+    'древ':'xal','стар':'xal','предк':'xal',
+    'нов':'khal','молод':'khal','мудр':'yar','умн':'yar',
+    'избран':'ari','главн':'ari','хорош':'suf','добр':'suf','красив':'suf',
+    'жив':'mar','мёртв':'mōr','мертв':'mōr',
+    'ветер':'zal','ветр':'zal','океан':'ākhasuf','мор':'thal',
+    'берег':'kōlākha','побереж':'kōlākha','волн':'ākha',
+    'облак':'oblako','туч':'oblako','туман':'tuman','снег':'sneg',
+    'льд':'led','лед':'led','гром':'grom','молни':'khōdzen',
+    'пламя':'khō','пламен':'khō','холод':'mōr','мороз':'mōr',
+    'жар':'khō','зной':'khō','тепл':'khō',
+    'правд':'thaltsan','истин':'thaltsan','лож':'ānthaltsan',
+    'надежд':'lānthōl','вер':'khalmar','свобод':'nurariya',
+    'справедлив':'aritsan','сил':'khōlān','мощ':'khōlān',
+    'смысл':'thaltsan','чуд':'ānthal','тайн':'nōkhlān','секрет':'nōkhlān',
+    'войн':'mōrkhō','мир':'nōkh','покой':'nōkh',
+    'год':'amār','лет':'amār','цикл':'amār','дн':'sōl','день':'sōl',
+    'ноч':'nōkh','утр':'dzēn','вечер':'khōl','врем':'amār','эпох':'amār',
+    'друг':'tō','брат':'tō','союз':'tō','враг':'ān',
+    'воин':'ur','солдат':'ur','бойц':'ur','пират':'khōsīn','разбой':'khōsīn',
+    'купец':'xur','торгов':'xur','жрец':'en','пророк':'hery',
+    'учит':'tsanīn','настав':'tsanīn','стро':'okhar','созда':'khalur','дела':'khalur',
+    'разруш':'mōrkhō','уничтож':'mōrkhō','писа':'khōs','пиш':'khōs','запис':'khōs',
+    'чита':'thal','игра':'thalur','петь':'zalkhō','танц':'thalur',
+    'люб':'lānmar','бо':'ghōlmar','дума':'tsanur','поним':'tsanlān',
+    'слуша':'thal','откры':'tōkhur','закры':'tōkhur',
+    'академ':'tsan-sen','библиот':'lan-sen','обсерв':'dzensen'
+};
+
+const ENDINGS = [
+    'иями','иях','ией','иям','ием','ами','ями','ах','ях','ой','ей',
+    'ые','ие','ыми','ими','ого','его','ому','ему','ая','яя','ое','ее',
+    'ый','ий','ов','ев','ьи','ам','ям','ом','ем',
+    'ать','ять','еть','ить','ыть','уть','оть','ти','чь',
+    'аю','яю','ею','ую','ию','аешь','яешь','еешь','уешь','иешь',
+    'ает','яет','еет','ует','иет','аем','яем','еем','уем','ием',
+    'аете','яете','еете','уете','иете','ают','яют','еют','уют','иют',
+    'ал','ял','ел','ил','ыл','ул','ол','ала','яла','ела','ила','ыла','ула','ола',
+    'али','яли','ели','или','ыли','ули','оли',
+    'ись','ться','тся','шься','мся','тесь','атся','ятся','ется','ится',
+    'ы','и','а','я','у','ю','е','о','ь','й'
 ];
 
-function translateText() {
-  const input = document.getElementById('inputText').value.trim();
-  if (!input) {
-    document.getElementById('translation').textContent = 'Введите текст для перевода.';
-    document.getElementById('gloss').textContent = '';
-    return;
-  }
-// ============================================================
-  // ПРОВЕРКА НА ФРАЗЫ-ПРИВЕТСТВИЯ
-  // ============================================================
-  const phraseResult = checkPhrases(input);
-  if (phraseResult.found) {
-    document.getElementById('translation').textContent = phraseResult.translation;
-    document.getElementById('gloss').textContent = 'Подстрочник: ' + phraseResult.translation;
-    return;
-  }
-  
-  const rawWords = input.split(/\s+/).filter(w => w.length > 0);
-  let processed = [];
-  let unknown = [];
+const TRANS_MAP = {'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'kh','ц':'ts','ч':'ch','ш':'sh','щ':'shch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya'};
 
-  rawWords.forEach(w => {
-    const clean = w.replace(/[^а-яa-zё]/gi, '').toLowerCase();
-    if (PREPOSITIONS.includes(clean)) return;
+function translit(w) {
+    let r = '';
+    for (let i = 0; i < w.length; i++) r += TRANS_MAP[w[i]] || w[i];
+    return r;
+}
 
-    const result = findInLexicon(clean);
-    if (result.found) {
-      const entry = result.entry;
-      let root = entry.root;
-      let pos = entry.pos;
-      let plural = false;
-      if (pos === 'noun' || pos === 'adj') {
-        if (root.endsWith('ān')) plural = true;
-        else if (PLURAL_WORDS.includes(clean)) plural = true;
-      }
-      let adj = (pos === 'adj');
-      processed.push({ word: w, root: root, pos: pos, plural: plural, adj: adj });
-    } else {
-      unknown.push(w);
-      processed.push({ word: w, root: w, pos: 'unknown', plural: false, adj: false });
-    }
-  });
-
-  if (processed.length === 0) {
-    document.getElementById('translation').textContent = 'Нет слов для перевода (только предлоги).';
-    document.getElementById('gloss').textContent = '';
-    return;
-  }
-
-  // Разделение на подлежащее, дополнение, глагол
-  let subject = [], objects = [], verb = null, verbIdx = -1;
-  for (let i = 0; i < processed.length; i++) {
-    if (processed[i].pos === 'verb') {
-      verbIdx = i;
-      verb = processed[i];
-      break;
-    }
-  }
-  if (verbIdx !== -1) {
-    subject = processed.slice(0, verbIdx);
-    objects = processed.slice(verbIdx + 1);
-  } else {
-    subject = processed;
-  }
-
-  let resultWords = [];
-
-  function addWord(wordObj) {
-    let root = wordObj.root;
-    if (wordObj.plural && (wordObj.pos === 'noun' || wordObj.pos === 'adj') && !root.endsWith('ān')) {
-      const last = root.charAt(root.length - 1);
-      const vowels = ['a','ā','o','ō','u','ū','e','i'];
-      if (vowels.includes(last.toLowerCase())) root += 'zān';
-      else root += 'ān';
-    }
-    resultWords.push(root);
-  }
-
-  let subjNouns = subject.filter(w => w.pos === 'noun' || w.pos === 'pron');
-  let subjAdjs = subject.filter(w => w.pos === 'adj');
-  subjNouns.forEach(w => addWord(w));
-  subjAdjs.forEach(w => addWord(w));
-
-  let objNouns = objects.filter(w => w.pos === 'noun' || w.pos === 'pron');
-  let objAdjs = objects.filter(w => w.pos === 'adj');
-  objNouns.forEach(w => addWord(w));
-  objAdjs.forEach(w => addWord(w));
-
-  if (verb) resultWords.push(verb.root);
-
-  // Грамматические частицы
-  const lowerInput = input.toLowerCase();
-
-  // Отрицание
- // Проверяем отдельные слова "не" и "нет" среди всех токенов
-const hasNegation = rawWords.some(w => {
-  const clean = w.replace(/[^а-яa-zё]/gi, '').toLowerCase();
-  return clean === 'не' || clean === 'нет';
-});
-if (hasNegation) {
-    if (verb) {
-      const idx = resultWords.indexOf(verb.root);
-      if (idx !== -1 && idx < resultWords.length) {
-        resultWords.splice(idx + 1, 0, 'ān');
-      }
-    }
-  }
-
-  // Вопрос
-  if (input.includes('?')) resultWords.push('kha');
-
-  // Прошедшее время
-  const hasPastMarker = lowerInput.includes('был') || lowerInput.includes('была') || lowerInput.includes('были');
-  const hasPastVerb = processed.some(w => w.pos === 'verb' && (w.word.endsWith('л') || w.word.endsWith('ла') || w.word.endsWith('ли') || w.word.endsWith('ло')));
-  if (hasPastMarker || hasPastVerb) {
-    if (verb) {
-      const idx = resultWords.indexOf(verb.root);
-      if (idx !== -1) {
-        let insertPos = idx + 1;
-        if (resultWords[insertPos] === 'ān') insertPos++;
-        resultWords.splice(insertPos, 0, 'nu');
-      }
-    }
-  }
-
-  // Будущее время
-  if (lowerInput.includes('буду') || lowerInput.includes('будет') || lowerInput.includes('будут')) {
-    if (verb) {
-      const idx = resultWords.indexOf(verb.root);
-      if (idx !== -1) {
-        let insertPos = idx + 1;
-        if (resultWords[insertPos] === 'ān') insertPos++;
-        resultWords.splice(insertPos, 0, 'shu');
-      }
-    }
-  }
-
-  // Модальные глаголы
-  const modalMap = {
-    'могу': 'xan', 'можешь': 'xan', 'может': 'xan', 'можем': 'xan', 'можете': 'xan', 'могут': 'xan',
-    'хочу': 'shar', 'хочешь': 'shar', 'хочет': 'shar', 'хотим': 'shar', 'хотите': 'shar', 'хотят': 'shar',
-    'должен': 'mun', 'должна': 'mun', 'должно': 'mun', 'должны': 'mun'
-  };
-  let modalSuffix = null;
-  for (let key in modalMap) {
-    if (lowerInput.includes(key)) { modalSuffix = modalMap[key]; break; }
-  }
-  if (modalSuffix && verb) {
-    const idx = resultWords.indexOf(verb.root);
-    if (idx !== -1) resultWords[idx] = verb.root + modalSuffix;
-  }
-
-  // Сослагательное наклонение
-  if (lowerInput.includes('бы') || lowerInput.includes('чтобы')) {
-    if (verb) {
-      const idx = resultWords.indexOf(verb.root);
-      if (idx !== -1) resultWords.splice(idx, 0, 'kha');
-    }
-  }
-
-  // Пассив
-  if (lowerInput.includes('был') || lowerInput.includes('была') || lowerInput.includes('были')) {
-    const hasOtherVerb = processed.some(w => w.pos === 'verb' && !['был','была','были','было'].includes(w.word));
-    if (hasOtherVerb && verb) {
-      const idx = resultWords.indexOf(verb.root);
-      if (idx !== -1) {
-        let insertPos = idx + 1;
-        while (insertPos < resultWords.length && ['ān','nu','shu'].includes(resultWords[insertPos])) insertPos++;
-        resultWords.splice(insertPos, 0, 'rak');
-      }
-    }
-  }
-
-  // Эвокативы
-  if (lowerInput.includes('вижу') || lowerInput.includes('наблюдаю')) {
-    if (verb) {
-      const idx = resultWords.indexOf(verb.root);
-      if (idx !== -1) resultWords[idx] = verb.root + 'ra';
-    }
-  } else if (lowerInput.includes('говорят') || lowerInput.includes('рассказывают')) {
-    if (verb) {
-      const idx = resultWords.indexOf(verb.root);
-      if (idx !== -1) resultWords[idx] = verb.root + 'ma';
-    }
-  } else if (lowerInput.includes('должно быть') || lowerInput.includes('вероятно')) {
-    if (verb) {
-      const idx = resultWords.indexOf(verb.root);
-      if (idx !== -1) resultWords[idx] = verb.root + 'la';
-    }
-  }
-
-  // Вывод
-  let translation = resultWords.join(' ');
-  // === ВЫВОД ПЕРЕВОДА (с поддержкой иероглифов) ===
-  if (showGlyphs) {
-    const glyphTranslation = toGlyphs(translation);
-    document.getElementById('translation').textContent = glyphTranslation;
-    document.getElementById('gloss').textContent = 'Латиница: ' + translation;
-  } else {
-    document.getElementById('translation').textContent = translation;
-    // Восстанавливаем обычный подстрочник
-    let glossParts = resultWords.map(w => {
-      for (let key in lexicon) {
-        if (lexicon[key].root === w) return key;
-      }
-      if (w === 'ān') return 'отриц.';
-      if (w === 'nu') return 'прош.';
-      if (w === 'shu') return 'буд.';
-      if (w === 'kha') return 'вопрос';
-      if (w === 'rak') return 'пассив';
-      return w;
-    });
-    let glossText = 'Подстрочник: ' + glossParts.join(' ');
-    if (unknown.length > 0) glossText += ' ⚠️ неизвестные: ' + unknown.join(', ');
-    document.getElementById('gloss').textContent = glossText;
-  }
-  document.getElementById('translation').className = 'result';
-
-  // Подстрочник
-  let glossParts = resultWords.map(w => {
-    for (let key in lexicon) {
-      if (lexicon[key].root === w) return key;
-    }
-    if (w === 'ān') return 'отриц.';
-    if (w === 'nu') return 'прош.';
-    if (w === 'shu') return 'буд.';
-    if (w === 'kha') return 'вопрос';
-    if (w === 'rak') return 'пассив';
+function stylize(w) {
+    w = w.replace(/aa/g,'ā').replace(/oo/g,'ō').replace(/uu/g,'ū').replace(/ee/g,'ē').replace(/ii/g,'ī');
+    if (w.endsWith('a')) w = w.slice(0,-1)+'ā';
+    else if (w.endsWith('o')) w = w.slice(0,-1)+'ō';
+    else if (w.endsWith('u')) w = w.slice(0,-1)+'ū';
+    if (w.length > 10) w = w.slice(0,10);
     return w;
-  });
-  let glossText = 'Подстрочник: ' + glossParts.join(' ');
-  if (unknown.length > 0) glossText += ' ⚠️ неизвестные: ' + unknown.join(', ');
-  document.getElementById('gloss').textContent = glossText;
+}
+
+function findMorpheme(w) {
+    let best = null, bestLen = 0;
+    for (let m in MORPHEMES) {
+        if (w.indexOf(m) === 0 && m.length > bestLen) { best = MORPHEMES[m]; bestLen = m.length; }
+    }
+    if (best) return best;
+    for (let m2 in MORPHEMES) {
+        if (m2.length >= 4 && w.indexOf(m2) !== -1) return MORPHEMES[m2];
+    }
+    return null;
+}
+
+function stripEndings(w) {
+    for (let i = 0; i < ENDINGS.length; i++) {
+        const e = ENDINGS[i];
+        if (w.length > e.length + 2 && w.slice(-e.length) === e) return w.slice(0, -e.length);
+    }
+    return w;
+}
+
+function generateRoot(word) {
+    const stem = stripEndings(word);
+    const mars = findMorpheme(stem) || findMorpheme(word);
+    if (mars) return mars;
+    return stylize(translit(stem));
+}
+
+function normalize(word) { return word.toLowerCase().replace(/ё/g, 'е'); }
+
+function findInLexicon(word) {
+    const norm = normalize(word);
+    if (lexicon[norm]) return { found: true, entry: lexicon[norm] };
+    if (VERB_LEMMAS[norm] && lexicon[VERB_LEMMAS[norm]]) return { found: true, entry: lexicon[VERB_LEMMAS[norm]] };
+    for (let i = 0; i < ENDINGS.length; i++) {
+        const e = ENDINGS[i];
+        if (norm.length > e.length + 2 && norm.slice(-e.length) === e) {
+            const stem = norm.slice(0, -e.length);
+            const variants = [stem, stem+'а', stem+'я', stem+'о', stem+'е', stem+'ь', stem+'ий', stem+'ия', stem+'ие', stem+'ость', stem+'ние', stem+'ение', stem+'ать', stem+'ять', stem+'еть', stem+'ить', stem+'ыть', stem+'уть', stem+'ти', stem+'чь'];
+            for (const v of variants) {
+                if (lexicon[v]) return { found: true, entry: lexicon[v] };
+            }
+        }
+    }
+    return { found: false };
 }
 
 // ============================================================
-// 4. ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+// 🎨 ИЕРОГЛИФЫ
 // ============================================================
+const MARTIAN_GLYPHS = {
+    'ākha':'〰','okh':'⌂','kōl':'✦','khō':'★','mar':'⊙','lān':'∞',
+    'thal':'┤','rōg':'▲','khan':'¢','sen':'P','dzen':'✦','sur':'☰',
+    'zal':'↯','ghar':'◆','nur':'➤','tsan':'✧','khal':'◈','xal':'◉',
+    'suf':'⬡','ari':'⏣','mōr':'✖'
+};
+
+const MARTIAN_ALPHABET = {
+    'm':'▭•••','n':'▭••','r':'⊙','l':'○','k':'▷','g':'◁','kh':'△','gh':'▽',
+    't':'|','d':'—','ts':'✖','dz':'ⴕ','th':'/','f':'Ꙙ','x':'♢',
+    's':'Ꝉ','z':'I','p':'p','b':'b','v':'v','a':'՚','ā':'¬','o':'ᵕ','ō':'ᵔ',
+    'u':'°','ū':'ˉˉ','i':'↯','e':'Ƨ','ē':'Ƨ̱'
+};
+
+function toGlyphs(text) {
+    if (!text) return '';
+    return text.split(' ').map(word => {
+        if (!word) return '';
+        const lower = word.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        if (MARTIAN_GLYPHS[lower]) return MARTIAN_GLYPHS[lower];
+        let out = '', i = 0;
+        while (i < word.length) {
+            const two = word.substr(i, 2).toLowerCase();
+            if (MARTIAN_ALPHABET[two]) { out += MARTIAN_ALPHABET[two]; i += 2; }
+            else {
+                const c = word[i].toLowerCase();
+                out += MARTIAN_ALPHABET[c] || c;
+                i++;
+            }
+        }
+        return out;
+    }).join(' ');
+}
+
+// ============================================================
+// 🔄 ПЕРЕКЛЮЧЕНИЕ ИЕРОГЛИФОВ
+// ============================================================
+function toggleGlyphs() {
+    showGlyphs = !showGlyphs;
+    const button = document.getElementById('glyphToggle');
+    if (showGlyphs) {
+        button.textContent = '📝 Латиница';
+        button.style.background = '#e67e22';
+        document.getElementById('translation').classList.add('glyph-mode');
+    } else {
+        button.textContent = '🔮 Иероглифы';
+        button.style.background = '#6c7a8a';
+        document.getElementById('translation').classList.remove('glyph-mode');
+    }
+    const input = document.getElementById('inputText').value.trim();
+    if (input) translateText();
+}
+
+// ============================================================
+// 📖 ФРАЗЫ
+// ============================================================
+function checkPhrases(text) {
+    const lower = text.toLowerCase();
+    const phraseMap = {
+        'привет':'Mar dzen','здравствуй':'Mar dzen','здравствуйте':'Mar dzen',
+        'добрый день':'Mar dzen','до свидания':'Lān mar','прощай':'Lān mar',
+        'прощайте':'Ariya lān','очень приятно':'Tsan lān','спасибо':'Tsan lān',
+        'глина помнит':'Lān sur','письмо из красной пыли':'Khalur khō sur',
+        'марсианская энциклопедия':'Tsankhō Marzān','красная пыль':'Khō sur','мнемис':'Lānīn'
+    };
+    for (const key in phraseMap) {
+        if (lower.includes(key)) return { found: true, translation: phraseMap[key] };
+    }
+    return { found: false };
+}
+
+// ============================================================
+// 🎯 ПЕРЕВОД
+// ============================================================
+function translateText() {
+    const input = document.getElementById('inputText').value.trim();
+    if (!input) {
+        document.getElementById('translation').textContent = 'Введите текст для перевода.';
+        document.getElementById('gloss').textContent = '';
+        return;
+    }
+
+    const phraseResult = checkPhrases(input);
+    if (phraseResult.found) {
+        document.getElementById('translation').textContent = phraseResult.translation;
+        document.getElementById('gloss').textContent = 'Подстрочник: ' + phraseResult.translation;
+        return;
+    }
+
+    const rawWords = input.split(/\s+/).filter(w => w.length > 0);
+    let processed = [], unknown = [];
+
+    rawWords.forEach(w => {
+        const clean = w.replace(/[^а-яa-zё]/gi, '').toLowerCase();
+        if (PREPOSITIONS.includes(clean)) return;
+
+        const result = findInLexicon(clean);
+        if (result.found) {
+            processed.push({
+                word: w,
+                root: result.entry.root,
+                pos: result.entry.pos,
+                plural: false,
+                adj: result.entry.pos === 'adj'
+            });
+        } else {
+            // НЕ в словаре — генерируем!
+            const generated = generateRoot(normalize(clean));
+            processed.push({
+                word: w,
+                root: generated,
+                pos: 'generated',
+                plural: false,
+                adj: false
+            });
+            unknown.push(w + '→' + generated);
+        }
+    });
+
+    if (processed.length === 0) {
+        document.getElementById('translation').textContent = 'Нет слов для перевода.';
+        document.getElementById('gloss').textContent = '';
+        return;
+    }
+
+    // Разделение
+    let verb = null, verbIdx = -1;
+    for (let i = 0; i < processed.length; i++) {
+        if (processed[i].pos === 'verb') { verbIdx = i; verb = processed[i]; break; }
+    }
+    let subject = verbIdx !== -1 ? processed.slice(0, verbIdx) : processed;
+    let objects = verbIdx !== -1 ? processed.slice(verbIdx + 1) : [];
+
+    let resultWords = [];
+
+    subject.forEach(w => resultWords.push(w.root));
+    objects.forEach(w => resultWords.push(w.root));
+    if (verb) resultWords.push(verb.root);
+
+    const lowerInput = input.toLowerCase();
+
+    // Отрицание
+    if (rawWords.some(w => ['не','нет'].includes(w.replace(/[^а-яa-zё]/gi,'').toLowerCase()))) {
+        if (verb) {
+            const idx = resultWords.indexOf(verb.root);
+            if (idx !== -1) resultWords.splice(idx + 1, 0, 'ān');
+        }
+    }
+
+    if (input.includes('?')) resultWords.push('kha');
+
+    // Прошедшее
+    const hasPast = lowerInput.includes('был') || lowerInput.includes('была') || lowerInput.includes('были');
+    if (hasPast && verb) {
+        const idx = resultWords.indexOf(verb.root);
+        if (idx !== -1) {
+            let p = idx + 1;
+            if (resultWords[p] === 'ān') p++;
+            resultWords.splice(p, 0, 'nu');
+        }
+    }
+
+    // Будущее
+    if ((lowerInput.includes('будет') || lowerInput.includes('будут')) && verb) {
+        const idx = resultWords.indexOf(verb.root);
+        if (idx !== -1) {
+            let p = idx + 1;
+            if (resultWords[p] === 'ān') p++;
+            resultWords.splice(p, 0, 'shu');
+        }
+    }
+
+    // Модальность
+    const modalMap = {'могу':'xan','можешь':'xan','может':'xan','хочу':'shar','хочешь':'shar','хочет':'shar','должен':'mun','должна':'mun','должны':'mun'};
+    for (const k in modalMap) {
+        if (lowerInput.includes(k) && verb) {
+            const idx = resultWords.indexOf(verb.root);
+            if (idx !== -1) resultWords[idx] = verb.root + modalMap[k];
+            break;
+        }
+    }
+
+    // Вывод
+    let translation = resultWords.join(' ');
+
+    if (showGlyphs) {
+        document.getElementById('translation').textContent = toGlyphs(translation);
+        document.getElementById('gloss').textContent = 'Латиница: ' + translation;
+    } else {
+        document.getElementById('translation').textContent = translation;
+    }
+
+    // Подстрочник
+    let glossText = 'Подстрочник: ' + processed.map(p => p.word + '→' + p.root).join(' ');
+    if (unknown.length > 0) glossText += '\n🆕 Авто-сгенерировано: ' + unknown.length;
+    document.getElementById('gloss').textContent = glossText;
+    document.getElementById('translation').className = 'result';
+}
+
 function clearAll() {
-  document.getElementById('inputText').value = '';
-  document.getElementById('translation').textContent = 'Здесь появится перевод...';
-  document.getElementById('translation').className = 'result';
-  document.getElementById('gloss').textContent = '';
+    document.getElementById('inputText').value = '';
+    document.getElementById('translation').textContent = 'Здесь появится перевод...';
+    document.getElementById('translation').className = 'result';
+    document.getElementById('gloss').textContent = '';
 }
 
 document.getElementById('inputText').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) translateText();
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) translateText();
 });
 </script>

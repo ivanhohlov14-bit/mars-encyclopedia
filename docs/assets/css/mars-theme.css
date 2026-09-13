@@ -1,4 +1,6 @@
-/* mars-theme.css — тёмная тема для звёздного неба */
+/* ============================================================
+   mars-theme.css — тёмная тема звёздного неба
+   ============================================================ */
 
 html body.mars-stars-on {
     background-color: #0a0a14 !important;
@@ -14,7 +16,9 @@ html body.mars-stars-on {
     --md-code-fg-color: #A29BFE !important;
 }
 
-/* МЕНЮ */
+/* ============================================================
+   ЛЕВОЕ МЕНЮ
+   ============================================================ */
 html body.mars-stars-on .wy-nav-side,
 html body.mars-stars-on .md-sidebar,
 html body.mars-stars-on .md-sidebar--primary,
@@ -22,7 +26,7 @@ html body.mars-stars-on .wy-side-nav-search,
 html body.mars-stars-on .md-nav,
 html body.mars-stars-on .md-nav__list,
 html body.mars-stars-on .md-nav__item {
-    background-color: #000 !important;
+    background-color: #000000 !important;
     background-image: none !important;
 }
 
@@ -36,20 +40,20 @@ html body.mars-stars-on .md-nav__title,
 html body.mars-stars-on .md-nav__item > a,
 html body.mars-stars-on .md-nav__item > span,
 html body.mars-stars-on .md-nav__item--nested > .md-nav__link {
-    color: #fff !important;
+    color: #ffffff !important;
     background-color: transparent !important;
 }
 
 html body.mars-stars-on .wy-menu-vertical a:hover,
 html body.mars-stars-on .md-nav__link:hover {
     color: #A29BFE !important;
-    background-color: rgba(108,99,255,0.18) !important;
+    background-color: rgba(108, 99, 255, 0.18) !important;
 }
 
 html body.mars-stars-on .wy-menu-vertical li.current > a,
 html body.mars-stars-on .md-nav__link--active {
     color: #A29BFE !important;
-    background-color: rgba(108,99,255,0.28) !important;
+    background-color: rgba(108, 99, 255, 0.28) !important;
     border-left: 3px solid #6C63FF !important;
     font-weight: 700 !important;
 }
@@ -59,16 +63,16 @@ html body.mars-stars-on .md-search__inner,
 html body.mars-stars-on .md-search__form,
 html body.mars-stars-on .md-nav__title,
 html body.mars-stars-on .md-nav__title[for="__drawer"] {
-    background-color: #000 !important;
-    color: #fff !important;
+    background-color: #000000 !important;
+    color: #ffffff !important;
     box-shadow: none !important;
 }
 
 html body.mars-stars-on .wy-side-nav-search input,
 html body.mars-stars-on .md-search__input {
-    background-color: rgba(255,255,255,0.08) !important;
-    color: #fff !important;
-    border: 1px solid rgba(108,99,255,0.4) !important;
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(108, 99, 255, 0.4) !important;
 }
 
 html body.mars-stars-on .wy-side-nav-search input::placeholder,
@@ -76,7 +80,9 @@ html body.mars-stars-on .md-search__input::placeholder {
     color: #9999bb !important;
 }
 
-/* КОНТЕНТ */
+/* ============================================================
+   КОНТЕНТ
+   ============================================================ */
 html body.mars-stars-on .md-content,
 html body.mars-stars-on .md-content__inner,
 html body.mars-stars-on .rst-content,
@@ -90,7 +96,9 @@ html body.mars-stars-on .md-typeset {
     color: #e0e0f0 !important;
 }
 
-/* ТАБЛИЦЫ */
+/* ============================================================
+   ТАБЛИЦЫ
+   ============================================================ */
 html body.mars-stars-on table,
 html body.mars-stars-on table.docutils,
 html body.mars-stars-on .rst-content table,
@@ -100,7 +108,7 @@ html body.mars-stars-on .wy-table-responsive table,
 html body.mars-stars-on .md-typeset table {
     background-color: #14142a !important;
     color: #e0e0f0 !important;
-    border: 1px solid rgba(108,99,255,0.35) !important;
+    border: 1px solid rgba(108, 99, 255, 0.35) !important;
     border-collapse: collapse !important;
 }
 
@@ -109,8 +117,8 @@ html body.mars-stars-on table.docutils th,
 html body.mars-stars-on .wy-table th,
 html body.mars-stars-on .md-typeset table th {
     background-color: #252550 !important;
-    color: #fff !important;
-    border: 1px solid rgba(108,99,255,0.45) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(108, 99, 255, 0.45) !important;
     font-weight: 700 !important;
 }
 
@@ -120,7 +128,7 @@ html body.mars-stars-on .wy-table td,
 html body.mars-stars-on .md-typeset table td {
     background-color: #14142a !important;
     color: #d4d4e4 !important;
-    border: 1px solid rgba(108,99,255,0.2) !important;
+    border: 1px solid rgba(108, 99, 255, 0.2) !important;
 }
 
 html body.mars-stars-on table tbody tr:nth-child(even) td {
@@ -128,10 +136,12 @@ html body.mars-stars-on table tbody tr:nth-child(even) td {
 }
 
 html body.mars-stars-on table tbody tr:hover td {
-    background-color: rgba(108,99,255,0.18) !important;
+    background-color: rgba(108, 99, 255, 0.18) !important;
 }
 
-/* ИНФОБОКСЫ */
+/* ============================================================
+   ИНФОБОКСЫ
+   ============================================================ */
 html body.mars-stars-on .infobox,
 html body.mars-stars-on .infobox-table,
 html body.mars-stars-on table.infobox,
@@ -142,7 +152,7 @@ html body.mars-stars-on aside[class*="infobox"],
 html body.mars-stars-on section[class*="infobox"] {
     background-color: #14142a !important;
     color: #e0e0f0 !important;
-    border: 2px solid rgba(108,99,255,0.45) !important;
+    border: 2px solid rgba(108, 99, 255, 0.45) !important;
 }
 
 html body.mars-stars-on .infobox th,
@@ -157,7 +167,7 @@ html body.mars-stars-on table[class*="infobox"] td,
 html body.mars-stars-on aside[class*="infobox"] > * {
     background-color: #1c1c38 !important;
     color: #e0e0f0 !important;
-    border-color: rgba(108,99,255,0.25) !important;
+    border-color: rgba(108, 99, 255, 0.25) !important;
 }
 
 html body.mars-stars-on .infobox th,
@@ -167,11 +177,13 @@ html body.mars-stars-on table[class*="infobox"] th,
 html body.mars-stars-on .infobox-title,
 html body.mars-stars-on .infobox caption {
     background-color: #252550 !important;
-    color: #fff !important;
+    color: #ffffff !important;
     font-weight: 700 !important;
 }
 
-/* ЗАГОЛОВКИ И ТЕКСТ */
+/* ============================================================
+   ЗАГОЛОВКИ, ТЕКСТ, ССЫЛКИ
+   ============================================================ */
 html body.mars-stars-on h1,
 html body.mars-stars-on h2,
 html body.mars-stars-on h3,
@@ -182,7 +194,7 @@ html body.mars-stars-on .md-typeset h1,
 html body.mars-stars-on .md-typeset h2,
 html body.mars-stars-on .md-typeset h3 {
     color: #f0f0ff !important;
-    border-bottom-color: rgba(108,99,255,0.3) !important;
+    border-bottom-color: rgba(108, 99, 255, 0.3) !important;
 }
 
 html body.mars-stars-on p,
@@ -203,11 +215,11 @@ html body.mars-stars-on a:hover {
 
 html body.mars-stars-on strong,
 html body.mars-stars-on b {
-    color: #fff !important;
+    color: #ffffff !important;
 }
 
 html body.mars-stars-on blockquote {
-    background-color: rgba(20,20,40,0.6) !important;
+    background-color: rgba(20, 20, 40, 0.6) !important;
     border-left: 4px solid #6C63FF !important;
     color: #d4d4e4 !important;
 }
@@ -218,7 +230,7 @@ html body.mars-stars-on .highlight,
 html body.mars-stars-on .md-typeset code {
     background-color: #15152a !important;
     color: #A29BFE !important;
-    border: 1px solid rgba(108,99,255,0.25) !important;
+    border: 1px solid rgba(108, 99, 255, 0.25) !important;
 }
 
 html body.mars-stars-on .admonition,
@@ -228,32 +240,36 @@ html body.mars-stars-on .tip,
 html body.mars-stars-on .info,
 html body.mars-stars-on .md-typeset .admonition {
     background-color: #1a1a30 !important;
-    border-color: rgba(108,99,255,0.35) !important;
+    border-color: rgba(108, 99, 255, 0.35) !important;
     color: #d4d4e4 !important;
 }
 
 html body.mars-stars-on .admonition-title,
 html body.mars-stars-on .admonition > .admonition-title {
-    background-color: rgba(108,99,255,0.3) !important;
-    color: #fff !important;
+    background-color: rgba(108, 99, 255, 0.3) !important;
+    color: #ffffff !important;
 }
 
-/* ВЕРХНЯЯ ПАНЕЛЬ */
+/* ============================================================
+   ВЕРХНЯЯ ПАНЕЛЬ
+   ============================================================ */
 html body.mars-stars-on .md-header,
 html body.mars-stars-on .wy-nav-top,
 html body.mars-stars-on .md-header__inner {
     background-color: #050510 !important;
-    border-bottom: 1px solid rgba(108,99,255,0.3) !important;
+    border-bottom: 1px solid rgba(108, 99, 255, 0.3) !important;
 }
 
 html body.mars-stars-on .md-header__title,
 html body.mars-stars-on .md-header-nav__title,
 html body.mars-stars-on .wy-nav-top a,
 html body.mars-stars-on .md-header__topic {
-    color: #fff !important;
+    color: #ffffff !important;
 }
 
-/* ПРОФИЛЬ */
+/* ============================================================
+   ПРОФИЛЬ
+   ============================================================ */
 html body.mars-stars-on .pf-card,
 html body.mars-stars-on .pf-quick-card,
 html body.mars-stars-on .pf-ach,
@@ -264,7 +280,7 @@ html body.mars-stars-on .pf-stat,
 html body.mars-stars-on .pf-day,
 html body.mars-stars-on .pf-history-item {
     background: #14142a !important;
-    border-color: rgba(108,99,255,0.35) !important;
+    border-color: rgba(108, 99, 255, 0.35) !important;
     color: #e0e0f0 !important;
 }
 
@@ -279,10 +295,13 @@ html body.mars-stars-on .pf-tab {
     color: #9999bb !important;
 }
 
-/* ФОРМЫ */
+/* ============================================================
+   ФОРМЫ И КНОПКИ
+   ============================================================ */
 html body.mars-stars-on button,
 html body.mars-stars-on .md-button,
 html body.mars-stars-on input[type="submit"],
+html body.mars-stars-on input[type="button"],
 html body.mars-stars-on .pf-btn {
     touch-action: manipulation !important;
     -webkit-tap-highlight-color: transparent;
@@ -300,7 +319,7 @@ html body.mars-stars-on textarea,
 html body.mars-stars-on select {
     background-color: #15152a !important;
     color: #e0e0f0 !important;
-    border-color: rgba(108,99,255,0.35) !important;
+    border-color: rgba(108, 99, 255, 0.35) !important;
     font-size: 16px !important;
     -webkit-appearance: none;
     appearance: none;
@@ -311,7 +330,57 @@ html body.mars-stars-on textarea::placeholder {
     color: #666688 !important;
 }
 
-/* ПЛАВНЫЕ ПЕРЕХОДЫ */
-body, .md-content, .wy-nav-content, .md-header, .wy-nav-side, .md-nav, table, table th, table td {
+/* ============================================================
+   ПЛАВНЫЕ ПЕРЕХОДЫ
+   ============================================================ */
+body,
+.md-content,
+.wy-nav-content,
+.md-header,
+.wy-nav-side,
+.md-nav,
+table,
+table th,
+table td {
     transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* ============================================================
+   📱 МОБИЛЬНАЯ АДАПТАЦИЯ ШАПКИ
+   ============================================================ */
+@media screen and (max-width: 1024px) {
+    /* Убираем лишние отступы у шапки */
+    html body.mars-stars-on .md-header__inner,
+    html body.mars-stars-on .wy-nav-top {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    /* Название сайта — обрезаем многоточием, не даём перекрыться */
+    html body.mars-stars-on .md-header__title,
+    html body.mars-stars-on .md-header-nav__title,
+    html body.mars-stars-on .wy-nav-top .title {
+        padding-right: 110px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+    }
+
+    /* Иконка меню (гамбургер) — белая на тёмной теме */
+    html body.mars-stars-on .md-header__button,
+    html body.mars-stars-on .md-header__button.md-icon,
+    html body.mars-stars-on .wy-nav-top .menu-toggle,
+    html body.mars-stars-on .wy-nav-top .icon {
+        color: #ffffff !important;
+        fill: #ffffff !important;
+    }
+}
+
+/* На очень узких экранах — меньше отступ справа */
+@media screen and (max-width: 380px) {
+    html body.mars-stars-on .md-header__title,
+    html body.mars-stars-on .md-header-nav__title,
+    html body.mars-stars-on .wy-nav-top .title {
+        padding-right: 70px !important;
+    }
 }

@@ -3,24 +3,43 @@ title: Политика конфиденциальности
 comments: false
 ---
 
-<div class="wiki-article">
-
 <div class="wiki-hatnote">
     <span>Эта страница описывает правила обработки данных на сайте «Марсианская энциклопедия».</span>
     <span>Если вы ищете информацию о самой планете — см. <a href="/">главную страницу</a>.</span>
 </div>
 
-<div class="wiki-infobox">
-    <div class="wiki-infobox-title">Политика конфиденциальности</div>
-    <table>
-        <tr><th>Тип документа</th><td>Юридический</td></tr>
-        <tr><th>Регулирует</th><td>Обработку персональных данных</td></tr>
-        <tr><th>Дата вступления в силу</th><td>21 августа 2026 года</td></tr>
-        <tr><th>Последнее обновление</th><td>13 сентября 2026 года</td></tr>
-        <tr><th>Контакт</th><td>mnemis.author@mail.ru></td></tr>
-        <tr><th>Хранение данных</th><td>Supabase (ЕС, Франкфурт)</td></tr>
-        <tr><th>Применимое право</th><td>Российская Федерация</td></tr>
-    </table>
+<div class="infobox">
+
+  <div class="infobox-header">
+    <h3>Политика конфиденциальности</h3>
+  </div>
+
+  <div class="infobox-section">Основные данные</div>
+
+  <ul class="infobox-list">
+    <li><b>Тип документа:</b> Юридический</li>
+    <li><b>Регулирует:</b> Обработку персональных данных</li>
+    <li><b>Дата вступления в силу:</b> 21 августа 2026 года</li>
+    <li><b>Последнее обновление:</b> 13 сентября 2026 года</li>
+    <li><b>Применимое право:</b> Российская Федерация</li>
+  </ul>
+
+  <div class="infobox-section">Хранение данных</div>
+
+  <ul class="infobox-list">
+    <li><b>Провайдер:</b> Supabase</li>
+    <li><b>Регион:</b> ЕС (Франкфурт, Германия)</li>
+    <li><b>Стандарты:</b> ISO 27001, SOC 2 Type II</li>
+    <li><b>Шифрование:</b> HTTPS/TLS 1.3, bcrypt</li>
+  </ul>
+
+  <div class="infobox-section">Контакт</div>
+
+  <ul class="infobox-list">
+    <li><b>Email:</b> <a href="mailto:mnemis.author@mail.ru">mnemis.author@mail.ru</a></li>
+    <li><b>Срок ответа:</b> до 3 рабочих дней</li>
+  </ul>
+
 </div>
 
 # Политика конфиденциальности
@@ -54,19 +73,13 @@ comments: false
 
 ## 1. Общие положения
 
-<div class="wiki-section">
-
 Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок обработки и защиты персональных данных пользователей сайта **«Марсианская энциклопедия»**, расположенного по адресу [mars-wiki.ru](/) (далее — «Сайт»).
 
 Оператором персональных данных является команда проекта «Марсианская энциклопедия» (далее — «Администрация»). Политика разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и учитывает принципы Общего регламента по защите данных (GDPR) Европейского союза.
 
 Используя Сайт, вы подтверждаете, что ознакомились с настоящей Политикой и принимаете её условия. Если вы не согласны с условиями — пожалуйста, прекратите использование Сайта.
 
-</div>
-
 ## 2. Какие данные мы собираем
-
-<div class="wiki-section">
 
 Администрация собирает только те данные, которые **необходимы для функционирования Сайта** и **предоставлены пользователем добровольно**. Мы не собираем данные скрытно, не приобретаем их у третьих лиц и не запрашиваем избыточную информацию.
 
@@ -100,11 +113,7 @@ comments: false
 - Данные о политических и религиозных убеждениях;
 - Геолокацию с точностью выше города.
 
-</div>
-
 ## 3. Как мы используем данные
-
-<div class="wiki-section">
 
 Собранные данные используются **исключительно** для следующих целей:
 
@@ -129,11 +138,7 @@ comments: false
 
 **Мы не используем данные для рекламы, маркетинга или профилирования пользователей.**
 
-</div>
-
 ## 4. Правовые основания обработки
-
-<div class="wiki-section">
 
 Обработка персональных данных осуществляется на следующих правовых основаниях:
 
@@ -144,11 +149,7 @@ comments: false
 
 Пользователь вправе **отозвать согласие** в любой момент, удалив аккаунт или обратившись к Администрации.
 
-</div>
-
 ## 5. Хранение и защита данных
-
-<div class="wiki-section">
 
 ### 5.1 Где хранятся данные
 
@@ -168,11 +169,7 @@ comments: false
 
 Персональные данные хранятся **до момента удаления аккаунта** пользователем или **до отзыва согласия**. После удаления данные безвозвратно стираются в течение **30 дней**, за исключением случаев, когда закон требует более длительного хранения.
 
-</div>
-
 ## 6. Передача данных третьим лицам
-
-<div class="wiki-section">
 
 Администрация **не продаёт**, **не сдаёт в аренду** и **не передаёт** персональные данные пользователей третьим лицам, за исключением следующих случаев:
 
@@ -184,11 +181,7 @@ comments: false
 
 Все сторонние сервисы, привлекаемые к работе Сайта, обязуются соблюдать конфиденциальность данных не ниже уровня настоящей Политики.
 
-</div>
-
 ## 7. Файлы cookie и локальное хранилище
-
-<div class="wiki-section">
 
 ### 7.1 Что такое cookie
 
@@ -208,11 +201,7 @@ comments: false
 
 Вы можете отключить cookie в настройках браузера. Однако учтите: **без необходимых cookie вход в аккаунт и сохранение настроек работать не будут**.
 
-</div>
-
 ## 8. Права пользователя
-
-<div class="wiki-section">
 
 В соответствии с законодательством вы имеете следующие права:
 
@@ -223,13 +212,9 @@ comments: false
 - **Право на возражение** — возразить против обработки данных в отдельных случаях;
 - **Право на переносимость** — получить свои данные в машиночитаемом формате.
 
-Для реализации любого из этих прав напишите на адрес <a href="mailto:privacy@mars-wiki.ru">privacy@mars-wiki.ru</a>. Администрация обработает запрос в течение **30 календарных дней**.
-
-</div>
+Для реализации любого из этих прав напишите на адрес <a href="mailto:mnemis.author@mail.ru">mnemis.author@mail.ru</a>. Администрация обработает запрос в течение **30 календарных дней**.
 
 ## 9. Удаление аккаунта
-
-<div class="wiki-section">
 
 Вы можете удалить свой аккаунт **в любой момент**. Для этого есть два способа:
 
@@ -239,7 +224,7 @@ comments: false
 
 ### Способ 2 — через обращение
 
-Напишите письмо с адреса, привязанного к аккаунту, на mnemis.author@mail.ru с темой «Удаление аккаунта». Мы подтвердим удаление в течение **3 рабочих дней**.
+Напишите письмо с адреса, привязанного к аккаунту, на <a href="mailto:mnemis.author@mail.ru">mnemis.author@mail.ru</a> с темой «Удаление аккаунта». Мы подтвердим удаление в течение **3 рабочих дней**.
 
 **После удаления аккаунта:**
 
@@ -248,11 +233,7 @@ comments: false
 - Публичные материалы, созданные вами, могут быть сохранены в обезличенном виде;
 - Резервные копии удаляются в течение **30 дней**.
 
-</div>
-
 ## 10. Дети и несовершеннолетние
-
-<div class="wiki-section">
 
 Сайт **не предназначен для детей младше 13 лет**. Администрация сознательно не собирает данные лиц, не достигших указанного возраста.
 
@@ -260,11 +241,7 @@ comments: false
 
 Пользователи в возрасте от 13 до 18 лет могут использовать Сайт только с согласия родителей или законных представителей.
 
-</div>
-
 ## 11. Изменения в политике
-
-<div class="wiki-section">
 
 Администрация оставляет за собой право изменять настоящую Политику. Все изменения вступают в силу с момента публикации на этой странице.
 
@@ -276,20 +253,13 @@ comments: false
 
 Продолжая использовать Сайт после внесения изменений, вы подтверждаете согласие с новой редакцией Политики.
 
-</div>
-
 ## 12. Контакты
-
-<div class="wiki-section">
 
 По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться:
 
 - **Email:** <a href="mailto:mnemis.author@mail.ru">mnemis.author@mail.ru</a>
 
-
 Мы стараемся отвечать на все обращения в течение **3 рабочих дней**.
-
-</div>
 
 ---
 
@@ -299,21 +269,97 @@ comments: false
     <p>См. также: <a href="/license/">Условия использования</a> · <a href="/about/">О проекте</a> · <a href="/">Главная страница</a></p>
 </div>
 
-</div>
-
 <style>
 /* ============================================================
-   Стили в духе энциклопедии — wiki-article
+   ИНФОБОКС — серый, в стиле Wikipedia
    ============================================================ */
-
-.wiki-article {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.75;
+.infobox {
+    float: right;
+    clear: right;
+    width: 300px;
+    background: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    padding: 0;
+    margin: 0 0 1rem 1.5rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
     color: #202122;
-    max-width: 100%;
+    border-radius: 2px;
 }
 
-/* Шапка-примечание */
+.infobox-header {
+    background: #eaecf0;
+    padding: 8px 12px;
+    border-bottom: 1px solid #a2a9b1;
+    text-align: center;
+    border-radius: 2px 2px 0 0;
+}
+
+.infobox-header h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #202122;
+    border: none;
+    line-height: 1.3;
+}
+
+.infobox-section {
+    background: #eaecf0;
+    padding: 6px 10px;
+    margin: 0;
+    border-top: 1px solid #a2a9b1;
+    border-bottom: 1px solid #a2a9b1;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: #202122;
+    letter-spacing: 0.3px;
+}
+
+.infobox-list {
+    margin: 0;
+    padding: 10px 12px 12px 28px;
+    list-style: none;
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+.infobox-list li {
+    margin: 4px 0;
+    padding: 0;
+    color: #202122;
+    position: relative;
+}
+
+.infobox-list li::before {
+    content: '•';
+    position: absolute;
+    left: -14px;
+    color: #54595d;
+    font-weight: 700;
+}
+
+.infobox-list b {
+    color: #202122;
+    font-weight: 600;
+}
+
+.infobox-list a {
+    color: #3366cc !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+    word-break: break-all;
+}
+
+.infobox-list a:hover {
+    text-decoration: underline !important;
+}
+
+/* ============================================================
+   ШАПКА-ПРИМЕЧАНИЕ
+   ============================================================ */
 .wiki-hatnote {
     font-style: italic;
     color: #54595d;
@@ -328,55 +374,9 @@ comments: false
 .wiki-hatnote a { color: #3366cc; text-decoration: none; }
 .wiki-hatnote a:hover { text-decoration: underline; }
 
-/* Инфобокс */
-.wiki-infobox {
-    float: right;
-    clear: right;
-    width: 300px;
-    margin: 0 0 18px 20px;
-    border: 1px solid #a2a9b1;
-    background: #f8f9fa;
-    font-size: 0.85rem;
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-.wiki-infobox-title {
-    background: #eaecf0;
-    padding: 8px 12px;
-    font-weight: 700;
-    text-align: center;
-    border-bottom: 1px solid #a2a9b1;
-    color: #202122;
-    font-size: 0.92rem;
-}
-.wiki-infobox table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.82rem;
-}
-.wiki-infobox th,
-.wiki-infobox td {
-    padding: 6px 10px;
-    text-align: left;
-    vertical-align: top;
-    border-top: 1px solid #eaecf0;
-    background: transparent;
-}
-.wiki-infobox th {
-    color: #54595d;
-    font-weight: 600;
-    width: 40%;
-}
-.wiki-infobox td {
-    color: #202122;
-}
-.wiki-infobox a {
-    color: #3366cc;
-    text-decoration: none;
-}
-.wiki-infobox a:hover { text-decoration: underline; }
-
-/* Оглавление */
+/* ============================================================
+   ОГЛАВЛЕНИЕ
+   ============================================================ */
 .wiki-toc {
     display: inline-block;
     padding: 12px 18px 12px 24px;
@@ -415,63 +415,21 @@ comments: false
     text-decoration: underline !important;
 }
 
-/* Секции */
-.wiki-section {
-    margin: 0 0 20px 0;
-}
-
-.wiki-section p {
-    margin: 0 0 14px 0;
-    line-height: 1.75;
-    color: #202122;
-}
-
-.wiki-section ul,
-.wiki-section ol {
-    margin: 0 0 14px 0;
-    padding-left: 24px;
-}
-.wiki-section li {
-    margin: 4px 0;
-    line-height: 1.7;
-    color: #202122;
-}
-
-.wiki-section strong { color: #000; font-weight: 700; }
-.wiki-section em { color: #54595d; }
-
-.wiki-section a {
-    color: #3366cc !important;
-    text-decoration: none !important;
-    border-bottom: none !important;
-}
-.wiki-section a:hover { text-decoration: underline !important; }
-
-/* Таблицы */
-.wiki-section table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 12px 0 18px 0;
-    font-size: 0.9rem;
-    background: #f8f9fa;
-    border: 1px solid #a2a9b1;
-}
-.wiki-section th {
-    background: #eaecf0;
-    color: #202122;
-    padding: 8px 12px;
-    text-align: left;
-    border: 1px solid #a2a9b1;
+/* ============================================================
+   ЗАГОЛОВКИ
+   ============================================================ */
+h1 {
+    font-size: 1.85rem;
     font-weight: 700;
-}
-.wiki-section td {
-    padding: 8px 12px;
-    border: 1px solid #a2a9b1;
-    color: #202122;
+    color: #000;
+    margin: 0 0 16px 0;
+    padding: 0 0 6px 0;
+    border-bottom: 1px solid #a2a9b1;
+    font-family: 'Linux Libertine', Georgia, 'Times New Roman', serif;
+    line-height: 1.25;
 }
 
-/* Заголовки h2 */
-.wiki-article h2 {
+h2 {
     font-size: 1.4rem;
     font-weight: 700;
     color: #000;
@@ -479,38 +437,85 @@ comments: false
     padding-bottom: 6px;
     border-bottom: 1px solid #a2a9b1;
     line-height: 1.3;
-}
-
-/* Заголовок h1 */
-.wiki-article h1 {
-    font-size: 1.85rem;
-    font-weight: 700;
-    color: #000;
-    margin: 0 0 8px 0;
-    padding: 0;
-    border: none;
     font-family: 'Linux Libertine', Georgia, 'Times New Roman', serif;
-    line-height: 1.2;
 }
 
-/* h3 */
-.wiki-section h3 {
+h3 {
     font-size: 1.1rem;
     font-weight: 700;
     color: #202122;
     margin: 20px 0 10px 0;
     padding: 0;
     border: none;
+    font-family: 'Linux Libertine', Georgia, 'Times New Roman', serif;
 }
 
-/* Разделитель */
-.wiki-article hr {
+/* ============================================================
+   ОСНОВНОЙ ТЕКСТ
+   ============================================================ */
+p {
+    margin: 0 0 14px 0;
+    line-height: 1.75;
+    color: #202122;
+}
+
+ul, ol {
+    margin: 0 0 14px 0;
+    padding-left: 24px;
+}
+li {
+    margin: 4px 0;
+    line-height: 1.7;
+    color: #202122;
+}
+
+strong { color: #000; font-weight: 700; }
+em { color: #54595d; }
+
+a {
+    color: #3366cc !important;
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+a:hover {
+    text-decoration: underline !important;
+}
+
+/* ============================================================
+   ТАБЛИЦЫ
+   ============================================================ */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0 18px 0;
+    font-size: 0.9rem;
+    background: #f8f9fa;
+    border: 1px solid #a2a9b1;
+}
+th {
+    background: #eaecf0;
+    color: #202122;
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #a2a9b1;
+    font-weight: 700;
+}
+td {
+    padding: 8px 12px;
+    border: 1px solid #a2a9b1;
+    color: #202122;
+    background: #fff;
+}
+
+hr {
     border: none;
     border-top: 1px solid #eaecf0;
     margin: 24px 0;
 }
 
-/* Нижняя сноска */
+/* ============================================================
+   НИЖНЯЯ СНОСКА
+   ============================================================ */
 .wiki-footer-note {
     margin-top: 32px;
     padding-top: 18px;
@@ -518,6 +523,7 @@ comments: false
     font-size: 0.85rem;
     color: #54595d;
     line-height: 1.6;
+    clear: both;
 }
 .wiki-footer-note p { margin: 0 0 4px 0; }
 .wiki-footer-note a {
@@ -528,36 +534,35 @@ comments: false
 .wiki-footer-note a:hover { text-decoration: underline !important; }
 
 /* ============================================================
-   Мобильная адаптация
+   МОБИЛЬНАЯ АДАПТАЦИЯ
    ============================================================ */
 @media (max-width: 700px) {
-    .wiki-infobox {
+    .infobox {
         float: none;
         width: 100%;
         margin: 0 0 18px 0;
     }
-    .wiki-article h1 { font-size: 1.5rem; }
-    .wiki-article h2 { font-size: 1.2rem; margin-top: 26px; }
-    .wiki-section h3 { font-size: 1rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.2rem; margin-top: 26px; }
+    h3 { font-size: 1rem; }
     .wiki-toc { width: 100%; font-size: 0.85rem; }
-    .wiki-section table { font-size: 0.82rem; }
-    .wiki-section th, .wiki-section td { padding: 6px 8px; }
+    table { font-size: 0.82rem; }
+    th, td { padding: 6px 8px; }
     .wiki-hatnote { font-size: 0.82rem; }
 }
 
 /* ============================================================
-   Тёмная тема — звёздное небо
+   ТЁМНАЯ ТЕМА — ЗВЁЗДНОЕ НЕБО
    ============================================================ */
-html body.mars-stars-on .wiki-article,
-html body.mars-stars-on .wiki-section p,
-html body.mars-stars-on .wiki-section li,
-html body.mars-stars-on .wiki-article h1,
-html body.mars-stars-on .wiki-article h2,
-html body.mars-stars-on .wiki-section h3 {
+html body.mars-stars-on h1,
+html body.mars-stars-on h2,
+html body.mars-stars-on h3,
+html body.mars-stars-on p,
+html body.mars-stars-on li {
     color: #e0e0f0 !important;
 }
-html body.mars-stars-on .wiki-section strong { color: #ffffff !important; }
-html body.mars-stars-on .wiki-section em { color: #b0b0c8 !important; }
+html body.mars-stars-on strong { color: #ffffff !important; }
+html body.mars-stars-on em { color: #b0b0c8 !important; }
 
 html body.mars-stars-on .wiki-hatnote {
     color: #b0b0c8 !important;
@@ -565,27 +570,33 @@ html body.mars-stars-on .wiki-hatnote {
     border-left-color: #6C63FF;
 }
 html body.mars-stars-on .wiki-hatnote a,
-html body.mars-stars-on .wiki-section a,
+html body.mars-stars-on a,
 html body.mars-stars-on .wiki-toc a,
-html body.mars-stars-on .wiki-footer-note a {
+html body.mars-stars-on .wiki-footer-note a,
+html body.mars-stars-on .infobox-list a {
     color: #A29BFE !important;
 }
 
-html body.mars-stars-on .wiki-infobox {
+html body.mars-stars-on .infobox {
     background: #14142a !important;
     border-color: rgba(108, 99, 255, 0.4) !important;
+    color: #e0e0f0 !important;
 }
-html body.mars-stars-on .wiki-infobox-title {
+html body.mars-stars-on .infobox-header,
+html body.mars-stars-on .infobox-section {
     background: #252550 !important;
     color: #ffffff !important;
-    border-bottom-color: rgba(108, 99, 255, 0.4) !important;
+    border-color: rgba(108, 99, 255, 0.4) !important;
 }
-html body.mars-stars-on .wiki-infobox th {
-    color: #b0b0c8 !important;
-    border-top-color: rgba(108, 99, 255, 0.2) !important;
+html body.mars-stars-on .infobox-header h3 {
+    color: #ffffff !important;
 }
-html body.mars-stars-on .wiki-infobox td {
+html body.mars-stars-on .infobox-list li,
+html body.mars-stars-on .infobox-list b {
     color: #e0e0f0 !important;
+}
+html body.mars-stars-on .infobox-list li::before {
+    color: #A29BFE;
 }
 
 html body.mars-stars-on .wiki-toc {
@@ -593,11 +604,12 @@ html body.mars-stars-on .wiki-toc {
     border-color: rgba(108, 99, 255, 0.4) !important;
 }
 
-html body.mars-stars-on .wiki-article h2 {
+html body.mars-stars-on h1,
+html body.mars-stars-on h2 {
     color: #f0f0ff !important;
     border-bottom-color: rgba(108, 99, 255, 0.35) !important;
 }
-html body.mars-stars-on .wiki-article hr {
+html body.mars-stars-on hr {
     border-top-color: rgba(108, 99, 255, 0.2) !important;
 }
 html body.mars-stars-on .wiki-footer-note {
@@ -605,16 +617,17 @@ html body.mars-stars-on .wiki-footer-note {
     border-top-color: rgba(108, 99, 255, 0.25) !important;
 }
 
-html body.mars-stars-on .wiki-section table {
+html body.mars-stars-on table {
     background: #14142a !important;
     border-color: rgba(108, 99, 255, 0.35) !important;
 }
-html body.mars-stars-on .wiki-section th {
+html body.mars-stars-on th {
     background: #252550 !important;
     color: #ffffff !important;
     border-color: rgba(108, 99, 255, 0.4) !important;
 }
-html body.mars-stars-on .wiki-section td {
+html body.mars-stars-on td {
+    background: #1a1a30 !important;
     color: #e0e0f0 !important;
     border-color: rgba(108, 99, 255, 0.2) !important;
 }

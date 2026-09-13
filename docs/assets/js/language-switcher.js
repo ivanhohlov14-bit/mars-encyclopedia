@@ -1,15 +1,12 @@
 // ============================================================
 // language-switcher.js — блок «Другие языки» в сайдбаре
-// Как в Википедии: список языков → клик → перевод страницы
+// Использует Яндекс.Переводчик (работает в РФ без блокировок)
 // ============================================================
 
 (function() {
     'use strict';
 
-    // ============================================================
-    // 🔧 НАСТРОЙКИ
-    // ============================================================
-    var SOURCE_LANG = 'ru'; // язык оригинала
+    var SOURCE_LANG = 'ru';
 
     var LANGUAGES = [
         { code: 'en',    flag: '🇬🇧', name: 'English' },
@@ -20,27 +17,21 @@
         { code: 'pl',    flag: '🇵🇱', name: 'Polski' },
         { code: 'pt',    flag: '🇵🇹', name: 'Português' },
         { code: 'tr',    flag: '🇹🇷', name: 'Türkçe' },
-        { code: 'zh-CN', flag: '🇨🇳', name: '中文' },
+        { code: 'zh',    flag: '🇨🇳', name: '中文' },
         { code: 'ja',    flag: '🇯🇵', name: '日本語' },
         { code: 'ko',    flag: '🇰🇷', name: '한국어' },
         { code: 'ar',    flag: '🇸🇦', name: 'العربية' }
     ];
 
     // ============================================================
-    // 🔗 ССЫЛКА НА GOOGLE TRANSLATE
+    // 🔗 ССЫЛКА НА ЯНДЕКС.ПЕРЕВОДЧИК
+    // Формат: translate.yandex.ru/translate?url=URL&lang=ru-en
     // ============================================================
     function makeTranslateUrl(targetLang) {
-        var host = window.location.hostname;
-        // mars-wiki.ru → mars-wiki-ru.translate.goog
-        var proxyHost = host.replace(/\./g, '-') + '.translate.goog';
-        var path = window.location.pathname + window.location.search;
-
-        var params = '_x_tr_sl=' + SOURCE_LANG +
-                     '&_x_tr_tl=' + targetLang +
-                     '&_x_tr_hl=' + SOURCE_LANG +
-                     '&_x_tr_pto=wapp';
-
-        return window.location.protocol + '//' + proxyHost + path + '?' + params;
+        var fullUrl = window.location.href;
+        var encoded = encodeURIComponent(fullUrl);
+        return 'https://translate.yandex.ru/translate?url=' + encoded +
+               '&lang=' + SOURCE_LANG + '-' + targetLang;
     }
 
     // ============================================================
@@ -72,9 +63,8 @@
     // 📥 ВСТАВКА В САЙДБАР
     // ============================================================
     function insertIntoSidebar() {
-        if (document.querySelector('.lang-switcher-block')) return;
+        if (document.querySelector('.lang-switcher-block')) return true;
 
-        // Пробуем найти сайдбар (Material + Read the Docs)
         var navList = document.querySelector('.md-nav--primary .md-nav__list') ||
                       document.querySelector('.md-sidebar--primary .md-nav__list');
         var sidebar = document.querySelector('.wy-nav-side .wy-menu-vertical') ||
@@ -83,20 +73,17 @@
         var block = createLanguageBlock();
 
         if (navList) {
-            // Material
             var li = document.createElement('li');
             li.className = 'md-nav__item';
             li.style.listStyle = 'none';
             li.appendChild(block);
             navList.appendChild(li);
+            return true;
         } else if (sidebar) {
-            // Read the Docs
             sidebar.appendChild(block);
-        } else {
-            // Ничего не нашли — попробуем ещё раз позже
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     // ============================================================
@@ -113,7 +100,6 @@
                 border-top: 1px solid rgba(160, 160, 180, 0.2);
                 list-style: none;
             }
-
             .lang-title {
                 font-size: 0.72rem;
                 font-weight: 700;
@@ -123,19 +109,16 @@
                 padding: 0 12px 10px 12px;
                 opacity: 0.9;
             }
-
             .lang-list {
                 list-style: none;
                 margin: 0;
                 padding: 0;
             }
-
             .lang-list li {
                 margin: 0;
                 padding: 0;
                 list-style: none;
             }
-
             .lang-link {
                 display: flex;
                 align-items: center;
@@ -150,47 +133,35 @@
                 border-radius: 4px;
                 line-height: 1.3;
             }
-
             .lang-link:hover {
                 background: rgba(108, 99, 255, 0.1);
                 color: #6C63FF !important;
                 transform: translateX(2px);
             }
-
             .lang-flag {
                 font-size: 1.05rem;
                 line-height: 1;
                 flex-shrink: 0;
             }
-
             .lang-name {
                 flex: 1;
                 line-height: 1.3;
             }
 
-            /* ============================================================
-               Тёмная тема (звёздное небо)
-               ============================================================ */
             html body.mars-stars-on .lang-switcher-block {
                 border-top-color: rgba(108, 99, 255, 0.25) !important;
             }
-
             html body.mars-stars-on .lang-title {
                 color: #A29BFE !important;
             }
-
             html body.mars-stars-on .lang-link {
                 color: #d4d4e4 !important;
             }
-
             html body.mars-stars-on .lang-link:hover {
                 background: rgba(108, 99, 255, 0.25) !important;
                 color: #A29BFE !important;
             }
 
-            /* ============================================================
-               Мобильный
-               ============================================================ */
             @media (max-width: 1024px) {
                 .lang-switcher-block {
                     margin: 12px 8px;
@@ -217,7 +188,6 @@
     // ============================================================
     function init() {
         addStyles();
-        // Пробуем вставить несколько раз — DOM может отрисоваться позже
         var attempts = 0;
         var interval = setInterval(function() {
             attempts++;
@@ -233,5 +203,5 @@
         init();
     }
 
-    console.log('🌐 Language switcher: активен');
+    console.log('🌐 Language switcher: активен (Яндекс.Переводчик)');
 })();

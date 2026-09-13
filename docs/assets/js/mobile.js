@@ -1,14 +1,10 @@
 // ============================================================
 // mobile.js — мобильные фиксы и кнопка регистрации
-// Работает только на телефонах. На ПК ничего не делает.
 // ============================================================
 
 (function() {
     'use strict';
 
-    // ============================================================
-    // 📱 ПРОВЕРКА: только мобильные
-    // ============================================================
     var IS_MOBILE =
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
         (navigator.maxTouchPoints && navigator.maxTouchPoints > 1 && window.innerWidth < 1024);
@@ -16,35 +12,24 @@
     if (!IS_MOBILE) return;
 
     // ============================================================
-    // 🔧 НАСТРОЙКИ
+    // 🔧 НАСТРОЙКИ — URL'ы от корня домена mars-wiki.ru
     // ============================================================
     var CONFIG = {
-        registerUrl: '/login/',             // куда ведёт кнопка «Войти»
-        profileUrl: '/profile/',            // куда ведёт, если уже на профиле
-        registerText: 'Войти',
-        registerTextOnProfile: 'Профиль',
-        registerIcon: '👤',
+        loginUrl:   '/login/',      // ← просто /login/
+        profileUrl: '/profile/',    // ← просто /profile/
+        loginText: 'Войти',
+        profileText: 'Профиль',
+        loginIcon: '👤',
+        profileIcon: '👤',
         hideOnPages: ['/secret/', '/secret-2/', '/login/']
     };
 
-    // ============================================================
-    // 🔗 БАЗОВЫЙ ПУТЬ (для GitHub Pages в подпапке)
-    // ============================================================
-    function getBasePath() {
-        return window.location.pathname.replace(/\/[^\/]*\/?$/, '') || '';
+    function vibrate(p) {
+        try { if (navigator.vibrate) navigator.vibrate(p); } catch(e) {}
     }
 
     // ============================================================
-    // 📳 ВИБРАЦИЯ
-    // ============================================================
-    function vibrate(pattern) {
-        try {
-            if (navigator.vibrate) navigator.vibrate(pattern);
-        } catch(e) {}
-    }
-
-    // ============================================================
-    // 👤 КНОПКА РЕГИСТРАЦИИ (правый верхний угол, не перекрывает заголовок)
+    // 👤 КНОПКА «ВОЙТИ / ПРОФИЛЬ»
     // ============================================================
     function initMobileRegisterButton() {
         if (document.getElementById('mobile-register-btn')) return;
@@ -56,19 +41,20 @@
             if (path.indexOf(CONFIG.hideOnPages[i]) !== -1) return;
         }
 
-        var base = getBasePath();
-        var onProfile = path.indexOf(CONFIG.profileUrl) !== -1;
-        var targetUrl = base + (onProfile ? CONFIG.profileUrl : CONFIG.registerUrl);
-        var labelText = onProfile ? CONFIG.registerTextOnProfile : CONFIG.registerText;
+        var onProfile = path.indexOf('/profile/') !== -1;
+
+        // ✅ ПРОСТО АБСОЛЮТНЫЙ URL — никакого base path
+        var targetUrl = onProfile ? CONFIG.profileUrl : CONFIG.loginUrl;
+        var labelText = onProfile ? CONFIG.profileText : CONFIG.loginText;
+        var iconChar  = onProfile ? CONFIG.profileIcon : CONFIG.loginIcon;
 
         var btn = document.createElement('a');
         btn.id = 'mobile-register-btn';
         btn.href = targetUrl;
-        btn.setAttribute('aria-label', onProfile ? 'Профиль' : 'Войти');
-        btn.innerHTML = '<span class="mrbtn-icon">' + CONFIG.registerIcon + '</span>' +
+        btn.setAttribute('aria-label', labelText);
+        btn.innerHTML = '<span class="mrbtn-icon">' + iconChar + '</span>' +
                         '<span class="mrbtn-text">' + labelText + '</span>';
 
-        // Стили — компактные, с safe-area для iPhone
         btn.style.cssText =
             'position:fixed;' +
             'top:calc(8px + env(safe-area-inset-top,0px));' +
@@ -111,24 +97,21 @@
 
         document.body.appendChild(btn);
 
-        // Добавляем CSS для отступа названия (чтобы кнопка не перекрывала заголовок)
+        // CSS: отступ у заголовка, адаптив кнопки
         var style = document.createElement('style');
         style.id = 'mobile-register-style';
         style.textContent = `
             @media screen and (max-width: 1024px) {
-                /* Отступ справа у заголовка — чтобы название не заезжало под кнопку */
                 .md-header__title,
                 .md-header-nav__title,
                 .wy-nav-top .title,
                 .wy-nav-top > a:not(.icon):not(.menu-toggle) {
-                    padding-right: 110px !important;
-                    max-width: calc(100vw - 130px) !important;
+                    padding-right: 100px !important;
+                    max-width: calc(100vw - 120px) !important;
                     overflow: hidden !important;
                     text-overflow: ellipsis !important;
                     white-space: nowrap !important;
                 }
-
-                /* Само название — обрезаем многоточием если не влезает */
                 .md-header__topic,
                 .md-header__title .md-header__topic,
                 .md-header-nav__title,
@@ -138,53 +121,33 @@
                     white-space: nowrap !important;
                     max-width: 100% !important;
                 }
-
-                /* Иконка и текст кнопки */
-                #mobile-register-btn .mrbtn-icon {
-                    font-size: 0.95rem;
-                    line-height: 1;
-                }
-                #mobile-register-btn .mrbtn-text {
-                    font-size: 0.8rem;
-                    line-height: 1;
-                }
-
-                /* На очень узких экранах — показываем только иконку */
-                @media (max-width: 380px) {
-                    #mobile-register-btn {
-                        padding: 0 10px !important;
-                    }
-                    #mobile-register-btn .mrbtn-text {
-                        display: none !important;
-                    }
-                    #mobile-register-btn .mrbtn-icon {
-                        font-size: 1.1rem !important;
-                    }
-                    .md-header__title,
-                    .md-header-nav__title,
-                    .wy-nav-top .title,
-                    .wy-nav-top > a:not(.icon):not(.menu-toggle) {
-                        padding-right: 70px !important;
-                        max-width: calc(100vw - 90px) !important;
-                    }
+                #mobile-register-btn .mrbtn-icon { font-size: 0.95rem; line-height: 1; }
+                #mobile-register-btn .mrbtn-text { font-size: 0.8rem; line-height: 1; }
+            }
+            @media (max-width: 400px) {
+                #mobile-register-btn { padding: 0 10px !important; }
+                #mobile-register-btn .mrbtn-text { display: none !important; }
+                #mobile-register-btn .mrbtn-icon { font-size: 1.15rem !important; }
+                .md-header__title,
+                .md-header-nav__title,
+                .wy-nav-top .title,
+                .wy-nav-top > a:not(.icon):not(.menu-toggle) {
+                    padding-right: 70px !important;
+                    max-width: calc(100vw - 90px) !important;
                 }
             }
         `;
         document.head.appendChild(style);
-
-        console.log('👤 Кнопка регистрации добавлена →', targetUrl);
     }
 
     // ============================================================
-    // 🍔 ФИКС МОБИЛЬНОГО МЕНЮ (drawer)
+    // 🍔 ФИКС МОБИЛЬНОГО МЕНЮ
     // ============================================================
     function fixMobileDrawer() {
-        function resetContentShift() {
-            // 1. Убираем overflow
+        function reset() {
             document.body.style.overflow = '';
             document.documentElement.style.overflow = '';
 
-            // 2. Проверяем, открыто ли меню
             var menuOpen =
                 document.querySelector('.wy-nav-side.shift') ||
                 document.querySelector('.md-sidebar--primary[data-md-state="active"]') ||
@@ -192,17 +155,12 @@
                 document.querySelector('.md-toggle--drawer:checked');
             if (menuOpen) return;
 
-            // 3. Сбрасываем сдвиги у контейнеров
-            var selectors = [
-                '.wy-nav-content-wrap',
-                '.wy-nav-content',
-                '.md-container',
-                '.md-main',
-                '.md-main__inner',
-                '.md-content',
-                '.md-content__inner'
+            var sels = [
+                '.wy-nav-content-wrap', '.wy-nav-content',
+                '.md-container', '.md-main', '.md-main__inner',
+                '.md-content', '.md-content__inner'
             ];
-            selectors.forEach(function(sel) {
+            sels.forEach(function(sel) {
                 document.querySelectorAll(sel).forEach(function(el) {
                     el.style.transform = '';
                     el.style.marginLeft = '';
@@ -210,7 +168,6 @@
                 });
             });
 
-            // 4. Read the Docs: убираем класс shift
             var sideNav = document.querySelector('.wy-nav-side');
             if (sideNav && !sideNav.classList.contains('shift')) {
                 document.querySelectorAll('.wy-nav-content-wrap.shift').forEach(function(el) {
@@ -218,7 +175,6 @@
                 });
             }
 
-            // 5. Material: снимаем активные состояния
             var hasOverlay = document.querySelector('.md-overlay[data-md-state="active"]');
             if (!hasOverlay) {
                 document.querySelectorAll('.md-sidebar--primary[data-md-state="active"]').forEach(function(el) {
@@ -229,41 +185,34 @@
                 });
             }
 
-            // 6. Убираем блокировку скролла у body если меню закрыто
-            if (!menuOpen) {
-                document.body.classList.remove('md-scroll-lock');
-                if (document.body.style.position === 'fixed') {
-                    document.body.style.position = '';
-                    document.body.style.top = '';
-                    document.body.style.width = '';
-                }
+            document.body.classList.remove('md-scroll-lock');
+            if (document.body.style.position === 'fixed') {
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
             }
         }
 
-        // Клики
         document.addEventListener('click', function(e) {
             var insideMenu = e.target.closest('.wy-nav-side, .md-sidebar--primary, .md-sidebar');
-            var isHamburger = e.target.closest('.wy-nav-top, .md-header__button, .md-header__button[for="__drawer"], .md-header__button[for="__toc"], label[for="__drawer"], label[for="__toc"]');
+            var isHamburger = e.target.closest('.wy-nav-top, .md-header__button, .md-header__button[for="__drawer"], label[for="__drawer"], label[for="__toc"]');
             var isMenuLink = e.target.closest('.wy-menu-vertical a, .md-nav__link');
             var isOverlay = e.target.closest('.md-overlay, .wy-overlay');
 
             if (isMenuLink || isOverlay || (!insideMenu && !isHamburger)) {
-                setTimeout(resetContentShift, 80);
-                setTimeout(resetContentShift, 350);
-                setTimeout(resetContentShift, 700);
+                setTimeout(reset, 80);
+                setTimeout(reset, 350);
+                setTimeout(reset, 700);
             }
         }, true);
 
-        // MutationObserver
         try {
             var observer = new MutationObserver(function() {
                 var menuOpen =
                     document.querySelector('.wy-nav-side.shift') ||
                     document.querySelector('.md-sidebar--primary[data-md-state="active"]') ||
                     document.querySelector('.md-overlay[data-md-state="active"]');
-                if (!menuOpen) {
-                    setTimeout(resetContentShift, 100);
-                }
+                if (!menuOpen) setTimeout(reset, 100);
             });
             observer.observe(document.body, {
                 attributes: true,
@@ -272,26 +221,18 @@
             });
         } catch(e) {}
 
-        // При загрузке и повороте — сброс
-        setTimeout(resetContentShift, 500);
-        window.addEventListener('orientationchange', function() {
-            setTimeout(resetContentShift, 300);
-        });
-
-        // При смене размера окна (например, поворот планшета)
-        window.addEventListener('resize', function() {
-            setTimeout(resetContentShift, 200);
-        });
-
-        console.log('🍔 Фикс мобильного меню активен');
+        setTimeout(reset, 500);
+        window.addEventListener('orientationchange', function() { setTimeout(reset, 300); });
+        window.addEventListener('resize', function() { setTimeout(reset, 200); });
     }
 
     // ============================================================
-    // 🚀 ЗАПУСК
+    // 🚀 СТАРТ
     // ============================================================
     function init() {
         initMobileRegisterButton();
         fixMobileDrawer();
+        console.log('📱 mobile.js: активен');
     }
 
     if (document.readyState === 'loading') {

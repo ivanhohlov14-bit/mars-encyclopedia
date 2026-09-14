@@ -1,249 +1,391 @@
-// collapse-menu.js — сворачивает названия в левом меню
+// accordion-menu.js — меню-аккордеон: только разделы, статьи по клику
 (function() {
     'use strict';
 
-    var STORAGE_KEY = 'mars_menu_collapsed';
+    var STORAGE_KEY = 'mars_menu_open_sections';
     var IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1024);
 
-    // По умолчанию меню свёрнуто
-    var isCollapsed = localStorage.getItem(STORAGE_KEY) !== 'false';
+    // Какие разделы открыты (сохраняется)
+    var openSections = {};
+    try {
+        openSections = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch(e) { openSections = {}; }
 
     // ============================================================
-    // КНОПКА ПЕРЕКЛЮЧЕНИЯ
+    // 🔍 ПОИСК NAV В ЛЮБОЙ ТЕМЕ
     // ============================================================
-    function createToggle() {
-        if (document.getElementById('menu-collapse-toggle')) return;
+    function findNav() {
+        // Material
+        var nav = document.querySelector('.md-sidebar--primary .md-nav--primary');
+        if (nav) return { el: nav, type: 'material' };
 
-        var btn = document.createElement('button');
-        btn.id = 'menu-collapse-toggle';
-        btn.setAttribute('aria-label', 'Свернуть/развернуть меню');
-        btn.innerHTML = isCollapsed ? '▶' : '◀';
-        btn.title = isCollapsed ? 'Развернуть меню' : 'Свернуть меню';
+        // Read the Docs
+        var menu = document.querySelector('.wy-menu-vertical');
+        if (menu) return { el: menu, type: 'readthedocs' };
 
-        btn.onclick = function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            setCollapsed(!isCollapsed);
-            try { if (navigator.vibrate) navigator.vibrate(15); } catch(err) {}
-        };
-
-        // Кнопка вставляется в сайдбар
-        var sidebar = document.querySelector('.wy-nav-side, .md-sidebar--primary');
-        if (sidebar) {
-            sidebar.appendChild(btn);
-        } else {
-            // Если сайдбара ещё нет — вставляем в body (появится при загрузке)
-            setTimeout(createToggle, 500);
-        }
+        return null;
     }
 
     // ============================================================
-    // УПРАВЛЕНИЕ СОСТОЯНИЕМ
+    // 🎯 ОБРАБОТКА МЕНЮ MATERIAL
     // ============================================================
-    function setCollapsed(collapsed) {
-        isCollapsed = collapsed;
-        localStorage.setItem(STORAGE_KEY, collapsed ? 'true' : 'false');
-        applyState();
+    function processMaterial(nav) {
+        var topItems = nav.querySelectorAll(':scope > .md-nav__list > .md-nav__item');
 
-        var btn = document.getElementById('menu-collapse-toggle');
-        if (btn) {
-            btn.innerHTML = collapsed ? '▶' : '◀';
-            btn.title = collapsed ? 'Развернуть меню' : 'Свернуть меню';
-        }
+        topItems.forEach(function(item) {
+            // Только разделы с вложениями
+            var nested = item.querySelector('.md-nav');
+            if (!nested) return;
+
+            item.classList.add('mars-accordion-section');
+
+            var label = item.querySelector(':scope > .md-nav__link');
+            if (!label) return;
+
+            var sectionTitle = label.textContent.trim();
+            var sectionId = label.getAttribute('for') || sectionTitle;
+
+            // Проверяем, открыт ли
+            var isOpen = openSections[sectionId] === true;
+            item.classList.toggle('mars-open', isOpen);
+
+            // Перехватываем клик по label
+            label.onclick = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleSection(item, sectionId);
+            };
+
+            // Скрываем input-чекбокс
+            var toggle = item.querySelector(':scope > input.md-nav__toggle');
+            if (toggle) {
+                toggle.style.display = 'none';
+                // Синхронизируем открытие
+                if (isOpen) toggle.checked = true;
+            }
+        });
     }
 
-    function applyState() {
-        var html = document.documentElement;
-        var body = document.body;
+    // ============================================================
+    // 🎯 ОБРАБОТКА МЕНЮ READ THE DOCS
+    // ============================================================
+    function processReadTheDocs(nav) {
+        var topItems = nav.querySelectorAll(':scope > ul > li.toctree-l1');
 
-        if (isCollapsed) {
-            html.classList.add('mars-menu-collapsed');
-            body.classList.add('mars-menu-collapsed');
-        } else {
-            html.classList.remove('mars-menu-collapsed');
-            body.classList.remove('mars-menu-collapsed');
-        }
+        topItems.forEach(function(item) {
+            var sublist = item.querySelector(':scope > ul');
+            if (!sublist) return;
+
+            item.classList.add('mars-accordion-section');
+
+            var label = item.querySelector(':scope > a');
+            if (!label) return;
+
+            var sectionTitle = label.textContent.trim();
+            var sectionId = sectionTitle;
+
+            var isOpen = openSections[sectionId] === true;
+            item.classList.toggle('mars-open', isOpen);
+
+            label.onclick = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                toggleSection(item, sectionId);
+            };
+        });
+    }
+
+    // ============================================================
+    // 🔄 ПЕРЕКЛЮЧЕНИЕ РАЗДЕЛА
+    // ============================================================
+    function toggleSection(item, sectionId) {
+        var isOpen = item.classList.contains('mars-open');
+        item.classList.toggle('mars-open', !isOpen);
+
+        openSections[sectionId] = !isOpen;
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(openSections));
+        } catch(e) {}
+
+        try { if (navigator.vibrate) navigator.vibrate(12); } catch(e) {}
     }
 
     // ============================================================
     // 🎨 СТИЛИ
     // ============================================================
     function addStyles() {
-        if (document.getElementById('collapse-menu-style')) return;
+        if (document.getElementById('accordion-menu-style')) return;
         var style = document.createElement('style');
-        style.id = 'collapse-menu-style';
+        style.id = 'accordion-menu-style';
         style.textContent = `
             /* ============================================================
-               🎯 СВЁРНУТОЕ МЕНЮ
+               🎯 МЕНЮ-АККОРДЕОН
                ============================================================ */
-            html.mars-menu-collapsed .wy-nav-side,
-            html.mars-menu-collapsed .md-sidebar--primary {
-                width: 56px !important;
-                min-width: 56px !important;
-                max-width: 56px !important;
+
+            /* --- Каждый раздел --- */
+            .mars-accordion-section {
+                position: relative !important;
+                margin: 6px 0 !important;
+                border-radius: 12px !important;
                 overflow: hidden !important;
-                transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
-            }
-            html.mars-menu-collapsed .wy-nav-side:hover,
-            html.mars-menu-collapsed .md-sidebar--primary:hover {
-                width: 260px !important;
-                min-width: 260px !important;
-                max-width: 260px !important;
-                overflow-y: auto !important;
-                box-shadow: 4px 0 24px rgba(0,0,0,0.35) !important;
-                z-index: 100 !important;
+                transition: background 0.25s, box-shadow 0.25s !important;
             }
 
-            /* Скрываем длинные названия */
-            html.mars-menu-collapsed .wy-menu-vertical a,
-            html.mars-menu-collapsed .wy-menu-vertical li,
-            html.mars-menu-collapsed .md-nav__link,
-            html.mars-menu-collapsed .md-nav__title,
-            html.mars-menu-collapsed .md-nav__item,
-            html.mars-menu-collapsed .caption,
-            html.mars-menu-collapsed .wy-menu-vertical header {
+            .mars-accordion-section.mars-open {
+                background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(162, 155, 254, 0.04)) !important;
+                box-shadow: inset 0 0 0 1px rgba(108, 99, 255, 0.2) !important;
+            }
+
+            /* --- Заголовок раздела --- */
+            .mars-accordion-section > .md-nav__link,
+            .mars-accordion-section > a.md-nav__link,
+            .mars-accordion-section > label.md-nav__link,
+            .mars-accordion-section > a.reference,
+            .mars-accordion-section > a {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                padding: 12px 14px !important;
+                margin: 0 !important;
+                font-size: 0.95rem !important;
+                font-weight: 800 !important;
+                color: #1a1a2e !important;
+                cursor: pointer !important;
+                border-radius: 12px !important;
+                background: transparent !important;
+                transition: all 0.25s !important;
+                text-decoration: none !important;
+                position: relative !important;
+                min-height: 44px !important;
+                user-select: none !important;
+                -webkit-tap-highlight-color: transparent !important;
+            }
+
+            /* Полоса слева */
+            .mars-accordion-section > .md-nav__link::before,
+            .mars-accordion-section > a.md-nav__link::before,
+            .mars-accordion-section > label.md-nav__link::before,
+            .mars-accordion-section > a.reference::before,
+            .mars-accordion-section > a::before {
+                content: '' !important;
+                position: absolute !important;
+                left: 0 !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
+                width: 4px !important;
+                height: 0 !important;
+                background: linear-gradient(180deg, #6C63FF, #A29BFE) !important;
+                border-radius: 0 4px 4px 0 !important;
+                transition: height 0.25s !important;
+            }
+
+            .mars-accordion-section.mars-open > .md-nav__link::before,
+            .mars-accordion-section.mars-open > a.md-nav__link::before,
+            .mars-accordion-section.mars-open > label.md-nav__link::before,
+            .mars-accordion-section.mars-open > a.reference::before,
+            .mars-accordion-section.mars-open > a::before {
+                height: 60% !important;
+            }
+
+            /* Наведение */
+            .mars-accordion-section > .md-nav__link:hover,
+            .mars-accordion-section > a.md-nav__link:hover,
+            .mars-accordion-section > label.md-nav__link:hover,
+            .mars-accordion-section > a.reference:hover,
+            .mars-accordion-section > a:hover {
+                background: rgba(108, 99, 255, 0.1) !important;
+                color: #6C63FF !important;
+            }
+
+            /* Стрелка-индикатор */
+            .mars-accordion-section > .md-nav__link::after,
+            .mars-accordion-section > a.md-nav__link::after,
+            .mars-accordion-section > label.md-nav__link::after,
+            .mars-accordion-section > a.reference::after,
+            .mars-accordion-section > a::after {
+                content: '▸' !important;
+                font-size: 1rem !important;
+                color: #6C63FF !important;
+                transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                display: inline-block !important;
+                margin-left: 8px !important;
+                flex-shrink: 0 !important;
+                font-weight: 900 !important;
+            }
+
+            .mars-accordion-section.mars-open > .md-nav__link::after,
+            .mars-accordion-section.mars-open > a.md-nav__link::after,
+            .mars-accordion-section.mars-open > label.md-nav__link::after,
+            .mars-accordion-section.mars-open > a.reference::after,
+            .mars-accordion-section.mars-open > a::after {
+                transform: rotate(90deg) !important;
+            }
+
+            /* --- Подменю (статьи) --- */
+            .mars-accordion-section > .md-nav,
+            .mars-accordion-section > nav.md-nav,
+            .mars-accordion-section > ul {
+                max-height: 0 !important;
+                overflow: hidden !important;
+                transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s !important;
+                opacity: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                background: transparent !important;
+            }
+
+            .mars-accordion-section.mars-open > .md-nav,
+            .mars-accordion-section.mars-open > nav.md-nav,
+            .mars-accordion-section.mars-open > ul {
+                max-height: 2000px !important;
+                opacity: 1 !important;
+                padding: 4px 0 8px 0 !important;
+                overflow: visible !important;
+            }
+
+            /* --- Ссылки статей внутри раздела --- */
+            .mars-accordion-section .md-nav .md-nav__link,
+            .mars-accordion-section ul li a {
+                display: block !important;
+                padding: 9px 14px 9px 30px !important;
+                margin: 2px 0 !important;
+                font-size: 0.88rem !important;
+                font-weight: 600 !important;
+                color: #555 !important;
+                background: transparent !important;
+                border-radius: 8px !important;
+                transition: all 0.2s !important;
+                text-decoration: none !important;
+                position: relative !important;
+                min-height: 38px !important;
                 white-space: nowrap !important;
                 overflow: hidden !important;
                 text-overflow: ellipsis !important;
+                border-left: 2px solid transparent !important;
             }
 
-            /* Обычное состояние — текст обрезается */
-            html.mars-menu-collapsed .wy-menu-vertical a,
-            html.mars-menu-collapsed .md-nav__link {
-                padding-left: 14px !important;
-                padding-right: 4px !important;
-                font-size: 0 !important;
-                position: relative !important;
-            }
-
-            /* При наведении — текст возвращается */
-            html.mars-menu-collapsed .wy-nav-side:hover .wy-menu-vertical a,
-            html.mars-menu-collapsed .wy-nav-side:hover .md-nav__link,
-            html.mars-menu-collapsed .md-sidebar--primary:hover .md-nav__link {
-                font-size: inherit !important;
-                padding-left: 20px !important;
-            }
-
-            /* Иконка-заменитель в свёрнутом виде — точка или эмодзи из текста */
-            html.mars-menu-collapsed .wy-menu-vertical a::before,
-            html.mars-menu-collapsed .md-nav__link::before {
-                content: '●' !important;
-                font-size: 0.9rem !important;
+            /* Линия слева для вложенных */
+            .mars-accordion-section .md-nav .md-nav__link::before,
+            .mars-accordion-section ul li a::before {
+                content: '·' !important;
+                position: absolute !important;
+                left: 14px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
                 color: #6C63FF !important;
-                display: inline-block !important;
-                margin-right: 0 !important;
-                transition: all 0.3s !important;
+                font-size: 1.4rem !important;
+                font-weight: 900 !important;
+                line-height: 1 !important;
+                opacity: 0.5 !important;
             }
 
-            /* При наведении точку убираем */
-            html.mars-menu-collapsed .wy-nav-side:hover .wy-menu-vertical a::before,
-            html.mars-menu-collapsed .wy-nav-side:hover .md-nav__link::before,
-            html.mars-menu-collapsed .md-sidebar--primary:hover .md-nav__link::before {
+            .mars-accordion-section .md-nav .md-nav__link:hover,
+            .mars-accordion-section ul li a:hover {
+                background: rgba(108, 99, 255, 0.12) !important;
+                color: #6C63FF !important;
+                padding-left: 34px !important;
+            }
+
+            /* Активная статья */
+            .mars-accordion-section .md-nav .md-nav__link--active,
+            .mars-accordion-section ul li.current > a,
+            .mars-accordion-section ul li a.active {
+                background: linear-gradient(135deg, rgba(108, 99, 255, 0.18), rgba(162, 155, 254, 0.08)) !important;
+                color: #6C63FF !important;
+                font-weight: 800 !important;
+                border-left-color: #6C63FF !important;
+            }
+
+            .mars-accordion-section .md-nav .md-nav__link--active::before,
+            .mars-accordion-section ul li.current > a::before,
+            .mars-accordion-section ul li a.active::before {
+                content: '◆' !important;
+                color: #f39c12 !important;
+                font-size: 0.9rem !important;
+                opacity: 1 !important;
+            }
+
+            /* Автооткрытие раздела с активной статьёй */
+            .mars-accordion-section:has(.md-nav__link--active),
+            .mars-accordion-section:has(li.current) {
+                background: linear-gradient(135deg, rgba(108, 99, 255, 0.06), rgba(162, 155, 254, 0.03)) !important;
+                box-shadow: inset 0 0 0 1px rgba(108, 99, 255, 0.15) !important;
+            }
+
+            /* Скрываем ненужные элементы */
+            .mars-accordion-section > input.md-nav__toggle {
                 display: none !important;
             }
 
-            /* Активная статья — крупная точка */
-            html.mars-menu-collapsed .wy-menu-vertical li.current > a::before,
-            html.mars-menu-collapsed .md-nav__link--active::before {
-                content: '◆' !important;
-                color: #f39c12 !important;
-                font-size: 1rem !important;
+            /* Заголовки-категории (caption) — не трогаем */
+            .wy-menu-vertical p.caption {
+                padding: 14px 12px 8px 12px !important;
+                font-size: 0.72rem !important;
+                font-weight: 900 !important;
+                color: #6C63FF !important;
+                text-transform: uppercase !important;
+                letter-spacing: 1.5px !important;
+                border-bottom: 1px solid rgba(108, 99, 255, 0.2) !important;
+                margin: 12px 0 6px 0 !important;
             }
 
-            /* Заголовки разделов */
-            html.mars-menu-collapsed .caption,
-            html.mars-menu-collapsed .md-nav__title {
-                font-size: 0 !important;
-                padding: 8px 0 !important;
-                border-bottom: 1px solid rgba(108,99,255,0.2) !important;
-                margin: 8px 0 !important;
+            /* ============================================================
+               🌌 ТЁМНАЯ ТЕМА
+               ============================================================ */
+            html body.mars-stars-on .mars-accordion-section > .md-nav__link,
+            html body.mars-stars-on .mars-accordion-section > a.md-nav__link,
+            html body.mars-stars-on .mars-accordion-section > label.md-nav__link,
+            html body.mars-stars-on .mars-accordion-section > a.reference,
+            html body.mars-stars-on .mars-accordion-section > a {
+                color: #ffffff !important;
             }
 
-            /* Поиск в меню */
-            html.mars-menu-collapsed .wy-side-nav-search,
-            html.mars-menu-collapsed .md-search__form {
-                padding: 8px !important;
-            }
-            html.mars-menu-collapsed .wy-side-nav-search input,
-            html.mars-menu-collapsed .md-search__input {
-                font-size: 0 !important;
-                padding: 10px !important;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236C63FF'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: 20px;
-                text-indent: -9999px;
-            }
-            html.mars-menu-collapsed .md-sidebar--primary:hover .md-search__input,
-            html.mars-menu-collapsed .wy-nav-side:hover .wy-side-nav-search input {
-                font-size: inherit !important;
-                background-image: none !important;
-                text-indent: 0 !important;
-                padding-left: 40px !important;
-            }
-
-            /* Кнопка переключения */
-            #menu-collapse-toggle {
-                position: absolute;
-                top: 12px;
-                right: 8px;
-                width: 32px;
-                height: 32px;
-                border-radius: 50%;
-                background: linear-gradient(135deg, #6C63FF, #A29BFE);
-                border: 2px solid #4a3fd9;
-                color: #fff;
-                font-size: 0.8rem;
-                font-weight: 900;
-                cursor: pointer;
-                z-index: 10;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 0;
-                box-shadow: 0 4px 12px rgba(108,99,255,0.5);
-                transition: transform 0.2s, box-shadow 0.2s;
-                touch-action: manipulation;
-                -webkit-tap-highlight-color: transparent;
-            }
-            #menu-collapse-toggle:hover {
-                transform: scale(1.1);
-                box-shadow: 0 6px 18px rgba(108,99,255,0.7);
-            }
-
-            /* Тёмная тема — совместимость */
-            html body.mars-stars-on.mars-menu-collapsed .wy-nav-side,
-            html body.mars-stars-on.mars-menu-collapsed .md-sidebar--primary {
-                background-color: #000 !important;
-            }
-            html body.mars-stars-on .wy-menu-vertical a::before,
-            html body.mars-stars-on .md-nav__link::before {
+            html body.mars-stars-on .mars-accordion-section > .md-nav__link:hover,
+            html body.mars-stars-on .mars-accordion-section > a:hover {
+                background: rgba(108, 99, 255, 0.2) !important;
                 color: #A29BFE !important;
             }
-            html body.mars-stars-on .wy-menu-vertical li.current > a::before,
-            html body.mars-stars-on .md-nav__link--active::before {
-                color: #f39c12 !important;
+
+            html body.mars-stars-on .mars-accordion-section.mars-open {
+                background: rgba(108, 99, 255, 0.08) !important;
+                box-shadow: inset 0 0 0 1px rgba(108, 99, 255, 0.3) !important;
             }
 
-            /* Мобильная версия — не сворачиваем, там своё меню */
+            html body.mars-stars-on .mars-accordion-section .md-nav .md-nav__link,
+            html body.mars-stars-on .mars-accordion-section ul li a {
+                color: #b0b0c8 !important;
+            }
+
+            html body.mars-stars-on .mars-accordion-section .md-nav .md-nav__link:hover,
+            html body.mars-stars-on .mars-accordion-section ul li a:hover {
+                background: rgba(108, 99, 255, 0.2) !important;
+                color: #A29BFE !important;
+            }
+
+            html body.mars-stars-on .mars-accordion-section .md-nav .md-nav__link--active,
+            html body.mars-stars-on .mars-accordion-section ul li.current > a {
+                background: rgba(108, 99, 255, 0.25) !important;
+                color: #A29BFE !important;
+            }
+
+            /* ============================================================
+               📱 МОБИЛЬНЫЙ
+               ============================================================ */
             @media (max-width: 768px) {
-                html.mars-menu-collapsed .wy-nav-side,
-                html.mars-menu-collapsed .md-sidebar--primary {
-                    width: 100% !important;
-                    min-width: 100% !important;
-                    max-width: 100% !important;
+                .mars-accordion-section {
+                    margin: 4px 0 !important;
                 }
-                html.mars-menu-collapsed .wy-menu-vertical a::before,
-                html.mars-menu-collapsed .md-nav__link::before {
-                    display: none !important;
+                .mars-accordion-section > .md-nav__link,
+                .mars-accordion-section > a {
+                    padding: 14px 12px !important;
+                    font-size: 1rem !important;
+                    min-height: 48px !important;
                 }
-                html.mars-menu-collapsed .wy-menu-vertical a,
-                html.mars-menu-collapsed .md-nav__link {
-                    font-size: inherit !important;
-                    padding-left: 20px !important;
-                }
-                #menu-collapse-toggle {
-                    display: none !important;
+                .mars-accordion-section .md-nav .md-nav__link,
+                .mars-accordion-section ul li a {
+                    padding: 12px 14px 12px 32px !important;
+                    min-height: 44px !important;
+                    font-size: 0.92rem !important;
                 }
             }
         `;
@@ -251,18 +393,38 @@
     }
 
     // ============================================================
+    // 🔄 ОБНОВЛЕНИЕ ПРИ ПЕРЕХОДЕ (MkDocs SPA-режим)
+    // ============================================================
+    function setupObserver() {
+        var lastNav = null;
+        setInterval(function() {
+            var nav = findNav();
+            if (nav && nav.el !== lastNav) {
+                lastNav = nav.el;
+                if (nav.type === 'material') processMaterial(nav.el);
+                else if (nav.type === 'readthedocs') processReadTheDocs(nav.el);
+            }
+        }, 500);
+    }
+
+    // ============================================================
     // 🚀 СТАРТ
     // ============================================================
     function init() {
         addStyles();
-        applyState();
-        // Ждём, пока тема создаст сайдбар
-        setTimeout(createToggle, 600);
-        setTimeout(function() {
-            if (!document.getElementById('menu-collapse-toggle')) createToggle();
-        }, 1500);
 
-        console.log('📋 Меню: ' + (isCollapsed ? 'свёрнуто' : 'развёрнуто'));
+        setTimeout(function() {
+            var nav = findNav();
+            if (nav) {
+                if (nav.type === 'material') processMaterial(nav.el);
+                else if (nav.type === 'readthedocs') processReadTheDocs(nav.el);
+                console.log('📋 Аккордеон-меню: активно (' + nav.type + ')');
+            } else {
+                setTimeout(init, 800);
+                return;
+            }
+            setupObserver();
+        }, 500);
     }
 
     if (document.readyState === 'loading') {

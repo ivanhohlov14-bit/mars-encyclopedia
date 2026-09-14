@@ -39,6 +39,12 @@
             '/forum/',
             '/guilds/',
             '/names/',
+            '/sky/',
+            '/scene-generator/',
+            '/duel/',
+            '/museum/',
+            '/weather/',
+            '/scan-dates/',
             '/translator/'
         ];
 

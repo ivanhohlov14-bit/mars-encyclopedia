@@ -1,163 +1,145 @@
-// accordion-menu.js — скрывает статьи в разделах (v3, force)
+// accordion-menu.js — просто и надёжно (v4)
 (function() {
     'use strict';
 
-    var STORAGE_KEY = 'mars_menu_v3';
-    var openSections = {};
-    try {
-        openSections = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    } catch(e) { openSections = {}; }
-
     // ============================================================
-    // ПОИСК ВСЕХ МЕНЮ
+    // НАХОДИМ ГЛАВНОЕ МЕНЮ
     // ============================================================
-    function findNavs() {
-        var navs = [];
+    function getRootNav() {
         // Material
-        var m1 = document.querySelector('.md-sidebar--primary .md-nav--primary');
-        if (m1) navs.push({ el: m1, type: 'material' });
+        var mat = document.querySelector('.md-sidebar--primary .md-nav--primary');
+        if (mat) return { el: mat, type: 'material' };
+
         // Read the Docs
-        var r1 = document.querySelector('.wy-menu-vertical');
-        if (r1) navs.push({ el: r1, type: 'readthedocs' });
-        return navs;
+        var rtd = document.querySelector('.wy-menu-vertical');
+        if (rtd) return { el: rtd, type: 'readthedocs' };
+
+        return null;
     }
 
     // ============================================================
-    // ОБРАБОТКА ОДНОГО ПУНКТА С ПОДМЕНЮ
+    // ПОЛУЧАЕМ ВЕРХНИЕ ПУНКТЫ МЕНЮ (только первый уровень)
     // ============================================================
-    function processItem(item, type) {
-        if (item.dataset.marsDone) return;
-        item.dataset.marsDone = '1';
-
-        // Ищем подменю (любой вложенный список/навигация)
-        var nested = null;
+    function getTopItems(root, type) {
         if (type === 'material') {
-            nested = item.querySelector(':scope > .md-nav');
+            // Прямые дети списка
+            var list = root.querySelector(':scope > .md-nav__list');
+            if (!list) return [];
+            return Array.from(list.querySelector(':scope > .md-nav__item'));
         } else {
-            nested = item.querySelector(':scope > ul');
+            // Read the Docs: ul > li.toctree-l1
+            var ul = root.querySelector(':scope > ul') || root.querySelector('ul');
+            if (!ul) return [];
+            return Array.from(ul.querySelector(':scope > li'));
         }
-        if (!nested) {
-            // Снимаем флаг — там нет подменю
-            delete item.dataset.marsDone;
-            return;
-        }
+    }
 
-        // Находим кликабельный заголовок
-        var label = null;
+    // ============================================================
+    // ПРОВЕРЯЕМ, ЕСТЬ ЛИ У ПУНКТА ПОДМЕНЮ
+    // ============================================================
+    function hasSubmenu(item, type) {
         if (type === 'material') {
-            label = item.querySelector(':scope > .md-nav__link') ||
-                    item.querySelector(':scope > label.md-nav__link');
+            return !!item.querySelector(':scope > .md-nav');
         } else {
-            label = item.querySelector(':scope > a');
-        }
-        if (!label) {
-            delete item.dataset.marsDone;
-            return;
-        }
-
-        item.classList.add('mars-section');
-
-        // Скрываем чекбоксы Material
-        var toggle = item.querySelector(':scope > input.md-nav__toggle');
-        if (toggle) toggle.style.cssText = 'display:none !important;position:absolute;left:-9999px;';
-
-        // Ключ раздела
-        var sectionId = label.getAttribute('for') ||
-                        label.textContent.trim().substring(0, 50) ||
-                        'section_' + Math.random();
-
-        // Восстанавливаем сохранённое состояние
-        if (openSections[sectionId] === true) {
-            item.classList.add('mars-open');
-        }
-
-        // Перехватываем клик
-        label.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-            var isOpen = item.classList.toggle('mars-open');
-            openSections[sectionId] = isOpen;
-            saveState();
-            try { if (navigator.vibrate) navigator.vibrate(10); } catch(err) {}
-        }, true);
-
-        // Также перехватываем change на чекбоксе (Material)
-        if (toggle) {
-            toggle.addEventListener('change', function(e) {
-                e.stopPropagation();
-                item.classList.toggle('mars-open', toggle.checked);
-                openSections[sectionId] = toggle.checked;
-                saveState();
-            }, true);
+            return !!item.querySelector(':scope > ul');
         }
     }
 
-    function saveState() {
-        try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(openSections));
-        } catch(e) {}
+    // ============================================================
+    // НАХОДИМ КЛИКАБЕЛЬНЫЙ ЗАГОЛОВОК
+    // ============================================================
+    function getLabel(item, type) {
+        if (type === 'material') {
+            return item.querySelector(':scope > .md-nav__link') ||
+                   item.querySelector(':scope > label.md-nav__link');
+        } else {
+            return item.querySelector(':scope > a');
+        }
     }
 
     // ============================================================
-    // ОБРАБОТКА ВСЕГО МЕНЮ
+    // ОБРАБОТКА
     // ============================================================
-    function processAll() {
-        var navs = findNavs();
-        var count = 0;
+    function process() {
+        var root = getRootNav();
+        if (!root) return false;
 
-        navs.forEach(function(nav) {
-            if (nav.type === 'material') {
-                // ВСЕ пункты меню с подменю
-                nav.el.querySelectorAll('.md-nav__item').forEach(function(item) {
-                    var hasNested = item.querySelector(':scope > .md-nav');
-                    if (hasNested) {
-                        processItem(item, 'material');
-                        count++;
-                    }
-                });
-            } else if (nav.type === 'readthedocs') {
-                nav.el.querySelectorAll('li.toctree-l1, li.toctree-l2, li.toctree-l3').forEach(function(item) {
-                    var hasNested = item.querySelector(':scope > ul');
-                    if (hasNested) {
-                        processItem(item, 'readthedocs');
-                        count++;
-                    }
-                });
+        var items = getTopItems(root.el, root.type);
+        if (!items.length) return false;
+
+        var counter = 0;
+
+        items.forEach(function(item, index) {
+            // Уже обработан?
+            if (item.dataset.marsProcessed === '1') return;
+
+            // Есть ли подменю?
+            if (!hasSubmenu(item, root.type)) {
+                item.dataset.marsProcessed = '1';
+                return;
             }
+
+            // Находим заголовок
+            var label = getLabel(item, root.type);
+            if (!label) return;
+
+            // Помечаем
+            item.dataset.marsProcessed = '1';
+            item.classList.add('mars-section');
+            item.dataset.marsIndex = index;
+
+            // Скрываем чекбокс Material
+            var toggle = item.querySelector(':scope > input.md-nav__toggle');
+            if (toggle) {
+                toggle.style.cssText = 'display:none !important;';
+                toggle.checked = false;
+            }
+
+            // Начальное состояние — ЗАКРЫТО (без чтения localStorage)
+            item.classList.remove('mars-open');
+
+            // Клик по заголовку
+            label.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                // Тоглим только ЭТОТ раздел
+                item.classList.toggle('mars-open');
+                try { if (navigator.vibrate) navigator.vibrate(10); } catch(err) {}
+            }, true);
+
+            counter++;
         });
 
-        // Скрываем заголовок над меню (краткая инфа о статье)
+        // Скрываем краткую инфу о статье
         hideSidebarTitle();
 
-        return count;
+        if (counter > 0) {
+            console.log('📋 Обработано разделов: ' + counter);
+        }
+        return true;
     }
 
     // ============================================================
-    // СКРЫТИЕ КРАТКОЙ ИНФЫ О СТАТЬЕ
+    // СКРЫТИЕ ЗАГОЛОВКА НАД МЕНЮ
     // ============================================================
     function hideSidebarTitle() {
-        // Material: заголовок раздела в сайдбаре
-        document.querySelectorAll('.md-sidebar--primary .md-nav__title').forEach(function(el) {
-            // Не трогаем drawer-заголовок (для мобильного)
+        // Material: заголовок раздела в сайдбаре (НЕ drawer для мобильного)
+        var titles = document.querySelectorAll('.md-sidebar--primary .md-nav__title');
+        titles.forEach(function(el) {
             if (el.getAttribute('for') === '__drawer') return;
+            if (el.closest('[for="__drawer"]')) return;
             el.style.cssText = 'display:none !important;';
         });
 
-        // Материал также может показывать заголовок текущей страницы
-        document.querySelectorAll('.md-sidebar--primary .md-nav > .md-nav__title').forEach(function(el) {
-            if (el.getAttribute('for') === '__drawer') return;
-            el.style.cssText = 'display:none !important;';
-        });
-
-        // Read the Docs: ищем "current" заголовок
-        document.querySelectorAll('.wy-menu-vertical .current').forEach(function(el) {
-            // Не трогаем сами ссылки, только caption
+        // Read the Docs: caption над меню
+        document.querySelectorAll('.wy-menu-vertical > p.caption').forEach(function(el) {
+            // Оставляем captions — они разделяют разделы
         });
     }
 
     // ============================================================
-    // СТИЛИ — только скрытие подменю, БЕЗ цвета/шрифтов
+    // СТИЛИ
     // ============================================================
     function addStyles() {
         if (document.getElementById('accordion-menu-style')) return;
@@ -165,20 +147,19 @@
         style.id = 'accordion-menu-style';
         style.textContent = `
             /* ============================================================
-               СКРЫТИЕ ПОДМЕНЮ У ЗАКРЫТЫХ РАЗДЕЛОВ
+               СКРЫТИЕ ПОДМЕНЮ (только верхний уровень)
                ============================================================ */
-            .mars-section:not(.mars-open) > .md-nav,
-            .mars-section:not(.mars-open) > nav.md-nav,
-            .mars-section:not(.mars-open) > ul,
-            .mars-section:not(.mars-open) > ul.subnav {
+            .md-nav__item.mars-section:not(.mars-open) > .md-nav {
                 display: none !important;
             }
+            .md-nav__item.mars-section.mars-open > .md-nav {
+                display: block !important;
+            }
 
-            /* Открытый раздел — подменю видно */
-            .mars-section.mars-open > .md-nav,
-            .mars-section.mars-open > nav.md-nav,
-            .mars-section.mars-open > ul,
-            .mars-section.mars-open > ul.subnav {
+            li.mars-section:not(.mars-open) > ul {
+                display: none !important;
+            }
+            li.mars-section.mars-open > ul {
                 display: block !important;
             }
 
@@ -188,97 +169,78 @@
             }
 
             /* ============================================================
-               СТРЕЛКА ▶ / ▼
+               СТРЕЛКА
                ============================================================ */
             .mars-section > .md-nav__link::after,
             .mars-section > label.md-nav__link::after,
-            .mars-section > a.md-nav__link::after,
-            .mars-section > a.reference::after,
             .mars-section > a::after {
-                content: '▶' !important;
-                display: inline-block !important;
-                font-size: 0.7em !important;
-                float: right !important;
-                margin-left: 6px !important;
-                opacity: 0.5 !important;
-                transition: transform 0.2s !important;
-                color: inherit !important;
+                content: '▶';
+                display: inline-block;
+                font-size: 0.7em;
+                float: right;
+                margin-left: 8px;
+                opacity: 0.5;
+                transition: transform 0.2s;
+                pointer-events: none;
             }
 
             .mars-section.mars-open > .md-nav__link::after,
             .mars-section.mars-open > label.md-nav__link::after,
-            .mars-section.mars-open > a.md-nav__link::after,
-            .mars-section.mars-open > a.reference::after,
             .mars-section.mars-open > a::after {
-                transform: rotate(90deg) !important;
+                transform: rotate(90deg);
+            }
+
+            /* Курсор */
+            .mars-section > .md-nav__link,
+            .mars-section > label.md-nav__link,
+            .mars-section > a {
+                cursor: pointer;
             }
 
             /* ============================================================
-               СКРЫТИЕ КРАТКОЙ ИНФЫ О СТАТЬЕ
+               СКРЫТИЕ КРАТКОЙ ИНФЫ О СТАТЬЕ (только ПК)
                ============================================================ */
-            /* ПК: заголовок текущей статьи над меню */
             @media (min-width: 769px) {
                 .md-sidebar--primary .md-nav__title:not([for="__drawer"]) {
                     display: none !important;
                 }
-                .md-sidebar--primary .md-nav--primary > .md-nav__title:not([for="__drawer"]) {
-                    display: none !important;
-                }
-            }
-
-            /* Read the Docs: подпись под пунктом */
-            .wy-menu-vertical .caption-text small {
-                display: none !important;
-            }
-            .wy-menu-vertical a.current small {
-                display: none !important;
             }
         `;
         document.head.appendChild(style);
     }
 
     // ============================================================
-    // НАБЛЮДАТЕЛЬ ЗА МЕНЮ
+    // СБРОС ЛЮБОГО СТАРОГО СОСТОЯНИЯ
     // ============================================================
-    function setupObserver() {
-        var lastCount = -1;
-        setInterval(function() {
-            var navs = findNavs();
-            if (!navs.length) return;
-            var c = processAll();
-            if (c !== lastCount) {
-                lastCount = c;
-                console.log('📋 Разделов обработано: ' + c);
-            }
-        }, 400);
-    }
-
-    // ============================================================
-    // ОДНОРАЗОВЫЙ СБРОС СТАРОГО СОСТОЯНИЯ
-    // ============================================================
-    function resetOld() {
+    function clearOldState() {
         try {
             localStorage.removeItem('mars_menu_open');
             localStorage.removeItem('mars_menu_open_v2');
+            localStorage.removeItem('mars_menu_v3');
         } catch(e) {}
     }
 
     // ============================================================
-    // СТАРТ
+    // ЗАПУСК
     // ============================================================
-    function init() {
-        resetOld();
+    function start() {
         addStyles();
-        setTimeout(function() {
-            processAll();
-            setupObserver();
-            console.log('📋 Аккордеон-меню v3: активно');
-        }, 400);
+        clearOldState();
+
+        var attempts = 0;
+        var timer = setInterval(function() {
+            attempts++;
+            var ok = process();
+            if (ok || attempts > 30) {
+                clearInterval(timer);
+                if (ok) console.log('📋 Аккордеон-меню v4: активно');
+            }
+        }, 300);
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', start);
     } else {
-        init();
+        start();
     }
 })();

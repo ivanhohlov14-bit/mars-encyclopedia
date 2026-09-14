@@ -253,6 +253,146 @@
 
 ---
 
+### <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  В этот день на Марсе
+
+<div id="thisDayBlock" style="
+  background: var(--block-bg, #f8f9fa);
+  border: 1px solid var(--border-color, #eaecf0);
+  padding: 16px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-color, #202122);
+">
+  <div style="font-weight:bold; margin-bottom:10px;">
+    <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
+    <span id="thisDayDate">загрузка...</span>
+  </div>
+  <div id="thisDayEvents" style="text-align:left; font-size:0.95rem; line-height:1.55;">
+    загрузка...
+  </div>
+  <div id="thisDayQuote" style="
+    margin-top:12px;
+    padding-top:10px;
+    border-top:1px solid var(--border-color, #eaecf0);
+    font-style:italic;
+    font-size:0.9rem;
+    color:var(--text-muted, #555);
+  "></div>
+</div>
+
+<script>
+  (function() {
+    const MONTHS_DAYS = [31,30,32,31,33,30,31,32,29,31,30,28,29,31,32,33,31,30,29,31,32,33];
+    const MONTHS_NAMES = [
+      'Ākha-dzen','Kōl-khan','Dzen-ākha','Khōsen','Mar-dzen','Ariya-mar',
+      'Zal-ākha','Thal-khō','Kōl-ghar','Mōr-ākha','Dzen-kōl','Xal-mar',
+      'Lān-sen','Khō-mōr','Ākha-mōr','Kōl-suf','Dzen-thal','Ghōl-ākha',
+      'Rōg-ari','Mar-lān','Ksanf-suf','Yar-okh'
+    ];
+    const MARTIAN_YEAR_DAYS = MONTHS_DAYS.reduce(function(s,n){return s+n;},0);
+    const EARTH_DAYS_IN_MARTIAN_YEAR = 668.6;
+
+    function getCurrentMartianDate() {
+      const now = new Date();
+      const start = new Date(2026, 0, 1).getTime();
+      const earthDays = (now.getTime() - start) / 86400000;
+      const dayOfYear = Math.floor((earthDays * (MARTIAN_YEAR_DAYS / EARTH_DAYS_IN_MARTIAN_YEAR)) % MARTIAN_YEAR_DAYS);
+      let remaining = dayOfYear, mIdx = 0;
+      for (let i = 0; i < MONTHS_DAYS.length; i++) {
+        if (remaining < MONTHS_DAYS[i]) { mIdx = i; break; }
+        remaining -= MONTHS_DAYS[i];
+      }
+      return { monthIndex: mIdx, day: remaining + 1 };
+    }
+
+    async function fetchJSON() {
+      const paths = [
+        'data/this-day.json',
+        '../data/this-day.json',
+        '/data/this-day.json'
+      ];
+      for (let i = 0; i < paths.length; i++) {
+        try {
+          const r = await fetch(paths[i]);
+          if (r.ok) return await r.json();
+        } catch(e) {}
+      }
+      throw new Error('this-day.json не найден');
+    }
+
+    async function load() {
+      const dateEl = document.getElementById('thisDayDate');
+      const eventsEl = document.getElementById('thisDayEvents');
+      const quoteEl = document.getElementById('thisDayQuote');
+      if (!dateEl || !eventsEl || !quoteEl) return;
+
+      try {
+        const data = await fetchJSON();
+        const cur = getCurrentMartianDate();
+        const monthName = MONTHS_NAMES[cur.monthIndex];
+        const month = data.months[cur.monthIndex];
+
+        // Дата
+        dateEl.textContent = cur.day + '-й день ' + monthName;
+
+        // События
+        const events = (data.events || []).filter(function(e) {
+          return e.month === monthName && e.day === cur.day;
+        });
+
+        let html = '';
+        html += '<div style="text-align:center; font-size:0.85rem; color:var(--text-muted,#666); margin-bottom:10px;">';
+        html += month.season + ' · «' + month.meaning + '»' + (month.note ? ' — ' + month.note : '');
+        html += '</div>';
+
+        if (events.length) {
+          events.sort(function(a,b){ return (a.year||0) - (b.year||0); });
+          events.forEach(function(ev) {
+            html += '<div style="margin-bottom:10px;">';
+            if (ev.year) {
+              html += '<span style="font-weight:bold; color:#6C63FF;">' + ev.year + ' г.</span> — ';
+            }
+            html += '<span style="font-weight:bold;">' + ev.title + '</span>';
+            html += '<div style="font-size:0.9rem; color:var(--text-color,#333); margin-top:2px;">' + ev.text + '</div>';
+            if (ev.link) {
+              html += '<a href="' + ev.link + '" style="font-size:0.85rem; color:#6C63FF;">Читать подробнее →</a>';
+            }
+            html += '</div>';
+          });
+        } else {
+          html += '<div style="text-align:center; color:var(--text-muted,#888); font-style:italic;">На этот день в хрониках событий пока не отмечено.</div>';
+        }
+
+        eventsEl.innerHTML = html;
+
+        // Цитата
+        const quotes = data.quotes || [];
+        if (quotes.length) {
+          const idx = (cur.day + cur.monthIndex) % quotes.length;
+          quoteEl.textContent = '«' + quotes[idx] + '»';
+        }
+
+        console.log('В этот день: загружено');
+      } catch(e) {
+        eventsEl.innerHTML = '<div style="text-align:center; color:#999;">Не удалось загрузить события дня.</div>';
+        console.error('В этот день:', e);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', load);
+    } else {
+      load();
+    }
+  })();
+</script>
+
+---
+
 ### 💬 Цитата дня
 
 <div id="quoteOfTheDay" style="
@@ -449,180 +589,6 @@
 
     document.getElementById('quoteText').innerHTML = `${quote.text}<br><span style="font-style:normal; font-size:0.9rem; color:var(--link-color, #0645ad);">— ${quote.source}</span>`;
   })();
-</script>
-
----
-
-<script>
-(function() {
-  'use strict';
-
-  const MONTHS_DAYS = [31,30,32,31,33,30,31,32,29,31,30,28,29,31,32,33,31,30,29,31,32,33];
-  const MARTIAN_YEAR_DAYS = MONTHS_DAYS.reduce((s,n)=>s+n,0);
-  const EARTH_DAYS_IN_MARTIAN_YEAR = 668.6;
-
-  function getCurrentMartianDate() {
-    const now = new Date();
-    const start = new Date(2026, 0, 1).getTime();
-    const earthDays = (now.getTime() - start) / 86400000;
-    const dayOfYear = Math.floor((earthDays * (MARTIAN_YEAR_DAYS / EARTH_DAYS_IN_MARTIAN_YEAR)) % MARTIAN_YEAR_DAYS);
-    let remaining = dayOfYear, mIdx = 0;
-    for (let i = 0; i < MONTHS_DAYS.length; i++) {
-      if (remaining < MONTHS_DAYS[i]) { mIdx = i; break; }
-      remaining -= MONTHS_DAYS[i];
-    }
-    return { monthIndex: mIdx, day: remaining + 1 };
-  }
-
-  // Пробуем разные пути
-  async function fetchJSON() {
-    const paths = [
-      'data/this-day.json',
-      '/data/this-day.json',
-      '../data/this-day.json',
-      '../../data/this-day.json',
-      'this-day.json'
-    ];
-    for (const p of paths) {
-      try {
-        const r = await fetch(p);
-        if (r.ok) return await r.json();
-      } catch(e) {}
-    }
-    throw new Error('Файл this-day.json не найден ни по одному пути');
-  }
-
-  // Создать блок, если его нет
-  function ensureBlock() {
-    let block = document.getElementById('this-day-block');
-    if (block) return block;
-
-    // Создаём
-    block = document.createElement('div');
-    block.id = 'this-day-block';
-    block.style.cssText = `
-      background: var(--block-bg, #f8f9fa);
-      border: 1px solid var(--border-color, #eaecf0);
-      border-left: 4px solid #6C63FF;
-      border-radius: 12px;
-      padding: 22px 26px;
-      margin: 24px 0;
-      font-family: 'Georgia', serif;
-    `;
-    block.innerHTML = `
-      <h3 style="margin:0 0 14px 0; color: var(--text-color, #202122); display:flex; align-items:center; gap:10px; font-size:1.15rem;">
-        <span style="font-size:1.4rem;">📅</span>
-        В этот день на Марсе
-      </h3>
-      <div id="this-day-content" style="font-size:1rem; line-height:1.65; color: var(--text-color, #202122);">
-        Загрузка…
-      </div>
-    `;
-
-    // Вставляем после первого h1 или после первого параграфа
-    const h1 = document.querySelector('.md-content h1, article h1, h1');
-    if (h1 && h1.parentNode) {
-      h1.parentNode.insertBefore(block, h1.nextSibling);
-    } else {
-      const content = document.querySelector('.md-content__inner, article, .document, body');
-      if (content) content.insertBefore(block, content.firstChild);
-    }
-
-    return block;
-  }
-
-  async function load() {
-    const block = ensureBlock();
-    const container = document.getElementById('this-day-content');
-    if (!container) {
-      console.error('❌ Не удалось создать контейнер');
-      return;
-    }
-
-    try {
-      const data = await fetchJSON();
-
-      const cur = getCurrentMartianDate();
-      const month = data.months[cur.monthIndex];
-      const lastDay = MONTHS_DAYS[cur.monthIndex];
-
-      let html = `
-        <div style="margin-bottom:16px; padding-bottom:14px; border-bottom:1px dashed #d0d0e0;">
-          <div style="font-size:1.5rem; font-weight:800; color:#6C63FF; margin-bottom:4px;">
-            ${cur.day}‑й день ${month.name}
-          </div>
-          <div style="font-size:0.9rem; color:#666; margin-bottom:8px;">
-            Сезон: <strong>${month.season}</strong>
-          </div>
-          <div style="font-size:0.95rem; color:#444; font-style:italic;">
-            <span style="color:#6C63FF;">«${month.meaning}»</span>
-            ${month.note ? ' — ' + month.note : ''}
-          </div>
-        </div>`;
-
-      // Маркеры
-      let markers = [];
-      if (cur.day === 1) markers.push({ icon: '🌅', text: `Начало месяца ${month.name}` });
-      if (cur.day === lastDay) markers.push({ icon: '🌇', text: `Последний день ${month.name}` });
-
-      if (markers.length) {
-        html += '<div style="margin-bottom:16px;">';
-        markers.forEach(m => {
-          html += `<div style="padding:10px 14px; background:rgba(243,156,18,0.1); border-radius:8px; margin-bottom:6px; font-size:0.92rem;">${m.icon} ${m.text}</div>`;
-        });
-        html += '</div>';
-      }
-
-      // События дня
-      const events = (data.events || []).filter(e => e.month === month.name && e.day === cur.day);
-      events.sort((a,b) => (a.year||0) - (b.year||0));
-
-      if (events.length) {
-        html += `<div style="margin-bottom:16px;">
-          <div style="font-size:0.8rem; color:#6C63FF; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">События этого дня</div>`;
-        events.forEach(ev => {
-          const c = ev.type === 'historic' ? '#e74c3c' : ev.type === 'holiday' ? '#f39c12' : '#6C63FF';
-          html += `
-            <div style="border-left:3px solid ${c}; padding-left:12px; margin-bottom:12px;">
-              <div style="font-weight:800; color:#1a1a1a; margin-bottom:3px;">
-                ${ev.year ? ev.year + ' г. — ' : ''}${ev.title}
-              </div>
-              <div style="font-size:0.95rem; color:#333; margin-bottom:5px;">${ev.text}</div>
-              ${ev.link ? `<a href="${ev.link}" style="font-size:0.85rem; color:#6C63FF; text-decoration:none;">Читать подробнее →</a>` : ''}
-            </div>`;
-        });
-        html += '</div>';
-      } else {
-        html += `<div style="margin-bottom:16px; padding:12px 14px; background:rgba(108,99,255,0.06); border-radius:8px; font-size:0.9rem; color:#666;">📭 На этот день в хрониках событий пока не отмечено.</div>`;
-      }
-
-      // Цитата дня
-      const quotes = data.quotes || [];
-      if (quotes.length) {
-        const q = quotes[(cur.day + cur.monthIndex) % quotes.length];
-        html += `
-          <div style="margin-top:14px; padding:14px 18px; background:linear-gradient(135deg,rgba(108,99,255,0.08),rgba(162,155,254,0.04)); border-radius:10px; border-left:3px solid #A29BFE;">
-            <div style="font-size:0.75rem; color:#6C63FF; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:6px;">Цитата дня</div>
-            <div style="font-style:italic; color:#333; font-size:1.05rem;">«${q}»</div>
-          </div>`;
-      }
-
-      container.innerHTML = html;
-      console.log('✅ В этот день: загружено');
-    } catch(e) {
-      container.innerHTML = '<span style="color:#999;">⚠️ ' + e.message + '</span>';
-      console.error('❌ В этот день:', e);
-    }
-  }
-
-  // Ждём загрузки DOM
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', load);
-  } else {
-    // DOM уже готов — запускаем сразу, но с небольшой задержкой
-    setTimeout(load, 300);
-  }
-})();
 </script>
 
 ---

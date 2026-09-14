@@ -720,3 +720,51 @@ body,
     display: none !important;
   }
 }
+
+/* ============================================
+   МЕНЮ-АККОРДЕОН
+   ============================================ */
+
+/* Все подменю скрыты по умолчанию — работает с самой первой миллисекунды */
+.wy-menu-vertical li > ul {
+    display: none !important;
+}
+
+/* Открытые разделы */
+.wy-menu-vertical li.mars-open > ul {
+    display: block !important;
+}
+
+/* Убираем крестик-кнопку */
+.wy-menu-vertical .toctree-expand {
+    display: none !important;
+}
+
+/* Убираем жирный шрифт */
+.wy-menu-vertical li > a,
+.wy-menu-vertical li.current > a,
+.wy-menu-vertical li > a:hover,
+.wy-menu-vertical li > a:focus {
+    font-weight: normal !important;
+}
+
+/* Стрелка ▸ справа */
+.wy-menu-vertical li.mars-has-sub > a {
+    position: relative;
+    padding-right: 26px !important;
+}
+.wy-menu-vertical li.mars-has-sub > a::after {
+    content: '▸';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85em;
+    opacity: 0.5;
+    transition: transform 0.2s;
+    pointer-events: none;
+}
+.wy-menu-vertical li.mars-has-sub.mars-open > a::after {
+    transform: translateY(-50%) rotate(90deg);
+    opacity: 0.9;
+}

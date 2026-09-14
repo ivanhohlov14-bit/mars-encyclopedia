@@ -1,8 +1,9 @@
-// accordion-menu.js — просто скрывает статьи в разделах
+// accordion-menu.js — просто скрывает статьи в разделах (v2)
 (function() {
     'use strict';
 
-    var STORAGE_KEY = 'mars_menu_open';
+    // Новый ключ — сбрасывает старое состояние
+    var STORAGE_KEY = 'mars_menu_open_v2';
 
     var openSections = {};
     try {
@@ -39,21 +40,15 @@
 
             var sectionId = label.getAttribute('for') || label.textContent.trim();
 
-            // Скрываем input
+            // Скрываем input-чекбокс
             var toggle = item.querySelector(':scope > input.md-nav__toggle');
             if (toggle) toggle.style.display = 'none';
 
-            // Восстанавливаем состояние
+            // ⚠️ НЕ автооткрываем. Только сохранённое состояние.
             var isOpen = openSections[sectionId] === true;
             item.classList.toggle('mars-open', isOpen);
 
-            // Если внутри активная ссылка — открываем принудительно
-            if (item.querySelector('.md-nav__link--active')) {
-                item.classList.add('mars-open');
-                openSections[sectionId] = true;
-                saveState();
-            }
-
+            // Клик — раскрыть/закрыть
             label.onclick = function(e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -85,12 +80,6 @@
             var isOpen = openSections[sectionId] === true;
             item.classList.toggle('mars-open', isOpen);
 
-            if (item.querySelector('li.current')) {
-                item.classList.add('mars-open');
-                openSections[sectionId] = true;
-                saveState();
-            }
-
             label.onclick = function(e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -109,33 +98,32 @@
     }
 
     // ============================================================
-    // СТИЛИ — только скрытие, никаких цветов и шрифтов
+    // СТИЛИ
     // ============================================================
     function addStyles() {
         if (document.getElementById('accordion-menu-style')) return;
         var style = document.createElement('style');
         style.id = 'accordion-menu-style';
         style.textContent = `
-            /* Скрываем вложенные списки у закрытых разделов */
+            /* ==== СКРЫТИЕ/ПОКАЗ ПОДМЕНЮ ==== */
             .mars-section > .md-nav,
             .mars-section > nav.md-nav,
             .mars-section > ul {
                 display: none;
             }
 
-            /* Показываем у открытых */
             .mars-section.mars-open > .md-nav,
             .mars-section.mars-open > nav.md-nav,
             .mars-section.mars-open > ul {
                 display: block;
             }
 
-            /* Скрываем чекбоксы Material */
+            /* ==== СКРЫТИЕ ЧЕКБОКСОВ ==== */
             .mars-section > input.md-nav__toggle {
                 display: none !important;
             }
 
-            /* Стрелочка — минимальная, без стилей цвета */
+            /* ==== СТРЕЛКА-ИНДИКАТОР (минимальная) ==== */
             .mars-section > .md-nav__link::after,
             .mars-section > a.md-nav__link::after,
             .mars-section > a.reference::after,
@@ -154,12 +142,33 @@
                 transform: rotate(90deg);
             }
 
-            /* Кликабельность */
             .mars-section > .md-nav__link,
             .mars-section > a.md-nav__link,
             .mars-section > a.reference,
             .mars-section > a {
                 cursor: pointer;
+            }
+
+            /* ============================================================
+               🎯 СКРЫТИЕ КРАТКОЙ ИНФЫ О СТАТЬЕ
+               ============================================================ */
+            /* Только на ПК. На мобильном оставляем — там важна кнопка "назад" */
+            @media (min-width: 769px) {
+                /* Заголовок текущего раздела над меню */
+                .md-sidebar--primary .md-nav__title:not([for="__drawer"]) {
+                    display: none !important;
+                }
+
+                /* Материал иногда показывает вложенный заголовок */
+                .md-sidebar--primary .md-nav .md-nav__title:not([for="__drawer"]) {
+                    display: none !important;
+                }
+            }
+
+            /* Если это Read the Docs — скрываем подпись под пунктом */
+            .wy-menu-vertical .headerlink,
+            .wy-menu-vertical small.caption-text {
+                display: none !important;
             }
         `;
         document.head.appendChild(style);
@@ -181,10 +190,25 @@
     }
 
     // ============================================================
+    // ОДНОРАЗОВЫЙ СБРОС СТАРОГО СОСТОЯНИЯ
+    // ============================================================
+    function resetOldState() {
+        try {
+            // Удаляем старое состояние от прошлой версии
+            if (localStorage.getItem('mars_menu_open')) {
+                localStorage.removeItem('mars_menu_open');
+                console.log('🧹 Старое состояние меню сброшено');
+            }
+        } catch(e) {}
+    }
+
+    // ============================================================
     // СТАРТ
     // ============================================================
     function init() {
+        resetOldState();
         addStyles();
+
         setTimeout(function() {
             var nav = findNav();
             if (!nav) {
@@ -194,7 +218,7 @@
             if (nav.type === 'material') processMaterial(nav.el);
             else processReadTheDocs(nav.el);
             setupObserver();
-            console.log('📋 Аккордеон-меню: активно');
+            console.log('📋 Аккордеон-меню v2: активно (' + nav.type + ')');
         }, 500);
     }
 

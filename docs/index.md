@@ -40,25 +40,50 @@
 <div class="wiki-layout">
     <!-- Левая колонка -->
     <div class="wiki-column-left">
-      
+
+<!-- ============ СЕКЦИЯ: Избранная статья ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--block-bg, #f8f9fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+">
 ## <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранная статья
 
 ### Хевсур — последний хранитель глины
 
 **[Хевсур](people/hevsur.md)** (2685 – ок. 2745 гг. Э.О.) — марсианский историк, писец и хранитель архива Академии Окхасена. Центральный персонаж эпопеи «Письмо из Красной пыли», посвятивший свою жизнь сбору, систематизации и сохранению знаний о гибнущем Марсе. Его главное наследие — «глиняная библиотека» — собрание тысяч табличек, которые пережили гибель планеты и легли в основу марсианской энциклопедии. В отличие от [Талина](people/talin.md), который улетел к Земле, Хевсур выбрал остаться на Марсе, чтобы записать его последние дни.
 [Читать полную статью о Хевсуре →](people/hevsur.md)
+</div>
 
----
-
-##  <img src="assets/images/stickers/sticker-pin.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  Знаете ли вы?
+<!-- ============ СЕКЦИЯ: Знаете ли вы? ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--block-bg, #f8f9fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+">
+## <img src="assets/images/stickers/sticker-pin.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Знаете ли вы?
 
 - <img src="assets/images/stickers/sticker-rocket.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Талин** — главный астронавигатор Марса, впервые увидел Землю в телескоп в 2714 году. Его расчёты траектории стали основой для Исхода к Земле[^1].
 - <img src="assets/images/stickers/sticker-waves.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Ацидалийское море** — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет[^2].
 - <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Марсианская письменность** — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках[^3].
 - <img src="assets/images/stickers/sticker-scales-no.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Слово **«Lān sur»** в переводе означает **«Глина помнит»**. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории[^4].
-- 
----
+</div>
 
+<!-- ============ СЕКЦИЯ: О цикле книг ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--block-bg, #f8f9fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+">
 ## <img src="assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О цикле книг «Письмо из Красной пыли»
 
 **«Письмо из Красной пыли»** — цикл романов в жанре твёрдой научной фантастики и планетарной драмы, созданный автором **Mnemis**. Действие происходит на Марсе в последние десятилетия перед гибелью планеты — в Эпоху Умирания. Цикл объединяет научную достоверность с глубокими философскими размышлениями о памяти, надежде и цене выживания.
@@ -68,18 +93,34 @@
 | Название | Год | Краткое описание |
 |----------|-----|------------------|
 | **[«Ацидалийское море»](books/acidalia-sea.md)** | 2026 | Первый роман. Знакомит с миром Эпохи Умирания и жизнью в Окхасене |
+</div>
 
----
-
-## <img src="assets/images/stickers/sticker-galaxy.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  О проекте
+<!-- ============ СЕКЦИЯ: О проекте ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--block-bg, #f8f9fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+">
+## <img src="assets/images/stickers/sticker-galaxy.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О проекте
 
 Проект адресован широкой аудитории, интересующейся вопросами происхождения жизни во Вселенной, эволюции планет и возможных форм разума за пределами Земли. Марсианская энциклопедия предлагает читателю не готовые ответы, а пространство для размышлений — модели того, какой могла бы быть история Марса, если бы на нём действительно существовала жизнь.
 
 Все гипотезы, представленные в проекте, основаны на реальных научных данных и не противоречат современному знанию. По вопросам сотрудничества и уточнения материалов: mnemis.author@mail.ru.
+</div>
 
----
-
-## <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  Интерактивные элементы
+<!-- ============ СЕКЦИЯ: Интерактивные элементы ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--block-bg, #f8f9fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+">
+## <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Интерактивные элементы
 
 ### <img src="assets/images/stickers/sticker-cube.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Случайная статья
 
@@ -101,9 +142,7 @@
 
 <script>
   (function() {
-    // Только те статьи, которые точно существуют в репозитории
     const pages = [
-      // История
       'history/periodization/',
       'history/timeline/',
       'history/myths/',
@@ -112,7 +151,6 @@
       'history/epokha-umiraniya/',
       'history/iskhod/',
       'history/pirate-kingdom/',
-      // География
       'geography/acidalia-sea/',
       'geography/okhasen/',
       'geography/rogen-aria/',
@@ -127,17 +165,14 @@
       'geography/kosmodrom-farsidy/',
       'geography/noviy-okhasen/',
       'geography/akademiya-okhasena/',
-      // Астрономия
       'astronomy/mars-sky/',
       'astronomy/phobos-deimos/',
       'astronomy/earth-as-target/',
       'astronomy/earth/',
-      // Культура и наука
       'terms/lan-sur/',
       'terms/tablichki/',
       'biology/gemotsianin/',
       'science/geology/',
-      // Персонажи
       'people/hevsur/',
       'people/talin/',
       'people/ella/',
@@ -153,12 +188,10 @@
       'people/sarum-ii/',
       'people/sarum-velikiy/',
       'people/ksanf-monster/',
-      // Боги и мифология
       'mythology/kho/',
       'mythology/akha/',
       'mythology/araksis/',
       'mythology/prorochestvo-kharana/',
-      // Книги (только та, что точно есть)
       'books/acidalia-sea/'
     ];
     
@@ -168,31 +201,30 @@
       
       btn.addEventListener('click', function() {
         const random = pages[Math.floor(Math.random() * pages.length)];
-        // Если сайт в подкаталоге, префикс уже учтён в ссылке (относительный путь)
         window.location.href = random;
       });
     });
   })();
 </script>
+</div>
 
 </div>
 
- <!-- Правая колонка -->
-  <div class="wiki-column-right">
-    
+<!-- ============ ПРАВАЯ КОЛОНКА ============ -->
+<div class="wiki-column-right">
+
+<!-- ============ СЕКЦИЯ: Марсианский календарь ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--block-bg, #f8f9fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+">
 ### <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Марсианский календарь
 
-<div id="martianCalendar" style="
-  background: var(--block-bg, #f8f9fa);
-  border: 1px solid var(--border-color, #eaecf0);
-  padding: 16px;
-  border-radius: 8px;
-  max-width: 400px;
-  margin: 20px auto;
-  font-family: 'Georgia', serif;
-  text-align: center;
-">
-  <h3 style="margin:0 0 8px 0; color: var(--text-color, #202122);"><img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Марсианский календарь</h3>
+<div id="martianCalendar" style="text-align: center; font-family: 'Georgia', serif;">
   <div id="martianDate" style="font-size:1.2rem; color: var(--text-color, #202122);">Загрузка...</div>
 </div>
 
@@ -257,38 +289,26 @@
     `;
   })();
 </script>
+</div>
 
----
-
-### <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">  В этот день на Марсе
-
-<div id="thisDayBlock" style="
+<!-- ============ СЕКЦИЯ: В этот день на Марсе ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
   background: var(--block-bg, #f8f9fa);
-  border: 1px solid var(--border-color, #eaecf0);
-  padding: 16px;
-  border-radius: 8px;
-  max-width: 600px;
-  margin: 20px auto;
-  font-family: 'Georgia', serif;
-  text-align: center;
-  font-size: 1rem;
-  color: var(--text-color, #202122);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
+### <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> В этот день на Марсе
+
+<div id="thisDayBlock" style="font-family: 'Georgia', serif; text-align: center; font-size: 1rem; color: var(--text-color, #202122);">
   <div style="font-weight:bold; margin-bottom:10px;">
     <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
     <span id="thisDayDate">загрузка...</span>
   </div>
-  <div id="thisDayEvents" style="text-align:left; font-size:0.95rem; line-height:1.55;">
-    загрузка...
-  </div>
-  <div id="thisDayQuote" style="
-    margin-top:12px;
-    padding-top:10px;
-    border-top:1px solid var(--border-color, #eaecf0);
-    font-style:italic;
-    font-size:0.9rem;
-    color:var(--text-muted, #555);
-  "></div>
+  <div id="thisDayEvents" style="text-align:left; font-size:0.95rem; line-height:1.55;">загрузка...</div>
+  <div id="thisDayQuote" style="margin-top:12px; padding-top:10px; border-top:1px solid var(--border-color, #eaecf0); font-style:italic; font-size:0.9rem; color:var(--text-muted, #555);"></div>
 </div>
 
 <script>
@@ -317,11 +337,7 @@
     }
 
     async function fetchJSON() {
-      const paths = [
-        'data/this-day.json',
-        '../data/this-day.json',
-        '/data/this-day.json'
-      ];
+      const paths = ['data/this-day.json', '../data/this-day.json', '/data/this-day.json'];
       for (let i = 0; i < paths.length; i++) {
         try {
           const r = await fetch(paths[i]);
@@ -343,10 +359,8 @@
         const monthName = MONTHS_NAMES[cur.monthIndex];
         const month = data.months[cur.monthIndex];
 
-        // Дата
         dateEl.textContent = cur.day + '-й день ' + monthName;
 
-        // События
         const events = (data.events || []).filter(function(e) {
           return e.month === monthName && e.day === cur.day;
         });
@@ -376,17 +390,13 @@
 
         eventsEl.innerHTML = html;
 
-        // Цитата
         const quotes = data.quotes || [];
         if (quotes.length) {
           const idx = (cur.day + cur.monthIndex) % quotes.length;
           quoteEl.textContent = '«' + quotes[idx] + '»';
         }
-
-        console.log('В этот день: загружено');
       } catch(e) {
         eventsEl.innerHTML = '<div style="text-align:center; color:#999;">Не удалось загрузить события дня.</div>';
-        console.error('В этот день:', e);
       }
     }
 
@@ -397,25 +407,22 @@
     }
   })();
 </script>
+</div>
 
----
-
+<!-- ============ СЕКЦИЯ: Изображение дня ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--block-bg, #f8f9fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+">
 ### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Изображение дня
 
-<div id="pictureOfDayBlock" style="
-  background: var(--block-bg, #f8f9fa);
-  border: 1px solid var(--border-color, #eaecf0);
-  padding: 16px;
-  border-radius: 8px;
-  max-width: 700px;
-  margin: 20px auto;
-  font-family: 'Georgia', serif;
-  text-align: center;
-  color: var(--text-color, #202122);
-">
+<div id="pictureOfDayBlock" style="font-family: 'Georgia', serif; text-align: center; color: var(--text-color, #202122);">
   <div style="font-weight:bold; margin-bottom:10px;">
-    <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
-   Изображение дня
+    <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Изображение дня
   </div>
   <div id="podWrap" style="min-height:200px; display:flex; align-items:center; justify-content:center;">
     <div style="color:var(--text-muted, #888); font-style:italic;">загрузка...</div>
@@ -427,12 +434,7 @@
 <script>
   (function() {
     async function fetchJSON() {
-      const paths = [
-        'data/pictures.json',
-        '../data/pictures.json',
-        '../../data/pictures.json',
-        '/data/pictures.json'
-      ];
+      const paths = ['data/pictures.json', '../data/pictures.json', '../../data/pictures.json', '/data/pictures.json'];
       for (let i = 0; i < paths.length; i++) {
         try {
           const r = await fetch(paths[i]);
@@ -446,12 +448,6 @@
       const now = new Date();
       const start = new Date(now.getFullYear(), 0, 0);
       return Math.floor((now - start) / 86400000);
-    }
-
-    function escapeHTML(s) {
-      return String(s).replace(/[&<>"']/g, function(c) {
-        return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
-      });
     }
 
     async function load() {
@@ -480,14 +476,10 @@
 
         wrap.innerHTML = '';
         wrap.appendChild(img);
-
         capEl.textContent = pic.caption || '';
         cntEl.textContent = 'Картина ' + (idx + 1) + ' из ' + pics.length;
-
-        console.log('Изображение дня: загружено');
       } catch(e) {
         wrap.innerHTML = '<div style="color:#999; font-style:italic;">Не удалось загрузить Изображение дня.</div>';
-        console.error('Изображение дня:', e);
       }
     }
 
@@ -498,194 +490,62 @@
     }
   })();
 </script>
+</div>
 
----
-
-### 💬 Цитата дня
-
-<div id="quoteOfTheDay" style="
+<!-- ============ СЕКЦИЯ: Цитата дня ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
   background: var(--block-bg, #f8f9fa);
-  border-left: 4px solid var(--border-color, #a2a9b1);
-  padding: 12px 20px;
-  margin: 20px 0;
-  font-style: italic;
-  font-family: 'Georgia', serif;
-  font-size: 1.1rem;
-  color: var(--text-color, #202122);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
+### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Цитата дня
+
+<div id="quoteOfTheDay" style="border-left: 4px solid #6C63FF; padding: 12px 20px; font-style: italic; font-family: 'Georgia', serif; font-size: 1.1rem; color: var(--text-color, #202122);">
   <span id="quoteText">Загрузка...</span>
 </div>
 
 <script>
   (function() {
     const quotes = [
-      // ===== ХЕВСУР =====
-      {
-        text: '«Khō mōr, dzen mōr, lān ān mōr» — Огонь умрёт, звезда умрёт, память не умрёт.',
-        source: 'Хевсур'
-      },
-      {
-        text: '«Глина помнит даже то, что мы сами забыли.»',
-        source: 'Хевсур'
-      },
-      {
-        text: '«Я всё записал. Теперь ваша очередь — помнить.»',
-        source: 'Хевсур'
-      },
-      {
-        text: '«Мы не победили время, но мы записали его. И это наша победа.»',
-        source: 'Хевсур'
-      },
-      {
-        text: '«Если я перестану писать, то кто расскажет о нас через тысячу лет?»',
-        source: 'Хевсур'
-      },
-      {
-        text: '«Глина не лжёт, и она не умирает. Она ждёт. И когда ты берёшь её в руки, ты берёшь в руки время.»',
-        source: 'Хевсур'
-      },
-      {
-        text: '«Я сижу в пещере и смотрю на воду через трещину в скале. Она не двигается. Она застыла, как глина, которую я уже не могу обжечь. Глина помнит. А море молчит.»',
-        source: 'Хевсур'
-      },
-
-      // ===== ТАЛИН =====
-      {
-        text: '«Смотри на звёзды и помни жизнь.»',
-        source: 'Талин'
-      },
-      {
-        text: '«Мы не бежим. Мы идём туда, где нас ждут. Даже если ждут только пустые скалы, мы высечем на них свои имена.»',
-        source: 'Талин'
-      },
-      {
-        text: '«Глина помнит даже то, что мы сами забыли. Если я потеряю память, пусть она сохранит мою душу.»',
-        source: 'Талин'
-      },
-      {
-        text: '«Я, Талин, сын Эрдана, смотрел на звёзды и помнил жизнь. Теперь я забываю, но глина помнит за меня. Lān sur.»',
-        source: 'Талин'
-      },
-
-      // ===== АРАТАН III =====
-      {
-        text: '«Я правил камнями, но не сумел удержать воду. Пусть те, кто улетают, правят хотя бы памятью.»',
-        source: 'Аратан III'
-      },
-      {
-        text: '«Мы не бежим от богов — мы идём туда, где они ещё не ступали. Если Марс суждено покинуть, пусть мы оставим на нём не только кости, но и память о том, что мы были.»',
-        source: 'Аратан III'
-      },
-
-      // ===== СОВИЯ =====
-      {
-        text: '«Море уходит, но я остаюсь. Вода умирает, но глина помнит.»',
-        source: 'Совия'
-      },
-      {
-        text: '«Я не записываю имена. Я пою их. Когда я умру, мои песни будут жить в тех, кто их слышал.»',
-        source: 'Совия'
-      },
-      {
-        text: '«Ты слышишь? Это не струны плачут. Это море прощается с нами.»',
-        source: 'Совия'
-      },
-      {
-        text: '«Ксанф спит на дне, в Ксанфовой Пасти, и когда он проснётся, море вскипит.»',
-        source: 'Совия'
-      },
-
-      // ===== ДРЕВНИЕ ФОРМУЛЫ =====
-      {
-        text: '«Lān sur. — Глина помнит.»',
-        source: 'Древняя формула'
-      },
-      {
-        text: '«Okh sen ākha, dzen thal marzān» — Город помнит море, смотри на звёзды, марсианин.',
-        source: 'Древняя формула'
-      },
-      {
-        text: '«Ksanf lān, okh ākha thal» — Река помнит, город смотрит на море.',
-        source: 'Древняя формула'
-      },
-
-      // ===== КСАНФ (ПИРАТСКИЙ КОРОЛЬ) =====
-      {
-        text: '«Море кормит нас, море поит нас, море забирает нас, когда приходит время. Мы не боимся смерти, потому что море — наш дом.»',
-        source: 'Ксанф (пиратский король)'
-      },
-      {
-        text: '«Тот, кто украдёт долю брата, будет брошен в воду. Тот, кто предаст брата, будет брошен в воду. Тот, кто забудет имя брата, будет проклят навеки. Море помнит всех. Море не прощает.»',
-        source: 'Ксанф (пиратский король)'
-      },
-
-      // ===== ХАРАН =====
-      {
-        text: '«Глина не лжёт, но она не говорит всего. Тот, кто умеет слушать, услышит и между строк.»',
-        source: 'Харан'
-      },
-      {
-        text: '«Я, Харан, сын Сарума, пишу это в год, когда море отступило от стен нашего города. Мы думали, что это временно. Мы думали, что вода вернётся. Но она не вернулась.»',
-        source: 'Харан'
-      },
-      {
-        text: '«Ты, кто идёт наверх, запомни: мы строили эту лестницу не для себя. Мы строили её для тебя. Чтобы ты мог выйти. Чтобы ты мог рассказать. Не подведи нас.»',
-        source: 'Харан'
-      },
-
-      // ===== ЙАРРА =====
-      {
-        text: '«Вы не запоминаете звёзды. Звёзды запоминают вас. Если вы смотрите на них достаточно долго, они начнут показывать вам путь домой.»',
-        source: 'Йарра'
-      },
-      {
-        text: '«Мы не спасаем мир. Мы спасаем мгновения. Один взгляд, одно слово, одна капля воды... Это и есть жизнь.»',
-        source: 'Йарра'
-      },
-
-      // ===== МИФЫ =====
-      {
-        text: '«Когда Фобос поднимется выше обычного, земля начнёт дрожать. Сначала реки помутнеют, потом высохнут. Потом из трещин пойдёт дым, и небо станет красным, как кровь.»',
-        source: 'Пророчество Харана'
-      },
-      {
-        text: '«Из пепла поднимется голос, и он скажет: "Ищите убежища за пределами своего мира". И те, кто услышат, построят корабли и увидят голубую звезду.»',
-        source: 'Пророчество Харана'
-      },
-      {
-        text: '«Она отняла у нас море, но оставила нам соль, чтобы мы помнили.»',
-        source: 'Плач Акха-Кора'
-      },
-      {
-        text: '«Когда Кхо коснулся Акхи, вскипела вода, и пар поднялся к небу, рождая облака. Когда Акха коснулась Кхо, остыл огонь, и из его застывшего сердца родился камень. Так явились небо и земля.»',
-        source: 'Книга Харан'
-      },
-
-      // ===== ИРАЙНА =====
-      {
-        text: '«Мы не можем изменить планету, но мы можем изменить себя. Это проще и быстрее.»',
-        source: 'Ирайна'
-      },
-      {
-        text: '«Они умерли, чтобы дать жизнь другим. Это не жертва, это — круговорот.»',
-        source: 'Ирайна'
-      },
-
-      // ===== МИРАН =====
-      {
-        text: '«Машины честнее людей. Они не лгут, не предают, не надеются на чудо. Они просто работают — или ломаются. Всё остальное — иллюзия.»',
-        source: 'Миран'
-      },
-      {
-        text: '«Прощай, Талин. Ты был прав. Земля — наша надежда. Помни обо мне... Lān sur.»',
-        source: 'Миран'
-      },
-
-      // ===== ЭЛЛА =====
-      {
-        text: '«Я заметила нечто необычное в пробе, взятой у подводного источника. Эти организмы не похожи на те, что мы видели раньше. Они делятся быстрее и, кажется, используют какой-то неизвестный нам механизм метаболизма.»',
-        source: 'Элла'
-      }
+      { text: '«Khō mōr, dzen mōr, lān ān mōr» — Огонь умрёт, звезда умрёт, память не умрёт.', source: 'Хевсур' },
+      { text: '«Глина помнит даже то, что мы сами забыли.»', source: 'Хевсур' },
+      { text: '«Я всё записал. Теперь ваша очередь — помнить.»', source: 'Хевсур' },
+      { text: '«Мы не победили время, но мы записали его. И это наша победа.»', source: 'Хевсур' },
+      { text: '«Если я перестану писать, то кто расскажет о нас через тысячу лет?»', source: 'Хевсур' },
+      { text: '«Глина не лжёт, и она не умирает. Она ждёт. И когда ты берёшь её в руки, ты берёшь в руки время.»', source: 'Хевсур' },
+      { text: '«Я сижу в пещере и смотрю на воду через трещину в скале. Она не двигается. Она застыла, как глина, которую я уже не могу обжечь. Глина помнит. А море молчит.»', source: 'Хевсур' },
+      { text: '«Смотри на звёзды и помни жизнь.»', source: 'Талин' },
+      { text: '«Мы не бежим. Мы идём туда, где нас ждут. Даже если ждут только пустые скалы, мы высечем на них свои имена.»', source: 'Талин' },
+      { text: '«Глина помнит даже то, что мы сами забыли. Если я потеряю память, пусть она сохранит мою душу.»', source: 'Талин' },
+      { text: '«Я, Талин, сын Эрдана, смотрел на звёзды и помнил жизнь. Теперь я забываю, но глина помнит за меня. Lān sur.»', source: 'Талин' },
+      { text: '«Я правил камнями, но не сумел удержать воду. Пусть те, кто улетают, правят хотя бы памятью.»', source: 'Аратан III' },
+      { text: '«Мы не бежим от богов — мы идём туда, где они ещё не ступали. Если Марс суждено покинуть, пусть мы оставим на нём не только кости, но и память о том, что мы были.»', source: 'Аратан III' },
+      { text: '«Море уходит, но я остаюсь. Вода умирает, но глина помнит.»', source: 'Совия' },
+      { text: '«Я не записываю имена. Я пою их. Когда я умру, мои песни будут жить в тех, кто их слышал.»', source: 'Совия' },
+      { text: '«Ты слышишь? Это не струны плачут. Это море прощается с нами.»', source: 'Совия' },
+      { text: '«Ксанф спит на дне, в Ксанфовой Пасти, и когда он проснётся, море вскипит.»', source: 'Совия' },
+      { text: '«Lān sur. — Глина помнит.»', source: 'Древняя формула' },
+      { text: '«Okh sen ākha, dzen thal marzān» — Город помнит море, смотри на звёзды, марсианин.', source: 'Древняя формула' },
+      { text: '«Ksanf lān, okh ākha thal» — Река помнит, город смотрит на море.', source: 'Древняя формула' },
+      { text: '«Море кормит нас, море поит нас, море забирает нас, когда приходит время. Мы не боимся смерти, потому что море — наш дом.»', source: 'Ксанф (пиратский король)' },
+      { text: '«Тот, кто украдёт долю брата, будет брошен в воду. Тот, кто предаст брата, будет брошен в воду. Тот, кто забудет имя брата, будет проклят навеки. Море помнит всех. Море не прощает.»', source: 'Ксанф (пиратский король)' },
+      { text: '«Глина не лжёт, но она не говорит всего. Тот, кто умеет слушать, услышит и между строк.»', source: 'Харан' },
+      { text: '«Я, Харан, сын Сарума, пишу это в год, когда море отступило от стен нашего города. Мы думали, что это временно. Мы думали, что вода вернётся. Но она не вернулась.»', source: 'Харан' },
+      { text: '«Ты, кто идёт наверх, запомни: мы строили эту лестницу не для себя. Мы строили её для тебя. Чтобы ты мог выйти. Чтобы ты мог рассказать. Не подведи нас.»', source: 'Харан' },
+      { text: '«Вы не запоминаете звёзды. Звёзды запоминают вас. Если вы смотрите на них достаточно долго, они начнут показывать вам путь домой.»', source: 'Йарра' },
+      { text: '«Мы не спасаем мир. Мы спасаем мгновения. Один взгляд, одно слово, одна капля воды... Это и есть жизнь.»', source: 'Йарра' },
+      { text: '«Когда Фобос поднимется выше обычного, земля начнёт дрожать. Сначала реки помутнеют, потом высохнут. Потом из трещин пойдёт дым, и небо станет красным, как кровь.»', source: 'Пророчество Харана' },
+      { text: '«Из пепла поднимется голос, и он скажет: "Ищите убежища за пределами своего мира". И те, кто услышат, построят корабли и увидят голубую звезду.»', source: 'Пророчество Харана' },
+      { text: '«Она отняла у нас море, но оставила нам соль, чтобы мы помнили.»', source: 'Плач Акха-Кора' },
+      { text: '«Когда Кхо коснулся Акхи, вскипела вода, и пар поднялся к небу, рождая облака. Когда Акха коснулась Кхо, остыл огонь, и из его застывшего сердца родился камень. Так явились небо и земля.»', source: 'Книга Харан' },
+      { text: '«Мы не можем изменить планету, но мы можем изменить себя. Это проще и быстрее.»', source: 'Ирайна' },
+      { text: '«Они умерли, чтобы дать жизнь другим. Это не жертва, это — круговорот.»', source: 'Ирайна' },
+      { text: '«Машины честнее людей. Они не лгут, не предают, не надеются на чудо. Они просто работают — или ломаются. Всё остальное — иллюзия.»', source: 'Миран' },
+      { text: '«Прощай, Талин. Ты был прав. Земля — наша надежда. Помни обо мне... Lān sur.»', source: 'Миран' },
+      { text: '«Я заметила нечто необычное в пробе, взятой у подводного источника. Эти организмы не похожи на те, что мы видели раньше. Они делятся быстрее и, кажется, используют какой-то неизвестный нам механизм метаболизма.»', source: 'Элла' }
     ];
 
     const now = new Date();
@@ -698,23 +558,20 @@
     document.getElementById('quoteText').innerHTML = `${quote.text}<br><span style="font-style:normal; font-size:0.9rem; color:var(--link-color, #0645ad);">— ${quote.source}</span>`;
   })();
 </script>
+</div>
 
----
-
+<!-- ============ СЕКЦИЯ: Спутники Марса ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--block-bg, #f8f9fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+">
 ### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса
 
-<div id="moonPhase" style="
-  background: var(--block-bg, #f8f9fa);
-  border: 1px solid var(--border-color, #eaecf0);
-  padding: 12px 16px;
-  border-radius: 8px;
-  max-width: 500px;
-  margin: 20px auto;
-  font-family: 'Georgia', serif;
-  text-align: center;
-  font-size: 1rem;
-  color: var(--text-color, #202122);
-">
+<div id="moonPhase" style="font-family: 'Georgia', serif; text-align: center; font-size: 1rem; color: var(--text-color, #202122);">
   <div style="font-weight:bold; margin-bottom:6px;">
     <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса
   </div>
@@ -734,30 +591,17 @@
     <div id="phobosTimer"></div>
     <div id="deimosTimer"></div>
   </div>
-  
-  <!-- Подпись с данными NASA -->
-  <div style="
-    margin-top:10px;
-    font-size:0.7rem;
-    color:var(--text-muted, #888);
-    border-top:1px solid var(--border-color, #eaecf0);
-    padding-top:6px;
-  ">
+  <div style="margin-top:10px; font-size:0.7rem; color:var(--text-muted, #888); border-top:1px solid var(--border-color, #eaecf0); padding-top:6px;">
     Данные: NASA Horizons (28 июня 2026, 14:34 UT)
   </div>
 </div>
 
 <script>
   (function() {
-    // ---- ТОЧНЫЕ ПЕРИОДЫ ОБРАЩЕНИЯ (сек) ----
-    const PHOBOS_PERIOD = 27540;   // 7.65 часов
-    const DEIMOS_PERIOD = 109080;  // 30.3 часов
-
-    // ---- НАЧАЛЬНАЯ ФАЗА (на 28 июня 2026, 14:34 UT) ----
+    const PHOBOS_PERIOD = 27540;
+    const DEIMOS_PERIOD = 109080;
     const PHOBOS_INITIAL = 0.62;
     const DEIMOS_INITIAL = 0.62;
-
-    // ---- ТОЧКА ОТСЧЁТА ----
     const refDate = new Date(Date.UTC(2026, 5, 28, 14, 34, 0));
 
     function getStatus(phase) {
@@ -787,15 +631,11 @@
     function update() {
       const now = new Date();
       const elapsed = (now - refDate) / 1000;
-
       const phobosPhase = (PHOBOS_INITIAL + elapsed / PHOBOS_PERIOD) % 1;
       const deimosPhase = (DEIMOS_INITIAL + elapsed / DEIMOS_PERIOD) % 1;
 
-      // Обновляем статусы (через innerHTML, т.к. там HTML-код с иконками)
       document.getElementById('phobosStatus').innerHTML = getStatus(phobosPhase);
       document.getElementById('deimosStatus').innerHTML = getStatus(deimosPhase);
-
-      // Таймеры с иконкой часов
       document.getElementById('phobosTimer').innerHTML = 
         `<img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос: ${formatTime(getNextPhaseTime(phobosPhase, PHOBOS_PERIOD))} до смены`;
       document.getElementById('deimosTimer').innerHTML = 
@@ -806,8 +646,17 @@
     setInterval(update, 1000);
   })();
 </script>
----
+</div>
 
+<!-- ============ СЕКЦИЯ: Звук ветра на Марсе ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--block-bg, #f8f9fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+">
 ### <img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Звук ветра на Марсе
 
 <div style="text-align: center; margin: 10px 0;">
@@ -836,7 +685,6 @@
     const btn = document.getElementById('windSoundBtn');
     let playing = false;
 
-    // Функция для обновления кнопки (используем innerHTML)
     function updateButton(state) {
       if (state) {
         btn.innerHTML = '<img src="assets/images/stickers/sticker-mute.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Выключить звук';
@@ -851,18 +699,15 @@
         playing = false;
         updateButton(false);
       } else {
-        // Пытаемся воспроизвести
         audio.play().then(() => {
           playing = true;
           updateButton(true);
         }).catch((err) => {
           console.warn('Не удалось воспроизвести звук:', err);
-          // Можно показать уведомление пользователю, если нужно
         });
       }
     });
 
-    // Если аудио закончится (не должно, т.к. loop), можно сбросить состояние
     audio.addEventListener('ended', function() {
       if (playing) {
         playing = false;
@@ -871,11 +716,10 @@
     });
   })();
 </script>
+</div>
 
   </div>
 </div>
-
----
 
 ## Примечания
 

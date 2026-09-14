@@ -453,6 +453,122 @@
 
 ---
 
+<!-- Блок «В этот день» -->
+<div id="this-day-block" style="
+  background: var(--block-bg, #f8f9fa);
+  border: 1px solid var(--border-color, #eaecf0);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 24px 0;
+  font-family: 'Georgia', serif;
+">
+  <h3 style="margin:0 0 12px 0; color: var(--text-color, #202122); display: flex; align-items: center; gap: 8px;">
+    <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle;">
+    В этот день на Марсе
+  </h3>
+  <div id="this-day-content" style="font-size:1rem; line-height:1.6; color: var(--text-color, #202122);">
+    Загрузка…
+  </div>
+</div>
+
+<script>
+(function() {
+  // ============================================================
+  // 1. Календарь (тот же, что в блоке «Марсианский календарь»)
+  // ============================================================
+  const months = [
+    { name: 'Ākha-dzen', days: 31 }, { name: 'Kōl-khan', days: 30 },
+    { name: 'Dzen-ākha', days: 32 }, { name: 'Khōsen', days: 31 },
+    { name: 'Mar-dzen', days: 33 }, { name: 'Ariya-mar', days: 30 },
+    { name: 'Zal-ākha', days: 31 }, { name: 'Thal-khō', days: 32 },
+    { name: 'Kōl-ghar', days: 29 }, { name: 'Mōr-ākha', days: 31 },
+    { name: 'Dzen-kōl', days: 30 }, { name: 'Xal-mar', days: 28 },
+    { name: 'Lān-sen', days: 29 }, { name: 'Khō-mōr', days: 31 },
+    { name: 'Ākha-mōr', days: 32 }, { name: 'Kōl-suf', days: 33 },
+    { name: 'Dzen-thal', days: 31 }, { name: 'Ghōl-ākha', days: 30 },
+    { name: 'Rōg-ari', days: 29 }, { name: 'Mar-lān', days: 31 },
+    { name: 'Ksanf-suf', days: 32 }, { name: 'Yar-okh', days: 33 }
+  ];
+  const MARTIAN_YEAR_DAYS = months.reduce((s, m) => s + m.days, 0);
+  const EARTH_DAYS_IN_MARTIAN_YEAR = 668.6;
+  const BOOK_REF_YEAR = 2740;
+  const BOOK_REF_DAYS_AGO = 3798000000;
+
+  function getCurrentMartianDate() {
+    const now = new Date();
+    const earthDaysFromStart = (now.getTime() - new Date(2026, 0, 1).getTime()) / (1000 * 60 * 60 * 24);
+    const martianYearsOffset = earthDaysFromStart / EARTH_DAYS_IN_MARTIAN_YEAR;
+    const baseYear = BOOK_REF_DAYS_AGO + BOOK_REF_YEAR;
+    const year = Math.floor(baseYear + martianYearsOffset);
+    const dayOfYear = Math.floor((earthDaysFromStart * (MARTIAN_YEAR_DAYS / EARTH_DAYS_IN_MARTIAN_YEAR)) % MARTIAN_YEAR_DAYS);
+    let remaining = dayOfYear;
+    let monthIndex = 0;
+    for (let i = 0; i < months.length; i++) {
+      if (remaining < months[i].days) { monthIndex = i; break; }
+      remaining -= months[i].days;
+    }
+    const day = remaining + 1;
+    return { month: months[monthIndex].name, day, year };
+  }
+
+  // ============================================================
+  // 2. Загрузка событий и фильтрация по текущей дате
+  // ============================================================
+  async function loadEvents() {
+    try {
+      const res = await fetch('data/this-day.json');
+      if (!res.ok) throw new Error('Нет файла');
+      const all = await res.json();
+      const current = getCurrentMartianDate();
+
+      // Ищем события на текущий месяц и день
+      const today = all.filter(e => e.month === current.month && e.day === current.day);
+
+      const container = document.getElementById('this-day-content');
+      if (!today.length) {
+        container.innerHTML = `
+          <p style="color: var(--text-muted, #555); margin: 0;">
+            <em>Сегодня, ${current.day}‑й день ${current.month}, в истории Марса не отмечено событий.</em>
+          </p>
+          <p style="font-size: 0.9rem; color: var(--text-muted, #777); margin-top: 8px;">
+            Возможно, ты добавишь их позже.
+          </p>`;
+        return;
+      }
+
+      // Сортируем по году
+      today.sort((a, b) => a.year - b.year);
+
+      let html = `<p style="margin: 0 0 12px 0; font-size: 0.9rem; color: var(--text-muted, #555);">
+        <strong>${current.day}‑й день ${current.month}</strong>, ${current.year.toLocaleString()} г. Э.О.
+      </p>`;
+
+      today.forEach(ev => {
+        html += `
+          <div style="border-left: 3px solid #6C63FF; padding-left: 12px; margin-bottom: 12px;">
+            <div style="font-weight: 700; margin-bottom: 2px;">
+              ${ev.year} г. — ${ev.title}
+            </div>
+            <div style="font-size: 0.95rem; color: var(--text-color, #333); margin-bottom: 4px;">
+              ${ev.text}
+            </div>
+            ${ev.link ? `<a href="${ev.link}" style="font-size: 0.85rem; color: #6C63FF;">Читать подробнее →</a>` : ''}
+          </div>`;
+      });
+
+      container.innerHTML = html;
+    } catch (e) {
+      document.getElementById('this-day-content').innerHTML =
+        '<span style="color: #999;">Не удалось загрузить события. Проверь файл <code>docs/data/this-day.json</code>.</span>';
+    }
+  }
+
+  loadEvents();
+})();
+</script>
+
+---
+
 ### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса
 
 <div id="moonPhase" style="

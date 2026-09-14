@@ -56,7 +56,7 @@ extra_javascript:
   - assets/js/mars-tts.js
   - assets/js/scroll-mode.js
   - assets/js/effects-menu.js
-  - assets/js/collapse-menu.js
+  - assets/js/collapse-menu.js?v=12
   # - assets/js/sound-engine.js
   # - assets/js/sound-ui.js
   # - assets/js/mobile-debug.js

@@ -25,174 +25,75 @@
   ],
 
   "events": [
-    {
-      "month": "Ākha-dzen", "day": 1, "year": null,
-      "type": "holiday",
-      "title": "Dzen Thal — Новый год",
-      "text": "Праздник смотрения на звёзды. В этот день король выходил на балкон дворца в Роген-Арии и оглашал начало нового года.",
-      "link": "/astronomy/marsian-calendar/#_6"
-    },
-    {
-      "month": "Kōl-khan", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Начало половодья — месяц Kōl-khan",
-      "text": "Входит в силу «земля-река». Реки выходят из берегов, начинается сезон земледельческих работ.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Dzen-ākha", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Начало месяца «звезда-вода»",
-      "text": "Dzen-ākha — время, когда талые воды смешиваются со светом звёзд. Благоприятный месяц для начала путешествий.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Khōsen", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Начало жары — месяц Khōsen",
-      "text": "«Место огня». Первый день летнего зноя. В храмах Акхи зажигали жертвенные огни.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Mar-dzen", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Расцвет — месяц Mar-dzen",
-      "text": "«Жизнь-звезда». Пик цветения. Самый благоприятный месяц для свадеб и союзов.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Ariya-mar", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Священный месяц Ariya-mar",
-      "text": "«Избранная жизнь». Месяц пророчеств и священных ритуалов.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Zal-ākha", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Начало сезона дождей — Zal-ākha",
-      "text": "«Ветер-вода». Приход дождей после долгого зноя. «Время, когда небо вспоминает о воде».",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Thal-khō", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Зной — месяц Thal-khō",
-      "text": "«Смотреть-огонь». Пик жары перед засухой. В этот месяц запрещалось выходить в путь днём.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Kōl-ghar", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Начало засухи — Kōl-ghar",
-      "text": "«Земля-камень». Самый сухой месяц года. Реки превращаются в камень, колодцы пересыхают.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Mōr-ākha", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Увядание — месяц Mōr-ākha",
-      "text": "«Смерть-вода». Время, когда природа отступает. В храмах служили заупокойные литургии.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Dzen-kōl", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Перед заморозками — Dzen-kōl",
-      "text": "«Звезда-земля». Последний месяц перед холодами. Готовили запасы на зиму.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Xal-mar", "day": 1, "year": null,
-      "type": "holiday",
-      "title": "Месяц предков — Xal-mar",
-      "text": "«Древняя жизнь». Время поминовения. По традиции, в этот месяц нельзя было начинать новые дела.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Lān-sen", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Ритуальный месяц Lān-sen",
-      "text": "«Память-место». Месяц тишины и записи хроник. Писцы Академии трудились круглосуточно.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Khō-mōr", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Угасание — Khō-mōr",
-      "text": "«Огонь-смерть». Огни в храмах гасили — оставался только один, вечный.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Ākha-mōr", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Замерзание — Ākha-mōr",
-      "text": "«Вода-смерть». Вода превращается в лёд. Начинались самые долгие ночи года.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Kōl-suf", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Ледяной покров — Kōl-suf",
-      "text": "«Земля-великая». Марс покрыт льдом. Города жили на запасах, накопленных летом.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Dzen-thal", "day": 1, "year": null,
-      "type": "holiday",
-      "title": "Месяц зимнего солнцестояния",
-      "text": "«Звезда-смотреть». Самые длинные ночи. Астрономы Академии вели главные наблюдения года.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Ghōl-ākha", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Месяц туманов — Ghōl-ākha",
-      "text": "«Тень-вода». Туманы покрывали долины. Путешественники шли по звуку колоколов.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Rōg-ari", "day": 1, "year": null,
-      "type": "holiday",
-      "title": "Праздничный месяц Rōg-ari",
-      "text": "«Король-избранный». Праздники по всей Ойкумене. Короли выходили к народу и раздавали дары.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Mar-lān", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Поминовения — месяц Mar-lān",
-      "text": "«Жизнь-память». Начинается время поминовения умерших. Таблички с именами готовили заранее.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Mar-lān", "day": 15, "year": null,
-      "type": "holiday",
-      "title": "Lān Mar — День памяти всех ушедших",
-      "text": "Главный день поминовения. Таблички с именами умерших выставлялись в храмах Ойкумены.",
-      "link": "/astronomy/marsian-calendar/#_6"
-    },
-    {
-      "month": "Ksanf-suf", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Паводок — Ksanf-suf",
-      "text": "«Великая река». Главный разлив года. По преданию, именно в этот месяц Ксанф I основал своё царство.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Yar-okh", "day": 1, "year": null,
-      "type": "calendar",
-      "title": "Месяц возвращения — Yar-okh",
-      "text": "«Старый дом». Караваны возвращались в города после зимних странствий. Готовились к новому году.",
-      "link": "/astronomy/marsian-calendar/#_3"
-    },
-    {
-      "month": "Zal-ākha", "day": 22, "year": 2690,
-      "type": "historic",
-      "title": "Снимок Земли зондом «Ковчег-4»",
-      "text": "Получено изображение Земли на основе 173 снимков. Позже эта дата вошла в марсианскую мифологию как «колыбель из пепла».",
-      "link": "/astronomy/earth/"
-    }
+    { "month": "Ākha-dzen", "day": 1, "year": null, "type": "holiday", "title": "Dzen Thal — Новый год", "text": "Праздник смотрения на звёзды. Король выходил на балкон дворца в Роген-Арии и оглашал начало нового года.", "link": "/astronomy/marsian-calendar/#_6" },
+    { "month": "Ākha-dzen", "day": 3, "year": 612, "type": "historic", "title": "Первые посевы Окхасена", "text": "По преданию, первые весенние посевы легли в долину Окхасена в третий день весеннего таяния.", "link": "/history/periodization/" },
+    { "month": "Ākha-dzen", "day": 10, "year": 987, "type": "historic", "title": "Открытие Великого Северного пути", "text": "Караван Ксанфа IV впервые прошёл через перевалы Фарсиды, соединив Окхасен с северными колониями.", "link": "/history/timeline/" },
+    { "month": "Ākha-dzen", "day": 20, "year": 1543, "type": "historic", "title": "Рождение Ксанфа VII", "text": "Весеннее утро, отмеченное рождением будущего правителя Ксанфидов, знаменовало начало новой эпохи.", "link": "/genealogy/" },
+    { "month": "Kōl-khan", "day": 1, "year": null, "type": "calendar", "title": "Начало половодья", "text": "Входит в силу месяц Kōl-khan — «земля-река». Реки выходят из берегов, начинается сезон земледельческих работ.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Kōl-khan", "day": 5, "year": 743, "type": "historic", "title": "Первый разлив Ксанф-реки", "text": "Хроники Академии фиксируют небывалый разлив главной реки Марса — вода дошла до стен Эдема.", "link": "/history/timeline/" },
+    { "month": "Kōl-khan", "day": 15, "year": 1204, "type": "historic", "title": "Основание порта на Эритрейском море", "text": "Купеческие дома Окхасена основали морской порт, соединивший внутренние земли с побережьем.", "link": "/history/periodization/" },
+    { "month": "Kōl-khan", "day": 25, "year": 1889, "type": "historic", "title": "Договор о разделе вод", "text": "Двенадцать королевств подписали договор о распределении речных вод — первый общеойкуменский правовой акт.", "link": "/history/timeline/" },
+    { "month": "Dzen-ākha", "day": 1, "year": null, "type": "calendar", "title": "Начало месяца «звезда-вода»", "text": "Dzen-ākha — время, когда талые воды смешиваются со светом звёзд. Благоприятный месяц для путешествий.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Dzen-ākha", "day": 8, "year": 856, "type": "historic", "title": "Открытие горного перевала", "text": "Разведчики Академии нашли перевал, впоследствии названный Талином — ворота в Фарсиду.", "link": "/history/timeline/" },
+    { "month": "Dzen-ākha", "day": 20, "year": 1650, "type": "historic", "title": "Основание южной колонии", "text": "Корабли Окхасена высадились на южном берегу и основали первое поселение за пределами исторической Ойкумены.", "link": "/history/periodization/" },
+    { "month": "Dzen-ākha", "day": 30, "year": 2234, "type": "historic", "title": "Рождение великого астронома", "text": "Академия Окхасена отмечает день рождения учёного, впервые описавшего орбиту Фобоса.", "link": "/astronomy/" },
+    { "month": "Khōsen", "day": 1, "year": null, "type": "calendar", "title": "Начало жары", "text": "«Место огня». Первый день летнего зноя. В храмах Акхи зажигали жертвенные огни.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Khōsen", "day": 7, "year": 902, "type": "holiday", "title": "Праздник Огня", "text": "В столице Ксанфидов зажигали тысячу лампад. Огонь от этого дня хранился весь год.", "link": "/history/timeline/" },
+    { "month": "Khōsen", "day": 15, "year": 1345, "type": "historic", "title": "Начало похода против Серпендиды", "text": "Король Эдема выступил в поход, длившийся три сезона. Исход решился в битве у Золотых Ворот.", "link": "/history/timeline/" },
+    { "month": "Khōsen", "day": 25, "year": 2010, "type": "historic", "title": "Освящение нового храма Акхи", "text": "Великий храм Акхи в Окхасене был достроен — самое высокое сооружение той эпохи.", "link": "/history/periodization/" },
+    { "month": "Mar-dzen", "day": 1, "year": null, "type": "calendar", "title": "Расцвет — месяц Mar-dzen", "text": "«Жизнь-звезда». Пик цветения. Самый благоприятный месяц для свадеб и союзов.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Mar-dzen", "day": 5, "year": 654, "type": "historic", "title": "Свадьба Ксанфа I", "text": "Основатель династии Ксанфидов сочетался браком с верховной жрицей Акхи — союз, объединивший светскую и духовную власть.", "link": "/genealogy/" },
+    { "month": "Mar-dzen", "day": 12, "year": 1456, "type": "holiday", "title": "Праздник жизни", "text": "По всей Ойкумене — день всеобщего веселья и примирения кровных врагов.", "link": "/history/timeline/" },
+    { "month": "Mar-dzen", "day": 25, "year": 2389, "type": "historic", "title": "Рождение наследника Эдема", "text": "У 47-го короля Эдема родился сын, которому суждено было стать последним правителем старой династии.", "link": "/genealogy/" },
+    { "month": "Ariya-mar", "day": 1, "year": null, "type": "calendar", "title": "Священный месяц Ariya-mar", "text": "«Избранная жизнь». Месяц пророчеств и священных ритуалов.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Ariya-mar", "day": 8, "year": 812, "type": "historic", "title": "Пророчество о падении Эритрея", "text": "Оракул Акхи впервые предрёк затопление Эритрейского побережья — предсказание сбылось через 300 лет.", "link": "/history/myths/" },
+    { "month": "Ariya-mar", "day": 15, "year": 1278, "type": "historic", "title": "Избрание короля Советом", "text": "Впервые в истории Ойкумены король был избран Советом двенадцати, а не унаследован по праву крови.", "link": "/history/timeline/" },
+    { "month": "Ariya-mar", "day": 25, "year": 1934, "type": "historic", "title": "Записаны первые законы", "text": "На глиняных табличках Академии впервые кодифицировано право Окхасена.", "link": "/terms/lan-sur/" },
+    { "month": "Zal-ākha", "day": 1, "year": null, "type": "calendar", "title": "Начало сезона дождей", "text": "«Ветер-вода». Приход дождей после долгого зноя. «Время, когда небо вспоминает о воде».", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Zal-ākha", "day": 7, "year": 723, "type": "historic", "title": "Дожди в пустыне", "text": "Хроники описывают дождь в Фарсиде — редчайшее событие, воспринятое как знак милости Акхи.", "link": "/history/myths/" },
+    { "month": "Zal-ākha", "day": 15, "year": 1101, "type": "historic", "title": "Затоплен древний город", "text": "Потоп уничтожил прибрежный город Ацидалию. Остались только таблички в Академии.", "link": "/history/timeline/" },
+    { "month": "Zal-ākha", "day": 22, "year": 2690, "type": "historic", "title": "Снимок Земли зондом «Ковчег-4»", "text": "Получено изображение Земли на основе 173 снимков. Позже вошло в мифологию как «колыбель из пепла».", "link": "/astronomy/earth/" },
+    { "month": "Thal-khō", "day": 1, "year": null, "type": "calendar", "title": "Зной — месяц Thal-khō", "text": "«Смотреть-огонь». Пик жары перед засухой. Запрещалось выходить в путь днём.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Thal-khō", "day": 10, "year": 1055, "type": "historic", "title": "Запрет на дневные путешествия", "text": "Совет королевств ввёл правило: летом передвигаться только ночью.", "link": "/history/timeline/" },
+    { "month": "Thal-khō", "day": 20, "year": 1567, "type": "historic", "title": "Осада Фарсиды", "text": "Девять королевств осаждали крепость Фарсиды 40 солов — успешно.", "link": "/history/timeline/" },
+    { "month": "Kōl-ghar", "day": 1, "year": null, "type": "calendar", "title": "Начало засухи", "text": "«Земля-камень». Самый сухой месяц. Реки превращаются в камень, колодцы пересыхают.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Kōl-ghar", "day": 8, "year": 934, "type": "historic", "title": "Пересыхание главного колодца", "text": "Колодец Окхасена, питавший город три века, впервые полностью высох.", "link": "/history/timeline/" },
+    { "month": "Kōl-ghar", "day": 15, "year": 1312, "type": "historic", "title": "Молитвы о воде", "text": "Совет жрецов объявил общенациональный пост. Дождь пришёл через 12 дней.", "link": "/history/myths/" },
+    { "month": "Kōl-ghar", "day": 22, "year": 1756, "type": "historic", "title": "Смерть короля от жажды", "text": "Король одной из южных провинций погиб в пустыне, возвращаясь из похода.", "link": "/genealogy/" },
+    { "month": "Mōr-ākha", "day": 1, "year": null, "type": "calendar", "title": "Увядание — Mōr-ākha", "text": "«Смерть-вода». Время, когда природа отступает. В храмах служили заупокойные литургии.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Mōr-ākha", "day": 10, "year": 1023, "type": "historic", "title": "Первые заупокойные литургии", "text": "В храмах введён обряд поминовения всех погибших в засуху.", "link": "/history/timeline/" },
+    { "month": "Mōr-ākha", "day": 20, "year": 1598, "type": "historic", "title": "Сбор последнего урожая", "text": "Земледельцы Окхасена заканчивали сбор — впереди зима.", "link": "/history/periodization/" },
+    { "month": "Dzen-kōl", "day": 1, "year": null, "type": "calendar", "title": "Перед заморозками", "text": "«Звезда-земля». Последний месяц перед холодами. Готовили запасы на зиму.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Dzen-kōl", "day": 12, "year": 1401, "type": "historic", "title": "Строительство Великого хранилища", "text": "Заложено главное зернохранилище Окхасена — простояло 800 лет.", "link": "/history/timeline/" },
+    { "month": "Dzen-kōl", "day": 25, "year": 2088, "type": "historic", "title": "Первый снег", "text": "Хроники Академии фиксируют первый снег в году — ранний и обильный.", "link": "/astronomy/" },
+    { "month": "Xal-mar", "day": 1, "year": null, "type": "holiday", "title": "Месяц предков", "text": "«Древняя жизнь». Время поминовения. Нельзя начинать новые дела.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Xal-mar", "day": 8, "year": 989, "type": "historic", "title": "Поминовение Ксанфа I", "text": "Впервые отмечен день памяти основателя династии — обряд сохранился до конца эпохи.", "link": "/genealogy/" },
+    { "month": "Xal-mar", "day": 20, "year": 1678, "type": "holiday", "title": "Возвращение душ", "text": "По преданию, в этот день души умерших навещают дома живых. Оставляли еду на порогах.", "link": "/history/myths/" },
+    { "month": "Lān-sen", "day": 1, "year": null, "type": "calendar", "title": "Ритуальный месяц Lān-sen", "text": "«Память-место». Месяц тишины и записи хроник. Писцы Академии трудились круглосуточно.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Lān-sen", "day": 10, "year": 1145, "type": "historic", "title": "Записаны свитки Д", "text": "Начато составление свода «Свиток Д» — крупнейшей хроники марсианской истории.", "link": "/svitok-d/" },
+    { "month": "Lān-sen", "day": 20, "year": 1823, "type": "historic", "title": "Рождение писца-легенды", "text": "День рождения Хевсура — первого хранителя глин, чьё имя стало синонимом памяти.", "link": "/people/" },
+    { "month": "Khō-mōr", "day": 1, "year": null, "type": "calendar", "title": "Угасание — Khō-mōr", "text": "«Огонь-смерть». Огни в храмах гасили — оставался только один, вечный.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Khō-mōr", "day": 15, "year": 1289, "type": "holiday", "title": "Гасят огни в храмах", "text": "Единственный день в году, когда все огни, кроме вечного, тушились. Тишина наступала по всей Ойкумене.", "link": "/history/timeline/" },
+    { "month": "Ākha-mōr", "day": 1, "year": null, "type": "calendar", "title": "Замерзание — Ākha-mōr", "text": "«Вода-смерть». Вода превращается в лёд. Начинались самые долгие ночи года.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Ākha-mōr", "day": 15, "year": 1445, "type": "historic", "title": "Лёд на Эритрейском море", "text": "Впервые за всю историю наблюдений Эритрейское море полностью покрылось льдом.", "link": "/history/timeline/" },
+    { "month": "Kōl-suf", "day": 1, "year": null, "type": "calendar", "title": "Ледяной покров — Kōl-suf", "text": "«Земля-великая». Марс покрыт льдом. Города жили на запасах, накопленных летом.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Kōl-suf", "day": 15, "year": 1612, "type": "historic", "title": "Голод в Окхасене", "text": "Зима 1612 года вошла в историю как «Голодная стужа». Погибла треть населения.", "link": "/history/timeline/" },
+    { "month": "Dzen-thal", "day": 1, "year": null, "type": "holiday", "title": "Месяц зимнего солнцестояния", "text": "«Звезда-смотреть». Самые длинные ночи. Астрономы Академии вели главные наблюдения года.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Dzen-thal", "day": 12, "year": 1367, "type": "historic", "title": "Пророчество о Земле", "text": "Астроном Академии впервые высказал мысль о существовании «малой серой звезды» — будущей Земли.", "link": "/astronomy/earth/" },
+    { "month": "Dzen-thal", "day": 25, "year": 2178, "type": "historic", "title": "Наблюдение за Марсом", "text": "Составлена самая точная карта марсианского неба того времени.", "link": "/astronomy/" },
+    { "month": "Ghōl-ākha", "day": 1, "year": null, "type": "calendar", "title": "Месяц туманов", "text": "«Тень-вода». Туманы покрывали долины. Путешественники шли по звуку колоколов.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Ghōl-ākha", "day": 15, "year": 1089, "type": "historic", "title": "Заблудившийся караван", "text": "Караван из 300 человек потерялся в туманах и вернулся только через месяц — все выжили.", "link": "/history/myths/" },
+    { "month": "Rōg-ari", "day": 1, "year": null, "type": "holiday", "title": "Праздничный месяц Rōg-ari", "text": "«Король-избранный». Праздники по всей Ойкумене. Короли выходили к народу.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Rōg-ari", "day": 14, "year": 1765, "type": "historic", "title": "Король к народу", "text": "47-й король Эдема лично вышел к ремесленникам и раздал дары. Событие вошло в песни.", "link": "/history/timeline/" },
+    { "month": "Mar-lān", "day": 1, "year": null, "type": "calendar", "title": "Поминовения — Mar-lān", "text": "«Жизнь-память». Начинается время поминовения умерших.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Mar-lān", "day": 15, "year": null, "type": "holiday", "title": "Lān Mar — День памяти всех ушедших", "text": "Таблички с именами умерших выставлялись в храмах Ойкумены.", "link": "/astronomy/marsian-calendar/#_6" },
+    { "month": "Mar-lān", "day": 25, "year": 1290, "type": "historic", "title": "Таблички предков", "text": "Впервые выставили 10 000 табличек с именами — с тех пор это стало традицией.", "link": "/history/timeline/" },
+    { "month": "Ksanf-suf", "day": 1, "year": null, "type": "calendar", "title": "Паводок — Ksanf-suf", "text": "«Великая река». Главный разлив года.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Ksanf-suf", "day": 10, "year": 600, "type": "historic", "title": "Основание Окхасена", "text": "Ксанф I основал столицу у слияния двух рек — начало Эпохи Основания.", "link": "/history/epokha-osnovaniya/" },
+    { "month": "Ksanf-suf", "day": 22, "year": 1901, "type": "historic", "title": "Великий потоп", "text": "Паводок уничтожил три города на юге. Пострадавшие переселились в Окхасен.", "link": "/history/timeline/" },
+    { "month": "Yar-okh", "day": 1, "year": null, "type": "calendar", "title": "Месяц возвращения — Yar-okh", "text": "«Старый дом». Караваны возвращались в города после зимних странствий.", "link": "/astronomy/marsian-calendar/#_3" },
+    { "month": "Yar-okh", "day": 15, "year": 1100, "type": "historic", "title": "Караваны возвращаются", "text": "Первые весенние караваны вошли в Окхасен. Началась ярмарка.", "link": "/history/periodization/" },
+    { "month": "Yar-okh", "day": 25, "year": 2001, "type": "holiday", "title": "Канун Нового года", "text": "За три дня до Dzen Thal — время уборки и подготовки к главному празднику года.", "link": "/astronomy/marsian-calendar/" }
   ],
 
   "quotes": [

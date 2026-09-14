@@ -455,6 +455,8 @@
 
 <script>
 (function() {
+  'use strict';
+
   const MONTHS_DAYS = [31,30,32,31,33,30,31,32,29,31,30,28,29,31,32,33,31,30,29,31,32,33];
   const MARTIAN_YEAR_DAYS = MONTHS_DAYS.reduce((s,n)=>s+n,0);
   const EARTH_DAYS_IN_MARTIAN_YEAR = 668.6;
@@ -472,14 +474,14 @@
     return { monthIndex: mIdx, day: remaining + 1 };
   }
 
-  // 🔧 ПРОБУЕМ НЕСКОЛЬКО ПУТЕЙ
+  // Пробуем разные пути
   async function fetchJSON() {
     const paths = [
-      '/data/this-day.json',
       'data/this-day.json',
+      '/data/this-day.json',
       '../data/this-day.json',
       '../../data/this-day.json',
-      '/mars-wiki/data/this-day.json'
+      'this-day.json'
     ];
     for (const p of paths) {
       try {
@@ -487,11 +489,56 @@
         if (r.ok) return await r.json();
       } catch(e) {}
     }
-    throw new Error('Не найден ни один путь');
+    throw new Error('Файл this-day.json не найден ни по одному пути');
+  }
+
+  // Создать блок, если его нет
+  function ensureBlock() {
+    let block = document.getElementById('this-day-block');
+    if (block) return block;
+
+    // Создаём
+    block = document.createElement('div');
+    block.id = 'this-day-block';
+    block.style.cssText = `
+      background: var(--block-bg, #f8f9fa);
+      border: 1px solid var(--border-color, #eaecf0);
+      border-left: 4px solid #6C63FF;
+      border-radius: 12px;
+      padding: 22px 26px;
+      margin: 24px 0;
+      font-family: 'Georgia', serif;
+    `;
+    block.innerHTML = `
+      <h3 style="margin:0 0 14px 0; color: var(--text-color, #202122); display:flex; align-items:center; gap:10px; font-size:1.15rem;">
+        <span style="font-size:1.4rem;">📅</span>
+        В этот день на Марсе
+      </h3>
+      <div id="this-day-content" style="font-size:1rem; line-height:1.65; color: var(--text-color, #202122);">
+        Загрузка…
+      </div>
+    `;
+
+    // Вставляем после первого h1 или после первого параграфа
+    const h1 = document.querySelector('.md-content h1, article h1, h1');
+    if (h1 && h1.parentNode) {
+      h1.parentNode.insertBefore(block, h1.nextSibling);
+    } else {
+      const content = document.querySelector('.md-content__inner, article, .document, body');
+      if (content) content.insertBefore(block, content.firstChild);
+    }
+
+    return block;
   }
 
   async function load() {
+    const block = ensureBlock();
     const container = document.getElementById('this-day-content');
+    if (!container) {
+      console.error('❌ Не удалось создать контейнер');
+      return;
+    }
+
     try {
       const data = await fetchJSON();
 
@@ -532,7 +579,7 @@
 
       if (events.length) {
         html += `<div style="margin-bottom:16px;">
-          <div style="font-size:0.8rem; color:#6C63FF; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">📜 События этого дня</div>`;
+          <div style="font-size:0.8rem; color:#6C63FF; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">События этого дня</div>`;
         events.forEach(ev => {
           const c = ev.type === 'historic' ? '#e74c3c' : ev.type === 'holiday' ? '#f39c12' : '#6C63FF';
           html += `
@@ -546,7 +593,7 @@
         });
         html += '</div>';
       } else {
-        html += `<div style="margin-bottom:16px; padding:12px 14px; background:rgba(108,99,255,0.06); border-radius:8px; font-size:0.9rem; color:#666;">На этот день в хрониках событий пока не отмечено.</div>`;
+        html += `<div style="margin-bottom:16px; padding:12px 14px; background:rgba(108,99,255,0.06); border-radius:8px; font-size:0.9rem; color:#666;">📭 На этот день в хрониках событий пока не отмечено.</div>`;
       }
 
       // Цитата дня
@@ -563,14 +610,21 @@
       container.innerHTML = html;
       console.log('✅ В этот день: загружено');
     } catch(e) {
-      container.innerHTML = '<span style="color:#999;">Не удалось загрузить. Проверь F12 → Network → data/this-day.json</span>';
-      console.error(e);
+      container.innerHTML = '<span style="color:#999;">⚠️ ' + e.message + '</span>';
+      console.error('❌ В этот день:', e);
     }
   }
 
-  load();
+  // Ждём загрузки DOM
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', load);
+  } else {
+    // DOM уже готов — запускаем сразу, но с небольшой задержкой
+    setTimeout(load, 300);
+  }
 })();
 </script>
+
 ---
 
 ### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса

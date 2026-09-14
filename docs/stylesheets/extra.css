@@ -722,22 +722,16 @@ body,
 }
 
 /* ============================================
-   МЕНЮ-АККОРДЕОН
+   МЕНЮ-АККОРДЕОН (только разделы с подменю)
    ============================================ */
 
-/* Все подменю скрыты по умолчанию — работает с самой первой миллисекунды */
-.wy-menu-vertical li > ul {
+/* Прячем подменю у закрытых разделов */
+html body .wy-menu-vertical li:not(.mars-open) > ul {
     display: none !important;
 }
 
-/* Открытые разделы */
-.wy-menu-vertical li.mars-open > ul {
+html body .wy-menu-vertical li.mars-open > ul {
     display: block !important;
-}
-
-/* Убираем крестик-кнопку */
-.wy-menu-vertical .toctree-expand {
-    display: none !important;
 }
 
 /* Убираем жирный шрифт */
@@ -748,23 +742,39 @@ body,
     font-weight: normal !important;
 }
 
-/* Стрелка ▸ справа */
-.wy-menu-vertical li.mars-has-sub > a {
-    position: relative;
-    padding-right: 26px !important;
+/* Убираем границы-полоски */
+.wy-menu-vertical li,
+.wy-menu-vertical li > a {
+    border: none !important;
+    box-shadow: none !important;
 }
-.wy-menu-vertical li.mars-has-sub > a::after {
+
+/* Скрываем родную кнопку-крестик */
+.wy-menu-vertical .toctree-expand {
+    display: none !important;
+}
+
+/* СТРЕЛКА — только у пунктов с подменю (li:has(> ul)) */
+.wy-menu-vertical li:has(> ul) > a {
+    position: relative !important;
+    padding-right: 28px !important;
+    cursor: pointer !important;
+}
+
+.wy-menu-vertical li:has(> ul) > a::after {
     content: '▸';
     position: absolute;
-    right: 10px;
+    right: 8px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 0.85em;
-    opacity: 0.5;
+    font-size: 12px;
+    color: inherit;
+    opacity: 0.55;
     transition: transform 0.2s;
     pointer-events: none;
 }
-.wy-menu-vertical li.mars-has-sub.mars-open > a::after {
+
+.wy-menu-vertical li:has(> ul).mars-open > a::after {
     transform: translateY(-50%) rotate(90deg);
-    opacity: 0.9;
+    opacity: 1;
 }

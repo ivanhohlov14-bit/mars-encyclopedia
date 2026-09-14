@@ -53,7 +53,7 @@ extra_javascript:
   - assets/js/mobile.js
   - assets/js/wikipedia-footer.js
   - assets/js/language-switcher.js
-  - assets/js/mars-tts.js
+  # - assets/js/mars-tts.js
   - assets/js/scroll-mode.js
   - assets/js/effects-menu.js
   - assets/js/collapse-menu.js?v=12

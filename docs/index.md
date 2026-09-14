@@ -453,120 +453,124 @@
 
 ---
 
-<!-- Блок «В этот день» -->
-<div id="this-day-block" style="
-  background: var(--block-bg, #f8f9fa);
-  border: 1px solid var(--border-color, #eaecf0);
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin: 24px 0;
-  font-family: 'Georgia', serif;
-">
-  <h3 style="margin:0 0 12px 0; color: var(--text-color, #202122); display: flex; align-items: center; gap: 8px;">
-    <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle;">
-    В этот день на Марсе
-  </h3>
-  <div id="this-day-content" style="font-size:1rem; line-height:1.6; color: var(--text-color, #202122);">
-    Загрузка…
-  </div>
-</div>
-
 <script>
 (function() {
-  // ============================================================
-  // 1. Календарь (тот же, что в блоке «Марсианский календарь»)
-  // ============================================================
-  const months = [
-    { name: 'Ākha-dzen', days: 31 }, { name: 'Kōl-khan', days: 30 },
-    { name: 'Dzen-ākha', days: 32 }, { name: 'Khōsen', days: 31 },
-    { name: 'Mar-dzen', days: 33 }, { name: 'Ariya-mar', days: 30 },
-    { name: 'Zal-ākha', days: 31 }, { name: 'Thal-khō', days: 32 },
-    { name: 'Kōl-ghar', days: 29 }, { name: 'Mōr-ākha', days: 31 },
-    { name: 'Dzen-kōl', days: 30 }, { name: 'Xal-mar', days: 28 },
-    { name: 'Lān-sen', days: 29 }, { name: 'Khō-mōr', days: 31 },
-    { name: 'Ākha-mōr', days: 32 }, { name: 'Kōl-suf', days: 33 },
-    { name: 'Dzen-thal', days: 31 }, { name: 'Ghōl-ākha', days: 30 },
-    { name: 'Rōg-ari', days: 29 }, { name: 'Mar-lān', days: 31 },
-    { name: 'Ksanf-suf', days: 32 }, { name: 'Yar-okh', days: 33 }
-  ];
-  const MARTIAN_YEAR_DAYS = months.reduce((s, m) => s + m.days, 0);
+  const MONTHS_DAYS = [31,30,32,31,33,30,31,32,29,31,30,28,29,31,32,33,31,30,29,31,32,33];
+  const MARTIAN_YEAR_DAYS = MONTHS_DAYS.reduce((s,n)=>s+n,0);
   const EARTH_DAYS_IN_MARTIAN_YEAR = 668.6;
-  const BOOK_REF_YEAR = 2740;
-  const BOOK_REF_DAYS_AGO = 3798000000;
 
   function getCurrentMartianDate() {
     const now = new Date();
-    const earthDaysFromStart = (now.getTime() - new Date(2026, 0, 1).getTime()) / (1000 * 60 * 60 * 24);
-    const martianYearsOffset = earthDaysFromStart / EARTH_DAYS_IN_MARTIAN_YEAR;
-    const baseYear = BOOK_REF_DAYS_AGO + BOOK_REF_YEAR;
-    const year = Math.floor(baseYear + martianYearsOffset);
-    const dayOfYear = Math.floor((earthDaysFromStart * (MARTIAN_YEAR_DAYS / EARTH_DAYS_IN_MARTIAN_YEAR)) % MARTIAN_YEAR_DAYS);
-    let remaining = dayOfYear;
-    let monthIndex = 0;
-    for (let i = 0; i < months.length; i++) {
-      if (remaining < months[i].days) { monthIndex = i; break; }
-      remaining -= months[i].days;
+    const start = new Date(2026, 0, 1).getTime();
+    const earthDays = (now.getTime() - start) / 86400000;
+    const dayOfYear = Math.floor((earthDays * (MARTIAN_YEAR_DAYS / EARTH_DAYS_IN_MARTIAN_YEAR)) % MARTIAN_YEAR_DAYS);
+    let remaining = dayOfYear, mIdx = 0;
+    for (let i = 0; i < MONTHS_DAYS.length; i++) {
+      if (remaining < MONTHS_DAYS[i]) { mIdx = i; break; }
+      remaining -= MONTHS_DAYS[i];
     }
-    const day = remaining + 1;
-    return { month: months[monthIndex].name, day, year };
+    return { monthIndex: mIdx, day: remaining + 1 };
   }
 
-  // ============================================================
-  // 2. Загрузка событий и фильтрация по текущей дате
-  // ============================================================
-  async function loadEvents() {
+  // 🔧 ПРОБУЕМ НЕСКОЛЬКО ПУТЕЙ
+  async function fetchJSON() {
+    const paths = [
+      '/data/this-day.json',
+      'data/this-day.json',
+      '../data/this-day.json',
+      '../../data/this-day.json',
+      '/mars-wiki/data/this-day.json'
+    ];
+    for (const p of paths) {
+      try {
+        const r = await fetch(p);
+        if (r.ok) return await r.json();
+      } catch(e) {}
+    }
+    throw new Error('Не найден ни один путь');
+  }
+
+  async function load() {
+    const container = document.getElementById('this-day-content');
     try {
-      const res = await fetch('data/this-day.json');
-      if (!res.ok) throw new Error('Нет файла');
-      const all = await res.json();
-      const current = getCurrentMartianDate();
+      const data = await fetchJSON();
 
-      // Ищем события на текущий месяц и день
-      const today = all.filter(e => e.month === current.month && e.day === current.day);
+      const cur = getCurrentMartianDate();
+      const month = data.months[cur.monthIndex];
+      const lastDay = MONTHS_DAYS[cur.monthIndex];
 
-      const container = document.getElementById('this-day-content');
-      if (!today.length) {
-        container.innerHTML = `
-          <p style="color: var(--text-muted, #555); margin: 0;">
-            <em>Сегодня, ${current.day}‑й день ${current.month}, в истории Марса не отмечено событий.</em>
-          </p>
-          <p style="font-size: 0.9rem; color: var(--text-muted, #777); margin-top: 8px;">
-            Возможно, ты добавишь их позже.
-          </p>`;
-        return;
+      let html = `
+        <div style="margin-bottom:16px; padding-bottom:14px; border-bottom:1px dashed #d0d0e0;">
+          <div style="font-size:1.5rem; font-weight:800; color:#6C63FF; margin-bottom:4px;">
+            ${cur.day}‑й день ${month.name}
+          </div>
+          <div style="font-size:0.9rem; color:#666; margin-bottom:8px;">
+            Сезон: <strong>${month.season}</strong>
+          </div>
+          <div style="font-size:0.95rem; color:#444; font-style:italic;">
+            <span style="color:#6C63FF;">«${month.meaning}»</span>
+            ${month.note ? ' — ' + month.note : ''}
+          </div>
+        </div>`;
+
+      // Маркеры
+      let markers = [];
+      if (cur.day === 1) markers.push({ icon: '🌅', text: `Начало месяца ${month.name}` });
+      if (cur.day === lastDay) markers.push({ icon: '🌇', text: `Последний день ${month.name}` });
+
+      if (markers.length) {
+        html += '<div style="margin-bottom:16px;">';
+        markers.forEach(m => {
+          html += `<div style="padding:10px 14px; background:rgba(243,156,18,0.1); border-radius:8px; margin-bottom:6px; font-size:0.92rem;">${m.icon} ${m.text}</div>`;
+        });
+        html += '</div>';
       }
 
-      // Сортируем по году
-      today.sort((a, b) => a.year - b.year);
+      // События дня
+      const events = (data.events || []).filter(e => e.month === month.name && e.day === cur.day);
+      events.sort((a,b) => (a.year||0) - (b.year||0));
 
-      let html = `<p style="margin: 0 0 12px 0; font-size: 0.9rem; color: var(--text-muted, #555);">
-        <strong>${current.day}‑й день ${current.month}</strong>, ${current.year.toLocaleString()} г. Э.О.
-      </p>`;
+      if (events.length) {
+        html += `<div style="margin-bottom:16px;">
+          <div style="font-size:0.8rem; color:#6C63FF; font-weight:800; text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;">📜 События этого дня</div>`;
+        events.forEach(ev => {
+          const c = ev.type === 'historic' ? '#e74c3c' : ev.type === 'holiday' ? '#f39c12' : '#6C63FF';
+          html += `
+            <div style="border-left:3px solid ${c}; padding-left:12px; margin-bottom:12px;">
+              <div style="font-weight:800; color:#1a1a1a; margin-bottom:3px;">
+                ${ev.year ? ev.year + ' г. — ' : ''}${ev.title}
+              </div>
+              <div style="font-size:0.95rem; color:#333; margin-bottom:5px;">${ev.text}</div>
+              ${ev.link ? `<a href="${ev.link}" style="font-size:0.85rem; color:#6C63FF; text-decoration:none;">Читать подробнее →</a>` : ''}
+            </div>`;
+        });
+        html += '</div>';
+      } else {
+        html += `<div style="margin-bottom:16px; padding:12px 14px; background:rgba(108,99,255,0.06); border-radius:8px; font-size:0.9rem; color:#666;">На этот день в хрониках событий пока не отмечено.</div>`;
+      }
 
-      today.forEach(ev => {
+      // Цитата дня
+      const quotes = data.quotes || [];
+      if (quotes.length) {
+        const q = quotes[(cur.day + cur.monthIndex) % quotes.length];
         html += `
-          <div style="border-left: 3px solid #6C63FF; padding-left: 12px; margin-bottom: 12px;">
-            <div style="font-weight: 700; margin-bottom: 2px;">
-              ${ev.year} г. — ${ev.title}
-            </div>
-            <div style="font-size: 0.95rem; color: var(--text-color, #333); margin-bottom: 4px;">
-              ${ev.text}
-            </div>
-            ${ev.link ? `<a href="${ev.link}" style="font-size: 0.85rem; color: #6C63FF;">Читать подробнее →</a>` : ''}
+          <div style="margin-top:14px; padding:14px 18px; background:linear-gradient(135deg,rgba(108,99,255,0.08),rgba(162,155,254,0.04)); border-radius:10px; border-left:3px solid #A29BFE;">
+            <div style="font-size:0.75rem; color:#6C63FF; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-bottom:6px;">Цитата дня</div>
+            <div style="font-style:italic; color:#333; font-size:1.05rem;">«${q}»</div>
           </div>`;
-      });
+      }
 
       container.innerHTML = html;
-    } catch (e) {
-      document.getElementById('this-day-content').innerHTML =
-        '<span style="color: #999;">Не удалось загрузить события. Проверь файл <code>docs/data/this-day.json</code>.</span>';
+      console.log('✅ В этот день: загружено');
+    } catch(e) {
+      container.innerHTML = '<span style="color:#999;">Не удалось загрузить. Проверь F12 → Network → data/this-day.json</span>';
+      console.error(e);
     }
   }
 
-  loadEvents();
+  load();
 })();
 </script>
-
 ---
 
 ### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса

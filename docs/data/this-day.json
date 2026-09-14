@@ -1,26 +1,212 @@
-[
-  {
-    "month": "Kōl-ghar",
-    "day": 11,
-    "year": 47,
-    "title": "Гибель Сарума I",
-    "text": "Первый правитель Окхасена погиб во время сильной засухи. Хроники Серпендиды описывают это как «день, когда река обмелела».",
-    "link": "/people/sarum-i/"
-  },
-  {
-    "month": "Kōl-ghar",
-    "day": 11,
-    "year": 712,
-    "title": "Основание Академии Окхасена",
-    "text": "В этот день был подписан Устав Академии — центра систематического знания, аналога земных университетов.",
-    "link": "/geography/akademiya-okhasena/"
-  },
-  {
-    "month": "Ākha-dzen",
-    "day": 5,
-    "year": 890,
-    "title": "Появление письменности и Lān sur",
-    "text": "Глина стала главным носителем информации. Сакральная фраза «Глина помнит» впервые была высечена на табличке.",
-    "link": "/terms/lan-sur/"
-  }
-]
+{
+  "months": [
+    { "name": "Ākha-dzen", "days": 31, "meaning": "вода-звезда", "note": "весеннее таяние", "season": "Пробуждение" },
+    { "name": "Kōl-khan", "days": 30, "meaning": "земля-река", "note": "половодье", "season": "Пробуждение" },
+    { "name": "Dzen-ākha", "days": 32, "meaning": "звезда-вода", "note": "таяние продолжается", "season": "Цветение" },
+    { "name": "Khōsen", "days": 31, "meaning": "место огня", "note": "начало жары", "season": "Цветение" },
+    { "name": "Mar-dzen", "days": 33, "meaning": "жизнь-звезда", "note": "расцвет", "season": "Зной" },
+    { "name": "Ariya-mar", "days": 30, "meaning": "избранная жизнь", "note": "священный месяц", "season": "Зной" },
+    { "name": "Zal-ākha", "days": 31, "meaning": "ветер-вода", "note": "сезон дождей", "season": "Ветры" },
+    { "name": "Thal-khō", "days": 32, "meaning": "смотреть-огонь", "note": "зной", "season": "Ветры" },
+    { "name": "Kōl-ghar", "days": 29, "meaning": "земля-камень", "note": "засуха", "season": "Угасание" },
+    { "name": "Mōr-ākha", "days": 31, "meaning": "смерть-вода", "note": "увядание", "season": "Угасание" },
+    { "name": "Dzen-kōl", "days": 30, "meaning": "звезда-земля", "note": "перед заморозками", "season": "Заморозки" },
+    { "name": "Xal-mar", "days": 28, "meaning": "древняя жизнь", "note": "месяц предков", "season": "Заморозки" },
+    { "name": "Lān-sen", "days": 29, "meaning": "память-место", "note": "ритуальный", "season": "Тьма" },
+    { "name": "Khō-mōr", "days": 31, "meaning": "огонь-смерть", "note": "угасание", "season": "Тьма" },
+    { "name": "Ākha-mōr", "days": 32, "meaning": "вода-смерть", "note": "замерзание", "season": "Ледяной покров" },
+    { "name": "Kōl-suf", "days": 33, "meaning": "земля-великая", "note": "ледяной покров", "season": "Ледяной покров" },
+    { "name": "Dzen-thal", "days": 31, "meaning": "звезда-смотреть", "note": "зимнее солнцестояние", "season": "Ледяной покров" },
+    { "name": "Ghōl-ākha", "days": 30, "meaning": "тень-вода", "note": "месяц туманов", "season": "Ледяной покров" },
+    { "name": "Rōg-ari", "days": 29, "meaning": "король-избранный", "note": "праздничный", "season": "Ледяной покров" },
+    { "name": "Mar-lān", "days": 31, "meaning": "жизнь-память", "note": "поминовения", "season": "Пробуждение" },
+    { "name": "Ksanf-suf", "days": 32, "meaning": "Великая река", "note": "паводок", "season": "Пробуждение" },
+    { "name": "Yar-okh", "days": 33, "meaning": "старый дом", "note": "месяц возвращения", "season": "Пробуждение" }
+  ],
+
+  "events": [
+    {
+      "month": "Ākha-dzen", "day": 1, "year": null,
+      "type": "holiday",
+      "title": "Dzen Thal — Новый год",
+      "text": "Праздник смотрения на звёзды. В этот день король выходил на балкон дворца в Роген-Арии и оглашал начало нового года.",
+      "link": "/astronomy/marsian-calendar/#_6"
+    },
+    {
+      "month": "Kōl-khan", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Начало половодья — месяц Kōl-khan",
+      "text": "Входит в силу «земля-река». Реки выходят из берегов, начинается сезон земледельческих работ.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Dzen-ākha", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Начало месяца «звезда-вода»",
+      "text": "Dzen-ākha — время, когда талые воды смешиваются со светом звёзд. Благоприятный месяц для начала путешествий.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Khōsen", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Начало жары — месяц Khōsen",
+      "text": "«Место огня». Первый день летнего зноя. В храмах Акхи зажигали жертвенные огни.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Mar-dzen", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Расцвет — месяц Mar-dzen",
+      "text": "«Жизнь-звезда». Пик цветения. Самый благоприятный месяц для свадеб и союзов.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Ariya-mar", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Священный месяц Ariya-mar",
+      "text": "«Избранная жизнь». Месяц пророчеств и священных ритуалов.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Zal-ākha", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Начало сезона дождей — Zal-ākha",
+      "text": "«Ветер-вода». Приход дождей после долгого зноя. «Время, когда небо вспоминает о воде».",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Thal-khō", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Зной — месяц Thal-khō",
+      "text": "«Смотреть-огонь». Пик жары перед засухой. В этот месяц запрещалось выходить в путь днём.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Kōl-ghar", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Начало засухи — Kōl-ghar",
+      "text": "«Земля-камень». Самый сухой месяц года. Реки превращаются в камень, колодцы пересыхают.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Mōr-ākha", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Увядание — месяц Mōr-ākha",
+      "text": "«Смерть-вода». Время, когда природа отступает. В храмах служили заупокойные литургии.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Dzen-kōl", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Перед заморозками — Dzen-kōl",
+      "text": "«Звезда-земля». Последний месяц перед холодами. Готовили запасы на зиму.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Xal-mar", "day": 1, "year": null,
+      "type": "holiday",
+      "title": "Месяц предков — Xal-mar",
+      "text": "«Древняя жизнь». Время поминовения. По традиции, в этот месяц нельзя было начинать новые дела.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Lān-sen", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Ритуальный месяц Lān-sen",
+      "text": "«Память-место». Месяц тишины и записи хроник. Писцы Академии трудились круглосуточно.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Khō-mōr", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Угасание — Khō-mōr",
+      "text": "«Огонь-смерть». Огни в храмах гасили — оставался только один, вечный.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Ākha-mōr", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Замерзание — Ākha-mōr",
+      "text": "«Вода-смерть». Вода превращается в лёд. Начинались самые долгие ночи года.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Kōl-suf", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Ледяной покров — Kōl-suf",
+      "text": "«Земля-великая». Марс покрыт льдом. Города жили на запасах, накопленных летом.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Dzen-thal", "day": 1, "year": null,
+      "type": "holiday",
+      "title": "Месяц зимнего солнцестояния",
+      "text": "«Звезда-смотреть». Самые длинные ночи. Астрономы Академии вели главные наблюдения года.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Ghōl-ākha", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Месяц туманов — Ghōl-ākha",
+      "text": "«Тень-вода». Туманы покрывали долины. Путешественники шли по звуку колоколов.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Rōg-ari", "day": 1, "year": null,
+      "type": "holiday",
+      "title": "Праздничный месяц Rōg-ari",
+      "text": "«Король-избранный». Праздники по всей Ойкумене. Короли выходили к народу и раздавали дары.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Mar-lān", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Поминовения — месяц Mar-lān",
+      "text": "«Жизнь-память». Начинается время поминовения умерших. Таблички с именами готовили заранее.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Mar-lān", "day": 15, "year": null,
+      "type": "holiday",
+      "title": "Lān Mar — День памяти всех ушедших",
+      "text": "Главный день поминовения. Таблички с именами умерших выставлялись в храмах Ойкумены.",
+      "link": "/astronomy/marsian-calendar/#_6"
+    },
+    {
+      "month": "Ksanf-suf", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Паводок — Ksanf-suf",
+      "text": "«Великая река». Главный разлив года. По преданию, именно в этот месяц Ксанф I основал своё царство.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Yar-okh", "day": 1, "year": null,
+      "type": "calendar",
+      "title": "Месяц возвращения — Yar-okh",
+      "text": "«Старый дом». Караваны возвращались в города после зимних странствий. Готовились к новому году.",
+      "link": "/astronomy/marsian-calendar/#_3"
+    },
+    {
+      "month": "Zal-ākha", "day": 22, "year": 2690,
+      "type": "historic",
+      "title": "Снимок Земли зондом «Ковчег-4»",
+      "text": "Получено изображение Земли на основе 173 снимков. Позже эта дата вошла в марсианскую мифологию как «колыбель из пепла».",
+      "link": "/astronomy/earth/"
+    }
+  ],
+
+  "quotes": [
+    "Глина помнит.",
+    "Lān sur — слово, которое переживёт камень.",
+    "Тот, кто пишет на глине, говорит с вечностью.",
+    "Марс не прощает забывчивых.",
+    "Звёзды видят всё, но молчат.",
+    "Вода уходит — память остаётся.",
+    "Король умирает, глина — нет.",
+    "Тень Акхи длиннее, чем кажется.",
+    "Каждый сол — шаг к новому году.",
+    "Глиняная табличка тяжелее меча.",
+    "Писец — хранитель дыхания королей.",
+    "Тот, кто считает солы, считает вечность."
+  ]
+}

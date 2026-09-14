@@ -778,3 +778,44 @@ html body .wy-menu-vertical li.mars-open > ul {
     transform: translateY(-50%) rotate(90deg);
     opacity: 1;
 }
+
+/* Основной контейнер для двухколоночной сетки */
+.wiki-layout {
+    display: grid;
+    /* Две колонки: левая чуть шире */
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 20px; /* Отступ между колонками */
+    max-width: 1250px;
+    margin: 0 auto; /* Центрируем на странице */
+}
+
+/* Контейнеры для колонок */
+.wiki-column-left,
+.wiki-column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Отступ между блоками внутри колонки */
+}
+
+/* --- Стиль для блоков в стиле Википедии (например, "Избранная статья") --- */
+/* Применяется ко всем блокам внутри колонок */
+.wiki-column-left > div,
+.wiki-column-right > div {
+    /* Убираем старые стили, если они конфликтуют */
+    margin: 0 !important;
+    max-width: none !important;
+
+    /* Добавляем стиль Википедии */
+    background-color: #f8f9fa;
+    border: 1px solid #a2a9b1;
+    padding: 12px 16px;
+    border-radius: 2px; /* Очень маленькое скругление */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Легкая тень */
+}
+
+/* --- Адаптивность: на мобильных устройствах колонки станут друг под другом --- */
+@media (max-width: 900px) {
+    .wiki-layout {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+}

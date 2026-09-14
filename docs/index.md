@@ -393,6 +393,107 @@
 
 ---
 
+### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Изображение дня
+
+<div id="pictureOfDayBlock" style="
+  background: var(--block-bg, #f8f9fa);
+  border: 1px solid var(--border-color, #eaecf0);
+  padding: 16px;
+  border-radius: 8px;
+  max-width: 700px;
+  margin: 20px auto;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  color: var(--text-color, #202122);
+">
+  <div style="font-weight:bold; margin-bottom:10px;">
+    <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
+   Изображение дня
+  </div>
+  <div id="podWrap" style="min-height:200px; display:flex; align-items:center; justify-content:center;">
+    <div style="color:var(--text-muted, #888); font-style:italic;">загрузка...</div>
+  </div>
+  <div id="podCaption" style="margin-top:12px; font-size:0.95rem; font-style:italic; color:var(--text-muted, #555);"></div>
+  <div id="podCounter" style="margin-top:6px; font-size:0.75rem; color:var(--text-muted, #888); border-top:1px solid var(--border-color, #eaecf0); padding-top:6px;"></div>
+</div>
+
+<script>
+  (function() {
+    async function fetchJSON() {
+      const paths = [
+        'data/pictures.json',
+        '../data/pictures.json',
+        '../../data/pictures.json',
+        '/data/pictures.json'
+      ];
+      for (let i = 0; i < paths.length; i++) {
+        try {
+          const r = await fetch(paths[i]);
+          if (r.ok) return await r.json();
+        } catch(e) {}
+      }
+      throw new Error('pictures.json не найден');
+    }
+
+    function dayOfYear() {
+      const now = new Date();
+      const start = new Date(now.getFullYear(), 0, 0);
+      return Math.floor((now - start) / 86400000);
+    }
+
+    function escapeHTML(s) {
+      return String(s).replace(/[&<>"']/g, function(c) {
+        return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+      });
+    }
+
+    async function load() {
+      const wrap = document.getElementById('podWrap');
+      const capEl = document.getElementById('podCaption');
+      const cntEl = document.getElementById('podCounter');
+      if (!wrap) return;
+
+      try {
+        const data = await fetchJSON();
+        const pics = Array.isArray(data) ? data : (data.pictures || []);
+        if (!pics.length) throw new Error('Список пуст');
+
+        const idx = dayOfYear() % pics.length;
+        const pic = pics[idx];
+
+        const img = document.createElement('img');
+        img.src = pic.src;
+        img.alt = pic.caption || '';
+        img.loading = 'lazy';
+        img.style.cssText = 'max-width:100%; max-height:520px; border-radius:6px; display:block; margin:0 auto;';
+
+        img.onerror = function() {
+          wrap.innerHTML = '<div style="color:#999; font-style:italic;">Изображение недоступно</div>';
+        };
+
+        wrap.innerHTML = '';
+        wrap.appendChild(img);
+
+        capEl.textContent = pic.caption || '';
+        cntEl.textContent = 'Картина ' + (idx + 1) + ' из ' + pics.length;
+
+        console.log('Изображение дня: загружено');
+      } catch(e) {
+        wrap.innerHTML = '<div style="color:#999; font-style:italic;">Не удалось загрузить Изображение дня.</div>';
+        console.error('Изображение дня:', e);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', load);
+    } else {
+      load();
+    }
+  })();
+</script>
+
+---
+
 ### 💬 Цитата дня
 
 <div id="quoteOfTheDay" style="

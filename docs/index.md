@@ -37,8 +37,10 @@
 2. **Художественная концепция** — расшифровка глиняных табличек, найденных историком **[Хевсуром](people/hevsur.md)** в подземном храме долины Ксанфа, описывающих историю марсианской цивилизации в Эпоху Умирания.
 3. **Логическая реконструкция** — моделирование биологических, социальных и культурных процессов, которые могли бы иметь место в условиях низкой гравитации (0,38 g), разрежённой атмосферы и постепенного угасания планеты.
 
----
-
+<div class="wiki-layout">
+    <!-- Левая колонка -->
+    <div class="wiki-column-left">
+      
 ## <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранная статья
 
 ### Хевсур — последний хранитель глины
@@ -172,6 +174,11 @@
     });
   })();
 </script>
+
+</div>
+
+ <!-- Правая колонка -->
+  <div class="wiki-column-right">
     
 ### <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Марсианский календарь
 
@@ -864,6 +871,9 @@
     });
   })();
 </script>
+
+  </div>
+</div>
 
 ---
 

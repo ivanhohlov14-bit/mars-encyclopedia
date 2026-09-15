@@ -675,36 +675,38 @@
 <h3><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранные списки</h3>
 
 <!-- === Текущий избранный список === -->
-<div style="display:flex; gap:10px; align-items:flex-start; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid #eaecf0;">
-  <div style="flex:0 0 50px; text-align:center;">
+<div style="display:flex; gap:14px; align-items:flex-start; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #eaecf0;">
+  <div style="flex:0 0 100px; text-align:center;">
     <a href="lists/eden-kings/">
-      <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" style="width:50px; height:50px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; display:block;">
+      <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" style="width:100px; height:100px; object-fit:cover; border-radius:6px; border:1px solid #c8ccd1; display:block;">
     </a>
-    <div style="font-size:0.55rem; color:#888; margin-top:3px; line-height:1.1;">Герб<br>Эдема</div>
+    <div style="font-size:0.62rem; color:#888; margin-top:5px; line-height:1.15;">Герб династии<br>королей Эдема</div>
   </div>
   <div style="flex:1; min-width:0;">
-    <div style="font-size:0.65rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; margin-bottom:2px;">Последний избранный список</div>
-    <div style="font-size:0.9rem; line-height:1.25;"><a href="lists/eden-kings/">Список королей Эдема</a></div>
+    <div style="font-size:0.72rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Последний избранный список</div>
+    <div style="font-size:1.05rem; line-height:1.3;"><a href="lists/eden-kings/">Список королей Эдема</a></div>
   </div>
 </div>
 
 <!-- === Предыдущий избранный список === -->
-<div style="display:flex; gap:10px; align-items:flex-start; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid #eaecf0;">
-  <div style="flex:0 0 50px; text-align:center;">
+<div style="display:flex; gap:14px; align-items:flex-start; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #eaecf0;">
+  <div style="flex:0 0 100px; text-align:center;">
     <a href="lists/ksanf-pirates/">
-      <img src="assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Ксанф" style="width:50px; height:50px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; display:block;">
+      <img src="assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Ксанф" style="width:100px; height:100px; object-fit:cover; border-radius:6px; border:1px solid #c8ccd1; display:block;">
     </a>
-    <div style="font-size:0.55rem; color:#888; margin-top:3px; line-height:1.1;">Герб<br>Ксанфид</div>
+    <div style="font-size:0.62rem; color:#888; margin-top:5px; line-height:1.15;">Герб династии<br>Ксанфид</div>
   </div>
   <div style="flex:1; min-width:0;">
-    <div style="font-size:0.65rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.3px; margin-bottom:2px;">Предыдущий избранный список</div>
-    <div style="font-size:0.9rem; line-height:1.25;"><a href="lists/ksanf-pirates/">Пиратские короли Ксанфа</a></div>
+    <div style="font-size:0.72rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Предыдущий избранный список</div>
+    <div style="font-size:1.05rem; line-height:1.3;"><a href="lists/ksanf-pirates/">Пиратские короли Ксанфа</a></div>
   </div>
 </div>
 
-<div style="text-align:center; margin-top:8px; padding-top:8px; border-top:1px solid #eaecf0;">
-  <a href="lists/" style="font-size:0.85rem;">Все избранные списки →</a>
+<div style="text-align:center; margin-top:14px; padding-top:12px; border-top:1px solid #eaecf0;">
+  <a href="lists/" style="font-size:0.9rem;">Все избранные списки →</a>
 </div>
+</div>
+<!-- ← ЗДЕСЬ ЗАКРЫВАЕТСЯ БЛОК "Избранные списки" -->
 
 
 <!-- ============ СЕКЦИЯ: Звук ветра на Марсе ============ -->

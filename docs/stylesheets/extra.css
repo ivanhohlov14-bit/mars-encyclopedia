@@ -819,3 +819,66 @@ html body .wy-menu-vertical li.mars-open > ul {
         grid-template-columns: 1fr; /* Одна колонка */
     }
 }
+
+/* ============================================
+   WIKI LAYOUT — подгонка под ширину темы
+   ============================================ */
+
+.wiki-layout {
+    display: grid;
+    /* Используем minmax — колонки не вылезут за пределы */
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;   /* больше не 1250px */
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.wiki-column-left,
+.wiki-column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;       /* КРИТИЧНО — без этого grid-элементы не сжимаются */
+    overflow: hidden;   /* чтобы контент не вылезал */
+}
+
+/* Блоки не должны вылезать */
+.wiki-layout > div > div {
+    box-sizing: border-box;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Картинки внутри — не вылезают */
+.wiki-layout img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Таблицы внутри — скроллятся, а не растягивают */
+.wiki-layout table {
+    width: 100%;
+    table-layout: fixed;
+    word-wrap: break-word;
+}
+
+/* --- Адаптив: планшет --- */
+@media (max-width: 1100px) {
+    .wiki-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Адаптив: мобильный --- */
+@media (max-width: 768px) {
+    .wiki-layout {
+        gap: 12px;
+    }
+    .wiki-column-left,
+    .wiki-column-right {
+        gap: 12px;
+    }
+}

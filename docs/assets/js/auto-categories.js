@@ -1,186 +1,199 @@
-// auto-categories.js — автоматические категории внизу страницы (в стиле Википедии)
+// auto-categories.js — категории статей (VIP v3)
 (function() {
     'use strict';
 
     // ============================================================
-    // СЛОВАРЬ КАТЕГОРИЙ ПО ПУТЯМ
+    // 🗺️ СЛОВАРЬ КАТЕГОРИЙ
     // ============================================================
-    const CATEGORY_MAP = {
-        // Разделы
-        'history':     'История',
-        'geography':   'География',
-        'astronomy':   'Астрономия',
-        'people':      'Персоналии',
-        'mythology':   'Мифология',
-        'biology':     'Биология',
-        'terms':       'Термины',
-        'books':       'Книги',
-        'lists':       'Избранные списки',
-        'science':     'Наука',
+    var CATEGORY_MAP = {
+        // Разделы верхнего уровня
+        'history':     { name: 'История',     icon: '📜' },
+        'geography':   { name: 'География',   icon: '🗺️' },
+        'astronomy':   { name: 'Астрономия',  icon: '🔭' },
+        'people':      { name: 'Персоналии',  icon: '👤' },
+        'mythology':   { name: 'Мифология',   icon: '🛕' },
+        'biology':     { name: 'Биология',    icon: '🧬' },
+        'terms':       { name: 'Термины',     icon: '📖' },
+        'books':       { name: 'Книги',       icon: '📚' },
+        'lists':       { name: 'Избранные списки', icon: '⭐' },
+        'science':     { name: 'Наука',       icon: '🔬' },
+        'game':        { name: 'Игра',        icon: '🎮' },
 
         // История
-        'periodization': 'Периодизация',
-        'timeline':      'Хронология',
-        'epokha-osnovaniya': 'Эпоха Основания',
-        'epokha-rascveta':   'Эпоха Расцвета',
-        'epokha-umiraniya':  'Эпоха Умирания',
-        'iskhod':            'Исход',
-        'pirate-kingdom':    'Пиратское королевство',
-        'myths':             'Мифы и легенды',
-        'edem':              'Эдем',
-        'arkadia-history':   'Аркадия',
-        'serpentida-history':'Серпентида',
-        'hellas-history':    'Эллада',
-        'kimeria-history':   'Кимерия',
-        'eritrea-history':   'Эритрея',
-        'utopia-history':    'Утопия',
-        'eridania-history':  'Эридания',
-        'khong-history':     'Кхонг',
-        'avsonia-history':   'Авсония',
+        'periodization':      { name: 'Периодизация', icon: '📅' },
+        'timeline':           { name: 'Хронология',    icon: '⏳' },
+        'epokha-osnovaniya':  { name: 'Эпоха Основания', icon: '🌱' },
+        'epokha-rascveta':    { name: 'Эпоха Расцвета',  icon: '☀️' },
+        'epokha-umiraniya':   { name: 'Эпоха Умирания',  icon: '🌑' },
+        'iskhod':             { name: 'Исход',          icon: '🚀' },
+        'pirate-kingdom':     { name: 'Пиратское королевство', icon: '🏴‍☠️' },
+        'myths':              { name: 'Мифы и легенды', icon: '✨' },
+        'edem':               { name: 'Эдем',           icon: '🏛️' },
+        'arkadia-history':    { name: 'Аркадия',        icon: '⛰️' },
+        'serpentida-history': { name: 'Серпентида',     icon: '🐍' },
+        'hellas-history':     { name: 'Эллада',         icon: '🏺' },
+        'kimeria-history':    { name: 'Кимерия',        icon: '🏹' },
+        'eritrea-history':    { name: 'Эритрея',        icon: '⚓' },
+        'utopia-history':     { name: 'Утопия',         icon: '🌊' },
+        'eridania-history':   { name: 'Эридания',       icon: '💎' },
+        'khong-history':      { name: 'Кхонг',          icon: '⛏️' },
+        'avsonia-history':    { name: 'Авсония',        icon: '🐟' },
 
         // География
-        'acidalia-sea':    'Ацидалийское море',
-        'okhasen':         'Окхасен',
-        'rogen-aria':      'Роген-Ария',
-        'farsida':         'Фарсида',
-        'farsida-caves':   'Пещеры Фарсиды',
-        'ksanf-river':     'Река Ксанф',
-        'eritreya':        'Эритрея',
-        'utopiya':         'Утопия',
-        'tarsis':          'Тарсис',
-        'noviy-okhasen':   'Новый Окхасен',
-        'akademiya-okhasena': 'Академия Окхасена',
+        'acidalia-sea':       { name: 'Ацидалийское море', icon: '🌊' },
+        'okhasen':            { name: 'Окхасен',        icon: '🏙️' },
+        'rogen-aria':         { name: 'Роген-Ария',     icon: '🏛️' },
+        'farsida':            { name: 'Фарсида',        icon: '🏔️' },
+        'farsida-caves':      { name: 'Пещеры Фарсиды', icon: '🕳️' },
+        'ksanf-river':        { name: 'Река Ксанф',     icon: '🌊' },
+        'eritreya':           { name: 'Эритрея',        icon: '⚓' },
+        'utopiya':            { name: 'Утопия',         icon: '🌊' },
+        'tarsis':             { name: 'Тарсис',         icon: '🗺️' },
+        'noviy-okhasen':      { name: 'Новый Окхасен',  icon: '🏙️' },
+        'akademiya-okhasena': { name: 'Академия Окхасена', icon: '📚' },
 
         // Астрономия
-        'mars-sky':        'Небо Марса',
-        'phobos-deimos':   'Фобос и Деймос',
-        'earth':           'Земля',
-        'earth-as-target': 'Земля как цель',
+        'mars-sky':        { name: 'Небо Марса',   icon: '🌌' },
+        'phobos-deimos':   { name: 'Фобос и Деймос', icon: '🌙' },
+        'earth':           { name: 'Земля',        icon: '🌍' },
+        'earth-as-target': { name: 'Земля как цель', icon: '🎯' },
 
-        // Люди
-        'hevsur':          'Хевсур',
-        'talin':           'Талин',
-        'ella':            'Элла',
-        'yarra':           'Йарра',
-        'alira':           'Алира',
-        'aratan-iii':      'Аратан III',
-        'irayina':         'Ирайна',
-        'miran':           'Миран',
-        'kharan':          'Харан',
-        'soviya':          'Совия',
-        'arash':           'Араш',
-        'kan':             'Кан',
+        // Персоналии
+        'hevsur':    { name: 'Хевсур',     icon: '📜' },
+        'talin':     { name: 'Талин',      icon: '⭐' },
+        'ella':      { name: 'Элла',       icon: '🔬' },
+        'yarra':     { name: 'Йарра',      icon: '✨' },
+        'alira':     { name: 'Алира',      icon: '👤' },
+        'aratan-iii':{ name: 'Аратан III', icon: '👑' },
+        'irayina':   { name: 'Ирайна',     icon: '🧬' },
+        'miran':     { name: 'Миран',      icon: '⚙️' },
+        'kharan':    { name: 'Харан',      icon: '🔮' },
+        'soviya':    { name: 'Совия',      icon: '🎵' },
+        'arash':     { name: 'Араш',       icon: '⚔️' },
+        'kan':       { name: 'Кан',        icon: '👤' },
 
-        // Списки
-        'eden-kings':      'Короли Эдема',
-        'ksanf-pirates':   'Пиратские короли Ксанфа',
-        'serpentida-kings':'Короли Серпентиды',
-        'hellas-rulers':   'Правители Эллады',
-        'arkadia-princes': 'Держатели ветра',
-        'utopia-admirals': 'Адмиралы Утопии',
-        'khong-masters':   'Мастера Кхонга',
-        'great-scribes':   'Великие писцы',
-        'index':           'Обзор',
+        // Избранные списки
+        'eden-kings':       { name: 'Короли Эдема',         icon: '👑' },
+        'ksanf-pirates':    { name: 'Пиратские короли Ксанфа', icon: '🏴‍☠️' },
+        'serpentida-kings': { name: 'Короли Серпентиды',    icon: '🐍' },
+        'hellas-rulers':    { name: 'Правители Эллады',     icon: '🏺' },
+        'arkadia-princes':  { name: 'Держатели ветра',      icon: '⛰️' },
+        'utopia-admirals':  { name: 'Адмиралы Утопии',      icon: '⚓' },
+        'khong-masters':    { name: 'Мастера Кхонга',       icon: '⛏️' },
+        'great-scribes':    { name: 'Великие писцы',        icon: '📜' },
 
-        // Термины и прочее
-        'lan-sur':         'Lān sur',
-        'tablichki':       'Таблички',
-        'gemotsianin':     'Гемоцианин',
-        'geology':         'Геология',
-        'kho':             'Кхо',
-        'akha':            'Акха',
-        'araksis':         'Араксис',
-        'prorochestvo-kharana': 'Пророчество Харана',
-        'acidalia-sea':    'Ацидалийское море'
+        // Прочее
+        'index':    { name: 'Обзор',           icon: '📄' },
+        'lan-sur':  { name: 'Lān sur',         icon: '🗣️' },
+        'tablichki':{ name: 'Таблички',        icon: '📋' },
+        'gemotsianin': { name: 'Гемоцианин',   icon: '🧪' },
+        'geology':  { name: 'Геология',        icon: '🪨' },
+        'kho':      { name: 'Кхо',             icon: '🔥' },
+        'akha':     { name: 'Акха',            icon: '💧' },
+        'araksis':  { name: 'Араксис',         icon: '⭐' },
+        'prorochestvo-kharana': { name: 'Пророчество Харана', icon: '🔮' }
     };
 
     // ============================================================
-    // ПОЛУЧИТЬ КАТЕГОРИИ ИЗ URL
+    // 🔍 ПОЛУЧИТЬ КАТЕГОРИИ ИЗ URL
     // ============================================================
     function getCategoriesFromURL() {
-        const path = window.location.pathname
-            .replace(/^\/|\/$/g, '')  // убрать слеши
+        var path = window.location.pathname
+            .replace(/^\/|\/$/g, '')
             .split('/');
-        const categories = [];
-        const seen = new Set();
+        var categories = [];
+        var seen = {};
 
-        path.forEach(segment => {
-            if (!segment) return;
-            const cat = CATEGORY_MAP[segment];
-            if (cat && !seen.has(cat)) {
+        for (var i = 0; i < path.length; i++) {
+            var segment = path[i];
+            if (!segment) continue;
+            var cat = CATEGORY_MAP[segment];
+            if (cat && !seen[cat.name]) {
                 categories.push(cat);
-                seen.add(cat);
+                seen[cat.name] = true;
             }
-        });
-
+        }
         return categories;
     }
 
     // ============================================================
-    // ОТРИСОВАТЬ БЛОК КАТЕГОРИЙ
+    // 🛡️ ЗАЩИТА ОТ СТАРОГО КЭША
+    // ============================================================
+    function removeOldLinks() {
+        var oldBlock = document.getElementById('auto-categories');
+        if (!oldBlock) return;
+
+        // Находим все ссылки и заменяем на span
+        var links = oldBlock.querySelectorAll('a');
+        for (var i = 0; i < links.length; i++) {
+            var a = links[i];
+            var span = document.createElement('span');
+            span.className = 'cat-chip';
+            span.textContent = a.textContent;
+            a.parentNode.replaceChild(span, a);
+        }
+    }
+
+    // ============================================================
+    // 🎨 ОТРИСОВАТЬ БЛОК КАТЕГОРИЙ
     // ============================================================
     function renderCategories() {
-        // Ищем контент-область
-        const content = document.querySelector('.md-content__inner, .rst-content, article, .document');
+        var content = document.querySelector('.md-content__inner, .rst-content, article, .document');
         if (!content) return;
 
-        const categories = getCategoriesFromURL();
-        if (!categories.length) return;
-
-        // Убираем старый блок, если есть
-        const old = document.getElementById('auto-categories');
+        // Сначала чистим старое
+        var old = document.getElementById('auto-categories');
         if (old) old.remove();
 
-        // Создаём блок
-        const block = document.createElement('div');
+        var categories = getCategoriesFromURL();
+        if (!categories.length) return;
+
+        // Создаём контейнер
+        var block = document.createElement('div');
         block.id = 'auto-categories';
-        block.style.cssText = `
-            margin-top: 40px;
-            padding: 14px 18px;
-            background: var(--block-bg, #f8f9fa);
-            border: 1px solid #c8ccd1;
-            border-radius: 8px;
-            font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
-            font-size: 0.9rem;
-            line-height: 1.7;
-        `;
 
-        let html = '<div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">';
-        html += '<span style="color:#888; font-weight:600; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.5px;">Категории:</span>';
+        // Собираем HTML
+        var html = '<div class="cat-inner">';
+        html += '<div class="cat-header">';
+        html += '<span class="cat-icon">📂</span>';
+        html += '<span class="cat-label">Категории</span>';
+        html += '</div>';
+        html += '<div class="cat-chips">';
 
-        categories.forEach((cat, i) => {
-            html += `<a href="/category/${encodeURIComponent(cat.toLowerCase())}/" style="
-                display: inline-block;
-                padding: 3px 10px;
-                background: rgba(108,99,255,0.1);
-                border: 1px solid rgba(108,99,255,0.3);
-                border-radius: 14px;
-                color: #6C63FF;
-                text-decoration: none;
-                font-weight: 600;
-                font-size: 0.85rem;
-                transition: all 0.2s;
-            " onmouseover="this.style.background='rgba(108,99,255,0.2)'" onmouseout="this.style.background='rgba(108,99,255,0.1)'">${cat}</a>`;
-        });
+        for (var i = 0; i < categories.length; i++) {
+            var cat = categories[i];
+            // ⚠️ SPAN, а не ссылка — нет 404
+            html += '<span class="cat-chip" data-cat="' + cat.name + '">';
+            html += '<span class="chip-icon">' + cat.icon + '</span>';
+            html += '<span class="chip-name">' + cat.name + '</span>';
+            html += '</span>';
+        }
 
         html += '</div>';
+        html += '</div>';
+
         block.innerHTML = html;
         content.appendChild(block);
     }
 
     // ============================================================
-    // ЗАПУСК
+    // 🚀 ЗАПУСК
     // ============================================================
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', renderCategories);
-    } else {
+    function run() {
+        removeOldLinks();
         renderCategories();
     }
 
-    // SPA (Material instant loading)
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+    } else {
+        run();
+    }
+
+    // SPA (MkDocs Material instant loading)
     if (typeof document$ !== 'undefined' && document$.subscribe) {
         document$.subscribe(function() {
-            setTimeout(renderCategories, 200);
+            setTimeout(run, 100);
         });
     }
 })();

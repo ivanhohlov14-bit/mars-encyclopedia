@@ -1,14 +1,11 @@
 # Список королей Эдема
 
-<div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:linear-gradient(135deg,#f0f0ff,#e8e8ff); border:1px solid #6C63FF; border-radius:8px; margin:16px 0 24px 0;">
-
-<div style="flex-shrink:0; width:34px; height:34px; background:#6C63FF; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px; font-weight:900; box-shadow:0 2px 6px rgba(108,99,255,0.4);">✦</div>
-
-<div style="flex:1; font-size:0.9rem; color:#333; line-height:1.3;">
-  <strong style="color:#6C63FF;">Этот список входит в число избранных списков</strong><br>
-  Марсианской энциклопедии. Он соответствует всем критериям качества.
-</div>
-
+<div class="wiki-featured-badge">
+  <div class="badge-icon">✦</div>
+  <div class="badge-text">
+    <strong>Этот список входит в число избранных списков</strong><br>
+    Марсианской энциклопедии. Он соответствует всем критериям качества.
+  </div>
 </div>
 
 **Список королей Эдема** — перечень правителей королевства <a href="https://mars-wiki.ru/history/edem/" target="_blank">Эдем</a>, одного из двенадцати великих королевств Марса. Включает всех монархов династии <a href="https://mars-wiki.ru/history/kings/" target="_blank">Сарумидов</a> — от легендарного основателя до последнего короля, правившего в Эпоху Умирания.

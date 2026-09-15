@@ -700,8 +700,6 @@
     <div style="font-size:0.72rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Предыдущий избранный список</div>
     <div style="font-size:1.05rem; line-height:1.3;"><a href="lists/ksanf-pirates/">Пиратские короли Ксанфа</a></div>
   </div>
-</div>
-
 <div style="text-align:center; margin-top:14px; padding-top:12px; border-top:1px solid #eaecf0;">
   <a href="lists/" style="font-size:0.9rem;">Все избранные списки →</a>
 </div>

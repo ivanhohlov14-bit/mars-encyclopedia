@@ -882,3 +882,113 @@ html body .wy-menu-vertical li.mars-open > ul {
         gap: 12px;
     }
 }
+
+/* ============================================
+   ЗВЁЗДНОЕ НЕБО + WIKI-LAYOUT (главная)
+   ============================================ */
+
+/* Делаем блоки на главной прозрачными в звёздном режиме */
+html body.mars-stars-on .wiki-layout > div > div,
+html body.stars-active .wiki-layout > div > div,
+html body.night-mode .wiki-layout > div > div,
+html body.dark-mode .wiki-layout > div > div,
+html body.mars-stars .wiki-layout > div > div,
+html.mars-stars-on .wiki-layout > div > div {
+    background: rgba(20, 15, 35, 0.55) !important;
+    border-color: rgba(162, 155, 254, 0.5) !important;
+    color: #e8e8f0 !important;
+    box-shadow: 0 1px 12px rgba(108, 99, 255, 0.2) !important;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+/* Заголовки в блоках — светлые */
+html body.mars-stars-on .wiki-layout h3,
+html body.mars-stars-on .wiki-layout h4,
+html body.stars-active .wiki-layout h3,
+html body.stars-active .wiki-layout h4,
+html body.night-mode .wiki-layout h3,
+html body.night-mode .wiki-layout h4,
+html body.dark-mode .wiki-layout h3,
+html body.dark-mode .wiki-layout h4,
+html body.mars-stars .wiki-layout h3,
+html body.mars-stars .wiki-layout h4,
+html.mars-stars-on .wiki-layout h3,
+html.mars-stars-on .wiki-layout h4 {
+    color: #ffffff !important;
+}
+
+/* Обычный текст и параграфы */
+html body.mars-stars-on .wiki-layout p,
+html body.mars-stars-on .wiki-layout li,
+html body.mars-stars-on .wiki-layout span,
+html body.mars-stars-on .wiki-layout strong,
+html body.mars-stars-on .wiki-layout em,
+html body.mars-stars-on .wiki-layout td,
+html body.mars-stars-on .wiki-layout th,
+html body.stars-active .wiki-layout p,
+html body.stars-active .wiki-layout li,
+html body.stars-active .wiki-layout span,
+html body.stars-active .wiki-layout strong,
+html body.night-mode .wiki-layout p,
+html body.night-mode .wiki-layout li,
+html body.dark-mode .wiki-layout p,
+html body.dark-mode .wiki-layout li,
+html body.mars-stars .wiki-layout p,
+html body.mars-stars .wiki-layout li,
+html.mars-stars-on .wiki-layout p,
+html.mars-stars-on .wiki-layout li {
+    color: #e0e0ee !important;
+}
+
+/* Ссылки — фиолетовые, светлые */
+html body.mars-stars-on .wiki-layout a,
+html body.stars-active .wiki-layout a,
+html body.night-mode .wiki-layout a,
+html body.dark-mode .wiki-layout a,
+html body.mars-stars .wiki-layout a,
+html.mars-stars-on .wiki-layout a {
+    color: #A29BFE !important;
+}
+
+html body.mars-stars-on .wiki-layout a:hover,
+html body.stars-active .wiki-layout a:hover,
+html body.night-mode .wiki-layout a:hover,
+html body.dark-mode .wiki-layout a:hover,
+html body.mars-stars .wiki-layout a:hover,
+html.mars-stars-on .wiki-layout a:hover {
+    color: #ffffff !important;
+}
+
+/* Разделители и рамки */
+html body.mars-stars-on .wiki-layout h3,
+html body.mars-stars-on .wiki-layout h4,
+html body.stars-active .wiki-layout h3,
+html body.night-mode .wiki-layout h3,
+html body.dark-mode .wiki-layout h3,
+html body.mars-stars .wiki-layout h3,
+html.mars-stars-on .wiki-layout h3 {
+    border-color: rgba(162, 155, 254, 0.3) !important;
+}
+
+/* Таблицы */
+html body.mars-stars-on .wiki-layout table,
+html body.mars-stars-on .wiki-layout thead,
+html body.mars-stars-on .wiki-layout tbody,
+html body.mars-stars-on .wiki-layout tr,
+html body.mars-stars-on .wiki-layout td,
+html body.mars-stars-on .wiki-layout th,
+html.mars-stars-on .wiki-layout table,
+html.mars-stars-on .wiki-layout td,
+html.mars-stars-on .wiki-layout th {
+    border-color: rgba(162, 155, 254, 0.3) !important;
+    color: #e0e0ee !important;
+}
+
+/* Счётчики времени, подписи, «загрузка...» — не тускнеем */
+html body.mars-stars-on .wiki-layout [style*="color:var(--text-muted"],
+html body.mars-stars-on .wiki-layout [style*="opacity"],
+html.mars-stars-on .wiki-layout [style*="color:var(--text-muted"],
+html.mars-stars-on .wiki-layout [style*="opacity"] {
+    color: rgba(200, 200, 220, 0.75) !important;
+}

@@ -695,17 +695,21 @@
 
 <!-- === Предыдущий избранный список === -->
 <div style="display:flex; gap:14px; align-items:flex-start; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #eaecf0;">
+
   <div style="flex:0 0 100px; text-align:center;">
     <a href="lists/ksanf-pirates/">
       <img src="assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Ксанф" style="width:100px; height:100px; object-fit:cover; border-radius:6px; border:1px solid #c8ccd1; display:block;">
     </a>
     <div style="font-size:0.62rem; color:#888; margin-top:5px; line-height:1.15;">Герб династии<br>Ксанфид</div>
   </div>
+
   <div style="flex:1; min-width:0;">
     <div style="display:flex; gap:10px; align-items:center;">
-    <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Hellas_Mars._Shield_shape_class-0.jpg" alt="Эллада" style="width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; flex-shrink:0;">
-    <a href="lists/hellas-rulers/" style="font-size:0.95rem;">Правители Эллады</a>
+      <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Hellas_Mars._Shield_shape_class-0.jpg" alt="Эллада" style="width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; flex-shrink:0;">
+      <a href="lists/hellas-rulers/" style="font-size:0.95rem;">Правители Эллады</a>
+    </div>
   </div>
+
 </div>
 
 <!-- ============ СЕКЦИЯ: Звук ветра на Марсе ============ -->

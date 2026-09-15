@@ -702,38 +702,6 @@
   </div>
 </div>
 
-<!-- === Другие избранные списки === -->
-<div style="font-size:0.75rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px;">Другие избранные списки</div>
-
-<div style="display:flex; flex-direction:column; gap:10px;">
-
-  <div style="display:flex; gap:10px; align-items:center;">
-    <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Serpentida_Mars._Shield_shape_r-0.jpg" alt="Серпентида" style="width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; flex-shrink:0;">
-    <a href="lists/serpentida-kings/" style="font-size:0.95rem;">Короли Серпентиды</a>
-  </div>
-
-  <div style="display:flex; gap:10px; align-items:center;">
-    <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Hellas_Mars._Shield_shape_class-0.jpg" alt="Эллада" style="width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; flex-shrink:0;">
-    <a href="lists/hellas-rulers/" style="font-size:0.95rem;">Правители Эллады</a>
-  </div>
-
-  <div style="display:flex; gap:10px; align-items:center;">
-    <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Utopia_Mars._Shield_shape_round-0.jpg" alt="Утопия" style="width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; flex-shrink:0;">
-    <a href="lists/utopia-admirals/" style="font-size:0.95rem;">Адмиралы Утопии</a>
-  </div>
-
-  <div style="display:flex; gap:10px; align-items:center;">
-    <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Khong_Mars._Shield_shape_angula-0.jpg" alt="Кхонг" style="width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; flex-shrink:0;">
-    <a href="lists/khong-masters/" style="font-size:0.95rem;">Мастера Кхонга</a>
-  </div>
-
-  <div style="display:flex; gap:10px; align-items:center;">
-    <img src="assets/images/akademiya-okhasena.png" alt="Академия" style="width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; flex-shrink:0;">
-    <a href="lists/great-scribes/" style="font-size:0.95rem;">Великие писцы Академии</a>
-  </div>
-
-</div>
-
 <div style="text-align:center; margin-top:14px; padding-top:12px; border-top:1px solid #eaecf0;">
   <a href="lists/" style="font-size:0.9rem;">Все избранные списки →</a>
 </div>
@@ -809,11 +777,3 @@
   })();
 </script>
 </div>
-
-## Примечания
-
-<references />
-[^1]: Талин впервые увидел Землю в 2714 году. Это событие описано в «Ацидалийском море» как ключевой момент, определивший судьбу марсианской цивилизации.
-[^2]: Ацидалийское море — реальная равнина на Марсе, существующая и сегодня. В книгах она является крупнейшим водоёмом Марса в Эпоху Умирания.
-[^3]: Марсианская письменность появилась в 890 году Э.О. Она была лого-силлабической и использовалась для записи всех знаний на глиняных табличках.
-[^4]: «Lān sur» — сакральная фраза, означающая «Глина помнит». Она стала девизом писцов и хранителей памяти.

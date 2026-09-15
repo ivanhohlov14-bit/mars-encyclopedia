@@ -992,3 +992,13 @@ html.mars-stars-on .wiki-layout [style*="color:var(--text-muted"],
 html.mars-stars-on .wiki-layout [style*="opacity"] {
     color: rgba(200, 200, 220, 0.75) !important;
 }
+
+html body.mars-stars-on #auto-categories {
+    background: rgba(20, 15, 35, 0.55) !important;
+    border-color: rgba(162, 155, 254, 0.4) !important;
+}
+html body.mars-stars-on #auto-categories a {
+    background: rgba(108,99,255,0.2) !important;
+    color: #A29BFE !important;
+    border-color: rgba(162, 155, 254, 0.4) !important;
+}

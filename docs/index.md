@@ -681,7 +681,7 @@
 </div>
 <div style="text-align:center; margin-bottom:20px;">
   <a href="lists/eden-kings/">
-    <img src="assets/images/coat-of-arms-of-eden.png" alt="Эдем" style="max-width:100%; height:auto; border-radius:6px; border:1px solid #c8ccd1;">
+    <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:6px; border:1px solid #c8ccd1; display:block;">
   </a>
 </div>
 

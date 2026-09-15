@@ -672,35 +672,62 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-<h3><img src="assets/images/stickers/sticker-scroll.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранный список</h3>
+<h3><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранные списки</h3>
 
 <!-- Текущий избранный список -->
 <div style="font-size:0.75rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Последний избранный список</div>
 <div style="font-size:1.05rem; margin-bottom:12px;">
   <a href="lists/eden-kings/">Список королей Эдема</a>
 </div>
-<div style="text-align:center; margin-bottom:20px;">
-  <a href="lists/eden-kings/">
-    <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" style="width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:6px; border:1px solid #c8ccd1; display:block;">
-  </a>
+<!-- === Текущий избранный список === -->
+<div style="display:flex; gap:14px; align-items:flex-start; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #eaecf0;">
+  <div style="flex:0 0 100px; text-align:center;">
+    <a href="lists/eden-kings/">
+      <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" style="width:100px; height:100px; object-fit:cover; border-radius:6px; border:1px solid #c8ccd1; display:block;">
+    </a>
+    <div style="font-size:0.62rem; color:#888; margin-top:5px; line-height:1.15;">Герб династии<br>королей Эдема</div>
+  </div>
+  <div style="flex:1; min-width:0;">
+    <div style="font-size:0.72rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Последний избранный список</div>
+    <div style="font-size:1.05rem; line-height:1.3;"><a href="lists/eden-kings/">Список королей Эдема</a></div>
+  </div>
 </div>
 
-<!-- Предыдущий избранный список -->
-<div style="font-size:0.75rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Предыдущий избранный список</div>
-<div style="font-size:1.05rem; margin-bottom:16px;">
-  <a href="lists/arkadia-princes/">Список Держателей ветра</a>
+<!-- === Предыдущий избранный список === -->
+<div style="display:flex; gap:14px; align-items:flex-start; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #eaecf0;">
+  <div style="flex:0 0 100px; text-align:center;">
+    <a href="lists/arkadia-princes/">
+      <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Arkadia_Mars._Shield_shape_moun-0.jpg" alt="Аркадия" style="width:100px; height:100px; object-fit:cover; border-radius:6px; border:1px solid #c8ccd1; display:block;">
+    </a>
+    <div style="font-size:0.62rem; color:#888; margin-top:5px; line-height:1.15;">Герб династии<br>Терманидов</div>
+  </div>
+  <div style="flex:1; min-width:0;">
+    <div style="font-size:0.72rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Предыдущий избранный список</div>
+    <div style="font-size:1.05rem; line-height:1.3;"><a href="lists/arkadia-princes/">Список Держателей ветра</a></div>
+  </div>
 </div>
 
-<!-- Другие избранные списки -->
-<div style="font-size:0.75rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">Другие избранные списки</div>
-<ul style="margin:0; padding-left:20px; line-height:1.85; font-size:0.95rem;">
-  <li><a href="lists/serpentida-kings/">Короли Серпентиды</a></li>
-  <li><a href="lists/hellas-rulers/">Правители Эллады</a></li>
-  <li><a href="lists/ksanf-pirates/">Пиратские короли Ксанфа</a></li>
-  <li><a href="lists/utopia-admirals/">Адмиралы Утопии</a></li>
-  <li><a href="lists/khong-masters/">Мастера Кхонга</a></li>
-  <li><a href="lists/great-scribes/">Великие писцы Академии</a></li>
-</ul>
+<!-- === Другие избранные списки === -->
+<div style="font-size:0.72rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px;">Другие избранные списки</div>
+
+<div style="display:flex; flex-direction:column; gap:10px;">
+
+  <div style="display:flex; gap:10px; align-items:center;">
+    <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Serpentida_Mars._Shield_shape_r-0.jpg" alt="Серпентида" style="width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; flex-shrink:0;">
+    <a href="lists/serpentida-kings/" style="font-size:0.95rem;">Короли Серпентиды</a>
+  </div>
+
+  <div style="display:flex; gap:10px; align-items:center;">
+    <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Hellas_Mars._Shield_shape_class-0.jpg" alt="Эллада" style="width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; flex-shrink:0;">
+    <a href="lists/hellas-rulers/" style="font-size:0.95rem;">Правители Эллады</a>
+  </div>
+
+  <div style="display:flex; gap:10px; align-items:center;">
+    <img src="assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Ксанф" style="width:48px; height:48px; object-fit:cover; border-radius:4px; border:1px solid #c8ccd1; flex-shrink:0;">
+    <a href="lists/ksanf-pirates/" style="font-size:0.95rem;">Пиратские короли Ксанфа</a>
+  </div>
+
+</div>
 </div>
 
 <!-- ============ СЕКЦИЯ: Звук ветра на Марсе ============ -->

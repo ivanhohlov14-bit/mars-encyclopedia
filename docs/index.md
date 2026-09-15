@@ -663,6 +663,69 @@
 </script>
 </div>
 
+<!-- ============ СЕКЦИЯ: Избранный список ============ -->
+<div style="
+  border: 2px solid #c8ccd1;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  background: var(--block-bg, #f8f9fa);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+">
+<h3><img src="assets/images/stickers/sticker-scroll.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранный список</h3>
+
+<!-- === Текущий избранный список === -->
+<div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid #eaecf0; flex-wrap:wrap;">
+  <div style="flex:0 0 140px; max-width:140px;">
+    <a href="lists/eden-kings/">
+      <img src="assets/images/eden-rogen-aria-construction.png" alt="Короли Эдема" style="width:100%; border-radius:6px; border:1px solid #c8ccd1;">
+    </a>
+  </div>
+  <div style="flex:1; min-width:200px;">
+    <div style="font-size:0.8rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Текущий избранный список</div>
+    <h4 style="margin:0 0 8px 0; font-size:1.1rem;"><a href="lists/eden-kings/">Список королей Эдема</a></h4>
+    <p style="margin:0; font-size:0.95rem; color:var(--text-color, #333);">
+      Все 47 королей и 3 царицы Эдема — от легендарного основания Роген-Арии до падения в 2740 году. С портретами, годами правления и краткими деяниями.
+    </p>
+    <p style="margin:8px 0 0 0;">
+      <a href="lists/eden-kings/" style="font-size:0.9rem; color:#0645ad;">Читать список →</a>
+    </p>
+  </div>
+</div>
+
+<!-- === Предыдущий избранный список === -->
+<div style="display:flex; gap:16px; align-items:flex-start; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid #eaecf0; flex-wrap:wrap;">
+  <div style="flex:0 0 140px; max-width:140px;">
+    <a href="lists/arkadia-princes/">
+      <img src="assets/images/arkadia-mountains.jpg" alt="Князья Аркадии" style="width:100%; border-radius:6px; border:1px solid #c8ccd1;">
+    </a>
+  </div>
+  <div style="flex:1; min-width:200px;">
+    <div style="font-size:0.8rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Предыдущий избранный список</div>
+    <h4 style="margin:0 0 8px 0; font-size:1.1rem;"><a href="lists/arkadia-princes/">Список Держателей ветра</a></h4>
+    <p style="margin:0; font-size:0.95rem; color:var(--text-color, #333);">
+      Все выборные князья Аркадии, носившие титул «Держатель ветра» (kōl-ghar), от основания Аркасена до гибели Термана III.
+    </p>
+    <p style="margin:8px 0 0 0;">
+      <a href="lists/arkadia-princes/" style="font-size:0.9rem; color:#0645ad;">Читать список →</a>
+    </p>
+  </div>
+</div>
+
+<!-- === Другие избранные списки === -->
+<div>
+  <div style="font-size:0.8rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px;">Другие избранные списки</div>
+  <ul style="margin:0; padding-left:20px; line-height:1.9;">
+    <li><a href="lists/serpentida-kings/">Список королей Серпентиды</a></li>
+    <li><a href="lists/hellas-rulers/">Список правителей Эллады</a></li>
+    <li><a href="lists/ksanf-pirates/">Список пиратских королей Ксанфа</a></li>
+    <li><a href="lists/utopia-admirals/">Список адмиралов Утопии</a></li>
+    <li><a href="lists/khong-masters/">Список мастеров-рудокопов Кхонга</a></li>
+    <li><a href="lists/great-scribes/">Список великих писцов Академии</a></li>
+  </ul>
+</div>
+</div>
+
 <!-- ============ СЕКЦИЯ: Звук ветра на Марсе ============ -->
 <div style="
   border: 2px solid #c8ccd1;

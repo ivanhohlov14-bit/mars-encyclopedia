@@ -57,7 +57,7 @@ extra_javascript:
   - assets/js/scroll-mode.js
   - assets/js/effects-menu.js
   - assets/js/collapse-menu.js?v=12
-  - assets/js/auto-categories.js
+  - assets/js/auto-categories.js?v=2
   # - assets/js/sound-engine.js
   # - assets/js/sound-ui.js
   # - assets/js/mobile-debug.js

@@ -50,12 +50,12 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-## <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранная статья
+<h3><img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранная статья</h3>
 
-### Хевсур — последний хранитель глины
+<h4>Хевсур — последний хранитель глины</h4>
 
-**[Хевсур](people/hevsur.md)** (2685 – ок. 2745 гг. Э.О.) — марсианский историк, писец и хранитель архива Академии Окхасена. Центральный персонаж эпопеи «Письмо из Красной пыли», посвятивший свою жизнь сбору, систематизации и сохранению знаний о гибнущем Марсе. Его главное наследие — «глиняная библиотека» — собрание тысяч табличек, которые пережили гибель планеты и легли в основу марсианской энциклопедии. В отличие от [Талина](people/talin.md), который улетел к Земле, Хевсур выбрал остаться на Марсе, чтобы записать его последние дни.
-[Читать полную статью о Хевсуре →](people/hevsur.md)
+<p><strong><a href="people/hevsur.md">Хевсур</a></strong> (2685 – ок. 2745 гг. Э.О.) — марсианский историк, писец и хранитель архива Академии Окхасена. Центральный персонаж эпопеи «Письмо из Красной пыли», посвятивший свою жизнь сбору, систематизации и сохранению знаний о гибнущем Марсе. Его главное наследие — «глиняная библиотека» — собрание тысяч табличек, которые пережили гибель планеты и легли в основу марсианской энциклопедии. В отличие от <a href="people/talin.md">Талина</a>, который улетел к Земле, Хевсур выбрал остаться на Марсе, чтобы записать его последние дни.</p>
+<p><a href="people/hevsur.md">Читать полную статью о Хевсуре →</a></p>
 </div>
 
 <!-- ============ СЕКЦИЯ: Знаете ли вы? ============ -->
@@ -67,12 +67,14 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-## <img src="assets/images/stickers/sticker-pin.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Знаете ли вы?
+<h3><img src="assets/images/stickers/sticker-pin.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Знаете ли вы?</h3>
 
-- <img src="assets/images/stickers/sticker-rocket.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Талин** — главный астронавигатор Марса, впервые увидел Землю в телескоп в 2714 году. Его расчёты траектории стали основой для Исхода к Земле[^1].
-- <img src="assets/images/stickers/sticker-waves.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Ацидалийское море** — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет[^2].
-- <img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> **Марсианская письменность** — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках[^3].
-- <img src="assets/images/stickers/sticker-scales-no.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Слово **«Lān sur»** в переводе означает **«Глина помнит»**. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории[^4].
+<ul>
+<li><img src="assets/images/stickers/sticker-rocket.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> <strong>Талин</strong> — главный астронавигатор Марса, впервые увидел Землю в телескоп в 2714 году. Его расчёты траектории стали основой для Исхода к Земле.</li>
+<li><img src="assets/images/stickers/sticker-waves.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> <strong>Ацидалийское море</strong> — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет.</li>
+<li><img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> <strong>Марсианская письменность</strong> — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках.</li>
+<li><img src="assets/images/stickers/sticker-scales-no.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Слово <strong>«Lān sur»</strong> в переводе означает <strong>«Глина помнит»</strong>. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории.</li>
+</ul>
 </div>
 
 <!-- ============ СЕКЦИЯ: О цикле книг ============ -->
@@ -84,15 +86,28 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-## <img src="assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О цикле книг «Письмо из Красной пыли»
+<h3><img src="assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О цикле книг «Письмо из Красной пыли»</h3>
 
-**«Письмо из Красной пыли»** — цикл романов в жанре твёрдой научной фантастики и планетарной драмы, созданный автором **Mnemis**. Действие происходит на Марсе в последние десятилетия перед гибелью планеты — в Эпоху Умирания. Цикл объединяет научную достоверность с глубокими философскими размышлениями о памяти, надежде и цене выживания.
+<p><strong>«Письмо из Красной пыли»</strong> — цикл романов в жанре твёрдой научной фантастики и планетарной драмы, созданный автором <strong>Mnemis</strong>. Действие происходит на Марсе в последние десятилетия перед гибелью планеты — в Эпоху Умирания. Цикл объединяет научную достоверность с глубокими философскими размышлениями о памяти, надежде и цене выживания.</p>
 
-### Вышедшие книги
+<h4>Вышедшие книги</h4>
 
-| Название | Год | Краткое описание |
-|----------|-----|------------------|
-| **[«Ацидалийское море»](books/acidalia-sea.md)** | 2026 | Первый роман. Знакомит с миром Эпохи Умирания и жизнью в Окхасене |
+<table style="width:100%; border-collapse:collapse;">
+<thead>
+<tr>
+<th style="text-align:left; padding:6px 10px; border-bottom:1px solid #c8ccd1;">Название</th>
+<th style="text-align:left; padding:6px 10px; border-bottom:1px solid #c8ccd1;">Год</th>
+<th style="text-align:left; padding:6px 10px; border-bottom:1px solid #c8ccd1;">Краткое описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:6px 10px;"><strong><a href="books/acidalia-sea.md">«Ацидалийское море»</a></strong></td>
+<td style="padding:6px 10px;">2026</td>
+<td style="padding:6px 10px;">Первый роман. Знакомит с миром Эпохи Умирания и жизнью в Окхасене</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 <!-- ============ СЕКЦИЯ: О проекте ============ -->
@@ -104,11 +119,11 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-## <img src="assets/images/stickers/sticker-galaxy.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О проекте
+<h3><img src="assets/images/stickers/sticker-galaxy.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О проекте</h3>
 
-Проект адресован широкой аудитории, интересующейся вопросами происхождения жизни во Вселенной, эволюции планет и возможных форм разума за пределами Земли. Марсианская энциклопедия предлагает читателю не готовые ответы, а пространство для размышлений — модели того, какой могла бы быть история Марса, если бы на нём действительно существовала жизнь.
+<p>Проект адресован широкой аудитории, интересующейся вопросами происхождения жизни во Вселенной, эволюции планет и возможных форм разума за пределами Земли. Марсианская энциклопедия предлагает читателю не готовые ответы, а пространство для размышлений — модели того, какой могла бы быть история Марса, если бы на нём действительно существовала жизнь.</p>
 
-Все гипотезы, представленные в проекте, основаны на реальных научных данных и не противоречат современному знанию. По вопросам сотрудничества и уточнения материалов: mnemis.author@mail.ru.
+<p>Все гипотезы, представленные в проекте, основаны на реальных научных данных и не противоречат современному знанию. По вопросам сотрудничества и уточнения материалов: mnemis.author@mail.ru.</p>
 </div>
 
 <!-- ============ СЕКЦИЯ: Интерактивные элементы ============ -->
@@ -120,9 +135,9 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-## <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Интерактивные элементы
+<h3><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Интерактивные элементы</h3>
 
-### <img src="assets/images/stickers/sticker-cube.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Случайная статья
+<h4><img src="assets/images/stickers/sticker-cube.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Случайная статья</h4>
 
 <div style="text-align: center; margin: 1.5rem 0;">
   <button id="randomArticleBtn" style="
@@ -222,7 +237,7 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-### <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Марсианский календарь
+<h4><img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Марсианский календарь</h4>
 
 <div id="martianCalendar" style="text-align: center; font-family: 'Georgia', serif;">
   <div id="martianDate" style="font-size:1.2rem; color: var(--text-color, #202122);">Загрузка...</div>
@@ -300,7 +315,7 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-### <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> В этот день на Марсе
+<h4><img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> В этот день на Марсе</h4>
 
 <div id="thisDayBlock" style="font-family: 'Georgia', serif; text-align: center; font-size: 1rem; color: var(--text-color, #202122);">
   <div style="font-weight:bold; margin-bottom:10px;">
@@ -418,7 +433,7 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Изображение дня
+<h4><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Изображение дня</h4>
 
 <div id="pictureOfDayBlock" style="font-family: 'Georgia', serif; text-align: center; color: var(--text-color, #202122);">
   <div style="font-weight:bold; margin-bottom:10px;">
@@ -501,7 +516,7 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Цитата дня
+<h4><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Цитата дня</h4>
 
 <div id="quoteOfTheDay" style="border-left: 4px solid #6C63FF; padding: 12px 20px; font-style: italic; font-family: 'Georgia', serif; font-size: 1.1rem; color: var(--text-color, #202122);">
   <span id="quoteText">Загрузка...</span>
@@ -569,7 +584,7 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-### <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса
+<h4><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса</h4>
 
 <div id="moonPhase" style="font-family: 'Georgia', serif; text-align: center; font-size: 1rem; color: var(--text-color, #202122);">
   <div style="font-weight:bold; margin-bottom:6px;">
@@ -657,7 +672,7 @@
   background: var(--block-bg, #f8f9fa);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 ">
-### <img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Звук ветра на Марсе
+<h4><img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Звук ветра на Марсе</h4>
 
 <div style="text-align: center; margin: 10px 0;">
   <button id="windSoundBtn" style="

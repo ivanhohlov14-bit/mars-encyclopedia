@@ -1,3 +1,8 @@
+---
+title: Избранные списки и порталы
+description: Лучшие списки Марсианской энциклопедии — правители, династии, адмиралы и писцы
+---
+
 <div class="featured-page">
 
 <div class="featured-hero">

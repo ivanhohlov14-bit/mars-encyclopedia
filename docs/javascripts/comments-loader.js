@@ -45,6 +45,9 @@
             '/museum/',
             '/weather/',
             '/scan-dates/',
+            '/categories/',
+            '/eden-kings/',
+            '/ksanf-pirates/',
             '/translator/'
         ];
 

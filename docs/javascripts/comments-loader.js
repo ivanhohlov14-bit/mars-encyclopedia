@@ -55,6 +55,7 @@
             '/lists/khong-masters/',
             '/lists/great-scribes/',
             '/lists/',
+            '/terms/akademiya-okhasena/',
             '/translator/'
         ];
 

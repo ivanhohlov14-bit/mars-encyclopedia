@@ -406,49 +406,136 @@ html body.mars-stars-on .categories-empty {
 
 <script>
 (function() {
-  var CATEGORY_MAP = {
-    'history': 'История', 'geography': 'География', 'astronomy': 'Астрономия',
-    'people': 'Персоналии', 'mythology': 'Мифология', 'biology': 'Биология',
-    'terms': 'Термины', 'books': 'Книги', 'lists': 'Избранные списки',
-    'science': 'Наука', 'game': 'Игра',
-    'periodization': 'Периодизация', 'timeline': 'Хронология',
-    'epokha-osnovaniya': 'Эпоха Основания', 'epokha-rascveta': 'Эпоха Расцвета',
-    'epokha-umiraniya': 'Эпоха Умирания', 'iskhod': 'Исход',
-    'pirate-kingdom': 'Пиратское королевство', 'myths': 'Мифы и легенды',
-    'edem': 'Эдем', 'arkadia-history': 'Аркадия', 'serpentida-history': 'Серпентида',
-    'hellas-history': 'Эллада', 'kimeria-history': 'Кимерия',
-    'eritrea-history': 'Эритрея', 'utopia-history': 'Утопия',
-    'eridania-history': 'Эридания', 'khong-history': 'Кхонг', 'avsonia-history': 'Авсония',
-    'acidalia-sea': 'Ацидалийское море', 'okhasen': 'Окхасен',
-    'rogen-aria': 'Роген-Ария', 'farsida': 'Фарсида', 'farsida-caves': 'Пещеры Фарсиды',
-    'ksanf-river': 'Река Ксанф', 'eritreya': 'Эритрея', 'utopiya': 'Утопия',
-    'tarsis': 'Тарсис', 'noviy-okhasen': 'Новый Окхасен',
+  'use strict';
+
+  // ============================================================
+  // НАЗВАНИЕ СТРАНИЦЫ (заголовок вкладки)
+  // ============================================================
+  document.title = 'Категории статей — Марсианская энциклопедия';
+
+  // ============================================================
+  // КАРТА КАТЕГОРИЙ (slug → название)
+  // ============================================================
+  var CATEGORY_MAP = Object.assign(Object.create(null), {
+    'history': 'История',
+    'geography': 'География',
+    'astronomy': 'Астрономия',
+    'people': 'Персоналии',
+    'mythology': 'Мифология',
+    'biology': 'Биология',
+    'terms': 'Термины',
+    'books': 'Книги',
+    'lists': 'Избранные списки',
+    'science': 'Наука',
+    'game': 'Игра',
+    'periodization': 'Периодизация',
+    'timeline': 'Хронология',
+    'epokha-osnovaniya': 'Эпоха Основания',
+    'epokha-rascveta': 'Эпоха Расцвета',
+    'epokha-umiraniya': 'Эпоха Умирания',
+    'iskhod': 'Исход',
+    'pirate-kingdom': 'Пиратское королевство',
+    'myths': 'Мифы и легенды',
+    'edem': 'Эдем',
+    'arkadia-history': 'Аркадия',
+    'serpentida-history': 'Серпентида',
+    'hellas-history': 'Эллада',
+    'kimeria-history': 'Кимерия',
+    'eritrea-history': 'Эритрея',
+    'utopia-history': 'Утопия',
+    'eridania-history': 'Эридания',
+    'khong-history': 'Кхонг',
+    'avsonia-history': 'Авсония',
+    'acidalia-sea': 'Ацидалийское море',
+    'okhasen': 'Окхасен',
+    'rogen-aria': 'Роген-Ария',
+    'farsida': 'Фарсида',
+    'farsida-caves': 'Пещеры Фарсиды',
+    'ksanf-river': 'Река Ксанф',
+    'eritreya': 'Эритрея',
+    'utopiya': 'Утопия',
+    'tarsis': 'Тарсис',
+    'noviy-okhasen': 'Новый Окхасен',
     'akademiya-okhasena': 'Академия Окхасена',
-    'mars-sky': 'Небо Марса', 'phobos-deimos': 'Фобос и Деймос',
-    'earth': 'Земля', 'earth-as-target': 'Земля как цель',
-    'hevsur': 'Хевсур', 'talin': 'Талин', 'ella': 'Элла', 'yarra': 'Йарра',
-    'alira': 'Алира', 'aratan-iii': 'Аратан III', 'irayina': 'Ирайна',
-    'miran': 'Миран', 'kharan': 'Харан', 'soviya': 'Совия', 'arash': 'Араш', 'kan': 'Кан',
-    'eden-kings': 'Короли Эдема', 'ksanf-pirates': 'Пиратские короли Ксанфа',
-    'serpentida-kings': 'Короли Серпентиды', 'hellas-rulers': 'Правители Эллады',
-    'arkadia-princes': 'Держатели ветра', 'utopia-admirals': 'Адмиралы Утопии',
-    'khong-masters': 'Мастера Кхонга', 'great-scribes': 'Великие писцы',
-    'lan-sur': 'Lān sur', 'tablichki': 'Таблички', 'gemotsianin': 'Гемоцианин',
-    'geology': 'Геология', 'kho': 'Кхо', 'akha': 'Акха',
-    'araksis': 'Араксис', 'prorochestvo-kharana': 'Пророчество Харана'
-  };
+    'mars-sky': 'Небо Марса',
+    'phobos-deimos': 'Фобос и Деймос',
+    'earth': 'Земля',
+    'earth-as-target': 'Земля как цель',
+    'hevsur': 'Хевсур',
+    'talin': 'Талин',
+    'ella': 'Элла',
+    'yarra': 'Йарра',
+    'alira': 'Алира',
+    'aratan-iii': 'Аратан III',
+    'irayina': 'Ирайна',
+    'miran': 'Миран',
+    'kharan': 'Харан',
+    'soviya': 'Совия',
+    'arash': 'Араш',
+    'kan': 'Кан',
+    'eden-kings': 'Короли Эдема',
+    'ksanf-pirates': 'Пиратские короли Ксанфа',
+    'serpentida-kings': 'Короли Серпентиды',
+    'hellas-rulers': 'Правители Эллады',
+    'arkadia-princes': 'Держатели ветра',
+    'utopia-admirals': 'Адмиралы Утопии',
+    'khong-masters': 'Мастера Кхонга',
+    'great-scribes': 'Великие писцы',
+    'lan-sur': 'Lān sur',
+    'tablichki': 'Таблички',
+    'gemotsianin': 'Гемоцианин',
+    'geology': 'Геология',
+    'kho': 'Кхо',
+    'akha': 'Акха',
+    'araksis': 'Араксис',
+    'prorochestvo-kharana': 'Пророчество Харана'
+  });
 
-  var SKIP_TITLES = ['Примечания', 'См. также', 'Ссылки', 'Литература',
-                     'Источники', 'Комментарии', 'Библиография', 'Gallery',
-                     'Галерея', 'Сноски', 'Приложение'];
+  // ============================================================
+  // ИКОНКИ ДЛЯ КАЖДОЙ КАТЕГОРИИ (можно заменить на свои URL)
+  // ============================================================
+  var CATEGORY_ICONS = Object.assign(Object.create(null), {
+    'История': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/martian-calendar-first-tablet.png',
+    'География': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-map.png',
+    'Астрономия': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars_starmap.png',
+    'Персоналии': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-king.png',
+    'Мифология': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/araksis-statue-concept.png',
+    'Биология': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-concept.jpg',
+    'Термины': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/clay-memory.webp',
+    'Книги': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/santii-cover.png',
+    'Избранные списки': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg',
+    'Наука': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png',
+    'Игра': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-field.jpg'
+  });
 
-  var TOP_ORDER = ['История', 'География', 'Астрономия', 'Персоналии',
-                   'Мифология', 'Биология', 'Наука', 'Термины',
-                   'Книги', 'Избранные списки', 'Игра'];
+  // ============================================================
+  // ЗАГОЛОВКИ-РАЗДЕЛЫ, КОТОРЫЕ НЕ ЯВЛЯЮТСЯ СТАТЬЯМИ
+  // ============================================================
+  var SKIP_TITLES = [
+    'Примечания', 'См. также', 'Ссылки', 'Литература',
+    'Источники', 'Комментарии', 'Библиография', 'Gallery',
+    'Галерея', 'Сноски', 'Приложение'
+  ];
 
+  // ============================================================
+  // ПОРЯДОК КАТЕГОРИЙ ВЕРХНЕГО УРОВНЯ
+  // ============================================================
+  var TOP_ORDER = [
+    'История', 'География', 'Астрономия', 'Персоналии',
+    'Мифология', 'Биология', 'Наука', 'Термины',
+    'Книги', 'Избранные списки', 'Игра'
+  ];
+
+  // ============================================================
+  // ЗАГРУЗКА search_index.json
+  // ============================================================
   function fetchIndex() {
-    var paths = ['search/search_index.json', '../search/search_index.json',
-                 '../../search/search_index.json', '/search/search_index.json'];
+    var paths = [
+      'search/search_index.json',
+      '../search/search_index.json',
+      '../../search/search_index.json',
+      '/search/search_index.json'
+    ];
     var i = 0;
     function tryNext() {
       if (i >= paths.length) return Promise.reject(new Error('Не найден search_index.json'));
@@ -460,10 +547,16 @@ html body.mars-stars-on .categories-empty {
     return tryNext();
   }
 
+  // ============================================================
+  // НОРМАЛИЗАЦИЯ URL (убрать якорь)
+  // ============================================================
   function normalizeLocation(loc) {
     return (loc || '').split('#')[0].replace(/^\//, '').replace(/\/$/, '');
   }
 
+  // ============================================================
+  // ПРОВЕРКА: ПРОПУСКАТЬ ЛИ ЗАГОЛОВОК
+  // ============================================================
   function isSkipTitle(title) {
     if (!title) return true;
     var t = title.trim();
@@ -474,8 +567,11 @@ html body.mars-stars-on .categories-empty {
     return false;
   }
 
+  // ============================================================
+  // ДЕДУПЛИКАЦИЯ: ОДНА СТРАНИЦА = ОДНА ЗАПИСЬ
+  // ============================================================
   function dedupeDocs(docs) {
-    var seen = {};
+    var seen = Object.create(null);
     var result = [];
     docs.forEach(function(doc) {
       var base = normalizeLocation(doc.location);
@@ -487,29 +583,48 @@ html body.mars-stars-on .categories-empty {
     return result;
   }
 
+  // ============================================================
+  // ГРУППИРОВКА ПО КАТЕГОРИЯМ (ЗАЩИЩЕНО ОТ prototype)
+  // ============================================================
   function groupDocs(docs) {
-    var groups = {};
+    var groups = Object.create(null);
+
     docs.forEach(function(doc) {
       if (isSkipTitle(doc.title)) return;
+
       var segments = doc.location.split('/').filter(Boolean);
-      var addedTo = {};
+      var addedTo = Object.create(null);
+
       segments.forEach(function(seg) {
+        // ✅ ЗАЩИТА: только собственные свойства, не prototype
+        if (!Object.prototype.hasOwnProperty.call(CATEGORY_MAP, seg)) return;
         var catName = CATEGORY_MAP[seg];
         if (!catName) return;
         if (addedTo[catName]) return;
         addedTo[catName] = true;
-        if (!groups[catName]) groups[catName] = [];
+
+        if (!Object.prototype.hasOwnProperty.call(groups, catName)) {
+          groups[catName] = [];
+        }
         groups[catName].push({ title: doc.title, location: doc.location });
       });
     });
+
     return groups;
   }
 
+  // ============================================================
+  // ОТРИСОВКА
+  // ============================================================
   function render(groups) {
     var container = document.getElementById('categories-container');
     if (!container) return;
 
-    var names = Object.keys(groups);
+    // ✅ ЗАЩИТА: только массивы, не случайные функции из prototype
+    var names = Object.keys(groups).filter(function(n) {
+      return Array.isArray(groups[n]);
+    });
+
     names.sort(function(a, b) {
       var ia = TOP_ORDER.indexOf(a);
       var ib = TOP_ORDER.indexOf(b);
@@ -527,7 +642,7 @@ html body.mars-stars-on .categories-empty {
       if (!articles.length) return;
 
       // Дедупликация по названию
-      var seenTitles = {};
+      var seenTitles = Object.create(null);
       var unique = [];
       articles.forEach(function(a) {
         if (seenTitles[a.title]) return;
@@ -537,8 +652,16 @@ html body.mars-stars-on .categories-empty {
       unique.sort(function(a, b) { return a.title.localeCompare(b.title); });
       totalArticles += unique.length;
 
+      var iconUrl = CATEGORY_ICONS[name] || '';
+
       html += '<div class="category-card" style="animation-delay:' + (idx * 0.06) + 's;">';
       html += '<div class="category-card-header">';
+
+      // ✅ ИКОНКА КАТЕГОРИИ
+      if (iconUrl) {
+        html += '<img src="' + iconUrl + '" alt="' + name + '" style="width:40px; height:40px; object-fit:cover; border-radius:8px; border:1px solid #e5e5ec; flex-shrink:0;" loading="lazy">';
+      }
+
       html += '<h3 class="category-card-title">' + name + '</h3>';
       html += '<span class="category-card-count">' + unique.length + '</span>';
       html += '</div>';
@@ -565,6 +688,9 @@ html body.mars-stars-on .categories-empty {
     if (statCategories) statCategories.textContent = names.length;
   }
 
+  // ============================================================
+  // ЗАПУСК
+  // ============================================================
   function run() {
     fetchIndex()
       .then(function(data) {

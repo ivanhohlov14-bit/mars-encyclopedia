@@ -20,6 +20,30 @@ markdown_extensions:
   - footnotes
   - md_in_html 
 
+# ✅ НОВОЕ: метатеги для соцсетей и поисковиков
+extra:
+  meta:
+    - property: og:type
+      content: website
+    - property: og:site_name
+      content: Марсианская энциклопедия
+    - property: og:title
+      content: Марсианская энциклопедия
+    - property: og:description
+      content: Свободный справочник о мире «Письмо из Красной пыли»
+    - property: og:image
+      content: https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/header-banner.png
+    - property: og:url
+      content: https://mars-wiki.ru/
+    - name: twitter:card
+      content: summary_large_image
+    - name: twitter:title
+      content: Марсианская энциклопедия
+    - name: twitter:description
+      content: Свободный справочник о мире «Письмо из Красной пыли»
+    - name: twitter:image
+      content: https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/header-banner.png
+
 extra_css:
   - stylesheets/extra.css
   - assets/css/mars-theme.css

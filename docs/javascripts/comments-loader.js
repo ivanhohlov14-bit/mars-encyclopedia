@@ -48,6 +48,7 @@
             '/categories/',
             '/eden-kings/',
             '/ksanf-pirates/',
+            '/lists/',
             '/translator/'
         ];
 

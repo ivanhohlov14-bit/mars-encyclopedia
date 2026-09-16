@@ -46,8 +46,14 @@
             '/weather/',
             '/scan-dates/',
             '/categories/',
-            '/eden-kings/',
-            '/ksanf-pirates/',
+            '/lists/eden-kings/',
+            '/lists/ksanf-pirates/',
+            '/lists/arkadia-princes/',
+            '/lists/serpentida-kings/',
+            '/lists/hellas-rulers/',
+            '/lists/utopia-admirals/',
+            '/lists/khong-masters/',
+            '/lists/great-scribes/',
             '/lists/',
             '/translator/'
         ];

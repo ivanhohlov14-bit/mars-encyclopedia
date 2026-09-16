@@ -83,6 +83,13 @@
     'prorochestvo-kharana': 'Пророчество Харана'
   };
 
+  // Заголовки-разделы, которые НЕ являются статьями
+  var SKIP_TITLES = [
+    'Примечания', 'См. также', 'Ссылки', 'Литература',
+    'Источники', 'Комментарии', 'Библиография', 'Gallery',
+    'Галерея', 'Сноски', 'Приложение'
+  ];
+
   // Категории верхнего уровня (идут первыми, в этом порядке)
   var TOP_ORDER = [
     'История', 'География', 'Астрономия', 'Персоналии',
@@ -90,6 +97,9 @@
     'Книги', 'Избранные списки', 'Игра'
   ];
 
+  // ============================================================
+  // 1. Загрузка search_index.json
+  // ============================================================
   function fetchIndex() {
     var paths = [
       'search/search_index.json',
@@ -108,33 +118,79 @@
     return tryNext();
   }
 
+  // ============================================================
+  // 2. Нормализация: убрать якорь, дедуплицировать
+  // ============================================================
+  function normalizeLocation(loc) {
+    // Убираем всё, что идёт после # — это якорь внутри страницы
+    return (loc || '').split('#')[0].replace(/^\//, '').replace(/\/$/, '');
+  }
+
+  function isSkipTitle(title) {
+    if (!title) return true;
+    var t = title.trim();
+    for (var i = 0; i < SKIP_TITLES.length; i++) {
+      if (t === SKIP_TITLES[i]) return true;
+    }
+    // Пропускаем заголовки вида "#_1", "#_2" и подобные
+    if (/^#?_?\d+$/.test(t)) return true;
+    return false;
+  }
+
+  // Оставляем только ОДНУ запись на каждую страницу (без якорей)
+  function dedupeDocs(docs) {
+    var seen = {};
+    var result = [];
+    docs.forEach(function(doc) {
+      var base = normalizeLocation(doc.location);
+      if (!base) return;
+      if (seen[base]) return;   // уже добавили эту страницу
+      seen[base] = true;
+      result.push({
+        title: doc.title || 'Без названия',
+        location: base
+      });
+    });
+    return result;
+  }
+
+  // ============================================================
+  // 3. Группировка по категориям
+  // ============================================================
   function groupDocs(docs) {
     var groups = {};
+
     docs.forEach(function(doc) {
-      var loc = doc.location || '';
-      var segments = loc.split('/').filter(Boolean);
+      // Пропускаем служебные подразделы
+      if (isSkipTitle(doc.title)) return;
+
+      var segments = doc.location.split('/').filter(Boolean);
+      var addedTo = {};
+
       segments.forEach(function(seg) {
         var catName = CATEGORY_MAP[seg];
         if (!catName) return;
+        if (addedTo[catName]) return;   // не добавляем дважды в одну категорию
+        addedTo[catName] = true;
+
         if (!groups[catName]) groups[catName] = [];
-        // Избегаем дублей
-        var exists = groups[catName].some(function(d) { return d.location === loc; });
-        if (!exists) {
-          groups[catName].push({
-            title: doc.title || 'Без названия',
-            location: loc
-          });
-        }
+        groups[catName].push({
+          title: doc.title,
+          location: doc.location
+        });
       });
     });
+
     return groups;
   }
 
+  // ============================================================
+  // 4. Отрисовка
+  // ============================================================
   function render(groups) {
     var container = document.getElementById('categories-container');
     if (!container) return;
 
-    // Сортируем категории: сначала верхние, потом остальные по алфавиту
     var names = Object.keys(groups);
     names.sort(function(a, b) {
       var ia = TOP_ORDER.indexOf(a);
@@ -148,20 +204,30 @@
     var html = '';
     names.forEach(function(name) {
       var articles = groups[name];
-      // Якорь из slug — берём первый, который сработал в CATEGORY_MAP
+      if (!articles.length) return;
+
+      // Ищем slug категории (для якоря)
       var slug = '';
       for (var key in CATEGORY_MAP) {
         if (CATEGORY_MAP[key] === name) { slug = key; break; }
       }
 
-      html += '<h2 id="' + slug + '" style="margin-top:32px;">' + name + '</h2>';
-      html += '<ul>';
+      html += '<h2 id="' + slug + '" style="margin-top:36px; padding-bottom:6px; border-bottom:1px solid #d0d0d0;">' + name + '</h2>';
+      html += '<ul style="line-height:1.9;">';
+
+      // Сортировка по названию
       articles.sort(function(a, b) { return a.title.localeCompare(b.title); });
+
+      // Дедупликация по названию внутри категории
+      var usedTitles = {};
       articles.forEach(function(art) {
-        var href = 'https://mars-wiki.ru/' + art.location.replace(/^\//, '');
-        if (href.charAt(href.length - 1) !== '/') href += '/';
+        if (usedTitles[art.title]) return;
+        usedTitles[art.title] = true;
+
+        var href = 'https://mars-wiki.ru/' + art.location + '/';
         html += '<li><a href="' + href + '">' + art.title + '</a></li>';
       });
+
       html += '</ul>';
     });
 
@@ -172,10 +238,13 @@
     container.innerHTML = html;
   }
 
+  // ============================================================
+  // 5. Запуск
+  // ============================================================
   function run() {
     fetchIndex()
       .then(function(data) {
-        var docs = data.docs || [];
+        var docs = dedupeDocs(data.docs || []);
         var groups = groupDocs(docs);
         render(groups);
       })

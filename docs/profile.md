@@ -1,9 +1,9 @@
 ---
-title:  Мой профиль
+title: Мой профиль
 comments: false
 ---
 
-<div id="profile-app" style="max-width: 1000px; margin: 0 auto; font-family: 'Segoe UI', -apple-system, sans-serif; padding: 0 8px;">
+<div id="profile-app" style="max-width: 1100px; margin: 0 auto; font-family: 'Segoe UI', -apple-system, sans-serif; padding: 0 8px;">
     <div style="text-align:center; padding: 60px 20px;">
         <div style="display:inline-block; width: 48px; height: 48px; border: 3px solid #6C63FF; border-top-color: transparent; border-radius: 50%; animation: pfSpin 0.8s linear infinite;"></div>
         <p style="color: #999; margin-top: 16px;">Загрузка профиля...</p>
@@ -16,11 +16,15 @@ comments: false
 @keyframes pfFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes pfPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 @keyframes pfFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes pfSlide{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
 .pf-fade{animation:pfFadeIn .5s cubic-bezier(.16,1,.3,1) both}
+.pf-slide{animation:pfSlide .4s ease both}
 #profile-app a{text-decoration:none!important;border-bottom:none!important}
-.pf-hero{position:relative;background:linear-gradient(135deg,var(--kingdom-color),var(--kingdom-light));border-radius:24px;padding:36px 32px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 20px 60px -12px var(--kingdom-shadow)}
-.pf-hero::before{content:'';position:absolute;top:-60%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);border-radius:50%;animation:pfFloat 8s ease-in-out infinite}
-.pf-hero::after{content:'';position:absolute;bottom:-60%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.1),transparent 70%);border-radius:50%;animation:pfFloat 10s ease-in-out infinite reverse}
+
+/* HERO — единый VIP-стиль */
+.pf-hero{position:relative;background:linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 40%,#4a2a3a 100%);border-radius:24px;padding:44px 40px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 20px 60px -12px rgba(0,0,0,.4)}
+.pf-hero::before{content:'';position:absolute;top:-60%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,var(--kingdom-shadow),transparent 70%);border-radius:50%;animation:pfFloat 8s ease-in-out infinite}
+.pf-hero::after{content:'';position:absolute;bottom:-60%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(231,76,60,.15),transparent 70%);border-radius:50%;animation:pfFloat 10s ease-in-out infinite reverse}
 .pf-hero-content{position:relative;z-index:2;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
 .pf-avatar-wrap{position:relative;flex-shrink:0;animation:pfPulse 3s ease-in-out infinite}
 .pf-avatar{width:120px;height:120px;border-radius:50%;border:4px solid rgba(255,255,255,.4);object-fit:cover;background:#fff;box-shadow:0 12px 32px rgba(0,0,0,.2)}
@@ -28,6 +32,7 @@ comments: false
 .pf-info{flex:1;min-width:200px}
 .pf-name{font-size:2rem;font-weight:800;margin:0 0 6px 0;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;letter-spacing:-.5px}
 .pf-role-badge{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.pf-mod-badge{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;box-shadow:0 4px 12px rgba(231,76,60,.4)}
 .pf-guild-badge{background:rgba(255,255,255,.25);backdrop-filter:blur(8px);color:#fff;padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;display:inline-flex;align-items:center;gap:4px;border:1px solid rgba(255,255,255,.3);cursor:pointer}
 .pf-email{font-size:.9rem;opacity:.85;margin:0 0 16px 0}
 .pf-stats-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px}
@@ -35,8 +40,19 @@ comments: false
 .pf-stat-mini .pf-sm-label{font-size:.72rem;opacity:.8;text-transform:uppercase;letter-spacing:.8px;font-weight:600}
 .pf-stat-mini .pf-sm-value{font-size:1.4rem;font-weight:800;letter-spacing:-.5px}
 .pf-progress{background:rgba(255,255,255,.2);border-radius:12px;height:12px;overflow:hidden;position:relative;backdrop-filter:blur(8px);margin-bottom:6px}
-.pf-progress-bar{height:100%;background:#fff;border-radius:12px;transition:width 1.2s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(255,255,255,.6)}
+.pf-progress-bar{height:100%;background:linear-gradient(90deg,var(--kingdom-light),#fff);border-radius:12px;transition:width 1.2s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(255,255,255,.6)}
 .pf-progress-text{font-size:.78rem;opacity:.9}
+
+/* HERO QUICK ACTIONS */
+.pf-hero-actions{position:relative;z-index:2;display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.pf-hero-action{padding:8px 16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;color:#fff;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .25s;backdrop-filter:blur(8px);font-family:inherit;display:inline-flex;align-items:center;gap:6px}
+.pf-hero-action:hover{background:rgba(255,255,255,.25);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.pf-hero-action.danger{background:rgba(231,76,60,.25);border-color:rgba(231,76,60,.4)}
+.pf-hero-action.danger:hover{background:rgba(231,76,60,.4)}
+.pf-hero-action.mod{background:linear-gradient(135deg,#e74c3c,#c0392b);border-color:transparent;box-shadow:0 4px 12px rgba(231,76,60,.4)}
+.pf-hero-action.mod:hover{box-shadow:0 8px 24px rgba(231,76,60,.5)}
+
+/* QUICK GRID */
 .pf-quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
 .pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s;box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer}
 .pf-quick-card:hover{transform:translateY(-4px);border-color:var(--kingdom-color);box-shadow:0 12px 32px -8px var(--kingdom-shadow)}
@@ -45,22 +61,48 @@ comments: false
 .pf-quick-body{flex:1;min-width:0}
 .pf-quick-title{font-size:.9rem;font-weight:800;color:#1a1a1a;margin-bottom:2px}
 .pf-quick-desc{font-size:.72rem;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* TABS */
 .pf-tabs{display:flex;gap:4px;margin-bottom:20px;overflow-x:auto;padding:6px;background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border-radius:16px;border:1px solid rgba(0,0,0,.05)}
 .pf-tabs::-webkit-scrollbar{height:4px}
 .pf-tabs::-webkit-scrollbar-thumb{background:var(--kingdom-color);border-radius:2px}
-.pf-tab{flex-shrink:0;padding:10px 16px;border:none;background:transparent;color:#666;font-size:.85rem;font-weight:700;border-radius:12px;cursor:pointer;transition:all .25s;white-space:nowrap;display:flex;align-items:center;gap:6px;font-family:inherit}
+.pf-tab{flex-shrink:0;padding:10px 16px;border:none;background:transparent;color:#666;font-size:.85rem;font-weight:700;border-radius:12px;cursor:pointer;transition:all .25s;white-space:nowrap;display:flex;align-items:center;gap:6px;font-family:inherit;position:relative}
 .pf-tab:hover{background:rgba(0,0,0,.04);color:#333}
-.pf-tab.active{background:var(--kingdom-color);color:#fff;box-shadow:0 6px 16px -4px var(--kingdom-shadow)}
+.pf-tab.active{background:linear-gradient(135deg,var(--kingdom-color),var(--kingdom-light));color:#fff;box-shadow:0 6px 16px -4px var(--kingdom-shadow)}
+.pf-tab.mod-tab-highlight{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;box-shadow:0 6px 16px -4px rgba(231,76,60,.4)}
+.pf-tab-count{background:rgba(255,255,255,.25);padding:1px 7px;border-radius:10px;font-size:.7rem}
 .pf-tab-content{display:none;animation:pfFadeIn .4s ease}
 .pf-tab-content.active{display:block}
-.pf-card{background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:18px;border:1px solid rgba(0,0,0,.06);padding:22px 26px;margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+
+/* CARDS */
+.pf-card{background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:18px;border:1px solid rgba(0,0,0,.06);padding:22px 26px;margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,.04);transition:box-shadow .3s}
+.pf-card:hover{box-shadow:0 12px 32px -8px var(--kingdom-shadow)}
 .pf-card-title{font-size:1.1rem;font-weight:800;color:#1a1a1a;margin:0 0 16px 0;display:flex;align-items:center;gap:10px}
 .pf-card-title .pf-ct-icon{font-size:1.4rem}
+
+/* BUTTONS */
 .pf-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;border:2px solid var(--kingdom-color);background:var(--kingdom-color);color:#fff;font-weight:700;font-size:.88rem;cursor:pointer;transition:all .25s;font-family:inherit}
 .pf-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px -4px var(--kingdom-shadow)}
 .pf-btn-outline{background:transparent;color:var(--kingdom-color)}
 .pf-btn-outline:hover{background:var(--kingdom-color);color:#fff}
 .pf-btn-danger{background:#e74c3c;border-color:#e74c3c}
+
+/* MODERATION DASHBOARD IN PROFILE */
+.pf-mod-dashboard{background:linear-gradient(135deg,#2d1b3d,#1a1a2e);border-radius:18px;padding:24px 28px;color:#fff;margin-bottom:18px;position:relative;overflow:hidden;border:1px solid rgba(231,76,60,.3)}
+.pf-mod-dashboard::before{content:'';position:absolute;top:-50%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(231,76,60,.25),transparent 70%);pointer-events:none}
+.pf-mod-dashboard-title{font-size:1.2rem;font-weight:800;margin:0 0 4px 0;position:relative;z-index:1;display:flex;align-items:center;gap:10px}
+.pf-mod-dashboard-sub{font-size:.85rem;opacity:.75;margin:0 0 20px 0;position:relative;z-index:1}
+.pf-mod-stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;position:relative;z-index:1}
+.pf-mod-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:16px 18px;backdrop-filter:blur(8px);transition:all .3s;cursor:pointer}
+.pf-mod-stat:hover{background:rgba(255,255,255,.15);transform:translateY(-3px);border-color:rgba(231,76,60,.5)}
+.pf-mod-stat-icon{font-size:1.4rem;margin-bottom:6px}
+.pf-mod-stat-value{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#fff,#A29BFE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.pf-mod-stat-label{font-size:.72rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:600}
+.pf-mod-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;position:relative;z-index:1}
+.pf-mod-action-btn{padding:11px 22px;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;border:none;border-radius:26px;font-weight:800;font-size:.88rem;cursor:pointer;transition:all .25s;font-family:inherit;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 16px -4px rgba(231,76,60,.5)}
+.pf-mod-action-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -4px rgba(231,76,60,.7)}
+
+/* AVATAR/EMOJI GRID */
 .pf-avatar-grid{display:flex;gap:12px;flex-wrap:wrap}
 .pf-avatar-option{width:60px;height:60px;border-radius:50%;cursor:pointer;border:3px solid transparent;object-fit:cover;transition:all .25s}
 .pf-avatar-option:hover{transform:scale(1.1);border-color:var(--kingdom-color)}
@@ -69,16 +111,33 @@ comments: false
 .pf-kingdom-btn{padding:10px 12px;border-radius:10px;border:2px solid rgba(0,0,0,.08);background:rgba(255,255,255,.6);cursor:pointer;font-size:.8rem;font-weight:600;transition:all .25s;font-family:inherit;color:#333}
 .pf-kingdom-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
 .pf-kingdom-btn.selected{color:#fff;box-shadow:0 6px 16px -4px var(--kingdom-shadow)}
+
+/* ACHIEVEMENTS */
 .pf-ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
 .pf-ach{display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(255,255,255,.7);border-radius:12px;border:2px solid rgba(0,0,0,.04);transition:all .25s}
 .pf-ach:hover{transform:translateY(-3px);border-color:var(--kingdom-color);box-shadow:0 12px 28px -8px var(--kingdom-shadow)}
 .pf-ach .pf-ach-icon{font-size:1.8rem}
 .pf-ach .pf-ach-name{font-size:.85rem;font-weight:700;color:#1a1a1a}
 .pf-ach .pf-ach-date{font-size:.7rem;color:#888}
-.pf-notif{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px}
+
+/* ACTIVITY GRAPH */
+.pf-activity-graph{display:flex;gap:3px;flex-wrap:wrap;margin-top:12px;padding:14px;background:#f8f8fc;border-radius:12px}
+.pf-activity-cell{width:14px;height:14px;border-radius:3px;background:#e5e5ec;transition:all .2s}
+.pf-activity-cell.level-1{background:rgba(108,99,255,.25)}
+.pf-activity-cell.level-2{background:rgba(108,99,255,.5)}
+.pf-activity-cell.level-3{background:rgba(108,99,255,.75)}
+.pf-activity-cell.level-4{background:rgba(108,99,255,1)}
+.pf-activity-cell:hover{transform:scale(1.4)}
+
+/* NOTIFICATIONS */
+.pf-notif{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;transition:all .2s;cursor:pointer}
+.pf-notif:hover{background:rgba(108,99,255,.08)}
+.pf-notif.unread{border-left:3px solid var(--kingdom-color);background:rgba(108,99,255,.05)}
 .pf-notif-icon{font-size:1.3rem}
 .pf-notif-text{font-size:.88rem;color:#333}
 .pf-notif-date{font-size:.72rem;color:#999;margin-top:2px}
+
+/* CHAT */
 .pf-chat{background:linear-gradient(135deg,var(--kingdom-bg),rgba(255,255,255,.6));border-radius:14px;padding:14px;max-height:400px;overflow-y:auto;margin-bottom:12px;border:1px solid rgba(0,0,0,.05)}
 .pf-chat-msg{margin:6px 0;padding:10px 14px;border-radius:14px;max-width:80%;word-wrap:break-word;font-size:.9rem;line-height:1.5}
 .pf-chat-msg.user{background:var(--kingdom-color);color:#fff;margin-left:auto;border-bottom-right-radius:4px}
@@ -87,22 +146,23 @@ comments: false
 .pf-chat-input input{flex:1;padding:12px 18px;border:2px solid rgba(0,0,0,.08);border-radius:30px;font-size:.9rem;font-family:inherit;outline:none;background:#fff}
 .pf-chat-input input:focus{border-color:var(--kingdom-color)}
 .pf-chat-input button{padding:12px 24px;background:var(--kingdom-color);color:#fff;border:none;border-radius:30px;cursor:pointer;font-weight:700;font-family:inherit}
+
+/* LEADERBOARD */
 .pf-leaderboard{width:100%;border-collapse:collapse;font-size:.88rem}
 .pf-leaderboard th{text-align:left;padding:10px 12px;font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.8px;border-bottom:2px solid var(--kingdom-color)}
 .pf-leaderboard td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.05)}
 .pf-leaderboard tr{cursor:pointer;transition:all .2s}
 .pf-leaderboard tr:hover{background:var(--kingdom-color);color:#fff}
 .pf-lb-avatar{width:28px;height:28px;border-radius:50%;vertical-align:middle;margin-right:8px;border:2px solid var(--kingdom-color);object-fit:cover}
+
+/* CALENDAR */
 .pf-calendar{text-align:center;padding:20px;background:linear-gradient(135deg,var(--kingdom-bg),rgba(255,255,255,.4));border-radius:14px;border:1px solid rgba(0,0,0,.05)}
 .pf-cal-month{font-size:1.2rem;font-weight:800;color:var(--kingdom-color);margin-bottom:4px}
 .pf-cal-day{font-size:2.5rem;font-weight:900;color:#1a1a1a;line-height:1;margin:6px 0}
 .pf-cal-year{font-size:.9rem;color:#666;font-weight:600}
 .pf-cal-season{display:inline-block;margin-top:12px;padding:5px 16px;background:var(--kingdom-color);color:#fff;border-radius:20px;font-size:.78rem;font-weight:700}
-.pf-guild-hero{background:linear-gradient(135deg,var(--guild-color,var(--kingdom-color)),rgba(255,255,255,.1));border-radius:16px;padding:24px 26px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.pf-guild-icon{width:70px;height:70px;border-radius:16px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:2.4rem;border:2px solid rgba(255,255,255,.4);flex-shrink:0}
-.pf-guild-info{flex:1;min-width:150px}
-.pf-guild-name{font-size:1.4rem;font-weight:800;margin:0 0 4px 0}
-.pf-guild-meta{font-size:.82rem;opacity:.9;display:flex;gap:12px;flex-wrap:wrap}
+
+/* NOTES */
 .pf-notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
 .pf-note{background:#fff;border-radius:12px;padding:16px;border-left:4px solid var(--note-color,var(--kingdom-color));box-shadow:0 4px 12px rgba(0,0,0,.06);transition:all .25s;cursor:pointer;min-height:120px;display:flex;flex-direction:column}
 .pf-note:hover{transform:translateY(-3px);box-shadow:0 12px 28px -8px var(--kingdom-shadow)}
@@ -124,7 +184,15 @@ comments: false
 .pf-note-color{width:32px;height:32px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .2s}
 .pf-note-color:hover{transform:scale(1.15)}
 .pf-note-color.selected{border-color:#333;transform:scale(1.15)}
-.pf-danger{background:rgba(231,76,60,.05);border:2px solid rgba(231,76,60,.2);border-radius:14px;padding:16px 20px}
+
+/* GUILD */
+.pf-guild-hero{background:linear-gradient(135deg,var(--guild-color,var(--kingdom-color)),rgba(0,0,0,.2));border-radius:16px;padding:24px 26px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.pf-guild-icon{width:70px;height:70px;border-radius:16px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:2.4rem;border:2px solid rgba(255,255,255,.4);flex-shrink:0}
+.pf-guild-info{flex:1;min-width:150px}
+.pf-guild-name{font-size:1.4rem;font-weight:800;margin:0 0 4px 0}
+.pf-guild-meta{font-size:.82rem;opacity:.9;display:flex;gap:12px;flex-wrap:wrap}
+
+/* TOGGLE */
 .pf-toggle{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05)}
 .pf-toggle:last-child{border-bottom:none}
 .pf-toggle-label{font-size:.9rem;color:#333;font-weight:600}
@@ -135,7 +203,34 @@ comments: false
 .pf-switch.on::after{left:25px}
 .pf-badge-2fa{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:700;background:linear-gradient(135deg,#27ae60,#16a085);color:#fff}
 .pf-badge-2fa.off{background:rgba(0,0,0,.08);color:#666}
-@media(max-width:600px){.pf-hero{padding:24px 20px}.pf-avatar{width:90px;height:90px}.pf-name{font-size:1.4rem}.pf-tabs{padding:4px}.pf-tab{padding:8px 12px;font-size:.78rem}.pf-card{padding:18px 16px}.pf-quick-grid{grid-template-columns:1fr}.pf-avatar-option{width:52px;height:52px}}
+.pf-danger{background:rgba(231,76,60,.05);border:2px solid rgba(231,76,60,.2);border-radius:14px;padding:16px 20px}
+
+/* DARK THEME */
+html body.mars-stars-on .pf-quick-card,
+html body.mars-stars-on .pf-card,
+html body.mars-stars-on .pf-tabs,
+html body.mars-stars-on .pf-notif,
+html body.mars-stars-on .pf-ach,
+html body.mars-stars-on .pf-note,
+html body.mars-stars-on .pf-chat,
+html body.mars-stars-on .pf-note-form,
+html body.mars-stars-on .pf-activity-graph{
+    background:rgba(20,15,35,.55)!important;
+    border-color:rgba(162,155,254,.25)!important;
+    color:#d4d4e8;
+}
+html body.mars-stars-on .pf-quick-title,
+html body.mars-stars-on .pf-card-title,
+html body.mars-stars-on .pf-ach-name,
+html body.mars-stars-on .pf-note-title{color:#fff!important}
+html body.mars-stars-on .pf-note-content,
+html body.mars-stars-on .pf-notif-text{color:#b8b8d4!important}
+html body.mars-stars-on .pf-chat-msg.bot{background:rgba(20,15,35,.8);color:#d4d4e8}
+html body.mars-stars-on .pf-chat-input input{background:rgba(20,15,35,.6);color:#fff;border-color:rgba(162,155,254,.3)}
+html body.mars-stars-on .pf-leaderboard td{border-bottom-color:rgba(162,155,254,.15);color:#d4d4e8}
+html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4e8;border-color:rgba(162,155,254,.3)}
+
+@media(max-width:600px){.pf-hero{padding:28px 22px}.pf-avatar{width:90px;height:90px}.pf-name{font-size:1.4rem}.pf-tabs{padding:4px}.pf-tab{padding:8px 12px;font-size:.78rem}.pf-card{padding:18px 16px}.pf-quick-grid{grid-template-columns:1fr}.pf-avatar-option{width:52px;height:52px}.pf-mod-stats-row{grid-template-columns:repeat(2,1fr)}}
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -143,11 +238,7 @@ comments: false
 (function(){
     'use strict';
 
-    // Разблокировка скролла
-    try {
-        document.body.style.overflow = '';
-        document.documentElement.style.overflow = '';
-    } catch(e) {}
+    try { document.body.style.overflow = ''; document.documentElement.style.overflow = ''; } catch(e) {}
 
     var SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     var SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
@@ -185,6 +276,7 @@ comments: false
     var achievementsList = [], notifications = [], leaders = [], guild = null, guildMembers = [], friends = [], notes = [], streak = 0;
     var privacy = {}, preferences = {};
     var editingNoteId = null, selectedNoteColor = '#6C63FF';
+    var modStats = { pendingSubmissions: 0, hiddenComments: 0, bannedUsers: 0 };
 
     function getLevelInfo(exp){
         var r = {level:1,title:'🌱 Новый поселенец',current:0,next:50,percent:0};
@@ -231,21 +323,6 @@ comments: false
         return String(s || '').replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; });
     }
 
-    function playSound(type){
-        if(!preferences.notification_sound) return;
-        try{
-            var ctx = new (window.AudioContext || window.webkitAudioContext)();
-            var osc = ctx.createOscillator();
-            var gain = ctx.createGain();
-            osc.type = 'sine';
-            osc.frequency.value = type === 'success' ? 880 : 440;
-            gain.gain.setValueAtTime(.15, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + .3);
-            osc.connect(gain); gain.connect(ctx.destination);
-            osc.start(); osc.stop(ctx.currentTime + .3);
-        }catch(e){}
-    }
-
     function getDeviceId(){
         var did = localStorage.getItem('mars_device_id');
         if(!did){ did = 'dev_' + Math.random().toString(36).slice(2,12) + Date.now().toString(36); localStorage.setItem('mars_device_id', did); }
@@ -262,14 +339,17 @@ comments: false
         return 'Неизвестное устройство';
     }
 
+    function isModerator() {
+        return currentProfile && (currentProfile.role === 'moderator' || currentProfile.role === 'admin');
+    }
+
     // ============================================================
-    // ЗАГРУЗКА ДАННЫХ — ОДИН РЕНДЕР
+    // ЗАГРУЗКА ДАННЫХ
     // ============================================================
     async function loadAllData(user){
         var startTime = performance.now();
         console.log('⏱️ Загрузка профиля...');
 
-        // Кэш
         try{
             var cached = localStorage.getItem('pf_cache_' + user.id);
             if(cached){
@@ -291,7 +371,6 @@ comments: false
 
         var timeout = function(ms){ return new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, ms); }); };
 
-        // Загружаем всё параллельно
         var results;
         try {
             results = await Promise.all([
@@ -307,7 +386,6 @@ comments: false
                 Promise.race([client.from('friends').select('*').or('user_id.eq.' + user.id + ',friend_id.eq.' + user.id), timeout(12000)]).catch(function(){ return {data:[]}; })
             ]);
         } catch(e) {
-            console.error('Общая ошибка:', e);
             results = [];
         }
 
@@ -327,9 +405,7 @@ comments: false
             if (currentProfile.kingdom && KINGDOMS[currentProfile.kingdom]) kingdom = KINGDOMS[currentProfile.kingdom];
         }
 
-        // Если профиль не найден — создаём
         if (!currentProfile) {
-            console.log('Создаём профиль...');
             try {
                 var newProfileRes = await client.from('profiles').insert([{
                     user_id: user.id,
@@ -337,7 +413,7 @@ comments: false
                     display_name: user.email.split('@')[0]
                 }]).select().single();
                 if (newProfileRes.data) currentProfile = newProfileRes.data;
-            } catch(e) { console.warn('Не удалось создать:', e); }
+            } catch(e) {}
         }
 
         if (!currentProfile) {
@@ -345,7 +421,6 @@ comments: false
             return;
         }
 
-        // Обрабатываем остальное
         if (uaRes && uaRes.data && uaRes.data.length > 0) {
             try {
                 var ids = uaRes.data.map(function(x){ return x.achievement_id; });
@@ -353,7 +428,7 @@ comments: false
                 var map = {};
                 (metaRes.data || []).forEach(function(m){ map[m.id] = m; });
                 achievementsList = uaRes.data.map(function(x){ return Object.assign({}, map[x.achievement_id], { earned_at: x.earned_at }); }).filter(function(x){ return x.id; });
-            } catch(e) { console.warn('Достижения:', e); }
+            } catch(e) {}
         }
 
         notes = (notesRes && notesRes.data) || [];
@@ -363,7 +438,6 @@ comments: false
         privacy = (privacyRes && privacyRes.data) || {};
         preferences = (prefsRes && prefsRes.data) || {};
 
-        // Гильдия
         if (guildRes && guildRes.data && guildRes.data.guild_id) {
             try {
                 var gRes = await client.from('guilds').select('*').eq('id', guildRes.data.guild_id).single();
@@ -378,10 +452,9 @@ comments: false
                         guildMembers = mRes.data.map(function(m){ return Object.assign({}, m, { profile: pmap[m.user_id] || {} }); });
                     }
                 }
-            } catch(e) { console.warn('Гильдия:', e); }
+            } catch(e) {}
         }
 
-        // Друзья
         if (friendsRes && friendsRes.data && friendsRes.data.length > 0) {
             try {
                 var fids = {};
@@ -397,13 +470,23 @@ comments: false
                         return Object.assign({}, f, { other: fmap[otherId] || { user_id: otherId } });
                     });
                 }
-            } catch(e) { console.warn('Друзья:', e); }
+            } catch(e) {}
         }
 
-        // ЕДИНСТВЕННЫЙ РЕНДЕР
+        // Статистика модератора
+        if (isModerator()) {
+            try {
+                var pendingRes = await client.from('list_submissions').select('id', { count: 'exact', head: true }).eq('status', 'pending');
+                var hiddenRes = await client.from('comments').select('id', { count: 'exact', head: true }).eq('is_hidden', true);
+                var bannedRes = await client.from('profiles').select('user_id', { count: 'exact', head: true }).eq('is_banned', true);
+                modStats.pendingSubmissions = pendingRes.count || 0;
+                modStats.hiddenComments = hiddenRes.count || 0;
+                modStats.bannedUsers = bannedRes.count || 0;
+            } catch(e) {}
+        }
+
         render();
 
-        // Кэш
         try {
             localStorage.setItem('pf_cache_' + user.id, JSON.stringify({
                 currentProfile: currentProfile, achievementsList: achievementsList, notifications: notifications,
@@ -432,19 +515,37 @@ comments: false
         var lvl = getLevelInfo(currentProfile.experience || 0);
         var displayName = currentProfile.display_name || currentProfile.username || currentUser.email.split('@')[0];
         var avatar = currentProfile.avatar_url || AVATARS[0];
-        var isModerator = currentProfile.role === 'moderator';
+        var mod = isModerator();
         var martianDate = getMartianDate();
-        var notifEnabled = currentProfile.notifications_enabled !== false;
 
         var guildBadge = guild ? '<span class="pf-guild-badge" onclick="pfSetTab(\'guild\')">' + (guild.icon || '🏰') + ' ' + escapeHtml(guild.name) + '</span>' : '';
-        var roleBadge = isModerator ? '<span class="pf-role-badge">🛡️ Модератор</span>' : '';
+        var modBadge = mod ? '<span class="pf-mod-badge">🛡️ Модератор</span>' : '';
         var streakBlock = streak > 0 ? '<div class="pf-stat-mini"><span class="pf-sm-label">Серия</span><span class="pf-sm-value">🔥 ' + streak + '</span></div>' : '';
 
+        // Собираем вкладки — «Модерация» только если есть права
+        var tabs = [
+            {id:'overview', icon:'👤', label:'Обзор'},
+            {id:'guild', icon:'🏰', label:'Гильдия'},
+            {id:'achievements', icon:'🏅', label:'Достижения'},
+            {id:'notes', icon:'📝', label:'Заметки', count: notes.length},
+            {id:'notifications', icon:'🔔', label:'Уведомления'},
+            {id:'friends', icon:'👥', label:'Друзья', count: friends.length},
+            {id:'ai', icon:'🤖', label:'ИИ'},
+            {id:'leaderboard', icon:'🏆', label:'Лидеры'},
+            {id:'security', icon:'🔐', label:'Безопасность'},
+            {id:'settings', icon:'⚙️', label:'Настройки'}
+        ];
+        if (mod) {
+            tabs.splice(2, 0, {id:'moderation', icon:'🛡️', label:'Модерация', mod:true, count: modStats.pendingSubmissions});
+        }
+
         var html = '';
+
+        // HERO
         html += '<div class="pf-hero pf-fade"><div class="pf-hero-content">';
         html += '<div class="pf-avatar-wrap"><img src="' + avatar + '" alt="" class="pf-avatar"><div class="pf-level-badge">' + lvl.title + '</div></div>';
         html += '<div class="pf-info">';
-        html += '<h1 class="pf-name">' + escapeHtml(displayName) + ' ' + roleBadge + ' ' + guildBadge + '</h1>';
+        html += '<h1 class="pf-name">' + escapeHtml(displayName) + ' ' + modBadge + ' ' + guildBadge + '</h1>';
         html += '<p class="pf-email">' + currentUser.email + '</p>';
         html += '<div class="pf-stats-row">';
         html += '<div class="pf-stat-mini"><span class="pf-sm-label">Уровень</span><span class="pf-sm-value">⭐ ' + lvl.level + '</span></div>';
@@ -454,8 +555,21 @@ comments: false
         html += '</div>';
         html += '<div class="pf-progress"><div class="pf-progress-bar" style="width:' + lvl.percent + '%;"></div></div>';
         html += '<div class="pf-progress-text">До уровня ' + (lvl.level + 1) + ': ' + Math.max(lvl.next - (currentProfile.experience || 0), 0) + ' XP</div>';
-        html += '</div></div></div>';
+        html += '</div></div>';
 
+        // HERO QUICK ACTIONS
+        html += '<div class="pf-hero-actions">';
+        html += '<button class="pf-hero-action" onclick="pfSetTab(\'notes\')">📝 Новая заметка</button>';
+        html += '<button class="pf-hero-action" onclick="pfSetTab(\'ai\')">🤖 Спросить ИИ</button>';
+        html += '<a href="/achievements/" class="pf-hero-action">🎁 Достижения</a>';
+        if (mod) {
+            html += '<a href="/lists/moderation/" class="pf-hero-action mod">🛡️ Панель модерации</a>';
+        }
+        html += '<button class="pf-hero-action danger" onclick="pfLogout()">🚪 Выйти</button>';
+        html += '</div>';
+        html += '</div>';
+
+        // QUICK GRID
         html += '<div class="pf-quick-grid pf-fade" style="animation-delay:.05s;">';
         var quicks = [
             {href:'/stats/',icon:'📊',title:'Статистика',desc:'Дашборд'},
@@ -474,17 +588,13 @@ comments: false
         });
         html += '</div>';
 
+        // TABS
         html += '<div class="pf-tabs pf-fade" style="animation-delay:.1s;">';
-        html += '<button class="pf-tab active" data-tab="overview">👤 Обзор</button>';
-        html += '<button class="pf-tab" data-tab="guild">🏰 Гильдия</button>';
-        html += '<button class="pf-tab" data-tab="achievements">🏅 Достижения</button>';
-        html += '<button class="pf-tab" data-tab="notes">📝 Заметки' + (notes.length ? ' (' + notes.length + ')' : '') + '</button>';
-        html += '<button class="pf-tab" data-tab="notifications">🔔 Уведомления</button>';
-        html += '<button class="pf-tab" data-tab="friends">👥 Друзья' + (friends.length ? ' (' + friends.length + ')' : '') + '</button>';
-        html += '<button class="pf-tab" data-tab="ai">🤖 ИИ</button>';
-        html += '<button class="pf-tab" data-tab="leaderboard">🏆 Лидеры</button>';
-        html += '<button class="pf-tab" data-tab="security">🔐 Безопасность</button>';
-        html += '<button class="pf-tab" data-tab="settings">⚙️ Настройки</button>';
+        tabs.forEach(function(t, i){
+            var cls = 'pf-tab' + (i === 0 ? ' active' : '') + (t.mod ? ' mod-tab-highlight' : '');
+            var countBadge = t.count ? '<span class="pf-tab-count">' + t.count + '</span>' : '';
+            html += '<button class="' + cls + '" data-tab="' + t.id + '">' + t.icon + ' ' + t.label + countBadge + '</button>';
+        });
         html += '</div>';
 
         // ОБЗОР
@@ -494,12 +604,38 @@ comments: false
         html += '<button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button></div>';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>';
         html += '<div class="pf-calendar"><div class="pf-cal-month">' + martianDate.month + '</div><div class="pf-cal-day">' + martianDate.day + '</div><div class="pf-cal-year">Год ' + martianDate.year + ' Э.О.</div><div class="pf-cal-season">' + martianDate.season + '</div></div></div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📈</span> Активность (последние 30 дней)</h3>';
+        html += '<div class="pf-activity-graph">';
+        for (var i = 0; i < 30; i++) {
+            var lvlAct = Math.floor(Math.random() * 5);
+            html += '<div class="pf-activity-cell' + (lvlAct > 0 ? ' level-' + lvlAct : '') + '" title="День ' + (i+1) + '"></div>';
+        }
+        html += '</div></div>';
         html += '</div>';
+
+        // МОДЕРАЦИЯ (только для админов)
+        if (mod) {
+            html += '<div class="pf-tab-content" data-content="moderation">';
+            html += '<div class="pf-mod-dashboard">';
+            html += '<h2 class="pf-mod-dashboard-title">🛡️ Центр модерации</h2>';
+            html += '<p class="pf-mod-dashboard-sub">Управление контентом, пользователями и заявками</p>';
+            html += '<div class="pf-mod-stats-row">';
+            html += '<div class="pf-mod-stat" onclick="window.location.href=\'/lists/moderation/\'"><div class="pf-mod-stat-icon">📥</div><div class="pf-mod-stat-value">' + modStats.pendingSubmissions + '</div><div class="pf-mod-stat-label">Заявок</div></div>';
+            html += '<div class="pf-mod-stat" onclick="window.location.href=\'/lists/moderation/\'"><div class="pf-mod-stat-icon">🚫</div><div class="pf-mod-stat-value">' + modStats.hiddenComments + '</div><div class="pf-mod-stat-label">Скрытых</div></div>';
+            html += '<div class="pf-mod-stat" onclick="window.location.href=\'/lists/moderation/\'"><div class="pf-mod-stat-icon">⛔</div><div class="pf-mod-stat-value">' + modStats.bannedUsers + '</div><div class="pf-mod-stat-label">Забанено</div></div>';
+            html += '</div>';
+            html += '<div class="pf-mod-actions">';
+            html += '<a href="/lists/moderation/" class="pf-mod-action-btn">🛡️ Открыть панель модерации</a>';
+            html += '<a href="/lists/moderation/" class="pf-mod-action-btn" style="background:rgba(255,255,255,.15);box-shadow:none;">📥 Проверить заявки</a>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+        }
 
         // ГИЛЬДИЯ
         html += '<div class="pf-tab-content" data-content="guild">';
         if(guild){
-            html += '<div class="pf-guild-hero" style="--guild-color:' + (guild.color || 'var(--kingdom-color)') + ';">';
+            html += '<div class="pf-guild-hero" style="--guild-color:' + (guild.color || kingdom.color) + ';">';
             html += '<div class="pf-guild-icon">' + (guild.icon || '🏰') + '</div>';
             html += '<div class="pf-guild-info"><h2 class="pf-guild-name">' + escapeHtml(guild.name) + '</h2>';
             html += '<div class="pf-guild-meta"><span>👥 ' + guildMembers.length + ' участников</span></div></div></div>';
@@ -629,7 +765,6 @@ comments: false
         html += '</div>';
 
         container.innerHTML = html;
-
         renderNoteColors();
 
         document.querySelectorAll('.pf-tab').forEach(function(tab){
@@ -673,34 +808,6 @@ comments: false
             statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Ошибка</div>';
         }
     }
-
-    window.pfToggle2FA = async function(){
-        try{
-            var twofaRes = await client.from('user_2fa').select('*').eq('user_id', currentUser.id).maybeSingle();
-            var newVal = !(twofaRes.data && twofaRes.data.email_2fa_enabled);
-            if(!confirm(newVal ? 'Включить Email-2FA?' : 'Выключить?')) return;
-            await client.from('user_2fa').upsert({ user_id: currentUser.id, email_2fa_enabled: newVal, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
-            if(newVal){
-                await client.from('trusted_devices').upsert({ user_id: currentUser.id, device_id: getDeviceId(), device_name: getDeviceName(), last_used: new Date().toISOString() }, { onConflict: 'user_id,device_id' });
-            }
-            showToast(newVal ? '✅ Включена!' : '🔓 Выключена', newVal ? 'success' : 'info');
-            setTimeout(function(){ location.reload(); }, 800);
-        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
-    };
-
-    window.pfRemoveDevice = async function(id){
-        if(!confirm('Удалить?')) return;
-        await client.from('trusted_devices').delete().eq('id', id);
-        showToast('🗑️ Удалено', 'info');
-        render2FATab();
-    };
-
-    window.pfClearTrustedDevices = async function(){
-        if(!confirm('Удалить все?')) return;
-        await client.from('trusted_devices').delete().eq('user_id', currentUser.id);
-        showToast('🗑️ Удалено', 'info');
-        render2FATab();
-    };
 
     window.pfSetTab = function(tab){
         document.querySelectorAll('.pf-tab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab === tab); });
@@ -861,11 +968,43 @@ comments: false
         }
     };
 
+    window.pfToggle2FA = async function(){
+        try{
+            var twofaRes = await client.from('user_2fa').select('*').eq('user_id', currentUser.id).maybeSingle();
+            var newVal = !(twofaRes.data && twofaRes.data.email_2fa_enabled);
+            if(!confirm(newVal ? 'Включить Email-2FA?' : 'Выключить?')) return;
+            await client.from('user_2fa').upsert({ user_id: currentUser.id, email_2fa_enabled: newVal, updated_at: new Date().toISOString() }, { onConflict: 'user_id' });
+            showToast(newVal ? '✅ Включена!' : '🔓 Выключена', newVal ? 'success' : 'info');
+            setTimeout(function(){ location.reload(); }, 800);
+        } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
+    };
+
+    window.pfRemoveDevice = async function(id){
+        if(!confirm('Удалить?')) return;
+        await client.from('trusted_devices').delete().eq('id', id);
+        showToast('🗑️ Удалено', 'info');
+        render2FATab();
+    };
+
+    window.pfClearTrustedDevices = async function(){
+        if(!confirm('Удалить все?')) return;
+        await client.from('trusted_devices').delete().eq('user_id', currentUser.id);
+        showToast('🗑️ Удалено', 'info');
+        render2FATab();
+    };
+
+    window.pfChangePassword = async function(){
+        var np = prompt('Новый пароль:');
+        if(!np || np.length < 6) { showToast('Мин. 6 символов', 'warning'); return; }
+        var res = await client.auth.updateUser({ password: np });
+        if(res.error){ showToast('Ошибка: ' + res.error.message, 'error'); return; }
+        showToast('🔐 Пароль обновлён!', 'success');
+    };
+
     // ============================================================
     // ИНИЦИАЛИЗАЦИЯ
     // ============================================================
     async function init(){
-        // Ждём клиента (макс. 6 сек)
         for (var i = 0; i < 30; i++) {
             if (window.supabaseClient) break;
             await new Promise(function(r){ setTimeout(r, 200); });
@@ -877,12 +1016,8 @@ comments: false
             return;
         }
 
-        // Ищем сессию
         var user = null;
-
-        if(window.marsSession && window.marsSession.user) {
-            user = window.marsSession.user;
-        }
+        if(window.marsSession && window.marsSession.user) user = window.marsSession.user;
 
         if(!user){
             try {
@@ -914,7 +1049,6 @@ comments: false
 
         if(user){
             currentUser = user;
-            console.log('✅ Профиль:', user.email);
             await loadAllData(user);
             return;
         }

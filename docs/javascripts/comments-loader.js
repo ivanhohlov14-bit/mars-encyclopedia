@@ -56,6 +56,7 @@
             '/lists/great-scribes/',
             '/lists/',
             '/terms/akademiya-okhasena/',
+            '/lists/moderation/',
             '/translator/'
         ];
 

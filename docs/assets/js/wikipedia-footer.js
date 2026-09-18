@@ -1,13 +1,10 @@
 // ============================================================
-// wikipedia-footer.js — VIP-футер в самом низу страницы
+// wikipedia-footer.js — VIP-футер всегда в самом низу статьи
 // ============================================================
 
 (function() {
     'use strict';
 
-    // ============================================================
-    // 🔧 НАСТРОЙКИ
-    // ============================================================
     var CONFIG = {
         siteName: 'Марсианская энциклопедия',
 
@@ -32,14 +29,15 @@
             { text: 'Статистика', href: '/statistics/' }
         ],
 
-        // Куда вставлять — самые дальние от центра контейнеры
-        targetSelectors: [
+        // ⚠️ ВАЖНО: контейнер, внутри которого будет футер
+        // Футер всегда ставится в КОНЕЦ этого контейнера
+        contentSelectors: [
             '.md-content__inner',
-            '.rst-content .section',
             '.rst-content',
             '.wy-nav-content',
             'article',
-            '.document'
+            '.document',
+            'main'
         ],
 
         skipPages: ['/secret/', '/secret-2/', '/login/', '/profile/', '/moderation/'],
@@ -47,17 +45,11 @@
         showBackToTop: true
     };
 
-    // ============================================================
-    // ПРОВЕРКА — не на служебных страницах
-    // ============================================================
     var path = window.location.pathname;
     for (var i = 0; i < CONFIG.skipPages.length; i++) {
         if (path.indexOf(CONFIG.skipPages[i]) === 0) return;
     }
 
-    // ============================================================
-    // 📄 СТИЛИ
-    // ============================================================
     var STYLES = [
         '.wiki-footer {',
         '  position: relative;',
@@ -200,7 +192,6 @@
         '  box-shadow: 0 16px 40px -8px rgba(108, 99, 255, 0.7);',
         '}',
 
-        // Тёмная тема
         'html body.mars-stars-on .wiki-footer {',
         '  background: rgba(20, 15, 35, 0.6) !important;',
         '  border-color: rgba(162, 155, 254, 0.25) !important;',
@@ -246,6 +237,7 @@
     function createFooter() {
         var footer = document.createElement('div');
         footer.className = 'wiki-footer';
+        footer.id = 'wiki-footer-block';
         footer.setAttribute('role', 'contentinfo');
 
         var html = '';
@@ -261,7 +253,6 @@
         if (CONFIG.links && CONFIG.links.length) {
             html += '<div class="wiki-footer-links">';
             CONFIG.links.forEach(function(link) {
-                // ✅ Без иконок-эмодзи
                 html += '<a href="' + link.href + '">' + link.text + '</a>';
             });
             html += '</div>';
@@ -315,32 +306,75 @@
     }
 
     // ============================================================
-    // 🔑 ВСТАВКА ФУТЕРА — В САМЫЙ НИЗ
+    // 🔑 НАЙТИ КОНТЕЙНЕР КОНТЕНТА
     // ============================================================
-    function insertFooter() {
-        var old = document.querySelector('.wiki-footer');
-        if (old) return old;
-
-        var footer = createFooter();
-
-        // ✅ Вставляем в КОНЕЦ body — ПОСЛЕ комментариев, лайков и всего остального
-        // Это гарантирует, что футер будет в самом низу
-        document.body.appendChild(footer);
-
-        return footer;
+    function findContentContainer() {
+        for (var i = 0; i < CONFIG.contentSelectors.length; i++) {
+            var el = document.querySelector(CONFIG.contentSelectors[i]);
+            if (el) return el;
+        }
+        return document.body;
     }
 
     // ============================================================
-    // 🔑 ПЕРЕНОС ФУТЕРА ВНИЗ (если что-то вставили после него)
+    // 🔑 ВСТАВИТЬ/ПЕРЕНЕСТИ ФУТЕР В КОНЕЦ КОНТЕЙНЕРА
     // ============================================================
-    function moveFooterToBottom() {
-        var footer = document.querySelector('.wiki-footer');
-        if (!footer) return;
+    function placeFooterAtBottom() {
+        var container = findContentContainer();
+        if (!container) return;
 
-        // Если футер не последний в body — переносим
-        if (footer.nextElementSibling) {
-            document.body.appendChild(footer);
+        var footer = document.getElementById('wiki-footer-block');
+
+        // Нет футера — создать и вставить
+        if (!footer) {
+            footer = createFooter();
+            container.appendChild(footer);
+            return;
         }
+
+        // Есть футер, но он не последний ребёнок контейнера — переносим в конец
+        var lastChild = container.lastElementChild;
+        if (lastChild !== footer) {
+            // Убираем из старого места
+            if (footer.parentNode) footer.parentNode.removeChild(footer);
+            // Вставляем в самый конец
+            container.appendChild(footer);
+        }
+    }
+
+    // ============================================================
+    // 🔑 MUTATION OBSERVER — следит за изменениями и держит футер внизу
+    // ============================================================
+    function watchForChanges() {
+        var container = findContentContainer();
+        if (!container) return;
+
+        var observer = new MutationObserver(function(mutations) {
+            // Игнорируем изменения самого футера
+            var onlyFooterChanged = true;
+            for (var i = 0; i < mutations.length; i++) {
+                var m = mutations[i];
+                // Если добавили/удалили что-то не связанное с футером — реагируем
+                for (var j = 0; j < m.addedNodes.length; j++) {
+                    var node = m.addedNodes[j];
+                    if (node.nodeType === 1 && !node.classList.contains('wiki-footer')) {
+                        onlyFooterChanged = false;
+                        break;
+                    }
+                }
+                if (!onlyFooterChanged) break;
+            }
+
+            if (!onlyFooterChanged) {
+                // Небольшая задержка — чтобы всё догрузилось
+                setTimeout(placeFooterAtBottom, 50);
+            }
+        });
+
+        observer.observe(container, {
+            childList: true,
+            subtree: false
+        });
     }
 
     // ============================================================
@@ -349,14 +383,23 @@
     function init() {
         injectStyles();
 
-        // Первая вставка
-        setTimeout(insertFooter, 400);
+        // Мгновенная вставка
+        placeFooterAtBottom();
 
-        // Проверка и перенос через 1 сек (когда комментарии и лайки догрузились)
-        setTimeout(moveFooterToBottom, 1200);
+        // Через 300 мс
+        setTimeout(placeFooterAtBottom, 300);
 
-        // Ещё раз через 2.5 сек — финальная страховка
-        setTimeout(moveFooterToBottom, 2500);
+        // Через 1 сек
+        setTimeout(placeFooterAtBottom, 1000);
+
+        // Через 2.5 сек (когда всё догрузилось)
+        setTimeout(placeFooterAtBottom, 2500);
+
+        // Через 5 сек (финальная страховка)
+        setTimeout(placeFooterAtBottom, 5000);
+
+        // MutationObserver
+        setTimeout(watchForChanges, 500);
 
         // Кнопка "Наверх"
         setTimeout(createBackToTop, 600);
@@ -368,15 +411,15 @@
         init();
     }
 
-    // SPA (Material instant loading)
+    // SPA
     if (typeof document$ !== 'undefined' && document$.subscribe) {
         document$.subscribe(function() {
             setTimeout(function() {
-                var old = document.querySelector('.wiki-footer');
+                var old = document.getElementById('wiki-footer-block');
                 if (old) old.remove();
-                insertFooter();
+                placeFooterAtBottom();
             }, 300);
-            setTimeout(moveFooterToBottom, 1500);
+            setTimeout(placeFooterAtBottom, 1500);
         });
     }
 

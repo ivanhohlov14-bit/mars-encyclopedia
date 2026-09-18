@@ -1,6 +1,5 @@
 // ============================================================
-// wikipedia-footer.js — VIP-футер в самом низу страницы
-// Цвет берётся из профиля пользователя (--kingdom-color)
+// wikipedia-footer.js — VIP-футер на всех страницах
 // ============================================================
 
 (function() {
@@ -38,7 +37,28 @@
             'main'
         ],
 
-        skipPages: ['/secret/', '/secret-2/', '/login/', '/profile/', '/moderation/']
+        // ✅ Оставляем только реально служебные страницы
+        // /profile/ УБРАН — футер теперь и там
+        skipPages: ['/secret/', '/secret-2/', '/login/', '/signup/']
+    };
+
+    var DEFAULT_COLOR = '#3498db'; // голубой по умолчанию
+    var STORAGE_KEY = 'mars_kingdom_color';
+
+    // Кэш всех королевств (дублирует данные из профиля)
+    var KINGDOM_COLORS = {
+        'Аркадия':    '#D4A574',
+        'Ксанф':      '#3D3D3D',
+        'Эдем':       '#F4A460',
+        'Эридания':   '#F5D76E',
+        'Кхонг':      '#A9A9A9',
+        'Авсония':    '#87CEEB',
+        'Кимерия':    '#B19CD9',
+        'Серпентида': '#E57373',
+        'Эритрей':    '#64B5F6',
+        'Утопия':     '#4DD0E1',
+        'Эллада':     '#FF8A65',
+        'Аливасото':  '#81C784'
     };
 
     var path = window.location.pathname;
@@ -47,25 +67,25 @@
     }
 
     // ============================================================
-    // 📄 СТИЛИ
+    // СТИЛИ
     // ============================================================
     var STYLES = [
         '.wiki-footer {',
         '  position: relative;',
         '  margin: 64px 0 32px 0;',
         '  padding: 32px 36px 28px;',
-        // Прозрачный фон с плавным переходом от белого через цвет профиля
+        // Прозрачный градиент через цвет профиля
         '  background: linear-gradient(135deg,',
         '    rgba(255, 255, 255, 0.55) 0%,',
-        '    color-mix(in srgb, var(--kingdom-color, #6C63FF) 6%, transparent) 40%,',
-        '    color-mix(in srgb, var(--kingdom-color, #6C63FF) 12%, transparent) 100%);',
-        '  border: 1px solid color-mix(in srgb, var(--kingdom-color, #6C63FF) 20%, transparent);',
+        '    color-mix(in srgb, var(--kingdom-color, #3498db) 6%, transparent) 40%,',
+        '    color-mix(in srgb, var(--kingdom-color, #3498db) 12%, transparent) 100%);',
+        '  border: 1px solid color-mix(in srgb, var(--kingdom-color, #3498db) 20%, transparent);',
         '  border-radius: 20px;',
         '  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;',
         '  font-size: 0.88rem;',
         '  line-height: 1.7;',
         '  color: #555;',
-        '  box-shadow: 0 4px 24px color-mix(in srgb, var(--kingdom-color, #6C63FF) 8%, transparent);',
+        '  box-shadow: 0 4px 24px color-mix(in srgb, var(--kingdom-color, #3498db) 8%, transparent);',
         '  overflow: hidden;',
         '  clear: both;',
         '  width: 100%;',
@@ -74,16 +94,15 @@
         '  -webkit-backdrop-filter: blur(8px);',
         '}',
 
-        // Верхняя цветная полоса — градиент от цвета профиля
         '.wiki-footer::before {',
         '  content: "";',
         '  position: absolute;',
         '  top: 0; left: 0; right: 0;',
         '  height: 4px;',
         '  background: linear-gradient(90deg,',
-        '    var(--kingdom-color, #6C63FF) 0%,',
-        '    color-mix(in srgb, var(--kingdom-color, #6C63FF) 50%, #ffffff) 50%,',
-        '    var(--kingdom-color, #6C63FF) 100%);',
+        '    var(--kingdom-color, #3498db) 0%,',
+        '    color-mix(in srgb, var(--kingdom-color, #3498db) 50%, #ffffff) 50%,',
+        '    var(--kingdom-color, #3498db) 100%);',
         '  border-radius: 20px 20px 0 0;',
         '}',
 
@@ -98,19 +117,19 @@
         '.wiki-footer-brand {',
         '  padding-bottom: 16px;',
         '  margin-bottom: 18px !important;',
-        '  border-bottom: 1px dashed color-mix(in srgb, var(--kingdom-color, #6C63FF) 20%, transparent);',
+        '  border-bottom: 1px dashed color-mix(in srgb, var(--kingdom-color, #3498db) 20%, transparent);',
         '  color: #444 !important;',
         '}',
 
         '.wiki-footer-brand strong { color: #1a1a2e; font-weight: 800; }',
         '.wiki-footer-brand em {',
-        '  color: var(--kingdom-color, #6C63FF);',
+        '  color: var(--kingdom-color, #3498db);',
         '  font-style: italic;',
         '  font-weight: 600;',
         '}',
 
         '.wiki-footer a {',
-        '  color: var(--kingdom-color, #6C63FF);',
+        '  color: var(--kingdom-color, #3498db);',
         '  text-decoration: none;',
         '  font-weight: 600;',
         '  border-bottom: 1px solid transparent;',
@@ -118,8 +137,7 @@
         '}',
 
         '.wiki-footer a:hover {',
-        '  border-bottom-color: var(--kingdom-color, #6C63FF);',
-        '  color: var(--kingdom-color, #6C63FF);',
+        '  border-bottom-color: var(--kingdom-color, #3498db);',
         '  filter: brightness(0.85);',
         '}',
 
@@ -132,16 +150,16 @@
         '  align-items: center;',
         '  padding-top: 18px;',
         '  margin-top: 4px;',
-        '  border-top: 1px dashed color-mix(in srgb, var(--kingdom-color, #6C63FF) 20%, transparent);',
+        '  border-top: 1px dashed color-mix(in srgb, var(--kingdom-color, #3498db) 20%, transparent);',
         '}',
 
         '.wiki-footer-links a {',
         '  display: inline-block;',
         '  padding: 8px 16px;',
-        '  background: color-mix(in srgb, var(--kingdom-color, #6C63FF) 8%, transparent);',
-        '  border: 1px solid color-mix(in srgb, var(--kingdom-color, #6C63FF) 20%, transparent);',
+        '  background: color-mix(in srgb, var(--kingdom-color, #3498db) 8%, transparent);',
+        '  border: 1px solid color-mix(in srgb, var(--kingdom-color, #3498db) 20%, transparent);',
         '  border-radius: 20px;',
-        '  color: var(--kingdom-color, #6C63FF) !important;',
+        '  color: var(--kingdom-color, #3498db) !important;',
         '  font-size: 0.85rem;',
         '  font-weight: 600;',
         '  text-decoration: none;',
@@ -150,20 +168,19 @@
         '}',
 
         '.wiki-footer-links a:hover {',
-        '  background: color-mix(in srgb, var(--kingdom-color, #6C63FF) 18%, transparent);',
-        '  border-color: var(--kingdom-color, #6C63FF);',
+        '  background: color-mix(in srgb, var(--kingdom-color, #3498db) 18%, transparent);',
+        '  border-color: var(--kingdom-color, #3498db);',
         '  transform: translateY(-2px);',
-        '  box-shadow: 0 6px 16px -4px color-mix(in srgb, var(--kingdom-color, #6C63FF) 35%, transparent);',
-        '  filter: none;',
+        '  box-shadow: 0 6px 16px -4px color-mix(in srgb, var(--kingdom-color, #3498db) 35%, transparent);',
         '}',
 
         // Тёмная тема
         'html body.mars-stars-on .wiki-footer {',
         '  background: linear-gradient(135deg,',
         '    rgba(20, 15, 35, 0.5) 0%,',
-        '    color-mix(in srgb, var(--kingdom-color, #A29BFE) 10%, rgba(20, 15, 35, 0.5)) 50%,',
-        '    color-mix(in srgb, var(--kingdom-color, #A29BFE) 18%, rgba(20, 15, 35, 0.5)) 100%) !important;',
-        '  border-color: color-mix(in srgb, var(--kingdom-color, #A29BFE) 35%, transparent) !important;',
+        '    color-mix(in srgb, var(--kingdom-color, #3498db) 10%, rgba(20, 15, 35, 0.5)) 50%,',
+        '    color-mix(in srgb, var(--kingdom-color, #3498db) 18%, rgba(20, 15, 35, 0.5)) 100%) !important;',
+        '  border-color: color-mix(in srgb, var(--kingdom-color, #3498db) 35%, transparent) !important;',
         '  color: #b8b8d4 !important;',
         '  backdrop-filter: blur(12px);',
         '  -webkit-backdrop-filter: blur(12px);',
@@ -172,26 +189,26 @@
         'html body.mars-stars-on .wiki-footer p { color: #b8b8d4 !important; }',
         'html body.mars-stars-on .wiki-footer-brand {',
         '  color: #d4d4e8 !important;',
-        '  border-bottom-color: color-mix(in srgb, var(--kingdom-color, #A29BFE) 30%, transparent) !important;',
+        '  border-bottom-color: color-mix(in srgb, var(--kingdom-color, #3498db) 30%, transparent) !important;',
         '}',
         'html body.mars-stars-on .wiki-footer-brand strong { color: #fff !important; }',
         'html body.mars-stars-on .wiki-footer-brand em {',
-        '  color: color-mix(in srgb, var(--kingdom-color, #A29BFE) 80%, #ffffff) !important;',
+        '  color: color-mix(in srgb, var(--kingdom-color, #3498db) 80%, #ffffff) !important;',
         '}',
         'html body.mars-stars-on .wiki-footer a {',
-        '  color: color-mix(in srgb, var(--kingdom-color, #A29BFE) 80%, #ffffff) !important;',
+        '  color: color-mix(in srgb, var(--kingdom-color, #3498db) 80%, #ffffff) !important;',
         '}',
         'html body.mars-stars-on .wiki-footer-links {',
-        '  border-top-color: color-mix(in srgb, var(--kingdom-color, #A29BFE) 30%, transparent) !important;',
+        '  border-top-color: color-mix(in srgb, var(--kingdom-color, #3498db) 30%, transparent) !important;',
         '}',
         'html body.mars-stars-on .wiki-footer-links a {',
-        '  background: color-mix(in srgb, var(--kingdom-color, #A29BFE) 15%, transparent) !important;',
-        '  border-color: color-mix(in srgb, var(--kingdom-color, #A29BFE) 35%, transparent) !important;',
-        '  color: color-mix(in srgb, var(--kingdom-color, #A29BFE) 70%, #ffffff) !important;',
+        '  background: color-mix(in srgb, var(--kingdom-color, #3498db) 15%, transparent) !important;',
+        '  border-color: color-mix(in srgb, var(--kingdom-color, #3498db) 35%, transparent) !important;',
+        '  color: color-mix(in srgb, var(--kingdom-color, #3498db) 70%, #ffffff) !important;',
         '}',
         'html body.mars-stars-on .wiki-footer-links a:hover {',
-        '  background: color-mix(in srgb, var(--kingdom-color, #A29BFE) 30%, transparent) !important;',
-        '  border-color: color-mix(in srgb, var(--kingdom-color, #A29BFE) 80%, #ffffff) !important;',
+        '  background: color-mix(in srgb, var(--kingdom-color, #3498db) 30%, transparent) !important;',
+        '  border-color: color-mix(in srgb, var(--kingdom-color, #3498db) 80%, #ffffff) !important;',
         '  color: #ffffff !important;',
         '}',
 
@@ -234,17 +251,81 @@
     }
 
     // ============================================================
-    // 🔑 ПОИСК КОНТЕЙНЕРА — родитель .rst-content
+    // 🎨 ПОЛУЧИТЬ ЦВЕТ ПРОФИЛЯ (с каскадным поиском)
+    // ============================================================
+    function getKingdomColor() {
+        // 1) Прямая переменная localStorage
+        try {
+            var saved = localStorage.getItem(STORAGE_KEY);
+            if (saved && /^#[0-9a-fA-F]{3,8}$/.test(saved)) {
+                return saved;
+            }
+        } catch(e) {}
+
+        // 2) Ищем в кэше профиля
+        try {
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key && key.indexOf('pf_cache_') === 0) {
+                    try {
+                        var cached = JSON.parse(localStorage.getItem(key));
+                        if (cached && cached.currentProfile && cached.currentProfile.kingdom) {
+                            var k = cached.currentProfile.kingdom;
+                            if (KINGDOM_COLORS[k]) {
+                                // Кэшируем глобально
+                                try { localStorage.setItem(STORAGE_KEY, KINGDOM_COLORS[k]); } catch(e) {}
+                                return KINGDOM_COLORS[k];
+                            }
+                        }
+                    } catch(e) {}
+                }
+            }
+        } catch(e) {}
+
+        // 3) Фолбэк — читаем CSS-переменную (уже установлена профилем)
+        try {
+            var fromCSS = getComputedStyle(document.documentElement)
+                .getPropertyValue('--kingdom-color').trim();
+            // Если это голубой/фиолетовый дефолт — считаем что пользователь не авторизован
+            if (fromCSS && fromCSS !== '#6C63FF' && fromCSS !== '#3498db') {
+                return fromCSS;
+            }
+        } catch(e) {}
+
+        return DEFAULT_COLOR;
+    }
+
+    // ============================================================
+    // 🎨 ПРИМЕНИТЬ ЦВЕТ КО ВСЕМУ
+    // ============================================================
+    function applyKingdomColor(color) {
+        if (!color) color = DEFAULT_COLOR;
+
+        // Устанавливаем на html и body
+        document.documentElement.style.setProperty('--kingdom-color', color);
+        document.body.style.setProperty('--kingdom-color', color);
+
+        // Флаг для диагностики
+        document.documentElement.setAttribute('data-kingdom-color', color);
+
+        // Применяем ко ВСЕМ элементам с этим цветом
+        var footer = document.getElementById('wiki-footer-block');
+        if (footer) {
+            footer.style.setProperty('--kingdom-color', color);
+        }
+    }
+
+    // ============================================================
+    // 🔑 ПОИСК КОНТЕЙНЕРА
     // ============================================================
     function findContentContainer() {
-        // Если есть .rst-content — вставляем в ЕГО РОДИТЕЛЯ (.wy-nav-content),
-        // потому что комментарии/лайки идут как СОСЕДИ .rst-content
+        // Если .rst-content есть — вставляем в его РОДИТЕЛЯ,
+        // чтобы футер был ПОСЛЕ комментариев и лайков
         var rst = document.querySelector('.rst-content');
         if (rst && rst.parentElement) {
             return rst.parentElement;
         }
 
-        // Fallback для других тем
         for (var i = 0; i < CONFIG.contentSelectors.length; i++) {
             var el = document.querySelector(CONFIG.contentSelectors[i]);
             if (el && el.children.length > 0) return el;
@@ -262,6 +343,9 @@
         if (!footer) {
             footer = createFooter();
             container.appendChild(footer);
+            // Применяем цвет сразу
+            var color = getKingdomColor();
+            applyKingdomColor(color);
             return;
         }
 
@@ -277,7 +361,7 @@
     }
 
     // ============================================================
-    // MUTATION OBSERVER — следит за всем деревом
+    // MUTATION OBSERVER
     // ============================================================
     var observer = null;
     var lastRun = 0;
@@ -310,78 +394,62 @@
         });
     }
 
-   // ============================================================
-// 🎨 СИНХРОНИЗАЦИЯ ЦВЕТА ПРОФИЛЯ
-// ============================================================
-function syncKingdomColor() {
-    var DEFAULT_COLOR = '#3498db'; // голубой по умолчанию
-    var color = DEFAULT_COLOR;
-
-    // 1) Пробуем взять сохранённый цвет профиля
-    try {
-        var saved = localStorage.getItem('mars_kingdom_color');
-        if (saved && /^#[0-9a-fA-F]{3,8}$/.test(saved)) {
-            color = saved;
-        } else {
-            // 2) Если нет — ищем в кэше профиля
-            for (var i = 0; i < localStorage.length; i++) {
-                var key = localStorage.key(i);
-                if (key && key.indexOf('pf_cache_') === 0) {
-                    try {
-                        var cached = JSON.parse(localStorage.getItem(key));
-                        if (cached && cached.currentProfile && cached.currentProfile.kingdom) {
-                            var KINGDOMS_MAP = {
-                                'Аркадия': '#D4A574',
-                                'Ксанф': '#3D3D3D',
-                                'Эдем': '#F4A460',
-                                'Эридания': '#F5D76E',
-                                'Кхонг': '#A9A9A9',
-                                'Авсония': '#87CEEB',
-                                'Кимерия': '#B19CD9',
-                                'Серпентида': '#E57373',
-                                'Эритрей': '#64B5F6',
-                                'Утопия': '#4DD0E1',
-                                'Эллада': '#FF8A65',
-                                'Аливасото': '#81C784'
-                            };
-                            var k = cached.currentProfile.kingdom;
-                            if (KINGDOMS_MAP[k]) {
-                                color = KINGDOMS_MAP[k];
-                                // На будущее — сохраняем глобально
-                                try { localStorage.setItem('mars_kingdom_color', color); } catch(e) {}
-                            }
-                            break;
-                        }
-                    } catch(e) {}
-                }
+    // ============================================================
+    // 🎧 СЛУШАЕМ ИЗМЕНЕНИЯ localStorage В ДРУГИХ ВКЛАДКАХ
+    // ============================================================
+    function watchColorChanges() {
+        window.addEventListener('storage', function(e) {
+            if (e.key === STORAGE_KEY) {
+                applyKingdomColor(e.newValue || DEFAULT_COLOR);
             }
-        }
-    } catch(e) {}
+        });
 
-    // Применяем цвет ко всему документу
-    document.documentElement.style.setProperty('--kingdom-color', color);
-    document.documentElement.setAttribute('data-kingdom-color', color);
-
-    // Дополнительно — если переключили тему, перезаписываем
-    document.body.style.setProperty('--kingdom-color', color);
-}
+        // Проверяем каждую секунду — если цвет изменился в текущей вкладке
+        var lastColor = getKingdomColor();
+        setInterval(function() {
+            var current = getKingdomColor();
+            if (current !== lastColor) {
+                lastColor = current;
+                applyKingdomColor(current);
+            }
+        }, 1000);
+    }
 
     // ============================================================
     // ЗАПУСК
     // ============================================================
     function init() {
         injectStyles();
-        syncKingdomColor();
+
+        // 🎨 Сразу применяем цвет (до вставки футера)
+        applyKingdomColor(getKingdomColor());
 
         enforceFooterAtBottom();
 
-        setTimeout(enforceFooterAtBottom, 100);
-        setTimeout(enforceFooterAtBottom, 300);
-        setTimeout(enforceFooterAtBottom, 800);
-        setTimeout(enforceFooterAtBottom, 1500);
-        setTimeout(enforceFooterAtBottom, 3000);
+        // Повторные попытки при загрузке
+        setTimeout(function() {
+            applyKingdomColor(getKingdomColor());
+            enforceFooterAtBottom();
+        }, 100);
+        setTimeout(function() {
+            applyKingdomColor(getKingdomColor());
+            enforceFooterAtBottom();
+        }, 300);
+        setTimeout(function() {
+            applyKingdomColor(getKingdomColor());
+            enforceFooterAtBottom();
+        }, 800);
+        setTimeout(function() {
+            applyKingdomColor(getKingdomColor());
+            enforceFooterAtBottom();
+        }, 1500);
+        setTimeout(function() {
+            applyKingdomColor(getKingdomColor());
+            enforceFooterAtBottom();
+        }, 3000);
 
         startObserver();
+        watchColorChanges();
     }
 
     if (document.readyState === 'loading') {
@@ -394,9 +462,9 @@ function syncKingdomColor() {
     if (typeof document$ !== 'undefined' && document$.subscribe) {
         document$.subscribe(function() {
             setTimeout(function() {
+                applyKingdomColor(getKingdomColor());
                 var old = document.getElementById('wiki-footer-block');
                 if (old) old.remove();
-                syncKingdomColor();
                 enforceFooterAtBottom();
                 startObserver();
             }, 300);
@@ -405,6 +473,8 @@ function syncKingdomColor() {
 
     // Для отладки
     window.forceFooterBottom = enforceFooterAtBottom;
+    window.getKingdomColor = getKingdomColor;
+    window.applyKingdomColor = applyKingdomColor;
 
-    console.log('📄 wikipedia-footer v4: активен');
+    console.log('📄 wikipedia-footer v5: активен | цвет:', getKingdomColor());
 })();

@@ -1064,3 +1064,63 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
     else init();
 })();
 </script>
+
+<script>
+window.showLevelUp = function(level, title) {
+  var overlay = document.createElement('div');
+  overlay.style.cssText = `
+    position: fixed; inset: 0; z-index: 999999;
+    background: radial-gradient(circle, rgba(108,99,255,0.6), rgba(0,0,0,0.9));
+    display: flex; align-items: center; justify-content: center;
+    animation: lvlFadeIn 0.4s ease;
+  `;
+  overlay.innerHTML = `
+    <div style="text-align: center; color: #fff; animation: lvlZoom 0.6s cubic-bezier(0.16,1,0.3,1);">
+      <div style="font-size: 8rem; margin-bottom: 20px; filter: drop-shadow(0 0 40px #A29BFE);">⭐</div>
+      <div style="font-size: 1rem; letter-spacing: 4px; opacity: 0.8;">УРОВЕНЬ</div>
+      <div style="font-size: 6rem; font-weight: 900; line-height: 1; background: linear-gradient(135deg, #fff, #A29BFE); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${level}</div>
+      <div style="font-size: 1.4rem; margin-top: 16px; font-weight: 700;">${title}</div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  
+  // Частицы
+  for (var i = 0; i < 60; i++) {
+    var p = document.createElement('div');
+    var angle = Math.random() * Math.PI * 2;
+    var dist = 200 + Math.random() * 400;
+    p.style.cssText = `
+      position: fixed; left: 50%; top: 50%;
+      width: 8px; height: 8px;
+      background: ${['#6C63FF','#A29BFE','#f39c12','#e74c3c'][i % 4]};
+      border-radius: 50%;
+      box-shadow: 0 0 20px currentColor;
+      animation: lvlParticle 1.2s ease forwards;
+      --dx: ${Math.cos(angle) * dist}px;
+      --dy: ${Math.sin(angle) * dist}px;
+    `;
+    overlay.appendChild(p);
+  }
+  
+  setTimeout(function() {
+    overlay.style.animation = 'lvlFadeOut 0.5s ease forwards';
+    setTimeout(function() { overlay.remove(); }, 500);
+  }, 2500);
+};
+
+// Стили
+var style = document.createElement('style');
+style.textContent = `
+  @keyframes lvlFadeIn { from { opacity: 0; } }
+  @keyframes lvlFadeOut { to { opacity: 0; } }
+  @keyframes lvlZoom { 
+    0% { transform: scale(0.3); opacity: 0; } 
+    60% { transform: scale(1.1); } 
+    100% { transform: scale(1); opacity: 1; } 
+  }
+  @keyframes lvlParticle {
+    to { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+  }
+`;
+document.head.appendChild(style);
+</script>

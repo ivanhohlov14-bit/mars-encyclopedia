@@ -1,9 +1,29 @@
 // ============================================================
-// wikipedia-footer.js — VIP-футер на всех страницах
+// wikipedia-footer.js — VIP-футер с анимированным градиентом
+// Цвет берётся из профиля пользователя ГАРАНТИРОВАННО
 // ============================================================
 
 (function() {
     'use strict';
+
+    var DEFAULT_COLOR = '#3498db';
+    var STORAGE_KEY = 'mars_kingdom_color';
+
+    // Все цвета королевств
+    var KINGDOM_COLORS = {
+        'Аркадия':    '#D4A574',
+        'Ксанф':      '#3D3D3D',
+        'Эдем':       '#F4A460',
+        'Эридания':   '#F5D76E',
+        'Кхонг':      '#A9A9A9',
+        'Авсония':    '#87CEEB',
+        'Кимерия':    '#B19CD9',
+        'Серпентида': '#E57373',
+        'Эритрей':    '#64B5F6',
+        'Утопия':     '#4DD0E1',
+        'Эллада':     '#FF8A65',
+        'Аливасото':  '#81C784'
+    };
 
     var CONFIG = {
         licenseNote:
@@ -37,28 +57,7 @@
             'main'
         ],
 
-        // ✅ Оставляем только реально служебные страницы
-        // /profile/ УБРАН — футер теперь и там
         skipPages: ['/secret/', '/secret-2/', '/login/', '/signup/']
-    };
-
-    var DEFAULT_COLOR = '#3498db'; // голубой по умолчанию
-    var STORAGE_KEY = 'mars_kingdom_color';
-
-    // Кэш всех королевств (дублирует данные из профиля)
-    var KINGDOM_COLORS = {
-        'Аркадия':    '#D4A574',
-        'Ксанф':      '#3D3D3D',
-        'Эдем':       '#F4A460',
-        'Эридания':   '#F5D76E',
-        'Кхонг':      '#A9A9A9',
-        'Авсония':    '#87CEEB',
-        'Кимерия':    '#B19CD9',
-        'Серпентида': '#E57373',
-        'Эритрей':    '#64B5F6',
-        'Утопия':     '#4DD0E1',
-        'Эллада':     '#FF8A65',
-        'Аливасото':  '#81C784'
     };
 
     var path = window.location.pathname;
@@ -67,153 +66,366 @@
     }
 
     // ============================================================
-    // СТИЛИ
+    // 🎨 ГЕНЕРАЦИЯ ПАЛИТРЫ ИЗ ОДНОГО ЦВЕТА
     // ============================================================
-    var STYLES = [
-    '.wiki-footer {',
-    '  position: relative;',
-    '  margin: 64px 0 32px 0;',
-    '  padding: 32px 36px 28px;',
-    // ✅ Смешиваем с БЕЛЫМ, а не transparent — теперь любой цвет виден
-    '  background: linear-gradient(135deg,',
-    '    color-mix(in srgb, var(--kingdom-color, #3498db) 8%, #ffffff) 0%,',
-    '    color-mix(in srgb, var(--kingdom-color, #3498db) 15%, #ffffff) 50%,',
-    '    color-mix(in srgb, var(--kingdom-color, #3498db) 22%, #ffffff) 100%);',
-    '  border: 1px solid color-mix(in srgb, var(--kingdom-color, #3498db) 35%, #ffffff);',
-    '  border-radius: 20px;',
-    '  font-family: -apple-system, "Segoe UI", Roboto, sans-serif;',
-    '  font-size: 0.88rem;',
-    '  line-height: 1.7;',
-    '  color: #555;',
-    '  box-shadow: 0 4px 24px color-mix(in srgb, var(--kingdom-color, #3498db) 20%, transparent);',
-    '  overflow: hidden;',
-    '  clear: both;',
-    '  width: 100%;',
-    '  box-sizing: border-box;',
-    '}',
+    function hexToRgb(hex) {
+        if (!hex) return { r: 52, g: 152, b: 219 };
+        var c = hex.replace('#', '');
+        if (c.length === 3) c = c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+        var n = parseInt(c, 16);
+        return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
+    }
 
-    '.wiki-footer::before {',
-    '  content: "";',
-    '  position: absolute;',
-    '  top: 0; left: 0; right: 0;',
-    '  height: 4px;',
-    '  background: linear-gradient(90deg,',
-    '    var(--kingdom-color, #3498db) 0%,',
-    '    color-mix(in srgb, var(--kingdom-color, #3498db) 60%, #ffffff) 50%,',
-    '    var(--kingdom-color, #3498db) 100%);',
-    '  border-radius: 20px 20px 0 0;',
-    '}',
+    function rgbToHex(r, g, b) {
+        return '#' + [r, g, b].map(function(x) {
+            var h = Math.max(0, Math.min(255, Math.round(x))).toString(16);
+            return h.length === 1 ? '0' + h : h;
+        }).join('');
+    }
 
-    '.wiki-footer p {',
-    '  position: relative;',
-    '  z-index: 1;',
-    '  margin: 0 0 14px 0;',
-    '  color: #555;',
-    '  line-height: 1.75;',
-    '}',
+    function mixWith(color, target, amount) {
+        // amount: 0 = только color, 1 = только target
+        var c = hexToRgb(color);
+        var t = hexToRgb(target);
+        return rgbToHex(
+            c.r + (t.r - c.r) * amount,
+            c.g + (t.g - c.g) * amount,
+            c.b + (t.b - c.b) * amount
+        );
+    }
 
-    '.wiki-footer-brand {',
-    '  padding-bottom: 16px;',
-    '  margin-bottom: 18px !important;',
-    '  border-bottom: 1px dashed color-mix(in srgb, var(--kingdom-color, #3498db) 35%, #ffffff);',
-    '  color: #333 !important;',
-    '}',
+    function lighten(color, amount) {
+        return mixWith(color, '#ffffff', amount);
+    }
 
-    '.wiki-footer-brand strong { color: #1a1a2e; font-weight: 800; }',
-    '.wiki-footer-brand em {',
-    '  color: color-mix(in srgb, var(--kingdom-color, #3498db) 85%, #000000);',
-    '  font-style: italic;',
-    '  font-weight: 700;',
-    '}',
+    function darken(color, amount) {
+        return mixWith(color, '#000000', amount);
+    }
 
-    '.wiki-footer a {',
-    '  color: color-mix(in srgb, var(--kingdom-color, #3498db) 85%, #000000);',
-    '  text-decoration: none;',
-    '  font-weight: 700;',
-    '  border-bottom: 1px solid transparent;',
-    '  transition: all 0.2s;',
-    '}',
+    // ============================================================
+    // 🔍 ГАРАНТИРОВАННЫЙ ПОИСК ЦВЕТА
+    // ============================================================
+    function detectKingdomColor() {
+        // 1) Прямо из localStorage
+        try {
+            var saved = localStorage.getItem(STORAGE_KEY);
+            if (saved && /^#[0-9a-fA-F]{3,8}$/.test(saved)) {
+                console.log('🎨 Цвет из localStorage:', saved);
+                return saved;
+            }
+        } catch(e) {}
 
-    '.wiki-footer a:hover {',
-    '  border-bottom-color: color-mix(in srgb, var(--kingdom-color, #3498db) 85%, #000000);',
-    '}',
+        // 2) Из кэша профиля
+        try {
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key && key.indexOf('pf_cache_') === 0) {
+                    try {
+                        var cached = JSON.parse(localStorage.getItem(key));
+                        if (cached && cached.currentProfile && cached.currentProfile.kingdom) {
+                            var k = cached.currentProfile.kingdom;
+                            if (KINGDOM_COLORS[k]) {
+                                try { localStorage.setItem(STORAGE_KEY, KINGDOM_COLORS[k]); } catch(e) {}
+                                console.log('🎨 Цвет из кэша профиля:', k, '→', KINGDOM_COLORS[k]);
+                                return KINGDOM_COLORS[k];
+                            }
+                        }
+                    } catch(e) {}
+                }
+            }
+        } catch(e) {}
 
-    '.wiki-footer-links {',
-    '  position: relative;',
-    '  z-index: 1;',
-    '  display: flex;',
-    '  flex-wrap: wrap;',
-    '  gap: 8px;',
-    '  align-items: center;',
-    '  padding-top: 18px;',
-    '  margin-top: 4px;',
-    '  border-top: 1px dashed color-mix(in srgb, var(--kingdom-color, #3498db) 35%, #ffffff);',
-    '}',
+        // 3) Из DOM — ищем data-атрибут
+        try {
+            var fromAttr = document.documentElement.getAttribute('data-kingdom-color');
+            if (fromAttr && /^#[0-9a-fA-F]{3,8}$/.test(fromAttr)) {
+                console.log('🎨 Цвет из data-атрибута:', fromAttr);
+                return fromAttr;
+            }
+        } catch(e) {}
 
-    '.wiki-footer-links a {',
-    '  display: inline-block;',
-    '  padding: 8px 16px;',
-    '  background: color-mix(in srgb, var(--kingdom-color, #3498db) 15%, #ffffff);',
-    '  border: 1px solid color-mix(in srgb, var(--kingdom-color, #3498db) 40%, #ffffff);',
-    '  border-radius: 20px;',
-    '  color: color-mix(in srgb, var(--kingdom-color, #3498db) 90%, #000000) !important;',
-    '  font-size: 0.85rem;',
-    '  font-weight: 700;',
-    '  text-decoration: none;',
-    '  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);',
-    '  border-bottom: none !important;',
-    '}',
+        // 4) Из CSS-переменной
+        try {
+            var fromCss = getComputedStyle(document.documentElement)
+                .getPropertyValue('--kingdom-color').trim();
+            if (fromCss && /^#[0-9a-fA-F]{3,8}$/.test(fromCss) &&
+                fromCss !== '#6C63FF' && fromCss !== '#3498db') {
+                console.log('🎨 Цвет из CSS-переменной:', fromCss);
+                return fromCss;
+            }
+        } catch(e) {}
 
-    '.wiki-footer-links a:hover {',
-    '  background: color-mix(in srgb, var(--kingdom-color, #3498db) 30%, #ffffff);',
-    '  border-color: var(--kingdom-color, #3498db);',
-    '  transform: translateY(-2px);',
-    '  box-shadow: 0 6px 16px -4px color-mix(in srgb, var(--kingdom-color, #3498db) 40%, transparent);',
-    '}',
+        console.log('🎨 Цвет по умолчанию:', DEFAULT_COLOR);
+        return DEFAULT_COLOR;
+    }
 
-    // Тёмная тема
-    'html body.mars-stars-on .wiki-footer {',
-    '  background: linear-gradient(135deg,',
-    '    color-mix(in srgb, var(--kingdom-color, #3498db) 15%, rgba(20, 15, 35, 0.85)) 0%,',
-    '    color-mix(in srgb, var(--kingdom-color, #3498db) 25%, rgba(20, 15, 35, 0.85)) 50%,',
-    '    color-mix(in srgb, var(--kingdom-color, #3498db) 35%, rgba(20, 15, 35, 0.85)) 100%) !important;',
-    '  border-color: color-mix(in srgb, var(--kingdom-color, #3498db) 50%, transparent) !important;',
-    '  color: #b8b8d4 !important;',
-    '  backdrop-filter: blur(12px);',
-    '  -webkit-backdrop-filter: blur(12px);',
-    '}',
+    // ============================================================
+    // 💉 ИНЖЕКЦИЯ КОМПОНЕНТОВ ЦВЕТА
+    // ============================================================
+    function injectColorVariables(color) {
+        var root = document.documentElement;
+        root.style.setProperty('--wf-primary', color);
+        root.style.setProperty('--wf-light', lighten(color, 0.35));
+        root.style.setProperty('--wf-lighter', lighten(color, 0.7));
+        root.style.setProperty('--wf-soft', lighten(color, 0.85));
+        root.style.setProperty('--wf-dark', darken(color, 0.2));
+        root.style.setProperty('--wf-darker', darken(color, 0.4));
+        root.style.setProperty('--wf-rgb', (function(c){
+            var rgb = hexToRgb(c);
+            return rgb.r + ',' + rgb.g + ',' + rgb.b;
+        })(color));
+    }
 
-    'html body.mars-stars-on .wiki-footer p { color: #d4d4e8 !important; }',
-    'html body.mars-stars-on .wiki-footer-brand {',
-    '  color: #e8e8f0 !important;',
-    '  border-bottom-color: color-mix(in srgb, var(--kingdom-color, #3498db) 50%, transparent) !important;',
-    '}',
-    'html body.mars-stars-on .wiki-footer-brand strong { color: #fff !important; }',
-    'html body.mars-stars-on .wiki-footer-brand em {',
-    '  color: color-mix(in srgb, var(--kingdom-color, #3498db) 40%, #ffffff) !important;',
-    '}',
-    'html body.mars-stars-on .wiki-footer a {',
-    '  color: color-mix(in srgb, var(--kingdom-color, #3498db) 40%, #ffffff) !important;',
-    '}',
-    'html body.mars-stars-on .wiki-footer-links {',
-    '  border-top-color: color-mix(in srgb, var(--kingdom-color, #3498db) 50%, transparent) !important;',
-    '}',
-    'html body.mars-stars-on .wiki-footer-links a {',
-    '  background: color-mix(in srgb, var(--kingdom-color, #3498db) 25%, transparent) !important;',
-    '  border-color: color-mix(in srgb, var(--kingdom-color, #3498db) 50%, transparent) !important;',
-    '  color: color-mix(in srgb, var(--kingdom-color, #3498db) 30%, #ffffff) !important;',
-    '}',
-    'html body.mars-stars-on .wiki-footer-links a:hover {',
-    '  background: color-mix(in srgb, var(--kingdom-color, #3498db) 45%, transparent) !important;',
-    '  border-color: color-mix(in srgb, var(--kingdom-color, #3498db) 60%, #ffffff) !important;',
-    '  color: #ffffff !important;',
-    '}',
+    // ============================================================
+    // 🎨 СТИЛИ С АНИМИРОВАННЫМ ГРАДИЕНТОМ
+    // ============================================================
+    function injectStyles() {
+        if (document.getElementById('wiki-footer-styles')) return;
 
-    '@media (max-width: 600px) {',
-    '  .wiki-footer { padding: 24px 20px 20px; margin: 40px 0 24px 0; border-radius: 14px; }',
-    '  .wiki-footer-links a { padding: 6px 12px; font-size: 0.78rem; }',
-    '}'
-].join('\n');
+        var style = document.createElement('style');
+        style.id = 'wiki-footer-styles';
+        style.textContent = `
+/* ==== КОНТЕЙНЕР ФУТЕРА ==== */
+.wiki-footer {
+    position: relative;
+    margin: 64px 0 32px 0;
+    padding: 32px 36px 28px;
+    border-radius: 20px;
+    font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #444;
+    overflow: hidden;
+    clear: both;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 8px 32px -8px rgba(var(--wf-rgb), 0.35);
+    isolation: isolate;
+    border: 1px solid rgba(var(--wf-rgb), 0.25);
+}
+
+/* ==== АНИМИРОВАННЫЙ ГРАДИЕНТНЫЙ ФОН ==== */
+.wiki-footer::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    z-index: -2;
+    background: linear-gradient(
+        135deg,
+        var(--wf-lighter) 0%,
+        var(--wf-soft) 25%,
+        var(--wf-lighter) 50%,
+        var(--wf-soft) 75%,
+        var(--wf-lighter) 100%
+    );
+    background-size: 300% 300%;
+    animation: wfGradientShift 18s ease infinite;
+}
+
+@keyframes wfGradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==== ВЕРХНЯЯ ЦВЕТНАЯ ПОЛОСА С БЛЕСКОМ ==== */
+.wiki-footer::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(
+        90deg,
+        var(--wf-primary) 0%,
+        var(--wf-light) 25%,
+        var(--wf-primary) 50%,
+        var(--wf-light) 75%,
+        var(--wf-primary) 100%
+    );
+    background-size: 200% 100%;
+    animation: wfTopBarShift 8s linear infinite;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 0 20px rgba(var(--wf-rgb), 0.6);
+}
+
+@keyframes wfTopBarShift {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* ==== МЯГКОЕ СВЕЧЕНИЕ В УГЛУ ==== */
+.wiki-footer > p:first-child::after {
+    content: '';
+    position: absolute;
+    top: -200px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(var(--wf-rgb), 0.15), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ==== ТЕКСТ ==== */
+.wiki-footer p {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 14px 0;
+    color: #4a4a5a;
+    line-height: 1.75;
+}
+
+.wiki-footer-brand {
+    padding-bottom: 16px;
+    margin-bottom: 18px !important;
+    border-bottom: 1px dashed rgba(var(--wf-rgb), 0.3);
+    color: #3a3a4a !important;
+}
+
+.wiki-footer-brand strong {
+    color: var(--wf-dark);
+    font-weight: 800;
+}
+
+.wiki-footer-brand em {
+    color: var(--wf-dark);
+    font-style: italic;
+    font-weight: 700;
+}
+
+/* ==== ССЫЛКИ В ТЕКСТЕ ==== */
+.wiki-footer a {
+    color: var(--wf-dark);
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.wiki-footer a:hover {
+    border-bottom-color: var(--wf-dark);
+}
+
+/* ==== БЛОК ССЫЛОК ==== */
+.wiki-footer-links {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    padding-top: 18px;
+    margin-top: 4px;
+    border-top: 1px dashed rgba(var(--wf-rgb), 0.3);
+}
+
+.wiki-footer-links a {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(var(--wf-rgb), 0.12);
+    border: 1px solid rgba(var(--wf-rgb), 0.35);
+    border-radius: 20px;
+    color: var(--wf-dark) !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border-bottom: none !important;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.wiki-footer-links a:hover {
+    background: rgba(var(--wf-rgb), 0.25);
+    border-color: var(--wf-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px rgba(var(--wf-rgb), 0.5);
+    color: var(--wf-darker) !important;
+}
+
+/* ============================================
+   🌌 ТЁМНАЯ ТЕМА
+   ============================================ */
+html body.mars-stars-on .wiki-footer {
+    color: #d4d4e8;
+    border-color: rgba(var(--wf-rgb), 0.5);
+    box-shadow: 0 8px 40px -8px rgba(var(--wf-rgb), 0.4);
+}
+
+html body.mars-stars-on .wiki-footer::before {
+    background: linear-gradient(
+        135deg,
+        rgba(20, 15, 35, 0.92) 0%,
+        rgba(var(--wf-rgb), 0.18) 50%,
+        rgba(20, 15, 35, 0.92) 100%
+    );
+    background-size: 300% 300%;
+}
+
+html body.mars-stars-on .wiki-footer::after {
+    background: linear-gradient(
+        90deg,
+        var(--wf-primary) 0%,
+        var(--wf-light) 50%,
+        var(--wf-primary) 100%
+    );
+    background-size: 200% 100%;
+    box-shadow: 0 0 24px rgba(var(--wf-rgb), 0.8);
+}
+
+html body.mars-stars-on .wiki-footer p {
+    color: #c8c8dc !important;
+}
+
+html body.mars-stars-on .wiki-footer-brand {
+    color: #e0e0ee !important;
+    border-bottom-color: rgba(var(--wf-rgb), 0.4) !important;
+}
+
+html body.mars-stars-on .wiki-footer-brand strong {
+    color: #ffffff !important;
+}
+
+html body.mars-stars-on .wiki-footer-brand em {
+    color: var(--wf-light) !important;
+}
+
+html body.mars-stars-on .wiki-footer a {
+    color: var(--wf-light) !important;
+}
+
+html body.mars-stars-on .wiki-footer-links {
+    border-top-color: rgba(var(--wf-rgb), 0.4) !important;
+}
+
+html body.mars-stars-on .wiki-footer-links a {
+    background: rgba(var(--wf-rgb), 0.15) !important;
+    border-color: rgba(var(--wf-rgb), 0.4) !important;
+    color: var(--wf-light) !important;
+}
+
+html body.mars-stars-on .wiki-footer-links a:hover {
+    background: rgba(var(--wf-rgb), 0.3) !important;
+    border-color: var(--wf-light) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 24px -4px rgba(var(--wf-rgb), 0.6);
+}
+
+/* ============================================
+   📱 МОБИЛЬНЫЙ
+   ============================================ */
+@media (max-width: 600px) {
+    .wiki-footer {
+        padding: 24px 20px 20px;
+        margin: 40px 0 24px 0;
+        border-radius: 14px;
+    }
+    .wiki-footer-links a {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+    }
+}
+`;
+        document.head.appendChild(style);
+    }
 
     // ============================================================
     // СОЗДАНИЕ ФУТЕРА
@@ -237,92 +449,13 @@
     }
 
     // ============================================================
-    // ИНЖЕКЦИЯ СТИЛЕЙ
-    // ============================================================
-    function injectStyles() {
-        if (document.getElementById('wiki-footer-styles')) return;
-        var style = document.createElement('style');
-        style.id = 'wiki-footer-styles';
-        style.textContent = STYLES;
-        document.head.appendChild(style);
-    }
-
-    // ============================================================
-    // 🎨 ПОЛУЧИТЬ ЦВЕТ ПРОФИЛЯ (с каскадным поиском)
-    // ============================================================
-    function getKingdomColor() {
-        // 1) Прямая переменная localStorage
-        try {
-            var saved = localStorage.getItem(STORAGE_KEY);
-            if (saved && /^#[0-9a-fA-F]{3,8}$/.test(saved)) {
-                return saved;
-            }
-        } catch(e) {}
-
-        // 2) Ищем в кэше профиля
-        try {
-            for (var i = 0; i < localStorage.length; i++) {
-                var key = localStorage.key(i);
-                if (key && key.indexOf('pf_cache_') === 0) {
-                    try {
-                        var cached = JSON.parse(localStorage.getItem(key));
-                        if (cached && cached.currentProfile && cached.currentProfile.kingdom) {
-                            var k = cached.currentProfile.kingdom;
-                            if (KINGDOM_COLORS[k]) {
-                                // Кэшируем глобально
-                                try { localStorage.setItem(STORAGE_KEY, KINGDOM_COLORS[k]); } catch(e) {}
-                                return KINGDOM_COLORS[k];
-                            }
-                        }
-                    } catch(e) {}
-                }
-            }
-        } catch(e) {}
-
-        // 3) Фолбэк — читаем CSS-переменную (уже установлена профилем)
-        try {
-            var fromCSS = getComputedStyle(document.documentElement)
-                .getPropertyValue('--kingdom-color').trim();
-            // Если это голубой/фиолетовый дефолт — считаем что пользователь не авторизован
-            if (fromCSS && fromCSS !== '#6C63FF' && fromCSS !== '#3498db') {
-                return fromCSS;
-            }
-        } catch(e) {}
-
-        return DEFAULT_COLOR;
-    }
-
-    // ============================================================
-    // 🎨 ПРИМЕНИТЬ ЦВЕТ КО ВСЕМУ
-    // ============================================================
-    function applyKingdomColor(color) {
-        if (!color) color = DEFAULT_COLOR;
-
-        // Устанавливаем на html и body
-        document.documentElement.style.setProperty('--kingdom-color', color);
-        document.body.style.setProperty('--kingdom-color', color);
-
-        // Флаг для диагностики
-        document.documentElement.setAttribute('data-kingdom-color', color);
-
-        // Применяем ко ВСЕМ элементам с этим цветом
-        var footer = document.getElementById('wiki-footer-block');
-        if (footer) {
-            footer.style.setProperty('--kingdom-color', color);
-        }
-    }
-
-    // ============================================================
-    // 🔑 ПОИСК КОНТЕЙНЕРА
+    // ПОИСК КОНТЕЙНЕРА
     // ============================================================
     function findContentContainer() {
-        // Если .rst-content есть — вставляем в его РОДИТЕЛЯ,
-        // чтобы футер был ПОСЛЕ комментариев и лайков
         var rst = document.querySelector('.rst-content');
         if (rst && rst.parentElement) {
             return rst.parentElement;
         }
-
         for (var i = 0; i < CONFIG.contentSelectors.length; i++) {
             var el = document.querySelector(CONFIG.contentSelectors[i]);
             if (el && el.children.length > 0) return el;
@@ -331,7 +464,7 @@
     }
 
     // ============================================================
-    // 🔑 ДЕРЖИМ ФУТЕР В САМОМ НИЗУ
+    // ПЕРЕНЕСТИ ФУТЕР В КОНЕЦ
     // ============================================================
     function enforceFooterAtBottom() {
         var footer = document.getElementById('wiki-footer-block');
@@ -340,9 +473,6 @@
         if (!footer) {
             footer = createFooter();
             container.appendChild(footer);
-            // Применяем цвет сразу
-            var color = getKingdomColor();
-            applyKingdomColor(color);
             return;
         }
 
@@ -358,6 +488,17 @@
     }
 
     // ============================================================
+    // 🎨 ОБНОВИТЬ ЦВЕТ (применяем каждый раз при загрузке и изменении)
+    // ============================================================
+    function refreshColor() {
+        var color = detectKingdomColor();
+        injectColorVariables(color);
+        document.documentElement.setAttribute('data-kingdom-color', color);
+        document.documentElement.style.setProperty('--kingdom-color', color);
+        return color;
+    }
+
+    // ============================================================
     // MUTATION OBSERVER
     // ============================================================
     var observer = null;
@@ -370,8 +511,7 @@
         observer = new MutationObserver(function(mutations) {
             var onlyFooterChanges = true;
             for (var i = 0; i < mutations.length; i++) {
-                var m = mutations[i];
-                var target = m.target;
+                var target = mutations[i].target;
                 if (target && target.closest && target.closest('.wiki-footer')) continue;
                 onlyFooterChanges = false;
                 break;
@@ -392,22 +532,23 @@
     }
 
     // ============================================================
-    // 🎧 СЛУШАЕМ ИЗМЕНЕНИЯ localStorage В ДРУГИХ ВКЛАДКАХ
+    // 🎧 СЛЕЖЕНИЕ ЗА ИЗМЕНЕНИЯМИ ЦВЕТА
     // ============================================================
     function watchColorChanges() {
+        // Изменения из других вкладок
         window.addEventListener('storage', function(e) {
             if (e.key === STORAGE_KEY) {
-                applyKingdomColor(e.newValue || DEFAULT_COLOR);
+                refreshColor();
             }
         });
 
-        // Проверяем каждую секунду — если цвет изменился в текущей вкладке
-        var lastColor = getKingdomColor();
+        // Опрос каждую секунду — если что-то изменилось
+        var lastColor = null;
         setInterval(function() {
-            var current = getKingdomColor();
+            var current = detectKingdomColor();
             if (current !== lastColor) {
                 lastColor = current;
-                applyKingdomColor(current);
+                refreshColor();
             }
         }, 1000);
     }
@@ -418,32 +559,18 @@
     function init() {
         injectStyles();
 
-        // 🎨 Сразу применяем цвет (до вставки футера)
-        applyKingdomColor(getKingdomColor());
+        // 🎨 Применяем цвет СРАЗУ
+        refreshColor();
+        console.log('🎨 wikipedia-footer: цвет =', detectKingdomColor());
 
         enforceFooterAtBottom();
 
-        // Повторные попытки при загрузке
-        setTimeout(function() {
-            applyKingdomColor(getKingdomColor());
-            enforceFooterAtBottom();
-        }, 100);
-        setTimeout(function() {
-            applyKingdomColor(getKingdomColor());
-            enforceFooterAtBottom();
-        }, 300);
-        setTimeout(function() {
-            applyKingdomColor(getKingdomColor());
-            enforceFooterAtBottom();
-        }, 800);
-        setTimeout(function() {
-            applyKingdomColor(getKingdomColor());
-            enforceFooterAtBottom();
-        }, 1500);
-        setTimeout(function() {
-            applyKingdomColor(getKingdomColor());
-            enforceFooterAtBottom();
-        }, 3000);
+        // Повторные вызовы при загрузке
+        setTimeout(function() { refreshColor(); enforceFooterAtBottom(); }, 100);
+        setTimeout(function() { refreshColor(); enforceFooterAtBottom(); }, 300);
+        setTimeout(function() { refreshColor(); enforceFooterAtBottom(); }, 800);
+        setTimeout(function() { refreshColor(); enforceFooterAtBottom(); }, 1500);
+        setTimeout(function() { refreshColor(); enforceFooterAtBottom(); }, 3000);
 
         startObserver();
         watchColorChanges();
@@ -459,7 +586,7 @@
     if (typeof document$ !== 'undefined' && document$.subscribe) {
         document$.subscribe(function() {
             setTimeout(function() {
-                applyKingdomColor(getKingdomColor());
+                refreshColor();
                 var old = document.getElementById('wiki-footer-block');
                 if (old) old.remove();
                 enforceFooterAtBottom();
@@ -468,10 +595,9 @@
         });
     }
 
-    // Для отладки
-    window.forceFooterBottom = enforceFooterAtBottom;
-    window.getKingdomColor = getKingdomColor;
-    window.applyKingdomColor = applyKingdomColor;
+    // Отладка
+    window.wfRefreshColor = refreshColor;
+    window.wfDetectColor = detectKingdomColor;
 
-    console.log('📄 wikipedia-footer v5: активен | цвет:', getKingdomColor());
+    console.log('📄 wikipedia-footer v6: активен');
 })();

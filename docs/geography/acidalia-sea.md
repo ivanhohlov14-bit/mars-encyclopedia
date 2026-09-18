@@ -87,7 +87,7 @@
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <!-- Омываемые государства -->
+   <!-- Омываемые государства -->
   <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Омываемые государства
   </div>
@@ -105,6 +105,19 @@
       <a href="https://mars-wiki.ru/geography/utopia/" style="color: #1a3a4a; text-decoration: underline;">Утопия</a>
     </div>
   </div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Звук моря -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Звук моря
+  </div>
+
+  <div class="mars-sound mars-sound--infobox"
+       data-src="/assets/sounds/the-sound-of-the-waves-the-sea.mp3"
+       data-title="Ацидалийское море"
+       data-caption="Реконструкция звука на основе данных NASA о ветрах и волнах Марса"
+       data-theme="blue"></div>
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 

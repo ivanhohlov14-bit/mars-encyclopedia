@@ -86,7 +86,7 @@ extra_javascript:
   # - assets/js/vip-scroll-reveal.js
   - assets/js/vip-cursor.js
   - assets/js/mars-audio.js
-  - assets/js/ui-sounds.js
+  # - assets/js/ui-sounds.js
   # - assets/js/vip-loader.js
   # - assets/js/sound-engine.js
   # - assets/js/sound-ui.js

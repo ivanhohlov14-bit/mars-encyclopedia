@@ -82,6 +82,9 @@ extra_javascript:
   - assets/js/effects-menu.js
   - assets/js/collapse-menu.js?v=12
   - assets/js/auto-categories.js?v=2
+  - assets/js/mars-dust.js
+  - assets/js/vip-scroll-reveal.js
+  - assets/js/vip-cursor.js
   # - assets/js/sound-engine.js
   # - assets/js/sound-ui.js
   # - assets/js/mobile-debug.js

@@ -1,12 +1,18 @@
 // ============================================================
-// ui-sounds.js — файлы + синтез через Web Audio
+// ui-sounds.js — VIP v5
+// Красивые синтезированные звуки с реверберацией
 // ============================================================
 
 (function() {
     'use strict';
 
     var ctx = null;
+    var reverbNode = null;
+    var pianoBuffer = null;
 
+    // ============================================================
+    // 🔊 WEB AUDIO КОНТЕКСТ
+    // ============================================================
     function getCtx() {
         if (ctx) return ctx;
         try {
@@ -16,274 +22,483 @@
     }
 
     // ============================================================
-    // 📁 ФАЙЛЫ (в корне /assets/sounds/)
+    // 🌊 КОНВОЛЮЦИОННЫЙ РЕВЕРБ (долгий, «в пещере»)
     // ============================================================
-    var files = {
-        piano: new Audio('/assets/sounds/868526__sadiquecat__processed-piano-a4.wav'),
-        click: new Audio('/assets/sounds/202313__7778__click-2.mp3')
-    };
-    files.piano.volume = 0.4;
-    files.piano.preload = 'auto';
-    files.click.volume = 0.3;
-    files.click.preload = 'auto';
+    function getReverb() {
+        if (reverbNode) return reverbNode;
+        var c = getCtx();
+        if (!c) return null;
 
-    function playFile(name) {
-        var a = files[name];
-        if (!a) return;
+        var rate = c.sampleRate;
+        var length = rate * 1.8;
+        var impulse = c.createBuffer(2, length, rate);
+
+        for (var ch = 0; ch < 2; ch++) {
+            var data = impulse.getChannelData(ch);
+            for (var i = 0; i < length; i++) {
+                var env = Math.pow(1 - i / length, 2.8);
+                data[i] = (Math.random() * 2 - 1) * env;
+            }
+        }
+
+        reverbNode = c.createConvolver();
+        reverbNode.buffer = impulse;
+
+        var wet = c.createGain();
+        wet.gain.value = 0.32;
+        reverbNode.connect(wet);
+        wet.connect(c.destination);
+
+        return reverbNode;
+    }
+
+    // ============================================================
+    // 📥 ЗАГРУЗКА PIANO.WAV (для торжественных моментов)
+    // ============================================================
+    async function loadPiano() {
+        var c = getCtx();
+        if (!c) return;
         try {
-            a.currentTime = 0;
-            var p = a.play();
-            if (p && p.catch) p.catch(function() {});
+            var res = await fetch('/assets/sounds/868526__sadiquecat__processed-piano-a4.wav');
+            var arr = await res.arrayBuffer();
+            pianoBuffer = await c.decodeAudioData(arr);
         } catch (e) {}
     }
 
     // ============================================================
-    // 🎹 СИНТЕЗ — тональные звуки
+    // 🎹 ГЕНЕРАТОРЫ ЗВУКОВ
     // ============================================================
 
-    // Универсальный свуп
-    function sweep(freqStart, freqEnd, duration, volume, type) {
+    // Универсальный тон с обёрткой (атака + затухание + реверб)
+    function playTone(freq, options) {
         var c = getCtx();
         if (!c) return;
         if (c.state === 'suspended') c.resume();
 
-        var t = c.currentTime;
+        options = options || {};
+        var duration = options.duration || 0.25;
+        var volume = options.volume || 0.15;
+        var type = options.type || 'sine';
+        var reverbMix = options.reverb !== undefined ? options.reverb : 0.35;
+        var filterFreq = options.filter || 4000;
+        var delay = options.delay || 0;
+
+        var t = c.currentTime + delay;
+
         var osc = c.createOscillator();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, t);
+
+        if (options.slideTo) {
+            osc.frequency.exponentialRampToValueAtTime(options.slideTo, t + duration);
+        }
+
         var gain = c.createGain();
+        var attack = options.attack || 0.008;
+        var release = options.release || duration;
 
-        osc.type = type || 'triangle';
-        osc.frequency.setValueAtTime(freqStart, t);
-        osc.frequency.exponentialRampToValueAtTime(freqEnd, t + duration);
+        gain.gain.setValueAtTime(0.0001, t);
+        gain.gain.exponentialRampToValueAtTime(volume, t + attack);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + release);
 
-        gain.gain.setValueAtTime(0.001, t);
-        gain.gain.exponentialRampToValueAtTime(volume, t + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.001, t + duration);
+        var filter = c.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(filterFreq, t);
+        filter.Q.value = 0.7;
 
-        osc.connect(gain);
-        gain.connect(c.destination);
+        var dry = c.createGain();
+        dry.gain.value = 1 - reverbMix;
+
+        var wet = c.createGain();
+        wet.gain.value = reverbMix;
+
+        var rev = getReverb();
+
+        osc.connect(filter);
+        filter.connect(dry);
+        dry.connect(c.destination);
+
+        if (rev) {
+            filter.connect(wet);
+            wet.connect(rev);
+        }
+
         osc.start(t);
-        osc.stop(t + duration);
+        osc.stop(t + release + 0.05);
     }
 
-    // Включение — восходящий
+    // Красивый «хрустальный» клик — короткий тинк с эхом
+    function playClick() {
+        playTone(1760, {           // A6 — высокий «тинк»
+            duration: 0.18,
+            volume: 0.08,           // тихо
+            type: 'sine',
+            reverb: 0.55,           // много эха
+            filter: 5000,
+            attack: 0.002,
+            release: 0.18
+        });
+
+        // Второй тон — мягче, ниже
+        playTone(880, {
+            duration: 0.22,
+            volume: 0.04,
+            type: 'sine',
+            reverb: 0.5,
+            filter: 3500,
+            attack: 0.003,
+            release: 0.22,
+            delay: 0.01
+        });
+    }
+
+    // Наведение — еле слышный «шелест»
+    function playHover() {
+        playTone(2400, {
+            duration: 0.08,
+            volume: 0.025,
+            type: 'sine',
+            reverb: 0.3,
+            filter: 6000,
+            attack: 0.001,
+            release: 0.08
+        });
+    }
+
+    // Включение — восходящий свуп
     function playToggleOn() {
-        sweep(400, 900, 0.18, 0.2, 'triangle');
+        playTone(523.25, {          // C5
+            duration: 0.25,
+            volume: 0.14,
+            type: 'triangle',
+            slideTo: 1046.5,        // C6
+            reverb: 0.4,
+            filter: 5000,
+            attack: 0.005,
+            release: 0.25
+        });
     }
 
-    // Выключение — нисходящий
+    // Выключение — нисходящий свуп
     function playToggleOff() {
-        sweep(900, 400, 0.18, 0.2, 'triangle');
-    }
-
-    // Выход / logout — два нисходящих тона (грустный аккорд)
-    function playExit() {
-        var c = getCtx();
-        if (!c) return;
-        if (c.state === 'suspended') c.resume();
-
-        var t = c.currentTime;
-        var notes = [523.25, 392.00, 261.63]; // C5 → G4 → C4
-
-        notes.forEach(function(freq, i) {
-            var osc = c.createOscillator();
-            var gain = c.createGain();
-            osc.type = 'sine';
-            osc.frequency.value = freq;
-
-            var start = t + i * 0.1;
-            gain.gain.setValueAtTime(0.001, start);
-            gain.gain.exponentialRampToValueAtTime(0.18, start + 0.03);
-            gain.gain.exponentialRampToValueAtTime(0.001, start + 0.35);
-
-            osc.connect(gain);
-            gain.connect(c.destination);
-            osc.start(start);
-            osc.stop(start + 0.35);
+        playTone(1046.5, {
+            duration: 0.25,
+            volume: 0.14,
+            type: 'triangle',
+            slideTo: 523.25,
+            reverb: 0.4,
+            filter: 5000,
+            attack: 0.005,
+            release: 0.25
         });
     }
 
-    // Вход / login — два восходящих
-    function playLogin() {
-        var c = getCtx();
-        if (!c) return;
-        if (c.state === 'suspended') c.resume();
-
-        var t = c.currentTime;
-        var notes = [392.00, 523.25, 659.25]; // G4 → C5 → E5
-
-        notes.forEach(function(freq, i) {
-            var osc = c.createOscillator();
-            var gain = c.createGain();
-            osc.type = 'sine';
-            osc.frequency.value = freq;
-
-            var start = t + i * 0.08;
-            gain.gain.setValueAtTime(0.001, start);
-            gain.gain.exponentialRampToValueAtTime(0.16, start + 0.02);
-            gain.gain.exponentialRampToValueAtTime(0.001, start + 0.3);
-
-            osc.connect(gain);
-            gain.connect(c.destination);
-            osc.start(start);
-            osc.stop(start + 0.3);
+    // Открытие меню — кто-то типа «whoosh»
+    function playOpen() {
+        playTone(600, {
+            duration: 0.3,
+            volume: 0.1,
+            type: 'sine',
+            slideTo: 1200,
+            reverb: 0.5,
+            filter: 3500,
+            attack: 0.02,
+            release: 0.3
         });
     }
 
-    // Успех / success — восходящее трезвучие
+    // Закрытие меню
+    function playClose() {
+        playTone(1200, {
+            duration: 0.3,
+            volume: 0.1,
+            type: 'sine',
+            slideTo: 500,
+            reverb: 0.5,
+            filter: 3500,
+            attack: 0.02,
+            release: 0.3
+        });
+    }
+
+    // Торжественный аккорд — для достижений, уровня, победы
     function playSuccess() {
-        var c = getCtx();
-        if (!c) return;
-        if (c.state === 'suspended') c.resume();
-
-        var t = c.currentTime;
-        var notes = [523.25, 659.25, 783.99]; // C5 E5 G5
-
+        var notes = [523.25, 659.25, 783.99, 1046.5]; // C5 E5 G5 C6
         notes.forEach(function(freq, i) {
-            var osc = c.createOscillator();
-            var gain = c.createGain();
-            osc.type = 'sine';
-            osc.frequency.value = freq;
-
-            var start = t + i * 0.07;
-            gain.gain.setValueAtTime(0.001, start);
-            gain.gain.exponentialRampToValueAtTime(0.15, start + 0.02);
-            gain.gain.exponentialRampToValueAtTime(0.001, start + 0.4);
-
-            osc.connect(gain);
-            gain.connect(c.destination);
-            osc.start(start);
-            osc.stop(start + 0.4);
+            playTone(freq, {
+                duration: 0.9,
+                volume: 0.11,
+                type: 'sine',
+                reverb: 0.5,
+                filter: 5000,
+                attack: 0.02,
+                release: 0.9,
+                delay: i * 0.09
+            });
         });
     }
 
-    // Ошибка / error — два низких тона
+    // Уровень up — фанфара
+    function playLevelUp() {
+        var notes = [659.25, 783.99, 1046.5, 1318.5]; // E5 G5 C6 E6
+        notes.forEach(function(freq, i) {
+            playTone(freq, {
+                duration: 1.1,
+                volume: 0.12,
+                type: 'triangle',
+                reverb: 0.55,
+                filter: 6000,
+                attack: 0.015,
+                release: 1.1,
+                delay: i * 0.11
+            });
+        });
+    }
+
+    // Ошибка — низкий «звук провала»
     function playError() {
-        var c = getCtx();
-        if (!c) return;
-        if (c.state === 'suspended') c.resume();
-
-        var t = c.currentTime;
-        [220, 180].forEach(function(freq, i) {
-            var osc = c.createOscillator();
-            var gain = c.createGain();
-            osc.type = 'sawtooth';
-            osc.frequency.value = freq;
-
-            var start = t + i * 0.12;
-            gain.gain.setValueAtTime(0.001, start);
-            gain.gain.exponentialRampToValueAtTime(0.12, start + 0.02);
-            gain.gain.exponentialRampToValueAtTime(0.001, start + 0.2);
-
-            osc.connect(gain);
-            gain.connect(c.destination);
-            osc.start(start);
-            osc.stop(start + 0.2);
+        playTone(220, {
+            duration: 0.3,
+            volume: 0.13,
+            type: 'sawtooth',
+            slideTo: 130,
+            reverb: 0.35,
+            filter: 1500,
+            attack: 0.005,
+            release: 0.3
         });
     }
 
-    // Открытие / notification — «динь»
+    // Уведомление — «динь»
     function playNotification() {
+        playTone(880, {
+            duration: 0.55,
+            volume: 0.12,
+            type: 'sine',
+            reverb: 0.5,
+            filter: 6000,
+            attack: 0.005,
+            release: 0.55
+        });
+        playTone(1318.5, {
+            duration: 0.5,
+            volume: 0.08,
+            type: 'sine',
+            reverb: 0.55,
+            filter: 6500,
+            attack: 0.005,
+            release: 0.5,
+            delay: 0.06
+        });
+    }
+
+    // Вход — радостная гамма
+    function playLogin() {
+        var notes = [392, 523.25, 659.25, 783.99]; // G4 C5 E5 G5
+        notes.forEach(function(freq, i) {
+            playTone(freq, {
+                duration: 0.45,
+                volume: 0.1,
+                type: 'sine',
+                reverb: 0.45,
+                filter: 5500,
+                attack: 0.01,
+                release: 0.45,
+                delay: i * 0.075
+            });
+        });
+    }
+
+    // Выход — грустная гамма
+    function playExit() {
+        var notes = [659.25, 523.25, 392, 261.63]; // E5 C5 G4 C4
+        notes.forEach(function(freq, i) {
+            playTone(freq, {
+                duration: 0.6,
+                volume: 0.1,
+                type: 'sine',
+                reverb: 0.5,
+                filter: 4500,
+                attack: 0.02,
+                release: 0.6,
+                delay: i * 0.13
+            });
+        });
+    }
+
+    // Открытие сундука / reward
+    function playReward() {
+        playTone(1046.5, {
+            duration: 0.15,
+            volume: 0.13,
+            type: 'triangle',
+            slideTo: 1568,
+            reverb: 0.4,
+            filter: 6000,
+            attack: 0.005,
+            release: 0.15
+        });
+        setTimeout(function() {
+            playTone(1568, {
+                duration: 0.7,
+                volume: 0.11,
+                type: 'sine',
+                reverb: 0.55,
+                filter: 6500,
+                attack: 0.01,
+                release: 0.7
+            });
+        }, 100);
+    }
+
+    // «Марсианский» звук — глубокий низкий гул
+    function playMars() {
+        playTone(110, {
+            duration: 1.5,
+            volume: 0.06,
+            type: 'sine',
+            reverb: 0.7,
+            filter: 800,
+            attack: 0.3,
+            release: 1.5
+        });
+        playTone(165, {
+            duration: 1.5,
+            volume: 0.04,
+            type: 'sine',
+            reverb: 0.7,
+            filter: 1000,
+            attack: 0.4,
+            release: 1.5,
+            delay: 0.2
+        });
+    }
+
+    // Плавное пиано — из файла, с ревербом
+    function playPiano(volume) {
+        if (!pianoBuffer) return;
         var c = getCtx();
         if (!c) return;
         if (c.state === 'suspended') c.resume();
 
-        var t = c.currentTime;
-        var osc = c.createOscillator();
-        var gain = c.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(880, t);
-        osc.frequency.exponentialRampToValueAtTime(1318.5, t + 0.08);
+        var source = c.createBufferSource();
+        source.buffer = pianoBuffer;
 
-        gain.gain.setValueAtTime(0.001, t);
-        gain.gain.exponentialRampToValueAtTime(0.18, t + 0.02);
-        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
+        var filter = c.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 5000;
 
-        osc.connect(gain);
-        gain.connect(c.destination);
-        osc.start(t);
-        osc.stop(t + 0.6);
+        var dry = c.createGain();
+        dry.gain.value = 0.5 * (volume || 0.5);
+
+        var wet = c.createGain();
+        wet.gain.value = 0.5 * (volume || 0.5);
+
+        var rev = getReverb();
+
+        source.connect(filter);
+        filter.connect(dry);
+        dry.connect(c.destination);
+
+        if (rev) {
+            filter.connect(wet);
+            wet.connect(rev);
+        }
+
+        source.start(0);
     }
 
     // ============================================================
-    // 🖱️ ДЕЛЕГИРОВАНИЕ
+    // 🖱️ ДЕЛЕГИРОВАНИЕ СОБЫТИЙ
     // ============================================================
 
-    // 1. Тогглы эффектов — [data-sound-toggle]
-    document.addEventListener('click', function(e) {
-        var el = e.target.closest('[data-sound-toggle]');
+    // Наведение — очень тихий шелест
+    var lastHover = 0;
+    document.addEventListener('mouseover', function(e) {
+        var now = Date.now();
+        if (now - lastHover < 60) return;
+
+        var el = e.target.closest('a, button, .pf-btn, .pf-tab, .pf-quick-card, .pf-note');
         if (!el) return;
 
-        var wasOn = el.getAttribute('aria-pressed') === 'true'
-                 || el.dataset.active === 'true'
-                 || el.classList.contains('active')
-                 || el.classList.contains('on');
-
-        if (wasOn) playToggleOff();
-        else playToggleOn();
+        lastHover = now;
+        playHover();
     }, true);
 
-    // 2. Кнопка "Выйти" — [data-sound="exit"]
+    // Клик — хрустальный тинк
     document.addEventListener('click', function(e) {
-        var el = e.target.closest('[data-sound="exit"], .pf-logout, [onclick*="pfLogout"]');
-        if (!el) return;
-        playExit();
-    }, true);
+        var toggle = e.target.closest('[data-sound-toggle]');
+        if (toggle) {
+            var wasOn = toggle.getAttribute('aria-pressed') === 'true'
+                     || toggle.dataset.active === 'true'
+                     || toggle.classList.contains('active')
+                     || toggle.classList.contains('on');
+            if (wasOn) playToggleOff();
+            else playToggleOn();
+            return;
+        }
 
-    // 3. Кнопка "Войти" — [data-sound="login"]
-    document.addEventListener('click', function(e) {
-        var el = e.target.closest('[data-sound="login"], .login-btn, a[href="/login/"]');
-        if (!el) return;
-        playLogin();
-    }, true);
+        if (e.target.closest('[data-sound="exit"], [onclick*="pfLogout"]')) {
+            playExit();
+            return;
+        }
 
-    // 4. Общий клик по ссылкам и кнопкам
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('[data-sound-toggle]')) return;
-        if (e.target.closest('[data-sound="exit"]')) return;
-        if (e.target.closest('[data-sound="login"]')) return;
+        if (e.target.closest('[data-sound="login"], a[href="/login/"]')) {
+            playLogin();
+            return;
+        }
 
-        if (e.target.closest('a, button, .pf-btn, .pf-tab, .pf-quick-card')) {
-            playFile('click');
+        if (e.target.closest('a, button, .pf-btn, .pf-tab, .pf-quick-card, .pf-note-btn')) {
+            playClick();
         }
     }, true);
 
-    // ============================================================
-    // 🔓 РАЗБЛОКИРОВКА AUDIO CONTEXT
-    // ============================================================
+    // Разблокировка AudioContext
     document.addEventListener('click', function unlock() {
         var c = getCtx();
         if (c && c.state === 'suspended') c.resume();
-
-        // Беззвучный клик чтобы разблокировать файловые звуки
-        try {
-            files.click.volume = 0;
-            var p = files.click.play();
-            if (p) p.then(function() {
-                files.click.pause();
-                files.click.volume = 0.3;
-            }).catch(function() {
-                files.click.volume = 0.3;
-            });
-        } catch (e) {}
-
         document.removeEventListener('click', unlock);
     }, { once: true });
 
     // ============================================================
-    // 🌐 ПУБЛИЧНОЕ API — можно вызывать вручную из любого скрипта
+    // 🌐 ПУБЛИЧНОЕ API
     // ============================================================
     window.marsSound = {
-        click:        function() { playFile('click'); },
-        piano:        function() { playFile('piano'); },
+        // Основные
+        click:        playClick,
+        hover:        playHover,
         toggleOn:     playToggleOn,
         toggleOff:    playToggleOff,
-        exit:         playExit,
-        login:        playLogin,
+        open:         playOpen,
+        close:        playClose,
+
+        // Торжественные
         success:      playSuccess,
+        levelUp:      playLevelUp,
+        reward:       playReward,
+        notification: playNotification,
+
+        // Аккаунт
+        login:        playLogin,
+        exit:         playExit,
+
+        // Особые
         error:        playError,
-        notification: playNotification
+        mars:         playMars,
+        piano:        playPiano,
+
+        // Универсальный — можно вызывать свой тон
+        tone: function(freq, opts) { playTone(freq, opts); }
     };
 
-    console.log('🔊 ui-sounds v3: файлы + синтез готовы');
-})();
+    // ============================================================
+    // 🚀 СТАРТ
+    // ============================================================
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', loadPiano);
+    } else {
+        loadPiano();
+    }
 
+    console.log('🔊 ui-sounds v5 VIP: всё готово');
+})();

@@ -1,5 +1,5 @@
 // ============================================================
-// wikipedia-footer.js — ФИНАЛ v8 (тёмный футер как в профиле)
+// wikipedia-footer.js — FINAL
 // ============================================================
 
 (function() {
@@ -15,212 +15,201 @@
         'Утопия': '#4DD0E1', 'Эллада': '#FF8A65', 'Аливасото': '#81C784'
     };
 
-    var skipPages = ['/secret/', '/secret-2/', '/login/', '/signup/'];
-    var path = window.location.pathname;
-    for (var i = 0; i < skipPages.length; i++) {
-        if (path.indexOf(skipPages[i]) === 0) return;
+    // Не показываем на этих страницах
+    var skip = ['/secret/', '/secret-2/', '/login/', '/signup/'];
+    for (var i = 0; i < skip.length; i++) {
+        if (location.pathname.indexOf(skip[i]) === 0) return;
     }
 
+    // ============================================================
+    // ЦВЕТ
+    // ============================================================
     function hexToRgb(hex) {
-        var c = (hex || '#3498db').replace('#', '');
+        var c = (hex || DEFAULT_COLOR).replace('#', '');
         if (c.length === 3) c = c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
         var n = parseInt(c, 16);
         return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
     }
 
-    function detectColor() {
+    function getColor() {
         try {
             var s = localStorage.getItem(STORAGE_KEY);
-            if (s && /^#[0-9a-fA-F]{3,8}$/.test(s)) return s;
+            if (s && /^#[0-9a-fA-F]{6}$/.test(s)) return s;
         } catch(e) {}
+
         try {
             for (var i = 0; i < localStorage.length; i++) {
                 var key = localStorage.key(i);
                 if (key && key.indexOf('pf_cache_') === 0) {
-                    try {
-                        var c = JSON.parse(localStorage.getItem(key));
-                        if (c && c.currentProfile && c.currentProfile.kingdom) {
-                            var col = KINGDOM_COLORS[c.currentProfile.kingdom];
-                            if (col) {
-                                try { localStorage.setItem(STORAGE_KEY, col); } catch(e) {}
-                                return col;
-                            }
+                    var cache = JSON.parse(localStorage.getItem(key));
+                    if (cache && cache.currentProfile && cache.currentProfile.kingdom) {
+                        var col = KINGDOM_COLORS[cache.currentProfile.kingdom];
+                        if (col) {
+                            try { localStorage.setItem(STORAGE_KEY, col); } catch(e) {}
+                            return col;
                         }
-                    } catch(e) {}
+                    }
                 }
             }
         } catch(e) {}
+
         return DEFAULT_COLOR;
     }
 
     function applyColor(color) {
         var rgb = hexToRgb(color);
-        var root = document.documentElement;
-        root.style.setProperty('--wf-color', color);
-        root.style.setProperty('--wf-rgb', rgb.r + ',' + rgb.g + ',' + rgb.b);
-        root.setAttribute('data-kingdom-color', color);
+        document.documentElement.style.setProperty('--wf-color', color);
+        document.documentElement.style.setProperty('--wf-rgb', rgb.r + ',' + rgb.g + ',' + rgb.b);
     }
 
+    // ============================================================
+    // СТИЛИ
+    // ============================================================
     function injectStyles() {
-        if (document.getElementById('wiki-footer-styles')) return;
-        var style = document.createElement('style');
-        style.id = 'wiki-footer-styles';
-        style.textContent = `
-/* ============================================
-   WIKIPEDIA FOOTER — тёмный, как hero профиля
-   ============================================ */
+        if (document.getElementById('wf-styles')) return;
+        var s = document.createElement('style');
+        s.id = 'wf-styles';
+        s.textContent = `
 .wiki-footer {
     position: relative;
-    margin: 64px 0 32px 0;
-    padding: 32px 36px 28px;
-    border-radius: 20px;
+    margin: 60px 0 30px;
+    padding: 30px 34px 26px;
+    border-radius: 18px;
     font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
     font-size: 0.88rem;
     line-height: 1.7;
-    color: #d4d4e8;
+    color: #333;
     overflow: hidden;
-    clear: both;
     width: 100%;
     box-sizing: border-box;
-    background: linear-gradient(135deg, #1a1a2e 0%, #2d1b3d 40%, #4a2a3a 100%);
-    box-shadow: 0 8px 32px -8px rgba(var(--wf-rgb, 52,152,219), 0.5),
-                0 0 60px -20px rgba(var(--wf-rgb, 52,152,219), 0.3);
-    border: 1px solid rgba(var(--wf-rgb, 52,152,219), 0.3);
+    border: 1px solid rgba(var(--wf-rgb, 52,152,219), 0.35);
+    box-shadow: 0 6px 24px -6px rgba(var(--wf-rgb, 52,152,219), 0.3);
 }
-
-/* Свечение в углу — как в hero профиля */
 .wiki-footer::before {
     content: '';
     position: absolute;
-    top: -50%; right: -10%;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(var(--wf-rgb, 52,152,219), 0.3), transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: wfGlow 8s ease-in-out infinite;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(135deg,
+        #ffffff 0%,
+        rgba(var(--wf-rgb, 52,152,219), 0.15) 50%,
+        #ffffff 100%);
+    background-size: 200% 200%;
+    animation: wfMove 12s ease infinite;
 }
-
-@keyframes wfGlow {
-    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-    50% { transform: translate(-20px, 20px) scale(1.1); opacity: 1; }
+@keyframes wfMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
-
-/* Верхняя цветная полоса с анимацией */
 .wiki-footer::after {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg,
-        var(--wf-color) 0%,
-        rgba(var(--wf-rgb), 0.3) 50%,
-        var(--wf-color) 100%);
-    background-size: 200% 100%;
-    animation: wfBar 6s linear infinite;
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 0 20px rgba(var(--wf-rgb), 0.7);
+    height: 4px;
+    background: var(--wf-color, #3498db);
+    box-shadow: 0 0 16px rgba(var(--wf-rgb, 52,152,219), 0.6);
 }
-
-@keyframes wfBar {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-}
-
 .wiki-footer p {
     position: relative;
     z-index: 1;
-    margin: 0 0 14px 0;
-    color: rgba(212, 212, 232, 0.85);
+    margin: 0 0 14px;
+    color: #444;
     line-height: 1.75;
 }
-
 .wiki-footer-brand {
-    padding-bottom: 16px;
-    margin-bottom: 18px !important;
-    border-bottom: 1px dashed rgba(var(--wf-rgb), 0.3);
-    color: rgba(224, 224, 238, 0.95) !important;
+    padding-bottom: 14px;
+    margin-bottom: 16px !important;
+    border-bottom: 1px dashed rgba(var(--wf-rgb, 52,152,219), 0.4);
+    color: #2a2a3a !important;
 }
-
-.wiki-footer-brand strong { color: #ffffff; font-weight: 800; }
-.wiki-footer-brand em {
-    color: var(--wf-color);
-    font-style: italic;
-    font-weight: 700;
-}
-
+.wiki-footer-brand strong { color: #1a1a2e; font-weight: 800; }
+.wiki-footer-brand em { color: var(--wf-color, #3498db); font-style: italic; font-weight: 700; }
 .wiki-footer a {
-    color: var(--wf-color);
+    color: var(--wf-color, #3498db);
     text-decoration: none;
     font-weight: 700;
     border-bottom: 1px solid transparent;
-    transition: all 0.2s;
+    transition: border-color 0.2s;
 }
-
-.wiki-footer a:hover {
-    border-bottom-color: var(--wf-color);
-    color: #ffffff;
-}
-
+.wiki-footer a:hover { border-bottom-color: var(--wf-color, #3498db); }
 .wiki-footer-links {
     position: relative;
     z-index: 1;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    align-items: center;
-    padding-top: 18px;
+    padding-top: 16px;
     margin-top: 4px;
-    border-top: 1px dashed rgba(var(--wf-rgb), 0.3);
+    border-top: 1px dashed rgba(var(--wf-rgb, 52,152,219), 0.4);
 }
-
 .wiki-footer-links a {
     display: inline-block;
     padding: 8px 16px;
-    background: rgba(var(--wf-rgb), 0.15);
-    border: 1px solid rgba(var(--wf-rgb), 0.4);
+    background: rgba(var(--wf-rgb, 52,152,219), 0.12);
+    border: 1px solid rgba(var(--wf-rgb, 52,152,219), 0.4);
     border-radius: 20px;
-    color: var(--wf-color) !important;
+    color: #2a2a3a !important;
     font-size: 0.85rem;
     font-weight: 700;
     text-decoration: none;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     border-bottom: none !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.25s;
+}
+.wiki-footer-links a:hover {
+    background: rgba(var(--wf-rgb, 52,152,219), 0.25);
+    border-color: var(--wf-color, #3498db);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px -4px rgba(var(--wf-rgb, 52,152,219), 0.5);
+    color: #000 !important;
 }
 
-.wiki-footer-links a:hover {
-    background: rgba(var(--wf-rgb), 0.35);
-    border-color: var(--wf-color);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px -4px rgba(var(--wf-rgb), 0.6);
-    color: #ffffff !important;
+/* Тёмная тема */
+html body.mars-stars-on .wiki-footer { color: #d4d4e8; }
+html body.mars-stars-on .wiki-footer::before {
+    background: linear-gradient(135deg,
+        #1e1e2e 0%,
+        rgba(var(--wf-rgb, 52,152,219), 0.15) 50%,
+        #1e1e2e 100%);
+    background-size: 200% 200%;
+}
+html body.mars-stars-on .wiki-footer p { color: #c8c8dc !important; }
+html body.mars-stars-on .wiki-footer-brand { color: #e0e0ee !important; }
+html body.mars-stars-on .wiki-footer-brand strong { color: #fff !important; }
+html body.mars-stars-on .wiki-footer-links a {
+    background: rgba(var(--wf-rgb, 52,152,219), 0.15) !important;
+    color: #e0e0ee !important;
+}
+html body.mars-stars-on .wiki-footer-links a:hover {
+    background: rgba(var(--wf-rgb, 52,152,219), 0.3) !important;
+    color: #fff !important;
 }
 
 @media (max-width: 600px) {
-    .wiki-footer { padding: 24px 20px 20px; margin: 40px 0 24px 0; border-radius: 14px; }
+    .wiki-footer { padding: 22px 18px; margin: 40px 0 20px; border-radius: 14px; }
     .wiki-footer-links a { padding: 6px 12px; font-size: 0.78rem; }
 }
 `;
-        document.head.appendChild(style);
+        document.head.appendChild(s);
     }
 
+    // ============================================================
+    // ФУТЕР
+    // ============================================================
     function createFooter() {
-        var footer = document.createElement('div');
-        footer.className = 'wiki-footer';
-        footer.id = 'wiki-footer-block';
-        footer.setAttribute('role', 'contentinfo');
-        footer.innerHTML =
+        var f = document.createElement('div');
+        f.className = 'wiki-footer';
+        f.id = 'wiki-footer-block';
+        f.innerHTML =
             '<p>Материалы «Марсианской энциклопедии» доступны по лицензии ' +
-            '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ru" target="_blank" rel="noopener">' +
+            '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ru" target="_blank">' +
             'Creative Commons «Attribution-NonCommercial-NoDerivs» (BY-NC-ND) 4.0</a>. ' +
             'Отдельные элементы могут иметь собственные условия использования — ' +
             'подробнее см. <a href="/license/">Условия использования</a>.</p>' +
             '<p class="wiki-footer-brand"><strong>Марсианская энциклопедия</strong>® — ' +
             'научно-художественный справочный проект по вселенной цикла романов ' +
-            '<em>«Письмо из Красной пыли»</em>. ' +
-            'Реконструкция истории Марса в Эпоху Умирания, основанная на научных данных ' +
-            'и художественной концепции автора.</p>' +
+            '<em>«Письмо из Красной пыли»</em>. Реконструкция истории Марса ' +
+            'в Эпоху Умирания, основанная на научных данных и художественной концепции автора.</p>' +
             '<div class="wiki-footer-links">' +
             '<a href="/privacy/">Политика конфиденциальности</a>' +
             '<a href="/about/">Описание проекта</a>' +
@@ -228,88 +217,56 @@
             '<a href="/code-of-conduct/">Кодекс поведения</a>' +
             '<a href="/statistics/">Статистика</a>' +
             '</div>';
-        return footer;
+        return f;
     }
 
     function findContainer() {
         var rst = document.querySelector('.rst-content');
         if (rst && rst.parentElement) return rst.parentElement;
-        var wy = document.querySelector('.wy-nav-content');
-        if (wy) return wy;
-        return document.body;
+        return document.querySelector('.wy-nav-content') || document.body;
     }
 
     function placeFooter() {
-        var footer = document.getElementById('wiki-footer-block');
-        var container = findContainer();
-
-        if (!footer) {
-            footer = createFooter();
-            container.appendChild(footer);
+        var f = document.getElementById('wiki-footer-block');
+        var c = findContainer();
+        if (!f) {
+            c.appendChild(createFooter());
             return;
         }
-
-        if (footer.parentElement !== container) {
-            if (footer.parentNode) footer.parentNode.removeChild(footer);
-            container.appendChild(footer);
-            return;
-        }
-
-        if (container.lastElementChild !== footer) {
-            container.appendChild(footer);
+        if (f.parentElement !== c || c.lastElementChild !== f) {
+            c.appendChild(f);
         }
     }
 
-    function refresh() {
-        var color = detectColor();
-        applyColor(color);
-        return color;
-    }
-
-    function init() {
+    // ============================================================
+    // ЗАПУСК — простой, быстрый
+    // ============================================================
+    function start() {
+        applyColor(getColor());
         injectStyles();
-        refresh();
         placeFooter();
-
-        // Несколько раз при загрузке
-        setTimeout(function() { refresh(); placeFooter(); }, 300);
-        setTimeout(function() { refresh(); placeFooter(); }, 1000);
-        setTimeout(function() { refresh(); placeFooter(); }, 2500);
-
-        // Mutation observer — держим футер внизу
-        var observer = new MutationObserver(function() {
-            placeFooter();
-        });
-        observer.observe(document.body, { childList: true, subtree: true });
-
-        // Следим за сменой URL (readthedocs SPA)
-        var lastUrl = location.href;
-        setInterval(function() {
-            if (location.href !== lastUrl) {
-                lastUrl = location.href;
-                var old = document.getElementById('wiki-footer-block');
-                if (old) old.remove();
-                setTimeout(function() { refresh(); placeFooter(); }, 300);
-                setTimeout(placeFooter, 1000);
-            }
-        }, 500);
-
-        // Проверяем цвет раз в 5 секунд (без спама в консоль)
-        var lastColor = detectColor();
-        setInterval(function() {
-            var current = detectColor();
-            if (current !== lastColor) {
-                lastColor = current;
-                applyColor(current);
-            }
-        }, 5000);
     }
 
+    // Мгновенно
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('DOMContentLoaded', start);
     } else {
-        init();
+        start();
     }
 
-    console.log('📄 wikipedia-footer v8: активен');
+    // Ещё разик через 500мс — для readthedocs (DOM дорисовывается)
+    setTimeout(start, 500);
+    setTimeout(placeFooter, 1500);
+
+    // Смена страницы (readthedocs перезагружает редко, но на всякий случай)
+    var lastUrl = location.href;
+    setInterval(function() {
+        if (location.href !== lastUrl) {
+            lastUrl = location.href;
+            var old = document.getElementById('wiki-footer-block');
+            if (old) old.remove();
+            setTimeout(start, 200);
+            setTimeout(placeFooter, 800);
+        }
+    }, 600);
 })();

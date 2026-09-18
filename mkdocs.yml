@@ -75,7 +75,7 @@ extra_javascript:
   - assets/js/qr-scanner.js
   - assets/js/easter-eggs.js
   - assets/js/mobile.js
-  - assets/js/wikipedia-footer.js
+  - assets/js/wikipedia-footer.js?v=7
   - assets/js/language-switcher.js
   # - assets/js/mars-tts.js
   - assets/js/scroll-mode.js

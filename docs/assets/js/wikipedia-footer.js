@@ -1,5 +1,6 @@
 // ============================================================
-// wikipedia-footer.js — FINAL v11
+// wikipedia-footer.js — FINAL v12
+// Цвет ВСЕГДА берётся из БД (Supabase), localStorage = кэш
 // ============================================================
 
 (function() {
@@ -27,27 +28,45 @@
         return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
     }
 
-    function getColor() {
+    // Кэш из localStorage (быстрый старт)
+    function getCachedColor() {
         try {
             var s = localStorage.getItem(STORAGE_KEY);
             if (s && /^#[0-9a-fA-F]{6}$/.test(s)) return s;
         } catch(e) {}
+        return null;
+    }
+
+    // 🔥 ГЛАВНОЕ: запрос к БД за АКТУАЛЬНЫМ королевством
+    async function fetchColorFromDB() {
         try {
-            for (var i = 0; i < localStorage.length; i++) {
-                var key = localStorage.key(i);
-                if (key && key.indexOf('pf_cache_') === 0) {
-                    var cache = JSON.parse(localStorage.getItem(key));
-                    if (cache && cache.currentProfile && cache.currentProfile.kingdom) {
-                        var col = KINGDOM_COLORS[cache.currentProfile.kingdom];
-                        if (col) {
-                            try { localStorage.setItem(STORAGE_KEY, col); } catch(e) {}
-                            return col;
-                        }
-                    }
-                }
-            }
-        } catch(e) {}
-        return DEFAULT_COLOR;
+            var sb = window.supabaseClient;
+            if (!sb) return null;
+
+            var sessionRes = await sb.auth.getSession();
+            var user = sessionRes && sessionRes.data && sessionRes.data.session
+                ? sessionRes.data.session.user : null;
+            if (!user) return null;
+
+            var res = await sb.from('profiles')
+                .select('kingdom')
+                .eq('user_id', user.id)
+                .single();
+
+            if (res.error || !res.data || !res.data.kingdom) return null;
+
+            var kingdom = res.data.kingdom;
+            var color = KINGDOM_COLORS[kingdom];
+            if (!color) return null;
+
+            // Сохраняем в localStorage для быстрого старта следующий раз
+            try { localStorage.setItem(STORAGE_KEY, color); } catch(e) {}
+            console.log('🎨 Цвет из БД:', kingdom, '→', color);
+            return color;
+        } catch(e) {
+            console.warn('🎨 Ошибка запроса цвета:', e);
+            return null;
+        }
     }
 
     function applyColor(color) {
@@ -62,11 +81,6 @@
         var s = document.createElement('style');
         s.id = 'wf-styles';
         s.textContent = `
-
-/* ============================================================
-   WIKIPEDIA FOOTER — светлый фон + медленное переливание
-   ============================================================ */
-
 .wiki-footer {
     position: relative;
     margin: 60px 0 30px;
@@ -82,8 +96,6 @@
     border: 1px solid rgba(var(--wf-rgb, 52,152,219), 0.3);
     box-shadow: 0 6px 24px -6px rgba(var(--wf-rgb, 52,152,219), 0.25);
 }
-
-/* Фон — очень медленное переливание волной */
 .wiki-footer::before {
     content: '';
     position: absolute;
@@ -102,14 +114,11 @@
     background-size: 300% 300%;
     animation: wfSlowWave 60s ease-in-out infinite;
 }
-
 @keyframes wfSlowWave {
     0%   { background-position: 0% 50%; }
     50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
-/* Верхняя полоса — цвета королевства, тоже медленно переливается */
 .wiki-footer::after {
     content: '';
     position: absolute;
@@ -131,36 +140,29 @@
         0 0 12px rgba(var(--wf-rgb, 52,152,219), 0.5),
         inset 0 -2px 6px rgba(0, 0, 0, 0.1);
 }
-
 @keyframes wfBarWave {
     0%   { background-position: 0% 50%; }
     50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
-/* Контент */
 .wiki-footer > * { position: relative; z-index: 1; }
-
 .wiki-footer p {
     margin: 0 0 14px;
     color: #444;
     line-height: 1.75;
 }
-
 .wiki-footer-brand {
     padding-bottom: 14px;
     margin-bottom: 16px !important;
     border-bottom: 1px dashed rgba(var(--wf-rgb, 52,152,219), 0.4);
     color: #2a2a3a !important;
 }
-
 .wiki-footer-brand strong { color: #1a1a2e; font-weight: 800; }
 .wiki-footer-brand em {
     color: var(--wf-color, #3498db);
     font-style: italic;
     font-weight: 700;
 }
-
 .wiki-footer a {
     color: var(--wf-color, #3498db);
     text-decoration: none;
@@ -169,7 +171,6 @@
     transition: border-color 0.25s;
 }
 .wiki-footer a:hover { border-bottom-color: var(--wf-color, #3498db); }
-
 .wiki-footer-links {
     display: flex;
     flex-wrap: wrap;
@@ -178,7 +179,6 @@
     margin-top: 4px;
     border-top: 1px dashed rgba(var(--wf-rgb, 52,152,219), 0.4);
 }
-
 .wiki-footer-links a {
     display: inline-block;
     padding: 8px 16px;
@@ -199,10 +199,6 @@
     box-shadow: 0 6px 16px -4px rgba(var(--wf-rgb, 52,152,219), 0.5);
     color: #000 !important;
 }
-
-/* ============================================================
-   ТЁМНАЯ ТЕМА
-   ============================================================ */
 html body.mars-stars-on .wiki-footer { color: #d4d4e8; }
 html body.mars-stars-on .wiki-footer::before {
     background: linear-gradient(
@@ -231,13 +227,10 @@ html body.mars-stars-on .wiki-footer-links a:hover {
     background: rgba(var(--wf-rgb, 52,152,219), 0.3) !important;
     color: #fff !important;
 }
-
 @media (max-width: 600px) {
     .wiki-footer { padding: 22px 18px; margin: 40px 0 20px; border-radius: 14px; }
     .wiki-footer-links a { padding: 6px 12px; font-size: 0.78rem; }
 }
-
-/* Уважение к настройкам ОС — если юзер отключил анимации */
 @media (prefers-reduced-motion: reduce) {
     .wiki-footer::before,
     .wiki-footer::after { animation: none; }
@@ -288,10 +281,23 @@ html body.mars-stars-on .wiki-footer-links a:hover {
         }
     }
 
-    function start() {
-        applyColor(getColor());
+    // ============================================================
+    // ЗАПУСК
+    // ============================================================
+    async function start() {
+        // 1. Мгновенно ставим кэш (чтобы не было мигания)
+        var cached = getCachedColor();
+        if (cached) applyColor(cached);
+
         injectStyles();
         placeFooter();
+
+        // 2. Асинхронно тянем актуальный из БД
+        var fresh = await fetchColorFromDB();
+        if (fresh && fresh !== cached) {
+            applyColor(fresh);
+            console.log('🎨 Цвет обновлён:', fresh);
+        }
     }
 
     if (document.readyState === 'loading') {
@@ -300,17 +306,34 @@ html body.mars-stars-on .wiki-footer-links a:hover {
         start();
     }
 
-    setTimeout(start, 500);
-    setTimeout(placeFooter, 1500);
+    setTimeout(placeFooter, 800);
+    setTimeout(placeFooter, 1800);
 
+    // Смена страницы (readthedocs)
     var lastUrl = location.href;
     setInterval(function() {
         if (location.href !== lastUrl) {
             lastUrl = location.href;
             var old = document.getElementById('wiki-footer-block');
             if (old) old.remove();
-            setTimeout(start, 200);
+            setTimeout(placeFooter, 200);
             setTimeout(placeFooter, 800);
         }
     }, 600);
+
+    // 🔧 Отладка — можно вызвать вручную из консоли
+    window.wfDebug = async function() {
+        console.log('📦 localStorage:', localStorage.getItem(STORAGE_KEY));
+        console.log('🌐 CSS --wf-color:', getComputedStyle(document.documentElement).getPropertyValue('--wf-color'));
+        console.log('🌐 CSS --wf-rgb:', getComputedStyle(document.documentElement).getPropertyValue('--wf-rgb'));
+        var fresh = await fetchColorFromDB();
+        console.log('🔥 Из БД:', fresh);
+        if (fresh) applyColor(fresh);
+        return fresh;
+    };
+
+    window.wfReset = function() {
+        try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+        location.reload();
+    };
 })();

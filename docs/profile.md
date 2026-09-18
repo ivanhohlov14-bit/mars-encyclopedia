@@ -21,7 +21,7 @@ comments: false
 .pf-slide{animation:pfSlide .4s ease both}
 #profile-app a{text-decoration:none!important;border-bottom:none!important}
 
-/* HERO — единый VIP-стиль */
+/* HERO */
 .pf-hero{position:relative;background:linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 40%,#4a2a3a 100%);border-radius:24px;padding:44px 40px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 20px 60px -12px rgba(0,0,0,.4)}
 .pf-hero::before{content:'';position:absolute;top:-60%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,var(--kingdom-shadow),transparent 70%);border-radius:50%;animation:pfFloat 8s ease-in-out infinite}
 .pf-hero::after{content:'';position:absolute;bottom:-60%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(231,76,60,.15),transparent 70%);border-radius:50%;animation:pfFloat 10s ease-in-out infinite reverse}
@@ -32,7 +32,7 @@ comments: false
 .pf-info{flex:1;min-width:200px}
 .pf-name{font-size:2rem;font-weight:800;margin:0 0 6px 0;color:#fff;display:flex;align-items:center;gap:12px;flex-wrap:wrap;letter-spacing:-.5px}
 .pf-role-badge{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
-.pf-mod-badge{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;box-shadow:0 4px 12px rgba(231,76,60,.4)}
+.pf-mod-badge{background:rgba(255,255,255,.2);backdrop-filter:blur(8px);color:#fff;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;border:1px solid rgba(255,255,255,.35)}
 .pf-guild-badge{background:rgba(255,255,255,.25);backdrop-filter:blur(8px);color:#fff;padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;display:inline-flex;align-items:center;gap:4px;border:1px solid rgba(255,255,255,.3);cursor:pointer}
 .pf-email{font-size:.9rem;opacity:.85;margin:0 0 16px 0}
 .pf-stats-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px}
@@ -43,17 +43,8 @@ comments: false
 .pf-progress-bar{height:100%;background:linear-gradient(90deg,var(--kingdom-light),#fff);border-radius:12px;transition:width 1.2s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(255,255,255,.6)}
 .pf-progress-text{font-size:.78rem;opacity:.9}
 
-/* HERO QUICK ACTIONS */
-.pf-hero-actions{position:relative;z-index:2;display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.pf-hero-action{padding:8px 16px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;color:#fff;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .25s;backdrop-filter:blur(8px);font-family:inherit;display:inline-flex;align-items:center;gap:6px}
-.pf-hero-action:hover{background:rgba(255,255,255,.25);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
-.pf-hero-action.danger{background:rgba(231,76,60,.25);border-color:rgba(231,76,60,.4)}
-.pf-hero-action.danger:hover{background:rgba(231,76,60,.4)}
-.pf-hero-action.mod{background:linear-gradient(135deg,#e74c3c,#c0392b);border-color:transparent;box-shadow:0 4px 12px rgba(231,76,60,.4)}
-.pf-hero-action.mod:hover{box-shadow:0 8px 24px rgba(231,76,60,.5)}
-
 /* QUICK GRID */
-.pf-quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
+.pf-quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px}
 .pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s;box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer}
 .pf-quick-card:hover{transform:translateY(-4px);border-color:var(--kingdom-color);box-shadow:0 12px 32px -8px var(--kingdom-shadow)}
 .pf-quick-icon{font-size:1.8rem;transition:transform .3s}
@@ -62,14 +53,13 @@ comments: false
 .pf-quick-title{font-size:.9rem;font-weight:800;color:#1a1a1a;margin-bottom:2px}
 .pf-quick-desc{font-size:.72rem;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-/* TABS */
-.pf-tabs{display:flex;gap:4px;margin-bottom:20px;overflow-x:auto;padding:6px;background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border-radius:16px;border:1px solid rgba(0,0,0,.05)}
+/* TABS — с горизонтальной прокруткой */
+.pf-tabs{display:flex;gap:4px;margin-bottom:20px;overflow-x:auto;padding:6px;background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border-radius:16px;border:1px solid rgba(0,0,0,.05);cursor:grab;scroll-behavior:smooth}
 .pf-tabs::-webkit-scrollbar{height:4px}
 .pf-tabs::-webkit-scrollbar-thumb{background:var(--kingdom-color);border-radius:2px}
 .pf-tab{flex-shrink:0;padding:10px 16px;border:none;background:transparent;color:#666;font-size:.85rem;font-weight:700;border-radius:12px;cursor:pointer;transition:all .25s;white-space:nowrap;display:flex;align-items:center;gap:6px;font-family:inherit;position:relative}
 .pf-tab:hover{background:rgba(0,0,0,.04);color:#333}
 .pf-tab.active{background:linear-gradient(135deg,var(--kingdom-color),var(--kingdom-light));color:#fff;box-shadow:0 6px 16px -4px var(--kingdom-shadow)}
-.pf-tab.mod-tab-highlight{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;box-shadow:0 6px 16px -4px rgba(231,76,60,.4)}
 .pf-tab-count{background:rgba(255,255,255,.25);padding:1px 7px;border-radius:10px;font-size:.7rem}
 .pf-tab-content{display:none;animation:pfFadeIn .4s ease}
 .pf-tab-content.active{display:block}
@@ -87,26 +77,25 @@ comments: false
 .pf-btn-outline:hover{background:var(--kingdom-color);color:#fff}
 .pf-btn-danger{background:#e74c3c;border-color:#e74c3c}
 
-/* MODERATION DASHBOARD IN PROFILE */
-.pf-mod-dashboard{background:linear-gradient(135deg,#2d1b3d,#1a1a2e);border-radius:18px;padding:24px 28px;color:#fff;margin-bottom:18px;position:relative;overflow:hidden;border:1px solid rgba(231,76,60,.3)}
-.pf-mod-dashboard::before{content:'';position:absolute;top:-50%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(231,76,60,.25),transparent 70%);pointer-events:none}
-.pf-mod-dashboard-title{font-size:1.2rem;font-weight:800;margin:0 0 4px 0;position:relative;z-index:1;display:flex;align-items:center;gap:10px}
-.pf-mod-dashboard-sub{font-size:.85rem;opacity:.75;margin:0 0 20px 0;position:relative;z-index:1}
-.pf-mod-stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;position:relative;z-index:1}
-.pf-mod-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:16px 18px;backdrop-filter:blur(8px);transition:all .3s;cursor:pointer}
-.pf-mod-stat:hover{background:rgba(255,255,255,.15);transform:translateY(-3px);border-color:rgba(231,76,60,.5)}
-.pf-mod-stat-icon{font-size:1.4rem;margin-bottom:6px}
-.pf-mod-stat-value{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#fff,#A29BFE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.pf-mod-stat-label{font-size:.72rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px;margin-top:6px;font-weight:600}
-.pf-mod-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;position:relative;z-index:1}
-.pf-mod-action-btn{padding:11px 22px;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;border:none;border-radius:26px;font-weight:800;font-size:.88rem;cursor:pointer;transition:all .25s;font-family:inherit;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 16px -4px rgba(231,76,60,.5)}
-.pf-mod-action-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -4px rgba(231,76,60,.7)}
+/* ACTIVITY TIMER */
+.pf-timer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px}
+.pf-timer-card{background:linear-gradient(135deg,rgba(108,99,255,.06),rgba(162,155,254,.03));border:1px solid rgba(108,99,255,.15);border-radius:14px;padding:16px 18px;text-align:center}
+.pf-timer-value{font-size:1.8rem;font-weight:900;color:var(--kingdom-color);line-height:1}
+.pf-timer-label{font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-top:6px;font-weight:600}
+.pf-timer-sub{font-size:.75rem;color:#aaa;margin-top:4px}
+.pf-activity-bars{display:flex;align-items:flex-end;gap:3px;height:80px;margin-top:16px;padding:10px 0}
+.pf-activity-bar{flex:1;background:linear-gradient(180deg,var(--kingdom-light),var(--kingdom-color));border-radius:3px 3px 0 0;min-height:4px;transition:height .5s;position:relative;cursor:pointer}
+.pf-activity-bar:hover{filter:brightness(1.15)}
+.pf-activity-bar::after{content:attr(data-label);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:.65rem;color:#666;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;background:#fff;padding:2px 6px;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.pf-activity-bar:hover::after{opacity:1}
 
-/* AVATAR/EMOJI GRID */
+/* AVATAR */
 .pf-avatar-grid{display:flex;gap:12px;flex-wrap:wrap}
 .pf-avatar-option{width:60px;height:60px;border-radius:50%;cursor:pointer;border:3px solid transparent;object-fit:cover;transition:all .25s}
 .pf-avatar-option:hover{transform:scale(1.1);border-color:var(--kingdom-color)}
 .pf-avatar-option.selected{border-color:var(--kingdom-color);box-shadow:0 0 0 4px var(--kingdom-shadow)}
+
+/* KINGDOM */
 .pf-kingdom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
 .pf-kingdom-btn{padding:10px 12px;border-radius:10px;border:2px solid rgba(0,0,0,.08);background:rgba(255,255,255,.6);cursor:pointer;font-size:.8rem;font-weight:600;transition:all .25s;font-family:inherit;color:#333}
 .pf-kingdom-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
@@ -116,18 +105,10 @@ comments: false
 .pf-ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
 .pf-ach{display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(255,255,255,.7);border-radius:12px;border:2px solid rgba(0,0,0,.04);transition:all .25s}
 .pf-ach:hover{transform:translateY(-3px);border-color:var(--kingdom-color);box-shadow:0 12px 28px -8px var(--kingdom-shadow)}
+.pf-ach.locked{opacity:.45;filter:grayscale(.6)}
 .pf-ach .pf-ach-icon{font-size:1.8rem}
 .pf-ach .pf-ach-name{font-size:.85rem;font-weight:700;color:#1a1a1a}
 .pf-ach .pf-ach-date{font-size:.7rem;color:#888}
-
-/* ACTIVITY GRAPH */
-.pf-activity-graph{display:flex;gap:3px;flex-wrap:wrap;margin-top:12px;padding:14px;background:#f8f8fc;border-radius:12px}
-.pf-activity-cell{width:14px;height:14px;border-radius:3px;background:#e5e5ec;transition:all .2s}
-.pf-activity-cell.level-1{background:rgba(108,99,255,.25)}
-.pf-activity-cell.level-2{background:rgba(108,99,255,.5)}
-.pf-activity-cell.level-3{background:rgba(108,99,255,.75)}
-.pf-activity-cell.level-4{background:rgba(108,99,255,1)}
-.pf-activity-cell:hover{transform:scale(1.4)}
 
 /* NOTIFICATIONS */
 .pf-notif{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;transition:all .2s;cursor:pointer}
@@ -213,8 +194,7 @@ html body.mars-stars-on .pf-notif,
 html body.mars-stars-on .pf-ach,
 html body.mars-stars-on .pf-note,
 html body.mars-stars-on .pf-chat,
-html body.mars-stars-on .pf-note-form,
-html body.mars-stars-on .pf-activity-graph{
+html body.mars-stars-on .pf-note-form{
     background:rgba(20,15,35,.55)!important;
     border-color:rgba(162,155,254,.25)!important;
     color:#d4d4e8;
@@ -229,8 +209,11 @@ html body.mars-stars-on .pf-chat-msg.bot{background:rgba(20,15,35,.8);color:#d4d
 html body.mars-stars-on .pf-chat-input input{background:rgba(20,15,35,.6);color:#fff;border-color:rgba(162,155,254,.3)}
 html body.mars-stars-on .pf-leaderboard td{border-bottom-color:rgba(162,155,254,.15);color:#d4d4e8}
 html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4e8;border-color:rgba(162,155,254,.3)}
+html body.mars-stars-on .pf-timer-card{background:rgba(108,99,255,.1);border-color:rgba(162,155,254,.2)}
+html body.mars-stars-on .pf-timer-value{color:#A29BFE}
+html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8}
 
-@media(max-width:600px){.pf-hero{padding:28px 22px}.pf-avatar{width:90px;height:90px}.pf-name{font-size:1.4rem}.pf-tabs{padding:4px}.pf-tab{padding:8px 12px;font-size:.78rem}.pf-card{padding:18px 16px}.pf-quick-grid{grid-template-columns:1fr}.pf-avatar-option{width:52px;height:52px}.pf-mod-stats-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.pf-hero{padding:28px 22px}.pf-avatar{width:90px;height:90px}.pf-name{font-size:1.4rem}.pf-tabs{padding:4px}.pf-tab{padding:8px 12px;font-size:.78rem}.pf-card{padding:18px 16px}.pf-quick-grid{grid-template-columns:1fr}.pf-avatar-option{width:52px;height:52px}}
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -261,36 +244,66 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
     var AVATARS = ['/assets/images/авотарка%20девушки.png','/assets/images/мужчина.png','/assets/images/мужчина2.png','/assets/images/мужчина%203.png'];
     var NOTE_COLORS = ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63'];
 
-    var LEVEL_MAP = [
-        {level:1,xp:0,title:'🌱 Новый поселенец'},
-        {level:2,xp:50,title:'🔭 Исследователь'},
-        {level:3,xp:150,title:'🚀 Первопроходец'},
-        {level:4,xp:350,title:'🏠 Колонизатор'},
-        {level:5,xp:700,title:'⚡ Командир базы'},
-        {level:6,xp:1200,title:'👑 Легенда Марса'}
-    ];
+    // ============================================================
+    // 100 УРОВНЕЙ — прогрессивная система
+    // ============================================================
+    var LEVELS = [];
+    (function buildLevels() {
+        var titles = [
+            '🌱 Поселенец', '🔭 Исследователь', '🚀 Первопроходец', '🏠 Колонизатор',
+            '⚡ Командир', '⚔️ Воин', '📜 Писец', '🔮 Мудрец',
+            '👑 Аристократ', '🏛️ Сенатор', '💎 Магнат', '🌟 Звёздный лорд',
+            '🐉 Дракон', '🔥 Феникс', '🌊 Повелитель морей', '⛰️ Владыка гор',
+            '🗡️ Мастер клинка', '🏹 Мастер лука', '🛡️ Щитоносец', '🎯 Снайпер',
+            '📖 Хронист', '🧙 Архимаг', '⚗️ Алхимик', '🔬 Учёный',
+            '🎨 Художник', '🎵 Бард', '💀 Некромант', '👻 Призрачный страж',
+            '🦅 Небесный всадник', '🐺 Вожак стаи', '🦁 Лев', '🐻 Медведь',
+            '🦊 Хитрец', '🐍 Змей', '🦂 Скорпион', '🕷️ Ткач',
+            '🌙 Лунный страж', '☀️ Солнечный рыцарь', '⭐ Звёздный магистр',
+            '🌟 Великий магистр', '✨ Легенда', '💫 Миф', '🌟 Сияющий',
+            '👼 Небожитель', '🔱 Владыка бездны', '👁️ Всевидящий', '🌌 Космический странник',
+            '🌀 Повелитель бурь', '❄️ Ледяной король', '🌋 Огненный владыка', '🌪️ Властелин ветров',
+            '⚡ Громовержец', '🌊 Океанский царь', '🌲 Лесной царь', '🌸 Цветущий',
+            '🍂 Осенний странник', '🌾 Жнец', '🛠️ Кузнец судьбы', '⚙️ Мастер механизмов',
+            '🏗️ Архитектор', '📐 Геометр', '🧮 Математик', '🎲 Игрок',
+            '♟️ Стратег', '🎭 Актёр', '🎪 Циркач', '🎨 Творец',
+            '📸 Хранитель мгновений', '🎬 Режиссёр', '🎤 Певец', '🕺 Танцор',
+            '🍀 Счастливчик', '🎰 Джекпот', '💎 Алмазный', '👑 Император',
+            '🏆 Чемпион', '🥇 Олимпиец', '🌟 Суперзвезда', '💫 Галактический',
+            '🌌 Межгалактический', '🔮 Провидческий', '🧿 Оберегающий', '📿 Святой',
+            '🕊️ Ангельский', '🔥 Демонический', '⚡ Божественный', '🌠 Метеорный',
+            '☄️ Комета', '🌍 Планетарный', '🌞 Звёздный', '🌌 Галактический',
+            '💥 Сверхновая', '🌀 Сингулярность', '🔱 Титан', '👁️ Древний',
+            '🌟 Вечный', '✨ Бесконечный', '💫 Абсолютный', '🔮 Легендарный',
+            '👑 Божественный', '🌌 Вселенский', '⭐ Величайший', '🏆 Непобедимый'
+        ];
 
-    var container = document.getElementById('profile-app');
-    var client = null;
-    var currentUser = null, currentProfile = null, kingdom = KINGDOMS['Эдем'];
-    var achievementsList = [], notifications = [], leaders = [], guild = null, guildMembers = [], friends = [], notes = [], streak = 0;
-    var privacy = {}, preferences = {};
-    var editingNoteId = null, selectedNoteColor = '#6C63FF';
-    var modStats = { pendingSubmissions: 0, hiddenComments: 0, bannedUsers: 0 };
+        // XP с прогрессией: level^1.8 * 20
+        for (var i = 1; i <= 100; i++) {
+            var xp = Math.floor(Math.pow(i, 1.8) * 20);
+            LEVELS.push({
+                level: i,
+                xp: xp,
+                title: titles[i - 1] || ('Уровень ' + i)
+            });
+        }
+    })();
 
     function getLevelInfo(exp){
-        var r = {level:1,title:'🌱 Новый поселенец',current:0,next:50,percent:0};
-        for(var i = LEVEL_MAP.length - 1; i >= 0; i--){
-            if(exp >= LEVEL_MAP[i].xp){
-                r.level = LEVEL_MAP[i].level; r.title = LEVEL_MAP[i].title;
-                r.current = LEVEL_MAP[i].xp;
-                r.next = (i < LEVEL_MAP.length - 1) ? LEVEL_MAP[i+1].xp : exp + 50;
-                break;
-            }
+        var idx = 0;
+        for (var i = LEVELS.length - 1; i >= 0; i--) {
+            if (exp >= LEVELS[i].xp) { idx = i; break; }
         }
-        var range = r.next - r.current;
-        r.percent = range > 0 ? Math.min(((exp - r.current) / range) * 100, 100) : 100;
-        return r;
+        var cur = LEVELS[idx];
+        var next = LEVELS[idx + 1] || { xp: cur.xp + 1000 };
+        var range = next.xp - cur.xp;
+        return {
+            level: cur.level,
+            title: cur.title,
+            current: cur.xp,
+            next: next.xp,
+            percent: range > 0 ? Math.min(((exp - cur.xp) / range) * 100, 100) : 100
+        };
     }
 
     function getMartianDate(){
@@ -308,6 +321,68 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
         return { year: year.toLocaleString(), month: months[mi], day: rem + 1, season: seasons[Math.floor(mi/2) % seasons.length] };
     }
 
+    // ============================================================
+    // ТРЕКЕР ВРЕМЕНИ НА САЙТЕ
+    // ============================================================
+    var sessionStart = Date.now();
+    var totalTime = 0; // в секундах
+    var _visitStart = 0;
+    var _isActive = true;
+    var _activityInterval = null;
+
+    // Загружаем общее время из localStorage
+    try {
+        var savedTime = localStorage.getItem('mars_total_time');
+        if (savedTime) totalTime = parseInt(savedTime, 10) || 0;
+    } catch(e) {}
+
+    function formatDuration(seconds) {
+        var h = Math.floor(seconds / 3600);
+        var m = Math.floor((seconds % 3600) / 60);
+        var s = seconds % 60;
+        if (h > 0) return h + 'ч ' + m + 'м';
+        if (m > 0) return m + 'м ' + s + 'с';
+        return s + 'с';
+    }
+
+    function startTimer() {
+        _visitStart = Date.now();
+        _isActive = true;
+
+        // Каждую секунду увеличиваем время, если вкладка активна
+        if (_activityInterval) clearInterval(_activityInterval);
+        _activityInterval = setInterval(function() {
+            if (!_isActive) return;
+            var elapsed = Math.floor((Date.now() - _visitStart) / 1000);
+            totalTime = (totalTime || 0) + 1;
+            // Синхронизируем с localStorage каждые 5 секунд
+            if (totalTime % 5 === 0) {
+                try { localStorage.setItem('mars_total_time', totalTime); } catch(e) {}
+            }
+            updateTimerDisplay();
+        }, 1000);
+
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                _isActive = false;
+            } else {
+                _isActive = true;
+                _visitStart = Date.now();
+            }
+        });
+
+        window.addEventListener('beforeunload', function() {
+            try { localStorage.setItem('mars_total_time', totalTime); } catch(e) {}
+        });
+    }
+
+    function updateTimerDisplay() {
+        var el = document.getElementById('pf-timer-total');
+        if (el) el.textContent = formatDuration(totalTime);
+        var el2 = document.getElementById('pf-timer-session');
+        if (el2) el2.textContent = formatDuration(Math.floor((Date.now() - sessionStart) / 1000));
+    }
+
     function showToast(msg, type){
         type = type || 'info';
         var colors = { success:'linear-gradient(135deg,#27ae60,#16a085)', info:'linear-gradient(135deg,#3498db,#2980b9)', warning:'linear-gradient(135deg,#e67e22,#d35400)', error:'linear-gradient(135deg,#e74c3c,#c0392b)' };
@@ -323,33 +398,23 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
         return String(s || '').replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; });
     }
 
-    function getDeviceId(){
-        var did = localStorage.getItem('mars_device_id');
-        if(!did){ did = 'dev_' + Math.random().toString(36).slice(2,12) + Date.now().toString(36); localStorage.setItem('mars_device_id', did); }
-        return did;
-    }
-
-    function getDeviceName(){
-        var ua = navigator.userAgent;
-        if(/Android/i.test(ua)) return 'Android-устройство';
-        if(/iPhone|iPad|iPod/i.test(ua)) return 'iPhone / iPad';
-        if(/Windows/i.test(ua)) return 'Windows ПК';
-        if(/Mac/i.test(ua)) return 'Mac';
-        if(/Linux/i.test(ua)) return 'Linux';
-        return 'Неизвестное устройство';
-    }
-
     function isModerator() {
         return currentProfile && (currentProfile.role === 'moderator' || currentProfile.role === 'admin');
     }
+
+    var container = document.getElementById('profile-app');
+    var client = null;
+    var currentUser = null, currentProfile = null, kingdom = KINGDOMS['Эдем'];
+    var achievementsList = [], notifications = [], leaders = [], guild = null, guildMembers = [], friends = [], notes = [], streak = 0;
+    var privacy = {}, preferences = {};
+    var editingNoteId = null, selectedNoteColor = '#6C63FF';
+    var modStats = { pendingSubmissions: 0, hiddenComments: 0, bannedUsers: 0 };
 
     // ============================================================
     // ЗАГРУЗКА ДАННЫХ
     // ============================================================
     async function loadAllData(user){
-        var startTime = performance.now();
         console.log('⏱️ Загрузка профиля...');
-
         try{
             var cached = localStorage.getItem('pf_cache_' + user.id);
             if(cached){
@@ -417,7 +482,7 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
         }
 
         if (!currentProfile) {
-            container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><div style="font-size:4rem;">⚠️</div><h2>Профиль не найден</h2><a href="/login/" style="display:inline-block;margin-top:16px;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
+            container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><h2>Профиль не найден</h2><a href="/login/" style="display:inline-block;margin-top:16px;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
             return;
         }
 
@@ -473,7 +538,6 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
             } catch(e) {}
         }
 
-        // Статистика модератора
         if (isModerator()) {
             try {
                 var pendingRes = await client.from('list_submissions').select('id', { count: 'exact', head: true }).eq('status', 'pending');
@@ -494,8 +558,6 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
                 streak: streak, privacy: privacy, preferences: preferences, cachedAt: Date.now()
             }));
         } catch(e) {}
-
-        console.log('✅ Профиль загружен за ' + Math.round(performance.now() - startTime) + ' мс');
     }
 
     // ============================================================
@@ -509,7 +571,6 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
             document.documentElement.style.setProperty('--kingdom-light', kingdom.light);
             document.documentElement.style.setProperty('--kingdom-shadow', kingdom.color + '40');
             document.body.style.background = kingdom.bg;
-            document.body.style.backgroundAttachment = 'fixed';
         } catch(e) {}
 
         var lvl = getLevelInfo(currentProfile.experience || 0);
@@ -522,11 +583,11 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
         var modBadge = mod ? '<span class="pf-mod-badge">🛡️ Модератор</span>' : '';
         var streakBlock = streak > 0 ? '<div class="pf-stat-mini"><span class="pf-sm-label">Серия</span><span class="pf-sm-value">🔥 ' + streak + '</span></div>' : '';
 
-        // Собираем вкладки — «Модерация» только если есть права
+        // Вкладки
         var tabs = [
             {id:'overview', icon:'👤', label:'Обзор'},
             {id:'guild', icon:'🏰', label:'Гильдия'},
-            {id:'achievements', icon:'🏅', label:'Достижения'},
+            {id:'achievements', icon:'🏅', label:'Достижения', count: achievementsList.length},
             {id:'notes', icon:'📝', label:'Заметки', count: notes.length},
             {id:'notifications', icon:'🔔', label:'Уведомления'},
             {id:'friends', icon:'👥', label:'Друзья', count: friends.length},
@@ -536,14 +597,14 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
             {id:'settings', icon:'⚙️', label:'Настройки'}
         ];
         if (mod) {
-            tabs.splice(2, 0, {id:'moderation', icon:'🛡️', label:'Модерация', mod:true, count: modStats.pendingSubmissions});
+            tabs.splice(2, 0, {id:'moderation', icon:'🛡️', label:'Модерация', count: modStats.pendingSubmissions});
         }
 
         var html = '';
 
         // HERO
         html += '<div class="pf-hero pf-fade"><div class="pf-hero-content">';
-        html += '<div class="pf-avatar-wrap"><img src="' + avatar + '" alt="" class="pf-avatar"><div class="pf-level-badge">' + lvl.title + '</div></div>';
+        html += '<div class="pf-avatar-wrap"><img src="' + avatar + '" alt="" class="pf-avatar"><div class="pf-level-badge">' + lvl.title + ' · ур. ' + lvl.level + '</div></div>';
         html += '<div class="pf-info">';
         html += '<h1 class="pf-name">' + escapeHtml(displayName) + ' ' + modBadge + ' ' + guildBadge + '</h1>';
         html += '<p class="pf-email">' + currentUser.email + '</p>';
@@ -555,43 +616,38 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
         html += '</div>';
         html += '<div class="pf-progress"><div class="pf-progress-bar" style="width:' + lvl.percent + '%;"></div></div>';
         html += '<div class="pf-progress-text">До уровня ' + (lvl.level + 1) + ': ' + Math.max(lvl.next - (currentProfile.experience || 0), 0) + ' XP</div>';
-        html += '</div></div>';
+        html += '</div></div></div>';
 
-        // HERO QUICK ACTIONS
-        html += '<div class="pf-hero-actions">';
-        html += '<button class="pf-hero-action" onclick="pfSetTab(\'notes\')">📝 Новая заметка</button>';
-        html += '<button class="pf-hero-action" onclick="pfSetTab(\'ai\')">🤖 Спросить ИИ</button>';
-        html += '<a href="/achievements/" class="pf-hero-action">🎁 Достижения</a>';
-        if (mod) {
-            html += '<a href="/lists/moderation/" class="pf-hero-action mod">🛡️ Панель модерации</a>';
-        }
-        html += '<button class="pf-hero-action danger" onclick="pfLogout()">🚪 Выйти</button>';
-        html += '</div>';
-        html += '</div>';
-
-        // QUICK GRID
+        // QUICK GRID — все кнопки, включая модерацию
         html += '<div class="pf-quick-grid pf-fade" style="animation-delay:.05s;">';
         var quicks = [
-            {href:'/stats/',icon:'📊',title:'Статистика',desc:'Дашборд'},
+            {href:'/names/',icon:'📛',title:'Имена',desc:'Марсианские имена'},
+            {href:'/sky/',icon:'🌌',title:'Небо',desc:'Симулятор неба'},
+            {href:'/scene-generator/',icon:'🎬',title:'Сцены',desc:'Генератор сцен'},
+            {href:'/duel/',icon:'⚔️',title:'Дуэль',desc:'Дуэль переводчиков'},
+            {href:'/museum/',icon:'🏛️',title:'Музей',desc:'Виртуальный музей'},
+            {href:'/weather/',icon:'🌡️',title:'Погода',desc:'Погода на Марсе'},
+            {href:'/interactive/',icon:'🎮',title:'Интерактив',desc:'Все игры'},
             {href:'/achievements/',icon:'🎁',title:'Достижения',desc:'Все награды'},
             {href:'/bookmarks/',icon:'📚',title:'Закладки',desc:'Сохранённое'},
             {href:'/quests/',icon:'🗺️',title:'Квесты',desc:'Задания'},
-            {href:'/guilds/',icon:'🏰',title:'Гильдии',desc: guild ? escapeHtml(guild.name) : 'Найти'},
-            {href:'/interactive/',icon:'🎮',title:'Интерактив',desc:'Игры'},
             {href:'/horoscope/',icon:'🔮',title:'Гороскоп',desc:'Судьба'},
             {href:'/scrolls/',icon:'📜',title:'Свитки',desc:'Библиотека'},
             {href:'/forum/',icon:'💬',title:'Форум',desc:'Общение'},
             {href:'/feed/',icon:'📰',title:'Лента',desc:'Активность'}
         ];
+        if (mod) {
+            quicks.unshift({href:'/lists/moderation/',icon:'🛡️',title:'Модерация',desc:'Панель управления'});
+        }
         quicks.forEach(function(q){
             html += '<a href="' + q.href + '" class="pf-quick-card"><div class="pf-quick-icon">' + q.icon + '</div><div class="pf-quick-body"><div class="pf-quick-title">' + q.title + '</div><div class="pf-quick-desc">' + q.desc + '</div></div></a>';
         });
         html += '</div>';
 
         // TABS
-        html += '<div class="pf-tabs pf-fade" style="animation-delay:.1s;">';
+        html += '<div class="pf-tabs pf-fade" id="pf-tabs-scroll" style="animation-delay:.1s;">';
         tabs.forEach(function(t, i){
-            var cls = 'pf-tab' + (i === 0 ? ' active' : '') + (t.mod ? ' mod-tab-highlight' : '');
+            var cls = 'pf-tab' + (i === 0 ? ' active' : '');
             var countBadge = t.count ? '<span class="pf-tab-count">' + t.count + '</span>' : '';
             html += '<button class="' + cls + '" data-tab="' + t.id + '">' + t.icon + ' ' + t.label + countBadge + '</button>';
         });
@@ -599,37 +655,48 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
 
         // ОБЗОР
         html += '<div class="pf-tab-content active" data-content="overview">';
+
+        // О себе
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> О себе</h3>';
         html += '<p style="margin:0 0 12px 0;color:#555;font-size:.95rem;line-height:1.6;" id="bio-text">' + escapeHtml(currentProfile.bio || '✍️ Ещё ничего не рассказал о себе.') + '</p>';
         html += '<button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button></div>';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>';
-        html += '<div class="pf-calendar"><div class="pf-cal-month">' + martianDate.month + '</div><div class="pf-cal-day">' + martianDate.day + '</div><div class="pf-cal-year">Год ' + martianDate.year + ' Э.О.</div><div class="pf-cal-season">' + martianDate.season + '</div></div></div>';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📈</span> Активность (последние 30 дней)</h3>';
-        html += '<div class="pf-activity-graph">';
-        for (var i = 0; i < 30; i++) {
-            var lvlAct = Math.floor(Math.random() * 5);
-            html += '<div class="pf-activity-cell' + (lvlAct > 0 ? ' level-' + lvlAct : '') + '" title="День ' + (i+1) + '"></div>';
-        }
-        html += '</div></div>';
+
+        // ТАЙМЕР АКТИВНОСТИ
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">⏱️</span> Активность</h3>';
+        html += '<div class="pf-timer-grid">';
+        html += '<div class="pf-timer-card"><div class="pf-timer-value" id="pf-timer-session">0с</div><div class="pf-timer-label">Сессия</div><div class="pf-timer-sub">Сейчас на сайте</div></div>';
+        html += '<div class="pf-timer-card"><div class="pf-timer-value" id="pf-timer-total">' + formatDuration(totalTime) + '</div><div class="pf-timer-label">Всего</div><div class="pf-timer-sub">За всё время</div></div>';
+        html += '<div class="pf-timer-card"><div class="pf-timer-value">' + streak + '</div><div class="pf-timer-label">Серия</div><div class="pf-timer-sub">Дней подряд</div></div>';
+        html += '<div class="pf-timer-card"><div class="pf-timer-value">' + (achievementsList.length) + '</div><div class="pf-timer-label">Наград</div><div class="pf-timer-sub">Получено</div></div>';
         html += '</div>';
 
-        // МОДЕРАЦИЯ (только для админов)
+        // График по дням
+        html += '<div style="font-size:.78rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:18px;font-weight:700;">Последние 30 дней</div>';
+        html += '<div class="pf-activity-bars">';
+        for (var d = 0; d < 30; d++) {
+            var h = 15 + Math.floor(Math.random() * 85);
+            html += '<div class="pf-activity-bar" style="height:' + h + '%;" data-label="День ' + (d+1) + ': ' + h + '%"></div>';
+        }
+        html += '</div>';
+        html += '<div style="display:flex;justify-content:space-between;font-size:.7rem;color:#aaa;margin-top:6px;"><span>30 дней назад</span><span>Сегодня</span></div>';
+        html += '</div>';
+
+        // Календарь
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>';
+        html += '<div class="pf-calendar"><div class="pf-cal-month">' + martianDate.month + '</div><div class="pf-cal-day">' + martianDate.day + '</div><div class="pf-cal-year">Год ' + martianDate.year + ' Э.О.</div><div class="pf-cal-season">' + martianDate.season + '</div></div></div>';
+        html += '</div>';
+
+        // МОДЕРАЦИЯ
         if (mod) {
             html += '<div class="pf-tab-content" data-content="moderation">';
-            html += '<div class="pf-mod-dashboard">';
-            html += '<h2 class="pf-mod-dashboard-title">🛡️ Центр модерации</h2>';
-            html += '<p class="pf-mod-dashboard-sub">Управление контентом, пользователями и заявками</p>';
-            html += '<div class="pf-mod-stats-row">';
-            html += '<div class="pf-mod-stat" onclick="window.location.href=\'/lists/moderation/\'"><div class="pf-mod-stat-icon">📥</div><div class="pf-mod-stat-value">' + modStats.pendingSubmissions + '</div><div class="pf-mod-stat-label">Заявок</div></div>';
-            html += '<div class="pf-mod-stat" onclick="window.location.href=\'/lists/moderation/\'"><div class="pf-mod-stat-icon">🚫</div><div class="pf-mod-stat-value">' + modStats.hiddenComments + '</div><div class="pf-mod-stat-label">Скрытых</div></div>';
-            html += '<div class="pf-mod-stat" onclick="window.location.href=\'/lists/moderation/\'"><div class="pf-mod-stat-icon">⛔</div><div class="pf-mod-stat-value">' + modStats.bannedUsers + '</div><div class="pf-mod-stat-label">Забанено</div></div>';
+            html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🛡️</span> Центр модерации</h3>';
+            html += '<div class="pf-timer-grid">';
+            html += '<div class="pf-timer-card" onclick="window.location.href=\'/lists/moderation/\'" style="cursor:pointer;"><div class="pf-timer-value">' + modStats.pendingSubmissions + '</div><div class="pf-timer-label">Заявок</div></div>';
+            html += '<div class="pf-timer-card" onclick="window.location.href=\'/lists/moderation/\'" style="cursor:pointer;"><div class="pf-timer-value">' + modStats.hiddenComments + '</div><div class="pf-timer-label">Скрытых</div></div>';
+            html += '<div class="pf-timer-card" onclick="window.location.href=\'/lists/moderation/\'" style="cursor:pointer;"><div class="pf-timer-value">' + modStats.bannedUsers + '</div><div class="pf-timer-label">Забанено</div></div>';
             html += '</div>';
-            html += '<div class="pf-mod-actions">';
-            html += '<a href="/lists/moderation/" class="pf-mod-action-btn">🛡️ Открыть панель модерации</a>';
-            html += '<a href="/lists/moderation/" class="pf-mod-action-btn" style="background:rgba(255,255,255,.15);box-shadow:none;">📥 Проверить заявки</a>';
-            html += '</div>';
-            html += '</div>';
-            html += '</div>';
+            html += '<div style="margin-top:18px;"><a href="/lists/moderation/" class="pf-btn">🛡️ Открыть панель модерации</a></div>';
+            html += '</div></div>';
         }
 
         // ГИЛЬДИЯ
@@ -648,19 +715,42 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
         }
         html += '</div>';
 
-        // ДОСТИЖЕНИЯ
+        // ДОСТИЖЕНИЯ — показываем все, заблокированные бледные
+        var ALL_ACHIEVEMENTS = [
+            {id:1,name:'Первый шаг',icon:'👣',desc:'Зарегистрироваться'},
+            {id:2,name:'Марсианин',icon:'🔴',desc:'Выбрать королевство'},
+            {id:3,name:'Читатель',icon:'📖',desc:'Прочитать 5 статей'},
+            {id:4,name:'Эрудит',icon:'🎓',desc:'Прочитать 50 статей'},
+            {id:5,name:'Хранитель',icon:'📚',desc:'Прочитать 200 статей'},
+            {id:6,name:'Комментатор',icon:'💬',desc:'Оставить первый комментарий'},
+            {id:7,name:'Оратор',icon:'🗣️',desc:'Оставить 50 комментариев'},
+            {id:8,name:'Ночной страж',icon:'🌙',desc:'Заходить после полуночи 7 дней'},
+            {id:9,name:'Ранняя пташка',icon:'🌅',desc:'Заходить до 6 утра 7 дней'},
+            {id:10,name:'Неделя',icon:'🔥',desc:'7 дней подряд'},
+            {id:11,name:'Месяц',icon:'💪',desc:'30 дней подряд'},
+            {id:12,name:'Год',icon:'🏆',desc:'365 дней подряд'},
+            {id:13,name:'Кузнец',icon:'⚒️',desc:'Создать 10 заметок'},
+            {id:14,name:'Летописец',icon:'📜',desc:'Создать 100 заметок'},
+            {id:15,name:'Художник',icon:'🎨',desc:'Сменить аватар 5 раз'},
+            {id:16,name:'Странник',icon:'🧭',desc:'Посетить 10 королевств'},
+            {id:17,name:'Мореход',icon:'⛵',desc:'Посетить все королевства'},
+            {id:18,name:'Дуэлянт',icon:'⚔️',desc:'Победить в дуэли 10 раз'},
+            {id:19,name:'Провидец',icon:'🔮',desc:'Использовать гороскоп 10 раз'},
+            {id:20,name:'Оракул',icon:'🧿',desc:'Использовать гороскоп 100 раз'},
+            {id:21,name:'Гурман',icon:'🍽️',desc:'Попробовать 5 рецептов'},
+            {id:22,name:'Мастер',icon:'🎯',desc:'Достичь 10 уровня'},
+            {id:23,name:'Грандмастер',icon:'👑',desc:'Достичь 50 уровня'},
+            {id:24,name:'Легенда',icon:'🌟',desc:'Достичь 100 уровня'}
+        ];
         html += '<div class="pf-tab-content" data-content="achievements">';
-        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Достижения (' + achievementsList.length + ')</h3>';
-        if(achievementsList.length === 0){
-            html += '<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет достижений.</p>';
-        } else {
-            html += '<div class="pf-ach-grid">';
-            achievementsList.forEach(function(a){
-                html += '<div class="pf-ach"><div class="pf-ach-icon">' + (a.icon || '🏅') + '</div><div><div class="pf-ach-name">' + escapeHtml(a.name || 'Достижение') + '</div><div class="pf-ach-date">' + (a.earned_at ? new Date(a.earned_at).toLocaleDateString('ru-RU') : '') + '</div></div></div>';
-            });
-            html += '</div>';
-        }
-        html += '</div></div>';
+        html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Достижения (' + achievementsList.length + '/' + ALL_ACHIEVEMENTS.length + ')</h3>';
+        html += '<div class="pf-ach-grid">';
+        ALL_ACHIEVEMENTS.forEach(function(a){
+            var earned = achievementsList.find(function(x){ return x.achievement_id === a.id || x.name === a.name; });
+            var cls = earned ? '' : ' locked';
+            html += '<div class="pf-ach' + cls + '"><div class="pf-ach-icon">' + (earned ? a.icon : '🔒') + '</div><div><div class="pf-ach-name">' + escapeHtml(a.name) + '</div><div class="pf-ach-date">' + (earned ? (earned.earned_at ? new Date(earned.earned_at).toLocaleDateString('ru-RU') : 'Получено') : escapeHtml(a.desc)) + '</div></div></div>';
+        });
+        html += '</div></div></div>';
 
         // ЗАМЕТКИ
         html += '<div class="pf-tab-content" data-content="notes">';
@@ -766,10 +856,23 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
 
         container.innerHTML = html;
         renderNoteColors();
+        updateTimerDisplay();
 
+        // Обработчики вкладок
         document.querySelectorAll('.pf-tab').forEach(function(tab){
             tab.onclick = function(){ pfSetTab(tab.dataset.tab); };
         });
+
+        // ПРОКРУТКА ВКЛАДОК КОЛЁСИКОМ
+        var tabsEl = document.getElementById('pf-tabs-scroll');
+        if (tabsEl) {
+            tabsEl.addEventListener('wheel', function(e) {
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                    e.preventDefault();
+                    tabsEl.scrollLeft += e.deltaY * 1.5;
+                }
+            }, { passive: false });
+        }
     }
 
     function renderNoteColors(){
@@ -778,37 +881,9 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
         el.innerHTML = NOTE_COLORS.map(function(c){ return '<div class="pf-note-color ' + (c === selectedNoteColor ? 'selected' : '') + '" style="background:' + c + ';" onclick="pfSelectNoteColor(\'' + c + '\')"></div>'; }).join('');
     }
 
-    async function render2FATab(){
-        var statusEl = document.getElementById('pf-2fa-status');
-        var switchEl = document.getElementById('pf-switch-2fa');
-        var devicesEl = document.getElementById('pf-trusted-devices');
-        if(!statusEl) return;
-        try{
-            var twofaRes = await client.from('user_2fa').select('*').eq('user_id', currentUser.id).maybeSingle();
-            var enabled = twofaRes.data && twofaRes.data.email_2fa_enabled;
-            if(enabled){
-                statusEl.innerHTML = '<div class="pf-badge-2fa">✅ Включена</div>';
-                if(switchEl) switchEl.classList.add('on');
-            } else {
-                statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Выключена</div>';
-                if(switchEl) switchEl.classList.remove('on');
-            }
-            if(devicesEl){
-                var devRes = await client.from('trusted_devices').select('*').eq('user_id', currentUser.id).order('last_used', { ascending: false });
-                var devices = devRes.data || [];
-                if(devices.length > 0){
-                    devicesEl.innerHTML = devices.map(function(d){
-                        return '<div class="pf-notif"><div class="pf-notif-icon">💻</div><div style="flex:1;"><div class="pf-notif-text"><b>' + escapeHtml(d.device_name || 'Устройство') + '</b></div><div class="pf-notif-date">' + new Date(d.last_used).toLocaleString('ru-RU') + '</div></div><button class="pf-note-btn danger" onclick="pfRemoveDevice(' + d.id + ')">✕</button></div>';
-                    }).join('');
-                } else {
-                    devicesEl.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">Нет устройств</p>';
-                }
-            }
-        } catch(e){
-            statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Ошибка</div>';
-        }
-    }
-
+    // ============================================================
+    // ПУБЛИЧНЫЕ ФУНКЦИИ
+    // ============================================================
     window.pfSetTab = function(tab){
         document.querySelectorAll('.pf-tab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab === tab); });
         document.querySelectorAll('.pf-tab-content').forEach(function(c){ c.classList.toggle('active', c.dataset.content === tab); });
@@ -834,7 +909,6 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
         var nn = prompt('Новое имя:', cur);
         if(!nn || nn === cur) return;
         if(nn.length < 2 || nn.length > 20){ showToast('2-20 символов', 'warning'); return; }
-        if(!/^[a-zA-Z0-9\s\-_]+$/.test(nn)){ showToast('Только латиница', 'warning'); return; }
         var res = await client.from('profiles').update({ display_name: nn.trim() }).eq('user_id', currentUser.id);
         if(res.error){ showToast('Ошибка', 'error'); return; }
         showToast('✅ Обновлено!', 'success');
@@ -857,6 +931,7 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
 
     window.pfSelectKingdom = async function(name){
         await client.from('profiles').update({ kingdom: name }).eq('user_id', currentUser.id);
+        try { localStorage.setItem('mars_kingdom_color', KINGDOMS[name].color); } catch(e) {}
         showToast('✅ ' + name + '!', 'success');
         setTimeout(function(){ location.reload(); }, 600);
     };
@@ -979,6 +1054,37 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
         } catch(e){ showToast('Ошибка: ' + e.message, 'error'); }
     };
 
+    async function render2FATab(){
+        var statusEl = document.getElementById('pf-2fa-status');
+        var switchEl = document.getElementById('pf-switch-2fa');
+        var devicesEl = document.getElementById('pf-trusted-devices');
+        if(!statusEl) return;
+        try{
+            var twofaRes = await client.from('user_2fa').select('*').eq('user_id', currentUser.id).maybeSingle();
+            var enabled = twofaRes.data && twofaRes.data.email_2fa_enabled;
+            if(enabled){
+                statusEl.innerHTML = '<div class="pf-badge-2fa">✅ Включена</div>';
+                if(switchEl) switchEl.classList.add('on');
+            } else {
+                statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Выключена</div>';
+                if(switchEl) switchEl.classList.remove('on');
+            }
+            if(devicesEl){
+                var devRes = await client.from('trusted_devices').select('*').eq('user_id', currentUser.id).order('last_used', { ascending: false });
+                var devices = devRes.data || [];
+                if(devices.length > 0){
+                    devicesEl.innerHTML = devices.map(function(d){
+                        return '<div class="pf-notif"><div class="pf-notif-icon">💻</div><div style="flex:1;"><div class="pf-notif-text"><b>' + escapeHtml(d.device_name || 'Устройство') + '</b></div><div class="pf-notif-date">' + new Date(d.last_used).toLocaleString('ru-RU') + '</div></div><button class="pf-note-btn danger" onclick="pfRemoveDevice(' + d.id + ')">✕</button></div>';
+                    }).join('');
+                } else {
+                    devicesEl.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">Нет устройств</p>';
+                }
+            }
+        } catch(e){
+            statusEl.innerHTML = '<div class="pf-badge-2fa off">⚠️ Ошибка</div>';
+        }
+    }
+
     window.pfRemoveDevice = async function(id){
         if(!confirm('Удалить?')) return;
         await client.from('trusted_devices').delete().eq('id', id);
@@ -1005,6 +1111,8 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
     // ИНИЦИАЛИЗАЦИЯ
     // ============================================================
     async function init(){
+        startTimer();
+
         for (var i = 0; i < 30; i++) {
             if (window.supabaseClient) break;
             await new Promise(function(r){ setTimeout(r, 200); });
@@ -1018,21 +1126,18 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
 
         var user = null;
         if(window.marsSession && window.marsSession.user) user = window.marsSession.user;
-
         if(!user){
             try {
                 var r = await client.auth.getSession();
                 if(r.data && r.data.session && r.data.session.user) user = r.data.session.user;
             } catch(e) {}
         }
-
         if(!user){
             try {
                 var r2 = await client.auth.refreshSession();
                 if(r2.data && r2.data.session && r2.data.session.user) user = r2.data.session.user;
             } catch(e) {}
         }
-
         if(!user){
             try {
                 var key = 'sb-ncytbgbzfjfoqmmgfygz-auth-token';
@@ -1083,8 +1188,6 @@ window.showLevelUp = function(level, title) {
     </div>
   `;
   document.body.appendChild(overlay);
-  
-  // Частицы
   for (var i = 0; i < 60; i++) {
     var p = document.createElement('div');
     var angle = Math.random() * Math.PI * 2;
@@ -1101,26 +1204,17 @@ window.showLevelUp = function(level, title) {
     `;
     overlay.appendChild(p);
   }
-  
   setTimeout(function() {
     overlay.style.animation = 'lvlFadeOut 0.5s ease forwards';
     setTimeout(function() { overlay.remove(); }, 500);
   }, 2500);
 };
-
-// Стили
 var style = document.createElement('style');
 style.textContent = `
   @keyframes lvlFadeIn { from { opacity: 0; } }
   @keyframes lvlFadeOut { to { opacity: 0; } }
-  @keyframes lvlZoom { 
-    0% { transform: scale(0.3); opacity: 0; } 
-    60% { transform: scale(1.1); } 
-    100% { transform: scale(1); opacity: 1; } 
-  }
-  @keyframes lvlParticle {
-    to { transform: translate(var(--dx), var(--dy)); opacity: 0; }
-  }
+  @keyframes lvlZoom { 0% { transform: scale(0.3); opacity: 0; } 60% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes lvlParticle { to { transform: translate(var(--dx), var(--dy)); opacity: 0; } }
 `;
 document.head.appendChild(style);
 </script>

@@ -310,24 +310,61 @@
         });
     }
 
-    // ============================================================
-    // 🎨 СИНХРОНИЗАЦИЯ ЦВЕТА ПРОФИЛЯ
-    // ============================================================
-    function syncKingdomColor() {
-        // --kingdom-color устанавливается в профиле (pf-render).
-        // Но футер должен работать и на других страницах.
-        // Если переменная уже есть — ничего не делаем.
-        // Если нет — ставим дефолтный цвет.
-        try {
-            var current = getComputedStyle(document.documentElement)
-                .getPropertyValue('--kingdom-color').trim();
-            if (!current) {
-                document.documentElement.style.setProperty('--kingdom-color', '#6C63FF');
+   // ============================================================
+// 🎨 СИНХРОНИЗАЦИЯ ЦВЕТА ПРОФИЛЯ
+// ============================================================
+function syncKingdomColor() {
+    var DEFAULT_COLOR = '#3498db'; // голубой по умолчанию
+    var color = DEFAULT_COLOR;
+
+    // 1) Пробуем взять сохранённый цвет профиля
+    try {
+        var saved = localStorage.getItem('mars_kingdom_color');
+        if (saved && /^#[0-9a-fA-F]{3,8}$/.test(saved)) {
+            color = saved;
+        } else {
+            // 2) Если нет — ищем в кэше профиля
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key && key.indexOf('pf_cache_') === 0) {
+                    try {
+                        var cached = JSON.parse(localStorage.getItem(key));
+                        if (cached && cached.currentProfile && cached.currentProfile.kingdom) {
+                            var KINGDOMS_MAP = {
+                                'Аркадия': '#D4A574',
+                                'Ксанф': '#3D3D3D',
+                                'Эдем': '#F4A460',
+                                'Эридания': '#F5D76E',
+                                'Кхонг': '#A9A9A9',
+                                'Авсония': '#87CEEB',
+                                'Кимерия': '#B19CD9',
+                                'Серпентида': '#E57373',
+                                'Эритрей': '#64B5F6',
+                                'Утопия': '#4DD0E1',
+                                'Эллада': '#FF8A65',
+                                'Аливасото': '#81C784'
+                            };
+                            var k = cached.currentProfile.kingdom;
+                            if (KINGDOMS_MAP[k]) {
+                                color = KINGDOMS_MAP[k];
+                                // На будущее — сохраняем глобально
+                                try { localStorage.setItem('mars_kingdom_color', color); } catch(e) {}
+                            }
+                            break;
+                        }
+                    } catch(e) {}
+                }
             }
-        } catch (e) {
-            document.documentElement.style.setProperty('--kingdom-color', '#6C63FF');
         }
-    }
+    } catch(e) {}
+
+    // Применяем цвет ко всему документу
+    document.documentElement.style.setProperty('--kingdom-color', color);
+    document.documentElement.setAttribute('data-kingdom-color', color);
+
+    // Дополнительно — если переключили тему, перезаписываем
+    document.body.style.setProperty('--kingdom-color', color);
+}
 
     // ============================================================
     // ЗАПУСК

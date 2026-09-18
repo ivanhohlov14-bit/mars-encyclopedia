@@ -1,5 +1,5 @@
 // ============================================================
-// wikipedia-footer.js — VIP-футер в стиле проекта
+// wikipedia-footer.js — VIP-футер в самом низу страницы
 // ============================================================
 
 (function() {
@@ -25,13 +25,14 @@
             'и художественной концепции автора.',
 
         links: [
-            { text: 'Политика конфиденциальности', href: '/privacy/', icon: '🔒' },
-            { text: 'Описание проекта', href: '/about/', icon: '📖' },
-            { text: 'Связаться с нами', href: '/contact/', icon: '✉️' },
-            { text: 'Кодекс поведения', href: '/code-of-conduct/', icon: '🤝' },
-            { text: 'Статистика', href: '/statistics/', icon: '📊' }
+            { text: 'Политика конфиденциальности', href: '/privacy/' },
+            { text: 'Описание проекта', href: '/about/' },
+            { text: 'Связаться с нами', href: '/contact/' },
+            { text: 'Кодекс поведения', href: '/code-of-conduct/' },
+            { text: 'Статистика', href: '/statistics/' }
         ],
 
+        // Куда вставлять — самые дальние от центра контейнеры
         targetSelectors: [
             '.md-content__inner',
             '.rst-content .section',
@@ -43,7 +44,6 @@
 
         skipPages: ['/secret/', '/secret-2/', '/login/', '/profile/', '/moderation/'],
 
-        // Показывать кнопку "Наверх"
         showBackToTop: true
     };
 
@@ -73,9 +73,11 @@
         '  box-shadow: 0 4px 24px rgba(108, 99, 255, 0.06);',
         '  overflow: hidden;',
         '  animation: wikiFooterIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;',
+        '  clear: both;',
+        '  width: 100%;',
+        '  box-sizing: border-box;',
         '}',
 
-        // Градиентная полоса сверху
         '.wiki-footer::before {',
         '  content: "";',
         '  position: absolute;',
@@ -85,7 +87,6 @@
         '  border-radius: 20px 20px 0 0;',
         '}',
 
-        // Декоративное свечение
         '.wiki-footer::after {',
         '  content: "";',
         '  position: absolute;',
@@ -100,7 +101,6 @@
         '  to { opacity: 1; transform: translateY(0); }',
         '}',
 
-        // Абзацы
         '.wiki-footer p {',
         '  position: relative;',
         '  z-index: 1;',
@@ -119,7 +119,6 @@
         '.wiki-footer-brand strong { color: #1a1a2e; font-weight: 800; }',
         '.wiki-footer-brand em { color: #6C63FF; font-style: italic; font-weight: 600; }',
 
-        // Ссылки в тексте
         '.wiki-footer a {',
         '  color: #6C63FF;',
         '  text-decoration: none;',
@@ -133,7 +132,6 @@
         '  color: #4a3fd9;',
         '}',
 
-        // Полоса ссылок
         '.wiki-footer-links {',
         '  position: relative;',
         '  z-index: 1;',
@@ -147,9 +145,7 @@
         '}',
 
         '.wiki-footer-links a {',
-        '  display: inline-flex;',
-        '  align-items: center;',
-        '  gap: 6px;',
+        '  display: inline-block;',
         '  padding: 8px 16px;',
         '  background: rgba(108, 99, 255, 0.06);',
         '  border: 1px solid rgba(108, 99, 255, 0.15);',
@@ -170,12 +166,6 @@
         '  box-shadow: 0 6px 16px -4px rgba(108, 99, 255, 0.35);',
         '}',
 
-        '.wiki-footer-links .link-icon {',
-        '  font-size: 1rem;',
-        '  line-height: 1;',
-        '}',
-
-        // Кнопка "Наверх"
         '.wiki-back-to-top {',
         '  position: fixed;',
         '  bottom: 30px;',
@@ -210,13 +200,7 @@
         '  box-shadow: 0 16px 40px -8px rgba(108, 99, 255, 0.7);',
         '}',
 
-        '.wiki-back-to-top:active {',
-        '  transform: translateY(-2px) scale(1.03);',
-        '}',
-
-        // ============================================
-        // 🌌 ТЁМНАЯ ТЕМА
-        // ============================================
+        // Тёмная тема
         'html body.mars-stars-on .wiki-footer {',
         '  background: rgba(20, 15, 35, 0.6) !important;',
         '  border-color: rgba(162, 155, 254, 0.25) !important;',
@@ -232,7 +216,6 @@
         'html body.mars-stars-on .wiki-footer-brand em { color: #A29BFE !important; }',
         'html body.mars-stars-on .wiki-footer a { color: #A29BFE !important; }',
         'html body.mars-stars-on .wiki-footer a:hover { border-bottom-color: #A29BFE !important; color: #fff !important; }',
-
         'html body.mars-stars-on .wiki-footer-links { border-top-color: rgba(162,155,254,0.2) !important; }',
         'html body.mars-stars-on .wiki-footer-links a {',
         '  background: rgba(108, 99, 255, 0.15) !important;',
@@ -245,19 +228,14 @@
         '  color: #fff !important;',
         '  box-shadow: 0 6px 20px -4px rgba(162, 155, 254, 0.5);',
         '}',
-
         'html body.mars-stars-on .wiki-back-to-top {',
         '  background: linear-gradient(135deg, #A29BFE, #6C63FF);',
         '  box-shadow: 0 12px 32px -8px rgba(162, 155, 254, 0.6);',
         '}',
 
-        // ============================================
-        // 📱 МОБИЛЬНЫЙ
-        // ============================================
         '@media (max-width: 600px) {',
         '  .wiki-footer { padding: 24px 20px 20px; margin: 40px 0 24px 0; border-radius: 14px; }',
         '  .wiki-footer-links a { padding: 6px 12px; font-size: 0.78rem; }',
-        '  .wiki-footer-links .link-icon { font-size: 0.9rem; }',
         '  .wiki-back-to-top { width: 46px; height: 46px; bottom: 20px; right: 20px; font-size: 1.2rem; }',
         '}'
     ].join('\n');
@@ -272,26 +250,19 @@
 
         var html = '';
 
-        // Абзац про лицензию
         if (CONFIG.licenseNote) {
             html += '<p>' + CONFIG.licenseNote + '</p>';
         }
 
-        // Бренд
         if (CONFIG.brandNote) {
             html += '<p class="wiki-footer-brand">' + CONFIG.brandNote + '</p>';
         }
 
-        // Ссылки
         if (CONFIG.links && CONFIG.links.length) {
             html += '<div class="wiki-footer-links">';
             CONFIG.links.forEach(function(link) {
-                html += '<a href="' + link.href + '">';
-                if (link.icon) {
-                    html += '<span class="link-icon">' + link.icon + '</span>';
-                }
-                html += '<span>' + link.text + '</span>';
-                html += '</a>';
+                // ✅ Без иконок-эмодзи
+                html += '<a href="' + link.href + '">' + link.text + '</a>';
             });
             html += '</div>';
         }
@@ -320,7 +291,6 @@
 
         document.body.appendChild(btn);
 
-        // Показ/скрытие при прокрутке
         var lastVisible = false;
         function checkScroll() {
             var visible = window.scrollY > 400;
@@ -331,17 +301,6 @@
         }
         window.addEventListener('scroll', checkScroll, { passive: true });
         checkScroll();
-    }
-
-    // ============================================================
-    // ПОИСК КОНТЕЙНЕРА
-    // ============================================================
-    function findTarget() {
-        for (var i = 0; i < CONFIG.targetSelectors.length; i++) {
-            var el = document.querySelector(CONFIG.targetSelectors[i]);
-            if (el) return el;
-        }
-        return null;
     }
 
     // ============================================================
@@ -356,19 +315,31 @@
     }
 
     // ============================================================
-    // ВСТАВКА ФУТЕРА
+    // 🔑 ВСТАВКА ФУТЕРА — В САМЫЙ НИЗ
     // ============================================================
     function insertFooter() {
-        if (document.querySelector('.wiki-footer')) return;
+        var old = document.querySelector('.wiki-footer');
+        if (old) return old;
 
-        var target = findTarget() || document.body;
         var footer = createFooter();
 
-        // Если target — не body, вставляем в его конец
-        if (target === document.body) {
+        // ✅ Вставляем в КОНЕЦ body — ПОСЛЕ комментариев, лайков и всего остального
+        // Это гарантирует, что футер будет в самом низу
+        document.body.appendChild(footer);
+
+        return footer;
+    }
+
+    // ============================================================
+    // 🔑 ПЕРЕНОС ФУТЕРА ВНИЗ (если что-то вставили после него)
+    // ============================================================
+    function moveFooterToBottom() {
+        var footer = document.querySelector('.wiki-footer');
+        if (!footer) return;
+
+        // Если футер не последний в body — переносим
+        if (footer.nextElementSibling) {
             document.body.appendChild(footer);
-        } else {
-            target.appendChild(footer);
         }
     }
 
@@ -378,11 +349,14 @@
     function init() {
         injectStyles();
 
-        // Первая попытка — быстро
-        setTimeout(insertFooter, 300);
+        // Первая вставка
+        setTimeout(insertFooter, 400);
 
-        // Повторная — если тема дорисовывает DOM
-        setTimeout(insertFooter, 1000);
+        // Проверка и перенос через 1 сек (когда комментарии и лайки догрузились)
+        setTimeout(moveFooterToBottom, 1200);
+
+        // Ещё раз через 2.5 сек — финальная страховка
+        setTimeout(moveFooterToBottom, 2500);
 
         // Кнопка "Наверх"
         setTimeout(createBackToTop, 600);
@@ -401,7 +375,8 @@
                 var old = document.querySelector('.wiki-footer');
                 if (old) old.remove();
                 insertFooter();
-            }, 200);
+            }, 300);
+            setTimeout(moveFooterToBottom, 1500);
         });
     }
 

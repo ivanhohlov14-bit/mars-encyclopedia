@@ -1,28 +1,151 @@
 # Эритрейское море
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Эритрейское море</h3>
-  <hr>
-  
-  <p><b>Латинское название:</b> Mare Erythraeum</p>
-  <p><b>Марсианское название:</b> Eritreya Thal («Красное море»)</p>
-  <p><b>Размер:</b> около 1500 км в поперечнике</p>
-  <p><b>Координаты центра:</b> <a href="https://geohack.toolforge.org/geohack.php?language=ru&pagename=Mare_Erythraeum&params=24.74_S_40_E_globe:mars" target="_blank">24,7° ю.ш., 40° в.д.</a></p>
-  <p><b>Расположение:</b> Южное полушарие Марса</p>
-  <p><b>Глубина:</b> до 3 км ниже среднего уровня</p>
-  <p><b>Площадь (в прошлом):</b> ~2,0–2,5 млн км²</p>
-  <p><b>Солёность (в прошлом):</b> 35–40 ‰</p>
-  <p><b>Средняя глубина (в прошлом):</b> 100–150 м</p>
-  <p><b>Максимальная глубина (в прошлом):</b> до 250 м</p>
-  <p><b>Температура (лето):</b> +12°C (к 2700 г. упала до −10°C)</p>
-  <p><b>Температура (зима):</b> −5°C (к 2700 г. упала до −25°C)</p>
-  <p><b>Ключевые города:</b> Эритрея-Сити, Портус-Эритрея</p>
-  <p><b>Связанные понятия:</b> <a href="araksis.md">Араксис</a>, <a href="ksanf-monster.md">Ксанф</a>, <a href="epokha-umiraniya.md">Эпоха Умирания</a></p>
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
 
-**Эритрейское море** (лат. *Mare Erythraeum*, марс. *Eritreya Thal* — «Красное море») — обширная тёмная область в южном полушарии Марса, в прошлом — крупный водоём. В эпопее «Письмо из Красной пыли» Эритрейское море выступает как важный географический объект, соединяющийся проливом Дзен-Мар с [Морем Аргира](argir-sea.md) и граничащий на востоке с [Ацидалийским морем](acidalia-sea.md). Его воды были менее солёными, чем в соседних морях, что делало его важным источником пресной воды для южных поселений. На побережье Эритрейского моря находились древние портовые города, а его острова служили убежищами для пиратов и беженцев в Эпоху Умирания.
+<div class="infobox" style="float: right; width: 280px; background: #dce8ef; border: 1px solid #8daebf; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+
+  <div style="background: #b8ced9; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; border-radius: 8px 8px 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #1a3a4a;">Эритрейское море</h3>
+  </div>
+
+  <!-- Карта -->
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-map.png" alt="Карта Эритрейского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Эритрейского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
+  <!-- Батиметрия -->
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-bathymetry.png" alt="Батиметрия Эритрейского моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
+    </div>
+  </div>
+
+  <!-- История -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    История
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• 4,5–4,0 млрд лет назад — формирование низменности</li>
+    <li>• ок. 1 г. Э.О. — первые портовые поселения</li>
+    <li>• 2500–2680 гг. — расцвет торговли через пролив Дзен-Мар</li>
+    <li>• 2680–2710 гг. — обмеление, пиратство на острове Эритрея</li>
+    <li>• к 2710 г. — полное высыхание моря</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Основные данные -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Основные данные
+  </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Латинское название:</b> <i>Mare Erythraeum</i></p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Марсианское название:</b> <i>Eritreya Thal</i> («Красное море»)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Тип водоёма:</b> внутреннее море (солёное)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Площадь (в прошлом):</b> ≈ 2,0–2,5 млн км²</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Размер:</b> ок. 1 500 км в поперечнике</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Солёность:</b> 35–40 ‰</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Средняя глубина:</b> 100–150 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Максимальная глубина:</b> ~250 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Температура поверхности (лето):</b> +12 °C (к 2700 г. — до −10 °C)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Температура поверхности (зима):</b> −5 °C (к 2700 г. — до −25 °C)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Координаты:</b> 24,7° ю.ш., 40° в.д.</p>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Гидрология -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Гидрология
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Притоки: реки с Земли Ноя и пустыни Ноахида</li>
+    <li>• Соединение с Морем Аргира: пролив Дзен-Мар</li>
+    <li>• Соседство на востоке: Ацидалийское море</li>
+    <li>• Циркуляция: циклоническая</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Острова -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Острова
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• остров Эритрея (центральный, пиратская база)</li>
+    <li>• Красный остров (железистые скалы)</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Геология -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Геология
+  </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Происхождение:</b> тектоника и эрозия</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Минералогия:</b> оксиды железа, сульфаты, глинистые минералы</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Глубина впадины:</b> до 3 км ниже среднего уровня</p>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Омываемые государства -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Омываемые государства
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/khong/" style="color: #1a3a4a; text-decoration: underline;">Кхонг</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsoniya.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/avsoniya/" style="color: #1a3a4a; text-decoration: underline;">Авсония</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eden/" style="color: #1a3a4a; text-decoration: underline;">Эдем</a>
+    </div>
+  </div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Звук моря -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Звук моря
+  </div>
+
+  <div class="mars-sound mars-sound--infobox"
+       data-src="/assets/sounds/the-sound-of-the-waves-the-sea.mp3"
+       data-title="Эритрейское море"
+       data-caption="Реконструкция звука"
+       data-theme="blue"></div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Факты -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Факты
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Самое пресное из южных морей Марса</li>
+    <li>• Видно даже в небольшой телескоп (деталь альбедо)</li>
+    <li>• Убежище пиратов в Эпоху Умирания</li>
+    <li>• Название — от красноватого оттенка воды</li>
+  </ul>
+
+</div>
+
+**Эритрейское море** (лат. *Mare Erythraeum*, марс. *Eritreya Thal* — «Красное море») — обширная тёмная область в южном полушарии Марса, в прошлом — крупный водоём. В эпопее «Письмо из Красной пыли» Эритрейское море выступает как важный географический объект, соединяющийся проливом Дзен-Мар с [Морем Аргира](https://mars-wiki.ru/geography/argir-sea/) и граничащий на востоке с [Ацидалийским морем](https://mars-wiki.ru/geography/acidalia-sea/). Его воды были менее солёными, чем в соседних морях, что делало его важным источником пресной воды для южных поселений. На побережье Эритрейского моря находились древние портовые города, а его острова служили убежищами для пиратов и беженцев в Эпоху Умирания.
 
 ## Этимология
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-red-waters.png" alt="Красные воды Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Красные воды Эритрейского моря. Реконструкция.</div>
+</div>
 
 Марсианское название *Eritreya Thal* дословно переводится как «Красное море». Оно связано с цветом воды — из-за высокого содержания оксидов железа, выносимых с окрестных равнин, вода в море имела красноватый оттенок[^1]. В марсианских табличках море также именуют *«Кровавым зеркалом»* — по цвету воды и способности отражать багровое небо Марса.
 
@@ -46,6 +169,11 @@
 | **Температура (зима)** | −5°C | К 2700 г. упала до −25°C |
 
 ### Острова
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-island-eritrea.png" alt="Остров Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Остров Эритрея — пиратская база. Реконструкция.</div>
+</div>
 
 В Эритрейском море существовало несколько островов, игравших важную роль в истории и торговле. Крупнейшим из них был **остров Эритрея** — скалистый остров в центральной части моря, ставший в Эпоху Умирания пиратской базой. Его чёрные базальтовые скалы поднимались из воды на высоту до 100 метров, делая остров почти неприступным[^7]. Другим важным островом был **Красный остров**, названный так из-за цвета скал, сложенных из богатых железом пород.
 
@@ -84,6 +212,11 @@
 
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-port.png" alt="Порт Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Порт Эритрейского моря в Эпоху Расцвета. Реконструкция.</div>
+</div>
+
 В Эпоху Расцвета Эритрейское море стало важным транспортным узлом, соединявшим южные земли с центральными областями Марса через пролив Дзен-Мар. По морю проходили торговые пути, связывавшие Кхонг, Авсонию и Эдем[^14].
 
 На острове Эритрея в этот период была построена крепость, которая позже стала пиратской базой. В храме на побережье хранились древние таблички, описывающие историю южных земель.
@@ -95,6 +228,11 @@
 В Эпоху Умирания остров Эритрея стал убежищем для пиратов, грабивших корабли, пытавшиеся покинуть умирающий Марс. Последние записи о море в марсианских табличках относятся к 2715 году[^16].
 
 ## Экосистема
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-ecosystem.png" alt="Подводный мир Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир Эритрейского моря. Реконструкция.</div>
+</div>
 
 В Эпоху Расцвета море было домом для многих видов организмов, приспособленных к марсианским условиям:
 
@@ -111,6 +249,11 @@
 
 ### В мифологии
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-myth-blood-mirror.png" alt="Миф о кровавом зеркале" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Миф о Кровавом зеркале. Реконструкция.</div>
+</div>
+
 Эритрейское море занимало важное место в марсианской мифологии. Считалось, что его красные воды — это кровь бога Кхо, пролитая в битве с Акхой[^18]. В «Песнях Совии» море упоминается как *«Кровавое зеркало»*, в котором отражается гнев богов.
 
 ### Легенды
@@ -124,6 +267,11 @@
 
 ## Современное состояние
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-dried-today.png" alt="Эритрейское море сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Высохшее Эритрейское море сегодня. Фотореалистичная реконструкция.</div>
+</div>
+
 Ныне Эритрейское море представляет собой тёмную пустынную область, покрытую песком и пылью. Однако под поверхностью сохраняются значительные запасы льда и воды[^21]. В книгах цикла, по состоянию на 2745 год, море полностью высохло и покрыто слоем пепла[^22].
 
 ## Научное обоснование
@@ -132,14 +280,14 @@
 
 ## Связанные статьи
 
-- [Ацидалийское море](acidalia-sea.md)
-- [Море Эллады](ellada-sea.md)
-- [Море Аргира](argir-sea.md)
-- [Араксис](araksis.md)
-- [Ксанф (чудовище)](ksanf-monster.md)
-- [Хевсур](hevsur.md)
-- [Эпоха Умирания](epokha-umiraniya.md)
-- [Эритрея](eritreya.md)
+- [Ацидалийское море](https://mars-wiki.ru/geography/acidalia-sea/)
+- [Море Эллады](https://mars-wiki.ru/geography/ellada-sea/)
+- [Море Аргира](https://mars-wiki.ru/geography/argir-sea/)
+- [Араксис](https://mars-wiki.ru/mythology/araksis/)
+- [Ксанф (чудовище)](https://mars-wiki.ru/mythology/ksanf-monster/)
+- [Хевсур](https://mars-wiki.ru/people/hevsur/)
+- [Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)
+- [Эритрея](https://mars-wiki.ru/geography/eritreya/)
 
 ## Примечания
 

@@ -143,7 +143,7 @@
 ## Этимология
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/argyre-sea-silver-waters.png" alt="Серебряные воды Моря Аргира" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_Martian_coastline_white_carbonate_sands_blue_shallow_ocean_red_clay_clif-0.jpg" alt="Серебряные воды Моря Аргира" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Серебряные воды Моря Аргира. Реконструкция.</div>
 </div>
 

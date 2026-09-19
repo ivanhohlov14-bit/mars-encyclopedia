@@ -166,47 +166,58 @@
     }
 
     // ============================================================
-    // 📌 ПОЗИЦИОНИРОВАНИЕ — точно слева от профиля
-    // ============================================================
-    var GAP = 16;
-    var BTN_SIZE = 40;
+// 📌 ПОЗИЦИОНИРОВАНИЕ — ПК: слева от профиля, мобильный: внизу справа
+// ============================================================
+var GAP = 16;
+var BTN_SIZE = 40;
+var IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1024);
 
-    function placeButton() {
-        if (!menuBtn) return;
+function placeButton() {
+    if (!menuBtn) return;
 
-        var profile = findProfileContainer();
-
-        if (!profile) {
-            // Профиль не найден — в правом верхнем углу
-            menuBtn.style.position = 'fixed';
-            menuBtn.style.top = '12px';
-            menuBtn.style.left = 'auto';
-            menuBtn.style.right = '16px';
-            menuBtn.style.transform = 'none';
-            menuBtn.style.zIndex = '9999999';
-            return;
-        }
-
-        var r = profile.getBoundingClientRect();
-        if (r.width === 0 || r.left === 0) return;
-
-        // Считаем позицию слева
-        var buttonLeft = r.left - GAP - BTN_SIZE;
-
-        // Ставим все свойства разом
+    // ✅ На мобильном — кнопка внизу справа (не перекрывает шапку)
+    if (IS_MOBILE || window.innerWidth < 768) {
         menuBtn.style.position = 'fixed';
-        menuBtn.style.top = (r.top + r.height / 2) + 'px';
-        menuBtn.style.left = buttonLeft + 'px';
-        menuBtn.style.right = 'auto';
-        menuBtn.style.transform = 'translateY(-50%)';
+        menuBtn.style.top = 'auto';
+        menuBtn.style.bottom = 'calc(90px + env(safe-area-inset-bottom, 0px))';
+        menuBtn.style.right = 'calc(20px + env(safe-area-inset-right, 0px))';
+        menuBtn.style.left = 'auto';
+        menuBtn.style.transform = 'none';
         menuBtn.style.zIndex = '9999999';
-        menuBtn.style.width = BTN_SIZE + 'px';
-        menuBtn.style.height = BTN_SIZE + 'px';
-
-        console.log('✨ Кнопка эффектов: left=' + Math.round(buttonLeft) +
-                    ', профиль left=' + Math.round(r.left) +
-                    ', отступ=' + GAP);
+        menuBtn.style.width = '48px';
+        menuBtn.style.height = '48px';
+        return;
     }
+
+    // ✅ На ПК — слева от профиля
+    var profile = findProfileContainer();
+
+    if (!profile) {
+        menuBtn.style.position = 'fixed';
+        menuBtn.style.top = '12px';
+        menuBtn.style.left = 'auto';
+        menuBtn.style.right = '16px';
+        menuBtn.style.bottom = 'auto';
+        menuBtn.style.transform = 'none';
+        menuBtn.style.zIndex = '9999999';
+        return;
+    }
+
+    var r = profile.getBoundingClientRect();
+    if (r.width === 0 || r.left === 0) return;
+
+    var buttonLeft = r.left - GAP - BTN_SIZE;
+
+    menuBtn.style.position = 'fixed';
+    menuBtn.style.top = (r.top + r.height / 2) + 'px';
+    menuBtn.style.left = buttonLeft + 'px';
+    menuBtn.style.right = 'auto';
+    menuBtn.style.bottom = 'auto';
+    menuBtn.style.transform = 'translateY(-50%)';
+    menuBtn.style.zIndex = '9999999';
+    menuBtn.style.width = BTN_SIZE + 'px';
+    menuBtn.style.height = BTN_SIZE + 'px';
+}
 
     // ============================================================
     // 📌 СОЗДАНИЕ UI

@@ -11,13 +11,11 @@
     <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #1a3a4a;">Эритрейское море</h3>
   </div>
 
-  <!-- Карта -->
   <div style="text-align: center; margin: 8px 0;">
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-map.png" alt="Карта Эритрейского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
     <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Эритрейского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
-  <!-- Батиметрия -->
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-bathymetry.png" alt="Батиметрия Эритрейского моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -25,7 +23,6 @@
     </div>
   </div>
 
-  <!-- История -->
   <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     История
   </div>
@@ -39,7 +36,6 @@
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <!-- Основные данные -->
   <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Основные данные
   </div>
@@ -57,7 +53,6 @@
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <!-- Гидрология -->
   <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Гидрология
   </div>
@@ -70,7 +65,6 @@
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <!-- Острова -->
   <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Острова
   </div>
@@ -81,7 +75,6 @@
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <!-- Геология -->
   <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Геология
   </div>
@@ -91,7 +84,6 @@
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <!-- Омываемые государства -->
   <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Омываемые государства
   </div>
@@ -112,20 +104,18 @@
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <!-- Звук моря -->
   <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Звук моря
   </div>
 
   <div class="mars-sound mars-sound--infobox"
-       data-src="/assets/sounds/the-sound-of-the-waves-the-sea.mp3"
+       data-src="/assets/sounds/waves-of-the-sea-ocean-seagulls.mp3"
        data-title="Эритрейское море"
        data-caption="Реконструкция звука"
        data-theme="blue"></div>
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <!-- Факты -->
   <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Факты
   </div>

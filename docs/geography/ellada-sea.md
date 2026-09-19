@@ -11,10 +11,16 @@
     <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #1a3a4a;">Море Эллада</h3>
   </div>
 
-  <!-- Карта -->
+ <!-- Карта -->
+<div style="text-align: center; margin: 8px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-map.png" alt="Карта Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+  <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Расположение Моря Эллада. Отмечено синим. По данным Академии Окхасена.</div>
+</div>
+
+ <!-- Батиметрия -->
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ellada-sea.png" alt="Расположение Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
-    <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Расположение Моря Эллада. По данным Академии Окхасена.</div>
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-bathymetry.png" alt="Батиметрия Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Батиметрическая карта Моря Эллада.</div>
   </div>
 
   <!-- Спутниковый снимок -->

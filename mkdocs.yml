@@ -77,6 +77,7 @@ extra_javascript:
   - assets/js/mobile.js
   - assets/js/wikipedia-footer.js?v=7
   - assets/js/language-switcher.js
+  - assets/js/mars-sound-synth.js?v=1
   # - assets/js/mars-tts.js
   - assets/js/scroll-mode.js
   - assets/js/effects-menu.js

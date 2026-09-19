@@ -1,6 +1,6 @@
 // ============================================================
-// mars-sound-synth.js — VIP v5
-// Реалистичный синтез моря + премиум-плеер
+// mars-sound-synth.js — VIP v6
+// Чистый звук моря + насыщенный дизайн в цветах инфобокса
 // ============================================================
 (function() {
     'use strict';
@@ -18,7 +18,6 @@
         return audioCtx;
     }
 
-    // ---- Брауновский шум (глубокий) ----
     function createBrownNoise(ctx, seconds) {
         var len = Math.floor(ctx.sampleRate * seconds);
         var buf = ctx.createBuffer(2, len, ctx.sampleRate);
@@ -38,7 +37,6 @@
         return src;
     }
 
-    // ---- Розовый шум (мягкий) ----
     function createPinkNoise(ctx, seconds) {
         var len = Math.floor(ctx.sampleRate * seconds);
         var buf = ctx.createBuffer(2, len, ctx.sampleRate);
@@ -63,7 +61,6 @@
         return src;
     }
 
-    // ---- Импульс реверберации (открытое пространство) ----
     function createReverbImpulse(ctx, duration, decay) {
         var len = Math.floor(ctx.sampleRate * duration);
         var impulse = ctx.createBuffer(2, len, ctx.sampleRate);
@@ -76,91 +73,48 @@
         return impulse;
     }
 
-    // ---- ПРЕСЕТЫ ----
     var PRESETS = {
         calm: {
             label: 'Спокойное море',
-            swell: 0.055,
-            rumble: 0.14,
-            waveBody: 0.32,
-            foam: 0.05,
-            bubbles: 0.35,
-            wind: 0.03,
-            crashChance: 0.15,
-            crashPower: 0.15,
-            stereoWidth: 0.6,
-            reverb: 0.28,
-            gulls: false
+            swell: 0.055, rumble: 0.14, waveBody: 0.32,
+            foam: 0.03, wind: 0.03,
+            crashChance: 0.15, crashPower: 0.15,
+            stereoWidth: 0.6, reverb: 0.28, gulls: false
         },
         ocean: {
             label: 'Океанские волны',
-            swell: 0.08,
-            rumble: 0.20,
-            waveBody: 0.42,
-            foam: 0.09,
-            bubbles: 0.55,
-            wind: 0.06,
-            crashChance: 0.35,
-            crashPower: 0.28,
-            stereoWidth: 0.85,
-            reverb: 0.38,
-            gulls: false
+            swell: 0.08, rumble: 0.20, waveBody: 0.42,
+            foam: 0.05, wind: 0.06,
+            crashChance: 0.35, crashPower: 0.28,
+            stereoWidth: 0.85, reverb: 0.38, gulls: false
         },
         storm: {
             label: 'Штормовое море',
-            swell: 0.14,
-            rumble: 0.32,
-            waveBody: 0.55,
-            foam: 0.16,
-            bubbles: 0.75,
-            wind: 0.18,
-            crashChance: 0.7,
-            crashPower: 0.45,
-            stereoWidth: 1.0,
-            reverb: 0.45,
-            gulls: false
+            swell: 0.14, rumble: 0.32, waveBody: 0.55,
+            foam: 0.10, wind: 0.18,
+            crashChance: 0.7, crashPower: 0.45,
+            stereoWidth: 1.0, reverb: 0.45, gulls: false
         },
         gulls: {
             label: 'Море с чайками',
-            swell: 0.07,
-            rumble: 0.16,
-            waveBody: 0.36,
-            foam: 0.07,
-            bubbles: 0.45,
-            wind: 0.04,
-            crashChance: 0.22,
-            crashPower: 0.20,
-            stereoWidth: 0.8,
-            reverb: 0.35,
-            gulls: true
+            swell: 0.07, rumble: 0.16, waveBody: 0.36,
+            foam: 0.04, wind: 0.04,
+            crashChance: 0.22, crashPower: 0.20,
+            stereoWidth: 0.8, reverb: 0.35, gulls: true
         },
         deep: {
             label: 'Глубокое море',
-            swell: 0.035,
-            rumble: 0.42,
-            waveBody: 0.28,
-            foam: 0.02,
-            bubbles: 0.15,
-            wind: 0.02,
-            crashChance: 0.08,
-            crashPower: 0.14,
-            stereoWidth: 0.5,
-            reverb: 0.55,
-            gulls: false
+            swell: 0.035, rumble: 0.42, waveBody: 0.28,
+            foam: 0.015, wind: 0.02,
+            crashChance: 0.08, crashPower: 0.14,
+            stereoWidth: 0.5, reverb: 0.55, gulls: false
         },
         freezing: {
             label: 'Замерзающее море',
-            swell: 0.04,
-            rumble: 0.10,
-            waveBody: 0.14,
-            foam: 0.04,
-            bubbles: 0.08,
-            wind: 0.28,
-            crashChance: 0.05,
-            crashPower: 0.08,
-            stereoWidth: 0.9,
-            reverb: 0.30,
-            gulls: false
+            swell: 0.04, rumble: 0.10, waveBody: 0.14,
+            foam: 0.02, wind: 0.28,
+            crashChance: 0.05, crashPower: 0.08,
+            stereoWidth: 0.9, reverb: 0.30, gulls: false
         }
     };
 
@@ -179,7 +133,7 @@
     }
 
     // ============================================================
-    // ЗВУКОВОЙ ДВИЖОК v5
+    // ЗВУКОВОЙ ДВИЖОК v6 — без пузырьков и резкой пены
     // ============================================================
     function buildSeaSound(ctx, presetName) {
         var cfg = PRESETS[presetName] || PRESETS.ocean;
@@ -188,7 +142,7 @@
         var nodes = [];
         var timers = [];
 
-        // ─── РЕВЕРБ ─── создаём один раз на сессию
+        // Реверб
         var reverbNode = ctx.createConvolver();
         reverbNode.buffer = createReverbImpulse(ctx, 3.5, 2.5);
         var reverbGain = ctx.createGain();
@@ -196,15 +150,15 @@
         reverbNode.connect(reverbGain);
         reverbGain.connect(master);
 
-        // ─── МАСТЕР-ФИЛЬТР ─── мягкий lowpass, убирает цифровую резкость
+        // Мастер-фильтр — мягкий lowpass, убирает цифровую резкость
         var masterLP = ctx.createBiquadFilter();
         masterLP.type = 'lowpass';
-        masterLP.frequency.value = 8000;
+        masterLP.frequency.value = 7000;
         masterLP.Q.value = 0.4;
         master.connect(masterLP);
         masterLP.connect(ctx.destination);
 
-        // ─── 1. ГЛУБИННЫЙ ГУЛ ───
+        // 1. ГЛУБИННЫЙ ГУЛ
         var rumble = createBrownNoise(ctx, 6);
         var rumbleLP = ctx.createBiquadFilter();
         rumbleLP.type = 'lowpass';
@@ -228,7 +182,7 @@
         rumble.start(); rumbleLFO.start();
         nodes.push(rumble, rumbleLFO);
 
-        // ─── 2. ТЕЛО ВОЛНЫ — стерео, две волны с разной фазой ───
+        // 2. ТЕЛО ВОЛНЫ — стерео, две волны с разной фазой
         function makeWaveLayer(pan, phaseOffset) {
             var wave = createPinkNoise(ctx, 6);
             var waveBP = ctx.createBiquadFilter();
@@ -264,7 +218,6 @@
             panner.connect(master);
             panner.connect(reverbNode);
 
-            // Сдвигаем фазу LFO для L и R
             wave.start(ctx.currentTime + phaseOffset);
             waveSweepLFO.start(ctx.currentTime + phaseOffset);
             waveAmpLFO.start(ctx.currentTime + phaseOffset);
@@ -274,23 +227,23 @@
         makeWaveLayer(-cfg.stereoWidth, 0);
         makeWaveLayer(cfg.stereoWidth, 1.5);
 
-        // ─── 3. ПЕНА ───
+        // 3. ПЕНА — теперь мягче, узкая полоса 200–1400 Гц (без «сыпучести»)
         var foam = createPinkNoise(ctx, 6);
         var foamHP = ctx.createBiquadFilter();
         foamHP.type = 'highpass';
-        foamHP.frequency.value = 350;
+        foamHP.frequency.value = 200;
         var foamLP = ctx.createBiquadFilter();
         foamLP.type = 'lowpass';
-        foamLP.frequency.value = 2200;
+        foamLP.frequency.value = 1400;
         foamLP.Q.value = 0.5;
         var foamGain = ctx.createGain();
-        foamGain.gain.value = cfg.foam * 0.3;
+        foamGain.gain.value = cfg.foam * 0.15;
 
         var foamLFO = ctx.createOscillator();
         foamLFO.type = 'sine';
         foamLFO.frequency.value = cfg.swell;
         var foamLFOGain = ctx.createGain();
-        foamLFOGain.gain.value = cfg.foam * 0.7;
+        foamLFOGain.gain.value = cfg.foam * 0.4;
         foamLFO.connect(foamLFOGain);
         foamLFOGain.connect(foamGain.gain);
 
@@ -302,38 +255,7 @@
         foam.start(); foamLFO.start();
         nodes.push(foam, foamLFO);
 
-        // ─── 4. ПУЗЫРЬКИ / КАПЛИ ─── редкие высокочастотные блики
-        function makeBubble(when, vol) {
-            var osc = ctx.createOscillator();
-            osc.type = 'sine';
-            var f0 = 800 + Math.random() * 1800;
-            osc.frequency.setValueAtTime(f0, when);
-            osc.frequency.exponentialRampToValueAtTime(f0 * 1.6, when + 0.04);
-            var g = ctx.createGain();
-            g.gain.setValueAtTime(0.0001, when);
-            g.gain.exponentialRampToValueAtTime(vol, when + 0.008);
-            g.gain.exponentialRampToValueAtTime(0.0001, when + 0.07);
-            var pan = ctx.createStereoPanner();
-            pan.pan.value = Math.random() * 2 - 1;
-            osc.connect(g);
-            g.connect(pan);
-            pan.connect(master);
-            pan.connect(reverbNode);
-            osc.start(when);
-            osc.stop(when + 0.1);
-        }
-
-        function bubbleLoop() {
-            if (Math.random() < cfg.bubbles * 0.4) {
-                var t = ctx.currentTime + Math.random() * 0.8;
-                makeBubble(t, 0.008 + Math.random() * 0.012);
-                if (Math.random() < 0.3) makeBubble(t + 0.06, 0.006);
-            }
-            timers.push(setTimeout(bubbleLoop, 400 + Math.random() * 1200));
-        }
-        if (cfg.bubbles > 0) bubbleLoop();
-
-        // ─── 5. ВЕТЕР ───
+        // 4. ВЕТЕР
         if (cfg.wind > 0) {
             var wind = createBrownNoise(ctx, 6);
             var windBP = ctx.createBiquadFilter();
@@ -359,9 +281,8 @@
             nodes.push(wind, windLFO);
         }
 
-        // ─── 6. КРУПНЫЕ ВСПЛЕСКИ ───
+        // 5. КРУПНЫЕ ВСПЛЕСКИ — без резкой пены!
         function bigCrash(startTime, power, panValue) {
-            // Основной "вуууш"
             var crash = createPinkNoise(ctx, 3);
             var crashBP = ctx.createBiquadFilter();
             crashBP.type = 'bandpass';
@@ -387,7 +308,7 @@
             crash.start(startTime);
             crash.stop(startTime + 3);
 
-            // Суб-бас удар (30–60 Гц) — мощь волны
+            // Суб-бас удар — мощь волны
             var boom = ctx.createOscillator();
             boom.type = 'sine';
             boom.frequency.setValueAtTime(65, startTime);
@@ -401,20 +322,7 @@
             boom.start(startTime);
             boom.stop(startTime + 2.0);
 
-            // Пена — шипение поверх
-            var foamBurst = createPinkNoise(ctx, 1.2);
-            var foamBurstHP = ctx.createBiquadFilter();
-            foamBurstHP.type = 'highpass';
-            foamBurstHP.frequency.value = 1500;
-            var foamBurstGain = ctx.createGain();
-            foamBurstGain.gain.setValueAtTime(0.0001, startTime + 0.1);
-            foamBurstGain.gain.exponentialRampToValueAtTime(power * 0.4, startTime + 0.4);
-            foamBurstGain.gain.exponentialRampToValueAtTime(0.0001, startTime + 1.6);
-            foamBurst.connect(foamBurstHP);
-            foamBurstHP.connect(foamBurstGain);
-            foamBurstGain.connect(panner);
-            foamBurst.start(startTime);
-            foamBurst.stop(startTime + 1.8);
+            // ❌ УБРАНА пена-всплеск (резкий highpass 1500) — это был «цик»
         }
 
         function crashLoop() {
@@ -427,7 +335,9 @@
         }
         if (cfg.crashChance > 0) crashLoop();
 
-        // ─── 7. ЧАЙКИ ───
+        // ❌ ПУЗЫРЬКИ УБРАНЫ ПОЛНОСТЬЮ
+
+        // 6. ЧАЙКИ
         if (cfg.gulls) {
             function gullCry(when) {
                 var panValue = Math.random() * 1.6 - 0.8;
@@ -481,7 +391,7 @@
     }
 
     // ============================================================
-    // UI — ДИЗАЙН В ЦВЕТАХ ИНФОБОКСА
+    // UI — НАСЫЩЕННЫЙ ДИЗАЙН
     // ============================================================
     function createPlayer(el) {
         var presetName = el.getAttribute('data-preset') || presetFromSrc(el.getAttribute('data-src'));
@@ -553,7 +463,7 @@
         };
     }
 
-    // ---- СТИЛИ (цвета инфобокса) ----
+    // ---- СТИЛИ v6 — без белой пелены, насыщенные цвета ----
     function addStyles() {
         if (document.getElementById('mss-style')) return;
         var s = document.createElement('style');
@@ -562,22 +472,17 @@
             '.mars-sound-ready {',
             '    display: flex; align-items: center; gap: 14px;',
             '    padding: 14px 16px; margin: 10px 0;',
-            '    background: linear-gradient(135deg, #dce8ef 0%, #b8ced9 100%);',
-            '    border: 1px solid #8daebf;',
+            '    background: linear-gradient(135deg, #b8ced9 0%, #8daebf 100%);',
+            '    border: 1px solid #6d92a8;',
             '    border-radius: 12px;',
             '    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;',
-            '    box-shadow: 0 4px 14px rgba(26,58,74,0.15), inset 0 1px 0 rgba(255,255,255,0.5);',
+            '    box-shadow: 0 6px 18px rgba(26,58,74,0.25), inset 0 1px 0 rgba(255,255,255,0.25);',
             '    position: relative; overflow: hidden;',
             '    transition: border-color 0.3s, box-shadow 0.3s;',
             '}',
-            '.mars-sound-ready::before {',
-            '    content: ""; position: absolute; inset: 0;',
-            '    background: radial-gradient(circle at 15% 0%, rgba(255,255,255,0.5), transparent 60%);',
-            '    pointer-events: none; opacity: 0.6;',
-            '}',
             '.mars-sound-ready.mss-playing {',
-            '    border-color: #4a7db5;',
-            '    box-shadow: 0 6px 24px rgba(74,125,181,0.35), inset 0 1px 0 rgba(255,255,255,0.6);',
+            '    border-color: #2a5a80;',
+            '    box-shadow: 0 8px 28px rgba(42,90,128,0.45), inset 0 1px 0 rgba(255,255,255,0.3);',
             '}',
 
             '.mss-left { position: relative; flex-shrink: 0; z-index: 1; }',
@@ -585,23 +490,23 @@
             '    position: relative;',
             '    width: 54px; height: 54px;',
             '    border-radius: 50%; border: none; cursor: pointer;',
-            '    background: linear-gradient(135deg, #4a7db5 0%, #1a3a4a 100%);',
+            '    background: linear-gradient(135deg, #3a6d9f 0%, #16304a 100%);',
             '    color: #fff; font-size: 16px;',
             '    display: inline-flex; align-items: center; justify-content: center;',
-            '    box-shadow: 0 6px 18px rgba(26,58,74,0.45), inset 0 1px 0 rgba(255,255,255,0.25);',
+            '    box-shadow: 0 6px 18px rgba(22,48,74,0.5), inset 0 1px 0 rgba(255,255,255,0.3);',
             '    transition: transform 0.25s cubic-bezier(.2,.9,.3,1.3), box-shadow 0.3s;',
             '    -webkit-tap-highlight-color: transparent;',
             '    z-index: 1;',
             '}',
             '.mss-btn:hover {',
             '    transform: scale(1.06);',
-            '    box-shadow: 0 10px 24px rgba(26,58,74,0.55), inset 0 1px 0 rgba(255,255,255,0.35);',
+            '    box-shadow: 0 10px 24px rgba(22,48,74,0.65), inset 0 1px 0 rgba(255,255,255,0.4);',
             '}',
             '.mss-btn:active { transform: scale(0.96); }',
             '.mss-icon { position: relative; z-index: 2; line-height: 1; }',
             '.mss-playing .mss-btn {',
             '    background: linear-gradient(135deg, #2a7ab8 0%, #0d2a3a 100%);',
-            '    box-shadow: 0 6px 22px rgba(42,122,184,0.55), inset 0 1px 0 rgba(255,255,255,0.3);',
+            '    box-shadow: 0 6px 22px rgba(42,122,184,0.6), inset 0 1px 0 rgba(255,255,255,0.35);',
             '}',
 
             '.mss-ring {',
@@ -611,11 +516,11 @@
             '.mss-playing .mss-ring {',
             '    display: block;',
             '    animation: mssRing 2s ease-out infinite;',
-            '    border: 2px solid rgba(74,125,181,0.7);',
+            '    border: 2px solid rgba(74,125,181,0.85);',
             '}',
             '.mss-playing .mss-ring::before {',
             '    content: ""; position: absolute; inset: -8px; border-radius: 50%;',
-            '    border: 2px solid rgba(74,125,181,0.4);',
+            '    border: 2px solid rgba(74,125,181,0.5);',
             '    animation: mssRing 2s ease-out infinite 0.3s;',
             '}',
             '@keyframes mssRing {',
@@ -626,29 +531,29 @@
             '.mss-center { flex: 1; min-width: 0; position: relative; z-index: 1; }',
             '.mss-title {',
             '    font-weight: 800; font-size: 1rem;',
-            '    color: #1a3a4a;',
+            '    color: #0d2a3a;',
             '    margin-bottom: 3px; letter-spacing: 0.3px;',
-            '    text-shadow: 0 1px 0 rgba(255,255,255,0.5);',
+            '    text-shadow: 0 1px 0 rgba(255,255,255,0.3);',
             '}',
             '.mss-caption {',
-            '    font-size: 0.74rem; color: #2a4a5a;',
+            '    font-size: 0.74rem; color: #1a3a4a;',
             '    transition: color 0.3s;',
             '}',
-            '.mss-playing .mss-caption { color: #4a7db5; font-weight: 600; }',
+            '.mss-playing .mss-caption { color: #0d3a5a; font-weight: 600; }',
 
             '.mss-viz {',
             '    display: flex; align-items: flex-end; gap: 2px;',
             '    height: 22px; margin-top: 7px;',
-            '    opacity: 0.5; transition: opacity 0.3s;',
+            '    opacity: 0.55; transition: opacity 0.3s;',
             '}',
             '.mss-playing .mss-viz { opacity: 1; }',
             '.mss-viz span {',
             '    flex: 1; min-width: 1px;',
             '    height: 20%;',
-            '    background: linear-gradient(180deg, #4a7db5, #1a3a4a);',
+            '    background: linear-gradient(180deg, #3a6d9f, #0d2a3a);',
             '    border-radius: 2px;',
             '    transition: height 0.4s ease;',
-            '    box-shadow: 0 0 4px rgba(74,125,181,0.5);',
+            '    box-shadow: 0 0 4px rgba(42,90,128,0.6);',
             '}',
             '.mss-playing .mss-viz span {',
             '    animation: mssBar 1.2s ease-in-out infinite alternate;',
@@ -656,7 +561,7 @@
             '    height: var(--h, 50%);',
             '}',
             '@keyframes mssBar {',
-            '    0% { height: 15%; opacity: 0.55; }',
+            '    0% { height: 15%; opacity: 0.6; }',
             '    100% { height: var(--h, 60%); opacity: 1; }',
             '}',
 
@@ -667,7 +572,7 @@
             '}',
             '.mss-live {',
             '    width: 10px; height: 10px; border-radius: 50%;',
-            '    background: #8daebf;',
+            '    background: #6d92a8;',
             '    transition: background 0.3s, box-shadow 0.3s;',
             '}',
             '.mss-playing .mss-live {',
@@ -691,7 +596,6 @@
         document.head.appendChild(s);
     }
 
-    // ---- Инициализация ----
     function init() {
         addStyles();
         var els = document.querySelectorAll('.mars-sound:not(.mars-sound-ready)');
@@ -711,5 +615,5 @@
         new MutationObserver(init).observe(document.body, { childList: true, subtree: true });
     }
 
-    console.log('🌊 mars-sound-synth VIP v5 загружен — реалистичное море, стерео + реверб');
+    console.log('🌊 mars-sound-synth VIP v6 — чистый звук + насыщенный дизайн');
 })();

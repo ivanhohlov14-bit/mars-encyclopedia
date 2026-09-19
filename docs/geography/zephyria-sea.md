@@ -1,35 +1,140 @@
 # Зефирийское море
 
-**Зефирийское море** (лат. *Zephyria Planum*, марс. *Zephyr Thal* — «Море западного ветра») — обширная возвышенная равнина в экваториальной области Марса, в далёком прошлом — крупный водоём, соединённый с Элизийским морем. В эпопее «Письмо из Красной пыли» Зефирийское море выступает как один из самых загадочных географических объектов — его воды, питаемые древними аллювиальными потоками, считались «живыми» и обладающими памятью. В отличие от других морей Марса, Зефирийское море было известно своими «плавучими плитами» — загадочными образованиями, которые, по легендам, служили убежищем для древних морских обитателей. Через Зефирийское море проходили важнейшие торговые пути, связывавшие западные и восточные земли, а его побережье было усеяно руинами древних городов, хранивших тайны первых марсианских цивилизаций.
-
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Зефирийское море</h3>
-  <hr>
-
-  <div style="text-align: center; margin-bottom: 8px;">
-    <div style="font-size: 0.7rem; color: #999; padding: 10px; border: 1px dashed #ccc; border-radius: 4px;">Изображение карты будет добавлено позже</div>
-    <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Расположение Зефирийского моря (отмечено красным)</div>
-  </div>
-
-  <p><b>Латинское название:</b> Zephyria Planum</p>
-  <p><b>Марсианское название:</b> Zephyr Thal («Море западного ветра»)</p>
-  <p><b>Размер:</b> около 575 км в поперечнике</p>
-  <p><b>Координаты центра:</b> <a href="https://geohack.toolforge.org/geohack.php?language=ru&pagename=Zephyria_Planum&params=5.45_S_155.85_E_globe:mars" target="_blank">5,45° ю.ш., 155,85° в.д.</a></p>
-  <p><b>Расположение:</b> Экваториальная область Марса, к югу от Элизийского моря</p>
-  <p><b>Высота:</b> ~2,7 км ниже среднего уровня</p>
-  <p><b>Площадь (в прошлом):</b> ~2,0–2,5 млн км²</p>
-  <p><b>Солёность (в прошлом):</b> 30–35 ‰</p>
-  <p><b>Средняя глубина (в прошлом):</b> 100–150 м</p>
-  <p><b>Максимальная глубина (в прошлом):</b> до 250 м</p>
-  <p><b>Температура (лето):</b> +12°C (к 2700 г. упала до −5°C)</p>
-  <p><b>Температура (зима):</b> −5°C (к 2700 г. упала до −20°C)</p>
-  <p><b>Ключевые города:</b> Зефирия-Сити, Порт Ветров</p>
-  <p><b>Связанные понятия:</b> <a href="araksis.md">Араксис</a>, <a href="ksanf-monster.md">Ксанф</a>, <a href="epokha-umiraniya.md">Эпоха Умирания</a></p>
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
 
-__TOC__
+<div class="infobox" style="float: right; width: 280px; background: #dce8ef; border: 1px solid #8daebf; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+
+  <div style="background: #b8ced9; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; border-radius: 8px 8px 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #1a3a4a;">Зефирийское море</h3>
+  </div>
+
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-map.png" alt="Карта Зефирийского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Зефирийского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-bathymetry.png" alt="Батиметрия Зефирийского моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
+    </div>
+  </div>
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    История
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• 3,5–3,0 млрд лет назад — формирование бассейна</li>
+    <li>• 3,0–1,5 млрд лет назад — вулканический этап</li>
+    <li>• ок. 1 г. Э.О. — первые поселения</li>
+    <li>• 2500–2680 гг. — расцвет портов и торговли</li>
+    <li>• к 2735 г. — полное высыхание</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Основные данные
+  </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Латинское название:</b> <i>Zephyria Planum</i></p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Марсианское название:</b> <i>Zephyr Thal</i> («Море западного ветра»)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Тип водоёма:</b> внутреннее море (солёное)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Площадь (в прошлом):</b> ≈ 2,0–2,5 млн км²</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Размер:</b> ок. 575 км в поперечнике</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Солёность:</b> 30–35 ‰</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Средняя глубина:</b> 100–150 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Максимальная глубина:</b> ~250 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Температура поверхности (лето):</b> +12 °C (к 2700 г. — до −5 °C)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Температура поверхности (зима):</b> −5 °C (к 2700 г. — до −20 °C)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Высота:</b> ~2,7 км ниже среднего уровня</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Координаты:</b> 5,45° ю.ш., 155,85° в.д.</p>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Гидрология
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Впадающие реки: аллювиальные потоки Медузских гор</li>
+    <li>• Соединение: с Элизийским морем на севере</li>
+    <li>• Циркуляция: циклоническая, против часовой стрелки</li>
+    <li>• Особенность: постоянные западные ветры</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Острова
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• остров Зефир (центральный, храм бога ветров)</li>
+    <li>• Туманный остров (место видений предков)</li>
+    <li>• «плавучие плиты» — перемещающиеся платформы</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Геология
+  </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Происхождение:</b> вулканическое + аллювиальное</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Минералогия:</b> базальты, сульфаты, глинистые минералы</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Формация:</b> Medusae Fossae</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Высота:</b> ~2,7 км ниже среднего уровня</p>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Омываемые государства
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eden/" style="color: #1a3a4a; text-decoration: underline;">Эдем</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/arkadia/" style="color: #1a3a4a; text-decoration: underline;">Аркадия</a>
+    </div>
+  </div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Звук моря
+  </div>
+
+  <div class="mars-sound mars-sound--infobox"
+       data-preset="ocean"
+       data-title="Звук моря"
+       data-caption="Реконструкция звука"
+       data-theme="blue"></div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Факты
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Одно из немногих морей с относительно пресной водой</li>
+    <li>• Загадочные «плавучие плиты» — уникальное явление</li>
+    <li>• Часть формации Medusae Fossae</li>
+    <li>• Высохшее дно использовалось как дорога</li>
+  </ul>
+
+</div>
+
+**Зефирийское море** (лат. *Zephyria Planum*, марс. *Zephyr Thal* — «Море западного ветра») — обширная возвышенная равнина в экваториальной области Марса, в далёком прошлом — крупный водоём, соединённый с Элизийским морем. В эпопее «Письмо из Красной пыли» Зефирийское море выступает как один из самых загадочных географических объектов — его воды, питаемые древними аллювиальными потоками, считались «живыми» и обладающими памятью. В отличие от других морей Марса, Зефирийское море было известно своими «плавучими плитами» — загадочными образованиями, которые, по легендам, служили убежищем для древних морских обитателей. Через Зефирийское море проходили важнейшие торговые пути, связывавшие западные и восточные земли, а его побережье было усеяно руинами древних городов, хранивших тайны первых марсианских цивилизаций.
 
 ## Этимология
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-mirror-of-west.png" alt="Зеркало Запада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">«Зеркало Запада» — отражение неба в водах Зефирийского моря. Реконструкция.</div>
+</div>
 
 Марсианское название *Zephyr Thal* дословно переводится как «Море западного ветра». Оно связано с древними марсианскими легендами, согласно которым западный ветер приносил на воды моря души умерших, а море, в свою очередь, возвращало их в мир живых в виде снов и видений[^1]. В марсианских табличках море также именуют *«Зеркалом Запада»* — из-за его способности отражать не только небо, но и грядущие события[^2].
 
@@ -53,6 +158,11 @@ __TOC__
 | **Температура (зима)** | −5°C | К 2700 г. упала до −20°C |
 
 ### Острова и «плавучие плиты»
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-floating-plates.png" alt="Плавучие плиты" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">«Плавучие плиты» Зефирийского моря. Реконструкция.</div>
+</div>
 
 В Зефирийском море существовало несколько островов, а также уникальные «плавучие плиты» — загадочные образования, которые перемещались по поверхности воды под действием ветров и течений. По легендам, эти плиты использовались древними моряками как временные убежища и платформы для торговли[^8].
 
@@ -97,11 +207,21 @@ __TOC__
 
 ### Эпоха Умирания (2680–2745 гг. Э.О.)
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-dried-road.png" alt="Высохшее дно Зефирийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Высохшее дно Зефирийского моря — дорога беженцев. Реконструкция.</div>
+</div>
+
 С началом глобального похолодания море начало мелеть и замерзать. К 2700 году его уровень упал настолько, что большая часть акватории превратилась в солончаки. К 2730 году море практически полностью высохло, и его дно стало использоваться беженцами как дорога к Элизийским горам и пещерам Фарсиды.
 
 Последние записи о море в марсианских табличках относятся к 2735 году, когда через его высохшее дно прошёл последний караван, направлявшийся к космодрому[^20].
 
 ## Экосистема
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-ecosystem.png" alt="Подводный мир Зефирийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир Зефирийского моря. Реконструкция.</div>
+</div>
 
 В Эпоху Расцвета море было домом для многих видов организмов, приспособленных к марсианским условиям и относительно низкой солёности:
 
@@ -118,6 +238,11 @@ __TOC__
 
 ### В мифологии
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-temple-of-winds.png" alt="Храм ветров на острове Зефир" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Храм ветров на острове Зефир. Реконструкция.</div>
+</div>
+
 Зефирийское море занимало важное место в марсианской мифологии. Считалось, что его гладкая поверхность — это зеркало, в котором богиня Араксис видела будущее. В «Песнях Совии» море упоминается как *«Зеркало Запада»*, способное заглядывать в грядущие времена[^22].
 
 ### Легенды
@@ -131,6 +256,11 @@ __TOC__
 
 ## Современное состояние
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-today.png" alt="Зефирийское море сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Зефирийская равнина сегодня. Фотореалистичная реконструкция.</div>
+</div>
+
 Ныне Зефирийское море представляет собой одну из самых загадочных равнин на Марсе, покрытую слоем пыли и пепла. Под поверхностью сохраняются значительные запасы льда и воды, что делает этот регион перспективным для будущих миссий[^25].
 
 В книгах цикла, по состоянию на 2745 год, море полностью высохло и покрыто слоем пепла[^26].
@@ -143,15 +273,15 @@ __TOC__
 
 ## Связанные статьи
 
-- [Ацидалийское море](acidalia-sea.md)
-- [Море Эллады](ellada-sea.md)
-- [Море Аргира](argir-sea.md)
-- [Эритрейское море](eritreya-sea.md)
-- [Амазонское море](amazon-sea.md)
-- [Араксис](araksis.md)
-- [Ксанф (чудовище)](ksanf-monster.md)
-- [Хевсур](hevsur.md)
-- [Эпоха Умирания](epokha-umiraniya.md)
+- [Ацидалийское море](https://mars-wiki.ru/geography/acidalia-sea/)
+- [Море Эллады](https://mars-wiki.ru/geography/ellada-sea/)
+- [Море Аргира](https://mars-wiki.ru/geography/argir-sea/)
+- [Эритрейское море](https://mars-wiki.ru/geography/eritreya-sea/)
+- [Амазонское море](https://mars-wiki.ru/geography/amazon-sea/)
+- [Араксис](https://mars-wiki.ru/mythology/araksis/)
+- [Ксанф (чудовище)](https://mars-wiki.ru/mythology/ksanf-monster/)
+- [Хевсур](https://mars-wiki.ru/people/hevsur/)
+- [Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)
 
 ## Примечания
 

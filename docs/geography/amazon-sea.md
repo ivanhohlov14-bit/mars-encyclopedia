@@ -1,27 +1,129 @@
 # Амазонское море
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Амазонское море</h3>
-  <hr>
-  
- <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/amazon-sea-map.png" alt="Карта Амазонского моря" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-  <div style="font-size: 0.9rem; color: #555; margin-top: 6px;">Амазонское море. Карта, составленная по данным Академии Окхасена (2650 г. Э.О.).</div>
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
 
-  <p><b>Латинское название:</b> Amazonis Planitia</p>
-  <p><b>Марсианское название:</b> Amazōnis Thal («Море Амазонки»)</p>
-  <p><b>Размер:</b> около 1500 км в поперечнике</p>
-  <p><b>Координаты центра:</b> <a href="https://geohack.toolforge.org/geohack.php?language=ru&pagename=Amazonis_Planitia&params=24.8_N_196.0_E_globe:mars" target="_blank">24,8° с.ш., 196,0° в.д.</a></p>
-  <p><b>Расположение:</b> Северное полушарие Марса, между [Тарсисом](https://mars-wiki.ru/geography/tarsis/) и Элизиумом</p>
-  <p><b>Глубина:</b> до 3 км ниже среднего уровня</p>
-  <p><b>Площадь (в прошлом):</b> ~2,6 млн км²</p>
-  <p><b>Солёность (в прошлом):</b> 30–35 ‰</p>
-  <p><b>Средняя глубина (в прошлом):</b> 100–150 м</p>
-  <p><b>Максимальная глубина (в прошлом):</b> до 200 м</p>
-  <p><b>Температура (лето):</b> +10°C (к 2700 г. упала до −5°C)</p>
-  <p><b>Температура (зима):</b> −10°C (к 2700 г. упала до −25°C)</p>
-  <p><b>Ключевые города:</b> Амазония-Сити, Новый Элизиум</p>
+<div class="infobox" style="float: right; width: 280px; background: #dce8ef; border: 1px solid #8daebf; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+
+  <div style="background: #b8ced9; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; border-radius: 8px 8px 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #1a3a4a;">Амазонское море</h3>
+  </div>
+
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-map.png" alt="Карта Амазонского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Амазонского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-bathymetry.png" alt="Батиметрия Амазонского моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
+    </div>
+  </div>
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    История
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• ок. 3,8 млрд лет назад — формирование моря как отдельного водоёма</li>
+    <li>• ок. 1650 г. Э.О. — первая карта Тар-Акхи</li>
+    <li>• 2500 г. — Соглашение между Аркадией и Эриданией</li>
+    <li>• 2700 г. — денонсация договора</li>
+    <li>• к 2735 г. — экологически мёртвое море</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Основные данные
+  </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Латинское название:</b> <i>Amazonis Planitia</i></p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Марсианское название:</b> <i>Amazōnis Thal</i> («Море Амазонки»)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Тип водоёма:</b> внутреннее море (солёное)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Площадь:</b> ≈ 2,6 млн км² (по данным Mars Explore)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Размер:</b> ок. 1 500 км в поперечнике</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Солёность:</b> 30–35 ‰</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Средняя глубина:</b> 100–150 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Максимальная глубина:</b> ~200 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Объём воды:</b> 1,1–1,6 млн км³</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Температура поверхности (лето):</b> +10 °C (к 2700 г. — до −5 °C)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Температура поверхности (зима):</b> −10 °C (к 2700 г. — до −25 °C)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Координаты:</b> 24,8° с.ш., 196,0° в.д.</p>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Гидрология
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Впадающие реки: Мангалы, Великого Течения, Молоч-Акха, Корсак-Акха</li>
+    <li>• Соединение с океаном: через пролив Эллада</li>
+    <li>• Крупнейшие заливы: Мангалы, Аркадийский, Темпейский</li>
+    <li>• Циркуляция: круговое течение против часовой стрелки</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Острова
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• остров Ляпи-Акха (центральный)</li>
+    <li>• остров Череп-Акха (искусственный)</li>
+    <li>• острова Песча-Акха (группа мелких)</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Геология
+  </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Происхождение:</b> тектоническое, из остатков древнего океана</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Минералогия:</b> глинистые минералы, сульфаты, соли</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Глубина впадины:</b> до 3 км ниже среднего уровня</p>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Омываемые государства
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/arkadia/" style="color: #1a3a4a; text-decoration: underline;">Аркадия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eridania/" style="color: #1a3a4a; text-decoration: underline;">Эридания</a>
+    </div>
+  </div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Звук моря
+  </div>
+
+  <div class="mars-sound mars-sound--infobox"
+       data-preset="storm"
+       data-title="Звук моря"
+       data-caption="Реконструкция звука"
+       data-theme="blue"></div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Факты
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Самое мелкое из крупных морей Марса</li>
+    <li>• Место древнейших поселений (3,8–3,9 млн лет назад)</li>
+    <li>• Найдены останки эласмотерия марсианского</li>
+    <li>• К 2735 г. признано «экологически мёртвым»</li>
+  </ul>
+
 </div>
 
 **Амазонское море** (марс. *Amazonia thal* — «Море Амазонии», от названия региона [Амазония](https://mars-wiki.ru/geography/amazonia/)) — водоём в северо-западной части Марса, занимающий значительную часть равнины Амазония и Аркадия. Самое мелкое из крупных морей Марса: максимальная глубина не превышает 180 метров[^1], средняя глубина составляет около 70–100 м (по разным оценкам — от 60 до 120 м)[^2].
@@ -33,6 +135,11 @@
 На западном побережье Амазонского моря, в районе современной горы Урана, археологами [Академии Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) были обнаружены остатки древнейших поселений марсиан, датируемые **3,8–3,9 млн лет назад**. В одном из слоёв раскопа были найдены фрагменты каменных орудий, застрявшие в останках древнего марсианского эласмотерия (*Elasmotherium marssicum*) — гигантского травоядного, обитавшего на берегах древнего моря[^5].
 
 ## Этимология
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-farsida-mirror.png" alt="Зеркало Фарсиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">«Зеркало Фарсиды» — Амазонское море на закате. Реконструкция.</div>
+</div>
 
 Название «Амазонское море» происходит от марсианского *Amazonia thal* — «Море Амазонии». В древних марсианских табличках оно упоминается под несколькими именами, отражающими различные этапы его истории и культурного восприятия.
 
@@ -60,6 +167,11 @@
 2. **Геолого-географический** — Эпоха Расцвета (2500–2680 гг. Э.О.), период интенсивного картографирования и систематических экспедиций Академии Окхасена.
 3. **Комплексный** — Эпоха Умирания (с 2680 г. Э.О. и до закрытия Академии), когда изучение моря приобрело практическое значение для выживания цивилизации.
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-tar-akha-map.png" alt="Первая карта Амазонского моря Тар-Акхи" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Первая карта Амазонского моря, составленная Тар-Акхой (ок. 1650 г. Э.О.). Реконструкция.</div>
+</div>
+
 В древности относительно положения и величины Амазонского бассейна существовали самые неясные и противоречивые представления: некоторые считали его частью Северного океана, простирающегося до самых вулканов [Фарсиды](https://mars-wiki.ru/geography/farsida/), и только после первых экспедиций мореплавателей Окхасена это мнение было оставлено[^9].
 
 Первую карту Амазонского моря и прилегающих земель составил марсианский географ **Тар-Акха** (ок. 1650 г. Э.О.), он же определил географические координаты для городов, устьев рек, мысов и заливов побережья. Его таблички с координатами хранились в архиве Академии Окхасена и использовались вплоть до Эпохи Умирания[^10].
@@ -83,6 +195,11 @@
 ---
 
 ### Батиметрия
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-bathymetry-depths.png" alt="Батиметрический профиль Амазонского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Батиметрический профиль Амазонского моря. Схема.</div>
+</div>
 
 Подводный рельеф Амазонского моря сравнительно прост. По мере удаления от берега глубины медленно и плавно нарастают, достигая в центральной части моря 180 м. Основная площадь дна характеризуется глубинами 70–150 м[^20]. Область наибольших глубин находится в центре моря, во впадине Темпе. Расположение изобат, близкое к симметричному, нарушается небольшой вытянутостью их на юго-восток в сторону залива Мангалы[^20].
 
@@ -150,6 +267,11 @@
 ---
 
 ### Флора и фауна
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-golden-acipenser.png" alt="Золотой аципенсер" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Золотой аципенсер — ценная промысловая рыба Амазонского моря. Реконструкция.</div>
+</div>
 
 Развит фитопланктон и бентос. Фитопланктон состоит (в %): из диатомовых водорослей — 55, перидиниевых — 41,2 и сине-зелёных — 2,2[^28]. В Эпоху Умирания в ряде мест побережья наблюдалось массовое размножение фиолетовых водорослей рода *Cladophora*[^28].
 
@@ -238,6 +360,11 @@
 
 ## Экономика
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-port-tana-akha.png" alt="Порт Тана-Акха" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Порт Тана-Акха — главный торговый узел Амазонского моря. Реконструкция.</div>
+</div>
+
 Амазонское море было весьма важно для Королевства Аркадия в Эпоху Расцвета из-за, с одной стороны, обилия рыбы, а с другой — постоянно увеличивающегося торгового оборота через море. Среднее годовое число входящих в гавани Амазонского моря кораблей в 2650–2700 годах Э.О. составляло 2 662 судна с общим тоннажем 362 951 тонна. Более половины из них приходилось на порт **Тана-Акха**, 558 — на **Аркадийск**, 296 — на **Эрданис**, 263 — на **Мари-Акха**. Береговых лодок в море прибыло 6 807, ушло — 6 832. Торговый флот Амазонского моря в это время состоял из 1 210 кораблей общим тоннажем 40 658[^36].
 
 Более активно торговля на Амазонском море стала развиваться в связи со строительством каналов и транспортных магистралей:
@@ -270,6 +397,11 @@
 
 ## Экология
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-ecological-disaster.png" alt="Экологическое бедствие в Темпейском заливе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Экологическое бедствие в Темпейском заливе (2707 г. Э.О.). Реконструкция.</div>
+</div>
+
 Оценка экологического состояния Амазонского моря по результатам многолетнего мониторинга морской среды, проводившегося Академией Окхасена, выявила следующие проблемы[^44]:
 
 - **Загрязнение отходами производств.** Море было сильно загрязнено отходами предприятий Эрданиса, Тана-Акха, Аркадийска и других промышленных городов, расположенных у побережья.
@@ -280,7 +412,6 @@
 - **Загрязнение тяжёлыми металлами.** Морские воды центральных районов моря загрязнены в основном тяжёлыми металлами: медь, железо, никель, ванадий, молибден. Среднегодовые концентрации по всем металлам снижались до начала Эпохи Умирания, за счёт чего происходило улучшение качества воды. Однако с 2710 года концентрации металлов вновь начали расти, достигнув пиковых значений к 2730 году[^48]. В многолетнем периоде наиболее загрязнённым районом являлся пролив Эллада за счёт постоянно высоких среднегодовых концентраций свинца[^49].
 
 В целом, экологическое состояние Амазонского моря в Эпоху Расцвета постепенно улучшалось, однако с началом глобального похолодания и ухудшением экономической ситуации деградация экосистемы резко ускорилась, и к 2735 году море было признано Академией Окхасена «экологически мёртвым»[^50].
-
 
 ## Связанные статьи
 
@@ -303,8 +434,6 @@
 - [Эпоха Расцвета](https://mars-wiki.ru/history/epokha-rascveta/)
 - [Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)
 - [Академия Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/)
-
----
 
 ## Примечания
 

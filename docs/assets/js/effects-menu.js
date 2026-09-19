@@ -1,20 +1,16 @@
 // ============================================================
-// effects-menu.js — VIP v8
-// Все тогглы = один красивый звук (ноты)
-// Меню = свой звук (ноты)
-// Кнопка — позиционирование через right
+// effects-menu.js — VIP v9
+// Круглая кнопка ✨ + все тогглы используют один звук
 // ============================================================
 
 (function() {
     'use strict';
 
     // ============================================================
-    // 🎵 НОТЫ
+    // 🎵 НОТЫ (для звука меню)
     // ============================================================
     var N = {
-        C5: 523.25, D5: 587.33, E5: 659.25,
-        G5: 783.99, A5: 880.00, B5: 987.77,
-        C6: 1046.50, D6: 1174.66, E6: 1318.51
+        G5: 783.99, B5: 987.77, D6: 1174.66
     };
 
     // ============================================================
@@ -40,7 +36,7 @@
     var isOpen = false;
 
     // ============================================================
-    // 🔊 ЗВУКОВОЙ ДВИЖОК — чистый sine, без реверба
+    // 🔊 ЗВУКОВОЙ ДВИЖОК
     // ============================================================
     var audioCtx = null;
 
@@ -52,7 +48,6 @@
         return audioCtx;
     }
 
-    // Одна чистая нота
     function playNote(freq, opts) {
         opts = opts || {};
         var c = getAudioCtx();
@@ -62,26 +57,19 @@
         var duration = opts.duration || 0.22;
         var volume = opts.volume || 0.05;
         var delay = opts.delay || 0;
-        var filterFreq = opts.filter || 1400;
 
         var t = c.currentTime + delay;
         var osc = c.createOscillator();
         var gain = c.createGain();
-        var filter = c.createBiquadFilter();
 
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, t);
-
-        filter.type = 'lowpass';
-        filter.frequency.value = filterFreq;
-        filter.Q.value = 0.5;
 
         gain.gain.setValueAtTime(0, t);
         gain.gain.linearRampToValueAtTime(volume, t + 0.025);
         gain.gain.linearRampToValueAtTime(0, t + duration);
 
-        osc.connect(filter);
-        filter.connect(gain);
+        osc.connect(gain);
         gain.connect(c.destination);
 
         osc.start(t);
@@ -89,45 +77,36 @@
     }
 
     // ============================================================
-    // 🎼 ЗВУК ДЛЯ ВСЕХ ТОГГЛОВ — красивый «мажорный аккорд»
+    // 🎼 ЗВУК ДЛЯ ВСЕХ ТОГГЛОВ (пока используется этот, потом заменим)
     // ============================================================
 
-    // ВКЛЮЧЕНИЕ любого эффекта — восходящее трезвучие + октава
-    // C5 → E5 → G5 → C6
+    // ВКЛЮЧЕНИЕ любого эффекта
     function soundEffectOn() {
-        playNote(N.C5, { duration: 0.22, volume: 0.05, delay: 0.00, filter: 1200 });
-        playNote(N.E5, { duration: 0.22, volume: 0.05, delay: 0.07, filter: 1300 });
-        playNote(N.G5, { duration: 0.22, volume: 0.05, delay: 0.14, filter: 1400 });
-        playNote(N.C6, { duration: 0.30, volume: 0.05, delay: 0.21, filter: 1500 });
+        playNote(N.G5, { duration: 0.18, volume: 0.045, delay: 0.00 });
+        playNote(N.B5, { duration: 0.18, volume: 0.045, delay: 0.06 });
+        playNote(N.D6, { duration: 0.24, volume: 0.045, delay: 0.12 });
     }
 
-    // ВЫКЛЮЧЕНИЕ любого эффекта — нисходящее (обратное)
-    // C6 → G5 → E5 → C5
+    // ВЫКЛЮЧЕНИЕ любого эффекта
     function soundEffectOff() {
-        playNote(N.C6, { duration: 0.20, volume: 0.05, delay: 0.00, filter: 1500 });
-        playNote(N.G5, { duration: 0.20, volume: 0.05, delay: 0.07, filter: 1400 });
-        playNote(N.E5, { duration: 0.20, volume: 0.05, delay: 0.14, filter: 1300 });
-        playNote(N.C5, { duration: 0.28, volume: 0.05, delay: 0.21, filter: 1200 });
+        playNote(N.D6, { duration: 0.16, volume: 0.045, delay: 0.00 });
+        playNote(N.B5, { duration: 0.16, volume: 0.045, delay: 0.06 });
+        playNote(N.G5, { duration: 0.22, volume: 0.045, delay: 0.12 });
     }
 
     // ============================================================
-    // 🎼 ЗВУК ТОЛЬКО ДЛЯ ОТКРЫТИЯ/ЗАКРЫТИЯ МЕНЮ
+    // 🎼 ЗВУК ДЛЯ МЕНЮ (оставляем отдельным)
     // ============================================================
-
-    // Открытие меню — высокий «взлёт»
-    // G5 → B5 → D6
     function soundMenuOpen() {
-        playNote(N.G5, { duration: 0.18, volume: 0.045, delay: 0.00, filter: 1500 });
-        playNote(N.B5, { duration: 0.18, volume: 0.045, delay: 0.06, filter: 1600 });
-        playNote(N.D6, { duration: 0.24, volume: 0.045, delay: 0.12, filter: 1700 });
+        playNote(N.G5, { duration: 0.18, volume: 0.045, delay: 0.00 });
+        playNote(N.B5, { duration: 0.18, volume: 0.045, delay: 0.06 });
+        playNote(N.D6, { duration: 0.24, volume: 0.045, delay: 0.12 });
     }
 
-    // Закрытие меню — «спуск»
-    // D6 → B5 → G5
     function soundMenuClose() {
-        playNote(N.D6, { duration: 0.16, volume: 0.045, delay: 0.00, filter: 1700 });
-        playNote(N.B5, { duration: 0.16, volume: 0.045, delay: 0.06, filter: 1600 });
-        playNote(N.G5, { duration: 0.22, volume: 0.045, delay: 0.12, filter: 1500 });
+        playNote(N.D6, { duration: 0.16, volume: 0.045, delay: 0.00 });
+        playNote(N.B5, { duration: 0.16, volume: 0.045, delay: 0.06 });
+        playNote(N.G5, { duration: 0.22, volume: 0.045, delay: 0.12 });
     }
 
     // ============================================================
@@ -168,16 +147,15 @@
         return null;
     }
 
-    // Ищем иконку/аватар внутри кнопки профиля
     function findProfileIcon(btn) {
         if (!btn) return null;
         return btn.querySelector('img, svg, [class*="avatar"], [class*="icon"]');
     }
 
     // ============================================================
-    // 📌 ПОЗИЦИОНИРОВАНИЕ — через RIGHT, надёжно
+    // 📌 ПОЗИЦИОНИРОВАНИЕ — круглой кнопки
     // ============================================================
-    var GAP = 12; // отступ между "Эффекты" и иконкой профиля (px)
+    var GAP = 12; // отступ между кнопкой эффектов и иконкой профиля
 
     function placeButton() {
         if (!menuBtn) return;
@@ -198,16 +176,13 @@
         var r = anchor.getBoundingClientRect();
         if (r.width === 0 || r.left === 0) return;
 
-        // Сбрасываем возможные inline-стили
         menuBtn.style.position = 'fixed';
         menuBtn.style.left = 'auto';
         menuBtn.style.zIndex = '9999999';
         menuBtn.style.top = (r.top + r.height / 2) + 'px';
         menuBtn.style.transform = 'translateY(-50%)';
-        menuBtn.style.height = Math.max(36, Math.min(40, r.height)) + 'px';
 
-        // 🎯 КЛЮЧЕВОЙ МОМЕНТ: привязываем ПРАВЫЙ край кнопки
-        // к ЛЕВОМУ краю иконки профиля с отступом GAP
+        // Привязываем ПРАВЫЙ край кнопки к ЛЕВОМУ краю иконки профиля
         var rightOffset = window.innerWidth - r.left + GAP;
         menuBtn.style.right = rightOffset + 'px';
     }
@@ -221,9 +196,8 @@
         menuBtn = document.createElement('button');
         menuBtn.id = 'effects-menu-btn';
         menuBtn.setAttribute('aria-label', 'Эффекты сайта');
-        menuBtn.innerHTML =
-            '<span class="em-btn-icon">✨</span>' +
-            '<span class="em-btn-text">Эффекты</span>';
+        menuBtn.setAttribute('title', 'Эффекты сайта');
+        menuBtn.innerHTML = '<span class="em-btn-icon">✨</span>';
         menuBtn.onclick = toggleMenu;
         document.body.appendChild(menuBtn);
 
@@ -252,7 +226,6 @@
 
         renderList();
 
-        // Много раз — чтобы точно поймать момент отрисовки шапки
         placeButton();
         [100, 250, 500, 800, 1200, 2000, 3500, 5000].forEach(function(ms) {
             setTimeout(placeButton, ms);
@@ -279,9 +252,6 @@
         }
     }
 
-    // ============================================================
-    // 📋 РЕНДЕР СПИСКА
-    // ============================================================
     function renderList() {
         var list = panel.querySelector('.em-list');
         list.innerHTML = OPTIONS.map(function(opt) {
@@ -305,7 +275,6 @@
                 var wasOn = opt.isOn();
                 clickOldButton(opt.selector);
 
-                // 🎵 ВСЕ ТОГГЛЫ ЗВУЧАТ ОДИНАКОВО
                 if (wasOn) soundEffectOff();
                 else soundEffectOn();
 
@@ -315,9 +284,6 @@
         });
     }
 
-    // ============================================================
-    // 🎛️ УПРАВЛЕНИЕ
-    // ============================================================
     function toggleMenu() { isOpen ? closeMenu() : openMenu(); }
 
     function openMenu() {
@@ -325,14 +291,13 @@
         if (menuBtn) {
             var r = menuBtn.getBoundingClientRect();
             panel.style.top = (r.bottom + 8) + 'px';
-            var panelWidth = 300;
             var panelRight = Math.max(8, window.innerWidth - r.right);
             panel.style.right = panelRight + 'px';
             panel.style.left = 'auto';
         }
         panel.classList.add('em-open');
         menuBtn.classList.add('em-active');
-        soundMenuOpen(); // ← только для меню
+        soundMenuOpen();
         try { if (navigator.vibrate) navigator.vibrate(10); } catch(e) {}
     }
 
@@ -340,7 +305,7 @@
         isOpen = false;
         panel.classList.remove('em-open');
         menuBtn.classList.remove('em-active');
-        soundMenuClose(); // ← только для меню
+        soundMenuClose();
     }
 
     // ============================================================
@@ -355,24 +320,18 @@
             '    display: inline-flex;',
             '    align-items: center;',
             '    justify-content: center;',
-            '    gap: 6px;',
-            '    padding: 0 14px;',
+            '    padding: 0;',
+            '    width: 40px;',
             '    height: 40px;',
-            '    border-radius: 20px;',
+            '    border-radius: 50%;',
             '    background: linear-gradient(135deg, #1a1a2e 0%, #252550 100%);',
             '    border: 1.5px solid rgba(108, 99, 255, 0.4);',
             '    color: #e8e8f0;',
-            '    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;',
-            '    font-size: 0.88rem;',
-            '    font-weight: 700;',
+            '    font-size: 1.2rem;',
             '    cursor: pointer;',
             '    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);',
-            '    transition: box-shadow 0.25s;',
-            '    overflow: hidden;',
-            '    white-space: nowrap;',
+            '    transition: box-shadow 0.25s, transform 0.25s;',
             '    -webkit-tap-highlight-color: transparent;',
-            '    isolation: isolate;',
-            '    box-sizing: border-box;',
             '    z-index: 9999999;',
             '}',
             '#effects-menu-btn::before {',
@@ -389,6 +348,7 @@
             '    background-size: 300% 300%;',
             '    animation: emShift 25s ease-in-out infinite;',
             '    opacity: 0.7;',
+            '    border-radius: 50%;',
             '}',
             '#effects-menu-btn.em-colored::before {',
             '    background: linear-gradient(120deg,',
@@ -408,6 +368,7 @@
             '    100% { background-position: 0% 50%; }',
             '}',
             '#effects-menu-btn:hover {',
+            '    transform: scale(1.08);',
             '    box-shadow: 0 8px 20px rgba(108, 99, 255, 0.5);',
             '}',
             '#effects-menu-btn.em-active {',
@@ -415,23 +376,12 @@
             '    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.25);',
             '}',
             '#effects-menu-btn .em-btn-icon {',
-            '    font-size: 1rem;',
+            '    font-size: 1.1rem;',
             '    line-height: 1;',
             '    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);',
             '}',
             '#effects-menu-btn.em-active .em-btn-icon {',
             '    transform: rotate(90deg) scale(1.1);',
-            '}',
-            '#effects-menu-btn .em-btn-text {',
-            '    font-size: 0.82rem;',
-            '    letter-spacing: 0.3px;',
-            '}',
-            '@media (max-width: 700px) {',
-            '    #effects-menu-btn {',
-            '        padding: 0 12px;',
-            '        height: 36px;',
-            '    }',
-            '    #effects-menu-btn .em-btn-text { display: none; }',
             '}',
 
             '#effects-menu-panel {',
@@ -582,5 +532,5 @@
         init();
     }
 
-    console.log('✨ Меню эффектов VIP v8 загружено');
+    console.log('✨ Меню эффектов VIP v9 загружено');
 })();

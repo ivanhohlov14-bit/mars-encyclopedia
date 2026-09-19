@@ -1,36 +1,133 @@
 # Море Эллада
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Море Эллада</h3>
-  <hr>
-
-  <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/map/more%20ellada.png" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
-    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение моря Эллады (отмечено синим)</div>
-  </div>
-
-  <p><b>Латинское название:</b> Hellas Planitia</p>
-  <p><b>Марсианское название:</b> Ellada Thal («Море-колыбель»)</p>
-  <p><b>Размер:</b> около 2300 км в поперечнике</p>
-  <p><b>Координаты центра:</b> <a href="https://geohack.toolforge.org/geohack.php?language=ru&pagename=Hellas_Planitia&params=42.4_S_70.5_E_globe:mars" target="_blank">42,4° ю.ш., 70,5° в.д.</a></p>
-  <p><b>Расположение:</b> Южное полушарие Марса</p>
-  <p><b>Глубина:</b> до 7 км ниже среднего уровня (максимальная — 9 км)</p>
-  <p><b>Площадь (в прошлом):</b> ~3,2 млн км² (высохла к 2700 г.)</p>
-  <p><b>Солёность (в прошлом):</b> 45–50 %</p>
-  <p><b>Средняя глубина (в прошлом):</b> 200–300 м</p>
-  <p><b>Максимальная глубина (в прошлом):</b> до 500 м</p>
-  <p><b>Температура (лето):</b> +20°C (к 2700 г. упала до −10°C)</p>
-  <p><b>Температура (зима):</b> −10°C (к 2700 г. упала до −30°C)</p>
-  <p><b>Объём воды:</b> 0,64–0,96 млн км³</p>
-  <p><b>Впадающие крупные реки:</b> р. Теней, р. Дао</p>
-  <p><b>Ключевые города:</b> Акха-Кор, Акха-Сен, Акха-Тар</p>
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
 
-**Море Эллада** (лат. *Hellas Planitia*, марс. *Ellada Thal* — «Море-колыбель») — обширная ударная низменность в южном полушарии Марса, в далёком прошлом — крупнейший водоём планеты. В эпопее «Письмо из Красной пыли» Море Эллада выступает как сакральный географический объект — место, где, согласно легендам, впервые возникла разумная жизнь, и где были основаны первые храмы богини [Араксис](araksis.md). В отличие от [Ацидалийского моря](acidalia-sea.md), которое было центром цивилизации в Эпоху Умирания, Море Эллады считалось «колыбелью» — местом зарождения марсианской культуры, но уже к Эпохе Расцвета превратившимся в солончаковую пустыню.
+<div class="infobox" style="float: right; width: 280px; background: #dce8ef; border: 1px solid #8daebf; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+
+  <div style="background: #b8ced9; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; border-radius: 8px 8px 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #1a3a4a;">Море Эллада</h3>
+  </div>
+
+  <!-- Карта -->
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-map.png" alt="Карта Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Расположение Моря Эллада. Отмечено синим. По данным Академии Окхасена.</div>
+  </div>
+
+  <!-- Батиметрия -->
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-bathymetry.png" alt="Батиметрия Моря Эллада" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
+    </div>
+  </div>
+
+  <!-- История -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    История
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• 4,5–4,1 млрд лет назад — образование ударного бассейна</li>
+    <li>• ок. 1 г. Э.О. — первые поселения на берегах</li>
+    <li>• 64–68 гг. Э.О. — первая война с кочевниками</li>
+    <li>• ок. 2550 г. — постройка канала Сарума</li>
+    <li>• к 2700 г. — полное высыхание моря</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Основные данные -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Основные данные
+  </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Латинское название:</b> <i>Hellas Planitia</i></p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Марсианское название:</b> <i>Ellada Thal</i> («Море-колыбель»)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Тип водоёма:</b> внутреннее море (солёное)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Площадь (в прошлом):</b> ≈ 3,2 млн км²</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Размер:</b> ок. 2 300 км в поперечнике</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Солёность:</b> 45–50 ‰</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Средняя глубина:</b> 200–300 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Максимальная глубина:</b> ~500 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Объём воды:</b> 0,64–0,96 млн км³</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Температура поверхности (лето):</b> +10…+20 °C (к 2700 г. — до −10 °C)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Координаты:</b> 42,4° ю.ш., 70,5° в.д.</p>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Гидрология -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Гидрология
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Впадающие реки: Теней, Дао</li>
+    <li>• Каналы: Сарума (~300 км), Термана (~150 км)</li>
+    <li>• Циркуляция: циклоническая</li>
+    <li>• Ключевые города: Акха-Кор, Акха-Сен, Акха-Тар</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Острова -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Острова
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Храм-Уг (северный, храм Араксис)</li>
+    <li>• Ал-Тар (западный, вулканический)</li>
+    <li>• Эллос (южный, центр царства)</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Геология -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Геология
+  </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Происхождение:</b> ударный бассейн (астероид ⌀ ≈ 100 км)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Минералогия:</b> галит, сульфаты, глинистые минералы</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Глубина впадины:</b> до 7 км ниже среднего уровня (макс. 9 км)</p>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Звук моря -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Звук моря
+  </div>
+
+  <div class="mars-sound mars-sound--infobox"
+       data-src="/assets/sounds/weak-waves-on-the-shore-of-a-calm-sea.mp3"
+       data-title="Море Эллада"
+       data-caption="Реконструкция звука"
+       data-theme="blue"></div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <!-- Факты -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Факты
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Самая глубокая низменность на Марсе</li>
+    <li>• Считалось «колыбелью» марсианской жизни</li>
+    <li>• Одна из самых солёных акваторий планеты</li>
+    <li>• Полностью высохло раньше Ацидалийского моря</li>
+  </ul>
+
+</div>
+
+**Море Эллада** (лат. *Hellas Planitia*, марс. *Ellada Thal* — «Море-колыбель») — обширная ударная низменность в южном полушарии Марса, в далёком прошлом — крупнейший водоём планеты. В эпопее «Письмо из Красной пыли» Море Эллада выступает как сакральный географический объект — место, где, согласно легендам, впервые возникла разумная жизнь, и где были основаны первые храмы богини [Араксис](https://mars-wiki.ru/mythology/araksis/). В отличие от [Ацидалийского моря](https://mars-wiki.ru/geography/acidalia-sea/), которое было центром цивилизации в Эпоху Умирания, Море Эллады считалось «колыбелью» — местом зарождения марсианской культуры, но уже к Эпохе Расцвета превратившимся в солончаковую пустыню.
 
 ## Этимология
 
-Марсианское название *Ellada Thal* дословно переводится как «Море-колыбель». Оно отражает ключевую роль водоёма в мифологии марсианской цивилизации — согласно преданиям, именно в водах Эллады богиня [Араксис](araksis.md) создала первую жизнь, и именно здесь появились первые разумные существа[^1]. В марсианских табличках море также именуют *«Глазом мира»* — считалось, что его гладкая поверхность отражает не только небо, но и все тайны прошлого. В позднейших источниках закрепилось название *«Солёное зеркало»* из-за высокой солёности воды и способности отражать звёзды[^2].
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-cradle-of-life.png" alt="Море Эллада — колыбель жизни" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Море Эллада — колыбель жизни. Реконструкция.</div>
+</div>
+
+Марсианское название *Ellada Thal* дословно переводится как «Море-колыбель». Оно отражает ключевую роль водоёма в мифологии марсианской цивилизации — согласно преданиям, именно в водах Эллады богиня [Араксис](https://mars-wiki.ru/mythology/araksis/) создала первую жизнь, и именно здесь появились первые разумные существа[^1]. В марсианских табличках море также именуют *«Глазом мира»* — считалось, что его гладкая поверхность отражает не только небо, но и все тайны прошлого. В позднейших источниках закрепилось название *«Солёное зеркало»* из-за высокой солёности воды и способности отражать звёзды[^2].
 
 Современное латинское название *Hellas Planitia* было дано итальянским астрономом Джованни Скиапарелли в XIX веке в честь Греции (Эллады)[^3].
 
@@ -42,7 +139,7 @@
 
 В Эпоху Расцвета (2500–2680 гг. Э.О.) площадь моря составляла около 3,2 млн км². Однако уже к 2700 году, в результате стремительного ухудшения климата, море практически полностью высохло, превратившись в солончаковую пустыню[^7]. На западе оно граничило с возвышенностями Земли Эритрея, на востоке — с Землями Кимерии, на юге — с Землями Авсинии, на севере — с Землями Эдема[^8].
 
-Рельеф дна был разнообразным: центральная глубокая впадина с ровным дном, покрытым илом и органическими отложениями, и обширная дельта на востоке, у впадения древних рек, где находились главные рыболовецкие угодья. 
+Рельеф дна был разнообразным: центральная глубокая впадина с ровным дном, покрытым илом и органическими отложениями, и обширная дельта на востоке, у впадения древних рек, где находились главные рыболовецкие угодья.
 
 | Параметр | Значение (в прошлом) | Примечание |
 |----------|---------------------|------------|
@@ -55,9 +152,19 @@
 
 ### Лес Тиррения
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-forest-tirrenia.png" alt="Лес Тиррения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Лес Тиррения на северном берегу Моря Эллада. Реконструкция.</div>
+</div>
+
 На крутом северном берегу Моря Эллада располагался **Лес Тиррения** — крупный массив голосеменных растений, состоявший из высоких фиолетовых деревьев, достигавших 20–30 метров в высоту. Их густые кроны образовывали непроходимые чащи, служившие естественной защитой от ветров и набегов кочевников. Древесина леса Тиррения, твёрдая и смолистая, высоко ценилась в судостроении и храмовом зодчестве; из неё строились корабли флота Серпендиды и колонны храма Араксис на острове Эллос. В Эпоху Умирания лес активно вырубали для отопления и строительства временных убежищ; к 2700 году от него остались лишь пни и пепел, а на его месте раскинулись пустоши, покрытые соляной коркой.
 
 ### Острова
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-temple-hram-ug.png" alt="Храм Араксис на острове Храм-Уг" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Древнейший храм Араксис на острове Храм-Уг. Реконструкция.</div>
+</div>
 
 В Море Эллада существовало несколько островов, игравших важную роль в истории и мифологии. Крупнейшим из них был **Храм-Уг** — скалистый остров в северной части моря, где находился древнейший храм Араксис. Его стены были вырезаны из цельного куска базальта, а внутри хранились таблички с описанием сотворения мира[^9]. Другим важным островом был **Ал-Тар** — вулканический остров на западе, где, по легендам, жили первые жрецы, передававшие знания из поколения в поколение. Южный остров **Эллос** служил центром царства Эллады, а на нём располагался город Араксис-Сен.
 
@@ -70,6 +177,11 @@
 По оценкам марсианских гидрологов, основанным на площади моря в 3,2 млн км² и средней глубине около 200–300 м, общий объём воды в Море Эллада составлял приблизительно **0,64–0,96 млн км³** (в среднем — около 0,8 млн км³). Это сопоставимо с объёмом воды в Ацидалийском море (~1,0 млн км³) и почти вдвое превышает объём Чёрного моря на Земле (0,555 млн км³). Такое количество воды делало Море Эллада одним из крупнейших внутренних водоёмов Марса, поддерживавшим влажный климат в южных регионах и обеспечивавшим водными ресурсами города и поля Серпендиды и Эллады.
 
 ### Каналы
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-canal-saruma.png" alt="Канал Сарума" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Канал Сарума. Реконструкция гидротехнического сооружения.</div>
+</div>
 
 В северной части Моря Эллады был прорыт **канал Сарума** — крупное гидротехническое сооружение, соединившее море с внутренними районами материка. Канал получил своё название в честь короля Сарума Великого, по инициативе которого началось его строительство в середине Эпохи Расцвета (ок. 2550 г. Э.О.). Его протяжённость составляла около 300 км, ширина — до 50 м, что позволяло проходить по нему небольшим судам.
 
@@ -97,6 +209,19 @@
 | 200 | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> | <span style="color: #4a7db5;">+6,7</span> |
 | 300 | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> | <span style="color: #4a7db5;">+6,9</span> |
 | 500 | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> | <span style="color: #4a7db5;">+7,0</span> |
+
+**Примечания:**
+
+1. **Координаты точки измерения:** 40° ю.ш., 70° в.д. — центральная часть Моря Эллада.
+2. **Период измерений:** 2650–2680 гг. Э.О., до начала интенсивного высыхания.
+3. **Названия месяцев** даны по марсианскому календарю, принятому в Академии Окхасена.
+
+**Наблюдения гидрологов:**
+
+- В поверхностном слое (0–30 м) температура сильно меняется по сезонам — от +4,6 °C зимой до +21,8 °C летом.
+- На глубинах 50–100 м колебания температуры минимальны, вода остаётся холодной круглый год (+5,2…+6,4 °C).
+- Начиная с 200 м, температура стабильна — около +6,7…+7,0 °C — и не зависит от сезона.
+- Термоклин (слой резкого изменения температуры) расположен на глубине 30–50 м.
 
 ## Геология
 
@@ -135,6 +260,11 @@
 
 ## Экосистема
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-ecosystem.png" alt="Подводный мир Моря Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир Моря Эллада. Реконструкция.</div>
+</div>
+
 В Эпоху Расцвета море было домом для тысяч видов организмов, приспособленных к высокой солёности и низкой гравитации[^19]:
 
 | Группа организмов | Представители | Особенности |
@@ -150,6 +280,11 @@
 
 ### В мифологии
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-myth-salt-mirror.png" alt="Миф о Солёном зеркале" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Миф о Солёном зеркале. Реконструкция.</div>
+</div>
+
 Море Эллада считалось местом, где Араксис создала первую жизнь. В «Книге Харан» сохранилась запись: *«Эллада — это колыбель, из которой мы вышли. Её воды помнят наши первые шаги, её берега хранят наши имена.»* Легенды повествуют о сотворении жизни из глины и воды Эллады и о «Солёном зеркале», отражавшем прошлое[^21].
 
 ### В искусстве
@@ -157,6 +292,11 @@
 На табличках сохранились изображения волн, кораблей и рыб. В Эпоху Умирания эти изображения стали особенно популярны — люди пытались запечатлеть море, пока оно ещё существовало[^22].
 
 ## Современное состояние
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-dried-today.png" alt="Море Эллада сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Высохшее Море Эллада сегодня. Фотореалистичная реконструкция.</div>
+</div>
 
 Ныне Море Эллада — это пустыня, покрытая соляной коркой. Однако под поверхностью сохраняются огромные запасы льда и воды, которые, возможно, остаются жидкими на глубине[^23]. В книгах цикла, по состоянию на 2745 год, море полностью высохло и покрыто слоем соли и пепла; его поверхность используется беженцами как дорога, но под солью сохраняется память о древних волнах[^24].
 
@@ -166,15 +306,15 @@
 
 ## Связанные статьи
 
-- [Ацидалийское море](acidalia-sea.md)
-- [Араксис](araksis.md)
-- [Ксанф (чудовище)](ksanf-monster.md)
-- [Совия](soviya.md)
-- [Хевсур](hevsur.md)
-- [Эпоха Умирания](epokha-umiraniya.md)
-- [Фарсида](farsida.md)
-- [Глиняные таблички](tablichki.md)
-- [Окхасен](okhasen.md)
+- [Ацидалийское море](https://mars-wiki.ru/geography/acidalia-sea/)
+- [Араксис](https://mars-wiki.ru/mythology/araksis/)
+- [Ксанф (чудовище)](https://mars-wiki.ru/mythology/ksanf-monster/)
+- [Совия](https://mars-wiki.ru/people/soviya/)
+- [Хевсур](https://mars-wiki.ru/people/hevsur/)
+- [Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)
+- [Фарсида](https://mars-wiki.ru/geography/farsida/)
+- [Глиняные таблички](https://mars-wiki.ru/terms/tablichki/)
+- [Окхасен](https://mars-wiki.ru/geography/okhasen/)
 
 ## Примечания
 

@@ -117,11 +117,11 @@
     Звук моря
   </div>
 
-  <div class="mars-sound mars-sound--infobox"
-       data-src="/assets/sounds/the-sea-is-slightly-rough.mp3"
-       data-title="Море Аргира"
-       data-caption="Реконструкция звука"
-       data-theme="blue"></div>
+ <div class="mars-sound mars-sound--infobox"
+     data-preset="deep"
+     data-title="Звук моря"
+     data-caption="Реконструкция звука"
+     data-theme="blue"></div>
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 

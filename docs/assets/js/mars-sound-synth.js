@@ -1,6 +1,6 @@
 // ============================================================
-// mars-sound-synth.js — Синтез звуков моря (оригинальный код)
-// Заменяет mp3-плеер. Никаких внешних файлов. 100% free.
+// mars-sound-synth.js — Реалистичный синтез звуков моря v2
+// Никаких внешних файлов. Читает data-src, мапит на пресет.
 // ============================================================
 (function() {
     'use strict';
@@ -18,8 +18,8 @@
         return audioCtx;
     }
 
-    // ---- Генератор розового шума (основа звука моря) ----
-    function createNoiseSource(ctx, seconds) {
+    // ---- Генератор розового шума (реалистичная основа моря) ----
+    function createPinkNoise(ctx, seconds) {
         var len = Math.floor(ctx.sampleRate * seconds);
         var buf = ctx.createBuffer(2, len, ctx.sampleRate);
         for (var ch = 0; ch < 2; ch++) {
@@ -43,17 +43,79 @@
         return src;
     }
 
-    // ---- Пресеты звуков ----
+    // ---- Белый шум (для брызг, пены) ----
+    function createWhiteNoise(ctx, seconds) {
+        var len = Math.floor(ctx.sampleRate * seconds);
+        var buf = ctx.createBuffer(2, len, ctx.sampleRate);
+        for (var ch = 0; ch < 2; ch++) {
+            var d = buf.getChannelData(ch);
+            for (var i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+        }
+        var src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.loop = true;
+        return src;
+    }
+
+    // ---- ПРЕСЕТЫ ----
     var PRESETS = {
-        calm:     { waveGain: 0.10, windGain: 0.03, waveRate: 0.08, waveDepth: 0.5, bandFreq: 500,  bandQ: 0.7, label: 'Спокойное море' },
-        ocean:    { waveGain: 0.18, windGain: 0.06, waveRate: 0.12, waveDepth: 0.7, bandFreq: 700,  bandQ: 0.8, label: 'Океанские волны' },
-        storm:    { waveGain: 0.26, windGain: 0.13, waveRate: 0.18, waveDepth: 0.9, bandFreq: 900,  bandQ: 1.0, label: 'Штормовое море' },
-        gulls:    { waveGain: 0.14, windGain: 0.05, waveRate: 0.10, waveDepth: 0.6, bandFreq: 600,  bandQ: 0.8, label: 'Море с чайками', gulls: true },
-        deep:     { waveGain: 0.15, windGain: 0.02, waveRate: 0.05, waveDepth: 0.4, bandFreq: 300,  bandQ: 0.6, label: 'Глубокое море' },
-        freezing: { waveGain: 0.06, windGain: 0.16, waveRate: 0.04, waveDepth: 0.3, bandFreq: 1200, bandQ: 1.2, label: 'Замерзающее море' }
+        calm: {
+            label: 'Спокойное море',
+            waveRate: 0.09, waveDepth: 0.55, waveGain: 0.22,
+            lowFreq: 400, lowQ: 0.6,
+            surfGain: 0.05, surfFreq: 1800,
+            rumble: 0.05, hiss: 0.008,
+            crashChance: 0.12, crashGain: 0.10,
+            wind: 0.02, gulls: false
+        },
+        ocean: {
+            label: 'Океанские волны',
+            waveRate: 0.13, waveDepth: 0.75, waveGain: 0.30,
+            lowFreq: 600, lowQ: 0.8,
+            surfGain: 0.09, surfFreq: 2200,
+            rumble: 0.09, hiss: 0.014,
+            crashChance: 0.28, crashGain: 0.22,
+            wind: 0.05, gulls: false
+        },
+        storm: {
+            label: 'Штормовое море',
+            waveRate: 0.20, waveDepth: 0.9, waveGain: 0.38,
+            lowFreq: 800, lowQ: 1.0,
+            surfGain: 0.15, surfFreq: 2600,
+            rumble: 0.16, hiss: 0.022,
+            crashChance: 0.55, crashGain: 0.32,
+            wind: 0.12, gulls: false
+        },
+        gulls: {
+            label: 'Море с чайками',
+            waveRate: 0.11, waveDepth: 0.65, waveGain: 0.24,
+            lowFreq: 500, lowQ: 0.7,
+            surfGain: 0.07, surfFreq: 2000,
+            rumble: 0.06, hiss: 0.010,
+            crashChance: 0.20, crashGain: 0.14,
+            wind: 0.03, gulls: true
+        },
+        deep: {
+            label: 'Глубокое море',
+            waveRate: 0.05, waveDepth: 0.45, waveGain: 0.28,
+            lowFreq: 250, lowQ: 0.5,
+            surfGain: 0.03, surfFreq: 1200,
+            rumble: 0.20, hiss: 0.004,
+            crashChance: 0.08, crashGain: 0.10,
+            wind: 0.02, gulls: false
+        },
+        freezing: {
+            label: 'Замерзающее море',
+            waveRate: 0.04, waveDepth: 0.3, waveGain: 0.12,
+            lowFreq: 1300, lowQ: 1.2,
+            surfGain: 0.02, surfFreq: 3200,
+            rumble: 0.03, hiss: 0.025,
+            crashChance: 0.05, crashGain: 0.06,
+            wind: 0.20, gulls: false
+        }
     };
 
-    // ---- Автоматический маппинг старых data-src на пресеты ----
+    // ---- Маппинг старых data-src на пресеты ----
     var SRC_MAP = {
         'weak-waves-on-the-shore-of-a-calm-sea.mp3': 'calm',
         'the-sound-of-the-waves-the-sea.mp3':        'ocean',
@@ -76,85 +138,172 @@
         master.gain.value = 0.0001;
         master.connect(ctx.destination);
         var nodes = [];
+        var timers = [];
 
-        // Слой 1: волны
-        var waveNoise = createNoiseSource(ctx, 4);
-        var waveBand = ctx.createBiquadFilter();
-        waveBand.type = 'bandpass';
-        waveBand.frequency.value = cfg.bandFreq;
-        waveBand.Q.value = cfg.bandQ;
+        // 1. ВОЛНЫ — розовый шум через полосовой фильтр + LFO по частоте
+        var waveNoise = createPinkNoise(ctx, 5);
+        var waveFilter = ctx.createBiquadFilter();
+        waveFilter.type = 'bandpass';
+        waveFilter.frequency.value = cfg.lowFreq;
+        waveFilter.Q.value = cfg.lowQ;
         var waveGain = ctx.createGain();
         waveGain.gain.value = cfg.waveGain;
 
+        // LFO модулирует частоту фильтра — эффект «набегающей волны»
         var waveLFO = ctx.createOscillator();
         waveLFO.type = 'sine';
         waveLFO.frequency.value = cfg.waveRate;
         var waveLFOGain = ctx.createGain();
-        waveLFOGain.gain.value = cfg.waveGain * cfg.waveDepth;
+        waveLFOGain.gain.value = cfg.lowFreq * 0.35;
         waveLFO.connect(waveLFOGain);
-        waveLFOGain.connect(waveGain.gain);
+        waveLFOGain.connect(waveFilter.frequency);
 
-        waveNoise.connect(waveBand);
-        waveBand.connect(waveGain);
+        // Второй LFO — амплитуда (громкость набегает и уходит)
+        var ampLFO = ctx.createOscillator();
+        ampLFO.type = 'sine';
+        ampLFO.frequency.value = cfg.waveRate * 0.9;
+        var ampLFOGain = ctx.createGain();
+        ampLFOGain.gain.value = cfg.waveGain * cfg.waveDepth;
+        ampLFO.connect(ampLFOGain);
+        ampLFOGain.connect(waveGain.gain);
+
+        waveNoise.connect(waveFilter);
+        waveFilter.connect(waveGain);
         waveGain.connect(master);
-        waveNoise.start(); waveLFO.start();
-        nodes.push(waveNoise, waveLFO);
+        waveNoise.start(); waveLFO.start(); ampLFO.start();
+        nodes.push(waveNoise, waveLFO, ampLFO);
 
-        // Слой 2: ветер (низкий рокот)
-        var windNoise = createNoiseSource(ctx, 4);
-        var windFilter = ctx.createBiquadFilter();
-        windFilter.type = 'lowpass';
-        windFilter.frequency.value = 400;
-        var windGain = ctx.createGain();
-        windGain.gain.value = cfg.windGain;
+        // 2. ПРИБОЙ/ПЕНА — белый шум через highpass (шипение воды)
+        var surfNoise = createWhiteNoise(ctx, 5);
+        var surfFilter = ctx.createBiquadFilter();
+        surfFilter.type = 'highpass';
+        surfFilter.frequency.value = cfg.surfFreq;
+        var surfGain = ctx.createGain();
+        surfGain.gain.value = cfg.surfGain;
+        var surfLFO = ctx.createOscillator();
+        surfLFO.type = 'sine';
+        surfLFO.frequency.value = cfg.waveRate * 1.1;
+        var surfLFOGain = ctx.createGain();
+        surfLFOGain.gain.value = cfg.surfGain * 0.6;
+        surfLFO.connect(surfLFOGain);
+        surfLFOGain.connect(surfGain.gain);
+        surfNoise.connect(surfFilter);
+        surfFilter.connect(surfGain);
+        surfGain.connect(master);
+        surfNoise.start(); surfLFO.start();
+        nodes.push(surfNoise, surfLFO);
 
-        var windLFO = ctx.createOscillator();
-        windLFO.type = 'sine';
-        windLFO.frequency.value = 0.04;
-        var windLFOGain = ctx.createGain();
-        windLFOGain.gain.value = cfg.windGain * 0.6;
-        windLFO.connect(windLFOGain);
-        windLFOGain.connect(windGain.gain);
+        // 3. ГЛУБИННЫЙ ГУЛ — низкий lowpass шум
+        var rumbleNoise = createPinkNoise(ctx, 5);
+        var rumbleFilter = ctx.createBiquadFilter();
+        rumbleFilter.type = 'lowpass';
+        rumbleFilter.frequency.value = 120;
+        var rumbleGain = ctx.createGain();
+        rumbleGain.gain.value = cfg.rumble;
+        rumbleNoise.connect(rumbleFilter);
+        rumbleFilter.connect(rumbleGain);
+        rumbleGain.connect(master);
+        rumbleNoise.start();
+        nodes.push(rumbleNoise);
 
-        windNoise.connect(windFilter);
-        windFilter.connect(windGain);
-        windGain.connect(master);
-        windNoise.start(); windLFO.start();
-        nodes.push(windNoise, windLFO);
+        // 4. ВЕТЕР — низкий рокот со случайными порывами
+        if (cfg.wind > 0) {
+            var windNoise = createPinkNoise(ctx, 5);
+            var windFilter = ctx.createBiquadFilter();
+            windFilter.type = 'bandpass';
+            windFilter.frequency.value = 350;
+            windFilter.Q.value = 0.4;
+            var windGain = ctx.createGain();
+            windGain.gain.value = cfg.wind;
+            var windLFO = ctx.createOscillator();
+            windLFO.type = 'sine';
+            windLFO.frequency.value = 0.06;
+            var windLFOGain = ctx.createGain();
+            windLFOGain.gain.value = cfg.wind * 0.7;
+            windLFO.connect(windLFOGain);
+            windLFOGain.connect(windGain.gain);
+            windNoise.connect(windFilter);
+            windFilter.connect(windGain);
+            windGain.connect(master);
+            windNoise.start(); windLFO.start();
+            nodes.push(windNoise, windLFO);
+        }
 
-        // Слой 3: чайки
-        var gullTimer = null;
+        // 5. ВСПЛЕСКИ ВОЛН — случайные бурсты «плюх» с реалистичной атакой
+        function waveCrash(when) {
+            var crashNoise = createWhiteNoise(ctx, 1.5);
+            var crashFilter = ctx.createBiquadFilter();
+            crashFilter.type = 'bandpass';
+            crashFilter.frequency.value = 800 + Math.random() * 1200;
+            crashFilter.Q.value = 0.8;
+            var crashGain = ctx.createGain();
+            crashGain.gain.setValueAtTime(0, when);
+            crashGain.gain.linearRampToValueAtTime(cfg.crashGain * (0.6 + Math.random() * 0.6), when + 0.08);
+            crashGain.gain.exponentialRampToValueAtTime(0.001, when + 0.6 + Math.random() * 0.8);
+            crashNoise.connect(crashFilter);
+            crashFilter.connect(crashGain);
+            crashGain.connect(master);
+            crashNoise.start(when);
+            crashNoise.stop(when + 1.5);
+
+            // пена (короткий высокий всплеск)
+            var foamNoise = createWhiteNoise(ctx, 0.5);
+            var foamFilter = ctx.createBiquadFilter();
+            foamFilter.type = 'highpass';
+            foamFilter.frequency.value = 3000;
+            var foamGain = ctx.createGain();
+            foamGain.gain.setValueAtTime(0, when);
+            foamGain.gain.linearRampToValueAtTime(cfg.crashGain * 0.35, when + 0.04);
+            foamGain.gain.exponentialRampToValueAtTime(0.001, when + 0.35);
+            foamNoise.connect(foamFilter);
+            foamFilter.connect(foamGain);
+            foamGain.connect(master);
+            foamNoise.start(when);
+            foamNoise.stop(when + 0.5);
+        }
+
+        function crashLoop() {
+            if (Math.random() < cfg.crashChance) {
+                waveCrash(ctx.currentTime + 0.05 + Math.random() * 0.2);
+            }
+            var next = 700 + Math.random() * 2000;
+            timers.push(setTimeout(crashLoop, next));
+        }
+        if (cfg.crashChance > 0) crashLoop();
+
+        // 6. ЧАЙКИ — крики в случайные моменты
         if (cfg.gulls) {
             function gullCry(when) {
                 var osc = ctx.createOscillator();
                 osc.type = 'triangle';
                 var g = ctx.createGain();
-                var f0 = 1400 + Math.random() * 600;
-                var f1 = f0 * 0.6;
+                var f0 = 1400 + Math.random() * 700;
+                var f1 = f0 * 0.55;
                 osc.frequency.setValueAtTime(f0, when);
-                osc.frequency.exponentialRampToValueAtTime(f1, when + 0.15);
-                osc.frequency.exponentialRampToValueAtTime(f0 * 0.9, when + 0.3);
+                osc.frequency.exponentialRampToValueAtTime(f1, when + 0.18);
+                osc.frequency.exponentialRampToValueAtTime(f0 * 0.85, when + 0.35);
                 g.gain.setValueAtTime(0, when);
-                g.gain.linearRampToValueAtTime(0.035, when + 0.03);
-                g.gain.exponentialRampToValueAtTime(0.001, when + 0.35);
+                g.gain.linearRampToValueAtTime(0.04, when + 0.03);
+                g.gain.exponentialRampToValueAtTime(0.001, when + 0.4);
                 osc.connect(g); g.connect(master);
-                osc.start(when); osc.stop(when + 0.4);
+                osc.start(when); osc.stop(when + 0.45);
             }
-            (function loop() {
-                if (Math.random() < 0.4) {
+            function gullLoop() {
+                if (Math.random() < 0.35) {
                     var t = ctx.currentTime + 0.1;
                     gullCry(t);
-                    if (Math.random() < 0.5) gullCry(t + 0.25);
+                    if (Math.random() < 0.55) gullCry(t + 0.3 + Math.random() * 0.3);
                 }
-                gullTimer = setTimeout(loop, 3000 + Math.random() * 5000);
-            })();
+                timers.push(setTimeout(gullLoop, 2500 + Math.random() * 6000));
+            }
+            gullLoop();
         }
 
         return {
             master: master,
             nodes: nodes,
             stop: function () {
-                if (gullTimer) clearTimeout(gullTimer);
+                timers.forEach(function (t) { clearTimeout(t); });
             }
         };
     }
@@ -187,34 +336,32 @@
             if (!ctx) return;
 
             if (currentEl === el && currentSound) {
-                // остановить
-                var stopTime = ctx.currentTime + 0.35;
-                try { currentSound.master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3); } catch (e) {}
-                currentSound.stop();
-                currentSound.nodes.forEach(function (n) {
-                    try { n.stop(stopTime); } catch (e) {}
-                });
+                try { currentSound.master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4); } catch (e) {}
+                var s = currentSound;
+                setTimeout(function () {
+                    s.stop();
+                    s.nodes.forEach(function (n) { try { n.stop(); } catch (e) {} });
+                }, 450);
                 currentSound = null;
                 currentEl = null;
                 btn.innerHTML = '<span class="mss-icon">▶</span>';
                 el.classList.remove('mss-playing');
             } else {
-                // остановить предыдущий
                 if (currentSound) {
-                    try { currentSound.master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.2); } catch (e) {}
-                    currentSound.stop();
-                    currentSound.nodes.forEach(function (n) {
-                        try { n.stop(ctx.currentTime + 0.25); } catch (e) {}
-                    });
+                    var prev = currentSound;
+                    try { prev.master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3); } catch (e) {}
+                    setTimeout(function () {
+                        prev.stop();
+                        prev.nodes.forEach(function (n) { try { n.stop(); } catch (e) {} });
+                    }, 350);
                     if (currentEl) {
                         currentEl.classList.remove('mss-playing');
-                        var prevBtn = currentEl.querySelector('.mss-btn');
-                        if (prevBtn) prevBtn.innerHTML = '<span class="mss-icon">▶</span>';
+                        var pb = currentEl.querySelector('.mss-btn');
+                        if (pb) pb.innerHTML = '<span class="mss-icon">▶</span>';
                     }
                 }
-                // запустить новый
                 currentSound = buildSeaSound(ctx, presetName);
-                currentSound.master.gain.exponentialRampToValueAtTime(0.7, ctx.currentTime + 0.6);
+                currentSound.master.gain.exponentialRampToValueAtTime(0.8, ctx.currentTime + 0.8);
                 currentEl = el;
                 btn.innerHTML = '<span class="mss-icon">■</span>';
                 el.classList.add('mss-playing');
@@ -229,40 +376,41 @@
         s.id = 'mss-style';
         s.textContent = [
             '.mars-sound-ready {',
-            '    display: flex; align-items: center; gap: 10px;',
-            '    padding: 10px; margin: 8px 0;',
+            '    display: flex; align-items: center; gap: 12px;',
+            '    padding: 12px; margin: 8px 0;',
             '    background: linear-gradient(135deg, #1a3a4a 0%, #2a4a5a 100%);',
-            '    border: 1px solid #8daebf; border-radius: 8px;',
+            '    border: 1px solid #8daebf; border-radius: 10px;',
             '    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;',
+            '    box-shadow: 0 4px 14px rgba(0,0,0,0.15);',
             '}',
             '.mss-btn {',
-            '    width: 40px; height: 40px; flex-shrink: 0;',
+            '    width: 44px; height: 44px; flex-shrink: 0;',
             '    border-radius: 50%; border: none; cursor: pointer;',
             '    background: linear-gradient(135deg, #6C63FF, #A29BFE);',
-            '    color: #fff; font-size: 14px;',
+            '    color: #fff; font-size: 15px;',
             '    display: inline-flex; align-items: center; justify-content: center;',
             '    box-shadow: 0 4px 12px rgba(108,99,255,0.4);',
             '    transition: transform 0.2s, box-shadow 0.2s;',
             '    -webkit-tap-highlight-color: transparent;',
             '}',
-            '.mss-btn:hover { transform: scale(1.08); box-shadow: 0 6px 16px rgba(108,99,255,0.6); }',
+            '.mss-btn:hover { transform: scale(1.08); box-shadow: 0 6px 18px rgba(108,99,255,0.6); }',
             '.mss-playing .mss-btn {',
-            '    animation: mssPulse 2s ease-in-out infinite;',
+            '    animation: mssPulse 2.2s ease-in-out infinite;',
             '    background: linear-gradient(135deg, #27ae60, #2ecc71);',
             '}',
             '@keyframes mssPulse {',
             '    0%, 100% { box-shadow: 0 0 0 0 rgba(46,204,113,0.7); }',
-            '    50% { box-shadow: 0 0 0 8px rgba(46,204,113,0); }',
+            '    50% { box-shadow: 0 0 0 10px rgba(46,204,113,0); }',
             '}',
             '.mss-info { flex: 1; min-width: 0; color: #e8e8f0; }',
-            '.mss-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 2px; }',
-            '.mss-caption { font-size: 0.72rem; color: #8daebf; }',
+            '.mss-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 3px; }',
+            '.mss-caption { font-size: 0.74rem; color: #8daebf; }',
             '.mss-playing .mss-caption { color: #A29BFE; }',
             '@media (max-width: 700px) {',
-            '    .mars-sound-ready { padding: 8px; }',
-            '    .mss-btn { width: 36px; height: 36px; }',
-            '    .mss-title { font-size: 0.82rem; }',
-            '    .mss-caption { font-size: 0.68rem; }',
+            '    .mars-sound-ready { padding: 10px; gap: 10px; }',
+            '    .mss-btn { width: 38px; height: 38px; font-size: 13px; }',
+            '    .mss-title { font-size: 0.85rem; }',
+            '    .mss-caption { font-size: 0.7rem; }',
             '}'
         ].join('\n');
         document.head.appendChild(s);
@@ -272,9 +420,7 @@
     function init() {
         addStyles();
         var els = document.querySelectorAll('.mars-sound:not(.mars-sound-ready)');
-        for (var i = 0; i < els.length; i++) {
-            createPlayer(els[i]);
-        }
+        for (var i = 0; i < els.length; i++) createPlayer(els[i]);
     }
 
     if (document.readyState === 'loading') {
@@ -290,5 +436,5 @@
         new MutationObserver(init).observe(document.body, { childList: true, subtree: true });
     }
 
-    console.log('🎵 mars-sound-synth загружен — синтез звуков моря активен');
+    console.log('🌊 mars-sound-synth v2 — реалистичный синтез моря активен');
 })();

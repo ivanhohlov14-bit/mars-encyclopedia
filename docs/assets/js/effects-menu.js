@@ -1,25 +1,29 @@
 // ============================================================
-// effects-menu.js — VIP v14
-// Кнопка СЛЕВА от профиля (offsetParent убран)
-// Звук меню — мягкий, не пищит
+// effects-menu.js — VIP v15 (ФИНАЛ)
+// ПК: кнопка слева от профиля
+// Мобильный: кнопка внизу справа
+// Звуки: тогглы = звёзды (длинный), меню = мягкий (не пищит)
 // ============================================================
 
 (function() {
     'use strict';
 
+    var IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                    (navigator.maxTouchPoints > 1 && window.innerWidth < 1024);
+
     // ============================================================
     // 🎯 ОПЦИИ
     // ============================================================
     var OPTIONS = [
-        { id: 'stars',    icon: '⭐', iconOn: '🌟', title: 'Звёздное небо',
+        { id: 'stars', icon: '⭐', iconOn: '🌟', title: 'Звёздное небо',
           desc: 'Тёмная космическая тема + мерцающие звёзды',
           selector: '#mars-stars-toggle',
           isOn: function() { return localStorage.getItem('mars_stars_enabled') === 'true'; } },
-        { id: 'martian',  icon: '📖', iconOn: '🪐', title: 'Марсианский язык',
+        { id: 'martian', icon: '📖', iconOn: '🪐', title: 'Марсианский язык',
           desc: 'Перевести статьи на древний марсианский',
           selector: '#martian-toggle',
           isOn: function() { return localStorage.getItem('mars_lang_mode') === 'mr'; } },
-        { id: 'scroll',   icon: '📜', iconOn: '📖', title: 'Режим свитка',
+        { id: 'scroll', icon: '📜', iconOn: '📖', title: 'Режим свитка',
           desc: 'Древний пергамент вместо обычного фона',
           selector: '#scroll-mode-toggle',
           isOn: function() { return localStorage.getItem('mars_scroll_mode') === 'true'; } }
@@ -36,24 +40,20 @@
 
     function getAudioCtx() {
         if (!audioCtx) {
-            try {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            } catch (e) { return null; }
+            try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+            catch (e) { return null; }
         }
-        if (audioCtx && audioCtx.state === 'suspended') {
-            audioCtx.resume().catch(function() {});
-        }
+        if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume().catch(function() {});
         return audioCtx;
     }
 
-    // ЗВУК ЗВЁЗД — ВКЛ (как в easter-eggs.js)
+    // ВКЛ эффекта — звук звёзд (220 → 554 Гц, 5 нот, 1.6 сек)
     function soundEffectOn() {
         var c = getAudioCtx();
         if (!c) return;
         var t = c.currentTime;
         [220, 277.18, 329.63, 440, 554.37].forEach(function(f, i) {
-            var o = c.createOscillator();
-            var g = c.createGain();
+            var o = c.createOscillator(), g = c.createGain();
             o.type = 'sine';
             o.frequency.value = f;
             var s = t + i * 0.13;
@@ -65,12 +65,11 @@
         });
     }
 
-    // ЗВУК ЗВЁЗД — ВЫКЛ
+    // ВЫКЛ эффекта — глиссандо
     function soundEffectOff() {
         var c = getAudioCtx();
         if (!c) return;
-        var o = c.createOscillator();
-        var g = c.createGain();
+        var o = c.createOscillator(), g = c.createGain();
         o.type = 'sine';
         o.frequency.setValueAtTime(554.37, c.currentTime);
         o.frequency.exponentialRampToValueAtTime(110, c.currentTime + 0.9);
@@ -80,17 +79,13 @@
         o.start(); o.stop(c.currentTime + 0.9);
     }
 
-    // ============================================================
-    // 🎼 МЕНЮ — ОТКРЫТИЕ — мягкая мелодия (не писк!)
-    // G5 → B5 → D6, 3 ноты по 0.06 сек
-    // ============================================================
+    // МЕНЮ — открытие (мягкая мелодия G5 → B5 → D6)
     function soundMenuOpen() {
         var c = getAudioCtx();
         if (!c) return;
         var t = c.currentTime;
         [783.99, 987.77, 1174.66].forEach(function(f, i) {
-            var o = c.createOscillator();
-            var g = c.createGain();
+            var o = c.createOscillator(), g = c.createGain();
             o.type = 'sine';
             o.frequency.value = f;
             var s = t + i * 0.07;
@@ -102,14 +97,13 @@
         });
     }
 
-    // МЕНЮ — ЗАКРЫТИЕ — мягкая мелодия вниз
+    // МЕНЮ — закрытие (D6 → B5 → G5)
     function soundMenuClose() {
         var c = getAudioCtx();
         if (!c) return;
         var t = c.currentTime;
         [1174.66, 987.77, 783.99].forEach(function(f, i) {
-            var o = c.createOscillator();
-            var g = c.createGain();
+            var o = c.createOscillator(), g = c.createGain();
             o.type = 'sine';
             o.frequency.value = f;
             var s = t + i * 0.07;
@@ -143,7 +137,7 @@
     }
 
     // ============================================================
-    // 🔍 ПОИСК ПРОФИЛЯ — без offsetParent (он ломает!)
+    // 🔍 ПОИСК ПРОФИЛЯ
     // ============================================================
     function findProfileContainer() {
         var sels = [
@@ -166,58 +160,57 @@
     }
 
     // ============================================================
-// 📌 ПОЗИЦИОНИРОВАНИЕ — ПК: слева от профиля, мобильный: внизу справа
-// ============================================================
-var GAP = 16;
-var BTN_SIZE = 40;
-var IS_MOBILE = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1024);
+    // 📌 ПОЗИЦИОНИРОВАНИЕ
+    // ============================================================
+    var GAP = 16;
+    var BTN_SIZE = 40;
 
-function placeButton() {
-    if (!menuBtn) return;
+    function placeButton() {
+        if (!menuBtn) return;
 
-    // ✅ На мобильном — кнопка внизу справа (не перекрывает шапку)
-    if (IS_MOBILE || window.innerWidth < 768) {
+        // 📱 МОБИЛЬНЫЙ: внизу справа (не перекрывает шапку)
+        if (IS_MOBILE || window.innerWidth < 768) {
+            menuBtn.style.position = 'fixed';
+            menuBtn.style.top = 'auto';
+            menuBtn.style.bottom = 'calc(90px + env(safe-area-inset-bottom, 0px))';
+            menuBtn.style.right = 'calc(20px + env(safe-area-inset-right, 0px))';
+            menuBtn.style.left = 'auto';
+            menuBtn.style.transform = 'none';
+            menuBtn.style.zIndex = '9999999';
+            menuBtn.style.width = '48px';
+            menuBtn.style.height = '48px';
+            return;
+        }
+
+        // 🖥 ПК: слева от профиля
+        var profile = findProfileContainer();
+
+        if (!profile) {
+            menuBtn.style.position = 'fixed';
+            menuBtn.style.top = '12px';
+            menuBtn.style.left = 'auto';
+            menuBtn.style.right = '16px';
+            menuBtn.style.bottom = 'auto';
+            menuBtn.style.transform = 'none';
+            menuBtn.style.zIndex = '9999999';
+            return;
+        }
+
+        var r = profile.getBoundingClientRect();
+        if (r.width === 0 || r.left === 0) return;
+
+        var buttonLeft = r.left - GAP - BTN_SIZE;
+
         menuBtn.style.position = 'fixed';
-        menuBtn.style.top = 'auto';
-        menuBtn.style.bottom = 'calc(90px + env(safe-area-inset-bottom, 0px))';
-        menuBtn.style.right = 'calc(20px + env(safe-area-inset-right, 0px))';
-        menuBtn.style.left = 'auto';
-        menuBtn.style.transform = 'none';
-        menuBtn.style.zIndex = '9999999';
-        menuBtn.style.width = '48px';
-        menuBtn.style.height = '48px';
-        return;
-    }
-
-    // ✅ На ПК — слева от профиля
-    var profile = findProfileContainer();
-
-    if (!profile) {
-        menuBtn.style.position = 'fixed';
-        menuBtn.style.top = '12px';
-        menuBtn.style.left = 'auto';
-        menuBtn.style.right = '16px';
+        menuBtn.style.top = (r.top + r.height / 2) + 'px';
+        menuBtn.style.left = buttonLeft + 'px';
+        menuBtn.style.right = 'auto';
         menuBtn.style.bottom = 'auto';
-        menuBtn.style.transform = 'none';
+        menuBtn.style.transform = 'translateY(-50%)';
         menuBtn.style.zIndex = '9999999';
-        return;
+        menuBtn.style.width = BTN_SIZE + 'px';
+        menuBtn.style.height = BTN_SIZE + 'px';
     }
-
-    var r = profile.getBoundingClientRect();
-    if (r.width === 0 || r.left === 0) return;
-
-    var buttonLeft = r.left - GAP - BTN_SIZE;
-
-    menuBtn.style.position = 'fixed';
-    menuBtn.style.top = (r.top + r.height / 2) + 'px';
-    menuBtn.style.left = buttonLeft + 'px';
-    menuBtn.style.right = 'auto';
-    menuBtn.style.bottom = 'auto';
-    menuBtn.style.transform = 'translateY(-50%)';
-    menuBtn.style.zIndex = '9999999';
-    menuBtn.style.width = BTN_SIZE + 'px';
-    menuBtn.style.height = BTN_SIZE + 'px';
-}
 
     // ============================================================
     // 📌 СОЗДАНИЕ UI
@@ -284,6 +277,9 @@ function placeButton() {
         }
     }
 
+    // ============================================================
+    // 📋 СПИСОК
+    // ============================================================
     function renderList() {
         var list = panel.querySelector('.em-list');
         list.innerHTML = OPTIONS.map(function(opt) {
@@ -304,31 +300,41 @@ function placeButton() {
             item.onclick = function() {
                 var opt = OPTIONS.find(function(o) { return o.id === item.dataset.id; });
                 if (!opt) return;
-
                 var wasOn = opt.isOn();
                 clickOldButton(opt.selector);
-
                 if (wasOn) soundEffectOff();
                 else soundEffectOn();
-
                 try { if (navigator.vibrate) navigator.vibrate(10); } catch(e) {}
                 setTimeout(renderList, 80);
             };
         });
     }
 
-    function toggleMenu() {
-        if (isOpen) closeMenu();
-        else openMenu();
-    }
+    // ============================================================
+    // 🎛️ ОТКРЫТИЕ / ЗАКРЫТИЕ
+    // ============================================================
+    function toggleMenu() { isOpen ? closeMenu() : openMenu(); }
 
     function openMenu() {
         isOpen = true;
         if (menuBtn) {
             var r = menuBtn.getBoundingClientRect();
-            panel.style.top = (r.bottom + 8) + 'px';
-            panel.style.left = Math.max(8, Math.min(r.left, window.innerWidth - 308)) + 'px';
-            panel.style.right = 'auto';
+
+            if (IS_MOBILE || window.innerWidth < 768) {
+                // Мобильный — панель над кнопкой
+                panel.style.top = 'auto';
+                panel.style.bottom = (window.innerHeight - r.top + 8) + 'px';
+                panel.style.left = '8px';
+                panel.style.right = '8px';
+                panel.style.width = 'auto';
+            } else {
+                // ПК — панель под кнопкой
+                panel.style.top = (r.bottom + 8) + 'px';
+                panel.style.bottom = 'auto';
+                panel.style.left = Math.max(8, Math.min(r.left, window.innerWidth - 308)) + 'px';
+                panel.style.right = 'auto';
+                panel.style.width = '300px';
+            }
         }
         panel.classList.add('em-open');
         menuBtn.classList.add('em-active');
@@ -540,27 +546,45 @@ function placeButton() {
             '    flex-shrink: 0;',
             '}',
             '.em-item.em-on .em-item-state { color: #27ae60; }',
+
+            /* Мобильная адаптация */
             '@media (max-width: 700px) {',
             '    #effects-menu-btn {',
-            '        width: 36px;',
-            '        height: 36px;',
-            '        font-size: 1rem;',
+            '        width: 48px;',
+            '        height: 48px;',
+            '        font-size: 1.3rem;',
             '    }',
             '    #effects-menu-panel {',
-            '        left: 8px !important;',
-            '        right: 8px !important;',
-            '        width: auto !important;',
-            '        max-width: none;',
+            '        border-radius: 16px;',
+            '    }',
+            '    .em-header {',
+            '        padding: 12px 14px;',
+            '        font-size: 0.88rem;',
+            '    }',
+            '    .em-item {',
+            '        padding: 10px;',
+            '    }',
+            '    .em-item-icon {',
+            '        font-size: 1.4rem;',
+            '        width: 28px;',
+            '    }',
+            '    .em-item-title {',
+            '        font-size: 0.85rem;',
+            '    }',
+            '    .em-item-desc {',
+            '        font-size: 0.68rem;',
             '    }',
             '}'
         ].join('\n');
         document.head.appendChild(s);
     }
 
+    // ============================================================
+    // 🚀 СТАРТ
+    // ============================================================
     function init() {
         hideOldButtons();
         addStyles();
-
         setTimeout(createMenu, 700);
         setTimeout(function() {
             if (!document.getElementById('effects-menu-btn')) createMenu();
@@ -573,5 +597,5 @@ function placeButton() {
         init();
     }
 
-    console.log('✨ Меню эффектов VIP v14 загружено');
+    console.log('✨ Меню эффектов VIP v15 загружено | Мобильный: ' + IS_MOBILE);
 })();

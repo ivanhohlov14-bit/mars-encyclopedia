@@ -74,18 +74,25 @@
   <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
     Население
   </div>
-
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+  
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
     <li>• Оценка (2650 г. Э.О.) ~6,5 млн чел.</li>
     <li>• Плотность ~0,62 чел./км²</li>
   </ul>
 
-  <hr style="margin: 6px 0;">
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
-  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+  <!-- Гимн -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Гимн королевства
+  </div>
+  <div id="gimn-kimeria"></div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     ВВП (ППС)
   </div>
-
   <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Итого (2650 г.) ~13 млн глиняных талантов</li>
     <li>• На душу населения ~2,0 таланта</li>

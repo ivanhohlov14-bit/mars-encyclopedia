@@ -109,10 +109,10 @@
   </div>
 
   <div class="mars-sound mars-sound--infobox"
-       data-src="/assets/sounds/waves-of-the-sea-ocean-seagulls.mp3"
-       data-title="Эритрейское море"
-       data-caption="Реконструкция звука"
-       data-theme="blue"></div>
+     data-preset="gulls"
+     data-title="Звук моря"
+     data-caption="Реконструкция звука"
+     data-theme="blue"></div>
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 

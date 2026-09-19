@@ -1,6 +1,6 @@
 // ============================================================
-// mars-sound-synth.js — Реалистичный синтез звуков моря v2
-// Никаких внешних файлов. Читает data-src, мапит на пресет.
+// mars-sound-synth.js — VIP v3
+// Реалистичный синтез моря + премиум-плеер с визуализацией
 // ============================================================
 (function() {
     'use strict';
@@ -18,7 +18,27 @@
         return audioCtx;
     }
 
-    // ---- Генератор розового шума (реалистичная основа моря) ----
+    // ---- Брауновский шум (глубокий, без «песка») ----
+    function createBrownNoise(ctx, seconds) {
+        var len = Math.floor(ctx.sampleRate * seconds);
+        var buf = ctx.createBuffer(2, len, ctx.sampleRate);
+        for (var ch = 0; ch < 2; ch++) {
+            var d = buf.getChannelData(ch);
+            var last = 0;
+            for (var i = 0; i < len; i++) {
+                var w = Math.random() * 2 - 1;
+                d[i] = (last + 0.02 * w) / 1.02;
+                last = d[i];
+                d[i] *= 3.5;
+            }
+        }
+        var src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.loop = true;
+        return src;
+    }
+
+    // ---- Розовый шум (мягкий, широкополосный) ----
     function createPinkNoise(ctx, seconds) {
         var len = Math.floor(ctx.sampleRate * seconds);
         var buf = ctx.createBuffer(2, len, ctx.sampleRate);
@@ -33,7 +53,7 @@
                 b3 = 0.86650*b3 + w*0.3104856;
                 b4 = 0.55000*b4 + w*0.5329522;
                 b5 = -0.7616*b5 - w*0.0168980;
-                d[i] = (b0+b1+b2+b3+b4+b5+b6+w*0.5362) * 0.11;
+                d[i] = (b0+b1+b2+b3+b4+b5+b6+w*0.5362) * 0.08;
                 b6 = w * 0.115926;
             }
         }
@@ -43,79 +63,76 @@
         return src;
     }
 
-    // ---- Белый шум (для брызг, пены) ----
-    function createWhiteNoise(ctx, seconds) {
-        var len = Math.floor(ctx.sampleRate * seconds);
-        var buf = ctx.createBuffer(2, len, ctx.sampleRate);
-        for (var ch = 0; ch < 2; ch++) {
-            var d = buf.getChannelData(ch);
-            for (var i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
-        }
-        var src = ctx.createBufferSource();
-        src.buffer = buf;
-        src.loop = true;
-        return src;
-    }
-
-    // ---- ПРЕСЕТЫ ----
+    // ---- ПРЕСЕТЫ (переработаны под реализм) ----
     var PRESETS = {
         calm: {
             label: 'Спокойное море',
-            waveRate: 0.09, waveDepth: 0.55, waveGain: 0.22,
-            lowFreq: 400, lowQ: 0.6,
-            surfGain: 0.05, surfFreq: 1800,
-            rumble: 0.05, hiss: 0.008,
-            crashChance: 0.12, crashGain: 0.10,
-            wind: 0.02, gulls: false
+            swell: 0.055,          // период набега волны (сек⁻¹): 18 сек — медленно
+            rumble: 0.14,          // глубокий гул
+            waveBody: 0.32,        // тело волны
+            foam: 0.05,            // пена (тихо)
+            wind: 0.03,
+            crashChance: 0.15,     // редкие крупные волны
+            crashPower: 0.15,
+            gulls: false
         },
         ocean: {
             label: 'Океанские волны',
-            waveRate: 0.13, waveDepth: 0.75, waveGain: 0.30,
-            lowFreq: 600, lowQ: 0.8,
-            surfGain: 0.09, surfFreq: 2200,
-            rumble: 0.09, hiss: 0.014,
-            crashChance: 0.28, crashGain: 0.22,
-            wind: 0.05, gulls: false
+            swell: 0.08,
+            rumble: 0.20,
+            waveBody: 0.42,
+            foam: 0.09,
+            wind: 0.06,
+            crashChance: 0.35,
+            crashPower: 0.28,
+            gulls: false
         },
         storm: {
             label: 'Штормовое море',
-            waveRate: 0.20, waveDepth: 0.9, waveGain: 0.38,
-            lowFreq: 800, lowQ: 1.0,
-            surfGain: 0.15, surfFreq: 2600,
-            rumble: 0.16, hiss: 0.022,
-            crashChance: 0.55, crashGain: 0.32,
-            wind: 0.12, gulls: false
+            swell: 0.14,
+            rumble: 0.32,
+            waveBody: 0.55,
+            foam: 0.16,
+            wind: 0.18,
+            crashChance: 0.7,
+            crashPower: 0.45,
+            gulls: false
         },
         gulls: {
             label: 'Море с чайками',
-            waveRate: 0.11, waveDepth: 0.65, waveGain: 0.24,
-            lowFreq: 500, lowQ: 0.7,
-            surfGain: 0.07, surfFreq: 2000,
-            rumble: 0.06, hiss: 0.010,
-            crashChance: 0.20, crashGain: 0.14,
-            wind: 0.03, gulls: true
+            swell: 0.07,
+            rumble: 0.16,
+            waveBody: 0.36,
+            foam: 0.07,
+            wind: 0.04,
+            crashChance: 0.22,
+            crashPower: 0.20,
+            gulls: true
         },
         deep: {
             label: 'Глубокое море',
-            waveRate: 0.05, waveDepth: 0.45, waveGain: 0.28,
-            lowFreq: 250, lowQ: 0.5,
-            surfGain: 0.03, surfFreq: 1200,
-            rumble: 0.20, hiss: 0.004,
-            crashChance: 0.08, crashGain: 0.10,
-            wind: 0.02, gulls: false
+            swell: 0.035,
+            rumble: 0.42,          // много гула
+            waveBody: 0.28,
+            foam: 0.02,
+            wind: 0.02,
+            crashChance: 0.08,
+            crashPower: 0.14,
+            gulls: false
         },
         freezing: {
             label: 'Замерзающее море',
-            waveRate: 0.04, waveDepth: 0.3, waveGain: 0.12,
-            lowFreq: 1300, lowQ: 1.2,
-            surfGain: 0.02, surfFreq: 3200,
-            rumble: 0.03, hiss: 0.025,
-            crashChance: 0.05, crashGain: 0.06,
-            wind: 0.20, gulls: false
+            swell: 0.04,
+            rumble: 0.10,
+            waveBody: 0.14,
+            foam: 0.04,
+            wind: 0.28,            // много ветра
+            crashChance: 0.05,
+            crashPower: 0.08,
+            gulls: false
         }
     };
 
-    // ---- Маппинг старых data-src на пресеты ----
     var SRC_MAP = {
         'weak-waves-on-the-shore-of-a-calm-sea.mp3': 'calm',
         'the-sound-of-the-waves-the-sea.mp3':        'ocean',
@@ -124,14 +141,15 @@
         'waves-of-the-sea-ocean.mp3':                'ocean',
         'mars-wind.mp3':                             'freezing'
     };
-
     function presetFromSrc(src) {
         if (!src) return 'ocean';
         var name = src.split('/').pop().split('?')[0];
         return SRC_MAP[name] || 'ocean';
     }
 
-    // ---- Слои звука ----
+    // ============================================================
+    // ЗВУКОВОЙ ДВИЖОК — реалистичное море
+    // ============================================================
     function buildSeaSound(ctx, presetName) {
         var cfg = PRESETS[presetName] || PRESETS.ocean;
         var master = ctx.createGain();
@@ -140,161 +158,204 @@
         var nodes = [];
         var timers = [];
 
-        // 1. ВОЛНЫ — розовый шум через полосовой фильтр + LFO по частоте
-        var waveNoise = createPinkNoise(ctx, 5);
-        var waveFilter = ctx.createBiquadFilter();
-        waveFilter.type = 'bandpass';
-        waveFilter.frequency.value = cfg.lowFreq;
-        waveFilter.Q.value = cfg.lowQ;
-        var waveGain = ctx.createGain();
-        waveGain.gain.value = cfg.waveGain;
-
-        // LFO модулирует частоту фильтра — эффект «набегающей волны»
-        var waveLFO = ctx.createOscillator();
-        waveLFO.type = 'sine';
-        waveLFO.frequency.value = cfg.waveRate;
-        var waveLFOGain = ctx.createGain();
-        waveLFOGain.gain.value = cfg.lowFreq * 0.35;
-        waveLFO.connect(waveLFOGain);
-        waveLFOGain.connect(waveFilter.frequency);
-
-        // Второй LFO — амплитуда (громкость набегает и уходит)
-        var ampLFO = ctx.createOscillator();
-        ampLFO.type = 'sine';
-        ampLFO.frequency.value = cfg.waveRate * 0.9;
-        var ampLFOGain = ctx.createGain();
-        ampLFOGain.gain.value = cfg.waveGain * cfg.waveDepth;
-        ampLFO.connect(ampLFOGain);
-        ampLFOGain.connect(waveGain.gain);
-
-        waveNoise.connect(waveFilter);
-        waveFilter.connect(waveGain);
-        waveGain.connect(master);
-        waveNoise.start(); waveLFO.start(); ampLFO.start();
-        nodes.push(waveNoise, waveLFO, ampLFO);
-
-        // 2. ПРИБОЙ/ПЕНА — белый шум через highpass (шипение воды)
-        var surfNoise = createWhiteNoise(ctx, 5);
-        var surfFilter = ctx.createBiquadFilter();
-        surfFilter.type = 'highpass';
-        surfFilter.frequency.value = cfg.surfFreq;
-        var surfGain = ctx.createGain();
-        surfGain.gain.value = cfg.surfGain;
-        var surfLFO = ctx.createOscillator();
-        surfLFO.type = 'sine';
-        surfLFO.frequency.value = cfg.waveRate * 1.1;
-        var surfLFOGain = ctx.createGain();
-        surfLFOGain.gain.value = cfg.surfGain * 0.6;
-        surfLFO.connect(surfLFOGain);
-        surfLFOGain.connect(surfGain.gain);
-        surfNoise.connect(surfFilter);
-        surfFilter.connect(surfGain);
-        surfGain.connect(master);
-        surfNoise.start(); surfLFO.start();
-        nodes.push(surfNoise, surfLFO);
-
-        // 3. ГЛУБИННЫЙ ГУЛ — низкий lowpass шум
-        var rumbleNoise = createPinkNoise(ctx, 5);
-        var rumbleFilter = ctx.createBiquadFilter();
-        rumbleFilter.type = 'lowpass';
-        rumbleFilter.frequency.value = 120;
+        // ─── 1. ГЛУБИННЫЙ ГУЛ ─── брауновский шум, lowpass 80 Гц
+        var rumble = createBrownNoise(ctx, 6);
+        var rumbleLP = ctx.createBiquadFilter();
+        rumbleLP.type = 'lowpass';
+        rumbleLP.frequency.value = 90;
+        rumbleLP.Q.value = 0.7;
         var rumbleGain = ctx.createGain();
         rumbleGain.gain.value = cfg.rumble;
-        rumbleNoise.connect(rumbleFilter);
-        rumbleFilter.connect(rumbleGain);
-        rumbleGain.connect(master);
-        rumbleNoise.start();
-        nodes.push(rumbleNoise);
 
-        // 4. ВЕТЕР — низкий рокот со случайными порывами
+        // Медленный LFO — гул то нарастает, то стихает
+        var rumbleLFO = ctx.createOscillator();
+        rumbleLFO.type = 'sine';
+        rumbleLFO.frequency.value = cfg.swell * 0.4;
+        var rumbleLFOGain = ctx.createGain();
+        rumbleLFOGain.gain.value = cfg.rumble * 0.5;
+        rumbleLFO.connect(rumbleLFOGain);
+        rumbleLFOGain.connect(rumbleGain.gain);
+
+        rumble.connect(rumbleLP);
+        rumbleLP.connect(rumbleGain);
+        rumbleGain.connect(master);
+        rumble.start(); rumbleLFO.start();
+        nodes.push(rumble, rumbleLFO);
+
+        // ─── 2. ТЕЛО ВОЛНЫ ─── розовый шум, bandpass со СВИПОМ частоты
+        // Это ключ к реализму: фильтр едет с 180 → 550 → 180 Гц — как настоящая волна
+        var wave = createPinkNoise(ctx, 6);
+        var waveBP = ctx.createBiquadFilter();
+        waveBP.type = 'bandpass';
+        waveBP.frequency.value = 350;
+        waveBP.Q.value = 1.2;
+
+        var waveGain = ctx.createGain();
+        waveGain.gain.value = cfg.waveBody;
+
+        // LFO #1 — на ЧАСТОТУ фильтра (свип волны)
+        var waveSweepLFO = ctx.createOscillator();
+        waveSweepLFO.type = 'sine';
+        waveSweepLFO.frequency.value = cfg.swell;
+        var waveSweepGain = ctx.createGain();
+        waveSweepGain.gain.value = 220;      // размах свипа ±220 Гц
+        waveSweepLFO.connect(waveSweepGain);
+        waveSweepGain.connect(waveBP.frequency);
+
+        // LFO #2 — на ГРОМКОСТЬ (волна нарастает и опадает)
+        var waveAmpLFO = ctx.createOscillator();
+        waveAmpLFO.type = 'sine';
+        waveAmpLFO.frequency.value = cfg.swell;
+        var waveAmpLFOGain = ctx.createGain();
+        waveAmpLFOGain.gain.value = cfg.waveBody * 0.65;
+        waveAmpLFO.connect(waveAmpLFOGain);
+        waveAmpLFOGain.connect(waveGain.gain);
+
+        wave.connect(waveBP);
+        waveBP.connect(waveGain);
+        waveGain.connect(master);
+        wave.start(); waveSweepLFO.start(); waveAmpLFO.start();
+        nodes.push(wave, waveSweepLFO, waveAmpLFO);
+
+        // ─── 3. ПЕНА ─── розовый шум, lowpass 900 Гц (без «песка»!)
+        // НЕ highpass — это и создавало ощущение сыпучего песка
+        var foam = createPinkNoise(ctx, 6);
+        var foamLP = ctx.createBiquadFilter();
+        foamLP.type = 'lowpass';
+        foamLP.frequency.value = 900;
+        foamLP.Q.value = 0.6;
+        var foamHP = ctx.createBiquadFilter();
+        foamHP.type = 'highpass';
+        foamHP.frequency.value = 300;      // отсекаем совсем низкие
+        var foamGain = ctx.createGain();
+        foamGain.gain.value = cfg.foam * 0.3;
+
+        // Пена появляется ТОЛЬКО на пике волны
+        var foamLFO = ctx.createOscillator();
+        foamLFO.type = 'sine';
+        foamLFO.frequency.value = cfg.swell;
+        var foamLFOGain = ctx.createGain();
+        foamLFOGain.gain.value = cfg.foam * 0.7;
+        foamLFO.connect(foamLFOGain);
+        foamLFOGain.connect(foamGain.gain);
+
+        foam.connect(foamHP);
+        foamHP.connect(foamLP);
+        foamLP.connect(foamGain);
+        foamGain.connect(master);
+        foam.start(); foamLFO.start();
+        nodes.push(foam, foamLFO);
+
+        // ─── 4. ВЕТЕР ─── брауновский шум, очень мягкий bandpass
         if (cfg.wind > 0) {
-            var windNoise = createPinkNoise(ctx, 5);
-            var windFilter = ctx.createBiquadFilter();
-            windFilter.type = 'bandpass';
-            windFilter.frequency.value = 350;
-            windFilter.Q.value = 0.4;
+            var wind = createBrownNoise(ctx, 6);
+            var windBP = ctx.createBiquadFilter();
+            windBP.type = 'bandpass';
+            windBP.frequency.value = 280;
+            windBP.Q.value = 0.5;
             var windGain = ctx.createGain();
             windGain.gain.value = cfg.wind;
+
             var windLFO = ctx.createOscillator();
             windLFO.type = 'sine';
-            windLFO.frequency.value = 0.06;
+            windLFO.frequency.value = 0.05;
             var windLFOGain = ctx.createGain();
-            windLFOGain.gain.value = cfg.wind * 0.7;
+            windLFOGain.gain.value = cfg.wind * 0.8;
             windLFO.connect(windLFOGain);
             windLFOGain.connect(windGain.gain);
-            windNoise.connect(windFilter);
-            windFilter.connect(windGain);
+
+            wind.connect(windBP);
+            windBP.connect(windGain);
             windGain.connect(master);
-            windNoise.start(); windLFO.start();
-            nodes.push(windNoise, windLFO);
+            wind.start(); windLFO.start();
+            nodes.push(wind, windLFO);
         }
 
-        // 5. ВСПЛЕСКИ ВОЛН — случайные бурсты «плюх» с реалистичной атакой
-        function waveCrash(when) {
-            var crashNoise = createWhiteNoise(ctx, 1.5);
-            var crashFilter = ctx.createBiquadFilter();
-            crashFilter.type = 'bandpass';
-            crashFilter.frequency.value = 800 + Math.random() * 1200;
-            crashFilter.Q.value = 0.8;
-            var crashGain = ctx.createGain();
-            crashGain.gain.setValueAtTime(0, when);
-            crashGain.gain.linearRampToValueAtTime(cfg.crashGain * (0.6 + Math.random() * 0.6), when + 0.08);
-            crashGain.gain.exponentialRampToValueAtTime(0.001, when + 0.6 + Math.random() * 0.8);
-            crashNoise.connect(crashFilter);
-            crashFilter.connect(crashGain);
-            crashGain.connect(master);
-            crashNoise.start(when);
-            crashNoise.stop(when + 1.5);
+        // ─── 5. ВСПЛЕСКИ ВОЛН ─── медленная атака (0.3 с), реалистичный свелл
+        function bigCrash(startTime, power) {
+            // Основной "вуууш"
+            var crash = createPinkNoise(ctx, 3);
+            var crashBP = ctx.createBiquadFilter();
+            crashBP.type = 'bandpass';
+            crashBP.frequency.setValueAtTime(180, startTime);
+            crashBP.frequency.linearRampToValueAtTime(650, startTime + 0.4);
+            crashBP.frequency.linearRampToValueAtTime(280, startTime + 2.0);
+            crashBP.Q.value = 1.4;
 
-            // пена (короткий высокий всплеск)
-            var foamNoise = createWhiteNoise(ctx, 0.5);
-            var foamFilter = ctx.createBiquadFilter();
-            foamFilter.type = 'highpass';
-            foamFilter.frequency.value = 3000;
-            var foamGain = ctx.createGain();
-            foamGain.gain.setValueAtTime(0, when);
-            foamGain.gain.linearRampToValueAtTime(cfg.crashGain * 0.35, when + 0.04);
-            foamGain.gain.exponentialRampToValueAtTime(0.001, when + 0.35);
-            foamNoise.connect(foamFilter);
-            foamFilter.connect(foamGain);
-            foamGain.connect(master);
-            foamNoise.start(when);
-            foamNoise.stop(when + 0.5);
+            var crashGain = ctx.createGain();
+            crashGain.gain.setValueAtTime(0.0001, startTime);
+            // МЕДЛЕННАЯ АТАКА — 0.35 секунды (реалистично!)
+            crashGain.gain.exponentialRampToValueAtTime(power, startTime + 0.35);
+            crashGain.gain.exponentialRampToValueAtTime(power * 0.5, startTime + 1.0);
+            crashGain.gain.exponentialRampToValueAtTime(0.0001, startTime + 2.5);
+
+            crash.connect(crashBP);
+            crashBP.connect(crashGain);
+            crashGain.connect(master);
+            crash.start(startTime);
+            crash.stop(startTime + 3);
+
+            // Глубокий "бум" под всплеском
+            var boom = ctx.createOscillator();
+            boom.type = 'sine';
+            boom.frequency.setValueAtTime(65, startTime);
+            boom.frequency.exponentialRampToValueAtTime(38, startTime + 0.8);
+            var boomGain = ctx.createGain();
+            boomGain.gain.setValueAtTime(0.0001, startTime);
+            boomGain.gain.exponentialRampToValueAtTime(power * 0.6, startTime + 0.2);
+            boomGain.gain.exponentialRampToValueAtTime(0.0001, startTime + 1.5);
+            boom.connect(boomGain);
+            boomGain.connect(master);
+            boom.start(startTime);
+            boom.stop(startTime + 1.6);
         }
 
         function crashLoop() {
             if (Math.random() < cfg.crashChance) {
-                waveCrash(ctx.currentTime + 0.05 + Math.random() * 0.2);
+                var power = cfg.crashPower * (0.7 + Math.random() * 0.6);
+                bigCrash(ctx.currentTime + 0.1 + Math.random() * 0.5, power);
             }
-            var next = 700 + Math.random() * 2000;
-            timers.push(setTimeout(crashLoop, next));
+            timers.push(setTimeout(crashLoop, 1500 + Math.random() * 3500));
         }
         if (cfg.crashChance > 0) crashLoop();
 
-        // 6. ЧАЙКИ — крики в случайные моменты
+        // ─── 6. ЧАЙКИ ─── реалистичный крик (двойной тон)
         if (cfg.gulls) {
             function gullCry(when) {
-                var osc = ctx.createOscillator();
-                osc.type = 'triangle';
-                var g = ctx.createGain();
-                var f0 = 1400 + Math.random() * 700;
-                var f1 = f0 * 0.55;
-                osc.frequency.setValueAtTime(f0, when);
-                osc.frequency.exponentialRampToValueAtTime(f1, when + 0.18);
-                osc.frequency.exponentialRampToValueAtTime(f0 * 0.85, when + 0.35);
-                g.gain.setValueAtTime(0, when);
-                g.gain.linearRampToValueAtTime(0.04, when + 0.03);
-                g.gain.exponentialRampToValueAtTime(0.001, when + 0.4);
-                osc.connect(g); g.connect(master);
-                osc.start(when); osc.stop(when + 0.45);
+                // Тон 1 — основной крик
+                var o1 = ctx.createOscillator();
+                o1.type = 'triangle';
+                var g1 = ctx.createGain();
+                var f0 = 1500 + Math.random() * 500;
+                o1.frequency.setValueAtTime(f0, when);
+                o1.frequency.exponentialRampToValueAtTime(f0 * 0.6, when + 0.12);
+                o1.frequency.exponentialRampToValueAtTime(f0 * 0.9, when + 0.25);
+                o1.frequency.exponentialRampToValueAtTime(f0 * 0.5, when + 0.4);
+                g1.gain.setValueAtTime(0.0001, when);
+                g1.gain.exponentialRampToValueAtTime(0.045, when + 0.03);
+                g1.gain.exponentialRampToValueAtTime(0.0001, when + 0.45);
+                o1.connect(g1); g1.connect(master);
+                o1.start(when); o1.stop(when + 0.5);
+
+                // Тон 2 — эхо/дребезг
+                var o2 = ctx.createOscillator();
+                o2.type = 'sine';
+                var g2 = ctx.createGain();
+                o2.frequency.setValueAtTime(f0 * 1.5, when + 0.05);
+                o2.frequency.exponentialRampToValueAtTime(f0 * 0.8, when + 0.35);
+                g2.gain.setValueAtTime(0.0001, when + 0.05);
+                g2.gain.exponentialRampToValueAtTime(0.018, when + 0.1);
+                g2.gain.exponentialRampToValueAtTime(0.0001, when + 0.4);
+                o2.connect(g2); g2.connect(master);
+                o2.start(when + 0.05); o2.stop(when + 0.45);
             }
             function gullLoop() {
-                if (Math.random() < 0.35) {
+                if (Math.random() < 0.4) {
                     var t = ctx.currentTime + 0.1;
                     gullCry(t);
-                    if (Math.random() < 0.55) gullCry(t + 0.3 + Math.random() * 0.3);
+                    if (Math.random() < 0.5) gullCry(t + 0.4 + Math.random() * 0.4);
                 }
-                timers.push(setTimeout(gullLoop, 2500 + Math.random() * 6000));
+                timers.push(setTimeout(gullLoop, 3000 + Math.random() * 7000));
             }
             gullLoop();
         }
@@ -308,7 +369,9 @@
         };
     }
 
-    // ---- UI плеера ----
+    // ============================================================
+    // UI — VIP ДИЗАЙН
+    // ============================================================
     function createPlayer(el) {
         var presetName = el.getAttribute('data-preset') || presetFromSrc(el.getAttribute('data-src'));
         var title = el.getAttribute('data-title') || 'Звук моря';
@@ -318,99 +381,215 @@
         el.classList.add('mars-sound-ready');
         el.innerHTML = '';
 
-        var btn = document.createElement('button');
-        btn.className = 'mss-btn';
-        btn.setAttribute('aria-label', 'Воспроизвести');
-        btn.innerHTML = '<span class="mss-icon">▶</span>';
+        // Визуализатор — 24 полоски
+        var barsHtml = '';
+        for (var i = 0; i < 24; i++) {
+            var h = 20 + Math.random() * 60;
+            barsHtml += '<span style="--h:' + h.toFixed(0) + '%;--d:' + (i * 0.06).toFixed(2) + 's"></span>';
+        }
 
-        var info = document.createElement('div');
-        info.className = 'mss-info';
-        info.innerHTML = '<div class="mss-title">' + title + '</div>' +
-                         '<div class="mss-caption">' + caption + ' · ' + cfg.label + '</div>';
+        el.innerHTML =
+            '<div class="mss-left">' +
+                '<button class="mss-btn" aria-label="Воспроизвести">' +
+                    '<span class="mss-ring"></span>' +
+                    '<span class="mss-icon">▶</span>' +
+                '</button>' +
+            '</div>' +
+            '<div class="mss-center">' +
+                '<div class="mss-title">' + title + '</div>' +
+                '<div class="mss-caption">' + caption + ' · ' + cfg.label + '</div>' +
+                '<div class="mss-viz">' + barsHtml + '</div>' +
+            '</div>' +
+            '<div class="mss-right">' +
+                '<span class="mss-live"></span>' +
+                '<span class="mss-status">∞</span>' +
+            '</div>';
 
-        el.appendChild(btn);
-        el.appendChild(info);
+        var btn = el.querySelector('.mss-btn');
+        var icon = el.querySelector('.mss-icon');
 
         btn.onclick = function () {
             var ctx = getAudioCtx();
             if (!ctx) return;
 
             if (currentEl === el && currentSound) {
-                try { currentSound.master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4); } catch (e) {}
                 var s = currentSound;
+                try { s.master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.6); } catch (e) {}
                 setTimeout(function () {
                     s.stop();
                     s.nodes.forEach(function (n) { try { n.stop(); } catch (e) {} });
-                }, 450);
+                }, 650);
                 currentSound = null;
                 currentEl = null;
-                btn.innerHTML = '<span class="mss-icon">▶</span>';
+                icon.textContent = '▶';
                 el.classList.remove('mss-playing');
             } else {
                 if (currentSound) {
                     var prev = currentSound;
-                    try { prev.master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3); } catch (e) {}
+                    try { prev.master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4); } catch (e) {}
                     setTimeout(function () {
                         prev.stop();
                         prev.nodes.forEach(function (n) { try { n.stop(); } catch (e) {} });
-                    }, 350);
+                    }, 450);
                     if (currentEl) {
                         currentEl.classList.remove('mss-playing');
-                        var pb = currentEl.querySelector('.mss-btn');
-                        if (pb) pb.innerHTML = '<span class="mss-icon">▶</span>';
+                        var pi = currentEl.querySelector('.mss-icon');
+                        if (pi) pi.textContent = '▶';
                     }
                 }
                 currentSound = buildSeaSound(ctx, presetName);
-                currentSound.master.gain.exponentialRampToValueAtTime(0.8, ctx.currentTime + 0.8);
+                currentSound.master.gain.exponentialRampToValueAtTime(0.85, ctx.currentTime + 1.5);
                 currentEl = el;
-                btn.innerHTML = '<span class="mss-icon">■</span>';
+                icon.textContent = '❚❚';
                 el.classList.add('mss-playing');
             }
         };
     }
 
-    // ---- Стили ----
+    // ---- СТИЛИ (VIP) ----
     function addStyles() {
         if (document.getElementById('mss-style')) return;
         var s = document.createElement('style');
         s.id = 'mss-style';
         s.textContent = [
+            /* Панель */
             '.mars-sound-ready {',
-            '    display: flex; align-items: center; gap: 12px;',
-            '    padding: 12px; margin: 8px 0;',
-            '    background: linear-gradient(135deg, #1a3a4a 0%, #2a4a5a 100%);',
-            '    border: 1px solid #8daebf; border-radius: 10px;',
+            '    display: flex; align-items: center; gap: 14px;',
+            '    padding: 14px 16px; margin: 10px 0;',
+            '    background: linear-gradient(135deg, rgba(20,30,48,0.95) 0%, rgba(36,59,85,0.92) 100%);',
+            '    border: 1px solid rgba(108,99,255,0.25);',
+            '    border-radius: 16px;',
             '    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;',
-            '    box-shadow: 0 4px 14px rgba(0,0,0,0.15);',
+            '    box-shadow: 0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);',
+            '    backdrop-filter: blur(10px);',
+            '    -webkit-backdrop-filter: blur(10px);',
+            '    position: relative; overflow: hidden;',
+            '    transition: border-color 0.3s, box-shadow 0.3s;',
             '}',
+            '.mars-sound-ready::before {',
+            '    content: ""; position: absolute; inset: 0;',
+            '    background: radial-gradient(circle at 20% 0%, rgba(108,99,255,0.15), transparent 60%);',
+            '    pointer-events: none; opacity: 0; transition: opacity 0.5s;',
+            '}',
+            '.mars-sound-ready.mss-playing {',
+            '    border-color: rgba(108,99,255,0.6);',
+            '    box-shadow: 0 8px 40px rgba(108,99,255,0.35), inset 0 1px 0 rgba(255,255,255,0.08);',
+            '}',
+            '.mars-sound-ready.mss-playing::before { opacity: 1; }',
+
+            /* Кнопка */
+            '.mss-left { position: relative; flex-shrink: 0; }',
             '.mss-btn {',
-            '    width: 44px; height: 44px; flex-shrink: 0;',
+            '    position: relative;',
+            '    width: 54px; height: 54px;',
             '    border-radius: 50%; border: none; cursor: pointer;',
-            '    background: linear-gradient(135deg, #6C63FF, #A29BFE);',
-            '    color: #fff; font-size: 15px;',
+            '    background: linear-gradient(135deg, #6C63FF 0%, #A29BFE 100%);',
+            '    color: #fff; font-size: 16px;',
             '    display: inline-flex; align-items: center; justify-content: center;',
-            '    box-shadow: 0 4px 12px rgba(108,99,255,0.4);',
-            '    transition: transform 0.2s, box-shadow 0.2s;',
+            '    box-shadow: 0 6px 20px rgba(108,99,255,0.5), inset 0 1px 0 rgba(255,255,255,0.3);',
+            '    transition: transform 0.25s cubic-bezier(.2,.9,.3,1.3), box-shadow 0.3s;',
             '    -webkit-tap-highlight-color: transparent;',
+            '    z-index: 1;',
             '}',
-            '.mss-btn:hover { transform: scale(1.08); box-shadow: 0 6px 18px rgba(108,99,255,0.6); }',
+            '.mss-btn:hover { transform: scale(1.06); box-shadow: 0 10px 26px rgba(108,99,255,0.65), inset 0 1px 0 rgba(255,255,255,0.35); }',
+            '.mss-btn:active { transform: scale(0.96); }',
+            '.mss-icon { position: relative; z-index: 2; line-height: 1; }',
             '.mss-playing .mss-btn {',
-            '    animation: mssPulse 2.2s ease-in-out infinite;',
-            '    background: linear-gradient(135deg, #27ae60, #2ecc71);',
+            '    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);',
+            '    box-shadow: 0 6px 24px rgba(0,198,255,0.55), inset 0 1px 0 rgba(255,255,255,0.35);',
             '}',
-            '@keyframes mssPulse {',
-            '    0%, 100% { box-shadow: 0 0 0 0 rgba(46,204,113,0.7); }',
-            '    50% { box-shadow: 0 0 0 10px rgba(46,204,113,0); }',
+
+            /* Пульсирующее кольцо */
+            '.mss-ring {',
+            '    position: absolute; inset: 0; border-radius: 50%;',
+            '    pointer-events: none; display: none;',
             '}',
-            '.mss-info { flex: 1; min-width: 0; color: #e8e8f0; }',
-            '.mss-title { font-weight: 700; font-size: 0.92rem; margin-bottom: 3px; }',
-            '.mss-caption { font-size: 0.74rem; color: #8daebf; }',
+            '.mss-playing .mss-ring {',
+            '    display: block;',
+            '    animation: mssRing 2s ease-out infinite;',
+            '    border: 2px solid rgba(0,198,255,0.6);',
+            '}',
+            '.mss-playing .mss-ring::before {',
+            '    content: ""; position: absolute; inset: -8px; border-radius: 50%;',
+            '    border: 2px solid rgba(0,198,255,0.35);',
+            '    animation: mssRing 2s ease-out infinite 0.3s;',
+            '}',
+            '@keyframes mssRing {',
+            '    0% { transform: scale(1); opacity: 0.8; }',
+            '    100% { transform: scale(1.6); opacity: 0; }',
+            '}',
+
+            /* Центр */
+            '.mss-center { flex: 1; min-width: 0; position: relative; z-index: 1; }',
+            '.mss-title {',
+            '    font-weight: 700; font-size: 0.95rem;',
+            '    background: linear-gradient(90deg, #e8e8f0, #A29BFE);',
+            '    -webkit-background-clip: text; background-clip: text;',
+            '    -webkit-text-fill-color: transparent;',
+            '    margin-bottom: 3px; letter-spacing: 0.2px;',
+            '}',
+            '.mss-caption { font-size: 0.72rem; color: #7a8aa0; transition: color 0.3s; }',
             '.mss-playing .mss-caption { color: #A29BFE; }',
+
+            /* Визуализатор */
+            '.mss-viz {',
+            '    display: flex; align-items: flex-end; gap: 2px;',
+            '    height: 22px; margin-top: 7px;',
+            '    opacity: 0.4; transition: opacity 0.3s;',
+            '}',
+            '.mss-playing .mss-viz { opacity: 1; }',
+            '.mss-viz span {',
+            '    flex: 1; min-width: 1px;',
+            '    height: 20%;',
+            '    background: linear-gradient(180deg, #00c6ff, #6C63FF);',
+            '    border-radius: 2px;',
+            '    transition: height 0.4s ease;',
+            '    box-shadow: 0 0 6px rgba(108,99,255,0.4);',
+            '}',
+            '.mss-playing .mss-viz span {',
+            '    animation: mssBar 1.2s ease-in-out infinite alternate;',
+            '    animation-delay: var(--d, 0s);',
+            '    height: var(--h, 50%);',
+            '}',
+            '@keyframes mssBar {',
+            '    0% { height: 15%; opacity: 0.5; }',
+            '    100% { height: var(--h, 60%); opacity: 1; }',
+            '}',
+
+            /* Правая часть */
+            '.mss-right {',
+            '    display: flex; flex-direction: column; align-items: center; gap: 4px;',
+            '    flex-shrink: 0; position: relative; z-index: 1;',
+            '    min-width: 32px;',
+            '}',
+            '.mss-live {',
+            '    width: 8px; height: 8px; border-radius: 50%;',
+            '    background: #3a4a5a; transition: background 0.3s, box-shadow 0.3s;',
+            '}',
+            '.mss-playing .mss-live {',
+            '    background: #00e676;',
+            '    box-shadow: 0 0 12px #00e676, 0 0 4px #00e676;',
+            '    animation: mssLive 1.5s ease-in-out infinite;',
+            '}',
+            '@keyframes mssLive {',
+            '    0%, 100% { opacity: 1; }',
+            '    50% { opacity: 0.35; }',
+            '}',
+            '.mss-status {',
+            '    font-size: 0.85rem; color: #4a5a70; font-weight: 700;',
+            '    font-family: ui-monospace, "SF Mono", Menlo, monospace;',
+            '    transition: color 0.3s;',
+            '}',
+            '.mss-playing .mss-status { color: #00c6ff; text-shadow: 0 0 8px rgba(0,198,255,0.6); }',
+
+            /* Мобильный */
             '@media (max-width: 700px) {',
-            '    .mars-sound-ready { padding: 10px; gap: 10px; }',
-            '    .mss-btn { width: 38px; height: 38px; font-size: 13px; }',
-            '    .mss-title { font-size: 0.85rem; }',
-            '    .mss-caption { font-size: 0.7rem; }',
+            '    .mars-sound-ready { padding: 12px; gap: 12px; border-radius: 14px; }',
+            '    .mss-btn { width: 48px; height: 48px; font-size: 14px; }',
+            '    .mss-title { font-size: 0.88rem; }',
+            '    .mss-caption { font-size: 0.68rem; }',
+            '    .mss-viz { height: 18px; gap: 1.5px; }',
+            '    .mss-right { min-width: 26px; }',
             '}'
         ].join('\n');
         document.head.appendChild(s);
@@ -436,5 +615,5 @@
         new MutationObserver(init).observe(document.body, { childList: true, subtree: true });
     }
 
-    console.log('🌊 mars-sound-synth v2 — реалистичный синтез моря активен');
+    console.log('🌊 mars-sound-synth VIP v3 загружен — реалистичное море + премиум-дизайн');
 })();

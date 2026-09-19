@@ -11,22 +11,16 @@
     <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #1a3a4a;">Море Эллада</h3>
   </div>
 
- <!-- Карта -->
-<div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-map.png" alt="Карта Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
-  <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Расположение Моря Эллада. Отмечено синим. По данным Академии Окхасена.</div>
-</div>
+  <!-- Карта -->
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-map.png" alt="Карта Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Расположение Моря Эллада. Отмечено синим. По данным Академии Окхасена.</div>
+  </div>
 
- <!-- Батиметрия -->
+  <!-- Батиметрия -->
   <div style="text-align: center; margin: 8px 0;">
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-bathymetry.png" alt="Батиметрия Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
     <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Батиметрическая карта Моря Эллада.</div>
-  </div>
-
-  <!-- Спутниковый снимок -->
-  <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Hellas_Planitia_by_the_Viking_orbiters.jpg" alt="Равнина Эллада из космоса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
-    <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Равнина Эллада. Снимок орбитальных аппаратов «Викинг».</div>
   </div>
 
   <!-- История -->
@@ -127,8 +121,8 @@
 ## Этимология
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_breathtaking_cinematic_view_of_the_Hellas_Sea_on_ancient_Mars_during_its_prime-0.jpg" alt="Море Эллада в Эпоху Расцвета" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Море Эллада в Эпоху Расцвета. Реконструкция.</div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-cradle-of-life.jpg" alt="Море Эллада — колыбель жизни" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Море Эллада — колыбель жизни. Реконструкция.</div>
 </div>
 
 Марсианское название *Ellada Thal* дословно переводится как «Море-колыбель». Оно отражает ключевую роль водоёма в мифологии марсианской цивилизации — согласно преданиям, именно в водах Эллады богиня [Араксис](https://mars-wiki.ru/mythology/araksis/) создала первую жизнь, и именно здесь появились первые разумные существа[^1]. В марсианских табличках море также именуют *«Глазом мира»* — считалось, что его гладкая поверхность отражает не только небо, но и все тайны прошлого. В позднейших источниках закрепилось название *«Солёное зеркало»* из-за высокой солёности воды и способности отражать звёзды[^2].
@@ -166,7 +160,7 @@
 ### Острова
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_cinematic_view_of_the_ancient_Temple_of_Araksis_on_the_rocky_island_of_Hram-0.jpg" alt="Храм Араксис на острове Храм-Уг" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-temple-hram-ug.jpg" alt="Храм Араксис на острове Храм-Уг" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Древнейший храм Араксис на острове Храм-Уг. Реконструкция.</div>
 </div>
 
@@ -183,8 +177,8 @@
 ### Каналы
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Cinematic_interior_of_the_ancient_Scribe_School_of_Hellas_on_the_island_of_Hello-0.jpg" alt="Школа писцов на острове Храм-Уг" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Школа писцов на острове Храм-Уг. Реконструкция.</div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-canal-saruma.jpg" alt="Канал Сарума" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Канал Сарума. Реконструкция гидротехнического сооружения.</div>
 </div>
 
 В северной части Моря Эллады был прорыт **канал Сарума** — крупное гидротехническое сооружение, соединившее море с внутренними районами материка. Канал получил своё название в честь короля Сарума Великого, по инициативе которого началось его строительство в середине Эпохи Расцвета (ок. 2550 г. Э.О.). Его протяжённость составляла около 300 км, ширина — до 50 м, что позволяло проходить по нему небольшим судам.
@@ -192,11 +186,6 @@
 Позже, для улучшения орошения обширных полей в долине Аравия, был построен **канал Термана** (названный в честь главного инженера проекта). Он отходил от Моря Эллады на запад и пересекался с каналом Сарума в районе Аравийских полей, образуя сложную гидросеть. Пересечение двух каналов стало инженерным чудом своего времени — вода из Моря Эллады, богатая минералами, смешивалась с пресной водой, поступавшей из горных рек, что повышало плодородие почв. Система каналов позволяла орошать до 10 тысяч гектаров земель и снабжать водой города на южных границах Королевства.
 
 С началом Эпохи Умирания каналы пришли в запустение: уровень воды в море упал, реки обмелели, и к 2700 году каналы полностью пересохли, превратившись в сухие русла, заметные до сих пор на спутниковых снимках.
-
-<div style="text-align: center; margin: 16px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/эллада-писцы.jpg" alt="Писцы Моря Эллада" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Писцы Академии за работой. Реконструкция.</div>
-</div>
 
 | Название | Заказчик | Протяжённость | Назначение |
 |----------|----------|---------------|------------|
@@ -262,7 +251,7 @@
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/эллада-город.jpg" alt="Город Моря Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/эллада-город.jpg" alt="Прибрежный город Моря Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Прибрежный город Моря Эллада в Эпоху Расцвета. Реконструкция.</div>
 </div>
 
@@ -280,8 +269,8 @@
 ## Экосистема
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Riders-on-combat-scorpions.jpg" alt="Ракоскорпионы Моря Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ракоскорпионы — хищники Моря Эллада. Реконструкция.</div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-ecosystem.jpg" alt="Подводный мир Моря Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир Моря Эллада. Реконструкция.</div>
 </div>
 
 В Эпоху Расцвета море было домом для тысяч видов организмов, приспособленных к высокой солёности и низкой гравитации[^19]:
@@ -300,8 +289,8 @@
 ### В мифологии
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/эллада-храм.jpg" alt="Храм Араксис у Моря Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Древний храм Араксис у Моря Эллада. Реконструкция.</div>
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-myth-salt-mirror.png" alt="Миф о Солёном зеркале" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Миф о Солёном зеркале. Реконструкция.</div>
 </div>
 
 Море Эллада считалось местом, где Араксис создала первую жизнь. В «Книге Харан» сохранилась запись: *«Эллада — это колыбель, из которой мы вышли. Её воды помнят наши первые шаги, её берега хранят наши имена.»* Легенды повествуют о сотворении жизни из глины и воды Эллады и о «Солёном зеркале», отражавшем прошлое[^21].
@@ -312,12 +301,19 @@
 
 ## Современное состояние
 
+Ныне Море Эллада — это пустыня, покрытая соляной коркой. Однако под поверхностью сохраняются огромные запасы льда и воды, которые, возможно, остаются жидкими на глубине[^23]. В книгах цикла, по состоянию на 2745 год, море полностью высохло и покрыто слоем соли и пепла; его поверхность используется беженцами как дорога, но под солью сохраняется память о древних волнах[^24].
+
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/эллада-разруха.jpg" alt="Море Эллада сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-dried-today.jpg" alt="Море Эллада сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Высохшее Море Эллада сегодня. Фотореалистичная реконструкция.</div>
 </div>
 
-Ныне Море Эллада — это пустыня, покрытая соляной коркой. Однако под поверхностью сохраняются огромные запасы льда и воды, которые, возможно, остаются жидкими на глубине[^23]. В книгах цикла, по состоянию на 2745 год, море полностью высохло и покрыто слоем соли и пепла; его поверхность используется беженцами как дорога, но под солью сохраняется память о древних волнах[^24].
+Равнина Эллада и сегодня остаётся самой глубокой низменностью Марса. Её дно покрыто слоями соли, пыли и пепла — немыми свидетелями великого прошлого. Ниже — реальный снимок равнины, сделанный орбитальными аппаратами «Викинг»: гигантский ударный бассейн, который когда-то был колыбелью марсианской жизни.
+
+<div style="text-align: center; margin: 20px 0; clear: both;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Hellas_Planitia_by_the_Viking_orbiters.jpg" alt="Равнина Эллада из космоса" style="width: 80%; max-width: 700px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 6px;">Равнина Эллада. Снимок орбитальных аппаратов «Викинг». NASA.</div>
+</div>
 
 ## Научное обоснование
 

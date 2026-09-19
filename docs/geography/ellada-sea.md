@@ -97,11 +97,11 @@
     Звук моря
   </div>
 
-  <div class="mars-sound mars-sound--infobox"
-       data-src="/assets/sounds/weak-waves-on-the-shore-of-a-calm-sea.mp3"
-       data-title="Море Эллада"
-       data-caption="Реконструкция звука"
-       data-theme="blue"></div>
+ <div class="mars-sound mars-sound--infobox"
+     data-preset="calm"
+     data-title="Звук моря"
+     data-caption="Реконструкция звука"
+     data-theme="blue"></div>
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 

@@ -1,5 +1,6 @@
 /* ==========================================
    ФИНАЛЬНЫЙ СТИЛЬ ДЛЯ МАРСИАНСКОЙ ЭНЦИКЛОПЕДИИ
+   VIP-версия: мягкие тени, плавные переходы
    ========================================== */
 
 /* --- БАЗОВЫЕ НАСТРОЙКИ --- */
@@ -75,10 +76,12 @@ nav.wy-nav-side .wy-side-nav-search a.icon-home {
 .wy-menu-vertical a {
   color: #202122 !important;
   background: #ffffff !important;
+  transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
 }
 .wy-menu-vertical a:hover {
   background: #eaecf0 !important;
   color: #0645ad !important;
+  padding-left: 1.4rem !important;
 }
 
 /* Убираем синюю подсветку активной страницы */
@@ -97,6 +100,7 @@ h1 {
   font-size: 2.6rem;
   border-bottom: 1px solid #a2a9b1;
   padding-bottom: 0.3rem;
+  letter-spacing: -0.3px;
 }
 h2 {
   font-weight: normal;
@@ -105,6 +109,7 @@ h2 {
   padding-bottom: 0.2rem;
   margin-top: 2rem;
   color: #000000;
+  letter-spacing: -0.2px;
 }
 h3, h4, h5, h6 {
   color: #000000;
@@ -114,6 +119,7 @@ h3, h4, h5, h6 {
 a {
   color: #0645ad !important;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 a:hover {
   color: #0b0080 !important;
@@ -126,6 +132,8 @@ table {
   margin: 1.5rem 0;
   width: 100%;
   border: 1px solid #a2a9b1;
+  border-radius: 4px;
+  overflow: hidden;
 }
 table th {
   background: #eaecf0;
@@ -136,9 +144,13 @@ table th {
 table td {
   padding: 0.5rem 0.8rem;
   border: 1px solid #a2a9b1;
+  transition: background 0.2s ease;
 }
 table tr:nth-child(even) {
   background: #f8f9fa;
+}
+table tr:hover td {
+  background: #f0f2f5;
 }
 
 /* --- ИНФОБОКСЫ --- */
@@ -152,6 +164,12 @@ table tr:nth-child(even) {
   width: 280px;
   font-size: 0.9rem;
   line-height: 1.5;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s ease;
+}
+.infobox:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 .infobox h3 {
   margin-top: 0;
@@ -175,6 +193,11 @@ blockquote {
   padding: 0.8rem 1.5rem;
   font-style: italic;
   color: #404244;
+  border-radius: 0 6px 6px 0;
+  transition: border-color 0.3s ease;
+}
+blockquote:hover {
+  border-left-color: #0645ad;
 }
 
 /* --- ПОИСК --- */
@@ -186,6 +209,7 @@ blockquote {
   font-size: 14px !important;
   color: #202122 !important;
   box-shadow: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .wy-side-nav-search input[type="text"]:focus {
   border-color: #0645ad !important;
@@ -237,6 +261,7 @@ footer {
   border-radius: 20px !important;
   white-space: nowrap !important;
   text-decoration: none !important;
+  transition: all 0.25s ease !important;
 }
 
 #auth-btn-container a[href="/login/"] {
@@ -247,10 +272,19 @@ footer {
   color: #fff !important;
   background: #6C63FF !important;
 }
+#auth-btn-container a[href="/register/"]:hover {
+  background: #5a52d5 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
+}
 
 #auth-btn-container img {
   width: 40px !important;
   height: 40px !important;
+  transition: transform 0.2s ease;
+}
+#auth-btn-container img:hover {
+  transform: scale(1.05);
 }
 
 #auth-btn-container .user-username {
@@ -326,7 +360,6 @@ body.sidebar-hidden .wy-nav-side {
    МОБИЛЬНАЯ ВЕРСИЯ (ТЕЛЕФОНЫ)
    ========================================== */
 
-/* Планшеты и маленькие ноутбуки */
 @media (max-width: 1024px) {
   .wy-nav-content {
     padding: 1.5rem 2rem !important;
@@ -346,9 +379,7 @@ body.sidebar-hidden .wy-nav-side {
   }
 }
 
-/* Телефоны */
 @media (max-width: 768px) {
-  /* --- 1. ШАПКА --- */
   .wy-nav-top {
     background: #6C63FF !important;
     position: fixed !important;
@@ -365,7 +396,6 @@ body.sidebar-hidden .wy-nav-side {
     border: none !important;
   }
   
-  /* --- 2. ГАМБУРГЕР (СЛЕВА) --- */
   .wy-nav-top .wy-nav-side-toggle {
     display: block !important;
     background: transparent !important;
@@ -378,12 +408,10 @@ body.sidebar-hidden .wy-nav-side {
     flex-shrink: 0 !important;
   }
   
-    /* --- 3. НАЗВАНИЕ САЙТА (ПО ЦЕНТРУ) — ПОЛНОСТЬЮ УБИРАЕМ --- */
   .wy-nav-top .wy-nav-side-toggle + a {
-    display: none !important;  /* скрываем название */
+    display: none !important;
   }
   
-   /* --- 4. КНОПКА АВТОРИЗАЦИИ (СПРАВА) — БОЛЬШЕ --- */
   #auth-btn-container {
     display: flex !important;
     align-items: center !important;
@@ -399,8 +427,8 @@ body.sidebar-hidden .wy-nav-side {
   }
 
   #auth-btn-container a {
-    font-size: 0.8rem !important;  /* было 0.6rem — увеличили */
-    padding: 5px 12px !important;  /* было 2px 8px — увеличили */
+    font-size: 0.8rem !important;
+    padding: 5px 12px !important;
     border-radius: 16px !important;
     color: #fff !important;
     text-decoration: none !important;
@@ -430,7 +458,6 @@ body.sidebar-hidden .wy-nav-side {
     vertical-align: middle !important;
   }
 
-  /* Контейнер с аватаркой и ссылками */
   #auth-btn-container .user-info {
     display: flex !important;
     align-items: center !important;
@@ -458,7 +485,6 @@ body.sidebar-hidden .wy-nav-side {
     opacity: 0.6 !important;
   }
   
-  /* --- 5. КОНТЕНТ --- */
   .wy-nav-content-wrap {
     margin-left: 0 !important;
     padding-top: 50px !important;
@@ -471,18 +497,10 @@ body.sidebar-hidden .wy-nav-side {
     max-width: 100% !important;
   }
   
-  /* --- 6. ЗАГОЛОВКИ --- */
-  h1 {
-    font-size: 1.8rem !important;
-  }
-  h2 {
-    font-size: 1.4rem !important;
-  }
-  h3 {
-    font-size: 1.2rem !important;
-  }
+  h1 { font-size: 1.8rem !important; }
+  h2 { font-size: 1.4rem !important; }
+  h3 { font-size: 1.2rem !important; }
   
-  /* --- 7. ИНФОБОКСЫ --- */
   .infobox {
     float: none !important;
     width: 100% !important;
@@ -495,7 +513,6 @@ body.sidebar-hidden .wy-nav-side {
     height: auto !important;
   }
   
-  /* --- 8. ТАБЛИЦЫ --- */
   .wy-table-responsive {
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
@@ -526,13 +543,11 @@ body.sidebar-hidden .wy-nav-side {
     padding: 6px 12px !important;
   }
   
-  /* --- 9. СКРЫВАЕМ НАШУ КНОПКУ НА ТЕЛЕФОНЕ --- */
   #sidebar-hotspot,
   #sidebar-toggle-btn {
     display: none !important;
   }
   
-  /* --- 10. БОКОВОЕ МЕНЮ --- */
   .wy-nav-side {
     position: fixed !important;
     top: 0 !important;
@@ -551,16 +566,171 @@ body.sidebar-hidden .wy-nav-side {
     transform: translateX(0) !important;
   }
 
-   /* ============================================================
-   ЗВЁЗДНОЕ НЕБО — ТЁМНАЯ ТЕМА
-   ============================================================ */
+  /* ============================================================
+     ЗВЁЗДНОЕ НЕБО — ТЁМНАЯ ТЕМА (мобильный)
+     ============================================================ */
+  html.mars-stars-on,
+  body.mars-stars-on {
+      background: linear-gradient(180deg, #0a0a14 0%, #15152a 50%, #1a1a2e 100%) !important;
+      background-attachment: fixed !important;
+  }
+
+  body.mars-stars-on .md-content,
+  body.mars-stars-on .rst-content,
+  body.mars-stars-on .wy-nav-content,
+  body.mars-stars-on .md-content__inner {
+      background-color: rgba(15, 15, 30, 0.75) !important;
+      color: #d4d4e4 !important;
+      backdrop-filter: blur(4px);
+  }
+
+  body.mars-stars-on .wy-nav-side,
+  body.mars-stars-on .md-sidebar,
+  body.mars-stars-on .wy-side-nav-search {
+      background-color: rgba(10, 10, 25, 0.9) !important;
+  }
+
+  body.mars-stars-on .wy-menu-vertical li a,
+  body.mars-stars-on .md-nav__link,
+  body.mars-stars-on .md-nav__title {
+      color: #c4c4d4 !important;
+  }
+
+  body.mars-stars-on .wy-menu-vertical li a:hover,
+  body.mars-stars-on .md-nav__link:hover {
+      color: #A29BFE !important;
+      background-color: rgba(108, 99, 255, 0.15) !important;
+  }
+
+  body.mars-stars-on .wy-menu-vertical li.current > a,
+  body.mars-stars-on .md-nav__link--active {
+      color: #A29BFE !important;
+      background-color: rgba(108, 99, 255, 0.2) !important;
+  }
+
+  body.mars-stars-on .md-header,
+  body.mars-stars-on .wy-nav-top {
+      background-color: rgba(10, 10, 25, 0.9) !important;
+      border-bottom: 1px solid rgba(108, 99, 255, 0.3) !important;
+  }
+
+  body.mars-stars-on h1,
+  body.mars-stars-on h2,
+  body.mars-stars-on h3,
+  body.mars-stars-on h4,
+  body.mars-stars-on h5,
+  body.mars-stars-on h6 {
+      color: #f0f0ff !important;
+  }
+
+  body.mars-stars-on p,
+  body.mars-stars-on li,
+  body.mars-stars-on span,
+  body.mars-stars-on div,
+  body.mars-stars-on td,
+  body.mars-stars-on th {
+      color: #d4d4e4 !important;
+  }
+
+  body.mars-stars-on a {
+      color: #A29BFE !important;
+  }
+
+  body.mars-stars-on a:hover {
+      color: #6C63FF !important;
+  }
+
+  body.mars-stars-on table {
+      background-color: rgba(20, 20, 40, 0.6) !important;
+  }
+
+  body.mars-stars-on th {
+      background-color: rgba(108, 99, 255, 0.2) !important;
+      color: #f0f0ff !important;
+  }
+
+  body.mars-stars-on td {
+      border-color: rgba(108, 99, 255, 0.15) !important;
+  }
+
+  body.mars-stars-on code,
+  body.mars-stars-on pre {
+      background-color: rgba(20, 20, 40, 0.8) !important;
+      color: #A29BFE !important;
+      border: 1px solid rgba(108, 99, 255, 0.2) !important;
+  }
+
+  body.mars-stars-on .admonition {
+      background-color: rgba(20, 20, 40, 0.6) !important;
+      border-color: rgba(108, 99, 255, 0.3) !important;
+  }
+
+  body.mars-stars-on .md-button,
+  body.mars-stars-on button:not(.mars-stars-toggle):not(.mm-btn) {
+      background-color: rgba(108, 99, 255, 0.2) !important;
+      color: #f0f0ff !important;
+      border-color: rgba(108, 99, 255, 0.4) !important;
+  }
+
+  body.mars-stars-on .pf-card,
+  body.mars-stars-on .pf-quick-card,
+  body.mars-stars-on .pf-ach,
+  body.mars-stars-on .pf-note,
+  body.mars-stars-on .pf-tabs,
+  body.mars-stars-on .pf-note-form {
+      background: rgba(20, 20, 40, 0.85) !important;
+      border-color: rgba(108, 99, 255, 0.3) !important;
+  }
+
+  body.mars-stars-on .pf-card-title,
+  body.mars-stars-on .pf-quick-title,
+  body.mars-stars-on .pf-ach-name,
+  body.mars-stars-on .pf-note-title,
+  body.mars-stars-on .pf-display-name {
+      color: #e0e0e0 !important;
+  }
+
+  body.mars-stars-on .pf-tab {
+      color: #aaa !important;
+  }
+
+  body.mars-stars-on .pf-tab.active {
+      color: #fff !important;
+  }
+
+  body.mars-stars-on input,
+  body.mars-stars-on textarea,
+  body.mars-stars-on select {
+      background-color: rgba(20, 20, 40, 0.6) !important;
+      color: #e0e0e0 !important;
+      border-color: rgba(108, 99, 255, 0.3) !important;
+  }
+
+  body.mars-stars-on input::placeholder,
+  body.mars-stars-on textarea::placeholder {
+      color: #666688 !important;
+  }
+
+  body,
+  .md-content,
+  .wy-nav-content,
+  .md-header,
+  .wy-nav-side {
+      transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  
+  .wy-nav-top .wy-side-nav-search {
+    display: none !important;
+  }
+}
+
+/* ЗВЁЗДНОЕ НЕБО для десктопа */
 html.mars-stars-on,
 body.mars-stars-on {
     background: linear-gradient(180deg, #0a0a14 0%, #15152a 50%, #1a1a2e 100%) !important;
     background-attachment: fixed !important;
 }
 
-/* Контентные блоки — полупрозрачный тёмный фон */
 body.mars-stars-on .md-content,
 body.mars-stars-on .rst-content,
 body.mars-stars-on .wy-nav-content,
@@ -570,7 +740,6 @@ body.mars-stars-on .md-content__inner {
     backdrop-filter: blur(4px);
 }
 
-/* Боковая панель */
 body.mars-stars-on .wy-nav-side,
 body.mars-stars-on .md-sidebar,
 body.mars-stars-on .wy-side-nav-search {
@@ -595,14 +764,12 @@ body.mars-stars-on .md-nav__link--active {
     background-color: rgba(108, 99, 255, 0.2) !important;
 }
 
-/* Верхняя панель */
 body.mars-stars-on .md-header,
 body.mars-stars-on .wy-nav-top {
     background-color: rgba(10, 10, 25, 0.9) !important;
     border-bottom: 1px solid rgba(108, 99, 255, 0.3) !important;
 }
 
-/* Заголовки и текст */
 body.mars-stars-on h1,
 body.mars-stars-on h2,
 body.mars-stars-on h3,
@@ -621,7 +788,6 @@ body.mars-stars-on th {
     color: #d4d4e4 !important;
 }
 
-/* Ссылки */
 body.mars-stars-on a {
     color: #A29BFE !important;
 }
@@ -630,7 +796,6 @@ body.mars-stars-on a:hover {
     color: #6C63FF !important;
 }
 
-/* Таблицы */
 body.mars-stars-on table {
     background-color: rgba(20, 20, 40, 0.6) !important;
 }
@@ -644,7 +809,6 @@ body.mars-stars-on td {
     border-color: rgba(108, 99, 255, 0.15) !important;
 }
 
-/* Код */
 body.mars-stars-on code,
 body.mars-stars-on pre {
     background-color: rgba(20, 20, 40, 0.8) !important;
@@ -652,13 +816,11 @@ body.mars-stars-on pre {
     border: 1px solid rgba(108, 99, 255, 0.2) !important;
 }
 
-/* Блоки admonition (заметки, предупреждения) */
 body.mars-stars-on .admonition {
     background-color: rgba(20, 20, 40, 0.6) !important;
     border-color: rgba(108, 99, 255, 0.3) !important;
 }
 
-/* Кнопки */
 body.mars-stars-on .md-button,
 body.mars-stars-on button:not(.mars-stars-toggle):not(.mm-btn) {
     background-color: rgba(108, 99, 255, 0.2) !important;
@@ -666,7 +828,6 @@ body.mars-stars-on button:not(.mars-stars-toggle):not(.mm-btn) {
     border-color: rgba(108, 99, 255, 0.4) !important;
 }
 
-/* Профиль — карточки */
 body.mars-stars-on .pf-card,
 body.mars-stars-on .pf-quick-card,
 body.mars-stars-on .pf-ach,
@@ -693,7 +854,6 @@ body.mars-stars-on .pf-tab.active {
     color: #fff !important;
 }
 
-/* Формы */
 body.mars-stars-on input,
 body.mars-stars-on textarea,
 body.mars-stars-on select {
@@ -707,7 +867,6 @@ body.mars-stars-on textarea::placeholder {
     color: #666688 !important;
 }
 
-/* Плавный переход */
 body,
 .md-content,
 .wy-nav-content,
@@ -715,17 +874,11 @@ body,
 .wy-nav-side {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
-  /* --- 11. ПОИСК В ШАПКЕ ТЕЛЕФОНА --- */
-  .wy-nav-top .wy-side-nav-search {
-    display: none !important;
-  }
-}
 
 /* ============================================
    МЕНЮ-АККОРДЕОН (только разделы с подменю)
    ============================================ */
 
-/* Прячем подменю у закрытых разделов */
 html body .wy-menu-vertical li:not(.mars-open) > ul {
     display: none !important;
 }
@@ -734,7 +887,6 @@ html body .wy-menu-vertical li.mars-open > ul {
     display: block !important;
 }
 
-/* Убираем жирный шрифт */
 .wy-menu-vertical li > a,
 .wy-menu-vertical li.current > a,
 .wy-menu-vertical li > a:hover,
@@ -742,19 +894,16 @@ html body .wy-menu-vertical li.mars-open > ul {
     font-weight: normal !important;
 }
 
-/* Убираем границы-полоски */
 .wy-menu-vertical li,
 .wy-menu-vertical li > a {
     border: none !important;
     box-shadow: none !important;
 }
 
-/* Скрываем родную кнопку-крестик */
 .wy-menu-vertical .toctree-expand {
     display: none !important;
 }
 
-/* СТРЕЛКА — только у пунктов с подменю (li:has(> ul)) */
 .wy-menu-vertical li:has(> ul) > a {
     position: relative !important;
     padding-right: 28px !important;
@@ -779,58 +928,15 @@ html body .wy-menu-vertical li.mars-open > ul {
     opacity: 1;
 }
 
-/* Основной контейнер для двухколоночной сетки */
-.wiki-layout {
-    display: grid;
-    /* Две колонки: левая чуть шире */
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 20px; /* Отступ между колонками */
-    max-width: 1250px;
-    margin: 0 auto; /* Центрируем на странице */
-}
-
-/* Контейнеры для колонок */
-.wiki-column-left,
-.wiki-column-right {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Отступ между блоками внутри колонки */
-}
-
-/* --- Стиль для блоков в стиле Википедии (например, "Избранная статья") --- */
-/* Применяется ко всем блокам внутри колонок */
-.wiki-column-left > div,
-.wiki-column-right > div {
-    /* Убираем старые стили, если они конфликтуют */
-    margin: 0 !important;
-    max-width: none !important;
-
-    /* Добавляем стиль Википедии */
-    background-color: #f8f9fa;
-    border: 1px solid #a2a9b1;
-    padding: 12px 16px;
-    border-radius: 2px; /* Очень маленькое скругление */
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Легкая тень */
-}
-
-/* --- Адаптивность: на мобильных устройствах колонки станут друг под другом --- */
-@media (max-width: 900px) {
-    .wiki-layout {
-        grid-template-columns: 1fr; /* Одна колонка */
-    }
-}
-
 /* ============================================
-   WIKI LAYOUT — подгонка под ширину темы
+   WIKI LAYOUT
    ============================================ */
-
 .wiki-layout {
     display: grid;
-    /* Используем minmax — колонки не вылезут за пределы */
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
     gap: 16px;
     width: 100%;
-    max-width: 100%;   /* больше не 1250px */
+    max-width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
 }
@@ -840,11 +946,10 @@ html body .wy-menu-vertical li.mars-open > ul {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    min-width: 0;       /* КРИТИЧНО — без этого grid-элементы не сжимаются */
-    overflow: hidden;   /* чтобы контент не вылезал */
+    min-width: 0;
+    overflow: hidden;
 }
 
-/* Блоки не должны вылезать */
 .wiki-layout > div > div {
     box-sizing: border-box;
     max-width: 100%;
@@ -852,42 +957,30 @@ html body .wy-menu-vertical li.mars-open > ul {
     overflow-wrap: break-word;
 }
 
-/* Картинки внутри — не вылезают */
 .wiki-layout img {
     max-width: 100%;
     height: auto;
 }
 
-/* Таблицы внутри — скроллятся, а не растягивают */
 .wiki-layout table {
     width: 100%;
     table-layout: fixed;
     word-wrap: break-word;
 }
 
-/* --- Адаптив: планшет --- */
 @media (max-width: 1100px) {
     .wiki-layout {
         grid-template-columns: 1fr;
     }
 }
 
-/* --- Адаптив: мобильный --- */
 @media (max-width: 768px) {
-    .wiki-layout {
-        gap: 12px;
-    }
+    .wiki-layout { gap: 12px; }
     .wiki-column-left,
-    .wiki-column-right {
-        gap: 12px;
-    }
+    .wiki-column-right { gap: 12px; }
 }
 
-/* ============================================
-   ЗВЁЗДНОЕ НЕБО + WIKI-LAYOUT (главная)
-   ============================================ */
-
-/* Делаем блоки на главной прозрачными в звёздном режиме */
+/* Звёздное небо + wiki-layout */
 html body.mars-stars-on .wiki-layout > div > div,
 html body.stars-active .wiki-layout > div > div,
 html body.night-mode .wiki-layout > div > div,
@@ -902,7 +995,6 @@ html.mars-stars-on .wiki-layout > div > div {
     -webkit-backdrop-filter: blur(6px);
 }
 
-/* Заголовки в блоках — светлые */
 html body.mars-stars-on .wiki-layout h3,
 html body.mars-stars-on .wiki-layout h4,
 html body.stars-active .wiki-layout h3,
@@ -918,7 +1010,6 @@ html.mars-stars-on .wiki-layout h4 {
     color: #ffffff !important;
 }
 
-/* Обычный текст и параграфы */
 html body.mars-stars-on .wiki-layout p,
 html body.mars-stars-on .wiki-layout li,
 html body.mars-stars-on .wiki-layout span,
@@ -941,7 +1032,6 @@ html.mars-stars-on .wiki-layout li {
     color: #e0e0ee !important;
 }
 
-/* Ссылки — фиолетовые, светлые */
 html body.mars-stars-on .wiki-layout a,
 html body.stars-active .wiki-layout a,
 html body.night-mode .wiki-layout a,
@@ -960,18 +1050,6 @@ html.mars-stars-on .wiki-layout a:hover {
     color: #ffffff !important;
 }
 
-/* Разделители и рамки */
-html body.mars-stars-on .wiki-layout h3,
-html body.mars-stars-on .wiki-layout h4,
-html body.stars-active .wiki-layout h3,
-html body.night-mode .wiki-layout h3,
-html body.dark-mode .wiki-layout h3,
-html body.mars-stars .wiki-layout h3,
-html.mars-stars-on .wiki-layout h3 {
-    border-color: rgba(162, 155, 254, 0.3) !important;
-}
-
-/* Таблицы */
 html body.mars-stars-on .wiki-layout table,
 html body.mars-stars-on .wiki-layout thead,
 html body.mars-stars-on .wiki-layout tbody,
@@ -985,14 +1063,6 @@ html.mars-stars-on .wiki-layout th {
     color: #e0e0ee !important;
 }
 
-/* Счётчики времени, подписи, «загрузка...» — не тускнеем */
-html body.mars-stars-on .wiki-layout [style*="color:var(--text-muted"],
-html body.mars-stars-on .wiki-layout [style*="opacity"],
-html.mars-stars-on .wiki-layout [style*="color:var(--text-muted"],
-html.mars-stars-on .wiki-layout [style*="opacity"] {
-    color: rgba(200, 200, 220, 0.75) !important;
-}
-
 html body.mars-stars-on #auto-categories {
     background: rgba(20, 15, 35, 0.55) !important;
     border-color: rgba(162, 155, 254, 0.4) !important;
@@ -1004,7 +1074,7 @@ html body.mars-stars-on #auto-categories a {
 }
 
 /* ============================================
-   КАТЕГОРИИ (светлая тема)
+   КАТЕГОРИИ
    ============================================ */
 #auto-categories {
     margin-top: 40px;
@@ -1042,9 +1112,6 @@ html body.mars-stars-on #auto-categories a {
     background: rgba(108, 99, 255, 0.2);
 }
 
-/* ============================================
-   ЗВЁЗДНОЕ НЕБО — КАТЕГОРИИ ПРОЗРАЧНЫ
-   ============================================ */
 html body.mars-stars-on #auto-categories {
     background: rgba(20, 15, 35, 0.55) !important;
     border-color: rgba(162, 155, 254, 0.4) !important;
@@ -1068,7 +1135,7 @@ html body.mars-stars-on #auto-categories .cat-chip:hover {
 }
 
 /* ============================================
-   ПЛАШКА "ИЗБРАННЫЙ СПИСОК" — ПРОЗРАЧНА
+   ПЛАШКА "ИЗБРАННЫЙ СПИСОК"
    ============================================ */
 .wiki-featured-badge {
     display: flex;
@@ -1079,7 +1146,11 @@ html body.mars-stars-on #auto-categories .cat-chip:hover {
     border: 1px solid #6C63FF;
     border-radius: 8px;
     margin: 16px 0 24px 0;
-    transition: background 0.3s, border-color 0.3s;
+    transition: all 0.3s ease;
+}
+
+.wiki-featured-badge:hover {
+    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.15);
 }
 
 .wiki-featured-badge .badge-icon {
@@ -1108,7 +1179,6 @@ html body.mars-stars-on #auto-categories .cat-chip:hover {
     color: #6C63FF;
 }
 
-/* Плашка в тёмной теме */
 html body.mars-stars-on .wiki-featured-badge {
     background: rgba(108, 99, 255, 0.15) !important;
     border-color: rgba(162, 155, 254, 0.5) !important;

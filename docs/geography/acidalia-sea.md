@@ -113,11 +113,11 @@
     Звук моря
   </div>
 
-  <div class="mars-sound mars-sound--infobox"
-       data-src="/assets/sounds/the-sound-of-the-waves-the-sea.mp3"
-       data-title="Ацидалийское море"
-       data-caption="Реконструкция звука"
-       data-theme="blue"></div>
+<div class="mars-sound mars-sound--infobox"
+     data-preset="ocean"
+     data-title="Ацидалийское море"
+     data-caption="Реконструкция звука"
+     data-theme="blue"></div>
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 

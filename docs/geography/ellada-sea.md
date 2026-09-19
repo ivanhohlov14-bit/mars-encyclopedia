@@ -90,6 +90,31 @@
 
   <hr style="margin: 6px 0; border-color: #b0ccd8;">
 
+  <!-- Омываемые государства -->
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Омываемые государства
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eden/" style="color: #1a3a4a; text-decoration: underline;">Эдем</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/kimeria/" style="color: #1a3a4a; text-decoration: underline;">Кимерия</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/avsonia/" style="color: #1a3a4a; text-decoration: underline;">Авсония</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритреи" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eritreya/" style="color: #1a3a4a; text-decoration: underline;">Эритрея</a>
+    </div>
+  </div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
   <!-- Звук моря -->
   <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
     Звук моря

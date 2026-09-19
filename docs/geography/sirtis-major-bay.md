@@ -1,35 +1,138 @@
 # Залив Большой Сирт
 
-**Залив Большой Сирт** (лат. *Syrtis Major Planum*, марс. *Sirtis Major Thal* — «Большой залив Сирт») — крупный залив в северной части [Зефирийского моря](zephyria-sea.md), в далёком прошлом — один из важнейших торговых и культурных центров экваториальной области Марса. В эпопее «Письмо из Красной пыли» Залив Большой Сирт выступает как ключевой географический объект, через который проходили основные морские пути между западными и восточными землями. Его глубокие воды и защищённые бухты делали его идеальным местом для портовых городов, а его побережье было усеяно древними храмами и крепостями, хранившими тайны первых марсианских цивилизаций. В Эпоху Умирания залив стал последним убежищем для беженцев, пытавшихся добраться до космодрома Фарсиды.
-
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Залив Большой Сирт</h3>
-  <hr>
-
-  <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://github.com/ivanhohlov14-bit/mars-encyclopedia/blob/main/docs/assets/images/map/залв.png" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
-    <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Расположение залива Большой Сирт (отмечено синим)</div>
-  </div>
-
-  <p><b>Латинское название:</b> Syrtis Major Planum</p>
-  <p><b>Марсианское название:</b> Sirtis Major Thal («Большой залив Сирт»)</p>
-  <p><b>Размер:</b> около 1300 км в поперечнике</p>
-  <p><b>Координаты центра:</b> <a href="https://geohack.toolforge.org/geohack.php?language=ru&pagename=Syrtis_Major_Planum&params=8.4_N_69.5_E_globe:mars" target="_blank">8,4° с.ш., 69,5° в.д.</a></p>
-  <p><b>Расположение:</b> Экваториальная область Марса, северная часть Зефирийского моря</p>
-  <p><b>Высота:</b> ~3–4 км ниже среднего уровня</p>
-  <p><b>Площадь (в прошлом):</b> ~1,5–2,0 млн км²</p>
-  <p><b>Солёность (в прошлом):</b> 30–35 ‰</p>
-  <p><b>Средняя глубина (в прошлом):</b> 150–200 м</p>
-  <p><b>Максимальная глубина (в прошлом):</b> до 300 м</p>
-  <p><b>Температура (лето):</b> +12°C (к 2700 г. упала до −5°C)</p>
-  <p><b>Температура (зима):</b> −5°C (к 2700 г. упала до −20°C)</p>
-  <p><b>Ключевые города:</b> Сирт-Сити, Порт Исиды, Нил-Сити</p>
-  <p><b>Связанные понятия:</b> <a href="araksis.md">Араксис</a>, <a href="ksanf-monster.md">Ксанф</a>, <a href="epokha-umiraniya.md">Эпоха Умирания</a></p>
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
 </div>
 
-__TOC__
+<div class="infobox" style="float: right; width: 280px; background: #dce8ef; border: 1px solid #8daebf; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+
+  <div style="background: #b8ced9; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; border-radius: 8px 8px 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #1a3a4a;">Залив Большой Сирт</h3>
+  </div>
+
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/syrtis-major-bay-map.png" alt="Карта залива Большой Сирт" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта залива Большой Сирт. По данным Академии Окхасена (2650 г. Э.О.).</div>
+  </div>
+
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
+    <div style="text-align: center;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/syrtis-major-bay-bathymetry.png" alt="Батиметрия залива Большой Сирт" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
+    </div>
+  </div>
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    История
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• 3,5–3,0 млрд лет назад — формирование бассейна</li>
+    <li>• 3,0–1,5 млрд лет назад — вулканический этап</li>
+    <li>• ок. 1 г. Э.О. — первые портовые поселения</li>
+    <li>• 2500–2680 гг. — расцвет Сирт-Сити, Порта Исиды, Нил-Сити</li>
+    <li>• к 2730 г. — полное высыхание</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Основные данные
+  </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Латинское название:</b> <i>Syrtis Major Planum</i></p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Марсианское название:</b> <i>Sirtis Major Thal</i> («Большой залив Сирт»)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Тип водоёма:</b> залив Зефирийского моря (солёный)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Площадь (в прошлом):</b> ≈ 1,5–2,0 млн км²</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Размер:</b> ок. 1 300 км в поперечнике</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Солёность:</b> 30–35 ‰</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Средняя глубина:</b> 150–200 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Максимальная глубина:</b> ~300 м</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Температура поверхности (лето):</b> +12 °C (к 2700 г. — до −5 °C)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Температура поверхности (зима):</b> −5 °C (к 2700 г. — до −20 °C)</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Высота:</b> ~3–4 км ниже среднего уровня</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Координаты:</b> 8,4° с.ш., 69,5° в.д.</p>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Гидрология
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Впадающие реки: с Эритрейских гор и Земли Исиды</li>
+    <li>• Соединение: с Зефирийским морем на юге</li>
+    <li>• Циркуляция: циклоническая, против часовой стрелки</li>
+    <li>• Крупнейшие города: Сирт-Сити, Порт Исиды, Нил-Сити</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Острова
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• остров Исида (центральный, храм Араксис)</li>
+    <li>• остров Нил (таблички с пророчествами)</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Геология
+  </div>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Происхождение:</b> тектоническое + вулканическое</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Минералогия:</b> базальты, сульфаты, глинистые минералы</p>
+  <p style="margin: 2px 0; color: #1a3a4a;"><b>Особенность:</b> одна из самых тёмных областей Марса</p>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Омываемые государства
+  </div>
+  <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/eden/" style="color: #1a3a4a; text-decoration: underline;">Эдем</a>
+    </div>
+    <div style="display: inline-flex; align-items: center; gap: 4px;">
+      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <a href="https://mars-wiki.ru/geography/utopia/" style="color: #1a3a4a; text-decoration: underline;">Утопия</a>
+    </div>
+  </div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Звук моря
+  </div>
+
+  <div class="mars-sound mars-sound--infobox"
+       data-preset="storm"
+       data-title="Звук моря"
+       data-caption="Реконструкция звука"
+       data-theme="blue"></div>
+
+  <hr style="margin: 6px 0; border-color: #b0ccd8;">
+
+  <div style="background: #b8ced9; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #8daebf; text-align: center; font-weight: bold; font-size: 0.9rem; color: #1a3a4a;">
+    Факты
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a3a4a;">
+    <li>• Одна из старейших деталей альбедо (отмечена в 1659 г.)</li>
+    <li>• Самая тёмная область Марса</li>
+    <li>• Храм Араксис на острове Исида</li>
+    <li>• Последнее убежище беженцев Эпохи Умирания</li>
+  </ul>
+
+</div>
+
+**Залив Большой Сирт** (лат. *Syrtis Major Planum*, марс. *Sirtis Major Thal* — «Большой залив Сирт») — крупный залив в северной части [Зефирийского моря](https://mars-wiki.ru/geography/zephyria-sea/), в далёком прошлом — один из важнейших торговых и культурных центров экваториальной области Марса. В эпопее «Письмо из Красной пыли» Залив Большой Сирт выступает как ключевой географический объект, через который проходили основные морские пути между западными и восточными землями. Его глубокие воды и защищённые бухты делали его идеальным местом для портовых городов, а его побережье было усеяно древними храмами и крепостями, хранившими тайны первых марсианских цивилизаций. В Эпоху Умирания залив стал последним убежищем для беженцев, пытавшихся добраться до космодрома Фарсиды.
 
 ## Этимология
+
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/syrtis-major-bay-eye-of-araksis.png" alt="Глаз Араксис" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">«Глаз Араксис» — залив Большой Сирт. Реконструкция.</div>
+</div>
 
 Марсианское название *Sirtis Major Thal* дословно переводится как «Большой залив Сирт». Оно связано с древними марсианскими легендами, согласно которым в этих водах обитали морские чудовища, а сам залив считался воротами в подземный мир. В марсианских табличках залив также именуют *«Глазом Араксис»* — из-за его формы, напоминающей глаз, и способности отражать небо[^1].
 
@@ -54,7 +157,12 @@ __TOC__
 
 ### Острова
 
-В заливе Большой Сирт существовало несколько островов. Крупнейшим из них был **остров Исида** — скалистый массив в центральной части залива, на котором, согласно преданиям, находился древний храм богини [Араксис](araksis.md). Другим важным островом был **остров Нил** — место, где, по легендам, хранились древние таблички с пророчествами о гибели Марса[^8].
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/syrtis-major-bay-isida-temple.png" alt="Храм Араксис на острове Исида" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Храм Араксис на острове Исида. Реконструкция.</div>
+</div>
+
+В заливе Большой Сирт существовало несколько островов. Крупнейшим из них был **остров Исида** — скалистый массив в центральной части залива, на котором, согласно преданиям, находился древний храм богини [Араксис](https://mars-wiki.ru/mythology/araksis/). Другим важным островом был **остров Нил** — место, где, по легендам, хранились древние таблички с пророчествами о гибели Марса[^8].
 
 ### Гидрология
 
@@ -91,6 +199,11 @@ __TOC__
 
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/syrtis-major-bay-port.png" alt="Порт Исиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Порт Исиды в Эпоху Расцвета. Реконструкция.</div>
+</div>
+
 В Эпоху Расцвета залив Большой Сирт стал одним из важнейших торговых узлов Марса. Через его порты проходили товары из Эдема, Утопии и южных земель. Здесь пересекались караванные пути, связывавшие западные и восточные области планеты[^18].
 
 На острове Исида был построен величественный храм Араксис, куда стекались паломники со всего Марса. Города Сирт-Сити, Порт Исиды и Нил-Сити процветали благодаря торговле рыбой, солью и минералами[^19].
@@ -102,6 +215,11 @@ __TOC__
 Последние записи о заливе в марсианских табличках относятся к 2735 году, когда через его высохшее дно прошёл последний караван, направлявшийся к звёздам[^21].
 
 ## Экосистема
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/syrtis-major-bay-ecosystem.png" alt="Подводный мир залива Большой Сирт" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир залива Большой Сирт. Реконструкция.</div>
+</div>
 
 В Эпоху Расцвета залив был домом для многих видов организмов, приспособленных к марсианским условиям и умеренной солёности:
 
@@ -118,6 +236,11 @@ __TOC__
 
 ### В мифологии
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/syrtis-major-bay-myth-araksis-tear.png" alt="Слеза Араксис" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Миф о слезе Араксис. Реконструкция.</div>
+</div>
+
 Залив Большой Сирт занимал важное место в марсианской мифологии. Считалось, что его воды — это слезы богини Араксис, пролитые ею при создании мира. В «Песнях Совии» залив упоминается как *«Глаз Араксис»*, способный видеть прошлое и будущее[^23].
 
 ### Легенды
@@ -132,6 +255,11 @@ __TOC__
 
 ## Современное состояние
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/syrtis-major-bay-today.png" alt="Залив Большой Сирт сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Залив Большой Сирт сегодня. Фотореалистичная реконструкция.</div>
+</div>
+
 Ныне залив Большой Сирт представляет собой тёмную равнину, покрытую слоем пыли и пепла. Под поверхностью сохраняются значительные запасы льда и воды, что делает этот регион перспективным для будущих миссий[^27].
 
 В книгах цикла, по состоянию на 2745 год, залив полностью высох и покрыт слоем пепла. Его поверхность используется беженцами как дорога[^28].
@@ -142,16 +270,16 @@ __TOC__
 
 ## Связанные статьи
 
-- [Зефирийское море](zephyria-sea.md)
-- [Ацидалийское море](acidalia-sea.md)
-- [Море Эллады](ellada-sea.md)
-- [Море Аргира](argir-sea.md)
-- [Эритрейское море](eritreya-sea.md)
-- [Амазонское море](amazon-sea.md)
-- [Араксис](araksis.md)
-- [Ксанф (чудовище)](ksanf-monster.md)
-- [Хевсур](hevsur.md)
-- [Эпоха Умирания](epokha-umiraniya.md)
+- [Зефирийское море](https://mars-wiki.ru/geography/zephyria-sea/)
+- [Ацидалийское море](https://mars-wiki.ru/geography/acidalia-sea/)
+- [Море Эллады](https://mars-wiki.ru/geography/ellada-sea/)
+- [Море Аргира](https://mars-wiki.ru/geography/argir-sea/)
+- [Эритрейское море](https://mars-wiki.ru/geography/eritreya-sea/)
+- [Амазонское море](https://mars-wiki.ru/geography/amazon-sea/)
+- [Араксис](https://mars-wiki.ru/mythology/araksis/)
+- [Ксанф (чудовище)](https://mars-wiki.ru/mythology/ksanf-monster/)
+- [Хевсур](https://mars-wiki.ru/people/hevsur/)
+- [Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)
 
 ## Примечания
 

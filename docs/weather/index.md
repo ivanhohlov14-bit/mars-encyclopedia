@@ -1,5 +1,5 @@
 ---
-title: Погода на Марсе
+title: 🌡️ Погода на Марсе
 comments: false
 ---
 
@@ -9,30 +9,38 @@ comments: false
 <p style="text-align:center; color:#9999bb; font-size:0.9rem; margin-bottom:32px;">Данные с марсохода NASA Curiosity (прибор REMS)</p>
 
 <!-- Панель управления -->
-<div id="controls" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-bottom:20px;">
-    <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
-        <button class="rover-btn active" data-rover="curiosity">
-            Curiosity
-            <span class="rover-info-icon">?</span>
-            <span class="rover-tooltip">
-                <span class="rover-tooltip-title">Curiosity</span>
-                <span class="rover-tooltip-row"><b>Посадка:</b> Август 2012</span>
-                <span class="rover-tooltip-row"><b>Местоположение:</b> Кратер Гейл, гора Шарп</span>
-                <span class="rover-tooltip-row"><b>Статус:</b> Активен с 2012 года</span>
-                <span class="rover-tooltip-row"><b>Прибор:</b> REMS (погодная станция)</span>
-                <span class="rover-tooltip-row"><b>Источник:</b> NASA / JPL-Caltech</span>
-                <span class="rover-tooltip-note">Данные обновляются NASA с задержкой около часа</span>
-            </span>
-        </button>
+<div id="controls" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-bottom:20px; position: relative; z-index: 100;">
+    <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; position: relative;">
+        <div class="rover-wrapper">
+            <button class="rover-btn active" data-rover="curiosity">
+                Curiosity
+                <span class="rover-info-icon">?</span>
+            </button>
+            <div class="rover-tooltip">
+                <div class="rover-tooltip-title">Curiosity</div>
+                <div class="rover-tooltip-row"><b>Посадка:</b> Август 2012</div>
+                <div class="rover-tooltip-row"><b>Местоположение:</b> Кратер Гейл, гора Шарп</div>
+                <div class="rover-tooltip-row"><b>Статус:</b> Активен с 2012 года</div>
+                <div class="rover-tooltip-row"><b>Прибор:</b> REMS (погодная станция)</div>
+                <div class="rover-tooltip-row"><b>Источник:</b> NASA / JPL-Caltech</div>
+                <div class="rover-tooltip-note">
+                    NASA обновляет данные не каждый день — иногда раз в несколько суток. На сайте всегда отображаются последние доступные данные.
+                </div>
+            </div>
+        </div>
     </div>
     <button id="refresh-btn">Обновить</button>
 </div>
 
 <!-- Статус данных -->
-<div id="data-status" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; color:#9999bb; margin-bottom:20px; padding:12px 18px; background: rgba(26,26,46,0.6); border-radius: 12px; border: 1px solid rgba(108,99,255,0.2);">
-    <div id="status-dot" style="width:8px; height:8px; border-radius:50%; background:#9999bb; transition: all 0.3s;"></div>
-    <span id="status-text">Загрузка данных...</span>
-    <span id="next-update" style="margin-left:auto; font-size:0.75rem; opacity:0.7; font-variant-numeric: tabular-nums;"></span>
+<div id="data-status" style="display:flex; align-items:flex-start; gap:10px; font-size:0.82rem; color:#9999bb; margin-bottom:20px; padding:14px 18px; background: rgba(26,26,46,0.6); border-radius: 12px; border: 1px solid rgba(108,99,255,0.2); line-height:1.6;">
+    <div id="status-dot" style="width:8px; height:8px; border-radius:50%; background:#9999bb; transition: all 0.3s; margin-top:5px; flex-shrink:0;"></div>
+    <div style="flex:1;">
+        <div id="status-text">Загрузка данных...</div>
+        <div style="font-size:0.75rem; color:#9999bb; margin-top:6px; opacity:0.8;">
+            ℹ️ NASA публикует погодные данные с марсоходов не каждый день. На странице показаны последние доступные значения.
+        </div>
+    </div>
 </div>
 
 <!-- Сетка карточек -->
@@ -83,8 +91,13 @@ comments: false
 }
 
 /* ============================================================ */
-/* 🔘 Кнопка марсохода со встроенным значком вопроса            */
+/* 🔘 Кнопка марсохода со значком вопроса                       */
 /* ============================================================ */
+.rover-wrapper {
+    position: relative;
+    display: inline-block;
+    z-index: 100;
+}
 .rover-btn {
     position: relative;
     display: inline-flex;
@@ -101,14 +114,12 @@ comments: false
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     font-family: inherit;
     box-shadow: 0 4px 16px rgba(108, 99, 255, 0.5);
-    overflow: visible;
 }
 .rover-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(108, 99, 255, 0.7);
 }
 
-/* Значок вопроса внутри кнопки */
 .rover-info-icon {
     display: inline-flex;
     align-items: center;
@@ -125,16 +136,18 @@ comments: false
     transition: all 0.2s;
     flex-shrink: 0;
 }
-.rover-info-icon:hover {
+.rover-btn:hover .rover-info-icon {
     background: rgba(255, 255, 255, 0.45);
     transform: scale(1.1);
 }
 
-/* Всплывающая подсказка */
+/* ============================================================ */
+/* 💬 Подсказка — СПРАВА от кнопки, ПОВЕРХ всех блоков           */
+/* ============================================================ */
 .rover-tooltip {
     position: absolute;
-    top: calc(100% + 12px);
-    left: 0;
+    top: -10px;
+    left: calc(100% + 16px);
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -145,36 +158,39 @@ comments: false
     padding: 16px 18px;
     font-size: 0.8rem;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.55;
     white-space: normal;
-    width: 300px;
+    width: 320px;
     text-align: left;
-    box-shadow: 0 12px 36px rgba(108, 99, 255, 0.5);
+    box-shadow: 0 16px 48px rgba(108, 99, 255, 0.6), 0 0 0 1px rgba(108,99,255,0.2);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-6px);
+    transform: translateX(-8px);
     transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 9999;
 }
+/* Стрелка слева, указывает на кнопку */
 .rover-tooltip::before {
     content: '';
     position: absolute;
-    top: -8px;
-    left: 24px;
+    top: 24px;
+    left: -9px;
     width: 14px;
     height: 14px;
     background: linear-gradient(135deg, #252550, #1a1a2e);
     border-left: 1.5px solid var(--c-accent);
-    border-top: 1.5px solid var(--c-accent);
+    border-bottom: 1.5px solid var(--c-accent);
     transform: rotate(45deg);
     border-radius: 2px;
 }
-.rover-btn:hover .rover-tooltip,
-.rover-info-icon:hover ~ .rover-tooltip {
+
+.rover-wrapper:hover .rover-tooltip,
+.rover-tooltip:hover {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(0);
+    pointer-events: auto;
 }
 
 .rover-tooltip-title {
@@ -200,13 +216,13 @@ comments: false
 }
 .rover-tooltip-note {
     display: block;
-    margin-top: 8px;
-    padding-top: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
     border-top: 1px solid rgba(108, 99, 255, 0.2);
-    font-size: 0.72rem;
-    font-style: italic;
+    font-size: 0.75rem;
     color: var(--c-text-dim);
-    line-height: 1.5;
+    line-height: 1.6;
+    font-style: italic;
 }
 
 /* ============================================================ */
@@ -399,15 +415,35 @@ comments: false
     animation: cosmicSpin 0.8s linear infinite;
 }
 
-@media (max-width: 600px) {
+/* ============================================================ */
+/* Мобильная адаптация                                           */
+/* ============================================================ */
+@media (max-width: 700px) {
     #weather-title { font-size: 1.6rem !important; }
     .weather-value { font-size: 1.5rem; }
     .weather-card { padding: 16px; }
     .history-bar { min-width: 400px; height: 110px; }
     .rover-btn, #refresh-btn { padding: 8px 16px; font-size: 0.82rem; }
     .cosmic-block { padding: 18px 16px; }
-    .rover-tooltip { width: 260px; left: auto; right: 0; }
-    .rover-tooltip::before { left: auto; right: 20px; }
+
+    /* На мобильном — подсказка снизу, чтобы не улетала за экран */
+    .rover-tooltip {
+        top: calc(100% + 12px);
+        left: 0;
+        transform: translateY(-8px);
+        width: calc(100vw - 40px);
+        max-width: 320px;
+    }
+    .rover-tooltip::before {
+        top: -9px;
+        left: 24px;
+        border-left: 1.5px solid var(--c-accent);
+        border-top: 1.5px solid var(--c-accent);
+        border-bottom: none;
+    }
+    .rover-wrapper:hover .rover-tooltip {
+        transform: translateY(0);
+    }
 }
 </style>
 
@@ -419,8 +455,7 @@ comments: false
     // 🔌 КОНФИГУРАЦИЯ
     // ============================================================
     const NASA_MSL_URL = 'https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json';
-    const CACHE_TTL = 10 * 60 * 1000;      // 10 минут — сколько живёт кэш
-    const CHECK_INTERVAL = 10 * 60 * 1000; // 10 минут — как часто проверяем NASA
+    const CACHE_TTL = 10 * 60 * 1000; // 10 минут
 
     // ============================================================
     // 🌡️ КОНВЕРТАЦИЯ
@@ -465,7 +500,7 @@ comments: false
     }
 
     // ============================================================
-    // 🔄 ПАРСИНГ NASA REMS
+    // 🔄 ПАРСИНГ NASA
     // ============================================================
     function parseNASA(json) {
         if (!json || !json.soles || !json.soles.length) return null;
@@ -482,23 +517,16 @@ comments: false
             ls: s.ls !== undefined ? parseFloat(s.ls) : null,
             windSpeed: s.wind_speed !== undefined ? parseFloat(s.wind_speed) : null,
             windDir: s.wind_direction !== undefined ? parseFloat(s.wind_direction) : null,
-            minGts: s.min_gts_temp !== undefined ? parseFloat(s.min_gts_temp) : null,
-            maxGts: s.max_gts_temp !== undefined ? parseFloat(s.max_gts_temp) : null,
-            uvIndex: s.local_uv_irradiance_index || null
+            season: s.season || null
         };
     }
 
     // ============================================================
     // 🔄 ЗАГРУЗКА
     // ============================================================
-    let refreshTimer = null;
-    let countdownTimer = null;
-    let nextUpdateTime = 0;
-
     async function fetchWeather(forceRefresh) {
-        const cacheKey = 'mars_weather_curiosity_v2';
+        const cacheKey = 'mars_weather_curiosity_v3';
 
-        // Кэш
         if (!forceRefresh) {
             try {
                 const cached = localStorage.getItem(cacheKey);
@@ -511,7 +539,6 @@ comments: false
             } catch(e) {}
         }
 
-        // Запрос к NASA
         try {
             const res = await fetch(NASA_MSL_URL, { cache: 'no-store' });
             if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -589,7 +616,7 @@ comments: false
     // ============================================================
     async function renderHistory() {
         const historyEl = document.getElementById('history-chart');
-        const cacheKey = 'mars_history_7sols_v2';
+        const cacheKey = 'mars_history_7sols_v3';
 
         try {
             const cached = localStorage.getItem(cacheKey);
@@ -717,9 +744,9 @@ comments: false
     }
 
     // ============================================================
-    // 🔄 СТАТУС + ОБРАТНЫЙ ОТСЧЁТ
+    // 🔄 СТАТУС — показываем ДАТУ NASA и СКОЛЬКО ВРЕМЕНИ ПРОШЛО
     // ============================================================
-    function updateStatus(fromCache, data, cachedAt) {
+    function updateStatus(data, cachedAt) {
         const dot = document.getElementById('status-dot');
         const text = document.getElementById('status-text');
 
@@ -730,36 +757,46 @@ comments: false
             return;
         }
 
-        // Проверяем возраст данных NASA
-        const age = cachedAt ? Math.floor((Date.now() - cachedAt) / 1000 / 60) : 0;
         const solText = 'Сол ' + data.sol;
         const earthText = data.earthDate ? ' · ' + formatEarthDate(data.earthDate) : '';
+        const ageText = data.earthDate ? ' · ' + humanAge(data.earthDate) : '';
 
-        if (fromCache && age > 2) {
+        // Если данные старше 2 дней — жёлтый
+        const daysOld = data.earthDate ? Math.floor((Date.now() - new Date(data.earthDate).getTime()) / (1000 * 60 * 60 * 24)) : 0;
+
+        if (daysOld >= 2) {
             dot.style.background = '#f39c12';
             dot.style.boxShadow = '0 0 10px #f39c12';
-            text.innerHTML = `Данные NASA: <b style="color:#A29BFE">${solText}</b>${earthText} · проверено ${age} мин назад`;
+            text.innerHTML = `Последние данные NASA: <b style="color:#A29BFE">${solText}</b>${earthText}${ageText}`;
         } else {
             dot.style.background = '#27ae60';
             dot.style.boxShadow = '0 0 10px #27ae60';
-            text.innerHTML = `Данные NASA: <b style="color:#A29BFE">${solText}</b>${earthText} · свежие`;
+            text.innerHTML = `Данные NASA: <b style="color:#A29BFE">${solText}</b>${earthText}${ageText}`;
         }
     }
 
     function formatEarthDate(str) {
         try {
             const d = new Date(str);
-            return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' });
+            return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
         } catch(e) { return str; }
     }
 
-    function updateCountdown() {
-        const el = document.getElementById('next-update');
-        if (!el) return;
-        const diff = Math.max(0, Math.floor((nextUpdateTime - Date.now()) / 1000));
-        const m = Math.floor(diff / 60);
-        const s = diff % 60;
-        el.textContent = `Проверка через ${m}:${s < 10 ? '0' : ''}${s}`;
+    function humanAge(dateStr) {
+        try {
+            const then = new Date(dateStr).getTime();
+            const now = Date.now();
+            const diff = now - then;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const mins = Math.floor(diff / (1000 * 60));
+
+            if (mins < 60) return `${mins} мин назад`;
+            if (hours < 24) return `${hours} ч назад`;
+            if (days < 30) return `${days} дн назад`;
+            const months = Math.floor(days / 30);
+            return `${months} мес назад`;
+        } catch(e) { return ''; }
     }
 
     // ============================================================
@@ -767,14 +804,10 @@ comments: false
     // ============================================================
     async function loadData(forceRefresh) {
         const result = await fetchWeather(forceRefresh);
-
-        updateStatus(result.fromCache, result.data, result.cachedAt);
+        updateStatus(result.data, result.cachedAt);
         renderCards(result.data);
         renderSeason(result.data);
         renderCompare(result.data);
-
-        nextUpdateTime = Date.now() + CHECK_INTERVAL;
-        updateCountdown();
     }
 
     // ============================================================
@@ -791,19 +824,15 @@ comments: false
 
         await loadData(false);
 
-        // Проверка NASA каждые 10 минут
-        refreshTimer = setInterval(() => loadData(false), CHECK_INTERVAL);
+        // Тихая проверка каждые 10 минут (без счётчика)
+        setInterval(() => loadData(false), CACHE_TTL);
 
-        // Обратный отсчёт каждую секунду
-        countdownTimer = setInterval(updateCountdown, 1000);
-
-        // Обновление при возврате на вкладку
         document.addEventListener('visibilitychange', function() {
             if (!document.hidden) loadData(false);
         });
 
         renderHistory();
-        console.log('🌌 VIP-погода на Марсе — только Curiosity');
+        console.log('🌌 VIP-погода на Марсе — финальная версия');
     }
 
     if (document.readyState === 'loading') {

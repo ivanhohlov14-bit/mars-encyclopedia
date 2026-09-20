@@ -173,17 +173,17 @@
   align-items: center;
   gap: 12px;
   padding: 12px;
-  background: linear-gradient(135deg, #dce8ef 0%, #b8ced9 100%);
-  border: 1px solid #8daebf;
+  background: linear-gradient(135deg, #2a2a3a 0%, #1a1a2e 100%);
+  border: 1px solid #4a4a5a;
   border-radius: 12px;
   margin: 8px 0;
   font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
-  box-shadow: 0 4px 14px rgba(26,58,74,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
   transition: all 0.3s;
 }
 .mars-wind-player.playing {
-  border-color: #2a5a80;
-  box-shadow: 0 8px 28px rgba(42,90,128,0.45), inset 0 1px 0 rgba(255,255,255,0.3);
+  border-color: #6C63FF;
+  box-shadow: 0 8px 28px rgba(108,99,255,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
 }
 .mars-wind-left { position: relative; flex-shrink: 0; }
 .mars-wind-btn {
@@ -193,26 +193,26 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  background: linear-gradient(135deg, #3a6d9f 0%, #16304a 100%);
+  background: linear-gradient(135deg, #6C63FF 0%, #4a3fb5 100%);
   color: #fff;
   font-size: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 18px rgba(22,48,74,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+  box-shadow: 0 6px 18px rgba(108,99,255,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
   transition: transform 0.25s cubic-bezier(.2,.9,.3,1.3), box-shadow 0.3s;
   -webkit-tap-highlight-color: transparent;
   z-index: 1;
 }
 .mars-wind-btn:hover {
   transform: scale(1.06);
-  box-shadow: 0 10px 24px rgba(22,48,74,0.65), inset 0 1px 0 rgba(255,255,255,0.4);
+  box-shadow: 0 10px 24px rgba(108,99,255,0.7), inset 0 1px 0 rgba(255,255,255,0.4);
 }
 .mars-wind-btn:active { transform: scale(0.96); }
 .mars-wind-icon { position: relative; z-index: 2; line-height: 1; }
 .mars-wind-player.playing .mars-wind-btn {
-  background: linear-gradient(135deg, #2a7ab8 0%, #0d2a3a 100%);
-  box-shadow: 0 6px 22px rgba(42,122,184,0.6), inset 0 1px 0 rgba(255,255,255,0.35);
+  background: linear-gradient(135deg, #8a7fff 0%, #6C63FF 100%);
+  box-shadow: 0 6px 22px rgba(162,155,254,0.6), inset 0 1px 0 rgba(255,255,255,0.35);
 }
 .mars-wind-ring {
   position: absolute;
@@ -224,14 +224,14 @@
 .mars-wind-player.playing .mars-wind-ring {
   display: block;
   animation: marsWindRing 2s ease-out infinite;
-  border: 2px solid rgba(74,125,181,0.85);
+  border: 2px solid rgba(162,155,254,0.85);
 }
 .mars-wind-player.playing .mars-wind-ring::before {
   content: '';
   position: absolute;
   inset: -8px;
   border-radius: 50%;
-  border: 2px solid rgba(74,125,181,0.5);
+  border: 2px solid rgba(162,155,254,0.5);
   animation: marsWindRing 2s ease-out infinite 0.3s;
 }
 @keyframes marsWindRing {
@@ -242,18 +242,17 @@
 .mars-wind-title {
   font-weight: 800;
   font-size: 0.92rem;
-  color: #0d2a3a;
+  color: #e8e8f0;
   margin-bottom: 3px;
   letter-spacing: 0.3px;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.3);
 }
 .mars-wind-caption {
   font-size: 0.72rem;
-  color: #1a3a4a;
+  color: #9999bb;
   margin-bottom: 6px;
   transition: color 0.3s;
 }
-.mars-wind-player.playing .mars-wind-caption { color: #0d3a5a; font-weight: 600; }
+.mars-wind-player.playing .mars-wind-caption { color: #A29BFE; font-weight: 600; }
 .mars-wind-viz {
   display: flex;
   align-items: flex-end;
@@ -267,10 +266,10 @@
   flex: 1;
   min-width: 1px;
   height: 20%;
-  background: linear-gradient(180deg, #3a6d9f, #0d2a3a);
+  background: linear-gradient(180deg, #A29BFE, #6C63FF);
   border-radius: 2px;
   transition: height 0.4s ease;
-  box-shadow: 0 0 4px rgba(42,90,128,0.6);
+  box-shadow: 0 0 4px rgba(162,155,254,0.6);
 }
 .mars-wind-player.playing .mars-wind-viz span {
   animation: marsWindBar 1.2s ease-in-out infinite alternate;
@@ -292,12 +291,12 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #6d92a8;
+  background: #4a4a5a;
   transition: background 0.3s, box-shadow 0.3s;
 }
 .mars-wind-player.playing .mars-wind-live {
-  background: #1f7a4a;
-  box-shadow: 0 0 10px #2a9d5f, 0 0 4px #2a9d5f;
+  background: #27ae60;
+  box-shadow: 0 0 10px #27ae60, 0 0 4px #27ae60;
   animation: marsWindLive 1.5s ease-in-out infinite;
 }
 @keyframes marsWindLive {
@@ -328,6 +327,69 @@ function marsWindToggle() {
   }
 }
 </script>
+
+  # Марс
+
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Избранная статья</span>
+</div>
+
+<div class="infobox" style="float: right; width: 280px; background: #ebe8e0; border: 1px solid #4a4a5a; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); color: #1a1a2e;">
+
+  <div style="background: #1a1a2e; padding: 8px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; border-radius: 8px 8px 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #e8e8f0;">Марс</h3>
+  </div>
+
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_Valles_Marineris_EDIT.jpg" alt="Марс" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #4a4a5a;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Марс. Снимок с долиной Маринер. NASA / ESA.</div>
+  </div>
+
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
+    Названия
+  </div>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Другие:</b> Dzen Mar («Живая звезда»), Kōl Xal («Древняя земля»)</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Марсианское:</b> <i>Marzān</i> («Земля живущих»)</p>
+
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
+
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
+    Орбитальные характеристики
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
+    <li>• Перигелий: 2,066⋅10⁸ км</li>
+    <li>• Афелий: 2,492⋅10⁸ км</li>
+    <li>• Большая полуось: 2,279⋅10⁸ км</li>
+    <li>• Эксцентриситет: 0,0934</li>
+    <li>• Сидерический период: 686,98 солов</li>
+    <li>• Орбитальная скорость: 24,07 км/с</li>
+    <li>• Наклонение: 1,85°</li>
+    <li>• Спутники: <a href="https://mars-wiki.ru/astronomy/phobos/" style="color: #4a3fb5; text-decoration: underline;">Фобос</a>, <a href="https://mars-wiki.ru/astronomy/deimos/" style="color: #4a3fb5; text-decoration: underline;">Деймос</a></li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
+
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
+    Физические характеристики
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
+    <li>• Полярное сжатие: 0,00648</li>
+    <li>• Экваториальный радиус: 3 396 км</li>
+    <li>• Полярный радиус: 3 376 км</li>
+    <li>• Средний радиус: 3 389,5 км</li>
+    <li>• Площадь поверхности: 1,448⋅10⁸ км²</li>
+    <li>• Объём: 1,631⋅10¹¹ км³</li>
+    <li>• Масса: 6,417⋅10²³ кг</li>
+    <li>• Плотность: 3,93 г/см³</li>
+    <li>• Ускорение своб. падения: 3,71 м/с²</li>
+    <li>• 1-я космическая скорость: 3,55 км/с</li>
+    <li>• 2-я космическая скорость: 5,03 км/с</li>
+    <li>• Период вращения: 24,6 часа</li>
+    <li>• Наклон оси: 25,2°</li>
+    <li>• Альбедо: 0,25 (Бонд)</li>
+    <li>• Вид. звёздная величина: −2,9</li>
+  </ul>
 
   <hr style="margin: 6px 0; border-color: #c0bcb3;">
 
@@ -366,7 +428,73 @@ function marsWindToggle() {
   <p style="margin: 2px 0; color: #1a1a2e;"><b>Разумные виды:</b> марсиане (гемоцианин)</p>
   <p style="margin: 2px 0; color: #1a1a2e;"><b>Государств:</b> 5 (к 2500 г. Э.О.)</p>
   <p style="margin: 2px 0; color: #1a1a2e;"><b>Судьба:</b> исход на Землю (2740 г.)</p>
-  
+
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
+
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
+    Звук планеты
+  </div>
+
+  <div id="mars-wind-player" class="mars-wind-player">
+    <div class="mars-wind-left">
+      <button class="mars-wind-btn" onclick="marsWindToggle()">
+        <span class="mars-wind-ring"></span>
+        <span class="mars-wind-icon">▶</span>
+      </button>
+    </div>
+    <div class="mars-wind-center">
+      <div class="mars-wind-title">Ветер Марса</div>
+      <div class="mars-wind-caption">Запись с микрофона марсохода</div>
+      <div class="mars-wind-viz">
+        <span style="--h:35%;--d:0s"></span>
+        <span style="--h:70%;--d:.08s"></span>
+        <span style="--h:45%;--d:.16s"></span>
+        <span style="--h:80%;--d:.24s"></span>
+        <span style="--h:55%;--d:.32s"></span>
+        <span style="--h:75%;--d:.40s"></span>
+        <span style="--h:40%;--d:.48s"></span>
+        <span style="--h:65%;--d:.56s"></span>
+        <span style="--h:50%;--d:.64s"></span>
+        <span style="--h:85%;--d:.72s"></span>
+        <span style="--h:30%;--d:.80s"></span>
+        <span style="--h:60%;--d:.88s"></span>
+        <span style="--h:75%;--d:.96s"></span>
+        <span style="--h:45%;--d:1.04s"></span>
+        <span style="--h:65%;--d:1.12s"></span>
+        <span style="--h:55%;--d:1.20s"></span>
+        <span style="--h:70%;--d:1.28s"></span>
+        <span style="--h:40%;--d:1.36s"></span>
+        <span style="--h:80%;--d:1.44s"></span>
+        <span style="--h:50%;--d:1.52s"></span>
+        <span style="--h:65%;--d:1.60s"></span>
+        <span style="--h:35%;--d:1.68s"></span>
+        <span style="--h:75%;--d:1.76s"></span>
+        <span style="--h:55%;--d:1.84s"></span>
+      </div>
+    </div>
+    <div class="mars-wind-right">
+      <span class="mars-wind-live"></span>
+    </div>
+  </div>
+
+  <audio id="mars-wind-audio" preload="none" loop>
+    <source src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/sounds/mars-wind.mp3" type="audio/mpeg">
+  </audio>
+
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
+
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
+    Связанные статьи
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
+    <li>• <a href="https://mars-wiki.ru/astronomy/phobos/" style="color: #4a3fb5; text-decoration: underline;">Фобос</a></li>
+    <li>• <a href="https://mars-wiki.ru/astronomy/deimos/" style="color: #4a3fb5; text-decoration: underline;">Деймос</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/acidalia-sea/" style="color: #4a3fb5; text-decoration: underline;">Ацидалийское море</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/tarsis/" style="color: #4a3fb5; text-decoration: underline;">Фарсида</a></li>
+    <li>• <a href="https://mars-wiki.ru/science/silicon-life/" style="color: #4a3fb5; text-decoration: underline;">Кремниевая жизнь</a></li>
+    <li>• <a href="https://mars-wiki.ru/history/epokha-umiraniya/" style="color: #4a3fb5; text-decoration: underline;">Эпоха Умирания</a></li>
+  </ul>
+
 </div>
 
 **Марс** — четвёртая по удалённости от Солнца и седьмая по размеру планета Солнечной системы. Наряду с Меркурием, Венерой и Землёй принадлежит к семейству планет земной группы. В марсианской астрономии известна под названиями **Dzen Mar** («Живая звезда») и **Kōl Xal** («Древняя земля»)[^10]. Для самих марсиан их мир всегда был просто **Marzān** — «Земля живущих», и лишь в Эпоху Умирания, когда взгляды обратились к звёздам, планета получила иные имена[^11].

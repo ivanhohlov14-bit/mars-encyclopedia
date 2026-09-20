@@ -6,15 +6,15 @@ comments: false
 <div id="weather-app" style="max-width: 960px; margin: 0 auto; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; padding: 0 8px;">
 
 <h1 id="weather-title" style="text-align:center; font-size: 2.2rem; letter-spacing: 2px; background: linear-gradient(135deg, #6C63FF, #A29BFE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">🌡️ Погода на Марсе</h1>
-<p style="text-align:center; color:#9999bb; font-size:0.9rem; margin-bottom:32px;">Данные с марсоходов NASA · Обновление каждые 5 минут</p>
+<p style="text-align:center; color:#9999bb; font-size:0.9rem; margin-bottom:32px;">Данные с марсохода NASA Curiosity (прибор REMS) · Обновление каждые 5 минут</p>
 
 <!-- Панель управления -->
 <div id="controls" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-bottom:20px;">
     <div style="display:flex; gap:8px; flex-wrap:wrap;">
-        <button class="rover-btn active" data-rover="curiosity">🚗 Curiosity</button>
-        <button class="rover-btn" data-rover="perseverance">🚗 Perseverance</button>
+        <button class="rover-btn active" data-rover="curiosity">Curiosity</button>
+        <button class="rover-btn" data-rover="perseverance">Perseverance</button>
     </div>
-    <button id="refresh-btn">🔄 Обновить</button>
+    <button id="refresh-btn">Обновить</button>
 </div>
 
 <!-- Статус данных -->
@@ -77,9 +77,6 @@ comments: false
 @keyframes cosmicPulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(108,99,255,0.6); }
     50% { box-shadow: 0 0 0 12px rgba(108,99,255,0); }
-}
-@keyframes cosmicBarGrow {
-    from { height: 0; }
 }
 
 /* Кнопки-пилюли */
@@ -297,23 +294,10 @@ comments: false
     'use strict';
 
     // ============================================================
-    // 🔌 ИСТОЧНИКИ ДАННЫХ
+    // 🔌 ИСТОЧНИК ДАННЫХ (NASA REMS — работает без CORS)
     // ============================================================
-    const API_SOURCES = {
-        curiosity: {
-            primary: 'https://api.maas2.apollorion.com/',
-            fallback: 'https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json',
-            name: 'Curiosity'
-        },
-        perseverance: {
-            primary: 'https://api.maas2.apollorion.com/',
-            fallback: null,
-            name: 'Perseverance'
-        }
-    };
-
-    const REFRESH_INTERVAL = 5 * 60 * 1000;
-    const CACHE_TTL = 10 * 60 * 1000; // 10 минут — дольше живёт кэш
+    const NASA_MSL_URL = 'https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json';
+    const CACHE_TTL = 10 * 60 * 1000; // 10 минут
 
     // ============================================================
     // 🌡️ КОНВЕРТАЦИЯ
@@ -358,27 +342,11 @@ comments: false
     }
 
     // ============================================================
-    // 🔄 ПАРСИНГ
+    // 🔄 ПАРСИНГ NASA REMS
     // ============================================================
-    function parseMAAS2(json, rover) {
-        if (!json) return null;
-        return {
-            sol: json.sol || 0,
-            minTemp: json.min_temp ?? null,
-            maxTemp: json.max_temp ?? null,
-            pressure: json.pressure ?? null,
-            opacity: json.atmo_opacity || 'Unknown',
-            sunrise: json.sunrise || '—',
-            sunset: json.sunset || '—',
-            ls: json.ls ?? null,
-            windSpeed: json.wind_speed ?? null,
-            windDir: json.wind_direction ?? null,
-            rover: rover
-        };
-    }
-
-    function parseNASAMSL(json, rover) {
+    function parseNASA(json) {
         if (!json || !json.soles || !json.soles.length) return null;
+        // API возвращает солы в порядке от новых к старым
         const s = json.soles[0];
         return {
             sol: parseInt(s.sol, 10) || 0,
@@ -391,7 +359,7 @@ comments: false
             ls: s.ls !== undefined ? parseFloat(s.ls) : null,
             windSpeed: s.wind_speed !== undefined ? parseFloat(s.wind_speed) : null,
             windDir: s.wind_direction !== undefined ? parseFloat(s.wind_direction) : null,
-            rover: rover
+            rover: 'curiosity'
         };
     }
 
@@ -402,8 +370,7 @@ comments: false
     let refreshTimer = null;
 
     async function fetchWeather(rover) {
-        const sources = API_SOURCES[rover];
-        const cacheKey = 'mars_weather_' + rover;
+        const cacheKey = 'mars_weather_nasa_' + rover;
 
         // Кэш
         try {
@@ -416,32 +383,22 @@ comments: false
             }
         } catch(e) {}
 
-        // API
-        const urls = [
-            { url: sources.primary, parser: 'maas2' },
-            sources.fallback ? { url: sources.fallback, parser: 'nasa' } : null
-        ].filter(Boolean);
+        // NASA API
+        try {
+            const res = await fetch(NASA_MSL_URL);
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const json = await res.json();
 
-        for (const source of urls) {
-            try {
-                const res = await fetch(source.url, { cache: 'no-store' });
-                if (!res.ok) continue;
-                const json = await res.json();
-
-                const data = source.parser === 'maas2'
-                    ? parseMAAS2(json, rover)
-                    : parseNASAMSL(json, rover);
-
-                if (data && data.sol) {
-                    localStorage.setItem(cacheKey, JSON.stringify({
-                        timestamp: Date.now(),
-                        data: data
-                    }));
-                    return { data, fromCache: false };
-                }
-            } catch(e) {
-                console.warn('⚠️ Источник не ответил:', source.url, e.message);
+            const data = parseNASA(json);
+            if (data && data.sol) {
+                localStorage.setItem(cacheKey, JSON.stringify({
+                    timestamp: Date.now(),
+                    data: data
+                }));
+                return { data, fromCache: false };
             }
+        } catch(e) {
+            console.warn('⚠️ NASA API не ответил:', e.message);
         }
         return { data: null, fromCache: false };
     }
@@ -501,7 +458,7 @@ comments: false
     }
 
     // ============================================================
-    // 📊 ИСТОРИЯ (только при наличии данных в кэше)
+    // 📊 ИСТОРИЯ
     // ============================================================
     async function renderHistory() {
         const historyEl = document.getElementById('history-chart');
@@ -522,7 +479,7 @@ comments: false
         historyEl.innerHTML = '<div style="text-align:center;padding:20px;color:#9999bb;"><div class="cosmic-spinner"></div><p style="margin-top:10px;font-size:0.82rem;">Загрузка истории...</p></div>';
 
         try {
-            const res = await fetch('https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json');
+            const res = await fetch(NASA_MSL_URL);
             if (!res.ok) throw new Error('Failed');
             const json = await res.json();
             const sols = (json.soles || []).slice(0, 7).reverse();
@@ -618,7 +575,7 @@ comments: false
                 <div style="text-align:center;padding:20px;background: linear-gradient(135deg, rgba(231,76,60,0.15), rgba(231,76,60,0.05));border-radius:14px;border:1.5px solid rgba(231,76,60,0.3);">
                     <div style="font-size:2rem;margin-bottom:6px;">🔴</div>
                     <div style="font-size:1.7rem;font-weight:900;color:#e74c3c;">${marsAvg !== null ? marsAvg + '°C' : '—'}</div>
-                    <div style="font-size:0.82rem;color:#9999bb;margin-top:6px;">Марс (${data.rover === 'curiosity' ? 'Гейл' : 'Езеро'})</div>
+                    <div style="font-size:0.82rem;color:#9999bb;margin-top:6px;">Марс (Гейл)</div>
                 </div>
                 <div style="text-align:center;padding:20px;background: linear-gradient(135deg, rgba(52,152,219,0.15), rgba(52,152,219,0.05));border-radius:14px;border:1.5px solid rgba(52,152,219,0.3);">
                     <div style="font-size:2rem;margin-bottom:6px;">🌍</div>
@@ -656,7 +613,7 @@ comments: false
             dot.style.background = '#27ae60';
             dot.style.boxShadow = '0 0 10px #27ae60';
             const now = new Date();
-            text.textContent = '🟢 Свежие данные · ' + now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+            text.textContent = 'Свежие данные · ' + now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
         }
     }
 
@@ -694,24 +651,24 @@ comments: false
         setupRoverSwitcher();
 
         document.getElementById('refresh-btn').addEventListener('click', async function() {
-            this.textContent = '⏳ Загрузка...';
+            this.textContent = 'Загрузка...';
             this.disabled = true;
             // Сбрасываем кэш чтобы получить свежие данные
-            try { localStorage.removeItem('mars_weather_' + currentRover); } catch(e) {}
+            try { localStorage.removeItem('mars_weather_nasa_' + currentRover); } catch(e) {}
             await loadData();
-            this.textContent = '🔄 Обновить';
+            this.textContent = 'Обновить';
             this.disabled = false;
         });
 
         await loadData();
-        refreshTimer = setInterval(loadData, REFRESH_INTERVAL);
+        refreshTimer = setInterval(loadData, 5 * 60 * 1000);
 
         document.addEventListener('visibilitychange', function() {
             if (!document.hidden) loadData();
         });
 
         renderHistory();
-        console.log('🌌 VIP-погода на Марсе загружена');
+        console.log('🌌 VIP-погода на Марсе загружена (NASA REMS)');
     }
 
     if (document.readyState === 'loading') {

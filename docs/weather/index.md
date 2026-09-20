@@ -33,12 +33,12 @@ comments: false
 </div>
 
 <!-- Статус данных -->
-<div id="data-status" style="display:flex; align-items:flex-start; gap:10px; font-size:0.82rem; color:#9999bb; margin-bottom:20px; padding:14px 18px; background: rgba(26,26,46,0.6); border-radius: 12px; border: 1px solid rgba(108,99,255,0.2); line-height:1.6;">
-    <div id="status-dot" style="width:8px; height:8px; border-radius:50%; background:#9999bb; transition: all 0.3s; margin-top:5px; flex-shrink:0;"></div>
+<div id="data-status" style="display:flex; align-items:flex-start; gap:12px; font-size:0.88rem; color:#e8e8f0; margin-bottom:20px; padding:16px 20px; background: linear-gradient(135deg, rgba(26,26,46,0.85), rgba(37,37,80,0.85)); border-radius: 14px; border: 1.5px solid rgba(108,99,255,0.35); line-height:1.6; box-shadow: 0 4px 16px rgba(0,0,0,0.25);">
+    <div id="status-dot" style="width:10px; height:10px; border-radius:50%; background:#9999bb; transition: all 0.3s; margin-top:6px; flex-shrink:0;"></div>
     <div style="flex:1;">
-        <div id="status-text">Загрузка данных...</div>
-        <div style="font-size:0.75rem; color:#9999bb; margin-top:6px; opacity:0.8;">
-            ℹ️ NASA публикует погодные данные с марсоходов не каждый день. На странице показаны последние доступные значения.
+        <div id="status-text" style="font-weight:700; font-size:0.92rem; color:#e8e8f0;">Загрузка данных...</div>
+        <div style="font-size:0.8rem; color:#A29BFE; margin-top:8px; font-weight:600; line-height:1.55;">
+            NASA публикует погодные данные с марсоходов не каждый день — иногда раз в несколько суток. На странице показаны последние доступные значения.
         </div>
     </div>
 </div>

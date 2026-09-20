@@ -16,16 +16,6 @@ plugins:
       url_base: "https://mars-wiki.ru"
       use_canonical_url: true
       add_schema_org_json_ld: true
-  - minify:
-      minify_html: true
-      minify_js: true
-      minify_css: true
-      htmlmin_opts:
-        remove_comments: true
-      js_files:
-        - assets/js/*.js
-      css_files:
-        - assets/css/*.css
 
 markdown_extensions:
   - admonition

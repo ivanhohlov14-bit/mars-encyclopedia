@@ -90,20 +90,6 @@
   <p style="margin: 2px 0; color: #e8e8f0;"><b style="color: #A29BFE;">Государств:</b> 5 (к 2500 г. Э.О.)</p>
   <p style="margin: 2px 0; color: #e8e8f0;"><b style="color: #A29BFE;">Судьба:</b> исход на Землю (2740 г.)</p>
 
-  <hr style="margin: 6px 0; border-color: #333355;">
-
-  <div style="background: #0d0d1a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #333355; text-align: center; font-weight: bold; font-size: 0.9rem; color: #A29BFE;">
-    Связанные статьи
-  </div>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #e8e8f0;">
-    <li>• <a href="/astronomy/phobos/" style="color: #A29BFE;">Фобос</a></li>
-    <li>• <a href="/astronomy/deimos/" style="color: #A29BFE;">Деймос</a></li>
-    <li>• <a href="/geography/acidalia-sea/" style="color: #A29BFE;">Ацидалийское море</a></li>
-    <li>• <a href="/geography/tarsis/" style="color: #A29BFE;">Фарсида</a></li>
-    <li>• <a href="/science/silicon-life/" style="color: #A29BFE;">Кремниевая жизнь</a></li>
-    <li>• <a href="/history/epokha-umiraniya/" style="color: #A29BFE;">Эпоха Умирания</a></li>
-  </ul>
-
 </div>
 
 **Марс** — четвёртая по удалённости от Солнца и седьмая по размеру планета Солнечной системы. Наряду с Меркурием, Венерой и Землёй принадлежит к семейству планет земной группы. В марсианской астрономии известна под названиями **Dzen Mar** («Живая звезда») и **Kōl Xal** («Древняя земля»)[^10]. Для самих марсиан их мир всегда был просто **Marzān** — «Земля живущих», и лишь в Эпоху Умирания, когда взгляды обратились к звёздам, планета получила иные имена[^11].

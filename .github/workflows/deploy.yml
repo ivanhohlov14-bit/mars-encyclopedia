@@ -38,12 +38,6 @@ jobs:
       - name: Optimize image URLs
         run: python scripts/optimize_urls.py
 
-      - name: Compress images to WebP
-        run: python scripts/compress_images.py
-
-      - name: Switch image links to WebP
-        run: python scripts/use_webp.py
-
       - name: Build site
         run: mkdocs build --verbose
 

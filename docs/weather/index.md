@@ -3,131 +3,206 @@ title: 🌡️ Погода на Марсе
 comments: false
 ---
 
-<div id="weather-app" style="max-width: 960px; margin: 0 auto; font-family: 'Segoe UI', -apple-system, sans-serif; padding: 0 8px;">
+<div id="weather-app" style="max-width: 960px; margin: 0 auto; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif; padding: 0 8px;">
 
-<h1 id="weather-title" style="text-align:center; font-size: 2.2rem; letter-spacing: 2px; background: linear-gradient(135deg, #e74c3c, #f39c12); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">🌡️ Погода на Марсе</h1>
-<p style="text-align:center; color:#888; font-size:0.9rem; margin-bottom:32px;">Данные с марсоходов NASA</p>
+<h1 id="weather-title" style="text-align:center; font-size: 2.2rem; letter-spacing: 2px; background: linear-gradient(135deg, #6C63FF, #A29BFE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900;">🌡️ Погода на Марсе</h1>
+<p style="text-align:center; color:#9999bb; font-size:0.9rem; margin-bottom:32px;">Данные с марсоходов NASA · Обновление каждые 5 минут</p>
 
 <!-- Панель управления -->
 <div id="controls" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-bottom:20px;">
-    <div style="display:flex; gap:8px;">
-        <button id="rover-curiosity" class="rover-btn active" data-rover="curiosity" style="padding:8px 16px; border-radius:8px; border:2px solid #e74c3c; background:#e74c3c; color:white; font-weight:600; cursor:pointer;">Curiosity</button>
-        <button id="rover-perseverance" class="rover-btn" data-rover="perseverance" style="padding:8px 16px; border-radius:8px; border:2px solid #ccc; background:transparent; color:#666; font-weight:600; cursor:pointer;">Perseverance</button>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="rover-btn active" data-rover="curiosity">🚗 Curiosity</button>
+        <button class="rover-btn" data-rover="perseverance">🚗 Perseverance</button>
     </div>
-    <button id="refresh-btn" style="padding:8px 16px; border-radius:8px; border:2px solid #6C63FF; background:transparent; color:#6C63FF; font-weight:600; cursor:pointer;">🔄 Обновить</button>
+    <button id="refresh-btn">🔄 Обновить</button>
 </div>
 
 <!-- Статус данных -->
-<div id="data-status" style="display:flex; align-items:center; gap:8px; font-size:0.8rem; color:#888; margin-bottom:16px;">
-    <div id="status-dot" style="width:8px; height:8px; border-radius:50%; background:#ccc;"></div>
+<div id="data-status" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; color:#9999bb; margin-bottom:20px; padding:10px 16px; background: rgba(26,26,46,0.6); border-radius: 12px; border: 1px solid rgba(108,99,255,0.2);">
+    <div id="status-dot" style="width:8px; height:8px; border-radius:50%; background:#9999bb; transition: all 0.3s;"></div>
     <span id="status-text">Загрузка данных...</span>
 </div>
 
 <!-- Сетка карточек -->
-<div id="weather-cards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; margin-bottom:28px;"></div>
+<div id="weather-cards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:28px;"></div>
 
 <!-- Историческая справка -->
-<div class="block" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); padding:24px; border-radius:16px; margin-bottom:24px; border:2px solid #e74c3c; box-shadow:0 4px 16px rgba(0,0,0,0.05);">
-    <h3 style="color:#1a1a1a; margin:0 0 16px 0; font-size:1.15rem; font-weight:800; display:flex; align-items:center; gap:10px;">📊 История за последние 7 солей</h3>
+<div class="cosmic-block">
+    <h3 class="block-title"><span>📊</span> История за последние 7 солей</h3>
     <div id="history-chart" style="overflow-x:auto;"></div>
 </div>
 
 <!-- Марсианский сезон -->
-<div class="block" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); padding:24px; border-radius:16px; margin-bottom:24px; border:2px solid #f39c12; box-shadow:0 4px 16px rgba(0,0,0,0.05);">
-    <h3 style="color:#1a1a1a; margin:0 0 16px 0; font-size:1.15rem; font-weight:800; display:flex; align-items:center; gap:10px;">🌍 Марсианский сезон</h3>
+<div class="cosmic-block">
+    <h3 class="block-title"><span>🌍</span> Марсианский сезон</h3>
     <div id="season-info" style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;"></div>
 </div>
 
 <!-- Сравнение с Землёй -->
-<div class="block" style="background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); padding:24px; border-radius:16px; margin-bottom:24px; border:2px solid #6C63FF; box-shadow:0 4px 16px rgba(0,0,0,0.05);">
-    <h3 style="color:#1a1a1a; margin:0 0 16px 0; font-size:1.15rem; font-weight:800; display:flex; align-items:center; gap:10px;">🌡️ Марс vs Земля</h3>
-    <div id="earth-compare" style="font-size:0.9rem; line-height:1.8; color:#333;"></div>
+<div class="cosmic-block">
+    <h3 class="block-title"><span>🌡️</span> Марс vs Земля</h3>
+    <div id="earth-compare" style="font-size:0.9rem; line-height:1.8;"></div>
 </div>
 
-<p style="margin-top:24px; text-align:center;">
-    <a href="/" style="color:#e74c3c; font-weight:600;">← На главную</a>
+<p style="margin-top:32px; text-align:center;">
+    <a href="/" style="color:#A29BFE; font-weight:600; text-decoration:none;">← На главную</a>
 </p>
 
 </div>
 
 <style>
-:root {
-    --weather-accent: #e74c3c;
-    --weather-warm: #f39c12;
-    --weather-cold: #3498db;
+/* ============================================================ */
+/* 🌌 VIP Тёмный космический стиль                              */
+/* ============================================================ */
+#weather-app {
+    --c-bg-1: #1a1a2e;
+    --c-bg-2: #252550;
+    --c-accent: #6C63FF;
+    --c-accent-light: #A29BFE;
+    --c-text: #e8e8f0;
+    --c-text-dim: #9999bb;
+    --c-border: rgba(108, 99, 255, 0.4);
+    --c-glow: rgba(108, 99, 255, 0.5);
+    color: var(--c-text);
 }
-@keyframes weatherPulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.3); opacity: 0.7; }
-}
-@keyframes weatherFadeIn {
+
+/* Анимации */
+@keyframes cosmicFadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-@keyframes weatherSpin {
+@keyframes cosmicSpin {
     to { transform: rotate(360deg); }
 }
+@keyframes cosmicPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(108,99,255,0.6); }
+    50% { box-shadow: 0 0 0 12px rgba(108,99,255,0); }
+}
+@keyframes cosmicBarGrow {
+    from { height: 0; }
+}
+
+/* Кнопки-пилюли */
+.rover-btn, #refresh-btn {
+    background: rgba(26, 26, 46, 0.7);
+    color: var(--c-text-dim);
+    border: 1.5px solid rgba(108, 99, 255, 0.3);
+    border-radius: 24px;
+    padding: 10px 22px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: inherit;
+}
+.rover-btn:hover, #refresh-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--c-accent);
+    color: var(--c-text);
+    box-shadow: 0 4px 16px rgba(108, 99, 255, 0.3);
+}
+.rover-btn.active {
+    background: linear-gradient(135deg, #6C63FF, #A29BFE);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(108, 99, 255, 0.5);
+}
+#refresh-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Карточки */
 .weather-card {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(16px);
-    border: 2px solid transparent;
-    border-radius: 18px;
-    padding: 22px 24px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    background: linear-gradient(135deg, #1a1a2e, #252550);
+    border: 1.5px solid rgba(108, 99, 255, 0.4);
+    border-radius: 16px;
+    padding: 20px 22px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     gap: 6px;
     position: relative;
     overflow: hidden;
-    animation: weatherFadeIn 0.6s ease both;
+    animation: cosmicFadeIn 0.5s ease both;
 }
 .weather-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--weather-accent), var(--weather-warm));
-    border-radius: 18px 18px 0 0;
+    height: 3px;
+    background: linear-gradient(90deg, #6C63FF, #A29BFE);
+    border-radius: 16px 16px 0 0;
 }
 .weather-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--weather-accent);
-    box-shadow: 0 16px 40px -8px rgba(231,76,60,0.3);
+    transform: translateY(-3px);
+    border-color: var(--c-accent);
+    box-shadow: 0 8px 28px rgba(108, 99, 255, 0.4);
 }
-.weather-icon { font-size: 1.8rem; margin-bottom: 4px; }
+.weather-icon { font-size: 1.6rem; margin-bottom: 2px; }
+.weather-label {
+    font-size: 0.72rem;
+    color: var(--c-text-dim);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
 .weather-value {
     font-size: 2rem;
     font-weight: 800;
-    color: #1a1a1a;
+    color: var(--c-text);
     line-height: 1.1;
     letter-spacing: -0.5px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
 }
 .weather-value .unit {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #888;
-    margin-left: 4px;
+    color: var(--c-text-dim);
 }
-.weather-label {
-    font-size: 0.82rem;
-    color: #777;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.weather-sub {
+    font-size: 0.75rem;
+    color: var(--c-text-dim);
+    margin-top: 2px;
 }
-.weather-delta {
-    font-size: 0.78rem;
+.weather-badge {
+    font-size: 0.72rem;
     font-weight: 700;
-    padding: 2px 10px;
+    padding: 3px 10px;
     border-radius: 20px;
     display: inline-block;
     width: fit-content;
     margin-top: 4px;
+    background: rgba(108, 99, 255, 0.15);
+    color: var(--c-accent-light);
+    border: 1px solid rgba(108, 99, 255, 0.3);
 }
-.weather-delta.up { background: #fdecea; color: #e74c3c; }
-.weather-delta.down { background: #e8f4fd; color: #3498db; }
-.weather-delta.neutral { background: #f0f0f0; color: #888; }
+
+/* Тёмные блоки */
+.cosmic-block {
+    background: linear-gradient(135deg, #1a1a2e, #252550);
+    border: 1.5px solid rgba(108, 99, 255, 0.4);
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    animation: cosmicFadeIn 0.6s ease both;
+}
+.block-title {
+    color: var(--c-text);
+    margin: 0 0 16px 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.3px;
+}
+
+/* История */
 .history-bar {
     display: flex;
     align-items: flex-end;
@@ -150,17 +225,20 @@ comments: false
     border-radius: 8px 8px 0 0;
     min-height: 6px;
     transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 12px currentColor;
 }
 .history-bar-value {
     font-size: 0.72rem;
     font-weight: 700;
-    color: #e74c3c;
+    color: var(--c-accent-light);
 }
 .history-bar-day {
-    font-size: 0.72rem;
-    color: #888;
+    font-size: 0.7rem;
+    color: var(--c-text-dim);
     font-weight: 600;
 }
+
+/* Сезон */
 .season-badge {
     display: inline-flex;
     align-items: center;
@@ -170,7 +248,7 @@ comments: false
     font-weight: 800;
     font-size: 0.95rem;
     color: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
 }
 .season-progress {
     flex: 1;
@@ -179,31 +257,39 @@ comments: false
 .season-progress-track {
     width: 100%;
     height: 12px;
-    background: rgba(0,0,0,0.08);
+    background: rgba(108, 99, 255, 0.15);
     border-radius: 6px;
     overflow: hidden;
     margin-top: 8px;
+    border: 1px solid rgba(108,99,255,0.2);
 }
 .season-progress-fill {
     height: 100%;
     border-radius: 6px;
-    transition: width 0.8s ease;
+    transition: width 1s ease;
+    box-shadow: 0 0 12px currentColor;
 }
+
+/* Спиннер */
+.cosmic-spinner {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(108,99,255,0.2);
+    border-top-color: var(--c-accent);
+    border-radius: 50%;
+    animation: cosmicSpin 0.8s linear infinite;
+}
+
+/* Мобильная адаптация */
 @media (max-width: 600px) {
     #weather-title { font-size: 1.6rem !important; }
     .weather-value { font-size: 1.5rem; }
     .weather-card { padding: 16px; }
     .history-bar { min-width: 400px; height: 110px; }
+    .rover-btn, #refresh-btn { padding: 8px 16px; font-size: 0.82rem; }
+    .cosmic-block { padding: 18px 16px; }
 }
-html body.mars-stars-on .weather-card,
-html body.mars-stars-on .block {
-    background: rgba(30,30,46,0.85) !important;
-    color: #d4d4e8 !important;
-}
-html body.mars-stars-on .weather-value { color: #e0e0e0; }
-html body.mars-stars-on .weather-label { color: #aaa; }
-html body.mars-stars-on .block h3 { color: #e0e0e0 !important; }
-html body.mars-stars-on #earth-compare { color: #ccc; }
 </style>
 
 <script>
@@ -215,22 +301,19 @@ html body.mars-stars-on #earth-compare { color: #ccc; }
     // ============================================================
     const API_SOURCES = {
         curiosity: {
-            // Основной источник - REMS (Curiosity)
-            primary: 'https://cab.inta-csic.es/rems/rems_weather.json',
-            // Резервный - MAAS2
-            fallback: 'https://api.maas2.apollorion.com/',
-            name: 'Curiosity (Gale Crater)'
+            primary: 'https://api.maas2.apollorion.com/',
+            fallback: 'https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json',
+            name: 'Curiosity'
         },
         perseverance: {
-            // Для Perseverance - используем MAAS2 (за неимением лучшего)
             primary: 'https://api.maas2.apollorion.com/',
             fallback: null,
-            name: 'Perseverance (Jezero Crater)'
+            name: 'Perseverance'
         }
     };
 
-    const REFRESH_INTERVAL = 5 * 60 * 1000; // 5 минут
-    const CACHE_TTL = 4 * 60 * 1000; // 4 минуты
+    const REFRESH_INTERVAL = 5 * 60 * 1000;
+    const CACHE_TTL = 10 * 60 * 1000; // 10 минут — дольше живёт кэш
 
     // ============================================================
     // 🌡️ КОНВЕРТАЦИЯ
@@ -257,158 +340,110 @@ html body.mars-stars-on #earth-compare { color: #ccc; }
         const solInYear = sol % solsInYear;
         const monthIdx = Math.floor((solInYear / solsInYear) * 22) % 22;
         const day = Math.floor((solInYear / solsInYear) * 22 * 30) % 30 + 1;
-        return {
-            year: year,
-            month: MARS_MONTHS[monthIdx],
-            day: day,
-            sol: sol
-        };
+        return { year, month: MARS_MONTHS[monthIdx], day, sol };
     }
 
     // ============================================================
-    // 🌍 МАРСИАНСКИЙ СЕЗОН
+    // 🌍 СЕЗОН
     // ============================================================
     function getSeason(ls) {
-        if (ls === null || ls === undefined || ls === 0) {
-            return { name: 'Неизвестно', emoji: '❓', color: '#888', progress: 0, ls: 0 };
+        if (ls === null || ls === undefined) {
+            return { name: 'Неизвестно', emoji: '❓', color: '#9999bb', progress: 0, ls: 0 };
         }
         const l = ((ls % 360) + 360) % 360;
-        if (l >= 0 && l < 90) {
-            return { name: 'Северная весна', emoji: '🌸', color: '#27ae60', progress: l / 90 * 100, ls: l };
-        } else if (l >= 90 && l < 180) {
-            return { name: 'Северное лето', emoji: '☀️', color: '#f39c12', progress: (l - 90) / 90 * 100, ls: l };
-        } else if (l >= 180 && l < 270) {
-            return { name: 'Северная осень', emoji: '🍂', color: '#e67e22', progress: (l - 180) / 90 * 100, ls: l };
-        } else {
-            return { name: 'Северная зима', emoji: '❄️', color: '#3498db', progress: (l - 270) / 90 * 100, ls: l };
-        }
+        if (l < 90) return { name: 'Северная весна', emoji: '🌸', color: '#27ae60', progress: l / 90 * 100, ls: l };
+        if (l < 180) return { name: 'Северное лето', emoji: '☀️', color: '#f39c12', progress: (l - 90) / 90 * 100, ls: l };
+        if (l < 270) return { name: 'Северная осень', emoji: '🍂', color: '#e67e22', progress: (l - 180) / 90 * 100, ls: l };
+        return { name: 'Северная зима', emoji: '❄️', color: '#3498db', progress: (l - 270) / 90 * 100, ls: l };
     }
 
     // ============================================================
-    // 🌙 ФАЗЫ ЛУН
+    // 🔄 ПАРСИНГ
     // ============================================================
-    function getMoonPhases(sol) {
-        const phobosPhase = (sol * 3.1) % 1;
-        const deimosPhase = (sol * 0.81) % 1;
-
-        function phaseName(p) {
-            if (p < 0.05 || p > 0.95) return { name: 'Новолуние', emoji: '🌑' };
-            if (p < 0.22) return { name: 'Молодая', emoji: '🌒' };
-            if (p < 0.28) return { name: 'Первая четверть', emoji: '🌓' };
-            if (p < 0.47) return { name: 'Растущая', emoji: '🌔' };
-            if (p < 0.53) return { name: 'Полнолуние', emoji: '🌕' };
-            if (p < 0.72) return { name: 'Убывающая', emoji: '🌖' };
-            if (p < 0.78) return { name: 'Последняя четверть', emoji: '🌗' };
-            return { name: 'Старая', emoji: '🌘' };
-        }
+    function parseMAAS2(json, rover) {
+        if (!json) return null;
         return {
-            phobos: phaseName(phobosPhase),
-            deimos: phaseName(deimosPhase)
+            sol: json.sol || 0,
+            minTemp: json.min_temp ?? null,
+            maxTemp: json.max_temp ?? null,
+            pressure: json.pressure ?? null,
+            opacity: json.atmo_opacity || 'Unknown',
+            sunrise: json.sunrise || '—',
+            sunset: json.sunset || '—',
+            ls: json.ls ?? null,
+            windSpeed: json.wind_speed ?? null,
+            windDir: json.wind_direction ?? null,
+            rover: rover
+        };
+    }
+
+    function parseNASAMSL(json, rover) {
+        if (!json || !json.soles || !json.soles.length) return null;
+        const s = json.soles[0];
+        return {
+            sol: parseInt(s.sol, 10) || 0,
+            minTemp: s.min_temp !== undefined ? parseFloat(s.min_temp) : null,
+            maxTemp: s.max_temp !== undefined ? parseFloat(s.max_temp) : null,
+            pressure: s.pressure !== undefined ? parseFloat(s.pressure) : null,
+            opacity: s.atmo_opacity || 'Unknown',
+            sunrise: s.sunrise || '—',
+            sunset: s.sunset || '—',
+            ls: s.ls !== undefined ? parseFloat(s.ls) : null,
+            windSpeed: s.wind_speed !== undefined ? parseFloat(s.wind_speed) : null,
+            windDir: s.wind_direction !== undefined ? parseFloat(s.wind_direction) : null,
+            rover: rover
         };
     }
 
     // ============================================================
-    // 🔄 ЗАГРУЗКА ДАННЫХ
+    // 🔄 ЗАГРУЗКА
     // ============================================================
     let currentRover = 'curiosity';
     let refreshTimer = null;
-    let cachedData = {};
 
     async function fetchWeather(rover) {
         const sources = API_SOURCES[rover];
         const cacheKey = 'mars_weather_' + rover;
 
-        // Проверяем кэш
+        // Кэш
         try {
             const cached = localStorage.getItem(cacheKey);
             if (cached) {
                 const parsed = JSON.parse(cached);
                 if (Date.now() - parsed.timestamp < CACHE_TTL && parsed.data) {
-                    console.log('📦 Погода из кэша:', rover);
                     return { data: parsed.data, fromCache: true };
                 }
             }
         } catch(e) {}
 
-        // Пробуем источники
-        const urls = [sources.primary];
-        if (sources.fallback) urls.push(sources.fallback);
+        // API
+        const urls = [
+            { url: sources.primary, parser: 'maas2' },
+            sources.fallback ? { url: sources.fallback, parser: 'nasa' } : null
+        ].filter(Boolean);
 
-        for (const url of urls) {
+        for (const source of urls) {
             try {
-                const res = await fetch(url);
+                const res = await fetch(source.url, { cache: 'no-store' });
                 if (!res.ok) continue;
                 const json = await res.json();
 
-                let data = null;
-                if (url.includes('rems_weather.json')) {
-                    data = parseREMS(json, rover);
-                } else if (url.includes('maas2')) {
-                    data = parseMAAS2(json, rover);
-                }
+                const data = source.parser === 'maas2'
+                    ? parseMAAS2(json, rover)
+                    : parseNASAMSL(json, rover);
 
-                if (data) {
+                if (data && data.sol) {
                     localStorage.setItem(cacheKey, JSON.stringify({
                         timestamp: Date.now(),
                         data: data
                     }));
-                    console.log('✅ Погода получена:', url);
-                    return { data: data, fromCache: false };
+                    return { data, fromCache: false };
                 }
             } catch(e) {
-                console.warn('⚠️ Источник не ответил:', url, e.message);
+                console.warn('⚠️ Источник не ответил:', source.url, e.message);
             }
         }
         return { data: null, fromCache: false };
-    }
-
-    // ============================================================
-    // 📖 ПАРСИНГ REMS (Curiosity)
-    // ============================================================
-    function parseREMS(json, rover) {
-        if (!json) return null;
-        return {
-            sol: json.current_sol || json.sol || 0,
-            minTemp: json.min_temp !== undefined ? parseFloat(json.min_temp) : null,
-            maxTemp: json.max_temp !== undefined ? parseFloat(json.max_temp) : null,
-            pressure: json.pressure !== undefined ? parseFloat(json.pressure) : null,
-            opacity: json.atmo_opacity || json.opacity || 'Unknown',
-            sunrise: json.sunrise || '—',
-            sunset: json.sunset || '—',
-            season: json.season || 'Unknown',
-            ls: json.ls !== undefined ? parseFloat(json.ls) : null,
-            windSpeed: json.wind_speed !== undefined ? parseFloat(json.wind_speed) : null,
-            windDir: json.wind_direction !== undefined ? parseFloat(json.wind_direction) : null,
-            uvIndex: json.local_uv_irradiance_index || null,
-            groundMin: json.min_gts_temp || null,
-            groundMax: json.max_gts_temp || null,
-            rover: rover
-        };
-    }
-
-    // ============================================================
-    // 📖 ПАРСИНГ MAAS2
-    // ============================================================
-    function parseMAAS2(json, rover) {
-        if (!json) return null;
-        const d = json;
-        return {
-            sol: d.sol || 0,
-            minTemp: d.min_temp !== undefined ? d.min_temp : null,
-            maxTemp: d.max_temp !== undefined ? d.max_temp : null,
-            pressure: d.pressure !== undefined ? d.pressure : null,
-            opacity: d.atmo_opacity || 'Unknown',
-            sunrise: d.sunrise || '—',
-            sunset: d.sunset || '—',
-            season: d.season || 'Unknown',
-            ls: d.ls !== undefined ? d.ls : null,
-            windSpeed: d.wind_speed !== undefined ? d.wind_speed : null,
-            windDir: d.wind_direction !== undefined ? d.wind_direction : null,
-            uvIndex: d.local_uv_irradiance_index || null,
-            groundMin: d.min_gts_temp || null,
-            groundMax: d.max_gts_temp || null,
-            rover: rover
-        };
     }
 
     // ============================================================
@@ -418,7 +453,7 @@ html body.mars-stars-on #earth-compare { color: #ccc; }
         const cardsEl = document.getElementById('weather-cards');
 
         if (!data) {
-            cardsEl.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:#999;">⚠️ Не удалось загрузить данные. Попробуйте обновить позже.</div>';
+            cardsEl.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:#9999bb;">⚠️ Не удалось загрузить данные. Попробуйте обновить позже.</div>';
             return;
         }
 
@@ -426,66 +461,32 @@ html body.mars-stars-on #earth-compare { color: #ccc; }
         const maxC = data.maxTemp;
         const avgC = (minC !== null && maxC !== null) ? (minC + maxC) / 2 : null;
         const mars = marsDate(data.sol);
-        const moons = getMoonPhases(data.sol);
 
         const cards = [
-            {
-                icon: '🌡️',
-                label: 'Средняя температура',
-                value: avgC !== null ? Math.round(avgC) : '—',
-                unit: '°C',
-                delta: avgC !== null ? (avgC < -60 ? 'Экстремальный холод' : avgC < -20 ? 'Очень холодно' : 'Холодно') : null,
-                deltaClass: 'down'
-            },
-            {
-                icon: '🔺',
-                label: 'Максимум',
-                value: maxC !== null ? Math.round(maxC) : '—',
-                unit: '°C',
-                sub: maxC !== null ? Math.round(toFahrenheit(maxC)) + '°F' : null
-            },
-            {
-                icon: '🔻',
-                label: 'Минимум',
-                value: minC !== null ? Math.round(minC) : '—',
-                unit: '°C',
-                sub: minC !== null ? Math.round(toFahrenheit(minC)) + '°F' : null
-            },
-            {
-                icon: '📊',
-                label: 'Давление',
-                value: data.pressure !== null ? Math.round(data.pressure) : '—',
-                unit: 'Па',
-                sub: data.pressure !== null ? (data.pressure / 100).toFixed(2) + ' гПа' : null
-            },
-            {
-                icon: '🌫️',
-                label: 'Атмосфера',
-                value: data.opacity,
-                unit: '',
-                sub: data.opacity === 'Sunny' ? 'Ясно' : data.opacity === 'Cloudy' ? 'Облачно' : data.opacity === 'Dusty' ? 'Пыльно' : ''
-            },
-            {
-                icon: '🌅',
-                label: 'Восход',
-                value: data.sunrise,
-                unit: '',
-                sub: 'Закат: ' + data.sunset
-            },
-            {
-                icon: '💨',
-                label: 'Ветер',
-                value: data.windSpeed !== null ? data.windSpeed.toFixed(1) : '—',
-                unit: 'м/с',
-                sub: data.windDir !== null ? 'Направление: ' + Math.round(data.windDir) + '°' : null
-            },
-            {
-                icon: '📅',
-                label: 'Марсианская дата',
-                value: mars.day + ' ' + mars.month,
-                unit: '',
-                sub: 'Год ' + mars.year + ' · Сол ' + data.sol
-            }
+            { icon: '🌡️', label: 'Средняя температура',
+              value: avgC !== null ? Math.round(avgC) : '—', unit: '°C',
+              badge: avgC !== null ? (avgC < -60 ? 'Экстремальный холод' : avgC < -20 ? 'Очень холодно' : 'Холодно') : null },
+            { icon: '🔺', label: 'Максимум',
+              value: maxC !== null ? Math.round(maxC) : '—', unit: '°C',
+              sub: maxC !== null ? Math.round(toFahrenheit(maxC)) + '°F' : null },
+            { icon: '🔻', label: 'Минимум',
+              value: minC !== null ? Math.round(minC) : '—', unit: '°C',
+              sub: minC !== null ? Math.round(toFahrenheit(minC)) + '°F' : null },
+            { icon: '📊', label: 'Давление',
+              value: data.pressure !== null ? Math.round(data.pressure) : '—', unit: 'Па',
+              sub: data.pressure !== null ? (data.pressure / 100).toFixed(2) + ' гПа' : null },
+            { icon: '🌫️', label: 'Атмосфера',
+              value: data.opacity === 'Sunny' ? 'Ясно' : data.opacity === 'Cloudy' ? 'Облачно' : data.opacity === 'Dusty' ? 'Пыльно' : data.opacity,
+              unit: '' },
+            { icon: '🌅', label: 'Восход / Закат',
+              value: data.sunrise, unit: '',
+              sub: 'Закат: ' + data.sunset },
+            { icon: '💨', label: 'Ветер',
+              value: data.windSpeed !== null ? data.windSpeed.toFixed(1) : '—', unit: 'м/с',
+              sub: data.windDir !== null ? 'Направление: ' + Math.round(data.windDir) + '°' : null },
+            { icon: '📅', label: 'Марсианская дата',
+              value: mars.day + ' ' + mars.month, unit: '',
+              sub: 'Год ' + mars.year + ' · Сол ' + data.sol }
         ];
 
         cardsEl.innerHTML = cards.map((c, i) => `
@@ -493,58 +494,80 @@ html body.mars-stars-on #earth-compare { color: #ccc; }
                 <span class="weather-icon">${c.icon}</span>
                 <span class="weather-label">${c.label}</span>
                 <span class="weather-value">${c.value}${c.unit ? '<span class="unit">' + c.unit + '</span>' : ''}</span>
-                ${c.delta ? '<span class="weather-delta ' + (c.deltaClass || 'neutral') + '">' + c.delta + '</span>' : ''}
-                ${c.sub ? '<span style="font-size:0.78rem;color:#888;margin-top:2px;">' + c.sub + '</span>' : ''}
+                ${c.badge ? '<span class="weather-badge">' + c.badge + '</span>' : ''}
+                ${c.sub ? '<span class="weather-sub">' + c.sub + '</span>' : ''}
             </div>
         `).join('');
     }
 
     // ============================================================
-    // 📊 ИСТОРИЧЕСКАЯ СПРАВКА
+    // 📊 ИСТОРИЯ (только при наличии данных в кэше)
     // ============================================================
     async function renderHistory() {
         const historyEl = document.getElementById('history-chart');
-        historyEl.innerHTML = '<div style="text-align:center;padding:20px;color:#999;"><div style="display:inline-block;width:32px;height:32px;border:3px solid rgba(231,76,60,0.2);border-top-color:#e74c3c;border-radius:50%;animation:weatherSpin 0.8s linear infinite;"></div><p style="margin-top:8px;">Загрузка истории...</p></div>';
+        const cacheKey = 'mars_history_7sols';
+
+        // Кэш истории — 1 час
+        try {
+            const cached = localStorage.getItem(cacheKey);
+            if (cached) {
+                const parsed = JSON.parse(cached);
+                if (Date.now() - parsed.timestamp < 60 * 60 * 1000) {
+                    drawHistory(parsed.sols);
+                    return;
+                }
+            }
+        } catch(e) {}
+
+        historyEl.innerHTML = '<div style="text-align:center;padding:20px;color:#9999bb;"><div class="cosmic-spinner"></div><p style="margin-top:10px;font-size:0.82rem;">Загрузка истории...</p></div>';
 
         try {
             const res = await fetch('https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json');
             if (!res.ok) throw new Error('Failed');
             const json = await res.json();
-
             const sols = (json.soles || []).slice(0, 7).reverse();
             if (sols.length === 0) throw new Error('No data');
 
-            const minTemps = sols.map(s => parseFloat(s.min_temp)).filter(v => !isNaN(v));
-            const maxTemps = sols.map(s => parseFloat(s.max_temp)).filter(v => !isNaN(v));
-            const globalMin = Math.min.apply(null, minTemps.length ? minTemps : [-100]);
-            const globalMax = Math.max.apply(null, maxTemps.length ? maxTemps : [0]);
-
-            let html = '<div class="history-bar">';
-            sols.forEach(s => {
-                const minT = parseFloat(s.min_temp);
-                const maxT = parseFloat(s.max_temp);
-                if (isNaN(minT) || isNaN(maxT)) return;
-                const heightPct = ((maxT - globalMin) / (globalMax - globalMin)) * 100;
-                const avgT = (minT + maxT) / 2;
-                const color = avgT < -50 ? '#3498db' : avgT < -20 ? '#5dade2' : '#f39c12';
-                html += `
-                    <div class="history-bar-item">
-                        <span class="history-bar-value">${Math.round(avgT)}°</span>
-                        <div class="history-bar-fill" style="height:${Math.max(heightPct, 8)}%; background:${color};"></div>
-                        <span class="history-bar-day">${s.sol}</span>
-                    </div>
-                `;
-            });
-            html += '</div>';
-            html += '<div style="display:flex;justify-content:space-between;font-size:0.72rem;color:#aaa;margin-top:8px;padding:0 4px;">';
-            html += '<span>← Старые солы</span>';
-            html += '<span>Солы (последние 7) →</span>';
-            html += '</div>';
-
-            historyEl.innerHTML = html;
+            localStorage.setItem(cacheKey, JSON.stringify({
+                timestamp: Date.now(),
+                sols: sols
+            }));
+            drawHistory(sols);
         } catch(e) {
-            historyEl.innerHTML = '<div style="text-align:center;padding:20px;color:#999;">📭 Исторические данные временно недоступны</div>';
+            historyEl.innerHTML = '<div style="text-align:center;padding:20px;color:#9999bb;">📭 Исторические данные временно недоступны</div>';
         }
+    }
+
+    function drawHistory(sols) {
+        const historyEl = document.getElementById('history-chart');
+        const minTemps = sols.map(s => parseFloat(s.min_temp)).filter(v => !isNaN(v));
+        const maxTemps = sols.map(s => parseFloat(s.max_temp)).filter(v => !isNaN(v));
+        const globalMin = Math.min(...(minTemps.length ? minTemps : [-100]));
+        const globalMax = Math.max(...(maxTemps.length ? maxTemps : [0]));
+
+        let html = '<div class="history-bar">';
+        sols.forEach(s => {
+            const minT = parseFloat(s.min_temp);
+            const maxT = parseFloat(s.max_temp);
+            if (isNaN(minT) || isNaN(maxT)) return;
+            const heightPct = ((maxT - globalMin) / (globalMax - globalMin)) * 100;
+            const avgT = (minT + maxT) / 2;
+            const color = avgT < -50 ? '#3498db' : avgT < -20 ? '#6C63FF' : '#A29BFE';
+            html += `
+                <div class="history-bar-item">
+                    <span class="history-bar-value">${Math.round(avgT)}°</span>
+                    <div class="history-bar-fill" style="height:${Math.max(heightPct, 8)}%; background: linear-gradient(180deg, ${color}, ${color}88); color: ${color};"></div>
+                    <span class="history-bar-day">${s.sol}</span>
+                </div>
+            `;
+        });
+        html += '</div>';
+        html += '<div style="display:flex;justify-content:space-between;font-size:0.72rem;color:#9999bb;margin-top:10px;padding:0 4px;">';
+        html += '<span>← Старые солы</span>';
+        html += '<span>Последние 7 солей →</span>';
+        html += '</div>';
+
+        historyEl.innerHTML = html;
     }
 
     // ============================================================
@@ -553,70 +576,66 @@ html body.mars-stars-on #earth-compare { color: #ccc; }
     function renderSeason(data) {
         const el = document.getElementById('season-info');
         if (!data || data.ls === null || data.ls === undefined) {
-            el.innerHTML = '<span style="color:#999;">Данные о сезоне временно недоступны</span>';
+            el.innerHTML = '<span style="color:#9999bb;">Данные о сезоне временно недоступны</span>';
             return;
         }
         const s = getSeason(data.ls);
         el.innerHTML = `
-            <div class="season-badge" style="background:${s.color};">
-                <span style="font-size:1.4rem;">${s.emoji}</span>
+            <div class="season-badge" style="background: linear-gradient(135deg, ${s.color}, ${s.color}aa);">
+                <span style="font-size:1.3rem;">${s.emoji}</span>
                 <span>${s.name}</span>
             </div>
             <div class="season-progress">
-                <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:#666;">
+                <div style="display:flex;justify-content:space-between;font-size:0.82rem;color:#9999bb;">
                     <span>Прогресс сезона</span>
-                    <span><strong>${Math.round(s.progress)}%</strong> (Ls ${Math.round(s.ls)}°)</span>
+                    <span style="color:#A29BFE;font-weight:700;">${Math.round(s.progress)}% · Ls ${Math.round(s.ls)}°</span>
                 </div>
                 <div class="season-progress-track">
-                    <div class="season-progress-fill" style="width:${s.progress}%;background:linear-gradient(90deg,${s.color},${s.color}88);"></div>
+                    <div class="season-progress-fill" style="width:${s.progress}%;background:linear-gradient(90deg,${s.color},${s.color}88); color:${s.color};"></div>
                 </div>
             </div>
         `;
     }
 
     // ============================================================
-    // 🌍 СРАВНЕНИЕ С ЗЕМЛЁЙ
+    // 🌍 СРАВНЕНИЕ
     // ============================================================
     function renderCompare(data) {
         const el = document.getElementById('earth-compare');
         if (!data) {
-            el.innerHTML = '<span style="color:#999;">Данные временно недоступны</span>';
+            el.innerHTML = '<span style="color:#9999bb;">Данные временно недоступны</span>';
             return;
         }
 
         const marsAvg = (data.minTemp !== null && data.maxTemp !== null)
             ? Math.round((data.minTemp + data.maxTemp) / 2)
             : null;
-
         const earthTemp = 15;
         const diff = marsAvg !== null ? earthTemp - marsAvg : null;
 
         el.innerHTML = `
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-                <div style="text-align:center;padding:16px;background:rgba(231,76,60,0.08);border-radius:12px;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                <div style="text-align:center;padding:20px;background: linear-gradient(135deg, rgba(231,76,60,0.15), rgba(231,76,60,0.05));border-radius:14px;border:1.5px solid rgba(231,76,60,0.3);">
                     <div style="font-size:2rem;margin-bottom:6px;">🔴</div>
-                    <div style="font-size:1.6rem;font-weight:900;color:#e74c3c;">${marsAvg !== null ? marsAvg + '°C' : '—'}</div>
-                    <div style="font-size:0.82rem;color:#888;margin-top:4px;">Марс (${data.rover === 'curiosity' ? 'Гейл' : 'Езеро'})</div>
+                    <div style="font-size:1.7rem;font-weight:900;color:#e74c3c;">${marsAvg !== null ? marsAvg + '°C' : '—'}</div>
+                    <div style="font-size:0.82rem;color:#9999bb;margin-top:6px;">Марс (${data.rover === 'curiosity' ? 'Гейл' : 'Езеро'})</div>
                 </div>
-                <div style="text-align:center;padding:16px;background:rgba(52,152,219,0.08);border-radius:12px;">
+                <div style="text-align:center;padding:20px;background: linear-gradient(135deg, rgba(52,152,219,0.15), rgba(52,152,219,0.05));border-radius:14px;border:1.5px solid rgba(52,152,219,0.3);">
                     <div style="font-size:2rem;margin-bottom:6px;">🌍</div>
-                    <div style="font-size:1.6rem;font-weight:900;color:#3498db;">~${earthTemp}°C</div>
-                    <div style="font-size:0.82rem;color:#888;margin-top:4px;">Земля (среднее)</div>
+                    <div style="font-size:1.7rem;font-weight:900;color:#3498db;">~${earthTemp}°C</div>
+                    <div style="font-size:0.82rem;color:#9999bb;margin-top:6px;">Земля (среднее)</div>
                 </div>
             </div>
             ${diff !== null ? `
-                <div style="margin-top:16px;text-align:center;font-size:0.9rem;color:#555;padding:12px;background:rgba(108,99,255,0.08);border-radius:10px;">
-                    На Марсе сейчас <strong style="color:#e74c3c;">на ${diff > 0 ? diff : Math.abs(diff)}°C ${diff > 0 ? 'холоднее' : 'теплее'}</strong>, чем на Земле
+                <div style="margin-top:16px;text-align:center;font-size:0.9rem;color:#e8e8f0;padding:14px;background: rgba(108,99,255,0.12);border-radius:12px;border:1px solid rgba(108,99,255,0.3);">
+                    На Марсе сейчас <strong style="color:#A29BFE;">на ${Math.abs(diff)}°C ${diff > 0 ? 'холоднее' : 'теплее'}</strong>, чем на Земле
                 </div>
             ` : ''}
-            <div style="margin-top:12px;font-size:0.78rem;color:#aaa;text-align:center;">
-                💡 Данные NASA обновляются с задержкой (марсоход передаёт их периодически)
-            </div>
         `;
     }
 
     // ============================================================
-    // 🔄 ОБНОВЛЕНИЕ СТАТУСА
+    // 🔄 СТАТУС
     // ============================================================
     function updateStatus(fromCache, data) {
         const dot = document.getElementById('status-dot');
@@ -624,38 +643,32 @@ html body.mars-stars-on #earth-compare { color: #ccc; }
 
         if (!data) {
             dot.style.background = '#e74c3c';
+            dot.style.boxShadow = '0 0 10px #e74c3c';
             text.textContent = 'Данные недоступны';
             return;
         }
 
         if (fromCache) {
             dot.style.background = '#f39c12';
-            text.textContent = 'Данные из кэша (обновление при следующем запросе)';
+            dot.style.boxShadow = '0 0 10px #f39c12';
+            text.textContent = 'Данные из кэша · Свежие будут при следующем обновлении';
         } else {
             dot.style.background = '#27ae60';
+            dot.style.boxShadow = '0 0 10px #27ae60';
             const now = new Date();
-            text.textContent = 'Свежие данные · Обновлено: ' + now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+            text.textContent = '🟢 Свежие данные · ' + now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
         }
     }
 
     // ============================================================
-    // 🔄 ПЕРЕКЛЮЧАТЕЛЬ МАРСОХОДОВ
+    // 🔄 ПЕРЕКЛЮЧАТЕЛЬ
     // ============================================================
     function setupRoverSwitcher() {
         const buttons = document.querySelectorAll('.rover-btn');
         buttons.forEach(btn => {
             btn.addEventListener('click', async function() {
-                buttons.forEach(b => {
-                    b.classList.remove('active');
-                    b.style.background = 'transparent';
-                    b.style.borderColor = '#ccc';
-                    b.style.color = '#666';
-                });
+                buttons.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
-                this.style.background = '#e74c3c';
-                this.style.borderColor = '#e74c3c';
-                this.style.color = 'white';
-
                 currentRover = this.dataset.rover;
                 await loadData();
             });
@@ -663,19 +676,12 @@ html body.mars-stars-on #earth-compare { color: #ccc; }
     }
 
     // ============================================================
-    // 🔄 ЗАГРУЗКА ДАННЫХ
+    // 🔄 ЗАГРУЗКА
     // ============================================================
     async function loadData() {
-        document.getElementById('last-update').textContent = 'Загрузка данных...';
-
         const result = await fetchWeather(currentRover);
 
-        if (result.data) {
-            updateStatus(result.fromCache, result.data);
-        } else {
-            updateStatus(false, null);
-        }
-
+        updateStatus(result.fromCache, result.data);
         renderCards(result.data);
         renderSeason(result.data);
         renderCompare(result.data);
@@ -687,31 +693,25 @@ html body.mars-stars-on #earth-compare { color: #ccc; }
     async function init() {
         setupRoverSwitcher();
 
-        // Кнопка обновления
         document.getElementById('refresh-btn').addEventListener('click', async function() {
-            this.textContent = '⏳ Обновление...';
+            this.textContent = '⏳ Загрузка...';
             this.disabled = true;
+            // Сбрасываем кэш чтобы получить свежие данные
+            try { localStorage.removeItem('mars_weather_' + currentRover); } catch(e) {}
             await loadData();
             this.textContent = '🔄 Обновить';
             this.disabled = false;
         });
 
-        // Первая загрузка
         await loadData();
-
-        // Автоматическое обновление каждые 5 минут
         refreshTimer = setInterval(loadData, REFRESH_INTERVAL);
 
-        // Обновление при возврате на вкладку
         document.addEventListener('visibilitychange', function() {
-            if (!document.hidden) {
-                loadData();
-            }
+            if (!document.hidden) loadData();
         });
 
         renderHistory();
-
-        console.log('🌡️ Погода на Марсе загружена (VIP)');
+        console.log('🌌 VIP-погода на Марсе загружена');
     }
 
     if (document.readyState === 'loading') {

@@ -122,24 +122,43 @@ comments: false
     </button>
 
     <div id="map-content" class="toggle-content">
-        <p style="font-size:0.85rem; color:#9999bb; margin:12px 0 16px 0; line-height:1.5;">
-            Текущее местоположение марсохода на карте Марса
-        </p>
+    <p style="font-size:0.85rem; color:#9999bb; margin:12px 0 16px 0; line-height:1.5;">
+        Текущее местоположение марсохода на карте Марса
+    </p>
 
-        <div class="mars-map-container">
-            <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-map.png"
-                 alt="Карта Марса"
-                 class="mars-map-img"
-                 onerror="this.style.display='none'; document.getElementById('map-fallback').style.display='block';">
-            <div id="map-fallback" style="display:none; text-align:center; padding:60px 20px; color:#9999bb; font-size:0.85rem;">
-                📷 Карта недоступна. Загрузите файл <code style="color:#A29BFE;">mars-map.png</code> в папку <code style="color:#A29BFE;">docs/assets/images/</code>
-            </div>
-            <div class="mars-map-marker" style="left: 88.17%; top: 52.5%;">
-                <div class="marker-pulse"></div>
-                <div class="marker-dot"></div>
-                <div class="marker-label">Curiosity</div>
-            </div>
+    <div class="mars-map-container">
+        <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-satellite.png"
+             alt="Спутниковая карта Марса"
+             class="mars-map-img"
+             onerror="this.style.display='none'; document.getElementById('map-fallback').style.display='block';">
+        <div id="map-fallback" style="display:none; text-align:center; padding:60px 20px; color:#9999bb; font-size:0.85rem;">
+            📷 Карта недоступна. Загрузите файл <code style="color:#A29BFE;">mars-satellite.png</code> в папку <code style="color:#A29BFE;">docs/assets/images/</code>
         </div>
+        <div class="mars-map-marker" style="left: 88.17%; top: 52.5%;">
+            <div class="marker-pulse"></div>
+            <div class="marker-dot"></div>
+            <div class="marker-label">Curiosity</div>
+        </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; margin-top:16px;">
+        <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:10px; text-align:center;">
+            <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; font-weight:700; letter-spacing:0.5px; margin-bottom:4px;">Кратер</div>
+            <div style="font-size:0.95rem; font-weight:800; color:#A29BFE;">Гейл</div>
+        </div>
+        <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:10px; text-align:center;">
+            <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; font-weight:700; letter-spacing:0.5px; margin-bottom:4px;">Широта</div>
+            <div style="font-size:0.95rem; font-weight:800; color:#e8e8f0;">4.5° ю.ш.</div>
+        </div>
+        <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:10px; text-align:center;">
+            <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; font-weight:700; letter-spacing:0.5px; margin-bottom:4px;">Долгота</div>
+            <div style="font-size:0.95rem; font-weight:800; color:#e8e8f0;">137.4° в.д.</div>
+        </div>
+        <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:10px; text-align:center;">
+            <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; font-weight:700; letter-spacing:0.5px; margin-bottom:4px;">Активен с</div>
+            <div style="font-size:0.95rem; font-weight:800; color:#e8e8f0;">Август 2012</div>
+        </div>
+    </div>
 
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; margin-top:16px;">
             <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:10px; text-align:center;">

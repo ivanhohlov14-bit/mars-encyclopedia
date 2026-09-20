@@ -61,17 +61,24 @@
     <li>• Вид. звёздная величина: −2,9</li>
   </ul>
 
-  <hr style="margin: 6px 0; border-color: #c0bcb3;">
+   <hr style="margin: 6px 0; border-color: #c0bcb3;">
 
   <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
     Звук планеты
   </div>
 
-  <div class="mars-sound mars-sound--infobox"
-       data-src="/assets/sounds/mars-wind.mp3"
-       data-title="Ветер Марса"
-       data-caption="Реконструкция звука"
-       data-theme="blue"></div>
+  <div style="padding: 10px 0;">
+    <audio id="mars-wind-audio" preload="none" style="width: 100%; display: none;">
+      <source src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/sounds/mars-wind.mp3" type="audio/mpeg">
+      Ваш браузер не поддерживает аудио.
+    </audio>
+    <button id="mars-wind-play" onclick="var a=document.getElementById('mars-wind-audio'); if(a.paused){a.play(); this.innerHTML='⏸ Пауза';} else {a.pause(); this.innerHTML='▶ Ветер Марса';}" style="width: 100%; padding: 12px 16px; background: linear-gradient(135deg, #6C63FF, #A29BFE); color: #fff; border: none; border-radius: 24px; font-weight: 700; font-size: 0.9rem; cursor: pointer; font-family: inherit; box-shadow: 0 4px 16px rgba(108,99,255,0.4); transition: all 0.25s;">
+      ▶ Ветер Марса
+    </button>
+    <div style="font-size: 0.7rem; color: #555; text-align: center; margin-top: 6px;">
+      Запись с микрофона марсохода · NASA
+    </div>
+  </div>
 
   <hr style="margin: 6px 0; border-color: #c0bcb3;">
 

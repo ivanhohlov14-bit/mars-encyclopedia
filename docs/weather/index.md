@@ -23,7 +23,7 @@ comments: false
                 <div class="rover-tooltip-row"><b>Статус:</b> Активен с 2012 года</div>
                 <div class="rover-tooltip-row"><b>Прибор:</b> REMS (погодная станция)</div>
                 <div class="rover-tooltip-row"><b>Источник:</b> NASA / JPL-Caltech</div>
-                <div class="rover-tooltip-note">NASA обновляет данные не каждый день — иногда раз в несколько суток. На сайте всегда отображаются последние доступные данные.</div>
+                <div class="rover-tooltip-note">NASA обновляет данные с задержкой — иногда раз в несколько суток.</div>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@ comments: false
     <div style="flex:1;">
         <div id="status-text" style="font-weight:700; font-size:0.92rem; color:#e8e8f0;">Загрузка данных...</div>
         <div style="font-size:0.8rem; color:#A29BFE; margin-top:8px; font-weight:600; line-height:1.55;">
-            NASA публикует погодные данные с марсоходов не каждый день — иногда раз в несколько суток. На странице показаны последние доступные значения.
+            NASA передаёт данные с задержкой. Отображаются последние полученные значения.
         </div>
     </div>
 </div>
@@ -45,22 +45,30 @@ comments: false
 <div id="weather-cards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:28px;"></div>
 
 <!-- ============================================================ -->
-<!-- 📅 КАЛЕНДАРЬ МАРСА                                          -->
+<!-- 📅 КАЛЕНДАРЬ (свёрнут по умолчанию)                         -->
 <!-- ============================================================ -->
 <div class="cosmic-block">
-    <h3 class="block-title"><span>📅</span> Архив погоды Марса · Curiosity (2012–2026)</h3>
-    <p style="font-size:0.85rem; color:#9999bb; margin:0 0 16px 0; line-height:1.5;">
-        Кликните на любой сол, чтобы увидеть подробные данные NASA за этот день
-    </p>
+    <button id="cal-toggle" class="cal-toggle-btn">
+        <span class="cal-toggle-icon">📅</span>
+        <span class="cal-toggle-text">Архив погоды Марса</span>
+        <span class="cal-toggle-sub">Curiosity · 2012–2026</span>
+        <span id="cal-toggle-arrow" class="cal-toggle-arrow">▼</span>
+    </button>
 
-    <div id="cal-year-selector" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; justify-content:center;"></div>
+    <div id="cal-content" class="cal-content">
+        <p style="font-size:0.85rem; color:#9999bb; margin:12px 0 16px 0; line-height:1.5;">
+            Кликните на любой сол, чтобы увидеть подробные данные NASA за этот день
+        </p>
 
-    <div id="cal-status-bar" style="display:flex; align-items:flex-start; gap:10px; padding:12px 16px; background: rgba(108,99,255,0.08); border: 1px solid rgba(108,99,255,0.25); border-radius: 10px; margin-bottom:18px;">
-        <div id="cal-status-dot" style="width:8px; height:8px; border-radius:50%; background:#9999bb; margin-top:6px; flex-shrink:0;"></div>
-        <div id="cal-status-text" style="font-size:0.85rem; color:#e8e8f0; font-weight:600; line-height:1.5;">Загрузка архива NASA...</div>
+        <div id="cal-year-selector" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; justify-content:center;"></div>
+
+        <div id="cal-status-bar" style="display:flex; align-items:flex-start; gap:10px; padding:12px 16px; background: rgba(108,99,255,0.08); border: 1px solid rgba(108,99,255,0.25); border-radius: 10px; margin-bottom:18px;">
+            <div id="cal-status-dot" style="width:8px; height:8px; border-radius:50%; background:#9999bb; margin-top:6px; flex-shrink:0;"></div>
+            <div id="cal-status-text" style="font-size:0.85rem; color:#e8e8f0; font-weight:600; line-height:1.5;">Загрузка архива NASA...</div>
+        </div>
+
+        <div id="cal-months"></div>
     </div>
-
-    <div id="cal-months"></div>
 </div>
 
 <!-- Марсианский сезон -->
@@ -314,6 +322,74 @@ comments: false
     letter-spacing: 0.3px;
 }
 
+/* Кнопка-переключатель календаря */
+.cal-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--c-text);
+    transition: all 0.2s;
+    text-align: left;
+}
+.cal-toggle-btn:hover .cal-toggle-text {
+    color: var(--c-accent-light);
+}
+.cal-toggle-icon {
+    font-size: 1.15rem;
+    flex-shrink: 0;
+}
+.cal-toggle-text {
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+}
+.cal-toggle-sub {
+    font-size: 0.78rem;
+    color: var(--c-text-dim);
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: 12px;
+}
+.cal-toggle-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(108,99,255,0.15);
+    border: 1px solid rgba(108,99,255,0.3);
+    color: var(--c-accent-light);
+    font-size: 0.75rem;
+    transition: transform 0.3s, background 0.2s;
+    flex-shrink: 0;
+}
+.cal-toggle-btn:hover .cal-toggle-arrow {
+    background: rgba(108,99,255,0.3);
+}
+.cal-toggle-btn.open .cal-toggle-arrow {
+    transform: rotate(180deg);
+}
+
+/* Скрытие/раскрытие контента */
+.cal-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+.cal-content.open {
+    max-height: 5000px;
+    opacity: 1;
+}
+
 /* Сезон */
 .season-badge {
     display: inline-flex;
@@ -465,6 +541,7 @@ comments: false
     .cal-month-card { padding: 10px; }
     .cal-days-grid { grid-template-columns: repeat(10, 1fr); gap: 2px; }
     .cal-day { font-size: 0.5rem; }
+    .cal-toggle-sub { display: none; }
 }
 @media (max-width: 500px) {
     .cal-month-grid { grid-template-columns: 1fr; }
@@ -487,9 +564,7 @@ comments: false
     // ============================================================
     // 🌡️ УТИЛИТЫ
     // ============================================================
-    function toFahrenheit(c) {
-        return Math.round(c * 9 / 5 + 32);
-    }
+    function toFahrenheit(c) { return Math.round(c * 9 / 5 + 32); }
 
     const SOLS_IN_YEAR = 668.6;
     const SOLS_IN_MONTH = SOLS_IN_YEAR / 12;
@@ -555,7 +630,7 @@ comments: false
     }
 
     // ============================================================
-    // 🔌 ЗАГРУЗКА ТЕКУЩЕЙ ПОГОДЫ
+    // 🔌 ЗАГРУЗКА ПОГОДЫ
     // ============================================================
     function parseNASA(json) {
         if (!json || !json.soles || !json.soles.length) return null;
@@ -608,7 +683,7 @@ comments: false
     }
 
     // ============================================================
-    // 🎨 РЕНДЕР КАРТОЧЕК
+    // 🎨 КАРТОЧКИ
     // ============================================================
     function renderCards(data) {
         const cardsEl = document.getElementById('weather-cards');
@@ -662,7 +737,7 @@ comments: false
     }
 
     // ============================================================
-    // 🌍 СЕЗОН И СРАВНЕНИЕ
+    // 🌍 СЕЗОН + СРАВНЕНИЕ
     // ============================================================
     function renderSeason(data) {
         const el = document.getElementById('season-info');
@@ -855,6 +930,36 @@ comments: false
         });
     }
 
+    // ============================================================
+    // 🔒 СКРЫТИЕ КНОПКИ ЭФФЕКТОВ
+    // ============================================================
+    function hideEffectsButton() {
+        const btn = document.getElementById('effects-menu-btn');
+        if (btn) {
+            btn.style.setProperty('display', 'none', 'important');
+            btn.style.setProperty('visibility', 'hidden', 'important');
+            btn.style.setProperty('opacity', '0', 'important');
+        }
+        // Также скрываем панель эффектов, если открыта
+        const panel = document.getElementById('effects-menu-panel');
+        if (panel) {
+            panel.style.setProperty('display', 'none', 'important');
+            panel.style.setProperty('visibility', 'hidden', 'important');
+        }
+    }
+
+    function showEffectsButton() {
+        const btn = document.getElementById('effects-menu-btn');
+        if (btn) {
+            btn.style.removeProperty('display');
+            btn.style.removeProperty('visibility');
+            btn.style.removeProperty('opacity');
+        }
+    }
+
+    // ============================================================
+    // 🪟 МОДАЛКА
+    // ============================================================
     function openSolModal(solNum) {
         const data = ALL_SOLS.find(s => s.sol === solNum);
         if (!data) return;
@@ -934,13 +1039,34 @@ comments: false
         `;
 
         modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        hideEffectsButton();
     }
 
     function closeSolModal() {
         const m = document.getElementById('sol-modal');
         if (m) m.style.display = 'none';
+        document.body.style.overflow = '';
+        showEffectsButton();
     }
 
+    // ============================================================
+    // 🔽 ПЕРЕКЛЮЧАТЕЛЬ КАЛЕНДАРЯ
+    // ============================================================
+    function setupCalendarToggle() {
+        const btn = document.getElementById('cal-toggle');
+        const content = document.getElementById('cal-content');
+        if (!btn || !content) return;
+
+        btn.onclick = () => {
+            btn.classList.toggle('open');
+            content.classList.toggle('open');
+        };
+    }
+
+    // ============================================================
+    // 📊 СТАТУС КАЛЕНДАРЯ
+    // ============================================================
     function updateCalStatus(count, error) {
         const dot = document.getElementById('cal-status-dot');
         const text = document.getElementById('cal-status-text');
@@ -1015,7 +1141,7 @@ comments: false
             if (!document.hidden) loadData(false);
         });
 
-        // Календарь
+        setupCalendarToggle();
         setTimeout(initCalendar, 100);
 
         console.log('🌌 VIP-погода на Марсе загружена');

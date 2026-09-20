@@ -12,7 +12,7 @@ comments: false
 <div id="controls" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-bottom:20px; position: relative; z-index: 100;">
     <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; position: relative;">
         <div class="rover-wrapper">
-            <button class="rover-btn active" data-rover="curiosity">
+            <button class="rover-btn active">
                 Curiosity
                 <span class="rover-info-icon">?</span>
             </button>
@@ -23,9 +23,7 @@ comments: false
                 <div class="rover-tooltip-row"><b>Статус:</b> Активен с 2012 года</div>
                 <div class="rover-tooltip-row"><b>Прибор:</b> REMS (погодная станция)</div>
                 <div class="rover-tooltip-row"><b>Источник:</b> NASA / JPL-Caltech</div>
-                <div class="rover-tooltip-note">
-                    NASA обновляет данные не каждый день — иногда раз в несколько суток. На сайте всегда отображаются последние доступные данные.
-                </div>
+                <div class="rover-tooltip-note">NASA обновляет данные не каждый день — иногда раз в несколько суток. На сайте всегда отображаются последние доступные данные.</div>
             </div>
         </div>
     </div>
@@ -46,10 +44,23 @@ comments: false
 <!-- Сетка карточек -->
 <div id="weather-cards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:28px;"></div>
 
-<!-- Историческая справка -->
+<!-- ============================================================ -->
+<!-- 📅 КАЛЕНДАРЬ МАРСА                                          -->
+<!-- ============================================================ -->
 <div class="cosmic-block">
-    <h3 class="block-title"><span>📊</span> История за последние 7 солей</h3>
-    <div id="history-chart" style="overflow-x:auto;"></div>
+    <h3 class="block-title"><span>📅</span> Архив погоды Марса · Curiosity (2012–2026)</h3>
+    <p style="font-size:0.85rem; color:#9999bb; margin:0 0 16px 0; line-height:1.5;">
+        Кликните на любой сол, чтобы увидеть подробные данные NASA за этот день
+    </p>
+
+    <div id="cal-year-selector" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; justify-content:center;"></div>
+
+    <div id="cal-status-bar" style="display:flex; align-items:flex-start; gap:10px; padding:12px 16px; background: rgba(108,99,255,0.08); border: 1px solid rgba(108,99,255,0.25); border-radius: 10px; margin-bottom:18px;">
+        <div id="cal-status-dot" style="width:8px; height:8px; border-radius:50%; background:#9999bb; margin-top:6px; flex-shrink:0;"></div>
+        <div id="cal-status-text" style="font-size:0.85rem; color:#e8e8f0; font-weight:600; line-height:1.5;">Загрузка архива NASA...</div>
+    </div>
+
+    <div id="cal-months"></div>
 </div>
 
 <!-- Марсианский сезон -->
@@ -70,15 +81,21 @@ comments: false
 
 </div>
 
+<!-- Модалка -->
+<div id="sol-modal" style="display:none; position:fixed; inset:0; z-index:99999; align-items:center; justify-content:center; padding:20px;">
+    <div id="sol-modal-bg" style="position:absolute; inset:0; background: rgba(10,10,20,0.85); backdrop-filter: blur(6px);"></div>
+    <div style="position:relative; background: linear-gradient(135deg, #1a1a2e, #252550); border: 1.5px solid #6C63FF; border-radius: 20px; padding:28px; max-width: 520px; width:100%; max-height:85vh; overflow-y:auto; box-shadow: 0 20px 60px rgba(108,99,255,0.4);">
+        <button id="modal-close" style="position:absolute; top:14px; right:14px; width:32px; height:32px; border-radius:50%; background: rgba(108,99,255,0.15); color:#A29BFE; border: 1px solid rgba(108,99,255,0.3); font-size:1rem; cursor:pointer;">✕</button>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
 <style>
 #weather-app {
-    --c-bg-1: #1a1a2e;
-    --c-bg-2: #252550;
     --c-accent: #6C63FF;
     --c-accent-light: #A29BFE;
     --c-text: #e8e8f0;
     --c-text-dim: #9999bb;
-    --c-border: rgba(108, 99, 255, 0.4);
     color: var(--c-text);
 }
 
@@ -90,16 +107,9 @@ comments: false
     to { transform: rotate(360deg); }
 }
 
-/* ============================================================ */
-/* 🔘 Кнопка марсохода со значком вопроса                       */
-/* ============================================================ */
-.rover-wrapper {
-    position: relative;
-    display: inline-block;
-    z-index: 100;
-}
+/* Кнопка марсохода */
+.rover-wrapper { position: relative; display: inline-block; z-index: 100; }
 .rover-btn {
-    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -119,7 +129,6 @@ comments: false
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(108, 99, 255, 0.7);
 }
-
 .rover-info-icon {
     display: inline-flex;
     align-items: center;
@@ -132,18 +141,14 @@ comments: false
     font-weight: 800;
     font-size: 0.75rem;
     line-height: 1;
-    cursor: help;
     transition: all 0.2s;
-    flex-shrink: 0;
 }
 .rover-btn:hover .rover-info-icon {
     background: rgba(255, 255, 255, 0.45);
     transform: scale(1.1);
 }
 
-/* ============================================================ */
-/* 💬 Подсказка — СПРАВА от кнопки, ПОВЕРХ всех блоков           */
-/* ============================================================ */
+/* Подсказка */
 .rover-tooltip {
     position: absolute;
     top: -10px;
@@ -157,12 +162,10 @@ comments: false
     border-radius: 14px;
     padding: 16px 18px;
     font-size: 0.8rem;
-    font-weight: 400;
     line-height: 1.55;
-    white-space: normal;
     width: 320px;
     text-align: left;
-    box-shadow: 0 16px 48px rgba(108, 99, 255, 0.6), 0 0 0 1px rgba(108,99,255,0.2);
+    box-shadow: 0 16px 48px rgba(108, 99, 255, 0.6);
     opacity: 0;
     visibility: hidden;
     transform: translateX(-8px);
@@ -170,7 +173,6 @@ comments: false
     pointer-events: none;
     z-index: 9999;
 }
-/* Стрелка слева, указывает на кнопку */
 .rover-tooltip::before {
     content: '';
     position: absolute;
@@ -182,17 +184,13 @@ comments: false
     border-left: 1.5px solid var(--c-accent);
     border-bottom: 1.5px solid var(--c-accent);
     transform: rotate(45deg);
-    border-radius: 2px;
 }
-
 .rover-wrapper:hover .rover-tooltip,
 .rover-tooltip:hover {
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
-    pointer-events: auto;
 }
-
 .rover-tooltip-title {
     font-size: 0.95rem;
     font-weight: 800;
@@ -200,20 +198,9 @@ comments: false
     margin-bottom: 6px;
     padding-bottom: 8px;
     border-bottom: 1px solid rgba(108, 99, 255, 0.3);
-    letter-spacing: 0.3px;
 }
-.rover-tooltip-row {
-    display: block;
-    font-size: 0.8rem;
-    line-height: 1.55;
-    color: var(--c-text);
-    margin-bottom: 4px;
-}
-.rover-tooltip-row b {
-    color: var(--c-accent-light);
-    font-weight: 700;
-    margin-right: 4px;
-}
+.rover-tooltip-row { display: block; font-size: 0.8rem; line-height: 1.55; margin-bottom: 4px; }
+.rover-tooltip-row b { color: var(--c-accent-light); font-weight: 700; margin-right: 4px; }
 .rover-tooltip-note {
     display: block;
     margin-top: 10px;
@@ -225,9 +212,7 @@ comments: false
     font-style: italic;
 }
 
-/* ============================================================ */
-/* Общие стили                                                   */
-/* ============================================================ */
+/* Refresh */
 #refresh-btn {
     background: rgba(26, 26, 46, 0.7);
     color: var(--c-text-dim);
@@ -246,11 +231,9 @@ comments: false
     color: var(--c-text);
     box-shadow: 0 4px 16px rgba(108, 99, 255, 0.3);
 }
-#refresh-btn:disabled {
-    opacity: 0.6;
-    cursor: wait;
-}
+#refresh-btn:disabled { opacity: 0.6; cursor: wait; }
 
+/* Карточки */
 .weather-card {
     background: linear-gradient(135deg, #1a1a2e, #252550);
     border: 1.5px solid rgba(108, 99, 255, 0.4);
@@ -289,23 +272,14 @@ comments: false
 .weather-value {
     font-size: 2rem;
     font-weight: 800;
-    color: var(--c-text);
     line-height: 1.1;
     letter-spacing: -0.5px;
     display: flex;
     align-items: baseline;
     gap: 4px;
 }
-.weather-value .unit {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--c-text-dim);
-}
-.weather-sub {
-    font-size: 0.75rem;
-    color: var(--c-text-dim);
-    margin-top: 2px;
-}
+.weather-value .unit { font-size: 0.95rem; font-weight: 600; color: var(--c-text-dim); }
+.weather-sub { font-size: 0.75rem; color: var(--c-text-dim); margin-top: 2px; }
 .weather-badge {
     font-size: 0.72rem;
     font-weight: 700;
@@ -319,6 +293,7 @@ comments: false
     border: 1px solid rgba(108, 99, 255, 0.3);
 }
 
+/* Тёмные блоки */
 .cosmic-block {
     background: linear-gradient(135deg, #1a1a2e, #252550);
     border: 1.5px solid rgba(108, 99, 255, 0.4);
@@ -339,41 +314,7 @@ comments: false
     letter-spacing: 0.3px;
 }
 
-.history-bar {
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
-    height: 140px;
-    padding: 0 4px;
-    min-width: 500px;
-}
-.history-bar-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    height: 100%;
-    justify-content: flex-end;
-}
-.history-bar-fill {
-    width: 100%;
-    border-radius: 8px 8px 0 0;
-    min-height: 6px;
-    transition: height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 0 12px currentColor;
-}
-.history-bar-value {
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: var(--c-accent-light);
-}
-.history-bar-day {
-    font-size: 0.7rem;
-    color: var(--c-text-dim);
-    font-weight: 600;
-}
-
+/* Сезон */
 .season-badge {
     display: inline-flex;
     align-items: center;
@@ -385,10 +326,7 @@ comments: false
     color: #fff;
     box-shadow: 0 4px 16px rgba(0,0,0,0.35);
 }
-.season-progress {
-    flex: 1;
-    min-width: 200px;
-}
+.season-progress { flex: 1; min-width: 200px; }
 .season-progress-track {
     width: 100%;
     height: 12px;
@@ -405,28 +343,109 @@ comments: false
     box-shadow: 0 0 12px currentColor;
 }
 
-.cosmic-spinner {
+/* Календарь */
+.cal-year-btn {
+    background: rgba(26,26,46,0.7);
+    color: #9999bb;
+    border: 1.5px solid rgba(108,99,255,0.3);
+    border-radius: 22px;
+    padding: 7px 16px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: inherit;
+}
+.cal-year-btn:hover {
+    transform: translateY(-2px);
+    border-color: #6C63FF;
+    color: #e8e8f0;
+    box-shadow: 0 4px 16px rgba(108,99,255,0.3);
+}
+.cal-year-btn.active {
+    background: linear-gradient(135deg, #6C63FF, #A29BFE);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 16px rgba(108,99,255,0.5);
+}
+.cal-month-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+}
+.cal-month-card {
+    background: rgba(26,26,46,0.5);
+    border: 1px solid rgba(108,99,255,0.25);
+    border-radius: 12px;
+    padding: 12px;
+    transition: all 0.25s;
+}
+.cal-month-card:hover {
+    border-color: rgba(108,99,255,0.5);
+    background: rgba(26,26,46,0.7);
+}
+.cal-month-title {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #A29BFE;
+    margin-bottom: 10px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+.cal-days-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 3px;
+}
+.cal-day {
+    aspect-ratio: 1;
+    border-radius: 5px;
+    background: rgba(108,99,255,0.08);
+    border: 1px solid rgba(108,99,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.58rem;
+    font-weight: 600;
+    color: #9999bb;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.cal-day:hover {
+    transform: scale(1.18);
+    border-color: #6C63FF;
+    color: #fff;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(108,99,255,0.5);
+}
+.cal-day.cold { background: rgba(52,152,219,0.35); border-color: rgba(52,152,219,0.5); color: #a9d5f0; }
+.cal-day.cool { background: rgba(108,99,255,0.3); border-color: rgba(108,99,255,0.5); color: #c8c4ff; }
+.cal-day.warm { background: rgba(243,156,18,0.3); border-color: rgba(243,156,18,0.5); color: #ffd59e; }
+.cal-day.hot { background: rgba(231,76,60,0.4); border-color: rgba(231,76,60,0.6); color: #ffb8b0; }
+.cal-day.no-data { opacity: 0.25; cursor: not-allowed; }
+.cal-spinner {
     display: inline-block;
     width: 32px;
     height: 32px;
     border: 3px solid rgba(108,99,255,0.2);
-    border-top-color: var(--c-accent);
+    border-top-color: #6C63FF;
     border-radius: 50%;
     animation: cosmicSpin 0.8s linear infinite;
 }
+.cal-loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: #9999bb;
+    font-size: 0.85rem;
+}
 
-/* ============================================================ */
-/* Мобильная адаптация                                           */
-/* ============================================================ */
+/* Мобильный */
 @media (max-width: 700px) {
     #weather-title { font-size: 1.6rem !important; }
     .weather-value { font-size: 1.5rem; }
     .weather-card { padding: 16px; }
-    .history-bar { min-width: 400px; height: 110px; }
     .rover-btn, #refresh-btn { padding: 8px 16px; font-size: 0.82rem; }
     .cosmic-block { padding: 18px 16px; }
-
-    /* На мобильном — подсказка снизу, чтобы не улетала за экран */
     .rover-tooltip {
         top: calc(100% + 12px);
         left: 0;
@@ -441,9 +460,14 @@ comments: false
         border-top: 1.5px solid var(--c-accent);
         border-bottom: none;
     }
-    .rover-wrapper:hover .rover-tooltip {
-        transform: translateY(0);
-    }
+    .rover-wrapper:hover .rover-tooltip { transform: translateY(0); }
+    .cal-month-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .cal-month-card { padding: 10px; }
+    .cal-days-grid { grid-template-columns: repeat(10, 1fr); gap: 2px; }
+    .cal-day { font-size: 0.5rem; }
+}
+@media (max-width: 500px) {
+    .cal-month-grid { grid-template-columns: 1fr; }
 }
 </style>
 
@@ -451,22 +475,34 @@ comments: false
 (function() {
     'use strict';
 
-    // ============================================================
-    // 🔌 КОНФИГУРАЦИЯ
-    // ============================================================
-    const NASA_MSL_URL = 'https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json';
-    const CACHE_TTL = 10 * 60 * 1000; // 10 минут
+    const NASA_URL = 'https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json';
+    const CACHE_TTL = 10 * 60 * 1000;
+    const ARCHIVE_CACHE_KEY = 'mars_full_archive_v1';
+    const ARCHIVE_CACHE_TTL = 60 * 60 * 1000;
+
+    let ALL_SOLS = [];
+    let BY_YEAR = {};
+    let currentCalYear = null;
 
     // ============================================================
-    // 🌡️ КОНВЕРТАЦИЯ
+    // 🌡️ УТИЛИТЫ
     // ============================================================
     function toFahrenheit(c) {
         return Math.round(c * 9 / 5 + 32);
     }
 
-    // ============================================================
-    // 📅 МАРСИАНСКИЙ КАЛЕНДАРЬ
-    // ============================================================
+    const SOLS_IN_YEAR = 668.6;
+    const SOLS_IN_MONTH = SOLS_IN_YEAR / 12;
+
+    function getMarsYear(sol) {
+        return Math.floor(parseInt(sol) / SOLS_IN_YEAR) + 1;
+    }
+    function getMarsMonth(sol) {
+        const year = getMarsYear(sol);
+        const dayInYear = parseInt(sol) - (year - 1) * SOLS_IN_YEAR;
+        return Math.floor(dayInYear / SOLS_IN_MONTH) + 1;
+    }
+
     const MARS_MONTHS = [
         'Ākha-dzen', 'Kōl-khan', 'Dzen-ākha', 'Khōsen',
         'Mar-dzen', 'Ariya-mar', 'Zal-ākha', 'Thal-khō',
@@ -485,9 +521,6 @@ comments: false
         return { year, month: MARS_MONTHS[monthIdx], day, sol };
     }
 
-    // ============================================================
-    // 🌍 СЕЗОН
-    // ============================================================
     function getSeason(ls) {
         if (ls === null || ls === undefined) {
             return { name: 'Неизвестно', emoji: '❓', color: '#9999bb', progress: 0, ls: 0 };
@@ -499,8 +532,30 @@ comments: false
         return { name: 'Северная зима', emoji: '❄️', color: '#3498db', progress: (l - 270) / 90 * 100, ls: l };
     }
 
+    function formatEarthDate(str) {
+        try {
+            const d = new Date(str);
+            return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+        } catch(e) { return str; }
+    }
+
+    function humanAge(dateStr) {
+        try {
+            const then = new Date(dateStr).getTime();
+            const diff = Date.now() - then;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const mins = Math.floor(diff / (1000 * 60));
+            if (mins < 60) return `${mins} мин назад`;
+            if (hours < 24) return `${hours} ч назад`;
+            if (days < 30) return `${days} дн назад`;
+            const months = Math.floor(days / 30);
+            return `${months} мес назад`;
+        } catch(e) { return ''; }
+    }
+
     // ============================================================
-    // 🔄 ПАРСИНГ NASA
+    // 🔌 ЗАГРУЗКА ТЕКУЩЕЙ ПОГОДЫ
     // ============================================================
     function parseNASA(json) {
         if (!json || !json.soles || !json.soles.length) return null;
@@ -516,17 +571,12 @@ comments: false
             sunset: s.sunset || '—',
             ls: s.ls !== undefined ? parseFloat(s.ls) : null,
             windSpeed: s.wind_speed !== undefined ? parseFloat(s.wind_speed) : null,
-            windDir: s.wind_direction !== undefined ? parseFloat(s.wind_direction) : null,
-            season: s.season || null
+            windDir: s.wind_direction !== undefined ? parseFloat(s.wind_direction) : null
         };
     }
 
-    // ============================================================
-    // 🔄 ЗАГРУЗКА
-    // ============================================================
     async function fetchWeather(forceRefresh) {
         const cacheKey = 'mars_weather_curiosity_v3';
-
         if (!forceRefresh) {
             try {
                 const cached = localStorage.getItem(cacheKey);
@@ -540,7 +590,7 @@ comments: false
         }
 
         try {
-            const res = await fetch(NASA_MSL_URL, { cache: 'no-store' });
+            const res = await fetch(NASA_URL, { cache: 'no-store' });
             if (!res.ok) throw new Error('HTTP ' + res.status);
             const json = await res.json();
             const data = parseNASA(json);
@@ -612,75 +662,7 @@ comments: false
     }
 
     // ============================================================
-    // 📊 ИСТОРИЯ
-    // ============================================================
-    async function renderHistory() {
-        const historyEl = document.getElementById('history-chart');
-        const cacheKey = 'mars_history_7sols_v3';
-
-        try {
-            const cached = localStorage.getItem(cacheKey);
-            if (cached) {
-                const parsed = JSON.parse(cached);
-                if (Date.now() - parsed.timestamp < 60 * 60 * 1000) {
-                    drawHistory(parsed.sols);
-                    return;
-                }
-            }
-        } catch(e) {}
-
-        historyEl.innerHTML = '<div style="text-align:center;padding:20px;color:#9999bb;"><div class="cosmic-spinner"></div><p style="margin-top:10px;font-size:0.82rem;">Загрузка истории...</p></div>';
-
-        try {
-            const res = await fetch(NASA_MSL_URL);
-            if (!res.ok) throw new Error('Failed');
-            const json = await res.json();
-            const sols = (json.soles || []).slice(0, 7).reverse();
-            if (sols.length === 0) throw new Error('No data');
-            localStorage.setItem(cacheKey, JSON.stringify({
-                timestamp: Date.now(),
-                sols: sols
-            }));
-            drawHistory(sols);
-        } catch(e) {
-            historyEl.innerHTML = '<div style="text-align:center;padding:20px;color:#9999bb;">📭 Исторические данные временно недоступны</div>';
-        }
-    }
-
-    function drawHistory(sols) {
-        const historyEl = document.getElementById('history-chart');
-        const minTemps = sols.map(s => parseFloat(s.min_temp)).filter(v => !isNaN(v));
-        const maxTemps = sols.map(s => parseFloat(s.max_temp)).filter(v => !isNaN(v));
-        const globalMin = Math.min(...(minTemps.length ? minTemps : [-100]));
-        const globalMax = Math.max(...(maxTemps.length ? maxTemps : [0]));
-
-        let html = '<div class="history-bar">';
-        sols.forEach(s => {
-            const minT = parseFloat(s.min_temp);
-            const maxT = parseFloat(s.max_temp);
-            if (isNaN(minT) || isNaN(maxT)) return;
-            const heightPct = ((maxT - globalMin) / (globalMax - globalMin)) * 100;
-            const avgT = (minT + maxT) / 2;
-            const color = avgT < -50 ? '#3498db' : avgT < -20 ? '#6C63FF' : '#A29BFE';
-            html += `
-                <div class="history-bar-item">
-                    <span class="history-bar-value">${Math.round(avgT)}°</span>
-                    <div class="history-bar-fill" style="height:${Math.max(heightPct, 8)}%; background: linear-gradient(180deg, ${color}, ${color}88); color: ${color};"></div>
-                    <span class="history-bar-day">${s.sol}</span>
-                </div>
-            `;
-        });
-        html += '</div>';
-        html += '<div style="display:flex;justify-content:space-between;font-size:0.72rem;color:#9999bb;margin-top:10px;padding:0 4px;">';
-        html += '<span>← Старые солы</span>';
-        html += '<span>Последние 7 солей →</span>';
-        html += '</div>';
-
-        historyEl.innerHTML = html;
-    }
-
-    // ============================================================
-    // 🌍 СЕЗОН
+    // 🌍 СЕЗОН И СРАВНЕНИЕ
     // ============================================================
     function renderSeason(data) {
         const el = document.getElementById('season-info');
@@ -706,9 +688,6 @@ comments: false
         `;
     }
 
-    // ============================================================
-    // 🌍 СРАВНЕНИЕ
-    // ============================================================
     function renderCompare(data) {
         const el = document.getElementById('earth-compare');
         if (!data) {
@@ -717,8 +696,7 @@ comments: false
         }
 
         const marsAvg = (data.minTemp !== null && data.maxTemp !== null)
-            ? Math.round((data.minTemp + data.maxTemp) / 2)
-            : null;
+            ? Math.round((data.minTemp + data.maxTemp) / 2) : null;
         const earthTemp = 15;
         const diff = marsAvg !== null ? earthTemp - marsAvg : null;
 
@@ -743,9 +721,6 @@ comments: false
         `;
     }
 
-    // ============================================================
-    // 🔄 СТАТУС — показываем ДАТУ NASA и СКОЛЬКО ВРЕМЕНИ ПРОШЛО
-    // ============================================================
     function updateStatus(data, cachedAt) {
         const dot = document.getElementById('status-dot');
         const text = document.getElementById('status-text');
@@ -760,8 +735,6 @@ comments: false
         const solText = 'Сол ' + data.sol;
         const earthText = data.earthDate ? ' · ' + formatEarthDate(data.earthDate) : '';
         const ageText = data.earthDate ? ' · ' + humanAge(data.earthDate) : '';
-
-        // Если данные старше 2 дней — жёлтый
         const daysOld = data.earthDate ? Math.floor((Date.now() - new Date(data.earthDate).getTime()) / (1000 * 60 * 60 * 24)) : 0;
 
         if (daysOld >= 2) {
@@ -775,32 +748,247 @@ comments: false
         }
     }
 
-    function formatEarthDate(str) {
+    // ============================================================
+    // 📅 КАЛЕНДАРЬ
+    // ============================================================
+    async function loadArchive() {
         try {
-            const d = new Date(str);
-            return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
-        } catch(e) { return str; }
+            const cached = localStorage.getItem(ARCHIVE_CACHE_KEY);
+            if (cached) {
+                const parsed = JSON.parse(cached);
+                if (Date.now() - parsed.timestamp < ARCHIVE_CACHE_TTL) {
+                    return parsed.data;
+                }
+            }
+        } catch(e) {}
+
+        const res = await fetch(NASA_URL, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const json = await res.json();
+        if (!json.soles || !json.soles.length) throw new Error('Нет данных');
+
+        localStorage.setItem(ARCHIVE_CACHE_KEY, JSON.stringify({
+            timestamp: Date.now(),
+            data: json.soles
+        }));
+        return json.soles;
     }
 
-    function humanAge(dateStr) {
-        try {
-            const then = new Date(dateStr).getTime();
-            const now = Date.now();
-            const diff = now - then;
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const mins = Math.floor(diff / (1000 * 60));
+    function groupByYear(sols) {
+        const groups = {};
+        sols.forEach(s => {
+            const yr = getMarsYear(s.sol);
+            if (!groups[yr]) groups[yr] = [];
+            groups[yr].push(s);
+        });
+        const sorted = {};
+        Object.keys(groups).sort((a, b) => b - a).forEach(k => {
+            groups[k].sort((a, b) => parseInt(a.sol) - parseInt(b.sol));
+            sorted[k] = groups[k];
+        });
+        return sorted;
+    }
 
-            if (mins < 60) return `${mins} мин назад`;
-            if (hours < 24) return `${hours} ч назад`;
-            if (days < 30) return `${days} дн назад`;
-            const months = Math.floor(days / 30);
-            return `${months} мес назад`;
-        } catch(e) { return ''; }
+    function tempClass(minT, maxT) {
+        const avg = (parseFloat(minT) + parseFloat(maxT)) / 2;
+        if (isNaN(avg)) return 'no-data';
+        if (avg < -70) return 'cold';
+        if (avg < -40) return 'cool';
+        if (avg < -15) return 'warm';
+        return 'hot';
+    }
+
+    function renderYearSelector() {
+        const el = document.getElementById('cal-year-selector');
+        if (!el) return;
+        const years = Object.keys(BY_YEAR);
+        el.innerHTML = years.map(y =>
+            `<button class="cal-year-btn ${y == currentCalYear ? 'active' : ''}" data-year="${y}">Год ${y}</button>`
+        ).join('');
+
+        el.querySelectorAll('.cal-year-btn').forEach(btn => {
+            btn.onclick = () => {
+                currentCalYear = btn.dataset.year;
+                renderYearSelector();
+                renderCalendarView();
+            };
+        });
+    }
+
+    function renderCalendarView() {
+        const view = document.getElementById('cal-months');
+        if (!view) return;
+        const sols = BY_YEAR[currentCalYear] || [];
+
+        const months = {};
+        sols.forEach(s => {
+            const m = getMarsMonth(s.sol);
+            if (!months[m]) months[m] = [];
+            months[m].push(s);
+        });
+
+        let html = '<div class="cal-month-grid">';
+        for (let m = 1; m <= 12; m++) {
+            const monthSols = months[m] || [];
+            html += `<div class="cal-month-card">
+                <div class="cal-month-title">${m}-й месяц</div>
+                <div class="cal-days-grid">`;
+
+            if (monthSols.length === 0) {
+                html += '<div style="grid-column: 1/-1; text-align:center; color:#9999bb; font-size:0.7rem; padding:8px;">нет данных</div>';
+            } else {
+                monthSols.forEach(s => {
+                    const cls = tempClass(s.min_temp, s.max_temp);
+                    const minV = Math.round(parseFloat(s.min_temp));
+                    const maxV = Math.round(parseFloat(s.max_temp));
+                    html += `<div class="cal-day ${cls}" data-sol="${s.sol}" title="Sol ${s.sol} · ${minV}…${maxV}°C">${s.sol.slice(-2)}</div>`;
+                });
+            }
+            html += '</div></div>';
+        }
+        html += '</div>';
+
+        view.innerHTML = html;
+
+        view.querySelectorAll('.cal-day[data-sol]').forEach(cell => {
+            cell.onclick = () => openSolModal(cell.dataset.sol);
+        });
+    }
+
+    function openSolModal(solNum) {
+        const data = ALL_SOLS.find(s => s.sol === solNum);
+        if (!data) return;
+
+        const modal = document.getElementById('sol-modal');
+        const body = document.getElementById('modal-body');
+
+        const minT = parseFloat(data.min_temp);
+        const maxT = parseFloat(data.max_temp);
+        const avgT = (!isNaN(minT) && !isNaN(maxT)) ? Math.round((minT + maxT) / 2) : null;
+        const pressurePa = parseFloat(data.pressure);
+        const pressureHpa = !isNaN(pressurePa) ? (pressurePa / 100).toFixed(2) : '—';
+
+        const earthMonthly = [4, 5, 9, 14, 18, 21, 23, 22, 19, 14, 9, 6];
+        let earthTemp = 15;
+        let earthMonthName = '';
+        try {
+            const d = new Date(data.terrestrial_date);
+            earthTemp = earthMonthly[d.getMonth()] || 15;
+            earthMonthName = d.toLocaleDateString('ru-RU', { month: 'long' });
+        } catch(e) {}
+        const diff = avgT !== null ? earthTemp - avgT : null;
+
+        body.innerHTML = `
+            <div style="font-size:1.7rem; font-weight:900; color:#A29BFE; margin-bottom:4px;">Сол ${data.sol}</div>
+            <div style="font-size:0.85rem; color:#9999bb; margin-bottom:20px;">${data.terrestrial_date || '—'} · Месяц ${getMarsMonth(data.sol)} · Год ${currentCalYear}</div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;">
+                <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-bottom:4px;">Максимум</div>
+                    <div style="font-size:1.2rem; font-weight:800; color:#f39c12;">${!isNaN(maxT) ? Math.round(maxT) + '°C' : '—'}</div>
+                </div>
+                <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-bottom:4px;">Минимум</div>
+                    <div style="font-size:1.2rem; font-weight:800; color:#5dade2;">${!isNaN(minT) ? Math.round(minT) + '°C' : '—'}</div>
+                </div>
+                <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-bottom:4px;">Средняя</div>
+                    <div style="font-size:1.2rem; font-weight:800; color:#e8e8f0;">${avgT !== null ? avgT + '°C' : '—'}</div>
+                </div>
+                <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-bottom:4px;">Давление</div>
+                    <div style="font-size:1.2rem; font-weight:800; color:#e8e8f0;">${pressureHpa}<span style="font-size:0.7rem; color:#9999bb; margin-left:3px;">гПа</span></div>
+                </div>
+                <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-bottom:4px;">Ветер</div>
+                    <div style="font-size:1.2rem; font-weight:800; color:#e8e8f0;">${data.wind_speed && data.wind_speed !== '--' ? data.wind_speed : '—'}<span style="font-size:0.7rem; color:#9999bb; margin-left:3px;">м/с</span></div>
+                </div>
+                <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-bottom:4px;">Атмосфера</div>
+                    <div style="font-size:1rem; font-weight:800; color:#e8e8f0;">${data.atmo_opacity || '—'}</div>
+                </div>
+                <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-bottom:4px;">Восход</div>
+                    <div style="font-size:1rem; font-weight:800; color:#e8e8f0;">${data.sunrise || '—'}</div>
+                </div>
+                <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:12px; text-align:center;">
+                    <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; letter-spacing:0.6px; font-weight:700; margin-bottom:4px;">Закат</div>
+                    <div style="font-size:1rem; font-weight:800; color:#e8e8f0;">${data.sunset || '—'}</div>
+                </div>
+            </div>
+
+            ${diff !== null ? `
+                <div style="padding:16px; background: rgba(108,99,255,0.1); border:1px solid rgba(108,99,255,0.25); border-radius:12px;">
+                    <div style="font-size:0.82rem; font-weight:800; color:#A29BFE; margin-bottom:10px;">🌍 Сравнение с Землёй</div>
+                    <div style="display:flex; justify-content:space-between; padding:6px 0; font-size:0.85rem; color:#e8e8f0; border-bottom:1px solid rgba(108,99,255,0.1);">
+                        <span>Средняя на Марсе</span><b style="color:#A29BFE;">${avgT}°C</b>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:6px 0; font-size:0.85rem; color:#e8e8f0; border-bottom:1px solid rgba(108,99,255,0.1);">
+                        <span>Средняя на Земле (${earthMonthName})</span><b style="color:#A29BFE;">~${earthTemp}°C</b>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; padding:6px 0; font-size:0.85rem; color:#e8e8f0;">
+                        <span>Разница</span><b style="color:#A29BFE;">${Math.abs(diff)}°C ${diff > 0 ? 'холоднее' : 'теплее'}</b>
+                    </div>
+                </div>
+            ` : ''}
+        `;
+
+        modal.style.display = 'flex';
+    }
+
+    function closeSolModal() {
+        const m = document.getElementById('sol-modal');
+        if (m) m.style.display = 'none';
+    }
+
+    function updateCalStatus(count, error) {
+        const dot = document.getElementById('cal-status-dot');
+        const text = document.getElementById('cal-status-text');
+        if (!dot || !text) return;
+
+        if (error) {
+            dot.style.background = '#e74c3c';
+            dot.style.boxShadow = '0 0 10px #e74c3c';
+            text.textContent = 'Не удалось загрузить архив NASA';
+            return;
+        }
+
+        dot.style.background = '#27ae60';
+        dot.style.boxShadow = '0 0 10px #27ae60';
+        text.innerHTML = `Загружено <b style="color:#A29BFE;">${count}</b> солов · Годы: ${Object.keys(BY_YEAR).length} · Источник: <b style="color:#A29BFE;">NASA</b>`;
+    }
+
+    async function initCalendar() {
+        const view = document.getElementById('cal-months');
+        if (!view) return;
+
+        view.innerHTML = '<div class="cal-loading"><div class="cal-spinner"></div><p style="margin-top:12px;">Загрузка архива NASA...</p></div>';
+
+        try {
+            const sols = await loadArchive();
+            ALL_SOLS = sols;
+            BY_YEAR = groupByYear(sols);
+            currentCalYear = Object.keys(BY_YEAR)[0];
+
+            renderYearSelector();
+            renderCalendarView();
+            updateCalStatus(sols.length, null);
+            console.log('📅 Календарь Марса загружен:', sols.length, 'солов');
+        } catch(e) {
+            console.error('Ошибка календаря:', e);
+            updateCalStatus(0, e);
+            view.innerHTML = '<div class="cal-loading">❌ Ошибка загрузки. Попробуйте позже.</div>';
+        }
+
+        document.getElementById('modal-close').onclick = closeSolModal;
+        document.getElementById('sol-modal-bg').onclick = closeSolModal;
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeSolModal();
+        });
     }
 
     // ============================================================
-    // 🔄 ЗАГРУЗКА
+    // 🚀 ЗАПУСК
     // ============================================================
     async function loadData(forceRefresh) {
         const result = await fetchWeather(forceRefresh);
@@ -810,29 +998,27 @@ comments: false
         renderCompare(result.data);
     }
 
-    // ============================================================
-    // 🚀 ЗАПУСК
-    // ============================================================
     async function init() {
         document.getElementById('refresh-btn').addEventListener('click', async function() {
             this.textContent = 'Загрузка...';
             this.disabled = true;
+            try { localStorage.removeItem('mars_weather_curiosity_v3'); } catch(e) {}
             await loadData(true);
             this.textContent = 'Обновить';
             this.disabled = false;
         });
 
         await loadData(false);
-
-        // Тихая проверка каждые 10 минут (без счётчика)
-        setInterval(() => loadData(false), CACHE_TTL);
+        setInterval(() => loadData(false), 10 * 60 * 1000);
 
         document.addEventListener('visibilitychange', function() {
             if (!document.hidden) loadData(false);
         });
 
-        renderHistory();
-        console.log('🌌 VIP-погода на Марсе — финальная версия');
+        // Календарь
+        setTimeout(initCalendar, 100);
+
+        console.log('🌌 VIP-погода на Марсе загружена');
     }
 
     if (document.readyState === 'loading') {

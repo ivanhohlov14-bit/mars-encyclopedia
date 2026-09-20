@@ -157,20 +157,22 @@
 
 В Эпоху Умирания (2680–2740 гг. Э.О.) атмосфера продолжала утончаться. К 2740 году давление упало до 2–3 мбар — критический уровень для дыхания даже с гемоцианином. Пылевые бури стали непрерывными, закрывая небо на недели и месяцы[^7].
 
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_violet_sky.jpg" alt="Фиолетовое небо Марса" style="width: 60%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Фиолетовое небо Марса на закате. Снимок марсохода Curiosity. NASA / JPL-Caltech.</div>
+</div>
+
 | Период | Давление, мбар | Состав |
 |--------|---------------|--------|
 | Эпоха Расцвета (2500–2680) | 6–7 | 95% CO₂, 3% N₂, 1,5% Ar, 0,1–0,2% O₂ |
 | Эпоха Умирания (2680–2740) | 2–3 | 96% CO₂, 3% N₂, следы Ar и O₂ |
 | Современность | 1–2 | 95,3% CO₂, 2,7% N₂, 1,6% Ar |
 
-<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_violet_sky.jpg" alt="Фиолетовое небо Марса" style="width: 60%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Фиолетовое небо Марса на закате. Снимок марсохода Curiosity. NASA / JPL-Caltech.</div>
-</div>
+
 
 ## Поверхность
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+<div style="float: left; margin-right: 15px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Olympus_Mons.jpg" alt="Олимп" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Олимп — высочайший вулкан Солнечной системы. NASA.</div>
 </div>
@@ -247,7 +249,7 @@
   </div>
 
   <div style="width: 160px; text-align: center;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/arkadia-flag-coat-of-arms.png" alt="Флаг Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Аркадия</div>
     <div style="font-size: 0.72rem; color: #555;">Северное царство рудокопов и кузнецов.</div>
   </div>

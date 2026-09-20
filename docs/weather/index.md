@@ -45,17 +45,17 @@ comments: false
 <div id="weather-cards" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:28px;"></div>
 
 <!-- ============================================================ -->
-<!-- 📅 КАЛЕНДАРЬ (свёрнут по умолчанию)                         -->
+<!-- 📅 КАЛЕНДАРЬ                                                -->
 <!-- ============================================================ -->
 <div class="cosmic-block">
-    <button id="cal-toggle" class="cal-toggle-btn">
-        <span class="cal-toggle-icon">📅</span>
-        <span class="cal-toggle-text">Архив погоды Марса</span>
-        <span class="cal-toggle-sub">Curiosity · 2012–2026</span>
-        <span id="cal-toggle-arrow" class="cal-toggle-arrow">▼</span>
+    <button class="cosmic-toggle" data-target="cal-content">
+        <span class="toggle-icon">📅</span>
+        <span class="toggle-text">Архив погоды Марса</span>
+        <span class="toggle-sub">Curiosity · 2012–2026</span>
+        <span class="toggle-arrow">▼</span>
     </button>
 
-    <div id="cal-content" class="cal-content">
+    <div id="cal-content" class="toggle-content">
         <p style="font-size:0.85rem; color:#9999bb; margin:12px 0 16px 0; line-height:1.5;">
             Кликните на любой сол, чтобы увидеть подробные данные NASA за этот день
         </p>
@@ -68,6 +68,97 @@ comments: false
         </div>
 
         <div id="cal-months"></div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 📈 ГРАФИК ТЕМПЕРАТУР                                        -->
+<!-- ============================================================ -->
+<div class="cosmic-block">
+    <button class="cosmic-toggle" data-target="chart-content">
+        <span class="toggle-icon">📈</span>
+        <span class="toggle-text">Температурный график</span>
+        <span class="toggle-sub">Мин / Сред / Макс по солам</span>
+        <span class="toggle-arrow">▼</span>
+    </button>
+
+    <div id="chart-content" class="toggle-content">
+        <p style="font-size:0.85rem; color:#9999bb; margin:12px 0 16px 0; line-height:1.5;">
+            Динамика температур по каждому солу выбранного года
+        </p>
+
+        <div id="chart-year-selector" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; justify-content:center;"></div>
+
+        <div style="position:relative; width:100%; height:300px; background: rgba(15,15,30,0.5); border: 1px solid rgba(108,99,255,0.2); border-radius: 12px; overflow:hidden;">
+            <canvas id="temp-chart" style="width:100%; height:100%; display:block;"></canvas>
+        </div>
+
+        <div style="display:flex; gap:20px; justify-content:center; margin-top:14px; flex-wrap:wrap;">
+            <div style="display:flex; align-items:center; gap:6px; font-size:0.78rem; color:#9999bb;">
+                <span style="display:inline-block; width:16px; height:3px; background:#f39c12; border-radius:2px;"></span>
+                Максимум
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; font-size:0.78rem; color:#9999bb;">
+                <span style="display:inline-block; width:16px; height:3px; background:#A29BFE; border-radius:2px;"></span>
+                Средняя
+            </div>
+            <div style="display:flex; align-items:center; gap:6px; font-size:0.78rem; color:#9999bb;">
+                <span style="display:inline-block; width:16px; height:3px; background:#5dade2; border-radius:2px;"></span>
+                Минимум
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 🗺 КАРТА МАРСА                                               -->
+<!-- ============================================================ -->
+<div class="cosmic-block">
+    <button class="cosmic-toggle" data-target="map-content">
+        <span class="toggle-icon">🗺</span>
+        <span class="toggle-text">Положение Curiosity</span>
+        <span class="toggle-sub">Кратер Гейл · 4.5° ю.ш.</span>
+        <span class="toggle-arrow">▼</span>
+    </button>
+
+    <div id="map-content" class="toggle-content">
+        <p style="font-size:0.85rem; color:#9999bb; margin:12px 0 16px 0; line-height:1.5;">
+            Текущее местоположение марсохода на карте Марса
+        </p>
+
+        <div class="mars-map-container">
+            <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-map.png"
+                 alt="Карта Марса"
+                 class="mars-map-img"
+                 onerror="this.style.display='none'; document.getElementById('map-fallback').style.display='block';">
+            <div id="map-fallback" style="display:none; text-align:center; padding:60px 20px; color:#9999bb; font-size:0.85rem;">
+                📷 Карта недоступна. Загрузите файл <code style="color:#A29BFE;">mars-map.png</code> в папку <code style="color:#A29BFE;">docs/assets/images/</code>
+            </div>
+            <div class="mars-map-marker" style="left: 88.17%; top: 52.5%;">
+                <div class="marker-pulse"></div>
+                <div class="marker-dot"></div>
+                <div class="marker-label">Curiosity</div>
+            </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px; margin-top:16px;">
+            <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:10px; text-align:center;">
+                <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; font-weight:700; letter-spacing:0.5px; margin-bottom:4px;">Кратер</div>
+                <div style="font-size:0.95rem; font-weight:800; color:#A29BFE;">Гейл</div>
+            </div>
+            <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:10px; text-align:center;">
+                <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; font-weight:700; letter-spacing:0.5px; margin-bottom:4px;">Широта</div>
+                <div style="font-size:0.95rem; font-weight:800; color:#e8e8f0;">4.5° ю.ш.</div>
+            </div>
+            <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:10px; text-align:center;">
+                <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; font-weight:700; letter-spacing:0.5px; margin-bottom:4px;">Долгота</div>
+                <div style="font-size:0.95rem; font-weight:800; color:#e8e8f0;">137.4° в.д.</div>
+            </div>
+            <div style="background: rgba(108,99,255,0.08); border:1px solid rgba(108,99,255,0.2); border-radius:10px; padding:10px; text-align:center;">
+                <div style="font-size:0.65rem; color:#9999bb; text-transform:uppercase; font-weight:700; letter-spacing:0.5px; margin-bottom:4px;">Активен с</div>
+                <div style="font-size:0.95rem; font-weight:800; color:#e8e8f0;">Август 2012</div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -322,8 +413,8 @@ comments: false
     letter-spacing: 0.3px;
 }
 
-/* Кнопка-переключатель календаря */
-.cal-toggle-btn {
+/* Универсальный переключатель */
+.cosmic-toggle {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -337,27 +428,27 @@ comments: false
     transition: all 0.2s;
     text-align: left;
 }
-.cal-toggle-btn:hover .cal-toggle-text {
+.cosmic-toggle:hover .toggle-text {
     color: var(--c-accent-light);
 }
-.cal-toggle-icon {
+.toggle-icon {
     font-size: 1.15rem;
     flex-shrink: 0;
 }
-.cal-toggle-text {
+.toggle-text {
     font-size: 1.05rem;
     font-weight: 800;
     letter-spacing: 0.3px;
     transition: color 0.2s;
 }
-.cal-toggle-sub {
+.toggle-sub {
     font-size: 0.78rem;
     color: var(--c-text-dim);
     font-weight: 600;
     margin-left: auto;
     margin-right: 12px;
 }
-.cal-toggle-arrow {
+.toggle-arrow {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -371,22 +462,22 @@ comments: false
     transition: transform 0.3s, background 0.2s;
     flex-shrink: 0;
 }
-.cal-toggle-btn:hover .cal-toggle-arrow {
+.cosmic-toggle:hover .toggle-arrow {
     background: rgba(108,99,255,0.3);
 }
-.cal-toggle-btn.open .cal-toggle-arrow {
+.cosmic-toggle.open .toggle-arrow {
     transform: rotate(180deg);
 }
 
 /* Скрытие/раскрытие контента */
-.cal-content {
+.toggle-content {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease, opacity 0.3s ease;
+    transition: max-height 0.6s ease, opacity 0.3s ease;
     opacity: 0;
 }
-.cal-content.open {
-    max-height: 5000px;
+.toggle-content.open {
+    max-height: 8000px;
     opacity: 1;
 }
 
@@ -515,6 +606,77 @@ comments: false
     font-size: 0.85rem;
 }
 
+/* Карта Марса */
+.mars-map-container {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a2e, #252550);
+    border: 1px solid rgba(108,99,255,0.25);
+}
+.mars-map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.9;
+    filter: contrast(1.05) brightness(0.95);
+}
+.mars-map-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+}
+.marker-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #e74c3c;
+    border: 2px solid #fff;
+    box-shadow: 0 0 16px rgba(231,76,60,1), 0 0 32px rgba(231,76,60,0.6);
+    position: relative;
+    z-index: 2;
+    animation: markerGlow 2s ease-in-out infinite;
+}
+.marker-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(231,76,60,0.7);
+    z-index: 1;
+    animation: markerPulse 2s ease-out infinite;
+}
+.marker-label {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #1a1a2e, #252550);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: 1.5px solid #6C63FF;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    z-index: 3;
+    letter-spacing: 0.4px;
+}
+@keyframes markerPulse {
+    0% { width: 14px; height: 14px; opacity: 1; }
+    100% { width: 70px; height: 70px; opacity: 0; }
+}
+@keyframes markerGlow {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
 /* Мобильный */
 @media (max-width: 700px) {
     #weather-title { font-size: 1.6rem !important; }
@@ -541,7 +703,9 @@ comments: false
     .cal-month-card { padding: 10px; }
     .cal-days-grid { grid-template-columns: repeat(10, 1fr); gap: 2px; }
     .cal-day { font-size: 0.5rem; }
-    .cal-toggle-sub { display: none; }
+    .toggle-sub { display: none; }
+    .toggle-text { font-size: 0.95rem; }
+    .marker-label { font-size: 0.62rem; padding: 3px 8px; }
 }
 @media (max-width: 500px) {
     .cal-month-grid { grid-template-columns: 1fr; }
@@ -560,6 +724,7 @@ comments: false
     let ALL_SOLS = [];
     let BY_YEAR = {};
     let currentCalYear = null;
+    let currentChartYear = null;
 
     // ============================================================
     // 🌡️ УТИЛИТЫ
@@ -824,7 +989,7 @@ comments: false
     }
 
     // ============================================================
-    // 📅 КАЛЕНДАРЬ
+    // 📅 АРХИВ
     // ============================================================
     async function loadArchive() {
         try {
@@ -931,7 +1096,170 @@ comments: false
     }
 
     // ============================================================
-    // 🔒 СКРЫТИЕ КНОПКИ ЭФФЕКТОВ
+    // 📈 ГРАФИК
+    // ============================================================
+    function renderChartYearSelector() {
+        const el = document.getElementById('chart-year-selector');
+        if (!el) return;
+        const years = Object.keys(BY_YEAR);
+        if (!years.length) return;
+        if (!currentChartYear) currentChartYear = years[0];
+
+        el.innerHTML = years.map(y =>
+            `<button class="cal-year-btn ${y == currentChartYear ? 'active' : ''}" data-year="${y}">${y}</button>`
+        ).join('');
+
+        el.querySelectorAll('.cal-year-btn').forEach(btn => {
+            btn.onclick = () => {
+                currentChartYear = btn.dataset.year;
+                renderChartYearSelector();
+                drawTempChart();
+            };
+        });
+    }
+
+    function drawTempChart() {
+        const canvas = document.getElementById('temp-chart');
+        if (!canvas) return;
+
+        const sols = (BY_YEAR[currentChartYear] || []).filter(s => {
+            const mn = parseFloat(s.min_temp), mx = parseFloat(s.max_temp);
+            return !isNaN(mn) && !isNaN(mx);
+        });
+
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        const W = rect.width;
+        const H = rect.height;
+
+        if (W === 0 || H === 0) return;
+
+        canvas.width = W * dpr;
+        canvas.height = H * dpr;
+        const ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, W, H);
+
+        if (!sols.length) {
+            ctx.fillStyle = '#9999bb';
+            ctx.font = '14px -apple-system, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Нет данных за этот год', W / 2, H / 2);
+            return;
+        }
+
+        const padL = 44, padR = 16, padT = 20, padB = 34;
+        const chartW = W - padL - padR;
+        const chartH = H - padT - padB;
+
+        let minY = Infinity, maxY = -Infinity;
+        sols.forEach(s => {
+            const mn = parseFloat(s.min_temp), mx = parseFloat(s.max_temp);
+            minY = Math.min(minY, mn);
+            maxY = Math.max(maxY, mx);
+        });
+        const pad = 5;
+        minY -= pad;
+        maxY += pad;
+
+        const rangeY = maxY - minY;
+        const rangeX = sols.length - 1 || 1;
+
+        const xFor = i => padL + (i / rangeX) * chartW;
+        const yFor = t => padT + chartH - ((t - minY) / rangeY) * chartH;
+
+        // Сетка и подписи Y
+        ctx.strokeStyle = 'rgba(108,99,255,0.12)';
+        ctx.fillStyle = 'rgba(153,153,187,0.75)';
+        ctx.font = '10px -apple-system, sans-serif';
+        ctx.textAlign = 'right';
+        ctx.lineWidth = 1;
+
+        const stepsY = 5;
+        for (let i = 0; i <= stepsY; i++) {
+            const t = minY + (rangeY * i / stepsY);
+            const y = yFor(t);
+            ctx.beginPath();
+            ctx.moveTo(padL, y);
+            ctx.lineTo(padL + chartW, y);
+            ctx.stroke();
+            ctx.fillText(Math.round(t) + '°', padL - 6, y + 3);
+        }
+
+        // Область между min и max
+        ctx.beginPath();
+        sols.forEach((s, i) => {
+            const y = yFor(parseFloat(s.max_temp));
+            if (i === 0) ctx.moveTo(xFor(i), y);
+            else ctx.lineTo(xFor(i), y);
+        });
+        for (let i = sols.length - 1; i >= 0; i--) {
+            ctx.lineTo(xFor(i), yFor(parseFloat(sols[i].min_temp)));
+        }
+        ctx.closePath();
+        const grad = ctx.createLinearGradient(0, padT, 0, padT + chartH);
+        grad.addColorStop(0, 'rgba(243,156,18,0.15)');
+        grad.addColorStop(1, 'rgba(93,173,226,0.15)');
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        // Линия максимума
+        ctx.beginPath();
+        sols.forEach((s, i) => {
+            const x = xFor(i);
+            const y = yFor(parseFloat(s.max_temp));
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        });
+        ctx.strokeStyle = '#f39c12';
+        ctx.lineWidth = 2;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = 'rgba(243,156,18,0.6)';
+        ctx.stroke();
+
+        // Линия минимума
+        ctx.beginPath();
+        sols.forEach((s, i) => {
+            const x = xFor(i);
+            const y = yFor(parseFloat(s.min_temp));
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        });
+        ctx.strokeStyle = '#5dade2';
+        ctx.shadowColor = 'rgba(93,173,226,0.6)';
+        ctx.stroke();
+
+        // Линия средней (пунктир)
+        ctx.beginPath();
+        sols.forEach((s, i) => {
+            const x = xFor(i);
+            const avg = (parseFloat(s.max_temp) + parseFloat(s.min_temp)) / 2;
+            const y = yFor(avg);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        });
+        ctx.strokeStyle = '#A29BFE';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([4, 4]);
+        ctx.shadowColor = 'rgba(162,155,254,0.4)';
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.shadowBlur = 0;
+
+        // Подписи X (солы — 6 меток)
+        ctx.fillStyle = 'rgba(153,153,187,0.75)';
+        ctx.font = '10px -apple-system, sans-serif';
+        ctx.textAlign = 'center';
+        const stepX = Math.max(1, Math.floor(sols.length / 6));
+        for (let i = 0; i < sols.length; i += stepX) {
+            const x = xFor(i);
+            ctx.fillText(sols[i].sol, x, H - 12);
+        }
+    }
+
+    // ============================================================
+    // 🪟 МОДАЛКА
     // ============================================================
     function hideEffectsButton() {
         const btn = document.getElementById('effects-menu-btn');
@@ -940,7 +1268,6 @@ comments: false
             btn.style.setProperty('visibility', 'hidden', 'important');
             btn.style.setProperty('opacity', '0', 'important');
         }
-        // Также скрываем панель эффектов, если открыта
         const panel = document.getElementById('effects-menu-panel');
         if (panel) {
             panel.style.setProperty('display', 'none', 'important');
@@ -957,9 +1284,6 @@ comments: false
         }
     }
 
-    // ============================================================
-    // 🪟 МОДАЛКА
-    // ============================================================
     function openSolModal(solNum) {
         const data = ALL_SOLS.find(s => s.sol === solNum);
         if (!data) return;
@@ -1051,17 +1375,35 @@ comments: false
     }
 
     // ============================================================
-    // 🔽 ПЕРЕКЛЮЧАТЕЛЬ КАЛЕНДАРЯ
+    // 🔽 УНИВЕРСАЛЬНЫЙ ПЕРЕКЛЮЧАТЕЛЬ
     // ============================================================
-    function setupCalendarToggle() {
-        const btn = document.getElementById('cal-toggle');
-        const content = document.getElementById('cal-content');
-        if (!btn || !content) return;
+    function setupToggles() {
+        document.querySelectorAll('.cosmic-toggle').forEach(btn => {
+            const targetId = btn.dataset.target;
+            const content = document.getElementById(targetId);
+            if (!content) return;
 
-        btn.onclick = () => {
-            btn.classList.toggle('open');
-            content.classList.toggle('open');
-        };
+            btn.onclick = () => {
+                btn.classList.toggle('open');
+                content.classList.toggle('open');
+
+                // Если открывается график — перерисовываем после анимации
+                if (targetId === 'chart-content' && content.classList.contains('open')) {
+                    setTimeout(() => {
+                        renderChartYearSelector();
+                        drawTempChart();
+                    }, 100);
+                }
+            };
+        });
+
+        // Resize — перерисовка графика
+        window.addEventListener('resize', () => {
+            const chartContent = document.getElementById('chart-content');
+            if (chartContent && chartContent.classList.contains('open')) {
+                drawTempChart();
+            }
+        });
     }
 
     // ============================================================
@@ -1084,7 +1426,7 @@ comments: false
         text.innerHTML = `Загружено <b style="color:#A29BFE;">${count}</b> солов · Годы: ${Object.keys(BY_YEAR).length} · Источник: <b style="color:#A29BFE;">NASA</b>`;
     }
 
-    async function initCalendar() {
+    async function initArchive() {
         const view = document.getElementById('cal-months');
         if (!view) return;
 
@@ -1095,6 +1437,7 @@ comments: false
             ALL_SOLS = sols;
             BY_YEAR = groupByYear(sols);
             currentCalYear = Object.keys(BY_YEAR)[0];
+            currentChartYear = currentCalYear;
 
             renderYearSelector();
             renderCalendarView();
@@ -1141,8 +1484,8 @@ comments: false
             if (!document.hidden) loadData(false);
         });
 
-        setupCalendarToggle();
-        setTimeout(initCalendar, 100);
+        setupToggles();
+        setTimeout(initArchive, 100);
 
         console.log('🌌 VIP-погода на Марсе загружена');
     }

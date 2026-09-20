@@ -99,11 +99,149 @@
   <p style="margin: 2px 0; color: #1a1a2e;"><b>Государств:</b> 5 (к 2500 г. Э.О.)</p>
   <p style="margin: 2px 0; color: #1a1a2e;"><b>Судьба:</b> исход на Землю (2740 г.)</p>
 
-  <hr style="margin: 6px 0; border-color: #c0bcb3;">
+ <hr style="margin: 6px 0; border-color: #c0bcb3;">
 
   <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
     Звук планеты
   </div>
+
+  <style>
+  .mars-wind-player {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: linear-gradient(135deg, #2a2a3a 0%, #1a1a2e 100%);
+    border: 1px solid #4a4a5a;
+    border-radius: 12px;
+    margin: 8px 0;
+    font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+    transition: all 0.3s;
+  }
+  .mars-wind-player.playing {
+    border-color: #6C63FF;
+    box-shadow: 0 8px 28px rgba(108,99,255,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .mars-wind-left { position: relative; flex-shrink: 0; }
+  .mars-wind-btn {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #6C63FF 0%, #4a3fb5 100%);
+    color: #fff;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(108,99,255,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+    transition: transform 0.25s cubic-bezier(.2,.9,.3,1.3), box-shadow 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 1;
+  }
+  .mars-wind-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 10px 24px rgba(108,99,255,0.7), inset 0 1px 0 rgba(255,255,255,0.4);
+  }
+  .mars-wind-btn:active { transform: scale(0.96); }
+  .mars-wind-icon { position: relative; z-index: 2; line-height: 1; }
+  .mars-wind-player.playing .mars-wind-btn {
+    background: linear-gradient(135deg, #8a7fff 0%, #6C63FF 100%);
+    box-shadow: 0 6px 22px rgba(162,155,254,0.6), inset 0 1px 0 rgba(255,255,255,0.35);
+  }
+  .mars-wind-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    display: none;
+  }
+  .mars-wind-player.playing .mars-wind-ring {
+    display: block;
+    animation: marsWindRing 2s ease-out infinite;
+    border: 2px solid rgba(162,155,254,0.85);
+  }
+  .mars-wind-player.playing .mars-wind-ring::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(162,155,254,0.5);
+    animation: marsWindRing 2s ease-out infinite 0.3s;
+  }
+  @keyframes marsWindRing {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.7); opacity: 0; }
+  }
+  .mars-wind-center { flex: 1; min-width: 0; }
+  .mars-wind-title {
+    font-weight: 800;
+    font-size: 0.92rem;
+    color: #e8e8f0;
+    margin-bottom: 3px;
+    letter-spacing: 0.3px;
+  }
+  .mars-wind-caption {
+    font-size: 0.72rem;
+    color: #9999bb;
+    margin-bottom: 6px;
+    transition: color 0.3s;
+  }
+  .mars-wind-player.playing .mars-wind-caption { color: #A29BFE; font-weight: 600; }
+  .mars-wind-viz {
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 20px;
+    opacity: 0.55;
+    transition: opacity 0.3s;
+  }
+  .mars-wind-player.playing .mars-wind-viz { opacity: 1; }
+  .mars-wind-viz span {
+    flex: 1;
+    min-width: 1px;
+    height: 20%;
+    background: linear-gradient(180deg, #A29BFE, #6C63FF);
+    border-radius: 2px;
+    transition: height 0.4s ease;
+    box-shadow: 0 0 4px rgba(162,155,254,0.6);
+  }
+  .mars-wind-player.playing .mars-wind-viz span {
+    animation: marsWindBar 1.2s ease-in-out infinite alternate;
+    animation-delay: var(--d, 0s);
+    height: var(--h, 50%);
+  }
+  @keyframes marsWindBar {
+    0% { height: 15%; opacity: 0.6; }
+    100% { height: var(--h, 60%); opacity: 1; }
+  }
+  .mars-wind-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-width: 20px;
+  }
+  .mars-wind-live {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #4a4a5a;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  .mars-wind-player.playing .mars-wind-live {
+    background: #27ae60;
+    box-shadow: 0 0 10px #27ae60, 0 0 4px #27ae60;
+    animation: marsWindLive 1.5s ease-in-out infinite;
+  }
+  @keyframes marsWindLive {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+  </style>
 
   <div id="mars-wind-player" class="mars-wind-player">
     <div class="mars-wind-left">
@@ -150,6 +288,29 @@
   <audio id="mars-wind-audio" preload="none" loop>
     <source src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/sounds/mars-wind.mp3" type="audio/mpeg">
   </audio>
+
+  <script>
+  function marsWindToggle() {
+    var audio = document.getElementById('mars-wind-audio');
+    var player = document.getElementById('mars-wind-player');
+    if (!audio || !player) return;
+    var icon = player.querySelector('.mars-wind-icon');
+
+    if (audio.paused) {
+      audio.volume = 0.7;
+      audio.play().then(function() {
+        player.classList.add('playing');
+        if (icon) icon.textContent = '❚❚';
+      }).catch(function(e) {
+        console.warn('Не удалось воспроизвести звук:', e);
+      });
+    } else {
+      audio.pause();
+      player.classList.remove('playing');
+      if (icon) icon.textContent = '▶';
+    }
+  }
+  </script>
 
   <hr style="margin: 6px 0; border-color: #c0bcb3;">
 

@@ -5,29 +5,29 @@
   <span style="font-weight: bold; color: #b8860b;">Избранная статья</span>
 </div>
 
-<div class="infobox" style="float: right; width: 280px; background: #1a1a2e; border: 1px solid #333355; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.35); color: #e8e8f0;">
+<div class="infobox" style="float: right; width: 280px; background: #ebe8e0; border: 1px solid #4a4a5a; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); color: #1a1a2e;">
 
-  <div style="background: #0d0d1a; padding: 8px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #333355; text-align: center; border-radius: 8px 8px 4px 4px;">
-    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #A29BFE;">Марс</h3>
+  <div style="background: #1a1a2e; padding: 8px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; border-radius: 8px 8px 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #e8e8f0;">Марс</h3>
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_Valles_Marineris_EDIT.jpg" alt="Марс" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #333355;">
-    <div style="font-size: 0.7rem; color: #9999bb; margin-top: 4px;">Марс. Снимок с долиной Маринер. NASA / ESA.</div>
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_Valles_Marineris_EDIT.jpg" alt="Марс" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #4a4a5a;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Марс. Снимок с долиной Маринер. NASA / ESA.</div>
   </div>
 
-  <div style="background: #0d0d1a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #333355; text-align: center; font-weight: bold; font-size: 0.9rem; color: #A29BFE;">
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
     Названия
   </div>
-  <p style="margin: 2px 0; color: #e8e8f0;"><b style="color: #A29BFE;">Другие:</b> Dzen Mar («Живая звезда»), Kōl Xal («Древняя земля»)</p>
-  <p style="margin: 2px 0; color: #e8e8f0;"><b style="color: #A29BFE;">Марсианское:</b> <i>Marzān</i> («Земля живущих»)</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Другие:</b> Dzen Mar («Живая звезда»), Kōl Xal («Древняя земля»)</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Марсианское:</b> <i>Marzān</i> («Земля живущих»)</p>
 
-  <hr style="margin: 6px 0; border-color: #333355;">
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
 
-  <div style="background: #0d0d1a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #333355; text-align: center; font-weight: bold; font-size: 0.9rem; color: #A29BFE;">
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
     Орбитальные характеристики
   </div>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #e8e8f0;">
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
     <li>• Перигелий: 2,066⋅10⁸ км</li>
     <li>• Афелий: 2,492⋅10⁸ км</li>
     <li>• Большая полуось: 2,279⋅10⁸ км</li>
@@ -35,15 +35,15 @@
     <li>• Сидерический период: 686,98 солов</li>
     <li>• Орбитальная скорость: 24,07 км/с</li>
     <li>• Наклонение: 1,85°</li>
-    <li>• Спутники: <a href="/astronomy/phobos/" style="color: #A29BFE;">Фобос</a>, <a href="/astronomy/deimos/" style="color: #A29BFE;">Деймос</a></li>
+    <li>• Спутники: <a href="https://mars-wiki.ru/astronomy/phobos/" style="color: #4a3fb5; text-decoration: underline;">Фобос</a>, <a href="https://mars-wiki.ru/astronomy/deimos/" style="color: #4a3fb5; text-decoration: underline;">Деймос</a></li>
   </ul>
 
-  <hr style="margin: 6px 0; border-color: #333355;">
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
 
-  <div style="background: #0d0d1a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #333355; text-align: center; font-weight: bold; font-size: 0.9rem; color: #A29BFE;">
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
     Физические характеристики
   </div>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #e8e8f0;">
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
     <li>• Полярное сжатие: 0,00648</li>
     <li>• Экваториальный радиус: 3 396 км</li>
     <li>• Полярный радиус: 3 376 км</li>
@@ -61,35 +61,44 @@
     <li>• Вид. звёздная величина: −2,9</li>
   </ul>
 
-  <hr style="margin: 6px 0; border-color: #333355;">
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
 
-  <div style="background: #0d0d1a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #333355; text-align: center; font-weight: bold; font-size: 0.9rem; color: #A29BFE;">
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
     Температура
   </div>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #e8e8f0;">
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
     <li>• Минимальная: −35 °C (Эпоха Умирания)</li>
     <li>• Средняя: −10 °C (Эпоха Расцвета)</li>
     <li>• Максимальная: +5 °C (летом)</li>
   </ul>
 
-  <hr style="margin: 6px 0; border-color: #333355;">
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
 
-  <div style="background: #0d0d1a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #333355; text-align: center; font-weight: bold; font-size: 0.9rem; color: #A29BFE;">
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
     Атмосфера
   </div>
-  <p style="margin: 2px 0; color: #e8e8f0;"><b style="color: #A29BFE;">Давление:</b> 6–7 мбар (Эпоха Расцвета)</p>
-  <p style="margin: 2px 0; color: #e8e8f0;"><b style="color: #A29BFE;">Состав:</b> 95% CO₂, 3% N₂, 1,5% Ar, 0,1–0,2% O₂</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Давление:</b> 6–7 мбар (Эпоха Расцвета)</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Состав:</b> 95% CO₂, 3% N₂, 1,5% Ar, 0,1–0,2% O₂</p>
 
-  <hr style="margin: 6px 0; border-color: #333355;">
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
 
-  <div style="background: #0d0d1a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #333355; text-align: center; font-weight: bold; font-size: 0.9rem; color: #A29BFE;">
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
+    Поверхность
+  </div>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Состав:</b> оксиды железа, базальт, обсидиан</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Водоёмы:</b> <a href="https://mars-wiki.ru/geography/acidalia-sea/" style="color: #4a3fb5; text-decoration: underline;">Ацидалийское</a>, <a href="https://mars-wiki.ru/geography/zephyria-sea/" style="color: #4a3fb5; text-decoration: underline;">Зефирийское</a>, <a href="https://mars-wiki.ru/geography/hellas-sea/" style="color: #4a3fb5; text-decoration: underline;">Эллады</a>, Эритрейское</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Крупные горы:</b> <a href="https://mars-wiki.ru/geography/olympus-mons/" style="color: #4a3fb5; text-decoration: underline;">Олимп</a>, <a href="https://mars-wiki.ru/geography/tarsis/" style="color: #4a3fb5; text-decoration: underline;">Фарсида</a></p>
+
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
+
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
     Обитаемость
   </div>
-  <p style="margin: 2px 0; color: #e8e8f0;"><b style="color: #A29BFE;">Период:</b> ~4,1 млрд лет — 2740 г. Э.О.</p>
-  <p style="margin: 2px 0; color: #e8e8f0;"><b style="color: #A29BFE;">Разумные виды:</b> марсиане (гемоцианин)</p>
-  <p style="margin: 2px 0; color: #e8e8f0;"><b style="color: #A29BFE;">Государств:</b> 5 (к 2500 г. Э.О.)</p>
-  <p style="margin: 2px 0; color: #e8e8f0;"><b style="color: #A29BFE;">Судьба:</b> исход на Землю (2740 г.)</p>
-
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Период:</b> ~4,1 млрд лет — 2740 г. Э.О.</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Разумные виды:</b> марсиане (гемоцианин)</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Государств:</b> 5 (к 2500 г. Э.О.)</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Судьба:</b> исход на Землю (2740 г.)</p>
+  
 </div>
 
 **Марс** — четвёртая по удалённости от Солнца и седьмая по размеру планета Солнечной системы. Наряду с Меркурием, Венерой и Землёй принадлежит к семейству планет земной группы. В марсианской астрономии известна под названиями **Dzen Mar** («Живая звезда») и **Kōl Xal** («Древняя земля»)[^10]. Для самих марсиан их мир всегда был просто **Marzān** — «Земля живущих», и лишь в Эпоху Умирания, когда взгляды обратились к звёздам, планета получила иные имена[^11].

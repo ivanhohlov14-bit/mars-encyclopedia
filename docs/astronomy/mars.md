@@ -105,6 +105,11 @@
 
 ## Физические характеристики
 
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Lava_flow_and_crater_ejecta.jpeg" alt="Лавовые потоки Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Лавовые потоки и выбросы кратера. Снимок MRO. NASA.</div>
+</div>
+
 Марс — типичная планета земной группы, состоящая из силикатных пород и металлического ядра. Его средняя плотность (3,93 г/см³) заметно ниже земной (5,52 г/см³), что указывает на меньшее содержание тяжёлых элементов[^1].
 
 ### Ядро
@@ -115,21 +120,16 @@
 
 Мантия Марса сложена силикатами (оливин, пироксен, полевые шпаты), богатыми железом и магнием. Кора имеет толщину от 30 до 80 км и состоит преимущественно из базальтов и андезитов, с высоким содержанием оксидов железа, придающих планете характерный красный цвет[^13].
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Lava_flow_and_crater_ejecta.jpeg" alt="Лавовые потоки Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Лавовые потоки и выбросы кратера. Снимок MRO. NASA.</div>
-</div>
-
 ## Орбита и вращение
-
-Марс вращается вокруг Солнца по эллиптической орбите с эксцентриситетом 0,0934 — это значительно больше, чем у Земли (0,0167). Расстояние от Солнца меняется от 206,6 млн км в перигелии до 249,2 млн км в афелии[^1].
-
-Марсианские сутки (*сол*) длятся 24 часа 39 минут 35 секунд — всего на 39 минут дольше земных[^2]. Смена сезонов на Марсе подобна земной (наклон оси 25,2°), но длится вдвое дольше из-за более долгого года[^1].
 
 <div style="text-align: center; margin: 24px 0;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-earth-comparison.jpeg" alt="Сравнение Марса и Земли" style="width: 70%; max-width: 550px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Сравнение размеров Марса и Земли.</div>
 </div>
+
+Марс вращается вокруг Солнца по эллиптической орбите с эксцентриситетом 0,0934 — это значительно больше, чем у Земли (0,0167). Расстояние от Солнца меняется от 206,6 млн км в перигелии до 249,2 млн км в афелии[^1].
+
+Марсианские сутки (*сол*) длятся 24 часа 39 минут 35 секунд — всего на 39 минут дольше земных[^2]. Смена сезонов на Марсе подобна земной (наклон оси 25,2°), но длится вдвое дольше из-за более долгого года[^1].
 
 ## Спутники
 
@@ -143,11 +143,6 @@
 Для марсианской цивилизации Фобос был небесным телом сакрального значения. Его быстрый бег по небу (он обращается вокруг планеты за 7 часов 39 минут, то есть быстрее суточного вращения) связывали с дыханием богини [Араксис](/mythology/araksis/). Жрецы использовали движение Фобоса для календарных расчётов, а его затенение — для предсказания бурь[^28].
 
 Деймос, напротив, двигался медленно и появлялся на небе редко. Его считали «тенью Кхо» — знаком грядущих бедствий. В Эпоху Умирания именно Деймос стал символом уходящего мира: в «Песнях Совии» он назван «последним оком, глядящим на умирающих»[^29].
-
-<div style="text-align: center; margin: 24px 0; clear: both;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/deimos.png" alt="Деймос" style="width: 40%; max-width: 300px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Деймос — второй спутник Марса. Снимок NASA.</div>
-</div>
 
 ## Атмосфера
 
@@ -168,12 +163,17 @@
 | Эпоха Умирания (2680–2740) | 2–3 | 96% CO₂, 3% N₂, следы Ar и O₂ |
 | Современность | 1–2 | 95,3% CO₂, 2,7% N₂, 1,6% Ar |
 
-<div style="text-align: center; margin: 24px 0; clear: both;">
+<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_violet_sky.jpg" alt="Фиолетовое небо Марса" style="width: 60%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Фиолетовое небо Марса на закате. Снимок марсохода Curiosity. NASA / JPL-Caltech.</div>
 </div>
 
 ## Поверхность
+
+<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Olympus_Mons.jpg" alt="Олимп" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Олимп — высочайший вулкан Солнечной системы. NASA.</div>
+</div>
 
 Поверхность Марса покрыта кратерами, горами, долинами и равнинами. Характерный красный цвет обусловлен высоким содержанием оксидов железа (ржавчины) в поверхностных породах[^8].
 
@@ -182,19 +182,16 @@
 - **Олимп** — высочайшая гора в Солнечной системе (21,2 км от основания)[^1].
 - **Фарсида** — вулканическое плато высотой 10–12 км с четырьмя гигантскими вулканами[^14].
 
-<div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Olympus_Mons.jpg" alt="Олимп" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Олимп — высочайший вулкан Солнечной системы. NASA.</div>
-</div>
-
 ### Крупнейшие долины
-
-- **Долина Маринера** — гигантский каньон длиной более 4 000 км, глубиной до 7 км[^1].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Candor_Chasma_THEMIS_mosaic.jpg" alt="Каньоны Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Каньоны Марса. Снимок THEMIS. NASA / ASU.</div>
 </div>
+
+- **Долина Маринера** — гигантский каньон длиной более 4 000 км, глубиной до 7 км[^1].
+
+
 
 ## Водоёмы
 
@@ -246,31 +243,31 @@
   <div style="width: 160px; text-align: center;">
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Эдем</div>
-    <div style="font-size: 0.72rem; color: #555;">Самое могущественное государство, столица Роген-Ария[^21].</div>
+    <div style="font-size: 0.72rem; color: #555;">Самое могущественное государство, столица Роген-Ария.</div>
   </div>
 
   <div style="width: 160px; text-align: center;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia/arkadia-flag-coat-of-arms.png" alt="Флаг Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/arkadia-flag-coat-of-arms.png" alt="Флаг Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Аркадия</div>
-    <div style="font-size: 0.72rem; color: #555;">Северное царство рудокопов и кузнецов[^22].</div>
+    <div style="font-size: 0.72rem; color: #555;">Северное царство рудокопов и кузнецов.</div>
   </div>
 
   <div style="width: 160px; text-align: center;">
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Кимерия</div>
-    <div style="font-size: 0.72rem; color: #555;">Восточное государство, известное обсидиановой архитектурой[^23].</div>
+    <div style="font-size: 0.72rem; color: #555;">Восточное государство, известное обсидиановой архитектурой.</div>
   </div>
 
   <div style="width: 160px; text-align: center;">
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Серпентида</div>
-    <div style="font-size: 0.72rem; color: #555;">Колыбель мореходов и письменности[^24].</div>
+    <div style="font-size: 0.72rem; color: #555;">Колыбель мореходов и письменности.</div>
   </div>
 
   <div style="width: 160px; text-align: center;">
     <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Эридания</div>
-    <div style="font-size: 0.72rem; color: #555;">Южное государство, хранитель древних знаний[^25].</div>
+    <div style="font-size: 0.72rem; color: #555;">Южное государство, хранитель древних знаний.</div>
   </div>
 
 </div>
@@ -288,26 +285,21 @@
 
 После этого Марс погрузился в вечную мерзлоту. Атмосфера продолжала утончаться, и к настоящему времени давление упало до 1–2 мбар, а средняя температура опустилась до −50 °C[^7].
 
-<div style="text-align: center; margin: 24px 0; clear: both;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-field.jpg" alt="Марс сегодня" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Современный Марс — безжизненная пустыня. NASA.</div>
-</div>
-
 ## Связанные статьи
 
-- [Ацидалийское море](/geography/acidalia-sea/)
-- [Долина Маринера](/geography/valles-marineris/)
-- [Королевство Эдем](/history/edem/)
-- [Кремниевая жизнь](/science/silicon-life/)
-- [Фарсида](/geography/tarsis/)
-- [Фобос](/astronomy/phobos/)
-- [Деймос](/astronomy/deimos/)
-- [Гемоцианин](/biology/gemotsianin/)
-- [Эпоха Умирания](/history/epokha-umiraniya/)
-- [Исход](/books/iskhod/)
-- [Хевсур](/people/hevsur/)
-- [Lān sur](/terms/lan-sur/)
-- [Глиняные таблички](/terms/tablets/)
+- [Ацидалийское море](https://mars-wiki.ru/geography/acidalia-sea/)
+- [Долина Маринера](https://mars-wiki.ru/geography/valles-marineris/)
+- [Королевство Эдем](https://mars-wiki.ru/history/edem/)
+- [Кремниевая жизнь](https://mars-wiki.ru/science/silicon-life/)
+- [Фарсида](https://mars-wiki.ru/geography/tarsis/)
+- [Фобос](https://mars-wiki.ru/astronomy/phobos/)
+- [Деймос](https://mars-wiki.ru/astronomy/deimos/)
+- [Гемоцианин](https://mars-wiki.ru/biology/gemotsianin/)
+- [Эпоха Умирания](https://mars-wiki.ru/history/epokha-umiraniya/)
+- [Исход](https://mars-wiki.ru/books/iskhod/)
+- [Хевсур](https://mars-wiki.ru/people/hevsur/)
+- [Lān sur](https://mars-wiki.ru/terms/lan-sur/)
+- [Глиняные таблички](https://mars-wiki.ru/terms/tablets/)
 
 ## Примечания
 

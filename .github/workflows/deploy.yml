@@ -35,6 +35,9 @@ jobs:
       - name: Auto-add descriptions
         run: python scripts/add_descriptions.py
 
+      - name: Optimize image URLs
+        run: python scripts/optimize_urls.py
+
       - name: Build site
         run: mkdocs build --verbose
 

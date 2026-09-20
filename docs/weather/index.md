@@ -1,5 +1,5 @@
 ---
-title: 🌡️ Погода на Марсе
+title: Погода на Марсе
 comments: false
 ---
 

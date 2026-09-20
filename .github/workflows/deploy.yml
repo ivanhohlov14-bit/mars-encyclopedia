@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install mkdocs mkdocs-advanced-seo Pillow
+          pip install mkdocs mkdocs-advanced-seo mkdocs-minify-plugin Pillow
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Auto-add descriptions
@@ -38,11 +38,8 @@ jobs:
       - name: Optimize image URLs
         run: python scripts/optimize_urls.py
 
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install mkdocs mkdocs-advanced-seo mkdocs-minify-plugin Pillow
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Add lazy loading to images
+        run: python scripts/lazy_images.py
 
       - name: Build site
         run: mkdocs build --verbose

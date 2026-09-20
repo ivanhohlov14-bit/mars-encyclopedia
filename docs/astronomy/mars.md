@@ -64,6 +64,18 @@
   <hr style="margin: 6px 0; border-color: #c0bcb3;">
 
   <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
+    Звук планеты
+  </div>
+
+  <div class="mars-sound mars-sound--infobox"
+       data-src="/assets/sounds/mars-wind.mp3"
+       data-title="Ветер Марса"
+       data-caption="Реконструкция звука"
+       data-theme="blue"></div>
+
+  <hr style="margin: 6px 0; border-color: #c0bcb3;">
+
+  <div style="background: #2a2a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a4a5a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8e8f0;">
     Температура
   </div>
   <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
@@ -165,11 +177,6 @@
 Марсиане, благодаря гемоцианину и жабрам, могли дышать этой смесью без масок, но чувствовали себя лучше вблизи воды, где кислорода было чуть больше[^7].
 
 В Эпоху Умирания (2680–2740 гг. Э.О.) атмосфера продолжала утончаться. К 2740 году давление упало до 2–3 мбар — критический уровень для дыхания даже с гемоцианином. Пылевые бури стали непрерывными, закрывая небо на недели и месяцы[^7].
-
-<div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_violet_sky.jpg" alt="Фиолетовое небо Марса" style="width: 60%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 8px;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Фиолетовое небо Марса на закате. Снимок марсохода Curiosity. NASA / JPL-Caltech.</div>
-</div>
 
 | Период | Давление, мбар | Состав |
 |--------|---------------|--------|

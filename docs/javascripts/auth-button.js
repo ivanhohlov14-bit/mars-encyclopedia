@@ -17,15 +17,15 @@
     // 📖 ЧТЕНИЕ СЕССИИ — из обоих ключей
     // ============================================================
     function readSession() {
+        var SB_KEY = 'sb-' + PROJECT_REF + '-auth-token';
+        var MY_KEY = 'mars-auth-v1';
         var raw = null;
 
-        // Пробуем sb-* (основной для supabase-js)
-        try { raw = localStorage.getItem(SB_KEY); } catch(e) {}
-        if (!raw) { try { raw = sessionStorage.getItem(SB_KEY); } catch(e) {} }
-
-        // Пробуем mars-auth-v1
-        if (!raw) { try { raw = localStorage.getItem(MY_KEY); } catch(e) {} }
+        // Пробуем наши ключи
+        try { raw = localStorage.getItem(MY_KEY); } catch(e) {}
         if (!raw) { try { raw = sessionStorage.getItem(MY_KEY); } catch(e) {} }
+        if (!raw) { try { raw = localStorage.getItem(SB_KEY); } catch(e) {} }
+        if (!raw) { try { raw = sessionStorage.getItem(SB_KEY); } catch(e) {} }
 
         // Cookie
         if (!raw) {
@@ -33,19 +33,25 @@
                 var cookies = document.cookie.split(';');
                 for (var i = 0; i < cookies.length; i++) {
                     var c = cookies[i].trim();
-                    if (c.indexOf(SB_KEY + '=') === 0) {
-                        raw = decodeURIComponent(c.substring(SB_KEY.length + 1));
-                        break;
-                    }
-                    if (c.indexOf(MY_KEY + '=') === 0) {
-                        raw = decodeURIComponent(c.substring(MY_KEY.length + 1));
-                        break;
-                    }
+                    if (c.indexOf(MY_KEY + '=') === 0) { raw = decodeURIComponent(c.substring(MY_KEY.length + 1)); break; }
+                    if (c.indexOf(SB_KEY + '=') === 0) { raw = decodeURIComponent(c.substring(SB_KEY.length + 1)); break; }
                 }
             } catch(e) {}
         }
 
         if (!raw) return null;
+
+        try {
+            var parsed = JSON.parse(raw);
+            // Поддержка ОБОИХ форматов: объект и массив
+            if (Array.isArray(parsed)) parsed = parsed[parsed.length - 1];
+            if (!parsed || !parsed.access_token || !parsed.user) return null;
+            if (parsed.expires_at && parsed.expires_at * 1000 < Date.now()) return null;
+            return parsed;
+        } catch(e) {
+            return null;
+        }
+    }
 
         try {
             var parsed = JSON.parse(raw);

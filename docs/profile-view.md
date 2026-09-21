@@ -6,21 +6,63 @@ comments: false
 <div id="profile-container">
     <div style="text-align:center;padding:60px 20px;">
         <div style="display:inline-block;width:48px;height:48px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin 0.8s linear infinite;"></div>
-        <p id="pf-status" style="color:#999;margin-top:16px;font-size:0.9rem;">Загрузка...</p>
-        <div id="pf-debug" style="margin-top:20px;padding:12px;background:#f5f5f5;border-radius:8px;text-align:left;font-family:monospace;font-size:0.7rem;color:#555;max-width:500px;margin-left:auto;margin-right:auto;white-space:pre-wrap;word-break:break-all;max-height:200px;overflow-y:auto;display:none;"></div>
+        <p style="color:#999;margin-top:16px;font-size:0.9rem;">Загрузка профиля...</p>
     </div>
 </div>
 
 <style>
 @keyframes pfSpin { to { transform: rotate(360deg); } }
 @keyframes pfFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-#profile-container { max-width:100%;margin:0 auto;font-family:'Segoe UI',-apple-system,sans-serif;padding:0 8px; }
+
+#profile-container { max-width: 100%; margin: 0 auto; font-family: 'Segoe UI', -apple-system, sans-serif; padding: 0 8px; }
 #profile-container a { text-decoration: none !important; }
-.pf-card { max-width: 500px; margin: 0 auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden; animation: pfFade 0.5s ease; }
-.pf-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 22px; border-radius: 12px; border: none; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; text-decoration: none !important; }
-.pf-btn-primary { background: linear-gradient(135deg, #6C63FF, #A29BFE); color: #fff !important; }
-.pf-btn-danger { background: transparent; color: #c0392b; border: 2px solid #f5c6c6; }
-.pf-error { max-width: 500px; margin: 40px auto; padding: 40px 30px; text-align: center; background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 4px solid #e74c3c; }
+
+.pf-card {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    animation: pfFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pf-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: 12px;
+    border: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none !important;
+}
+.pf-btn:hover { transform: translateY(-2px); }
+.pf-btn-primary {
+    background: linear-gradient(135deg, #6C63FF, #A29BFE);
+    color: #fff !important;
+    box-shadow: 0 8px 20px -4px rgba(108, 99, 255, 0.4);
+}
+.pf-btn-danger {
+    background: transparent;
+    color: #c0392b;
+    border: 2px solid #f5c6c6;
+}
+.pf-btn-danger:hover { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+.pf-error {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 40px 30px;
+    text-align: center;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-left: 4px solid #e74c3c;
+}
 .pf-error-icon { font-size: 3.5rem; margin-bottom: 12px; }
 .pf-error-title { font-size: 1.3rem; font-weight: 800; color: #2c3e50; margin: 0 0 8px 0; }
 .pf-error-sub { color: #888; font-size: 0.95rem; margin: 0 0 20px 0; line-height: 1.5; }
@@ -30,20 +72,12 @@ comments: false
 (function() {
     'use strict';
 
-    var SUPABASE_URL = 'https://ncytbgbzfjfoqmmgfygz.supabase.co';
-    var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
     var PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
+    var SUPABASE_URL = 'https://' + PROJECT_REF + '.supabase.co';
+    var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
+    var SESSION_KEY = 'sb-' + PROJECT_REF + '-auth-token';
 
     var container = document.getElementById('profile-container');
-    var debugLines = [];
-
-    function log(m) {
-        var t = new Date().toLocaleTimeString();
-        debugLines.push('[' + t + '] ' + m);
-        console.log(m);
-        var el = document.getElementById('pf-debug');
-        if (el) { el.textContent = debugLines.join('\n'); el.style.display = 'block'; }
-    }
 
     function escapeHtml(s) {
         return String(s || '').replace(/[&<>"']/g, function(m) {
@@ -62,30 +96,38 @@ comments: false
     // 📖 ЧТЕНИЕ СЕССИИ
     // ============================================================
     function readSession() {
-        var key = 'sb-' + PROJECT_REF + '-auth-token';
         var raw = null;
-        try { raw = localStorage.getItem(key); } catch (e) { log('localStorage недоступен'); }
-        if (!raw) { try { raw = sessionStorage.getItem(key); } catch (e) {} }
-        if (!raw) { log('❌ Сессия не найдена'); return null; }
+
+        try { raw = localStorage.getItem(SESSION_KEY); } catch(e) {}
+        if (!raw) { try { raw = sessionStorage.getItem(SESSION_KEY); } catch(e) {} }
+        if (!raw) {
+            try {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var c = cookies[i].trim();
+                    if (c.indexOf(SESSION_KEY + '=') === 0) {
+                        raw = decodeURIComponent(c.substring(SESSION_KEY.length + 1));
+                        break;
+                    }
+                }
+            } catch(e) {}
+        }
+
+        if (!raw) return null;
 
         try {
             var parsed = JSON.parse(raw);
-            // Если это массив (старый формат) — берём последний
             if (Array.isArray(parsed)) parsed = parsed[parsed.length - 1];
-            if (!parsed || !parsed.access_token || !parsed.user) {
-                log('❌ Сессия повреждена');
-                return null;
-            }
-            log('✅ Сессия найдена: ' + parsed.user.email);
+            if (!parsed || !parsed.access_token || !parsed.user) return null;
+            if (parsed.expires_at && parsed.expires_at * 1000 < Date.now()) return null;
             return parsed;
-        } catch (e) {
-            log('❌ Ошибка парсинга: ' + e.message);
+        } catch(e) {
             return null;
         }
     }
 
     // ============================================================
-    // 🌐 ЗАПРОС К SUPABASE REST API
+    // 🌐 API
     // ============================================================
     async function apiGet(path, session) {
         var res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
@@ -95,15 +137,12 @@ comments: false
                 'Content-Type': 'application/json'
             }
         });
-        if (!res.ok) {
-            log('⚠️ REST ' + res.status + ' для ' + path);
-            return null;
-        }
+        if (!res.ok) return null;
         return await res.json();
     }
 
     // ============================================================
-    // ОШИБКА
+    // ❌ ОШИБКА
     // ============================================================
     function showError(title, sub, action) {
         container.innerHTML = [
@@ -112,34 +151,25 @@ comments: false
             '  <h2 class="pf-error-title">' + escapeHtml(title) + '</h2>',
             '  <p class="pf-error-sub">' + (sub || '') + '</p>',
             action || '',
-            '</div>',
-            '<div style="max-width:500px;margin:20px auto;padding:14px;background:#f5f5f5;border-radius:10px;font-family:monospace;font-size:0.7rem;color:#666;white-space:pre-wrap;word-break:break-all;">',
-            debugLines.join('\n'),
             '</div>'
         ].join('');
     }
 
     // ============================================================
-    // ЗАГРУЗКА ПРОФИЛЯ
+    // 👤 ЗАГРУЗКА ПРОФИЛЯ
     // ============================================================
     async function loadProfile(session, profileUserId, isOwn) {
-        log('Загрузка профиля: ' + profileUserId);
-
         var profiles = await apiGet('profiles?user_id=eq.' + profileUserId + '&select=*', session);
         var profile = profiles && profiles[0];
 
         if (!profile) {
-            log('Профиль не найден');
             if (isOwn) {
-                showError('Профиль не создан', 'Создайте профиль в настройках.',
-                    '<a href="/profile/edit/" class="pf-btn pf-btn-primary">📝 Заполнить</a>');
+                showError('Профиль не создан', 'Заполните свой профиль.', '<a href="/profile/edit/" class="pf-btn pf-btn-primary">📝 Заполнить</a>');
             } else {
                 showError('Пользователь не найден', '', '');
             }
             return;
         }
-
-        log('✅ Профиль получен: ' + (profile.display_name || profile.username));
 
         var name = profile.display_name || profile.username || 'Аноним';
         var kingdom = profile.kingdom || 'Эдем';
@@ -180,29 +210,30 @@ comments: false
             '  </div>',
             '</div>'
         ].join('');
-
-        log('✅ Профиль отрисован');
     }
 
     // ============================================================
-    // ВЫХОД
+    // 🚪 ВЫХОД
     // ============================================================
     window.pfLogout = function() {
+        try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
+        try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
+        try { document.cookie = SESSION_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
         try {
-            var key = 'sb-' + PROJECT_REF + '-auth-token';
-            localStorage.removeItem(key);
-            sessionStorage.removeItem(key);
-        } catch (e) {}
+            var keys = [];
+            for (var i = 0; i < localStorage.length; i++) {
+                var k = localStorage.key(i);
+                if (k && k.indexOf('sb-') === 0) keys.push(k);
+            }
+            keys.forEach(function(k) { localStorage.removeItem(k); });
+        } catch(e) {}
         window.location.href = '/';
     };
 
     // ============================================================
-    // СТАРТ
+    // 🚀 СТАРТ
     // ============================================================
     function init() {
-        log('══════ ИНИЦИАЛИЗАЦИЯ ══════');
-        log('URL: ' + location.href);
-
         var session = readSession();
         if (!session) {
             showError('Вы не вошли', 'Войдите, чтобы просмотреть профиль.',

@@ -96,20 +96,10 @@ comments: false
     // 📖 ЧТЕНИЕ СЕССИИ (localStorage + sessionStorage + cookie)
     // ============================================================
     function readSession() {
-        var raw = null, source = '';
+        var raw = null;
 
-        try {
-            raw = localStorage.getItem(SESSION_KEY);
-            if (raw) source = 'localStorage';
-        } catch(e) {}
-
-        if (!raw) {
-            try {
-                raw = sessionStorage.getItem(SESSION_KEY);
-                if (raw) source = 'sessionStorage';
-            } catch(e) {}
-        }
-
+        try { raw = localStorage.getItem(SESSION_KEY); } catch(e) {}
+        if (!raw) { try { raw = sessionStorage.getItem(SESSION_KEY); } catch(e) {} }
         if (!raw) {
             try {
                 var cookies = document.cookie.split(';');
@@ -117,21 +107,19 @@ comments: false
                     var c = cookies[i].trim();
                     if (c.indexOf(SESSION_KEY + '=') === 0) {
                         raw = decodeURIComponent(c.substring(SESSION_KEY.length + 1));
-                        source = 'cookie';
                         break;
                     }
                 }
             } catch(e) {}
         }
 
-        if (!raw) { console.log('❌ Сессия не найдена'); return null; }
+        if (!raw) return null;
 
         try {
             var parsed = JSON.parse(raw);
             if (Array.isArray(parsed)) parsed = parsed[parsed.length - 1];
             if (!parsed || !parsed.access_token || !parsed.user) return null;
             if (parsed.expires_at && parsed.expires_at * 1000 < Date.now()) return null;
-            console.log('✅ Сессия (' + source + '):', parsed.user.email);
             return parsed;
         } catch(e) {
             return null;
@@ -139,13 +127,13 @@ comments: false
     }
 
     // ============================================================
-    // ⏳ ЖДЁМ ПОЯВЛЕНИЯ СЕССИИ (до 10 секунд)
+    // ⏳ ЖДЁМ СЕССИЮ (до 10 сек)
     // ============================================================
     function waitForSession(callback) {
         var attempts = 0;
-        var maxAttempts = 40; // 40 × 250мс = 10 сек
+        var maxAttempts = 40;
 
-        var check = function() {
+        function check() {
             attempts++;
             var session = readSession();
 
@@ -160,7 +148,7 @@ comments: false
             }
 
             setTimeout(check, 250);
-        };
+        }
 
         check();
     }
@@ -270,7 +258,7 @@ comments: false
     };
 
     // ============================================================
-    // 🚀 СТАРТ — с ожиданием сессии
+    // 🚀 СТАРТ
     // ============================================================
     function init() {
         waitForSession(function(session) {

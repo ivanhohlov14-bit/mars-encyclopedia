@@ -7,7 +7,7 @@
     var PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
     var SUPABASE_URL = 'https://' + PROJECT_REF + '.supabase.co';
     var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
-    var SESSION_KEY = 'sb-' + PROJECT_REF + '-auth-token';
+    var SESSION_KEY = 'mars-auth-v1';
 
     var profileCache = {};
     var PROFILE_TTL = 5 * 60 * 1000;

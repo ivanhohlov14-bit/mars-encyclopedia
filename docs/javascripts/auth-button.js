@@ -1,15 +1,12 @@
 // ============================================================
-// auth-button.js — VIP v3
-// Светлый стиль + фикс бесконечной загрузки на телефоне
+// auth-button.js — VIP v4
+// Светлые надписи + фикс вечного спиннера на телефоне
 // ============================================================
 (function() {
     'use strict';
 
-    console.log('✅ auth-button.js VIP v3 загружен');
+    console.log('✅ auth-button.js VIP v4 загружен');
 
-    // ============================================================
-    // ⚙️ КОНФИГ
-    // ============================================================
     var CONFIG = {
         supabase: {
             url: 'https://ncytbgbzfjfoqmmgfygz.supabase.co',
@@ -23,11 +20,12 @@
         mobileBreakpoint: 768,
         profileCacheTTL: 5 * 60 * 1000,
         retryDelay: 500,
-        maxRetries: 20
+        maxRetries: 30,
+        fallbackTimeout: 8000  // через 8 сек показать кнопки вместо спиннера
     };
 
     // ============================================================
-    // 🎨 СТИЛИ (светлые, как раньше + свечения)
+    // 🎨 СТИЛИ
     // ============================================================
     function injectStyles() {
         if (document.getElementById('auth-vip-styles')) return;
@@ -40,7 +38,6 @@
             '    gap: 6px;',
             '    flex-wrap: wrap;',
             '}',
-            /* --- Плашка пользователя (светлая, как было) --- */
             '.auth-user-chip {',
             '    display: inline-flex;',
             '    align-items: center;',
@@ -48,7 +45,8 @@
             '    background: #f5f5f5;',
             '    padding: 4px 10px;',
             '    border-radius: 20px;',
-            '    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);',
+            '    flex-wrap: wrap;',
+            '    transition: box-shadow 0.25s, transform 0.25s;',
             '}',
             '.auth-user-chip:hover {',
             '    box-shadow: 0 4px 16px rgba(108, 99, 255, 0.35);',
@@ -61,15 +59,10 @@
             '    border: 2px solid #ddd;',
             '    object-fit: cover;',
             '    flex-shrink: 0;',
-            '    transition: border-color 0.25s;',
-            '}',
-            '.auth-user-chip:hover .auth-avatar {',
-            '    border-color: #6C63FF;',
             '}',
             '.auth-username {',
             '    font-size: 0.75rem;',
             '    color: #333;',
-            '    font-weight: 600;',
             '    max-width: 60px;',
             '    overflow: hidden;',
             '    text-overflow: ellipsis;',
@@ -77,34 +70,24 @@
             '}',
             '.auth-link-profile {',
             '    color: #6C63FF;',
-            '    font-size: 0.75rem;',
-            '    font-weight: 700;',
             '    text-decoration: none !important;',
-            '    transition: color 0.2s;',
+            '    font-size: 0.75rem;',
             '    white-space: nowrap;',
+            '    transition: text-shadow 0.2s;',
             '}',
             '.auth-link-profile:hover {',
-            '    color: #4a3fb5;',
-            '    text-shadow: 0 0 8px rgba(108, 99, 255, 0.4);',
+            '    text-shadow: 0 0 8px rgba(108, 99, 255, 0.6);',
             '}',
             '.auth-link-logout {',
             '    color: #c0392b;',
-            '    font-size: 0.75rem;',
-            '    font-weight: 600;',
-            '    cursor: pointer;',
-            '    background: none;',
-            '    border: none;',
-            '    padding: 0;',
-            '    font-family: inherit;',
             '    text-decoration: none !important;',
-            '    transition: color 0.2s;',
+            '    font-size: 0.75rem;',
             '    white-space: nowrap;',
+            '    transition: text-shadow 0.2s;',
             '}',
             '.auth-link-logout:hover {',
-            '    color: #e74c3c;',
-            '    text-shadow: 0 0 8px rgba(231, 76, 60, 0.4);',
+            '    text-shadow: 0 0 8px rgba(231, 76, 60, 0.6);',
             '}',
-            /* --- Гость --- */
             '.auth-guest {',
             '    display: inline-flex;',
             '    align-items: center;',
@@ -113,17 +96,16 @@
             '}',
             '.auth-link-login {',
             '    color: #555;',
-            '    font-size: 0.8rem;',
-            '    font-weight: 600;',
             '    text-decoration: none !important;',
-            '    padding: 4px 10px;',
-            '    border-radius: 16px;',
-            '    transition: all 0.2s;',
+            '    font-size: 0.8rem;',
             '    white-space: nowrap;',
+            '    padding: 4px 8px;',
+            '    border-radius: 16px;',
+            '    transition: color 0.2s, text-shadow 0.2s;',
             '}',
             '.auth-link-login:hover {',
             '    color: #6C63FF;',
-            '    text-shadow: 0 0 8px rgba(108, 99, 255, 0.4);',
+            '    text-shadow: 0 0 8px rgba(108, 99, 255, 0.5);',
             '}',
             '.auth-link-register {',
             '    color: #fff;',
@@ -132,42 +114,25 @@
             '    border-radius: 16px;',
             '    text-decoration: none !important;',
             '    font-size: 0.8rem;',
-            '    font-weight: 700;',
-            '    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);',
-            '    box-shadow: 0 2px 10px rgba(108, 99, 255, 0.4);',
             '    white-space: nowrap;',
+            '    box-shadow: 0 2px 10px rgba(108, 99, 255, 0.4);',
+            '    transition: all 0.25s;',
             '}',
             '.auth-link-register:hover {',
             '    transform: translateY(-2px);',
-            '    background: #5a51e8;',
-            '    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.7);',
-            '    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);',
+            '    box-shadow: 0 6px 18px rgba(108, 99, 255, 0.7);',
             '}',
-            /* --- Загрузка --- */
-            '.auth-loading {',
-            '    color: #999;',
-            '    font-size: 0.8rem;',
-            '    opacity: 0.7;',
+            '.auth-error {',
+            '    color: #c0392b;',
+            '    font-size: 0.72rem;',
+            '    font-family: inherit;',
             '}',
-            '.auth-spinner {',
-            '    display: inline-block;',
-            '    width: 14px;',
-            '    height: 14px;',
-            '    border: 2px solid rgba(108, 99, 255, 0.3);',
-            '    border-top-color: #6C63FF;',
-            '    border-radius: 50%;',
-            '    animation: authSpin 0.8s linear infinite;',
-            '}',
-            '@keyframes authSpin {',
-            '    to { transform: rotate(360deg); }',
-            '}',
-            /* --- Мобильная кастомизация --- */
             '@media (max-width: 768px) {',
             '    .auth-user-chip { padding: 3px 8px; gap: 4px; }',
             '    .auth-avatar { width: 22px; height: 22px; }',
             '    .auth-username { max-width: 45px; font-size: 0.68rem; }',
             '    .auth-link-profile, .auth-link-logout { font-size: 0.68rem; }',
-            '    .auth-link-login { font-size: 0.72rem; padding: 3px 8px; }',
+            '    .auth-link-login { font-size: 0.72rem; padding: 3px 6px; }',
             '    .auth-link-register { font-size: 0.72rem; padding: 3px 10px; }',
             '}'
         ].join('\n');
@@ -216,6 +181,7 @@
     var authInitialized = false;
     var initRetries = 0;
     var profileCache = {};
+    var fallbackUsed = false;
 
     function initSupabase() {
         if (authInitialized) return;
@@ -225,7 +191,8 @@
             if (initRetries < CONFIG.maxRetries) {
                 setTimeout(initSupabase, CONFIG.retryDelay);
             } else {
-                console.warn('⚠️ Supabase не загрузился');
+                console.warn('⚠️ Supabase не загрузился — показываем fallback');
+                showFallbackGuest();
             }
             return;
         }
@@ -234,41 +201,48 @@
             supabaseClient = supabase.createClient(CONFIG.supabase.url, CONFIG.supabase.key);
             authInitialized = true;
             window._supabaseClient = supabaseClient;
-            console.log('✅ Supabase инициализирован');
+            console.log('✅ Supabase инициализирован (попыток: ' + initRetries + ')');
 
-            supabaseClient.auth.onAuthStateChange(function(event, session) {
+            supabaseClient.auth.onAuthStateChange(function(event) {
                 console.log('🔐 Auth event:', event);
-                // Небольшая задержка чтобы DOM точно был готов
                 setTimeout(function() { updateAuthUI(); }, 50);
             });
 
-            // Первый рендер
             setTimeout(renderButton, 200);
         } catch (e) {
             console.error('❌ Ошибка Supabase:', e);
+            showFallbackGuest();
         }
     }
 
+    // Показ кнопок "Войти/Регистрация" без Supabase
+    function showFallbackGuest() {
+        var container = document.getElementById('auth-btn-container') || ensureContainer();
+        if (!container) return;
+        container.innerHTML = [
+            '<div class="auth-guest">',
+            '    <a href="' + CONFIG.routes.login + '" class="auth-link-login">Войти</a>',
+            '    <a href="' + CONFIG.routes.register + '" class="auth-link-register">Регистрация</a>',
+            '</div>'
+        ].join('');
+    }
+
     // ============================================================
-    // 📥 ПРОФИЛЬ (с кэшем)
+    // 📥 ПРОФИЛЬ
     // ============================================================
     async function fetchProfile(userId) {
         if (!supabaseClient || !userId) return null;
-
         var cached = profileCache[userId];
         if (cached && (Date.now() - cached.timestamp < CONFIG.profileCacheTTL)) {
             return cached.data;
         }
-
         try {
             var result = await supabaseClient
                 .from('profiles')
                 .select('display_name, username, avatar_url')
                 .eq('user_id', userId)
                 .single();
-
             if (result.error) return null;
-
             var data = result.data;
             profileCache[userId] = { data: data, timestamp: Date.now() };
             return data;
@@ -279,7 +253,7 @@
     }
 
     // ============================================================
-    // 🎨 КОНТЕЙНЕР (создаётся если не существует)
+    // 🎨 КОНТЕЙНЕР
     // ============================================================
     function ensureContainer() {
         var container = document.getElementById('auth-btn-container');
@@ -321,8 +295,7 @@
                     'cursor: pointer;',
                     'padding: 6px 8px;',
                     'flex-shrink: 0;',
-                    'line-height: 1;',
-                    '-webkit-tap-highlight-color: transparent;'
+                    'line-height: 1;'
                 ].join('');
                 hamburger.onclick = function() {
                     var sidebar = document.querySelector('.wy-nav-side');
@@ -335,8 +308,6 @@
             } else {
                 customHeader.appendChild(container);
             }
-
-            console.log('✅ Мобильная шапка готова');
             return container;
         }
 
@@ -353,7 +324,6 @@
                 'z-index: 1000;'
             ].join('');
             header.appendChild(container);
-            console.log('✅ Кнопка в header');
             return container;
         }
 
@@ -362,7 +332,11 @@
             'position: fixed !important;',
             'top: 10px !important;',
             'right: 10px !important;',
-            'z-index: 99999 !important;'
+            'z-index: 99999 !important;',
+            'background: rgba(255,255,255,0.9);',
+            'border-radius: 20px;',
+            'padding: 4px 12px;',
+            'box-shadow: 0 2px 12px rgba(0,0,0,0.15);'
         ].join('');
         document.body.prepend(container);
         return container;
@@ -377,15 +351,18 @@
     }, 100);
 
     async function updateAuthUI() {
-        // ВАЖНО: если контейнера нет — создаём
         var container = document.getElementById('auth-btn-container');
-        if (!container) {
-            container = ensureContainer();
-        }
+        if (!container) container = ensureContainer();
         if (!container) return;
 
         if (!supabaseClient || !authInitialized) {
-            container.innerHTML = '<span class="auth-spinner"></span>';
+            // НЕ показываем вечный спиннер — показываем гостя
+            container.innerHTML = [
+                '<div class="auth-guest">',
+                '    <a href="' + CONFIG.routes.login + '" class="auth-link-login">Войти</a>',
+                '    <a href="' + CONFIG.routes.register + '" class="auth-link-register">Регистрация</a>',
+                '</div>'
+            ].join('');
             return;
         }
 
@@ -407,12 +384,13 @@
 
                 var safeUsername = escapeHtml(username);
 
+                // НАДПИСИ КАК В ИСХОДНОМ КОДЕ
                 container.innerHTML = [
                     '<div class="auth-user-chip">',
-                    '    <img src="' + avatarUrl + '" alt="" class="auth-avatar" onerror="this.style.display=\'none\'">',
+                    '    <img src="' + avatarUrl + '" alt="Avatar" class="auth-avatar" onerror="this.style.display=\'none\'">',
                     '    <span class="auth-username">' + safeUsername + '</span>',
                     '    <a href="' + CONFIG.routes.profile + '" class="auth-link-profile">Профиль</a>',
-                    '    <button class="auth-link-logout" onclick="window._authLogout()">Выйти</button>',
+                    '    <a href="#" onclick="window._authLogout(); return false;" class="auth-link-logout">Выйти</a>',
                     '</div>'
                 ].join('');
             } else {
@@ -426,7 +404,12 @@
             }
         } catch (e) {
             console.error('❌ Ошибка updateAuthUI:', e);
-            container.innerHTML = '<span class="auth-loading">Ошибка</span>';
+            container.innerHTML = [
+                '<div class="auth-guest">',
+                '    <a href="' + CONFIG.routes.login + '" class="auth-link-login">Войти</a>',
+                '    <a href="' + CONFIG.routes.register + '" class="auth-link-register">Регистрация</a>',
+                '</div>'
+            ].join('');
         }
     }
 
@@ -436,11 +419,9 @@
     async function logoutUser() {
         console.log('🔄 Выход...');
         try {
-            if (supabaseClient) {
-                await supabaseClient.auth.signOut();
-            }
+            if (supabaseClient) await supabaseClient.auth.signOut();
         } catch (e) {
-            console.warn('⚠️ Ошибка signOut:', e);
+            console.warn('⚠️ signOut:', e);
         }
         clearLocalSession();
         profileCache = {};
@@ -448,18 +429,14 @@
     }
 
     function clearLocalSession() {
-        console.log('🧹 Очистка...');
         try {
             var keysToRemove = [];
             for (var i = 0; i < localStorage.length; i++) {
                 var key = localStorage.key(i);
-                if (key && key.indexOf('supabase') === 0) {
-                    keysToRemove.push(key);
-                }
+                if (key && key.indexOf('supabase') === 0) keysToRemove.push(key);
             }
             keysToRemove.forEach(function(k) { localStorage.removeItem(k); });
         } catch (e) {}
-
         try {
             document.cookie.split(';').forEach(function(cookie) {
                 var name = cookie.split('=')[0].trim();
@@ -495,10 +472,19 @@
     function start() {
         injectStyles();
         initSupabase();
-        // Повторная проверка через 2 секунды — на случай если что-то пошло не так
+
+        // Fallback: если через 8 сек спиннер всё ещё крутится — показать гостя
+        setTimeout(function() {
+            if (!fallbackUsed && (!supabaseClient || !authInitialized)) {
+                console.warn('⚠️ Fallback: Supabase не загрузился за 8 сек');
+                fallbackUsed = true;
+                showFallbackGuest();
+            }
+        }, CONFIG.fallbackTimeout);
+
+        // Повторная проверка
         setTimeout(function() {
             if (!document.getElementById('auth-btn-container')) {
-                console.log('🔄 Повторная попытка...');
                 renderButton();
             } else {
                 updateAuthUI();
@@ -515,5 +501,5 @@
         start();
     }
 
-    console.log('✅ auth-button.js VIP v3 выполнен');
+    console.log('✅ auth-button.js VIP v4 выполнен');
 })();

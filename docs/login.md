@@ -6,7 +6,7 @@ comments: false
 <div id="login-app" style="max-width:100%;margin:0 auto;font-family:'Segoe UI',-apple-system,sans-serif;padding:0 8px;">
     <div style="text-align:center;padding:60px 20px;">
         <div style="display:inline-block;width:48px;height:48px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:lgSpin 0.8s linear infinite;"></div>
-        <p id="lg-status" style="color:#999;margin-top:16px;font-size:0.9rem;">Загрузка формы...</p>
+        <p style="color:#999;margin-top:16px;font-size:0.9rem;">Загрузка формы...</p>
     </div>
 </div>
 
@@ -85,18 +85,23 @@ comments: false
     transition: all 0.25s;
 }
 .lg-input:focus { border-color: #6C63FF; background: #fff; box-shadow: 0 0 0 4px rgba(108,99,255,0.1); }
+.lg-input.error { border-color: #e74c3c; background: #fff5f5; }
 .lg-eye-btn {
     position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
     background: none; border: none; cursor: pointer; font-size: 1.1rem;
     padding: 6px; opacity: 0.6; color: #1a1a2e;
 }
+.lg-error-text { font-size: 0.78rem; color: #e74c3c; margin-top: 6px; padding-left: 4px; display: none; }
+.lg-error-text.show { display: block; }
 .lg-btn {
     width: 100%; padding: 15px 20px; border-radius: 12px; border: none;
     font-size: 0.98rem; font-weight: 800; cursor: pointer; font-family: inherit;
     display: flex; align-items: center; justify-content: center; gap: 8px;
     background: linear-gradient(135deg, #6C63FF, #A29BFE);
     color: #fff; box-shadow: 0 8px 20px -4px rgba(108,99,255,0.4);
+    transition: all 0.25s;
 }
+.lg-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 28px -4px rgba(108,99,255,0.5); }
 .lg-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .lg-spinner {
     width: 18px; height: 18px;
@@ -110,6 +115,7 @@ comments: false
     color: #6C63FF; font-weight: 700; cursor: pointer;
     background: none; border: none; font-family: inherit; font-size: 0.82rem; padding: 4px 0;
 }
+.lg-link:hover { opacity: 0.75; }
 .lg-toast {
     position: fixed; bottom: 30px; left: 50%;
     transform: translateX(-50%) translateY(100px);
@@ -122,12 +128,6 @@ comments: false
 .lg-toast.success { background: linear-gradient(135deg, #27ae60, #16a085); }
 .lg-toast.error { background: linear-gradient(135deg, #e74c3c, #c0392b); }
 .lg-toast.info { background: linear-gradient(135deg, #3498db, #2980b9); }
-.lg-debug {
-    margin-top: 16px; padding: 12px; background: #f5f5f5;
-    border-radius: 8px; font-family: monospace; font-size: 0.7rem;
-    color: #555; white-space: pre-wrap; word-break: break-all;
-    max-height: 200px; overflow-y: auto;
-}
 
 @media (max-width: 500px) {
     .lg-hero { padding: 32px 24px 24px 24px; border-radius: 20px 20px 0 0; }
@@ -136,26 +136,14 @@ comments: false
 </style>
 
 <script>
-// ⚡️ КРИТИЧНО: этот код не зависит ни от каких CDN
 (function() {
     'use strict';
-
-    console.log('🔐 login.md загружен');
 
     var SUPABASE_URL = 'https://ncytbgbzfjfoqmmgfygz.supabase.co';
     var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
     var PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
 
     var container = document.getElementById('login-app');
-    var debugLines = [];
-
-    function log(msg) {
-        var t = new Date().toLocaleTimeString();
-        debugLines.push('[' + t + '] ' + msg);
-        console.log(msg);
-        var el = document.getElementById('lg-debug');
-        if (el) el.textContent = debugLines.join('\n');
-    }
 
     function escapeHtml(s) {
         return String(s || '').replace(/[&<>"']/g, function(m) {
@@ -178,7 +166,7 @@ comments: false
     }
 
     // ============================================================
-    // 🎯 ФОРМА РЕНДЕРИТСЯ СРАЗУ — НЕ ЖДЁМ НИЧЕГО
+    // 🎯 РЕНДЕР
     // ============================================================
     function render() {
         var params = new URLSearchParams(window.location.search);
@@ -202,6 +190,7 @@ comments: false
             '        <div class="lg-input-wrap">',
             '          <input type="email" id="login-email" class="lg-input" placeholder="ivan@example.com" value="' + escapeHtml(emailFromUrl) + '" autocomplete="email" required>',
             '        </div>',
+            '        <div class="lg-error-text" id="login-email-error"></div>',
             '      </div>',
             '      <div class="lg-field">',
             '        <label for="login-password">Пароль</label>',
@@ -209,11 +198,15 @@ comments: false
             '          <input type="password" id="login-password" class="lg-input" placeholder="Введите пароль" autocomplete="current-password" required>',
             '          <button type="button" class="lg-eye-btn" data-target="login-password">👁️</button>',
             '        </div>',
+            '        <div class="lg-error-text" id="login-password-error"></div>',
             '      </div>',
             '      <button type="submit" class="lg-btn" id="btn-login">',
             '        <span class="lg-spinner"></span>',
             '        <span>Войти</span>',
             '      </button>',
+            '      <div class="lg-extra">',
+            '        <button type="button" class="lg-link" id="forgot-password">Забыли пароль?</button>',
+            '      </div>',
             '    </form>',
             '    <form class="lg-form hidden" id="form-register">',
             '      <div class="lg-field">',
@@ -221,6 +214,7 @@ comments: false
             '        <div class="lg-input-wrap">',
             '          <input type="email" id="reg-email" class="lg-input" placeholder="ivan@example.com" autocomplete="email" required>',
             '        </div>',
+            '        <div class="lg-error-text" id="reg-email-error"></div>',
             '      </div>',
             '      <div class="lg-field">',
             '        <label for="reg-password">Пароль</label>',
@@ -228,6 +222,7 @@ comments: false
             '          <input type="password" id="reg-password" class="lg-input" placeholder="Минимум 6 символов" autocomplete="new-password" required>',
             '          <button type="button" class="lg-eye-btn" data-target="reg-password">👁️</button>',
             '        </div>',
+            '        <div class="lg-error-text" id="reg-password-error"></div>',
             '      </div>',
             '      <div class="lg-field">',
             '        <label for="reg-password2">Подтвердите пароль</label>',
@@ -235,13 +230,17 @@ comments: false
             '          <input type="password" id="reg-password2" class="lg-input" placeholder="Повторите пароль" autocomplete="new-password" required>',
             '          <button type="button" class="lg-eye-btn" data-target="reg-password2">👁️</button>',
             '        </div>',
+            '        <div class="lg-error-text" id="reg-password2-error"></div>',
             '      </div>',
             '      <button type="submit" class="lg-btn" id="btn-register">',
             '        <span class="lg-spinner"></span>',
             '        <span>Создать аккаунт</span>',
             '      </button>',
+            '      <div class="lg-extra" style="justify-content:center;">',
+            '        <span style="color:#888;">Уже есть аккаунт?</span>',
+            '        <button type="button" class="lg-link" id="switch-to-login">Войти</button>',
+            '      </div>',
             '    </form>',
-            '    <div class="lg-debug" id="lg-debug"></div>',
             '  </div>',
             '</div>'
         ].join('');
@@ -257,6 +256,10 @@ comments: false
             };
         });
 
+        document.getElementById('switch-to-login').onclick = function() {
+            document.querySelector('.lg-tab[data-tab="login"]').click();
+        };
+
         // Показать пароль
         document.querySelectorAll('.lg-eye-btn').forEach(function(btn) {
             btn.onclick = function() {
@@ -267,16 +270,30 @@ comments: false
             };
         });
 
-        // Формы
+        // Забыли пароль
+        document.getElementById('forgot-password').onclick = async function() {
+            var email = document.getElementById('login-email').value.trim();
+            if (!email) { showToast('Введите email', 'error'); return; }
+            showToast('Отправка...', 'info');
+            try {
+                var res = await fetch(SUPABASE_URL + '/auth/v1/recover', {
+                    method: 'POST',
+                    headers: { 'apikey': SUPABASE_KEY, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                });
+                if (res.ok) showToast('📧 Проверьте почту!', 'success');
+                else showToast('Не удалось отправить', 'error');
+            } catch(e) {
+                showToast('Ошибка сети', 'error');
+            }
+        };
+
         document.getElementById('form-login').onsubmit = handleLogin;
         document.getElementById('form-register').onsubmit = handleRegister;
-
-        log('✅ Форма отрисована');
-        log('URL: ' + location.href);
     }
 
     // ============================================================
-    // 💾 СОХРАНЕНИЕ СЕССИИ (формат Supabase JS v2)
+    // 💾 СОХРАНЕНИЕ СЕССИИ — localStorage + sessionStorage + cookie
     // ============================================================
     function saveSession(data) {
         var session = {
@@ -285,78 +302,70 @@ comments: false
             expires_at: Math.floor(Date.now() / 1000) + (data.expires_in || 3600),
             expires_in: data.expires_in || 3600,
             token_type: data.token_type || 'bearer',
-            user: data.user
+            user: data.user,
+            saved_at: Date.now()
         };
         var key = 'sb-' + PROJECT_REF + '-auth-token';
+        var json = JSON.stringify(session);
+
+        try { localStorage.setItem(key, json); } catch(e) {}
+        try { sessionStorage.setItem(key, json); } catch(e) {}
+
         try {
-            localStorage.setItem(key, JSON.stringify(session));
-            log('✅ Сессия сохранена в localStorage');
-        } catch (e) {
-            log('⚠️ localStorage заблокирован, пробую sessionStorage');
-            try {
-                sessionStorage.setItem(key, JSON.stringify(session));
-                log('✅ Сессия сохранена в sessionStorage');
-            } catch (e2) {
-                log('❌ Хранилище недоступно: ' + e2.message);
-            }
-        }
+            var expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+            document.cookie = key + '=' + encodeURIComponent(json) + '; expires=' + expires + '; path=/; SameSite=Lax; Secure';
+        } catch(e) {}
     }
 
     // ============================================================
-    // 🚪 ВХОД — прямой fetch к Supabase API
+    // 🚪 ВХОД
     // ============================================================
     async function handleLogin(e) {
         e.preventDefault();
-        debugLines = [];
-        log('══════ ВХОД ══════');
 
         var email = document.getElementById('login-email').value.trim();
         var password = document.getElementById('login-password').value;
         var btn = document.getElementById('btn-login');
 
-        if (!email || !password) {
-            showToast('Заполните все поля', 'error');
+        // Сброс ошибок
+        document.querySelectorAll('.lg-error-text').forEach(function(el) { el.classList.remove('show'); });
+        document.querySelectorAll('.lg-input').forEach(function(el) { el.classList.remove('error'); });
+
+        if (!email) {
+            document.getElementById('login-email').classList.add('error');
+            document.getElementById('login-email-error').textContent = 'Введите email';
+            document.getElementById('login-email-error').classList.add('show');
             return;
         }
-
-        log('Email: ' + email);
-        log('Пароль: длина ' + password.length);
+        if (!password) {
+            document.getElementById('login-password').classList.add('error');
+            document.getElementById('login-password-error').textContent = 'Введите пароль';
+            document.getElementById('login-password-error').classList.add('show');
+            return;
+        }
 
         btn.classList.add('loading');
         btn.disabled = true;
 
         try {
-            var url = SUPABASE_URL + '/auth/v1/token?grant_type=password';
-            log('📡 Запрос: POST /auth/v1/token');
-
             var controller = new AbortController();
             var timeoutId = setTimeout(function() { controller.abort(); }, 15000);
 
-            var res = await fetch(url, {
+            var res = await fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
                 method: 'POST',
-                headers: {
-                    'apikey': SUPABASE_KEY,
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'apikey': SUPABASE_KEY, 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email, password: password }),
                 signal: controller.signal
             });
 
             clearTimeout(timeoutId);
-            log('📥 Ответ HTTP: ' + res.status);
 
             var data;
-            try {
-                data = await res.json();
-            } catch (je) {
-                log('❌ Не удалось разобрать ответ');
-                throw new Error('Сервер вернул некорректный ответ');
-            }
+            try { data = await res.json(); }
+            catch (je) { throw new Error('Сервер вернул некорректный ответ'); }
 
             if (!res.ok) {
                 var errMsg = data.error_description || data.error || data.msg || data.message || ('HTTP ' + res.status);
-                log('❌ Ошибка: ' + errMsg);
-
                 if (String(errMsg).toLowerCase().indexOf('invalid') !== -1) {
                     showToast('Неверный email или пароль', 'error');
                 } else if (String(errMsg).toLowerCase().indexOf('confirm') !== -1) {
@@ -364,33 +373,20 @@ comments: false
                 } else {
                     showToast(errMsg, 'error');
                 }
-
                 btn.classList.remove('loading');
                 btn.disabled = false;
                 return;
             }
 
-            log('✅ Токен получен');
-            log('User: ' + (data.user ? data.user.email : 'нет'));
-
             saveSession(data);
             showToast('Добро пожаловать!', 'success');
 
-            log('🎉 Переход на /profile/');
-            setTimeout(function() {
-                window.location.href = '/profile/';
-            }, 800);
+            setTimeout(function() { window.location.href = '/profile/'; }, 900);
 
         } catch (err) {
-            log('❌ Exception: ' + err.name + ' — ' + err.message);
-
             var msg = err.message;
-            if (err.name === 'AbortError') {
-                msg = 'Превышено время ожидания. Проверьте интернет.';
-            } else if (msg.indexOf('Failed to fetch') !== -1 || msg.indexOf('NetworkError') !== -1) {
-                msg = 'Нет связи с сервером. Проверьте интернет.';
-            }
-
+            if (err.name === 'AbortError') msg = 'Превышено время ожидания';
+            else if (msg.indexOf('Failed to fetch') !== -1) msg = 'Нет связи с сервером';
             showToast(msg, 'error');
             btn.classList.remove('loading');
             btn.disabled = false;
@@ -402,76 +398,75 @@ comments: false
     // ============================================================
     async function handleRegister(e) {
         e.preventDefault();
-        debugLines = [];
-        log('══════ РЕГИСТРАЦИЯ ══════');
 
         var email = document.getElementById('reg-email').value.trim();
         var password = document.getElementById('reg-password').value;
         var password2 = document.getElementById('reg-password2').value;
         var btn = document.getElementById('btn-register');
 
-        if (!email) { showToast('Введите email', 'error'); return; }
-        if (password.length < 6) { showToast('Пароль минимум 6 символов', 'error'); return; }
-        if (password !== password2) { showToast('Пароли не совпадают', 'error'); return; }
+        document.querySelectorAll('.lg-error-text').forEach(function(el) { el.classList.remove('show'); });
+        document.querySelectorAll('.lg-input').forEach(function(el) { el.classList.remove('error'); });
+
+        if (!email) {
+            document.getElementById('reg-email').classList.add('error');
+            document.getElementById('reg-email-error').textContent = 'Введите email';
+            document.getElementById('reg-email-error').classList.add('show');
+            return;
+        }
+        if (password.length < 6) {
+            document.getElementById('reg-password').classList.add('error');
+            document.getElementById('reg-password-error').textContent = 'Минимум 6 символов';
+            document.getElementById('reg-password-error').classList.add('show');
+            return;
+        }
+        if (password !== password2) {
+            document.getElementById('reg-password2').classList.add('error');
+            document.getElementById('reg-password2-error').textContent = 'Пароли не совпадают';
+            document.getElementById('reg-password2-error').classList.add('show');
+            return;
+        }
 
         btn.classList.add('loading');
         btn.disabled = true;
 
         try {
-            var url = SUPABASE_URL + '/auth/v1/signup';
-            log('📡 POST /auth/v1/signup');
-
             var controller = new AbortController();
             var timeoutId = setTimeout(function() { controller.abort(); }, 15000);
 
-            var res = await fetch(url, {
+            var res = await fetch(SUPABASE_URL + '/auth/v1/signup', {
                 method: 'POST',
-                headers: {
-                    'apikey': SUPABASE_KEY,
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'apikey': SUPABASE_KEY, 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email, password: password }),
                 signal: controller.signal
             });
 
             clearTimeout(timeoutId);
-            log('📥 HTTP: ' + res.status);
 
             var data = await res.json();
 
             if (!res.ok) {
                 var errMsg = data.error_description || data.error || data.msg || data.message || ('HTTP ' + res.status);
-                log('❌ ' + errMsg);
-
                 if (String(errMsg).toLowerCase().indexOf('already') !== -1) {
                     showToast('Этот email уже зарегистрирован', 'error');
                 } else {
                     showToast(errMsg, 'error');
                 }
-
                 btn.classList.remove('loading');
                 btn.disabled = false;
                 return;
             }
 
-            log('✅ Регистрация успешна');
-
-            // Если сессия сразу создана — заходим
             if (data.access_token && data.user) {
                 saveSession(data);
                 showToast('Аккаунт создан!', 'success');
-                setTimeout(function() {
-                    window.location.href = '/profile/';
-                }, 800);
+                setTimeout(function() { window.location.href = '/profile/'; }, 900);
             } else {
-                // Требуется подтверждение email
                 showToast('Проверьте почту и подтвердите email', 'success');
                 btn.classList.remove('loading');
                 btn.disabled = false;
             }
 
         } catch (err) {
-            log('❌ ' + err.message);
             var msg = err.name === 'AbortError' ? 'Превышено время ожидания' : err.message;
             showToast(msg, 'error');
             btn.classList.remove('loading');
@@ -480,20 +475,12 @@ comments: false
     }
 
     // ============================================================
-    // 🚀 СТАРТ — сразу, без ожиданий
+    // 🚀 СТАРТ
     // ============================================================
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', render);
     } else {
         render();
     }
-
-    log('══════ ИНИЦИАЛИЗАЦИЯ ══════');
-    log('UserAgent: ' + navigator.userAgent.substring(0, 80));
-    log('localStorage: ' + (function() {
-        try { localStorage.setItem('__t','1'); localStorage.removeItem('__t'); return 'доступен'; }
-        catch(e) { return 'ЗАБЛОКИРОВАН'; }
-    })());
-
 })();
 </script>

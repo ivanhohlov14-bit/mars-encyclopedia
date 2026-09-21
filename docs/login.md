@@ -142,6 +142,7 @@ comments: false
     var SUPABASE_URL = 'https://ncytbgbzfjfoqmmgfygz.supabase.co';
     var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
     var PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
+    var SESSION_KEY = 'sb-' + PROJECT_REF + '-auth-token';
 
     var container = document.getElementById('login-app');
 
@@ -166,7 +167,7 @@ comments: false
     }
 
     // ============================================================
-    // 🎯 РЕНДЕР
+    // 🎯 РЕНДЕР ФОРМЫ
     // ============================================================
     function render() {
         var params = new URLSearchParams(window.location.search);
@@ -245,7 +246,6 @@ comments: false
             '</div>'
         ].join('');
 
-        // Вкладки
         document.querySelectorAll('.lg-tab').forEach(function(tab) {
             tab.onclick = function() {
                 document.querySelectorAll('.lg-tab').forEach(function(t) { t.classList.remove('active'); });
@@ -260,7 +260,6 @@ comments: false
             document.querySelector('.lg-tab[data-tab="login"]').click();
         };
 
-        // Показать пароль
         document.querySelectorAll('.lg-eye-btn').forEach(function(btn) {
             btn.onclick = function() {
                 var t = document.getElementById(btn.dataset.target);
@@ -270,7 +269,6 @@ comments: false
             };
         });
 
-        // Забыли пароль
         document.getElementById('forgot-password').onclick = async function() {
             var email = document.getElementById('login-email').value.trim();
             if (!email) { showToast('Введите email', 'error'); return; }
@@ -293,28 +291,30 @@ comments: false
     }
 
     // ============================================================
-    // 💾 СОХРАНЕНИЕ СЕССИИ — localStorage + sessionStorage + cookie
+    // 💾 СОХРАНЕНИЕ СЕССИИ
     // ============================================================
     function saveSession(data) {
         var session = {
             access_token: data.access_token,
             refresh_token: data.refresh_token,
             expires_at: Math.floor(Date.now() / 1000) + (data.expires_in || 3600),
-            expires_in: data.expires_in || 3600,
-            token_type: data.token_type || 'bearer',
-            user: data.user,
-            saved_at: Date.now()
+            token_type: 'bearer',
+            user: {
+                id: data.user.id,
+                email: data.user.email
+            }
         };
-        var key = 'sb-' + PROJECT_REF + '-auth-token';
         var json = JSON.stringify(session);
 
-        try { localStorage.setItem(key, json); } catch(e) {}
-        try { sessionStorage.setItem(key, json); } catch(e) {}
+        try { localStorage.setItem(SESSION_KEY, json); } catch(e) {}
+        try { sessionStorage.setItem(SESSION_KEY, json); } catch(e) {}
 
-        try {
-            var expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
-            document.cookie = key + '=' + encodeURIComponent(json) + '; expires=' + expires + '; path=/; SameSite=Lax; Secure';
-        } catch(e) {}
+        if (json.length < 3500) {
+            try {
+                var expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+                document.cookie = SESSION_KEY + '=' + encodeURIComponent(json) + '; expires=' + expires + '; path=/; SameSite=Lax; Secure';
+            } catch(e) {}
+        }
     }
 
     // ============================================================
@@ -327,7 +327,6 @@ comments: false
         var password = document.getElementById('login-password').value;
         var btn = document.getElementById('btn-login');
 
-        // Сброс ошибок
         document.querySelectorAll('.lg-error-text').forEach(function(el) { el.classList.remove('show'); });
         document.querySelectorAll('.lg-input').forEach(function(el) { el.classList.remove('error'); });
 

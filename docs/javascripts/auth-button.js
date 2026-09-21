@@ -1,5 +1,5 @@
 // ============================================================
-// auth-button.js — оригинальный стиль + надёжная сессия
+// auth-button.js — читает сессию из ОБОИХ ключей
 // ============================================================
 (function() {
     'use strict';
@@ -7,26 +7,38 @@
     var PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
     var SUPABASE_URL = 'https://' + PROJECT_REF + '.supabase.co';
     var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
-    var SESSION_KEY = 'mars-auth-v1';
+    var SB_KEY = 'sb-' + PROJECT_REF + '-auth-token';
+    var MY_KEY = 'mars-auth-v1';
 
     var profileCache = {};
     var PROFILE_TTL = 5 * 60 * 1000;
 
     // ============================================================
-    // 📖 ЧТЕНИЕ СЕССИИ
+    // 📖 ЧТЕНИЕ СЕССИИ — из обоих ключей
     // ============================================================
     function readSession() {
         var raw = null;
 
-        try { raw = localStorage.getItem(SESSION_KEY); } catch(e) {}
-        if (!raw) { try { raw = sessionStorage.getItem(SESSION_KEY); } catch(e) {} }
+        // Пробуем sb-* (основной для supabase-js)
+        try { raw = localStorage.getItem(SB_KEY); } catch(e) {}
+        if (!raw) { try { raw = sessionStorage.getItem(SB_KEY); } catch(e) {} }
+
+        // Пробуем mars-auth-v1
+        if (!raw) { try { raw = localStorage.getItem(MY_KEY); } catch(e) {} }
+        if (!raw) { try { raw = sessionStorage.getItem(MY_KEY); } catch(e) {} }
+
+        // Cookie
         if (!raw) {
             try {
                 var cookies = document.cookie.split(';');
                 for (var i = 0; i < cookies.length; i++) {
                     var c = cookies[i].trim();
-                    if (c.indexOf(SESSION_KEY + '=') === 0) {
-                        raw = decodeURIComponent(c.substring(SESSION_KEY.length + 1));
+                    if (c.indexOf(SB_KEY + '=') === 0) {
+                        raw = decodeURIComponent(c.substring(SB_KEY.length + 1));
+                        break;
+                    }
+                    if (c.indexOf(MY_KEY + '=') === 0) {
+                        raw = decodeURIComponent(c.substring(MY_KEY.length + 1));
                         break;
                     }
                 }
@@ -152,7 +164,6 @@
 
         var session = readSession();
 
-        // ============ НЕ АВТОРИЗОВАН ============
         if (!session || !session.user) {
             if (isMobile()) {
                 container.innerHTML =
@@ -170,7 +181,6 @@
             return;
         }
 
-        // ============ АВТОРИЗОВАН ============
         var profile = await fetchProfile(session);
         var user = session.user;
 
@@ -205,14 +215,17 @@
     // 🚪 ВЫХОД
     // ============================================================
     window.logoutUser = function() {
-        try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
-        try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
-        try { document.cookie = SESSION_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
+        try { localStorage.removeItem(SB_KEY); } catch(e) {}
+        try { localStorage.removeItem(MY_KEY); } catch(e) {}
+        try { sessionStorage.removeItem(SB_KEY); } catch(e) {}
+        try { sessionStorage.removeItem(MY_KEY); } catch(e) {}
+        try { document.cookie = SB_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
+        try { document.cookie = MY_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
         try {
             var toRemove = [];
             for (var i = 0; i < localStorage.length; i++) {
                 var k = localStorage.key(i);
-                if (k && k.indexOf('sb-') === 0) toRemove.push(k);
+                if (k && (k.indexOf('sb-') === 0 || k.indexOf('mars-auth') === 0)) toRemove.push(k);
             }
             toRemove.forEach(function(k) { localStorage.removeItem(k); });
         } catch(e) {}
@@ -226,7 +239,7 @@
     window.addEventListener('pageshow', function() { updateUI(); });
     window.addEventListener('focus', function() { updateUI(); });
     window.addEventListener('storage', function(e) {
-        if (e.key === SESSION_KEY) updateUI();
+        if (e.key === SB_KEY || e.key === MY_KEY) updateUI();
     });
 
     var lastMobile = isMobile();
@@ -248,9 +261,6 @@
         }, 250);
     });
 
-    // ============================================================
-    // 🚀 СТАРТ
-    // ============================================================
     function start() {
         updateUI();
         setTimeout(updateUI, 500);

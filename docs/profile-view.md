@@ -75,7 +75,8 @@ comments: false
     var PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
     var SUPABASE_URL = 'https://' + PROJECT_REF + '.supabase.co';
     var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
-    var SESSION_KEY = 'mars-auth-v1';
+    var MY_KEY = 'mars-auth-v1';
+    var SB_KEY = 'sb-' + PROJECT_REF + '-auth-token';
 
     var container = document.getElementById('profile-container');
 
@@ -93,20 +94,31 @@ comments: false
     };
 
     // ============================================================
-    // 📖 ЧТЕНИЕ СЕССИИ (localStorage + sessionStorage + cookie)
+    // 📖 ЧТЕНИЕ СЕССИИ — из mars-auth-v1 и sb-*
     // ============================================================
     function readSession() {
         var raw = null;
 
-        try { raw = localStorage.getItem(SESSION_KEY); } catch(e) {}
-        if (!raw) { try { raw = sessionStorage.getItem(SESSION_KEY); } catch(e) {} }
+        // 1. mars-auth-v1 — наш основной ключ
+        try { raw = localStorage.getItem(MY_KEY); } catch(e) {}
+        if (!raw) { try { raw = sessionStorage.getItem(MY_KEY); } catch(e) {} }
+
+        // 2. sb-* — на случай если есть
+        if (!raw) { try { raw = localStorage.getItem(SB_KEY); } catch(e) {} }
+        if (!raw) { try { raw = sessionStorage.getItem(SB_KEY); } catch(e) {} }
+
+        // 3. Cookie
         if (!raw) {
             try {
                 var cookies = document.cookie.split(';');
                 for (var i = 0; i < cookies.length; i++) {
                     var c = cookies[i].trim();
-                    if (c.indexOf(SESSION_KEY + '=') === 0) {
-                        raw = decodeURIComponent(c.substring(SESSION_KEY.length + 1));
+                    if (c.indexOf(MY_KEY + '=') === 0) {
+                        raw = decodeURIComponent(c.substring(MY_KEY.length + 1));
+                        break;
+                    }
+                    if (c.indexOf(SB_KEY + '=') === 0) {
+                        raw = decodeURIComponent(c.substring(SB_KEY.length + 1));
                         break;
                     }
                 }
@@ -119,7 +131,6 @@ comments: false
             var parsed = JSON.parse(raw);
             if (Array.isArray(parsed)) parsed = parsed[parsed.length - 1];
             if (!parsed || !parsed.access_token || !parsed.user) return null;
-            if (parsed.expires_at && parsed.expires_at * 1000 < Date.now()) return null;
             return parsed;
         } catch(e) {
             return null;
@@ -127,11 +138,11 @@ comments: false
     }
 
     // ============================================================
-    // ⏳ ЖДЁМ СЕССИЮ (до 10 сек)
+    // ⏳ ЖДЁМ СЕССИЮ (до 5 сек)
     // ============================================================
     function waitForSession(callback) {
         var attempts = 0;
-        var maxAttempts = 40;
+        var maxAttempts = 20;
 
         function check() {
             attempts++;
@@ -191,7 +202,24 @@ comments: false
 
         if (!profile) {
             if (isOwn) {
-                showError('Профиль не создан', 'Заполните свой профиль.', '<a href="/profile/edit/" class="pf-btn pf-btn-primary">📝 Заполнить</a>');
+                var name = (session.user.user_metadata && session.user.user_metadata.username) 
+                        || (session.user.email ? session.user.email.split('@')[0] : 'Пользователь');
+                var email = session.user.email || '';
+                container.innerHTML = [
+                    '<div class="pf-card" style="border:2px solid #6C63FF;">',
+                    '  <div style="height:6px;background:linear-gradient(90deg, #6C63FF, #A29BFE);"></div>',
+                    '  <div style="padding:30px 28px 24px 28px;text-align:center;">',
+                    '    <div style="width:120px;height:120px;border-radius:50%;background:#6C63FF;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:3rem;font-weight:700;">' + escapeHtml(name[0].toUpperCase()) + '</div>',
+                    '    <h2 style="margin:16px 0 4px 0;font-size:1.6rem;color:#2c3e50;">' + escapeHtml(name) + '</h2>',
+                    '    <p style="color:#888;font-size:0.9rem;margin:0 0 20px 0;">' + escapeHtml(email) + '</p>',
+                    '    <p style="color:#666;background:#f8f9fa;padding:12px;border-radius:8px;font-size:0.9rem;">📝 Профиль ещё не заполнен</p>',
+                    '    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;">',
+                    '      <a href="/profile/edit/" class="pf-btn pf-btn-primary">✏️ Заполнить профиль</a>',
+                    '      <button class="pf-btn pf-btn-danger" onclick="pfLogout()">🚪 Выйти</button>',
+                    '    </div>',
+                    '  </div>',
+                    '</div>'
+                ].join('');
             } else {
                 showError('Пользователь не найден', '', '');
             }
@@ -243,16 +271,19 @@ comments: false
     // 🚪 ВЫХОД
     // ============================================================
     window.pfLogout = function() {
-        try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
-        try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
-        try { document.cookie = SESSION_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
+        try { localStorage.removeItem(MY_KEY); } catch(e) {}
+        try { localStorage.removeItem(SB_KEY); } catch(e) {}
+        try { sessionStorage.removeItem(MY_KEY); } catch(e) {}
+        try { sessionStorage.removeItem(SB_KEY); } catch(e) {}
+        try { document.cookie = MY_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
+        try { document.cookie = SB_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
         try {
-            var keys = [];
+            var toRemove = [];
             for (var i = 0; i < localStorage.length; i++) {
                 var k = localStorage.key(i);
-                if (k && k.indexOf('sb-') === 0) keys.push(k);
+                if (k && (k.indexOf('sb-') === 0 || k.indexOf('mars-auth') === 0)) toRemove.push(k);
             }
-            keys.forEach(function(k) { localStorage.removeItem(k); });
+            toRemove.forEach(function(k) { localStorage.removeItem(k); });
         } catch(e) {}
         window.location.href = '/';
     };

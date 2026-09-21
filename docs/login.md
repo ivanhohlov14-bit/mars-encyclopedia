@@ -211,40 +211,42 @@ comments: false
     }
 
     // ============================================================
-    // 💾 СОХРАНЕНИЕ — пишем в ОБА ключа
-    // ============================================================
-    function saveSession(data) {
-        var session = {
+// 💾 СОХРАНЕНИЕ — ОБЪЕКТ (не массив!) для supabase-js v2
+// ============================================================
+function saveSession(data) {
+    var session = {
+        access_token: data.access_token,
+        refresh_token: data.refresh_token,
+        expires_in: data.expires_in || 3600,
+        expires_at: Math.floor(Date.now() / 1000) + (data.expires_in || 3600),
+        token_type: data.token_type || 'bearer',
+        user: data.user
+    };
+    // 🎯 ОБЪЕКТ, не массив!
+    var json = JSON.stringify(session);
+
+    var SB_KEY = 'sb-' + PROJECT_REF + '-auth-token';
+    var MY_KEY = 'mars-auth-v1';
+
+    // В оба ключа — ОБЪЕКТ
+    try { localStorage.setItem(SB_KEY, json); } catch(e) {}
+    try { sessionStorage.setItem(SB_KEY, json); } catch(e) {}
+    try { localStorage.setItem(MY_KEY, json); } catch(e) {}
+    try { sessionStorage.setItem(MY_KEY, json); } catch(e) {}
+
+    // Cookie — компактная, ОБЪЕКТ
+    try {
+        var compact = JSON.stringify({
             access_token: data.access_token,
             refresh_token: data.refresh_token,
-            expires_in: data.expires_in || 3600,
-            expires_at: Math.floor(Date.now() / 1000) + (data.expires_in || 3600),
-            token_type: data.token_type || 'bearer',
-            user: data.user
-        };
-        var json = JSON.stringify([session]);
-
-        // sb-* — для supabase-js (profile.md, supabase-client.js)
-        try { localStorage.setItem(SB_KEY, json); } catch(e) {}
-        try { sessionStorage.setItem(SB_KEY, json); } catch(e) {}
-
-        // mars-auth-v1 — для auth-button.js
-        try { localStorage.setItem(MY_KEY, json); } catch(e) {}
-        try { sessionStorage.setItem(MY_KEY, json); } catch(e) {}
-
-        // Cookie с компактной версией
-        try {
-            var compact = JSON.stringify([{
-                access_token: data.access_token,
-                refresh_token: data.refresh_token,
-                expires_at: session.expires_at,
-                token_type: 'bearer',
-                user: { id: data.user.id, email: data.user.email }
-            }]);
-            var expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
-            document.cookie = SB_KEY + '=' + encodeURIComponent(compact) + '; expires=' + expires + '; path=/; SameSite=Lax';
-        } catch(e) {}
-    }
+            expires_at: session.expires_at,
+            token_type: 'bearer',
+            user: { id: data.user.id, email: data.user.email }
+        });
+        var expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+        document.cookie = SB_KEY + '=' + encodeURIComponent(compact) + '; expires=' + expires + '; path=/; SameSite=Lax';
+    } catch(e) {}
+}
 
     async function handleLogin(e) {
         e.preventDefault();

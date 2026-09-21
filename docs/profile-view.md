@@ -93,30 +93,19 @@ comments: false
     };
 
     // ============================================================
-    // 📖 ЧТЕНИЕ СЕССИИ
+    // 📖 ЧТЕНИЕ СЕССИИ — поддерживает формат supabase-js (массив)
     // ============================================================
     function readSession() {
         var raw = null;
 
         try { raw = localStorage.getItem(SESSION_KEY); } catch(e) {}
         if (!raw) { try { raw = sessionStorage.getItem(SESSION_KEY); } catch(e) {} }
-        if (!raw) {
-            try {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var c = cookies[i].trim();
-                    if (c.indexOf(SESSION_KEY + '=') === 0) {
-                        raw = decodeURIComponent(c.substring(SESSION_KEY.length + 1));
-                        break;
-                    }
-                }
-            } catch(e) {}
-        }
 
         if (!raw) return null;
 
         try {
             var parsed = JSON.parse(raw);
+            // 🔑 Библиотека хранит МАССИВ — берём последний элемент
             if (Array.isArray(parsed)) parsed = parsed[parsed.length - 1];
             if (!parsed || !parsed.access_token || !parsed.user) return null;
             if (parsed.expires_at && parsed.expires_at * 1000 < Date.now()) return null;
@@ -218,7 +207,6 @@ comments: false
     window.pfLogout = function() {
         try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
         try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
-        try { document.cookie = SESSION_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
         try {
             var keys = [];
             for (var i = 0; i < localStorage.length; i++) {

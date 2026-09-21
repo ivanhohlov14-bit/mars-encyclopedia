@@ -142,7 +142,7 @@ comments: false
     var SUPABASE_URL = 'https://ncytbgbzfjfoqmmgfygz.supabase.co';
     var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
     var PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
-    var SESSION_KEY = 'sb-' + PROJECT_REF + '-auth-token';
+    var SESSION_KEY = 'mars-auth-v1';
 
     var container = document.getElementById('login-app');
 

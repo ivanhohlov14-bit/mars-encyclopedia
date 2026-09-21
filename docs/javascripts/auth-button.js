@@ -1,15 +1,14 @@
 // ============================================================
-// auth-button.js — VIP v2
-// Универсальная авторизация: ПК + телефон
-// Полная переработка: баги исправлены, производительность улучшена
+// auth-button.js — VIP v3
+// Светлый стиль + фикс бесконечной загрузки на телефоне
 // ============================================================
 (function() {
     'use strict';
 
-    console.log('✅ auth-button.js VIP v2 загружен');
+    console.log('✅ auth-button.js VIP v3 загружен');
 
     // ============================================================
-    // ⚙️ КОНФИГУРАЦИЯ (менять только тут)
+    // ⚙️ КОНФИГ
     // ============================================================
     var CONFIG = {
         supabase: {
@@ -22,80 +21,75 @@
             profile: '/profile/'
         },
         mobileBreakpoint: 768,
-        profileCacheTTL: 5 * 60 * 1000, // 5 минут
+        profileCacheTTL: 5 * 60 * 1000,
         retryDelay: 500,
         maxRetries: 20
     };
 
     // ============================================================
-    // 🎨 CSS-переменные (инжектятся один раз)
+    // 🎨 СТИЛИ (светлые, как раньше + свечения)
     // ============================================================
     function injectStyles() {
         if (document.getElementById('auth-vip-styles')) return;
         var s = document.createElement('style');
         s.id = 'auth-vip-styles';
         s.textContent = [
-            ':root {',
-            '    --auth-accent: #6C63FF;',
-            '    --auth-accent-light: #A29BFE;',
-            '    --auth-bg-dark: #1a1a2e;',
-            '    --auth-bg-2: #252550;',
-            '    --auth-text: #e8e8f0;',
-            '    --auth-text-dim: #9999bb;',
-            '    --auth-border: rgba(108, 99, 255, 0.4);',
-            '}',
             '#auth-btn-container {',
             '    display: inline-flex;',
             '    align-items: center;',
             '    gap: 6px;',
-            '    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;',
+            '    flex-wrap: wrap;',
             '}',
-            /* --- Авторизован: плашка --- */
+            /* --- Плашка пользователя (светлая, как было) --- */
             '.auth-user-chip {',
             '    display: inline-flex;',
             '    align-items: center;',
             '    gap: 6px;',
+            '    background: #f5f5f5;',
             '    padding: 4px 10px;',
-            '    background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(37,37,80,0.9));',
-            '    border: 1.5px solid var(--auth-border);',
             '    border-radius: 20px;',
             '    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);',
-            '    text-decoration: none !important;',
             '}',
             '.auth-user-chip:hover {',
-            '    border-color: var(--auth-accent);',
             '    box-shadow: 0 4px 16px rgba(108, 99, 255, 0.35);',
             '    transform: translateY(-1px);',
             '}',
             '.auth-avatar {',
-            '    width: 26px;',
-            '    height: 26px;',
+            '    width: 28px;',
+            '    height: 28px;',
             '    border-radius: 50%;',
-            '    border: 2px solid rgba(162, 155, 254, 0.4);',
+            '    border: 2px solid #ddd;',
             '    object-fit: cover;',
             '    flex-shrink: 0;',
+            '    transition: border-color 0.25s;',
+            '}',
+            '.auth-user-chip:hover .auth-avatar {',
+            '    border-color: #6C63FF;',
             '}',
             '.auth-username {',
-            '    font-size: 0.78rem;',
-            '    color: var(--auth-text);',
+            '    font-size: 0.75rem;',
+            '    color: #333;',
             '    font-weight: 600;',
-            '    max-width: 80px;',
+            '    max-width: 60px;',
             '    overflow: hidden;',
             '    text-overflow: ellipsis;',
             '    white-space: nowrap;',
             '}',
             '.auth-link-profile {',
-            '    color: var(--auth-accent-light);',
+            '    color: #6C63FF;',
             '    font-size: 0.75rem;',
             '    font-weight: 700;',
             '    text-decoration: none !important;',
             '    transition: color 0.2s;',
             '    white-space: nowrap;',
             '}',
-            '.auth-link-profile:hover { color: #fff; }',
+            '.auth-link-profile:hover {',
+            '    color: #4a3fb5;',
+            '    text-shadow: 0 0 8px rgba(108, 99, 255, 0.4);',
+            '}',
             '.auth-link-logout {',
-            '    color: #e74c3c;',
-            '    font-size: 0.72rem;',
+            '    color: #c0392b;',
+            '    font-size: 0.75rem;',
             '    font-weight: 600;',
             '    cursor: pointer;',
             '    background: none;',
@@ -106,31 +100,35 @@
             '    transition: color 0.2s;',
             '    white-space: nowrap;',
             '}',
-            '.auth-link-logout:hover { color: #ff6b5a; }',
-            /* --- Не авторизован: кнопки --- */
+            '.auth-link-logout:hover {',
+            '    color: #e74c3c;',
+            '    text-shadow: 0 0 8px rgba(231, 76, 60, 0.4);',
+            '}',
+            /* --- Гость --- */
             '.auth-guest {',
             '    display: inline-flex;',
             '    align-items: center;',
             '    gap: 6px;',
+            '    flex-wrap: wrap;',
             '}',
             '.auth-link-login {',
-            '    color: var(--auth-text-dim);',
+            '    color: #555;',
             '    font-size: 0.8rem;',
             '    font-weight: 600;',
             '    text-decoration: none !important;',
-            '    padding: 5px 10px;',
+            '    padding: 4px 10px;',
             '    border-radius: 16px;',
             '    transition: all 0.2s;',
             '    white-space: nowrap;',
             '}',
             '.auth-link-login:hover {',
-            '    color: var(--auth-text);',
-            '    background: rgba(108, 99, 255, 0.1);',
+            '    color: #6C63FF;',
+            '    text-shadow: 0 0 8px rgba(108, 99, 255, 0.4);',
             '}',
             '.auth-link-register {',
             '    color: #fff;',
-            '    background: linear-gradient(135deg, #6C63FF, #A29BFE);',
-            '    padding: 5px 14px;',
+            '    background: #6C63FF;',
+            '    padding: 4px 12px;',
             '    border-radius: 16px;',
             '    text-decoration: none !important;',
             '    font-size: 0.8rem;',
@@ -141,22 +139,36 @@
             '}',
             '.auth-link-register:hover {',
             '    transform: translateY(-2px);',
-            '    box-shadow: 0 6px 18px rgba(108, 99, 255, 0.6);',
+            '    background: #5a51e8;',
+            '    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.7);',
+            '    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);',
             '}',
             /* --- Загрузка --- */
             '.auth-loading {',
-            '    color: var(--auth-text-dim);',
+            '    color: #999;',
             '    font-size: 0.8rem;',
             '    opacity: 0.7;',
             '}',
+            '.auth-spinner {',
+            '    display: inline-block;',
+            '    width: 14px;',
+            '    height: 14px;',
+            '    border: 2px solid rgba(108, 99, 255, 0.3);',
+            '    border-top-color: #6C63FF;',
+            '    border-radius: 50%;',
+            '    animation: authSpin 0.8s linear infinite;',
+            '}',
+            '@keyframes authSpin {',
+            '    to { transform: rotate(360deg); }',
+            '}',
             /* --- Мобильная кастомизация --- */
             '@media (max-width: 768px) {',
-            '    .auth-username { max-width: 50px; font-size: 0.7rem; }',
-            '    .auth-link-profile, .auth-link-logout { font-size: 0.68rem; }',
-            '    .auth-link-login { font-size: 0.72rem; padding: 4px 8px; }',
-            '    .auth-link-register { font-size: 0.72rem; padding: 4px 10px; }',
+            '    .auth-user-chip { padding: 3px 8px; gap: 4px; }',
             '    .auth-avatar { width: 22px; height: 22px; }',
-            '    .auth-user-chip { padding: 3px 8px; }',
+            '    .auth-username { max-width: 45px; font-size: 0.68rem; }',
+            '    .auth-link-profile, .auth-link-logout { font-size: 0.68rem; }',
+            '    .auth-link-login { font-size: 0.72rem; padding: 3px 8px; }',
+            '    .auth-link-register { font-size: 0.72rem; padding: 3px 10px; }',
             '}'
         ].join('\n');
         document.head.appendChild(s);
@@ -203,7 +215,7 @@
     var supabaseClient = null;
     var authInitialized = false;
     var initRetries = 0;
-    var profileCache = {}; // { userId: { data, timestamp } }
+    var profileCache = {};
 
     function initSupabase() {
         if (authInitialized) return;
@@ -213,7 +225,7 @@
             if (initRetries < CONFIG.maxRetries) {
                 setTimeout(initSupabase, CONFIG.retryDelay);
             } else {
-                console.warn('⚠️ Supabase не загрузился после ' + CONFIG.maxRetries + ' попыток');
+                console.warn('⚠️ Supabase не загрузился');
             }
             return;
         }
@@ -221,19 +233,19 @@
         try {
             supabaseClient = supabase.createClient(CONFIG.supabase.url, CONFIG.supabase.key);
             authInitialized = true;
-            window._supabaseClient = supabaseClient; // теперь реально доступен
+            window._supabaseClient = supabaseClient;
             console.log('✅ Supabase инициализирован');
 
-            // Слушаем изменения авторизации
             supabaseClient.auth.onAuthStateChange(function(event, session) {
                 console.log('🔐 Auth event:', event);
-                updateAuthUI();
+                // Небольшая задержка чтобы DOM точно был готов
+                setTimeout(function() { updateAuthUI(); }, 50);
             });
 
             // Первый рендер
             setTimeout(renderButton, 200);
         } catch (e) {
-            console.error('❌ Ошибка создания Supabase клиента:', e);
+            console.error('❌ Ошибка Supabase:', e);
         }
     }
 
@@ -243,7 +255,6 @@
     async function fetchProfile(userId) {
         if (!supabaseClient || !userId) return null;
 
-        // Кэш
         var cached = profileCache[userId];
         if (cached && (Date.now() - cached.timestamp < CONFIG.profileCacheTTL)) {
             return cached.data;
@@ -256,22 +267,19 @@
                 .eq('user_id', userId)
                 .single();
 
-            if (result.error) {
-                // Не логируем как ошибку, если профиль просто пуст
-                return null;
-            }
+            if (result.error) return null;
 
             var data = result.data;
             profileCache[userId] = { data: data, timestamp: Date.now() };
             return data;
         } catch (e) {
-            console.warn('⚠️ Ошибка запроса профиля:', e.message);
+            console.warn('⚠️ Ошибка профиля:', e.message);
             return null;
         }
     }
 
     // ============================================================
-    // 🎨 СОЗДАНИЕ КОНТЕЙНЕРА
+    // 🎨 КОНТЕЙНЕР (создаётся если не существует)
     // ============================================================
     function ensureContainer() {
         var container = document.getElementById('auth-btn-container');
@@ -281,11 +289,9 @@
         container.id = 'auth-btn-container';
 
         if (isMobile()) {
-            // Скрываем старую шапку readthedocs
             var oldTop = document.querySelector('.wy-nav-top');
             if (oldTop) oldTop.style.display = 'none';
 
-            // Создаём свою мобильную шапку
             var customHeader = document.getElementById('custom-mobile-header');
             if (!customHeader) {
                 customHeader = document.createElement('div');
@@ -294,7 +300,7 @@
                     'position: fixed;',
                     'top: 0; left: 0; right: 0;',
                     'height: 50px;',
-                    'background: linear-gradient(135deg, #6C63FF 0%, #A29BFE 100%);',
+                    'background: #6C63FF;',
                     'z-index: 9999;',
                     'display: flex;',
                     'align-items: center;',
@@ -327,7 +333,6 @@
                 customHeader.appendChild(container);
                 document.body.prepend(customHeader);
             } else {
-                // Шапка уже есть — просто вставляем контейнер внутрь
                 customHeader.appendChild(container);
             }
 
@@ -335,7 +340,6 @@
             return container;
         }
 
-        // ПК — ищем header
         var header = document.querySelector('header');
         if (header) {
             container.style.cssText = [
@@ -349,12 +353,11 @@
                 'z-index: 1000;'
             ].join('');
             header.appendChild(container);
-            console.log('✅ Кнопка вставлена в header (ПК)');
+            console.log('✅ Кнопка в header');
             return container;
         }
 
-        // Запасной вариант
-        console.warn('⚠️ Шапка не найдена — вставляем в body');
+        console.warn('⚠️ Header не найден — в body');
         container.style.cssText = [
             'position: fixed !important;',
             'top: 10px !important;',
@@ -369,23 +372,26 @@
     // 🎨 ОТРИСОВКА
     // ============================================================
     var renderButton = debounce(function() {
-        var container = ensureContainer();
-        if (!container) return;
+        ensureContainer();
         updateAuthUI();
     }, 100);
 
     async function updateAuthUI() {
+        // ВАЖНО: если контейнера нет — создаём
         var container = document.getElementById('auth-btn-container');
+        if (!container) {
+            container = ensureContainer();
+        }
         if (!container) return;
 
         if (!supabaseClient || !authInitialized) {
-            container.innerHTML = '<span class="auth-loading">⏳</span>';
+            container.innerHTML = '<span class="auth-spinner"></span>';
             return;
         }
 
         try {
             var sessionResult = await supabaseClient.auth.getSession();
-            var session = sessionResult.data && sessionResult.data.session;
+            var session = sessionResult && sessionResult.data && sessionResult.data.session;
             var user = session && session.user;
 
             if (user) {
@@ -394,50 +400,29 @@
 
                 var username = (profile && (profile.display_name || profile.username))
                     || (user.user_metadata && user.user_metadata.username)
-                    || user.email.split('@')[0];
+                    || (user.email ? user.email.split('@')[0] : 'Пользователь');
 
                 var avatarUrl = (profile && profile.avatar_url)
                     || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(getInitials(username)) + '&background=6C63FF&color=fff&size=64&rounded=true';
 
-                // Безопасный HTML
                 var safeUsername = escapeHtml(username);
 
-                if (isMobile()) {
-                    container.innerHTML = [
-                        '<div class="auth-user-chip">',
-                        '    <img src="' + avatarUrl + '" alt="" class="auth-avatar" onerror="this.style.display=\'none\'">',
-                        '    <span class="auth-username">' + safeUsername + '</span>',
-                        '    <a href="' + CONFIG.routes.profile + '" class="auth-link-profile">Профиль</a>',
-                        '    <button class="auth-link-logout" onclick="window._authLogout()">Выйти</button>',
-                        '</div>'
-                    ].join('');
-                } else {
-                    container.innerHTML = [
-                        '<div class="auth-user-chip">',
-                        '    <img src="' + avatarUrl + '" alt="" class="auth-avatar" onerror="this.style.display=\'none\'">',
-                        '    <span class="auth-username">' + safeUsername + '</span>',
-                        '    <a href="' + CONFIG.routes.profile + '" class="auth-link-profile">Профиль</a>',
-                        '    <button class="auth-link-logout" onclick="window._authLogout()">Выйти</button>',
-                        '</div>'
-                    ].join('');
-                }
+                container.innerHTML = [
+                    '<div class="auth-user-chip">',
+                    '    <img src="' + avatarUrl + '" alt="" class="auth-avatar" onerror="this.style.display=\'none\'">',
+                    '    <span class="auth-username">' + safeUsername + '</span>',
+                    '    <a href="' + CONFIG.routes.profile + '" class="auth-link-profile">Профиль</a>',
+                    '    <button class="auth-link-logout" onclick="window._authLogout()">Выйти</button>',
+                    '</div>'
+                ].join('');
             } else {
                 console.log('👤 Не авторизован');
-                if (isMobile()) {
-                    container.innerHTML = [
-                        '<div class="auth-guest">',
-                        '    <a href="' + CONFIG.routes.login + '" class="auth-link-login">Войти</a>',
-                        '    <a href="' + CONFIG.routes.register + '" class="auth-link-register">Регистрация</a>',
-                        '</div>'
-                    ].join('');
-                } else {
-                    container.innerHTML = [
-                        '<div class="auth-guest">',
-                        '    <a href="' + CONFIG.routes.login + '" class="auth-link-login">Войти</a>',
-                        '    <a href="' + CONFIG.routes.register + '" class="auth-link-register">Регистрация</a>',
-                        '</div>'
-                    ].join('');
-                }
+                container.innerHTML = [
+                    '<div class="auth-guest">',
+                    '    <a href="' + CONFIG.routes.login + '" class="auth-link-login">Войти</a>',
+                    '    <a href="' + CONFIG.routes.register + '" class="auth-link-register">Регистрация</a>',
+                    '</div>'
+                ].join('');
             }
         } catch (e) {
             console.error('❌ Ошибка updateAuthUI:', e);
@@ -449,7 +434,7 @@
     // 🚪 ВЫХОД
     // ============================================================
     async function logoutUser() {
-        console.log('🔄 Выход из аккаунта...');
+        console.log('🔄 Выход...');
         try {
             if (supabaseClient) {
                 await supabaseClient.auth.signOut();
@@ -463,7 +448,7 @@
     }
 
     function clearLocalSession() {
-        console.log('🧹 Очистка локальных данных...');
+        console.log('🧹 Очистка...');
         try {
             var keysToRemove = [];
             for (var i = 0; i < localStorage.length; i++) {
@@ -493,14 +478,14 @@
         var currentMobile = isMobile();
         if (currentMobile !== lastMobileState) {
             lastMobileState = currentMobile;
-            // Пересобираем шапку — она зависит от мобильности
             var oldContainer = document.getElementById('auth-btn-container');
             if (oldContainer) oldContainer.remove();
             var oldCustom = document.getElementById('custom-mobile-header');
             if (oldCustom) oldCustom.remove();
             var oldTop = document.querySelector('.wy-nav-top');
             if (oldTop && !currentMobile) oldTop.style.display = '';
-            renderButton();
+            ensureContainer();
+            updateAuthUI();
         }
     }, 250));
 
@@ -510,9 +495,17 @@
     function start() {
         injectStyles();
         initSupabase();
+        // Повторная проверка через 2 секунды — на случай если что-то пошло не так
+        setTimeout(function() {
+            if (!document.getElementById('auth-btn-container')) {
+                console.log('🔄 Повторная попытка...');
+                renderButton();
+            } else {
+                updateAuthUI();
+            }
+        }, 2000);
     }
 
-    // Экспорт в window
     window._authLogout = logoutUser;
     window._authRefresh = updateAuthUI;
 
@@ -522,5 +515,5 @@
         start();
     }
 
-    console.log('✅ auth-button.js VIP v2 выполнен');
+    console.log('✅ auth-button.js VIP v3 выполнен');
 })();

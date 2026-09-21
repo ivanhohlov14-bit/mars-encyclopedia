@@ -209,12 +209,14 @@ nav:
               - Геология Марса: science/geology.md
               - Олимп: geography/olimp.md
               - Цвет поверхности Марса: science/mars-color.md
+  - Находки NASA: 
           - Загадка «марсианской медузы»: science/mars-jellyfish-curiosity-sighting.md
           - «Ракета» на Марсе: science/mars-rocket-object.md
           - «Квадратная структура» на Марсе: science/square-structure.md
           - «Пистолет» на Марсе: science/mars-gun.md
           - «Дверь» на Марсе: science/mars-door.md
           - «Пирамида» на Марсе: science/mars-pyramid.md
+          - Жизнь и вода на Марсе: science/mars-life-water-2026.md
   - Персонажи:
       - Историки:
           - Хевсур: people/hevsur.md

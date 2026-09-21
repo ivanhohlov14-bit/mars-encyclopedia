@@ -74,11 +74,6 @@
     <div class="start-card-name">Небо Марса</div>
     <div class="start-card-desc">Звёздное небо древней планеты</div>
   </a>
-  <a href="https://mars-wiki.ru/scan-dates/" class="start-card">
-    <div class="start-card-icon">🔍</div>
-    <div class="start-card-name">Сканер дат</div>
-    <div class="start-card-desc">Поиск событий по датам</div>
-  </a>
 </div>
 
 <div class="start-cat-title">🎮 Игры и развлечения</div>
@@ -465,18 +460,23 @@
   filter: drop-shadow(0 0 12px rgba(var(--start-accent-rgb), 0.7));
 }
 .start-science-text p {
-  margin: 0 0 10px 0;
-  font-size: 0.92rem;
-  line-height: 1.65;
-  color: #e8e8f0;
-  font-weight: 500;
+  margin: 0 0 12px 0;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: #1a1a2e;
+  font-weight: 700;
+  letter-spacing: 0.15px;
 }
 .start-science-text p:last-child {
   margin-bottom: 0;
 }
 .start-science-text b {
-  color: var(--start-accent-light);
-  font-weight: 800;
+  color: #4a3fb5;
+  font-weight: 900;
+  background: linear-gradient(135deg, #4a3fb5, #6C63FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Контакт */
@@ -546,11 +546,13 @@
   z-index: 1;
 }
 .start-footer-quote-sub {
-  font-size: 0.85rem;
-  color: #b8b8cc;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  color: #1a1a2e;
+  font-weight: 700;
+  line-height: 1.7;
   position: relative;
   z-index: 1;
+  letter-spacing: 0.2px;
 }
 
 /* Мобильный */

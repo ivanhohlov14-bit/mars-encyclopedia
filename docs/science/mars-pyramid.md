@@ -1,37 +1,86 @@
 # «Пирамида» на Марсе: сенсационный снимок NASA
 
-<div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">«Пирамида» на Марсе</h3>
-  <hr>
-  <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ce9c8c434f657d2a645994519c49483c.jpg" alt="Трёхгранная пирамида в Кандоре" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Загадочная трёхгранная структура в каньоне Кандор (Candor Chasma). Кадр сделан Mars Global Surveyor в 2001 году и стал сенсацией в марте 2026 года. Источник: NASA/JPL/MSSS</div>
+<div style="background: #f5eef8; border: 1px solid #a97ec0; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #6a3fb5;">◈</span>
+  <span style="font-weight: bold; color: #6a3fb5;">Сенсация 2026</span>
+</div>
+
+<div class="infobox" style="float: right; width: 280px; background: #ede4f5; border: 1px solid #6a4a8a; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(106,74,138,0.2); color: #1a1a2e;">
+
+  <div style="background: #2a1a3a; padding: 8px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; border-radius: 8px 8px 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #e8dcff;">«Пирамида» на Марсе</h3>
   </div>
 
-  <p><b>Тип</b> Неопознанная геологическая формация / артефакт</p>
-  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/eden/">Королевство Эдем</a></span></p>
-  <p><b>Местоположение</b> <a href="/geography/candor-chasma/">Каньон Кандор (Candor Chasma)</a>, система каньонов <a href="/geography/valles-marineris/">Valles Marineris</a>, Марс</p>
-  <p><b>Координаты</b> ~5° ю.ш., 75° з.д. (западная часть Candor Chasma)</p>
-  <p><b>Дата первого снимка</b> 2001 год (Mars Global Surveyor)</p>
-  <p><b>Дата повторных снимков</b> 2002, 2007 (MRO), 2014, 2016</p>
-  <p><b>Дата публикации</b> 17–18 марта 2026 года</p>
-  <p><b>Аппарат</b> <a href="https://mars.nasa.gov/mgs/">Mars Global Surveyor (NASA)</a>, <a href="https://mars.nasa.gov/mro/">Mars Reconnaissance Orbiter (NASA)</a></p>
-  <p><b>Размер</b> ~290 метров в ширину, ~145 метров в высоту</p>
-  <p><b>Углы наклона граней</b> 120° между гранями</p>
-  <p><b>Статус</b> Не идентифицирован NASA (природное образование)</p>
-  <hr style="margin: 6px 0;">
-  <p><b>Связанные статьи:</b> <a href="/geography/eden/">Королевство Эдем</a>, <a href="/geography/valles-marineris/">Valles Marineris</a>, <a href="/geography/akademiya-okhasena/">Академия Окхасена</a>, <a href="/people/hevsur/">Хевсур</a>, <a href="/history/epokha-rascveta/">Эпоха Расцвета</a></p>
+  <div style="text-align: center; margin: 8px 0;">
+    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ce9c8c434f657d2a645994519c49483c.jpg" alt="Трёхгранная пирамида в Кандоре" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #6a4a8a;">
+    <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Загадочная трёхгранная структура в каньоне Кандор. Кадр Mars Global Surveyor, 2001.</div>
+  </div>
+
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
+    Общие данные
+  </div>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Тип:</b> Неопознанная геологическая формация / артефакт</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Страна:</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="https://mars-wiki.ru/geography/eden/" style="color: #6a3fb5; text-decoration: underline;">Королевство Эдем</a></span></p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Местоположение:</b> <a href="https://mars-wiki.ru/geography/candor-chasma/" style="color: #6a3fb5; text-decoration: underline;">Каньон Кандор</a>, система <a href="https://mars-wiki.ru/geography/valles-marineris/" style="color: #6a3fb5; text-decoration: underline;">Valles Marineris</a></p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Координаты:</b> ~5° ю.ш., 75° з.д.</p>
+
+  <hr style="margin: 6px 0; border-color: #c4a8d4;">
+
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
+    Хронология снимков
+  </div>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Первый снимок:</b> 2001 год (Mars Global Surveyor)</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Повторные:</b> 2002, 2007 (MRO), 2014, 2016</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Публикация:</b> 17–18 марта 2026</p>
+
+  <hr style="margin: 6px 0; border-color: #c4a8d4;">
+
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
+    Аппараты
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
+    <li>• <a href="https://mars.nasa.gov/mgs/" style="color: #6a3fb5; text-decoration: underline;">Mars Global Surveyor</a> (NASA)</li>
+    <li>• <a href="https://mars.nasa.gov/mro/" style="color: #6a3fb5; text-decoration: underline;">Mars Reconnaissance Orbiter</a> (NASA)</li>
+  </ul>
+
+  <hr style="margin: 6px 0; border-color: #c4a8d4;">
+
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
+    Характеристики
+  </div>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Размер:</b> ~290 м в ширину, ~145 м в высоту</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Углы наклона:</b> 120° между гранями</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Статус:</b> Не идентифицирован NASA</p>
+
+  <hr style="margin: 6px 0; border-color: #c4a8d4;">
+
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
+    Связанные статьи
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
+    <li>• <a href="https://mars-wiki.ru/geography/eden/" style="color: #6a3fb5; text-decoration: underline;">Королевство Эдем</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/valles-marineris/" style="color: #6a3fb5; text-decoration: underline;">Valles Marineris</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/akademiya-okhasena/" style="color: #6a3fb5; text-decoration: underline;">Академия Окхасена</a></li>
+    <li>• <a href="https://mars-wiki.ru/people/hevsur/" style="color: #6a3fb5; text-decoration: underline;">Хевсур</a></li>
+    <li>• <a href="https://mars-wiki.ru/history/epokha-rascveta/" style="color: #6a3fb5; text-decoration: underline;">Эпоха Расцвета</a></li>
+  </ul>
+
 </div>
 
 **«Пирамида» на Марсе** — загадочный объект, обнаруженный независимым исследователем Китом Лейни (Keith Laney) на снимках NASA Mars Global Surveyor, сделанных в **2001 году** в западной части каньона Кандор (Candor Chasma) — одном из крупнейших каньонов в системе **Valles Marineris**[^1][^2][^3].
 
 Структура представляет собой **трёхгранную пирамиду** шириной около **290 метров** и высотой примерно **145 метров**, с тремя почти идеально симметричными треугольными гранями, сходящимися в вершине под углом **120 градусов**[^4][^5].
 
+<div style="text-align: center; margin: 24px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_Martian_pyramid_silhouetted_against_starry_night_sky_Milky_Way_visible_a-0.jpg" alt="Пирамида на фоне звёздного неба" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Пирамида на фоне звёздного неба с Млечным Путём. Художественная реконструкция.</div>
+</div>
+
 В **марте 2026 года** документалист **Брайан Кори Доббс** (Brian Cory Dobbs), известный по фильму *Blue Planet Red*, переопубликовал снимки в социальной сети X, заявив, что структура *«по размеру сопоставима с Великой пирамидой в Египте»*[^6][^7]. Пост мгновенно стал вирусным, собрав тысячи репостов и комментариев[^8][^9].
 
 Однако представители NASA и учёные-геологи склоняются к версии **естественного геологического образования** — результата эрозии, ветра и тектонических процессов, сформировавших каньон Кандор за миллиарды лет[^10][^11]. Европейское космическое агентство (ESA) также подтвердило, что подобные формации являются *«плодом человеческого воображения на сильно эродированной поверхности»*[^12][^13].
 
-Независимые исследователи, опираясь на расшифрованные глиняные таблички из [Академии Окхасена](/geography/akademiya-okhasena/) и летописи [Королевства Эдем](/geography/eden/), выдвинули альтернативную гипотезу: **«пирамида» может быть обсерваторией или культовым сооружением**, построенным в Эпоху Расцвета (2500–2680 гг. Э.О.) для наблюдения за звёздами и проведения ритуалов[^14][^15].
+Независимые исследователи, опираясь на расшифрованные глиняные таблички из [Академии Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) и летописи [Королевства Эдем](https://mars-wiki.ru/geography/eden/), выдвинули альтернативную гипотезу: **«пирамида» может быть обсерваторией или культовым сооружением**, построенным в Эпоху Расцвета (2500–2680 гг. Э.О.) для наблюдения за звёздами и проведения ритуалов[^14][^15].
 
 ---
 
@@ -61,6 +110,11 @@
 
 Пост мгновенно стал вирусным. К 18–19 марта 2026 года новость облетела все мировые СМИ — от **Daily Mail** и **Mirror** до **ScienceAlert** и **WION**[^9][^10][^11]. Пользователи сравнивали объект с **египетскими пирамидами**, **«Лицом на Марсе»** из Кидонии и даже **доказательством существования древней цивилизации**[^12][^13].
 
+<div style="text-align: center; margin: 24px 0; clear: both;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/снимок_наса_пирамида.jpg" alt="Снимок NASA — пирамида в Кандоре" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Снимок NASA: трёхгранная пирамида в западной части каньона Кандор. Источник: NASA/JPL/MSSS</div>
+</div>
+
 ---
 
 ## Версия NASA: естественное геологическое образование
@@ -76,6 +130,11 @@
 3. **Это «положительные рельефные выступы».** Учёные называют подобные образования *«positive relief knobs»* — результат длительного выветривания[^7].
 
 4. **Это не первый случай парейдолии.** В 1976 году аппарат Viking-1 сфотографировал в регионе Кидония холм, похожий на человеческое лицо. В 2006 году ESA развеяло миф с помощью высококачественных 3D-снимков, показав, что это обычный эродированный островной холм[^16][^17].
+
+<div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Martian_pyramid_seen_through_a_massive_dust_storm_only_silhouette_visible_throug-0.jpg" alt="Пирамида в пылевую бурю" style="max-width: 100%; height: auto; border-radius: 4px;">
+  <div style="margin-top: 4px; color: #555;">Пирамида сквозь пылевую бурю. Реконструкция.</div>
+</div>
 
 **Планетолог Паскаль Ли** (Pascal Lee), председатель Mars Institute и учёный SETI Institute, заявил[^15]:
 
@@ -93,11 +152,16 @@
 
 3. **Отсутствие аналогичных форм.** В окрестностях каньона Кандор нет других структур с такой же идеальной трёхгранной симметрией.
 
+<div style="text-align: center; margin: 24px 0; clear: both;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Extreme_close-up_of_ancient_Martian_pyramid_stone_surface_weathered_red_sandston-0.jpg" alt="Крупный план поверхности пирамиды" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Крупный план поверхности: выветренный красный песчаник. Реконструкция.</div>
+</div>
+
 ---
 
 ## Альтернативная гипотеза: обсерватория Эпохи Расцвета
 
-Независимые исследователи, опираясь на расшифрованные таблички [Академии Окхасена](/geography/akademiya-okhasena/) и летописи [Королевства Эдем](/geography/eden/), предлагают альтернативную версию: **«пирамида» может быть обсерваторией или культовым сооружением**, построенным в **Эпоху Расцвета (2500–2680 гг. Э.О.)**[^14][^15][^20].
+Независимые исследователи, опираясь на расшифрованные таблички [Академии Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) и летописи [Королевства Эдем](https://mars-wiki.ru/geography/eden/), предлагают альтернативную версию: **«пирамида» может быть обсерваторией или культовым сооружением**, построенным в **Эпоху Расцвета (2500–2680 гг. Э.О.)**[^14][^15][^20].
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
   <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/32dee7a998011f18dbd520d3b9467fa_1.jpeg" alt="Концепция обсерватории" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
@@ -128,6 +192,11 @@
 
 Исследователи Mars Institute **Джордж Хаас** и **Кит Лейни** в соавторстве опубликовали статью, в которой предположили, что симметрия структуры может указывать на **искусственное происхождение**[^25]. Хаас описал структуру как имеющую *«уровень геометрии и симметрии, который поддерживает высокую вероятность искусственного происхождения»*[^7].
 
+<div style="text-align: center; margin: 24px 0; clear: both;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_Martian_pyramid_under_construction_by_six-fingered_humanoid_workers_alie-0.jpg" alt="Пирамида в процессе строительства" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Пирамида в процессе строительства шестипалыми рабочими. Реконструкция по табличкам.</div>
+</div>
+
 ---
 
 ## Версия Брайана Доббса и реакция общественности
@@ -150,6 +219,11 @@
 Интерес к находке подогрели и **документы ЦРУ, опубликованные в конце 2025 года**, в которых агентство описывало эксперименты по изучению Марса с помощью астральной проекции в рамках проекта **«Project Stargate»**. Испытуемые сообщали о пирамидах и дорогах, что, по мнению некоторых, указывает на существование древней цивилизации[^26][^27].
 
 Однако сам Доббс признал, что эта находка *«не является прямым доказательством существования древней цивилизации»*[^6].
+
+<div style="text-align: center; margin: 24px 0;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_Martian_pyramid_half-buried_in_red_sand_cracks_running_through_the_stone-0.jpg" alt="Пирамида, наполовину засыпанная песком" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Пирамида, наполовину засыпанная красным песком. Трещины проходят сквозь камень. Реконструкция.</div>
+</div>
 
 ---
 
@@ -182,23 +256,25 @@
 
 ## Связанные статьи
 
-- [Королевство Эдем](/geography/eden/)
-- [Каньон Кандор](/geography/candor-chasma/)
-- [Valles Marineris](/geography/valles-marineris/)
-- [Академия Окхасена](/geography/akademiya-okhasena/)
-- [Хевсур](/people/hevsur/)
-- [Эпоха Расцвета](/history/epokha-rascveta/)
-- [Глиняные таблички](/terms/tablichki/)
-- [Lān sur](/terms/lan-sur/)
-- [Загадка «марсианской медузы»](/science/mars-jellyfish/)
-- [«Квадратная структура» на Марсе](/science/square-structure/)
-- [«Ракета» на Марсе](/science/mars-rocket-object/)
-- [«Пистолет» на Марсе](/science/mars-gun/)
-- [«Дверь» на Марсе](/science/mars-door/)
+- [Королевство Эдем](https://mars-wiki.ru/geography/eden/)
+- [Каньон Кандор](https://mars-wiki.ru/geography/candor-chasma/)
+- [Valles Marineris](https://mars-wiki.ru/geography/valles-marineris/)
+- [Академия Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/)
+- [Хевсур](https://mars-wiki.ru/people/hevsur/)
+- [Эпоха Расцвета](https://mars-wiki.ru/history/epokha-rascveta/)
+- [Глиняные таблички](https://mars-wiki.ru/terms/tablichki/)
+- [Lān sur](https://mars-wiki.ru/terms/lan-sur/)
+- [Загадка «марсианской медузы»](https://mars-wiki.ru/science/mars-jellyfish/)
+- [«Квадратная структура» на Марсе](https://mars-wiki.ru/science/square-structure/)
+- [«Ракета» на Марсе](https://mars-wiki.ru/science/mars-rocket-object/)
+- [«Пистолет» на Марсе](https://mars-wiki.ru/science/mars-gun/)
+- [«Дверь» на Марсе](https://mars-wiki.ru/science/mars-door/)
 
 ---
 
 ## Примечания
+
+<references />
 
 [^1]: NASA, Mars Global Surveyor, Mars Orbiter Camera, 2001.
 [^2]: NASA, Mars Image Explorer, Candor Chasma, 2001.

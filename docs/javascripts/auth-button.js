@@ -1,5 +1,5 @@
 // ============================================================
-// auth-button.js — читает сессию из ОБОИХ ключей
+// auth-button.js — читает из mars-auth-v1 и sb-*, оба формата
 // ============================================================
 (function() {
     'use strict';
@@ -14,44 +14,34 @@
     var PROFILE_TTL = 5 * 60 * 1000;
 
     // ============================================================
-    // 📖 ЧТЕНИЕ СЕССИИ — из обоих ключей
+    // 📖 ЧТЕНИЕ СЕССИИ
     // ============================================================
     function readSession() {
-        var SB_KEY = 'sb-' + PROJECT_REF + '-auth-token';
-        var MY_KEY = 'mars-auth-v1';
         var raw = null;
 
-        // Пробуем наши ключи
         try { raw = localStorage.getItem(MY_KEY); } catch(e) {}
         if (!raw) { try { raw = sessionStorage.getItem(MY_KEY); } catch(e) {} }
         if (!raw) { try { raw = localStorage.getItem(SB_KEY); } catch(e) {} }
         if (!raw) { try { raw = sessionStorage.getItem(SB_KEY); } catch(e) {} }
 
-        // Cookie
         if (!raw) {
             try {
                 var cookies = document.cookie.split(';');
                 for (var i = 0; i < cookies.length; i++) {
                     var c = cookies[i].trim();
-                    if (c.indexOf(MY_KEY + '=') === 0) { raw = decodeURIComponent(c.substring(MY_KEY.length + 1)); break; }
-                    if (c.indexOf(SB_KEY + '=') === 0) { raw = decodeURIComponent(c.substring(SB_KEY.length + 1)); break; }
+                    if (c.indexOf(MY_KEY + '=') === 0) {
+                        raw = decodeURIComponent(c.substring(MY_KEY.length + 1));
+                        break;
+                    }
+                    if (c.indexOf(SB_KEY + '=') === 0) {
+                        raw = decodeURIComponent(c.substring(SB_KEY.length + 1));
+                        break;
+                    }
                 }
             } catch(e) {}
         }
 
         if (!raw) return null;
-
-        try {
-            var parsed = JSON.parse(raw);
-            // Поддержка ОБОИХ форматов: объект и массив
-            if (Array.isArray(parsed)) parsed = parsed[parsed.length - 1];
-            if (!parsed || !parsed.access_token || !parsed.user) return null;
-            if (parsed.expires_at && parsed.expires_at * 1000 < Date.now()) return null;
-            return parsed;
-        } catch(e) {
-            return null;
-        }
-    }
 
         try {
             var parsed = JSON.parse(raw);
@@ -67,28 +57,28 @@
     // ============================================================
     // 📥 ПРОФИЛЬ
     // ============================================================
-    async function fetchProfile(session) {
+    function fetchProfile(session) {
         var userId = session.user.id;
         var cached = profileCache[userId];
-        if (cached && cached.expires > Date.now()) return cached.data;
+        if (cached && cached.expires > Date.now()) return Promise.resolve(cached.data);
 
-        try {
-            var url = SUPABASE_URL + '/rest/v1/profiles?user_id=eq.' + userId + '&select=display_name,username,avatar_url&limit=1';
-            var res = await fetch(url, {
-                headers: {
-                    'apikey': SUPABASE_KEY,
-                    'Authorization': 'Bearer ' + session.access_token
-                }
-            });
+        var url = SUPABASE_URL + '/rest/v1/profiles?user_id=eq.' + userId + '&select=display_name,username,avatar_url&limit=1';
+
+        return fetch(url, {
+            headers: {
+                'apikey': SUPABASE_KEY,
+                'Authorization': 'Bearer ' + session.access_token
+            }
+        }).then(function(res) {
             if (!res.ok) return null;
-
-            var arr = await res.json();
-            var profile = Array.isArray(arr) && arr.length > 0 ? arr[0] : null;
+            return res.json();
+        }).then(function(arr) {
+            var profile = (Array.isArray(arr) && arr.length > 0) ? arr[0] : null;
             profileCache[userId] = { data: profile, expires: Date.now() + PROFILE_TTL };
             return profile;
-        } catch(e) {
+        }).catch(function() {
             return null;
-        }
+        });
     }
 
     // ============================================================
@@ -138,7 +128,6 @@
                 };
 
                 container.style.cssText = 'display:flex !important;align-items:center !important;gap:4px !important;margin-left:auto !important;flex-shrink:0 !important;';
-
                 customHeader.appendChild(hamburger);
                 customHeader.appendChild(container);
                 document.body.prepend(customHeader);
@@ -164,12 +153,13 @@
     // ============================================================
     // 🎨 РЕНДЕР
     // ============================================================
-    async function updateUI() {
+    function updateUI() {
         var container = ensureContainer();
         if (!container) return;
 
         var session = readSession();
 
+        // ============ НЕ АВТОРИЗОВАН ============
         if (!session || !session.user) {
             if (isMobile()) {
                 container.innerHTML =
@@ -187,9 +177,19 @@
             return;
         }
 
-        var profile = await fetchProfile(session);
+        // ============ АВТОРИЗОВАН ============
         var user = session.user;
 
+        // Сразу показываем кнопку с email, потом обновим с профилем
+        renderAuthorized(container, user, null);
+
+        // Асинхронно подтягиваем профиль
+        fetchProfile(session).then(function(profile) {
+            renderAuthorized(container, user, profile);
+        });
+    }
+
+    function renderAuthorized(container, user, profile) {
         var username = (profile && (profile.display_name || profile.username))
             || (user.user_metadata && user.user_metadata.username)
             || (user.email ? user.email.split('@')[0] : 'Пользователь');
@@ -267,6 +267,9 @@
         }, 250);
     });
 
+    // ============================================================
+    // 🚀 СТАРТ
+    // ============================================================
     function start() {
         updateUI();
         setTimeout(updateUI, 500);

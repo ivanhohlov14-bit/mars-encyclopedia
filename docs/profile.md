@@ -1107,7 +1107,7 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         showToast('🔐 Пароль обновлён!', 'success');
     };
 
-    // ============================================================
+     // ============================================================
     // ИНИЦИАЛИЗАЦИЯ
     // ============================================================
     async function init(){
@@ -1125,7 +1125,34 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         }
 
         var user = null;
-        if(window.marsSession && window.marsSession.user) user = window.marsSession.user;
+
+        // 🎯 ГЛАВНОЕ: восстанавливаем сессию из mars-auth-v1 через API supabase-js
+        try {
+            var marsRaw = localStorage.getItem('mars-auth-v1') || sessionStorage.getItem('mars-auth-v1');
+            if (marsRaw) {
+                var marsParsed = JSON.parse(marsRaw);
+                // поддержка старого формата (массив) и нового (объект)
+                if (Array.isArray(marsParsed)) marsParsed = marsParsed[marsParsed.length - 1];
+                if (marsParsed && marsParsed.access_token && marsParsed.refresh_token) {
+                    console.log('🔧 Восстанавливаю сессию из mars-auth-v1...');
+                    var setRes = await client.auth.setSession({
+                        access_token: marsParsed.access_token,
+                        refresh_token: marsParsed.refresh_token
+                    });
+                    if (setRes.data && setRes.data.session && setRes.data.session.user) {
+                        user = setRes.data.session.user;
+                        console.log('✅ Сессия восстановлена из mars-auth-v1!');
+                    } else if (setRes.error) {
+                        console.warn('⚠️ setSession error:', setRes.error.message);
+                    }
+                }
+            }
+        } catch(e) {
+            console.warn('Bridge error:', e);
+        }
+
+        // Резервные варианты (как было)
+        if(!user && window.marsSession && window.marsSession.user) user = window.marsSession.user;
         if(!user){
             try {
                 var r = await client.auth.getSession();
@@ -1144,6 +1171,7 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
                 var stored = localStorage.getItem(key);
                 if(stored){
                     var val = JSON.parse(stored);
+                    if(Array.isArray(val)) val = val[val.length - 1];
                     if(val && val.access_token && val.refresh_token){
                         var st = await client.auth.setSession({ access_token: val.access_token, refresh_token: val.refresh_token });
                         if(st.data && st.data.user) user = st.data.user;

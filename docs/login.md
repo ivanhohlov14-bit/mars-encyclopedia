@@ -167,7 +167,7 @@ comments: false
     }
 
     // ============================================================
-    // 🎯 РЕНДЕР ФОРМЫ
+    // 🎨 ФОРМА
     // ============================================================
     function render() {
         var params = new URLSearchParams(window.location.search);
@@ -291,30 +291,22 @@ comments: false
     }
 
     // ============================================================
-    // 💾 СОХРАНЕНИЕ СЕССИИ
+    // 💾 СОХРАНЕНИЕ СЕССИИ — формат supabase-js (массив)
     // ============================================================
     function saveSession(data) {
         var session = {
             access_token: data.access_token,
             refresh_token: data.refresh_token,
             expires_at: Math.floor(Date.now() / 1000) + (data.expires_in || 3600),
-            token_type: 'bearer',
-            user: {
-                id: data.user.id,
-                email: data.user.email
-            }
+            expires_in: data.expires_in || 3600,
+            token_type: data.token_type || 'bearer',
+            user: data.user
         };
-        var json = JSON.stringify(session);
+        // 🔑 Сохраняем МАССИВОМ — так же, как сама библиотека Supabase
+        var json = JSON.stringify([session]);
 
         try { localStorage.setItem(SESSION_KEY, json); } catch(e) {}
         try { sessionStorage.setItem(SESSION_KEY, json); } catch(e) {}
-
-        if (json.length < 3500) {
-            try {
-                var expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
-                document.cookie = SESSION_KEY + '=' + encodeURIComponent(json) + '; expires=' + expires + '; path=/; SameSite=Lax; Secure';
-            } catch(e) {}
-        }
     }
 
     // ============================================================
@@ -473,9 +465,6 @@ comments: false
         }
     }
 
-    // ============================================================
-    // 🚀 СТАРТ
-    // ============================================================
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', render);
     } else {

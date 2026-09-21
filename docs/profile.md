@@ -6,7 +6,7 @@ comments: false
 <div id="profile-app" style="max-width: 1100px; margin: 0 auto; font-family: 'Segoe UI', -apple-system, sans-serif; padding: 0 8px;">
     <div style="text-align:center; padding: 60px 20px;">
         <div style="display:inline-block; width: 48px; height: 48px; border: 3px solid #6C63FF; border-top-color: transparent; border-radius: 50%; animation: pfSpin 0.8s linear infinite;"></div>
-        <p style="color: #999; margin-top: 16px;">Загрузка профиля...</p>
+        <p style="color: #999; margin-top: 16px;" id="pf-loading-text">Загрузка профиля...</p>
     </div>
 </div>
 
@@ -17,8 +17,10 @@ comments: false
 @keyframes pfPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 @keyframes pfFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 @keyframes pfSlide{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pfSkel{0%,100%{opacity:.5}50%{opacity:.9}}
 .pf-fade{animation:pfFadeIn .5s cubic-bezier(.16,1,.3,1) both}
 .pf-slide{animation:pfSlide .4s ease both}
+.pf-skeleton{background:linear-gradient(90deg,#e8e8ec 25%,#f0f0f4 50%,#e8e8ec 75%);background-size:200% 100%;animation:pfSkel 1.5s ease infinite;border-radius:8px}
 #profile-app a{text-decoration:none!important;border-bottom:none!important}
 .pf-hero{position:relative;background:linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 40%,#4a2a3a 100%);border-radius:24px;padding:44px 40px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 20px 60px -12px rgba(0,0,0,.4)}
 .pf-hero::before{content:'';position:absolute;top:-60%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,var(--kingdom-shadow),transparent 70%);border-radius:50%;animation:pfFloat 8s ease-in-out infinite}
@@ -194,9 +196,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
     var AVATARS = ['/assets/images/авотарка%20девушки.png','/assets/images/мужчина.png','/assets/images/мужчина2.png','/assets/images/мужчина%203.png'];
     var NOTE_COLORS = ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63'];
 
-    // ============================================================
-    // 100 УРОВНЕЙ
-    // ============================================================
     var LEVELS = [];
     (function buildLevels() {
         var titles = ['🌱 Поселенец','🔭 Исследователь','🚀 Первопроходец','🏠 Колонизатор','⚡ Командир','⚔️ Воин','📜 Писец','🔮 Мудрец','👑 Аристократ','🏛️ Сенатор','💎 Магнат','🌟 Звёздный лорд','🐉 Дракон','🔥 Феникс','🌊 Повелитель морей','⛰️ Владыка гор','🗡️ Мастер клинка','🏹 Мастер лука','🛡️ Щитоносец','🎯 Снайпер','📖 Хронист','🧙 Архимаг','⚗️ Алхимик','🔬 Учёный','🎨 Художник','🎵 Бард','💀 Некромант','👻 Призрачный страж','🦅 Небесный всадник','🐺 Вожак стаи','🦁 Лев','🐻 Медведь','🦊 Хитрец','🐍 Змей','🦂 Скорпион','🕷️ Ткач','🌙 Лунный страж','☀️ Солнечный рыцарь','⭐ Звёздный магистр','🌟 Великий магистр','✨ Легенда','💫 Миф','🌟 Сияющий','👼 Небожитель','🔱 Владыка бездны','👁️ Всевидящий','🌌 Космический странник','🌀 Повелитель бурь','❄️ Ледяной король','🌋 Огненный владыка','🌪️ Властелин ветров','⚡ Громовержец','🌊 Океанский царь','🌲 Лесной царь','🌸 Цветущий','🍂 Осенний странник','🌾 Жнец','🛠️ Кузнец судьбы','⚙️ Мастер механизмов','🏗️ Архитектор','📐 Геометр','🧮 Математик','🎲 Игрок','♟️ Стратег','🎭 Актёр','🎪 Циркач','🎨 Творец','📸 Хранитель мгновений','🎬 Режиссёр','🎤 Певец','🕺 Танцор','🍀 Счастливчик','🎰 Джекпот','💎 Алмазный','👑 Император','🏆 Чемпион','🥇 Олимпиец','🌟 Суперзвезда','💫 Галактический','🌌 Межгалактический','🔮 Провидческий','🧿 Оберегающий','📿 Святой','🕊️ Ангельский','🔥 Демонический','⚡ Божественный','🌠 Метеорный','☄️ Комета','🌍 Планетарный','🌞 Звёздный','🌌 Галактический','💥 Сверхновая','🌀 Сингулярность','🔱 Титан','👁️ Древний','🌟 Вечный','✨ Бесконечный','💫 Абсолютный','🔮 Легендарный','👑 Божественный','🌌 Вселенский','⭐ Величайший','🏆 Непобедимый'];
@@ -208,9 +207,7 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
 
     function getLevelInfo(exp){
         var idx = 0;
-        for (var i = LEVELS.length - 1; i >= 0; i--) {
-            if (exp >= LEVELS[i].xp) { idx = i; break; }
-        }
+        for (var i = LEVELS.length - 1; i >= 0; i--) { if (exp >= LEVELS[i].xp) { idx = i; break; } }
         var cur = LEVELS[idx];
         var next = LEVELS[idx + 1] || { xp: cur.xp + 1000 };
         var range = next.xp - cur.xp;
@@ -232,15 +229,11 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         return { year: year.toLocaleString(), month: months[mi], day: rem + 1, season: seasons[Math.floor(mi/2) % seasons.length] };
     }
 
-    // ============================================================
-    // ТРЕКЕР ВРЕМЕНИ
-    // ============================================================
     var sessionStart = Date.now();
     var totalTime = 0;
     var _visitStart = 0;
     var _isActive = true;
     var _activityInterval = null;
-
     try { var savedTime = localStorage.getItem('mars_total_time'); if (savedTime) totalTime = parseInt(savedTime, 10) || 0; } catch(e) {}
 
     function formatDuration(seconds) {
@@ -295,153 +288,133 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
     var editingNoteId = null, selectedNoteColor = '#6C63FF';
     var modStats = { pendingSubmissions: 0, hiddenComments: 0, bannedUsers: 0 };
 
-    // ============================================================
-    // ЗАГРУЗКА ДАННЫХ
-    // ============================================================
-    async function loadAllData(user){
-        console.log('⏱️ Загрузка профиля...');
-        try{
-            var cached = localStorage.getItem('pf_cache_' + user.id);
-            if(cached){
-                var d = JSON.parse(cached);
-                currentProfile = d.currentProfile || null;
-                if(currentProfile && currentProfile.kingdom && KINGDOMS[currentProfile.kingdom]) kingdom = KINGDOMS[currentProfile.kingdom];
-                achievementsList = d.achievementsList || [];
-                notifications = d.notifications || [];
-                leaders = d.leaders || [];
-                guild = d.guild || null;
-                guildMembers = d.guildMembers || [];
-                friends = d.friends || [];
-                notes = d.notes || [];
-                streak = d.streak || 0;
-                privacy = d.privacy || {};
-                preferences = d.preferences || {};
-            }
-        }catch(e){}
-
-        var timeout = function(ms){ return new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout')); }, ms); }); };
-
-        var results;
-        try {
-            results = await Promise.all([
-                Promise.race([client.from('profiles').select('*').eq('user_id', user.id).single(), timeout(12000)]).catch(function(){ return {data:null}; }),
-                Promise.race([client.from('user_achievements').select('achievement_id, earned_at').eq('user_id', user.id).order('earned_at', { ascending: false }), timeout(12000)]).catch(function(){ return {data:[]}; }),
-                Promise.race([client.from('user_notes').select('*').eq('user_id', user.id).order('pinned', { ascending: false }).order('updated_at', { ascending: false }), timeout(12000)]).catch(function(){ return {data:[]}; }),
-                Promise.race([client.from('notifications').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(10), timeout(12000)]).catch(function(){ return {data:[]}; }),
-                Promise.race([client.from('profiles').select('user_id, username, display_name, experience, level, avatar_url').order('experience', { ascending: false }).limit(10), timeout(12000)]).catch(function(){ return {data:[]}; }),
-                Promise.race([client.from('daily_logins').select('streak').eq('user_id', user.id).order('login_date', { ascending: false }).limit(1), timeout(12000)]).catch(function(){ return {data:[]}; }),
-                Promise.race([client.from('user_privacy').select('*').eq('user_id', user.id).maybeSingle(), timeout(12000)]).catch(function(){ return {data:null}; }),
-                Promise.race([client.from('user_preferences').select('*').eq('user_id', user.id).maybeSingle(), timeout(12000)]).catch(function(){ return {data:null}; }),
-                Promise.race([client.from('guild_members').select('guild_id').eq('user_id', user.id).maybeSingle(), timeout(12000)]).catch(function(){ return {data:null}; }),
-                Promise.race([client.from('friends').select('*').or('user_id.eq.' + user.id + ',friend_id.eq.' + user.id), timeout(12000)]).catch(function(){ return {data:[]}; })
-            ]);
-        } catch(e) { results = []; }
-
-        var profileRes = results[0] || {data:null};
-        var uaRes = results[1] || {data:[]};
-        var notesRes = results[2] || {data:[]};
-        var notifRes = results[3] || {data:[]};
-        var leadersRes = results[4] || {data:[]};
-        var streakRes = results[5] || {data:[]};
-        var privacyRes = results[6] || {data:null};
-        var prefsRes = results[7] || {data:null};
-        var guildRes = results[8] || {data:null};
-        var friendsRes = results[9] || {data:[]};
-
-        if (profileRes && profileRes.data) {
-            currentProfile = profileRes.data;
-            if (currentProfile.kingdom && KINGDOMS[currentProfile.kingdom]) kingdom = KINGDOMS[currentProfile.kingdom];
-        }
-
-        if (!currentProfile) {
-            try {
-                var newProfileRes = await client.from('profiles').insert([{ user_id: user.id, username: user.email.split('@')[0], display_name: user.email.split('@')[0] }]).select().single();
-                if (newProfileRes.data) currentProfile = newProfileRes.data;
-            } catch(e) {}
-        }
-
-        if (!currentProfile) {
-            container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><h2>Профиль не найден</h2><a href="/login/" style="display:inline-block;margin-top:16px;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
-            return;
-        }
-
-        if (uaRes && uaRes.data && uaRes.data.length > 0) {
-            try {
-                var ids = uaRes.data.map(function(x){ return x.achievement_id; });
-                var metaRes = await client.from('achievements').select('*').in('id', ids);
-                var map = {};
-                (metaRes.data || []).forEach(function(m){ map[m.id] = m; });
-                achievementsList = uaRes.data.map(function(x){ return Object.assign({}, map[x.achievement_id], { earned_at: x.earned_at }); }).filter(function(x){ return x.id; });
-            } catch(e) {}
-        }
-
-        notes = (notesRes && notesRes.data) || [];
-        notifications = (notifRes && notifRes.data) || [];
-        leaders = (leadersRes && leadersRes.data) || [];
-        streak = (streakRes && streakRes.data && streakRes.data[0]) ? streakRes.data[0].streak : 0;
-        privacy = (privacyRes && privacyRes.data) || {};
-        preferences = (prefsRes && prefsRes.data) || {};
-
-        if (guildRes && guildRes.data && guildRes.data.guild_id) {
-            try {
-                var gRes = await client.from('guilds').select('*').eq('id', guildRes.data.guild_id).single();
-                guild = gRes.data;
-                if (guild) {
-                    var mRes = await client.from('guild_members').select('user_id, role, joined_at').eq('guild_id', guild.id).order('joined_at', { ascending: true }).limit(50);
-                    if (mRes.data && mRes.data.length > 0) {
-                        var mids = mRes.data.map(function(m){ return m.user_id; });
-                        var pRes = await client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', mids);
-                        var pmap = {};
-                        (pRes.data || []).forEach(function(p){ pmap[p.user_id] = p; });
-                        guildMembers = mRes.data.map(function(m){ return Object.assign({}, m, { profile: pmap[m.user_id] || {} }); });
-                    }
-                }
-            } catch(e) {}
-        }
-
-        if (friendsRes && friendsRes.data && friendsRes.data.length > 0) {
-            try {
-                var fids = {};
-                friendsRes.data.forEach(function(f){ fids[f.user_id] = true; fids[f.friend_id] = true; });
-                delete fids[user.id];
-                var idArr = Object.keys(fids);
-                if (idArr.length > 0) {
-                    var fpRes = await client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', idArr);
-                    var fmap = {};
-                    (fpRes.data || []).forEach(function(p){ fmap[p.user_id] = p; });
-                    friends = friendsRes.data.map(function(f){
-                        var otherId = f.user_id === user.id ? f.friend_id : f.user_id;
-                        return Object.assign({}, f, { other: fmap[otherId] || { user_id: otherId } });
-                    });
-                }
-            } catch(e) {}
-        }
-
-        if (isModerator()) {
-            try {
-                var pendingRes = await client.from('list_submissions').select('id', { count: 'exact', head: true }).eq('status', 'pending');
-                var hiddenRes = await client.from('comments').select('id', { count: 'exact', head: true }).eq('is_hidden', true);
-                var bannedRes = await client.from('profiles').select('user_id', { count: 'exact', head: true }).eq('is_banned', true);
-                modStats.pendingSubmissions = pendingRes.count || 0;
-                modStats.hiddenComments = hiddenRes.count || 0;
-                modStats.bannedUsers = bannedRes.count || 0;
-            } catch(e) {}
-        }
-
-        render();
-
-        try {
-            localStorage.setItem('pf_cache_' + user.id, JSON.stringify({
-                currentProfile: currentProfile, achievementsList: achievementsList, notifications: notifications,
-                leaders: leaders, guild: guild, guildMembers: guildMembers, friends: friends, notes: notes,
-                streak: streak, privacy: privacy, preferences: preferences, cachedAt: Date.now()
-            }));
-        } catch(e) {}
+    function showFatalError(msg, retry){
+        container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:420px;margin:0 auto;">'
+            + '<div style="font-size:3.5rem;margin-bottom:14px;">⚠️</div>'
+            + '<h2 style="margin:0 0 8px 0;color:#2c3e50;">Не удалось загрузить профиль</h2>'
+            + '<p style="color:#888;margin:0 0 20px 0;line-height:1.5;">' + escapeHtml(msg || 'Проверьте соединение') + '</p>'
+            + '<button onclick="location.reload()" style="padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;border:none;font-weight:700;font-size:1rem;cursor:pointer;">🔄 Обновить</button>'
+            + '</div>';
     }
 
-    // ============================================================
-    // РЕНДЕР
-    // ============================================================
+    async function loadAllData(user){
+        console.log('⏱️ Загрузка профиля...');
+
+        // ПРОФИЛЬ загружаем ПЕРВЫМ — отдельно, с таймаутом
+        var profileRes;
+        try {
+            profileRes = await Promise.race([
+                client.from('profiles').select('*').eq('user_id', user.id).maybeSingle(),
+                new Promise(function(_,rej){ setTimeout(function(){ rej(new Error('timeout профиля')); }, 10000); })
+            ]);
+        } catch(e) {
+            console.error('profile load error:', e.message);
+            throw new Error('Не удалось загрузить профиль из базы');
+        }
+
+        if (profileRes.error) {
+            console.error('profile error:', profileRes.error);
+            throw new Error(profileRes.error.message || 'Ошибка базы');
+        }
+
+        if (profileRes.data) {
+            currentProfile = profileRes.data;
+            if (currentProfile.kingdom && KINGDOMS[currentProfile.kingdom]) kingdom = KINGDOMS[currentProfile.kingdom];
+        } else {
+            // создаём
+            try {
+                var newP = await client.from('profiles').insert([{ user_id: user.id, username: user.email.split('@')[0], display_name: user.email.split('@')[0] }]).select().single();
+                if (newP.data) currentProfile = newP.data;
+                else throw new Error('Не удалось создать профиль');
+            } catch(e) {
+                throw new Error('Профиль не создан: ' + e.message);
+            }
+        }
+
+        // рендерим сразу после получения профиля
+        render();
+
+        // Остальное — параллельно, ошибки игнорируем
+        try {
+            var results = await Promise.all([
+                Promise.race([client.from('user_achievements').select('achievement_id, earned_at').eq('user_id', user.id), new Promise(function(_,r){setTimeout(function(){r(new Error('t'));},10000);})]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('user_notes').select('*').eq('user_id', user.id).order('pinned', { ascending: false }), new Promise(function(_,r){setTimeout(function(){r(new Error('t'));},10000);})]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('notifications').select('*').eq('user_id', user.id).order('created_at', { ascending: false }).limit(10), new Promise(function(_,r){setTimeout(function(){r(new Error('t'));},10000);})]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('profiles').select('user_id, username, display_name, experience, level, avatar_url').order('experience', { ascending: false }).limit(10), new Promise(function(_,r){setTimeout(function(){r(new Error('t'));},10000);})]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('daily_logins').select('streak').eq('user_id', user.id).order('login_date', { ascending: false }).limit(1), new Promise(function(_,r){setTimeout(function(){r(new Error('t'));},10000);})]).catch(function(){ return {data:[]}; }),
+                Promise.race([client.from('guild_members').select('guild_id').eq('user_id', user.id).maybeSingle(), new Promise(function(_,r){setTimeout(function(){r(new Error('t'));},10000);})]).catch(function(){ return {data:null}; }),
+                Promise.race([client.from('friends').select('*').or('user_id.eq.' + user.id + ',friend_id.eq.' + user.id), new Promise(function(_,r){setTimeout(function(){r(new Error('t'));},10000);})]).catch(function(){ return {data:[]}; })
+            ]);
+
+            var uaRes = results[0], notesRes = results[1], notifRes = results[2], leadersRes = results[3], streakRes = results[4], guildRes = results[5], friendsRes = results[6];
+
+            if (uaRes && uaRes.data && uaRes.data.length) {
+                try {
+                    var ids = uaRes.data.map(function(x){ return x.achievement_id; });
+                    var metaRes = await client.from('achievements').select('*').in('id', ids);
+                    var map = {};
+                    (metaRes.data || []).forEach(function(m){ map[m.id] = m; });
+                    achievementsList = uaRes.data.map(function(x){ return Object.assign({}, map[x.achievement_id], { earned_at: x.earned_at }); }).filter(function(x){ return x.id; });
+                } catch(e) {}
+            }
+            notes = (notesRes && notesRes.data) || [];
+            notifications = (notifRes && notifRes.data) || [];
+            leaders = (leadersRes && leadersRes.data) || [];
+            streak = (streakRes && streakRes.data && streakRes.data[0]) ? streakRes.data[0].streak : 0;
+
+            if (guildRes && guildRes.data && guildRes.data.guild_id) {
+                try {
+                    var gRes = await client.from('guilds').select('*').eq('id', guildRes.data.guild_id).single();
+                    guild = gRes.data;
+                    if (guild) {
+                        var mRes = await client.from('guild_members').select('user_id, role, joined_at').eq('guild_id', guild.id).limit(50);
+                        if (mRes.data && mRes.data.length) {
+                            var mids = mRes.data.map(function(m){ return m.user_id; });
+                            var pRes = await client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', mids);
+                            var pmap = {};
+                            (pRes.data || []).forEach(function(p){ pmap[p.user_id] = p; });
+                            guildMembers = mRes.data.map(function(m){ return Object.assign({}, m, { profile: pmap[m.user_id] || {} }); });
+                        }
+                    }
+                } catch(e) {}
+            }
+
+            if (friendsRes && friendsRes.data && friendsRes.data.length) {
+                try {
+                    var fids = {};
+                    friendsRes.data.forEach(function(f){ fids[f.user_id] = true; fids[f.friend_id] = true; });
+                    delete fids[user.id];
+                    var idArr = Object.keys(fids);
+                    if (idArr.length) {
+                        var fpRes = await client.from('profiles').select('user_id, display_name, username, avatar_url').in('user_id', idArr);
+                        var fmap = {};
+                        (fpRes.data || []).forEach(function(p){ fmap[p.user_id] = p; });
+                        friends = friendsRes.data.map(function(f){
+                            var otherId = f.user_id === user.id ? f.friend_id : f.user_id;
+                            return Object.assign({}, f, { other: fmap[otherId] || { user_id: otherId } });
+                        });
+                    }
+                } catch(e) {}
+            }
+
+            if (isModerator()) {
+                try {
+                    var pendingRes = await client.from('list_submissions').select('id', { count: 'exact', head: true }).eq('status', 'pending');
+                    var hiddenRes = await client.from('comments').select('id', { count: 'exact', head: true }).eq('is_hidden', true);
+                    var bannedRes = await client.from('profiles').select('user_id', { count: 'exact', head: true }).eq('is_banned', true);
+                    modStats.pendingSubmissions = pendingRes.count || 0;
+                    modStats.hiddenComments = hiddenRes.count || 0;
+                    modStats.bannedUsers = bannedRes.count || 0;
+                } catch(e) {}
+            }
+
+            // перерендерим с полными данными
+            render();
+        } catch(e) {
+            console.warn('Дополнительные данные не загрузились:', e.message);
+        }
+    }
+
     function render(){
         if(!currentProfile || !currentUser) return;
         try {
@@ -477,7 +450,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         if (mod) { tabs.splice(2, 0, {id:'moderation', icon:'🛡️', label:'Модерация', count: modStats.pendingSubmissions}); }
 
         var html = '';
-
         html += '<div class="pf-hero pf-fade"><div class="pf-hero-content">';
         html += '<div class="pf-avatar-wrap"><img src="' + avatar + '" alt="" class="pf-avatar"><div class="pf-level-badge">' + lvl.title + ' · ур. ' + lvl.level + '</div></div>';
         html += '<div class="pf-info">';
@@ -938,7 +910,7 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
     };
 
     // ============================================================
-    // 🚀 БЫСТРОЕ ЧТЕНИЕ СЕССИИ (без supabase-js)
+    // ЧТЕНИЕ СЕССИИ
     // ============================================================
     function readRawSession() {
         var raw = null;
@@ -956,8 +928,12 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
     }
 
     // ============================================================
-    // ИНИЦИАЛИЗАЦИЯ — мгновенный рендер + фоновое обогащение
+    // ИНИЦИАЛИЗАЦИЯ
     // ============================================================
+    var loadingTimeout = setTimeout(function() {
+        showFatalError('Долго грузится. Проверьте соединение.', true);
+    }, 20000);
+
     async function init(){
         startTimer();
 
@@ -972,6 +948,7 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         }
 
         if (!rawSession || !rawSession.user) {
+            clearTimeout(loadingTimeout);
             container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
                 + '<div style="font-size:4rem;margin-bottom:16px;">🔒</div>'
                 + '<h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2>'
@@ -980,51 +957,56 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
             return;
         }
 
-        // МГНОВЕННО рендерим базовый профиль
         currentUser = rawSession.user;
-        var uname = (rawSession.user.user_metadata && rawSession.user.user_metadata.username)
-                 || (rawSession.user.email ? rawSession.user.email.split('@')[0] : 'Пользователь');
 
-        currentProfile = {
-            user_id: rawSession.user.id,
-            username: uname,
-            display_name: uname,
-            experience: 0,
-            level: 1,
-            kingdom: 'Эдем'
-        };
-        kingdom = KINGDOMS['Эдем'];
-        render();
-
-        // Фоном обогащаем
-        loadExtrasInBackground(rawSession);
-    }
-
-    // ============================================================
-    // ФОНОВАЯ ЗАГРУЗКА — не блокирует UI
-    // ============================================================
-    async function loadExtrasInBackground(rawSession) {
-        for (var i = 0; i < 20; i++) {
-            if (window.supabaseClient) break;
+        // Ждём supabase + создаём клиент если его нет
+        for (var i = 0; i < 25; i++) {
+            if (window.supabase && typeof window.supabase.createClient === 'function') break;
             await new Promise(function(r){ setTimeout(r, 300); });
         }
-        client = window.supabaseClient;
+
+        if (window.supabaseClient) {
+            client = window.supabaseClient;
+        } else if (window.supabase && typeof window.supabase.createClient === 'function') {
+            try {
+                client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+                    auth: {
+                        storageKey: 'sb-ncytbgbzfjfoqmmgfygz-auth-token',
+                        persistSession: true,
+                        autoRefreshToken: true
+                    }
+                });
+                window.supabaseClient = client;
+            } catch(e) { console.error('createClient:', e); }
+        }
+
         if (!client) {
-            console.warn('supabase-js не загрузился — остаётся базовый профиль');
+            clearTimeout(loadingTimeout);
+            showFatalError('Не удалось подключиться к серверу. Проверьте интернет.');
             return;
         }
 
+        // Устанавливаем сессию
         try {
-            await Promise.race([
+            var setRes = await Promise.race([
                 client.auth.setSession({
                     access_token: rawSession.access_token,
                     refresh_token: rawSession.refresh_token
                 }),
-                new Promise(function(_, rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); })
+                new Promise(function(_, rej){ setTimeout(function(){ rej(new Error('timeout')); }, 6000); })
             ]);
+            if (setRes && setRes.error) console.warn('setSession error:', setRes.error.message);
         } catch(e) { console.warn('setSession:', e.message); }
 
-        try { await loadAllData(currentUser); } catch(e) { console.error('loadAllData:', e); }
+        // Грузим данные
+        try {
+            await loadAllData(currentUser);
+            clearTimeout(loadingTimeout);
+        } catch(e) {
+            clearTimeout(loadingTimeout);
+            console.error('loadAllData error:', e);
+            showFatalError(e.message || 'Ошибка загрузки профиля');
+        }
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

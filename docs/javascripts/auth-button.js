@@ -1,10 +1,8 @@
 // ============================================================
-// auth-button.js — оригинальный стиль + рабочая сессия
+// auth-button.js — оригинальный стиль + рабочая сессия (Финал)
 // ============================================================
 (function() {
     'use strict';
-
-    console.log('✅ auth-button.js загружен');
 
     var PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
     var SUPABASE_URL = 'https://' + PROJECT_REF + '.supabase.co';
@@ -15,30 +13,19 @@
     var PROFILE_TTL = 5 * 60 * 1000;
 
     // ============================================================
-    // 📖 ЧТЕНИЕ СЕССИИ
+    // 📖 ЧТЕНИЕ СЕССИИ — поддерживает массив
     // ============================================================
     function readSession() {
         var raw = null;
 
         try { raw = localStorage.getItem(SESSION_KEY); } catch(e) {}
         if (!raw) { try { raw = sessionStorage.getItem(SESSION_KEY); } catch(e) {} }
-        if (!raw) {
-            try {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var c = cookies[i].trim();
-                    if (c.indexOf(SESSION_KEY + '=') === 0) {
-                        raw = decodeURIComponent(c.substring(SESSION_KEY.length + 1));
-                        break;
-                    }
-                }
-            } catch(e) {}
-        }
 
         if (!raw) return null;
 
         try {
             var parsed = JSON.parse(raw);
+            // 🔑 Библиотека Supabase хранит МАССИВ — берём последний
             if (Array.isArray(parsed)) parsed = parsed[parsed.length - 1];
             if (!parsed || !parsed.access_token || !parsed.user) return null;
             if (parsed.expires_at && parsed.expires_at * 1000 < Date.now()) return null;
@@ -49,7 +36,7 @@
     }
 
     // ============================================================
-    // 📥 ЗАГРУЗКА ПРОФИЛЯ (Borla + аватарка)
+    // 📥 ЗАГРУЗКА ПРОФИЛЯ
     // ============================================================
     async function fetchProfile(session) {
         var userId = session.user.id;
@@ -93,7 +80,7 @@
     }
 
     // ============================================================
-    // 🎨 СОЗДАНИЕ КОНТЕЙНЕРА (как в первом коде)
+    // 🎨 КОНТЕЙНЕР
     // ============================================================
     function ensureContainer() {
         var container = document.getElementById('auth-btn-container');
@@ -103,11 +90,9 @@
         container.id = 'auth-btn-container';
 
         if (isMobile()) {
-            // Скрываем старую шапку
             var oldTop = document.querySelector('.wy-nav-top');
             if (oldTop) oldTop.style.display = 'none';
 
-            // Своя мобильная шапка
             var customHeader = document.getElementById('custom-mobile-header');
             if (!customHeader) {
                 customHeader = document.createElement('div');
@@ -123,29 +108,22 @@
                     if (sidebar) sidebar.classList.toggle('shift');
                 };
 
-                container.style.cssText = 'display:flex !important;align-items:center !important;gap:4px !important;margin-left:auto !important;flex-shrink:0 !important;';
-
                 customHeader.appendChild(hamburger);
                 customHeader.appendChild(container);
                 document.body.prepend(customHeader);
-                console.log('✅ Создана мобильная шапка');
             } else {
-                container.style.cssText = 'display:flex !important;align-items:center !important;gap:4px !important;margin-left:auto !important;flex-shrink:0 !important;';
                 customHeader.appendChild(container);
             }
             return container;
         }
 
-        // ПК — в header
         var header = document.querySelector('header');
         if (header) {
             container.style.cssText = 'display:inline-flex;align-items:center;gap:6px;float:right;margin-top:6px;margin-right:10px;flex-wrap:wrap;max-width:100%;position:relative;z-index:1000;';
             header.appendChild(container);
-            console.log('✅ Кнопка в header (ПК)');
             return container;
         }
 
-        // Fallback
         container.style.cssText = 'position:fixed !important;top:10px !important;right:10px !important;z-index:99999 !important;background:rgba(255,255,255,0.9) !important;border-radius:20px !important;padding:4px 12px !important;box-shadow:0 2px 12px rgba(0,0,0,0.15) !important;display:flex !important;align-items:center !important;gap:6px !important;';
         document.body.prepend(container);
         return container;
@@ -192,15 +170,13 @@
         var safeName = escapeHtml(username);
 
         if (isMobile()) {
-            // Мобильный стиль
             container.innerHTML =
                 '<div style="display: flex; align-items: center; gap: 3px; background: rgba(255,255,255,0.15); border-radius: 20px; padding: 2px 6px 2px 4px; border: 1px solid rgba(255,255,255,0.1);">' +
                 '  <img src="' + avatarUrl + '" alt="Avatar" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover;">' +
-                '  <a href="/profile/" style="color: #fff; text-decoration: none; font-size: 0.6rem; opacity: 0.9;">Проф</a>' +
+                '  <a href="/profile/" style="color: #fff; text-decoration: none; font-size: 0.6rem; opacity: 0.9;">Профиль</a>' +
                 '  <a href="#" onclick="window.logoutUser(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.6rem;">Выйти</a>' +
                 '</div>';
         } else {
-            // ПК стиль — как в первом коде
             container.innerHTML =
                 '<div style="display: flex; align-items: center; gap: 6px; background: #f5f5f5; padding: 4px 10px; border-radius: 20px; flex-wrap: wrap;">' +
                 '  <img src="' + avatarUrl + '" alt="Avatar" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover;">' +
@@ -217,7 +193,6 @@
     window.logoutUser = function() {
         try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
         try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
-        try { document.cookie = SESSION_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
         try {
             var toRemove = [];
             for (var i = 0; i < localStorage.length; i++) {
@@ -231,7 +206,7 @@
     };
 
     // ============================================================
-    // 🔄 ОБНОВЛЕНИЕ ПРИ СОБЫТИЯХ
+    // 🔄 ОБНОВЛЕНИЕ
     // ============================================================
     window.addEventListener('pageshow', function() { updateUI(); });
     window.addEventListener('focus', function() { updateUI(); });
@@ -239,7 +214,6 @@
         if (e.key === SESSION_KEY) updateUI();
     });
 
-    // Resize — пересоздаём контейнер при смене режима
     var lastMobile = isMobile();
     var resizeTimer = null;
     window.addEventListener('resize', function() {
@@ -273,6 +247,4 @@
     } else {
         start();
     }
-
-    console.log('✅ auth-button.js выполнен');
 })();

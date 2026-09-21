@@ -1,5 +1,5 @@
 // ============================================================
-// auth-button.js — оригинальный стиль + рабочая сессия (Финал)
+// auth-button.js — оригинальный стиль + рабочая сессия
 // ============================================================
 (function() {
     'use strict';
@@ -13,19 +13,30 @@
     var PROFILE_TTL = 5 * 60 * 1000;
 
     // ============================================================
-    // 📖 ЧТЕНИЕ СЕССИИ — поддерживает массив
+    // 📖 ЧТЕНИЕ СЕССИИ (3 места: localStorage, sessionStorage, cookie)
     // ============================================================
     function readSession() {
         var raw = null;
 
         try { raw = localStorage.getItem(SESSION_KEY); } catch(e) {}
         if (!raw) { try { raw = sessionStorage.getItem(SESSION_KEY); } catch(e) {} }
+        if (!raw) {
+            try {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var c = cookies[i].trim();
+                    if (c.indexOf(SESSION_KEY + '=') === 0) {
+                        raw = decodeURIComponent(c.substring(SESSION_KEY.length + 1));
+                        break;
+                    }
+                }
+            } catch(e) {}
+        }
 
         if (!raw) return null;
 
         try {
             var parsed = JSON.parse(raw);
-            // 🔑 Библиотека Supabase хранит МАССИВ — берём последний
             if (Array.isArray(parsed)) parsed = parsed[parsed.length - 1];
             if (!parsed || !parsed.access_token || !parsed.user) return null;
             if (parsed.expires_at && parsed.expires_at * 1000 < Date.now()) return null;
@@ -36,7 +47,7 @@
     }
 
     // ============================================================
-    // 📥 ЗАГРУЗКА ПРОФИЛЯ
+    // 📥 ПРОФИЛЬ (display_name = Borla, avatar_url)
     // ============================================================
     async function fetchProfile(session) {
         var userId = session.user.id;
@@ -80,7 +91,7 @@
     }
 
     // ============================================================
-    // 🎨 КОНТЕЙНЕР
+    // 🎨 КОНТЕЙНЕР (ПК в header, мобильный в свою шапку)
     // ============================================================
     function ensureContainer() {
         var container = document.getElementById('auth-btn-container');
@@ -108,15 +119,19 @@
                     if (sidebar) sidebar.classList.toggle('shift');
                 };
 
+                container.style.cssText = 'display:flex !important;align-items:center !important;gap:4px !important;margin-left:auto !important;flex-shrink:0 !important;';
+
                 customHeader.appendChild(hamburger);
                 customHeader.appendChild(container);
                 document.body.prepend(customHeader);
             } else {
+                container.style.cssText = 'display:flex !important;align-items:center !important;gap:4px !important;margin-left:auto !important;flex-shrink:0 !important;';
                 customHeader.appendChild(container);
             }
             return container;
         }
 
+        // ПК — вставляем в header
         var header = document.querySelector('header');
         if (header) {
             container.style.cssText = 'display:inline-flex;align-items:center;gap:6px;float:right;margin-top:6px;margin-right:10px;flex-wrap:wrap;max-width:100%;position:relative;z-index:1000;';
@@ -124,13 +139,14 @@
             return container;
         }
 
+        // Запасной вариант
         container.style.cssText = 'position:fixed !important;top:10px !important;right:10px !important;z-index:99999 !important;background:rgba(255,255,255,0.9) !important;border-radius:20px !important;padding:4px 12px !important;box-shadow:0 2px 12px rgba(0,0,0,0.15) !important;display:flex !important;align-items:center !important;gap:6px !important;';
         document.body.prepend(container);
         return container;
     }
 
     // ============================================================
-    // 🎨 РЕНДЕР — оригинальный стиль
+    // 🎨 РЕНДЕР — ОРИГИНАЛЬНЫЙ СТИЛЬ
     // ============================================================
     async function updateUI() {
         var container = ensureContainer();
@@ -138,7 +154,7 @@
 
         var session = readSession();
 
-        // ============= НЕ АВТОРИЗОВАН =============
+        // ============ НЕ АВТОРИЗОВАН ============
         if (!session || !session.user) {
             if (isMobile()) {
                 container.innerHTML =
@@ -156,7 +172,7 @@
             return;
         }
 
-        // ============= АВТОРИЗОВАН =============
+        // ============ АВТОРИЗОВАН ============
         var profile = await fetchProfile(session);
         var user = session.user;
 
@@ -193,6 +209,7 @@
     window.logoutUser = function() {
         try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
         try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
+        try { document.cookie = SESSION_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
         try {
             var toRemove = [];
             for (var i = 0; i < localStorage.length; i++) {
@@ -202,7 +219,7 @@
             toRemove.forEach(function(k) { localStorage.removeItem(k); });
         } catch(e) {}
         profileCache = {};
-        window.location.reload();
+        window.location.href = '/';
     };
 
     // ============================================================

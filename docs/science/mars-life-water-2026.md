@@ -1,80 +1,80 @@
-# Сенсация 2026: жизнь и вода на Марсе
+# Жизнь и вода на Марсе
 
-<div style="background: #e6f5f2; border: 1px solid #7ec9c0; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
-  <span style="font-size: 20px; color: #2a7a6a;">◈</span>
-  <span style="font-weight: bold; color: #2a7a6a;">Сенсация 2026</span>
+<div style="background: #f5eef8; border: 1px solid #a97ec0; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #6a3fb5;">◈</span>
+  <span style="font-weight: bold; color: #6a3fb5;">Сенсация 2026</span>
 </div>
 
-<div class="infobox" style="float: right; width: 280px; background: #d8edea; border: 1px solid #4a8a7a; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(74,138,122,0.2); color: #1a2a2a;">
+<div class="infobox" style="float: right; width: 280px; background: #ede4f5; border: 1px solid #6a4a8a; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(106,74,138,0.2); color: #1a1a2e;">
 
-  <div style="background: #1a3a3a; padding: 8px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #4a8a7a; text-align: center; border-radius: 8px 8px 4px 4px;">
-    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #d0f0e8;">Жизнь и вода на Марсе</h3>
+  <div style="background: #2a1a3a; padding: 8px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; border-radius: 8px 8px 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem; color: #e8dcff;">Жизнь и вода на Марсе</h3>
   </div>
 
-  <div style="background: #1a3a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a8a7a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #d0f0e8;">
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
     Главное событие
   </div>
-  <p style="margin: 2px 0; color: #1a2a2a;"><b>Событие:</b> Потенциальная биосигнатура в породе «Чейава Фоллс»</p>
-  <p style="margin: 2px 0; color: #1a2a2a;"><b>Образец:</b> «Сапфировый каньон»</p>
-  <p style="margin: 2px 0; color: #1a2a2a;"><b>Дата публикации:</b> Сентябрь 2025 (Nature)</p>
-  <p style="margin: 2px 0; color: #1a2a2a;"><b>Аппарат:</b> <a href="https://mars-wiki.ru/science/perseverance/" style="color: #2a7a6a; text-decoration: underline;">Perseverance</a> (NASA)</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Событие:</b> Потенциальная биосигнатура в породе «Чейава Фоллс»</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Образец:</b> «Сапфировый каньон»</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Дата публикации:</b> Сентябрь 2025 (Nature)</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Аппарат:</b> <a href="https://mars-wiki.ru/science/perseverance/" style="color: #6a3fb5; text-decoration: underline;">Perseverance</a> (NASA)</p>
 
-  <hr style="margin: 6px 0; border-color: #a8ccc4;">
+  <hr style="margin: 6px 0; border-color: #c4a8d4;">
 
-  <div style="background: #1a3a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a8a7a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #d0f0e8;">
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
     Местоположение
   </div>
-  <p style="margin: 2px 0; color: #1a2a2a;"><b>Регион:</b> Кратер Езеро (Jezero Crater)</p>
-  <p style="margin: 2px 0; color: #1a2a2a;"><b>Формация:</b> Bright Angel</p>
-  <p style="margin: 2px 0; color: #1a2a2a;"><b>Долина:</b> <a href="https://mars-wiki.ru/geography/valles-marineris/" style="color: #2a7a6a; text-decoration: underline;">Неретва</a></p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Регион:</b> Кратер Езеро (Jezero Crater)</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Формация:</b> Bright Angel</p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Долина:</b> <a href="https://mars-wiki.ru/geography/valles-marineris/" style="color: #6a3fb5; text-decoration: underline;">Неретва</a></p>
 
-  <hr style="margin: 6px 0; border-color: #a8ccc4;">
+  <hr style="margin: 6px 0; border-color: #c4a8d4;">
 
-  <div style="background: #1a3a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a8a7a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #d0f0e8;">
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
     Состав породы
   </div>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a2a2a;">
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
     <li>• Глинистые минералы и ил</li>
     <li>• Органический углерод</li>
     <li>• Сера и фосфаты</li>
     <li>• Оксиды железа</li>
   </ul>
 
-  <hr style="margin: 6px 0; border-color: #a8ccc4;">
+  <hr style="margin: 6px 0; border-color: #c4a8d4;">
 
-  <div style="background: #1a3a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a8a7a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #d0f0e8;">
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
     Ключевые открытия
   </div>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a2a2a;">
-    <li>• <a href="https://mars-wiki.ru/science/cheyava-falls/" style="color: #2a7a6a; text-decoration: underline;">Чейава Фоллс</a> — биосигнатура</li>
-    <li>• <a href="https://mars-wiki.ru/science/ferrihydrite-sulfate/" style="color: #2a7a6a; text-decoration: underline;">Ферригидроксисульфат</a> — новый минерал</li>
-    <li>• <a href="https://mars-wiki.ru/science/underground-ocean/" style="color: #2a7a6a; text-decoration: underline;">Подземный океан</a> на глубине 5–20 км</li>
-    <li>• <a href="https://mars-wiki.ru/science/polar-lake-debate/" style="color: #2a7a6a; text-decoration: underline;">Спор о подлёдном озере</a></li>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
+    <li>• <a href="https://mars-wiki.ru/science/cheyava-falls/" style="color: #6a3fb5; text-decoration: underline;">Чейава Фоллс</a> — биосигнатура</li>
+    <li>• <a href="https://mars-wiki.ru/science/ferrihydrite-sulfate/" style="color: #6a3fb5; text-decoration: underline;">Ферригидроксисульфат</a> — новый минерал</li>
+    <li>• <a href="https://mars-wiki.ru/science/underground-ocean/" style="color: #6a3fb5; text-decoration: underline;">Подземный океан</a> на глубине 5–20 км</li>
+    <li>• <a href="https://mars-wiki.ru/science/polar-lake-debate/" style="color: #6a3fb5; text-decoration: underline;">Спор о подлёдном озере</a></li>
   </ul>
 
-  <hr style="margin: 6px 0; border-color: #a8ccc4;">
+  <hr style="margin: 6px 0; border-color: #c4a8d4;">
 
-  <div style="background: #1a3a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a8a7a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #d0f0e8;">
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
     Миссии
   </div>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a2a2a;">
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
     <li>• ESCAPADE (2027)</li>
     <li>• Mars Sample Return — <i>отменена</i></li>
     <li>• Марсианские дроны</li>
     <li>• ИИ на Perseverance</li>
   </ul>
 
-  <hr style="margin: 6px 0; border-color: #a8ccc4;">
+  <hr style="margin: 6px 0; border-color: #c4a8d4;">
 
-  <div style="background: #1a3a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #4a8a7a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #d0f0e8;">
+  <div style="background: #2a1a3a; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #6a4a8a; text-align: center; font-weight: bold; font-size: 0.9rem; color: #e8dcff;">
     Связанные статьи
   </div>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a2a2a;">
-    <li>• <a href="https://mars-wiki.ru/science/silicon-life/" style="color: #2a7a6a; text-decoration: underline;">Кремниевая жизнь</a></li>
-    <li>• <a href="https://mars-wiki.ru/history/epokha-umiraniya/" style="color: #2a7a6a; text-decoration: underline;">Эпоха Умирания</a></li>
-    <li>• <a href="https://mars-wiki.ru/people/hevsur/" style="color: #2a7a6a; text-decoration: underline;">Хевсур</a></li>
-    <li>• <a href="https://mars-wiki.ru/terms/tablichki/" style="color: #2a7a6a; text-decoration: underline;">Глиняные таблички</a></li>
-    <li>• <a href="https://mars-wiki.ru/geography/akademiya-okhasena/" style="color: #2a7a6a; text-decoration: underline;">Академия Окхасена</a></li>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6; color: #1a1a2e;">
+    <li>• <a href="https://mars-wiki.ru/science/silicon-life/" style="color: #6a3fb5; text-decoration: underline;">Кремниевая жизнь</a></li>
+    <li>• <a href="https://mars-wiki.ru/history/epokha-umiraniya/" style="color: #6a3fb5; text-decoration: underline;">Эпоха Умирания</a></li>
+    <li>• <a href="https://mars-wiki.ru/people/hevsur/" style="color: #6a3fb5; text-decoration: underline;">Хевсур</a></li>
+    <li>• <a href="https://mars-wiki.ru/terms/tablichki/" style="color: #6a3fb5; text-decoration: underline;">Глиняные таблички</a></li>
+    <li>• <a href="https://mars-wiki.ru/geography/akademiya-okhasena/" style="color: #6a3fb5; text-decoration: underline;">Академия Окхасена</a></li>
   </ul>
 
 </div>

@@ -167,7 +167,7 @@ comments: false
     }
 
     // ============================================================
-    // 🎨 ФОРМА
+    // 🎨 РЕНДЕР ФОРМЫ
     // ============================================================
     function render() {
         var params = new URLSearchParams(window.location.search);
@@ -291,7 +291,8 @@ comments: false
     }
 
     // ============================================================
-    // 💾 СОХРАНЕНИЕ СЕССИИ — формат supabase-js (массив)
+    // 💾 СОХРАНЕНИЕ СЕССИИ
+    // Формат МАССИВ + КОМПАКТНЫЙ user — влезает в cookie
     // ============================================================
     function saveSession(data) {
         var session = {
@@ -300,13 +301,20 @@ comments: false
             expires_at: Math.floor(Date.now() / 1000) + (data.expires_in || 3600),
             expires_in: data.expires_in || 3600,
             token_type: data.token_type || 'bearer',
-            user: data.user
+            user: {
+                id: data.user.id,
+                email: data.user.email
+            }
         };
-        // 🔑 Сохраняем МАССИВОМ — так же, как сама библиотека Supabase
         var json = JSON.stringify([session]);
 
         try { localStorage.setItem(SESSION_KEY, json); } catch(e) {}
         try { sessionStorage.setItem(SESSION_KEY, json); } catch(e) {}
+
+        try {
+            var expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
+            document.cookie = SESSION_KEY + '=' + encodeURIComponent(json) + '; expires=' + expires + '; path=/; SameSite=Lax';
+        } catch(e) {}
     }
 
     // ============================================================
@@ -372,7 +380,7 @@ comments: false
             saveSession(data);
             showToast('Добро пожаловать!', 'success');
 
-            setTimeout(function() { window.location.href = '/profile/'; }, 900);
+            setTimeout(function() { window.location.href = '/'; }, 700);
 
         } catch (err) {
             var msg = err.message;
@@ -450,7 +458,7 @@ comments: false
             if (data.access_token && data.user) {
                 saveSession(data);
                 showToast('Аккаунт создан!', 'success');
-                setTimeout(function() { window.location.href = '/profile/'; }, 900);
+                setTimeout(function() { window.location.href = '/'; }, 700);
             } else {
                 showToast('Проверьте почту и подтвердите email', 'success');
                 btn.classList.remove('loading');

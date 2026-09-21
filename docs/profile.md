@@ -1,5 +1,5 @@
 ---
-title: Мой профиль
+title: Профиль
 comments: false
 ---
 
@@ -20,8 +20,6 @@ comments: false
 .pf-fade{animation:pfFadeIn .5s cubic-bezier(.16,1,.3,1) both}
 .pf-slide{animation:pfSlide .4s ease both}
 #profile-app a{text-decoration:none!important;border-bottom:none!important}
-
-/* HERO */
 .pf-hero{position:relative;background:linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 40%,#4a2a3a 100%);border-radius:24px;padding:44px 40px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 20px 60px -12px rgba(0,0,0,.4)}
 .pf-hero::before{content:'';position:absolute;top:-60%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,var(--kingdom-shadow),transparent 70%);border-radius:50%;animation:pfFloat 8s ease-in-out infinite}
 .pf-hero::after{content:'';position:absolute;bottom:-60%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(231,76,60,.15),transparent 70%);border-radius:50%;animation:pfFloat 10s ease-in-out infinite reverse}
@@ -42,8 +40,6 @@ comments: false
 .pf-progress{background:rgba(255,255,255,.2);border-radius:12px;height:12px;overflow:hidden;position:relative;backdrop-filter:blur(8px);margin-bottom:6px}
 .pf-progress-bar{height:100%;background:linear-gradient(90deg,var(--kingdom-light),#fff);border-radius:12px;transition:width 1.2s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(255,255,255,.6)}
 .pf-progress-text{font-size:.78rem;opacity:.9}
-
-/* QUICK GRID */
 .pf-quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px}
 .pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s;box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer}
 .pf-quick-card:hover{transform:translateY(-4px);border-color:var(--kingdom-color);box-shadow:0 12px 32px -8px var(--kingdom-shadow)}
@@ -52,8 +48,6 @@ comments: false
 .pf-quick-body{flex:1;min-width:0}
 .pf-quick-title{font-size:.9rem;font-weight:800;color:#1a1a1a;margin-bottom:2px}
 .pf-quick-desc{font-size:.72rem;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-/* TABS — с горизонтальной прокруткой */
 .pf-tabs{display:flex;gap:4px;margin-bottom:20px;overflow-x:auto;padding:6px;background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border-radius:16px;border:1px solid rgba(0,0,0,.05);cursor:grab;scroll-behavior:smooth}
 .pf-tabs::-webkit-scrollbar{height:4px}
 .pf-tabs::-webkit-scrollbar-thumb{background:var(--kingdom-color);border-radius:2px}
@@ -63,21 +57,15 @@ comments: false
 .pf-tab-count{background:rgba(255,255,255,.25);padding:1px 7px;border-radius:10px;font-size:.7rem}
 .pf-tab-content{display:none;animation:pfFadeIn .4s ease}
 .pf-tab-content.active{display:block}
-
-/* CARDS */
 .pf-card{background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-radius:18px;border:1px solid rgba(0,0,0,.06);padding:22px 26px;margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,.04);transition:box-shadow .3s}
 .pf-card:hover{box-shadow:0 12px 32px -8px var(--kingdom-shadow)}
 .pf-card-title{font-size:1.1rem;font-weight:800;color:#1a1a1a;margin:0 0 16px 0;display:flex;align-items:center;gap:10px}
 .pf-card-title .pf-ct-icon{font-size:1.4rem}
-
-/* BUTTONS */
 .pf-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;border:2px solid var(--kingdom-color);background:var(--kingdom-color);color:#fff;font-weight:700;font-size:.88rem;cursor:pointer;transition:all .25s;font-family:inherit}
 .pf-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px -4px var(--kingdom-shadow)}
 .pf-btn-outline{background:transparent;color:var(--kingdom-color)}
 .pf-btn-outline:hover{background:var(--kingdom-color);color:#fff}
 .pf-btn-danger{background:#e74c3c;border-color:#e74c3c}
-
-/* ACTIVITY TIMER */
 .pf-timer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px}
 .pf-timer-card{background:linear-gradient(135deg,rgba(108,99,255,.06),rgba(162,155,254,.03));border:1px solid rgba(108,99,255,.15);border-radius:14px;padding:16px 18px;text-align:center}
 .pf-timer-value{font-size:1.8rem;font-weight:900;color:var(--kingdom-color);line-height:1}
@@ -88,20 +76,14 @@ comments: false
 .pf-activity-bar:hover{filter:brightness(1.15)}
 .pf-activity-bar::after{content:attr(data-label);position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:.65rem;color:#666;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;background:#fff;padding:2px 6px;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
 .pf-activity-bar:hover::after{opacity:1}
-
-/* AVATAR */
 .pf-avatar-grid{display:flex;gap:12px;flex-wrap:wrap}
 .pf-avatar-option{width:60px;height:60px;border-radius:50%;cursor:pointer;border:3px solid transparent;object-fit:cover;transition:all .25s}
 .pf-avatar-option:hover{transform:scale(1.1);border-color:var(--kingdom-color)}
 .pf-avatar-option.selected{border-color:var(--kingdom-color);box-shadow:0 0 0 4px var(--kingdom-shadow)}
-
-/* KINGDOM */
 .pf-kingdom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
 .pf-kingdom-btn{padding:10px 12px;border-radius:10px;border:2px solid rgba(0,0,0,.08);background:rgba(255,255,255,.6);cursor:pointer;font-size:.8rem;font-weight:600;transition:all .25s;font-family:inherit;color:#333}
 .pf-kingdom-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
 .pf-kingdom-btn.selected{color:#fff;box-shadow:0 6px 16px -4px var(--kingdom-shadow)}
-
-/* ACHIEVEMENTS */
 .pf-ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
 .pf-ach{display:flex;align-items:center;gap:10px;padding:12px 14px;background:rgba(255,255,255,.7);border-radius:12px;border:2px solid rgba(0,0,0,.04);transition:all .25s}
 .pf-ach:hover{transform:translateY(-3px);border-color:var(--kingdom-color);box-shadow:0 12px 28px -8px var(--kingdom-shadow)}
@@ -109,16 +91,12 @@ comments: false
 .pf-ach .pf-ach-icon{font-size:1.8rem}
 .pf-ach .pf-ach-name{font-size:.85rem;font-weight:700;color:#1a1a1a}
 .pf-ach .pf-ach-date{font-size:.7rem;color:#888}
-
-/* NOTIFICATIONS */
 .pf-notif{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;transition:all .2s;cursor:pointer}
 .pf-notif:hover{background:rgba(108,99,255,.08)}
 .pf-notif.unread{border-left:3px solid var(--kingdom-color);background:rgba(108,99,255,.05)}
 .pf-notif-icon{font-size:1.3rem}
 .pf-notif-text{font-size:.88rem;color:#333}
 .pf-notif-date{font-size:.72rem;color:#999;margin-top:2px}
-
-/* CHAT */
 .pf-chat{background:linear-gradient(135deg,var(--kingdom-bg),rgba(255,255,255,.6));border-radius:14px;padding:14px;max-height:400px;overflow-y:auto;margin-bottom:12px;border:1px solid rgba(0,0,0,.05)}
 .pf-chat-msg{margin:6px 0;padding:10px 14px;border-radius:14px;max-width:80%;word-wrap:break-word;font-size:.9rem;line-height:1.5}
 .pf-chat-msg.user{background:var(--kingdom-color);color:#fff;margin-left:auto;border-bottom-right-radius:4px}
@@ -127,23 +105,17 @@ comments: false
 .pf-chat-input input{flex:1;padding:12px 18px;border:2px solid rgba(0,0,0,.08);border-radius:30px;font-size:.9rem;font-family:inherit;outline:none;background:#fff}
 .pf-chat-input input:focus{border-color:var(--kingdom-color)}
 .pf-chat-input button{padding:12px 24px;background:var(--kingdom-color);color:#fff;border:none;border-radius:30px;cursor:pointer;font-weight:700;font-family:inherit}
-
-/* LEADERBOARD */
 .pf-leaderboard{width:100%;border-collapse:collapse;font-size:.88rem}
 .pf-leaderboard th{text-align:left;padding:10px 12px;font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.8px;border-bottom:2px solid var(--kingdom-color)}
 .pf-leaderboard td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.05)}
 .pf-leaderboard tr{cursor:pointer;transition:all .2s}
 .pf-leaderboard tr:hover{background:var(--kingdom-color);color:#fff}
 .pf-lb-avatar{width:28px;height:28px;border-radius:50%;vertical-align:middle;margin-right:8px;border:2px solid var(--kingdom-color);object-fit:cover}
-
-/* CALENDAR */
 .pf-calendar{text-align:center;padding:20px;background:linear-gradient(135deg,var(--kingdom-bg),rgba(255,255,255,.4));border-radius:14px;border:1px solid rgba(0,0,0,.05)}
 .pf-cal-month{font-size:1.2rem;font-weight:800;color:var(--kingdom-color);margin-bottom:4px}
 .pf-cal-day{font-size:2.5rem;font-weight:900;color:#1a1a1a;line-height:1;margin:6px 0}
 .pf-cal-year{font-size:.9rem;color:#666;font-weight:600}
 .pf-cal-season{display:inline-block;margin-top:12px;padding:5px 16px;background:var(--kingdom-color);color:#fff;border-radius:20px;font-size:.78rem;font-weight:700}
-
-/* NOTES */
 .pf-notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
 .pf-note{background:#fff;border-radius:12px;padding:16px;border-left:4px solid var(--note-color,var(--kingdom-color));box-shadow:0 4px 12px rgba(0,0,0,.06);transition:all .25s;cursor:pointer;min-height:120px;display:flex;flex-direction:column}
 .pf-note:hover{transform:translateY(-3px);box-shadow:0 12px 28px -8px var(--kingdom-shadow)}
@@ -165,15 +137,11 @@ comments: false
 .pf-note-color{width:32px;height:32px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .2s}
 .pf-note-color:hover{transform:scale(1.15)}
 .pf-note-color.selected{border-color:#333;transform:scale(1.15)}
-
-/* GUILD */
 .pf-guild-hero{background:linear-gradient(135deg,var(--guild-color,var(--kingdom-color)),rgba(0,0,0,.2));border-radius:16px;padding:24px 26px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .pf-guild-icon{width:70px;height:70px;border-radius:16px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:2.4rem;border:2px solid rgba(255,255,255,.4);flex-shrink:0}
 .pf-guild-info{flex:1;min-width:150px}
 .pf-guild-name{font-size:1.4rem;font-weight:800;margin:0 0 4px 0}
 .pf-guild-meta{font-size:.82rem;opacity:.9;display:flex;gap:12px;flex-wrap:wrap}
-
-/* TOGGLE */
 .pf-toggle{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05)}
 .pf-toggle:last-child{border-bottom:none}
 .pf-toggle-label{font-size:.9rem;color:#333;font-weight:600}
@@ -185,26 +153,9 @@ comments: false
 .pf-badge-2fa{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:700;background:linear-gradient(135deg,#27ae60,#16a085);color:#fff}
 .pf-badge-2fa.off{background:rgba(0,0,0,.08);color:#666}
 .pf-danger{background:rgba(231,76,60,.05);border:2px solid rgba(231,76,60,.2);border-radius:14px;padding:16px 20px}
-
-/* DARK THEME */
-html body.mars-stars-on .pf-quick-card,
-html body.mars-stars-on .pf-card,
-html body.mars-stars-on .pf-tabs,
-html body.mars-stars-on .pf-notif,
-html body.mars-stars-on .pf-ach,
-html body.mars-stars-on .pf-note,
-html body.mars-stars-on .pf-chat,
-html body.mars-stars-on .pf-note-form{
-    background:rgba(20,15,35,.55)!important;
-    border-color:rgba(162,155,254,.25)!important;
-    color:#d4d4e8;
-}
-html body.mars-stars-on .pf-quick-title,
-html body.mars-stars-on .pf-card-title,
-html body.mars-stars-on .pf-ach-name,
-html body.mars-stars-on .pf-note-title{color:#fff!important}
-html body.mars-stars-on .pf-note-content,
-html body.mars-stars-on .pf-notif-text{color:#b8b8d4!important}
+html body.mars-stars-on .pf-quick-card,html body.mars-stars-on .pf-card,html body.mars-stars-on .pf-tabs,html body.mars-stars-on .pf-notif,html body.mars-stars-on .pf-ach,html body.mars-stars-on .pf-note,html body.mars-stars-on .pf-chat,html body.mars-stars-on .pf-note-form{background:rgba(20,15,35,.55)!important;border-color:rgba(162,155,254,.25)!important;color:#d4d4e8}
+html body.mars-stars-on .pf-quick-title,html body.mars-stars-on .pf-card-title,html body.mars-stars-on .pf-ach-name,html body.mars-stars-on .pf-note-title{color:#fff!important}
+html body.mars-stars-on .pf-note-content,html body.mars-stars-on .pf-notif-text{color:#b8b8d4!important}
 html body.mars-stars-on .pf-chat-msg.bot{background:rgba(20,15,35,.8);color:#d4d4e8}
 html body.mars-stars-on .pf-chat-input input{background:rgba(20,15,35,.6);color:#fff;border-color:rgba(162,155,254,.3)}
 html body.mars-stars-on .pf-leaderboard td{border-bottom-color:rgba(162,155,254,.15);color:#d4d4e8}
@@ -212,7 +163,6 @@ html body.mars-stars-on .pf-kingdom-btn{background:rgba(20,15,35,.6);color:#d4d4
 html body.mars-stars-on .pf-timer-card{background:rgba(108,99,255,.1);border-color:rgba(162,155,254,.2)}
 html body.mars-stars-on .pf-timer-value{color:#A29BFE}
 html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8}
-
 @media(max-width:600px){.pf-hero{padding:28px 22px}.pf-avatar{width:90px;height:90px}.pf-name{font-size:1.4rem}.pf-tabs{padding:4px}.pf-tab{padding:8px 12px;font-size:.78rem}.pf-card{padding:18px 16px}.pf-quick-grid{grid-template-columns:1fr}.pf-avatar-option{width:52px;height:52px}}
 </style>
 
@@ -245,47 +195,14 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
     var NOTE_COLORS = ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63'];
 
     // ============================================================
-    // 100 УРОВНЕЙ — прогрессивная система
+    // 100 УРОВНЕЙ
     // ============================================================
     var LEVELS = [];
     (function buildLevels() {
-        var titles = [
-            '🌱 Поселенец', '🔭 Исследователь', '🚀 Первопроходец', '🏠 Колонизатор',
-            '⚡ Командир', '⚔️ Воин', '📜 Писец', '🔮 Мудрец',
-            '👑 Аристократ', '🏛️ Сенатор', '💎 Магнат', '🌟 Звёздный лорд',
-            '🐉 Дракон', '🔥 Феникс', '🌊 Повелитель морей', '⛰️ Владыка гор',
-            '🗡️ Мастер клинка', '🏹 Мастер лука', '🛡️ Щитоносец', '🎯 Снайпер',
-            '📖 Хронист', '🧙 Архимаг', '⚗️ Алхимик', '🔬 Учёный',
-            '🎨 Художник', '🎵 Бард', '💀 Некромант', '👻 Призрачный страж',
-            '🦅 Небесный всадник', '🐺 Вожак стаи', '🦁 Лев', '🐻 Медведь',
-            '🦊 Хитрец', '🐍 Змей', '🦂 Скорпион', '🕷️ Ткач',
-            '🌙 Лунный страж', '☀️ Солнечный рыцарь', '⭐ Звёздный магистр',
-            '🌟 Великий магистр', '✨ Легенда', '💫 Миф', '🌟 Сияющий',
-            '👼 Небожитель', '🔱 Владыка бездны', '👁️ Всевидящий', '🌌 Космический странник',
-            '🌀 Повелитель бурь', '❄️ Ледяной король', '🌋 Огненный владыка', '🌪️ Властелин ветров',
-            '⚡ Громовержец', '🌊 Океанский царь', '🌲 Лесной царь', '🌸 Цветущий',
-            '🍂 Осенний странник', '🌾 Жнец', '🛠️ Кузнец судьбы', '⚙️ Мастер механизмов',
-            '🏗️ Архитектор', '📐 Геометр', '🧮 Математик', '🎲 Игрок',
-            '♟️ Стратег', '🎭 Актёр', '🎪 Циркач', '🎨 Творец',
-            '📸 Хранитель мгновений', '🎬 Режиссёр', '🎤 Певец', '🕺 Танцор',
-            '🍀 Счастливчик', '🎰 Джекпот', '💎 Алмазный', '👑 Император',
-            '🏆 Чемпион', '🥇 Олимпиец', '🌟 Суперзвезда', '💫 Галактический',
-            '🌌 Межгалактический', '🔮 Провидческий', '🧿 Оберегающий', '📿 Святой',
-            '🕊️ Ангельский', '🔥 Демонический', '⚡ Божественный', '🌠 Метеорный',
-            '☄️ Комета', '🌍 Планетарный', '🌞 Звёздный', '🌌 Галактический',
-            '💥 Сверхновая', '🌀 Сингулярность', '🔱 Титан', '👁️ Древний',
-            '🌟 Вечный', '✨ Бесконечный', '💫 Абсолютный', '🔮 Легендарный',
-            '👑 Божественный', '🌌 Вселенский', '⭐ Величайший', '🏆 Непобедимый'
-        ];
-
-        // XP с прогрессией: level^1.8 * 20
+        var titles = ['🌱 Поселенец','🔭 Исследователь','🚀 Первопроходец','🏠 Колонизатор','⚡ Командир','⚔️ Воин','📜 Писец','🔮 Мудрец','👑 Аристократ','🏛️ Сенатор','💎 Магнат','🌟 Звёздный лорд','🐉 Дракон','🔥 Феникс','🌊 Повелитель морей','⛰️ Владыка гор','🗡️ Мастер клинка','🏹 Мастер лука','🛡️ Щитоносец','🎯 Снайпер','📖 Хронист','🧙 Архимаг','⚗️ Алхимик','🔬 Учёный','🎨 Художник','🎵 Бард','💀 Некромант','👻 Призрачный страж','🦅 Небесный всадник','🐺 Вожак стаи','🦁 Лев','🐻 Медведь','🦊 Хитрец','🐍 Змей','🦂 Скорпион','🕷️ Ткач','🌙 Лунный страж','☀️ Солнечный рыцарь','⭐ Звёздный магистр','🌟 Великий магистр','✨ Легенда','💫 Миф','🌟 Сияющий','👼 Небожитель','🔱 Владыка бездны','👁️ Всевидящий','🌌 Космический странник','🌀 Повелитель бурь','❄️ Ледяной король','🌋 Огненный владыка','🌪️ Властелин ветров','⚡ Громовержец','🌊 Океанский царь','🌲 Лесной царь','🌸 Цветущий','🍂 Осенний странник','🌾 Жнец','🛠️ Кузнец судьбы','⚙️ Мастер механизмов','🏗️ Архитектор','📐 Геометр','🧮 Математик','🎲 Игрок','♟️ Стратег','🎭 Актёр','🎪 Циркач','🎨 Творец','📸 Хранитель мгновений','🎬 Режиссёр','🎤 Певец','🕺 Танцор','🍀 Счастливчик','🎰 Джекпот','💎 Алмазный','👑 Император','🏆 Чемпион','🥇 Олимпиец','🌟 Суперзвезда','💫 Галактический','🌌 Межгалактический','🔮 Провидческий','🧿 Оберегающий','📿 Святой','🕊️ Ангельский','🔥 Демонический','⚡ Божественный','🌠 Метеорный','☄️ Комета','🌍 Планетарный','🌞 Звёздный','🌌 Галактический','💥 Сверхновая','🌀 Сингулярность','🔱 Титан','👁️ Древний','🌟 Вечный','✨ Бесконечный','💫 Абсолютный','🔮 Легендарный','👑 Божественный','🌌 Вселенский','⭐ Величайший','🏆 Непобедимый'];
         for (var i = 1; i <= 100; i++) {
             var xp = Math.floor(Math.pow(i, 1.8) * 20);
-            LEVELS.push({
-                level: i,
-                xp: xp,
-                title: titles[i - 1] || ('Уровень ' + i)
-            });
+            LEVELS.push({ level: i, xp: xp, title: titles[i - 1] || ('Уровень ' + i) });
         }
     })();
 
@@ -297,13 +214,7 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         var cur = LEVELS[idx];
         var next = LEVELS[idx + 1] || { xp: cur.xp + 1000 };
         var range = next.xp - cur.xp;
-        return {
-            level: cur.level,
-            title: cur.title,
-            current: cur.xp,
-            next: next.xp,
-            percent: range > 0 ? Math.min(((exp - cur.xp) / range) * 100, 100) : 100
-        };
+        return { level: cur.level, title: cur.title, current: cur.xp, next: next.xp, percent: range > 0 ? Math.min(((exp - cur.xp) / range) * 100, 100) : 100 };
     }
 
     function getMartianDate(){
@@ -322,19 +233,15 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
     }
 
     // ============================================================
-    // ТРЕКЕР ВРЕМЕНИ НА САЙТЕ
+    // ТРЕКЕР ВРЕМЕНИ
     // ============================================================
     var sessionStart = Date.now();
-    var totalTime = 0; // в секундах
+    var totalTime = 0;
     var _visitStart = 0;
     var _isActive = true;
     var _activityInterval = null;
 
-    // Загружаем общее время из localStorage
-    try {
-        var savedTime = localStorage.getItem('mars_total_time');
-        if (savedTime) totalTime = parseInt(savedTime, 10) || 0;
-    } catch(e) {}
+    try { var savedTime = localStorage.getItem('mars_total_time'); if (savedTime) totalTime = parseInt(savedTime, 10) || 0; } catch(e) {}
 
     function formatDuration(seconds) {
         var h = Math.floor(seconds / 3600);
@@ -348,39 +255,22 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
     function startTimer() {
         _visitStart = Date.now();
         _isActive = true;
-
-        // Каждую секунду увеличиваем время, если вкладка активна
         if (_activityInterval) clearInterval(_activityInterval);
         _activityInterval = setInterval(function() {
             if (!_isActive) return;
-            var elapsed = Math.floor((Date.now() - _visitStart) / 1000);
             totalTime = (totalTime || 0) + 1;
-            // Синхронизируем с localStorage каждые 5 секунд
-            if (totalTime % 5 === 0) {
-                try { localStorage.setItem('mars_total_time', totalTime); } catch(e) {}
-            }
+            if (totalTime % 5 === 0) { try { localStorage.setItem('mars_total_time', totalTime); } catch(e) {} }
             updateTimerDisplay();
         }, 1000);
-
         document.addEventListener('visibilitychange', function() {
-            if (document.hidden) {
-                _isActive = false;
-            } else {
-                _isActive = true;
-                _visitStart = Date.now();
-            }
+            if (document.hidden) { _isActive = false; } else { _isActive = true; _visitStart = Date.now(); }
         });
-
-        window.addEventListener('beforeunload', function() {
-            try { localStorage.setItem('mars_total_time', totalTime); } catch(e) {}
-        });
+        window.addEventListener('beforeunload', function() { try { localStorage.setItem('mars_total_time', totalTime); } catch(e) {} });
     }
 
     function updateTimerDisplay() {
-        var el = document.getElementById('pf-timer-total');
-        if (el) el.textContent = formatDuration(totalTime);
-        var el2 = document.getElementById('pf-timer-session');
-        if (el2) el2.textContent = formatDuration(Math.floor((Date.now() - sessionStart) / 1000));
+        var el = document.getElementById('pf-timer-total'); if (el) el.textContent = formatDuration(totalTime);
+        var el2 = document.getElementById('pf-timer-session'); if (el2) el2.textContent = formatDuration(Math.floor((Date.now() - sessionStart) / 1000));
     }
 
     function showToast(msg, type){
@@ -394,13 +284,8 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         setTimeout(function(){ t.style.transform = 'translateX(-50%) translateY(100px)'; setTimeout(function(){ t.remove(); }, 400); }, 2400);
     }
 
-    function escapeHtml(s){
-        return String(s || '').replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; });
-    }
-
-    function isModerator() {
-        return currentProfile && (currentProfile.role === 'moderator' || currentProfile.role === 'admin');
-    }
+    function escapeHtml(s){ return String(s || '').replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; }); }
+    function isModerator() { return currentProfile && (currentProfile.role === 'moderator' || currentProfile.role === 'admin'); }
 
     var container = document.getElementById('profile-app');
     var client = null;
@@ -450,9 +335,7 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
                 Promise.race([client.from('guild_members').select('guild_id').eq('user_id', user.id).maybeSingle(), timeout(12000)]).catch(function(){ return {data:null}; }),
                 Promise.race([client.from('friends').select('*').or('user_id.eq.' + user.id + ',friend_id.eq.' + user.id), timeout(12000)]).catch(function(){ return {data:[]}; })
             ]);
-        } catch(e) {
-            results = [];
-        }
+        } catch(e) { results = []; }
 
         var profileRes = results[0] || {data:null};
         var uaRes = results[1] || {data:[]};
@@ -472,11 +355,7 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
 
         if (!currentProfile) {
             try {
-                var newProfileRes = await client.from('profiles').insert([{
-                    user_id: user.id,
-                    username: user.email.split('@')[0],
-                    display_name: user.email.split('@')[0]
-                }]).select().single();
+                var newProfileRes = await client.from('profiles').insert([{ user_id: user.id, username: user.email.split('@')[0], display_name: user.email.split('@')[0] }]).select().single();
                 if (newProfileRes.data) currentProfile = newProfileRes.data;
             } catch(e) {}
         }
@@ -583,7 +462,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         var modBadge = mod ? '<span class="pf-mod-badge">🛡️ Модератор</span>' : '';
         var streakBlock = streak > 0 ? '<div class="pf-stat-mini"><span class="pf-sm-label">Серия</span><span class="pf-sm-value">🔥 ' + streak + '</span></div>' : '';
 
-        // Вкладки
         var tabs = [
             {id:'overview', icon:'👤', label:'Обзор'},
             {id:'guild', icon:'🏰', label:'Гильдия'},
@@ -596,13 +474,10 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
             {id:'security', icon:'🔐', label:'Безопасность'},
             {id:'settings', icon:'⚙️', label:'Настройки'}
         ];
-        if (mod) {
-            tabs.splice(2, 0, {id:'moderation', icon:'🛡️', label:'Модерация', count: modStats.pendingSubmissions});
-        }
+        if (mod) { tabs.splice(2, 0, {id:'moderation', icon:'🛡️', label:'Модерация', count: modStats.pendingSubmissions}); }
 
         var html = '';
 
-        // HERO
         html += '<div class="pf-hero pf-fade"><div class="pf-hero-content">';
         html += '<div class="pf-avatar-wrap"><img src="' + avatar + '" alt="" class="pf-avatar"><div class="pf-level-badge">' + lvl.title + ' · ур. ' + lvl.level + '</div></div>';
         html += '<div class="pf-info">';
@@ -618,7 +493,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         html += '<div class="pf-progress-text">До уровня ' + (lvl.level + 1) + ': ' + Math.max(lvl.next - (currentProfile.experience || 0), 0) + ' XP</div>';
         html += '</div></div></div>';
 
-        // QUICK GRID — все кнопки, включая модерацию
         html += '<div class="pf-quick-grid pf-fade" style="animation-delay:.05s;">';
         var quicks = [
             {href:'/names/',icon:'📛',title:'Имена',desc:'Марсианские имена'},
@@ -636,15 +510,12 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
             {href:'/forum/',icon:'💬',title:'Форум',desc:'Общение'},
             {href:'/feed/',icon:'📰',title:'Лента',desc:'Активность'}
         ];
-        if (mod) {
-            quicks.unshift({href:'/lists/moderation/',icon:'🛡️',title:'Модерация',desc:'Панель управления'});
-        }
+        if (mod) { quicks.unshift({href:'/lists/moderation/',icon:'🛡️',title:'Модерация',desc:'Панель управления'}); }
         quicks.forEach(function(q){
             html += '<a href="' + q.href + '" class="pf-quick-card"><div class="pf-quick-icon">' + q.icon + '</div><div class="pf-quick-body"><div class="pf-quick-title">' + q.title + '</div><div class="pf-quick-desc">' + q.desc + '</div></div></a>';
         });
         html += '</div>';
 
-        // TABS
         html += '<div class="pf-tabs pf-fade" id="pf-tabs-scroll" style="animation-delay:.1s;">';
         tabs.forEach(function(t, i){
             var cls = 'pf-tab' + (i === 0 ? ' active' : '');
@@ -653,15 +524,11 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         });
         html += '</div>';
 
-        // ОБЗОР
         html += '<div class="pf-tab-content active" data-content="overview">';
-
-        // О себе
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> О себе</h3>';
         html += '<p style="margin:0 0 12px 0;color:#555;font-size:.95rem;line-height:1.6;" id="bio-text">' + escapeHtml(currentProfile.bio || '✍️ Ещё ничего не рассказал о себе.') + '</p>';
         html += '<button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button></div>';
 
-        // ТАЙМЕР АКТИВНОСТИ
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">⏱️</span> Активность</h3>';
         html += '<div class="pf-timer-grid">';
         html += '<div class="pf-timer-card"><div class="pf-timer-value" id="pf-timer-session">0с</div><div class="pf-timer-label">Сессия</div><div class="pf-timer-sub">Сейчас на сайте</div></div>';
@@ -669,8 +536,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         html += '<div class="pf-timer-card"><div class="pf-timer-value">' + streak + '</div><div class="pf-timer-label">Серия</div><div class="pf-timer-sub">Дней подряд</div></div>';
         html += '<div class="pf-timer-card"><div class="pf-timer-value">' + (achievementsList.length) + '</div><div class="pf-timer-label">Наград</div><div class="pf-timer-sub">Получено</div></div>';
         html += '</div>';
-
-        // График по дням
         html += '<div style="font-size:.78rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-top:18px;font-weight:700;">Последние 30 дней</div>';
         html += '<div class="pf-activity-bars">';
         for (var d = 0; d < 30; d++) {
@@ -681,12 +546,10 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         html += '<div style="display:flex;justify-content:space-between;font-size:.7rem;color:#aaa;margin-top:6px;"><span>30 дней назад</span><span>Сегодня</span></div>';
         html += '</div>';
 
-        // Календарь
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>';
         html += '<div class="pf-calendar"><div class="pf-cal-month">' + martianDate.month + '</div><div class="pf-cal-day">' + martianDate.day + '</div><div class="pf-cal-year">Год ' + martianDate.year + ' Э.О.</div><div class="pf-cal-season">' + martianDate.season + '</div></div></div>';
         html += '</div>';
 
-        // МОДЕРАЦИЯ
         if (mod) {
             html += '<div class="pf-tab-content" data-content="moderation">';
             html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🛡️</span> Центр модерации</h3>';
@@ -699,7 +562,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
             html += '</div></div>';
         }
 
-        // ГИЛЬДИЯ
         html += '<div class="pf-tab-content" data-content="guild">';
         if(guild){
             html += '<div class="pf-guild-hero" style="--guild-color:' + (guild.color || kingdom.color) + ';">';
@@ -715,32 +577,8 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         }
         html += '</div>';
 
-        // ДОСТИЖЕНИЯ — показываем все, заблокированные бледные
         var ALL_ACHIEVEMENTS = [
-            {id:1,name:'Первый шаг',icon:'👣',desc:'Зарегистрироваться'},
-            {id:2,name:'Марсианин',icon:'🔴',desc:'Выбрать королевство'},
-            {id:3,name:'Читатель',icon:'📖',desc:'Прочитать 5 статей'},
-            {id:4,name:'Эрудит',icon:'🎓',desc:'Прочитать 50 статей'},
-            {id:5,name:'Хранитель',icon:'📚',desc:'Прочитать 200 статей'},
-            {id:6,name:'Комментатор',icon:'💬',desc:'Оставить первый комментарий'},
-            {id:7,name:'Оратор',icon:'🗣️',desc:'Оставить 50 комментариев'},
-            {id:8,name:'Ночной страж',icon:'🌙',desc:'Заходить после полуночи 7 дней'},
-            {id:9,name:'Ранняя пташка',icon:'🌅',desc:'Заходить до 6 утра 7 дней'},
-            {id:10,name:'Неделя',icon:'🔥',desc:'7 дней подряд'},
-            {id:11,name:'Месяц',icon:'💪',desc:'30 дней подряд'},
-            {id:12,name:'Год',icon:'🏆',desc:'365 дней подряд'},
-            {id:13,name:'Кузнец',icon:'⚒️',desc:'Создать 10 заметок'},
-            {id:14,name:'Летописец',icon:'📜',desc:'Создать 100 заметок'},
-            {id:15,name:'Художник',icon:'🎨',desc:'Сменить аватар 5 раз'},
-            {id:16,name:'Странник',icon:'🧭',desc:'Посетить 10 королевств'},
-            {id:17,name:'Мореход',icon:'⛵',desc:'Посетить все королевства'},
-            {id:18,name:'Дуэлянт',icon:'⚔️',desc:'Победить в дуэли 10 раз'},
-            {id:19,name:'Провидец',icon:'🔮',desc:'Использовать гороскоп 10 раз'},
-            {id:20,name:'Оракул',icon:'🧿',desc:'Использовать гороскоп 100 раз'},
-            {id:21,name:'Гурман',icon:'🍽️',desc:'Попробовать 5 рецептов'},
-            {id:22,name:'Мастер',icon:'🎯',desc:'Достичь 10 уровня'},
-            {id:23,name:'Грандмастер',icon:'👑',desc:'Достичь 50 уровня'},
-            {id:24,name:'Легенда',icon:'🌟',desc:'Достичь 100 уровня'}
+            {id:1,name:'Первый шаг',icon:'👣',desc:'Зарегистрироваться'},{id:2,name:'Марсианин',icon:'🔴',desc:'Выбрать королевство'},{id:3,name:'Читатель',icon:'📖',desc:'Прочитать 5 статей'},{id:4,name:'Эрудит',icon:'🎓',desc:'Прочитать 50 статей'},{id:5,name:'Хранитель',icon:'📚',desc:'Прочитать 200 статей'},{id:6,name:'Комментатор',icon:'💬',desc:'Оставить первый комментарий'},{id:7,name:'Оратор',icon:'🗣️',desc:'Оставить 50 комментариев'},{id:8,name:'Ночной страж',icon:'🌙',desc:'Заходить после полуночи 7 дней'},{id:9,name:'Ранняя пташка',icon:'🌅',desc:'Заходить до 6 утра 7 дней'},{id:10,name:'Неделя',icon:'🔥',desc:'7 дней подряд'},{id:11,name:'Месяц',icon:'💪',desc:'30 дней подряд'},{id:12,name:'Год',icon:'🏆',desc:'365 дней подряд'},{id:13,name:'Кузнец',icon:'⚒️',desc:'Создать 10 заметок'},{id:14,name:'Летописец',icon:'📜',desc:'Создать 100 заметок'},{id:15,name:'Художник',icon:'🎨',desc:'Сменить аватар 5 раз'},{id:16,name:'Странник',icon:'🧭',desc:'Посетить 10 королевств'},{id:17,name:'Мореход',icon:'⛵',desc:'Посетить все королевства'},{id:18,name:'Дуэлянт',icon:'⚔️',desc:'Победить в дуэли 10 раз'},{id:19,name:'Провидец',icon:'🔮',desc:'Использовать гороскоп 10 раз'},{id:20,name:'Оракул',icon:'🧿',desc:'Использовать гороскоп 100 раз'},{id:21,name:'Гурман',icon:'🍽️',desc:'Попробовать 5 рецептов'},{id:22,name:'Мастер',icon:'🎯',desc:'Достичь 10 уровня'},{id:23,name:'Грандмастер',icon:'👑',desc:'Достичь 50 уровня'},{id:24,name:'Легенда',icon:'🌟',desc:'Достичь 100 уровня'}
         ];
         html += '<div class="pf-tab-content" data-content="achievements">';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Достижения (' + achievementsList.length + '/' + ALL_ACHIEVEMENTS.length + ')</h3>';
@@ -752,7 +590,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         });
         html += '</div></div></div>';
 
-        // ЗАМЕТКИ
         html += '<div class="pf-tab-content" data-content="notes">';
         html += '<div class="pf-card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;"><h3 class="pf-card-title" style="margin:0;"><span class="pf-ct-icon">📝</span> Заметки (' + notes.length + ')</h3><button class="pf-btn" onclick="pfOpenNoteForm()">➕ Новая</button></div>';
         html += '<div class="pf-note-form" id="pf-note-form"><input type="text" class="pf-note-input title" id="pf-note-title" placeholder="Заголовок" maxlength="100"><textarea class="pf-note-input content" id="pf-note-content" placeholder="Текст..." maxlength="5000"></textarea><div style="font-size:.8rem;color:#888;margin-bottom:6px;">Цвет:</div><div class="pf-note-colors" id="pf-note-colors"></div><div style="display:flex;gap:8px;flex-wrap:wrap;"><button class="pf-btn" onclick="pfSaveNote()">💾 Сохранить</button><button class="pf-btn pf-btn-outline" onclick="pfCloseNoteForm()">Отмена</button></div></div>';
@@ -767,7 +604,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         }
         html += '</div></div>';
 
-        // УВЕДОМЛЕНИЯ
         html += '<div class="pf-tab-content" data-content="notifications">';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Уведомления</h3>';
         if(notifications.length === 0){
@@ -779,7 +615,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         }
         html += '</div></div>';
 
-        // ДРУЗЬЯ
         html += '<div class="pf-tab-content" data-content="friends">';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Друзья (' + friends.length + ')</h3>';
         if(friends.length === 0){
@@ -794,14 +629,12 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         }
         html += '</div></div>';
 
-        // ИИ
         html += '<div class="pf-tab-content" data-content="ai">';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🤖</span> ИИ-гид</h3>';
         html += '<div class="pf-chat" id="pf-chat-container"><div class="pf-chat-msg bot">Привет! Спрашивай о Марсе! 🪐</div></div>';
         html += '<div class="pf-chat-input"><input type="text" id="pf-chat-input" placeholder="Спросите..." onkeypress="if(event.key===\'Enter\')pfSendChat()"><button onclick="pfSendChat()">Отправить</button></div>';
         html += '</div></div>';
 
-        // ЛИДЕРЫ
         html += '<div class="pf-tab-content" data-content="leaderboard">';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏆</span> Топ-10</h3>';
         html += '<table class="pf-leaderboard"><thead><tr><th>#</th><th>Участник</th><th style="text-align:right;">Ур.</th><th style="text-align:right;">XP</th></tr></thead><tbody>';
@@ -813,7 +646,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         });
         html += '</tbody></table></div></div>';
 
-        // БЕЗОПАСНОСТЬ
         html += '<div class="pf-tab-content" data-content="security">';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email-2FA</h3>';
         html += '<div id="pf-2fa-status" style="margin-bottom:20px;"></div>';
@@ -827,7 +659,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         html += '<button class="pf-btn" onclick="pfChangePassword()">🔐 Сменить пароль</button>';
         html += '</div></div>';
 
-        // НАСТРОЙКИ
         html += '<div class="pf-tab-content" data-content="settings">';
         html += '<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя</h3>';
         html += '<p style="color:#555;margin:0 0 12px 0;">Текущее: <b id="pf-display-name">' + escapeHtml(displayName) + '</b></p>';
@@ -858,12 +689,10 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         renderNoteColors();
         updateTimerDisplay();
 
-        // Обработчики вкладок
         document.querySelectorAll('.pf-tab').forEach(function(tab){
             tab.onclick = function(){ pfSetTab(tab.dataset.tab); };
         });
 
-        // ПРОКРУТКА ВКЛАДОК КОЛЁСИКОМ
         var tabsEl = document.getElementById('pf-tabs-scroll');
         if (tabsEl) {
             tabsEl.addEventListener('wheel', function(e) {
@@ -881,9 +710,6 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         el.innerHTML = NOTE_COLORS.map(function(c){ return '<div class="pf-note-color ' + (c === selectedNoteColor ? 'selected' : '') + '" style="background:' + c + ';" onclick="pfSelectNoteColor(\'' + c + '\')"></div>'; }).join('');
     }
 
-    // ============================================================
-    // ПУБЛИЧНЫЕ ФУНКЦИИ
-    // ============================================================
     window.pfSetTab = function(tab){
         document.querySelectorAll('.pf-tab').forEach(function(t){ t.classList.toggle('active', t.dataset.tab === tab); });
         document.querySelectorAll('.pf-tab-content').forEach(function(c){ c.classList.toggle('active', c.dataset.content === tab); });
@@ -953,7 +779,11 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
     };
 
     window.pfLogout = async function(){
-        await client.auth.signOut();
+        try { await client.auth.signOut(); } catch(e) {}
+        try { localStorage.removeItem('mars-auth-v1'); } catch(e) {}
+        try { localStorage.removeItem('sb-ncytbgbzfjfoqmmgfygz-auth-token'); } catch(e) {}
+        try { sessionStorage.removeItem('mars-auth-v1'); } catch(e) {}
+        try { sessionStorage.removeItem('sb-ncytbgbzfjfoqmmgfygz-auth-token'); } catch(e) {}
         localStorage.clear();
         window.location.href = '/';
     };
@@ -1107,90 +937,94 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
         showToast('🔐 Пароль обновлён!', 'success');
     };
 
-     // ============================================================
-    // ИНИЦИАЛИЗАЦИЯ
+    // ============================================================
+    // 🚀 БЫСТРОЕ ЧТЕНИЕ СЕССИИ (без supabase-js)
+    // ============================================================
+    function readRawSession() {
+        var raw = null;
+        try { raw = localStorage.getItem('mars-auth-v1'); } catch(e) {}
+        if (!raw) { try { raw = sessionStorage.getItem('mars-auth-v1'); } catch(e) {} }
+        if (!raw) { try { raw = localStorage.getItem('sb-ncytbgbzfjfoqmmgfygz-auth-token'); } catch(e) {} }
+        if (!raw) { try { raw = sessionStorage.getItem('sb-ncytbgbzfjfoqmmgfygz-auth-token'); } catch(e) {} }
+        if (!raw) return null;
+        try {
+            var p = JSON.parse(raw);
+            if (Array.isArray(p)) p = p[p.length - 1];
+            if (!p || !p.access_token || !p.user) return null;
+            return p;
+        } catch(e) { return null; }
+    }
+
+    // ============================================================
+    // ИНИЦИАЛИЗАЦИЯ — мгновенный рендер + фоновое обогащение
     // ============================================================
     async function init(){
         startTimer();
 
-        for (var i = 0; i < 30; i++) {
+        var rawSession = readRawSession();
+
+        if (!rawSession) {
+            for (var w = 0; w < 15; w++) {
+                await new Promise(function(r){ setTimeout(r, 200); });
+                rawSession = readRawSession();
+                if (rawSession) break;
+            }
+        }
+
+        if (!rawSession || !rawSession.user) {
+            container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
+                + '<div style="font-size:4rem;margin-bottom:16px;">🔒</div>'
+                + '<h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2>'
+                + '<p style="color:#888;margin:0 0 20px 0;">Войдите, чтобы увидеть профиль</p>'
+                + '<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
+            return;
+        }
+
+        // МГНОВЕННО рендерим базовый профиль
+        currentUser = rawSession.user;
+        var uname = (rawSession.user.user_metadata && rawSession.user.user_metadata.username)
+                 || (rawSession.user.email ? rawSession.user.email.split('@')[0] : 'Пользователь');
+
+        currentProfile = {
+            user_id: rawSession.user.id,
+            username: uname,
+            display_name: uname,
+            experience: 0,
+            level: 1,
+            kingdom: 'Эдем'
+        };
+        kingdom = KINGDOMS['Эдем'];
+        render();
+
+        // Фоном обогащаем
+        loadExtrasInBackground(rawSession);
+    }
+
+    // ============================================================
+    // ФОНОВАЯ ЗАГРУЗКА — не блокирует UI
+    // ============================================================
+    async function loadExtrasInBackground(rawSession) {
+        for (var i = 0; i < 20; i++) {
             if (window.supabaseClient) break;
-            await new Promise(function(r){ setTimeout(r, 200); });
+            await new Promise(function(r){ setTimeout(r, 300); });
         }
         client = window.supabaseClient;
-
-        if(!client){
-            container.innerHTML = '<div style="text-align:center;padding:60px 20px;"><h2>⚠️ Ошибка загрузки</h2><button onclick="location.reload()" style="margin-top:16px;padding:12px 24px;background:#6C63FF;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;">Обновить</button></div>';
+        if (!client) {
+            console.warn('supabase-js не загрузился — остаётся базовый профиль');
             return;
         }
 
-        var user = null;
-
-        // 🎯 ГЛАВНОЕ: восстанавливаем сессию из mars-auth-v1 через API supabase-js
         try {
-            var marsRaw = localStorage.getItem('mars-auth-v1') || sessionStorage.getItem('mars-auth-v1');
-            if (marsRaw) {
-                var marsParsed = JSON.parse(marsRaw);
-                // поддержка старого формата (массив) и нового (объект)
-                if (Array.isArray(marsParsed)) marsParsed = marsParsed[marsParsed.length - 1];
-                if (marsParsed && marsParsed.access_token && marsParsed.refresh_token) {
-                    console.log('🔧 Восстанавливаю сессию из mars-auth-v1...');
-                    var setRes = await client.auth.setSession({
-                        access_token: marsParsed.access_token,
-                        refresh_token: marsParsed.refresh_token
-                    });
-                    if (setRes.data && setRes.data.session && setRes.data.session.user) {
-                        user = setRes.data.session.user;
-                        console.log('✅ Сессия восстановлена из mars-auth-v1!');
-                    } else if (setRes.error) {
-                        console.warn('⚠️ setSession error:', setRes.error.message);
-                    }
-                }
-            }
-        } catch(e) {
-            console.warn('Bridge error:', e);
-        }
+            await Promise.race([
+                client.auth.setSession({
+                    access_token: rawSession.access_token,
+                    refresh_token: rawSession.refresh_token
+                }),
+                new Promise(function(_, rej){ setTimeout(function(){ rej(new Error('timeout')); }, 5000); })
+            ]);
+        } catch(e) { console.warn('setSession:', e.message); }
 
-        // Резервные варианты (как было)
-        if(!user && window.marsSession && window.marsSession.user) user = window.marsSession.user;
-        if(!user){
-            try {
-                var r = await client.auth.getSession();
-                if(r.data && r.data.session && r.data.session.user) user = r.data.session.user;
-            } catch(e) {}
-        }
-        if(!user){
-            try {
-                var r2 = await client.auth.refreshSession();
-                if(r2.data && r2.data.session && r2.data.session.user) user = r2.data.session.user;
-            } catch(e) {}
-        }
-        if(!user){
-            try {
-                var key = 'sb-ncytbgbzfjfoqmmgfygz-auth-token';
-                var stored = localStorage.getItem(key);
-                if(stored){
-                    var val = JSON.parse(stored);
-                    if(Array.isArray(val)) val = val[val.length - 1];
-                    if(val && val.access_token && val.refresh_token){
-                        var st = await client.auth.setSession({ access_token: val.access_token, refresh_token: val.refresh_token });
-                        if(st.data && st.data.user) user = st.data.user;
-                    }
-                }
-            } catch(e) {}
-        }
-
-        if(user){
-            currentUser = user;
-            await loadAllData(user);
-            return;
-        }
-
-        container.innerHTML = '<div style="text-align:center;padding:60px 20px;max-width:400px;margin:0 auto;">'
-            + '<div style="font-size:4rem;margin-bottom:16px;">🔒</div>'
-            + '<h2 style="margin:0 0 8px 0;">Вы не авторизованы</h2>'
-            + '<p style="color:#888;margin:0 0 20px 0;">Войдите, чтобы увидеть профиль</p>'
-            + '<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
+        try { await loadAllData(currentUser); } catch(e) { console.error('loadAllData:', e); }
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
@@ -1201,35 +1035,14 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
 <script>
 window.showLevelUp = function(level, title) {
   var overlay = document.createElement('div');
-  overlay.style.cssText = `
-    position: fixed; inset: 0; z-index: 999999;
-    background: radial-gradient(circle, rgba(108,99,255,0.6), rgba(0,0,0,0.9));
-    display: flex; align-items: center; justify-content: center;
-    animation: lvlFadeIn 0.4s ease;
-  `;
-  overlay.innerHTML = `
-    <div style="text-align: center; color: #fff; animation: lvlZoom 0.6s cubic-bezier(0.16,1,0.3,1);">
-      <div style="font-size: 8rem; margin-bottom: 20px; filter: drop-shadow(0 0 40px #A29BFE);">⭐</div>
-      <div style="font-size: 1rem; letter-spacing: 4px; opacity: 0.8;">УРОВЕНЬ</div>
-      <div style="font-size: 6rem; font-weight: 900; line-height: 1; background: linear-gradient(135deg, #fff, #A29BFE); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${level}</div>
-      <div style="font-size: 1.4rem; margin-top: 16px; font-weight: 700;">${title}</div>
-    </div>
-  `;
+  overlay.style.cssText = 'position: fixed; inset: 0; z-index: 999999; background: radial-gradient(circle, rgba(108,99,255,0.6), rgba(0,0,0,0.9)); display: flex; align-items: center; justify-content: center; animation: lvlFadeIn 0.4s ease;';
+  overlay.innerHTML = '<div style="text-align: center; color: #fff; animation: lvlZoom 0.6s cubic-bezier(0.16,1,0.3,1);"><div style="font-size: 8rem; margin-bottom: 20px; filter: drop-shadow(0 0 40px #A29BFE);">⭐</div><div style="font-size: 1rem; letter-spacing: 4px; opacity: 0.8;">УРОВЕНЬ</div><div style="font-size: 6rem; font-weight: 900; line-height: 1; background: linear-gradient(135deg, #fff, #A29BFE); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">' + level + '</div><div style="font-size: 1.4rem; margin-top: 16px; font-weight: 700;">' + title + '</div></div>';
   document.body.appendChild(overlay);
   for (var i = 0; i < 60; i++) {
     var p = document.createElement('div');
     var angle = Math.random() * Math.PI * 2;
     var dist = 200 + Math.random() * 400;
-    p.style.cssText = `
-      position: fixed; left: 50%; top: 50%;
-      width: 8px; height: 8px;
-      background: ${['#6C63FF','#A29BFE','#f39c12','#e74c3c'][i % 4]};
-      border-radius: 50%;
-      box-shadow: 0 0 20px currentColor;
-      animation: lvlParticle 1.2s ease forwards;
-      --dx: ${Math.cos(angle) * dist}px;
-      --dy: ${Math.sin(angle) * dist}px;
-    `;
+    p.style.cssText = 'position: fixed; left: 50%; top: 50%; width: 8px; height: 8px; background: ' + ['#6C63FF','#A29BFE','#f39c12','#e74c3c'][i % 4] + '; border-radius: 50%; box-shadow: 0 0 20px currentColor; animation: lvlParticle 1.2s ease forwards; --dx: ' + Math.cos(angle) * dist + 'px; --dy: ' + Math.sin(angle) * dist + 'px;';
     overlay.appendChild(p);
   }
   setTimeout(function() {
@@ -1238,11 +1051,6 @@ window.showLevelUp = function(level, title) {
   }, 2500);
 };
 var style = document.createElement('style');
-style.textContent = `
-  @keyframes lvlFadeIn { from { opacity: 0; } }
-  @keyframes lvlFadeOut { to { opacity: 0; } }
-  @keyframes lvlZoom { 0% { transform: scale(0.3); opacity: 0; } 60% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } }
-  @keyframes lvlParticle { to { transform: translate(var(--dx), var(--dy)); opacity: 0; } }
-`;
+style.textContent = '@keyframes lvlFadeIn { from { opacity: 0; } } @keyframes lvlFadeOut { to { opacity: 0; } } @keyframes lvlZoom { 0% { transform: scale(0.3); opacity: 0; } 60% { transform: scale(1.1); } 100% { transform: scale(1); opacity: 1; } } @keyframes lvlParticle { to { transform: translate(var(--dx), var(--dy)); opacity: 0; } }';
 document.head.appendChild(style);
 </script>

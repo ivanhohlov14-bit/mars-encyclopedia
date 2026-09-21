@@ -93,26 +93,76 @@ comments: false
     };
 
     // ============================================================
-    // 📖 ЧТЕНИЕ СЕССИИ — поддерживает формат supabase-js (массив)
+    // 📖 ЧТЕНИЕ СЕССИИ (localStorage + sessionStorage + cookie)
     // ============================================================
     function readSession() {
-        var raw = null;
+        var raw = null, source = '';
 
-        try { raw = localStorage.getItem(SESSION_KEY); } catch(e) {}
-        if (!raw) { try { raw = sessionStorage.getItem(SESSION_KEY); } catch(e) {} }
+        try {
+            raw = localStorage.getItem(SESSION_KEY);
+            if (raw) source = 'localStorage';
+        } catch(e) {}
 
-        if (!raw) return null;
+        if (!raw) {
+            try {
+                raw = sessionStorage.getItem(SESSION_KEY);
+                if (raw) source = 'sessionStorage';
+            } catch(e) {}
+        }
+
+        if (!raw) {
+            try {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var c = cookies[i].trim();
+                    if (c.indexOf(SESSION_KEY + '=') === 0) {
+                        raw = decodeURIComponent(c.substring(SESSION_KEY.length + 1));
+                        source = 'cookie';
+                        break;
+                    }
+                }
+            } catch(e) {}
+        }
+
+        if (!raw) { console.log('❌ Сессия не найдена'); return null; }
 
         try {
             var parsed = JSON.parse(raw);
-            // 🔑 Библиотека хранит МАССИВ — берём последний элемент
             if (Array.isArray(parsed)) parsed = parsed[parsed.length - 1];
             if (!parsed || !parsed.access_token || !parsed.user) return null;
             if (parsed.expires_at && parsed.expires_at * 1000 < Date.now()) return null;
+            console.log('✅ Сессия (' + source + '):', parsed.user.email);
             return parsed;
         } catch(e) {
             return null;
         }
+    }
+
+    // ============================================================
+    // ⏳ ЖДЁМ ПОЯВЛЕНИЯ СЕССИИ (до 10 секунд)
+    // ============================================================
+    function waitForSession(callback) {
+        var attempts = 0;
+        var maxAttempts = 40; // 40 × 250мс = 10 сек
+
+        var check = function() {
+            attempts++;
+            var session = readSession();
+
+            if (session) {
+                callback(session);
+                return;
+            }
+
+            if (attempts >= maxAttempts) {
+                callback(null);
+                return;
+            }
+
+            setTimeout(check, 250);
+        };
+
+        check();
     }
 
     // ============================================================
@@ -207,6 +257,7 @@ comments: false
     window.pfLogout = function() {
         try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
         try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
+        try { document.cookie = SESSION_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
         try {
             var keys = [];
             for (var i = 0; i < localStorage.length; i++) {
@@ -219,22 +270,23 @@ comments: false
     };
 
     // ============================================================
-    // 🚀 СТАРТ
+    // 🚀 СТАРТ — с ожиданием сессии
     // ============================================================
     function init() {
-        var session = readSession();
-        if (!session) {
-            showError('Вы не вошли', 'Войдите, чтобы просмотреть профиль.',
-                '<a href="/login/" class="pf-btn pf-btn-primary">🔐 Войти</a>');
-            return;
-        }
+        waitForSession(function(session) {
+            if (!session) {
+                showError('Вы не вошли', 'Войдите, чтобы просмотреть профиль.',
+                    '<a href="/login/" class="pf-btn pf-btn-primary">🔐 Войти</a>');
+                return;
+            }
 
-        var params = new URLSearchParams(location.search);
-        var urlUserId = params.get('user_id');
-        var profileUserId = urlUserId || session.user.id;
-        var isOwn = !urlUserId || urlUserId === session.user.id;
+            var params = new URLSearchParams(location.search);
+            var urlUserId = params.get('user_id');
+            var profileUserId = urlUserId || session.user.id;
+            var isOwn = !urlUserId || urlUserId === session.user.id;
 
-        loadProfile(session, profileUserId, isOwn);
+            loadProfile(session, profileUserId, isOwn);
+        });
     }
 
     if (document.readyState === 'loading') {

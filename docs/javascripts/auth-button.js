@@ -1,5 +1,5 @@
 // ============================================================
-// auth-button.js — оригинальный стиль + рабочая сессия
+// auth-button.js — оригинальный стиль + надёжная сессия
 // ============================================================
 (function() {
     'use strict';
@@ -13,7 +13,7 @@
     var PROFILE_TTL = 5 * 60 * 1000;
 
     // ============================================================
-    // 📖 ЧТЕНИЕ СЕССИИ (3 места: localStorage, sessionStorage, cookie)
+    // 📖 ЧТЕНИЕ СЕССИИ
     // ============================================================
     function readSession() {
         var raw = null;
@@ -47,7 +47,7 @@
     }
 
     // ============================================================
-    // 📥 ПРОФИЛЬ (display_name = Borla, avatar_url)
+    // 📥 ПРОФИЛЬ
     // ============================================================
     async function fetchProfile(session) {
         var userId = session.user.id;
@@ -91,7 +91,7 @@
     }
 
     // ============================================================
-    // 🎨 КОНТЕЙНЕР (ПК в header, мобильный в свою шапку)
+    // 🎨 КОНТЕЙНЕР
     // ============================================================
     function ensureContainer() {
         var container = document.getElementById('auth-btn-container');
@@ -131,7 +131,6 @@
             return container;
         }
 
-        // ПК — вставляем в header
         var header = document.querySelector('header');
         if (header) {
             container.style.cssText = 'display:inline-flex;align-items:center;gap:6px;float:right;margin-top:6px;margin-right:10px;flex-wrap:wrap;max-width:100%;position:relative;z-index:1000;';
@@ -139,14 +138,13 @@
             return container;
         }
 
-        // Запасной вариант
         container.style.cssText = 'position:fixed !important;top:10px !important;right:10px !important;z-index:99999 !important;background:rgba(255,255,255,0.9) !important;border-radius:20px !important;padding:4px 12px !important;box-shadow:0 2px 12px rgba(0,0,0,0.15) !important;display:flex !important;align-items:center !important;gap:6px !important;';
         document.body.prepend(container);
         return container;
     }
 
     // ============================================================
-    // 🎨 РЕНДЕР — ОРИГИНАЛЬНЫЙ СТИЛЬ
+    // 🎨 РЕНДЕР
     // ============================================================
     async function updateUI() {
         var container = ensureContainer();

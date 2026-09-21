@@ -167,7 +167,7 @@ comments: false
     }
 
     // ============================================================
-    // 🎨 РЕНДЕР ФОРМЫ
+    // 🎨 РЕНДЕР
     // ============================================================
     function render() {
         var params = new URLSearchParams(window.location.search);
@@ -291,29 +291,47 @@ comments: false
     }
 
     // ============================================================
-    // 💾 СОХРАНЕНИЕ СЕССИИ
-    // Формат МАССИВ + КОМПАКТНЫЙ user — влезает в cookie
+    // 💾 СОХРАНЕНИЕ СЕССИИ — ПОЛНЫЙ формат supabase-js v2
     // ============================================================
     function saveSession(data) {
-        var session = {
+        // 🔑 ПОЛНАЯ сессия со всеми полями — supabase-js узнает её
+        var fullSession = {
             access_token: data.access_token,
             refresh_token: data.refresh_token,
-            expires_at: Math.floor(Date.now() / 1000) + (data.expires_in || 3600),
             expires_in: data.expires_in || 3600,
+            expires_at: Math.floor(Date.now() / 1000) + (data.expires_in || 3600),
             token_type: data.token_type || 'bearer',
-            user: {
-                id: data.user.id,
-                email: data.user.email
-            }
+            user: data.user  // ← ПОЛНЫЙ user как вернул Supabase
         };
-        var json = JSON.stringify([session]);
+        var fullJson = JSON.stringify([fullSession]);
 
-        try { localStorage.setItem(SESSION_KEY, json); } catch(e) {}
-        try { sessionStorage.setItem(SESSION_KEY, json); } catch(e) {}
-
+        // 1. localStorage — ПОЛНАЯ
         try {
+            localStorage.setItem(SESSION_KEY, fullJson);
+        } catch(e) {
+            console.warn('localStorage error:', e.message);
+        }
+
+        // 2. sessionStorage — ПОЛНАЯ (резерв)
+        try {
+            sessionStorage.setItem(SESSION_KEY, fullJson);
+        } catch(e) {}
+
+        // 3. Cookie — КОМПАКТНАЯ (влезет в 4 КБ)
+        try {
+            var compactSession = {
+                access_token: data.access_token,
+                refresh_token: data.refresh_token,
+                expires_at: fullSession.expires_at,
+                token_type: 'bearer',
+                user: {
+                    id: data.user.id,
+                    email: data.user.email
+                }
+            };
+            var compactJson = JSON.stringify([compactSession]);
             var expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
-            document.cookie = SESSION_KEY + '=' + encodeURIComponent(json) + '; expires=' + expires + '; path=/; SameSite=Lax';
+            document.cookie = SESSION_KEY + '=' + encodeURIComponent(compactJson) + '; expires=' + expires + '; path=/; SameSite=Lax';
         } catch(e) {}
     }
 

@@ -1,15 +1,13 @@
 // ============================================================
-// auth-button.js — VIP v6
-// Без Supabase-js библиотеки! Читает сессию напрямую.
+// auth-button.js — VIP v7 (ФИНАЛ)
+// БЕЗ библиотеки Supabase! Читает сессию напрямую.
 // ============================================================
 (function() {
     'use strict';
 
-    console.log('✅ auth-button.js VIP v6 загружен');
+    console.log('✅ auth-button.js VIP v7 загружен');
 
     var PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
-    var SUPABASE_URL = 'https://' + PROJECT_REF + '.supabase.co';
-    var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
     var SESSION_KEY = 'sb-' + PROJECT_REF + '-auth-token';
 
     var CONFIG = {
@@ -19,13 +17,27 @@
     };
 
     // ============================================================
-    // 📖 ЧТЕНИЕ СЕССИИ (без библиотеки)
+    // 📖 ЧТЕНИЕ СЕССИИ (из 3 мест)
     // ============================================================
     function readSession() {
         var raw = null;
+        var source = '';
 
-        try { raw = localStorage.getItem(SESSION_KEY); } catch(e) {}
-        if (!raw) { try { raw = sessionStorage.getItem(SESSION_KEY); } catch(e) {} }
+        // 1. localStorage
+        try {
+            raw = localStorage.getItem(SESSION_KEY);
+            if (raw) source = 'localStorage';
+        } catch(e) {}
+
+        // 2. sessionStorage
+        if (!raw) {
+            try {
+                raw = sessionStorage.getItem(SESSION_KEY);
+                if (raw) source = 'sessionStorage';
+            } catch(e) {}
+        }
+
+        // 3. COOKIE — самое надёжное
         if (!raw) {
             try {
                 var cookies = document.cookie.split(';');
@@ -33,6 +45,7 @@
                     var c = cookies[i].trim();
                     if (c.indexOf(SESSION_KEY + '=') === 0) {
                         raw = decodeURIComponent(c.substring(SESSION_KEY.length + 1));
+                        source = 'cookie';
                         break;
                     }
                 }
@@ -43,12 +56,38 @@
 
         try {
             var parsed = JSON.parse(raw);
+            // Старый формат мог быть массивом
             if (Array.isArray(parsed)) parsed = parsed[parsed.length - 1];
             if (!parsed || !parsed.access_token || !parsed.user) return null;
+
+            // Проверка срока
+            if (parsed.expires_at && parsed.expires_at * 1000 < Date.now()) {
+                console.log('⚠️ Сессия истекла');
+                return null;
+            }
+
+            console.log('👤 Сессия найдена (' + source + '):', parsed.user.email);
             return parsed;
         } catch(e) {
             return null;
         }
+    }
+
+    // ============================================================
+    // 🔧 УТИЛИТЫ
+    // ============================================================
+    function isMobile() { return window.innerWidth <= 768; }
+
+    function escapeHtml(s) {
+        return String(s || '').replace(/[&<>"']/g, function(m) {
+            return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m];
+        });
+    }
+
+    function getInitials(name) {
+        if (!name) return '?';
+        var p = String(name).trim().split(/[\s._-]+/);
+        return p.length >= 2 ? (p[0][0] + p[1][0]).toUpperCase() : name[0].toUpperCase();
     }
 
     // ============================================================
@@ -86,23 +125,6 @@
     }
 
     // ============================================================
-    // 🔧 УТИЛИТЫ
-    // ============================================================
-    function isMobile() { return window.innerWidth <= 768; }
-
-    function escapeHtml(s) {
-        return String(s || '').replace(/[&<>"']/g, function(m) {
-            return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m];
-        });
-    }
-
-    function getInitials(name) {
-        if (!name) return '?';
-        var p = String(name).trim().split(/[\s._-]+/);
-        return p.length >= 2 ? (p[0][0] + p[1][0]).toUpperCase() : name[0].toUpperCase();
-    }
-
-    // ============================================================
     // 🎨 КОНТЕЙНЕР
     // ============================================================
     function ensureContainer() {
@@ -125,6 +147,7 @@
                 var hamburger = document.createElement('button');
                 hamburger.id = 'mobile-hamburger';
                 hamburger.textContent = '☰';
+                hamburger.setAttribute('aria-label', 'Меню');
                 hamburger.style.cssText = 'background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;padding:6px 8px;flex-shrink:0;line-height:1;';
                 hamburger.onclick = function() {
                     var sidebar = document.querySelector('.wy-nav-side');
@@ -134,19 +157,23 @@
                 customHeader.appendChild(hamburger);
                 customHeader.appendChild(container);
                 document.body.prepend(customHeader);
+                console.log('✅ Мобильная шапка создана');
             } else {
                 customHeader.appendChild(container);
             }
             return container;
         }
 
+        // ПК
         var header = document.querySelector('header');
         if (header) {
             container.style.cssText = 'display:inline-flex;align-items:center;gap:8px;float:right;margin-top:6px;margin-right:10px;position:relative;z-index:1000;';
             header.appendChild(container);
+            console.log('✅ Кнопка в header (ПК)');
             return container;
         }
 
+        // Fallback
         container.style.cssText = 'position:fixed !important;top:10px !important;right:10px !important;z-index:99999 !important;background:rgba(255,255,255,0.9);border-radius:20px;padding:4px 12px;box-shadow:0 2px 12px rgba(0,0,0,0.15);';
         document.body.prepend(container);
         return container;
@@ -190,9 +217,12 @@
     // 🚪 ВЫХОД
     // ============================================================
     window._authLogout = function() {
+        console.log('🔄 Выход...');
         try { localStorage.removeItem(SESSION_KEY); } catch(e) {}
         try { sessionStorage.removeItem(SESSION_KEY); } catch(e) {}
         try { document.cookie = SESSION_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
+
+        // Чистим все Supabase-ключи
         try {
             var toRemove = [];
             for (var i = 0; i < localStorage.length; i++) {
@@ -201,11 +231,12 @@
             }
             toRemove.forEach(function(k) { localStorage.removeItem(k); });
         } catch(e) {}
-        window.location.reload();
+
+        window.location.href = '/';
     };
 
     // ============================================================
-    // 🔄 ОБНОВЛЕНИЕ ПРИ ВОЗВРАТЕ
+    // 🔄 ОБНОВЛЕНИЕ ПРИ СОБЫТИЯХ
     // ============================================================
     window.addEventListener('pageshow', function() { updateUI(); });
     window.addEventListener('focus', function() { updateUI(); });
@@ -219,8 +250,10 @@
     function start() {
         injectStyles();
         updateUI();
+        // Несколько повторов — на случай, если сессия записалась позже
         setTimeout(updateUI, 300);
         setTimeout(updateUI, 1000);
+        setTimeout(updateUI, 2000);
     }
 
     if (document.readyState === 'loading') {
@@ -229,5 +262,5 @@
         start();
     }
 
-    console.log('✅ auth-button.js VIP v6 выполнен');
+    console.log('✅ auth-button.js VIP v7 — только localStorage, без библиотеки');
 })();

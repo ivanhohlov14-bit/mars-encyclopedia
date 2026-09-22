@@ -1,7 +1,10 @@
 // ============================================================
-// auth-button.js v5 — instant render, no flicker, mobile-safe
-// Надёжность: кэш, 3 ключа + cookie, авто-обновление
-// Стиль: оригинальный
+// auth-button.js v6 — финал
+// - Мгновенный рендер из кэша (без мерцания)
+// - 3 ключа + sessionStorage + cookie
+// - Кастомный мобильный хедер с заголовком
+// - Скрытие нативного .wy-nav-top (с восстановлением)
+// - Оригинальный стиль кнопок
 // ============================================================
 (function() {
     'use strict';
@@ -17,6 +20,7 @@
     var BACKUP_KEY = 'mars-auth-backup';
     var CACHE_KEY = 'mars-auth-ui-cache';
     var CONTAINER_ID = 'auth-btn-container';
+    var HEADER_ID = 'custom-mobile-header';
 
     // ============================================================
     // 🍪 COOKIE
@@ -35,24 +39,21 @@
     }
 
     // ============================================================
-    // 📖 READ SESSION — из 3 ключей + sessionStorage + cookie
+    // 📖 READ SESSION
     // ============================================================
     function readSession() {
         var keys = [MY_KEY, SB_KEY, BACKUP_KEY];
         var raw = null;
         var i;
 
-        // localStorage
         for (i = 0; i < keys.length; i++) {
             try { raw = localStorage.getItem(keys[i]); if (raw) break; } catch(e) {}
         }
-        // sessionStorage
         if (!raw) {
             for (i = 0; i < keys.length; i++) {
                 try { raw = sessionStorage.getItem(keys[i]); if (raw) break; } catch(e) {}
             }
         }
-        // cookies
         if (!raw) {
             for (i = 0; i < keys.length; i++) {
                 raw = getCookie(keys[i]);
@@ -74,7 +75,7 @@
     }
 
     // ============================================================
-    // 💾 CACHE — мгновенный рендер без мерцания
+    // 💾 CACHE
     // ============================================================
     function readCache(userId) {
         try {
@@ -155,31 +156,52 @@
     }
 
     // ============================================================
+    // 🛡️ Скрыть нативный хедер темы
+    // ============================================================
+    function hideNativeHeader() {
+        if (!isMobile()) return;
+        var t = document.querySelector('.wy-nav-top');
+        if (t) t.style.setProperty('display', 'none', 'important');
+    }
+
+    function restoreNativeHeader() {
+        var t = document.querySelector('.wy-nav-top');
+        if (t) t.style.removeProperty('display');
+    }
+
+    // ============================================================
     // 📦 CONTAINER
     // ============================================================
     function ensureContainer() {
         var container = document.getElementById(CONTAINER_ID);
-        if (container) return container;
+        if (container) {
+            // Проверим, что он в правильном родителе
+            if (isMobile()) {
+                var h = document.getElementById(HEADER_ID);
+                if (h && container.parentElement !== h) {
+                    h.appendChild(container);
+                }
+            }
+            return container;
+        }
 
         container = document.createElement('div');
         container.id = CONTAINER_ID;
-
-        // Минимальная высота — чтобы не было «сжатия» при обновлении
         container.style.minHeight = '36px';
 
         // ---------- МОБИЛЬНЫЙ ----------
         if (isMobile()) {
-            var oldTop = document.querySelector('.wy-nav-top');
-            if (oldTop) oldTop.style.display = 'none';
+            hideNativeHeader();
 
-            var customHeader = document.getElementById('custom-mobile-header');
+            var customHeader = document.getElementById(HEADER_ID);
             if (!customHeader) {
                 customHeader = document.createElement('div');
-                customHeader.id = 'custom-mobile-header';
-                customHeader.style.cssText = 'position:fixed;top:0;left:0;right:0;height:50px;background:#6C63FF;z-index:9999;display:flex;align-items:center;padding:0 8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);gap:6px;';
+                customHeader.id = HEADER_ID;
+                customHeader.style.cssText = 'position:fixed;top:0;left:0;right:0;height:50px;background:#6C63FF;z-index:99999;display:flex;align-items:center;padding:0 8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);gap:6px;';
 
                 var hamburger = document.createElement('button');
                 hamburger.id = 'mobile-hamburger';
+                hamburger.type = 'button';
                 hamburger.textContent = '☰';
                 hamburger.style.cssText = 'background:transparent;border:none;color:#fff;font-size:22px;cursor:pointer;padding:6px 8px;flex-shrink:0;line-height:1;';
                 hamburger.onclick = function() {
@@ -187,13 +209,19 @@
                     if (sidebar) sidebar.classList.toggle('shift');
                 };
 
-                container.style.cssText = 'display:flex !important;align-items:center !important;gap:4px !important;margin-left:auto !important;flex-shrink:0 !important;';
+                var title = document.createElement('span');
+                title.className = 'mobile-header-title';
+                title.textContent = 'Марсианская энциклопедия';
+                title.style.cssText = 'color:#fff;font-weight:700;font-size:0.85rem;flex:1;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px;';
+
+                container.style.cssText = 'display:flex !important;align-items:center !important;gap:4px !important;flex-shrink:0 !important;';
 
                 customHeader.appendChild(hamburger);
+                customHeader.appendChild(title);
                 customHeader.appendChild(container);
                 document.body.prepend(customHeader);
             } else {
-                container.style.cssText = 'display:flex !important;align-items:center !important;gap:4px !important;margin-left:auto !important;flex-shrink:0 !important;';
+                container.style.cssText = 'display:flex !important;align-items:center !important;gap:4px !important;flex-shrink:0 !important;';
                 customHeader.appendChild(container);
             }
             return container;
@@ -260,7 +288,7 @@
     }
 
     // ============================================================
-    // 🔄 UPDATE UI — мгновенно из кэша, потом фоновое обновление
+    // 🔄 UPDATE UI
     // ============================================================
     var lastRenderedUserId = null;
     var updateLock = false;
@@ -295,7 +323,6 @@
                 renderLoggedIn(container, cache.name, cache.avatarUrl);
                 lastRenderedUserId = userId;
             } else if (!cache && lastRenderedUserId !== userId) {
-                // Нет кэша — рендерим из сессии (минимум)
                 var quickName =
                     (u.user_metadata && u.user_metadata.username) ||
                     (u.email ? u.email.split('@')[0] : 'Профиль');
@@ -311,7 +338,7 @@
                 (u.email ? u.email.split('@')[0] : 'Профиль');
             var freshAvatar = (profile && profile.avatar_url) || null;
 
-            // ----- 3️⃣ Обновляем, если данные изменились -----
+            // ----- 3️⃣ Обновляем если изменилось -----
             var cacheNow = readCache(userId);
             var nameChanged = !cacheNow || cacheNow.name !== freshName;
             var avatarChanged = !cacheNow || cacheNow.avatarUrl !== freshAvatar;
@@ -332,7 +359,6 @@
     // 🚪 LOGOUT
     // ============================================================
     window.logoutUser = function() {
-        // Чистим всё
         [MY_KEY, SB_KEY, BACKUP_KEY, CACHE_KEY].forEach(function(k) {
             try { localStorage.removeItem(k); } catch(e) {}
             try { sessionStorage.removeItem(k); } catch(e) {}
@@ -350,14 +376,12 @@
             toRemove.forEach(function(k) { localStorage.removeItem(k); });
         } catch(e) {}
 
-        // Сброс состояния
         lastRenderedUserId = null;
-
         window.location.href = '/';
     };
 
     // ============================================================
-    // 🔔 PUBLIC API — вызывается из login.md и profile.md
+    // 🔔 PUBLIC API
     // ============================================================
     window.refreshAuthButton = function() {
         lastRenderedUserId = null;
@@ -367,7 +391,7 @@
     };
 
     // ============================================================
-    // 👂 EVENTS — авто-обновление
+    // 👂 EVENTS
     // ============================================================
     window.addEventListener('storage', updateUI);
     window.addEventListener('focus', updateUI);
@@ -377,7 +401,7 @@
         if (!document.hidden) updateUI();
     });
 
-    // Ресайз (переключение мобильный ↔ ПК)
+    // Ресайз (мобильный ↔ ПК)
     var lastMobile = isMobile();
     var resizeTimer = null;
     window.addEventListener('resize', function() {
@@ -389,10 +413,9 @@
 
                 var c = document.getElementById(CONTAINER_ID);
                 if (c) c.remove();
-                var h = document.getElementById('custom-mobile-header');
+                var h = document.getElementById(HEADER_ID);
                 if (h) h.remove();
-                var t = document.querySelector('.wy-nav-top');
-                if (t && !nowMobile) t.style.display = '';
+                if (!nowMobile) restoreNativeHeader();
 
                 lastRenderedUserId = null;
                 updateUI();
@@ -407,6 +430,19 @@
         updateUI();
         setTimeout(updateUI, 300);
         setTimeout(updateUI, 1200);
+
+        // 🔁 Периодическая проверка сессии — если её кто-то снёс, восстановим
+        setInterval(updateUI, 3000);
+
+        // 🛡️ Возвращаем скрытие нативного хедера, если кто-то его вернул
+        setInterval(function() {
+            if (isMobile()) {
+                var t = document.querySelector('.wy-nav-top');
+                if (t && t.style.display !== 'none') {
+                    t.style.setProperty('display', 'none', 'important');
+                }
+            }
+        }, 1500);
     }
 
     if (document.readyState === 'loading') {

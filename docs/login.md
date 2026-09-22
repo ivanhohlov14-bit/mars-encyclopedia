@@ -12,7 +12,7 @@ comments: false
 
 <style>
 /* ============================================================
-   VIP LOGIN STYLES
+   VIP LOGIN v2 — FAST
    ============================================================ */
 @keyframes lgSpin { to { transform: rotate(360deg); } }
 @keyframes lgFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -25,9 +25,9 @@ comments: false
 @keyframes lgRise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes lgShake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
 
-.lg-container { max-width: 460px; margin: 0 auto; position: relative; }
+.lg-container { max-width: 460px; margin: 0 auto; position: relative; contain: layout style; }
 
-/* --- HERO --- */
+/* HERO */
 .lg-hero {
     position: relative;
     background:
@@ -41,11 +41,12 @@ comments: false
     overflow: hidden;
     border: 1px solid rgba(162,155,254,.15);
     border-bottom: none;
+    contain: layout style paint;
+    transform: translateZ(0);
 }
 .lg-hero::before {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background-image:
         radial-gradient(2px 2px at 12% 25%, #fff, transparent),
         radial-gradient(1px 1px at 38% 65%, #fff, transparent),
@@ -57,94 +58,77 @@ comments: false
     opacity: 0.55;
     animation: lgFloat 9s ease-in-out infinite;
     pointer-events: none;
+    will-change: transform;
 }
 .lg-hero::after {
     content: '';
-    position: absolute;
-    top: -40%;
-    right: -30%;
-    width: 320px;
-    height: 320px;
+    position: absolute; top: -40%; right: -30%;
+    width: 320px; height: 320px;
     background: radial-gradient(circle, rgba(108,99,255,.35), transparent 70%);
     border-radius: 50%;
     animation: lgFloat 12s ease-in-out infinite reverse;
     pointer-events: none;
+    will-change: transform;
 }
 .lg-hero-content { position: relative; z-index: 3; }
 
-/* --- LOGO --- */
+/* LOGO */
 .lg-logo-wrap { position: relative; width: 96px; height: 96px; margin: 0 auto 18px auto; }
 .lg-logo {
     width: 96px; height: 96px; border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #e74c3c 0%, #c0392b 40%, #7f1d1d 80%, #4a1010 100%);
-    box-shadow:
-        inset -8px -8px 24px rgba(0,0,0,0.6),
-        0 0 40px 6px rgba(231,76,60,0.45),
-        0 0 80px 12px rgba(231,76,60,0.15);
+    box-shadow: inset -8px -8px 24px rgba(0,0,0,0.6), 0 0 40px 6px rgba(231,76,60,0.45), 0 0 80px 12px rgba(231,76,60,0.15);
     animation: lgPulse 3.2s ease-in-out infinite;
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 2;
+    transform: translateZ(0);
+    will-change: transform;
 }
 .lg-logo::before {
-    content: '';
-    position: absolute;
-    top: 18%; left: 22%;
+    content: ''; position: absolute; top: 18%; left: 22%;
     width: 26%; height: 26%;
     background: radial-gradient(circle, rgba(255,255,255,.6), transparent 70%);
-    border-radius: 50%;
-    filter: blur(3px);
+    border-radius: 50%; filter: blur(3px);
 }
 .lg-logo-orbit {
     position: absolute; inset: -6px;
     border: 1.5px dashed rgba(162,155,254,.5);
     border-radius: 50%;
     animation: lgOrbit 22s linear infinite;
+    will-change: transform;
 }
 .lg-logo-orbit::before {
-    content: '';
-    position: absolute; top: -3px; left: 50%;
+    content: ''; position: absolute; top: -3px; left: 50%;
     width: 6px; height: 6px;
-    background: #A29BFE;
-    border-radius: 50%;
+    background: #A29BFE; border-radius: 50%;
     box-shadow: 0 0 10px #A29BFE;
     transform: translateX(-50%);
 }
 
-/* --- TITLE --- */
+/* TITLE */
 .lg-hero-title {
     font-size: 1.65rem; font-weight: 800; margin: 0 0 8px 0;
     letter-spacing: -.4px;
     background: linear-gradient(90deg, #fff 0%, #A29BFE 25%, #fff 50%, #A29BFE 75%, #fff 100%);
     background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     animation: lgShine 6s linear infinite;
 }
 .lg-hero-sub { font-size: 0.88rem; opacity: 0.7; margin: 0; letter-spacing: 1px; }
 
-/* --- TABS --- */
-.lg-tabs {
-    display: flex;
-    background: rgba(255,255,255,.98);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0,0,0,.06);
-    position: relative;
-}
+/* TABS */
+.lg-tabs { display: flex; background: rgba(255,255,255,.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,.06); position: relative; }
 .lg-tab {
     flex: 1; padding: 18px 12px;
     background: none; border: none;
     color: #999; font-size: 0.92rem; font-weight: 700;
     cursor: pointer; font-family: inherit;
-    position: relative;
-    transition: color .25s;
+    position: relative; transition: color .25s;
     -webkit-tap-highlight-color: transparent;
 }
 .lg-tab:hover { color: #666; }
 .lg-tab.active { color: #6C63FF; }
 .lg-tab.active::after {
-    content: '';
-    position: absolute; bottom: 0; left: 18%; right: 18%; height: 3px;
+    content: ''; position: absolute; bottom: 0; left: 18%; right: 18%; height: 3px;
     background: linear-gradient(90deg, #6C63FF, #A29BFE, #6C63FF);
     background-size: 200% auto;
     animation: lgShine 3s linear infinite;
@@ -152,24 +136,23 @@ comments: false
     box-shadow: 0 0 12px rgba(108,99,255,.6);
 }
 
-/* --- CARD --- */
+/* CARD */
 .lg-card {
     background: #fff;
     padding: 34px 32px 26px 32px;
     border-radius: 0 0 26px 26px;
     box-shadow: 0 24px 70px -12px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,.02);
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
+    contain: layout style;
 }
 .lg-card::before {
-    content: '';
-    position: absolute; top: 0; left: -100%;
+    content: ''; position: absolute; top: 0; left: -100%;
     width: 100%; height: 3px;
     background: linear-gradient(90deg, transparent, #6C63FF, #A29BFE, transparent);
     animation: lgShine 4s ease-in-out infinite;
 }
 
-/* --- FORM --- */
+/* FORM */
 .lg-form { animation: lgFade 0.4s cubic-bezier(.16,1,.3,1); }
 .lg-form.hidden { display: none; }
 
@@ -195,20 +178,15 @@ comments: false
     background: #f8f9fb;
     color: #1a1a2e;
     box-sizing: border-box;
-    transition: all 0.28s cubic-bezier(.16,1,.3,1);
+    transition: border-color .25s, box-shadow .25s, background .25s;
 }
 .lg-input:hover { border-color: #d0d4e0; }
 .lg-input:focus {
     border-color: #6C63FF;
     background: #fff;
     box-shadow: 0 0 0 4px rgba(108,99,255,0.12), 0 4px 16px -4px rgba(108,99,255,.15);
-    transform: translateY(-1px);
 }
-.lg-input.error {
-    border-color: #e74c3c;
-    background: #fff5f5;
-    animation: lgShake .35s ease;
-}
+.lg-input.error { border-color: #e74c3c; background: #fff5f5; animation: lgShake .35s ease; }
 .lg-input.valid { border-color: #27ae60; background: #f5fff8; }
 
 .lg-eye-btn {
@@ -217,55 +195,34 @@ comments: false
     background: none; border: none;
     cursor: pointer; font-size: 1.05rem;
     padding: 6px; opacity: 0.55; color: #1a1a2e;
-    transition: opacity .2s, transform .2s;
+    transition: opacity .2s;
     -webkit-tap-highlight-color: transparent;
 }
-.lg-eye-btn:hover { opacity: 1; transform: translateY(-50%) scale(1.1); }
+.lg-eye-btn:hover { opacity: 1; }
 
 .lg-error-text {
     font-size: 0.78rem; color: #e74c3c;
     margin-top: 6px; padding-left: 4px;
     display: none;
-    animation: lgRise .25s ease;
 }
-.lg-error-text.show { display: block; }
+.lg-error-text.show { display: block; animation: lgRise .25s ease; }
 
-/* --- PASSWORD STRENGTH --- */
-.lg-pw-strength {
-    display: flex; gap: 4px; margin-top: 8px;
-    padding-left: 4px;
-    height: 4px;
-}
-.lg-pw-seg {
-    flex: 1; height: 4px;
-    background: #e8eaf0;
-    border-radius: 2px;
-    transition: background .3s;
-}
+/* PASSWORD STRENGTH */
+.lg-pw-strength { display: flex; gap: 4px; margin-top: 8px; padding-left: 4px; height: 4px; }
+.lg-pw-seg { flex: 1; height: 4px; background: #e8eaf0; border-radius: 2px; transition: background .3s; }
 .lg-pw-seg.on-weak { background: #e74c3c; }
 .lg-pw-seg.on-mid { background: #f39c12; }
 .lg-pw-seg.on-strong { background: #27ae60; }
-.lg-pw-label {
-    font-size: .72rem; margin-top: 5px; padding-left: 4px;
-    color: #999; font-weight: 600;
-}
+.lg-pw-label { font-size: .72rem; margin-top: 5px; padding-left: 4px; color: #999; font-weight: 600; }
 .lg-pw-label.weak { color: #e74c3c; }
 .lg-pw-label.mid { color: #f39c12; }
 .lg-pw-label.strong { color: #27ae60; }
 
-/* --- CAPS WARNING --- */
-.lg-caps-warn {
-    display: none;
-    font-size: .75rem;
-    color: #f39c12;
-    margin-top: 6px;
-    padding-left: 4px;
-    font-weight: 600;
-    animation: lgRise .2s ease;
-}
+/* CAPS */
+.lg-caps-warn { display: none; font-size: .75rem; color: #f39c12; margin-top: 6px; padding-left: 4px; font-weight: 600; }
 .lg-caps-warn.show { display: block; }
 
-/* --- BUTTON --- */
+/* BUTTON */
 .lg-btn {
     width: 100%;
     padding: 16px 20px;
@@ -280,15 +237,13 @@ comments: false
     background-size: 200% auto;
     color: #fff;
     box-shadow: 0 8px 24px -4px rgba(108,99,255,0.45);
-    transition: all 0.28s cubic-bezier(.16,1,.3,1);
-    position: relative;
-    overflow: hidden;
+    transition: transform .25s, box-shadow .25s, background-position .5s;
+    position: relative; overflow: hidden;
     -webkit-tap-highlight-color: transparent;
-    animation: lgGlow 3s ease-in-out infinite;
+    will-change: transform;
 }
 .lg-btn::before {
-    content: '';
-    position: absolute; inset: 0;
+    content: ''; position: absolute; inset: 0;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
     transform: translateX(-100%);
     transition: transform .6s;
@@ -300,7 +255,7 @@ comments: false
 }
 .lg-btn:hover:not(:disabled)::before { transform: translateX(100%); }
 .lg-btn:active:not(:disabled) { transform: translateY(0) scale(.98); }
-.lg-btn:disabled { opacity: 0.65; cursor: not-allowed; animation: none; }
+.lg-btn:disabled { opacity: 0.65; cursor: not-allowed; }
 
 .lg-spinner {
     width: 18px; height: 18px;
@@ -313,12 +268,8 @@ comments: false
 .lg-btn.loading .lg-spinner { display: inline-block; }
 .lg-btn.loading span:last-child { opacity: .85; }
 
-/* --- EXTRA LINKS --- */
-.lg-extra {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 18px; font-size: 0.82rem;
-    flex-wrap: wrap; gap: 8px;
-}
+/* LINKS */
+.lg-extra { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; font-size: 0.82rem; flex-wrap: wrap; gap: 8px; }
 .lg-link {
     color: #6C63FF; font-weight: 700;
     cursor: pointer; background: none; border: none;
@@ -329,30 +280,25 @@ comments: false
     position: relative;
 }
 .lg-link::after {
-    content: '';
-    position: absolute; left: 0; right: 0; bottom: 2px;
-    height: 1.5px;
+    content: ''; position: absolute; left: 0; right: 0; bottom: 2px; height: 1.5px;
     background: #6C63FF;
-    transform: scaleX(0);
-    transform-origin: right;
+    transform: scaleX(0); transform-origin: right;
     transition: transform .3s cubic-bezier(.16,1,.3,1);
 }
 .lg-link:hover::after { transform: scaleX(1); transform-origin: left; }
 .lg-link:hover { opacity: .85; }
 
-/* --- TOAST --- */
+/* TOAST */
 .lg-toast {
     position: fixed; bottom: 30px; left: 50%;
     transform: translateX(-50%) translateY(120px);
-    padding: 14px 28px;
-    border-radius: 32px;
+    padding: 14px 28px; border-radius: 32px;
     font-weight: 700; font-size: 0.9rem;
     box-shadow: 0 16px 40px rgba(0,0,0,0.3);
     z-index: 999999;
     transition: transform .45s cubic-bezier(.16,1,.3,1);
     display: flex; align-items: center; gap: 10px;
-    max-width: 90vw;
-    color: #fff;
+    max-width: 90vw; color: #fff;
     backdrop-filter: blur(10px);
 }
 .lg-toast.show { transform: translateX(-50%) translateY(0); }
@@ -360,29 +306,49 @@ comments: false
 .lg-toast.error { background: linear-gradient(135deg, #e74c3c, #c0392b); }
 .lg-toast.info { background: linear-gradient(135deg, #3498db, #2980b9); }
 
-/* --- STARS BACKGROUND (fixed behind card) --- */
-.lg-stars {
-    position: fixed; inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-}
+/* STARS */
+.lg-stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; contain: strict; }
 .lg-star {
-    position: absolute;
-    width: 2px; height: 2px;
-    background: #A29BFE;
-    border-radius: 50%;
+    position: absolute; width: 2px; height: 2px;
+    background: #A29BFE; border-radius: 50%;
     box-shadow: 0 0 6px #A29BFE;
     animation: lgStar 8s linear infinite;
+    will-change: transform, opacity;
 }
 
-/* --- MOBILE --- */
+/* REDIRECT OVERLAY */
+.lg-redirect-overlay {
+    position: fixed; inset: 0;
+    background: radial-gradient(circle at 50% 40%, rgba(30,20,60,.92), rgba(10,10,26,.96));
+    backdrop-filter: blur(14px);
+    z-index: 2147483647;
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    color: #fff;
+    animation: lgFade .3s ease;
+}
+.lg-redirect-spinner {
+    width: 60px; height: 60px;
+    border: 4px solid rgba(162,155,254,.25);
+    border-top-color: #A29BFE;
+    border-radius: 50%;
+    animation: lgSpin .8s linear infinite;
+    box-shadow: 0 0 32px rgba(162,155,254,.5);
+}
+.lg-redirect-title { margin: 22px 0 6px 0; font-weight: 800; font-size: 1.1rem; letter-spacing: .3px; }
+.lg-redirect-sub { margin: 0; color: rgba(255,255,255,.65); font-size: .85rem; }
+
+/* MOBILE */
 @media (max-width: 500px) {
     .lg-hero { padding: 34px 24px 26px 24px; border-radius: 22px 22px 0 0; }
     .lg-card { padding: 26px 22px 22px 22px; border-radius: 0 0 22px 22px; }
     .lg-hero-title { font-size: 1.4rem; }
     .lg-logo-wrap, .lg-logo { width: 78px; height: 78px; }
     .lg-input { padding: 14px 42px 14px 14px; font-size: .92rem; }
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 </style>
 
@@ -398,37 +364,10 @@ comments: false
     var PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
     var SB_KEY = 'sb-' + PROJECT_REF + '-auth-token';
     var MY_KEY = 'mars-auth-v1';
+    var BACKUP_KEY = 'mars-auth-backup';
 
     var container = document.getElementById('login-app');
     if (!container) { return; }
-
-    // ============================================================
-    // 🛡️ AUTO-REDIRECT если уже залогинен
-    // ============================================================
-    function tryReadSession() {
-        var keys = [MY_KEY, SB_KEY];
-        for (var i = 0; i < keys.length; i++) {
-            try {
-                var raw = localStorage.getItem(keys[i]) || sessionStorage.getItem(keys[i]);
-                if (!raw) continue;
-                var p = JSON.parse(raw);
-                if (Array.isArray(p)) p = p[p.length - 1];
-                if (!p || !p.access_token || !p.user) continue;
-                if (p.expires_at && p.expires_at * 1000 < Date.now()) continue;
-                return p;
-            } catch (e) {}
-        }
-        return null;
-    }
-
-    if (tryReadSession()) {
-        container.innerHTML = '<div style="text-align:center;padding:60px 20px;">'
-            + '<div style="display:inline-block;width:44px;height:44px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:lgSpin .8s linear infinite;"></div>'
-            + '<p style="color:#6C63FF;margin-top:16px;font-weight:700;">Вы уже вошли. Перенаправление...</p>'
-            + '</div>';
-        setTimeout(function () { window.location.href = '/profile/'; }, 700);
-        return;
-    }
 
     // ============================================================
     // HELPERS
@@ -437,6 +376,17 @@ comments: false
         return String(s || '').replace(/[&<>"']/g, function(m) {
             return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m];
         });
+    }
+
+    function getCookie(name) {
+        try {
+            var cs = document.cookie.split(';');
+            for (var i = 0; i < cs.length; i++) {
+                var c = cs[i].trim();
+                if (c.indexOf(name + '=') === 0) return decodeURIComponent(c.substring(name.length + 1));
+            }
+        } catch(e) {}
+        return null;
     }
 
     function showToast(msg, type) {
@@ -453,21 +403,6 @@ comments: false
         }, 3200);
     }
 
-    function createStars() {
-        var wrap = document.createElement('div');
-        wrap.className = 'lg-stars';
-        for (var i = 0; i < 20; i++) {
-            var s = document.createElement('div');
-            s.className = 'lg-star';
-            s.style.left = Math.random() * 100 + '%';
-            s.style.top = (60 + Math.random() * 40) + '%';
-            s.style.animationDelay = (Math.random() * 8) + 's';
-            s.style.animationDuration = (6 + Math.random() * 6) + 's';
-            wrap.appendChild(s);
-        }
-        document.body.appendChild(wrap);
-    }
-
     function measurePasswordStrength(pw) {
         var score = 0;
         if (pw.length >= 6) score++;
@@ -479,7 +414,26 @@ comments: false
     }
 
     // ============================================================
-    // 💾 СОХРАНЕНИЕ — пишем ВО ВСЁ
+    // SESSION READ (3 ключа + sessionStorage + cookie)
+    // ============================================================
+    function tryReadSession() {
+        var keys = [MY_KEY, SB_KEY, BACKUP_KEY];
+        var raw = null, i;
+        for (i = 0; i < keys.length; i++) { try { raw = localStorage.getItem(keys[i]); if (raw) break; } catch(e) {} }
+        if (!raw) for (i = 0; i < keys.length; i++) { try { raw = sessionStorage.getItem(keys[i]); if (raw) break; } catch(e) {} }
+        if (!raw) for (i = 0; i < keys.length; i++) { raw = getCookie(keys[i]); if (raw) break; }
+        if (!raw) return null;
+        try {
+            var p = JSON.parse(raw);
+            if (Array.isArray(p)) p = p[p.length - 1];
+            if (!p || !p.access_token || !p.user) return null;
+            if (p.expires_at && p.expires_at * 1000 < Date.now()) return null;
+            return p;
+        } catch(e) { return null; }
+    }
+
+    // ============================================================
+    // SAVE SESSION — 3 ключа + sessionStorage + 2 cookie
     // ============================================================
     function saveSession(data) {
         var session = {
@@ -492,13 +446,12 @@ comments: false
         };
         var json = JSON.stringify([session]);
 
-        // localStorage + sessionStorage — в оба ключа
         try { localStorage.setItem(SB_KEY, json); } catch(e) {}
         try { localStorage.setItem(MY_KEY, json); } catch(e) {}
+        try { localStorage.setItem(BACKUP_KEY, json); } catch(e) {}
         try { sessionStorage.setItem(SB_KEY, json); } catch(e) {}
         try { sessionStorage.setItem(MY_KEY, json); } catch(e) {}
 
-        // Cookie — в оба имени, на год
         try {
             var compact = JSON.stringify([{
                 access_token: data.access_token,
@@ -511,27 +464,19 @@ comments: false
             document.cookie = SB_KEY + '=' + encodeURIComponent(compact) + '; expires=' + expires + '; path=/; SameSite=Lax';
             document.cookie = MY_KEY + '=' + encodeURIComponent(compact) + '; expires=' + expires + '; path=/; SameSite=Lax';
         } catch(e) {}
-        
-         // 🔔 Обновляем кнопку в шапке МГНОВЕННО
-    try {
-        if (typeof window.refreshAuthButton === 'function') {
-            window.refreshAuthButton();
-        }
-    } catch(e) {}
-    try {
-        window.dispatchEvent(new Event('storage'));
-    } catch(e) {}
-}
 
-        // Проверяем, что записалось
+        // 🔔 Мгновенно обновить кнопку в шапке
         try {
-            var check = localStorage.getItem(MY_KEY);
-            if (!check) console.warn('[login] localStorage запись не удалась');
+            if (typeof window.refreshAuthButton === 'function') {
+                window.refreshAuthButton();
+            }
         } catch(e) {}
+
+        try { window.dispatchEvent(new Event('storage')); } catch(e) {}
     }
 
     // ============================================================
-    // 🌐 FETCH с ретраями
+    // FETCH с ретраями
     // ============================================================
     async function fetchWithRetry(url, options, retries) {
         retries = retries == null ? 2 : retries;
@@ -546,16 +491,14 @@ comments: false
                 return res;
             } catch (e) {
                 lastErr = e;
-                if (i < retries) {
-                    await new Promise(function(r) { setTimeout(r, 800 * (i + 1)); });
-                }
+                if (i < retries) await new Promise(function(r) { setTimeout(r, 600 * (i + 1)); });
             }
         }
         throw lastErr || new Error('Network error');
     }
 
     // ============================================================
-    // 🎨 RENDER
+    // 🎨 RENDER ФОРМЫ — вызывается СРАЗУ
     // ============================================================
     function render() {
         var params = new URLSearchParams(window.location.search);
@@ -650,8 +593,6 @@ comments: false
                 var isLogin = tab.dataset.tab === 'login';
                 document.getElementById('form-login').classList.toggle('hidden', !isLogin);
                 document.getElementById('form-register').classList.toggle('hidden', isLogin);
-                var firstInput = document.querySelector(isLogin ? '#login-email' : '#reg-email');
-                if (firstInput) setTimeout(function() { firstInput.focus(); }, 100);
             };
         });
 
@@ -659,7 +600,6 @@ comments: false
             document.querySelector('.lg-tab[data-tab="login"]').click();
         };
 
-        // Eye
         document.querySelectorAll('.lg-eye-btn').forEach(function(btn) {
             btn.onclick = function() {
                 var t = document.getElementById(btn.dataset.target);
@@ -669,7 +609,6 @@ comments: false
             };
         });
 
-        // Password strength
         var regPw = document.getElementById('reg-password');
         if (regPw) {
             regPw.addEventListener('input', function() {
@@ -678,9 +617,7 @@ comments: false
                 var label = document.getElementById('reg-pw-label');
                 segs.forEach(function(seg, i) {
                     seg.className = 'lg-pw-seg';
-                    if (i < score) {
-                        seg.classList.add(score <= 2 ? 'on-weak' : score <= 3 ? 'on-mid' : 'on-strong');
-                    }
+                    if (i < score) seg.classList.add(score <= 2 ? 'on-weak' : score <= 3 ? 'on-mid' : 'on-strong');
                 });
                 if (!regPw.value) { label.textContent = ''; label.className = 'lg-pw-label'; return; }
                 if (score <= 2) { label.textContent = 'Слабый пароль'; label.className = 'lg-pw-label weak'; }
@@ -689,7 +626,6 @@ comments: false
             });
         }
 
-        // Caps Lock warning
         var loginPw = document.getElementById('login-password');
         if (loginPw) {
             loginPw.addEventListener('keyup', function(e) {
@@ -706,7 +642,6 @@ comments: false
             });
         }
 
-        // Forgot password
         document.getElementById('forgot-password').onclick = async function() {
             var email = document.getElementById('login-email').value.trim();
             if (!email) { showToast('Введите email', 'error'); return; }
@@ -720,7 +655,7 @@ comments: false
                 if (res.ok) showToast('📧 Проверьте почту!', 'success');
                 else showToast('Не удалось отправить', 'error');
             } catch(e) {
-                showToast('Ошибка сети. Попробуйте ещё раз', 'error');
+                showToast('Ошибка сети', 'error');
             }
         };
 
@@ -774,7 +709,7 @@ comments: false
                 if (lower.indexOf('invalid') !== -1 || lower.indexOf('credentials') !== -1) {
                     showToast('Неверный email или пароль', 'error');
                 } else if (lower.indexOf('confirm') !== -1) {
-                    showToast('Email не подтверждён. Проверьте почту', 'error');
+                    showToast('Email не подтверждён', 'error');
                 } else if (lower.indexOf('too many') !== -1) {
                     showToast('Слишком много попыток. Подождите', 'error');
                 } else {
@@ -787,12 +722,12 @@ comments: false
 
             saveSession(data);
             showToast('Добро пожаловать!', 'success');
-            setTimeout(function() { window.location.href = '/profile/'; }, 700);
+            setTimeout(function() { window.location.href = '/profile/'; }, 600);
 
         } catch (err) {
             var msg = err.message;
             if (err.name === 'AbortError') msg = 'Превышено время ожидания';
-            else if (msg.indexOf('Failed to fetch') !== -1 || msg.indexOf('Network') !== -1) msg = 'Нет связи с сервером';
+            else if (msg.indexOf('Failed to fetch') !== -1) msg = 'Нет связи с сервером';
             showToast(msg, 'error');
             btn.classList.remove('loading');
             btn.disabled = false;
@@ -863,10 +798,10 @@ comments: false
 
             if (data.access_token && data.user) {
                 saveSession(data);
-                showToast('Аккаунт создан! Добро пожаловать', 'success');
-                setTimeout(function() { window.location.href = '/profile/'; }, 700);
+                showToast('Аккаунт создан!', 'success');
+                setTimeout(function() { window.location.href = '/profile/'; }, 600);
             } else {
-                showToast('📧 Проверьте почту и подтвердите email', 'success');
+                showToast('📧 Проверьте почту', 'success');
                 btn.classList.remove('loading');
                 btn.disabled = false;
             }
@@ -880,14 +815,59 @@ comments: false
     }
 
     // ============================================================
-    // START
+    // ⚡ МГНОВЕННЫЙ РЕНДЕР ФОРМЫ (без ожидания)
     // ============================================================
-    createStars();
+    render();
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', render);
-    } else {
-        render();
+    // ============================================================
+    // ⭐ Звёзды — после рендера, асинхронно
+    // ============================================================
+    function createStars() {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var wrap = document.createElement('div');
+        wrap.className = 'lg-stars';
+        var n = window.innerWidth <= 500 ? 12 : 20;
+        for (var i = 0; i < n; i++) {
+            var s = document.createElement('div');
+            s.className = 'lg-star';
+            s.style.left = Math.random() * 100 + '%';
+            s.style.top = (60 + Math.random() * 40) + '%';
+            s.style.animationDelay = (Math.random() * 8) + 's';
+            s.style.animationDuration = (6 + Math.random() * 6) + 's';
+            wrap.appendChild(s);
+        }
+        document.body.appendChild(wrap);
     }
+
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(createStars, { timeout: 1500 });
+    } else {
+        setTimeout(createStars, 300);
+    }
+
+    // ============================================================
+    // 🛡️ Проверка сессии — ПОСЛЕ рендера формы
+    // ============================================================
+    function checkSession() {
+        if (!tryReadSession()) return;
+
+        var overlay = document.createElement('div');
+        overlay.className = 'lg-redirect-overlay';
+        overlay.innerHTML =
+            '<div class="lg-redirect-spinner"></div>' +
+            '<p class="lg-redirect-title">Вы уже вошли</p>' +
+            '<p class="lg-redirect-sub">Перенаправление в профиль...</p>';
+        document.body.appendChild(overlay);
+
+        setTimeout(function() { window.location.href = '/profile/'; }, 500);
+    }
+
+    // Откладываем проверку сессии до idle — форма показывается мгновенно
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(checkSession, { timeout: 800 });
+    } else {
+        setTimeout(checkSession, 100);
+    }
+
 })();
 </script>

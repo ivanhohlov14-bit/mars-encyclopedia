@@ -1,20 +1,68 @@
 // docs/javascripts/comments.js
-// УПРОЩЁННАЯ ВЕРСИЯ — без JOIN, с отдельным запросом профилей
+// v2 — единый клиент, без конфликтов
 
 (function() {
     console.log('✅ comments.js загружен');
 
     const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
+    const PROJECT_REF = 'ncytbgbzfjfoqmmgfygz';
+    const SB_KEY = 'sb-' + PROJECT_REF + '-auth-token';
 
-    // === ЗАГРУЗКА КОММЕНТАРИЕВ ===
+    // ============================================================
+    // 🌉 ЕДИНЫЙ КЛИЕНТ — возвращает существующий или создаёт один раз
+    // ============================================================
+    function getClient() {
+        // Уже есть единый клиент
+        if (window.supabaseClient && window.supabaseClient.auth) {
+            return window.supabaseClient;
+        }
+        // Создаём ОДИН раз и сохраняем
+        if (window.supabase && typeof window.supabase.createClient === 'function') {
+            try {
+                window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+                    auth: {
+                        storageKey: SB_KEY,
+                        persistSession: true,
+                        autoRefreshToken: true,
+                        detectSessionInUrl: false
+                    }
+                });
+                return window.supabaseClient;
+            } catch(e) {
+                console.warn('[comments] createClient failed:', e.message);
+            }
+        }
+        return null;
+    }
+
+    // ============================================================
+    // 👤 Получить юзера — из единого клиента
+    // ============================================================
+    async function getUser() {
+        var client = getClient();
+        if (!client) return null;
+        try {
+            var r = await client.auth.getSession();
+            return (r && r.data && r.data.session && r.data.session.user) || null;
+        } catch(e) {
+            return null;
+        }
+    }
+
+    // ============================================================
+    // 📥 ЗАГРУЗКА КОММЕНТАРИЕВ
+    // ============================================================
     async function loadComments(articleSlug, containerId) {
         const container = document.getElementById(containerId);
         if (!container) return;
 
-        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const client = getClient();
+        if (!client) {
+            container.innerHTML = '<p style="color: #c0392b;">⚠️ Клиент не готов. Обновите страницу.</p>';
+            return;
+        }
 
-        // 1. Получаем комментарии (без JOIN)
         const { data: comments, error } = await client
             .from('comments')
             .select('*')
@@ -28,7 +76,6 @@
             return;
         }
 
-        // 2. Получаем профили пользователей отдельно
         const userIds = [...new Set(comments.map(c => c.user_id))];
         let profilesMap = {};
         if (userIds.length > 0) {
@@ -36,27 +83,22 @@
                 .from('profiles')
                 .select('user_id, username, display_name, avatar_url')
                 .in('user_id', userIds);
-
             if (!profileError && profiles) {
                 profiles.forEach(p => profilesMap[p.user_id] = p);
             }
         }
 
-        // 3. Собираем комментарии с профилями
         const commentsWithProfiles = comments.map(c => ({
             ...c,
-            profiles: profilesMap[c.user_id] || { 
-                display_name: 'Аноним', 
+            profiles: profilesMap[c.user_id] || {
+                display_name: 'Аноним',
                 username: 'Аноним',
-                avatar_url: null 
+                avatar_url: null
             }
         }));
 
-        // 4. Получаем текущего пользователя
-        const { data: session } = await client.auth.getSession();
-        const user = session?.session?.user;
+        const user = await getUser();
 
-        // 5. Проверяем бан
         let isBanned = false;
         if (user) {
             const { data: profile } = await client
@@ -67,32 +109,29 @@
             isBanned = profile?.is_banned || false;
         }
 
-        // 6. Строим дерево комментариев
         const topComments = commentsWithProfiles.filter(c => !c.parent_id);
         const nestedComments = buildCommentTree(commentsWithProfiles, user?.id);
 
         if (topComments.length === 0) {
-            container.innerHTML = `
-                <div style="margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px; text-align: center; color: #999;">
-                    Пока нет комментариев. Будьте первым!
-                </div>
-                ${await renderCommentForm(articleSlug, containerId, isBanned)}
-            `;
+            container.innerHTML =
+                '<div style="margin: 20px 0; padding: 20px; background: #f8f9fa; border-radius: 8px; text-align: center; color: #999;">' +
+                '  Пока нет комментариев. Будьте первым!' +
+                '</div>' +
+                await renderCommentForm(articleSlug, containerId, isBanned);
             return;
         }
 
-        container.innerHTML = `
-            <div style="margin-top: 30px; border-top: 2px solid #eaecf0; padding-top: 20px;">
-                <h3 style="margin: 0 0 16px 0;">💬 Комментарии (${topComments.length})</h3>
-                <div id="comments-list">
-                    ${nestedComments}
-                </div>
-                ${await renderCommentForm(articleSlug, containerId, isBanned)}
-            </div>
-        `;
+        container.innerHTML =
+            '<div style="margin-top: 30px; border-top: 2px solid #eaecf0; padding-top: 20px;">' +
+            '  <h3 style="margin: 0 0 16px 0;">💬 Комментарии (' + topComments.length + ')</h3>' +
+            '  <div id="comments-list">' + nestedComments + '</div>' +
+            await renderCommentForm(articleSlug, containerId, isBanned) +
+            '</div>';
     }
 
-    // === ПОСТРОЕНИЕ ДЕРЕВА ===
+    // ============================================================
+    // 🌳 ДЕРЕВО КОММЕНТАРИЕВ
+    // ============================================================
     function buildCommentTree(comments, userId) {
         const commentMap = {};
         comments.forEach(c => commentMap[c.id] = c);
@@ -101,9 +140,7 @@
         comments.forEach(c => {
             if (c.parent_id) {
                 if (commentMap[c.parent_id]) {
-                    if (!commentMap[c.parent_id].children) {
-                        commentMap[c.parent_id].children = [];
-                    }
+                    if (!commentMap[c.parent_id].children) commentMap[c.parent_id].children = [];
                     commentMap[c.parent_id].children.push(c);
                 }
             } else {
@@ -114,7 +151,7 @@
         function renderComment(comment, depth = 0) {
             const profile = comment.profiles || {};
             const displayName = profile.display_name || profile.username || 'Аноним';
-            const avatar = profile.avatar_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=6C63FF&color=fff&size=32`;
+            const avatar = profile.avatar_url || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(displayName) + '&background=6C63FF&color=fff&size=32';
             const isOwn = userId === comment.user_id;
             const indent = depth * 20;
 
@@ -123,76 +160,58 @@
                 childrenHtml = comment.children.map(child => renderComment(child, depth + 1)).join('');
             }
 
-            return `
-                <div style="margin-left: ${indent}px; padding: 12px 0; border-bottom: 1px solid #f0f0f0;" data-comment-id="${comment.id}">
-                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
-                        <img src="${avatar}" alt="Avatar" style="width: 28px; height: 28px; border-radius: 50%;">
-                        <strong style="font-size: 0.9rem;">${displayName}</strong>
-                        <span style="font-size: 0.75rem; color: #999;">${new Date(comment.created_at).toLocaleString('ru-RU')}</span>
-                        ${isOwn ? `
-                            <button onclick="deleteComment('${comment.id}')" style="background: none; border: none; color: #c0392b; cursor: pointer; font-size: 0.75rem;">🗑️</button>
-                        ` : ''}
-                    </div>
-                    <div style="font-size: 0.95rem; line-height: 1.5; padding-left: 38px;">
-                        ${comment.content}
-                    </div>
-                    <div style="padding-left: 38px; margin-top: 4px; display: flex; gap: 12px; align-items: center;">
-                        <button onclick="likeComment('${comment.id}', 1)" class="comment-like-btn" style="background: none; border: none; cursor: pointer; font-size: 0.85rem; color: #555;">
-                            👍 <span class="like-count">${comment.likes || 0}</span>
-                        </button>
-                        <button onclick="likeComment('${comment.id}', -1)" class="comment-like-btn" style="background: none; border: none; cursor: pointer; font-size: 0.85rem; color: #555;">
-                            👎 <span class="dislike-count">${comment.dislikes || 0}</span>
-                        </button>
-                        <button onclick="showReplyForm('${comment.id}')" style="background: none; border: none; cursor: pointer; font-size: 0.8rem; color: #6C63FF;">
-                            Ответить
-                        </button>
-                    </div>
-                    <div id="reply-form-${comment.id}" style="display: none; padding-left: 38px; margin-top: 8px;"></div>
-                    ${childrenHtml}
-                </div>
-            `;
+            return '<div style="margin-left: ' + indent + 'px; padding: 12px 0; border-bottom: 1px solid #f0f0f0;" data-comment-id="' + comment.id + '">' +
+                '<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">' +
+                '  <img src="' + avatar + '" alt="Avatar" style="width: 28px; height: 28px; border-radius: 50%;">' +
+                '  <strong style="font-size: 0.9rem;">' + displayName + '</strong>' +
+                '  <span style="font-size: 0.75rem; color: #999;">' + new Date(comment.created_at).toLocaleString('ru-RU') + '</span>' +
+                (isOwn ? '  <button onclick="deleteComment(\'' + comment.id + '\')" style="background: none; border: none; color: #c0392b; cursor: pointer; font-size: 0.75rem;">🗑️</button>' : '') +
+                '</div>' +
+                '<div style="font-size: 0.95rem; line-height: 1.5; padding-left: 38px;">' + comment.content + '</div>' +
+                '<div style="padding-left: 38px; margin-top: 4px; display: flex; gap: 12px; align-items: center;">' +
+                '  <button onclick="likeComment(\'' + comment.id + '\', 1)" class="comment-like-btn" style="background: none; border: none; cursor: pointer; font-size: 0.85rem; color: #555;">👍 <span class="like-count">' + (comment.likes || 0) + '</span></button>' +
+                '  <button onclick="likeComment(\'' + comment.id + '\', -1)" class="comment-like-btn" style="background: none; border: none; cursor: pointer; font-size: 0.85rem; color: #555;">👎 <span class="dislike-count">' + (comment.dislikes || 0) + '</span></button>' +
+                '  <button onclick="showReplyForm(\'' + comment.id + '\')" style="background: none; border: none; cursor: pointer; font-size: 0.8rem; color: #6C63FF;">Ответить</button>' +
+                '</div>' +
+                '<div id="reply-form-' + comment.id + '" style="display: none; padding-left: 38px; margin-top: 8px;"></div>' +
+                childrenHtml +
+                '</div>';
         }
 
         return roots.map(c => renderComment(c)).join('');
     }
 
-    // === ФОРМА ДОБАВЛЕНИЯ ===
+    // ============================================================
+    // 📝 ФОРМА КОММЕНТАРИЯ
+    // ============================================================
     async function renderCommentForm(articleSlug, containerId, isBanned) {
-        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        const { data: session } = await client.auth.getSession();
-        const user = session?.session?.user;
+        const user = await getUser();
 
         if (!user) {
-            return `
-                <div style="margin: 16px 0; padding: 16px; background: #f8f9fa; border-radius: 8px; text-align: center;">
-                    <a href="/login/" style="color: #6C63FF;">Войдите</a> или <a href="/register/" style="color: #6C63FF;">зарегистрируйтесь</a>, чтобы оставить комментарий.
-                </div>
-            `;
+            return '<div style="margin: 16px 0; padding: 16px; background: #f8f9fa; border-radius: 8px; text-align: center;">' +
+                '<a href="/login/" style="color: #6C63FF;">Войдите</a> или <a href="/register/" style="color: #6C63FF;">зарегистрируйтесь</a>, чтобы оставить комментарий.' +
+                '</div>';
         }
 
         if (isBanned) {
-            return `
-                <div style="margin: 16px 0; padding: 16px; background: #fff5f5; border-radius: 8px; text-align: center; border: 1px solid #f5c6cb;">
-                    ⛔ Вы забанены и не можете оставлять комментарии.
-                </div>
-            `;
+            return '<div style="margin: 16px 0; padding: 16px; background: #fff5f5; border-radius: 8px; text-align: center; border: 1px solid #f5c6cb;">' +
+                '⛔ Вы забанены и не можете оставлять комментарии.' +
+                '</div>';
         }
 
-        return `
-            <div style="margin: 16px 0;">
-                <textarea id="comment-input-${containerId}" rows="3" placeholder="Напишите комментарий..." style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; font-size: 0.95rem; resize: vertical;"></textarea>
-                <button onclick="submitComment('${articleSlug}', '${containerId}')" style="margin-top: 8px; padding: 8px 24px; background: #6C63FF; color: #fff; border: none; border-radius: 6px; cursor: pointer;">
-                    Отправить
-                </button>
-                <span id="comment-status-${containerId}" style="margin-left: 12px; font-size: 0.85rem; color: #999;"></span>
-            </div>
-        `;
+        return '<div style="margin: 16px 0;">' +
+            '  <textarea id="comment-input-' + containerId + '" rows="3" placeholder="Напишите комментарий..." style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; font-size: 0.95rem; resize: vertical;"></textarea>' +
+            '  <button onclick="submitComment(\'' + articleSlug + '\', \'' + containerId + '\')" style="margin-top: 8px; padding: 8px 24px; background: #6C63FF; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Отправить</button>' +
+            '  <span id="comment-status-' + containerId + '" style="margin-left: 12px; font-size: 0.85rem; color: #999;"></span>' +
+            '</div>';
     }
 
-    // === ОТПРАВКА ===
+    // ============================================================
+    // 📤 ОТПРАВКА КОММЕНТАРИЯ
+    // ============================================================
     async function submitComment(articleSlug, containerId) {
-        const input = document.getElementById(`comment-input-${containerId}`);
-        const status = document.getElementById(`comment-status-${containerId}`);
+        const input = document.getElementById('comment-input-' + containerId);
+        const status = document.getElementById('comment-status-' + containerId);
         const content = input.value.trim();
 
         if (!content) {
@@ -204,9 +223,8 @@
         status.textContent = '⏳ Отправка...';
         status.style.color = '#999';
 
-        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        const { data: session } = await client.auth.getSession();
-        const user = session?.session?.user;
+        const client = getClient();
+        const user = await getUser();
 
         if (!user) {
             status.textContent = '❌ Войдите, чтобы оставить комментарий.';
@@ -251,11 +269,12 @@
         setTimeout(() => loadComments(articleSlug, containerId), 500);
     }
 
-    // === ЛАЙК ===
+    // ============================================================
+    // 👍 ЛАЙК КОММЕНТАРИЯ
+    // ============================================================
     async function likeComment(commentId, likeType) {
-        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        const { data: session } = await client.auth.getSession();
-        const user = session?.session?.user;
+        const client = getClient();
+        const user = await getUser();
 
         if (!user) {
             alert('Войдите, чтобы ставить лайки.');
@@ -302,7 +321,7 @@
             .update({ likes, dislikes })
             .eq('id', commentId);
 
-        const commentEl = document.querySelector(`[data-comment-id="${commentId}"]`);
+        const commentEl = document.querySelector('[data-comment-id="' + commentId + '"]');
         if (commentEl) {
             const likeSpan = commentEl.querySelector('.like-count');
             const dislikeSpan = commentEl.querySelector('.dislike-count');
@@ -311,47 +330,38 @@
         }
     }
 
-    // === УДАЛЕНИЕ ===
+    // ============================================================
+    // 🗑️ УДАЛЕНИЕ
+    // ============================================================
     async function deleteComment(commentId) {
         if (!confirm('Удалить комментарий?')) return;
-
-        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        const { error } = await client
-            .from('comments')
-            .delete()
-            .eq('id', commentId);
-
+        const client = getClient();
+        const { error } = await client.from('comments').delete().eq('id', commentId);
         if (error) {
             alert('Ошибка удаления: ' + error.message);
             return;
         }
-
         const container = document.getElementById('comments-container');
         const articleSlug = container?.dataset?.articleSlug;
-        if (articleSlug) {
-            loadComments(articleSlug, 'comments-container');
-        }
+        if (articleSlug) loadComments(articleSlug, 'comments-container');
     }
 
-    // === ОТВЕТ ===
+    // ============================================================
+    // 💬 ФОРМА ОТВЕТА
+    // ============================================================
     function showReplyForm(commentId) {
-        const formContainer = document.getElementById(`reply-form-${commentId}`);
+        const formContainer = document.getElementById('reply-form-' + commentId);
         if (!formContainer) return;
 
         if (formContainer.style.display === 'none') {
-            const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-            client.auth.getSession().then(({ data }) => {
-                const user = data?.session?.user;
+            getUser().then(user => {
                 if (!user) {
-                    formContainer.innerHTML = `<p style="color: #999; font-size: 0.9rem;"><a href="/login/">Войдите</a>, чтобы ответить.</p>`;
+                    formContainer.innerHTML = '<p style="color: #999; font-size: 0.9rem;"><a href="/login/">Войдите</a>, чтобы ответить.</p>';
                 } else {
-                    formContainer.innerHTML = `
-                        <textarea id="reply-input-${commentId}" rows="2" placeholder="Напишите ответ..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; font-size: 0.9rem; resize: vertical;"></textarea>
-                        <button onclick="submitReply('${commentId}')" style="margin-top: 6px; padding: 6px 20px; background: #6C63FF; color: #fff; border: none; border-radius: 6px; cursor: pointer;">
-                            Ответить
-                        </button>
-                        <span id="reply-status-${commentId}" style="margin-left: 12px; font-size: 0.85rem; color: #999;"></span>
-                    `;
+                    formContainer.innerHTML =
+                        '<textarea id="reply-input-' + commentId + '" rows="2" placeholder="Напишите ответ..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; font-size: 0.9rem; resize: vertical;"></textarea>' +
+                        '<button onclick="submitReply(\'' + commentId + '\')" style="margin-top: 6px; padding: 6px 20px; background: #6C63FF; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Ответить</button>' +
+                        '<span id="reply-status-' + commentId + '" style="margin-left: 12px; font-size: 0.85rem; color: #999;"></span>';
                 }
                 formContainer.style.display = 'block';
             });
@@ -360,10 +370,12 @@
         }
     }
 
-    // === ОТПРАВКА ОТВЕТА ===
+    // ============================================================
+    // 📤 ОТПРАВКА ОТВЕТА
+    // ============================================================
     async function submitReply(parentId) {
-        const input = document.getElementById(`reply-input-${parentId}`);
-        const status = document.getElementById(`reply-status-${parentId}`);
+        const input = document.getElementById('reply-input-' + parentId);
+        const status = document.getElementById('reply-status-' + parentId);
         const content = input.value.trim();
 
         if (!content) {
@@ -372,9 +384,8 @@
             return;
         }
 
-        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        const { data: session } = await client.auth.getSession();
-        const user = session?.session?.user;
+        const client = getClient();
+        const user = await getUser();
 
         if (!user) {
             status.textContent = '❌ Войдите, чтобы ответить.';
@@ -436,12 +447,16 @@
         }
     }
 
+    // ============================================================
+    // 🌐 ГЛОБАЛЬНЫЕ ФУНКЦИИ
+    // ============================================================
     window.loadComments = loadComments;
     window.submitComment = submitComment;
     window.likeComment = likeComment;
     window.deleteComment = deleteComment;
     window.showReplyForm = showReplyForm;
     window.submitReply = submitReply;
+    window.getCommentsClient = getClient; // для отладки
 
-    console.log('✅ comments.js готов (упрощённая версия)');
+    console.log('✅ comments.js v2 готов (единый клиент)');
 })();

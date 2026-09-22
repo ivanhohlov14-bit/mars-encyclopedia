@@ -1,0 +1,9 @@
+/* Скрыть нативную ссылку «Профиль» — оставляем только нашу кнопку */
+@media (max-width: 768px) {
+    a[href="/profile/"]:not(#auth-btn-container a),
+    a[href="/profile"]:not(#auth-btn-container a),
+    header a[href*="/profile"]:not(#auth-btn-container a),
+    .wy-nav-top a[href*="/profile"]:not(#auth-btn-container a) {
+        display: none !important;
+    }
+}

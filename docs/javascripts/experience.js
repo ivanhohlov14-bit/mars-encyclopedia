@@ -1,11 +1,36 @@
 // docs/javascripts/experience.js
-// ФИНАЛЬНАЯ ВЕРСИЯ — БЕЗ КОНФЛИКТОВ
+// v2 — единый клиент, без конфликтов
 
 (function() {
-    console.log('✅ experience.js загружен');
+    'use strict';
+    console.log('✅ experience.js v2 загружен');
 
     const SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";
     const SUPABASE_KEY = "sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D";
+    const SB_KEY = 'sb-ncytbgbzfjfoqmmgfygz-auth-token';
+
+    // ============================================================
+    // 🌉 ЕДИНЫЙ КЛИЕНТ
+    // ============================================================
+    function getClient() {
+        if (window.supabaseClient && window.supabaseClient.auth) return window.supabaseClient;
+        if (window.supabase && typeof window.supabase.createClient === 'function') {
+            try {
+                window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+                    auth: {
+                        storageKey: SB_KEY,
+                        persistSession: true,
+                        autoRefreshToken: true,
+                        detectSessionInUrl: false
+                    }
+                });
+                return window.supabaseClient;
+            } catch(e) {
+                console.warn('[experience] createClient failed:', e.message);
+            }
+        }
+        return null;
+    }
 
     const LEVEL_MAP = [
         { level: 1, xp: 0, title: '🌱 Новый поселенец' },
@@ -32,9 +57,13 @@
     async function addExperience(userId, points) {
         if (!userId) return;
 
-        console.log('🔥 addExperience вызвана! userId:', userId, 'points:', points);
+        const client = getClient();
+        if (!client) {
+            console.warn('[experience] client not ready');
+            return;
+        }
 
-        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        console.log('🔥 addExperience:', userId, '+' + points);
 
         const { data: profile, error } = await client
             .from('profiles')
@@ -47,8 +76,6 @@
             return;
         }
 
-        console.log('📊 Профиль из БД:', profile);
-
         const currentExp = profile?.experience || 0;
         const currentLevel = profile?.level || 1;
         const newExp = currentExp + points;
@@ -56,19 +83,9 @@
         const newLevel = newLevelData.level;
         const newTitle = newLevelData.title;
 
-        console.log(`📊 Текущий опыт: ${currentExp}, новый: ${newExp}`);
-        console.log(`📊 Текущий уровень: ${currentLevel}, новый: ${newLevel}`);
-
-        const updateData = {
-            experience: newExp,
-            level: newLevel
-        };
-
-        console.log('📤 Обновляем БД:', updateData);
-
         const { error: updateError } = await client
             .from('profiles')
-            .update(updateData)
+            .update({ experience: newExp, level: newLevel })
             .eq('user_id', userId);
 
         if (updateError) {
@@ -76,158 +93,108 @@
             return;
         }
 
-        console.log(`✅ ОБНОВЛЕНО! Опыт: ${newExp}, Уровень: ${newLevel}`);
+        console.log('✅ Опыт обновлён:', newExp, 'уровень:', newLevel);
 
         if (newLevel !== currentLevel) {
-            console.log(`🎉 ПОВЫШЕНИЕ УРОВНЯ! ${currentLevel} → ${newLevel} (${newTitle})`);
+            console.log('🎉 Повышение:', currentLevel, '→', newLevel);
             if (typeof window.showLevelUpToast === 'function') {
                 window.showLevelUpToast(newLevel, newTitle);
-            } else {
-                alert(`🎉 Поздравляем! Вы достигли ${newLevel} уровня — ${newTitle}!`);
             }
-            await client
-                .from('notifications')
-                .insert([{
+            try {
+                await client.from('notifications').insert([{
                     user_id: userId,
-                    message: `🎉 Вы достигли ${newLevel} уровня — ${newTitle}!`,
+                    message: '🎉 Вы достигли ' + newLevel + ' уровня — ' + newTitle + '!',
                     type: 'level_up'
                 }]);
+            } catch(e) {}
         }
 
         await checkAchievements(userId, newExp);
     }
 
     async function checkAchievements(userId, currentExp) {
-        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const client = getClient();
+        if (!client) return;
 
         const { data: allAchievements, error: achError } = await client
             .from('achievements')
             .select('*');
 
-        if (achError) {
-            console.error('Ошибка загрузки достижений:', achError);
-            return;
-        }
+        if (achError) return;
 
-        const { data: earned, error: earnedError } = await client
+        const { data: earned } = await client
             .from('user_achievements')
             .select('achievement_id')
             .eq('user_id', userId);
 
-        if (earnedError) {
-            console.error('Ошибка загрузки достижений пользователя:', earnedError);
-            return;
-        }
+        const earnedIds = (earned || []).map(item => item.achievement_id);
 
-        const earnedIds = earned.map(item => item.achievement_id);
-
-        for (const ach of allAchievements) {
+        for (const ach of allAchievements || []) {
             if (earnedIds.includes(ach.id)) continue;
-
-            if (ach.name === '🚀 Первый шаг' && currentExp >= 10) {
-                await grantAchievement(userId, ach.id);
-            } else if (ach.name === '📖 Знаток' && currentExp >= 50) {
-                await grantAchievement(userId, ach.id);
-            } else if (ach.name === '🌍 Исследователь' && currentExp >= 100) {
-                await grantAchievement(userId, ach.id);
-            } else if (ach.name === '🖊️ Летописец' && currentExp >= 200) {
-                await grantAchievement(userId, ach.id);
-            } else if (ach.name === '🏆 Марсианин' && currentExp >= 300) {
-                await grantAchievement(userId, ach.id);
-            }
+            if (ach.name === '🚀 Первый шаг' && currentExp >= 10) await grantAchievement(userId, ach.id);
+            else if (ach.name === '📖 Знаток' && currentExp >= 50) await grantAchievement(userId, ach.id);
+            else if (ach.name === '🌍 Исследователь' && currentExp >= 100) await grantAchievement(userId, ach.id);
+            else if (ach.name === '🖊️ Летописец' && currentExp >= 200) await grantAchievement(userId, ach.id);
+            else if (ach.name === '🏆 Марсианин' && currentExp >= 300) await grantAchievement(userId, ach.id);
         }
     }
 
     async function grantAchievement(userId, achievementId) {
-        const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        const client = getClient();
+        if (!client) return;
+
         const { error } = await client
             .from('user_achievements')
             .insert([{ user_id: userId, achievement_id: achievementId }]);
 
-        if (error) {
-            console.error('Ошибка выдачи достижения:', error);
-        } else {
-            console.log('🏅 Новое достижение!');
+        if (error) return;
+
+        console.log('🏅 Достижение выдано');
+
+        try {
             const { data: ach } = await client
                 .from('achievements')
                 .select('name, icon')
                 .eq('id', achievementId)
                 .single();
+
             if (ach) {
-                await client
-                    .from('notifications')
-                    .insert([{
-                        user_id: userId,
-                        message: `🏅 Получено достижение: ${ach.icon} ${ach.name}!`,
-                        type: 'achievement'
-                    }]);
+                await client.from('notifications').insert([{
+                    user_id: userId,
+                    message: '🏅 Получено достижение: ' + ach.icon + ' ' + ach.name + '!',
+                    type: 'achievement'
+                }]);
             }
-        }
+        } catch(e) {}
     }
 
     function showLevelUpToast(level, title) {
-        if (sessionStorage.getItem('level_up_toast_shown')) return;
-
         const toast = document.createElement('div');
-        toast.innerHTML = `
-            <div style="
-                background: linear-gradient(135deg, #f39c12, #e67e22);
-                color: #fff;
-                padding: 20px 40px;
-                border-radius: 16px;
-                font-size: 1.8rem;
-                font-weight: bold;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-                display: flex;
-                align-items: center;
-                gap: 16px;
-                animation: levelUpPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-                           levelUpFadeOut 3s ease forwards 0.5s;
-            ">
-                <span style="font-size: 3rem;">🎉</span>
-                <div>
-                    <div style="font-size: 1rem; opacity: 0.8;">Новый уровень!</div>
-                    <div>${level} — ${title}</div>
-                </div>
-            </div>
-        `;
-        toast.style.cssText = `
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 999999;
-            pointer-events: none;
-        `;
+        toast.innerHTML =
+            '<div style="background: linear-gradient(135deg, #f39c12, #e67e22); color: #fff; padding: 20px 40px; border-radius: 16px; font-size: 1.8rem; font-weight: bold; font-family: \'Segoe UI\', Arial, sans-serif; box-shadow: 0 20px 60px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 16px; animation: levelUpPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, levelUpFadeOut 3s ease forwards 0.5s;">' +
+            '  <span style="font-size: 3rem;">🎉</span>' +
+            '  <div>' +
+            '    <div style="font-size: 1rem; opacity: 0.8;">Новый уровень!</div>' +
+            '    <div>' + level + ' — ' + title + '</div>' +
+            '  </div>' +
+            '</div>';
+        toast.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 999999; pointer-events: none;';
 
         if (!document.getElementById('level-up-toast-styles')) {
             const style = document.createElement('style');
             style.id = 'level-up-toast-styles';
-            style.textContent = `
-                @keyframes levelUpPop {
-                    0% { transform: scale(0.3) rotate(-5deg); opacity: 0; }
-                    100% { transform: scale(1) rotate(0deg); opacity: 1; }
-                }
-                @keyframes levelUpFadeOut {
-                    0% { opacity: 1; }
-                    80% { opacity: 1; }
-                    100% { opacity: 0; transform: scale(1.1) translateY(-20px); }
-                }
-            `;
+            style.textContent =
+                '@keyframes levelUpPop { 0% { transform: scale(0.3) rotate(-5deg); opacity: 0; } 100% { transform: scale(1) rotate(0deg); opacity: 1; } }' +
+                '@keyframes levelUpFadeOut { 0% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; transform: scale(1.1) translateY(-20px); } }';
             document.head.appendChild(style);
         }
 
         document.body.appendChild(toast);
-        setTimeout(() => {
-            if (toast.parentNode) toast.remove();
-        }, 3500);
-
-        sessionStorage.setItem('level_up_toast_shown', 'true');
+        setTimeout(function() { if (toast.parentNode) toast.remove(); }, 3500);
     }
 
     window.addExperience = addExperience;
     window.showLevelUpToast = showLevelUpToast;
 
-    console.log('✅ experience.js готов');
+    console.log('✅ experience.js v2 готов');
 })();

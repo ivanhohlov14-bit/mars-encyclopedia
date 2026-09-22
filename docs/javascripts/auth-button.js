@@ -1,10 +1,12 @@
 // ============================================================
-// auth-button.js v6 — финал
+// auth-button.js v7 — финал
 // - Мгновенный рендер из кэша (без мерцания)
 // - 3 ключа + sessionStorage + cookie
 // - Кастомный мобильный хедер с заголовком
 // - Скрытие нативного .wy-nav-top (с восстановлением)
-// - Оригинальный стиль кнопок
+// - Мостик к supabase-js (comments/likes/experience)
+// - Надёжное определение мобильного (UA + matchMedia + width)
+// - onerror на аватарку → fallback ui-avatars
 // ============================================================
 (function() {
     'use strict';
@@ -39,7 +41,7 @@
     }
 
     // ============================================================
-    // 📖 READ SESSION
+    // 📖 READ SESSION — 3 ключа + sessionStorage + cookie
     // ============================================================
     function readSession() {
         var keys = [MY_KEY, SB_KEY, BACKUP_KEY];
@@ -75,7 +77,7 @@
     }
 
     // ============================================================
-    // 💾 CACHE
+    // 💾 CACHE — мгновенный рендер без мерцания
     // ============================================================
     function readCache(userId) {
         try {
@@ -106,12 +108,24 @@
     }
 
     // ============================================================
-    // 🔧 UTILS
+    // 📱 ОПРЕДЕЛЕНИЕ МОБИЛЬНОГО (надёжное: UA + matchMedia + width)
     // ============================================================
     function isMobile() {
+        // 1. User-Agent — самый надёжный на телефонах
+        if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            return true;
+        }
+        // 2. MatchMedia
+        try {
+            if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return true;
+        } catch(e) {}
+        // 3. innerWidth (fallback)
         return window.innerWidth <= 768;
     }
 
+    // ============================================================
+    // 🔧 UTILS
+    // ============================================================
     function getInitials(name) {
         if (!name) return '?';
         var parts = String(name).trim().split(/[\s._-]+/);
@@ -138,20 +152,98 @@
         try {
             var url = SUPABASE_URL + '/rest/v1/profiles?user_id=eq.' +
                       encodeURIComponent(session.user.id) +
-                      '&select=display_name,username,avatar_url&limit=1';
+                      '&select=*&limit=1';
             var res = await fetch(url, {
                 headers: {
                     'apikey': SUPABASE_KEY,
                     'Authorization': 'Bearer ' + session.access_token
                 }
             });
-            if (!res.ok) return null;
+            if (!res.ok) {
+                console.warn('[auth-button] profile fetch HTTP', res.status);
+                return null;
+            }
             var arr = await res.json();
-            return Array.isArray(arr) && arr.length ? arr[0] : null;
+            var p = Array.isArray(arr) && arr.length ? arr[0] : null;
+            if (!p) return null;
+
+            // Универсально: любое из возможных полей
+            var name = p.display_name || p.username || null;
+            var avatar = p.avatar_url || p.avatar || p.avatarUrl || null;
+
+            return { display_name: name, avatar_url: avatar, _raw: p };
         } catch(e) {
+            console.warn('[auth-button] profile fetch error:', e.message);
             return null;
         } finally {
             _profileFetching = false;
+        }
+    }
+
+    // ============================================================
+    // 🌉 BRIDGE TO SUPABASE-JS
+    // Передаём нашу сессию в supabase-js — чтобы comments.js,
+    // experience.js, likes.js и остальные видели пользователя
+    // ============================================================
+    var _bridged = false;
+    var _bridgeToken = null;
+
+    async function bridgeToSupabase(session) {
+        if (!session || !session.access_token) return;
+
+        // Уже мостили эту сессию — не повторяем
+        if (_bridged && _bridgeToken === session.access_token) return;
+
+        // Ищем supabase-js (до 6 секунд)
+        var tries = 0;
+        while (tries < 30) {
+            if (window.supabaseClient || (window.supabase && window.supabase.auth)) break;
+            await new Promise(function(r) { setTimeout(r, 200); });
+            tries++;
+        }
+
+        var client = window.supabaseClient;
+
+        // Если клиента нет, но библиотека загружена — создаём свой
+        if (!client && window.supabase && typeof window.supabase.createClient === 'function') {
+            try {
+                client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+                    auth: {
+                        storageKey: SB_KEY,
+                        persistSession: true,
+                        autoRefreshToken: true,
+                        detectSessionInUrl: false
+                    }
+                });
+                window.supabaseClient = client;
+            } catch(e) {
+                console.warn('[auth-button] createClient failed:', e.message);
+            }
+        }
+
+        if (!client || !client.auth) return;
+
+        // Проверяем: уже установлена?
+        try {
+            var cur = await client.auth.getSession();
+            var curToken = cur && cur.data && cur.data.session && cur.data.session.access_token;
+            if (curToken && curToken === session.access_token) {
+                _bridged = true;
+                _bridgeToken = session.access_token;
+                return;
+            }
+        } catch(e) {}
+
+        // Устанавливаем сессию
+        try {
+            await client.auth.setSession({
+                access_token: session.access_token,
+                refresh_token: session.refresh_token
+            });
+            _bridged = true;
+            _bridgeToken = session.access_token;
+        } catch(e) {
+            console.warn('[auth-button] setSession failed:', e.message);
         }
     }
 
@@ -175,7 +267,6 @@
     function ensureContainer() {
         var container = document.getElementById(CONTAINER_ID);
         if (container) {
-            // Проверим, что он в правильном родителе
             if (isMobile()) {
                 var h = document.getElementById(HEADER_ID);
                 if (h && container.parentElement !== h) {
@@ -261,25 +352,27 @@
     }
 
     // ============================================================
-    // 🎨 RENDER: LOGGED IN (оригинальный стиль)
+    // 🎨 RENDER: LOGGED IN (оригинальный стиль + onerror аватар)
     // ============================================================
     function renderLoggedIn(container, name, avatarUrl) {
         var safeName = escapeHtml(name);
-        var av = avatarUrl || ('https://ui-avatars.com/api/?name=' +
-                 encodeURIComponent(getInitials(name)) +
-                 '&background=6C63FF&color=fff&size=64&rounded=true');
+        var fallback = 'https://ui-avatars.com/api/?name=' +
+            encodeURIComponent(getInitials(name)) +
+            '&background=6C63FF&color=fff&size=64&rounded=true';
+        var av = avatarUrl || fallback;
+        var avEscaped = String(av).replace(/"/g, '&quot;');
 
         if (isMobile()) {
             container.innerHTML =
                 '<div style="display: flex; align-items: center; gap: 3px; background: rgba(255,255,255,0.15); border-radius: 20px; padding: 2px 6px 2px 4px; border: 1px solid rgba(255,255,255,0.1);">' +
-                '  <img src="' + av + '" alt="Avatar" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover;">' +
+                '  <img src="' + avEscaped + '" alt="" onerror="this.onerror=null;this.src=\'' + fallback + '\';" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover; background: #6C63FF;">' +
                 '  <a href="/profile/" style="color: #fff; text-decoration: none; font-size: 0.6rem; opacity: 0.9;">Профиль</a>' +
                 '  <a href="#" onclick="window.logoutUser(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.6rem;">Выйти</a>' +
                 '</div>';
         } else {
             container.innerHTML =
                 '<div style="display: flex; align-items: center; gap: 6px; background: #f5f5f5; padding: 4px 10px; border-radius: 20px; flex-wrap: wrap;">' +
-                '  <img src="' + av + '" alt="Avatar" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover;">' +
+                '  <img src="' + avEscaped + '" alt="" onerror="this.onerror=null;this.src=\'' + fallback + '\';" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover; background: #6C63FF;">' +
                 '  <span style="font-size: 0.75rem; color: #333; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' + safeName + '</span>' +
                 '  <a href="/profile/" style="color: #6C63FF; text-decoration: none; font-size: 0.75rem; white-space: nowrap;">Профиль</a>' +
                 '  <a href="#" onclick="window.logoutUser(); return false;" style="color: #c0392b; text-decoration: none; font-size: 0.75rem; white-space: nowrap;">Выйти</a>' +
@@ -288,7 +381,7 @@
     }
 
     // ============================================================
-    // 🔄 UPDATE UI
+    // 🔄 UPDATE UI — мгновенно из кэша, потом фоновое обновление
     // ============================================================
     var lastRenderedUserId = null;
     var updateLock = false;
@@ -330,6 +423,10 @@
                 lastRenderedUserId = userId;
             }
 
+            // 🌉 Мостик к supabase-js (для comments/likes/experience)
+            // Не await — не блокирует рендер
+            bridgeToSupabase(session);
+
             // ----- 2️⃣ Фоновый fetch профиля -----
             var profile = await fetchProfileFromServer(session);
             var freshName =
@@ -359,6 +456,7 @@
     // 🚪 LOGOUT
     // ============================================================
     window.logoutUser = function() {
+        // Чистим storage
         [MY_KEY, SB_KEY, BACKUP_KEY, CACHE_KEY].forEach(function(k) {
             try { localStorage.removeItem(k); } catch(e) {}
             try { sessionStorage.removeItem(k); } catch(e) {}
@@ -376,7 +474,17 @@
             toRemove.forEach(function(k) { localStorage.removeItem(k); });
         } catch(e) {}
 
+        // Выход из supabase-js
+        try {
+            if (window.supabaseClient && window.supabaseClient.auth) {
+                window.supabaseClient.auth.signOut();
+            }
+        } catch(e) {}
+
+        _bridged = false;
+        _bridgeToken = null;
         lastRenderedUserId = null;
+
         window.location.href = '/';
     };
 
@@ -385,6 +493,7 @@
     // ============================================================
     window.refreshAuthButton = function() {
         lastRenderedUserId = null;
+        _bridged = false;
         updateUI();
         setTimeout(updateUI, 400);
         setTimeout(updateUI, 1200);

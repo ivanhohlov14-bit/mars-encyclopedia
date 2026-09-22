@@ -58,6 +58,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js
   - javascripts/auth-button.js
   - javascripts/profile-mobile.js
+  - javascripts/session-keeper.js
   - assets/js/martian-lexicon.js
   - assets/js/gimn-kimeria-data.js?v=1
   - assets/js/gimn-player.js?v=1

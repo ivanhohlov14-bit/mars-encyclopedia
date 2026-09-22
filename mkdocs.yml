@@ -54,60 +54,52 @@ extra_css:
   - assets/css/wikipedia-footer.css
   - assets/css/scroll-mode.css
   - stylesheets/hide-dup.css
+  - stylesheets/mobile-fast.css
 
 extra_javascript:
-  # ─── 1. Supabase SDK — ОДИН раз ───
+  # ============ КРИТИЧНО — грузится ВСЕГДА, ВСЕГДА ПЕРВЫМ ============
+  - javascripts/mobile-optimizer.js
   - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js
-
-  # ─── 2. Авторизация — создаёт единый window.supabaseClient ───
+  - assets/js/supabase-client.js
   - javascripts/auth-button.js
   - javascripts/session-keeper.js
 
-  # ─── 3. Контент ───
-  - assets/js/martian-lexicon.js
-  - assets/js/gimn-kimeria-data.js?v=1
-  - assets/js/gimn-player.js?v=1
-  - assets/js/martian-mode.js
-
-  # ─── 4. Игровая логика (использует window.supabaseClient) ───
-  - javascripts/experience.js
-  - javascripts/page-tracker.js
+  # ============ БАЗОВОЕ — нужно всем ============
+  - javascripts/mobile-touch.js
+  - javascripts/lazy-images.js
+  - javascripts/mobile-cache.js
   - javascripts/comments.js
   - javascripts/comments-loader.js
-
-  # ─── 5. UI и остальное ───
+  - javascripts/experience.js
+  - javascripts/page-tracker.js
+  - assets/js/article-tools.js
+  - assets/js/daily-reward.js
+  - assets/js/streak-widget.js
+  - assets/js/track-visit.js
+  - assets/js/martian-lexicon.js
+  - assets/js/martian-mode.js
   - javascripts/sidebar-toggle.js
   - javascripts/sidebar-scroll.js
   - javascripts/remove-nav-buttons.js
-  - assets/js/qrcode.min.js
-  - assets/js/track-visit.js
-  - assets/js/daily-reward.js
-  - assets/js/article-tools.js
-  - assets/js/streak-widget.js
-  - assets/js/intro.js
-  - assets/js/device-link.js
-  - assets/js/supabase-client.js
-  - assets/js/qr-scanner.js
-  - assets/js/easter-eggs.js
   - assets/js/mobile.js
   - assets/js/wikipedia-footer.js?v=7
   - assets/js/language-switcher.js
-  - assets/js/mars-sound-synth.js?v=1
-  - assets/js/yandex-metrika.js?v=1
   - assets/js/scroll-mode.js
-  - assets/js/effects-menu.js
   - assets/js/collapse-menu.js?v=12
   - assets/js/auto-categories.js?v=2
+
+  # ============ ЛЕНИВО — грузим после 2 сек (audio, sounds) ============
+  - assets/js/gimn-kimeria-data.js?v=1
+  - assets/js/gimn-player.js?v=1
+  - assets/js/qrcode.min.js
+  - assets/js/intro.js
+  - assets/js/device-link.js
+  - assets/js/qr-scanner.js
+  - assets/js/easter-eggs.js
+  - assets/js/mars-sound-synth.js?v=1
+  - assets/js/yandex-metrika.js?v=1
+  - assets/js/effects-menu.js
   - assets/js/vip-cursor.js
-  # - assets/js/mars-tts.js
-  # - assets/js/mars-dust.js
-  # - assets/js/vip-scroll-reveal.js
-  # - assets/js/mars-audio.js
-  # - assets/js/ui-sounds.js
-  # - assets/js/vip-loader.js
-  # - assets/js/sound-engine.js
-  # - assets/js/sound-ui.js
-  # - assets/js/mobile-debug.js
 
 extra_head:
   - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

@@ -173,6 +173,14 @@ html body.mars-stars-on .pf-activity-bar::after{background:#1a1a2e;color:#d4d4e8
 (function(){
     'use strict';
 
+    // 📱 ТЕЛЕФОН → мобильный профиль
+    if (window.innerWidth <= 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        var _ms = document.createElement('script');
+        _ms.src = '/javascripts/profile-mobile.js?v=1';
+        document.head.appendChild(_ms);
+        return;
+    }
+
     try { document.body.style.overflow = ''; document.documentElement.style.overflow = ''; } catch(e) {}
 
     var SUPABASE_URL = "https://ncytbgbzfjfoqmmgfygz.supabase.co";

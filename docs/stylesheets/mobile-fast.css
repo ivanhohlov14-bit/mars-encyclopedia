@@ -1,0 +1,44 @@
+/* Только для мобильных — облегчение рендера */
+@media (max-width: 768px) {
+    /* 1. Отключаем тяжёлые тени */
+    * { box-shadow: none !important; text-shadow: none !important; }
+
+    /* 2. Только критичные тени */
+    .pf-hero,
+    .pf-btn,
+    .vip-banner,
+    #auth-btn-container > div { box-shadow: 0 4px 12px rgba(0,0,0,.08) !important; }
+
+    /* 3. Убираем backdrop-filter (жрёт GPU) */
+    * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+
+    /* 4. Отключаем тяжёлые анимации */
+    .pf-hero::before,
+    .pf-hero::after,
+    .vip-banner::before,
+    .vip-banner::after,
+    .lg-hero::before,
+    .lg-hero::after { animation: none !important; }
+
+    /* 5. Готовим к GPU только то, что реально анимируется */
+    .pf-avatar,
+    .pf-btn,
+    .pf-quick-card { transform: translateZ(0); }
+
+    /* 6. Отключаем smooth scroll (тяжело на мобильном) */
+    * { scroll-behavior: auto !important; }
+}
+
+/* Убираем плавные скроллы на мобильном */
+@media (max-width: 768px) {
+    html { scroll-behavior: auto; }
+}
+
+/* Или совсем для слабых устройств */
+@media (prefers-reduced-motion: reduce),
+       (max-width: 480px) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -511,6 +511,17 @@ comments: false
             document.cookie = SB_KEY + '=' + encodeURIComponent(compact) + '; expires=' + expires + '; path=/; SameSite=Lax';
             document.cookie = MY_KEY + '=' + encodeURIComponent(compact) + '; expires=' + expires + '; path=/; SameSite=Lax';
         } catch(e) {}
+        
+         // 🔔 Обновляем кнопку в шапке МГНОВЕННО
+    try {
+        if (typeof window.refreshAuthButton === 'function') {
+            window.refreshAuthButton();
+        }
+    } catch(e) {}
+    try {
+        window.dispatchEvent(new Event('storage'));
+    } catch(e) {}
+}
 
         // Проверяем, что записалось
         try {

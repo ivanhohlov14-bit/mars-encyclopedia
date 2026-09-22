@@ -904,3 +904,10 @@ comments: false
     }
 })();
 </script>
+
+<script>
+// После загрузки профиля — обновить кнопку в шапке
+setTimeout(function() {
+    if (typeof window.refreshAuthButton === 'function') window.refreshAuthButton();
+}, 800);
+</script>

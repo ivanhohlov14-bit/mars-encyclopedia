@@ -1,29 +1,219 @@
-<!-- БАННЕР -->
-<div style="
+---
+title: Марсианская энциклопедия
+comments: false
+---
+
+<link rel="preload" as="image" href="assets/images/header-banner.png" fetchpriority="high">
+<link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+
+<div class="vip-banner">
+  <img src="assets/images/header-banner.png" alt="" fetchpriority="high" decoding="async" width="1200" height="220">
+  <div class="vip-banner-overlay"></div>
+  <div class="vip-banner-content">
+    <h1>Марсианская энциклопедия</h1>
+    <p>Свободный справочник о мире «Письмо из Красной пыли»</p>
+  </div>
+</div>
+
+<style>
+/* ============================================================
+   VIP STYLES + MOBILE OPTIMIZATION
+   ============================================================ */
+:root {
+  --vip-border: #c8ccd1;
+  --vip-bg: var(--block-bg, #f8f9fa);
+  --vip-accent: #6C63FF;
+  --vip-accent-2: #A29BFE;
+  --vip-shadow: 0 1px 4px rgba(0,0,0,.08);
+  --vip-shadow-hover: 0 12px 32px -8px rgba(108,99,255,.25);
+}
+
+/* ============ BANNER ============ */
+.vip-banner {
+  position: relative;
   width: 100%;
   height: 220px;
-  background: url('assets/images/header-banner.png') center/cover no-repeat;
-  border-radius: 12px;
+  border-radius: 16px;
+  overflow: hidden;
   margin-bottom: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-family: 'Georgia', serif;
-  text-align: center;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 32px -8px rgba(0,0,0,.4);
+  contain: layout paint;
+  animation: vipFadeIn .6s cubic-bezier(.16,1,.3,1) both;
+}
+.vip-banner img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateZ(0);
+}
+.vip-banner-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.55) 100%),
+    radial-gradient(circle at 20% 30%, rgba(108,99,255,.2), transparent 60%);
+}
+.vip-banner-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 20px;
+  color: #fff; font-family: 'Georgia', serif;
+}
+.vip-banner-content h1 {
+  font-size: 2.8rem; font-weight: normal; margin: 0;
+  color: #fff !important;
+  border: none !important; padding: 0 !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.85);
+  letter-spacing: -.5px;
+}
+.vip-banner-content p {
+  color: #f0e6d0; font-size: 1.2rem; margin: 10px 0 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,.85);
+}
+
+/* ============ VIP CARDS ============ */
+.vip-card {
+  border: 2px solid var(--vip-border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  background: var(--vip-bg);
+  box-shadow: var(--vip-shadow);
+  transition: transform .3s cubic-bezier(.16,1,.3,1),
+              box-shadow .3s cubic-bezier(.16,1,.3,1),
+              border-color .3s;
   position: relative;
-">
-  <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); border-radius:12px;"></div>
-  <h1 style="color: white; font-size: 2.8rem; font-weight: normal; margin: 0; text-shadow: 0 2px 12px rgba(0,0,0,0.8); position:relative; z-index:1;">
-    Марсианская энциклопедия
-  </h1>
-  <p style="color: #f0e6d0; font-size: 1.2rem; margin: 10px 0 0; text-shadow: 0 2px 8px rgba(0,0,0,0.8); position:relative; z-index:1;">
-    Свободный справочник о мире «Письмо из Красной пыли»
-  </p>
-</div>
+  overflow: hidden;
+  animation: vipSlideUp .5s cubic-bezier(.16,1,.3,1) both;
+}
+.vip-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--vip-accent), var(--vip-accent-2), transparent);
+  opacity: 0; transition: opacity .35s;
+}
+.vip-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--vip-shadow-hover);
+  border-color: var(--vip-accent);
+}
+.vip-card:hover::before { opacity: 1; }
+
+/* Заголовки в карточках */
+.vip-card h3, .vip-card h4 {
+  margin-top: 0;
+  display: flex; align-items: center; gap: 8px;
+  color: #1a1a2e;
+}
+.vip-card h3 { font-size: 1.15rem; margin-bottom: 16px; }
+.vip-card h4 { font-size: 1rem; margin-bottom: 12px; }
+
+/* Стикеры */
+.vip-sticker {
+  width: 24px !important;
+  height: 24px !important;
+  display: inline !important;
+  vertical-align: middle;
+  margin-right: 6px;
+  transition: transform .3s cubic-bezier(.16,1,.3,1);
+}
+.vip-card:hover .vip-sticker { transform: scale(1.15) rotate(-6deg); }
+
+/* Кнопки */
+.vip-btn {
+  background: linear-gradient(135deg, #6C63FF, #A29BFE) !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 12px 28px !important;
+  font-size: 1rem !important;
+  font-family: inherit !important;
+  border-radius: 24px !important;
+  cursor: pointer !important;
+  box-shadow: 0 8px 20px -4px rgba(108,99,255,.45) !important;
+  transition: all .28s cubic-bezier(.16,1,.3,1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  -webkit-tap-highlight-color: transparent;
+}
+.vip-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 32px -4px rgba(108,99,255,.55) !important;
+}
+.vip-btn:active { transform: translateY(0) scale(.98) !important; }
+
+/* Таблица */
+.vip-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .92rem;
+}
+.vip-card table th {
+  text-align: left;
+  padding: 8px 10px;
+  color: #888;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  border-bottom: 2px solid var(--vip-accent) !important;
+}
+.vip-card table td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.vip-card table tbody tr { transition: background .2s; }
+.vip-card table tbody tr:hover { background: rgba(108,99,255,.05); }
+
+/* Списки */
+.vip-card ul { padding-left: 20px; margin: 0; }
+.vip-card ul li { margin-bottom: 10px; line-height: 1.6; }
+
+/* Анимации */
+@keyframes vipFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes vipSlideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes vipPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+/* === Ленивая загрузка карточек ниже fold === */
+.vip-lazy {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 300px;
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 768px) {
+  .vip-banner { height: 160px; border-radius: 12px; }
+  .vip-banner-content h1 { font-size: 1.5rem; }
+  .vip-banner-content p { font-size: .85rem; margin-top: 6px; }
+
+  .vip-card {
+    padding: 16px 16px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+  }
+  .vip-card h3 { font-size: 1rem; }
+  .vip-card h4 { font-size: .92rem; }
+
+  .vip-sticker { width: 20px !important; height: 20px !important; margin-right: 4px; }
+
+  .vip-btn { padding: 11px 20px !important; font-size: .9rem !important; }
+
+  .vip-card table { font-size: .82rem; }
+  .vip-card table th, .vip-card table td { padding: 6px 6px; }
+}
+
+@media (max-width: 480px) {
+  .vip-banner { height: 130px; }
+  .vip-banner-content h1 { font-size: 1.2rem; }
+  .vip-banner-content p { font-size: .75rem; }
+}
+
+/* Уменьшить анимации для слабых устройств */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
 
 # Марсианская энциклопедия
 
@@ -38,19 +228,10 @@
 3. **Логическая реконструкция** — моделирование биологических, социальных и культурных процессов, которые могли бы иметь место в условиях низкой гравитации (0,38 g), разрежённой атмосферы и постепенного угасания планеты.
 
 <div class="wiki-layout">
-    <!-- Левая колонка -->
-    <div class="wiki-column-left">
+<div class="wiki-column-left">
 
-<!-- ============ СЕКЦИЯ: Избранная статья ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h3><img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранная статья</h3>
+<div class="vip-card vip-lazy">
+<h3><img src="assets/images/stickers/sticker-tablet.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Избранная статья</h3>
 
 <h4>Хевсур — последний хранитель глины</h4>
 
@@ -58,723 +239,488 @@
 <p><a href="people/hevsur.md">Читать полную статью о Хевсуре →</a></p>
 </div>
 
-<!-- ============ СЕКЦИЯ: Знаете ли вы? ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h3><img src="assets/images/stickers/sticker-pin.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Знаете ли вы?</h3>
+<div class="vip-card vip-lazy">
+<h3><img src="assets/images/stickers/sticker-pin.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Знаете ли вы?</h3>
 
 <ul>
-<li><img src="assets/images/stickers/sticker-rocket.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> <strong>Талин</strong> — главный астронавигатор Марса, впервые увидел Землю в телескоп в 2714 году. Его расчёты траектории стали основой для Исхода к Земле.</li>
-<li><img src="assets/images/stickers/sticker-waves.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> <strong>Ацидалийское море</strong> — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет.</li>
-<li><img src="assets/images/stickers/sticker-tablet.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> <strong>Марсианская письменность</strong> — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках.</li>
-<li><img src="assets/images/stickers/sticker-scales-no.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Слово <strong>«Lān sur»</strong> в переводе означает <strong>«Глина помнит»</strong>. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории.</li>
+<li><img src="assets/images/stickers/sticker-rocket.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> <strong>Талин</strong> — главный астронавигатор Марса, впервые увидел Землю в телескоп в 2714 году. Его расчёты траектории стали основой для Исхода к Земле.</li>
+<li><img src="assets/images/stickers/sticker-waves.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> <strong>Ацидалийское море</strong> — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет.</li>
+<li><img src="assets/images/stickers/sticker-tablet.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> <strong>Марсианская письменность</strong> — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках.</li>
+<li><img src="assets/images/stickers/sticker-scales-no.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Слово <strong>«Lān sur»</strong> в переводе означает <strong>«Глина помнит»</strong>. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории.</li>
 </ul>
 </div>
 
-<!-- ============ СЕКЦИЯ: О цикле книг ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h3><img src="assets/images/stickers/sticker-books.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О цикле книг «Письмо из Красной пыли»</h3>
+<div class="vip-card vip-lazy">
+<h3><img src="assets/images/stickers/sticker-books.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> О цикле книг «Письмо из Красной пыли»</h3>
 
 <p><strong>«Письмо из Красной пыли»</strong> — цикл романов в жанре твёрдой научной фантастики и планетарной драмы, созданный автором <strong>Mnemis</strong>. Действие происходит на Марсе в последние десятилетия перед гибелью планеты — в Эпоху Умирания. Цикл объединяет научную достоверность с глубокими философскими размышлениями о памяти, надежде и цене выживания.</p>
 
 <h4>Вышедшие книги</h4>
 
-<table style="width:100%; border-collapse:collapse;">
+<table>
 <thead>
-<tr>
-<th style="text-align:left; padding:6px 10px; border-bottom:1px solid #c8ccd1;">Название</th>
-<th style="text-align:left; padding:6px 10px; border-bottom:1px solid #c8ccd1;">Год</th>
-<th style="text-align:left; padding:6px 10px; border-bottom:1px solid #c8ccd1;">Краткое описание</th>
-</tr>
+<tr><th>Название</th><th>Год</th><th>Краткое описание</th></tr>
 </thead>
 <tbody>
-<tr>
-<td style="padding:6px 10px;"><strong><a href="books/acidalia-sea.md">«Ацидалийское море»</a></strong></td>
-<td style="padding:6px 10px;">2026</td>
-<td style="padding:6px 10px;">Первый роман. Знакомит с миром Эпохи Умирания и жизнью в Окхасене</td>
-</tr>
+<tr><td><strong><a href="books/acidalia-sea.md">«Ацидалийское море»</a></strong></td><td>2026</td><td>Первый роман. Знакомит с миром Эпохи Умирания и жизнью в Окхасене</td></tr>
 </tbody>
 </table>
 </div>
 
-<!-- ============ СЕКЦИЯ: О проекте ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h3><img src="assets/images/stickers/sticker-galaxy.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> О проекте</h3>
+<div class="vip-card vip-lazy">
+<h3><img src="assets/images/stickers/sticker-galaxy.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> О проекте</h3>
 
 <p>Проект адресован широкой аудитории, интересующейся вопросами происхождения жизни во Вселенной, эволюции планет и возможных форм разума за пределами Земли. Марсианская энциклопедия предлагает читателю не готовые ответы, а пространство для размышлений — модели того, какой могла бы быть история Марса, если бы на нём действительно существовала жизнь.</p>
 
 <p>Все гипотезы, представленные в проекте, основаны на реальных научных данных и не противоречат современному знанию. По вопросам сотрудничества и уточнения материалов: mnemis.author@mail.ru.</p>
 </div>
 
-<!-- ============ СЕКЦИЯ: Интерактивные элементы ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h3><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Интерактивные элементы</h3>
+<div class="vip-card vip-lazy">
+<h3><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Интерактивные элементы</h3>
 
-<h4><img src="assets/images/stickers/sticker-cube.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Случайная статья</h4>
+<h4><img src="assets/images/stickers/sticker-cube.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Случайная статья</h4>
 
-<div style="text-align: center; margin: 1.5rem 0;">
-  <button id="randomArticleBtn" style="
-    background: #0645ad;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 1.2rem;
-    font-family: 'Georgia', serif;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  ">
-    <img src="assets/images/stickers/sticker-cube.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Случайная статья
-  </button>
+<div style="text-align: center; margin: 1.2rem 0;">
+  <button id="randomArticleBtn" class="vip-btn">🎲 Случайная статья</button>
 </div>
-
-<script>
-  (function() {
-    const pages = [
-      'history/periodization/',
-      'history/timeline/',
-      'history/myths/',
-      'history/epokha-osnovaniya/',
-      'history/epokha-rascveta/',
-      'history/epokha-umiraniya/',
-      'history/iskhod/',
-      'history/pirate-kingdom/',
-      'geography/acidalia-sea/',
-      'geography/okhasen/',
-      'geography/rogen-aria/',
-      'geography/farsida/',
-      'geography/farsida-caves/',
-      'geography/ksanf-river/',
-      'geography/eritreya/',
-      'geography/utopiya/',
-      'geography/edem/',
-      'geography/tarsis/',
-      'geography/podzemniy-khram/',
-      'geography/kosmodrom-farsidy/',
-      'geography/noviy-okhasen/',
-      'geography/akademiya-okhasena/',
-      'astronomy/mars-sky/',
-      'astronomy/phobos-deimos/',
-      'astronomy/earth-as-target/',
-      'astronomy/earth/',
-      'terms/lan-sur/',
-      'terms/tablichki/',
-      'biology/gemotsianin/',
-      'science/geology/',
-      'people/hevsur/',
-      'people/talin/',
-      'people/ella/',
-      'people/yarra/',
-      'people/alira/',
-      'people/aratan-iii/',
-      'people/irayina/',
-      'people/miran/',
-      'people/kharan/',
-      'people/soviya/',
-      'people/arash/',
-      'people/kan/',
-      'people/sarum-ii/',
-      'people/sarum-velikiy/',
-      'people/ksanf-monster/',
-      'mythology/kho/',
-      'mythology/akha/',
-      'mythology/araksis/',
-      'mythology/prorochestvo-kharana/',
-      'books/acidalia-sea/'
-    ];
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      const btn = document.getElementById('randomArticleBtn');
-      if (!btn) return;
-      
-      btn.addEventListener('click', function() {
-        const random = pages[Math.floor(Math.random() * pages.length)];
-        window.location.href = random;
-      });
-    });
-  })();
-</script>
 </div>
 
 </div>
 
-<!-- ============ ПРАВАЯ КОЛОНКА ============ -->
 <div class="wiki-column-right">
 
-<!-- ============ СЕКЦИЯ: Марсианский календарь ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h4><img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Марсианский календарь</h4>
-
-<div id="martianCalendar" style="text-align: center; font-family: 'Georgia', serif;">
-  <div id="martianDate" style="font-size:1.2rem; color: var(--text-color, #202122);">Загрузка...</div>
+<div class="vip-card vip-lazy">
+<h4><img src="assets/images/stickers/sticker-calendar.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Марсианский календарь</h4>
+<div id="martianCalendar" style="text-align:center;font-family:'Georgia',serif;">
+  <div id="martianDate" style="font-size:1.2rem;color:var(--text-color,#202122);">Загрузка...</div>
+</div>
 </div>
 
-<script>
-  (function() {
-    const months = [
-      { name: 'Ākha-dzen', days: 31 },
-      { name: 'Kōl-khan', days: 30 },
-      { name: 'Dzen-ākha', days: 32 },
-      { name: 'Khōsen', days: 31 },
-      { name: 'Mar-dzen', days: 33 },
-      { name: 'Ariya-mar', days: 30 },
-      { name: 'Zal-ākha', days: 31 },
-      { name: 'Thal-khō', days: 32 },
-      { name: 'Kōl-ghar', days: 29 },
-      { name: 'Mōr-ākha', days: 31 },
-      { name: 'Dzen-kōl', days: 30 },
-      { name: 'Xal-mar', days: 28 },
-      { name: 'Lān-sen', days: 29 },
-      { name: 'Khō-mōr', days: 31 },
-      { name: 'Ākha-mōr', days: 32 },
-      { name: 'Kōl-suf', days: 33 },
-      { name: 'Dzen-thal', days: 31 },
-      { name: 'Ghōl-ākha', days: 30 },
-      { name: 'Rōg-ari', days: 29 },
-      { name: 'Mar-lān', days: 31 },
-      { name: 'Ksanf-suf', days: 32 },
-      { name: 'Yar-okh', days: 33 }
-    ];
-    const MARTIAN_YEAR_DAYS = months.reduce((sum, m) => sum + m.days, 0);
-    const EARTH_DAYS_IN_MARTIAN_YEAR = 668.6;
-    const BOOK_REF_YEAR = 2740;
-    const BOOK_REF_DAYS_AGO = 3798000000;
-
-    function getMartianDate() {
-      const now = new Date();
-      const earthDaysFromStart = (now.getTime() - new Date(2026, 0, 1).getTime()) / (1000 * 60 * 60 * 24);
-      const martianYearsOffset = earthDaysFromStart / EARTH_DAYS_IN_MARTIAN_YEAR;
-      const baseYear = BOOK_REF_DAYS_AGO + BOOK_REF_YEAR;
-      const year = Math.floor(baseYear + martianYearsOffset);
-      const dayOfYear = Math.floor((earthDaysFromStart * (MARTIAN_YEAR_DAYS / EARTH_DAYS_IN_MARTIAN_YEAR)) % MARTIAN_YEAR_DAYS);
-      let remaining = dayOfYear;
-      let monthIndex = 0;
-      for (let i = 0; i < months.length; i++) {
-        if (remaining < months[i].days) {
-          monthIndex = i;
-          break;
-        }
-        remaining -= months[i].days;
-      }
-      const day = remaining + 1;
-      const seasonNames = ['Пробуждение', 'Цветение', 'Зной', 'Ветры', 'Угасание', 'Заморозки', 'Тьма', 'Ледяной покров'];
-      const season = seasonNames[Math.floor(monthIndex / 2) % seasonNames.length];
-      return { year: year.toLocaleString(), month: months[monthIndex].name, day, season };
-    }
-
-    const date = getMartianDate();
-    document.getElementById('martianDate').innerHTML = `
-      <div><strong>${date.month}</strong> ${date.day}‑й день</div>
-      <div>Год ${date.year} Э.О.</div>
-      <div style="font-size:0.9rem; color:var(--text-muted, #555); margin-top:4px;">${date.season}</div>
-    `;
-  })();
-</script>
-</div>
-
-<!-- ============ СЕКЦИЯ: В этот день на Марсе ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h4><img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> В этот день на Марсе</h4>
-
-<div id="thisDayBlock" style="font-family: 'Georgia', serif; text-align: center; font-size: 1rem; color: var(--text-color, #202122);">
-  <div style="font-weight:bold; margin-bottom:10px;">
-    <img src="assets/images/stickers/sticker-calendar.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;">
+<div class="vip-card vip-lazy">
+<h4><img src="assets/images/stickers/sticker-calendar.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> В этот день на Марсе</h4>
+<div id="thisDayBlock" style="font-family:'Georgia',serif;text-align:center;font-size:1rem;">
+  <div style="font-weight:bold;margin-bottom:10px;">
+    <img src="assets/images/stickers/sticker-calendar.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24">
     <span id="thisDayDate">загрузка...</span>
   </div>
-  <div id="thisDayEvents" style="text-align:left; font-size:0.95rem; line-height:1.55;">загрузка...</div>
-  <div id="thisDayQuote" style="margin-top:12px; padding-top:10px; border-top:1px solid var(--border-color, #eaecf0); font-style:italic; font-size:0.9rem; color:var(--text-muted, #555);"></div>
+  <div id="thisDayEvents" style="text-align:left;font-size:.95rem;line-height:1.55;">загрузка...</div>
+  <div id="thisDayQuote" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border-color,#eaecf0);font-style:italic;font-size:.9rem;color:var(--text-muted,#555);"></div>
+</div>
 </div>
 
-<script>
-  (function() {
-    const MONTHS_DAYS = [31,30,32,31,33,30,31,32,29,31,30,28,29,31,32,33,31,30,29,31,32,33];
-    const MONTHS_NAMES = [
-      'Ākha-dzen','Kōl-khan','Dzen-ākha','Khōsen','Mar-dzen','Ariya-mar',
-      'Zal-ākha','Thal-khō','Kōl-ghar','Mōr-ākha','Dzen-kōl','Xal-mar',
-      'Lān-sen','Khō-mōr','Ākha-mōr','Kōl-suf','Dzen-thal','Ghōl-ākha',
-      'Rōg-ari','Mar-lān','Ksanf-suf','Yar-okh'
-    ];
-    const MARTIAN_YEAR_DAYS = MONTHS_DAYS.reduce(function(s,n){return s+n;},0);
-    const EARTH_DAYS_IN_MARTIAN_YEAR = 668.6;
-
-    function getCurrentMartianDate() {
-      const now = new Date();
-      const start = new Date(2026, 0, 1).getTime();
-      const earthDays = (now.getTime() - start) / 86400000;
-      const dayOfYear = Math.floor((earthDays * (MARTIAN_YEAR_DAYS / EARTH_DAYS_IN_MARTIAN_YEAR)) % MARTIAN_YEAR_DAYS);
-      let remaining = dayOfYear, mIdx = 0;
-      for (let i = 0; i < MONTHS_DAYS.length; i++) {
-        if (remaining < MONTHS_DAYS[i]) { mIdx = i; break; }
-        remaining -= MONTHS_DAYS[i];
-      }
-      return { monthIndex: mIdx, day: remaining + 1 };
-    }
-
-    async function fetchJSON() {
-      const paths = ['data/this-day.json', '../data/this-day.json', '/data/this-day.json'];
-      for (let i = 0; i < paths.length; i++) {
-        try {
-          const r = await fetch(paths[i]);
-          if (r.ok) return await r.json();
-        } catch(e) {}
-      }
-      throw new Error('this-day.json не найден');
-    }
-
-    async function load() {
-      const dateEl = document.getElementById('thisDayDate');
-      const eventsEl = document.getElementById('thisDayEvents');
-      const quoteEl = document.getElementById('thisDayQuote');
-      if (!dateEl || !eventsEl || !quoteEl) return;
-
-      try {
-        const data = await fetchJSON();
-        const cur = getCurrentMartianDate();
-        const monthName = MONTHS_NAMES[cur.monthIndex];
-        const month = data.months[cur.monthIndex];
-
-        dateEl.textContent = cur.day + '-й день ' + monthName;
-
-        const events = (data.events || []).filter(function(e) {
-          return e.month === monthName && e.day === cur.day;
-        });
-
-        let html = '';
-        html += '<div style="text-align:center; font-size:0.85rem; color:var(--text-muted,#666); margin-bottom:10px;">';
-        html += month.season + ' · «' + month.meaning + '»' + (month.note ? ' — ' + month.note : '');
-        html += '</div>';
-
-        if (events.length) {
-          events.sort(function(a,b){ return (a.year||0) - (b.year||0); });
-          events.forEach(function(ev) {
-            html += '<div style="margin-bottom:10px;">';
-            if (ev.year) {
-              html += '<span style="font-weight:bold; color:#6C63FF;">' + ev.year + ' г.</span> — ';
-            }
-            html += '<span style="font-weight:bold;">' + ev.title + '</span>';
-            html += '<div style="font-size:0.9rem; color:var(--text-color,#333); margin-top:2px;">' + ev.text + '</div>';
-            if (ev.link) {
-              html += '<a href="' + ev.link + '" style="font-size:0.85rem; color:#6C63FF;">Читать подробнее →</a>';
-            }
-            html += '</div>';
-          });
-        } else {
-          html += '<div style="text-align:center; color:var(--text-muted,#888); font-style:italic;">На этот день в хрониках событий пока не отмечено.</div>';
-        }
-
-        eventsEl.innerHTML = html;
-
-        const quotes = data.quotes || [];
-        if (quotes.length) {
-          const idx = (cur.day + cur.monthIndex) % quotes.length;
-          quoteEl.textContent = '«' + quotes[idx] + '»';
-        }
-      } catch(e) {
-        eventsEl.innerHTML = '<div style="text-align:center; color:#999;">Не удалось загрузить события дня.</div>';
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', load);
-    } else {
-      load();
-    }
-  })();
-</script>
-</div>
-
-<!-- ============ СЕКЦИЯ: Изображение дня ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h4><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Изображение дня</h4>
-
-<div id="pictureOfDayBlock" style="font-family: 'Georgia', serif; text-align: center; color: var(--text-color, #202122);">
-  <div style="font-weight:bold; margin-bottom:10px;">
-    <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Изображение дня
+<div class="vip-card vip-lazy">
+<h4><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Изображение дня</h4>
+<div id="pictureOfDayBlock" style="font-family:'Georgia',serif;text-align:center;">
+  <div id="podWrap" style="min-height:200px;display:flex;align-items:center;justify-content:center;">
+    <div style="color:var(--text-muted,#888);font-style:italic;">загрузка...</div>
   </div>
-  <div id="podWrap" style="min-height:200px; display:flex; align-items:center; justify-content:center;">
-    <div style="color:var(--text-muted, #888); font-style:italic;">загрузка...</div>
-  </div>
-  <div id="podCaption" style="margin-top:12px; font-size:0.95rem; font-style:italic; color:var(--text-muted, #555);"></div>
-  <div id="podCounter" style="margin-top:6px; font-size:0.75rem; color:var(--text-muted, #888); border-top:1px solid var(--border-color, #eaecf0); padding-top:6px;"></div>
+  <div id="podCaption" style="margin-top:12px;font-size:.95rem;font-style:italic;color:var(--text-muted,#555);"></div>
+  <div id="podCounter" style="margin-top:6px;font-size:.75rem;color:var(--text-muted,#888);border-top:1px solid var(--border-color,#eaecf0);padding-top:6px;"></div>
+</div>
 </div>
 
-<script>
-  (function() {
-    async function fetchJSON() {
-      const paths = ['data/pictures.json', '../data/pictures.json', '../../data/pictures.json', '/data/pictures.json'];
-      for (let i = 0; i < paths.length; i++) {
-        try {
-          const r = await fetch(paths[i]);
-          if (r.ok) return await r.json();
-        } catch(e) {}
-      }
-      throw new Error('pictures.json не найден');
-    }
-
-    function dayOfYear() {
-      const now = new Date();
-      const start = new Date(now.getFullYear(), 0, 0);
-      return Math.floor((now - start) / 86400000);
-    }
-
-    async function load() {
-      const wrap = document.getElementById('podWrap');
-      const capEl = document.getElementById('podCaption');
-      const cntEl = document.getElementById('podCounter');
-      if (!wrap) return;
-
-      try {
-        const data = await fetchJSON();
-        const pics = Array.isArray(data) ? data : (data.pictures || []);
-        if (!pics.length) throw new Error('Список пуст');
-
-        const idx = dayOfYear() % pics.length;
-        const pic = pics[idx];
-
-        const img = document.createElement('img');
-        img.src = pic.src;
-        img.alt = pic.caption || '';
-        img.loading = 'lazy';
-        img.style.cssText = 'max-width:100%; max-height:520px; border-radius:6px; display:block; margin:0 auto;';
-
-        img.onerror = function() {
-          wrap.innerHTML = '<div style="color:#999; font-style:italic;">Изображение недоступно</div>';
-        };
-
-        wrap.innerHTML = '';
-        wrap.appendChild(img);
-        capEl.textContent = pic.caption || '';
-        cntEl.textContent = 'Картина ' + (idx + 1) + ' из ' + pics.length;
-      } catch(e) {
-        wrap.innerHTML = '<div style="color:#999; font-style:italic;">Не удалось загрузить Изображение дня.</div>';
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', load);
-    } else {
-      load();
-    }
-  })();
-</script>
-</div>
-
-<!-- ============ СЕКЦИЯ: Цитата дня ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h4><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Цитата дня</h4>
-
-<div id="quoteOfTheDay" style="border-left: 4px solid #6C63FF; padding: 12px 20px; font-style: italic; font-family: 'Georgia', serif; font-size: 1.1rem; color: var(--text-color, #202122);">
+<div class="vip-card vip-lazy">
+<h4><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Цитата дня</h4>
+<div id="quoteOfTheDay" style="border-left:4px solid #6C63FF;padding:12px 20px;font-style:italic;font-family:'Georgia',serif;font-size:1.05rem;">
   <span id="quoteText">Загрузка...</span>
 </div>
-
-<script>
-  (function() {
-    const quotes = [
-      { text: '«Khō mōr, dzen mōr, lān ān mōr» — Огонь умрёт, звезда умрёт, память не умрёт.', source: 'Хевсур' },
-      { text: '«Глина помнит даже то, что мы сами забыли.»', source: 'Хевсур' },
-      { text: '«Я всё записал. Теперь ваша очередь — помнить.»', source: 'Хевсур' },
-      { text: '«Мы не победили время, но мы записали его. И это наша победа.»', source: 'Хевсур' },
-      { text: '«Если я перестану писать, то кто расскажет о нас через тысячу лет?»', source: 'Хевсур' },
-      { text: '«Глина не лжёт, и она не умирает. Она ждёт. И когда ты берёшь её в руки, ты берёшь в руки время.»', source: 'Хевсур' },
-      { text: '«Я сижу в пещере и смотрю на воду через трещину в скале. Она не двигается. Она застыла, как глина, которую я уже не могу обжечь. Глина помнит. А море молчит.»', source: 'Хевсур' },
-      { text: '«Смотри на звёзды и помни жизнь.»', source: 'Талин' },
-      { text: '«Мы не бежим. Мы идём туда, где нас ждут. Даже если ждут только пустые скалы, мы высечем на них свои имена.»', source: 'Талин' },
-      { text: '«Глина помнит даже то, что мы сами забыли. Если я потеряю память, пусть она сохранит мою душу.»', source: 'Талин' },
-      { text: '«Я, Талин, сын Эрдана, смотрел на звёзды и помнил жизнь. Теперь я забываю, но глина помнит за меня. Lān sur.»', source: 'Талин' },
-      { text: '«Я правил камнями, но не сумел удержать воду. Пусть те, кто улетают, правят хотя бы памятью.»', source: 'Аратан III' },
-      { text: '«Мы не бежим от богов — мы идём туда, где они ещё не ступали. Если Марс суждено покинуть, пусть мы оставим на нём не только кости, но и память о том, что мы были.»', source: 'Аратан III' },
-      { text: '«Море уходит, но я остаюсь. Вода умирает, но глина помнит.»', source: 'Совия' },
-      { text: '«Я не записываю имена. Я пою их. Когда я умру, мои песни будут жить в тех, кто их слышал.»', source: 'Совия' },
-      { text: '«Ты слышишь? Это не струны плачут. Это море прощается с нами.»', source: 'Совия' },
-      { text: '«Ксанф спит на дне, в Ксанфовой Пасти, и когда он проснётся, море вскипит.»', source: 'Совия' },
-      { text: '«Lān sur. — Глина помнит.»', source: 'Древняя формула' },
-      { text: '«Okh sen ākha, dzen thal marzān» — Город помнит море, смотри на звёзды, марсианин.', source: 'Древняя формула' },
-      { text: '«Ksanf lān, okh ākha thal» — Река помнит, город смотрит на море.', source: 'Древняя формула' },
-      { text: '«Море кормит нас, море поит нас, море забирает нас, когда приходит время. Мы не боимся смерти, потому что море — наш дом.»', source: 'Ксанф (пиратский король)' },
-      { text: '«Тот, кто украдёт долю брата, будет брошен в воду. Тот, кто предаст брата, будет брошен в воду. Тот, кто забудет имя брата, будет проклят навеки. Море помнит всех. Море не прощает.»', source: 'Ксанф (пиратский король)' },
-      { text: '«Глина не лжёт, но она не говорит всего. Тот, кто умеет слушать, услышит и между строк.»', source: 'Харан' },
-      { text: '«Я, Харан, сын Сарума, пишу это в год, когда море отступило от стен нашего города. Мы думали, что это временно. Мы думали, что вода вернётся. Но она не вернулась.»', source: 'Харан' },
-      { text: '«Ты, кто идёт наверх, запомни: мы строили эту лестницу не для себя. Мы строили её для тебя. Чтобы ты мог выйти. Чтобы ты мог рассказать. Не подведи нас.»', source: 'Харан' },
-      { text: '«Вы не запоминаете звёзды. Звёзды запоминают вас. Если вы смотрите на них достаточно долго, они начнут показывать вам путь домой.»', source: 'Йарра' },
-      { text: '«Мы не спасаем мир. Мы спасаем мгновения. Один взгляд, одно слово, одна капля воды... Это и есть жизнь.»', source: 'Йарра' },
-      { text: '«Когда Фобос поднимется выше обычного, земля начнёт дрожать. Сначала реки помутнеют, потом высохнут. Потом из трещин пойдёт дым, и небо станет красным, как кровь.»', source: 'Пророчество Харана' },
-      { text: '«Из пепла поднимется голос, и он скажет: "Ищите убежища за пределами своего мира". И те, кто услышат, построят корабли и увидят голубую звезду.»', source: 'Пророчество Харана' },
-      { text: '«Она отняла у нас море, но оставила нам соль, чтобы мы помнили.»', source: 'Плач Акха-Кора' },
-      { text: '«Когда Кхо коснулся Акхи, вскипела вода, и пар поднялся к небу, рождая облака. Когда Акха коснулась Кхо, остыл огонь, и из его застывшего сердца родился камень. Так явились небо и земля.»', source: 'Книга Харан' },
-      { text: '«Мы не можем изменить планету, но мы можем изменить себя. Это проще и быстрее.»', source: 'Ирайна' },
-      { text: '«Они умерли, чтобы дать жизнь другим. Это не жертва, это — круговорот.»', source: 'Ирайна' },
-      { text: '«Машины честнее людей. Они не лгут, не предают, не надеются на чудо. Они просто работают — или ломаются. Всё остальное — иллюзия.»', source: 'Миран' },
-      { text: '«Прощай, Талин. Ты был прав. Земля — наша надежда. Помни обо мне... Lān sur.»', source: 'Миран' },
-      { text: '«Я заметила нечто необычное в пробе, взятой у подводного источника. Эти организмы не похожи на те, что мы видели раньше. Они делятся быстрее и, кажется, используют какой-то неизвестный нам механизм метаболизма.»', source: 'Элла' }
-    ];
-
-    const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 0);
-    const diff = (now - start) + (start.getTimezoneOffset() - now.getTimezoneOffset()) * 60000;
-    const dayOfYear = Math.floor(diff / 86400000);
-    const index = dayOfYear % quotes.length;
-    const quote = quotes[index];
-
-    document.getElementById('quoteText').innerHTML = `${quote.text}<br><span style="font-style:normal; font-size:0.9rem; color:var(--link-color, #0645ad);">— ${quote.source}</span>`;
-  })();
-</script>
 </div>
 
-<!-- ============ СЕКЦИЯ: Спутники Марса ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h4><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса</h4>
-
-<div id="moonPhase" style="font-family: 'Georgia', serif; text-align: center; font-size: 1rem; color: var(--text-color, #202122);">
-  <div style="font-weight:bold; margin-bottom:6px;">
-    <img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Спутники Марса
-  </div>
-  <div>
-    <span style="font-weight:bold;">
-      <img src="assets/images/stickers/sticker-phobos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос:
-    </span>
-    <span id="phobosStatus">загрузка...</span>
-  </div>
-  <div>
-    <span style="font-weight:bold;">
-      <img src="assets/images/stickers/sticker-deimos.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос:
-    </span>
-    <span id="deimosStatus">загрузка...</span>
-  </div>
-  <div style="margin-top:8px; font-size:0.8rem; color:var(--text-muted, #555);">
+<div class="vip-card vip-lazy">
+<h4><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Спутники Марса</h4>
+<div id="moonPhase" style="font-family:'Georgia',serif;text-align:center;font-size:1rem;">
+  <div><span style="font-weight:bold;">
+    <img src="assets/images/stickers/sticker-phobos.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Фобос:
+  </span> <span id="phobosStatus">загрузка...</span></div>
+  <div><span style="font-weight:bold;">
+    <img src="assets/images/stickers/sticker-deimos.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Деймос:
+  </span> <span id="deimosStatus">загрузка...</span></div>
+  <div style="margin-top:8px;font-size:.8rem;color:var(--text-muted,#555);">
     <div id="phobosTimer"></div>
     <div id="deimosTimer"></div>
   </div>
-  <div style="margin-top:10px; font-size:0.7rem; color:var(--text-muted, #888); border-top:1px solid var(--border-color, #eaecf0); padding-top:6px;">
+  <div style="margin-top:10px;font-size:.7rem;color:var(--text-muted,#888);border-top:1px solid var(--border-color,#eaecf0);padding-top:6px;">
     Данные: NASA Horizons (28 июня 2026, 14:34 UT)
   </div>
 </div>
-
-<script>
-  (function() {
-    const PHOBOS_PERIOD = 27540;
-    const DEIMOS_PERIOD = 109080;
-    const PHOBOS_INITIAL = 0.62;
-    const DEIMOS_INITIAL = 0.62;
-    const refDate = new Date(Date.UTC(2026, 5, 28, 14, 34, 0));
-
-    function getStatus(phase) {
-      const p = ((phase % 1) + 1) % 1;
-      if (p < 0.25) return '<img src="assets/images/stickers/sticker-satellites-rise.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> восходит';
-      if (p < 0.50) return '☀️ в зените';
-      if (p < 0.75) return '<img src="assets/images/stickers/sticker-satellites-set.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> заходит';
-      return '<img src="assets/images/stickers/sticker-beyond-horizon.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> за горизонтом';
-    }
-
-    function getNextPhaseTime(phase, period) {
-      const p = ((phase % 1) + 1) % 1;
-      const next = Math.ceil(p / 0.25) * 0.25;
-      let diff = next - p;
-      if (diff <= 0) diff += 0.25;
-      return diff * period;
-    }
-
-    function formatTime(seconds) {
-      if (seconds < 0) seconds = 0;
-      const h = Math.floor(seconds / 3600);
-      const m = Math.floor((seconds % 3600) / 60);
-      const s = Math.floor(seconds % 60);
-      return `${h}ч ${m}м ${s}с`;
-    }
-
-    function update() {
-      const now = new Date();
-      const elapsed = (now - refDate) / 1000;
-      const phobosPhase = (PHOBOS_INITIAL + elapsed / PHOBOS_PERIOD) % 1;
-      const deimosPhase = (DEIMOS_INITIAL + elapsed / DEIMOS_PERIOD) % 1;
-
-      document.getElementById('phobosStatus').innerHTML = getStatus(phobosPhase);
-      document.getElementById('deimosStatus').innerHTML = getStatus(deimosPhase);
-      document.getElementById('phobosTimer').innerHTML = 
-        `<img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Фобос: ${formatTime(getNextPhaseTime(phobosPhase, PHOBOS_PERIOD))} до смены`;
-      document.getElementById('deimosTimer').innerHTML = 
-        `<img src="assets/images/stickers/sticker-clock.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Деймос: ${formatTime(getNextPhaseTime(deimosPhase, DEIMOS_PERIOD))} до смены`;
-    }
-
-    update();
-    setInterval(update, 1000);
-  })();
-</script>
 </div>
 
-<!-- ============ СЕКЦИЯ: Избранные списки ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h3><img src="assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Избранные списки</h3>
+<div class="vip-card vip-lazy">
+<h3><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Избранные списки</h3>
 
-<!-- === Текущий избранный список === -->
-<div style="display:flex; gap:14px; align-items:flex-start; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #eaecf0;">
-  <div style="flex:0 0 100px; text-align:center;">
+<div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #eaecf0;">
+  <div style="flex:0 0 100px;text-align:center;">
     <a href="lists/eden-kings/">
-      <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" style="width:100px; height:100px; object-fit:cover; border-radius:6px; border:1px solid #c8ccd1; display:block;">
+      <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" loading="lazy" decoding="async" width="100" height="100" style="width:100px;height:100px;object-fit:cover;border-radius:8px;border:1px solid #c8ccd1;display:block;transition:transform .3s;">
     </a>
-    <div style="font-size:0.62rem; color:#888; margin-top:5px; line-height:1.15;">Герб династии<br>королей Эдема</div>
+    <div style="font-size:.62rem;color:#888;margin-top:5px;line-height:1.15;">Герб династии<br>королей Эдема</div>
   </div>
-  <div style="flex:1; min-width:0;">
-    <div style="font-size:0.72rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Последний избранный список</div>
-    <div style="font-size:1.05rem; line-height:1.3;"><a href="lists/eden-kings/">Список королей Эдема</a></div>
+  <div style="flex:1;min-width:0;">
+    <div style="font-size:.72rem;color:#6C63FF;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Последний избранный</div>
+    <div style="font-size:1.05rem;line-height:1.3;"><a href="lists/eden-kings/">Список королей Эдема</a></div>
   </div>
 </div>
 
-<!-- === Предыдущий избранный список === -->
-<div style="display:flex; gap:14px; align-items:flex-start; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid #eaecf0;">
-  <div style="flex:0 0 100px; text-align:center;">
+<div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #eaecf0;">
+  <div style="flex:0 0 100px;text-align:center;">
     <a href="lists/ksanf-pirates/">
-      <img src="assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Ксанф" style="width:100px; height:100px; object-fit:cover; border-radius:6px; border:1px solid #c8ccd1; display:block;">
+      <img src="assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Ксанф" loading="lazy" decoding="async" width="100" height="100" style="width:100px;height:100px;object-fit:cover;border-radius:8px;border:1px solid #c8ccd1;display:block;transition:transform .3s;">
     </a>
-    <div style="font-size:0.62rem; color:#888; margin-top:5px; line-height:1.15;">Герб династии<br>Ксанфид</div>
+    <div style="font-size:.62rem;color:#888;margin-top:5px;line-height:1.15;">Герб династии<br>Ксанфид</div>
   </div>
-  <div style="flex:1; min-width:0;">
-    <div style="font-size:0.72rem; color:#6C63FF; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Предыдущий избранный список</div>
-    <div style="font-size:1.05rem; line-height:1.3;"><a href="lists/ksanf-pirates/">Пиратские короли Ксанфа</a></div>
+  <div style="flex:1;min-width:0;">
+    <div style="font-size:.72rem;color:#6C63FF;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Предыдущий</div>
+    <div style="font-size:1.05rem;line-height:1.3;"><a href="lists/ksanf-pirates/">Пиратские короли Ксанфа</a></div>
   </div>
 </div>
 
-<div style="text-align:center; margin-top:14px; padding-top:12px; border-top:1px solid #eaecf0;">
-  <a href="lists/" style="font-size:0.9rem;">Все избранные списки →</a>
+<div style="text-align:center;margin-top:14px;padding-top:12px;border-top:1px solid #eaecf0;">
+  <a href="lists/" style="font-size:.9rem;">Все избранные списки →</a>
 </div>
 </div>
-<!-- ← ЗДЕСЬ ЗАКРЫВАЕТСЯ БЛОК "Избранные списки" -->
 
-
-<!-- ============ СЕКЦИЯ: Звук ветра на Марсе ============ -->
-<div style="
-  border: 2px solid #c8ccd1;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: var(--block-bg, #f8f9fa);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-">
-<h4><img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Звук ветра на Марсе</h4>
-
-<div style="text-align: center; margin: 10px 0;">
-  <button id="windSoundBtn" style="
-    background: #0645ad;
-    color: white;
-    border: none;
-    padding: 10px 24px;
-    font-size: 1rem;
-    font-family: 'Georgia', serif;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  ">
-    <img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Включить звук ветра
-  </button>
+<div class="vip-card vip-lazy">
+<h4><img src="assets/images/stickers/sticker-sound.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Звук ветра на Марсе</h4>
+<div style="text-align:center;margin:10px 0;">
+  <button id="windSoundBtn" class="vip-btn">🎵 Включить звук ветра</button>
 </div>
-
-<audio id="windAudio" loop preload="auto">
+<audio id="windAudio" loop preload="none">
   <source src="assets/sounds/mars-wind.mp3" type="audio/mpeg">
 </audio>
+</div>
+
+</div>
+</div>
 
 <script>
-  (function() {
-    const audio = document.getElementById('windAudio');
-    const btn = document.getElementById('windSoundBtn');
-    let playing = false;
+// ============================================================
+// ЕДИНЫЙ СКРИПТ — все интерактивные элементы
+// ============================================================
+(function() {
+    'use strict';
 
-    function updateButton(state) {
-      if (state) {
-        btn.innerHTML = '<img src="assets/images/stickers/sticker-mute.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Выключить звук';
-      } else {
-        btn.innerHTML = '<img src="assets/images/stickers/sticker-sound.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Включить звук ветра';
-      }
+    // ============================================================
+    // 📅 Общие константы марсианского календаря
+    // ============================================================
+    var MONTHS_DAYS = [31,30,32,31,33,30,31,32,29,31,30,28,29,31,32,33,31,30,29,31,32,33];
+    var MONTHS_NAMES = ['Ākha-dzen','Kōl-khan','Dzen-ākha','Khōsen','Mar-dzen','Ariya-mar','Zal-ākha','Thal-khō','Kōl-ghar','Mōr-ākha','Dzen-kōl','Xal-mar','Lān-sen','Khō-mōr','Ākha-mōr','Kōl-suf','Dzen-thal','Ghōl-ākha','Rōg-ari','Mar-lān','Ksanf-suf','Yar-okh'];
+    var MARTIAN_YEAR_DAYS = MONTHS_DAYS.reduce(function(s,n){return s+n;},0);
+    var EARTH_DAYS_IN_MARTIAN_YEAR = 668.6;
+    var BOOK_REF_YEAR = 2740;
+    var BOOK_REF_DAYS_AGO = 3798000000;
+    var SEASON_NAMES = ['Пробуждение','Цветение','Зной','Ветры','Угасание','Заморозки','Тьма','Ледяной покров'];
+
+    function getCurrentMartianDate() {
+        var now = new Date();
+        var start = new Date(2026, 0, 1).getTime();
+        var earthDays = (now.getTime() - start) / 86400000;
+        var dayOfYear = Math.floor((earthDays * (MARTIAN_YEAR_DAYS / EARTH_DAYS_IN_MARTIAN_YEAR)) % MARTIAN_YEAR_DAYS);
+        var remaining = dayOfYear, mIdx = 0;
+        for (var i = 0; i < MONTHS_DAYS.length; i++) {
+            if (remaining < MONTHS_DAYS[i]) { mIdx = i; break; }
+            remaining -= MONTHS_DAYS[i];
+        }
+        var martianYearsOffset = earthDays / EARTH_DAYS_IN_MARTIAN_YEAR;
+        var year = Math.floor(BOOK_REF_DAYS_AGO + BOOK_REF_YEAR + martianYearsOffset);
+        return {
+            monthIndex: mIdx,
+            monthName: MONTHS_NAMES[mIdx],
+            day: remaining + 1,
+            year: year,
+            season: SEASON_NAMES[Math.floor(mIdx / 2) % SEASON_NAMES.length]
+        };
     }
 
-    btn.addEventListener('click', function() {
-      if (playing) {
-        audio.pause();
-        playing = false;
-        updateButton(false);
-      } else {
-        audio.play().then(() => {
-          playing = true;
-          updateButton(true);
-        }).catch((err) => {
-          console.warn('Не удалось воспроизвести звук:', err);
-        });
-      }
-    });
+    // ============================================================
+    // 📅 Календарь
+    // ============================================================
+    function initCalendar() {
+        var el = document.getElementById('martianDate');
+        if (!el) return;
+        var d = getCurrentMartianDate();
+        el.innerHTML =
+            '<div><strong>' + d.monthName + '</strong> ' + d.day + '-й день</div>' +
+            '<div>Год ' + d.year.toLocaleString() + ' Э.О.</div>' +
+            '<div style="font-size:.9rem;color:var(--text-muted,#555);margin-top:4px;">' + d.season + '</div>';
+    }
 
-    audio.addEventListener('ended', function() {
-      if (playing) {
-        playing = false;
-        updateButton(false);
-      }
-    });
-  })();
+    // ============================================================
+    // 📅 В этот день на Марсе
+    // ============================================================
+    async function fetchJSON(paths) {
+        for (var i = 0; i < paths.length; i++) {
+            try {
+                var r = await fetch(paths[i]);
+                if (r.ok) return await r.json();
+            } catch(e) {}
+        }
+        throw new Error('JSON не найден');
+    }
+
+    async function initThisDay() {
+        var dateEl = document.getElementById('thisDayDate');
+        var eventsEl = document.getElementById('thisDayEvents');
+        var quoteEl = document.getElementById('thisDayQuote');
+        if (!dateEl || !eventsEl) return;
+
+        try {
+            var data = await fetchJSON(['data/this-day.json', '../data/this-day.json', '/data/this-day.json']);
+            var cur = getCurrentMartianDate();
+            var month = data.months[cur.monthIndex];
+
+            dateEl.textContent = cur.day + '-й день ' + cur.monthName;
+
+            var events = (data.events || []).filter(function(e) {
+                return e.month === cur.monthName && e.day === cur.day;
+            });
+
+            var html = '<div style="text-align:center;font-size:.85rem;color:var(--text-muted,#666);margin-bottom:10px;">' +
+                month.season + ' · «' + month.meaning + '»' + (month.note ? ' — ' + month.note : '') + '</div>';
+
+            if (events.length) {
+                events.sort(function(a,b){ return (a.year||0) - (b.year||0); });
+                events.forEach(function(ev) {
+                    html += '<div style="margin-bottom:10px;">';
+                    if (ev.year) html += '<span style="font-weight:bold;color:#6C63FF;">' + ev.year + ' г.</span> — ';
+                    html += '<span style="font-weight:bold;">' + ev.title + '</span>';
+                    html += '<div style="font-size:.9rem;color:var(--text-color,#333);margin-top:2px;">' + ev.text + '</div>';
+                    if (ev.link) html += '<a href="' + ev.link + '" style="font-size:.85rem;color:#6C63FF;">Читать подробнее →</a>';
+                    html += '</div>';
+                });
+            } else {
+                html += '<div style="text-align:center;color:var(--text-muted,#888);font-style:italic;">На этот день в хрониках событий пока не отмечено.</div>';
+            }
+
+            eventsEl.innerHTML = html;
+
+            var quotes = data.quotes || [];
+            if (quotes.length) {
+                var idx = (cur.day + cur.monthIndex) % quotes.length;
+                quoteEl.textContent = '«' + quotes[idx] + '»';
+            }
+        } catch(e) {
+            eventsEl.innerHTML = '<div style="text-align:center;color:#999;">Не удалось загрузить события дня.</div>';
+        }
+    }
+
+    // ============================================================
+    // 🖼️ Изображение дня
+    // ============================================================
+    async function initPictureOfDay() {
+        var wrap = document.getElementById('podWrap');
+        if (!wrap) return;
+
+        try {
+            var data = await fetchJSON(['data/pictures.json', '../data/pictures.json', '../../data/pictures.json', '/data/pictures.json']);
+            var pics = Array.isArray(data) ? data : (data.pictures || []);
+            if (!pics.length) throw new Error('Список пуст');
+
+            var now = new Date();
+            var start = new Date(now.getFullYear(), 0, 0);
+            var doy = Math.floor((now - start) / 86400000);
+            var idx = doy % pics.length;
+            var pic = pics[idx];
+
+            var img = document.createElement('img');
+            img.src = pic.src;
+            img.alt = pic.caption || '';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            img.style.cssText = 'max-width:100%;max-height:520px;border-radius:8px;display:block;margin:0 auto;';
+
+            img.onerror = function() {
+                wrap.innerHTML = '<div style="color:#999;font-style:italic;">Изображение недоступно</div>';
+            };
+
+            wrap.innerHTML = '';
+            wrap.appendChild(img);
+
+            var capEl = document.getElementById('podCaption');
+            var cntEl = document.getElementById('podCounter');
+            if (capEl) capEl.textContent = pic.caption || '';
+            if (cntEl) cntEl.textContent = 'Картина ' + (idx + 1) + ' из ' + pics.length;
+        } catch(e) {
+            wrap.innerHTML = '<div style="color:#999;font-style:italic;">Не удалось загрузить Изображение дня.</div>';
+        }
+    }
+
+    // ============================================================
+    // 💬 Цитата дня
+    // ============================================================
+    var QUOTES = [
+        { text: '«Khō mōr, dzen mōr, lān ān mōr» — Огонь умрёт, звезда умрёт, память не умрёт.', source: 'Хевсур' },
+        { text: '«Глина помнит даже то, что мы сами забыли.»', source: 'Хевсур' },
+        { text: '«Я всё записал. Теперь ваша очередь — помнить.»', source: 'Хевсур' },
+        { text: '«Мы не победили время, но мы записали его. И это наша победа.»', source: 'Хевсур' },
+        { text: '«Если я перестану писать, то кто расскажет о нас через тысячу лет?»', source: 'Хевсур' },
+        { text: '«Глина не лжёт, и она не умирает. Она ждёт. И когда ты берёшь её в руки, ты берёшь в руки время.»', source: 'Хевсур' },
+        { text: '«Смотри на звёзды и помни жизнь.»', source: 'Талин' },
+        { text: '«Мы не бежим. Мы идём туда, где нас ждут. Даже если ждут только пустые скалы, мы высечем на них свои имена.»', source: 'Талин' },
+        { text: '«Я, Талин, сын Эрдана, смотрел на звёзды и помнил жизнь. Теперь я забываю, но глина помнит за меня. Lān sur.»', source: 'Талин' },
+        { text: '«Я правил камнями, но не сумел удержать воду. Пусть те, кто улетают, правят хотя бы памятью.»', source: 'Аратан III' },
+        { text: '«Море уходит, но я остаюсь. Вода умирает, но глина помнит.»', source: 'Совия' },
+        { text: '«Я не записываю имена. Я пою их. Когда я умру, мои песни будут жить в тех, кто их слышал.»', source: 'Совия' },
+        { text: '«Lān sur. — Глина помнит.»', source: 'Древняя формула' },
+        { text: '«Okh sen ākha, dzen thal marzān» — Город помнит море, смотри на звёзды, марсианин.', source: 'Древняя формула' },
+        { text: '«Глина не лжёт, но она не говорит всего. Тот, кто умеет слушать, услышит и между строк.»', source: 'Харан' },
+        { text: '«Вы не запоминаете звёзды. Звёзды запоминают вас.»', source: 'Йарра' },
+        { text: '«Мы не спасаем мир. Мы спасаем мгновения. Один взгляд, одно слово, одна капля воды... Это и есть жизнь.»', source: 'Йарра' },
+        { text: '«Мы не можем изменить планету, но мы можем изменить себя. Это проще и быстрее.»', source: 'Ирайна' },
+        { text: '«Они умерли, чтобы дать жизнь другим. Это не жертва, это — круговорот.»', source: 'Ирайна' },
+        { text: '«Машины честнее людей. Они не лгут, не предают, не надеются на чудо. Они просто работают — или ломаются.»', source: 'Миран' }
+    ];
+
+    function initQuote() {
+        var el = document.getElementById('quoteText');
+        if (!el) return;
+        var now = new Date();
+        var start = new Date(now.getFullYear(), 0, 0);
+        var doy = Math.floor((now - start) / 86400000);
+        var q = QUOTES[doy % QUOTES.length];
+        el.innerHTML = q.text + '<br><span style="font-style:normal;font-size:.9rem;color:var(--link-color,#0645ad);">— ' + q.source + '</span>';
+    }
+
+    // ============================================================
+    // 🌑 Спутники
+    // ============================================================
+    var PHOBOS_PERIOD = 27540;
+    var DEIMOS_PERIOD = 109080;
+    var PHOBOS_INITIAL = 0.62;
+    var DEIMOS_INITIAL = 0.62;
+    var REF_DATE = Date.UTC(2026, 5, 28, 14, 34, 0);
+
+    function getStatus(phase) {
+        var p = ((phase % 1) + 1) % 1;
+        if (p < 0.25) return '🌅 восходит';
+        if (p < 0.50) return '☀️ в зените';
+        if (p < 0.75) return '🌇 заходит';
+        return '🌑 за горизонтом';
+    }
+    function getNextPhaseTime(phase, period) {
+        var p = ((phase % 1) + 1) % 1;
+        var next = Math.ceil(p / 0.25) * 0.25;
+        var diff = next - p;
+        if (diff <= 0) diff += 0.25;
+        return diff * period;
+    }
+    function formatTime(s) {
+        if (s < 0) s = 0;
+        var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = Math.floor(s % 60);
+        return h + 'ч ' + m + 'м ' + sec + 'с';
+    }
+
+    var moonsInterval = null;
+    function updateMoons() {
+        var phobosEl = document.getElementById('phobosStatus');
+        var deimosEl = document.getElementById('deimosStatus');
+        var pTimerEl = document.getElementById('phobosTimer');
+        var dTimerEl = document.getElementById('deimosTimer');
+        if (!phobosEl) return;
+
+        var now = Date.now();
+        var elapsed = (now - REF_DATE) / 1000;
+        var pp = (PHOBOS_INITIAL + elapsed / PHOBOS_PERIOD) % 1;
+        var dp = (DEIMOS_INITIAL + elapsed / DEIMOS_PERIOD) % 1;
+
+        phobosEl.innerHTML = getStatus(pp);
+        deimosEl.innerHTML = getStatus(dp);
+        if (pTimerEl) pTimerEl.innerHTML = '⏱ Фобос: ' + formatTime(getNextPhaseTime(pp, PHOBOS_PERIOD)) + ' до смены';
+        if (dTimerEl) dTimerEl.innerHTML = '⏱ Деймос: ' + formatTime(getNextPhaseTime(dp, DEIMOS_PERIOD)) + ' до смены';
+    }
+
+    function initMoons() {
+        if (!document.getElementById('phobosStatus')) return;
+        updateMoons();
+        // Обновляем только когда вкладка активна
+        moonsInterval = setInterval(function() {
+            if (!document.hidden) updateMoons();
+        }, 5000);
+    }
+
+    // ============================================================
+    // 🎲 Случайная статья
+    // ============================================================
+    var RANDOM_PAGES = [
+        'history/periodization/','history/timeline/','history/myths/','history/epokha-osnovaniya/',
+        'history/epokha-rascveta/','history/epokha-umiraniya/','history/iskhod/','history/pirate-kingdom/',
+        'geography/acidalia-sea/','geography/okhasen/','geography/rogen-aria/','geography/farsida/',
+        'geography/farsida-caves/','geography/ksanf-river/','geography/eritreya/','geography/utopiya/',
+        'geography/edem/','geography/tarsis/','geography/podzemniy-khram/','geography/kosmodrom-farsidy/',
+        'geography/noviy-okhasen/','geography/akademiya-okhasena/','astronomy/mars-sky/','astronomy/phobos-deimos/',
+        'astronomy/earth-as-target/','astronomy/earth/','terms/lan-sur/','terms/tablichki/','biology/gemotsianin/',
+        'science/geology/','people/hevsur/','people/talin/','people/ella/','people/yarra/','people/alira/',
+        'people/aratan-iii/','people/irayina/','people/miran/','people/kharan/','people/soviya/','people/arash/',
+        'people/kan/','people/sarum-ii/','people/sarum-velikiy/','mythology/kho/','mythology/akha/','mythology/araksis/',
+        'mythology/prorochestvo-kharana/','books/acidalia-sea/'
+    ];
+
+    function initRandom() {
+        var btn = document.getElementById('randomArticleBtn');
+        if (!btn) return;
+        btn.addEventListener('click', function() {
+            var p = RANDOM_PAGES[Math.floor(Math.random() * RANDOM_PAGES.length)];
+            window.location.href = p;
+        });
+    }
+
+    // ============================================================
+    // 🎵 Звук ветра (lazy — грузим только при клике)
+    // ============================================================
+    function initWindSound() {
+        var btn = document.getElementById('windSoundBtn');
+        var audio = document.getElementById('windAudio');
+        if (!btn || !audio) return;
+        var playing = false;
+
+        btn.addEventListener('click', function() {
+            if (playing) {
+                audio.pause();
+                playing = false;
+                btn.innerHTML = '🎵 Включить звук ветра';
+            } else {
+                audio.play().then(function() {
+                    playing = true;
+                    btn.innerHTML = '🔇 Выключить звук';
+                }).catch(function(err) {
+                    console.warn('Не удалось воспроизвести звук:', err);
+                });
+            }
+        });
+    }
+
+    // ============================================================
+    // 🚀 ИНИЦИАЛИЗАЦИЯ — синхронные мгновенно, async через IntersectionObserver
+    // ============================================================
+    function runSync() {
+        initCalendar();
+        initQuote();
+        initRandom();
+        initWindSound();
+        initMoons();
+    }
+
+    function runAsync() {
+        initThisDay();
+        initPictureOfDay();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            runSync();
+            // Async запускаем после первого кадра — не блокируем рендер
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(runAsync, { timeout: 2000 });
+            } else {
+                setTimeout(runAsync, 300);
+            }
+        });
+    } else {
+        runSync();
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(runAsync, { timeout: 2000 });
+        } else {
+            setTimeout(runAsync, 300);
+        }
+    }
+})();
 </script>
-</div>

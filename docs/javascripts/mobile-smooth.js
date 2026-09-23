@@ -1,4 +1,4 @@
-// mobile-smooth.js — управление анимациями и рендером на мобильных
+// mobile-smooth.js v2 — мягкая оптимизация без отключения анимаций
 (function() {
     'use strict';
 
@@ -7,105 +7,115 @@
 
     if (!isMobile) return;
 
-    console.log('[mobile-smooth] 📱 Оптимизация анимаций');
+    console.log('[mobile-smooth] 📱 Мягкая оптимизация');
 
     // ═══════════════════════════════════════════════════════════
-    // 1. Помечаем body → CSS знает, что это мобильный
+    // 1. Помечаем body
     // ═══════════════════════════════════════════════════════════
-    document.documentElement.classList.add('is-mobile-lite');
+    document.documentElement.classList.add('is-mobile-smooth');
 
     // ═══════════════════════════════════════════════════════════
-    // 2. Пауза анимаций когда вкладка неактивна
-    // ═══════════════════════════════════════════════════════════
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.documentElement.classList.add('animations-paused');
-        } else {
-            document.documentElement.classList.remove('animations-paused');
-        }
-    });
-
-    // ═══════════════════════════════════════════════════════════
-    // 3. Останавливаем анимации у off-screen элементов
+    // 2. Пауза off-screen анимаций (не отключение — пауза!)
     // ═══════════════════════════════════════════════════════════
     if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = '';
-                } else {
-                    entry.target.style.animationPlayState = 'paused';
-                }
+                // Пауза, а не отключение — вернётся при появлении
+                entry.target.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
             });
-        }, { rootMargin: '100px' });
+        }, { rootMargin: '200px' });
 
-        // Наблюдаем за анимированными элементами
-        setTimeout(function() {
+        // Наблюдаем за большими блоками
+        var observeBigBlocks = function() {
             document.querySelectorAll(
                 '.pf-hero, .vip-banner, .lg-hero, .quote-vip, ' +
-                '.timeline-item, .pf-card, .pf-timer-card, .pf-note, ' +
-                '.pf-ach, .pf-notif, .interpretation-item, .infobox-vip'
+                '.timeline-item, .pf-card, .infobox-vip, .table-vip, ' +
+                '.interpretation-item, .pf-note'
             ).forEach(function(el) {
-                io.observe(el);
+                if (!el.dataset.smoothObserved) {
+                    el.dataset.smoothObserved = '1';
+                    io.observe(el);
+                }
             });
-        }, 500);
+        };
+
+        observeBigBlocks();
+        setTimeout(observeBigBlocks, 1000);
+        setTimeout(observeBigBlocks, 3000);
     }
 
     // ═══════════════════════════════════════════════════════════
-    // 4. Throttle скролла и ресайза до 60 FPS
+    // 3. Пауза анимаций на скрытой вкладке (не отключение)
+    // ═══════════════════════════════════════════════════════════
+    document.addEventListener('visibilitychange', function() {
+        var all = document.querySelectorAll('*');
+        var state = document.hidden ? 'paused' : '';
+        // Проходим только по реально анимированным
+        document.querySelectorAll(
+            '.pf-hero, .pf-hero::before, .pf-hero::after, ' +
+            '.vip-banner, .lg-hero, .lg-logo, .lg-logo-orbit, ' +
+            '.pf-avatar-wrap, .pf-avatar-ring, .pf-mod-badge'
+        ).forEach(function(el) {
+            el.style.animationPlayState = state;
+        });
+    });
+
+    // ═══════════════════════════════════════════════════════════
+    // 4. Throttle скролла
     // ═══════════════════════════════════════════════════════════
     var scrollRaf = false;
     window.addEventListener('scroll', function() {
         if (scrollRaf) return;
         scrollRaf = true;
-        requestAnimationFrame(function() {
-            scrollRaf = false;
-        });
+        requestAnimationFrame(function() { scrollRaf = false; });
     }, { passive: true });
 
     // ═══════════════════════════════════════════════════════════
-    // 5. Останавливаем тяжёлые setInterval на невидимой вкладке
+    // 5. Останавливаем setInterval на невидимой вкладке
     // ═══════════════════════════════════════════════════════════
     var _origSetInterval = window.setInterval;
     window.setInterval = function(fn, ms) {
-        // Останавливаем, если интервал < 1 сек и вкладка скрыта
         var id = _origSetInterval.call(window, function() {
-            if (ms < 1000 && document.hidden) return;
+            // Если вкладка скрыта и интервал частый — пропускаем
+            if (document.hidden && ms < 1000) return;
             fn.apply(this, arguments);
         }, ms);
         return id;
     };
 
     // ═══════════════════════════════════════════════════════════
-    // 6. Точка Curiosity на карте — упрощаем анимацию
+    // 6. Точка Curiosity — замедляем SVG-анимации
     // ═══════════════════════════════════════════════════════════
     setTimeout(function() {
-        // Находим элементы карты с анимацией
-        document.querySelectorAll('svg circle, svg .pulse, .curiosity-dot, .mars-map-dot').forEach(function(dot) {
-            // Отключаем SVG-анимации
-            dot.querySelectorAll('animate, animateTransform').forEach(function(a) {
-                a.setAttribute('dur', '5s'); // замедляем в 3 раза
+        document.querySelectorAll('svg circle, svg .pulse, .curiosity-dot, .mars-map-dot, [class*="curiosity"]').forEach(function(el) {
+            // Замедляем в 2 раза, а не отключаем
+            el.querySelectorAll('animate, animateTransform').forEach(function(a) {
+                var dur = a.getAttribute('dur');
+                if (dur) {
+                    // Парсим "2s" → "4s"
+                    var match = dur.match(/^([\d.]+)(s|ms)?$/);
+                    if (match) {
+                        var val = parseFloat(match[1]);
+                        var unit = match[2] || 's';
+                        a.setAttribute('dur', (val * 2.5) + unit);
+                    }
+                }
             });
-            // Отключаем CSS-анимации
-            dot.style.animation = 'none';
-            dot.style.willChange = 'auto';
+            // Если CSS-анимация — замедляем
+            var cs = getComputedStyle(el);
+            if (cs.animationName && cs.animationName !== 'none') {
+                el.style.animationDuration = '4s';
+            }
         });
     }, 1000);
 
     // ═══════════════════════════════════════════════════════════
-    // 7. Помечаем элементы, которые используют box-shadow в анимации
-    // ═══════════════════════════════════════════════════════════
-    setTimeout(function() {
-        document.querySelectorAll('[class*="glow"], [class*="pulse"]').forEach(function(el) {
-            el.style.animation = 'none';
-        });
-    }, 800);
-
-    // ═══════════════════════════════════════════════════════════
-    // 8. Следим за FPS — если проседает, отключаем ещё больше
+    // 7. FPS-монитор — только помечаем, не отключаем
     // ═══════════════════════════════════════════════════════════
     var frameCount = 0;
     var lastTime = performance.now();
+    var lowFpsCount = 0;
+
     function checkFPS(now) {
         frameCount++;
         if (now - lastTime >= 1000) {
@@ -113,40 +123,45 @@
             frameCount = 0;
             lastTime = now;
 
-            if (fps < 40) {
-                console.warn('[mobile-smooth] ⚠️ FPS упал до ' + fps + ' — экстренный режим');
-                document.documentElement.classList.add('ultra-lite');
-
-                // Отключаем абсолютно все анимации
-                var style = document.getElementById('ultra-lite-style');
-                if (!style) {
-                    style = document.createElement('style');
-                    style.id = 'ultra-lite-style';
-                    style.textContent = `
-                        .ultra-lite *,
-                        .ultra-lite *::before,
-                        .ultra-lite *::after {
-                            animation: none !important;
-                            transition: none !important;
-                            box-shadow: none !important;
-                        }
-                        .ultra-lite .pf-hero::before,
-                        .ultra-lite .pf-hero::after,
-                        .ultra-lite .vip-banner::before,
-                        .ultra-lite .vip-banner::after {
-                            display: none !important;
-                        }
-                    `;
-                    document.head.appendChild(style);
+            if (fps < 30) {
+                lowFpsCount++;
+                if (lowFpsCount >= 3) {
+                    console.warn('[mobile-smooth] ⚠️ FPS стабильно низкий — мягкий режим');
+                    document.documentElement.classList.add('soft-mode');
+                    addSoftModeStyle();
                 }
+            } else {
+                lowFpsCount = 0;
             }
         }
         requestAnimationFrame(checkFPS);
     }
     requestAnimationFrame(checkFPS);
 
+    // Мягкий режим — только замедление, НЕ отключение
+    function addSoftModeStyle() {
+        if (document.getElementById('soft-mode-style')) return;
+        var st = document.createElement('style');
+        st.id = 'soft-mode-style';
+        st.textContent = `
+            .soft-mode .pf-hero::before,
+            .soft-mode .pf-hero::after,
+            .soft-mode .lg-hero::before,
+            .soft-mode .lg-hero::after,
+            .soft-mode .lg-logo,
+            .soft-mode .lg-logo-orbit,
+            .soft-mode .pf-avatar-ring {
+                animation-duration: 25s !important;
+            }
+            .soft-mode * {
+                transition-duration: .15s !important;
+            }
+        `;
+        document.head.appendChild(st);
+    }
+
     // ═══════════════════════════════════════════════════════════
-    // 9. Принудительный repaint после загрузки (фикс «залипания»)
+    // 8. Repaint после загрузки
     // ═══════════════════════════════════════════════════════════
     window.addEventListener('load', function() {
         setTimeout(function() {
@@ -157,18 +172,5 @@
         }, 500);
     });
 
-    // ═══════════════════════════════════════════════════════════
-    // 10. Убираем «hover-залипание» после тапа
-    // ═══════════════════════════════════════════════════════════
-    document.addEventListener('touchstart', function(e) {
-        var el = e.target;
-        while (el && el !== document.body) {
-            if (el.classList && el.classList.contains('pf-tab')) {
-                break;
-            }
-            el = el.parentElement;
-        }
-    }, { passive: true });
-
-    console.log('[mobile-smooth] ✅ Готово. CSS-класс is-mobile-lite добавлен');
+    console.log('[mobile-smooth] ✅ Готово (мягкий режим)');
 })();

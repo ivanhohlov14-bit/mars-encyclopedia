@@ -1,8 +1,8 @@
 // ============================================================
-// wikipedia-footer.js — FINAL v14
+// wikipedia-footer.js — FINAL v15
 // - Цвет королевства из БД (Supabase) + кэш
-// - Кнопка доната CloudTips
-// - VIP стиль + защита от дублей
+// - Компактная кнопка доната CloudTips
+// - VIP стиль, сдержанный
 // ============================================================
 
 (function() {
@@ -24,7 +24,6 @@
         'Утопия': '#4DD0E1', 'Эллада': '#FF8A65', 'Аливасото': '#81C784'
     };
 
-    // Страницы, где футер не нужен
     var skip = ['/secret/', '/secret-2/', '/login/', '/signup/'];
     for (var i = 0; i < skip.length; i++) {
         if (location.pathname.indexOf(skip[i]) === 0) return;
@@ -89,7 +88,7 @@
     }
 
     // ============================================================
-    // STYLES — VIP
+    // STYLES
     // ============================================================
     function injectStyles() {
         if (document.getElementById(STYLES_ID)) return;
@@ -101,8 +100,8 @@
 .wiki-footer {
     position: relative;
     margin: 60px 0 30px;
-    padding: 32px 36px 28px;
-    border-radius: 20px;
+    padding: 28px 32px 24px;
+    border-radius: 18px;
     font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
     font-size: 0.88rem;
     line-height: 1.7;
@@ -135,7 +134,6 @@
     );
     background-size: 300% 300%;
     animation: wfSlowWave 60s ease-in-out infinite;
-    will-change: background-position;
 }
 @keyframes wfSlowWave {
     0%   { background-position: 0% 50%; }
@@ -164,7 +162,6 @@
     box-shadow:
         0 0 12px rgba(var(--wf-rgb, 52,152,219), 0.5),
         inset 0 -2px 6px rgba(0, 0, 0, 0.1);
-    will-change: background-position;
 }
 @keyframes wfBarWave {
     0%   { background-position: 0% 50%; }
@@ -203,79 +200,56 @@
 }
 .wiki-footer a:hover { border-bottom-color: var(--wf-color, #3498db); }
 
-/* ========== DONATE BUTTON ========== */
+/* ========== DONATE BUTTON (компактная) ========== */
 .wf-donate-wrap {
     text-align: center;
-    margin: 22px 0 18px;
-    padding: 20px 0;
+    margin: 18px 0 16px;
+    padding: 16px 0 14px;
     border-top: 1px dashed rgba(var(--wf-rgb, 52,152,219), 0.4);
     border-bottom: 1px dashed rgba(var(--wf-rgb, 52,152,219), 0.4);
 }
 .wf-donate-title {
-    font-size: 0.82rem;
-    color: #666;
-    margin-bottom: 14px;
+    font-size: 0.75rem;
+    color: #777;
+    margin-bottom: 10px;
     font-weight: 600;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
 }
 .wf-donate-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 14px 32px;
-    background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%);
-    background-size: 200% auto;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 22px;
+    background: var(--wf-color, #3498db);
     color: #fff !important;
-    border-radius: 32px;
-    font-weight: 800;
+    border-radius: 8px;
+    font-weight: 600;
     text-decoration: none !important;
-    font-size: 0.95rem;
-    letter-spacing: 0.3px;
-    box-shadow:
-        0 10px 24px -6px rgba(255, 107, 53, 0.55),
-        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
+    font-size: 0.85rem;
+    letter-spacing: 0.2px;
+    transition: all 0.25s ease;
     border: none !important;
     -webkit-tap-highlight-color: transparent;
-}
-.wf-donate-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.7s;
+    box-shadow: 0 2px 8px rgba(var(--wf-rgb, 52,152,219), 0.25);
 }
 .wf-donate-btn:hover {
-    transform: translateY(-3px);
-    background-position: 100% center;
-    box-shadow:
-        0 16px 32px -8px rgba(255, 107, 53, 0.7),
-        0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+    background: var(--wf-color, #3498db);
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(var(--wf-rgb, 52,152,219), 0.4);
     color: #fff !important;
     border-bottom: none !important;
 }
-.wf-donate-btn:hover::before { transform: translateX(100%); }
-.wf-donate-btn:active { transform: translateY(-1px) scale(0.98); }
-.wf-donate-icon {
-    font-size: 1.15rem;
-    animation: wfHeartBeat 2s ease-in-out infinite;
-    display: inline-block;
-}
-@keyframes wfHeartBeat {
-    0%, 100% { transform: scale(1); }
-    15% { transform: scale(1.15); }
-    30% { transform: scale(1); }
-    45% { transform: scale(1.1); }
-    60% { transform: scale(1); }
+.wf-donate-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(var(--wf-rgb, 52,152,219), 0.3);
 }
 .wf-donate-sub {
-    font-size: 0.75rem;
-    color: #888;
-    margin-top: 12px;
+    font-size: 0.72rem;
+    color: #999;
+    margin-top: 8px;
     font-style: italic;
 }
 
@@ -345,19 +319,18 @@ html body.mars-stars-on .wf-donate-wrap {
 
 /* ========== MOBILE ========== */
 @media (max-width: 600px) {
-    .wiki-footer { padding: 24px 20px 20px; margin: 40px 0 20px; border-radius: 16px; }
+    .wiki-footer { padding: 22px 18px 18px; margin: 40px 0 20px; border-radius: 14px; }
     .wiki-footer-links a { padding: 7px 13px; font-size: 0.78rem; }
-    .wf-donate-wrap { padding: 16px 0; margin: 18px 0 14px; }
-    .wf-donate-btn { padding: 13px 26px; font-size: 0.9rem; gap: 8px; }
-    .wf-donate-icon { font-size: 1.05rem; }
-    .wf-donate-sub { font-size: 0.72rem; }
+    .wf-donate-wrap { padding: 14px 0 12px; margin: 16px 0 14px; }
+    .wf-donate-btn { padding: 7px 18px; font-size: 0.8rem; border-radius: 7px; }
+    .wf-donate-sub { font-size: 0.68rem; margin-top: 6px; }
+    .wf-donate-title { font-size: 0.7rem; margin-bottom: 8px; }
 }
 
 /* ========== REDUCED MOTION ========== */
 @media (prefers-reduced-motion: reduce) {
     .wiki-footer::before,
-    .wiki-footer::after,
-    .wf-donate-icon { animation: none !important; }
+    .wiki-footer::after { animation: none !important; }
     .wf-donate-btn { transition: none !important; }
 }
 `;
@@ -384,13 +357,10 @@ html body.mars-stars-on .wf-donate-wrap {
                 '<em>«Письмо из Красной пыли»</em>. Реконструкция истории Марса ' +
                 'в Эпоху Умирания, основанная на научных данных и художественной концепции автора.</p>';
 
-        // 💛 DONATE BUTTON
+        // Компактный блок доната
         html += '<div class="wf-donate-wrap">' +
-                '<div class="wf-donate-title">Поддержите проект</div>' +
-                '<a class="wf-donate-btn" href="' + DONATE_URL + '" target="_blank" rel="noopener">' +
-                '<span class="wf-donate-icon">❤️</span>' +
-                '<span>Поддержать</span>' +
-                '</a>' +
+                '<div class="wf-donate-title">Поддержать проект</div>' +
+                '<a class="wf-donate-btn" href="' + DONATE_URL + '" target="_blank" rel="noopener">Поддержать</a>' +
                 '<div class="wf-donate-sub">Средства идут на новые статьи и иллюстрации</div>' +
                 '</div>';
 
@@ -431,14 +401,12 @@ html body.mars-stars-on .wf-donate-wrap {
     // START
     // ============================================================
     async function start() {
-        // 1. Мгновенно кэш — без мигания
         var cached = getCachedColor();
         if (cached) applyColor(cached);
 
         injectStyles();
         placeFooter();
 
-        // 2. Фоном — актуальный из БД
         var fresh = await fetchColorFromDB();
         if (fresh && fresh !== cached) {
             applyColor(fresh);
@@ -452,11 +420,10 @@ html body.mars-stars-on .wf-donate-wrap {
         start();
     }
 
-    // Подстраховка от поздней отрисовки темы
     setTimeout(placeFooter, 800);
     setTimeout(placeFooter, 1800);
 
-    // Смена страницы в readthedocs (SPA-like поведение)
+    // Смена страницы (readthedocs)
     var lastUrl = location.href;
     setInterval(function() {
         if (location.href !== lastUrl) {

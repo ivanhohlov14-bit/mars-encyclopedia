@@ -22,14 +22,12 @@ comments: false
 @keyframes pfRing{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 @keyframes pfGlow{0%,100%{box-shadow:0 0 20px rgba(108,99,255,.4)}50%{box-shadow:0 0 40px rgba(108,99,255,.7)}}
 @keyframes pfSparkle{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:1;transform:scale(1)}}
-@keyframes pfHeartbeat{0%,100%{transform:scale(1)}25%{transform:scale(1.15)}50%{transform:scale(1)}75%{transform:scale(1.08)}}
 @keyframes pfWave{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 
-#profile-app{max-width:1100px;margin:0 auto;font-family:'Segoe UI',-apple-system,sans-serif;padding:0 8px;contain:layout style}
+#profile-app{max-width:1100px;margin:0 auto;font-family:'Segoe UI',-apple-system,sans-serif;padding:0 8px}
 #profile-app a{text-decoration:none!important;border-bottom:none!important}
 .pf-fade{animation:pfFadeIn .5s cubic-bezier(.16,1,.3,1) both}
 
-/* === HERO === */
 .pf-hero{position:relative;background:linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 40%,#4a2a3a 100%);border-radius:24px;padding:44px 40px;color:#fff;margin-bottom:20px;overflow:hidden;box-shadow:0 20px 60px -12px rgba(0,0,0,.4)}
 .pf-hero::before{content:'';position:absolute;top:-60%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,var(--ks),transparent 70%);border-radius:50%;animation:pfFloat 8s ease-in-out infinite}
 .pf-hero::after{content:'';position:absolute;bottom:-60%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(231,76,60,.15),transparent 70%);border-radius:50%;animation:pfFloat 10s ease-in-out infinite reverse}
@@ -43,7 +41,6 @@ comments: false
 .pf-info{flex:1;min-width:200px}
 .pf-name{font-size:2rem;font-weight:800;margin:0 0 8px 0;color:#fff;display:flex;align-items:center;gap:10px;flex-wrap:wrap;letter-spacing:-.5px}
 .pf-mod-badge{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;box-shadow:0 4px 14px rgba(231,76,60,.5);animation:pfGlow 2s ease-in-out infinite;border:1px solid rgba(255,255,255,.3)}
-.pf-vip-badge{background:linear-gradient(135deg,#f39c12,#e67e22,#f39c12);background-size:200% auto;color:#fff;padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;box-shadow:0 4px 14px rgba(243,156,18,.5);animation:pfShine 3s linear infinite}
 .pf-guild-badge{background:rgba(255,255,255,.22);backdrop-filter:blur(8px);color:#fff;padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;display:inline-flex;align-items:center;gap:4px;border:1px solid rgba(255,255,255,.35);cursor:pointer;transition:all .25s}
 .pf-guild-badge:hover{background:rgba(255,255,255,.32);transform:translateY(-2px)}
 .pf-email{font-size:.9rem;opacity:.85;margin:0 0 14px 0}
@@ -56,7 +53,6 @@ comments: false
 .pf-progress-bar::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);background-size:200% 100%;animation:pfShine 2s linear infinite}
 .pf-progress-text{font-size:.78rem;opacity:.9}
 
-/* === МОЯ СТРАНИЧКА === */
 .pf-mypage{background:linear-gradient(135deg,#fff 0%,#fafbfd 100%);border-radius:22px;border:1px solid rgba(0,0,0,.06);padding:26px 28px;margin-bottom:18px;box-shadow:0 4px 20px rgba(0,0,0,.05);animation:pfFadeIn .5s both;position:relative;overflow:hidden}
 .pf-mypage::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--kc),var(--kl),var(--kc));background-size:200% auto;animation:pfShine 3s linear infinite}
 .pf-mypage-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
@@ -65,7 +61,7 @@ comments: false
 .pf-mypage-title{font-size:1.2rem;font-weight:800;color:#1a1a1a;margin:0 0 2px 0;letter-spacing:-.3px}
 .pf-mypage-sub{font-size:.82rem;color:#888;margin:0}
 .pf-mypage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:18px}
-.pf-mypage-tile{background:linear-gradient(135deg,var(--kb),#fff);border:1px solid rgba(108,99,255,.15);border-radius:14px;padding:14px 16px;transition:all .3s cubic-bezier(.16,1,.3,1);cursor:pointer;position:relative;overflow:hidden}
+.pf-mypage-tile{background:linear-gradient(135deg,var(--kb),#fff);border:1px solid rgba(108,99,255,.15);border-radius:14px;padding:14px 16px;transition:all .3s cubic-bezier(.16,1,.3,1);cursor:pointer}
 .pf-mypage-tile:hover{transform:translateY(-3px);box-shadow:0 12px 28px -8px var(--ks);border-color:var(--kc)}
 .pf-mypage-tile-label{font-size:.68rem;color:#888;text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:4px}
 .pf-mypage-tile-value{font-size:1.4rem;font-weight:900;color:var(--kc);letter-spacing:-.5px;line-height:1.1}
@@ -75,17 +71,13 @@ comments: false
 .pf-mypage-action:hover{transform:translateY(-2px);border-color:var(--kc);box-shadow:0 8px 20px -6px var(--ks);color:var(--kc)}
 .pf-mypage-action-icon{font-size:1.2rem;flex-shrink:0}
 
-/* === БЛИЖАЙШИЕ ДОСТИЖЕНИЯ === */
 .pf-next-ach{background:linear-gradient(135deg,#fff8e1,#fffbf0);border:2px solid rgba(243,156,18,.3);border-radius:16px;padding:16px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;animation:pfFadeIn .5s both;animation-delay:.1s}
 .pf-next-ach-icon{font-size:2.4rem;flex-shrink:0;animation:pfWave 2s ease-in-out infinite}
 .pf-next-ach-info{flex:1;min-width:0}
 .pf-next-ach-label{font-size:.7rem;color:#a08040;text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:2px}
 .pf-next-ach-name{font-size:1rem;font-weight:800;color:#1a1a1a;margin-bottom:4px}
 .pf-next-ach-desc{font-size:.8rem;color:#666}
-.pf-next-ach-progress{height:6px;background:rgba(243,156,18,.15);border-radius:3px;overflow:hidden;margin-top:8px}
-.pf-next-ach-fill{height:100%;background:linear-gradient(90deg,#f39c12,#e67e22);border-radius:3px;transition:width 1s}
 
-/* === QUICK GRID === */
 .pf-quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px}
 .pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:#fff;border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s cubic-bezier(.16,1,.3,1);box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer;position:relative;overflow:hidden}
 .pf-quick-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--kc),transparent);opacity:0;transition:opacity .3s}
@@ -96,7 +88,6 @@ comments: false
 .pf-quick-title{font-size:.9rem;font-weight:800;color:#1a1a1a;margin-bottom:2px}
 .pf-quick-desc{font-size:.72rem;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-/* === TABS === */
 .pf-tabs{display:flex;gap:4px;margin-bottom:20px;overflow-x:auto;padding:6px;background:rgba(255,255,255,.9);border-radius:16px;border:1px solid rgba(0,0,0,.05);scroll-behavior:smooth;cursor:grab;-webkit-overflow-scrolling:touch}
 .pf-tabs:active{cursor:grabbing}
 .pf-tabs::-webkit-scrollbar{height:4px}
@@ -112,7 +103,6 @@ comments: false
 .pf-tab-content{display:none;animation:pfFadeIn .4s ease}
 .pf-tab-content.active{display:block}
 
-/* === CARDS === */
 .pf-card{background:#fff;border-radius:18px;border:1px solid rgba(0,0,0,.06);padding:22px 26px;margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,.04);transition:box-shadow .3s,transform .3s}
 .pf-card:hover{box-shadow:0 12px 32px -8px var(--ks);transform:translateY(-2px)}
 .pf-card-title{font-size:1.1rem;font-weight:800;color:#1a1a1a;margin:0 0 16px 0;display:flex;align-items:center;gap:10px}
@@ -130,7 +120,6 @@ comments: false
 .pf-timer-label{font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-top:6px;font-weight:600}
 .pf-timer-sub{font-size:.75rem;color:#aaa;margin-top:4px}
 
-/* === MODERATION === */
 .pf-mod-panel{background:linear-gradient(135deg,rgba(231,76,60,.05),rgba(192,57,43,.03));border:2px solid rgba(231,76,60,.25);border-radius:18px;padding:22px 26px;margin-bottom:18px}
 .pf-mod-panel .pf-card-title{color:#c0392b}
 .pf-mod-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:16px}
@@ -139,16 +128,14 @@ comments: false
 .pf-mod-stat-value{font-size:1.8rem;font-weight:900;color:#e74c3c;line-height:1}
 .pf-mod-stat-label{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-top:6px;font-weight:700}
 
-/* === HEATMAP === */
 .pf-heatmap{display:grid;grid-template-columns:repeat(13,1fr);gap:3px;margin-top:14px}
-.pf-heat-cell{aspect-ratio:1;background:rgba(108,99,255,.08);border-radius:3px;transition:all .25s;cursor:pointer;position:relative}
+.pf-heat-cell{aspect-ratio:1;background:rgba(108,99,255,.08);border-radius:3px;transition:all .25s;cursor:pointer}
 .pf-heat-cell:hover{transform:scale(1.3);z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .pf-heat-cell[data-level="1"]{background:rgba(108,99,255,.25)}
 .pf-heat-cell[data-level="2"]{background:rgba(108,99,255,.45)}
 .pf-heat-cell[data-level="3"]{background:rgba(108,99,255,.7)}
 .pf-heat-cell[data-level="4"]{background:var(--kc);box-shadow:0 0 8px var(--ks)}
 
-/* === CHART === */
 .pf-chart{display:flex;align-items:flex-end;gap:4px;height:100px;margin:20px 0 8px;padding:8px 0;border-bottom:1px dashed rgba(0,0,0,.08)}
 .pf-chart-bar{flex:1;background:linear-gradient(180deg,var(--kl),var(--kc));border-radius:4px 4px 0 0;min-height:4px;transition:all .3s;animation:pfGrow .6s cubic-bezier(.16,1,.3,1) both;position:relative;cursor:pointer}
 .pf-chart-bar:hover{filter:brightness(1.15);transform:scaleY(1.05)}
@@ -156,9 +143,8 @@ comments: false
 .pf-chart-bar:hover::after{opacity:1}
 .pf-chart-labels{display:flex;justify-content:space-between;font-size:.68rem;color:#999;margin-bottom:14px}
 
-/* === ACHIEVEMENTS === */
 .pf-ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
-.pf-ach{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#f8f9fb;border-radius:12px;border:2px solid transparent;transition:all .25s;position:relative;overflow:hidden}
+.pf-ach{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#f8f9fb;border-radius:12px;border:2px solid transparent;transition:all .25s}
 .pf-ach:hover{transform:translateY(-3px);border-color:var(--kc);box-shadow:0 12px 28px -8px var(--ks)}
 .pf-ach.locked{opacity:.45;filter:grayscale(.6)}
 .pf-ach-icon{font-size:1.8rem;transition:transform .3s}
@@ -166,7 +152,6 @@ comments: false
 .pf-ach-name{font-size:.85rem;font-weight:700;color:#1a1a1a}
 .pf-ach-date{font-size:.7rem;color:#888}
 
-/* === NOTES === */
 .pf-notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
 .pf-note{background:#fff;border-radius:12px;padding:16px;border-left:4px solid var(--note-color,var(--kc));box-shadow:0 4px 12px rgba(0,0,0,.06);transition:all .25s;cursor:pointer;min-height:120px;display:flex;flex-direction:column;animation:pfSlideUp .35s ease both}
 .pf-note:hover{transform:translateY(-3px);box-shadow:0 12px 28px -8px var(--ks)}
@@ -179,7 +164,6 @@ comments: false
 .pf-note-btn:hover{background:var(--kc);color:#fff}
 .pf-note-btn.danger:hover{background:#e74c3c;color:#fff}
 
-/* === NOTIFS === */
 .pf-notif{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;transition:all .25s;animation:pfSlideUp .3s ease both}
 .pf-notif:hover{background:rgba(108,99,255,.08);transform:translateX(4px)}
 .pf-notif.unread{border-left:3px solid var(--kc);background:rgba(108,99,255,.06)}
@@ -187,7 +171,6 @@ comments: false
 .pf-notif-text{font-size:.88rem;color:#333}
 .pf-notif-date{font-size:.72rem;color:#999;margin-top:2px}
 
-/* === LEADERBOARD === */
 .pf-leaderboard{width:100%;border-collapse:collapse;font-size:.88rem}
 .pf-leaderboard th{text-align:left;padding:10px 12px;font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.8px;border-bottom:2px solid var(--kc)}
 .pf-leaderboard td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.05);transition:background .2s}
@@ -195,58 +178,54 @@ comments: false
 .pf-leaderboard tbody tr:hover{background:rgba(108,99,255,.05)}
 .pf-lb-avatar{width:28px;height:28px;border-radius:50%;vertical-align:middle;margin-right:8px;border:2px solid var(--kc);object-fit:cover}
 
-/* === FRIENDS === */
 .pf-friend{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;transition:all .25s;align-items:center;animation:pfSlideUp .3s ease both}
 .pf-friend:hover{background:rgba(108,99,255,.08);transform:translateX(4px)}
 .pf-friend-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--kc);flex-shrink:0}
 
-/* === GUILD === */
 .pf-guild-hero{background:linear-gradient(135deg,var(--guild-color,var(--kc)),rgba(0,0,0,.2));border-radius:18px;padding:26px 28px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:0 12px 32px -8px rgba(0,0,0,.3)}
-.pf-guild-icon{width:76px;height:76px;border-radius:18px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:2.5rem;border:2px solid rgba(255,255,255,.45);flex-shrink:0;backdrop-filter:blur(6px)}
+.pf-guild-icon{width:76px;height:76px;border-radius:18px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:2.5rem;border:2px solid rgba(255,255,255,.45);flex-shrink:0}
 .pf-guild-name{font-size:1.5rem;font-weight:800;margin:0 0 6px 0}
 .pf-guild-meta{font-size:.85rem;opacity:.92;display:flex;gap:14px;flex-wrap:wrap}
 
-/* === AI === */
 .pf-chat{background:linear-gradient(135deg,var(--kb),rgba(255,255,255,.6));border-radius:16px;padding:16px;max-height:420px;overflow-y:auto;margin-bottom:12px;border:1px solid rgba(0,0,0,.05)}
 .pf-chat-msg{margin:6px 0;padding:11px 16px;border-radius:16px;max-width:82%;word-wrap:break-word;font-size:.9rem;line-height:1.5;animation:pfSlideUp .3s ease both}
-.pf-chat-msg.user{background:linear-gradient(135deg,var(--kc),var(--kl));color:#fff;margin-left:auto;border-bottom-right-radius:4px;box-shadow:0 6px 16px -6px var(--ks)}
-.pf-chat-msg.bot{background:#fff;color:#333;margin-right:auto;border-bottom-left-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.04)}
+.pf-chat-msg.user{background:linear-gradient(135deg,var(--kc),var(--kl));color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+.pf-chat-msg.bot{background:#fff;color:#333;margin-right:auto;border-bottom-left-radius:4px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
 .pf-chat-input{display:flex;gap:8px}
-.pf-chat-input input{flex:1;padding:13px 20px;border:2px solid rgba(0,0,0,.08);border-radius:30px;font-size:.9rem;font-family:inherit;outline:none;background:#fff;transition:all .25s;color:#1a1a2e}
+.pf-chat-input input{flex:1;padding:13px 20px;border:2px solid rgba(0,0,0,.08);border-radius:30px;font-size:.9rem;font-family:inherit;outline:none;background:#fff}
 .pf-chat-input input:focus{border-color:var(--kc);box-shadow:0 0 0 4px var(--ks)}
-.pf-chat-input button{padding:12px 26px;background:linear-gradient(135deg,var(--kc),var(--kl));color:#fff;border:none;border-radius:30px;cursor:pointer;font-weight:800;font-family:inherit;font-size:.9rem;box-shadow:0 6px 16px -6px var(--ks);transition:all .25s}
-.pf-chat-input button:hover{transform:translateY(-2px);box-shadow:0 10px 24px -6px var(--ks)}
-.pf-chat-input button:active{transform:scale(.98)}
+.pf-chat-input button{padding:12px 26px;background:linear-gradient(135deg,var(--kc),var(--kl));color:#fff;border:none;border-radius:30px;cursor:pointer;font-weight:800;font-family:inherit;font-size:.9rem}
 
-/* === TOGGLE === */
 .pf-toggle{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05)}
 .pf-toggle:last-child{border-bottom:none}
 .pf-toggle-label{font-size:.9rem;color:#333;font-weight:600}
 .pf-toggle-desc{font-size:.75rem;color:#888;margin-top:2px}
 .pf-switch{position:relative;width:48px;height:26px;background:rgba(0,0,0,.1);border-radius:26px;cursor:pointer;transition:all .3s;flex-shrink:0}
 .pf-switch.on{background:linear-gradient(135deg,#27ae60,#16a085)}
-.pf-switch::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:all .3s cubic-bezier(.16,1,.3,1);box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.pf-switch::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:all .3s;box-shadow:0 2px 6px rgba(0,0,0,.2)}
 .pf-switch.on::after{left:25px}
 .pf-badge-2fa{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:800;background:linear-gradient(135deg,#27ae60,#16a085);color:#fff;box-shadow:0 4px 12px rgba(39,174,96,.4)}
 .pf-badge-2fa.off{background:rgba(0,0,0,.08);color:#666;box-shadow:none}
 
-/* === DEVICE === */
 .pf-device{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;align-items:center}
 .pf-device-icon{font-size:1.5rem;flex-shrink:0}
 
-/* === AVATARS === */
+/* ====== QR DEVICE LINK BUTTON ====== */
+.pf-device-link-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px 22px;border-radius:14px;border:2px solid var(--kc);background:linear-gradient(135deg,rgba(108,99,255,.08),rgba(108,99,255,.02));color:var(--kc);font-size:.92rem;font-weight:700;cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);font-family:inherit;-webkit-tap-highlight-color:transparent}
+.pf-device-link-btn:hover{background:var(--kc);color:#fff;transform:translateY(-2px);box-shadow:0 10px 24px -6px var(--ks)}
+.pf-device-link-btn:active{transform:translateY(0) scale(.98)}
+.pf-device-link-btn .pf-dl-icon{font-size:1.25rem;line-height:1}
+
 .pf-avatar-grid{display:flex;gap:12px;flex-wrap:wrap}
 .pf-avatar-option{width:60px;height:60px;border-radius:50%;cursor:pointer;border:3px solid transparent;object-fit:cover;transition:all .25s}
 .pf-avatar-option:hover{transform:scale(1.1);border-color:var(--kc)}
 .pf-avatar-option.selected{border-color:var(--kc);box-shadow:0 0 0 4px var(--ks)}
 
-/* === KINGDOMS === */
 .pf-kingdom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
 .pf-kingdom-btn{padding:10px 12px;border-radius:10px;border:2px solid rgba(0,0,0,.08);background:#fff;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .25s;font-family:inherit;color:#333}
 .pf-kingdom-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
 .pf-kingdom-btn.selected{color:#fff;box-shadow:0 6px 16px -4px var(--ks)}
 
-/* === MODAL === */
 .pf-modal-bg{position:fixed;inset:0;background:rgba(10,10,26,.6);backdrop-filter:blur(8px);z-index:999998;display:flex;align-items:center;justify-content:center;padding:20px;animation:pfFadeIn .25s ease;overflow-y:auto}
 .pf-modal{background:#fff;border-radius:20px;padding:28px;max-width:440px;width:100%;box-shadow:0 24px 70px -12px rgba(0,0,0,.4);animation:pfSlideUp .35s cubic-bezier(.16,1,.3,1);margin:auto}
 .pf-modal h3{margin:0 0 8px 0;font-size:1.2rem;color:#1a1a2e}
@@ -256,8 +235,7 @@ comments: false
 .pf-modal textarea.pf-modal-input{min-height:100px;resize:vertical}
 .pf-modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
 
-/* === TOAST === */
-.pf-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120px);padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;box-shadow:0 12px 32px rgba(0,0,0,.3);z-index:999999;transition:transform .4s cubic-bezier(.16,1,.3,1);color:#fff;max-width:90vw;backdrop-filter:blur(10px)}
+.pf-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120px);padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;box-shadow:0 12px 32px rgba(0,0,0,.3);z-index:999999;transition:transform .4s cubic-bezier(.16,1,.3,1);color:#fff;max-width:90vw}
 .pf-toast.show{transform:translateX(-50%) translateY(0)}
 .pf-toast.success{background:linear-gradient(135deg,#27ae60,#16a085)}
 .pf-toast.error{background:linear-gradient(135deg,#e74c3c,#c0392b)}
@@ -265,7 +243,6 @@ comments: false
 
 .pf-skel{background:linear-gradient(90deg,#f0f0f4 25%,#f8f8fc 50%,#f0f0f4 75%);background-size:200% 100%;animation:pfShine 1.5s ease-in-out infinite;border-radius:14px;margin-bottom:16px}
 
-/* === MOBILE === */
 @media(max-width:600px){
     .pf-hero{padding:28px 22px}
     .pf-avatar{width:90px;height:90px}
@@ -290,8 +267,8 @@ comments: false
     .pf-mypage{padding:18px 16px}
     .pf-mypage-grid{grid-template-columns:1fr 1fr}
     .pf-mypage-actions{grid-template-columns:1fr}
-    .pf-mypage-action{justify-content:center}
-    .pf-next-ach{flex-direction:column;text-align:center;padding:14px}
+    .pf-next-ach{flex-direction:column;text-align:center}
+    .pf-device-link-btn{padding:12px 18px;font-size:.88rem}
 }
 @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -309,8 +286,6 @@ comments: false
     var MY_KEY='mars-auth-v1';
     var BACKUP_KEY='mars-auth-backup';
     var PROFILE_CACHE_KEY='mars-profile-cache';
-    var GUILD_CACHE_KEY='mars-guild-cache';
-    var LEADERS_CACHE_KEY='mars-leaders-cache';
     var ACTIVITY_KEY='mars-activity-v1';
     var XP_HISTORY_KEY='mars-xp-history';
     var CHAT_KEY='mars-ai-chat-history';
@@ -319,9 +294,6 @@ comments: false
     var container=document.getElementById('profile-app');
     if(!container)return;
 
-    // ============================================================
-    // SESSION
-    // ============================================================
     function getCookie(name){
         try{var cs=document.cookie.split(';');
             for(var i=0;i<cs.length;i++){var c=cs[i].trim();if(c.indexOf(name+'=')===0)return decodeURIComponent(c.substring(name.length+1));}
@@ -343,9 +315,6 @@ comments: false
         }catch(e){return null;}
     }
 
-    // ============================================================
-    // CACHE
-    // ============================================================
     function readCache(key,ttl){
         try{var raw=localStorage.getItem(key);if(!raw)return null;
             var c=JSON.parse(raw);
@@ -357,9 +326,6 @@ comments: false
         try{localStorage.setItem(key,JSON.stringify({data:data,ts:Date.now()}));}catch(e){}
     }
 
-    // ============================================================
-    // FETCH
-    // ============================================================
     async function fetchRetry(url,opts,retries){
         retries=retries==null?2:retries;
         var lastErr;
@@ -406,9 +372,6 @@ comments: false
         return true;
     }
 
-    // ============================================================
-    // ACTIVITY
-    // ============================================================
     function trackActivity(){
         try{var a=JSON.parse(localStorage.getItem(ACTIVITY_KEY)||'{}');
             var today=new Date().toISOString().slice(0,10);
@@ -421,9 +384,6 @@ comments: false
     }
     function getActivity(){try{return JSON.parse(localStorage.getItem(ACTIVITY_KEY)||'{}');}catch(e){return {};}}
 
-    // ============================================================
-    // CONSTANTS
-    // ============================================================
     var KINGDOMS={'Аркадия':'#D4A574','Ксанф':'#3D3D3D','Эдем':'#F4A460','Эридания':'#F5D76E','Кхонг':'#A9A9A9','Авсония':'#87CEEB','Кимерия':'#B19CD9','Серпентида':'#E57373','Эритрей':'#64B5F6','Утопия':'#4DD0E1','Эллада':'#FF8A65','Аливасото':'#81C784'};
     var AVATARS=['/assets/images/авотарка%20девушки.png','/assets/images/мужчина.png','/assets/images/мужчина2.png','/assets/images/мужчина%203.png'];
     var LEVEL_TITLES=['🌱 Поселенец','🔭 Исследователь','🚀 Первопроходец','🏠 Колонизатор','⚡ Командир','⚔️ Воин','📜 Писец','🔮 Мудрец','👑 Аристократ','🏛️ Сенатор','💎 Магнат','🌟 Звёздный лорд','🐉 Дракон','🔥 Феникс','🌊 Повелитель морей','⛰️ Владыка гор','🗡️ Мастер клинка','🏹 Мастер лука','🛡️ Щитоносец','🎯 Снайпер'];
@@ -464,9 +424,6 @@ comments: false
         setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove();},400);},2500);
     }
 
-    // ============================================================
-    // MODAL
-    // ============================================================
     function showModal(opts){
         var bg=document.createElement('div');bg.className='pf-modal-bg';
         var m=document.createElement('div');m.className='pf-modal';
@@ -497,9 +454,6 @@ comments: false
         });
     }
 
-    // ============================================================
-    // STATE
-    // ============================================================
     var currentUser=null,currentProfile=null;
     var kingdomColor='#6C63FF';
     var achievements=[],notes=[],notifications=[],leaders=[],friends=[];
@@ -508,7 +462,6 @@ comments: false
     var streak=0,editingNoteId=null,selectedNoteColor='#6C63FF';
     var totalTime=0,sessionStart=Date.now(),_isActive=true;
     var chatHistory=[];
-    var _dailyTasks=[];
     try{var st=localStorage.getItem('mars_total_time');if(st)totalTime=parseInt(st,10)||0;}catch(e){}
     try{chatHistory=JSON.parse(localStorage.getItem(CHAT_KEY)||'[]');}catch(e){chatHistory=[];}
 
@@ -541,10 +494,6 @@ comments: false
         var seasons=['Пробуждение','Цветение','Зной','Ветры','Угасание','Заморозки','Тьма','Ледяной покров'];
         return{year:year.toLocaleString(),month:months[mi],day:rem+1,season:seasons[Math.floor(mi/2)%seasons.length]};
     }
-
-    // ============================================================
-    // FIND NEXT ACHIEVEMENT
-    // ============================================================
     function getNextAchievement(){
         var earnedIds={};
         achievements.forEach(function(a){earnedIds[a.achievement_id]=true;});
@@ -554,9 +503,6 @@ comments: false
         return null;
     }
 
-    // ============================================================
-    // RENDER
-    // ============================================================
     function render(){
         if(!currentProfile||!currentUser)return;
         try{
@@ -599,53 +545,27 @@ comments: false
 
         // МОЯ СТРАНИЧКА
         html+='<div class="pf-mypage">';
-        html+='<div class="pf-mypage-header">';
-        html+='<div class="pf-mypage-icon">🗂️</div>';
-        html+='<div class="pf-mypage-titles">';
-        html+='<h2 class="pf-mypage-title">Моя страничка</h2>';
-        html+='<p class="pf-mypage-sub">Быстрый обзор твоей активности</p>';
-        html+='</div></div>';
-
+        html+='<div class="pf-mypage-header"><div class="pf-mypage-icon">🗂️</div>';
+        html+='<div class="pf-mypage-titles"><h2 class="pf-mypage-title">Моя страничка</h2><p class="pf-mypage-sub">Быстрый обзор активности</p></div></div>';
         html+='<div class="pf-mypage-grid">';
-        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'achievements\')">';
-        html+='<div class="pf-mypage-tile-label">Достижения</div>';
-        html+='<div class="pf-mypage-tile-value">'+achievements.length+'/'+ALL_ACHIEVEMENTS.length+'</div>';
-        html+='<div class="pf-mypage-tile-sub">'+Math.round(achievements.length/ALL_ACHIEVEMENTS.length*100)+'% собрано</div>';
+        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'achievements\')"><div class="pf-mypage-tile-label">Достижения</div><div class="pf-mypage-tile-value">'+achievements.length+'/'+ALL_ACHIEVEMENTS.length+'</div><div class="pf-mypage-tile-sub">'+Math.round(achievements.length/ALL_ACHIEVEMENTS.length*100)+'% собрано</div></div>';
+        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'notes\')"><div class="pf-mypage-tile-label">Заметки</div><div class="pf-mypage-tile-value">'+notes.length+'</div><div class="pf-mypage-tile-sub">личных записей</div></div>';
+        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'friends\')"><div class="pf-mypage-tile-label">Друзья</div><div class="pf-mypage-tile-value">'+friends.length+'</div><div class="pf-mypage-tile-sub">в кругу общения</div></div>';
+        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'activity\')"><div class="pf-mypage-tile-label">Дней на сайте</div><div class="pf-mypage-tile-value">'+Object.keys(getActivity()).length+'</div><div class="pf-mypage-tile-sub">активных</div></div>';
         html+='</div>';
-        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'notes\')">';
-        html+='<div class="pf-mypage-tile-label">Заметки</div>';
-        html+='<div class="pf-mypage-tile-value">'+notes.length+'</div>';
-        html+='<div class="pf-mypage-tile-sub">личных записей</div>';
-        html+='</div>';
-        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'friends\')">';
-        html+='<div class="pf-mypage-tile-label">Друзья</div>';
-        html+='<div class="pf-mypage-tile-value">'+friends.length+'</div>';
-        html+='<div class="pf-mypage-tile-sub">в кругу общения</div>';
-        html+='</div>';
-        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'activity\')">';
-        html+='<div class="pf-mypage-tile-label">Дней на сайте</div>';
-        html+='<div class="pf-mypage-tile-value">'+Object.keys(getActivity()).length+'</div>';
-        html+='<div class="pf-mypage-tile-sub">активных</div>';
-        html+='</div>';
-        html+='</div>';
-
         html+='<div class="pf-mypage-actions">';
         html+='<a href="/achievements/" class="pf-mypage-action"><span class="pf-mypage-action-icon">🏅</span>Все награды</a>';
         html+='<a href="/bookmarks/" class="pf-mypage-action"><span class="pf-mypage-action-icon">📚</span>Закладки</a>';
         html+='<a href="/quests/" class="pf-mypage-action"><span class="pf-mypage-action-icon">🗺️</span>Квесты</a>';
-        html+='<a href="/scrolls/" class="pf-mypage-action"><span class="pf-mypage-action-icon">📜</span>Свитки Хевсура</a>';
-        html+='</div>';
-        html+='</div>';
+        html+='<a href="/scrolls/" class="pf-mypage-action"><span class="pf-mypage-action-icon">📜</span>Свитки</a>';
+        html+='</div></div>';
 
-        // БЛИЖАЙШЕЕ ДОСТИЖЕНИЕ
+        // NEXT ACH
         if(nextAch){
-            html+='<div class="pf-next-ach">';
-            html+='<div class="pf-next-ach-icon">'+(nextAch.i||'🎯')+'</div>';
-            html+='<div class="pf-next-ach-info">';
-            html+='<div class="pf-next-ach-label">Следующая награда</div>';
+            html+='<div class="pf-next-ach"><div class="pf-next-ach-icon">'+(nextAch.i||'🎯')+'</div>';
+            html+='<div class="pf-next-ach-info"><div class="pf-next-ach-label">Следующая награда</div>';
             html+='<div class="pf-next-ach-name">'+escapeHtml(nextAch.n)+'</div>';
-            html+='<div class="pf-next-ach-desc">'+escapeHtml(nextAch.d)+'</div>';
-            html+='</div></div>';
+            html+='<div class="pf-next-ach-desc">'+escapeHtml(nextAch.d)+'</div></div></div>';
         }
 
         // QUICK
@@ -697,15 +617,13 @@ comments: false
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> О себе</h3>';
         html+='<p style="margin:0 0 12px 0;color:#555;font-size:.95rem;line-height:1.6;" id="pf-bio">'+escapeHtml(currentProfile.bio||'✍️ Ещё ничего не рассказал о себе.')+'</p>';
         html+='<button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button></div>';
-
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>';
-        html+='<div class="pf-calendar" style="text-align:center;padding:20px;background:linear-gradient(135deg,var(--kb),rgba(255,255,255,.4));border-radius:14px;border:1px solid rgba(0,0,0,.05);">';
+        html+='<div style="text-align:center;padding:20px;background:linear-gradient(135deg,var(--kb),rgba(255,255,255,.4));border-radius:14px;border:1px solid rgba(0,0,0,.05);">';
         html+='<div style="font-size:1.2rem;font-weight:800;color:var(--kc);margin-bottom:4px;">'+md.month+'</div>';
         html+='<div style="font-size:2.5rem;font-weight:900;color:#1a1a1a;line-height:1;margin:6px 0;">'+md.day+'</div>';
         html+='<div style="font-size:.9rem;color:#666;font-weight:600;">Год '+md.year+' Э.О.</div>';
         html+='<div style="display:inline-block;margin-top:12px;padding:5px 16px;background:var(--kc);color:#fff;border-radius:20px;font-size:.78rem;font-weight:700;">'+md.season+'</div>';
-        html+='</div></div>';
-        html+='</div>';
+        html+='</div></div></div>';
 
         // ACTIVITY
         html+='<div class="pf-tab-content'+(activeTab==='activity'?' active':'')+'" data-content="activity">';
@@ -716,44 +634,32 @@ comments: false
         html+='<div class="pf-timer-card"><div class="pf-timer-value">'+streak+'</div><div class="pf-timer-label">Серия</div><div class="pf-timer-sub">Дней подряд</div></div>';
         html+='<div class="pf-timer-card"><div class="pf-timer-value">'+Object.keys(getActivity()).length+'</div><div class="pf-timer-label">Дней</div><div class="pf-timer-sub">Всего</div></div>';
         html+='</div></div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔥</span> Активность за 90 дней</h3>';
-        html+='<div id="pf-heatmap-wrap">'+renderHeatmap()+'</div>';
-        html+='<div style="display:flex;justify-content:space-between;font-size:.7rem;color:#aaa;margin-top:8px;"><span>90 дней назад</span><span>Сегодня</span></div>';
-        html+='</div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📈</span> XP за 14 дней</h3>';
-        html+='<div id="pf-chart-wrap">'+renderXPChart()+'</div></div>';
+        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔥</span> Активность за 90 дней</h3><div>'+renderHeatmap()+'</div>';
+        html+='<div style="display:flex;justify-content:space-between;font-size:.7rem;color:#aaa;margin-top:8px;"><span>90 дней назад</span><span>Сегодня</span></div></div>';
+        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📈</span> XP за 14 дней</h3><div>'+renderXPChart()+'</div></div>';
         html+='</div>';
 
         // MODERATION
         if(mod){
             html+='<div class="pf-tab-content'+(activeTab==='moderation'?' active':'')+'" data-content="moderation">';
-            html+='<div class="pf-mod-panel">';
-            html+='<h3 class="pf-card-title"><span class="pf-ct-icon">🛡️</span> Центр модерации</h3>';
+            html+='<div class="pf-mod-panel"><h3 class="pf-card-title"><span class="pf-ct-icon">🛡️</span> Центр модерации</h3>';
             html+='<div class="pf-mod-stats">';
             html+='<div class="pf-mod-stat" onclick="location.href=\'/lists/moderation/\'"><div class="pf-mod-stat-value">'+modStats.pendingSubmissions+'</div><div class="pf-mod-stat-label">Заявок</div></div>';
             html+='<div class="pf-mod-stat" onclick="location.href=\'/lists/moderation/\'"><div class="pf-mod-stat-value">'+modStats.hiddenComments+'</div><div class="pf-mod-stat-label">Скрытых</div></div>';
             html+='<div class="pf-mod-stat" onclick="location.href=\'/lists/moderation/\'"><div class="pf-mod-stat-value">'+modStats.bannedUsers+'</div><div class="pf-mod-stat-label">Забанено</div></div>';
-            html+='</div>';
-            html+='<a href="/lists/moderation/" class="pf-btn">🛡️ Открыть панель модерации</a>';
-            html+='</div></div>';
+            html+='</div><a href="/lists/moderation/" class="pf-btn">🛡️ Открыть панель модерации</a></div></div>';
         }
 
         // GUILD
         html+='<div class="pf-tab-content'+(activeTab==='guild'?' active':'')+'" data-content="guild">';
         if(guild){
-            html+='<div class="pf-guild-hero" style="--guild-color:'+(guild.color||kingdomColor)+';">';
-            html+='<div class="pf-guild-icon">'+(guild.icon||'🏰')+'</div>';
-            html+='<div style="flex:1;min-width:150px;">';
-            html+='<h2 class="pf-guild-name">'+escapeHtml(guild.name)+'</h2>';
-            html+='<div class="pf-guild-meta"><span>👥 '+guildMembers.length+' участников</span></div>';
-            html+='</div></div>';
-            html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📜</span> Описание</h3>';
-            html+='<p style="margin:0;color:#555;line-height:1.6;">'+escapeHtml(guild.description||'Без описания')+'</p></div>';
+            html+='<div class="pf-guild-hero" style="--guild-color:'+(guild.color||kingdomColor)+';"><div class="pf-guild-icon">'+(guild.icon||'🏰')+'</div><div style="flex:1;min-width:150px;"><h2 class="pf-guild-name">'+escapeHtml(guild.name)+'</h2><div class="pf-guild-meta"><span>👥 '+guildMembers.length+' участников</span></div></div></div>';
+            html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📜</span> Описание</h3><p style="margin:0;color:#555;line-height:1.6;">'+escapeHtml(guild.description||'Без описания')+'</p></div>';
             html+='<div class="pf-card"><a href="/guilds/" class="pf-btn pf-btn-outline">🏰 Перейти в гильдии</a>';
-            if(guild.leader_id===currentUser.id)html+='<button class="pf-btn pf-btn-danger" style="margin-left:8px;" onclick="pfDeleteGuild()">🗑️ Удалить гильдию</button>';
+            if(guild.leader_id===currentUser.id)html+='<button class="pf-btn pf-btn-danger" style="margin-left:8px;" onclick="pfDeleteGuild()">🗑️ Удалить</button>';
             html+='</div>';
         }else{
-            html+='<div class="pf-card" style="text-align:center;padding:50px 20px;"><div style="font-size:4rem;margin-bottom:12px;">🏰</div><h3 style="margin:0 0 8px 0;">Вы пока не в гильдии</h3><p style="color:#888;margin:0 0 16px 0;">Вступайте в гильдии, чтобы объединяться с другими</p><a href="/guilds/" class="pf-btn">🔍 Найти гильдию</a></div>';
+            html+='<div class="pf-card" style="text-align:center;padding:50px 20px;"><div style="font-size:4rem;margin-bottom:12px;">🏰</div><h3 style="margin:0 0 8px 0;">Вы пока не в гильдии</h3><a href="/guilds/" class="pf-btn">🔍 Найти гильдию</a></div>';
         }
         html+='</div>';
 
@@ -810,15 +716,13 @@ comments: false
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🤖</span> ИИ-гид</h3>';
         html+='<div class="pf-chat" id="pf-chat-container">';
         if(chatHistory.length===0){
-            html+='<div class="pf-chat-msg bot">Привет! Я ИИ-гид по миру «Письмо из Красной пыли». Спрашивай о Марсе, королевствах, персонажах, истории! 🪐</div>';
+            html+='<div class="pf-chat-msg bot">Привет! Я ИИ-гид по миру «Письмо из Красной пыли». Спрашивай о Марсе! 🪐</div>';
         }else{
             chatHistory.slice(-20).forEach(function(m){
                 html+='<div class="pf-chat-msg '+(m.role==='user'?'user':'bot')+'">'+escapeHtml(m.text)+'</div>';
             });
         }
-        html+='</div>';
-        html+='<div class="pf-chat-input"><input type="text" id="pf-chat-input" placeholder="Спросите о Марсе..." onkeypress="if(event.key===\'Enter\')pfSendChat()"><button onclick="pfSendChat()">➤</button></div>';
-        html+='</div></div>';
+        html+='</div><div class="pf-chat-input"><input type="text" id="pf-chat-input" placeholder="Спросите..." onkeypress="if(event.key===\'Enter\')pfSendChat()"><button onclick="pfSendChat()">➤</button></div></div></div>';
 
         // NOTIFS
         html+='<div class="pf-tab-content'+(activeTab==='notifications'?' active':'')+'" data-content="notifications">';
@@ -856,7 +760,11 @@ comments: false
         html+='<div id="pf-2fa-status" style="margin-bottom:20px;"></div>';
         html+='<div class="pf-toggle"><div><div class="pf-toggle-label">🔐 Email-2FA</div><div class="pf-toggle-desc">Запрашивать код при входе с новых устройств</div></div><div class="pf-switch" id="pf-switch-2fa" onclick="pfToggle2FA()"></div></div>';
         html+='</div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📱</span> Доверенные устройства</h3>';
+        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📱</span> Вход с другого устройства</h3>';
+        html+='<p style="color:#666;font-size:.88rem;line-height:1.55;margin:0 0 14px 0;">Сгенерируйте QR-код и отсканируйте его камерой телефона, чтобы войти с другого устройства.</p>';
+        html+='<button type="button" class="pf-device-link-btn" onclick="pfOpenDeviceLink()"><span class="pf-dl-icon">📱</span><span>Показать QR-код</span></button>';
+        html+='</div>';
+        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">💻</span> Доверенные устройства</h3>';
         html+='<div id="pf-trusted-devices"><p style="color:#888;">Загрузка...</p></div>';
         html+='<button class="pf-btn pf-btn-outline" onclick="pfClearTrustedDevices()" style="margin-top:12px;">🗑️ Удалить все</button>';
         html+='</div>';
@@ -869,14 +777,12 @@ comments: false
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя</h3>';
         html+='<p style="color:#555;margin:0 0 12px 0;">Текущее: <b id="pf-display-name">'+escapeHtml(displayName)+'</b></p>';
         html+='<button class="pf-btn pf-btn-outline" onclick="pfEditName()">✏️ Изменить</button></div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🖼️</span> Аватар</h3>';
-        html+='<div class="pf-avatar-grid">';
+        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🖼️</span> Аватар</h3><div class="pf-avatar-grid">';
         AVATARS.forEach(function(url){
             html+='<img src="'+url+'" alt="" class="pf-avatar-option'+(avatar===url?' selected':'')+'" onclick="pfSelectAvatar(\''+url+'\')" loading="lazy">';
         });
         html+='</div></div>';
-        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏰</span> Королевство</h3>';
-        html+='<div class="pf-kingdom-grid">';
+        html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏰</span> Королевство</h3><div class="pf-kingdom-grid">';
         Object.keys(KINGDOMS).forEach(function(name){
             var sel=currentProfile.kingdom===name;
             var col=KINGDOMS[name];
@@ -891,7 +797,6 @@ comments: false
         container.innerHTML=html;
         attachTabsEvents();
 
-        // Звёзды в hero
         var starsBox=document.getElementById('pf-hero-stars');
         if(starsBox){
             for(var i=0;i<20;i++){
@@ -938,9 +843,6 @@ comments: false
         return '<div class="pf-chart">'+bars+'</div>'+labels;
     }
 
-    // ============================================================
-    // TABS
-    // ============================================================
     function attachTabsEvents(){
         var w=document.getElementById('pf-tabs');
         if(!w)return;
@@ -986,10 +888,28 @@ comments: false
     });
 
     // ============================================================
-    // ACTIONS
+    // 🆕 ОТКРЫТИЕ QR (ПК показывает, мобильный сканирует)
     // ============================================================
+    window.pfOpenDeviceLink = function(){
+        // Мобильный → сканер
+        if (window.marsQrScanner && window.marsQrScanner.isMobile) {
+            window.marsQrScanner.open();
+            return;
+        }
+        if (window.qsOpenScanner && /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            window.qsOpenScanner();
+            return;
+        }
+        // ПК → показ QR
+        if (window.marsLinkDevice && typeof window.marsLinkDevice.open === 'function') {
+            window.marsLinkDevice.open((currentUser && currentUser.email) || '');
+            return;
+        }
+        showToast('Модуль QR ещё не загружен. Подождите...', 'info');
+    };
+
     window.pfLogout=function(){
-        [MY_KEY,SB_KEY,BACKUP_KEY,PROFILE_CACHE_KEY,GUILD_CACHE_KEY,LEADERS_CACHE_KEY].forEach(function(k){
+        [MY_KEY,SB_KEY,BACKUP_KEY,PROFILE_CACHE_KEY].forEach(function(k){
             try{localStorage.removeItem(k);}catch(e){}
             try{sessionStorage.removeItem(k);}catch(e){}
         });
@@ -1058,7 +978,7 @@ comments: false
 
     window.pfDeleteAccount=function(){
         showModal({
-            title:'⚠️ Удалить аккаунт?',sub:'Действие необратимо. Введите email для подтверждения:',
+            title:'⚠️ Удалить аккаунт?',sub:'Необратимо. Введите email:',
             fields:[{name:'email',type:'email',placeholder:currentUser.email,max:100}],
             okText:'Удалить',
             onOk:async function(v){
@@ -1075,20 +995,11 @@ comments: false
 
     window.pfDeleteGuild=function(){
         if(!guild)return;
-        showModal({
-            title:'Удалить гильдию?',sub:'Все участники будут исключены. Это необратимо.',
-            fields:[],okText:'Удалить',
-            onOk:async function(){
-                try{
-                    await apiDelete('guilds?id=eq.'+guild.id,currentUser._token);
-                    showToast('🗑️ Гильдия удалена','info');
-                    setTimeout(function(){location.reload();},500);
-                }catch(e){showToast('Ошибка','error');}
-            }
+        showModal({title:'Удалить гильдию?',sub:'Необратимо.',fields:[],okText:'Удалить',
+            onOk:async function(){try{await apiDelete('guilds?id=eq.'+guild.id,currentUser._token);showToast('🗑️ Удалена','info');setTimeout(function(){location.reload();},500);}catch(e){showToast('Ошибка','error');}}
         });
     };
 
-    // NOTES
     window.pfOpenNoteForm=function(id){
         editingNoteId=id||null;
         var n=null;
@@ -1096,17 +1007,14 @@ comments: false
         showModal({
             title:n?'Редактировать заметку':'Новая заметка',
             fields:[
-                {name:'title',value:n?(n.title||''):'',placeholder:'Заголовок (необязательно)',max:100},
-                {name:'content',type:'textarea',value:n?(n.content||''):'',placeholder:'Текст заметки...',max:5000}
+                {name:'title',value:n?(n.title||''):'',placeholder:'Заголовок',max:100},
+                {name:'content',type:'textarea',value:n?(n.content||''):'',placeholder:'Текст...',max:5000}
             ],
             onOk:async function(v){
                 if(!v.content){showToast('Введите текст','error');return;}
                 try{
-                    if(editingNoteId){
-                        await apiPatch('user_notes?id=eq.'+editingNoteId,{title:v.title,content:v.content,updated_at:new Date().toISOString()},currentUser._token);
-                    }else{
-                        await apiPost('user_notes',{user_id:currentUser.id,title:v.title,content:v.content,color:selectedNoteColor},currentUser._token);
-                    }
+                    if(editingNoteId)await apiPatch('user_notes?id=eq.'+editingNoteId,{title:v.title,content:v.content,updated_at:new Date().toISOString()},currentUser._token);
+                    else await apiPost('user_notes',{user_id:currentUser.id,title:v.title,content:v.content,color:selectedNoteColor},currentUser._token);
                     showToast('✅ Сохранено!','success');
                     setTimeout(function(){location.reload();},400);
                 }catch(e){showToast('Ошибка: '+e.message,'error');}
@@ -1121,46 +1029,35 @@ comments: false
         catch(e){showToast('Ошибка','error');}
     };
     window.pfDeleteNote=function(id){
-        showModal({title:'Удалить заметку?',sub:'Это действие нельзя отменить.',fields:[],okText:'Удалить',
+        showModal({title:'Удалить заметку?',sub:'Необратимо.',fields:[],okText:'Удалить',
             onOk:async function(){try{await apiDelete('user_notes?id=eq.'+id,currentUser._token);setTimeout(function(){location.reload();},300);}catch(e){showToast('Ошибка','error');}}
         });
     };
 
-    // AI CHAT
     window.pfSendChat=async function(){
         var input=document.getElementById('pf-chat-input');
         var chatEl=document.getElementById('pf-chat-container');
         if(!input||!chatEl)return;
         var q=input.value.trim();
         if(!q)return;
-
-        var userMsg=document.createElement('div');
-        userMsg.className='pf-chat-msg user';userMsg.textContent=q;
+        var userMsg=document.createElement('div');userMsg.className='pf-chat-msg user';userMsg.textContent=q;
         chatEl.appendChild(userMsg);chatEl.scrollTop=chatEl.scrollHeight;
         input.value='';
         chatHistory.push({role:'user',text:q});
-
         try{
-            var res=await fetchRetry(SUPABASE_URL+'/functions/v1/ai-chat',{
-                method:'POST',
-                headers:{'Content-Type':'application/json','Authorization':'Bearer '+currentUser._token},
-                body:JSON.stringify({message:q,history:chatHistory.slice(-6)})
-            },1);
+            var res=await fetchRetry(SUPABASE_URL+'/functions/v1/ai-chat',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+currentUser._token},body:JSON.stringify({message:q,history:chatHistory.slice(-6)})},1);
             var data=await res.json();
             var reply=data.reply||data.error||'Нет ответа';
-            var botMsg=document.createElement('div');
-            botMsg.className='pf-chat-msg bot';botMsg.textContent=reply;
+            var botMsg=document.createElement('div');botMsg.className='pf-chat-msg bot';botMsg.textContent=reply;
             chatEl.appendChild(botMsg);chatEl.scrollTop=chatEl.scrollHeight;
             chatHistory.push({role:'bot',text:reply});
         }catch(e){
-            var err=document.createElement('div');
-            err.className='pf-chat-msg bot';err.textContent='⚠️ Ошибка сети. Попробуйте ещё раз.';
+            var err=document.createElement('div');err.className='pf-chat-msg bot';err.textContent='⚠️ Ошибка сети';
             chatEl.appendChild(err);
         }
         try{localStorage.setItem(CHAT_KEY,JSON.stringify(chatHistory.slice(-30)));}catch(e){}
     };
 
-    // 2FA
     window.pfToggle2FA=async function(){
         try{
             var r=await apiGet('user_2fa?user_id=eq.'+currentUser.id+'&select=*',currentUser._token);
@@ -1172,11 +1069,8 @@ comments: false
                 fields:[],okText:newVal?'Включить':'Выключить',
                 onOk:async function(){
                     try{
-                        if(r&&r[0]){
-                            await apiPatch('user_2fa?user_id=eq.'+currentUser.id,{email_2fa_enabled:newVal,updated_at:new Date().toISOString()},currentUser._token);
-                        }else{
-                            await apiPost('user_2fa',{user_id:currentUser.id,email_2fa_enabled:newVal,updated_at:new Date().toISOString()},currentUser._token);
-                        }
+                        if(r&&r[0])await apiPatch('user_2fa?user_id=eq.'+currentUser.id,{email_2fa_enabled:newVal,updated_at:new Date().toISOString()},currentUser._token);
+                        else await apiPost('user_2fa',{user_id:currentUser.id,email_2fa_enabled:newVal,updated_at:new Date().toISOString()},currentUser._token);
                         showToast(newVal?'✅ Включена!':'🔓 Выключена',newVal?'success':'info');
                         render2FATab();
                     }catch(e){showToast('Ошибка: '+e.message,'error');}
@@ -1193,13 +1087,8 @@ comments: false
         try{
             var r=await apiGet('user_2fa?user_id=eq.'+currentUser.id+'&select=*',currentUser._token);
             var enabled=r&&r[0]&&r[0].email_2fa_enabled;
-            if(enabled){
-                statusEl.innerHTML='<div class="pf-badge-2fa">✅ 2FA включена</div>';
-                if(switchEl)switchEl.classList.add('on');
-            }else{
-                statusEl.innerHTML='<div class="pf-badge-2fa off">⚠️ 2FA выключена</div>';
-                if(switchEl)switchEl.classList.remove('on');
-            }
+            if(enabled){statusEl.innerHTML='<div class="pf-badge-2fa">✅ 2FA включена</div>';if(switchEl)switchEl.classList.add('on');}
+            else{statusEl.innerHTML='<div class="pf-badge-2fa off">⚠️ 2FA выключена</div>';if(switchEl)switchEl.classList.remove('on');}
             if(devicesEl){
                 var devRes=await apiGet('trusted_devices?user_id=eq.'+currentUser.id+'&select=*&order=last_used.desc',currentUser._token);
                 var devices=devRes||[];
@@ -1219,13 +1108,12 @@ comments: false
         catch(e){showToast('Ошибка','error');}
     };
     window.pfClearTrustedDevices=function(){
-        showModal({title:'Удалить все устройства?',sub:'Придётся заново подтверждать вход с каждого.',fields:[],okText:'Удалить',
+        showModal({title:'Удалить все устройства?',sub:'Придётся заново подтверждать вход.',fields:[],okText:'Удалить',
             onOk:async function(){try{await apiDelete('trusted_devices?user_id=eq.'+currentUser.id,currentUser._token);showToast('🗑️ Удалено','info');render2FATab();}catch(e){showToast('Ошибка','error');}}
         });
     };
     window.pfChangePassword=function(){
-        showModal({
-            title:'Новый пароль',sub:'Минимум 6 символов',
+        showModal({title:'Новый пароль',sub:'Минимум 6 символов',
             fields:[{name:'password',type:'password',placeholder:'Новый пароль',max:100}],
             onOk:async function(v){
                 if(!v.password||v.password.length<6){showToast('Минимум 6 символов','error');return;}
@@ -1234,17 +1122,12 @@ comments: false
         });
     };
 
-    // ============================================================
-    // LOAD
-    // ============================================================
     async function loadAll(session){
         currentUser=session.user;
         currentUser._token=session.access_token;
-
         var profiles;
         try{profiles=await apiGet('profiles?user_id=eq.'+encodeURIComponent(session.user.id)+'&select=*',session.access_token);}
         catch(e){throw new Error('Не удалось загрузить профиль: '+e.message);}
-
         currentProfile=Array.isArray(profiles)&&profiles.length?profiles[0]:null;
         if(!currentProfile){
             try{
@@ -1256,11 +1139,8 @@ comments: false
                 currentProfile=Array.isArray(created)&&created.length?created[0]:null;
             }catch(e){throw new Error('Профиль не создан: '+e.message);}
         }
-
         writeCache(PROFILE_CACHE_KEY,{user:session.user,profile:currentProfile});
         render();
-
-        // Фоном остальное — параллельно
         try{
             var results=await Promise.all([
                 apiGet('user_achievements?user_id=eq.'+session.user.id+'&select=achievement_id,earned_at',session.access_token).catch(function(){return [];}),
@@ -1271,7 +1151,6 @@ comments: false
                 apiGet('guild_members?user_id=eq.'+session.user.id+'&select=guild_id,role',session.access_token).catch(function(){return [];}),
                 apiGet('friends?or=(user_id.eq.'+session.user.id+',friend_id.eq.'+session.user.id+')&select=*',session.access_token).catch(function(){return [];})
             ]);
-
             var uaRes=results[0]||[];
             notes=results[1]||[];
             notifications=results[2]||[];
@@ -1279,7 +1158,6 @@ comments: false
             streak=(results[4]&&results[4][0]&&results[4][0].streak)||0;
             var guildMember=results[5]&&results[5][0];
             var friendsRes=results[6]||[];
-
             if(uaRes.length){
                 try{
                     var ids=uaRes.map(function(x){return x.achievement_id;}).filter(Boolean);
@@ -1293,7 +1171,6 @@ comments: false
                     }
                 }catch(e){}
             }
-
             if(guildMember&&guildMember.guild_id){
                 try{
                     var gr=await apiGet('guilds?id=eq.'+guildMember.guild_id+'&select=*',session.access_token);
@@ -1309,7 +1186,6 @@ comments: false
                     }
                 }catch(e){}
             }
-
             if(friendsRes.length){
                 try{
                     var fids={};
@@ -1326,7 +1202,6 @@ comments: false
                     }
                 }catch(e){}
             }
-
             if(isModerator()){
                 try{
                     var pending=await apiGet('list_submissions?status=eq.pending&select=id&limit=1',session.access_token);
@@ -1337,7 +1212,6 @@ comments: false
                     modStats.bannedUsers=(banned||[]).length||0;
                 }catch(e){}
             }
-
             render();
         }catch(e){console.warn('[profile] bg load error:',e.message);}
     }
@@ -1395,18 +1269,15 @@ comments: false
 
     async function init(){
         trackActivity();
-
         var session=readSession();
         if(!session){
             session=await waitSession(3000);
             if(!session){showLogin();return;}
         }
-
         if(renderFromCache(session)){
             loadAll(session).catch(function(e){console.warn('[profile] reload:',e.message);});
             return;
         }
-
         renderSkeleton();
         try{await loadAll(session);}
         catch(e){showError(e.message);}

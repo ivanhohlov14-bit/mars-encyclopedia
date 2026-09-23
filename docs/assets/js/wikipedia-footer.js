@@ -347,7 +347,7 @@ html body.mars-stars-on .wiki-footer-links a:hover {
                 '<a href="/code-of-conduct/">Кодекс поведения</a>' +
                 '<a href="/statistics/">Статистика</a>' +
                 '<a class="wf-donate-btn" href="' + DONATE_URL + '" target="_blank" rel="noopener">' +
-                '❤️ Поддержать проект' +
+                'Поддержать проект' +
                 '</a>' +
                 '</div>';
 

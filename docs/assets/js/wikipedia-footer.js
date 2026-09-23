@@ -1,8 +1,7 @@
 // ============================================================
-// wikipedia-footer.js — FINAL v15
+// wikipedia-footer.js — FINAL v16
 // - Цвет королевства из БД (Supabase) + кэш
-// - Компактная кнопка доната CloudTips
-// - VIP стиль, сдержанный
+// - Кнопка «Поддержать проект» в ряду ссылок футера
 // ============================================================
 
 (function() {
@@ -200,66 +199,14 @@
 }
 .wiki-footer a:hover { border-bottom-color: var(--wf-color, #3498db); }
 
-/* ========== DONATE BUTTON (компактная) ========== */
-.wf-donate-wrap {
-    text-align: center;
-    margin: 18px 0 16px;
-    padding: 16px 0 14px;
-    border-top: 1px dashed rgba(var(--wf-rgb, 52,152,219), 0.4);
-    border-bottom: 1px dashed rgba(var(--wf-rgb, 52,152,219), 0.4);
-}
-.wf-donate-title {
-    font-size: 0.75rem;
-    color: #777;
-    margin-bottom: 10px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-}
-.wf-donate-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    padding: 8px 22px;
-    background: var(--wf-color, #3498db);
-    color: #fff !important;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none !important;
-    font-size: 0.85rem;
-    letter-spacing: 0.2px;
-    transition: all 0.25s ease;
-    border: none !important;
-    -webkit-tap-highlight-color: transparent;
-    box-shadow: 0 2px 8px rgba(var(--wf-rgb, 52,152,219), 0.25);
-}
-.wf-donate-btn:hover {
-    background: var(--wf-color, #3498db);
-    filter: brightness(1.1);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 14px rgba(var(--wf-rgb, 52,152,219), 0.4);
-    color: #fff !important;
-    border-bottom: none !important;
-}
-.wf-donate-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 4px rgba(var(--wf-rgb, 52,152,219), 0.3);
-}
-.wf-donate-sub {
-    font-size: 0.72rem;
-    color: #999;
-    margin-top: 8px;
-    font-style: italic;
-}
-
-/* ========== FOOTER LINKS ========== */
+/* ========== FOOTER LINKS ROW ========== */
 .wiki-footer-links {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     padding-top: 16px;
     margin-top: 4px;
+    align-items: center;
 }
 .wiki-footer-links a {
     display: inline-block;
@@ -280,6 +227,41 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 16px -4px rgba(var(--wf-rgb, 52,152,219), 0.5);
     color: #000 !important;
+}
+
+/* ========== DONATE BUTTON (в ряду с ссылками) ========== */
+.wf-donate-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 16px !important;
+    background: var(--wf-color, #3498db) !important;
+    color: #fff !important;
+    border-radius: 20px !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.2px;
+    text-decoration: none !important;
+    border: 1px solid var(--wf-color, #3498db) !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(var(--wf-rgb, 52,152,219), 0.3);
+    -webkit-tap-highlight-color: transparent;
+    margin-left: auto;
+}
+.wf-donate-btn:hover {
+    filter: brightness(1.12);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px -4px rgba(var(--wf-rgb, 52,152,219), 0.55);
+    color: #fff !important;
+    border-bottom: 1px solid var(--wf-color, #3498db) !important;
+}
+.wf-donate-btn:active {
+    transform: translateY(0);
+}
+.wf-donate-icon {
+    font-size: 0.95rem;
+    line-height: 1;
 }
 
 /* ========== DARK THEME ========== */
@@ -311,26 +293,26 @@ html body.mars-stars-on .wiki-footer-links a:hover {
     background: rgba(var(--wf-rgb, 52,152,219), 0.3) !important;
     color: #fff !important;
 }
-html body.mars-stars-on .wf-donate-title { color: #aaa !important; }
-html body.mars-stars-on .wf-donate-sub { color: #888 !important; }
-html body.mars-stars-on .wf-donate-wrap {
-    border-color: rgba(var(--wf-rgb, 52,152,219), 0.5);
-}
 
 /* ========== MOBILE ========== */
 @media (max-width: 600px) {
     .wiki-footer { padding: 22px 18px 18px; margin: 40px 0 20px; border-radius: 14px; }
+    .wiki-footer-links { gap: 6px; }
     .wiki-footer-links a { padding: 7px 13px; font-size: 0.78rem; }
-    .wf-donate-wrap { padding: 14px 0 12px; margin: 16px 0 14px; }
-    .wf-donate-btn { padding: 7px 18px; font-size: 0.8rem; border-radius: 7px; }
-    .wf-donate-sub { font-size: 0.68rem; margin-top: 6px; }
-    .wf-donate-title { font-size: 0.7rem; margin-bottom: 8px; }
+    .wf-donate-btn {
+        padding: 7px 14px !important;
+        font-size: 0.78rem !important;
+        margin-left: 0;
+        width: 100%;
+        margin-top: 4px;
+    }
 }
 
 /* ========== REDUCED MOTION ========== */
 @media (prefers-reduced-motion: reduce) {
     .wiki-footer::before,
     .wiki-footer::after { animation: none !important; }
+    .wiki-footer-links a,
     .wf-donate-btn { transition: none !important; }
 }
 `;
@@ -357,19 +339,16 @@ html body.mars-stars-on .wf-donate-wrap {
                 '<em>«Письмо из Красной пыли»</em>. Реконструкция истории Марса ' +
                 'в Эпоху Умирания, основанная на научных данных и художественной концепции автора.</p>';
 
-        // Компактный блок доната
-        html += '<div class="wf-donate-wrap">' +
-                '<div class="wf-donate-title">Поддержать проект</div>' +
-                '<a class="wf-donate-btn" href="' + DONATE_URL + '" target="_blank" rel="noopener">Поддержать</a>' +
-                '<div class="wf-donate-sub">Средства идут на новые статьи и иллюстрации</div>' +
-                '</div>';
-
+        // Кнопка доната — последняя в ряду ссылок
         html += '<div class="wiki-footer-links">' +
                 '<a href="/privacy/">Политика конфиденциальности</a>' +
                 '<a href="/about/">Описание проекта</a>' +
                 '<a href="/contact/">Связаться с нами</a>' +
                 '<a href="/code-of-conduct/">Кодекс поведения</a>' +
                 '<a href="/statistics/">Статистика</a>' +
+                '<a class="wf-donate-btn" href="' + DONATE_URL + '" target="_blank" rel="noopener">' +
+                '❤️ Поддержать проект' +
+                '</a>' +
                 '</div>';
 
         f.innerHTML = html;

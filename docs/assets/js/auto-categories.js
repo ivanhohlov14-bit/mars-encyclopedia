@@ -1,12 +1,13 @@
 // ============================================================
-// auto-categories.js — v2 VIP
-// Категории статей из URL с чипами-ссылками
+// auto-categories.js — v3 VIP
+// Категории статей внизу статьи (перед комментариями)
+// - Вставка ПЕРЕД комментариями / лайками
 // - Относительные ссылки (работает на localhost/проде/preview)
-// - CSS встроен (не зависит от extra.css)
+// - CSS встроен
 // - Retry если контент ещё не отрисован
 // - Поддержка MkDocs Material (document$)
-// - Safe от prototype pollution (Object.create(null))
-// - Escape данных, dedupe, анимация появления
+// - Safe от prototype pollution
+// - Escape данных, dedupe, анимация
 // - Публичное API: window.marsAutoCategories.*
 // ============================================================
 (function() {
@@ -19,7 +20,7 @@
     // ⚙️ Конфиг
     // ============================================================
     var BLOCK_ID = 'auto-categories';
-    var CATEGORIES_PATH = '/categories/';   // относительный путь
+    var CATEGORIES_PATH = '/categories/';
     var DEBUG = false;
 
     function log() {
@@ -122,7 +123,7 @@
     }
 
     // ============================================================
-    // 🎨 Стили (свои, не зависим от extra.css)
+    // 🎨 Стили
     // ============================================================
     function injectStyles() {
         if (document.getElementById('auto-categories-style')) return;
@@ -130,7 +131,7 @@
         s.id = 'auto-categories-style';
         s.textContent = `
             #${BLOCK_ID} {
-                margin: 28px 0 24px 0;
+                margin: 40px 0 24px 0;
                 padding: 16px 20px;
                 background: linear-gradient(135deg, rgba(108,99,255,.05), rgba(162,155,254,.02));
                 border: 1px solid rgba(108,99,255,.18);
@@ -209,13 +210,16 @@
 
             /* Мобильный */
             @media (max-width: 600px) {
-                #${BLOCK_ID} { padding: 12px 14px; margin: 20px 0 18px 0; }
+                #${BLOCK_ID} { padding: 12px 14px; margin: 28px 0 18px 0; }
                 #${BLOCK_ID} .cat-chip { padding: 5px 11px; font-size: .76rem; }
                 #${BLOCK_ID} .cat-label { font-size: .68rem; }
             }
 
             @media (prefers-reduced-motion: reduce) {
-                #${BLOCK_ID}, #${BLOCK_ID} .cat-chip { animation: none !important; transition: none !important; }
+                #${BLOCK_ID}, #${BLOCK_ID} .cat-chip {
+                    animation: none !important;
+                    transition: none !important;
+                }
             }
         `;
         document.head.appendChild(s);
@@ -227,7 +231,7 @@
     function getCategoriesFromURL() {
         var path = window.location.pathname.replace(/^\/+|\/+$/g, '').split('/');
         var categories = [];
-        var seen = Object.create(null);  // 🛡️ защита от prototype pollution
+        var seen = Object.create(null);
 
         for (var i = 0; i < path.length; i++) {
             var segment = path[i];
@@ -255,6 +259,31 @@
     }
 
     // ============================================================
+    // 🎯 Найти КУДА вставить блок — в самый низ статьи,
+    //    но ПЕРЕД комментариями / лайками / hr-разделителем
+    // ============================================================
+    function findInsertTarget(content) {
+        // 1. Разделитель комментариев (comments-loader.js)
+        var commentsHr = document.getElementById('comments-loader-hr');
+        if (commentsHr && commentsHr.parentNode) return commentsHr;
+
+        // 2. Заголовок комментариев
+        var commentsHeading = document.getElementById('comments-loader-heading');
+        if (commentsHeading && commentsHeading.parentNode) return commentsHeading;
+
+        // 3. Контейнер комментариев
+        var commentsContainer = document.getElementById('comments-container');
+        if (commentsContainer && commentsContainer.parentNode) return commentsContainer;
+
+        // 4. Виджет лайков (article-tools.js)
+        var articleTools = document.getElementById('article-tools-widget');
+        if (articleTools && articleTools.parentNode) return articleTools;
+
+        // 5. Если ничего нет — возвращаем null → блок уйдёт в конец контента
+        return null;
+    }
+
+    // ============================================================
     // 🖼️ Рендер блока
     // ============================================================
     function renderCategories() {
@@ -270,10 +299,8 @@
             return true;
         }
 
-        // Строим URL для категорий относительно текущего origin
-        // → работает и на localhost, и на проде, и на preview
+        // Базовый URL категорий (учитываем <base> MkDocs)
         var baseUrl = CATEGORIES_PATH;
-        // Учитываем base_url MkDocs (может быть /mars-encyclopedia/ и т.п.)
         var baseTag = document.querySelector('base');
         if (baseTag && baseTag.href) {
             try {
@@ -290,8 +317,7 @@
         for (var i = 0; i < categories.length; i++) {
             var cat = categories[i];
             var href = baseUrl + '#' + encodeURIComponent(cat.slug);
-            html += '<a class="cat-chip" href="' + escapeHtml(href) +
-                    '" data-segment="' + escapeHtml(cat.slug) + '">' +
+            html += '<a class="cat-chip" href="' + escapeHtml(href) + '" data-segment="' + escapeHtml(cat.slug) + '">' +
                     escapeHtml(cat.name) +
                     '</a>';
         }
@@ -301,8 +327,20 @@
         block.id = BLOCK_ID;
         block.innerHTML = html;
 
-        // Вставляем в начало контента (перед статьёй)
-        content.insertBefore(block, content.firstChild);
+        // 🎯 Вставляем ПЕРЕД комментариями/лайками
+        var target = findInsertTarget(content);
+        try {
+            if (target) {
+                target.parentNode.insertBefore(block, target);
+                log('вставлен перед', target.id || target.className);
+            } else {
+                content.appendChild(block);
+                log('вставлен в конец content');
+            }
+        } catch(e) {
+            // Fallback на случай, если target исчез
+            content.appendChild(block);
+        }
 
         log('отрисовано категорий:', categories.length);
         return true;
@@ -312,18 +350,21 @@
     // 🔄 Запуск с retry
     // ============================================================
     var _retryTimer = null;
+    var _retryCount = 0;
+    var MAX_RETRIES = 10;
 
     function run() {
         var ok = renderCategories();
         if (ok) {
             if (_retryTimer) { clearTimeout(_retryTimer); _retryTimer = null; }
+            _retryCount = 0;
             return;
         }
-        // Контент ещё не готов — пробуем позже
+        if (_retryCount++ > MAX_RETRIES) return;
         if (_retryTimer) clearTimeout(_retryTimer);
         _retryTimer = setTimeout(function() {
             _retryTimer = null;
-            renderCategories();
+            run();
         }, 400);
     }
 
@@ -342,22 +383,44 @@
             setTimeout(run, 100);
         }
 
-        // MkDocs Material SPA-переходы
+        // Ещё раз позже — на случай если комментарии подгрузились
+        // после нас (тогда блок переедет вниз перед ними)
+        setTimeout(run, 1500);
+        setTimeout(run, 3500);
+
+        // MkDocs Material SPA
         if (typeof document$ !== 'undefined' && document$.subscribe) {
             try {
                 document$.subscribe(function() {
+                    _retryCount = 0;
                     setTimeout(run, 150);
                 });
             } catch(e) {}
         }
 
-        // Если контент подгружается динамически — observer
+        // MutationObserver — если comments-loader вставит свой hr позже
         if (typeof MutationObserver !== 'undefined') {
-            var obs = new MutationObserver(function() {
-                if (document.getElementById(BLOCK_ID)) return;
-                if (getContentRoot()) {
+            var obs = new MutationObserver(function(mutations) {
+                // Ищем появление comments-loader-hr или comments-container
+                var needRerender = false;
+                for (var i = 0; i < mutations.length; i++) {
+                    var m = mutations[i];
+                    if (!m.addedNodes || !m.addedNodes.length) continue;
+                    for (var j = 0; j < m.addedNodes.length; j++) {
+                        var n = m.addedNodes[j];
+                        if (n.nodeType !== 1) continue;
+                        if (n.id === 'comments-loader-hr' ||
+                            n.id === 'comments-container' ||
+                            n.id === 'article-tools-widget') {
+                            needRerender = true;
+                            break;
+                        }
+                    }
+                    if (needRerender) break;
+                }
+                if (needRerender) {
                     clearTimeout(init._obsT);
-                    init._obsT = setTimeout(run, 300);
+                    init._obsT = setTimeout(run, 200);
                 }
             });
             try {
@@ -382,5 +445,5 @@
         }
     };
 
-    if (DEBUG) console.log('✅ auto-categories.js v2 VIP загружен');
+    if (DEBUG) console.log('✅ auto-categories.js v3 VIP загружен');
 })();

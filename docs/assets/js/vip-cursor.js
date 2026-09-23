@@ -1,12 +1,6 @@
 // ============================================================
-// vip-cursor.js — v3 VIP "Mars Cursor"
-// Светящийся Марс вместо курсора
-// - Планета 44px с поверхностью, кольцом, свечением
-// - НЕ пропадает (виден всегда)
-// - Искры при движении (без клик-ripple)
-// - GPU-ускорение, RAF-цикл, пул спарков
-// - Reduced-motion, touch-детект, пауза при скрытой вкладке
-// - Публичное API: window.marsVipCursor.*
+// vip-cursor.js — v4 "Mars Mini"
+// Маленький Марс 22px, без прыжка в центр при загрузке
 // ============================================================
 (function() {
     'use strict';
@@ -14,9 +8,6 @@
     if (window.__vipCursorLoaded) return;
     window.__vipCursorLoaded = true;
 
-    // ============================================================
-    // 🚫 Кого не трогаем
-    // ============================================================
     function isTouchDevice() {
         if ('ontouchstart' in window && navigator.maxTouchPoints > 1) return true;
         if (navigator.maxTouchPoints > 1 && window.innerWidth < 1024) return true;
@@ -29,33 +20,46 @@
         } catch(e) { return false; }
     }
 
-    if (isTouchDevice()) {
-        console.log('ℹ️ vip-cursor: тач-устройство — выход');
-        return;
-    }
+    if (isTouchDevice()) return;
 
     var REDUCED_MOTION = prefersReducedMotion();
 
     // ============================================================
-    // ⚙️ Конфиг
+    // ⚙️ Конфиг — компактный Марс
     // ============================================================
     var CONFIG = {
-        cursorSize: 44,              // размер Марса
-        cursorSizeHover: 56,         // увеличенный на hover
-        colorDark: '#7f1d1d',        // тёмная сторона Марса
-        colorMid: '#c0392b',         // основной
-        colorLight: '#e74c3c',       // светлая сторона
-        colorHighlight: '#ff9060',   // блик
-        glowColor: 'rgba(231, 76, 60, 0.55)',
-        ringColor: 'rgba(243, 156, 18, 0.4)',
+        cursorSize: 22,              // ⬅ уменьшено с 44
+        cursorSizeHover: 28,         // ⬅ 28 вместо 56
+        colorDark: '#7f1d1d',
+        colorMid: '#c0392b',
+        colorLight: '#e74c3c',
+        colorHighlight: '#ff9060',
+        ringColor: 'rgba(243, 156, 18, 0.45)',
         sparkColor: '#ff9060',
-        sparkSize: 4,
-        sparkLife: 800,
-        sparkMax: 25,
+        sparkSize: 3,
+        sparkLife: 700,
+        sparkMax: 20,
         sparkSpawnDistance: 10,
         sparksEnabled: !REDUCED_MOTION,
-        hoverTargets: 'a, button, .pf-btn, .pf-tab, .pf-quick-card, .pf-mypage-action, [role="button"], .wy-menu-vertical a, .md-nav__link, input, textarea, select'
+        hoverTargets: 'a, button, .pf-btn, .pf-tab, .pf-quick-card, .pf-mypage-action, [role="button"], .wy-menu-vertical a, .md-nav__link, input, textarea, select',
+        posKey: 'mars_cursor_pos'
     };
+
+    // ============================================================
+    // 💾 Последняя позиция мыши (между страницами)
+    // ============================================================
+    function loadPos() {
+        try {
+            var raw = sessionStorage.getItem(CONFIG.posKey);
+            if (!raw) return null;
+            var p = JSON.parse(raw);
+            if (p && typeof p.x === 'number' && typeof p.y === 'number') return p;
+        } catch(e) {}
+        return null;
+    }
+    function savePos(x, y) {
+        try { sessionStorage.setItem(CONFIG.posKey, JSON.stringify({ x: x, y: y })); } catch(e) {}
+    }
 
     // ============================================================
     // 🎨 Стили
@@ -65,19 +69,13 @@
         var s = document.createElement('style');
         s.id = 'vip-cursor-style';
         s.textContent = `
-            /* Скрываем системный курсор, но НЕ в полях ввода */
             body.vip-cursor-on,
-            body.vip-cursor-on * {
-                cursor: none !important;
-            }
+            body.vip-cursor-on * { cursor: none !important; }
             body.vip-cursor-on input,
             body.vip-cursor-on textarea,
             body.vip-cursor-on select,
-            body.vip-cursor-on [contenteditable="true"] {
-                cursor: text !important;
-            }
+            body.vip-cursor-on [contenteditable="true"] { cursor: text !important; }
 
-            /* ============ МАРС-КУРСОР ============ */
             #vip-cursor {
                 position: fixed;
                 top: 0;
@@ -86,42 +84,39 @@
                 height: ${CONFIG.cursorSize}px;
                 pointer-events: none;
                 z-index: 2147483646;
-                transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+                transform: translate3d(-200px, -200px, 0) translate(-50%, -50%);
                 will-change: transform;
                 border-radius: 50%;
-                opacity: 1;
-                /* Ядро планеты */
-                background:
-                    radial-gradient(circle at 30% 30%,
-                        ${CONFIG.colorHighlight} 0%,
-                        ${CONFIG.colorLight} 20%,
-                        ${CONFIG.colorMid} 55%,
-                        ${CONFIG.colorDark} 100%);
-                /* Свечение */
+                background: radial-gradient(circle at 30% 30%,
+                    ${CONFIG.colorHighlight} 0%,
+                    ${CONFIG.colorLight} 22%,
+                    ${CONFIG.colorMid} 55%,
+                    ${CONFIG.colorDark} 100%);
                 box-shadow:
-                    0 0 18px ${CONFIG.glowColor},
-                    0 0 36px rgba(231, 76, 60, 0.3),
-                    0 0 72px rgba(231, 76, 60, 0.15),
-                    inset -6px -6px 12px rgba(0, 0, 0, 0.55),
-                    inset 4px 4px 10px rgba(255, 150, 100, 0.25);
-                transition: width .25s cubic-bezier(.16,1,.3,1),
-                            height .25s cubic-bezier(.16,1,.3,1),
-                            box-shadow .25s ease;
+                    0 0 10px rgba(231, 76, 60, 0.55),
+                    0 0 22px rgba(231, 76, 60, 0.3),
+                    0 0 44px rgba(231, 76, 60, 0.15),
+                    inset -3px -3px 6px rgba(0, 0, 0, 0.55),
+                    inset 2px 2px 5px rgba(255, 150, 100, 0.3);
+                transition: width .2s cubic-bezier(.16,1,.3,1),
+                            height .2s cubic-bezier(.16,1,.3,1),
+                            box-shadow .2s ease;
+                opacity: 0;
             }
+            #vip-cursor.ready { opacity: 1; }
 
-            /* Поверхность Марса — кратеры/пятна через псевдо-элемент */
+            /* Кратеры */
             #vip-cursor::before {
                 content: '';
                 position: absolute;
                 inset: 0;
                 border-radius: 50%;
                 background:
-                    radial-gradient(ellipse 6px 4px at 25% 30%, rgba(120, 40, 20, 0.7), transparent 70%),
-                    radial-gradient(ellipse 8px 5px at 65% 55%, rgba(120, 40, 20, 0.6), transparent 70%),
-                    radial-gradient(ellipse 5px 3px at 40% 75%, rgba(120, 40, 20, 0.55), transparent 70%),
-                    radial-gradient(ellipse 7px 4px at 70% 25%, rgba(120, 40, 20, 0.5), transparent 70%);
-                animation: marsSpin 12s linear infinite;
-                opacity: 0.85;
+                    radial-gradient(ellipse 3px 2px at 25% 30%, rgba(120, 40, 20, 0.75), transparent 70%),
+                    radial-gradient(ellipse 4px 3px at 65% 55%, rgba(120, 40, 20, 0.65), transparent 70%),
+                    radial-gradient(ellipse 2.5px 2px at 40% 75%, rgba(120, 40, 20, 0.6), transparent 70%),
+                    radial-gradient(ellipse 3.5px 2.5px at 70% 25%, rgba(120, 40, 20, 0.55), transparent 70%);
+                animation: marsSpin 14s linear infinite;
             }
 
             /* Кольцо-орбита */
@@ -130,12 +125,12 @@
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                width: calc(100% + 18px);
-                height: calc(100% + 18px);
+                width: calc(100% + 10px);
+                height: calc(100% + 10px);
                 border-radius: 50%;
                 border: 1px dashed ${CONFIG.ringColor};
                 transform: translate(-50%, -50%) rotateX(72deg);
-                animation: marsRingSpin 8s linear infinite;
+                animation: marsRingSpin 9s linear infinite;
                 pointer-events: none;
             }
 
@@ -148,31 +143,27 @@
                 to { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(360deg); }
             }
 
-            /* Hover — Марс растёт и светится сильнее */
             #vip-cursor.hover {
                 box-shadow:
-                    0 0 26px rgba(231, 76, 60, 0.75),
-                    0 0 52px rgba(231, 76, 60, 0.45),
-                    0 0 100px rgba(231, 76, 60, 0.25),
-                    inset -6px -6px 12px rgba(0, 0, 0, 0.55),
-                    inset 4px 4px 10px rgba(255, 150, 100, 0.4);
+                    0 0 14px rgba(231, 76, 60, 0.8),
+                    0 0 28px rgba(231, 76, 60, 0.5),
+                    0 0 56px rgba(231, 76, 60, 0.25),
+                    inset -3px -3px 6px rgba(0, 0, 0, 0.55),
+                    inset 2px 2px 5px rgba(255, 150, 100, 0.4);
             }
             #vip-cursor.hover::after {
-                border-color: rgba(243, 156, 18, 0.7);
-                border-width: 2px;
+                border-color: rgba(243, 156, 18, 0.75);
+                border-width: 1.5px;
             }
 
-            /* Клик — сжатие */
             #vip-cursor.click {
                 box-shadow:
-                    0 0 30px rgba(243, 156, 18, 0.9),
-                    0 0 60px rgba(243, 156, 18, 0.5),
-                    0 0 120px rgba(243, 156, 18, 0.3),
-                    inset -8px -8px 14px rgba(0, 0, 0, 0.6),
-                    inset 5px 5px 12px rgba(255, 200, 100, 0.5);
+                    0 0 18px rgba(243, 156, 18, 0.95),
+                    0 0 36px rgba(243, 156, 18, 0.55),
+                    0 0 72px rgba(243, 156, 18, 0.3),
+                    inset -4px -4px 8px rgba(0, 0, 0, 0.6);
             }
 
-            /* ============ ИСКРЫ ============ */
             .vip-spark {
                 position: fixed;
                 top: 0;
@@ -184,7 +175,7 @@
                 pointer-events: none;
                 z-index: 2147483645;
                 will-change: transform, opacity;
-                box-shadow: 0 0 10px ${CONFIG.sparkColor};
+                box-shadow: 0 0 8px ${CONFIG.sparkColor};
             }
 
             @media (prefers-reduced-motion: reduce) {
@@ -201,12 +192,13 @@
     // 🖱️ Состояние
     // ============================================================
     var cursor = null;
-    var mouseX = -100, mouseY = -100;
-    var cursorX = -100, cursorY = -100;
+    var mouseX = -200, mouseY = -200;
+    var cursorX = -200, cursorY = -200;
     var targetScale = 1;
     var currentScale = 1;
     var rafId = null;
     var isActive = true;
+    var hasMousePos = false;   // ⬅ ключевое: не показываем пока не знаем где мышь
     var sparkCount = 0;
     var lastSparkX = 0, lastSparkY = 0;
     var lastMoveX = 0, lastMoveY = 0;
@@ -214,7 +206,7 @@
     var hoveredEl = null;
 
     // ============================================================
-    // ✨ Спарки
+    // ✨ Искры
     // ============================================================
     function getSpark() {
         if (sparkPool.length > 0) return sparkPool.pop();
@@ -225,7 +217,7 @@
 
     function releaseSpark(el) {
         el.remove();
-        if (sparkPool.length < 40) sparkPool.push(el);
+        if (sparkPool.length < 30) sparkPool.push(el);
     }
 
     function spawnSpark(x, y, dx, dy) {
@@ -268,24 +260,28 @@
             return;
         }
 
-        // Плавная интерполяция позиции
-        cursorX += (mouseX - cursorX) * 0.4;
-        cursorY += (mouseY - cursorY) * 0.4;
-
-        // Плавный зум
-        currentScale += (targetScale - currentScale) * 0.22;
-
-        if (cursor) {
-            cursor.style.transform = 'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%) scale(' + currentScale.toFixed(3) + ')';
+        // Не двигаем курсор, пока не знаем где мышь
+        if (hasMousePos) {
+            cursorX += (mouseX - cursorX) * 0.5;
+            cursorY += (mouseY - cursorY) * 0.5;
         }
 
-        // Искры по движению
-        var dx = mouseX - lastMoveX;
-        var dy = mouseY - lastMoveY;
-        if (Math.abs(dx) + Math.abs(dy) > 2) {
-            spawnSpark(mouseX, mouseY, dx, dy);
-            lastMoveX = mouseX;
-            lastMoveY = mouseY;
+        currentScale += (targetScale - currentScale) * 0.25;
+
+        if (cursor && hasMousePos) {
+            cursor.style.transform =
+                'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%) scale(' + currentScale.toFixed(3) + ')';
+        }
+
+        // Искры
+        if (hasMousePos) {
+            var dx = mouseX - lastMoveX;
+            var dy = mouseY - lastMoveY;
+            if (Math.abs(dx) + Math.abs(dy) > 2) {
+                spawnSpark(mouseX, mouseY, dx, dy);
+                lastMoveX = mouseX;
+                lastMoveY = mouseY;
+            }
         }
 
         rafId = requestAnimationFrame(tick);
@@ -304,7 +300,28 @@
         mouseX = e.clientX;
         mouseY = e.clientY;
 
-        // Hover по target
+        // 🎯 Первое движение мыши — мгновенно появляемся там где мышь
+        if (!hasMousePos) {
+            hasMousePos = true;
+            cursorX = mouseX;
+            cursorY = mouseY;
+            lastMoveX = mouseX;
+            lastMoveY = mouseY;
+            lastSparkX = mouseX;
+            lastSparkY = mouseY;
+            if (cursor) {
+                // Мгновенно без transition
+                cursor.style.transition = 'none';
+                cursor.style.transform =
+                    'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%) scale(1)';
+                cursor.classList.add('ready');
+                void cursor.offsetWidth;
+                cursor.style.transition = '';
+            }
+        }
+
+        savePos(mouseX, mouseY);
+
         var hover = e.target && e.target.closest && e.target.closest(CONFIG.hoverTargets);
         if (hover !== hoveredEl) {
             hoveredEl = hover;
@@ -331,16 +348,15 @@
 
     function onVisibilityChange() {
         isActive = !document.hidden;
-        if (isActive) {
-            startLoop();
-        } else if (rafId != null) {
+        if (isActive) startLoop();
+        else if (rafId != null) {
             cancelAnimationFrame(rafId);
             rafId = null;
         }
     }
 
     // ============================================================
-    // 🚀 Старт
+    // 🚀 Init
     // ============================================================
     function init() {
         injectStyles();
@@ -350,13 +366,20 @@
         document.body.appendChild(cursor);
         document.body.classList.add('vip-cursor-on');
 
-        // Стартовая позиция — в центр экрана (чтобы не пропадал до первого движения)
-        mouseX = cursorX = window.innerWidth / 2;
-        mouseY = cursorY = window.innerHeight / 2;
-        lastMoveX = mouseX;
-        lastMoveY = mouseY;
-        if (cursor) {
-            cursor.style.transform = 'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%)';
+        // 🎯 Пробуем восстановить позицию с прошлой страницы
+        var saved = loadPos();
+        if (saved) {
+            // Ставим сразу в нужное место БЕЗ появления — ждём mousemove
+            mouseX = saved.x;
+            mouseY = saved.y;
+            cursorX = saved.x;
+            cursorY = saved.y;
+            cursor.style.transition = 'none';
+            cursor.style.transform =
+                'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%) scale(1)';
+            cursor.style.opacity = '0'; // всё ещё скрыт до первого mousemove
+            void cursor.offsetWidth;
+            cursor.style.transition = '';
         }
 
         document.addEventListener('mousemove', onMouseMove, { passive: true });
@@ -365,7 +388,7 @@
         document.addEventListener('visibilitychange', onVisibilityChange);
 
         startLoop();
-        console.log('🪐 vip-cursor v3 Mars Cursor активен');
+        console.log('🪐 vip-cursor v4 Mars Mini (22px) активен');
     }
 
     // ============================================================
@@ -394,22 +417,8 @@
         init();
     }
 
-    // ============================================================
-    // 🌐 Публичное API
-    // ============================================================
     window.marsVipCursor = {
         destroy: destroy,
-        isActive: function() { return isActive; },
-        setColors: function(dark, mid, light, highlight) {
-            var c = document.getElementById('vip-cursor');
-            if (!c) return;
-            c.style.background = 'radial-gradient(circle at 30% 30%, ' +
-                (highlight || CONFIG.colorHighlight) + ' 0%, ' +
-                (light || CONFIG.colorLight) + ' 20%, ' +
-                (mid || CONFIG.colorMid) + ' 55%, ' +
-                (dark || CONFIG.colorDark) + ' 100%)';
-        }
+        isActive: function() { return isActive; }
     };
-
-    console.log('✅ vip-cursor.js v3 Mars Cursor загружен');
 })();

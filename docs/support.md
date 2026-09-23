@@ -8,6 +8,14 @@
     </div>
     <h1 class="start-hero-title">Поддержать проект</h1>
     <p class="start-hero-subtitle">Марсианская энциклопедия — некоммерческий научно-справочный проект, создаваемый энтузиастами, объединёнными интересом к миру цикла «Письмо из Красной пыли». Цель проекта — систематизация и популяризация знаний о марсианской истории, географии, биологии и культуре в рамках художественной вселенной.</p>
+
+    <div class="start-hero-donate">
+      <a class="start-donate-btn" href="https://pay.cloudtips.ru/p/14549541" target="_blank" rel="noopener">
+        <span class="start-donate-icon">❤️</span>
+        <span class="start-donate-text">Поддержать проект</span>
+      </a>
+      <div class="start-donate-sub">Безопасная оплата через Т-Банк · СБП · Карта</div>
+    </div>
   </div>
 </div>
 
@@ -81,6 +89,22 @@
 
 ---
 
+## <img src="https://cdn.jsdelivr.net/gh/ivanhohlov14-bit/mars-encyclopedia@main/docs/assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Финансовая поддержка
+
+<div class="start-donate-card">
+  <div class="start-donate-card-icon">💛</div>
+  <div class="start-donate-card-body">
+    <div class="start-donate-card-title">Поддержите развитие проекта</div>
+    <div class="start-donate-card-desc">Средства идут на оплату подписки Leonardo.Ai для генерации приватных иллюстраций, хостинг и развитие сайта. Каждый вклад — это новая статья о Марсе.</div>
+    <a class="start-donate-btn start-donate-btn-large" href="https://pay.cloudtips.ru/p/14549541" target="_blank" rel="noopener">
+      <span class="start-donate-icon">❤️</span>
+      <span class="start-donate-text">Поддержать проект</span>
+    </a>
+  </div>
+</div>
+
+---
+
 ## 📧 Контакты
 
 <div class="start-contact">
@@ -98,74 +122,213 @@
 
 <style>
 /* ============================================================ */
-/* 💜 Поддержать проект — VIP стиль                             */
+/* 💜 Поддержать проект — VIP стиль v2                         */
 /* ============================================================ */
 
-.start-hero, .start-step, .start-card, .start-science, .start-contact, .start-footer-quote {
-  --start-accent: var(--wf-color, #6C63FF);
-  --start-accent-light: var(--wf-color-light, #A29BFE);
-  --start-accent-rgb: var(--wf-rgb, 108,99,255);
+/* Локальные переменные — наследуют цвет королевства из футера */
+.start-hero, .start-step, .start-science, .start-contact,
+.start-footer-quote, .start-donate-card {
+  --sa: var(--wf-color, #6C63FF);
+  --sal: var(--wf-color-light, #A29BFE);
+  --sar: var(--wf-rgb, 108,99,255);
 }
 
-/* Хиро-блок */
+/* ============ HERO ============ */
 .start-hero {
   position: relative;
-  padding: 44px 24px;
+  padding: 48px 28px 40px;
   margin: 0 0 32px 0;
   background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a14 60%, #000 100%);
-  border: 1.5px solid rgba(var(--start-accent-rgb), 0.4);
-  border-radius: 20px;
+  border: 1.5px solid rgba(var(--sar), 0.4);
+  border-radius: 22px;
   overflow: hidden;
   text-align: center;
-  box-shadow: 0 12px 40px rgba(var(--start-accent-rgb), 0.25);
+  box-shadow: 0 12px 40px rgba(var(--sar), 0.25);
+  contain: layout style;
 }
 .start-hero-stars {
   position: absolute;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  contain: strict;
 }
 .start-hero-content {
   position: relative;
   z-index: 1;
 }
 .start-hero-icon {
-  margin-bottom: 12px;
-  filter: drop-shadow(0 0 20px rgba(var(--start-accent-rgb), 0.8));
+  margin-bottom: 14px;
+  filter: drop-shadow(0 0 20px rgba(var(--sar), 0.8));
   animation: startHeroFloat 3s ease-in-out infinite;
+  will-change: transform;
+  display: inline-block;
 }
 .start-hero-icon img {
   width: 64px;
   height: 64px;
   object-fit: contain;
-  display: inline-block;
+  display: block;
 }
 @keyframes startHeroFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
 .start-hero-title {
-  font-size: 1.8rem;
+  font-size: 1.85rem;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--start-accent), var(--start-accent-light));
+  background: linear-gradient(135deg, var(--sa), var(--sal));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 0 0 12px 0;
+  margin: 0 0 14px 0;
   letter-spacing: -0.5px;
   line-height: 1.2;
 }
 .start-hero-subtitle {
   font-size: 0.95rem;
   color: #c8c8dd;
-  margin: 0;
-  line-height: 1.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 26px auto;
+  line-height: 1.65;
+  max-width: 620px;
 }
 
-/* Шаги */
+/* ============ HERO DONATE ============ */
+.start-hero-donate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* ============ DONATE BUTTON ============ */
+.start-donate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 36px;
+  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FF6B35 100%);
+  background-size: 200% auto;
+  color: #fff !important;
+  border-radius: 34px;
+  font-weight: 800;
+  text-decoration: none !important;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+  font-family: inherit;
+  box-shadow:
+    0 12px 28px -8px rgba(255, 107, 53, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  border: none !important;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+.start-donate-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.75s;
+  pointer-events: none;
+}
+.start-donate-btn:hover {
+  transform: translateY(-3px);
+  background-position: 100% center;
+  box-shadow:
+    0 18px 36px -8px rgba(255, 107, 53, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.35) inset;
+  color: #fff !important;
+  border-bottom: none !important;
+}
+.start-donate-btn:hover::before { transform: translateX(100%); }
+.start-donate-btn:active { transform: translateY(-1px) scale(0.98); }
+
+.start-donate-btn-large {
+  padding: 17px 42px;
+  font-size: 1.08rem;
+  margin-top: 8px;
+}
+
+.start-donate-icon {
+  font-size: 1.2rem;
+  animation: startHeartBeat 2s ease-in-out infinite;
+  display: inline-block;
+  transform-origin: center;
+}
+@keyframes startHeartBeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.2); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+  60% { transform: scale(1); }
+}
+.start-donate-text {
+  position: relative;
+  z-index: 1;
+}
+.start-donate-sub {
+  font-size: 0.75rem;
+  color: #888;
+  font-style: italic;
+  letter-spacing: 0.2px;
+}
+
+/* ============ DONATE CARD (в разделе «Финансовая поддержка») ============ */
+.start-donate-card {
+  display: flex;
+  gap: 20px;
+  padding: 28px 30px;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.02));
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  border-radius: 20px;
+  margin: 20px 0 32px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 28px -12px rgba(255, 107, 53, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.start-donate-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #FF6B35, #F7931E);
+}
+.start-donate-card:hover {
+  border-color: #FF6B35;
+  box-shadow: 0 16px 40px -12px rgba(255, 107, 53, 0.55);
+  transform: translateY(-3px);
+}
+.start-donate-card-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+  animation: startHeroFloat 3s ease-in-out infinite;
+}
+.start-donate-card-body {
+  flex: 1;
+  min-width: 0;
+}
+.start-donate-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #c2410c;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+.start-donate-card-desc {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+/* ============ STEPS ============ */
 .start-steps {
   display: flex;
   flex-direction: column;
@@ -178,9 +341,8 @@
   gap: 16px;
   padding: 20px 24px;
   background: linear-gradient(135deg, rgba(26,26,46,0.95), rgba(37,37,80,0.95));
-  border: 1.5px solid rgba(var(--start-accent-rgb), 0.3);
+  border: 1.5px solid rgba(var(--sar), 0.3);
   border-radius: 16px;
-  text-decoration: none;
   color: #e8e8f0;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
@@ -189,6 +351,7 @@
   transform: translateY(20px);
   animation: startStepIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: var(--delay, 0s);
+  contain: layout style;
 }
 @keyframes startStepIn {
   to { opacity: 1; transform: translateY(0); }
@@ -198,13 +361,13 @@
   position: absolute;
   top: 0; left: 0; bottom: 0;
   width: 4px;
-  background: linear-gradient(180deg, var(--start-accent), var(--start-accent-light));
+  background: linear-gradient(180deg, var(--sa), var(--sal));
   border-radius: 16px 0 0 16px;
 }
 .start-step:hover {
   transform: translateY(-4px) scale(1.01);
-  border-color: var(--start-accent);
-  box-shadow: 0 16px 40px rgba(var(--start-accent-rgb), 0.45);
+  border-color: var(--sa);
+  box-shadow: 0 16px 40px rgba(var(--sar), 0.45);
   background: linear-gradient(135deg, rgba(37,37,80,0.95), rgba(26,26,46,0.95));
 }
 .start-step * {
@@ -218,9 +381,9 @@
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--start-accent), var(--start-accent-light));
+  background: linear-gradient(135deg, var(--sa), var(--sal));
   flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(var(--start-accent-rgb), 0.5);
+  box-shadow: 0 4px 14px rgba(var(--sar), 0.5);
   transition: transform 0.3s;
   overflow: hidden;
 }
@@ -233,14 +396,11 @@
 .start-step:hover .start-step-num {
   transform: scale(1.1) rotate(-6deg);
 }
-.start-step-body {
-  flex: 1;
-  min-width: 0;
-}
+.start-step-body { flex: 1; min-width: 0; }
 .start-step-title {
   font-size: 1.1rem;
   font-weight: 800;
-  color: var(--start-accent-light);
+  color: var(--sal);
   margin-bottom: 4px;
   letter-spacing: 0.3px;
 }
@@ -251,28 +411,28 @@
 }
 .start-step-arrow {
   font-size: 1.4rem;
-  color: var(--start-accent);
+  color: var(--sa);
   flex-shrink: 0;
   transition: transform 0.3s, color 0.3s;
 }
 .start-step:hover .start-step-arrow {
   transform: translateX(6px) scale(1.15);
-  color: var(--start-accent-light);
+  color: var(--sal);
 }
 
-/* Наука / Благодарность */
+/* ============ SCIENCE / БЛАГОДАРНОСТЬ ============ */
 .start-science {
   display: flex;
   gap: 16px;
   padding: 22px 24px;
-  background: linear-gradient(135deg, rgba(var(--start-accent-rgb), 0.12), rgba(var(--start-accent-rgb), 0.05));
-  border: 1.5px solid rgba(var(--start-accent-rgb), 0.35);
+  background: linear-gradient(135deg, rgba(var(--sar), 0.12), rgba(var(--sar), 0.05));
+  border: 1.5px solid rgba(var(--sar), 0.35);
   border-radius: 16px;
   margin: 20px 0;
 }
 .start-science-icon {
   flex-shrink: 0;
-  filter: drop-shadow(0 0 12px rgba(var(--start-accent-rgb), 0.7));
+  filter: drop-shadow(0 0 12px rgba(var(--sar), 0.7));
 }
 .start-science-icon img {
   width: 48px;
@@ -288,11 +448,8 @@
   font-weight: 700;
   letter-spacing: 0.15px;
 }
-.start-science-text p:last-child {
-  margin-bottom: 0;
-}
+.start-science-text p:last-child { margin-bottom: 0; }
 .start-science-text b {
-  color: #4a3fb5;
   font-weight: 900;
   background: linear-gradient(135deg, #4a3fb5, #6C63FF);
   -webkit-background-clip: text;
@@ -300,29 +457,24 @@
   background-clip: text;
 }
 
-/* Контакт */
+/* ============ CONTACT ============ */
 .start-contact {
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 20px 24px;
   background: linear-gradient(135deg, rgba(26,26,46,0.9), rgba(37,37,80,0.9));
-  border: 1.5px solid rgba(var(--start-accent-rgb), 0.35);
+  border: 1.5px solid rgba(var(--sar), 0.35);
   border-radius: 16px;
   margin: 20px 0;
   transition: all 0.3s;
 }
 .start-contact:hover {
-  border-color: var(--start-accent);
-  box-shadow: 0 8px 24px rgba(var(--start-accent-rgb), 0.35);
+  border-color: var(--sa);
+  box-shadow: 0 8px 24px rgba(var(--sar), 0.35);
 }
-.start-contact-icon {
-  font-size: 2rem;
-  flex-shrink: 0;
-}
-.start-contact-body {
-  flex: 1;
-}
+.start-contact-icon { font-size: 2rem; flex-shrink: 0; }
+.start-contact-body { flex: 1; }
 .start-contact-label {
   font-size: 0.75rem;
   color: #b8b8cc;
@@ -334,30 +486,27 @@
 .start-contact-link {
   font-size: 1rem;
   font-weight: 800;
-  color: var(--start-accent-light);
+  color: var(--sal);
   text-decoration: none;
-  transition: all 0.2s;
+  transition: color 0.2s;
 }
-.start-contact-link:hover {
-  color: #fff;
-  text-decoration: none;
-}
+.start-contact-link:hover { color: #fff; text-decoration: none; }
 
-/* Финальный блок */
+/* ============ FOOTER QUOTE ============ */
 .start-footer-quote {
   margin-top: 40px;
   padding: 32px 24px;
   text-align: center;
-  background: linear-gradient(135deg, rgba(var(--start-accent-rgb), 0.15), rgba(var(--start-accent-rgb), 0.05));
-  border: 1.5px solid rgba(var(--start-accent-rgb), 0.4);
+  background: linear-gradient(135deg, rgba(var(--sar), 0.15), rgba(var(--sar), 0.05));
+  border: 1.5px solid rgba(var(--sar), 0.4);
   border-radius: 20px;
   position: relative;
   overflow: hidden;
 }
 .start-footer-quote-text {
-  font-size: 1.6rem;
+  font-size: 1.65rem;
   font-weight: 900;
-  background: linear-gradient(135deg, var(--start-accent), var(--start-accent-light));
+  background: linear-gradient(135deg, var(--sa), var(--sal));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -376,12 +525,39 @@
   letter-spacing: 0.2px;
 }
 
-/* Мобильный */
+/* ============ ANIMATIONS для звёзд ============ */
+@keyframes startStarTwinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+@keyframes startMeteorFall {
+  0% { opacity: 0; transform: translate(0, 0); }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translate(280px, 280px); }
+}
+
+/* ============ МОБИЛЬНЫЙ ============ */
 @media (max-width: 700px) {
-  .start-hero { padding: 28px 18px; }
-  .start-hero-title { font-size: 1.35rem; }
-  .start-hero-subtitle { font-size: 0.85rem; }
+  .start-hero { padding: 32px 20px 28px; border-radius: 18px; }
+  .start-hero-title { font-size: 1.4rem; }
+  .start-hero-subtitle { font-size: 0.85rem; margin-bottom: 22px; }
   .start-hero-icon img { width: 52px; height: 52px; }
+
+  .start-donate-btn { padding: 14px 28px; font-size: 0.94rem; gap: 8px; border-radius: 28px; }
+  .start-donate-btn-large { padding: 15px 32px; font-size: 0.98rem; }
+  .start-donate-icon { font-size: 1.05rem; }
+  .start-donate-sub { font-size: 0.7rem; }
+
+  .start-donate-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 22px 20px;
+    gap: 12px;
+  }
+  .start-donate-card-icon { font-size: 2.5rem; }
+  .start-donate-card-title { font-size: 1.05rem; }
+  .start-donate-card-desc { font-size: 0.85rem; margin-bottom: 14px; }
 
   .start-step { padding: 16px 18px; gap: 12px; }
   .start-step-num { width: 38px; height: 38px; }
@@ -400,6 +576,15 @@
   .start-footer-quote-text { font-size: 1.3rem; }
   .start-footer-quote-sub { font-size: 0.78rem; }
 }
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce) {
+  .start-hero-icon,
+  .start-donate-icon,
+  .start-donate-card-icon { animation: none !important; }
+  .start-step { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .start-donate-btn { transition: none !important; }
+}
 </style>
 
 <script>
@@ -407,87 +592,98 @@
   'use strict';
 
   // ============================================================
-  // 🌌 Звёздный фон для хиро-блока
+  // 📱 Определение мобильного
+  // ============================================================
+  function isMobile() {
+    if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) return true;
+    try {
+      if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return true;
+    } catch(e) {}
+    return window.innerWidth <= 768;
+  }
+
+  // ============================================================
+  // 🌌 Звёздный фон для хиро-блока (с оптимизацией)
   // ============================================================
   function initHeroStars() {
     var hero = document.querySelector('.start-hero-stars');
     if (!hero) return;
+    if (hero.dataset.ready === '1') return;  // защита от дублей
+    hero.dataset.ready = '1';
 
-    var starCount = 80;
+    // Уважение к настройкам ОС
+    var reduced = false;
+    try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e) {}
+    if (reduced) return;
+
+    var mobile = isMobile();
+
+    // Меньше звёзд на мобильном — меньше CPU
+    var starCount = mobile ? 30 : 70;
+    var meteorCount = mobile ? 0 : 3;
+
+    var frag = document.createDocumentFragment();
+
     for (var i = 0; i < starCount; i++) {
       var star = document.createElement('div');
+      var size = 1 + Math.random() * 2.2;
       star.style.cssText =
         'position:absolute;' +
         'background:#fff;' +
         'border-radius:50%;' +
-        'box-shadow:0 0 6px 1px rgba(255,255,255,0.8);' +
-        'left:' + (Math.random() * 100) + '%;' +
-        'top:' + (Math.random() * 100) + '%;' +
-        'width:' + (1 + Math.random() * 2.5) + 'px;' +
-        'height:' + (1 + Math.random() * 2.5) + 'px;' +
-        'animation:startStarTwinkle ' + (1.5 + Math.random() * 3) + 's ease-in-out infinite;' +
-        'animation-delay:' + (Math.random() * 3) + 's;' +
-        'opacity:0;';
-      hero.appendChild(star);
+        'left:' + (Math.random() * 100).toFixed(2) + '%;' +
+        'top:' + (Math.random() * 100).toFixed(2) + '%;' +
+        'width:' + size.toFixed(1) + 'px;' +
+        'height:' + size.toFixed(1) + 'px;' +
+        'opacity:0;' +
+        'will-change:opacity,transform;' +
+        'animation:startStarTwinkle ' + (1.8 + Math.random() * 2.5).toFixed(2) + 's ease-in-out infinite;' +
+        'animation-delay:' + (Math.random() * 3).toFixed(2) + 's;';
+      frag.appendChild(star);
     }
 
-    var meteorCount = 4;
     for (var j = 0; j < meteorCount; j++) {
       var meteor = document.createElement('div');
-      var w = 2;
-      var left = Math.random() * 80 + 10;
-      var top = Math.random() * 30;
       meteor.style.cssText =
         'position:absolute;' +
         'background:#fff;' +
         'border-radius:50%;' +
         'box-shadow:0 0 10px 2px rgba(255,255,255,0.9);' +
-        'left:' + left + '%;' +
-        'top:' + top + '%;' +
-        'width:' + w + 'px;' +
-        'height:' + w + 'px;' +
-        'animation:startMeteorFall ' + (2.5 + Math.random() * 2) + 's linear infinite;' +
-        'animation-delay:' + (Math.random() * 4) + 's;' +
-        'opacity:0;';
-      hero.appendChild(meteor);
+        'left:' + (Math.random() * 80 + 10).toFixed(1) + '%;' +
+        'top:' + (Math.random() * 30).toFixed(1) + '%;' +
+        'width:2px;' +
+        'height:2px;' +
+        'opacity:0;' +
+        'will-change:transform,opacity;' +
+        'animation:startMeteorFall ' + (2.8 + Math.random() * 2).toFixed(2) + 's linear infinite;' +
+        'animation-delay:' + (Math.random() * 4).toFixed(2) + 's;';
+      frag.appendChild(meteor);
     }
 
-    if (!document.getElementById('start-hero-keyframes')) {
-      var style = document.createElement('style');
-      style.id = 'start-hero-keyframes';
-      style.textContent = `
-        @keyframes startStarTwinkle {
-          0%, 100% { opacity: 0.15; transform: scale(0.8); }
-          50% { opacity: 1; transform: scale(1.2); }
-        }
-        @keyframes startMeteorFall {
-          0% { opacity: 0; transform: translate(0, 0); }
-          10% { opacity: 1; }
-          85% { opacity: 1; }
-          100% { opacity: 0; transform: translate(280px, 280px); }
-        }
-      `;
-      document.head.appendChild(style);
-    }
+    hero.appendChild(frag);
   }
 
   // ============================================================
-  // 🎨 Цвет из профиля
+  // 🎨 Цвет из профиля (из localStorage, ставит wikipedia-footer.js)
   // ============================================================
   function applyUserTheme() {
     try {
-      var wfColor = localStorage.getItem('wf_color') || localStorage.getItem('wf-color');
-      var wfRgb = localStorage.getItem('wf_rgb') || localStorage.getItem('wf-rgb');
-
+      var wfColor = localStorage.getItem('mars_kingdom_color');
       if (wfColor && /^#[0-9a-fA-F]{6}$/.test(wfColor)) {
         document.documentElement.style.setProperty('--wf-color', wfColor);
+        // Обновляем и --wf-rgb
+        var c = wfColor.replace('#', '');
+        if (c.length === 3) c = c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
+        var n = parseInt(c, 16);
+        var rgb = ((n >> 16) & 255) + ',' + ((n >> 8) & 255) + ',' + (n & 255);
+        document.documentElement.style.setProperty('--wf-rgb', rgb);
       }
-      if (wfRgb) {
-        document.documentElement.style.setProperty('--wf-rgb', wfRgb);
-      }
-    } catch (e) {}
+    } catch(e) {}
   }
 
+  // ============================================================
+  // 🚀 INIT
+  // ============================================================
   function init() {
     applyUserTheme();
     initHeroStars();
@@ -498,5 +694,10 @@
   } else {
     init();
   }
+
+  // Подстраховка: если контент подгрузился позже (readthedocs)
+  window.addEventListener('load', function() {
+    setTimeout(initHeroStars, 300);
+  });
 })();
 </script>

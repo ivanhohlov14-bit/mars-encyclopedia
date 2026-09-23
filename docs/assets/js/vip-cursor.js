@@ -1,15 +1,12 @@
 // ============================================================
-// vip-cursor.js — v2 VIP
-// Светящийся курсор с искрами
-// - GPU-ускорение (transform translate3d, не left/top)
-// - requestAnimationFrame вместо сырого mousemove
-// - Пул спарков — не плодятся таймеры
-// - Не отключает курсор в input/textarea/select
-// - Пауза при скрытой вкладке
-// - Уважает prefers-reduced-motion
-// - Не грузится на тач-устройствах
-// - Клик-ripple эффект
-// - Публичное API: window.marsVipCursor.destroy()
+// vip-cursor.js — v3 VIP "Mars Cursor"
+// Светящийся Марс вместо курсора
+// - Планета 44px с поверхностью, кольцом, свечением
+// - НЕ пропадает (виден всегда)
+// - Искры при движении (без клик-ripple)
+// - GPU-ускорение, RAF-цикл, пул спарков
+// - Reduced-motion, touch-детект, пауза при скрытой вкладке
+// - Публичное API: window.marsVipCursor.*
 // ============================================================
 (function() {
     'use strict';
@@ -43,17 +40,21 @@
     // ⚙️ Конфиг
     // ============================================================
     var CONFIG = {
-        cursorSize: 20,
-        cursorBorder: 2,
-        cursorColor: '#6C63FF',
-        cursorColorHover: '#A29BFE',
-        sparkColor: '#A29BFE',
+        cursorSize: 44,              // размер Марса
+        cursorSizeHover: 56,         // увеличенный на hover
+        colorDark: '#7f1d1d',        // тёмная сторона Марса
+        colorMid: '#c0392b',         // основной
+        colorLight: '#e74c3c',       // светлая сторона
+        colorHighlight: '#ff9060',   // блик
+        glowColor: 'rgba(231, 76, 60, 0.55)',
+        ringColor: 'rgba(243, 156, 18, 0.4)',
+        sparkColor: '#ff9060',
         sparkSize: 4,
-        sparkLife: 700,           // мс жизни спарка
-        sparkMax: 30,             // максимум одновременных спарков
-        sparkSpawnDistance: 8,    // px между спарками
+        sparkLife: 800,
+        sparkMax: 25,
+        sparkSpawnDistance: 10,
         sparksEnabled: !REDUCED_MOTION,
-        hoverTargets: 'a, button, .pf-btn, .pf-tab, .pf-quick-card, .pf-mypage-action, [role="button"], .wy-menu-vertical a, .md-nav__link'
+        hoverTargets: 'a, button, .pf-btn, .pf-tab, .pf-quick-card, .pf-mypage-action, [role="button"], .wy-menu-vertical a, .md-nav__link, input, textarea, select'
     };
 
     // ============================================================
@@ -64,7 +65,7 @@
         var s = document.createElement('style');
         s.id = 'vip-cursor-style';
         s.textContent = `
-            /* Скрываем системный курсор на всём, кроме полей ввода */
+            /* Скрываем системный курсор, но НЕ в полях ввода */
             body.vip-cursor-on,
             body.vip-cursor-on * {
                 cursor: none !important;
@@ -76,41 +77,102 @@
                 cursor: text !important;
             }
 
+            /* ============ МАРС-КУРСОР ============ */
             #vip-cursor {
                 position: fixed;
                 top: 0;
                 left: 0;
                 width: ${CONFIG.cursorSize}px;
                 height: ${CONFIG.cursorSize}px;
-                border: ${CONFIG.cursorBorder}px solid ${CONFIG.cursorColor};
-                border-radius: 50%;
                 pointer-events: none;
                 z-index: 2147483646;
-                transform: translate3d(-100px, -100px, 0);
+                transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
                 will-change: transform;
+                border-radius: 50%;
+                opacity: 1;
+                /* Ядро планеты */
+                background:
+                    radial-gradient(circle at 30% 30%,
+                        ${CONFIG.colorHighlight} 0%,
+                        ${CONFIG.colorLight} 20%,
+                        ${CONFIG.colorMid} 55%,
+                        ${CONFIG.colorDark} 100%);
+                /* Свечение */
                 box-shadow:
-                    0 0 ${CONFIG.cursorSize}px ${CONFIG.cursorColor},
-                    0 0 40px rgba(108, 99, 255, 0.4);
-                transition: width .15s, height .15s, border-color .15s, background .15s, opacity .2s;
-                opacity: 0;
-                mix-blend-mode: screen;
-            }
-            #vip-cursor.visible { opacity: 1; }
-            #vip-cursor.hover {
-                background: ${CONFIG.cursorColorHover};
-                border-color: ${CONFIG.cursorColorHover};
-                width: ${CONFIG.cursorSize + 10}px;
-                height: ${CONFIG.cursorSize + 10}px;
-                box-shadow:
-                    0 0 30px ${CONFIG.cursorColorHover},
-                    0 0 60px rgba(162, 155, 254, 0.6);
-            }
-            #vip-cursor.click {
-                width: ${CONFIG.cursorSize - 4}px;
-                height: ${CONFIG.cursorSize - 4}px;
-                background: ${CONFIG.cursorColor};
+                    0 0 18px ${CONFIG.glowColor},
+                    0 0 36px rgba(231, 76, 60, 0.3),
+                    0 0 72px rgba(231, 76, 60, 0.15),
+                    inset -6px -6px 12px rgba(0, 0, 0, 0.55),
+                    inset 4px 4px 10px rgba(255, 150, 100, 0.25);
+                transition: width .25s cubic-bezier(.16,1,.3,1),
+                            height .25s cubic-bezier(.16,1,.3,1),
+                            box-shadow .25s ease;
             }
 
+            /* Поверхность Марса — кратеры/пятна через псевдо-элемент */
+            #vip-cursor::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+                background:
+                    radial-gradient(ellipse 6px 4px at 25% 30%, rgba(120, 40, 20, 0.7), transparent 70%),
+                    radial-gradient(ellipse 8px 5px at 65% 55%, rgba(120, 40, 20, 0.6), transparent 70%),
+                    radial-gradient(ellipse 5px 3px at 40% 75%, rgba(120, 40, 20, 0.55), transparent 70%),
+                    radial-gradient(ellipse 7px 4px at 70% 25%, rgba(120, 40, 20, 0.5), transparent 70%);
+                animation: marsSpin 12s linear infinite;
+                opacity: 0.85;
+            }
+
+            /* Кольцо-орбита */
+            #vip-cursor::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: calc(100% + 18px);
+                height: calc(100% + 18px);
+                border-radius: 50%;
+                border: 1px dashed ${CONFIG.ringColor};
+                transform: translate(-50%, -50%) rotateX(72deg);
+                animation: marsRingSpin 8s linear infinite;
+                pointer-events: none;
+            }
+
+            @keyframes marsSpin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            @keyframes marsRingSpin {
+                from { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(0); }
+                to { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(360deg); }
+            }
+
+            /* Hover — Марс растёт и светится сильнее */
+            #vip-cursor.hover {
+                box-shadow:
+                    0 0 26px rgba(231, 76, 60, 0.75),
+                    0 0 52px rgba(231, 76, 60, 0.45),
+                    0 0 100px rgba(231, 76, 60, 0.25),
+                    inset -6px -6px 12px rgba(0, 0, 0, 0.55),
+                    inset 4px 4px 10px rgba(255, 150, 100, 0.4);
+            }
+            #vip-cursor.hover::after {
+                border-color: rgba(243, 156, 18, 0.7);
+                border-width: 2px;
+            }
+
+            /* Клик — сжатие */
+            #vip-cursor.click {
+                box-shadow:
+                    0 0 30px rgba(243, 156, 18, 0.9),
+                    0 0 60px rgba(243, 156, 18, 0.5),
+                    0 0 120px rgba(243, 156, 18, 0.3),
+                    inset -8px -8px 14px rgba(0, 0, 0, 0.6),
+                    inset 5px 5px 12px rgba(255, 200, 100, 0.5);
+            }
+
+            /* ============ ИСКРЫ ============ */
             .vip-spark {
                 position: fixed;
                 top: 0;
@@ -122,31 +184,14 @@
                 pointer-events: none;
                 z-index: 2147483645;
                 will-change: transform, opacity;
-                box-shadow: 0 0 8px ${CONFIG.sparkColor};
-            }
-
-            /* Клик-риппл */
-            .vip-cursor-ripple {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 40px;
-                height: 40px;
-                border: 2px solid ${CONFIG.cursorColor};
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 2147483644;
-                transform: translate3d(-50%, -50%, 0) scale(0.5);
-                opacity: 0.9;
-                animation: vipRipple .6s cubic-bezier(.16,1,.3,1) forwards;
-            }
-            @keyframes vipRipple {
-                to { transform: translate3d(-50%, -50%, 0) scale(1.8); opacity: 0; }
+                box-shadow: 0 0 10px ${CONFIG.sparkColor};
             }
 
             @media (prefers-reduced-motion: reduce) {
-                #vip-cursor { transition: none !important; }
-                .vip-spark, .vip-cursor-ripple { display: none !important; }
+                #vip-cursor,
+                #vip-cursor::before,
+                #vip-cursor::after { animation: none !important; transition: none !important; }
+                .vip-spark { display: none !important; }
             }
         `;
         document.head.appendChild(s);
@@ -162,17 +207,16 @@
     var currentScale = 1;
     var rafId = null;
     var isActive = true;
-    var isVisible = false;
     var sparkCount = 0;
     var lastSparkX = 0, lastSparkY = 0;
+    var lastMoveX = 0, lastMoveY = 0;
     var sparkPool = [];
     var hoveredEl = null;
 
     // ============================================================
-    // ✨ Спарк
+    // ✨ Спарки
     // ============================================================
     function getSpark() {
-        // Переиспользуем из пула
         if (sparkPool.length > 0) return sparkPool.pop();
         var s = document.createElement('div');
         s.className = 'vip-spark';
@@ -188,7 +232,6 @@
         if (!CONFIG.sparksEnabled) return;
         if (sparkCount >= CONFIG.sparkMax) return;
 
-        // Проверка дистанции
         var sdx = x - lastSparkX;
         var sdy = y - lastSparkY;
         if (Math.abs(sdx) + Math.abs(sdy) < CONFIG.sparkSpawnDistance) return;
@@ -198,65 +241,51 @@
         sparkCount++;
 
         var s = getSpark();
-        s.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
-        s.style.opacity = '1';
         s.style.transition = 'none';
+        s.style.opacity = '1';
+        s.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) scale(1)';
         document.body.appendChild(s);
 
-        // Форсируем reflow, чтобы transition сработал
         void s.offsetWidth;
 
-        s.style.transition = 'transform ' + CONFIG.sparkLife + 'ms ease-out, opacity ' + CONFIG.sparkLife + 'ms ease-out';
-        s.style.transform = 'translate3d(' + (x - dx * 2) + 'px,' + (y - dy * 2) + 'px,0) scale(0)';
+        var life = CONFIG.sparkLife;
+        s.style.transition = 'transform ' + life + 'ms cubic-bezier(.16,1,.3,1), opacity ' + life + 'ms ease-out';
+        s.style.transform = 'translate3d(' + (x - dx * 2.5) + 'px,' + (y - dy * 2.5) + 'px,0) scale(0)';
         s.style.opacity = '0';
 
         setTimeout(function() {
             releaseSpark(s);
             sparkCount--;
-        }, CONFIG.sparkLife);
-    }
-
-    // ============================================================
-    // 🎯 Клик-риппл
-    // ============================================================
-    function spawnRipple(x, y) {
-        if (REDUCED_MOTION) return;
-        var r = document.createElement('div');
-        r.className = 'vip-cursor-ripple';
-        r.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0) translate(-50%,-50%) scale(0.5)';
-        document.body.appendChild(r);
-        setTimeout(function() { r.remove(); }, 650);
+        }, life);
     }
 
     // ============================================================
     // 🔄 RAF-цикл
     // ============================================================
-    var lastMouseX = 0, lastMouseY = 0;
-
     function tick() {
         if (!isActive) {
             rafId = null;
             return;
         }
 
-        // Плавная интерполяция курсора
-        cursorX += (mouseX - cursorX) * 0.35;
-        cursorY += (mouseY - cursorY) * 0.35;
+        // Плавная интерполяция позиции
+        cursorX += (mouseX - cursorX) * 0.4;
+        cursorY += (mouseY - cursorY) * 0.4;
 
         // Плавный зум
-        currentScale += (targetScale - currentScale) * 0.2;
+        currentScale += (targetScale - currentScale) * 0.22;
 
         if (cursor) {
             cursor.style.transform = 'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%) scale(' + currentScale.toFixed(3) + ')';
         }
 
-        // Спарки по движению
-        var dx = mouseX - lastMouseX;
-        var dy = mouseY - lastMouseY;
+        // Искры по движению
+        var dx = mouseX - lastMoveX;
+        var dy = mouseY - lastMoveY;
         if (Math.abs(dx) + Math.abs(dy) > 2) {
             spawnSpark(mouseX, mouseY, dx, dy);
-            lastMouseX = mouseX;
-            lastMouseY = mouseY;
+            lastMoveX = mouseX;
+            lastMoveY = mouseY;
         }
 
         rafId = requestAnimationFrame(tick);
@@ -275,39 +304,28 @@
         mouseX = e.clientX;
         mouseY = e.clientY;
 
-        if (!isVisible && cursor) {
-            cursor.classList.add('visible');
-            isVisible = true;
-        }
-
-        // Hover определяем сразу по target
+        // Hover по target
         var hover = e.target && e.target.closest && e.target.closest(CONFIG.hoverTargets);
         if (hover !== hoveredEl) {
             hoveredEl = hover;
-            if (cursor) cursor.classList.toggle('hover', !!hover);
+            if (cursor) {
+                cursor.classList.toggle('hover', !!hover);
+                targetScale = hover ? (CONFIG.cursorSizeHover / CONFIG.cursorSize) : 1;
+            }
         }
     }
 
-    function onMouseDown(e) {
-        if (cursor) cursor.classList.add('click');
-        spawnRipple(e.clientX, e.clientY);
+    function onMouseDown() {
+        if (cursor) {
+            cursor.classList.add('click');
+            targetScale = 0.85;
+        }
     }
 
     function onMouseUp() {
-        if (cursor) cursor.classList.remove('click');
-    }
-
-    function onMouseLeave() {
         if (cursor) {
-            cursor.classList.remove('visible');
-            isVisible = false;
-        }
-    }
-
-    function onMouseEnter() {
-        if (cursor) {
-            cursor.classList.add('visible');
-            isVisible = true;
+            cursor.classList.remove('click');
+            targetScale = hoveredEl ? (CONFIG.cursorSizeHover / CONFIG.cursorSize) : 1;
         }
     }
 
@@ -332,16 +350,22 @@
         document.body.appendChild(cursor);
         document.body.classList.add('vip-cursor-on');
 
-        // Пассивные слушатели — не блокируем скролл
+        // Стартовая позиция — в центр экрана (чтобы не пропадал до первого движения)
+        mouseX = cursorX = window.innerWidth / 2;
+        mouseY = cursorY = window.innerHeight / 2;
+        lastMoveX = mouseX;
+        lastMoveY = mouseY;
+        if (cursor) {
+            cursor.style.transform = 'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%)';
+        }
+
         document.addEventListener('mousemove', onMouseMove, { passive: true });
         document.addEventListener('mousedown', onMouseDown, { passive: true });
         document.addEventListener('mouseup', onMouseUp, { passive: true });
-        document.addEventListener('mouseleave', onMouseLeave, { passive: true });
-        document.addEventListener('mouseenter', onMouseEnter, { passive: true });
         document.addEventListener('visibilitychange', onVisibilityChange);
 
         startLoop();
-        console.log('✨ vip-cursor v2 VIP активен');
+        console.log('🪐 vip-cursor v3 Mars Cursor активен');
     }
 
     // ============================================================
@@ -356,12 +380,10 @@
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mousedown', onMouseDown);
         document.removeEventListener('mouseup', onMouseUp);
-        document.removeEventListener('mouseleave', onMouseLeave);
-        document.removeEventListener('mouseenter', onMouseEnter);
         document.removeEventListener('visibilitychange', onVisibilityChange);
         if (cursor && cursor.parentNode) cursor.remove();
         document.body.classList.remove('vip-cursor-on');
-        document.querySelectorAll('.vip-spark, .vip-cursor-ripple').forEach(function(el) { el.remove(); });
+        document.querySelectorAll('.vip-spark').forEach(function(el) { el.remove(); });
         cursor = null;
         console.log('🛑 vip-cursor: отключён');
     }
@@ -377,14 +399,17 @@
     // ============================================================
     window.marsVipCursor = {
         destroy: destroy,
-        setColor: function(color) {
-            if (cursor) {
-                cursor.style.borderColor = color;
-                cursor.style.boxShadow = '0 0 20px ' + color + ', 0 0 40px ' + color + '66';
-            }
-        },
-        isActive: function() { return isActive; }
+        isActive: function() { return isActive; },
+        setColors: function(dark, mid, light, highlight) {
+            var c = document.getElementById('vip-cursor');
+            if (!c) return;
+            c.style.background = 'radial-gradient(circle at 30% 30%, ' +
+                (highlight || CONFIG.colorHighlight) + ' 0%, ' +
+                (light || CONFIG.colorLight) + ' 20%, ' +
+                (mid || CONFIG.colorMid) + ' 55%, ' +
+                (dark || CONFIG.colorDark) + ' 100%)';
+        }
     };
 
-    console.log('✅ vip-cursor.js v2 VIP загружен');
+    console.log('✅ vip-cursor.js v3 Mars Cursor загружен');
 })();

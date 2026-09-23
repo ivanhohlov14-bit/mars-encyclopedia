@@ -1,23 +1,72 @@
 // ============================================================
-// mars-sound-synth.js — VIP v6
-// Чистый звук моря + насыщенный дизайн в цветах инфобокса
+// mars-sound-synth.js — v2 VIP
+// Синтезатор звуков (море/океан/шторм/чайки/глубина/замерзание)
+// - Debounced observer (было 100 вызовов/сек → 1 раз в 300мс)
+// - Auto-disconnect через 30 сек
+// - Правильная остановка без двойного stop()
+// - Resume AudioContext при возврате на вкладку
+// - Mobile: 16 баров вместо 24
+// - aria-pressed + keyboard (Space/Enter)
+// - SPA через document$ — стоп при переходе
+// - Публичное API: window.marsSound.*
 // ============================================================
 (function() {
     'use strict';
 
+    if (window.__marsSoundSynthLoaded) return;
+    window.__marsSoundSynthLoaded = true;
+
+    // ============================================================
+    // ⚙️ Конфиг
+    // ============================================================
+    var DEBUG = false;
+    var OBSERVER_TIMEOUT = 30000;
+    var DEBOUNCE_MS = 300;
+
+    function log() {
+        if (!DEBUG) return;
+        try { console.log.apply(console, ['🌊 sound:'].concat([].slice.call(arguments))); } catch(e) {}
+    }
+
+    function isMobile() {
+        if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) return true;
+        if (navigator.maxTouchPoints > 0 && window.innerWidth <= 768) return true;
+        return window.innerWidth <= 768;
+    }
+
+    function prefersReducedMotion() {
+        try {
+            return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        } catch(e) { return false; }
+    }
+
+    var IS_MOBILE = isMobile();
+    var REDUCED_MOTION = prefersReducedMotion();
+
+    // ============================================================
+    // 🔊 AudioContext
+    // ============================================================
     var audioCtx = null;
-    var currentSound = null;
-    var currentEl = null;
 
     function getAudioCtx() {
         if (!audioCtx) {
-            try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-            catch (e) { return null; }
+            try {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                log('AudioContext создан');
+            } catch(e) {
+                log('AudioContext error:', e.message);
+                return null;
+            }
         }
-        if (audioCtx.state === 'suspended') audioCtx.resume().catch(function(){});
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume().catch(function(){});
+        }
         return audioCtx;
     }
 
+    // ============================================================
+    // 🎵 Генераторы шума
+    // ============================================================
     function createBrownNoise(ctx, seconds) {
         var len = Math.floor(ctx.sampleRate * seconds);
         var buf = ctx.createBuffer(2, len, ctx.sampleRate);
@@ -73,49 +122,16 @@
         return impulse;
     }
 
+    // ============================================================
+    // 🎚️ Пресеты
+    // ============================================================
     var PRESETS = {
-        calm: {
-            label: 'Спокойное море',
-            swell: 0.055, rumble: 0.14, waveBody: 0.32,
-            foam: 0.03, wind: 0.03,
-            crashChance: 0.15, crashPower: 0.15,
-            stereoWidth: 0.6, reverb: 0.28, gulls: false
-        },
-        ocean: {
-            label: 'Океанские волны',
-            swell: 0.08, rumble: 0.20, waveBody: 0.42,
-            foam: 0.05, wind: 0.06,
-            crashChance: 0.35, crashPower: 0.28,
-            stereoWidth: 0.85, reverb: 0.38, gulls: false
-        },
-        storm: {
-            label: 'Штормовое море',
-            swell: 0.14, rumble: 0.32, waveBody: 0.55,
-            foam: 0.10, wind: 0.18,
-            crashChance: 0.7, crashPower: 0.45,
-            stereoWidth: 1.0, reverb: 0.45, gulls: false
-        },
-        gulls: {
-            label: 'Море с чайками',
-            swell: 0.07, rumble: 0.16, waveBody: 0.36,
-            foam: 0.04, wind: 0.04,
-            crashChance: 0.22, crashPower: 0.20,
-            stereoWidth: 0.8, reverb: 0.35, gulls: true
-        },
-        deep: {
-            label: 'Глубокое море',
-            swell: 0.035, rumble: 0.42, waveBody: 0.28,
-            foam: 0.015, wind: 0.02,
-            crashChance: 0.08, crashPower: 0.14,
-            stereoWidth: 0.5, reverb: 0.55, gulls: false
-        },
-        freezing: {
-            label: 'Замерзающее море',
-            swell: 0.04, rumble: 0.10, waveBody: 0.14,
-            foam: 0.02, wind: 0.28,
-            crashChance: 0.05, crashPower: 0.08,
-            stereoWidth: 0.9, reverb: 0.30, gulls: false
-        }
+        calm:     { label: 'Спокойное море',  swell: 0.055, rumble: 0.14, waveBody: 0.32, foam: 0.03,  wind: 0.03,  crashChance: 0.15, crashPower: 0.15, stereoWidth: 0.6,  reverb: 0.28, gulls: false },
+        ocean:    { label: 'Океанские волны', swell: 0.08,  rumble: 0.20, waveBody: 0.42, foam: 0.05,  wind: 0.06,  crashChance: 0.35, crashPower: 0.28, stereoWidth: 0.85, reverb: 0.38, gulls: false },
+        storm:    { label: 'Штормовое море',  swell: 0.14,  rumble: 0.32, waveBody: 0.55, foam: 0.10,  wind: 0.18,  crashChance: 0.7,  crashPower: 0.45, stereoWidth: 1.0,  reverb: 0.45, gulls: false },
+        gulls:    { label: 'Море с чайками',  swell: 0.07,  rumble: 0.16, waveBody: 0.36, foam: 0.04,  wind: 0.04,  crashChance: 0.22, crashPower: 0.20, stereoWidth: 0.8,  reverb: 0.35, gulls: true  },
+        deep:     { label: 'Глубокое море',   swell: 0.035, rumble: 0.42, waveBody: 0.28, foam: 0.015, wind: 0.02,  crashChance: 0.08, crashPower: 0.14, stereoWidth: 0.5,  reverb: 0.55, gulls: false },
+        freezing: { label: 'Замерзающее море', swell: 0.04, rumble: 0.10, waveBody: 0.14, foam: 0.02,  wind: 0.28,  crashChance: 0.05, crashPower: 0.08, stereoWidth: 0.9,  reverb: 0.30, gulls: false }
     };
 
     var SRC_MAP = {
@@ -126,6 +142,7 @@
         'waves-of-the-sea-ocean.mp3':                'ocean',
         'mars-wind.mp3':                             'freezing'
     };
+
     function presetFromSrc(src) {
         if (!src) return 'ocean';
         var name = src.split('/').pop().split('?')[0];
@@ -133,14 +150,16 @@
     }
 
     // ============================================================
-    // ЗВУКОВОЙ ДВИЖОК v6 — без пузырьков и резкой пены
+    // 🌊 Сборка звука моря
     // ============================================================
     function buildSeaSound(ctx, presetName) {
         var cfg = PRESETS[presetName] || PRESETS.ocean;
         var master = ctx.createGain();
         master.gain.value = 0.0001;
+
         var nodes = [];
         var timers = [];
+        var stopped = false;
 
         // Реверб
         var reverbNode = ctx.createConvolver();
@@ -150,7 +169,7 @@
         reverbNode.connect(reverbGain);
         reverbGain.connect(master);
 
-        // Мастер-фильтр — мягкий lowpass, убирает цифровую резкость
+        // Мастер-фильтр
         var masterLP = ctx.createBiquadFilter();
         masterLP.type = 'lowpass';
         masterLP.frequency.value = 7000;
@@ -158,7 +177,7 @@
         master.connect(masterLP);
         masterLP.connect(ctx.destination);
 
-        // 1. ГЛУБИННЫЙ ГУЛ
+        // 1. Гул
         var rumble = createBrownNoise(ctx, 6);
         var rumbleLP = ctx.createBiquadFilter();
         rumbleLP.type = 'lowpass';
@@ -182,7 +201,7 @@
         rumble.start(); rumbleLFO.start();
         nodes.push(rumble, rumbleLFO);
 
-        // 2. ТЕЛО ВОЛНЫ — стерео, две волны с разной фазой
+        // 2. Тело волны
         function makeWaveLayer(pan, phaseOffset) {
             var wave = createPinkNoise(ctx, 6);
             var waveBP = ctx.createBiquadFilter();
@@ -227,7 +246,7 @@
         makeWaveLayer(-cfg.stereoWidth, 0);
         makeWaveLayer(cfg.stereoWidth, 1.5);
 
-        // 3. ПЕНА — теперь мягче, узкая полоса 200–1400 Гц (без «сыпучести»)
+        // 3. Пена
         var foam = createPinkNoise(ctx, 6);
         var foamHP = ctx.createBiquadFilter();
         foamHP.type = 'highpass';
@@ -255,7 +274,7 @@
         foam.start(); foamLFO.start();
         nodes.push(foam, foamLFO);
 
-        // 4. ВЕТЕР
+        // 4. Ветер
         if (cfg.wind > 0) {
             var wind = createBrownNoise(ctx, 6);
             var windBP = ctx.createBiquadFilter();
@@ -281,7 +300,7 @@
             nodes.push(wind, windLFO);
         }
 
-        // 5. КРУПНЫЕ ВСПЛЕСКИ — без резкой пены!
+        // 5. Всплески
         function bigCrash(startTime, power, panValue) {
             var crash = createPinkNoise(ctx, 3);
             var crashBP = ctx.createBiquadFilter();
@@ -307,8 +326,8 @@
             panner.connect(reverbNode);
             crash.start(startTime);
             crash.stop(startTime + 3);
+            nodes.push(crash);
 
-            // Суб-бас удар — мощь волны
             var boom = ctx.createOscillator();
             boom.type = 'sine';
             boom.frequency.setValueAtTime(65, startTime);
@@ -321,11 +340,11 @@
             boomGain.connect(master);
             boom.start(startTime);
             boom.stop(startTime + 2.0);
-
-            // ❌ УБРАНА пена-всплеск (резкий highpass 1500) — это был «цик»
+            nodes.push(boom);
         }
 
         function crashLoop() {
+            if (stopped) return;
             if (Math.random() < cfg.crashChance) {
                 var power = cfg.crashPower * (0.7 + Math.random() * 0.6);
                 var pan = (Math.random() * 2 - 1) * cfg.stereoWidth;
@@ -335,9 +354,7 @@
         }
         if (cfg.crashChance > 0) crashLoop();
 
-        // ❌ ПУЗЫРЬКИ УБРАНЫ ПОЛНОСТЬЮ
-
-        // 6. ЧАЙКИ
+        // 6. Чайки
         if (cfg.gulls) {
             function gullCry(when) {
                 var panValue = Math.random() * 1.6 - 0.8;
@@ -358,6 +375,7 @@
                 o1.connect(g1); g1.connect(panner); panner.connect(master);
                 g1.connect(reverbNode);
                 o1.start(when); o1.stop(when + 0.5);
+                nodes.push(o1);
 
                 var o2 = ctx.createOscillator();
                 o2.type = 'sine';
@@ -369,8 +387,10 @@
                 g2.gain.exponentialRampToValueAtTime(0.0001, when + 0.4);
                 o2.connect(g2); g2.connect(panner);
                 o2.start(when + 0.05); o2.stop(when + 0.45);
+                nodes.push(o2);
             }
             function gullLoop() {
+                if (stopped) return;
                 if (Math.random() < 0.4) {
                     var t = ctx.currentTime + 0.1;
                     gullCry(t);
@@ -384,15 +404,62 @@
         return {
             master: master,
             nodes: nodes,
-            stop: function () {
-                timers.forEach(function (t) { clearTimeout(t); });
+            presetName: presetName,
+
+            // ✅ Правильная остановка — не бросает двойной stop()
+            stop: function() {
+                if (stopped) return;
+                stopped = true;
+
+                timers.forEach(function(t) { clearTimeout(t); });
+                timers = [];
+
+                // Затухание
+                try {
+                    master.gain.cancelScheduledValues(ctx.currentTime);
+                    master.gain.setValueAtTime(master.gain.value || 0.0001, ctx.currentTime);
+                    master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.5);
+                } catch(e) {}
+
+                var stopAt = ctx.currentTime + 0.55;
+                setTimeout(function() {
+                    nodes.forEach(function(n) {
+                        try { if (n.stop) n.stop(stopAt); } catch(e) {}
+                    });
+                    setTimeout(function() {
+                        nodes.forEach(function(n) {
+                            try { n.disconnect(); } catch(e) {}
+                        });
+                        try { master.disconnect(); } catch(e) {}
+                        try { reverbNode.disconnect(); } catch(e) {}
+                        try { masterLP.disconnect(); } catch(e) {}
+                    }, 100);
+                }, 600);
             }
         };
     }
 
     // ============================================================
-    // UI — НАСЫЩЕННЫЙ ДИЗАЙН
+    // 🖼️ Плеер
     // ============================================================
+    var activeSound = null;
+    var activeEl = null;
+
+    function stopActive() {
+        if (!activeSound) return;
+        try { activeSound.stop(); } catch(e) {}
+        activeSound = null;
+
+        if (activeEl) {
+            activeEl.classList.remove('mss-playing');
+            var btn = activeEl.querySelector('.mss-btn');
+            var icon = activeEl.querySelector('.mss-icon');
+            if (icon) icon.textContent = '▶';
+            if (btn) btn.setAttribute('aria-pressed', 'false');
+            activeEl = null;
+        }
+    }
+
     function createPlayer(el) {
         var presetName = el.getAttribute('data-preset') || presetFromSrc(el.getAttribute('data-src'));
         var caption = el.getAttribute('data-caption') || 'Реконструкция звука';
@@ -400,15 +467,16 @@
         el.classList.add('mars-sound-ready');
         el.innerHTML = '';
 
+        var barsCount = IS_MOBILE ? 16 : 24;
         var barsHtml = '';
-        for (var i = 0; i < 24; i++) {
+        for (var i = 0; i < barsCount; i++) {
             var h = 20 + Math.random() * 60;
             barsHtml += '<span style="--h:' + h.toFixed(0) + '%;--d:' + (i * 0.06).toFixed(2) + 's"></span>';
         }
 
         el.innerHTML =
             '<div class="mss-left">' +
-                '<button class="mss-btn" aria-label="Воспроизвести">' +
+                '<button class="mss-btn" type="button" aria-label="Воспроизвести" aria-pressed="false">' +
                     '<span class="mss-ring"></span>' +
                     '<span class="mss-icon">▶</span>' +
                 '</button>' +
@@ -425,181 +493,197 @@
         var btn = el.querySelector('.mss-btn');
         var icon = el.querySelector('.mss-icon');
 
-        btn.onclick = function () {
+        function toggle() {
             var ctx = getAudioCtx();
             if (!ctx) return;
 
-            if (currentEl === el && currentSound) {
-                var s = currentSound;
-                try { s.master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.6); } catch (e) {}
-                setTimeout(function () {
-                    s.stop();
-                    s.nodes.forEach(function (n) { try { n.stop(); } catch (e) {} });
-                }, 650);
-                currentSound = null;
-                currentEl = null;
-                icon.textContent = '▶';
-                el.classList.remove('mss-playing');
-            } else {
-                if (currentSound) {
-                    var prev = currentSound;
-                    try { prev.master.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4); } catch (e) {}
-                    setTimeout(function () {
-                        prev.stop();
-                        prev.nodes.forEach(function (n) { try { n.stop(); } catch (e) {} });
-                    }, 450);
-                    if (currentEl) {
-                        currentEl.classList.remove('mss-playing');
-                        var pi = currentEl.querySelector('.mss-icon');
-                        if (pi) pi.textContent = '▶';
-                    }
-                }
-                currentSound = buildSeaSound(ctx, presetName);
-                currentSound.master.gain.exponentialRampToValueAtTime(0.85, ctx.currentTime + 1.5);
-                currentEl = el;
-                icon.textContent = '❚❚';
-                el.classList.add('mss-playing');
+            // Если этот же играет — стоп
+            if (activeEl === el && activeSound) {
+                stopActive();
+                return;
             }
-        };
+
+            // Останавливаем предыдущий
+            if (activeSound) {
+                stopActive();
+            }
+
+            // Запускаем новый
+            activeSound = buildSeaSound(ctx, presetName);
+            activeEl = el;
+            try {
+                activeSound.master.gain.exponentialRampToValueAtTime(0.85, ctx.currentTime + 1.5);
+            } catch(e) {}
+
+            icon.textContent = '❚❚';
+            btn.setAttribute('aria-pressed', 'true');
+            el.classList.add('mss-playing');
+        }
+
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggle();
+        });
+
+        // Keyboard
+        btn.addEventListener('keydown', function(e) {
+            if (e.key === ' ' || e.key === 'Enter') {
+                e.preventDefault();
+                toggle();
+            }
+        });
     }
 
-    // ---- СТИЛИ v6 — без белой пелены, насыщенные цвета ----
-    function addStyles() {
+    // ============================================================
+    // 🎨 Стили
+    // ============================================================
+    function injectStyles() {
         if (document.getElementById('mss-style')) return;
         var s = document.createElement('style');
         s.id = 'mss-style';
-        s.textContent = [
-            '.mars-sound-ready {',
-            '    display: flex; align-items: center; gap: 14px;',
-            '    padding: 14px 16px; margin: 10px 0;',
-            '    background: linear-gradient(135deg, #b8ced9 0%, #8daebf 100%);',
-            '    border: 1px solid #6d92a8;',
-            '    border-radius: 12px;',
-            '    font-family: -apple-system, "Segoe UI", Roboto, sans-serif;',
-            '    box-shadow: 0 6px 18px rgba(26,58,74,0.25), inset 0 1px 0 rgba(255,255,255,0.25);',
-            '    position: relative; overflow: hidden;',
-            '    transition: border-color 0.3s, box-shadow 0.3s;',
-            '}',
-            '.mars-sound-ready.mss-playing {',
-            '    border-color: #2a5a80;',
-            '    box-shadow: 0 8px 28px rgba(42,90,128,0.45), inset 0 1px 0 rgba(255,255,255,0.3);',
-            '}',
-
-            '.mss-left { position: relative; flex-shrink: 0; z-index: 1; }',
-            '.mss-btn {',
-            '    position: relative;',
-            '    width: 54px; height: 54px;',
-            '    border-radius: 50%; border: none; cursor: pointer;',
-            '    background: linear-gradient(135deg, #3a6d9f 0%, #16304a 100%);',
-            '    color: #fff; font-size: 16px;',
-            '    display: inline-flex; align-items: center; justify-content: center;',
-            '    box-shadow: 0 6px 18px rgba(22,48,74,0.5), inset 0 1px 0 rgba(255,255,255,0.3);',
-            '    transition: transform 0.25s cubic-bezier(.2,.9,.3,1.3), box-shadow 0.3s;',
-            '    -webkit-tap-highlight-color: transparent;',
-            '    z-index: 1;',
-            '}',
-            '.mss-btn:hover {',
-            '    transform: scale(1.06);',
-            '    box-shadow: 0 10px 24px rgba(22,48,74,0.65), inset 0 1px 0 rgba(255,255,255,0.4);',
-            '}',
-            '.mss-btn:active { transform: scale(0.96); }',
-            '.mss-icon { position: relative; z-index: 2; line-height: 1; }',
-            '.mss-playing .mss-btn {',
-            '    background: linear-gradient(135deg, #2a7ab8 0%, #0d2a3a 100%);',
-            '    box-shadow: 0 6px 22px rgba(42,122,184,0.6), inset 0 1px 0 rgba(255,255,255,0.35);',
-            '}',
-
-            '.mss-ring {',
-            '    position: absolute; inset: 0; border-radius: 50%;',
-            '    pointer-events: none; display: none;',
-            '}',
-            '.mss-playing .mss-ring {',
-            '    display: block;',
-            '    animation: mssRing 2s ease-out infinite;',
-            '    border: 2px solid rgba(74,125,181,0.85);',
-            '}',
-            '.mss-playing .mss-ring::before {',
-            '    content: ""; position: absolute; inset: -8px; border-radius: 50%;',
-            '    border: 2px solid rgba(74,125,181,0.5);',
-            '    animation: mssRing 2s ease-out infinite 0.3s;',
-            '}',
-            '@keyframes mssRing {',
-            '    0% { transform: scale(1); opacity: 0.9; }',
-            '    100% { transform: scale(1.7); opacity: 0; }',
-            '}',
-
-            '.mss-center { flex: 1; min-width: 0; position: relative; z-index: 1; }',
-            '.mss-title {',
-            '    font-weight: 800; font-size: 1rem;',
-            '    color: #0d2a3a;',
-            '    margin-bottom: 3px; letter-spacing: 0.3px;',
-            '    text-shadow: 0 1px 0 rgba(255,255,255,0.3);',
-            '}',
-            '.mss-caption {',
-            '    font-size: 0.74rem; color: #1a3a4a;',
-            '    transition: color 0.3s;',
-            '}',
-            '.mss-playing .mss-caption { color: #0d3a5a; font-weight: 600; }',
-
-            '.mss-viz {',
-            '    display: flex; align-items: flex-end; gap: 2px;',
-            '    height: 22px; margin-top: 7px;',
-            '    opacity: 0.55; transition: opacity 0.3s;',
-            '}',
-            '.mss-playing .mss-viz { opacity: 1; }',
-            '.mss-viz span {',
-            '    flex: 1; min-width: 1px;',
-            '    height: 20%;',
-            '    background: linear-gradient(180deg, #3a6d9f, #0d2a3a);',
-            '    border-radius: 2px;',
-            '    transition: height 0.4s ease;',
-            '    box-shadow: 0 0 4px rgba(42,90,128,0.6);',
-            '}',
-            '.mss-playing .mss-viz span {',
-            '    animation: mssBar 1.2s ease-in-out infinite alternate;',
-            '    animation-delay: var(--d, 0s);',
-            '    height: var(--h, 50%);',
-            '}',
-            '@keyframes mssBar {',
-            '    0% { height: 15%; opacity: 0.6; }',
-            '    100% { height: var(--h, 60%); opacity: 1; }',
-            '}',
-
-            '.mss-right {',
-            '    display: flex; align-items: center; justify-content: center;',
-            '    flex-shrink: 0; position: relative; z-index: 1;',
-            '    min-width: 20px;',
-            '}',
-            '.mss-live {',
-            '    width: 10px; height: 10px; border-radius: 50%;',
-            '    background: #6d92a8;',
-            '    transition: background 0.3s, box-shadow 0.3s;',
-            '}',
-            '.mss-playing .mss-live {',
-            '    background: #1f7a4a;',
-            '    box-shadow: 0 0 10px #2a9d5f, 0 0 4px #2a9d5f;',
-            '    animation: mssLive 1.5s ease-in-out infinite;',
-            '}',
-            '@keyframes mssLive {',
-            '    0%, 100% { opacity: 1; }',
-            '    50% { opacity: 0.35; }',
-            '}',
-
-            '@media (max-width: 700px) {',
-            '    .mars-sound-ready { padding: 12px; gap: 12px; border-radius: 10px; }',
-            '    .mss-btn { width: 48px; height: 48px; font-size: 14px; }',
-            '    .mss-title { font-size: 0.92rem; }',
-            '    .mss-caption { font-size: 0.7rem; }',
-            '    .mss-viz { height: 18px; gap: 1.5px; }',
-            '}'
-        ].join('\n');
+        s.textContent = `
+            .mars-sound-ready {
+                display: flex; align-items: center; gap: 14px;
+                padding: 14px 16px; margin: 10px 0;
+                background: linear-gradient(135deg, #b8ced9 0%, #8daebf 100%);
+                border: 1px solid #6d92a8;
+                border-radius: 12px;
+                font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+                box-shadow: 0 6px 18px rgba(26,58,74,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+                position: relative; overflow: hidden;
+                transition: border-color .3s, box-shadow .3s;
+            }
+            .mars-sound-ready.mss-playing {
+                border-color: #2a5a80;
+                box-shadow: 0 8px 28px rgba(42,90,128,0.45), inset 0 1px 0 rgba(255,255,255,0.3);
+            }
+            .mss-left { position: relative; flex-shrink: 0; z-index: 1; }
+            .mss-btn {
+                position: relative;
+                width: 54px; height: 54px;
+                border-radius: 50%; border: none; cursor: pointer;
+                background: linear-gradient(135deg, #3a6d9f 0%, #16304a 100%);
+                color: #fff; font-size: 16px;
+                display: inline-flex; align-items: center; justify-content: center;
+                box-shadow: 0 6px 18px rgba(22,48,74,0.5), inset 0 1px 0 rgba(255,255,255,0.3);
+                transition: transform .25s cubic-bezier(.2,.9,.3,1.3), box-shadow .3s;
+                -webkit-tap-highlight-color: transparent;
+                z-index: 1;
+            }
+            .mss-btn:hover {
+                transform: scale(1.06);
+                box-shadow: 0 10px 24px rgba(22,48,74,0.65), inset 0 1px 0 rgba(255,255,255,0.4);
+            }
+            .mss-btn:active { transform: scale(0.96); }
+            .mss-btn:focus-visible {
+                outline: 2px solid #16304a;
+                outline-offset: 2px;
+            }
+            .mss-icon { position: relative; z-index: 2; line-height: 1; }
+            .mss-playing .mss-btn {
+                background: linear-gradient(135deg, #2a7ab8 0%, #0d2a3a 100%);
+                box-shadow: 0 6px 22px rgba(42,122,184,0.6), inset 0 1px 0 rgba(255,255,255,0.35);
+            }
+            .mss-ring {
+                position: absolute; inset: 0; border-radius: 50%;
+                pointer-events: none; display: none;
+            }
+            .mss-playing .mss-ring {
+                display: block;
+                animation: mssRing 2s ease-out infinite;
+                border: 2px solid rgba(74,125,181,0.85);
+            }
+            .mss-playing .mss-ring::before {
+                content: ''; position: absolute; inset: -8px; border-radius: 50%;
+                border: 2px solid rgba(74,125,181,0.5);
+                animation: mssRing 2s ease-out infinite 0.3s;
+            }
+            @keyframes mssRing {
+                0% { transform: scale(1); opacity: 0.9; }
+                100% { transform: scale(1.7); opacity: 0; }
+            }
+            .mss-center { flex: 1; min-width: 0; position: relative; z-index: 1; }
+            .mss-title {
+                font-weight: 800; font-size: 1rem;
+                color: #0d2a3a;
+                margin-bottom: 3px; letter-spacing: 0.3px;
+                text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+            }
+            .mss-caption {
+                font-size: 0.74rem; color: #1a3a4a;
+                transition: color .3s;
+            }
+            .mss-playing .mss-caption { color: #0d3a5a; font-weight: 600; }
+            .mss-viz {
+                display: flex; align-items: flex-end; gap: 2px;
+                height: 22px; margin-top: 7px;
+                opacity: 0.55; transition: opacity .3s;
+            }
+            .mss-playing .mss-viz { opacity: 1; }
+            .mss-viz span {
+                flex: 1; min-width: 1px;
+                height: 20%;
+                background: linear-gradient(180deg, #3a6d9f, #0d2a3a);
+                border-radius: 2px;
+                transition: height .4s ease;
+                box-shadow: 0 0 4px rgba(42,90,128,0.6);
+            }
+            .mss-playing .mss-viz span {
+                animation: mssBar 1.2s ease-in-out infinite alternate;
+                animation-delay: var(--d, 0s);
+                height: var(--h, 50%);
+            }
+            @keyframes mssBar {
+                0% { height: 15%; opacity: 0.6; }
+                100% { height: var(--h, 60%); opacity: 1; }
+            }
+            .mss-right {
+                display: flex; align-items: center; justify-content: center;
+                flex-shrink: 0; position: relative; z-index: 1;
+                min-width: 20px;
+            }
+            .mss-live {
+                width: 10px; height: 10px; border-radius: 50%;
+                background: #6d92a8;
+                transition: background .3s, box-shadow .3s;
+            }
+            .mss-playing .mss-live {
+                background: #1f7a4a;
+                box-shadow: 0 0 10px #2a9d5f, 0 0 4px #2a9d5f;
+                animation: mssLive 1.5s ease-in-out infinite;
+            }
+            @keyframes mssLive {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.35; }
+            }
+            @media (max-width: 700px) {
+                .mars-sound-ready { padding: 12px; gap: 12px; border-radius: 10px; }
+                .mss-btn { width: 48px; height: 48px; font-size: 14px; }
+                .mss-title { font-size: 0.92rem; }
+                .mss-caption { font-size: 0.7rem; }
+                .mss-viz { height: 18px; gap: 1.5px; }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .mss-playing .mss-ring,
+                .mss-playing .mss-viz span,
+                .mss-playing .mss-live {
+                    animation: none !important;
+                }
+                .mss-viz span { transition: none !important; }
+            }
+        `;
         document.head.appendChild(s);
     }
 
+    // ============================================================
+    // 🚀 Init
+    // ============================================================
     function init() {
-        addStyles();
+        injectStyles();
         var els = document.querySelectorAll('.mars-sound:not(.mars-sound-ready)');
-        for (var i = 0; i < els.length; i++) createPlayer(els[i]);
+        for (var i = 0; i < els.length; i++) {
+            try { createPlayer(els[i]); } catch(e) { log('createPlayer error:', e.message); }
+        }
     }
 
     if (document.readyState === 'loading') {
@@ -607,13 +691,109 @@
     } else {
         init();
     }
-    window.addEventListener('load', init);
-    setTimeout(init, 500);
-    setTimeout(init, 1500);
 
-    if (window.MutationObserver) {
-        new MutationObserver(init).observe(document.body, { childList: true, subtree: true });
+    // Одна подстраховка (было load + 2 setTimeout + observer)
+    setTimeout(init, 800);
+
+    // ============================================================
+    // 🔄 MutationObserver с debounce + auto-disconnect
+    // ============================================================
+    var mo = null;
+    var moTimer = null;
+
+    function startObserver() {
+        if (typeof MutationObserver === 'undefined') return;
+        if (mo) return;
+
+        mo = new MutationObserver(function(mutations) {
+            if (moTimer) return;
+            moTimer = setTimeout(function() {
+                moTimer = null;
+                // Проверяем только если добавили новые .mars-sound
+                var hasNew = false;
+                for (var i = 0; i < mutations.length && !hasNew; i++) {
+                    var m = mutations[i];
+                    if (!m.addedNodes || !m.addedNodes.length) continue;
+                    for (var j = 0; j < m.addedNodes.length; j++) {
+                        var n = m.addedNodes[j];
+                        if (n.nodeType !== 1) continue;
+                        if (n.classList && n.classList.contains('mars-sound') && !n.classList.contains('mars-sound-ready')) {
+                            hasNew = true;
+                            break;
+                        }
+                        if (n.querySelector && n.querySelector('.mars-sound:not(.mars-sound-ready)')) {
+                            hasNew = true;
+                            break;
+                        }
+                    }
+                }
+                if (hasNew) init();
+            }, DEBOUNCE_MS);
+        });
+
+        try {
+            mo.observe(document.body, { childList: true, subtree: true });
+            setTimeout(function() {
+                if (mo) { try { mo.disconnect(); } catch(e) {} mo = null; }
+                log('observer отключён');
+            }, OBSERVER_TIMEOUT);
+        } catch(e) {}
     }
 
-    console.log('🌊 mars-sound-synth VIP v6 — чистый звук + насыщенный дизайн');
+    if (document.body) startObserver();
+    else document.addEventListener('DOMContentLoaded', startObserver);
+
+    // ============================================================
+    // 👁️ Resume AudioContext при возврате на вкладку
+    // ============================================================
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) return;
+        if (audioCtx && audioCtx.state === 'suspended') {
+            audioCtx.resume().catch(function(){});
+        }
+    });
+
+    // ============================================================
+    // 🔄 SPA-переходы — останавливаем звук
+    // ============================================================
+    if (typeof document$ !== 'undefined' && document$.subscribe) {
+        try {
+            document$.subscribe(function() {
+                if (activeSound) stopActive();
+                setTimeout(init, 200);
+            });
+        } catch(e) {}
+    } else {
+        // Fallback — смена URL
+        var lastUrl = location.href;
+        setInterval(function() {
+            if (location.href === lastUrl) return;
+            lastUrl = location.href;
+            if (activeSound) stopActive();
+            setTimeout(init, 200);
+        }, 1000);
+    }
+
+    // ============================================================
+    // 🌐 Публичное API
+    // ============================================================
+    window.marsSound = {
+        play: function(preset) {
+            var el = document.querySelector('.mars-sound[data-preset="' + preset + '"]');
+            if (!el) return false;
+            var btn = el.querySelector('.mss-btn');
+            if (btn) btn.click();
+            return true;
+        },
+        stop: stopActive,
+        isPlaying: function() { return !!activeSound; },
+        getPreset: function() { return activeSound ? activeSound.presetName : null; },
+        presets: Object.keys(PRESETS),
+        labels: Object.keys(PRESETS).reduce(function(acc, k) {
+            acc[k] = PRESETS[k].label;
+            return acc;
+        }, {})
+    };
+
+    log('v2 VIP загружен');
 })();

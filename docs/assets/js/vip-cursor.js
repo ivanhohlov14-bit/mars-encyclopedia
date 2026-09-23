@@ -1,6 +1,6 @@
 // ============================================================
-// vip-cursor.js — v4 "Mars Mini"
-// Маленький Марс 22px, без прыжка в центр при загрузке
+// vip-cursor.js — v5 "Mars Mini Fix"
+// Маленький Марс 22px, появляется сразу после перехода
 // ============================================================
 (function() {
     'use strict';
@@ -25,11 +25,11 @@
     var REDUCED_MOTION = prefersReducedMotion();
 
     // ============================================================
-    // ⚙️ Конфиг — компактный Марс
+    // ⚙️ Конфиг
     // ============================================================
     var CONFIG = {
-        cursorSize: 22,              // ⬅ уменьшено с 44
-        cursorSizeHover: 28,         // ⬅ 28 вместо 56
+        cursorSize: 22,
+        cursorSizeHover: 28,
         colorDark: '#7f1d1d',
         colorMid: '#c0392b',
         colorLight: '#e74c3c',
@@ -42,23 +42,39 @@
         sparkSpawnDistance: 10,
         sparksEnabled: !REDUCED_MOTION,
         hoverTargets: 'a, button, .pf-btn, .pf-tab, .pf-quick-card, .pf-mypage-action, [role="button"], .wy-menu-vertical a, .md-nav__link, input, textarea, select',
-        posKey: 'mars_cursor_pos'
+        posKey: 'mars_cursor_pos',
+        // Fallback: если мышь не двигалась N мс после загрузки — показать по центру
+        fallbackShowMs: 1500,
+        // Троттлинг записи позиции в sessionStorage
+        saveThrottleMs: 250
     };
 
     // ============================================================
-    // 💾 Последняя позиция мыши (между страницами)
+    // 💾 Позиция между страницами
     // ============================================================
     function loadPos() {
         try {
             var raw = sessionStorage.getItem(CONFIG.posKey);
             if (!raw) return null;
             var p = JSON.parse(raw);
-            if (p && typeof p.x === 'number' && typeof p.y === 'number') return p;
+            if (p && typeof p.x === 'number' && typeof p.y === 'number'
+                && p.x > 0 && p.y > 0
+                && p.x < window.innerWidth + 100 && p.y < window.innerHeight + 100) {
+                return p;
+            }
         } catch(e) {}
         return null;
     }
+
+    var _saveTimer = null;
     function savePos(x, y) {
-        try { sessionStorage.setItem(CONFIG.posKey, JSON.stringify({ x: x, y: y })); } catch(e) {}
+        if (_saveTimer) return;
+        _saveTimer = setTimeout(function() {
+            _saveTimer = null;
+            try {
+                sessionStorage.setItem(CONFIG.posKey, JSON.stringify({ x: x, y: y }));
+            } catch(e) {}
+        }, CONFIG.saveThrottleMs);
     }
 
     // ============================================================
@@ -98,14 +114,12 @@
                     0 0 44px rgba(231, 76, 60, 0.15),
                     inset -3px -3px 6px rgba(0, 0, 0, 0.55),
                     inset 2px 2px 5px rgba(255, 150, 100, 0.3);
-                transition: width .2s cubic-bezier(.16,1,.3,1),
-                            height .2s cubic-bezier(.16,1,.3,1),
+                transition: opacity .2s ease,
                             box-shadow .2s ease;
                 opacity: 0;
             }
             #vip-cursor.ready { opacity: 1; }
 
-            /* Кратеры */
             #vip-cursor::before {
                 content: '';
                 position: absolute;
@@ -119,7 +133,6 @@
                 animation: marsSpin 14s linear infinite;
             }
 
-            /* Кольцо-орбита */
             #vip-cursor::after {
                 content: '';
                 position: absolute;
@@ -198,12 +211,35 @@
     var currentScale = 1;
     var rafId = null;
     var isActive = true;
-    var hasMousePos = false;   // ⬅ ключевое: не показываем пока не знаем где мышь
+    var isVisible = false;
     var sparkCount = 0;
     var lastSparkX = 0, lastSparkY = 0;
     var lastMoveX = 0, lastMoveY = 0;
     var sparkPool = [];
     var hoveredEl = null;
+    var fallbackTimer = null;
+
+    function showCursor(x, y) {
+        if (!cursor || isVisible) return;
+        isVisible = true;
+        cursorX = x;
+        cursorY = y;
+        mouseX = x;
+        mouseY = y;
+        lastMoveX = x;
+        lastMoveY = y;
+        lastSparkX = x;
+        lastSparkY = y;
+
+        // Мгновенно, без transition
+        var prevTrans = cursor.style.transition;
+        cursor.style.transition = 'none';
+        cursor.style.transform =
+            'translate3d(' + x + 'px,' + y + 'px,0) translate(-50%,-50%) scale(1)';
+        cursor.classList.add('ready');
+        void cursor.offsetWidth; // reflow
+        cursor.style.transition = prevTrans || '';
+    }
 
     // ============================================================
     // ✨ Искры
@@ -260,21 +296,19 @@
             return;
         }
 
-        // Не двигаем курсор, пока не знаем где мышь
-        if (hasMousePos) {
+        if (isVisible) {
             cursorX += (mouseX - cursorX) * 0.5;
             cursorY += (mouseY - cursorY) * 0.5;
         }
 
         currentScale += (targetScale - currentScale) * 0.25;
 
-        if (cursor && hasMousePos) {
+        if (cursor && isVisible) {
             cursor.style.transform =
                 'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%) scale(' + currentScale.toFixed(3) + ')';
         }
 
-        // Искры
-        if (hasMousePos) {
+        if (isVisible) {
             var dx = mouseX - lastMoveX;
             var dy = mouseY - lastMoveY;
             if (Math.abs(dx) + Math.abs(dy) > 2) {
@@ -297,29 +331,14 @@
     // 🖱️ Обработчики
     // ============================================================
     function onMouseMove(e) {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        // 🎯 Первое движение мыши — мгновенно появляемся там где мышь
-        if (!hasMousePos) {
-            hasMousePos = true;
-            cursorX = mouseX;
-            cursorY = mouseY;
-            lastMoveX = mouseX;
-            lastMoveY = mouseY;
-            lastSparkX = mouseX;
-            lastSparkY = mouseY;
-            if (cursor) {
-                // Мгновенно без transition
-                cursor.style.transition = 'none';
-                cursor.style.transform =
-                    'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%) scale(1)';
-                cursor.classList.add('ready');
-                void cursor.offsetWidth;
-                cursor.style.transition = '';
-            }
+        // Первое движение — показываем там где мышь
+        if (!isVisible) {
+            if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = null; }
+            showCursor(e.clientX, e.clientY);
         }
 
+        mouseX = e.clientX;
+        mouseY = e.clientY;
         savePos(mouseX, mouseY);
 
         var hover = e.target && e.target.closest && e.target.closest(CONFIG.hoverTargets);
@@ -333,16 +352,26 @@
     }
 
     function onMouseDown() {
-        if (cursor) {
-            cursor.classList.add('click');
-            targetScale = 0.85;
-        }
+        if (!cursor || !isVisible) return;
+        cursor.classList.add('click');
+        targetScale = 0.85;
     }
 
     function onMouseUp() {
-        if (cursor) {
-            cursor.classList.remove('click');
-            targetScale = hoveredEl ? (CONFIG.cursorSizeHover / CONFIG.cursorSize) : 1;
+        if (!cursor || !isVisible) return;
+        cursor.classList.remove('click');
+        targetScale = hoveredEl ? (CONFIG.cursorSizeHover / CONFIG.cursorSize) : 1;
+    }
+
+    function onMouseLeaveDoc() {
+        // Мышь ушла за пределы окна — скрываем до возврата
+        if (cursor) cursor.classList.remove('ready');
+        isVisible = false;
+    }
+
+    function onMouseEnterDoc(e) {
+        if (!isVisible && e.clientX > 0 && e.clientY > 0) {
+            showCursor(e.clientX, e.clientY);
         }
     }
 
@@ -366,29 +395,30 @@
         document.body.appendChild(cursor);
         document.body.classList.add('vip-cursor-on');
 
-        // 🎯 Пробуем восстановить позицию с прошлой страницы
+        // 🎯 Восстановление позиции
         var saved = loadPos();
         if (saved) {
-            // Ставим сразу в нужное место БЕЗ появления — ждём mousemove
-            mouseX = saved.x;
-            mouseY = saved.y;
-            cursorX = saved.x;
-            cursorY = saved.y;
-            cursor.style.transition = 'none';
-            cursor.style.transform =
-                'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%) scale(1)';
-            cursor.style.opacity = '0'; // всё ещё скрыт до первого mousemove
-            void cursor.offsetWidth;
-            cursor.style.transition = '';
+            // Показываем сразу — БЕЗ прыжка и БЕЗ скрытия
+            showCursor(saved.x, saved.y);
+        } else {
+            // Нет сохранённой — ждём mousemove
+            // НО: fallback — если мышь не двигалась 1.5 сек, ставим в центр
+            fallbackTimer = setTimeout(function() {
+                if (!isVisible) {
+                    showCursor(window.innerWidth / 2, window.innerHeight / 2);
+                }
+            }, CONFIG.fallbackShowMs);
         }
 
         document.addEventListener('mousemove', onMouseMove, { passive: true });
         document.addEventListener('mousedown', onMouseDown, { passive: true });
         document.addEventListener('mouseup', onMouseUp, { passive: true });
+        document.addEventListener('mouseleave', onMouseLeaveDoc);
+        document.addEventListener('mouseenter', onMouseEnterDoc);
         document.addEventListener('visibilitychange', onVisibilityChange);
 
         startLoop();
-        console.log('🪐 vip-cursor v4 Mars Mini (22px) активен');
+        console.log('🪐 vip-cursor v5 Mars Mini активен' + (saved ? ' (позиция восстановлена)' : ''));
     }
 
     // ============================================================
@@ -396,13 +426,13 @@
     // ============================================================
     function destroy() {
         isActive = false;
-        if (rafId != null) {
-            cancelAnimationFrame(rafId);
-            rafId = null;
-        }
+        if (fallbackTimer) clearTimeout(fallbackTimer);
+        if (rafId != null) { cancelAnimationFrame(rafId); rafId = null; }
         document.removeEventListener('mousemove', onMouseMove);
         document.removeEventListener('mousedown', onMouseDown);
         document.removeEventListener('mouseup', onMouseUp);
+        document.removeEventListener('mouseleave', onMouseLeaveDoc);
+        document.removeEventListener('mouseenter', onMouseEnterDoc);
         document.removeEventListener('visibilitychange', onVisibilityChange);
         if (cursor && cursor.parentNode) cursor.remove();
         document.body.classList.remove('vip-cursor-on');

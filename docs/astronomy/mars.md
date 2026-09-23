@@ -475,7 +475,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 ## Исследование Марса
 
 <div style="float: left; margin-right: 15px; margin-bottom: 10px; width: 260px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mariner4.jpg" alt="Mariner 4" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mariner4.png" alt="Mariner 4" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">«Маринер-4» — первый аппарат, передавший снимки Марса. NASA.</div>
 </div>
 

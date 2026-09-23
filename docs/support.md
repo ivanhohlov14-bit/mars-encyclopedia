@@ -8,14 +8,6 @@
     </div>
     <h1 class="start-hero-title">Поддержать проект</h1>
     <p class="start-hero-subtitle">Марсианская энциклопедия — некоммерческий научно-справочный проект, создаваемый энтузиастами, объединёнными интересом к миру цикла «Письмо из Красной пыли». Цель проекта — систематизация и популяризация знаний о марсианской истории, географии, биологии и культуре в рамках художественной вселенной.</p>
-
-    <div class="start-hero-donate">
-      <a class="start-donate-btn" href="https://pay.cloudtips.ru/p/14549541" target="_blank" rel="noopener">
-        <span class="start-donate-icon">❤️</span>
-        <span class="start-donate-text">Поддержать проект</span>
-      </a>
-      <div class="start-donate-sub">Безопасная оплата через Т-Банк · СБП · Карта</div>
-    </div>
   </div>
 </div>
 
@@ -92,13 +84,11 @@
 ## <img src="https://cdn.jsdelivr.net/gh/ivanhohlov14-bit/mars-encyclopedia@main/docs/assets/images/stickers/sticker-stars.png" style="width: 24px; height: 24px; display: inline; vertical-align: middle; margin-right: 6px;"> Финансовая поддержка
 
 <div class="start-donate-card">
-  <div class="start-donate-card-icon">💛</div>
   <div class="start-donate-card-body">
-    <div class="start-donate-card-title">Поддержите развитие проекта</div>
-    <div class="start-donate-card-desc">Средства идут на оплату подписки Leonardo.Ai для генерации приватных иллюстраций, хостинг и развитие сайта. Каждый вклад — это новая статья о Марсе.</div>
-    <a class="start-donate-btn start-donate-btn-large" href="https://pay.cloudtips.ru/p/14549541" target="_blank" rel="noopener">
-      <span class="start-donate-icon">❤️</span>
-      <span class="start-donate-text">Поддержать проект</span>
+    <div class="start-donate-card-title">Поддержать развитие проекта</div>
+    <div class="start-donate-card-desc">Средства идут на оплату подписки Leonardo.Ai для генерации приватных иллюстраций, хостинг и развитие сайта.</div>
+    <a class="start-donate-btn" href="https://pay.cloudtips.ru/p/14549541" target="_blank" rel="noopener">
+      Поддержать
     </a>
   </div>
 </div>
@@ -122,10 +112,9 @@
 
 <style>
 /* ============================================================ */
-/* 💜 Поддержать проект — VIP стиль v2                         */
+/* 💜 Поддержать проект — сдержанный VIP стиль v3              */
 /* ============================================================ */
 
-/* Локальные переменные — наследуют цвет королевства из футера */
 .start-hero, .start-step, .start-science, .start-contact,
 .start-footer-quote, .start-donate-card {
   --sa: var(--wf-color, #6C63FF);
@@ -136,11 +125,11 @@
 /* ============ HERO ============ */
 .start-hero {
   position: relative;
-  padding: 48px 28px 40px;
+  padding: 44px 28px 36px;
   margin: 0 0 32px 0;
   background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a14 60%, #000 100%);
   border: 1.5px solid rgba(var(--sar), 0.4);
-  border-radius: 22px;
+  border-radius: 20px;
   overflow: hidden;
   text-align: center;
   box-shadow: 0 12px 40px rgba(var(--sar), 0.25);
@@ -165,17 +154,17 @@
   display: inline-block;
 }
 .start-hero-icon img {
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   display: block;
 }
 @keyframes startHeroFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
 .start-hero-title {
-  font-size: 1.85rem;
+  font-size: 1.8rem;
   font-weight: 900;
   background: linear-gradient(135deg, var(--sa), var(--sal));
   -webkit-background-clip: text;
@@ -188,144 +177,76 @@
 .start-hero-subtitle {
   font-size: 0.95rem;
   color: #c8c8dd;
-  margin: 0 auto 26px auto;
+  margin: 0 auto;
   line-height: 1.65;
   max-width: 620px;
-}
-
-/* ============ HERO DONATE ============ */
-.start-hero-donate {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 8px;
 }
 
 /* ============ DONATE BUTTON ============ */
 .start-donate-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 15px 36px;
-  background: linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FF6B35 100%);
-  background-size: 200% auto;
+  justify-content: center;
+  padding: 9px 26px;
+  background: var(--sa, #6C63FF);
   color: #fff !important;
-  border-radius: 34px;
-  font-weight: 800;
+  border-radius: 8px;
+  font-weight: 600;
   text-decoration: none !important;
-  font-size: 1rem;
-  letter-spacing: 0.3px;
+  font-size: 0.88rem;
+  letter-spacing: 0.2px;
   font-family: inherit;
-  box-shadow:
-    0 12px 28px -8px rgba(255, 107, 53, 0.6),
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
   border: none !important;
+  transition: all 0.25s ease;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
-}
-.start-donate-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.75s;
-  pointer-events: none;
+  margin-top: 6px;
+  box-shadow: 0 2px 8px rgba(var(--sar), 0.25);
 }
 .start-donate-btn:hover {
-  transform: translateY(-3px);
-  background-position: 100% center;
-  box-shadow:
-    0 18px 36px -8px rgba(255, 107, 53, 0.75),
-    0 0 0 1px rgba(255, 255, 255, 0.35) inset;
+  background: var(--sal, #A29BFE);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--sar), 0.4);
   color: #fff !important;
   border-bottom: none !important;
 }
-.start-donate-btn:hover::before { transform: translateX(100%); }
-.start-donate-btn:active { transform: translateY(-1px) scale(0.98); }
-
-.start-donate-btn-large {
-  padding: 17px 42px;
-  font-size: 1.08rem;
-  margin-top: 8px;
+.start-donate-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(var(--sar), 0.3);
 }
 
-.start-donate-icon {
-  font-size: 1.2rem;
-  animation: startHeartBeat 2s ease-in-out infinite;
-  display: inline-block;
-  transform-origin: center;
-}
-@keyframes startHeartBeat {
-  0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.2); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.12); }
-  60% { transform: scale(1); }
-}
-.start-donate-text {
-  position: relative;
-  z-index: 1;
-}
-.start-donate-sub {
-  font-size: 0.75rem;
-  color: #888;
-  font-style: italic;
-  letter-spacing: 0.2px;
-}
-
-/* ============ DONATE CARD (в разделе «Финансовая поддержка») ============ */
+/* ============ DONATE CARD ============ */
 .start-donate-card {
-  display: flex;
-  gap: 20px;
-  padding: 28px 30px;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.08), rgba(255, 107, 53, 0.02));
-  border: 2px solid rgba(255, 107, 53, 0.3);
-  border-radius: 20px;
+  padding: 22px 26px;
+  background: rgba(var(--sar), 0.04);
+  border: 1px solid rgba(var(--sar), 0.18);
+  border-radius: 14px;
   margin: 20px 0 32px;
-  align-items: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 28px -12px rgba(255, 107, 53, 0.35);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .start-donate-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, #FF6B35, #F7931E);
-}
-.start-donate-card:hover {
-  border-color: #FF6B35;
-  box-shadow: 0 16px 40px -12px rgba(255, 107, 53, 0.55);
-  transform: translateY(-3px);
-}
-.start-donate-card-icon {
-  font-size: 3rem;
-  flex-shrink: 0;
-  animation: startHeroFloat 3s ease-in-out infinite;
+  width: 3px;
+  background: var(--sa);
+  opacity: 0.6;
 }
 .start-donate-card-body {
-  flex: 1;
-  min-width: 0;
+  padding-left: 8px;
 }
 .start-donate-card-title {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #c2410c;
-  margin-bottom: 8px;
-  letter-spacing: -0.2px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
 }
 .start-donate-card-desc {
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.65;
-  margin-bottom: 16px;
+  font-size: 0.86rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 14px;
 }
 
 /* ============ STEPS ============ */
@@ -525,7 +446,7 @@
   letter-spacing: 0.2px;
 }
 
-/* ============ ANIMATIONS для звёзд ============ */
+/* ============ KEYFRAMES для звёзд ============ */
 @keyframes startStarTwinkle {
   0%, 100% { opacity: 0.15; transform: scale(0.8); }
   50% { opacity: 1; transform: scale(1.2); }
@@ -539,25 +460,16 @@
 
 /* ============ МОБИЛЬНЫЙ ============ */
 @media (max-width: 700px) {
-  .start-hero { padding: 32px 20px 28px; border-radius: 18px; }
-  .start-hero-title { font-size: 1.4rem; }
-  .start-hero-subtitle { font-size: 0.85rem; margin-bottom: 22px; }
-  .start-hero-icon img { width: 52px; height: 52px; }
+  .start-hero { padding: 30px 18px 26px; border-radius: 16px; }
+  .start-hero-title { font-size: 1.35rem; }
+  .start-hero-subtitle { font-size: 0.85rem; }
+  .start-hero-icon img { width: 48px; height: 48px; }
 
-  .start-donate-btn { padding: 14px 28px; font-size: 0.94rem; gap: 8px; border-radius: 28px; }
-  .start-donate-btn-large { padding: 15px 32px; font-size: 0.98rem; }
-  .start-donate-icon { font-size: 1.05rem; }
-  .start-donate-sub { font-size: 0.7rem; }
+  .start-donate-btn { padding: 8px 20px; font-size: 0.84rem; border-radius: 7px; }
 
-  .start-donate-card {
-    flex-direction: column;
-    text-align: center;
-    padding: 22px 20px;
-    gap: 12px;
-  }
-  .start-donate-card-icon { font-size: 2.5rem; }
-  .start-donate-card-title { font-size: 1.05rem; }
-  .start-donate-card-desc { font-size: 0.85rem; margin-bottom: 14px; }
+  .start-donate-card { padding: 18px 20px; }
+  .start-donate-card-title { font-size: 0.94rem; }
+  .start-donate-card-desc { font-size: 0.8rem; margin-bottom: 12px; }
 
   .start-step { padding: 16px 18px; gap: 12px; }
   .start-step-num { width: 38px; height: 38px; }
@@ -579,9 +491,7 @@
 
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion: reduce) {
-  .start-hero-icon,
-  .start-donate-icon,
-  .start-donate-card-icon { animation: none !important; }
+  .start-hero-icon { animation: none !important; }
   .start-step { opacity: 1 !important; transform: none !important; animation: none !important; }
   .start-donate-btn { transition: none !important; }
 }
@@ -603,24 +513,21 @@
   }
 
   // ============================================================
-  // 🌌 Звёздный фон для хиро-блока (с оптимизацией)
+  // 🌌 Звёздный фон для хиро-блока (оптимизировано)
   // ============================================================
   function initHeroStars() {
     var hero = document.querySelector('.start-hero-stars');
     if (!hero) return;
-    if (hero.dataset.ready === '1') return;  // защита от дублей
+    if (hero.dataset.ready === '1') return;
     hero.dataset.ready = '1';
 
-    // Уважение к настройкам ОС
     var reduced = false;
     try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e) {}
     if (reduced) return;
 
     var mobile = isMobile();
-
-    // Меньше звёзд на мобильном — меньше CPU
-    var starCount = mobile ? 30 : 70;
-    var meteorCount = mobile ? 0 : 3;
+    var starCount = mobile ? 25 : 60;
+    var meteorCount = mobile ? 0 : 2;
 
     var frag = document.createDocumentFragment();
 
@@ -664,14 +571,13 @@
   }
 
   // ============================================================
-  // 🎨 Цвет из профиля (из localStorage, ставит wikipedia-footer.js)
+  // 🎨 Цвет из профиля
   // ============================================================
   function applyUserTheme() {
     try {
       var wfColor = localStorage.getItem('mars_kingdom_color');
       if (wfColor && /^#[0-9a-fA-F]{6}$/.test(wfColor)) {
         document.documentElement.style.setProperty('--wf-color', wfColor);
-        // Обновляем и --wf-rgb
         var c = wfColor.replace('#', '');
         if (c.length === 3) c = c[0]+c[0]+c[1]+c[1]+c[2]+c[2];
         var n = parseInt(c, 16);
@@ -681,9 +587,6 @@
     } catch(e) {}
   }
 
-  // ============================================================
-  // 🚀 INIT
-  // ============================================================
   function init() {
     applyUserTheme();
     initHeroStars();
@@ -695,7 +598,6 @@
     init();
   }
 
-  // Подстраховка: если контент подгрузился позже (readthedocs)
   window.addEventListener('load', function() {
     setTimeout(initHeroStars, 300);
   });

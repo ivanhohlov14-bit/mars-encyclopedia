@@ -1,201 +1,683 @@
-// link-device.js — генерация QR-кода для быстрого входа с телефона
+// ============================================================
+// link-device.js — v2 VIP
+// Генерация QR-кода для входа с другого устройства
+// - Единый клиент + корректный URL
+// - VIP-модалка с анимациями
+// - Копирование ссылки
+// - 3 CDN для QR-библиотеки
+// - Адаптация под мобильный (там — кнопка сканера)
+// - Публичное API: window.marsLinkDevice.open()
+// ============================================================
 (function() {
     'use strict';
 
-    // Ждём готовности клиента
-    function waitForClient(cb, attempts = 0) {
-        if (window.supabaseClient && window.marsSession?.ready) {
-            cb(window.marsSession);
-        } else if (attempts < 50) {
-            setTimeout(() => waitForClient(cb, attempts + 1), 100);
-        }
+    if (window.__linkDeviceLoaded) return;
+    window.__linkDeviceLoaded = true;
+
+    // ============================================================
+    // ⚙️ Конфигурация
+    // ============================================================
+    var QR_CDN_LIST = [
+        'https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js',
+        'https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'
+    ];
+
+    var LOGIN_PATH = '/login/';  // ✅ правильный путь
+    var BTN_ID = 'link-device-btn';
+
+    // ============================================================
+    // 🔧 Утилиты
+    // ============================================================
+    function isMobile() {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) return true;
+        if (navigator.maxTouchPoints > 1 && window.innerWidth < 1024) return true;
+        return window.innerWidth < 768;
     }
 
-    // Загружаем библиотеку QR-кодов динамически
-    function loadQRCodeLib(cb) {
-        if (window.QRCode) { cb(); return; }
-        const s = document.createElement('script');
-        s.src = 'https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js';
-        s.onload = cb;
-        document.head.appendChild(s);
-    }
-
-    // Открываем модалку с QR
-    function openQRModal(email) {
-        loadQRCodeLib(() => {
-            const baseUrl = window.location.origin + '/mars-encyclopedia/login/';
-            const loginUrl = baseUrl + '?email=' + encodeURIComponent(email);
-
-            const overlay = document.createElement('div');
-            overlay.id = 'link-device-overlay';
-            overlay.style.cssText = `
-                position: fixed; inset: 0; z-index: 999999;
-                background: rgba(0,0,0,0.7);
-                backdrop-filter: blur(8px);
-                display: flex; align-items: center; justify-content: center;
-                padding: 20px;
-                animation: fadeIn 0.3s ease;
-            `;
-            overlay.innerHTML = `
-                <div style="
-                    background: #fff;
-                    max-width: 420px; width: 100%;
-                    padding: 32px 28px;
-                    border-radius: 24px;
-                    text-align: center;
-                    position: relative;
-                    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-                    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-                ">
-                    <button onclick="this.closest('#link-device-overlay').remove()" style="
-                        position: absolute; top: 14px; right: 16px;
-                        width: 32px; height: 32px; border-radius: 50%;
-                        background: rgba(0,0,0,0.05); border: none;
-                        font-size: 18px; cursor: pointer; color: #666;
-                    ">✕</button>
-
-                    <div style="font-size: 3rem; margin-bottom: 8px;">📱</div>
-                    <h2 style="margin: 0 0 8px 0; color: #1a1a1a; font-size: 1.4rem;">Вход с другого устройства</h2>
-                    <p style="margin: 0 0 20px 0; color: #888; font-size: 0.9rem;">
-                        Наведи камеру телефона на код — откроется страница входа
-                    </p>
-
-                    <div id="qr-container" style="
-                        display: flex; align-items: center; justify-content: center;
-                        padding: 20px;
-                        background: #fafafa;
-                        border-radius: 16px;
-                        margin-bottom: 16px;
-                    "></div>
-
-                    <div style="
-                        background: #f0f4ff;
-                        padding: 12px 16px;
-                        border-radius: 12px;
-                        margin-bottom: 16px;
-                        font-size: 0.85rem;
-                        color: #4a5568;
-                    ">
-                        <b>Ваш email:</b><br>
-                        <span style="color: #6C63FF; font-weight: 700;">${email}</span>
-                    </div>
-
-                    <div style="
-                        background: #fff8e1;
-                        padding: 10px 14px;
-                        border-radius: 10px;
-                        font-size: 0.8rem;
-                        color: #856404;
-                        text-align: left;
-                        border-left: 3px solid #f39c12;
-                    ">
-                        💡 После сканирования введите свой пароль от аккаунта
-                    </div>
-                </div>
-            `;
-
-            document.body.appendChild(overlay);
-
-            // Генерируем QR
-            const qrContainer = overlay.querySelector('#qr-container');
-            const canvas = document.createElement('canvas');
-            qrContainer.appendChild(canvas);
-
-            window.QRCode.toCanvas(canvas, loginUrl, {
-                width: 220,
-                margin: 2,
-                color: { dark: '#1a1a1a', light: '#ffffff' },
-                errorCorrectionLevel: 'M'
-            }, (err) => {
-                if (err) console.error('QR ошибка:', err);
-            });
-
-            // Закрытие по клику на фон
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) overlay.remove();
-            });
-
-            // Закрытие по Esc
-            const escHandler = (e) => {
-                if (e.key === 'Escape') {
-                    overlay.remove();
-                    document.removeEventListener('keydown', escHandler);
-                }
-            };
-            document.addEventListener('keydown', escHandler);
+    function escapeHtml(s) {
+        return String(s || '').replace(/[&<>"']/g, function(m) {
+            return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m];
         });
     }
 
-    // Добавляем кнопку в профиль
-    function addButtonToProfile(session) {
-        if (!session.user) return;
+    function getLoginUrl(email) {
+        var base = window.location.origin + LOGIN_PATH;
+        if (email) base += '?email=' + encodeURIComponent(email);
+        return base;
+    }
 
-        // Ждём, пока загрузится профиль
-        const tryAdd = setInterval(() => {
-            // Ищем любое место в профиле — например, блок "Опасная зона"
-            const dangerZone = document.querySelector('#profile-container');
+    // ============================================================
+    // 📚 Загрузка QR-библиотеки (3 CDN fallback)
+    // ============================================================
+    var _qrPromise = null;
 
-            // Ищем раздел "Настройки" или добавляем после основного блока
-            const settings = document.querySelector('.pf-tab[data-tab="settings"]') ||
-                             document.querySelector('[data-content="settings"]');
+    function loadQRLib() {
+        if (window.QRCode && typeof window.QRCode.toCanvas === 'function') {
+            return Promise.resolve(true);
+        }
+        if (_qrPromise) return _qrPromise;
 
-            // Или добавим кнопку в hero-блок рядом с основными действиями
-            const hero = document.querySelector('.pf-hero-content') ||
-                         document.querySelector('#profile-container .pf-quick-grid') ||
-                         document.querySelector('#profile-container');
+        _qrPromise = new Promise(function(resolve) {
+            var idx = 0;
 
-            if (!hero) return;
-            if (document.getElementById('link-device-btn')) {
-                clearInterval(tryAdd);
+            function tryNext() {
+                if (idx >= QR_CDN_LIST.length) {
+                    console.error('❌ link-device: все CDN QR недоступны');
+                    resolve(false);
+                    return;
+                }
+                var url = QR_CDN_LIST[idx++];
+                var s = document.createElement('script');
+                s.src = url;
+                s.async = true;
+
+                var timeout = setTimeout(function() {
+                    if (s.parentNode) s.parentNode.removeChild(s);
+                    tryNext();
+                }, 8000);
+
+                s.onload = function() {
+                    clearTimeout(timeout);
+                    if (window.QRCode) {
+                        console.log('✅ link-device: QR-библиотека загружена с', url);
+                        resolve(true);
+                    } else {
+                        tryNext();
+                    }
+                };
+                s.onerror = function() {
+                    clearTimeout(timeout);
+                    tryNext();
+                };
+                document.head.appendChild(s);
+            }
+            tryNext();
+        });
+        return _qrPromise;
+    }
+
+    // ============================================================
+    // 🎨 Стили
+    // ============================================================
+    function injectStyles() {
+        if (document.getElementById('link-device-style')) return;
+        var s = document.createElement('style');
+        s.id = 'link-device-style';
+        s.textContent = `
+            @keyframes ldFadeIn { from { opacity: 0; } to { opacity: 1; } }
+            @keyframes ldSlideUp {
+                from { opacity: 0; transform: translateY(24px) scale(0.96); }
+                to { opacity: 1; transform: translateY(0) scale(1); }
+            }
+            @keyframes ldSpin { to { transform: rotate(360deg); } }
+            @keyframes ldPulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.04); }
+            }
+            @keyframes ldShine {
+                0% { background-position: -200% center; }
+                100% { background-position: 200% center; }
+            }
+
+            #ld-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 999999;
+                background: rgba(10, 10, 26, 0.75);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                animation: ldFadeIn 0.3s ease;
+                overflow-y: auto;
+                font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+            }
+
+            .ld-modal {
+                background: #fff;
+                max-width: 440px;
+                width: 100%;
+                padding: 34px 30px 28px;
+                border-radius: 26px;
+                text-align: center;
+                position: relative;
+                box-shadow:
+                    0 30px 80px rgba(0, 0, 0, 0.5),
+                    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+                animation: ldSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+                margin: auto;
+                overflow: hidden;
+            }
+            .ld-modal::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, #6C63FF, #A29BFE, #6C63FF);
+                background-size: 200% auto;
+                animation: ldShine 3s linear infinite;
+            }
+
+            .ld-close {
+                position: absolute;
+                top: 14px;
+                right: 16px;
+                width: 34px;
+                height: 34px;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.05);
+                border: none;
+                font-size: 18px;
+                cursor: pointer;
+                color: #666;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.25s;
+                font-family: inherit;
+                padding: 0;
+                line-height: 1;
+                z-index: 2;
+            }
+            .ld-close:hover {
+                background: rgba(0, 0, 0, 0.12);
+                transform: rotate(90deg);
+                color: #000;
+            }
+
+            .ld-icon {
+                font-size: 3.2rem;
+                margin-bottom: 6px;
+                display: inline-block;
+                animation: ldPulse 2.5s ease-in-out infinite;
+                filter: drop-shadow(0 8px 20px rgba(108, 99, 255, 0.35));
+            }
+            .ld-title {
+                margin: 0 0 8px 0;
+                font-size: 1.4rem;
+                font-weight: 800;
+                color: #1a1a2e;
+                letter-spacing: -0.3px;
+            }
+            .ld-subtitle {
+                margin: 0 0 22px 0;
+                color: #888;
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .ld-qr-wrap {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 18px;
+                background: linear-gradient(135deg, #fafbfd, #f0f4ff);
+                border: 1px solid rgba(108, 99, 255, 0.15);
+                border-radius: 18px;
+                margin-bottom: 18px;
+                position: relative;
+                min-height: 240px;
+            }
+            .ld-qr-wrap canvas,
+            .ld-qr-wrap img {
+                border-radius: 10px;
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+
+            .ld-qr-loading {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                color: #999;
+                font-size: 0.88rem;
+            }
+            .ld-spinner {
+                width: 42px;
+                height: 42px;
+                border: 3px solid rgba(108, 99, 255, 0.2);
+                border-top-color: #6C63FF;
+                border-radius: 50%;
+                animation: ldSpin 0.8s linear infinite;
+            }
+
+            .ld-email-box {
+                background: linear-gradient(135deg, #f0f4ff, #e8ecff);
+                padding: 12px 16px;
+                border-radius: 12px;
+                margin-bottom: 14px;
+                font-size: 0.85rem;
+                color: #4a5568;
+                text-align: left;
+                border: 1px solid rgba(108, 99, 255, 0.15);
+            }
+            .ld-email-box .ld-email-label {
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 0.8px;
+                color: #888;
+                font-weight: 700;
+                margin-bottom: 4px;
+            }
+            .ld-email-box .ld-email-value {
+                color: #6C63FF;
+                font-weight: 700;
+                font-size: 0.92rem;
+                word-break: break-all;
+            }
+
+            .ld-copy-row {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 16px;
+            }
+            .ld-copy-input {
+                flex: 1;
+                padding: 11px 14px;
+                border: 1.5px solid #e8eaf0;
+                border-radius: 10px;
+                font-size: 0.8rem;
+                font-family: 'SF Mono', 'Consolas', monospace;
+                color: #555;
+                background: #fafafa;
+                outline: none;
+                min-width: 0;
+                text-overflow: ellipsis;
+            }
+            .ld-copy-btn {
+                padding: 11px 18px;
+                background: linear-gradient(135deg, #6C63FF, #A29BFE);
+                color: #fff;
+                border: none;
+                border-radius: 10px;
+                font-size: 0.85rem;
+                font-weight: 700;
+                cursor: pointer;
+                font-family: inherit;
+                transition: all 0.25s;
+                white-space: nowrap;
+                box-shadow: 0 4px 12px -2px rgba(108, 99, 255, 0.4);
+            }
+            .ld-copy-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px -4px rgba(108, 99, 255, 0.5);
+            }
+            .ld-copy-btn.copied {
+                background: linear-gradient(135deg, #27ae60, #16a085);
+            }
+
+            .ld-hint {
+                background: #fff8e1;
+                padding: 10px 14px;
+                border-radius: 10px;
+                font-size: 0.78rem;
+                color: #856404;
+                text-align: left;
+                border-left: 3px solid #f39c12;
+                line-height: 1.5;
+            }
+
+            /* Кнопка в профиле */
+            .pf-device-link-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                padding: 14px 20px;
+                border-radius: 14px;
+                border: 2px solid var(--kc, #6C63FF);
+                background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(108, 99, 255, 0.03));
+                color: var(--kc, #6C63FF);
+                font-size: 0.92rem;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+                font-family: inherit;
+                -webkit-tap-highlight-color: transparent;
+                margin-top: 8px;
+            }
+            .pf-device-link-btn:hover {
+                background: var(--kc, #6C63FF);
+                color: #fff;
+                transform: translateY(-2px);
+                box-shadow: 0 10px 24px -6px var(--ks, rgba(108, 99, 255, 0.4));
+            }
+            .pf-device-link-btn:active {
+                transform: translateY(0) scale(0.98);
+            }
+            .pf-device-link-btn .pf-dl-icon {
+                font-size: 1.2rem;
+                line-height: 1;
+            }
+
+            /* Мобильная адаптация */
+            @media (max-width: 600px) {
+                .ld-modal { padding: 28px 22px 22px; border-radius: 20px; }
+                .ld-icon { font-size: 2.6rem; }
+                .ld-title { font-size: 1.2rem; }
+                .ld-subtitle { font-size: 0.85rem; margin-bottom: 16px; }
+                .ld-qr-wrap { padding: 14px; min-height: 200px; }
+                .ld-copy-input { font-size: 0.72rem; padding: 10px 12px; }
+                .ld-copy-btn { padding: 10px 14px; font-size: 0.8rem; }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                #ld-overlay,
+                .ld-modal,
+                .ld-icon,
+                .ld-spinner,
+                .ld-modal::before {
+                    animation: none !important;
+                }
+            }
+        `;
+        document.head.appendChild(s);
+    }
+
+    // ============================================================
+    // 🖼️ Копирование ссылки
+    // ============================================================
+    function copyToClipboard(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            return navigator.clipboard.writeText(text);
+        }
+        return new Promise(function(resolve, reject) {
+            try {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                resolve();
+            } catch(e) {
+                reject(e);
+            }
+        });
+    }
+
+    // ============================================================
+    // 🖼️ Открыть модалку с QR
+    // ============================================================
+    function openQRModal(email) {
+        injectStyles();
+
+        var old = document.getElementById('ld-overlay');
+        if (old) old.remove();
+
+        var loginUrl = getLoginUrl(email);
+        var overlay = document.createElement('div');
+        overlay.id = 'ld-overlay';
+        overlay.innerHTML =
+            '<div class="ld-modal">' +
+            '  <button class="ld-close" type="button" aria-label="Закрыть">✕</button>' +
+            '  <div class="ld-icon">📱</div>' +
+            '  <h2 class="ld-title">Вход с другого устройства</h2>' +
+            '  <p class="ld-subtitle">Наведите камеру телефона на QR-код</p>' +
+            '  <div class="ld-qr-wrap" id="ld-qr-container">' +
+            '    <div class="ld-qr-loading">' +
+            '      <div class="ld-spinner"></div>' +
+            '      <div>Генерация QR-кода...</div>' +
+            '    </div>' +
+            '  </div>' +
+            (email ?
+                '<div class="ld-email-box">' +
+                '  <div class="ld-email-label">Ваш email</div>' +
+                '  <div class="ld-email-value">' + escapeHtml(email) + '</div>' +
+                '</div>' : '') +
+            '  <div class="ld-copy-row">' +
+            '    <input type="text" class="ld-copy-input" id="ld-copy-input" readonly value="' + escapeHtml(loginUrl) + '">' +
+            '    <button type="button" class="ld-copy-btn" id="ld-copy-btn">📋 Копировать</button>' +
+            '  </div>' +
+            '  <div class="ld-hint">💡 После сканирования введите свой пароль на телефоне</div>' +
+            '</div>';
+
+        document.body.appendChild(overlay);
+
+        // Закрытие
+        var closeBtn = overlay.querySelector('.ld-close');
+        closeBtn.onclick = closeModal;
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) closeModal();
+        });
+        document.addEventListener('keydown', function escHandler(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                document.removeEventListener('keydown', escHandler);
+            }
+        });
+
+        function closeModal() {
+            overlay.style.animation = 'ldFadeIn 0.25s ease reverse';
+            setTimeout(function() { overlay.remove(); }, 250);
+        }
+
+        // Копирование
+        overlay.querySelector('#ld-copy-btn').onclick = function() {
+            var btn = this;
+            copyToClipboard(loginUrl).then(function() {
+                btn.textContent = '✓ Скопировано';
+                btn.classList.add('copied');
+                setTimeout(function() {
+                    btn.textContent = '📋 Копировать';
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(function() {
+                btn.textContent = '⚠️ Ошибка';
+                setTimeout(function() {
+                    btn.textContent = '📋 Копировать';
+                }, 2000);
+            });
+        };
+
+        // Генерация QR
+        var qrContainer = overlay.querySelector('#ld-qr-container');
+        loadQRLib().then(function(ok) {
+            if (!ok) {
+                qrContainer.innerHTML =
+                    '<div style="text-align:center;color:#888;padding:20px;">' +
+                    '  <div style="font-size:2.5rem;margin-bottom:8px;">📡</div>' +
+                    '  <div>Не удалось загрузить QR-генератор</div>' +
+                    '  <div style="font-size:0.8rem;margin-top:8px;color:#aaa;">Используйте кнопку «Копировать» ниже</div>' +
+                    '</div>';
                 return;
             }
 
-            const btn = document.createElement('button');
-            btn.id = 'link-device-btn';
-            btn.innerHTML = '📱 Войти с телефона';
-            btn.style.cssText = `
-                display: inline-flex; align-items: center; gap: 8px;
-                padding: 12px 22px;
-                margin: 10px 0;
-                border-radius: 30px;
-                border: 2px solid #6C63FF;
-                background: transparent;
-                color: #6C63FF;
-                font-size: 0.9rem;
-                font-weight: 700;
-                cursor: pointer;
-                transition: all 0.25s;
-                font-family: inherit;
-            `;
-            btn.onmouseenter = () => {
-                btn.style.background = '#6C63FF';
-                btn.style.color = '#fff';
-                btn.style.transform = 'translateY(-2px)';
-                btn.style.boxShadow = '0 8px 20px rgba(108,99,255,0.4)';
-            };
-            btn.onmouseleave = () => {
-                btn.style.background = 'transparent';
-                btn.style.color = '#6C63FF';
-                btn.style.transform = 'translateY(0)';
-                btn.style.boxShadow = 'none';
-            };
-            btn.onclick = () => openQRModal(session.user.email);
+            qrContainer.innerHTML = '';
+            var canvas = document.createElement('canvas');
+            qrContainer.appendChild(canvas);
 
-            // Вставляем после quick-grid если есть, иначе просто в контейнер
-            const quickGrid = document.querySelector('.pf-quick-grid');
-            if (quickGrid && quickGrid.parentNode) {
-                quickGrid.parentNode.insertBefore(btn, quickGrid.nextSibling);
-            } else {
-                hero.appendChild(btn);
+            try {
+                window.QRCode.toCanvas(canvas, loginUrl, {
+                    width: 220,
+                    margin: 2,
+                    color: { dark: '#1a1a2e', light: '#ffffff' },
+                    errorCorrectionLevel: 'M'
+                }, function(err) {
+                    if (err) {
+                        console.error('QR ошибка:', err);
+                        qrContainer.innerHTML =
+                            '<div style="color:#888;padding:20px;text-align:center;">' +
+                            '⚠️ Ошибка генерации QR. Используйте кнопку «Копировать»' +
+                            '</div>';
+                    }
+                });
+            } catch(e) {
+                qrContainer.innerHTML =
+                    '<div style="color:#888;padding:20px;text-align:center;">' +
+                    '⚠️ Ошибка генерации QR' +
+                    '</div>';
             }
-
-            clearInterval(tryAdd);
-        }, 500);
-
-        // Таймаут — перестаём искать через 10 сек
-        setTimeout(() => clearInterval(tryAdd), 10000);
+        });
     }
 
-    // Запуск
-    waitForClient(addButtonToProfile);
+    // ============================================================
+    // 🎯 Вставка кнопки в профиль
+    // ============================================================
+    function addButtonToProfile() {
+        if (document.getElementById(BTN_ID)) return true;
+
+        // Ищем блок «Безопасность» в профиле
+        var securityContent = document.querySelector('[data-content="security"]');
+        if (!securityContent) return false;
+
+        // Находим вкладку 2FA или устройств
+        var devicesCard = securityContent.querySelector('#pf-trusted-devices');
+        var targetCard = devicesCard ? devicesCard.closest('.pf-card') : null;
+
+        // Если нашли блок доверенных устройств — вставляем кнопку туда
+        if (targetCard) {
+            var btn = document.createElement('button');
+            btn.id = BTN_ID;
+            btn.type = 'button';
+            btn.className = 'pf-device-link-btn';
+
+            if (isMobile()) {
+                btn.innerHTML = '<span class="pf-dl-icon">📷</span><span>Сканировать QR с ПК</span>';
+                btn.onclick = function() {
+                    if (window.marsQrScanner && typeof window.marsQrScanner.open === 'function') {
+                        window.marsQrScanner.open();
+                    } else if (window.qsOpenScanner) {
+                        window.qsOpenScanner();
+                    } else {
+                        alert('Сканер QR загружается...');
+                    }
+                };
+            } else {
+                btn.innerHTML = '<span class="pf-dl-icon">📱</span><span>Войти с телефона (QR)</span>';
+                btn.onclick = function() {
+                    var email = (window.marsSession && window.marsSession.user && window.marsSession.user.email)
+                        || (window.supabaseClient && null);
+                    if (!email) {
+                        // Пробуем вытащить email из профиля
+                        var nameEl = document.querySelector('.pf-email');
+                        if (nameEl) email = nameEl.textContent.trim();
+                    }
+                    openQRModal(email);
+                };
+            }
+
+            targetCard.appendChild(btn);
+            console.log('✅ link-device: кнопка добавлена');
+            return true;
+        }
+
+        // Fallback: вставляем в hero
+        var heroInfo = document.querySelector('.pf-info');
+        if (heroInfo) {
+            var btn2 = document.createElement('button');
+            btn2.id = BTN_ID;
+            btn2.type = 'button';
+            btn2.className = 'pf-device-link-btn';
+            btn2.style.marginTop = '14px';
+            btn2.style.maxWidth = '260px';
+
+            if (isMobile()) {
+                btn2.innerHTML = '<span class="pf-dl-icon">📷</span><span>Сканировать QR</span>';
+                btn2.onclick = function() {
+                    if (window.marsQrScanner && typeof window.marsQrScanner.open === 'function') {
+                        window.marsQrScanner.open();
+                    } else if (window.qsOpenScanner) {
+                        window.qsOpenScanner();
+                    }
+                };
+            } else {
+                btn2.innerHTML = '<span class="pf-dl-icon">📱</span><span>Войти с телефона</span>';
+                btn2.onclick = function() {
+                    var email = (window.marsSession && window.marsSession.user && window.marsSession.user.email) || '';
+                    openQRModal(email);
+                };
+            }
+
+            heroInfo.appendChild(btn2);
+            console.log('✅ link-device: кнопка в hero');
+            return true;
+        }
+
+        return false;
+    }
+
+    // ============================================================
+    // 🔄 Наблюдение за профилем (динамическая загрузка)
+    // ============================================================
+    function startWatching() {
+        // Пробуем сразу
+        if (addButtonToProfile()) return;
+
+        // MutationObserver
+        if (typeof MutationObserver !== 'undefined') {
+            var obs = new MutationObserver(function() {
+                if (addButtonToProfile()) {
+                    obs.disconnect();
+                }
+            });
+            obs.observe(document.body, { childList: true, subtree: true });
+            setTimeout(function() { obs.disconnect(); }, 20000);
+        }
+
+        // Резервный setInterval
+        var tries = 0;
+        var iv = setInterval(function() {
+            tries++;
+            if (addButtonToProfile()) {
+                clearInterval(iv);
+                return;
+            }
+            if (tries > 40) clearInterval(iv);
+        }, 500);
+    }
+
+    // ============================================================
+    // 🚀 Старт
+    // ============================================================
+    function init() {
+        injectStyles();
+
+        // Ждём готовности сессии
+        var sessionReady = false;
+        if (window.marsSession && window.marsSession.ready) sessionReady = true;
+
+        if (sessionReady) {
+            startWatching();
+        } else {
+            // Ждём до 8 сек
+            var start = Date.now();
+            var iv = setInterval(function() {
+                if ((window.marsSession && window.marsSession.ready) || Date.now() - start > 8000) {
+                    clearInterval(iv);
+                    startWatching();
+                }
+            }, 200);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    // ============================================================
+    // 🌐 Публичное API
+    // ============================================================
+    window.marsLinkDevice = {
+        open: function(email) {
+            var e = email || (window.marsSession && window.marsSession.user && window.marsSession.user.email);
+            openQRModal(e);
+        },
+        isMobile: isMobile(),
+        getLoginUrl: getLoginUrl
+    };
+
+    console.log('✅ link-device.js v2 VIP загружен');
 })();

@@ -55,10 +55,12 @@ extra_css:
   - assets/css/scroll-mode.css
   - stylesheets/hide-dup.css
   - stylesheets/mobile-fast.css
+  - stylesheets/mobile-smooth.css
 
 extra_javascript:
   # ============ КРИТИЧНО — грузится ВСЕГДА, ВСЕГДА ПЕРВЫМ ============
-  - javascripts/mobile-optimizer.js
+  - javascripts/mobile-optimizer.js?v=4
+  - javascripts/mobile-smooth.js?v=4
   - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js
   - assets/js/supabase-client.js
   - javascripts/auth-button.js

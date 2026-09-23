@@ -67,6 +67,7 @@ extra_javascript:
   - javascripts/auth-button.js
   - javascripts/session-keeper.js
   - assets/js/wiki-vip.js
+  - assets/js/wake-lock.js
 
   # ============ БАЗОВОЕ — нужно всем ============
   - javascripts/mobile-touch.js

@@ -1,6 +1,6 @@
 // ============================================================
-// vip-cursor.js — v5 "Mars Mini Fix"
-// Маленький Марс 22px, появляется сразу после перехода
+// vip-cursor.js — v6 "Trail Mars"
+// Маленький Марс + видимый шлейф
 // ============================================================
 (function() {
     'use strict';
@@ -30,27 +30,39 @@
     var CONFIG = {
         cursorSize: 22,
         cursorSizeHover: 28,
+
+        // ⚡ СКОРОСТЬ — чем выше, тем резче следует за мышью
+        followSpeed: 0.85,        // было 0.5, теперь почти моментально
+        scaleSpeed: 0.28,
+
         colorDark: '#7f1d1d',
         colorMid: '#c0392b',
         colorLight: '#e74c3c',
         colorHighlight: '#ff9060',
         ringColor: 'rgba(243, 156, 18, 0.45)',
-        sparkColor: '#ff9060',
-        sparkSize: 3,
-        sparkLife: 700,
-        sparkMax: 20,
-        sparkSpawnDistance: 10,
+
+        // ✨ ШЛЕЙФ — мини-Марсы позади
+        trailEnabled: !REDUCED_MOTION,
+        trailSize: 10,            // размер мини-Марса
+        trailLife: 900,           // мс — сколько живёт
+        trailMax: 28,             // максимум одновременно
+        trailMinDist: 6,          // минимальная дистанция между точками шлейфа
+
+        // ✨ СПАРКИ — искры как раньше, но крупнее
         sparksEnabled: !REDUCED_MOTION,
+        sparkSize: 4,
+        sparkLife: 1100,
+        sparkMax: 24,
+        sparkMinDist: 12,
+
         hoverTargets: 'a, button, .pf-btn, .pf-tab, .pf-quick-card, .pf-mypage-action, [role="button"], .wy-menu-vertical a, .md-nav__link, input, textarea, select',
         posKey: 'mars_cursor_pos',
-        // Fallback: если мышь не двигалась N мс после загрузки — показать по центру
         fallbackShowMs: 1500,
-        // Троттлинг записи позиции в sessionStorage
         saveThrottleMs: 250
     };
 
     // ============================================================
-    // 💾 Позиция между страницами
+    // 💾 Позиция
     // ============================================================
     function loadPos() {
         try {
@@ -59,9 +71,7 @@
             var p = JSON.parse(raw);
             if (p && typeof p.x === 'number' && typeof p.y === 'number'
                 && p.x > 0 && p.y > 0
-                && p.x < window.innerWidth + 100 && p.y < window.innerHeight + 100) {
-                return p;
-            }
+                && p.x < window.innerWidth + 100 && p.y < window.innerHeight + 100) return p;
         } catch(e) {}
         return null;
     }
@@ -71,9 +81,7 @@
         if (_saveTimer) return;
         _saveTimer = setTimeout(function() {
             _saveTimer = null;
-            try {
-                sessionStorage.setItem(CONFIG.posKey, JSON.stringify({ x: x, y: y }));
-            } catch(e) {}
+            try { sessionStorage.setItem(CONFIG.posKey, JSON.stringify({ x: x, y: y })); } catch(e) {}
         }, CONFIG.saveThrottleMs);
     }
 
@@ -92,6 +100,7 @@
             body.vip-cursor-on select,
             body.vip-cursor-on [contenteditable="true"] { cursor: text !important; }
 
+            /* ========== КУРСОР ========== */
             #vip-cursor {
                 position: fixed;
                 top: 0;
@@ -100,7 +109,7 @@
                 height: ${CONFIG.cursorSize}px;
                 pointer-events: none;
                 z-index: 2147483646;
-                transform: translate3d(-200px, -200px, 0) translate(-50%, -50%);
+                transform: translate3d(-200px,-200px,0) translate(-50%,-50%);
                 will-change: transform;
                 border-radius: 50%;
                 background: radial-gradient(circle at 30% 30%,
@@ -114,8 +123,7 @@
                     0 0 44px rgba(231, 76, 60, 0.15),
                     inset -3px -3px 6px rgba(0, 0, 0, 0.55),
                     inset 2px 2px 5px rgba(255, 150, 100, 0.3);
-                transition: opacity .2s ease,
-                            box-shadow .2s ease;
+                transition: opacity .2s ease, box-shadow .2s ease;
                 opacity: 0;
             }
             #vip-cursor.ready { opacity: 1; }
@@ -126,76 +134,92 @@
                 inset: 0;
                 border-radius: 50%;
                 background:
-                    radial-gradient(ellipse 3px 2px at 25% 30%, rgba(120, 40, 20, 0.75), transparent 70%),
-                    radial-gradient(ellipse 4px 3px at 65% 55%, rgba(120, 40, 20, 0.65), transparent 70%),
-                    radial-gradient(ellipse 2.5px 2px at 40% 75%, rgba(120, 40, 20, 0.6), transparent 70%),
-                    radial-gradient(ellipse 3.5px 2.5px at 70% 25%, rgba(120, 40, 20, 0.55), transparent 70%);
+                    radial-gradient(ellipse 3px 2px at 25% 30%, rgba(120,40,20,.75), transparent 70%),
+                    radial-gradient(ellipse 4px 3px at 65% 55%, rgba(120,40,20,.65), transparent 70%),
+                    radial-gradient(ellipse 2.5px 2px at 40% 75%, rgba(120,40,20,.6), transparent 70%),
+                    radial-gradient(ellipse 3.5px 2.5px at 70% 25%, rgba(120,40,20,.55), transparent 70%);
                 animation: marsSpin 14s linear infinite;
             }
 
             #vip-cursor::after {
                 content: '';
                 position: absolute;
-                top: 50%;
-                left: 50%;
+                top: 50%; left: 50%;
                 width: calc(100% + 10px);
                 height: calc(100% + 10px);
                 border-radius: 50%;
                 border: 1px dashed ${CONFIG.ringColor};
-                transform: translate(-50%, -50%) rotateX(72deg);
+                transform: translate(-50%,-50%) rotateX(72deg);
                 animation: marsRingSpin 9s linear infinite;
                 pointer-events: none;
             }
 
-            @keyframes marsSpin {
-                from { transform: rotate(0deg); }
-                to { transform: rotate(360deg); }
-            }
+            @keyframes marsSpin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
             @keyframes marsRingSpin {
-                from { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(0); }
-                to { transform: translate(-50%, -50%) rotateX(72deg) rotateZ(360deg); }
+                from { transform: translate(-50%,-50%) rotateX(72deg) rotateZ(0); }
+                to   { transform: translate(-50%,-50%) rotateX(72deg) rotateZ(360deg); }
             }
 
             #vip-cursor.hover {
                 box-shadow:
-                    0 0 14px rgba(231, 76, 60, 0.8),
-                    0 0 28px rgba(231, 76, 60, 0.5),
-                    0 0 56px rgba(231, 76, 60, 0.25),
-                    inset -3px -3px 6px rgba(0, 0, 0, 0.55),
-                    inset 2px 2px 5px rgba(255, 150, 100, 0.4);
+                    0 0 14px rgba(231,76,60,.8),
+                    0 0 28px rgba(231,76,60,.5),
+                    0 0 56px rgba(231,76,60,.25),
+                    inset -3px -3px 6px rgba(0,0,0,.55),
+                    inset 2px 2px 5px rgba(255,150,100,.4);
             }
             #vip-cursor.hover::after {
-                border-color: rgba(243, 156, 18, 0.75);
+                border-color: rgba(243,156,18,.75);
                 border-width: 1.5px;
             }
-
             #vip-cursor.click {
                 box-shadow:
-                    0 0 18px rgba(243, 156, 18, 0.95),
-                    0 0 36px rgba(243, 156, 18, 0.55),
-                    0 0 72px rgba(243, 156, 18, 0.3),
-                    inset -4px -4px 8px rgba(0, 0, 0, 0.6);
+                    0 0 18px rgba(243,156,18,.95),
+                    0 0 36px rgba(243,156,18,.55),
+                    0 0 72px rgba(243,156,18,.3),
+                    inset -4px -4px 8px rgba(0,0,0,.6);
             }
 
+            /* ========== ШЛЕЙФ (мини-Марсы) ========== */
+            .vip-trail {
+                position: fixed;
+                top: 0; left: 0;
+                width: ${CONFIG.trailSize}px;
+                height: ${CONFIG.trailSize}px;
+                pointer-events: none;
+                z-index: 2147483644;
+                border-radius: 50%;
+                background: radial-gradient(circle at 35% 35%,
+                    ${CONFIG.colorHighlight} 0%,
+                    ${CONFIG.colorLight} 25%,
+                    ${CONFIG.colorMid} 60%,
+                    ${CONFIG.colorDark} 100%);
+                box-shadow:
+                    0 0 8px rgba(231,76,60,.6),
+                    0 0 16px rgba(231,76,60,.35);
+                will-change: transform, opacity;
+            }
+
+            /* ========== СПАРКИ (искры) ========== */
             .vip-spark {
                 position: fixed;
-                top: 0;
-                left: 0;
+                top: 0; left: 0;
                 width: ${CONFIG.sparkSize}px;
                 height: ${CONFIG.sparkSize}px;
-                background: ${CONFIG.sparkColor};
+                background: ${CONFIG.colorHighlight};
                 border-radius: 50%;
                 pointer-events: none;
                 z-index: 2147483645;
                 will-change: transform, opacity;
-                box-shadow: 0 0 8px ${CONFIG.sparkColor};
+                box-shadow: 0 0 10px ${CONFIG.colorHighlight};
             }
 
             @media (prefers-reduced-motion: reduce) {
-                #vip-cursor,
-                #vip-cursor::before,
-                #vip-cursor::after { animation: none !important; transition: none !important; }
-                .vip-spark { display: none !important; }
+                #vip-cursor, #vip-cursor::before, #vip-cursor::after {
+                    animation: none !important;
+                    transition: none !important;
+                }
+                .vip-spark, .vip-trail { display: none !important; }
             }
         `;
         document.head.appendChild(s);
@@ -212,37 +236,88 @@
     var rafId = null;
     var isActive = true;
     var isVisible = false;
+
+    var hoveredEl = null;
+    var fallbackTimer = null;
+
+    // Шлейф
+    var trailCount = 0;
+    var lastTrailX = 0, lastTrailY = 0;
+    var trailPool = [];
+
+    // Спарки
     var sparkCount = 0;
     var lastSparkX = 0, lastSparkY = 0;
     var lastMoveX = 0, lastMoveY = 0;
     var sparkPool = [];
-    var hoveredEl = null;
-    var fallbackTimer = null;
 
     function showCursor(x, y) {
         if (!cursor || isVisible) return;
         isVisible = true;
-        cursorX = x;
-        cursorY = y;
-        mouseX = x;
-        mouseY = y;
-        lastMoveX = x;
-        lastMoveY = y;
-        lastSparkX = x;
-        lastSparkY = y;
+        cursorX = mouseX = lastMoveX = lastTrailX = lastSparkX = x;
+        cursorY = mouseY = lastMoveY = lastTrailY = lastSparkY = y;
 
-        // Мгновенно, без transition
         var prevTrans = cursor.style.transition;
         cursor.style.transition = 'none';
         cursor.style.transform =
             'translate3d(' + x + 'px,' + y + 'px,0) translate(-50%,-50%) scale(1)';
         cursor.classList.add('ready');
-        void cursor.offsetWidth; // reflow
+        void cursor.offsetWidth;
         cursor.style.transition = prevTrans || '';
     }
 
     // ============================================================
-    // ✨ Искры
+    // 🌫️ ШЛЕЙФ — мини-Марсы позади
+    // ============================================================
+    function getTrail() {
+        if (trailPool.length > 0) return trailPool.pop();
+        var t = document.createElement('div');
+        t.className = 'vip-trail';
+        return t;
+    }
+
+    function releaseTrail(el) {
+        el.remove();
+        if (trailPool.length < 40) trailPool.push(el);
+    }
+
+    function spawnTrail(x, y) {
+        if (!CONFIG.trailEnabled) return;
+        if (trailCount >= CONFIG.trailMax) return;
+
+        var dx = x - lastTrailX;
+        var dy = y - lastTrailY;
+        if (Math.sqrt(dx * dx + dy * dy) < CONFIG.trailMinDist) return;
+
+        lastTrailX = x;
+        lastTrailY = y;
+        trailCount++;
+
+        var t = getTrail();
+        t.style.transition = 'none';
+        t.style.opacity = '0.7';
+        t.style.transform = 'translate3d(' + (x - CONFIG.trailSize / 2) + 'px,' + (y - CONFIG.trailSize / 2) + 'px,0) scale(1)';
+        document.body.appendChild(t);
+
+        void t.offsetWidth;
+
+        var life = CONFIG.trailLife;
+        t.style.transition = 'transform ' + life + 'ms ease-out, opacity ' + life + 'ms ease-out';
+        // Улетает чуть назад и уменьшается
+        t.style.transform =
+            'translate3d(' +
+                (x - CONFIG.trailSize / 2 - dx * 1.5) + 'px,' +
+                (y - CONFIG.trailSize / 2 - dy * 1.5) + 'px,0) scale(0.2)';
+        t.style.opacity = '0';
+
+        setTimeout(function() {
+            releaseTrail(t);
+            trailCount--;
+        }, life);
+    }
+
+    // ============================================================
+    // ✨ СПАРКИ
     // ============================================================
     function getSpark() {
         if (sparkPool.length > 0) return sparkPool.pop();
@@ -253,7 +328,7 @@
 
     function releaseSpark(el) {
         el.remove();
-        if (sparkPool.length < 30) sparkPool.push(el);
+        if (sparkPool.length < 40) sparkPool.push(el);
     }
 
     function spawnSpark(x, y, dx, dy) {
@@ -262,7 +337,7 @@
 
         var sdx = x - lastSparkX;
         var sdy = y - lastSparkY;
-        if (Math.abs(sdx) + Math.abs(sdy) < CONFIG.sparkSpawnDistance) return;
+        if (Math.sqrt(sdx * sdx + sdy * sdy) < CONFIG.sparkMinDist) return;
 
         lastSparkX = x;
         lastSparkY = y;
@@ -278,7 +353,8 @@
 
         var life = CONFIG.sparkLife;
         s.style.transition = 'transform ' + life + 'ms cubic-bezier(.16,1,.3,1), opacity ' + life + 'ms ease-out';
-        s.style.transform = 'translate3d(' + (x - dx * 2.5) + 'px,' + (y - dy * 2.5) + 'px,0) scale(0)';
+        s.style.transform =
+            'translate3d(' + (x - dx * 3) + 'px,' + (y - dy * 3) + 'px,0) scale(0)';
         s.style.opacity = '0';
 
         setTimeout(function() {
@@ -288,31 +364,33 @@
     }
 
     // ============================================================
-    // 🔄 RAF-цикл
+    // 🔄 RAF
     // ============================================================
     function tick() {
-        if (!isActive) {
-            rafId = null;
-            return;
-        }
+        if (!isActive) { rafId = null; return; }
 
         if (isVisible) {
-            cursorX += (mouseX - cursorX) * 0.5;
-            cursorY += (mouseY - cursorY) * 0.5;
+            // ⚡ Более резкое следование
+            cursorX += (mouseX - cursorX) * CONFIG.followSpeed;
+            cursorY += (mouseY - cursorY) * CONFIG.followSpeed;
         }
 
-        currentScale += (targetScale - currentScale) * 0.25;
+        currentScale += (targetScale - currentScale) * CONFIG.scaleSpeed;
 
         if (cursor && isVisible) {
             cursor.style.transform =
-                'translate3d(' + cursorX + 'px,' + cursorY + 'px,0) translate(-50%,-50%) scale(' + currentScale.toFixed(3) + ')';
+                'translate3d(' + cursorX.toFixed(2) + 'px,' + cursorY.toFixed(2) + 'px,0) translate(-50%,-50%) scale(' + currentScale.toFixed(3) + ')';
         }
 
         if (isVisible) {
             var dx = mouseX - lastMoveX;
             var dy = mouseY - lastMoveY;
-            if (Math.abs(dx) + Math.abs(dy) > 2) {
-                spawnSpark(mouseX, mouseY, dx, dy);
+            var speed = Math.sqrt(dx * dx + dy * dy);
+            if (speed > 1.5) {
+                // Шлейф — на каждое движение
+                spawnTrail(mouseX, mouseY);
+                // Спарки — только на быстрых движениях
+                if (speed > 6) spawnSpark(mouseX, mouseY, dx, dy);
                 lastMoveX = mouseX;
                 lastMoveY = mouseY;
             }
@@ -322,21 +400,17 @@
     }
 
     function startLoop() {
-        if (rafId == null && isActive) {
-            rafId = requestAnimationFrame(tick);
-        }
+        if (rafId == null && isActive) rafId = requestAnimationFrame(tick);
     }
 
     // ============================================================
     // 🖱️ Обработчики
     // ============================================================
     function onMouseMove(e) {
-        // Первое движение — показываем там где мышь
         if (!isVisible) {
             if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = null; }
             showCursor(e.clientX, e.clientY);
         }
-
         mouseX = e.clientX;
         mouseY = e.clientY;
         savePos(mouseX, mouseY);
@@ -364,24 +438,18 @@
     }
 
     function onMouseLeaveDoc() {
-        // Мышь ушла за пределы окна — скрываем до возврата
         if (cursor) cursor.classList.remove('ready');
         isVisible = false;
     }
 
     function onMouseEnterDoc(e) {
-        if (!isVisible && e.clientX > 0 && e.clientY > 0) {
-            showCursor(e.clientX, e.clientY);
-        }
+        if (!isVisible && e.clientX > 0 && e.clientY > 0) showCursor(e.clientX, e.clientY);
     }
 
     function onVisibilityChange() {
         isActive = !document.hidden;
         if (isActive) startLoop();
-        else if (rafId != null) {
-            cancelAnimationFrame(rafId);
-            rafId = null;
-        }
+        else if (rafId != null) { cancelAnimationFrame(rafId); rafId = null; }
     }
 
     // ============================================================
@@ -395,18 +463,12 @@
         document.body.appendChild(cursor);
         document.body.classList.add('vip-cursor-on');
 
-        // 🎯 Восстановление позиции
         var saved = loadPos();
         if (saved) {
-            // Показываем сразу — БЕЗ прыжка и БЕЗ скрытия
             showCursor(saved.x, saved.y);
         } else {
-            // Нет сохранённой — ждём mousemove
-            // НО: fallback — если мышь не двигалась 1.5 сек, ставим в центр
             fallbackTimer = setTimeout(function() {
-                if (!isVisible) {
-                    showCursor(window.innerWidth / 2, window.innerHeight / 2);
-                }
+                if (!isVisible) showCursor(window.innerWidth / 2, window.innerHeight / 2);
             }, CONFIG.fallbackShowMs);
         }
 
@@ -418,7 +480,7 @@
         document.addEventListener('visibilitychange', onVisibilityChange);
 
         startLoop();
-        console.log('🪐 vip-cursor v5 Mars Mini активен' + (saved ? ' (позиция восстановлена)' : ''));
+        console.log('🪐 vip-cursor v6 Trail Mars активен');
     }
 
     // ============================================================
@@ -436,9 +498,8 @@
         document.removeEventListener('visibilitychange', onVisibilityChange);
         if (cursor && cursor.parentNode) cursor.remove();
         document.body.classList.remove('vip-cursor-on');
-        document.querySelectorAll('.vip-spark').forEach(function(el) { el.remove(); });
+        document.querySelectorAll('.vip-spark, .vip-trail').forEach(function(el) { el.remove(); });
         cursor = null;
-        console.log('🛑 vip-cursor: отключён');
     }
 
     if (document.readyState === 'loading') {

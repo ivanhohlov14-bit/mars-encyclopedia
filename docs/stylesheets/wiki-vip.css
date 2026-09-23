@@ -1,48 +1,54 @@
 /* ============================================================
-   wiki-vip.css — единый стиль всех статей энциклопедии
+   wiki-vip.css v2 — стили применяются к .md-content напрямую
    ============================================================ */
 
-:root {
+.md-content {
   --wiki-accent: #6C63FF;
   --wiki-accent-rgb: 108, 99, 255;
-  --wiki-bg: #fbfbfd;
   --wiki-text: #1a1a2e;
   --wiki-muted: #6b7280;
   --wiki-border: #e5e7eb;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--wiki-text);
 }
 
-/* ========== МЕТКИ СТАТЬИ ========== */
-.wiki-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  margin: 0 0 18px 0;
-  border: 1px solid;
+/* ========== ЗАГОЛОВКИ ========== */
+.md-content h2 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  margin: 44px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--wiki-border);
+  position: relative;
+  color: var(--wiki-text);
 }
-.wiki-badge-star {
-  background: linear-gradient(135deg, #FFF8E1, #FFE9A7);
-  border-color: #C9A227;
-  color: #7a5e0a;
-  box-shadow: 0 2px 8px rgba(201, 162, 39, 0.25);
+.md-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--wiki-accent), transparent);
 }
-.wiki-badge-good {
-  background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
-  border-color: #2E7D32;
-  color: #1B5E20;
+.md-content h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 26px 0 12px;
+  color: #2c2c44;
 }
-.wiki-badge-draft {
-  background: linear-gradient(135deg, #F5F5F5, #EAEAEA);
-  border-color: #9E9E9E;
-  color: #424242;
+
+/* ========== ССЫЛКИ ========== */
+.md-content a {
+  color: var(--wiki-accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
 }
-.wiki-badge-icon {
-  font-size: 1rem;
-  line-height: 1;
+.md-content a:hover {
+  border-bottom-color: var(--wiki-accent);
 }
 
 /* ========== ИНФОБОКС ========== */
@@ -57,17 +63,16 @@
   font-size: 0.88rem;
   --infobox-color: #6C63FF;
   --infobox-color-rgb: 108, 99, 255;
-  animation: wikiFadeIn 0.5s cubic-bezier(.16,1,.3,1) both;
 }
-.wiki-infobox[data-theme="astronomy"]  { --infobox-color: #6C63FF; --infobox-color-rgb: 108,99,255; }
-.wiki-infobox[data-theme="history"]    { --infobox-color: #8B2635; --infobox-color-rgb: 139,38,53; }
-.wiki-infobox[data-theme="kingdom"]    { --infobox-color: #C9A227; --infobox-color-rgb: 201,162,39; }
-.wiki-infobox[data-theme="biology"]    { --infobox-color: #2E7D32; --infobox-color-rgb: 46,125,50; }
-.wiki-infobox[data-theme="geography"]  { --infobox-color: #1976D2; --infobox-color-rgb: 25,118,210; }
-.wiki-infobox[data-theme="person"]     { --infobox-color: #E65100; --infobox-color-rgb: 230,81,0; }
-.wiki-infobox[data-theme="mythology"]  { --infobox-color: #7B1FA2; --infobox-color-rgb: 123,31,162; }
-.wiki-infobox[data-theme="science"]    { --infobox-color: #00838F; --infobox-color-rgb: 0,131,143; }
-.wiki-infobox[data-theme="tech"]       { --infobox-color: #455A64; --infobox-color-rgb: 69,90,100; }
+.wiki-infobox[data-theme="astronomy"] { --infobox-color: #6C63FF; --infobox-color-rgb: 108,99,255; }
+.wiki-infobox[data-theme="history"]   { --infobox-color: #8B2635; --infobox-color-rgb: 139,38,53; }
+.wiki-infobox[data-theme="kingdom"]   { --infobox-color: #C9A227; --infobox-color-rgb: 201,162,39; }
+.wiki-infobox[data-theme="biology"]   { --infobox-color: #2E7D32; --infobox-color-rgb: 46,125,50; }
+.wiki-infobox[data-theme="geography"] { --infobox-color: #1976D2; --infobox-color-rgb: 25,118,210; }
+.wiki-infobox[data-theme="person"]    { --infobox-color: #E65100; --infobox-color-rgb: 230,81,0; }
+.wiki-infobox[data-theme="mythology"] { --infobox-color: #7B1FA2; --infobox-color-rgb: 123,31,162; }
+.wiki-infobox[data-theme="science"]   { --infobox-color: #00838F; --infobox-color-rgb: 0,131,143; }
+.wiki-infobox[data-theme="tech"]      { --infobox-color: #455A64; --infobox-color-rgb: 69,90,100; }
 
 .wiki-infobox-header {
   background: linear-gradient(135deg, var(--infobox-color), color-mix(in srgb, var(--infobox-color) 70%, #000));
@@ -86,7 +91,6 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
 .wiki-infobox-image {
   padding: 12px 16px 8px;
   background: #fafbfd;
@@ -104,7 +108,6 @@
   margin-top: 6px;
   font-style: italic;
 }
-
 .wiki-infobox-section {
   background: linear-gradient(90deg, rgba(var(--infobox-color-rgb), 0.12), rgba(var(--infobox-color-rgb), 0.04));
   padding: 7px 18px;
@@ -116,17 +119,13 @@
   border-top: 1px solid rgba(var(--infobox-color-rgb), 0.1);
   border-bottom: 1px solid rgba(var(--infobox-color-rgb), 0.1);
 }
-
-.wiki-infobox-rows {
-  padding: 4px 0;
-}
+.wiki-infobox-rows { padding: 4px 0; }
 .wiki-infobox-row {
   display: flex;
   padding: 8px 18px;
   gap: 10px;
   align-items: flex-start;
   border-bottom: 1px solid #f3f4f6;
-  transition: background 0.2s;
 }
 .wiki-infobox-row:last-child { border-bottom: none; }
 .wiki-infobox-row:hover { background: rgba(var(--infobox-color-rgb), 0.04); }
@@ -147,68 +146,67 @@
   font-size: 0.86rem;
   line-height: 1.4;
 }
-.wiki-infobox-value a {
-  color: var(--infobox-color);
+.wiki-infobox-value a { color: var(--infobox-color); font-weight: 700; }
+
+/* ========== СЕТКА ФАКТОВ ========== */
+.wiki-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+.wiki-fact-card {
+  padding: 18px 14px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--wiki-border);
+  text-align: center;
+  transition: all 0.3s cubic-bezier(.16,1,.3,1);
+}
+.wiki-fact-card:hover {
+  border-color: var(--wiki-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -8px rgba(var(--wiki-accent-rgb), 0.3);
+}
+.wiki-fact-card-value {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--wiki-accent);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.wiki-fact-card-label {
+  font-size: 0.72rem;
+  color: var(--wiki-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
   font-weight: 700;
 }
 
-.wiki-infobox-list {
-  list-style: none;
-  margin: 0;
-  padding: 4px 0;
+/* ========== ФАКТ-БЛОК ========== */
+.wiki-factbox {
+  display: flex;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(var(--wiki-accent-rgb), 0.08), rgba(var(--wiki-accent-rgb), 0.02));
+  border: 1px solid rgba(var(--wiki-accent-rgb), 0.2);
+  margin: 22px 0;
 }
-.wiki-infobox-list li {
-  padding: 6px 18px;
-  font-size: 0.85rem;
-  color: var(--wiki-text);
-  border-bottom: 1px solid #f3f4f6;
-  line-height: 1.5;
-}
-.wiki-infobox-list li:last-child { border-bottom: none; }
-.wiki-infobox-list li a { color: var(--infobox-color); font-weight: 700; }
-
-/* ========== ТЕКСТ СТАТЬИ ========== */
-.wiki-content {
-  font-size: 1rem;
-  line-height: 1.75;
-  color: var(--wiki-text);
-  max-width: 100%;
-}
-.wiki-content h2 {
-  font-size: 1.6rem;
-  font-weight: 800;
-  margin: 40px 0 16px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--wiki-border);
-  position: relative;
-}
-.wiki-content h2::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 70px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--wiki-accent), transparent);
-}
-.wiki-content h3 {
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin: 28px 0 12px;
-  color: #2c2c44;
-}
-.wiki-content p {
-  margin: 0 0 16px;
-}
-.wiki-content a {
+.wiki-factbox-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+.wiki-factbox-body { flex: 1; }
+.wiki-factbox-title {
+  font-size: 0.72rem;
   color: var(--wiki-accent);
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
 }
-.wiki-content a:hover {
-  border-bottom-color: var(--wiki-accent);
+.wiki-factbox-text {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--wiki-text);
 }
 
 /* ========== ЦИТАТЫ ========== */
@@ -239,6 +237,7 @@
   margin: 0 0 10px;
   position: relative;
   z-index: 1;
+  color: var(--wiki-text);
 }
 .wiki-quote-source {
   font-size: 0.8rem;
@@ -250,7 +249,7 @@
   margin-top: 8px;
 }
 
-/* ========== ВРЕМЕННАЯ ЛИНИЯ ========== */
+/* ========== TIMELINE ========== */
 .wiki-timeline {
   position: relative;
   margin: 28px 0;
@@ -273,10 +272,7 @@
   transform: translateX(-12px);
   transition: opacity 0.5s, transform 0.5s;
 }
-.wiki-timeline-item.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
+.wiki-timeline-item.visible { opacity: 1; transform: translateX(0); }
 .wiki-timeline-item::before {
   content: '';
   position: absolute;
@@ -290,7 +286,7 @@
   box-shadow: 0 0 0 2px var(--wiki-accent), 0 0 12px rgba(var(--wiki-accent-rgb), 0.5);
 }
 .wiki-timeline-date {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--wiki-accent);
   font-weight: 800;
   text-transform: uppercase;
@@ -309,77 +305,10 @@
   line-height: 1.55;
 }
 
-/* ========== ФАКТ-БЛОК ========== */
-.wiki-factbox {
-  display: flex;
-  gap: 14px;
-  padding: 18px 20px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(var(--wiki-accent-rgb), 0.08), rgba(var(--wiki-accent-rgb), 0.02));
-  border: 1px solid rgba(var(--wiki-accent-rgb), 0.2);
-  margin: 22px 0;
-}
-.wiki-factbox-icon {
-  font-size: 1.8rem;
-  flex-shrink: 0;
-  line-height: 1;
-}
-.wiki-factbox-body {
-  flex: 1;
-}
-.wiki-factbox-title {
-  font-size: 0.75rem;
-  color: var(--wiki-accent);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-}
-.wiki-factbox-text {
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: var(--wiki-text);
-}
-
-/* ========== СЕТКА ФАКТОВ ========== */
-.wiki-facts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 14px;
-  margin: 24px 0;
-}
-.wiki-fact-card {
-  padding: 18px 16px;
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid var(--wiki-border);
-  text-align: center;
-  transition: all 0.3s cubic-bezier(.16,1,.3,1);
-}
-.wiki-fact-card:hover {
-  border-color: var(--wiki-accent);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px -8px rgba(var(--wiki-accent-rgb), 0.3);
-}
-.wiki-fact-card-value {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--wiki-accent);
-  line-height: 1.1;
-  margin-bottom: 6px;
-}
-.wiki-fact-card-label {
-  font-size: 0.75rem;
-  color: var(--wiki-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  font-weight: 700;
-}
-
 /* ========== КАРТОЧКИ КОРОЛЕВСТВ ========== */
 .wiki-kingdoms {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   gap: 14px;
   margin: 24px 0;
 }
@@ -397,78 +326,78 @@
 }
 .wiki-kingdom img {
   width: 100%;
-  height: 110px;
+  height: 100px;
   object-fit: cover;
   display: block;
 }
-.wiki-kingdom-body {
-  padding: 12px 14px 16px;
-}
+.wiki-kingdom-body { padding: 10px 12px 14px; }
 .wiki-kingdom-name {
   font-weight: 800;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--wiki-text);
   margin-bottom: 4px;
 }
 .wiki-kingdom-desc {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: var(--wiki-muted);
   line-height: 1.5;
 }
 
-/* ========== FAQ (для Алисы и SEO) ========== */
+/* ========== FAQ (на details) ========== */
 .wiki-faq {
   margin: 28px 0;
 }
-.wiki-faq-item {
+.wiki-faq details {
   border: 1px solid var(--wiki-border);
   border-radius: 10px;
   margin-bottom: 10px;
+  background: #fff;
   overflow: hidden;
   transition: box-shadow 0.25s;
 }
-.wiki-faq-item:hover {
+.wiki-faq details:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.05);
 }
-.wiki-faq-q {
+.wiki-faq details[open] {
+  border-color: var(--wiki-accent);
+  box-shadow: 0 6px 20px -4px rgba(var(--wiki-accent-rgb), 0.2);
+}
+.wiki-faq summary {
   padding: 14px 18px;
   font-weight: 700;
   cursor: pointer;
   font-size: 0.95rem;
   color: var(--wiki-text);
   background: #fafbfd;
+  list-style: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   user-select: none;
   transition: background 0.2s;
 }
-.wiki-faq-q:hover { background: #f3f4f6; }
-.wiki-faq-q::after {
+.wiki-faq summary::-webkit-details-marker { display: none; }
+.wiki-faq summary::after {
   content: '+';
   font-size: 1.3rem;
   color: var(--wiki-accent);
   font-weight: 800;
   transition: transform 0.3s;
+  line-height: 1;
 }
-.wiki-faq-item.open .wiki-faq-q::after {
+.wiki-faq details[open] summary::after {
   transform: rotate(45deg);
 }
-.wiki-faq-a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-  padding: 0 18px;
+.wiki-faq summary:hover { background: #f3f4f6; }
+.wiki-faq-answer {
+  padding: 14px 18px 18px;
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--wiki-muted);
-}
-.wiki-faq-item.open .wiki-faq-a {
-  max-height: 500px;
-  padding: 14px 18px 18px;
+  border-top: 1px solid var(--wiki-border);
 }
 
-/* ========== СВЯЗАННЫЕ СТАТЬИ ========== */
+/* ========== СВЯЗАННЫЕ ========== */
 .wiki-related {
   display: flex;
   flex-wrap: wrap;
@@ -485,14 +414,15 @@
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--wiki-text);
+  color: var(--wiki-text) !important;
   text-decoration: none;
   transition: all 0.25s cubic-bezier(.16,1,.3,1);
+  border-bottom: 1px solid var(--wiki-border) !important;
 }
 .wiki-related a:hover {
   background: var(--wiki-accent);
-  color: #fff;
-  border-color: var(--wiki-accent);
+  color: #fff !important;
+  border-color: var(--wiki-accent) !important;
   transform: translateY(-2px);
   box-shadow: 0 8px 20px -6px rgba(var(--wiki-accent-rgb), 0.5);
 }
@@ -522,24 +452,17 @@
     gap: 3px;
     padding: 10px 16px;
   }
-  .wiki-infobox-label {
-    width: auto;
-  }
-  .wiki-content h2 { font-size: 1.35rem; }
-  .wiki-content h3 { font-size: 1.08rem; }
+  .wiki-infobox-label { width: auto; }
+  .md-content h2 { font-size: 1.3rem; margin-top: 32px; }
+  .md-content h3 { font-size: 1.05rem; }
   .wiki-quote { padding: 18px 20px 14px 24px; }
   .wiki-quote p { font-size: 0.98rem; }
-  .wiki-fact-card-value { font-size: 1.3rem; }
-  .wiki-kingdom img { height: 90px; }
-}
-
-/* ========== АНИМАЦИИ ========== */
-@keyframes wikiFadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  .wiki-fact-card-value { font-size: 1.25rem; }
+  .wiki-kingdom img { height: 85px; }
+  .wiki-related a { padding: 7px 14px; font-size: 0.8rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wiki-timeline-item { opacity: 1 !important; transform: none !important; }
-  .wiki-infobox { animation: none !important; }
+  .wiki-timeline-item { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .wiki-fact-card, .wiki-kingdom { transition: none !important; }
 }

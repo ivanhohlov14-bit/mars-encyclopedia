@@ -1,0 +1,168 @@
+/* ============================================================
+   mobile-smooth.css — спасение FPS на мобильных
+   Отключает тяжёлые анимации, оставляет лёгкие
+   ============================================================ */
+
+/* ============ МОБИЛЬНЫЙ: главные правила ============ */
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+
+    /* --- 1. Убираем тяжёлые анимации полностью --- */
+    *,
+    *::before,
+    *::after {
+        /* Отключаем все shine-эффекты (background-position) */
+        animation-name: none !important;
+    }
+
+    /* --- 2. Возвращаем только ЛЁГКИЕ (transform/opacity) --- */
+    .pf-fade,
+    .pf-slide-up,
+    .vip-fade-in,
+    .lg-fade {
+        animation: pfFadeIn .4s ease both !important;
+    }
+
+    /* --- 3. Убиваем backdrop-filter (жрёт GPU) --- */
+    *,
+    *::before,
+    *::after {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    /* --- 4. Все тени — статичные (без анимации) --- */
+    *,
+    *::before,
+    *::after {
+        transition-property: transform, opacity !important;
+        transition-duration: .15s !important;
+    }
+
+    /* --- 5. GPU-ускорение ТОЛЬКО для реально движущихся --- */
+    .pf-avatar,
+    .pf-quick-card,
+    .pf-tab,
+    .vip-btn,
+    .pf-btn,
+    .related-chip,
+    .lg-btn,
+    #auth-btn-container img {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
+
+    /* --- 6. Отключаем сложные тени у больших блоков --- */
+    .pf-hero,
+    .vip-banner,
+    .lg-hero,
+    .lg-card,
+    .infobox-vip,
+    .quote-vip,
+    .table-vip,
+    .timeline-vip {
+        box-shadow: 0 2px 8px rgba(0,0,0,.08) !important;
+    }
+
+    /* --- 7. Псевдоэлементы декора — статичные --- */
+    .pf-hero::before,
+    .pf-hero::after,
+    .vip-banner::before,
+    .vip-banner::after,
+    .lg-hero::before,
+    .lg-hero::after {
+        animation: none !important;
+        will-change: auto !important;
+    }
+
+    /* --- 8. Прогресс-бар — без мерцания --- */
+    .pf-progress-bar::after,
+    .lg-btn::before,
+    .lg-tab.active::after,
+    .lg-card::before {
+        animation: none !important;
+        opacity: 0 !important;
+    }
+
+    /* --- 9. Скелетоны — минимальная анимация --- */
+    .pf-skel,
+    .lg-skeleton {
+        animation: pfSkelSimple 1.4s ease-in-out infinite !important;
+        background: #eef0f5 !important;
+    }
+
+    /* --- 10. Звёзды на логине — минимум --- */
+    .lg-stars,
+    .lg-star { display: none !important; }
+
+    /* --- 11. Убираем hover-эффекты (они на тач не работают) --- */
+    .pf-quick-card:hover,
+    .pf-card:hover,
+    .pf-timer-card:hover,
+    .pf-ach:hover,
+    .pf-note:hover,
+    .pf-notif:hover,
+    .pf-friend:hover,
+    .pf-btn:hover,
+    .pf-tab:hover,
+    .related-chip:hover,
+    .infobox-vip-row:hover,
+    .interpretation-item:hover,
+    .quote-vip:hover,
+    .lg-btn:hover,
+    .lg-tab:hover {
+        transform: none !important;
+        box-shadow: inherit !important;
+    }
+}
+
+@keyframes pfSkelSimple {
+    0%, 100% { opacity: .55; }
+    50% { opacity: .85; }
+}
+
+/* ============ Планшеты: средний режим ============ */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Только самое тяжёлое отключаем */
+    .pf-hero::before,
+    .pf-hero::after,
+    .vip-banner::before,
+    .vip-banner::after {
+        animation-duration: 20s !important;
+    }
+    * {
+        backdrop-filter: none !important;
+    }
+}
+
+/* ============ Маленькие телефоны: ещё жёстче ============ */
+@media (max-width: 480px) {
+    /* Никаких анимаций вообще кроме fade */
+    .pf-hero::before,
+    .pf-hero::after,
+    .pf-avatar-ring,
+    .lg-logo-orbit,
+    .vip-banner::before,
+    .vip-banner::after {
+        display: none !important;
+    }
+
+    /* Только opacity-переходы */
+    *,
+    *::before,
+    *::after {
+        animation-duration: .2s !important;
+        transition-duration: .15s !important;
+    }
+}
+
+/* ============ Battery Saver / Reduced Motion ============ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

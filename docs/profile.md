@@ -6,7 +6,7 @@ comments: false
 <div id="profile-app">
     <div style="text-align:center;padding:60px 20px;">
         <div style="display:inline-block;width:48px;height:48px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin .8s linear infinite;"></div>
-        <p style="color:#999;margin-top:16px;font-size:0.9rem;">Загрузка профиля...</p>
+        <p style="color:#999;margin-top:16px;font-size:.9rem;">Загрузка профиля...</p>
     </div>
 </div>
 
@@ -21,15 +21,19 @@ comments: false
 @keyframes pfGrow{from{transform:scaleY(0);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
 @keyframes pfRing{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 @keyframes pfGlow{0%,100%{box-shadow:0 0 20px rgba(108,99,255,.4)}50%{box-shadow:0 0 40px rgba(108,99,255,.7)}}
+@keyframes pfSparkle{0%,100%{opacity:0;transform:scale(.5)}50%{opacity:1;transform:scale(1)}}
+@keyframes pfHeartbeat{0%,100%{transform:scale(1)}25%{transform:scale(1.15)}50%{transform:scale(1)}75%{transform:scale(1.08)}}
+@keyframes pfWave{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 
 #profile-app{max-width:1100px;margin:0 auto;font-family:'Segoe UI',-apple-system,sans-serif;padding:0 8px;contain:layout style}
 #profile-app a{text-decoration:none!important;border-bottom:none!important}
 .pf-fade{animation:pfFadeIn .5s cubic-bezier(.16,1,.3,1) both}
 
-/* HERO */
-.pf-hero{position:relative;background:linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 40%,#4a2a3a 100%);border-radius:24px;padding:44px 40px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 20px 60px -12px rgba(0,0,0,.4);contain:layout style paint}
-.pf-hero::before{content:'';position:absolute;top:-60%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,var(--ks),transparent 70%);border-radius:50%;animation:pfFloat 8s ease-in-out infinite;will-change:transform}
-.pf-hero::after{content:'';position:absolute;bottom:-60%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(231,76,60,.15),transparent 70%);border-radius:50%;animation:pfFloat 10s ease-in-out infinite reverse;will-change:transform}
+/* === HERO === */
+.pf-hero{position:relative;background:linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 40%,#4a2a3a 100%);border-radius:24px;padding:44px 40px;color:#fff;margin-bottom:20px;overflow:hidden;box-shadow:0 20px 60px -12px rgba(0,0,0,.4)}
+.pf-hero::before{content:'';position:absolute;top:-60%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,var(--ks),transparent 70%);border-radius:50%;animation:pfFloat 8s ease-in-out infinite}
+.pf-hero::after{content:'';position:absolute;bottom:-60%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(231,76,60,.15),transparent 70%);border-radius:50%;animation:pfFloat 10s ease-in-out infinite reverse}
+.pf-hero-stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .pf-hero-content{position:relative;z-index:2;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
 .pf-avatar-wrap{position:relative;flex-shrink:0}
 .pf-avatar-ring{position:absolute;inset:-8px;border:2px dashed var(--kl);border-radius:50%;animation:pfRing 18s linear infinite;opacity:.5}
@@ -38,11 +42,11 @@ comments: false
 .pf-level-badge{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.95);color:var(--kc);padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:800;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.15);border:2px solid rgba(255,255,255,.5);z-index:2}
 .pf-info{flex:1;min-width:200px}
 .pf-name{font-size:2rem;font-weight:800;margin:0 0 8px 0;color:#fff;display:flex;align-items:center;gap:10px;flex-wrap:wrap;letter-spacing:-.5px}
-.pf-role-badge{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;box-shadow:0 4px 12px rgba(243,156,18,.4)}
 .pf-mod-badge{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;box-shadow:0 4px 14px rgba(231,76,60,.5);animation:pfGlow 2s ease-in-out infinite;border:1px solid rgba(255,255,255,.3)}
+.pf-vip-badge{background:linear-gradient(135deg,#f39c12,#e67e22,#f39c12);background-size:200% auto;color:#fff;padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:800;letter-spacing:.4px;text-transform:uppercase;box-shadow:0 4px 14px rgba(243,156,18,.5);animation:pfShine 3s linear infinite}
 .pf-guild-badge{background:rgba(255,255,255,.22);backdrop-filter:blur(8px);color:#fff;padding:4px 14px;border-radius:20px;font-size:.72rem;font-weight:700;display:inline-flex;align-items:center;gap:4px;border:1px solid rgba(255,255,255,.35);cursor:pointer;transition:all .25s}
 .pf-guild-badge:hover{background:rgba(255,255,255,.32);transform:translateY(-2px)}
-.pf-email{font-size:.9rem;opacity:.85;margin:0 0 16px 0}
+.pf-email{font-size:.9rem;opacity:.85;margin:0 0 14px 0}
 .pf-stats-row{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:16px}
 .pf-stat-mini{display:flex;flex-direction:column;gap:2px}
 .pf-sm-label{font-size:.72rem;opacity:.8;text-transform:uppercase;letter-spacing:.8px;font-weight:600}
@@ -52,7 +56,36 @@ comments: false
 .pf-progress-bar::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);background-size:200% 100%;animation:pfShine 2s linear infinite}
 .pf-progress-text{font-size:.78rem;opacity:.9}
 
-/* QUICK */
+/* === МОЯ СТРАНИЧКА === */
+.pf-mypage{background:linear-gradient(135deg,#fff 0%,#fafbfd 100%);border-radius:22px;border:1px solid rgba(0,0,0,.06);padding:26px 28px;margin-bottom:18px;box-shadow:0 4px 20px rgba(0,0,0,.05);animation:pfFadeIn .5s both;position:relative;overflow:hidden}
+.pf-mypage::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--kc),var(--kl),var(--kc));background-size:200% auto;animation:pfShine 3s linear infinite}
+.pf-mypage-header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.pf-mypage-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--kc),var(--kl));display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 6px 16px -4px var(--ks);flex-shrink:0}
+.pf-mypage-titles{flex:1;min-width:0}
+.pf-mypage-title{font-size:1.2rem;font-weight:800;color:#1a1a1a;margin:0 0 2px 0;letter-spacing:-.3px}
+.pf-mypage-sub{font-size:.82rem;color:#888;margin:0}
+.pf-mypage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:18px}
+.pf-mypage-tile{background:linear-gradient(135deg,var(--kb),#fff);border:1px solid rgba(108,99,255,.15);border-radius:14px;padding:14px 16px;transition:all .3s cubic-bezier(.16,1,.3,1);cursor:pointer;position:relative;overflow:hidden}
+.pf-mypage-tile:hover{transform:translateY(-3px);box-shadow:0 12px 28px -8px var(--ks);border-color:var(--kc)}
+.pf-mypage-tile-label{font-size:.68rem;color:#888;text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:4px}
+.pf-mypage-tile-value{font-size:1.4rem;font-weight:900;color:var(--kc);letter-spacing:-.5px;line-height:1.1}
+.pf-mypage-tile-sub{font-size:.7rem;color:#aaa;margin-top:2px}
+.pf-mypage-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.pf-mypage-action{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border:1.5px solid rgba(0,0,0,.06);border-radius:12px;color:#333;cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:700;transition:all .25s cubic-bezier(.16,1,.3,1);text-decoration:none!important}
+.pf-mypage-action:hover{transform:translateY(-2px);border-color:var(--kc);box-shadow:0 8px 20px -6px var(--ks);color:var(--kc)}
+.pf-mypage-action-icon{font-size:1.2rem;flex-shrink:0}
+
+/* === БЛИЖАЙШИЕ ДОСТИЖЕНИЯ === */
+.pf-next-ach{background:linear-gradient(135deg,#fff8e1,#fffbf0);border:2px solid rgba(243,156,18,.3);border-radius:16px;padding:16px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;animation:pfFadeIn .5s both;animation-delay:.1s}
+.pf-next-ach-icon{font-size:2.4rem;flex-shrink:0;animation:pfWave 2s ease-in-out infinite}
+.pf-next-ach-info{flex:1;min-width:0}
+.pf-next-ach-label{font-size:.7rem;color:#a08040;text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:2px}
+.pf-next-ach-name{font-size:1rem;font-weight:800;color:#1a1a1a;margin-bottom:4px}
+.pf-next-ach-desc{font-size:.8rem;color:#666}
+.pf-next-ach-progress{height:6px;background:rgba(243,156,18,.15);border-radius:3px;overflow:hidden;margin-top:8px}
+.pf-next-ach-fill{height:100%;background:linear-gradient(90deg,#f39c12,#e67e22);border-radius:3px;transition:width 1s}
+
+/* === QUICK GRID === */
 .pf-quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px}
 .pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:#fff;border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s cubic-bezier(.16,1,.3,1);box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer;position:relative;overflow:hidden}
 .pf-quick-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--kc),transparent);opacity:0;transition:opacity .3s}
@@ -63,7 +96,7 @@ comments: false
 .pf-quick-title{font-size:.9rem;font-weight:800;color:#1a1a1a;margin-bottom:2px}
 .pf-quick-desc{font-size:.72rem;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-/* TABS */
+/* === TABS === */
 .pf-tabs{display:flex;gap:4px;margin-bottom:20px;overflow-x:auto;padding:6px;background:rgba(255,255,255,.9);border-radius:16px;border:1px solid rgba(0,0,0,.05);scroll-behavior:smooth;cursor:grab;-webkit-overflow-scrolling:touch}
 .pf-tabs:active{cursor:grabbing}
 .pf-tabs::-webkit-scrollbar{height:4px}
@@ -79,7 +112,7 @@ comments: false
 .pf-tab-content{display:none;animation:pfFadeIn .4s ease}
 .pf-tab-content.active{display:block}
 
-/* CARDS */
+/* === CARDS === */
 .pf-card{background:#fff;border-radius:18px;border:1px solid rgba(0,0,0,.06);padding:22px 26px;margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,.04);transition:box-shadow .3s,transform .3s}
 .pf-card:hover{box-shadow:0 12px 32px -8px var(--ks);transform:translateY(-2px)}
 .pf-card-title{font-size:1.1rem;font-weight:800;color:#1a1a1a;margin:0 0 16px 0;display:flex;align-items:center;gap:10px}
@@ -97,7 +130,7 @@ comments: false
 .pf-timer-label{font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-top:6px;font-weight:600}
 .pf-timer-sub{font-size:.75rem;color:#aaa;margin-top:4px}
 
-/* MODERATION PANEL */
+/* === MODERATION === */
 .pf-mod-panel{background:linear-gradient(135deg,rgba(231,76,60,.05),rgba(192,57,43,.03));border:2px solid rgba(231,76,60,.25);border-radius:18px;padding:22px 26px;margin-bottom:18px}
 .pf-mod-panel .pf-card-title{color:#c0392b}
 .pf-mod-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:16px}
@@ -106,7 +139,7 @@ comments: false
 .pf-mod-stat-value{font-size:1.8rem;font-weight:900;color:#e74c3c;line-height:1}
 .pf-mod-stat-label{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-top:6px;font-weight:700}
 
-/* HEATMAP */
+/* === HEATMAP === */
 .pf-heatmap{display:grid;grid-template-columns:repeat(13,1fr);gap:3px;margin-top:14px}
 .pf-heat-cell{aspect-ratio:1;background:rgba(108,99,255,.08);border-radius:3px;transition:all .25s;cursor:pointer;position:relative}
 .pf-heat-cell:hover{transform:scale(1.3);z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.2)}
@@ -115,7 +148,7 @@ comments: false
 .pf-heat-cell[data-level="3"]{background:rgba(108,99,255,.7)}
 .pf-heat-cell[data-level="4"]{background:var(--kc);box-shadow:0 0 8px var(--ks)}
 
-/* CHART */
+/* === CHART === */
 .pf-chart{display:flex;align-items:flex-end;gap:4px;height:100px;margin:20px 0 8px;padding:8px 0;border-bottom:1px dashed rgba(0,0,0,.08)}
 .pf-chart-bar{flex:1;background:linear-gradient(180deg,var(--kl),var(--kc));border-radius:4px 4px 0 0;min-height:4px;transition:all .3s;animation:pfGrow .6s cubic-bezier(.16,1,.3,1) both;position:relative;cursor:pointer}
 .pf-chart-bar:hover{filter:brightness(1.15);transform:scaleY(1.05)}
@@ -123,7 +156,7 @@ comments: false
 .pf-chart-bar:hover::after{opacity:1}
 .pf-chart-labels{display:flex;justify-content:space-between;font-size:.68rem;color:#999;margin-bottom:14px}
 
-/* ACH */
+/* === ACHIEVEMENTS === */
 .pf-ach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
 .pf-ach{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#f8f9fb;border-radius:12px;border:2px solid transparent;transition:all .25s;position:relative;overflow:hidden}
 .pf-ach:hover{transform:translateY(-3px);border-color:var(--kc);box-shadow:0 12px 28px -8px var(--ks)}
@@ -133,7 +166,7 @@ comments: false
 .pf-ach-name{font-size:.85rem;font-weight:700;color:#1a1a1a}
 .pf-ach-date{font-size:.7rem;color:#888}
 
-/* NOTES */
+/* === NOTES === */
 .pf-notes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
 .pf-note{background:#fff;border-radius:12px;padding:16px;border-left:4px solid var(--note-color,var(--kc));box-shadow:0 4px 12px rgba(0,0,0,.06);transition:all .25s;cursor:pointer;min-height:120px;display:flex;flex-direction:column;animation:pfSlideUp .35s ease both}
 .pf-note:hover{transform:translateY(-3px);box-shadow:0 12px 28px -8px var(--ks)}
@@ -146,7 +179,7 @@ comments: false
 .pf-note-btn:hover{background:var(--kc);color:#fff}
 .pf-note-btn.danger:hover{background:#e74c3c;color:#fff}
 
-/* NOTIFS */
+/* === NOTIFS === */
 .pf-notif{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;transition:all .25s;animation:pfSlideUp .3s ease both}
 .pf-notif:hover{background:rgba(108,99,255,.08);transform:translateX(4px)}
 .pf-notif.unread{border-left:3px solid var(--kc);background:rgba(108,99,255,.06)}
@@ -154,7 +187,7 @@ comments: false
 .pf-notif-text{font-size:.88rem;color:#333}
 .pf-notif-date{font-size:.72rem;color:#999;margin-top:2px}
 
-/* LEADERBOARD */
+/* === LEADERBOARD === */
 .pf-leaderboard{width:100%;border-collapse:collapse;font-size:.88rem}
 .pf-leaderboard th{text-align:left;padding:10px 12px;font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.8px;border-bottom:2px solid var(--kc)}
 .pf-leaderboard td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.05);transition:background .2s}
@@ -162,18 +195,18 @@ comments: false
 .pf-leaderboard tbody tr:hover{background:rgba(108,99,255,.05)}
 .pf-lb-avatar{width:28px;height:28px;border-radius:50%;vertical-align:middle;margin-right:8px;border:2px solid var(--kc);object-fit:cover}
 
-/* FRIENDS */
+/* === FRIENDS === */
 .pf-friend{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;transition:all .25s;align-items:center;animation:pfSlideUp .3s ease both}
 .pf-friend:hover{background:rgba(108,99,255,.08);transform:translateX(4px)}
 .pf-friend-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--kc);flex-shrink:0}
 
-/* GUILD */
+/* === GUILD === */
 .pf-guild-hero{background:linear-gradient(135deg,var(--guild-color,var(--kc)),rgba(0,0,0,.2));border-radius:18px;padding:26px 28px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:0 12px 32px -8px rgba(0,0,0,.3)}
 .pf-guild-icon{width:76px;height:76px;border-radius:18px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:2.5rem;border:2px solid rgba(255,255,255,.45);flex-shrink:0;backdrop-filter:blur(6px)}
 .pf-guild-name{font-size:1.5rem;font-weight:800;margin:0 0 6px 0}
 .pf-guild-meta{font-size:.85rem;opacity:.92;display:flex;gap:14px;flex-wrap:wrap}
 
-/* AI CHAT */
+/* === AI === */
 .pf-chat{background:linear-gradient(135deg,var(--kb),rgba(255,255,255,.6));border-radius:16px;padding:16px;max-height:420px;overflow-y:auto;margin-bottom:12px;border:1px solid rgba(0,0,0,.05)}
 .pf-chat-msg{margin:6px 0;padding:11px 16px;border-radius:16px;max-width:82%;word-wrap:break-word;font-size:.9rem;line-height:1.5;animation:pfSlideUp .3s ease both}
 .pf-chat-msg.user{background:linear-gradient(135deg,var(--kc),var(--kl));color:#fff;margin-left:auto;border-bottom-right-radius:4px;box-shadow:0 6px 16px -6px var(--ks)}
@@ -185,7 +218,7 @@ comments: false
 .pf-chat-input button:hover{transform:translateY(-2px);box-shadow:0 10px 24px -6px var(--ks)}
 .pf-chat-input button:active{transform:scale(.98)}
 
-/* TOGGLE */
+/* === TOGGLE === */
 .pf-toggle{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05)}
 .pf-toggle:last-child{border-bottom:none}
 .pf-toggle-label{font-size:.9rem;color:#333;font-weight:600}
@@ -197,25 +230,25 @@ comments: false
 .pf-badge-2fa{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:800;background:linear-gradient(135deg,#27ae60,#16a085);color:#fff;box-shadow:0 4px 12px rgba(39,174,96,.4)}
 .pf-badge-2fa.off{background:rgba(0,0,0,.08);color:#666;box-shadow:none}
 
-/* DEVICE */
+/* === DEVICE === */
 .pf-device{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;align-items:center}
 .pf-device-icon{font-size:1.5rem;flex-shrink:0}
 
-/* AVATAR GRID */
+/* === AVATARS === */
 .pf-avatar-grid{display:flex;gap:12px;flex-wrap:wrap}
 .pf-avatar-option{width:60px;height:60px;border-radius:50%;cursor:pointer;border:3px solid transparent;object-fit:cover;transition:all .25s}
 .pf-avatar-option:hover{transform:scale(1.1);border-color:var(--kc)}
 .pf-avatar-option.selected{border-color:var(--kc);box-shadow:0 0 0 4px var(--ks)}
 
-/* KINGDOMS */
+/* === KINGDOMS === */
 .pf-kingdom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
 .pf-kingdom-btn{padding:10px 12px;border-radius:10px;border:2px solid rgba(0,0,0,.08);background:#fff;cursor:pointer;font-size:.8rem;font-weight:600;transition:all .25s;font-family:inherit;color:#333}
 .pf-kingdom-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
 .pf-kingdom-btn.selected{color:#fff;box-shadow:0 6px 16px -4px var(--ks)}
 
-/* MODAL */
-.pf-modal-bg{position:fixed;inset:0;background:rgba(10,10,26,.6);backdrop-filter:blur(8px);z-index:999998;display:flex;align-items:center;justify-content:center;padding:20px;animation:pfFadeIn .25s ease}
-.pf-modal{background:#fff;border-radius:20px;padding:28px;max-width:440px;width:100%;box-shadow:0 24px 70px -12px rgba(0,0,0,.4);animation:pfSlideUp .35s cubic-bezier(.16,1,.3,1)}
+/* === MODAL === */
+.pf-modal-bg{position:fixed;inset:0;background:rgba(10,10,26,.6);backdrop-filter:blur(8px);z-index:999998;display:flex;align-items:center;justify-content:center;padding:20px;animation:pfFadeIn .25s ease;overflow-y:auto}
+.pf-modal{background:#fff;border-radius:20px;padding:28px;max-width:440px;width:100%;box-shadow:0 24px 70px -12px rgba(0,0,0,.4);animation:pfSlideUp .35s cubic-bezier(.16,1,.3,1);margin:auto}
 .pf-modal h3{margin:0 0 8px 0;font-size:1.2rem;color:#1a1a2e}
 .pf-modal p{margin:0 0 18px 0;color:#666;font-size:.88rem;line-height:1.5}
 .pf-modal-input{width:100%;padding:12px 16px;border-radius:12px;border:2px solid #e8eaf0;font-size:.95rem;font-family:inherit;outline:none;background:#fafafa;margin-bottom:12px;box-sizing:border-box;transition:all .25s;color:#1a1a2e}
@@ -223,7 +256,7 @@ comments: false
 .pf-modal textarea.pf-modal-input{min-height:100px;resize:vertical}
 .pf-modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
 
-/* TOAST */
+/* === TOAST === */
 .pf-toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(120px);padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;box-shadow:0 12px 32px rgba(0,0,0,.3);z-index:999999;transition:transform .4s cubic-bezier(.16,1,.3,1);color:#fff;max-width:90vw;backdrop-filter:blur(10px)}
 .pf-toast.show{transform:translateX(-50%) translateY(0)}
 .pf-toast.success{background:linear-gradient(135deg,#27ae60,#16a085)}
@@ -232,7 +265,7 @@ comments: false
 
 .pf-skel{background:linear-gradient(90deg,#f0f0f4 25%,#f8f8fc 50%,#f0f0f4 75%);background-size:200% 100%;animation:pfShine 1.5s ease-in-out infinite;border-radius:14px;margin-bottom:16px}
 
-/* MOBILE */
+/* === MOBILE === */
 @media(max-width:600px){
     .pf-hero{padding:28px 22px}
     .pf-avatar{width:90px;height:90px}
@@ -254,6 +287,11 @@ comments: false
     .pf-chart{height:70px}
     .pf-mod-stats{grid-template-columns:1fr 1fr}
     .pf-chat-msg{max-width:90%}
+    .pf-mypage{padding:18px 16px}
+    .pf-mypage-grid{grid-template-columns:1fr 1fr}
+    .pf-mypage-actions{grid-template-columns:1fr}
+    .pf-mypage-action{justify-content:center}
+    .pf-next-ach{flex-direction:column;text-align:center;padding:14px}
 }
 @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -276,6 +314,7 @@ comments: false
     var ACTIVITY_KEY='mars-activity-v1';
     var XP_HISTORY_KEY='mars-xp-history';
     var CHAT_KEY='mars-ai-chat-history';
+    var ACTIVE_TAB_KEY='mars-profile-active-tab';
 
     var container=document.getElementById('profile-app');
     if(!container)return;
@@ -469,6 +508,7 @@ comments: false
     var streak=0,editingNoteId=null,selectedNoteColor='#6C63FF';
     var totalTime=0,sessionStart=Date.now(),_isActive=true;
     var chatHistory=[];
+    var _dailyTasks=[];
     try{var st=localStorage.getItem('mars_total_time');if(st)totalTime=parseInt(st,10)||0;}catch(e){}
     try{chatHistory=JSON.parse(localStorage.getItem(CHAT_KEY)||'[]');}catch(e){chatHistory=[];}
 
@@ -503,6 +543,18 @@ comments: false
     }
 
     // ============================================================
+    // FIND NEXT ACHIEVEMENT
+    // ============================================================
+    function getNextAchievement(){
+        var earnedIds={};
+        achievements.forEach(function(a){earnedIds[a.achievement_id]=true;});
+        for(var i=0;i<ALL_ACHIEVEMENTS.length;i++){
+            if(!earnedIds[ALL_ACHIEVEMENTS[i].id])return ALL_ACHIEVEMENTS[i];
+        }
+        return null;
+    }
+
+    // ============================================================
     // RENDER
     // ============================================================
     function render(){
@@ -522,11 +574,12 @@ comments: false
         var md=getMartianDate();
         var xpLeft=Math.max(lvl.next-(currentProfile.experience||0),0);
         var mod=isModerator();
+        var nextAch=getNextAchievement();
 
         var html='';
 
         // HERO
-        html+='<div class="pf-hero pf-fade"><div class="pf-hero-content">';
+        html+='<div class="pf-hero pf-fade"><div class="pf-hero-stars" id="pf-hero-stars"></div><div class="pf-hero-content">';
         html+='<div class="pf-avatar-wrap"><div class="pf-avatar-ring"></div><img src="'+avatar+'" alt="" class="pf-avatar" loading="eager"><div class="pf-level-badge">'+lvl.title+' · ур. '+lvl.level+'</div></div>';
         html+='<div class="pf-info">';
         html+='<h1 class="pf-name">'+escapeHtml(displayName);
@@ -543,6 +596,57 @@ comments: false
         html+='<div class="pf-progress"><div class="pf-progress-bar" style="width:'+lvl.percent+'%;"></div></div>';
         html+='<div class="pf-progress-text">До уровня '+(lvl.level+1)+': '+xpLeft+' XP</div>';
         html+='</div></div></div>';
+
+        // МОЯ СТРАНИЧКА
+        html+='<div class="pf-mypage">';
+        html+='<div class="pf-mypage-header">';
+        html+='<div class="pf-mypage-icon">🗂️</div>';
+        html+='<div class="pf-mypage-titles">';
+        html+='<h2 class="pf-mypage-title">Моя страничка</h2>';
+        html+='<p class="pf-mypage-sub">Быстрый обзор твоей активности</p>';
+        html+='</div></div>';
+
+        html+='<div class="pf-mypage-grid">';
+        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'achievements\')">';
+        html+='<div class="pf-mypage-tile-label">Достижения</div>';
+        html+='<div class="pf-mypage-tile-value">'+achievements.length+'/'+ALL_ACHIEVEMENTS.length+'</div>';
+        html+='<div class="pf-mypage-tile-sub">'+Math.round(achievements.length/ALL_ACHIEVEMENTS.length*100)+'% собрано</div>';
+        html+='</div>';
+        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'notes\')">';
+        html+='<div class="pf-mypage-tile-label">Заметки</div>';
+        html+='<div class="pf-mypage-tile-value">'+notes.length+'</div>';
+        html+='<div class="pf-mypage-tile-sub">личных записей</div>';
+        html+='</div>';
+        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'friends\')">';
+        html+='<div class="pf-mypage-tile-label">Друзья</div>';
+        html+='<div class="pf-mypage-tile-value">'+friends.length+'</div>';
+        html+='<div class="pf-mypage-tile-sub">в кругу общения</div>';
+        html+='</div>';
+        html+='<div class="pf-mypage-tile" onclick="pfSetTab(\'activity\')">';
+        html+='<div class="pf-mypage-tile-label">Дней на сайте</div>';
+        html+='<div class="pf-mypage-tile-value">'+Object.keys(getActivity()).length+'</div>';
+        html+='<div class="pf-mypage-tile-sub">активных</div>';
+        html+='</div>';
+        html+='</div>';
+
+        html+='<div class="pf-mypage-actions">';
+        html+='<a href="/achievements/" class="pf-mypage-action"><span class="pf-mypage-action-icon">🏅</span>Все награды</a>';
+        html+='<a href="/bookmarks/" class="pf-mypage-action"><span class="pf-mypage-action-icon">📚</span>Закладки</a>';
+        html+='<a href="/quests/" class="pf-mypage-action"><span class="pf-mypage-action-icon">🗺️</span>Квесты</a>';
+        html+='<a href="/scrolls/" class="pf-mypage-action"><span class="pf-mypage-action-icon">📜</span>Свитки Хевсура</a>';
+        html+='</div>';
+        html+='</div>';
+
+        // БЛИЖАЙШЕЕ ДОСТИЖЕНИЕ
+        if(nextAch){
+            html+='<div class="pf-next-ach">';
+            html+='<div class="pf-next-ach-icon">'+(nextAch.i||'🎯')+'</div>';
+            html+='<div class="pf-next-ach-info">';
+            html+='<div class="pf-next-ach-label">Следующая награда</div>';
+            html+='<div class="pf-next-ach-name">'+escapeHtml(nextAch.n)+'</div>';
+            html+='<div class="pf-next-ach-desc">'+escapeHtml(nextAch.d)+'</div>';
+            html+='</div></div>';
+        }
 
         // QUICK
         html+='<div class="pf-quick-grid pf-fade" style="animation-delay:.05s;">';
@@ -579,14 +683,17 @@ comments: false
             {id:'security',icon:'🔐',label:'Безопасность'},
             {id:'settings',icon:'⚙️',label:'Настройки'}
         );
+        var activeTab=localStorage.getItem(ACTIVE_TAB_KEY)||'overview';
+        if(!tabs.find(function(t){return t.id===activeTab;}))activeTab='overview';
+
         html+='<div class="pf-tabs pf-fade" id="pf-tabs" style="animation-delay:.1s;">';
-        tabs.forEach(function(t,i){
-            html+='<button class="pf-tab '+(t.cls||'')+(i===0?' active':'')+'" data-tab="'+t.id+'">'+t.icon+' '+t.label+(t.count?' <span class="pf-tab-count">'+t.count+'</span>':'')+'</button>';
+        tabs.forEach(function(t){
+            html+='<button class="pf-tab '+(t.cls||'')+(t.id===activeTab?' active':'')+'" data-tab="'+t.id+'">'+t.icon+' '+t.label+(t.count?' <span class="pf-tab-count">'+t.count+'</span>':'')+'</button>';
         });
         html+='</div>';
 
         // OVERVIEW
-        html+='<div class="pf-tab-content active" data-content="overview">';
+        html+='<div class="pf-tab-content'+(activeTab==='overview'?' active':'')+'" data-content="overview">';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> О себе</h3>';
         html+='<p style="margin:0 0 12px 0;color:#555;font-size:.95rem;line-height:1.6;" id="pf-bio">'+escapeHtml(currentProfile.bio||'✍️ Ещё ничего не рассказал о себе.')+'</p>';
         html+='<button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button></div>';
@@ -601,7 +708,7 @@ comments: false
         html+='</div>';
 
         // ACTIVITY
-        html+='<div class="pf-tab-content" data-content="activity">';
+        html+='<div class="pf-tab-content'+(activeTab==='activity'?' active':'')+'" data-content="activity">';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">⏱️</span> Время на сайте</h3>';
         html+='<div class="pf-timer-grid">';
         html+='<div class="pf-timer-card"><div class="pf-timer-value" id="pf-timer-session">0с</div><div class="pf-timer-label">Сессия</div><div class="pf-timer-sub">Сейчас</div></div>';
@@ -619,7 +726,7 @@ comments: false
 
         // MODERATION
         if(mod){
-            html+='<div class="pf-tab-content" data-content="moderation">';
+            html+='<div class="pf-tab-content'+(activeTab==='moderation'?' active':'')+'" data-content="moderation">';
             html+='<div class="pf-mod-panel">';
             html+='<h3 class="pf-card-title"><span class="pf-ct-icon">🛡️</span> Центр модерации</h3>';
             html+='<div class="pf-mod-stats">';
@@ -632,7 +739,7 @@ comments: false
         }
 
         // GUILD
-        html+='<div class="pf-tab-content" data-content="guild">';
+        html+='<div class="pf-tab-content'+(activeTab==='guild'?' active':'')+'" data-content="guild">';
         if(guild){
             html+='<div class="pf-guild-hero" style="--guild-color:'+(guild.color||kingdomColor)+';">';
             html+='<div class="pf-guild-icon">'+(guild.icon||'🏰')+'</div>';
@@ -651,7 +758,7 @@ comments: false
         html+='</div>';
 
         // ACHIEVEMENTS
-        html+='<div class="pf-tab-content" data-content="achievements">';
+        html+='<div class="pf-tab-content'+(activeTab==='achievements'?' active':'')+'" data-content="achievements">';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Достижения ('+achievements.length+'/'+ALL_ACHIEVEMENTS.length+')</h3>';
         html+='<div class="pf-progress" style="background:rgba(108,99,255,.1);height:10px;margin-bottom:16px;"><div class="pf-progress-bar" style="width:'+Math.round(achievements.length/ALL_ACHIEVEMENTS.length*100)+'%;"></div></div>';
         html+='<div class="pf-ach-grid">';
@@ -662,7 +769,7 @@ comments: false
         html+='</div></div></div>';
 
         // NOTES
-        html+='<div class="pf-tab-content" data-content="notes">';
+        html+='<div class="pf-tab-content'+(activeTab==='notes'?' active':'')+'" data-content="notes">';
         html+='<div class="pf-card"><div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;"><h3 class="pf-card-title" style="margin:0;"><span class="pf-ct-icon">📝</span> Заметки ('+notes.length+')</h3><button class="pf-btn" onclick="pfOpenNoteForm()">➕ Новая</button></div>';
         if(notes.length===0){
             html+='<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет заметок.</p>';
@@ -684,7 +791,7 @@ comments: false
         html+='</div></div>';
 
         // FRIENDS
-        html+='<div class="pf-tab-content" data-content="friends">';
+        html+='<div class="pf-tab-content'+(activeTab==='friends'?' active':'')+'" data-content="friends">';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Друзья ('+friends.length+')</h3>';
         if(friends.length===0){
             html+='<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет друзей.</p>';
@@ -699,7 +806,7 @@ comments: false
         html+='</div></div>';
 
         // AI
-        html+='<div class="pf-tab-content" data-content="ai">';
+        html+='<div class="pf-tab-content'+(activeTab==='ai'?' active':'')+'" data-content="ai">';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🤖</span> ИИ-гид</h3>';
         html+='<div class="pf-chat" id="pf-chat-container">';
         if(chatHistory.length===0){
@@ -714,7 +821,7 @@ comments: false
         html+='</div></div>';
 
         // NOTIFS
-        html+='<div class="pf-tab-content" data-content="notifications">';
+        html+='<div class="pf-tab-content'+(activeTab==='notifications'?' active':'')+'" data-content="notifications">';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Уведомления ('+notifications.length+')</h3>';
         if(notifications.length===0){
             html+='<p style="text-align:center;color:#888;padding:40px 20px;">Уведомлений пока нет.</p>';
@@ -727,10 +834,10 @@ comments: false
         html+='</div></div>';
 
         // LEADERBOARD
-        html+='<div class="pf-tab-content" data-content="leaderboard">';
+        html+='<div class="pf-tab-content'+(activeTab==='leaderboard'?' active':'')+'" data-content="leaderboard">';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">🏆</span> Топ-10 по опыту</h3>';
         if(leaders.length===0){
-            html+='<p style="text-align:center;color:#888;padding:40px 20px;">Таблица лидеров недоступна. Возможно, нет данных.</p>';
+            html+='<p style="text-align:center;color:#888;padding:40px 20px;">Таблица лидеров недоступна.</p>';
         }else{
             html+='<table class="pf-leaderboard"><thead><tr><th>#</th><th>Участник</th><th style="text-align:right;">Ур.</th><th style="text-align:right;">XP</th></tr></thead><tbody>';
             leaders.forEach(function(l,i){
@@ -744,7 +851,7 @@ comments: false
         html+='</div></div>';
 
         // SECURITY
-        html+='<div class="pf-tab-content" data-content="security">';
+        html+='<div class="pf-tab-content'+(activeTab==='security'?' active':'')+'" data-content="security">';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email-2FA</h3>';
         html+='<div id="pf-2fa-status" style="margin-bottom:20px;"></div>';
         html+='<div class="pf-toggle"><div><div class="pf-toggle-label">🔐 Email-2FA</div><div class="pf-toggle-desc">Запрашивать код при входе с новых устройств</div></div><div class="pf-switch" id="pf-switch-2fa" onclick="pfToggle2FA()"></div></div>';
@@ -758,7 +865,7 @@ comments: false
         html+='</div></div>';
 
         // SETTINGS
-        html+='<div class="pf-tab-content" data-content="settings">';
+        html+='<div class="pf-tab-content'+(activeTab==='settings'?' active':'')+'" data-content="settings">';
         html+='<div class="pf-card"><h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя</h3>';
         html+='<p style="color:#555;margin:0 0 12px 0;">Текущее: <b id="pf-display-name">'+escapeHtml(displayName)+'</b></p>';
         html+='<button class="pf-btn pf-btn-outline" onclick="pfEditName()">✏️ Изменить</button></div>';
@@ -784,8 +891,17 @@ comments: false
         container.innerHTML=html;
         attachTabsEvents();
 
-        // Подгружаем 2FA при первом входе на вкладку
-        if(document.querySelector('[data-content="security"]'))render2FATab();
+        // Звёзды в hero
+        var starsBox=document.getElementById('pf-hero-stars');
+        if(starsBox){
+            for(var i=0;i<20;i++){
+                var s=document.createElement('div');
+                s.style.cssText='position:absolute;width:'+(1+Math.random()*2)+'px;height:'+(1+Math.random()*2)+'px;background:#fff;border-radius:50%;left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;opacity:.4;animation:pfSparkle '+(2+Math.random()*3)+'s ease-in-out infinite;animation-delay:'+(Math.random()*3)+'s;';
+                starsBox.appendChild(s);
+            }
+        }
+
+        if(activeTab==='security')render2FATab();
     }
 
     function renderHeatmap(){
@@ -847,6 +963,7 @@ comments: false
     }
 
     window.pfSetTab=function(tab){
+        localStorage.setItem(ACTIVE_TAB_KEY,tab);
         document.querySelectorAll('.pf-tab').forEach(function(t){
             var on=t.dataset.tab===tab;
             t.classList.toggle('active',on);
@@ -1143,7 +1260,7 @@ comments: false
         writeCache(PROFILE_CACHE_KEY,{user:session.user,profile:currentProfile});
         render();
 
-        // Фоном остальное
+        // Фоном остальное — параллельно
         try{
             var results=await Promise.all([
                 apiGet('user_achievements?user_id=eq.'+session.user.id+'&select=achievement_id,earned_at',session.access_token).catch(function(){return [];}),
@@ -1163,7 +1280,6 @@ comments: false
             var guildMember=results[5]&&results[5][0];
             var friendsRes=results[6]||[];
 
-            // Achievements metadata
             if(uaRes.length){
                 try{
                     var ids=uaRes.map(function(x){return x.achievement_id;}).filter(Boolean);
@@ -1178,7 +1294,6 @@ comments: false
                 }catch(e){}
             }
 
-            // Guild
             if(guildMember&&guildMember.guild_id){
                 try{
                     var gr=await apiGet('guilds?id=eq.'+guildMember.guild_id+'&select=*',session.access_token);
@@ -1195,7 +1310,6 @@ comments: false
                 }catch(e){}
             }
 
-            // Friends
             if(friendsRes.length){
                 try{
                     var fids={};
@@ -1213,20 +1327,17 @@ comments: false
                 }catch(e){}
             }
 
-            // Moderation stats
             if(isModerator()){
                 try{
                     var pending=await apiGet('list_submissions?status=eq.pending&select=id&limit=1',session.access_token);
                     var hidden=await apiGet('comments?is_hidden=eq.true&select=id&limit=1',session.access_token);
                     var banned=await apiGet('profiles?is_banned=eq.true&select=user_id&limit=1',session.access_token);
-                    // Точные числа через count — Supabase REST через header
                     modStats.pendingSubmissions=(pending||[]).length||0;
                     modStats.hiddenComments=(hidden||[]).length||0;
                     modStats.bannedUsers=(banned||[]).length||0;
                 }catch(e){}
             }
 
-            // Плавное обновление
             render();
         }catch(e){console.warn('[profile] bg load error:',e.message);}
     }
@@ -1244,6 +1355,7 @@ comments: false
     function renderSkeleton(){
         container.innerHTML=
             '<div class="pf-skel" style="height:220px;"></div>'+
+            '<div class="pf-skel" style="height:180px;"></div>'+
             '<div class="pf-quick-grid" style="margin-bottom:24px;">'+
             '<div class="pf-skel" style="height:70px;"></div>'.repeat(4)+
             '</div>'+

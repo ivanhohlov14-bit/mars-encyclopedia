@@ -240,7 +240,7 @@ html body.mars-stars-on .wiki-footer-links a:hover {
         document.head.appendChild(s);
     }
 
-    function createFooter() {
+      function createFooter() {
         var f = document.createElement('div');
         f.className = 'wiki-footer';
         f.id = 'wiki-footer-block';
@@ -248,15 +248,12 @@ html body.mars-stars-on .wiki-footer-links a:hover {
             '<p><strong>Авторские материалы</strong> «Марсианской энциклопедии» доступны по лицензии ' +
             '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ru" target="_blank">' +
             'Creative Commons «Attribution-NonCommercial-NoDerivs» (BY-NC-ND) 4.0</a>. ' +
-            'Отдельные иллюстративные материалы могут иметь собственные условия использования — ' +
+            'Отдельные элементы могут иметь собственные условия использования — ' +
             'подробнее см. <a href="/license/">Условия использования</a>.</p>' +
             '<p class="wiki-footer-brand"><strong>Марсианская энциклопедия</strong> — ' +
             'научно-художественный справочный проект по вселенной цикла романов ' +
             '<em>«Письмо из Красной пыли»</em>. Реконструкция истории Марса ' +
             'в Эпоху Умирания, основанная на научных данных и художественной концепции автора.</p>' +
-            '<p>Иллюстрации созданы с помощью ' +
-            '<a href="https://leonardo.ai" target="_blank" rel="noopener">Leonardo.Ai</a> ' +
-            'и используются в соответствии с условиями сервиса.</p>' +
             '<div class="wiki-footer-links">' +
             '<a href="/privacy/">Политика конфиденциальности</a>' +
             '<a href="/about/">Описание проекта</a>' +

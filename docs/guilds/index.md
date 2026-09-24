@@ -19,14 +19,15 @@ comments: false
 @keyframes gldRise{from{opacity:0;transform:translateY(40px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 @keyframes gldCrown{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-4px) rotate(3deg)}}
 @keyframes gldPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-@keyframes gldCoinSpin{0%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+@keyframes gldMsgIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes gldMsgOut{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
 
 #gld-app{max-width:1100px;margin:0 auto;font-family:'Segoe UI',-apple-system,sans-serif;padding:0 8px 60px}
 #gld-app a{text-decoration:none!important;border-bottom:none!important}
 .gld-fade{animation:gldFade .5s cubic-bezier(.16,1,.3,1) both}
 
-/* HERO — с залом совета */
-.gld-hero{position:relative;background:linear-gradient(135deg,rgba(20,15,35,.85),rgba(45,27,61,.75)),url('/assets/images/guild-hall.jpg') center/cover;border-radius:24px;padding:60px 32px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.5);min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center}
+/* HERO */
+.gld-hero{position:relative;background:linear-gradient(135deg,rgba(20,15,35,.85),rgba(45,27,61,.75)),url('/assets/images/lucid-origin_Ancient_Martian_council_hall_interior_grand_stone_chamber_with_tall_columns_thro-0.jpg') center/cover;border-radius:24px;padding:60px 32px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.5);min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center}
 .gld-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(108,99,255,.15),transparent 70%);pointer-events:none}
 .gld-hero-content{position:relative;z-index:2}
 .gld-hero-crest{display:inline-flex;align-items:center;justify-content:center;width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--gk),var(--gk-l));font-size:3.5rem;margin-bottom:16px;box-shadow:0 20px 50px -10px var(--gk-s),0 0 0 6px rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.2);animation:gldFloat 4s ease-in-out infinite}
@@ -82,10 +83,11 @@ comments: false
 .rank-r1{background:linear-gradient(135deg,#27ae60,#16a085);color:#fff;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);font-size:.65rem}
 .subtitle-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;font-size:.68rem;font-weight:800;background:rgba(108,99,255,.12);color:var(--gk);border:1px solid rgba(108,99,255,.3);cursor:help;margin-left:6px}
 
-/* GUILD PAGE — с тронным залом */
-.gld-page-hero{position:relative;background:linear-gradient(135deg,rgba(20,15,35,.85),rgba(45,27,61,.75)),url('/assets/images/guild-hall.jpg') center/cover;border-radius:24px;padding:40px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.5);min-height:240px}
+/* PAGE HERO */
+.gld-page-hero{position:relative;background:linear-gradient(135deg,rgba(20,15,35,.85),rgba(45,27,61,.75)),url('/assets/images/lucid-origin_Ancient_Martian_council_hall_interior_grand_stone_chamber_with_tall_columns_thro-0.jpg') center/cover;border-radius:24px;padding:40px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.5);min-height:240px}
 .gld-page-content{position:relative;z-index:2;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
-.gld-page-crest{width:120px;height:140px;background:linear-gradient(135deg,var(--guild-color,#6C63FF),rgba(0,0,0,.3));border-radius:8px 8px 50% 50%;display:flex;align-items:center;justify-content:center;font-size:4rem;box-shadow:0 20px 40px -10px rgba(0,0,0,.5),inset 0 0 0 3px rgba(255,255,255,.15);flex-shrink:0;position:relative}
+.gld-page-crest{width:120px;height:140px;background:linear-gradient(135deg,var(--guild-color,#6C63FF),rgba(0,0,0,.3));border-radius:8px 8px 50% 50%;display:flex;align-items:center;justify-content:center;font-size:4rem;box-shadow:0 20px 40px -10px rgba(0,0,0,.5),inset 0 0 0 3px rgba(255,255,255,.15);flex-shrink:0;position:relative;overflow:hidden}
+.gld-page-crest img{width:100%;height:100%;object-fit:cover}
 .gld-page-crest::before{content:'';position:absolute;top:-6px;left:-6px;right:-6px;bottom:-6px;border:2px dashed rgba(255,255,255,.25);border-radius:12px 12px 50% 50%;pointer-events:none}
 .gld-page-info{flex:1;min-width:220px}
 .gld-page-name{font-size:2rem;font-weight:800;margin:0 0 6px 0;text-shadow:0 4px 12px rgba(0,0,0,.6)}
@@ -93,17 +95,16 @@ comments: false
 .gld-page-stats{display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem;opacity:.95}
 .gld-page-stats b{font-size:1.1rem;display:block;color:#fff}
 
-/* MEMBERS LIST — с пиршественным залом */
+/* MEMBERS LIST — «Чертог Славы» */
 .gld-members{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.06);margin-bottom:20px}
-.gld-members-banner{height:160px;background:url('/assets/images/guild-feast.jpg') center/cover;position:relative;overflow:hidden}
-.gld-members-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.6) 100%)}
+.gld-members-banner{height:160px;background:url('/assets/images/lucid-origin_Panoramic_view_of_ancient_Martian_feast_hall_long_wooden_tables_with_candles_sto-0.jpg') center/cover;position:relative;overflow:hidden}
+.gld-members-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.7) 100%)}
 .gld-members-banner-content{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:16px;color:#fff;z-index:2}
-.gld-members-banner-icon{font-size:2rem;margin-right:10px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.8))}
-.gld-members-banner-title{font-size:1rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+.gld-members-banner-title{font-size:1.05rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.8);background:linear-gradient(90deg,#fff,#f5d76e,#fff);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gldShine 4s linear infinite}
 .gld-members-list{padding:16px 20px}
 .gld-member{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(0,0,0,.02);margin-bottom:8px;transition:all .25s;cursor:pointer;border:1.5px solid transparent}
 .gld-member:hover{background:rgba(108,99,255,.06);transform:translateX(4px);border-color:rgba(108,99,255,.2)}
-.gld-member-avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--gk);flex-shrink:0}
+.gld-member-avatar{width:46px !important;height:46px !important;min-width:46px !important;min-height:46px !important;max-width:46px !important;max-height:46px !important;aspect-ratio:1/1 !important;border-radius:50% !important;object-fit:cover !important;border:2px solid var(--gk);flex-shrink:0 !important;display:block !important}
 .gld-member-info{flex:1;min-width:0}
 .gld-member-name{font-weight:800;color:#1a1a1a;font-size:.95rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .gld-member-meta{font-size:.75rem;color:#888;margin-top:2px}
@@ -120,16 +121,31 @@ comments: false
 .gld-chat-header-count{font-size:.78rem;background:rgba(255,255,255,.15);padding:4px 10px;border-radius:12px}
 .gld-chat-body{flex:1;overflow-y:auto;padding:16px 20px;background:linear-gradient(180deg,#fafbfd,#fff);min-height:300px;max-height:420px}
 .gld-chat-empty{text-align:center;color:#999;padding:60px 20px;font-size:.9rem}
-.gld-chat-msg{display:flex;gap:10px;margin-bottom:14px;animation:gldFade .3s ease both}
+.gld-chat-msg{display:flex;gap:10px;margin-bottom:14px}
 .gld-chat-msg.own{flex-direction:row-reverse}
-.gld-chat-msg-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--gk);flex-shrink:0}
+.gld-chat-msg-avatar{
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    min-height:38px !important;
+    max-width:38px !important;
+    max-height:38px !important;
+    aspect-ratio:1/1 !important;
+    object-fit:cover !important;
+    border-radius:50% !important;
+    border:2px solid var(--gk) !important;
+    flex-shrink:0 !important;
+    display:block !important;
+    padding:0 !important;
+    margin:0 !important;
+}
 .gld-chat-msg-content{max-width:75%;min-width:0}
 .gld-chat-msg.own .gld-chat-msg-content{text-align:right}
 .gld-chat-msg-head{font-size:.75rem;color:#888;margin-bottom:4px;display:flex;align-items:center;gap:6px}
 .gld-chat-msg.own .gld-chat-msg-head{justify-content:flex-end}
 .gld-chat-msg-author{font-weight:800;color:#333}
-.gld-chat-msg-text{padding:10px 14px;border-radius:14px;background:#f0f0f5;color:#333;font-size:.88rem;line-height:1.45;word-wrap:break-word;display:inline-block;text-align:left}
-.gld-chat-msg.own .gld-chat-msg-text{background:linear-gradient(135deg,var(--gk),var(--gk-l));color:#fff;border-bottom-right-radius:4px}
+.gld-chat-msg-text{padding:10px 14px;border-radius:14px;background:#f0f0f5;color:#333;font-size:.88rem;line-height:1.45;word-wrap:break-word;display:inline-block;text-align:left;animation:gldMsgIn .3s ease}
+.gld-chat-msg.own .gld-chat-msg-text{background:linear-gradient(135deg,var(--gk),var(--gk-l));color:#fff;border-bottom-right-radius:4px;animation:gldMsgOut .3s ease}
 .gld-chat-msg:not(.own) .gld-chat-msg-text{border-bottom-left-radius:4px}
 .gld-chat-msg-time{font-size:.68rem;color:#bbb;margin-top:4px}
 .gld-chat-input{display:flex;gap:8px;padding:12px 16px;border-top:1px solid rgba(0,0,0,.06);background:#fafafa}
@@ -137,7 +153,6 @@ comments: false
 .gld-chat-input input:focus{border-color:var(--gk);box-shadow:0 0 0 4px var(--gk-s)}
 .gld-chat-input button{padding:12px 22px;background:linear-gradient(135deg,var(--gk),var(--gk-l));color:#fff;border:none;border-radius:24px;cursor:pointer;font-weight:800;font-family:inherit;font-size:.9rem;transition:all .2s}
 .gld-chat-input button:hover{transform:translateY(-2px);box-shadow:0 8px 20px -4px var(--gk-s)}
-.gld-chat-input button:disabled{opacity:.5;cursor:not-allowed;transform:none}
 
 /* TABS */
 .gld-tabs{display:flex;gap:4px;margin-bottom:20px;padding:6px;background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.05);overflow-x:auto}
@@ -153,9 +168,10 @@ comments: false
 .gld-quest-progress-bar{height:100%;background:linear-gradient(90deg,var(--gk),var(--gk-l));transition:width 1s cubic-bezier(.16,1,.3,1)}
 .gld-quest-meta{display:flex;justify-content:space-between;font-size:.75rem;color:#888}
 
-/* MODAL */
+/* MODALS */
 .gld-modal-bg{position:fixed;inset:0;z-index:99999;background:rgba(10,10,26,.75);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;animation:gldFade .3s ease;overflow-y:auto}
 .gld-modal{background:#fff;max-width:520px;width:100%;border-radius:22px;padding:30px 28px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:gldRise .4s cubic-bezier(.16,1,.3,1);max-height:92vh;overflow-y:auto}
+.gld-modal.wide{max-width:760px}
 .gld-modal-title{font-size:1.35rem;font-weight:800;color:#1a1a1a;margin:0 0 20px 0;display:flex;align-items:center;gap:10px}
 .gld-modal-close{position:absolute;top:14px;right:16px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.05);border:none;font-size:1.1rem;cursor:pointer;color:#666;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:inherit}
 .gld-modal-close:hover{background:rgba(0,0,0,.1);transform:rotate(90deg)}
@@ -165,10 +181,10 @@ comments: false
 .gld-field input:focus,.gld-field textarea:focus{border-color:var(--gk);background:#fff;box-shadow:0 0 0 4px var(--gk-s)}
 .gld-field textarea{resize:vertical;min-height:80px}
 .gld-icon-picker,.gld-color-picker{display:flex;gap:8px;flex-wrap:wrap}
-.gld-icon-btn-pick{width:50px;height:50px;border-radius:12px;border:2px solid rgba(0,0,0,.08);background:#fafafa;font-size:1.5rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-family:inherit;overflow:hidden}
+.gld-icon-btn-pick{width:50px;height:50px;border-radius:12px;border:2px solid rgba(0,0,0,.08);background:#fafafa;font-size:1.5rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-family:inherit;overflow:hidden;padding:0}
 .gld-icon-btn-pick:hover{transform:scale(1.08)}
 .gld-icon-btn-pick.selected{border-color:var(--gk);background:rgba(108,99,255,.1);transform:scale(1.1);box-shadow:0 4px 12px -2px var(--gk-s)}
-.gld-icon-btn-pick img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.gld-icon-btn-pick img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block}
 .gld-color-btn{width:40px;height:40px;border-radius:50%;border:3px solid transparent;cursor:pointer;transition:all .2s;padding:0}
 .gld-color-btn.selected{border-color:#333;transform:scale(1.18);box-shadow:0 4px 12px rgba(0,0,0,.25)}
 .gld-modal-actions{display:flex;gap:10px;margin-top:24px}
@@ -182,32 +198,31 @@ comments: false
 .gld-rank-option.selected{border-color:var(--gk);background:rgba(108,99,255,.1)}
 .gld-rank-option:disabled{opacity:.4;cursor:not-allowed}
 
-.gld-empty{text-align:center;padding:60px 20px;background:#fff;border-radius:20px;border:2px dashed rgba(108,99,255,.2)}
-.gld-empty-icon{font-size:4rem;margin-bottom:12px;opacity:.5}
-.gld-empty-title{font-size:1.1rem;font-weight:700;color:#666}
-
-/* Dark */
-html body.mars-stars-on .gld-stat,
-html body.mars-stars-on .gld-card,
-html body.mars-stars-on .gld-filters,
-html body.mars-stars-on .gld-members,
-html body.mars-stars-on .gld-chat,
-html body.mars-stars-on .gld-quest,
-html body.mars-stars-on .gld-tabs{background:#14142a;border-color:rgba(108,99,255,.3);color:#e0e0f0}
-html body.mars-stars-on .gld-card-name,
-html body.mars-stars-on .gld-quest-title,
-html body.mars-stars-on .gld-member-name{color:#e0e0f0}
-html body.mars-stars-on .gld-card-desc,
-html body.mars-stars-on .gld-quest-desc{color:#aaa}
-html body.mars-stars-on .gld-modal{background:#14142a}
-html body.mars-stars-on .gld-modal-title{color:#e0e0f0}
-html body.mars-stars-on .gld-field input,
-html body.mars-stars-on .gld-field textarea{background:#1a1a30;color:#e0e0f0;border-color:rgba(108,99,255,.3)}
-html body.mars-stars-on .gld-chat-body{background:linear-gradient(180deg,#0f0f1e,#14142a)}
-html body.mars-stars-on .gld-chat-msg-text{background:#252550;color:#e0e0f0}
-html body.mars-stars-on .gld-chat-input{background:#1a1a30}
-html body.mars-stars-on .gld-chat-input input{background:#252550;color:#e0e0f0;border-color:rgba(108,99,255,.3)}
-html body.mars-stars-on .gld-icon-btn{background:#252550;border-color:rgba(108,99,255,.3);color:#ccc}
+/* ПРОФИЛЬ УЧАСТНИКА */
+.gld-profile-modal{display:grid;grid-template-columns:200px 1fr;gap:0;overflow:hidden}
+.gld-profile-left{background:linear-gradient(135deg,#1a1a2e,#2d1b3d);padding:24px 16px;color:#fff;display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden}
+.gld-profile-left::before{content:'';position:absolute;inset:0;background:url('/assets/images/lucid-origin_Ancient_Martian_council_hall_interior_grand_stone_chamber_with_tall_columns_thro-0.jpg') center/cover;opacity:.25;pointer-events:none}
+.gld-profile-avatar-wrap{position:relative;z-index:2;margin-bottom:16px}
+.gld-profile-avatar{width:120px;height:120px;border-radius:50%;border:4px solid rgba(255,255,255,.3);object-fit:cover;box-shadow:0 12px 32px rgba(0,0,0,.5);display:block}
+.gld-profile-rank-badge{position:absolute;bottom:-4px;right:-4px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:3px solid #fff;font-size:1.1rem}
+.gld-profile-name{position:relative;z-index:2;font-size:1.15rem;font-weight:800;text-align:center;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.8);word-break:break-word}
+.gld-profile-id{position:relative;z-index:2;font-size:.72rem;opacity:.7;margin-bottom:12px}
+.gld-profile-kingdom{position:relative;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);padding:6px 12px;border-radius:20px;font-size:.78rem;font-weight:700;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2)}
+.gld-profile-kingdom img{width:18px;height:auto;border-radius:2px}
+.gld-profile-right{padding:24px 24px}
+.gld-profile-right h3{margin:0 0 16px 0;font-size:1.1rem;color:#1a1a1a}
+.gld-profile-stat-row{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.05);font-size:.88rem}
+.gld-profile-stat-row:last-child{border-bottom:none}
+.gld-profile-stat-label{color:#666;display:flex;align-items:center;gap:6px}
+.gld-profile-stat-value{font-weight:800;color:#1a1a1a}
+.gld-profile-xp-bar{height:12px;background:rgba(108,99,255,.15);border-radius:12px;overflow:hidden;margin:12px 0 6px;position:relative}
+.gld-profile-xp-fill{height:100%;background:linear-gradient(90deg,#6C63FF,#A29BFE,#6C63FF);background-size:200% auto;border-radius:12px;box-shadow:0 0 12px #6C63FF;animation:gldShine 2s linear infinite}
+.gld-profile-xp-text{text-align:center;font-size:.78rem;color:#666;font-weight:700}
+.gld-profile-actions{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+.gld-profile-btn{flex:1;min-width:120px;padding:12px;border-radius:12px;border:2px solid var(--gk);background:#fff;color:var(--gk);font-weight:800;font-size:.85rem;cursor:pointer;font-family:inherit;transition:all .25s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.gld-profile-btn:hover{background:var(--gk);color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px -4px var(--gk-s)}
+.gld-profile-btn.primary{background:var(--gk);color:#fff}
+.gld-profile-btn.primary:hover{background:var(--gk-l);border-color:var(--gk-l)}
 
 @media (max-width:640px){
     .gld-hero{padding:32px 20px;min-height:220px;border-radius:20px}
@@ -217,8 +232,9 @@ html body.mars-stars-on .gld-icon-btn{background:#252550;border-color:rgba(108,9
     .gld-page-hero{padding:24px 20px}
     .gld-page-crest{width:90px;height:110px;font-size:3rem}
     .gld-page-name{font-size:1.5rem}
+    .gld-profile-modal{grid-template-columns:1fr}
+    .gld-profile-avatar{width:100px;height:100px}
     .gld-chat-msg-content{max-width:85%}
-    .gld-chat-input button{padding:12px 16px}
 }
 @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
@@ -266,6 +282,10 @@ var SUBTITLES=[
 
 var GUILD_ICONS=['🏰','⚔️','🛡️','👑','🔥','🌟','🌊','📜','🧠','🎵','🎨','⚙️','🔭','💎','🏆','🚀','🗡️','🐉','🦅','⚡'];
 var GUILD_COLORS=['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63','#34495e','#e67e22','#f5d76e','#8e44ad'];
+var GUILD_CRESTS=[
+'/assets/images/icon-war.png',
+'/assets/images/lucid-origin_Martian_hall_of_honor_wall_covered_with_golden_shields_and_portraits_of_legendar-0.jpg'
+];
 
 var container=document.getElementById('gld-app');
 var client=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
@@ -288,22 +308,21 @@ function toast(msg,type){
     requestAnimationFrame(function(){t.style.transform='translateX(-50%) translateY(0)';});
     setTimeout(function(){t.style.transform='translateX(-50%) translateY(100px)';setTimeout(function(){t.remove();},400);},2400);
 }
-function avatarFor(name){return 'https://ui-avatars.com/api/?name='+encodeURIComponent(name||'?')+'&background=6C63FF&color=fff&size=64&rounded=true';}
+function avatarFor(name){return 'https://ui-avatars.com/api/?name='+encodeURIComponent(name||'?')+'&background=6C63FF&color=fff&size=128&rounded=true';}
 function fmtTime(iso){var d=new Date(iso);var h=d.getHours(),m=d.getMinutes();return (h<10?'0':'')+h+':'+(m<10?'0':'')+m;}
+
+function getLevel(exp){exp=exp||0;var l=1;while(l<100&&exp>=Math.floor(Math.pow(l+1,1.8)*20))l++;var c=Math.floor(Math.pow(l,1.8)*20);var n=Math.floor(Math.pow(l+1,1.8)*20);var p=n>c?Math.min(((exp-c)/(n-c))*100,100):100;return{level:l,current:c,next:n,percent:p};}
 
 async function loadData(){
     var s=await client.auth.getSession();
     currentUser=s&&s.data&&s.data.session?s.data.session.user:null;
-
     if(currentUser){
         var pr=await client.from('profiles').select('*').eq('user_id',currentUser.id).single();
         profile=pr&&pr.data;
         myKingdom=KINGDOMS[profile&&profile.kingdom]||KINGDOMS['Кимерия'];
     }
-
     var gr=await client.from('guilds').select('*').order('created_at',{ascending:false});
     guilds=(gr&&gr.data)||[];
-
     var mr=await client.from('guild_members').select('guild_id,user_id,rank,subtitle,joined_at');
     membersCount={};membersMap={};
     var allIds={};
@@ -317,7 +336,7 @@ async function loadData(){
     guilds.forEach(function(g){if(g.leader_id)allIds[g.leader_id]=true;});
     var ids=Object.keys(allIds);
     if(ids.length>0){
-        var pRes=await client.from('profiles').select('user_id,username,display_name,avatar_url').in('user_id',ids);
+        var pRes=await client.from('profiles').select('user_id,username,display_name,avatar_url,experience,level,kingdom,bio').in('user_id',ids);
         profilesMap={};
         (pRes&&pRes.data||[]).forEach(function(p){profilesMap[p.user_id]=p;});
     }
@@ -364,36 +383,50 @@ async function leaveGuild(){
 }
 
 async function changeRank(userId,newRank,newSubtitle){
-    if(!currentUser||!myGuildId)return;
-    if(myRank<4){toast('Недостаточно прав','error');return;}
-    if(myRank===4&&newRank>3){toast('R4 может повысить только до R3','error');return;}
-    if(userId===currentUser.id){toast('Себе ранг менять нельзя','error');return;}
+    if(!currentUser||!myGuildId){toast('Не в гильдии','error');return false;}
+    if(myRank<4){toast('Недостаточно прав (нужен R4/R5)','error');return false;}
+    if(myRank===4&&newRank>3){toast('R4 может повысить только до R3','error');return false;}
+    if(userId===currentUser.id){toast('Себе ранг менять нельзя','error');return false;}
+
     var target=(membersMap[myGuildId]||[]).filter(function(m){return m.user_id===userId;})[0];
-    if(!target)return;
-    if(target.rank>=5){toast('Лидера изменить нельзя','error');return;}
+    if(!target){toast('Участник не найден','error');return false;}
+    if(target.rank>=5){toast('Лидера изменить нельзя','error');return false;}
+
     var upd={rank:newRank};
-    if(newSubtitle!==undefined)upd.subtitle=newSubtitle;
-    if(newRank!==4)upd.subtitle=null;
-    var r=await client.from('guild_members').update(upd).eq('guild_id',myGuildId).eq('user_id',userId);
-    if(r.error){toast('Ошибка: '+r.error.message,'error');return;}
-    toast('✅ Ранг обновлён','success');await loadData();render();
+    if(newRank===4&&newSubtitle)upd.subtitle=newSubtitle;
+    else upd.subtitle=null;
+
+    // Пробуем 2 раза
+    for(var attempt=0;attempt<2;attempt++){
+        var r=await client.from('guild_members').update(upd).eq('guild_id',myGuildId).eq('user_id',userId).select();
+        if(!r.error){
+            // Проверяем, что действительно обновилось
+            await new Promise(function(res){setTimeout(res,300);});
+            var check=await client.from('guild_members').select('rank,subtitle').eq('guild_id',myGuildId).eq('user_id',userId).single();
+            if(check&&check.data&&check.data.rank===newRank){
+                toast('✅ Ранг обновлён на '+newRank,'success');
+                await loadData();render();
+                return true;
+            }
+        } else {
+            console.warn('Rank update error:',r.error);
+        }
+        await new Promise(function(res){setTimeout(res,500);});
+    }
+    toast('⚠️ Ранг не сохранился. Проверь RLS-политику','error');
+    return false;
 }
 
-/* ═══ CHAT ═══ */
+/* CHAT */
 async function loadChat(){
     if(!currentGuildId)return;
-    var r=await client.from('guild_chat')
-        .select('id,user_id,message,created_at')
-        .eq('guild_id',currentGuildId)
-        .order('created_at',{ascending:true})
-        .limit(100);
+    var r=await client.from('guild_chat').select('id,user_id,message,created_at').eq('guild_id',currentGuildId).order('created_at',{ascending:true}).limit(100);
     chatMessages=(r&&r.data)||[];
-    // Подгружаем профили
     var ids={};
     chatMessages.forEach(function(m){if(!profilesMap[m.user_id])ids[m.user_id]=true;});
-    var idArr=Object.keys(ids);
-    if(idArr.length){
-        var p=await client.from('profiles').select('user_id,username,display_name,avatar_url').in('user_id',idArr);
+    var arr=Object.keys(ids);
+    if(arr.length){
+        var p=await client.from('profiles').select('user_id,username,display_name,avatar_url').in('user_id',arr);
         (p&&p.data||[]).forEach(function(x){profilesMap[x.user_id]=x;});
     }
 }
@@ -407,15 +440,14 @@ function renderChatBody(){
         var isOwn=m.user_id===currentUser.id;
         var mem=(membersMap[currentGuildId]||[]).filter(function(x){return x.user_id===m.user_id;})[0];
         var rank=mem?RANKS[mem.rank]||RANKS[1]:RANKS[1];
-        var rankBadge='<span class="rank-badge '+rank.class+'" style="width:20px;height:20px;font-size:.62rem;">'+(mem&&mem.rank===5?'👑':(mem&&mem.rank===4?'🛡️':'R'+(mem?mem.rank:1)))+'</span>';
+        var rb='<span class="rank-badge '+rank.class+'" style="width:20px;height:20px;font-size:.62rem;">'+(mem&&mem.rank===5?'👑':(mem&&mem.rank===4?'🛡️':'R'+(mem?mem.rank:1)))+'</span>';
         return '<div class="gld-chat-msg'+(isOwn?' own':'')+'">'+
             '<img src="'+escAttr(av)+'" class="gld-chat-msg-avatar" onerror="this.onerror=null;this.src=\''+avatarFor(name)+'\';">'+
             '<div class="gld-chat-msg-content">'+
-                '<div class="gld-chat-msg-head">'+rankBadge+'<span class="gld-chat-msg-author">'+esc(name)+'</span></div>'+
+                '<div class="gld-chat-msg-head">'+rb+'<span class="gld-chat-msg-author" onclick="gldShowProfile(\''+escAttr(m.user_id)+'\')" style="cursor:pointer;">'+esc(name)+'</span></div>'+
                 '<div class="gld-chat-msg-text">'+esc(m.message).replace(/\n/g,'<br>')+'</div>'+
                 '<div class="gld-chat-msg-time">'+fmtTime(m.created_at)+'</div>'+
-            '</div>'+
-        '</div>';
+            '</div></div>';
     }).join('');
 }
 
@@ -430,8 +462,7 @@ async function sendChat(){
     input.disabled=false;
     if(r.error){toast('Ошибка: '+r.error.message,'error');return;}
     input.value='';
-    await loadChat();
-    updateChatUI();
+    await loadChat();updateChatUI();
 }
 
 function updateChatUI(){
@@ -456,21 +487,16 @@ function startChatPolling(){
     },4000);
 }
 
-/* ═══ RENDER LIST ═══ */
+/* LIST */
 function renderList(){
     document.documentElement.style.setProperty('--gk',myKingdom.color);
     document.documentElement.style.setProperty('--gk-l',myKingdom.light);
     document.documentElement.style.setProperty('--gk-s',myKingdom.color+'40');
-
     var total=Object.values(membersCount).reduce(function(a,b){return a+b;},0);
     var filtered=guilds.slice();
     if(activeFilter==='my'&&myGuildId)filtered=filtered.filter(function(g){return g.id===myGuildId;});
-    if(searchQuery){
-        var q=searchQuery.toLowerCase();
-        filtered=filtered.filter(function(g){return (g.name||'').toLowerCase().indexOf(q)!==-1||(g.description||'').toLowerCase().indexOf(q)!==-1;});
-    }
+    if(searchQuery){var q=searchQuery.toLowerCase();filtered=filtered.filter(function(g){return (g.name||'').toLowerCase().indexOf(q)!==-1||(g.description||'').toLowerCase().indexOf(q)!==-1;});}
     filtered.sort(function(a,b){return (membersCount[b.id]||0)-(membersCount[a.id]||0);});
-
     container.innerHTML=
     '<div class="gld-hero gld-fade"><div class="gld-hero-content">'+
         '<div class="gld-hero-crest">🏰</div>'+
@@ -480,8 +506,7 @@ function renderList(){
             (currentUser&&!myGuildId?'<button class="gld-hero-btn primary" onclick="gldCreate()">➕ Создать гильдию</button>':'')+
             (currentUser&&myGuildId?'<button class="gld-hero-btn primary" onclick="gldOpenMine()">🏰 Моя гильдия</button>':'')+
             (!currentUser?'<a href="/login/" class="gld-hero-btn primary">🔐 Войти</a>':'')+
-        '</div>'+
-    '</div></div>'+
+        '</div></div></div>'+
     '<div class="gld-stats-grid gld-fade" style="animation-delay:.1s;">'+
         '<div class="gld-stat"><div class="gld-stat-icon">🏰</div><div class="gld-stat-value">'+guilds.length+'</div><div class="gld-stat-label">Гильдий</div></div>'+
         '<div class="gld-stat"><div class="gld-stat-icon">👥</div><div class="gld-stat-value">'+total+'</div><div class="gld-stat-label">Участников</div></div>'+
@@ -494,7 +519,9 @@ function renderList(){
         '<input class="gld-search" type="text" placeholder="🔍 Поиск..." value="'+escAttr(searchQuery)+'" oninput="gldSearch(this.value)">'+
     '</div>'+
     (filtered.length===0?
-        '<div class="gld-empty"><div class="gld-empty-icon">🏰</div><div class="gld-empty-title">'+(searchQuery?'Ничего не найдено':'Гильдий пока нет')+'</div>'+
+        '<div class="gld-empty" style="text-align:center;padding:60px 20px;background:#fff;border-radius:20px;border:2px dashed rgba(108,99,255,.2);">'+
+        '<div style="font-size:4rem;margin-bottom:12px;opacity:.5;">🏰</div>'+
+        '<div style="font-size:1.1rem;font-weight:700;color:#666;">'+(searchQuery?'Ничего не найдено':'Гильдий пока нет')+'</div>'+
         (currentUser&&!myGuildId&&!searchQuery?'<button class="gld-btn primary" style="max-width:200px;margin:20px auto 0;" onclick="gldCreate()">➕ Создать</button>':'')+'</div>'
         :
         '<div class="gld-grid">'+filtered.map(renderCard).join('')+'</div>'
@@ -524,7 +551,7 @@ function renderCard(g,i){
         '<div class="gld-card-actions">'+action+'</div></div>';
 }
 
-/* ═══ RENDER DETAIL ═══ */
+/* DETAIL */
 async function renderGuildDetail(){
     var g=guilds.filter(function(x){return x.id===currentGuildId;})[0];
     if(!g){currentView='list';render();return;}
@@ -532,7 +559,6 @@ async function renderGuildDetail(){
     members.sort(function(a,b){return (b.rank||1)-(a.rank||1);});
     var isLeader=g.leader_id===currentUser.id;
     var canManage=myRank>=4||isLeader;
-
     if(currentTab==='chat')await loadChat();
     var qr=await client.from('guild_quests').select('*').eq('guild_id',g.id).eq('status','active').order('created_at',{ascending:false});
     var quests=(qr&&qr.data)||[];
@@ -547,8 +573,7 @@ async function renderGuildDetail(){
     if(currentTab==='members'){
         content='<div class="gld-members gld-fade">'+
             '<div class="gld-members-banner"><div class="gld-members-banner-content">'+
-            '<div class="gld-members-banner-icon">🍖</div>'+
-            '<div class="gld-members-banner-title">Пиршественный зал</div>'+
+            '<div class="gld-members-banner-title">Чертог Славы</div>'+
             '</div></div>'+
             '<div class="gld-members-list">'+members.map(function(m){return renderMember(m,g);}).join('')+'</div></div>';
     } else if(currentTab==='chat'){
@@ -562,8 +587,7 @@ async function renderGuildDetail(){
             '<div class="gld-chat-input">'+
                 '<input type="text" id="gld-chat-input" placeholder="Написать сообщение..." maxlength="1000" onkeypress="if(event.key===\'Enter\')gldSendChat()">'+
                 '<button onclick="gldSendChat()">Отправить</button>'+
-            '</div>'+
-        '</div>';
+            '</div></div>';
     } else if(currentTab==='quests'){
         content='<div class="gld-members gld-fade" style="padding:20px;">'+
             '<h3 style="margin:0 0 16px 0;font-size:1.2rem;font-weight:800;color:#1a1a1a;">🎯 Задания гильдии</h3>'+
@@ -572,18 +596,19 @@ async function renderGuildDetail(){
         '</div>';
     }
 
+    var crestHtml=g.icon&&g.icon.indexOf('/')===0?'<img src="'+escAttr(g.icon)+'" alt="">':(g.icon||'🏰');
     container.innerHTML=
     '<button class="gld-btn secondary" onclick="gldBack()" style="max-width:180px;margin-bottom:16px;">← К списку</button>'+
     '<div class="gld-page-hero gld-fade" style="--guild-color:'+(g.color||'#6C63FF')+';">'+
         '<div class="gld-page-content">'+
-            '<div class="gld-page-crest">'+(g.icon||'🏰')+'</div>'+
+            '<div class="gld-page-crest">'+crestHtml+'</div>'+
             '<div class="gld-page-info">'+
                 '<h1 class="gld-page-name">'+esc(g.name)+'</h1>'+
                 (g.motto?'<p class="gld-page-motto">«'+esc(g.motto)+'»</p>':'')+
                 '<div class="gld-page-stats">'+
                     '<div><b>'+(membersCount[g.id]||0)+'</b>Участников</div>'+
                     '<div><b>'+(g.rating||0)+'</b>Рейтинг</div>'+
-                    '<div><b style="display:inline-flex;align-items:center;gap:4px;"><img src="/assets/images/guild-coin.jpg" style="width:22px;height:22px;border-radius:50%;vertical-align:middle;">'+(g.bank||0)+'</b>Казна</div>'+
+                    '<div><b style="display:inline-flex;align-items:center;gap:4px;"><img src="/assets/images/lucid-origin_Golden_coin_with_Mars_planet_engraving_ancient_runes_around_edge_worn_patina_shi-0.jpg" style="width:22px;height:22px;border-radius:50%;vertical-align:middle;">'+(g.bank||0)+'</b>Казна</div>'+
                 '</div>'+
             '</div>'+
         '</div>'+
@@ -593,9 +618,7 @@ async function renderGuildDetail(){
         (canManage?'<button class="gld-btn primary" style="max-width:220px;" onclick="gldWriteMessage()">✉️ Письмо всем</button>':'')+
         (!isLeader?'<button class="gld-btn secondary" style="max-width:180px;" onclick="gldLeave()">🚪 Выйти</button>':'')+
         (isLeader?'<button class="gld-btn danger" style="max-width:180px;" onclick="gldDelete()">🗑️ Удалить</button>':'')+
-    '</div>'+
-    tabs+
-    content;
+    '</div>'+tabs+content;
 }
 
 function renderMember(m,g){
@@ -607,13 +630,13 @@ function renderMember(m,g){
     var canManage=(myRank>=4||g.leader_id===currentUser.id)&&m.rank<5&&!isMe;
     var sub=null;
     if(m.rank===4&&m.subtitle){sub=SUBTITLES.filter(function(s){return s.id===m.subtitle;})[0];}
-    return '<div class="gld-member">'+
+    return '<div class="gld-member" onclick="gldShowProfile(\''+escAttr(m.user_id)+'\')">'+
         '<div class="rank-badge '+rank.class+'" title="'+rank.label+'">'+(m.rank===5?'👑':(m.rank===4?'🛡️':'R'+m.rank))+'</div>'+
         '<img src="'+escAttr(av)+'" class="gld-member-avatar" onerror="this.onerror=null;this.src=\''+avatarFor(name)+'\';">'+
         '<div class="gld-member-info"><div class="gld-member-name">'+esc(name)+(isMe?' (вы)':'')+
             (sub?'<span class="subtitle-badge" title="'+sub.bonus+'">'+sub.icon+' '+sub.name+'</span>':'')+
         '</div><div class="gld-member-meta">'+rank.icon+' '+rank.label+'</div></div>'+
-        (canManage?'<div class="gld-member-actions"><button class="gld-icon-btn" onclick="gldEditMember(\''+escAttr(m.user_id)+'\','+m.rank+',\''+escAttr(m.subtitle||'')+'\')" title="Изменить">⚙️</button></div>':'')+
+        (canManage?'<div class="gld-member-actions" onclick="event.stopPropagation();"><button class="gld-icon-btn" onclick="gldEditMember(\''+escAttr(m.user_id)+'\','+m.rank+',\''+escAttr(m.subtitle||'')+'\')" title="Изменить">⚙️</button></div>':'')+
     '</div>';
 }
 
@@ -625,7 +648,93 @@ function renderQuest(q){
         '<div class="gld-quest-meta"><span>'+q.progress+' / '+q.goal+'</span><span>+'+(q.reward_xp||0)+' XP · +'+(q.reward_bank||0)+' 🪙</span></div></div>';
 }
 
-/* ═══ MODALS ═══ */
+/* ═══ ПРОФИЛЬ УЧАСТНИКА (Vikings-style) ═══ */
+async function showMemberProfile(userId){
+    var p=profilesMap[userId];
+    // Если профиль не загружен - подгружаем
+    if(!p){
+        var r=await client.from('profiles').select('user_id,username,display_name,avatar_url,experience,level,kingdom,bio').eq('user_id',userId).single();
+        if(r&&r.data){p=r.data;profilesMap[userId]=p;}
+    }
+    if(!p){toast('Профиль недоступен','error');return;}
+
+    var name=p.display_name||p.username||'Аноним';
+    var av=p.avatar_url||avatarFor(name);
+    var level=getLevel(p.experience||0);
+    var kingdomName=p.kingdom||'Неизвестно';
+    var kingdom=KINGDOMS[kingdomName];
+    var flag=kingdom?kingdom.flag:null;
+    var isMe=userId===currentUser.id;
+
+    // Мемберство в этой гильдии
+    var mem=(membersMap[currentGuildId]||[]).filter(function(x){return x.user_id===userId;})[0];
+    var rankInfo=mem?RANKS[mem.rank]||RANKS[1]:RANKS[1];
+    var sub=null;
+    if(mem&&mem.rank===4&&mem.subtitle){sub=SUBTITLES.filter(function(s){return s.id===mem.subtitle;})[0];}
+
+    // Друзья?
+    var isFriend=false,friendshipId=null;
+    try{
+        var fr=await client.from('friendships').select('id,status').or('and(user_id.eq.'+currentUser.id+',friend_id.eq.'+userId+'),and(user_id.eq.'+userId+',friend_id.eq.'+currentUser.id+')').maybeSingle();
+        if(fr&&fr.data){isFriend=fr.data.status==='accepted';friendshipId=fr.data.id;}
+    }catch(e){}
+
+    var o=document.createElement('div');o.className='gld-modal-bg';
+    o.innerHTML='<div class="gld-modal wide" style="padding:0;">'+
+        '<button class="gld-modal-close" onclick="this.closest(\'.gld-modal-bg\').remove()" style="z-index:3;">✕</button>'+
+        '<div class="gld-profile-modal">'+
+            '<div class="gld-profile-left">'+
+                '<div class="gld-profile-avatar-wrap">'+
+                    '<img src="'+escAttr(av)+'" class="gld-profile-avatar" onerror="this.onerror=null;this.src=\''+avatarFor(name)+'\';">'+
+                    '<div class="rank-badge '+rankInfo.class+' gld-profile-rank-badge">'+(mem&&mem.rank===5?'👑':(mem&&mem.rank===4?'🛡️':'R'+(mem?mem.rank:1)))+'</div>'+
+                '</div>'+
+                '<div class="gld-profile-name">'+esc(name)+'</div>'+
+                '<div class="gld-profile-id">ID: '+esc(userId.slice(0,8))+'</div>'+
+                (flag?'<div class="gld-profile-kingdom"><img src="'+escAttr(flag)+'" alt=""> '+esc(kingdomName)+'</div>':'<div class="gld-profile-kingdom">🏰 Без королевства</div>')+
+            '</div>'+
+            '<div class="gld-profile-right">'+
+                '<h3>'+rankInfo.icon+' '+rankInfo.label+(sub?' · '+sub.icon+' '+sub.name:'')+'</h3>'+
+                '<div class="gld-profile-stat-row"><span class="gld-profile-stat-label">⭐ Уровень</span><span class="gld-profile-stat-value">'+level.level+'</span></div>'+
+                '<div class="gld-profile-stat-row"><span class="gld-profile-stat-label">💎 Опыт</span><span class="gld-profile-stat-value">'+(p.experience||0)+'</span></div>'+
+                '<div class="gld-profile-xp-bar"><div class="gld-profile-xp-fill" style="width:'+level.percent+'%"></div></div>'+
+                '<div class="gld-profile-xp-text">До уровня '+(level.level+1)+': '+(level.next-(p.experience||0))+' XP</div>'+
+                '<div class="gld-profile-stat-row" style="margin-top:14px;"><span class="gld-profile-stat-label">🏰 Гильдия</span><span class="gld-profile-stat-value">'+(myGuildId?'В вашей гильдии':'Другая')+'</span></div>'+
+                '<div class="gld-profile-stat-row"><span class="gld-profile-stat-label">💬 Сообщений</span><span class="gld-profile-stat-value">—</span></div>'+
+                (p.bio?'<div class="gld-profile-stat-row"><span class="gld-profile-stat-label">📝 О себе</span></div><p style="font-size:.85rem;color:#555;line-height:1.5;margin:6px 0 0;">'+esc(p.bio)+'</p>':'')+
+                '<div class="gld-profile-actions">'+
+                    (!isMe?(isFriend?'<button class="gld-profile-btn" disabled>✓ В друзьях</button>':'<button class="gld-profile-btn primary" onclick="gldAddFriend(\''+escAttr(userId)+'\')">➕ В друзья</button>'):'')+
+                    (!isMe?'<button class="gld-profile-btn" onclick="gldSendPrivate(\''+escAttr(userId)+'\')">💬 Написать</button>':'')+
+                    (myRank>=4&&!isMe&&(!mem)?'<button class="gld-profile-btn primary" onclick="gldInviteToGuild(\''+escAttr(userId)+'\')">🏰 Пригласить в гильдию</button>':'')+
+                '</div>'+
+            '</div>'+
+        '</div>'+
+    '</div>';
+    document.body.appendChild(o);
+}
+
+window.gldAddFriend=async function(userId){
+    try{
+        var r=await client.from('friendships').insert([{user_id:currentUser.id,friend_id:userId,status:'pending'}]);
+        if(r.error)throw r.error;
+        toast('✅ Заявка отправлена!','success');
+        document.querySelector('.gld-modal-bg').remove();
+    }catch(e){toast('Ошибка: '+e.message,'error');}
+};
+
+window.gldSendPrivate=function(userId){
+    toast('Личные сообщения — в разработке','info');
+};
+
+window.gldInviteToGuild=async function(userId){
+    try{
+        var r=await client.from('guild_invites').insert([{guild_id:currentGuildId,inviter_id:currentUser.id,invitee_id:userId,status:'pending'}]);
+        if(r.error)throw r.error;
+        toast('✉️ Приглашение отправлено!','success');
+        document.querySelector('.gld-modal-bg').remove();
+    }catch(e){toast('Ошибка: '+e.message,'error');}
+};
+
+/* MODALS */
 function openCreateModal(){
     if(!currentUser){toast('Войдите','warning');return;}
     if(myGuildId){toast('Вы уже в гильдии','warning');return;}
@@ -638,12 +747,13 @@ function openCreateModal(){
         '<div class="gld-field"><label>Описание</label><textarea id="g-desc" maxlength="300" placeholder="О чём ваша гильдия?"></textarea></div>'+
         '<div class="gld-field"><label>Иконка</label><div class="gld-icon-picker" id="g-icons">'+
             GUILD_ICONS.map(function(ic,i){return '<button type="button" class="gld-icon-btn-pick'+(i===0?' selected':'')+'" data-icon="'+ic+'">'+ic+'</button>';}).join('')+
+            GUILD_CRESTS.map(function(u){return '<button type="button" class="gld-icon-btn-pick" data-icon="'+u+'"><img src="'+u+'" alt=""></button>';}).join('')+
         '</div></div>'+
         '<div class="gld-field"><label>Цвет</label><div class="gld-color-picker">'+
             GUILD_COLORS.map(function(c,i){return '<button type="button" class="gld-color-btn'+(i===0?' selected':'')+'" data-color="'+c+'" style="background:'+c+';"></button>';}).join('')+
         '</div></div>'+
         '<div class="gld-field"><label>Флаг</label><div class="gld-icon-picker" id="g-flags">'+
-            Object.keys(KINGDOMS).map(function(k,i){return '<button type="button" class="gld-icon-btn-pick'+(i===0?' selected':'')+'" data-flag="'+k+'" style="padding:4px;" title="'+k+'"><img src="'+KINGDOMS[k].flag+'"></button>';}).join('')+
+            Object.keys(KINGDOMS).map(function(k,i){return '<button type="button" class="gld-icon-btn-pick'+(i===0?' selected':'')+'" data-flag="'+k+'" style="padding:4px;" title="'+k+'"><img src="'+KINGDOMS[k].flag+'" alt=""></button>';}).join('')+
         '</div></div>'+
         '<div class="gld-modal-actions"><button class="gld-btn secondary" onclick="this.closest(\'.gld-modal-bg\').remove()">Отмена</button><button class="gld-btn primary" id="g-create">🏰 Создать</button></div>'+
     '</div>';
@@ -652,14 +762,7 @@ function openCreateModal(){
     o.querySelectorAll('.gld-color-btn').forEach(function(b){b.onclick=function(){o.querySelectorAll('.gld-color-btn').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');};});
     o.querySelectorAll('.gld-icon-btn-pick[data-flag]').forEach(function(b){b.onclick=function(){o.querySelectorAll('.gld-icon-btn-pick[data-flag]').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');};});
     o.querySelector('#g-create').onclick=async function(){
-        await createGuild(
-            o.querySelector('#g-name').value.trim(),
-            o.querySelector('#g-desc').value.trim(),
-            o.querySelector('.gld-icon-btn-pick[data-icon].selected').dataset.icon,
-            o.querySelector('.gld-color-btn.selected').dataset.color,
-            KINGDOMS[o.querySelector('.gld-icon-btn-pick[data-flag].selected').dataset.flag].flag,
-            o.querySelector('#g-motto').value.trim()
-        );
+        await createGuild(o.querySelector('#g-name').value.trim(),o.querySelector('#g-desc').value.trim(),o.querySelector('.gld-icon-btn-pick[data-icon].selected').dataset.icon,o.querySelector('.gld-color-btn.selected').dataset.color,KINGDOMS[o.querySelector('.gld-icon-btn-pick[data-flag].selected').dataset.flag].flag,o.querySelector('#g-motto').value.trim());
         o.remove();
     };
 }
@@ -686,16 +789,17 @@ function openEditMember(userId,rank,subtitle){
     document.body.appendChild(o);
     var selRank=rank,selSub=subtitle||null;
     o.querySelectorAll('.gld-rank-option:not([disabled])').forEach(function(b){
-        b.onclick=function(){o.querySelectorAll('.gld-rank-option').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');
-            selRank=parseInt(b.dataset.rank,10);o.querySelector('#sub-wrap').style.display=selRank===4?'':'none';};
+        b.onclick=function(){o.querySelectorAll('.gld-rank-option').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');selRank=parseInt(b.dataset.rank,10);o.querySelector('#sub-wrap').style.display=selRank===4?'':'none';};
     });
     o.querySelectorAll('#subs .gld-icon-btn-pick').forEach(function(b){
         b.onclick=function(){o.querySelectorAll('#subs .gld-icon-btn-pick').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');selSub=b.dataset.sub;};
     });
-    o.querySelector('#save').onclick=async function(){await changeRank(userId,selRank,selRank===4?selSub:null);o.remove();};
+    o.querySelector('#save').onclick=async function(){
+        var ok=await changeRank(userId,selRank,selRank===4?selSub:null);
+        if(ok)o.remove();
+    };
 }
 
-/* ═══ EXPORTS ═══ */
 window.gldCreate=openCreateModal;
 window.gldJoin=joinGuild;
 window.gldLeave=leaveGuild;
@@ -705,6 +809,7 @@ window.gldOpenMine=function(){if(myGuildId)window.gldOpenGuild(myGuildId);};
 window.gldOpenGuild=function(id){currentGuildId=id;currentView='detail';currentTab='members';render();};
 window.gldTab=function(t){currentTab=t;render();};
 window.gldEditMember=openEditMember;
+window.gldShowProfile=showMemberProfile;
 window.gldSendChat=sendChat;
 window.gldEditGuild=function(){toast('В разработке','info');};
 window.gldWriteMessage=function(){toast('В разработке','info');};

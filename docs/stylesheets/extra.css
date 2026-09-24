@@ -1,5 +1,6 @@
 /* ============================================================
-   МАРСИАНСКАЯ ЭНЦИКЛОПЕДИЯ — VIP STYLES v2
+   МАРСИАНСКАЯ ЭНЦИКЛОПЕДИЯ — VIP STYLES v3
+   
    Структура:
      1. Переменные
      2. Базовые настройки
@@ -10,16 +11,19 @@
      7. Wiki layout
      8. Категории и плашки
      9. Авторизация
-     10. Тёмная тема (Звёздное небо)
-     11. Мобильная адаптация
-     12. Доступность и reduced-motion
+    10. Кнопка сворачивания (ПК)
+    11. Тёмная тема (единый блок)
+    12. Мобильная адаптация
+    13. Производительность (mobile-first)
+    14. Reduced-motion + accessibility
    ============================================================ */
+
 
 /* ============================================================
    1. ПЕРЕМЕННЫЕ
    ============================================================ */
 :root {
-    /* Цвета */
+    /* Светлая тема */
     --c-text: #202122;
     --c-text-muted: #54595d;
     --c-link: #0645ad;
@@ -33,13 +37,13 @@
     --c-accent-hover: #5a52d5;
     --c-accent-light: #A29BFE;
 
-    /* Тёмная тема (Звёздное небо) */
+    /* Тёмная тема */
     --dark-bg-1: #0a0a14;
     --dark-bg-2: #15152a;
     --dark-bg-3: #1a1a2e;
-    --dark-panel: rgba(15, 15, 30, 0.75);
-    --dark-panel-solid: rgba(10, 10, 25, 0.9);
-    --dark-card: rgba(20, 20, 40, 0.85);
+    --dark-panel: rgba(15, 15, 30, 0.92);
+    --dark-panel-solid: rgba(10, 10, 25, 0.97);
+    --dark-card: rgba(20, 20, 40, 0.92);
     --dark-text: #d4d4e4;
     --dark-text-bright: #f0f0ff;
     --dark-link: #A29BFE;
@@ -57,7 +61,7 @@
     --shadow-accent: 0 4px 12px rgba(108, 99, 255, 0.4);
 
     /* Переходы */
-    --trans-fast: 0.2s ease;
+    --trans-fast: 0.15s ease;
     --trans-base: 0.25s ease;
     --trans-smooth: 0.3s ease;
 
@@ -65,7 +69,12 @@
     --content-max: 1100px;
     --sidebar-width: 300px;
     --mobile-header-h: 50px;
+
+    /* Мобильные флаги (переключаются в @media) */
+    --use-blur: 1;
+    --use-fixed-bg: 1;
 }
+
 
 /* ============================================================
    2. БАЗОВЫЕ НАСТРОЙКИ
@@ -78,39 +87,29 @@ body {
     background: var(--c-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
-/* Плавные переходы для смены темы */
-body,
-.md-content,
-.wy-nav-content,
-.md-header,
-.wy-nav-side {
-    transition:
-        background-color 0.5s ease,
-        color 0.5s ease;
-}
 
 /* ============================================================
    3. LAYOUT
    ============================================================ */
 .wy-nav-content {
-    max-width: var(--content-max) !important;
-    background: var(--c-bg) !important;
-    padding: 2.5rem 3.5rem !important;
+    max-width: var(--content-max);
+    background: var(--c-bg);
+    padding: 2.5rem 3.5rem;
     margin: 0 auto;
     border-left: 1px solid var(--c-border-light);
     border-right: 1px solid var(--c-border-light);
 }
 
-/* --- Боковая панель --- */
 .wy-nav-side {
-    background: var(--c-bg) !important;
+    background: var(--c-bg);
 }
 
 .wy-side-nav-search {
-    padding-top: 0 !important;
-    background: var(--c-bg) !important;
+    padding-top: 0;
+    background: var(--c-bg);
 }
 
 .wy-side-nav-search .wy-dropdown,
@@ -120,14 +119,14 @@ body,
     border: 1px solid var(--c-border-light);
 }
 
-/* --- Логотип --- */
+/* Логотип */
 .wy-side-nav-search .icon-home {
     position: relative;
     z-index: 10;
 }
 
 .wy-side-nav-search .icon-home img {
-    max-height: 60px !important;
+    max-height: 60px;
     width: auto;
     display: block;
     margin: 10px auto 5px;
@@ -137,47 +136,44 @@ body,
 
 /* Скрываем стандартный текст "Home" */
 .wy-side-nav-search a.icon-home {
-    font-size: 0 !important;
+    font-size: 0;
 }
 .wy-side-nav-search a.icon-home::before {
-    display: none !important;
+    display: none;
 }
 
-/* --- Название сайта — белое --- */
+/* Название сайта — белое */
 .wy-side-nav-search a,
 .wy-side-nav-search a:link,
 .wy-side-nav-search a:visited,
 .wy-side-nav-search a:hover,
 .wy-side-nav-search a:active,
-nav.wy-nav-side .wy-side-nav-search a,
-nav.wy-nav-side .wy-side-nav-search a.icon-home {
+nav.wy-nav-side .wy-side-nav-search a {
     color: #ffffff !important;
 }
 
-/* --- Меню в боковой панели --- */
+/* Меню в боковой панели */
 .wy-menu-vertical a {
-    color: var(--c-text) !important;
-    background: var(--c-bg) !important;
-    transition:
-        background var(--trans-fast),
-        color var(--trans-fast),
-        padding-left var(--trans-fast);
+    color: var(--c-text);
+    background: var(--c-bg);
+    transition: background var(--trans-fast), color var(--trans-fast), padding-left var(--trans-fast);
 }
 .wy-menu-vertical a:hover {
-    background: var(--c-bg-hover) !important;
-    color: var(--c-link) !important;
-    padding-left: 1.4rem !important;
+    background: var(--c-bg-hover);
+    color: var(--c-link);
+    padding-left: 1.4rem;
 }
 
 /* Убираем синюю подсветку активной страницы */
 .wy-menu-vertical li.current a {
-    color: var(--c-text) !important;
-    background: var(--c-bg) !important;
+    color: var(--c-text);
+    background: var(--c-bg);
 }
 .wy-menu-vertical li.current a:hover {
-    background: var(--c-bg-hover) !important;
-    color: var(--c-link) !important;
+    background: var(--c-bg-hover);
+    color: var(--c-link);
 }
+
 
 /* ============================================================
    4. ТИПОГРАФИКА
@@ -205,12 +201,12 @@ h3, h4, h5, h6 {
 }
 
 a {
-    color: var(--c-link) !important;
+    color: var(--c-link);
     text-decoration: none;
     transition: color var(--trans-fast);
 }
 a:hover {
-    color: var(--c-link-hover) !important;
+    color: var(--c-link-hover);
     text-decoration: underline;
 }
 
@@ -222,6 +218,7 @@ textarea:focus-visible {
     outline: 2px solid var(--c-accent);
     outline-offset: 2px;
 }
+
 
 /* ============================================================
    5. ЭЛЕМЕНТЫ
@@ -245,13 +242,9 @@ table th {
 table td {
     padding: 0.5rem 0.8rem;
     border: 1px solid var(--c-border);
-    transition: background var(--trans-fast);
 }
 table tr:nth-child(even) {
     background: var(--c-bg-subtle);
-}
-table tr:hover td {
-    background: #f0f2f5;
 }
 
 /* --- Инфобоксы --- */
@@ -268,9 +261,6 @@ table tr:hover td {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     transition: box-shadow var(--trans-smooth);
-}
-.infobox:hover {
-    box-shadow: var(--shadow-md);
 }
 .infobox h3 {
     margin-top: 0;
@@ -303,25 +293,23 @@ blockquote:hover {
 
 /* --- Поиск --- */
 .wy-side-nav-search input[type="text"] {
-    background: var(--c-bg) !important;
-    border: 1px solid var(--c-border) !important;
-    border-radius: var(--radius-sm) !important;
-    padding: 6px 12px !important;
-    font-size: 14px !important;
-    color: var(--c-text) !important;
-    box-shadow: none !important;
-    transition:
-        border-color var(--trans-fast),
-        box-shadow var(--trans-fast);
+    background: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px;
+    font-size: 14px;
+    color: var(--c-text);
+    box-shadow: none;
+    transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
 }
 .wy-side-nav-search input[type="text"]:focus {
-    border-color: var(--c-link) !important;
-    box-shadow: 0 0 0 2px rgba(6, 69, 173, 0.15) !important;
-    outline: none !important;
+    border-color: var(--c-link);
+    box-shadow: 0 0 0 2px rgba(6, 69, 173, 0.15);
+    outline: none;
 }
 .wy-side-nav-search input[type="text"]::placeholder {
-    color: #888888 !important;
-    font-style: italic !important;
+    color: #888888;
+    font-style: italic;
 }
 
 /* --- Скрываем ненужные элементы --- */
@@ -329,54 +317,52 @@ blockquote:hover {
 .wy-breadcrumbs,
 footer,
 .footer {
-    display: none !important;
-}
-.wy-nav-content-wrap .wy-nav-content .wy-nav-content {
-    padding-bottom: 0 !important;
+    display: none;
 }
 .rst-versions {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: hidden !important;
-    pointer-events: none !important;
-    opacity: 0 !important;
+    display: none;
+    visibility: hidden;
+    height: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0;
 }
+
 
 /* ============================================================
    6. МЕНЮ-АККОРДЕОН
    ============================================================ */
 html body .wy-menu-vertical li:not(.mars-open) > ul {
-    display: none !important;
+    display: none;
 }
 html body .wy-menu-vertical li.mars-open > ul {
-    display: block !important;
+    display: block;
 }
 
 .wy-menu-vertical li > a,
 .wy-menu-vertical li.current > a,
 .wy-menu-vertical li > a:hover,
 .wy-menu-vertical li > a:focus {
-    font-weight: normal !important;
+    font-weight: normal;
 }
 
 .wy-menu-vertical li,
 .wy-menu-vertical li > a {
-    border: none !important;
-    box-shadow: none !important;
+    border: none;
+    box-shadow: none;
 }
 
 .wy-menu-vertical .toctree-expand {
-    display: none !important;
+    display: none;
 }
 
 .wy-menu-vertical li:has(> ul) > a {
-    position: relative !important;
-    padding-right: 28px !important;
-    cursor: pointer !important;
+    position: relative;
+    padding-right: 28px;
+    cursor: pointer;
 }
 
 .wy-menu-vertical li:has(> ul) > a::after {
@@ -396,6 +382,7 @@ html body .wy-menu-vertical li.mars-open > ul {
     transform: translateY(-50%) rotate(90deg);
     opacity: 1;
 }
+
 
 /* ============================================================
    7. WIKI LAYOUT
@@ -449,6 +436,7 @@ html body .wy-menu-vertical li.mars-open > ul {
     .wiki-column-right { gap: 12px; }
 }
 
+
 /* ============================================================
    8. КАТЕГОРИИ И ПЛАШКИ
    ============================================================ */
@@ -479,7 +467,7 @@ html body .wy-menu-vertical li.mars-open > ul {
     font-weight: 600;
     font-size: 0.85rem;
     cursor: default;
-    transition: all var(--trans-fast);
+    transition: background var(--trans-fast);
 }
 #auto-categories .cat-chip:hover {
     background: rgba(108, 99, 255, 0.2);
@@ -496,9 +484,6 @@ html body .wy-menu-vertical li.mars-open > ul {
     border-radius: var(--radius-lg);
     margin: 16px 0 24px;
     transition: box-shadow var(--trans-smooth);
-}
-.wiki-featured-badge:hover {
-    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.15);
 }
 .wiki-featured-badge .badge-icon {
     flex-shrink: 0;
@@ -524,49 +509,50 @@ html body .wy-menu-vertical li.mars-open > ul {
     color: var(--c-accent);
 }
 
+
 /* ============================================================
    9. АВТОРИЗАЦИЯ
    ============================================================ */
 #auth-btn-container {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    float: right !important;
-    margin-top: 6px !important;
-    margin-right: 10px !important;
-    flex-wrap: wrap !important;
-    max-width: 100% !important;
-    position: relative !important;
-    z-index: 1000 !important;
-    font-size: 1.1rem !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    float: right;
+    margin-top: 6px;
+    margin-right: 10px;
+    flex-wrap: wrap;
+    max-width: 100%;
+    position: relative;
+    z-index: 1000;
+    font-size: 1.1rem;
 }
 
 #auth-btn-container a {
-    font-size: 1rem !important;
-    padding: 6px 18px !important;
-    border-radius: var(--radius-pill) !important;
-    white-space: nowrap !important;
-    text-decoration: none !important;
-    transition: all var(--trans-base) !important;
+    font-size: 1rem;
+    padding: 6px 18px;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+    text-decoration: none;
+    transition: all var(--trans-base);
 }
 
 #auth-btn-container a[href="/login/"] {
-    color: #555 !important;
+    color: #555;
 }
 
 #auth-btn-container a[href="/register/"] {
-    color: #fff !important;
-    background: var(--c-accent) !important;
+    color: #fff;
+    background: var(--c-accent);
 }
 #auth-btn-container a[href="/register/"]:hover {
-    background: var(--c-accent-hover) !important;
+    background: var(--c-accent-hover);
     transform: translateY(-1px);
     box-shadow: var(--shadow-accent);
 }
 
 #auth-btn-container img {
-    width: 40px !important;
-    height: 40px !important;
+    width: 40px;
+    height: 40px;
     transition: transform var(--trans-fast);
 }
 #auth-btn-container img:hover {
@@ -574,29 +560,30 @@ html body .wy-menu-vertical li.mars-open > ul {
 }
 
 #auth-btn-container .user-username {
-    font-size: 1rem !important;
-    max-width: 100px !important;
+    font-size: 1rem;
+    max-width: 100px;
 }
+
 
 /* ============================================================
    10. КНОПКА СВОРАЧИВАНИЯ МЕНЮ (ПК)
    ============================================================ */
 #sidebar-toggle-btn {
-    position: fixed !important;
-    left: 10px !important;
-    top: 10px !important;
-    z-index: 99999 !important;
-    display: block !important;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    z-index: 99999;
+    display: block;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 300;
     letter-spacing: 1px;
-    opacity: 0.3 !important;
-    transition: all var(--trans-smooth) !important;
+    opacity: 0.3;
+    transition: all var(--trans-smooth);
 }
 #sidebar-toggle-btn:hover {
-    background: var(--c-accent-hover) !important;
-    box-shadow: 2px 0 16px rgba(108, 99, 255, 0.4) !important;
-    opacity: 1 !important;
+    background: var(--c-accent-hover);
+    box-shadow: 2px 0 16px rgba(108, 99, 255, 0.4);
+    opacity: 1;
 }
 
 #sidebar-hotspot {
@@ -607,30 +594,27 @@ html body .wy-menu-vertical li.mars-open > ul {
 .wy-nav-side,
 .wy-nav-content-wrap,
 .wy-nav-content {
-    transition:
-        margin-left var(--trans-smooth),
-        max-width var(--trans-smooth),
-        padding var(--trans-smooth);
+    transition: margin-left var(--trans-smooth), max-width var(--trans-smooth), padding var(--trans-smooth);
 }
 
 /* Скрытое меню */
 body.sidebar-hidden .wy-nav-content-wrap {
-    margin-left: 0 !important;
-    max-width: 100% !important;
-    padding: 0 !important;
+    margin-left: 0;
+    max-width: 100%;
+    padding: 0;
 }
 body.sidebar-hidden .wy-nav-content {
-    margin-left: 0 !important;
-    max-width: 100% !important;
-    padding: 20px 40px !important;
+    margin-left: 0;
+    max-width: 100%;
+    padding: 20px 40px;
 }
 body.sidebar-hidden .wy-nav-side {
-    margin-left: calc(-1 * var(--sidebar-width)) !important;
+    margin-left: calc(-1 * var(--sidebar-width));
 }
 
+
 /* ============================================================
-   11. ТЁМНАЯ ТЕМА — ЗВЁЗДНОЕ НЕБО
-   (единый блок для ПК и мобильного — раньше дублировался)
+   11. ТЁМНАЯ ТЕМА — ЗВЁЗДНОЕ НЕБО (единый блок)
    ============================================================ */
 html.mars-stars-on,
 body.mars-stars-on {
@@ -639,16 +623,17 @@ body.mars-stars-on {
         var(--dark-bg-1) 0%,
         var(--dark-bg-2) 50%,
         var(--dark-bg-3) 100%
-    ) !important;
-    background-attachment: fixed !important;
+    );
+    background-attachment: fixed;
 }
 
+/* Контент */
 body.mars-stars-on .md-content,
 body.mars-stars-on .rst-content,
 body.mars-stars-on .wy-nav-content,
 body.mars-stars-on .md-content__inner {
-    background-color: var(--dark-panel) !important;
-    color: var(--dark-text) !important;
+    background-color: var(--dark-panel);
+    color: var(--dark-text);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
 }
@@ -656,40 +641,43 @@ body.mars-stars-on .md-content__inner {
 body.mars-stars-on .wy-nav-side,
 body.mars-stars-on .md-sidebar,
 body.mars-stars-on .wy-side-nav-search {
-    background-color: var(--dark-panel-solid) !important;
+    background-color: var(--dark-panel-solid);
 }
 
+/* Меню */
 body.mars-stars-on .wy-menu-vertical li a,
 body.mars-stars-on .md-nav__link,
 body.mars-stars-on .md-nav__title {
-    color: #c4c4d4 !important;
+    color: #c4c4d4;
 }
 
 body.mars-stars-on .wy-menu-vertical li a:hover,
 body.mars-stars-on .md-nav__link:hover {
-    color: var(--dark-link) !important;
-    background-color: rgba(108, 99, 255, 0.15) !important;
+    color: var(--dark-link);
+    background-color: rgba(108, 99, 255, 0.15);
 }
 
 body.mars-stars-on .wy-menu-vertical li.current > a,
 body.mars-stars-on .md-nav__link--active {
-    color: var(--dark-link) !important;
-    background-color: rgba(108, 99, 255, 0.2) !important;
+    color: var(--dark-link);
+    background-color: rgba(108, 99, 255, 0.2);
 }
 
+/* Шапка */
 body.mars-stars-on .md-header,
 body.mars-stars-on .wy-nav-top {
-    background-color: var(--dark-panel-solid) !important;
-    border-bottom: 1px solid var(--dark-border) !important;
+    background-color: var(--dark-panel-solid);
+    border-bottom: 1px solid var(--dark-border);
 }
 
+/* Типографика */
 body.mars-stars-on h1,
 body.mars-stars-on h2,
 body.mars-stars-on h3,
 body.mars-stars-on h4,
 body.mars-stars-on h5,
 body.mars-stars-on h6 {
-    color: var(--dark-text-bright) !important;
+    color: var(--dark-text-bright);
     border-color: var(--dark-border);
 }
 
@@ -699,56 +687,59 @@ body.mars-stars-on span,
 body.mars-stars-on div,
 body.mars-stars-on td,
 body.mars-stars-on th {
-    color: var(--dark-text) !important;
+    color: var(--dark-text);
 }
 
 body.mars-stars-on a {
-    color: var(--dark-link) !important;
+    color: var(--dark-link);
 }
 body.mars-stars-on a:hover {
-    color: var(--c-accent) !important;
+    color: var(--c-accent);
 }
 
+/* Таблицы */
 body.mars-stars-on table {
-    background-color: rgba(20, 20, 40, 0.6) !important;
+    background-color: rgba(20, 20, 40, 0.6);
 }
 body.mars-stars-on th {
-    background-color: rgba(108, 99, 255, 0.2) !important;
-    color: var(--dark-text-bright) !important;
+    background-color: rgba(108, 99, 255, 0.2);
+    color: var(--dark-text-bright);
     border-color: var(--dark-border);
 }
 body.mars-stars-on td {
-    border-color: rgba(108, 99, 255, 0.15) !important;
+    border-color: rgba(108, 99, 255, 0.15);
 }
 
+/* Код */
 body.mars-stars-on code,
 body.mars-stars-on pre {
-    background-color: rgba(20, 20, 40, 0.8) !important;
-    color: var(--dark-link) !important;
-    border: 1px solid rgba(108, 99, 255, 0.2) !important;
+    background-color: rgba(20, 20, 40, 0.8);
+    color: var(--dark-link);
+    border: 1px solid rgba(108, 99, 255, 0.2);
 }
 
+/* Admonition и кнопки */
 body.mars-stars-on .admonition {
-    background-color: rgba(20, 20, 40, 0.6) !important;
-    border-color: var(--dark-border) !important;
+    background-color: rgba(20, 20, 40, 0.6);
+    border-color: var(--dark-border);
 }
 
 body.mars-stars-on .md-button,
 body.mars-stars-on button:not(.mars-stars-toggle):not(.mm-btn) {
-    background-color: rgba(108, 99, 255, 0.2) !important;
-    color: var(--dark-text-bright) !important;
-    border-color: rgba(108, 99, 255, 0.4) !important;
+    background-color: rgba(108, 99, 255, 0.2);
+    color: var(--dark-text-bright);
+    border-color: rgba(108, 99, 255, 0.4);
 }
 
-/* Профиль в тёмной теме */
+/* Профиль */
 body.mars-stars-on .pf-card,
 body.mars-stars-on .pf-quick-card,
 body.mars-stars-on .pf-ach,
 body.mars-stars-on .pf-note,
 body.mars-stars-on .pf-tabs,
 body.mars-stars-on .pf-note-form {
-    background: var(--dark-card) !important;
-    border-color: var(--dark-border) !important;
+    background: var(--dark-card);
+    border-color: var(--dark-border);
 }
 
 body.mars-stars-on .pf-card-title,
@@ -756,40 +747,38 @@ body.mars-stars-on .pf-quick-title,
 body.mars-stars-on .pf-ach-name,
 body.mars-stars-on .pf-note-title,
 body.mars-stars-on .pf-display-name {
-    color: #e0e0e0 !important;
+    color: #e0e0e0;
 }
 
-body.mars-stars-on .pf-tab { color: #aaa !important; }
-body.mars-stars-on .pf-tab.active { color: #fff !important; }
+body.mars-stars-on .pf-tab { color: #aaa; }
+body.mars-stars-on .pf-tab.active { color: #fff; }
 
+/* Поля ввода */
 body.mars-stars-on input,
 body.mars-stars-on textarea,
 body.mars-stars-on select {
-    background-color: rgba(20, 20, 40, 0.6) !important;
-    color: #e0e0e0 !important;
-    border-color: var(--dark-border) !important;
+    background-color: rgba(20, 20, 40, 0.6);
+    color: #e0e0e0;
+    border-color: var(--dark-border);
 }
 body.mars-stars-on input::placeholder,
 body.mars-stars-on textarea::placeholder {
-    color: #666688 !important;
+    color: #666688;
 }
 
-/* Wiki-layout в тёмной теме */
-html body.mars-stars-on .wiki-layout > div > div,
-html.mars-stars-on .wiki-layout > div > div {
-    background: rgba(20, 15, 35, 0.55) !important;
-    border-color: rgba(162, 155, 254, 0.5) !important;
-    color: #e8e8f0 !important;
-    box-shadow: 0 1px 12px rgba(108, 99, 255, 0.2) !important;
+/* Wiki-layout */
+html body.mars-stars-on .wiki-layout > div > div {
+    background: rgba(20, 15, 35, 0.75);
+    border-color: rgba(162, 155, 254, 0.5);
+    color: #e8e8f0;
+    box-shadow: 0 1px 12px rgba(108, 99, 255, 0.2);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }
 
 html body.mars-stars-on .wiki-layout h3,
-html body.mars-stars-on .wiki-layout h4,
-html.mars-stars-on .wiki-layout h3,
-html.mars-stars-on .wiki-layout h4 {
-    color: #ffffff !important;
+html body.mars-stars-on .wiki-layout h4 {
+    color: #ffffff;
 }
 
 html body.mars-stars-on .wiki-layout p,
@@ -798,19 +787,15 @@ html body.mars-stars-on .wiki-layout span,
 html body.mars-stars-on .wiki-layout strong,
 html body.mars-stars-on .wiki-layout em,
 html body.mars-stars-on .wiki-layout td,
-html body.mars-stars-on .wiki-layout th,
-html.mars-stars-on .wiki-layout p,
-html.mars-stars-on .wiki-layout li {
-    color: #e0e0ee !important;
+html body.mars-stars-on .wiki-layout th {
+    color: #e0e0ee;
 }
 
-html body.mars-stars-on .wiki-layout a,
-html.mars-stars-on .wiki-layout a {
-    color: var(--dark-link) !important;
+html body.mars-stars-on .wiki-layout a {
+    color: var(--dark-link);
 }
-html body.mars-stars-on .wiki-layout a:hover,
-html.mars-stars-on .wiki-layout a:hover {
-    color: #ffffff !important;
+html body.mars-stars-on .wiki-layout a:hover {
+    color: #ffffff;
 }
 
 html body.mars-stars-on .wiki-layout table,
@@ -818,38 +803,35 @@ html body.mars-stars-on .wiki-layout thead,
 html body.mars-stars-on .wiki-layout tbody,
 html body.mars-stars-on .wiki-layout tr,
 html body.mars-stars-on .wiki-layout td,
-html body.mars-stars-on .wiki-layout th,
-html.mars-stars-on .wiki-layout table,
-html.mars-stars-on .wiki-layout td,
-html.mars-stars-on .wiki-layout th {
-    border-color: rgba(162, 155, 254, 0.3) !important;
-    color: #e0e0ee !important;
+html body.mars-stars-on .wiki-layout th {
+    border-color: rgba(162, 155, 254, 0.3);
+    color: #e0e0ee;
 }
 
-/* Категории в тёмной теме */
+/* Категории */
 html body.mars-stars-on #auto-categories {
-    background: rgba(20, 15, 35, 0.55) !important;
-    border-color: rgba(162, 155, 254, 0.4) !important;
+    background: rgba(20, 15, 35, 0.75);
+    border-color: rgba(162, 155, 254, 0.4);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }
 html body.mars-stars-on #auto-categories .cat-label {
-    color: var(--dark-link) !important;
+    color: var(--dark-link);
 }
 html body.mars-stars-on #auto-categories .cat-chip {
-    background: rgba(108, 99, 255, 0.2) !important;
-    border-color: rgba(162, 155, 254, 0.4) !important;
-    color: var(--dark-link) !important;
+    background: rgba(108, 99, 255, 0.2);
+    border-color: rgba(162, 155, 254, 0.4);
+    color: var(--dark-link);
 }
 html body.mars-stars-on #auto-categories .cat-chip:hover {
-    background: rgba(108, 99, 255, 0.35) !important;
-    color: #ffffff !important;
+    background: rgba(108, 99, 255, 0.35);
+    color: #ffffff;
 }
 
-/* Плашка в тёмной теме */
+/* Плашка */
 html body.mars-stars-on .wiki-featured-badge {
-    background: rgba(108, 99, 255, 0.15) !important;
-    border-color: rgba(162, 155, 254, 0.5) !important;
+    background: rgba(108, 99, 255, 0.15);
+    border-color: rgba(162, 155, 254, 0.5);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 }
@@ -858,245 +840,357 @@ html body.mars-stars-on .wiki-featured-badge .badge-icon {
     box-shadow: 0 2px 8px rgba(162, 155, 254, 0.6);
 }
 html body.mars-stars-on .wiki-featured-badge .badge-text {
-    color: #e0e0ee !important;
+    color: #e0e0ee;
 }
 html body.mars-stars-on .wiki-featured-badge .badge-text strong {
-    color: var(--dark-link) !important;
+    color: var(--dark-link);
 }
+
 
 /* ============================================================
    12. МОБИЛЬНАЯ АДАПТАЦИЯ
    ============================================================ */
 @media (max-width: 1024px) {
     .wy-nav-content {
-        padding: 1.5rem 2rem !important;
-        max-width: 100% !important;
+        padding: 1.5rem 2rem;
+        max-width: 100%;
     }
     .infobox {
-        float: none !important;
-        width: 100% !important;
-        margin: 1rem 0 !important;
+        float: none;
+        width: 100%;
+        margin: 1rem 0;
     }
     .infobox img {
-        max-width: 100% !important;
-        height: auto !important;
+        max-width: 100%;
+        height: auto;
     }
-    table { font-size: 0.85rem !important; }
+    table { font-size: 0.85rem; }
 }
 
 @media (max-width: 768px) {
     /* Шапка */
     .wy-nav-top {
-        background: var(--c-accent) !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        z-index: 9999 !important;
-        height: var(--mobile-header-h) !important;
-        padding: 0 8px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-        border: none !important;
+        background: var(--c-accent);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        height: var(--mobile-header-h);
+        padding: 0 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        border: none;
     }
     .wy-nav-top .wy-nav-side-toggle {
-        display: block !important;
-        background: transparent !important;
-        color: #fff !important;
-        border: none !important;
-        padding: 6px 8px !important;
-        font-size: 22px !important;
-        cursor: pointer !important;
-        line-height: 1 !important;
-        flex-shrink: 0 !important;
+        display: block;
+        background: transparent;
+        color: #fff;
+        border: none;
+        padding: 6px 8px;
+        font-size: 22px;
+        cursor: pointer;
+        line-height: 1;
+        flex-shrink: 0;
     }
     .wy-nav-top .wy-nav-side-toggle + a {
-        display: none !important;
+        display: none;
     }
     .wy-nav-top .wy-side-nav-search {
-        display: none !important;
+        display: none;
     }
 
     /* Контент */
     .wy-nav-content-wrap {
-        margin-left: 0 !important;
-        padding-top: var(--mobile-header-h) !important;
+        margin-left: 0;
+        padding-top: var(--mobile-header-h);
     }
     .wy-nav-content {
-        padding: 1rem 1.2rem !important;
-        font-size: 15px !important;
-        line-height: 1.6 !important;
-        max-width: 100% !important;
+        padding: 1rem 1.2rem;
+        font-size: 15px;
+        line-height: 1.6;
+        max-width: 100%;
     }
 
-    h1 { font-size: 1.8rem !important; }
-    h2 { font-size: 1.4rem !important; }
-    h3 { font-size: 1.2rem !important; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.2rem; }
 
     /* Инфобокс */
     .infobox {
-        float: none !important;
-        width: 100% !important;
-        margin: 0 0 1rem 0 !important;
-        padding: 0.8rem 1rem !important;
-        font-size: 0.85rem !important;
+        float: none;
+        width: 100%;
+        margin: 0 0 1rem 0;
+        padding: 0.8rem 1rem;
+        font-size: 0.85rem;
     }
     .infobox img {
-        max-width: 100% !important;
-        height: auto !important;
+        max-width: 100%;
+        height: auto;
     }
-    .infobox p { margin: 0.2rem 0 !important; }
+    .infobox p { margin: 0.2rem 0; }
 
     /* Таблицы */
     .wy-table-responsive {
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
     table {
-        font-size: 0.8rem !important;
-        display: block !important;
-        overflow-x: auto !important;
-        white-space: nowrap !important;
+        font-size: 0.8rem;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
     }
     table td,
     table th {
-        padding: 0.4rem 0.6rem !important;
+        padding: 0.4rem 0.6rem;
     }
 
     img {
-        max-width: 100% !important;
-        height: auto !important;
+        max-width: 100%;
+        height: auto;
     }
 
     #globeViz,
     #marsMap {
-        height: 400px !important;
+        height: 400px;
     }
 
     .wy-menu-vertical a {
-        font-size: 14px !important;
-        padding: 6px 12px !important;
+        font-size: 14px;
+        padding: 6px 12px;
     }
 
     /* Скрываем элементы ПК */
     #sidebar-hotspot,
     #sidebar-toggle-btn {
-        display: none !important;
+        display: none;
     }
 
     /* Боковое меню */
     .wy-nav-side {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        height: 100% !important;
-        width: var(--sidebar-width) !important;
-        z-index: 9998 !important;
-        background: #fff !important;
-        overflow-y: auto !important;
-        transform: translateX(calc(-1 * var(--sidebar-width))) !important;
-        transition: transform var(--trans-smooth) !important;
-        padding-top: var(--mobile-header-h) !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: var(--sidebar-width);
+        z-index: 9998;
+        background: #fff;
+        overflow-y: auto;
+        transform: translateX(calc(-1 * var(--sidebar-width)));
+        transition: transform var(--trans-smooth);
+        padding-top: var(--mobile-header-h);
     }
     .wy-nav-side.shift {
-        transform: translateX(0) !important;
+        transform: translateX(0);
     }
 
     /* Авторизация */
     #auth-btn-container {
-        display: flex !important;
-        align-items: center !important;
-        gap: 6px !important;
-        flex-shrink: 0 !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        float: none !important;
-        position: static !important;
-        z-index: 99999 !important;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        float: none;
+        position: static;
+        z-index: 99999;
     }
     #auth-btn-container a {
-        font-size: 0.8rem !important;
-        padding: 5px 12px !important;
-        border-radius: 16px !important;
-        color: #fff !important;
-        text-decoration: none !important;
-        white-space: nowrap !important;
-        display: inline-block !important;
-        font-weight: 500 !important;
+        font-size: 0.8rem;
+        padding: 5px 12px;
+        border-radius: 16px;
+        color: #fff;
+        text-decoration: none;
+        white-space: nowrap;
+        display: inline-block;
+        font-weight: 500;
     }
     #auth-btn-container a[href="/login/"] {
-        color: #fff !important;
-        opacity: 0.85 !important;
-        background: transparent !important;
+        color: #fff;
+        opacity: 0.85;
+        background: transparent;
     }
     #auth-btn-container a[href="/register/"] {
-        background: rgba(255, 255, 255, 0.2) !important;
-        color: #fff !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.15);
     }
     #auth-btn-container img {
-        width: 28px !important;
-        height: 28px !important;
-        border-radius: 50% !important;
-        border: 2px solid rgba(255, 255, 255, 0.4) !important;
-        display: inline-block !important;
-        vertical-align: middle !important;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        display: inline-block;
+        vertical-align: middle;
     }
     #auth-btn-container .user-info {
-        display: flex !important;
-        align-items: center !important;
-        gap: 6px !important;
-        background: rgba(255, 255, 255, 0.12) !important;
-        border-radius: var(--radius-pill) !important;
-        padding: 3px 8px 3px 4px !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius-pill);
+        padding: 3px 8px 3px 4px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
     #auth-btn-container .user-info a {
-        font-size: 0.7rem !important;
-        padding: 3px 8px !important;
-        color: #fff !important;
-        opacity: 0.85 !important;
-        background: transparent !important;
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        color: #fff;
+        opacity: 0.85;
+        background: transparent;
     }
     #auth-btn-container .user-info a[href="/profile/"] {
-        opacity: 1 !important;
-        font-weight: 500 !important;
+        opacity: 1;
+        font-weight: 500;
     }
     #auth-btn-container .user-info a[onclick*="logout"] {
-        opacity: 0.6 !important;
+        opacity: 0.6;
     }
 }
+
 
 /* ============================================================
-   13. ДОСТУПНОСТЬ И REDUCED-MOTION
+   13. ПРОИЗВОДИТЕЛЬНОСТЬ — МОБИЛЬНАЯ ОПТИМИЗАЦИЯ
+   Отключаем тяжёлые эффекты на телефонах и планшетах
    ============================================================ */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+@media (max-width: 1024px) {
+
+    /* 🔴 1. Отключаем backdrop-filter — главная причина лагов */
+    body.mars-stars-on .md-content,
+    body.mars-stars-on .rst-content,
+    body.mars-stars-on .wy-nav-content,
+    body.mars-stars-on .md-content__inner,
+    html body.mars-stars-on .wiki-layout > div > div,
+    html body.mars-stars-on #auto-categories,
+    html body.mars-stars-on .wiki-featured-badge {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
+
+    /* Заменяем на плотный фон */
+    body.mars-stars-on .md-content,
+    body.mars-stars-on .rst-content,
+    body.mars-stars-on .wy-nav-content,
+    body.mars-stars-on .md-content__inner {
+        background-color: rgba(15, 15, 30, 0.95);
+    }
+
+    html body.mars-stars-on .wiki-layout > div > div {
+        background: rgba(20, 15, 35, 0.92);
+    }
+
+    html body.mars-stars-on #auto-categories {
+        background: rgba(20, 15, 35, 0.92);
+    }
+
+    html body.mars-stars-on .wiki-featured-badge {
+        background: rgba(108, 99, 255, 0.2);
+    }
+
+    /* 🔴 2. Убираем background-attachment: fixed */
+    html.mars-stars-on,
+    body.mars-stars-on {
+        background-attachment: scroll;
+    }
+
+    /* 🔴 3. Убираем глобальные transition на layout */
+    body,
+    .md-content,
+    .wy-nav-content,
+    .md-header,
     .wy-nav-side,
-    .wy-nav-content-wrap,
-    .wy-nav-content {
-        transition: none !important;
+    .wy-nav-content-wrap {
+        transition: none;
+    }
+
+    /* 🔴 4. Таблицы — без transition */
+    table td,
+    table tr {
+        transition: none;
+    }
+
+    /* 🔴 5. Убираем box-shadow на инфобоксах */
+    .infobox,
+    .infobox:hover {
+        box-shadow: none;
+    }
+
+    .infobox,
+    .wiki-featured-badge {
+        transition: none;
     }
 }
 
-/* Отключаем backdrop-filter при слабом железе */
+@media (max-width: 768px) {
+
+    /* Оставляем только лёгкие transition */
+    .wy-menu-vertical a {
+        transition: background 0.15s ease, color 0.15s ease;
+    }
+    a {
+        transition: color 0.1s ease;
+    }
+
+    #auth-btn-container a {
+        transition: none;
+    }
+    #auth-btn-container img {
+        transition: none;
+    }
+
+    table {
+        border-radius: 0;
+    }
+    table tr:hover td {
+        background: transparent;
+    }
+}
+
+/* Fallback для браузеров без backdrop-filter */
 @supports not (backdrop-filter: blur(4px)) {
     body.mars-stars-on .md-content,
     body.mars-stars-on .rst-content,
     body.mars-stars-on .wy-nav-content,
     html body.mars-stars-on .wiki-layout > div > div {
-        background: rgba(15, 15, 30, 0.95) !important;
+        background: rgba(15, 15, 30, 0.95);
+    }
+}
+
+
+/* ============================================================
+   14. REDUCED-MOTION + ACCESSIBILITY
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
+        scroll-behavior: auto;
+    }
+    .wy-nav-side,
+    .wy-nav-content-wrap,
+    .wy-nav-content {
+        transition: none;
+    }
+    html.mars-stars-on,
+    body.mars-stars-on {
+        background-attachment: scroll;
+    }
+    body.mars-stars-on .md-content,
+    body.mars-stars-on .rst-content,
+    body.mars-stars-on .wy-nav-content,
+    html body.mars-stars-on .wiki-layout > div > div,
+    html body.mars-stars-on #auto-categories {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
     }
 }
 
@@ -1109,14 +1203,14 @@ html body.mars-stars-on .wiki-featured-badge .badge-text strong {
     #sidebar-toggle-btn,
     .rst-versions,
     .wy-nav-top {
-        display: none !important;
+        display: none;
     }
     .wy-nav-content,
     .wy-nav-content-wrap {
-        margin: 0 !important;
-        padding: 0 !important;
-        max-width: 100% !important;
-        border: none !important;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        border: none;
     }
     body { font-size: 12pt; }
 }

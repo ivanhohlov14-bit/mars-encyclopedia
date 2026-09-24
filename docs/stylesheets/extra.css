@@ -1280,3 +1280,64 @@ html body.mars-stars-on .wiki-featured-badge .badge-text strong {
 .wy-menu-vertical li:has(> ul).mars-open > a {
     font-weight: normal !important;
 }
+/* ============================================================
+   РАЗМЕР БУКВ В ШАПКЕ — крупнее
+   ============================================================ */
+
+/* Десктоп */
+@media (min-width: 769px) {
+    /* Ссылки в шапке */
+    #auth-btn-container a {
+        font-size: 1rem !important;
+    }
+    
+    /* Имя пользователя */
+    #auth-btn-container span,
+    #auth-btn-container .user-info span {
+        font-size: 0.95rem !important;
+        max-width: 120px !important;
+    }
+    
+    /* Профиль и Выйти */
+    #auth-btn-container a[href="/profile/"],
+    #auth-btn-container a[onclick*="logout"],
+    #auth-btn-container a[onclick*="logoutUser"] {
+        font-size: 0.95rem !important;
+    }
+    
+    /* Аватарка — тоже чуть крупнее */
+    #auth-btn-container img {
+        width: 36px !important;
+        height: 36px !important;
+    }
+}
+
+/* Мобильный */
+@media (max-width: 768px) {
+    #auth-btn-container a {
+        font-size: 0.85rem !important;
+        padding: 6px 12px !important;
+    }
+    
+    #auth-btn-container .user-info a,
+    #auth-btn-container a[href="/profile/"],
+    #auth-btn-container a[onclick*="logout"],
+    #auth-btn-container a[onclick*="logoutUser"] {
+        font-size: 0.8rem !important;
+    }
+    
+    #auth-btn-container img {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}
+
+/* Очень узкие экраны — чтобы не переполнялось */
+@media (max-width: 380px) {
+    #auth-btn-container .user-info span {
+        display: none !important;
+    }
+    #auth-btn-container a[href="/profile/"] {
+        font-size: 0.78rem !important;
+    }
+}

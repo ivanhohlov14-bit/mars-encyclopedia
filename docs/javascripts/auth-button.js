@@ -1,12 +1,10 @@
 // ============================================================
-// auth-button.js v7 — финал
-// - Мгновенный рендер из кэша (без мерцания)
-// - 3 ключа + sessionStorage + cookie
-// - Кастомный мобильный хедер с заголовком
-// - Скрытие нативного .wy-nav-top (с восстановлением)
-// - Мостик к supabase-js (comments/likes/experience)
-// - Надёжное определение мобильного (UA + matchMedia + width)
-// - onerror на аватарку → fallback ui-avatars
+// auth-button.js — v8 VIP
+// - Убрано polling (было setInterval × 2 каждые 1.5-3 сек)
+// - MutationObserver с auto-disconnect для хедера
+// - Проверка доступности /profile/ (HEAD-запрос)
+// - Кэш bridgeToSupabase (не дёргаем каждый раз)
+// - Логи в консоль (можно отключить)
 // ============================================================
 (function() {
     'use strict';
@@ -23,6 +21,12 @@
     var CACHE_KEY = 'mars-auth-ui-cache';
     var CONTAINER_ID = 'auth-btn-container';
     var HEADER_ID = 'custom-mobile-header';
+    var DEBUG = false;
+
+    function log() {
+        if (!DEBUG) return;
+        try { console.log.apply(console, ['👤 auth:'].concat([].slice.call(arguments))); } catch(e) {}
+    }
 
     // ============================================================
     // 🍪 COOKIE
@@ -41,12 +45,11 @@
     }
 
     // ============================================================
-    // 📖 READ SESSION — 3 ключа + sessionStorage + cookie
+    // 📖 READ SESSION
     // ============================================================
     function readSession() {
         var keys = [MY_KEY, SB_KEY, BACKUP_KEY];
-        var raw = null;
-        var i;
+        var raw = null, i;
 
         for (i = 0; i < keys.length; i++) {
             try { raw = localStorage.getItem(keys[i]); if (raw) break; } catch(e) {}
@@ -71,13 +74,11 @@
             if (!p || !p.access_token || !p.user) return null;
             if (p.expires_at && p.expires_at * 1000 < Date.now()) return null;
             return p;
-        } catch(e) {
-            return null;
-        }
+        } catch(e) { return null; }
     }
 
     // ============================================================
-    // 💾 CACHE — мгновенный рендер без мерцания
+    // 💾 CACHE
     // ============================================================
     function readCache(userId) {
         try {
@@ -87,9 +88,7 @@
             if (!c || c.userId !== userId) return null;
             if (Date.now() - c.ts > 7 * 24 * 60 * 60 * 1000) return null;
             return c;
-        } catch(e) {
-            return null;
-        }
+        } catch(e) { return null; }
     }
 
     function writeCache(userId, name, avatarUrl) {
@@ -108,18 +107,13 @@
     }
 
     // ============================================================
-    // 📱 ОПРЕДЕЛЕНИЕ МОБИЛЬНОГО (надёжное: UA + matchMedia + width)
+    // 📱 МОБИЛЬНЫЙ
     // ============================================================
     function isMobile() {
-        // 1. User-Agent — самый надёжный на телефонах
-        if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            return true;
-        }
-        // 2. MatchMedia
+        if (/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) return true;
         try {
             if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return true;
         } catch(e) {}
-        // 3. innerWidth (fallback)
         return window.innerWidth <= 768;
     }
 
@@ -129,9 +123,7 @@
     function getInitials(name) {
         if (!name) return '?';
         var parts = String(name).trim().split(/[\s._-]+/);
-        if (parts.length >= 2) {
-            return (parts[0][0] + parts[1][0]).toUpperCase();
-        }
+        if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
         return name[0].toUpperCase();
     }
 
@@ -142,7 +134,25 @@
     }
 
     // ============================================================
-    // 🌐 FETCH PROFILE (без supabase-js)
+    // 🔎 Проверка доступности /profile/ (1 раз, кэшируется)
+    // ============================================================
+    var _profilePageChecked = null;
+
+    async function checkProfilePage() {
+        if (_profilePageChecked !== null) return _profilePageChecked;
+        try {
+            var res = await fetch('/profile/', { method: 'HEAD' });
+            _profilePageChecked = res.ok;
+            log('страница /profile/:', res.ok ? 'доступна' : 'недоступна (' + res.status + ')');
+        } catch(e) {
+            _profilePageChecked = false;
+            log('/profile/ check error:', e.message);
+        }
+        return _profilePageChecked;
+    }
+
+    // ============================================================
+    // 🌐 FETCH PROFILE
     // ============================================================
     var _profileFetching = false;
 
@@ -160,20 +170,18 @@
                 }
             });
             if (!res.ok) {
-                console.warn('[auth-button] profile fetch HTTP', res.status);
+                log('profile fetch HTTP', res.status);
                 return null;
             }
             var arr = await res.json();
             var p = Array.isArray(arr) && arr.length ? arr[0] : null;
             if (!p) return null;
 
-            // Универсально: любое из возможных полей
             var name = p.display_name || p.username || null;
             var avatar = p.avatar_url || p.avatar || p.avatarUrl || null;
-
             return { display_name: name, avatar_url: avatar, _raw: p };
         } catch(e) {
-            console.warn('[auth-button] profile fetch error:', e.message);
+            log('profile fetch error:', e.message);
             return null;
         } finally {
             _profileFetching = false;
@@ -181,20 +189,15 @@
     }
 
     // ============================================================
-    // 🌉 BRIDGE TO SUPABASE-JS
-    // Передаём нашу сессию в supabase-js — чтобы comments.js,
-    // experience.js, likes.js и остальные видели пользователя
+    // 🌉 BRIDGE
     // ============================================================
     var _bridged = false;
     var _bridgeToken = null;
 
     async function bridgeToSupabase(session) {
         if (!session || !session.access_token) return;
-
-        // Уже мостили эту сессию — не повторяем
         if (_bridged && _bridgeToken === session.access_token) return;
 
-        // Ищем supabase-js (до 6 секунд)
         var tries = 0;
         while (tries < 30) {
             if (window.supabaseClient || (window.supabase && window.supabase.auth)) break;
@@ -204,7 +207,6 @@
 
         var client = window.supabaseClient;
 
-        // Если клиента нет, но библиотека загружена — создаём свой
         if (!client && window.supabase && typeof window.supabase.createClient === 'function') {
             try {
                 client = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
@@ -217,13 +219,12 @@
                 });
                 window.supabaseClient = client;
             } catch(e) {
-                console.warn('[auth-button] createClient failed:', e.message);
+                log('createClient failed:', e.message);
             }
         }
 
         if (!client || !client.auth) return;
 
-        // Проверяем: уже установлена?
         try {
             var cur = await client.auth.getSession();
             var curToken = cur && cur.data && cur.data.session && cur.data.session.access_token;
@@ -234,7 +235,6 @@
             }
         } catch(e) {}
 
-        // Устанавливаем сессию
         try {
             await client.auth.setSession({
                 access_token: session.access_token,
@@ -243,12 +243,12 @@
             _bridged = true;
             _bridgeToken = session.access_token;
         } catch(e) {
-            console.warn('[auth-button] setSession failed:', e.message);
+            log('setSession failed:', e.message);
         }
     }
 
     // ============================================================
-    // 🛡️ Скрыть нативный хедер темы
+    // 🛡️ ХЕДЕР
     // ============================================================
     function hideNativeHeader() {
         if (!isMobile()) return;
@@ -269,9 +269,7 @@
         if (container) {
             if (isMobile()) {
                 var h = document.getElementById(HEADER_ID);
-                if (h && container.parentElement !== h) {
-                    h.appendChild(container);
-                }
+                if (h && container.parentElement !== h) h.appendChild(container);
             }
             return container;
         }
@@ -280,7 +278,6 @@
         container.id = CONTAINER_ID;
         container.style.minHeight = '36px';
 
-        // ---------- МОБИЛЬНЫЙ ----------
         if (isMobile()) {
             hideNativeHeader();
 
@@ -318,7 +315,6 @@
             return container;
         }
 
-        // ---------- ДЕСКТОП: header ----------
         var header = document.querySelector('header');
         if (header) {
             container.style.cssText = 'display:inline-flex;align-items:center;gap:6px;float:right;margin-top:6px;margin-right:10px;flex-wrap:wrap;max-width:100%;position:relative;z-index:1000;min-height:36px;';
@@ -326,14 +322,13 @@
             return container;
         }
 
-        // ---------- ДЕСКТОП: fallback (fixed) ----------
         container.style.cssText = 'position:fixed !important;top:10px !important;right:10px !important;z-index:99999 !important;background:rgba(255,255,255,0.9) !important;border-radius:20px !important;padding:4px 12px !important;box-shadow:0 2px 12px rgba(0,0,0,0.15) !important;display:flex !important;align-items:center !important;gap:6px !important;min-height:36px;';
         document.body.prepend(container);
         return container;
     }
 
     // ============================================================
-    // 🎨 RENDER: LOGGED OUT (оригинальный стиль)
+    // 🎨 RENDER
     // ============================================================
     function renderLoggedOut(container) {
         if (isMobile()) {
@@ -351,9 +346,6 @@
         }
     }
 
-    // ============================================================
-    // 🎨 RENDER: LOGGED IN (оригинальный стиль + onerror аватар)
-    // ============================================================
     function renderLoggedIn(container, name, avatarUrl) {
         var safeName = escapeHtml(name);
         var fallback = 'https://ui-avatars.com/api/?name=' +
@@ -365,23 +357,27 @@
         if (isMobile()) {
             container.innerHTML =
                 '<div style="display: flex; align-items: center; gap: 3px; background: rgba(255,255,255,0.15); border-radius: 20px; padding: 2px 6px 2px 4px; border: 1px solid rgba(255,255,255,0.1);">' +
-                '  <img src="' + avEscaped + '" alt="" onerror="this.onerror=null;this.src=\'' + fallback + '\';" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover; background: #6C63FF;">' +
-                '  <a href="/profile/" style="color: #fff; text-decoration: none; font-size: 0.6rem; opacity: 0.9;">Профиль</a>' +
+                '  <a href="/profile/" style="display: flex; align-items: center; gap: 4px; text-decoration: none; color: #fff;">' +
+                '    <img src="' + avEscaped + '" alt="" onerror="this.onerror=null;this.src=\'' + fallback + '\';" style="width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); object-fit: cover; background: #6C63FF; display: block;">' +
+                '    <span style="color: #fff; font-size: 0.6rem; opacity: 0.9;">Профиль</span>' +
+                '  </a>' +
                 '  <a href="#" onclick="window.logoutUser(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.6rem;">Выйти</a>' +
                 '</div>';
         } else {
             container.innerHTML =
                 '<div style="display: flex; align-items: center; gap: 6px; background: #f5f5f5; padding: 4px 10px; border-radius: 20px; flex-wrap: wrap;">' +
-                '  <img src="' + avEscaped + '" alt="" onerror="this.onerror=null;this.src=\'' + fallback + '\';" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover; background: #6C63FF;">' +
-                '  <span style="font-size: 0.75rem; color: #333; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' + safeName + '</span>' +
-                '  <a href="/profile/" style="color: #6C63FF; text-decoration: none; font-size: 0.75rem; white-space: nowrap;">Профиль</a>' +
+                '  <a href="/profile/" style="display: flex; align-items: center; gap: 6px; text-decoration: none; color: inherit;">' +
+                '    <img src="' + avEscaped + '" alt="" onerror="this.onerror=null;this.src=\'' + fallback + '\';" style="width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ddd; object-fit: cover; background: #6C63FF; display: block;">' +
+                '    <span style="font-size: 0.75rem; color: #333; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">' + safeName + '</span>' +
+                '    <span style="color: #6C63FF; font-size: 0.75rem; white-space: nowrap;">Профиль</span>' +
+                '  </a>' +
                 '  <a href="#" onclick="window.logoutUser(); return false;" style="color: #c0392b; text-decoration: none; font-size: 0.75rem; white-space: nowrap;">Выйти</a>' +
                 '</div>';
         }
     }
 
     // ============================================================
-    // 🔄 UPDATE UI — мгновенно из кэша, потом фоновое обновление
+    // 🔄 UPDATE UI
     // ============================================================
     var lastRenderedUserId = null;
     var updateLock = false;
@@ -396,7 +392,6 @@
 
             var session = readSession();
 
-            // ----- Не залогинен -----
             if (!session) {
                 if (lastRenderedUserId !== null || container.innerHTML.indexOf('Войти') === -1) {
                     renderLoggedOut(container);
@@ -409,7 +404,7 @@
             var u = session.user;
             var userId = u.id;
 
-            // ----- 1️⃣ Мгновенный рендер из кэша -----
+            // 1️⃣ Мгновенный рендер из кэша
             var cache = readCache(userId);
 
             if (cache && lastRenderedUserId !== userId) {
@@ -423,11 +418,13 @@
                 lastRenderedUserId = userId;
             }
 
-            // 🌉 Мостик к supabase-js (для comments/likes/experience)
-            // Не await — не блокирует рендер
+            // 🌉 Мостик
             bridgeToSupabase(session);
 
-            // ----- 2️⃣ Фоновый fetch профиля -----
+            // 🔎 Проверяем доступность /profile/ (1 раз)
+            checkProfilePage();
+
+            // 2️⃣ Фоновый fetch
             var profile = await fetchProfileFromServer(session);
             var freshName =
                 (profile && (profile.display_name || profile.username)) ||
@@ -435,7 +432,7 @@
                 (u.email ? u.email.split('@')[0] : 'Профиль');
             var freshAvatar = (profile && profile.avatar_url) || null;
 
-            // ----- 3️⃣ Обновляем если изменилось -----
+            // 3️⃣ Обновляем если изменилось
             var cacheNow = readCache(userId);
             var nameChanged = !cacheNow || cacheNow.name !== freshName;
             var avatarChanged = !cacheNow || cacheNow.avatarUrl !== freshAvatar;
@@ -446,7 +443,7 @@
             writeCache(userId, freshName, freshAvatar);
 
         } catch(e) {
-            console.warn('[auth-button]', e);
+            log('updateUI error:', e.message);
         } finally {
             updateLock = false;
         }
@@ -456,13 +453,13 @@
     // 🚪 LOGOUT
     // ============================================================
     window.logoutUser = function() {
-        // Чистим storage
         [MY_KEY, SB_KEY, BACKUP_KEY, CACHE_KEY].forEach(function(k) {
             try { localStorage.removeItem(k); } catch(e) {}
             try { sessionStorage.removeItem(k); } catch(e) {}
         });
         try { document.cookie = SB_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
         try { document.cookie = MY_KEY + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e) {}
+
         try {
             var toRemove = [];
             for (var i = 0; i < localStorage.length; i++) {
@@ -471,10 +468,9 @@
                     toRemove.push(k);
                 }
             }
-            toRemove.forEach(function(k) { localStorage.removeItem(k); });
+            toRemove.forEach(function(k) { try { localStorage.removeItem(k); } catch(e) {} });
         } catch(e) {}
 
-        // Выход из supabase-js
         try {
             if (window.supabaseClient && window.supabaseClient.auth) {
                 window.supabaseClient.auth.signOut();
@@ -495,22 +491,21 @@
         lastRenderedUserId = null;
         _bridged = false;
         updateUI();
-        setTimeout(updateUI, 400);
-        setTimeout(updateUI, 1200);
     };
 
     // ============================================================
-    // 👂 EVENTS
+    // 👂 EVENTS (без polling!)
     // ============================================================
     window.addEventListener('storage', updateUI);
     window.addEventListener('focus', updateUI);
     window.addEventListener('pageshow', updateUI);
+    window.addEventListener('online', updateUI);
 
     document.addEventListener('visibilitychange', function() {
         if (!document.hidden) updateUI();
     });
 
-    // Ресайз (мобильный ↔ ПК)
+    // Ресайз
     var lastMobile = isMobile();
     var resizeTimer = null;
     window.addEventListener('resize', function() {
@@ -533,6 +528,48 @@
     });
 
     // ============================================================
+    // 🛡️ GUARD хедера — через MutationObserver, не polling
+    // ============================================================
+    var headerGuard = null;
+    var headerGuardTimer = null;
+
+    function startHeaderGuard() {
+        if (!isMobile()) return;
+        if (headerGuard) return;
+
+        var nativeHeader = document.querySelector('.wy-nav-top');
+        if (!nativeHeader) return;
+
+        headerGuard = new MutationObserver(function() {
+            if (headerGuardTimer) return;
+            headerGuardTimer = setTimeout(function() {
+                headerGuardTimer = null;
+                if (isMobile()) {
+                    var t = document.querySelector('.wy-nav-top');
+                    if (t && t.style.display !== 'none') {
+                        t.style.setProperty('display', 'none', 'important');
+                    }
+                }
+            }, 300);
+        });
+
+        try {
+            headerGuard.observe(nativeHeader, {
+                attributes: true,
+                attributeFilter: ['style', 'class']
+            });
+
+            // Auto-disconnect через 30 сек — тема уже устаканилась
+            setTimeout(function() {
+                if (headerGuard) {
+                    try { headerGuard.disconnect(); } catch(e) {}
+                    headerGuard = null;
+                }
+            }, 30000);
+        } catch(e) {}
+    }
+
+    // ============================================================
     // 🚀 START
     // ============================================================
     function start() {
@@ -540,18 +577,8 @@
         setTimeout(updateUI, 300);
         setTimeout(updateUI, 1200);
 
-        // 🔁 Периодическая проверка сессии — если её кто-то снёс, восстановим
-        setInterval(updateUI, 3000);
-
-        // 🛡️ Возвращаем скрытие нативного хедера, если кто-то его вернул
-        setInterval(function() {
-            if (isMobile()) {
-                var t = document.querySelector('.wy-nav-top');
-                if (t && t.style.display !== 'none') {
-                    t.style.setProperty('display', 'none', 'important');
-                }
-            }
-        }, 1500);
+        // Запускаем guard хедера (только MutationObserver, не setInterval)
+        setTimeout(startHeaderGuard, 1500);
     }
 
     if (document.readyState === 'loading') {

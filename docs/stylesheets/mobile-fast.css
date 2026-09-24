@@ -1,44 +1,237 @@
-/* Только для мобильных — облегчение рендера */
+/* ============================================================
+   mobile-fast.css — v2 VIP
+   Лёгкий рендер на мобильных и слабых устройствах
+   
+   Что делает:
+     1. Отключает тяжёлые тени и backdrop-filter
+     2. Убирает тяжёлые анимации на hero-блоках
+     3. Готовит GPU-слои только для анимируемых элементов
+     4. Уважает prefers-reduced-motion
+   ============================================================ */
+
+
+/* ============================================================
+   1. МОБИЛЬНЫЕ — базовые оптимизации (768px и меньше)
+   ============================================================ */
 @media (max-width: 768px) {
-    /* 1. Отключаем тяжёлые тени */
-    * { box-shadow: none !important; text-shadow: none !important; }
 
-    /* 2. Только критичные тени */
-    .pf-hero,
-    .pf-btn,
+    /* ------------------------------------------------------------
+       1.1 Тени — заменяем на плоские, оставляем только нужные
+       ------------------------------------------------------------ */
+
+    /* Убираем все тени кроме критичных (см. 1.2) */
+    .pf-card,
+    .pf-quick-card,
+    .pf-timer-card,
+    .pf-ach,
+    .pf-note,
+    .pf-notif,
+    .pf-friend,
+    .pf-tab,
+    .pf-mypage-tile,
+    .pf-mypage-action,
+    .wiki-featured-badge,
+    .infobox,
+    blockquote,
+    table {
+        box-shadow: none !important;
+    }
+
+    /* Текстовые тени — тоже убираем */
+    .pf-hero .pf-name,
+    .pf-hero h1,
     .vip-banner,
-    #auth-btn-container > div { box-shadow: 0 4px 12px rgba(0,0,0,.08) !important; }
+    .lg-hero {
+        text-shadow: none !important;
+    }
 
-    /* 3. Убираем backdrop-filter (жрёт GPU) */
-    * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+    /* ------------------------------------------------------------
+       1.2 Критичные тени — оставляем (но облегчённые)
+       ------------------------------------------------------------ */
 
-    /* 4. Отключаем тяжёлые анимации */
+    /* Hero — одна лёгкая тень вместо большой */
+    .pf-hero {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+    }
+
+    /* Кнопки — минимальная */
+    .pf-btn,
+    .daily-btn,
+    .mc-btn {
+        box-shadow: 0 2px 6px rgba(108, 99, 255, 0.25) !important;
+    }
+
+    /* Auth-кнопка в шапке */
+    #auth-btn-container > div {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* ------------------------------------------------------------
+       1.3 Backdrop-filter — отключаем только у конкретных элементов
+       (важно: НЕ через `*`, чтобы не ломать фоны)
+       ------------------------------------------------------------ */
+
+    body.mars-stars-on .md-content,
+    body.mars-stars-on .rst-content,
+    body.mars-stars-on .wy-nav-content,
+    body.mars-stars-on .md-content__inner,
+    .pf-hero,
+    .pf-card,
+    .vip-banner,
+    .lg-hero,
+    .ld-modal,
+    .pf-modal,
+    .mc-form,
+    #auth-btn-container > div,
+    #effects-menu-panel,
+    #sound-panel {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    /* ------------------------------------------------------------
+       1.4 Тяжёлые анимации — отключаем на hero-блоках
+       (двигающиеся blob-фоны, вращающиеся кольца)
+       ------------------------------------------------------------ */
+
+    /* Псевдо-элементы с анимацией */
     .pf-hero::before,
     .pf-hero::after,
     .vip-banner::before,
     .vip-banner::after,
     .lg-hero::before,
-    .lg-hero::after { animation: none !important; }
+    .lg-hero::after {
+        animation: none !important;
+        opacity: 0.4 !important;
+    }
 
-    /* 5. Готовим к GPU только то, что реально анимируется */
+    /* Вращающиеся кольца и пульсации */
+    .pf-avatar-ring,
+    .pf-mod-badge,
+    .pf-level-badge,
+    .lg-logo-orbit,
+    .lg-logo {
+        animation: none !important;
+    }
+
+    /* Shimmer на прогресс-баре */
+    .pf-progress-bar::after {
+        animation: none !important;
+    }
+
+    /* Плавающие элементы */
+    .pf-hero-stars > * {
+        animation: none !important;
+        opacity: 0.3 !important;
+    }
+
+    /* ------------------------------------------------------------
+       1.5 GPU-слои — только для реально анимируемых элементов
+       (translateZ(0) на всё создаёт лишние слои → лаги)
+       ------------------------------------------------------------ */
+
+    /* Только те, что точно двигаются/меняют прозрачность */
     .pf-avatar,
     .pf-btn,
-    .pf-quick-card { transform: translateZ(0); }
+    .pf-quick-card,
+    .pf-tab,
+    .mc-btn,
+    #auth-btn-container img {
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
 
-    /* 6. Отключаем smooth scroll (тяжело на мобильном) */
-    * { scroll-behavior: auto !important; }
+    /* ------------------------------------------------------------
+       1.6 Скролл — отключаем smooth только в конкретных местах
+       ------------------------------------------------------------ */
+
+    /* Плавный скролл на мобильном тяжёлый — отключаем глобально */
+    html,
+    body {
+        scroll-behavior: auto !important;
+    }
+
+    /* Внутренние контейнеры со скроллом тоже */
+    .wy-menu-vertical,
+    .pf-tabs {
+        scroll-behavior: auto !important;
+    }
 }
 
-/* Убираем плавные скроллы на мобильном */
-@media (max-width: 768px) {
-    html { scroll-behavior: auto; }
-}
 
-/* Или совсем для слабых устройств */
-@media (prefers-reduced-motion: reduce),
-       (max-width: 480px) {
-    *, *::before, *::after {
+/* ============================================================
+   2. СЛАБЫЕ УСТРОЙСТВА / УЗКИЕ ЭКРАНЫ (480px и меньше)
+   ============================================================ */
+@media (max-width: 480px) {
+
+    /* Ещё агрессивнее — почти всё статично */
+    *,
+    *::before,
+    *::after {
         animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.05s !important;
+    }
+
+    /* Hero без свечения вообще */
+    .pf-hero::before,
+    .pf-hero::after {
+        display: none !important;
+    }
+
+    /* Прогресс-бар без shimmer */
+    .pf-progress-bar::after {
+        display: none !important;
+    }
+
+    /* Кнопки без transition */
+    .pf-btn,
+    .mc-btn,
+    #auth-btn-container a {
+        transition: none !important;
+    }
+}
+
+
+/* ============================================================
+   3. PREFERS-REDUCED-MOTION — доступность
+   (отдельно от 480px — это РАЗНЫЕ причины!)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    /* Все анимации и переходы — минимально возможные */
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* Отключаем именно движущиеся элементы */
+    .pf-hero::before,
+    .pf-hero::after,
+    .vip-banner::before,
+    .vip-banner::after,
+    .lg-hero::before,
+    .lg-hero::after,
+    .pf-avatar-ring,
+    .pf-progress-bar::after,
+    .xp-toast,
+    .mars-xp-toast,
+    .mars-xp-particle,
+    .vip-spark,
+    .vip-trail,
+    .mars-intro-star,
+    .mars-intro-meteor {
+        animation: none !important;
+    }
+
+    /* Частицы — совсем убираем */
+    .mars-xp-particle,
+    .vip-spark,
+    .vip-trail {
+        display: none !important;
     }
 }

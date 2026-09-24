@@ -1214,3 +1214,69 @@ html body.mars-stars-on .wiki-featured-badge .badge-text strong {
     }
     body { font-size: 12pt; }
 }
+/* ============================================================
+   ВОЗВРАТ К ПРЕЖНЕМУ СТИЛЮ — тонкий шрифт, без красного
+   ============================================================ */
+
+/* Левое меню — обычный вес шрифта */
+.wy-menu-vertical a,
+.wy-menu-vertical li > a,
+.wy-menu-vertical li.current > a,
+.wy-menu-vertical li.current > a:hover,
+.wy-menu-vertical li > a:hover,
+.wy-menu-vertical .caption,
+.wy-menu-vertical span,
+.wy-menu-vertical li.toctree-l1 > a,
+.wy-menu-vertical li.toctree-l2 > a,
+.wy-menu-vertical li.toctree-l3 > a {
+    font-weight: normal !important;
+    font-size: 0.92rem !important;
+}
+
+/* Ссылки в шапке (Профиль, Выйти) — обычный вес */
+#auth-btn-container a,
+#auth-btn-container a:hover,
+#auth-btn-container .user-info a {
+    font-weight: normal !important;
+}
+
+/* «Выйти» — вернуть в обычный цвет, без красного */
+#auth-btn-container a[onclick*="logout"],
+#auth-btn-container a[onclick*="logoutUser"] {
+    color: inherit !important;
+    font-weight: normal !important;
+}
+
+/* На десктопе */
+@media (min-width: 769px) {
+    #auth-btn-container a[onclick*="logout"],
+    #auth-btn-container a[onclick*="logoutUser"] {
+        color: #666 !important;
+    }
+    #auth-btn-container a[onclick*="logout"]:hover {
+        color: #333 !important;
+    }
+}
+
+/* На мобильном (фиолетовая шапка) */
+@media (max-width: 768px) {
+    #auth-btn-container a[onclick*="logout"],
+    #auth-btn-container a[onclick*="logoutUser"] {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+    #auth-btn-container a[onclick*="logout"]:hover {
+        color: #fff !important;
+    }
+}
+
+/* Активный пункт меню — без жирности */
+.wy-menu-vertical li.current > a,
+.wy-menu-vertical .md-nav__link--active {
+    font-weight: normal !important;
+}
+
+/* Раскрытые разделы — без жирности */
+.wy-menu-vertical li.mars-open > a,
+.wy-menu-vertical li:has(> ul).mars-open > a {
+    font-weight: normal !important;
+}

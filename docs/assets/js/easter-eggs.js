@@ -1,14 +1,15 @@
 // ============================================================
-// easter-eggs.js — v2 VIP
+// easter-eggs.js — v3 VIP
 // Пасхалки, звёзды, метеоры, пословицы, сезоны
-// - Fix: getBasePath → корректный /secret/ от корня сайта
-// - Fix: не конфликтует с vip-cursor.js (проверка флага)
-// - Fix: кнопка звёзд выше effects-menu (bottom: 150px)
-// - Fix: debounce resize
-// - Fix: не показывает пословицы при клике на UI-элементы
-// - Уважает prefers-reduced-motion
-// - Safe storage (try/catch)
-// - DEBUG флаг, публичное API
+// - 🆕 Fix: AudioContext создаётся ТОЛЬКО после user gesture
+// - 🆕 Fix: starsOn({silent:true}) для инициализации без звука
+// - 🆕 Fix: проверка существующего canvas / кнопки
+// - 🆕 Fix: pagehide → cleanup
+// - 🆕 Fix: prefers-reduced-motion
+// - 🆕 Fix: не конфликтует с vip-cursor.js
+// - 🆕 Fix: кнопка звёзд выше effects-menu (bottom: 150px)
+// - 🆕 Fix: debounce resize, auto-disconnect
+// - Публичное API: window.marsEasterEggs.*
 // ============================================================
 (function() {
     'use strict';
@@ -55,21 +56,18 @@
 
     // ============================================================
     // 🔗 Правильный путь к секретной странице
-    // Ищем существующую ссылку в DOM, иначе /secret/ от корня
     // ============================================================
     function getSecretUrl() {
-        // 1) Ищем ссылку на /secret/ в навигации
         try {
             var links = document.querySelectorAll('a[href*="secret"]');
             for (var i = 0; i < links.length; i++) {
                 var href = links[i].getAttribute('href');
                 if (href && href.indexOf('secret') !== -1 && href.indexOf('javascript:') !== 0) {
-                    return links[i].href; // абсолютный URL
+                    return links[i].href;
                 }
             }
         } catch(e) {}
 
-        // 2) Используем <base> если есть
         try {
             var baseTag = document.querySelector('base');
             if (baseTag && baseTag.href) {
@@ -77,19 +75,25 @@
             }
         } catch(e) {}
 
-        // 3) По умолчанию — от корня
         return window.location.origin + '/secret/';
     }
 
     // ============================================================
-    // 🔊 АУДИО
+    // 🔊 АУДИО — КРИТИЧНО: не создаём до user gesture
     // ============================================================
     var audioCtx = null;
     var audioUnlocked = false;
 
+    /**
+     * Возвращает AudioContext только если он уже разблокирован.
+     * Иначе null — это предотвращает Chrome warnings.
+     */
     function getAudioCtx() {
+        if (!audioUnlocked) return null;
         try {
-            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
             if (audioCtx && audioCtx.state === 'suspended') {
                 audioCtx.resume().catch(function(){});
             }
@@ -97,19 +101,34 @@
         return audioCtx;
     }
 
+    /**
+     * Разблокирует AudioContext после первого взаимодействия пользователя.
+     * Вешается один раз на touchstart/click/keydown.
+     */
     function unlockAudioOnce() {
         if (audioUnlocked) return;
+
         function un() {
-            var c = getAudioCtx();
-            if (c && c.state === 'suspended') c.resume().catch(function(){});
-            audioUnlocked = true;
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx && audioCtx.state === 'suspended') {
+                    audioCtx.resume().catch(function(){});
+                }
+                audioUnlocked = true;
+                log('AudioContext разблокирован');
+            } catch(e) {
+                log('unlock error:', e.message);
+            }
             document.removeEventListener('touchstart', un);
             document.removeEventListener('click', un);
             document.removeEventListener('keydown', un);
         }
-        document.addEventListener('touchstart', un, { passive: true, once: false });
-        document.addEventListener('click', un, { passive: true, once: false });
-        document.addEventListener('keydown', un, { passive: true, once: false });
+
+        document.addEventListener('touchstart', un, { passive: true });
+        document.addEventListener('click', un, { passive: true });
+        document.addEventListener('keydown', un, { passive: true });
     }
 
     // ============================================================
@@ -117,15 +136,12 @@
     // ============================================================
     function initCursor() {
         if (IS_MOBILE) return;
-
-        // 🛑 Если vip-cursor.js уже рулит — не мешаем
         if (window.__vipCursorLoaded || window.marsVipCursor) {
             log('vip-cursor активен, CSS-курсор не ставим');
             return;
         }
-        if (document.getElementById('vip-cursor-style')) return;
+        if (document.getElementById('easter-cursor-style')) return;
 
-        // Fallback — CSS-курсор с Марсом
         var s = document.createElement('style');
         s.id = 'easter-cursor-style';
         s.textContent = '*{cursor:url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><defs><radialGradient id="mg" cx="35%" cy="35%"><stop offset="0%" stop-color="%23e74c3c"/><stop offset="100%" stop-color="%237f1d1d"/></radialGradient></defs><circle cx="16" cy="16" r="12" fill="url(%23mg)" stroke="%234a1010" stroke-width="1"/><ellipse cx="11" cy="12" rx="3" ry="2" fill="%23922b1f" opacity="0.6"/><ellipse cx="20" cy="18" rx="4" ry="2.5" fill="%23922b1f" opacity="0.5"/></svg>\') 16 16,auto !important;}a,button,.md-nav__link{cursor:url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36"><defs><radialGradient id="mg2" cx="35%" cy="35%"><stop offset="0%" stop-color="%23f39c12"/><stop offset="100%" stop-color="%23c0392b"/></radialGradient></defs><circle cx="18" cy="18" r="14" fill="url(%23mg2)" stroke="%23a04000" stroke-width="1.5"/></svg>\') 18 18,pointer !important;}input,textarea{cursor:text !important;}';
@@ -142,9 +158,18 @@
     var starsCtx = null;
     var starsData = [];
     var shotsData = [];
+    var starsResizeTimer = null;
 
     function initStars() {
+        // 🆕 Проверка: canvas уже может быть создан другим скриптом
+        if (document.getElementById('mars-stars-canvas')) {
+            log('canvas уже существует — не создаём');
+            createToggle();
+            return;
+        }
+
         if (safeLS_get(STARS_KEY) === 'true') {
+            // 🆕 silent: true — не играем звук при загрузке
             createStars(false);
         }
         createToggle();
@@ -152,6 +177,8 @@
 
     function createStars(playSound) {
         if (starsCanvas) return;
+        // 🆕 Двойная проверка canvas
+        if (document.getElementById('mars-stars-canvas')) return;
 
         document.body.classList.add('mars-stars-on');
         document.documentElement.classList.add('mars-stars-on');
@@ -206,7 +233,6 @@
             var w = window.innerWidth, h = window.innerHeight;
             starsCtx.clearRect(0, 0, w, h);
 
-            // Звёзды
             for (var i = 0; i < starsData.length; i++) {
                 var s = starsData[i];
                 s.tw += s.sp;
@@ -224,7 +250,6 @@
                 starsCtx.fill();
             }
 
-            // Метеоры
             shotsData = shotsData.filter(function(x) { return x.life > 0; });
             for (var j = 0; j < shotsData.length; j++) {
                 var sh = shotsData[j];
@@ -260,11 +285,9 @@
 
         resize();
 
-        // Debounce resize
-        var _resizeTimer = null;
         starsResizeHandler = function() {
-            if (_resizeTimer) clearTimeout(_resizeTimer);
-            _resizeTimer = setTimeout(function() { _resizeTimer = null; resize(); }, 200);
+            if (starsResizeTimer) clearTimeout(starsResizeTimer);
+            starsResizeTimer = setTimeout(function() { starsResizeTimer = null; resize(); }, 200);
         };
         window.addEventListener('resize', starsResizeHandler, { passive: true });
 
@@ -279,6 +302,10 @@
         if (starsResizeHandler) {
             window.removeEventListener('resize', starsResizeHandler);
             starsResizeHandler = null;
+        }
+        if (starsResizeTimer) {
+            clearTimeout(starsResizeTimer);
+            starsResizeTimer = null;
         }
         if (starsRAF) {
             cancelAnimationFrame(starsRAF);
@@ -315,7 +342,6 @@
         var on = safeLS_get(STARS_KEY) === 'true';
         btn.textContent = on ? '🌟' : '⭐';
 
-        // ⬆️ Подняли ВЫШЕ effects-menu (у него bottom: 90px)
         var size = IS_MOBILE ? 52 : 48;
         btn.style.cssText =
             'position:fixed;' +
@@ -341,6 +367,15 @@
             last = now;
             vibrate(20);
 
+            // 🆕 Разблокируем аудио при первом клике (user gesture)
+            if (!audioUnlocked) {
+                try {
+                    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume().catch(function(){});
+                    audioUnlocked = true;
+                } catch(e) {}
+            }
+
             if (safeLS_get(STARS_KEY) === 'true') {
                 safeLS_set(STARS_KEY, 'false');
                 removeStars();
@@ -358,10 +393,11 @@
     }
 
     // ============================================================
-    // 🔊 ЗВУКИ
+    // 🔊 ЗВУКИ (все проверяют audioUnlocked)
     // ============================================================
     function playStarsOn() {
         if (REDUCED_MOTION) return;
+        if (!audioUnlocked) return; // 🆕 защита от warning
         var c = getAudioCtx(); if (!c) return;
         var t = c.currentTime;
         [220, 277.18, 329.63, 440, 554.37].forEach(function(f, i) {
@@ -380,6 +416,7 @@
     }
 
     function playStarsOff() {
+        if (!audioUnlocked) return; // 🆕
         var c = getAudioCtx(); if (!c) return;
         try {
             var o = c.createOscillator(), g = c.createGain();
@@ -394,6 +431,7 @@
     }
 
     function playEaster() {
+        if (!audioUnlocked) return; // 🆕
         var c = getAudioCtx(); if (!c) return;
         [261.63, 329.63, 392, 523.25].forEach(function(f, i) {
             setTimeout(function() {
@@ -547,7 +585,6 @@
             if (s.parentNode) s.remove();
         }, 4500);
 
-        // Кнопка "Перейти на секретную страницу"
         var u = document.createElement('div');
         u.style.cssText =
             'position:fixed;top:' + (IS_MOBILE ? '12px' : '20px') + ';left:50%;' +
@@ -610,10 +647,10 @@
         document.addEventListener('click', function(e) {
             if (!e.target || !e.target.closest) return;
             if (e.target.closest(PROVERB_EXCLUDE)) return;
-            // Не считаем клики на метеорах/снежинках
             if (e.target.classList && (
                 e.target.classList.contains('vip-spark') ||
-                e.target.classList.contains('vip-cursor-ripple')
+                e.target.classList.contains('vip-cursor-ripple') ||
+                e.target.classList.contains('mars-xp-particle')
             )) return;
 
             cnt++;
@@ -762,22 +799,48 @@
         init();
     }
 
+    // 🆕 Cleanup при уходе со страницы
+    window.addEventListener('pagehide', function() {
+        if (starsRAF) { cancelAnimationFrame(starsRAF); starsRAF = null; }
+    });
+
     // ============================================================
     // 🌐 Публичное API
     // ============================================================
     window.marsEasterEggs = {
         trigger: triggerMeteor,
         proverb: showProverb,
-        starsOn: function() {
+
+        /**
+         * Включить звёзды.
+         * @param {Object} opts - {silent: true} — без звука (для инициализации)
+         */
+        starsOn: function(opts) {
+            opts = opts || {};
             safeLS_set(STARS_KEY, 'true');
-            createStars(true);
+            createStars(!opts.silent); // silent=true → playSound=false
+            var btn = document.getElementById('mars-stars-toggle');
+            if (btn) {
+                btn.textContent = '🌟';
+                btn.setAttribute('aria-pressed', 'true');
+            }
         },
+
         starsOff: function() {
             safeLS_set(STARS_KEY, 'false');
             removeStars();
+            var btn = document.getElementById('mars-stars-toggle');
+            if (btn) {
+                btn.textContent = '⭐';
+                btn.setAttribute('aria-pressed', 'false');
+            }
         },
-        isStarsOn: function() { return safeLS_get(STARS_KEY) === 'true'; }
+
+        isStarsOn: function() { return safeLS_get(STARS_KEY) === 'true'; },
+
+        // 🆕 Debug
+        isAudioUnlocked: function() { return audioUnlocked; }
     };
 
-    if (DEBUG) console.log('✅ easter-eggs.js v2 VIP загружен');
+    if (DEBUG) console.log('✅ easter-eggs.js v3 VIP загружен');
 })();

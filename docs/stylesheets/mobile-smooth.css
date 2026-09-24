@@ -1,86 +1,119 @@
 /* ============================================================
-   mobile-smooth.css v2 — мягкая оптимизация
-   Убирает ТОЛЬКО тяжёлое, оставляет лёгкое
+   mobile-smooth.css — v3 VIP
+   Мягкая оптимизация: убираем тяжёлое, оставляем лёгкое
+   
+   Что оставляем (дёшево для GPU):
+     • transform (translate, scale, rotate)
+     • opacity
+     • filter: blur() — только статично
+   
+   Что убираем/замедляем (дорого):
+     • background-position (shine — paint каждый кадр)
+     • box-shadow-анимация (glow — перерисовка)
+     • backdrop-filter (жрёт GPU)
+     • filter-анимации
    ============================================================ */
 
+
+/* ============================================================
+   1. МОБИЛЬНЫЕ + TAP-УСТРОЙСТВА
+   ============================================================ */
 @media (max-width: 768px), (hover: none) and (pointer: coarse) {
 
-    /* ═══════════════════════════════════════════════════════
-       ✅ ЧТО ОСТАВЛЯЕМ (лёгкое, transform/opacity):
-       - fade-in, slide-up, zoom
-       - hover-подъёмы через transform
-       - все анимации появления элементов
-       ═══════════════════════════════════════════════════════ */
-
-    /* ═══════════════════════════════════════════════════════
-       ❌ ЧТО УБИРАЕМ (тяжёлое, paint каждый кадр):
-       - background-position (shine)
-       - box-shadow анимации (glow)
-       - backdrop-filter
-       - filter анимации
-       ═══════════════════════════════════════════════════════ */
-
-    /* --- 1. Убиваем ONLY shine-анимации (background-position) --- */
+    /* ------------------------------------------------------------
+       1.1 Убираем shine-анимации (background-position = paint)
+       ------------------------------------------------------------ */
     .pf-progress-bar::after,
     .lg-btn::before,
     .lg-tab.active::after,
     .lg-card::before,
     .mc-comment::before,
-    [class*="shine"]::after,
-    [class*="shine"]::before {
+    [class*="shine"]::before,
+    [class*="shine"]::after {
         display: none !important;
     }
 
-    /* --- 2. Убиваем glow (box-shadow анимации) --- */
+    /* ------------------------------------------------------------
+       1.2 Убираем glow (анимация box-shadow)
+       ------------------------------------------------------------ */
     .pf-mod-badge,
     [class*="glow"],
     .lg-btn {
         animation: none !important;
     }
 
-    /* --- 3. Отключаем backdrop-filter (жрёт GPU сильнее всего) --- */
-    * {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
-
-    /* Компенсируем потерю — делаем фоны чуть плотнее */
+    /* ------------------------------------------------------------
+       1.3 Отключаем backdrop-filter только там, где он есть
+       (не через `*` — чтобы не ломать общий рендер)
+       ------------------------------------------------------------ */
+    body.mars-stars-on .md-content,
+    body.mars-stars-on .rst-content,
+    body.mars-stars-on .wy-nav-content,
+    body.mars-stars-on .md-content__inner,
     .pf-quick-card,
     .pf-card,
     .pf-tabs,
+    .pf-note,
+    .pf-ach,
+    .pf-friend,
     .lg-tabs,
     .lg-card,
     .infobox-vip,
     .quote-vip,
-    .table-vip {
-        background-opacity: 1;
+    .table-vip,
+    .ld-modal,
+    .pf-modal,
+    #effects-menu-panel,
+    #sound-panel {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
 
-    /* --- 4. Упрощаем тени у больших блоков (не убираем!) --- */
+    /* ------------------------------------------------------------
+       1.4 Компенсация потери прозрачности — плотные фоны
+       ------------------------------------------------------------ */
+    body.mars-stars-on .pf-card,
+    body.mars-stars-on .pf-quick-card,
+    body.mars-stars-on .pf-note,
+    body.mars-stars-on .pf-ach,
+    body.mars-stars-on .pf-friend,
+    body.mars-stars-on .pf-tabs {
+        background: rgba(20, 20, 40, 0.95) !important;
+    }
+
+    /* ------------------------------------------------------------
+       1.5 Упрощаем тени у больших блоков (не убираем — оставляем вид)
+       ------------------------------------------------------------ */
     .pf-hero,
     .vip-banner,
     .lg-hero,
     .lg-card {
-        box-shadow: 0 4px 16px rgba(0,0,0,.15) !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
     }
 
-    /* --- 5. Замедляем тяжёлые декоративные анимации в 2 раза --- */
+    /* ------------------------------------------------------------
+       1.6 Замедляем тяжёлые декоративные анимации (×2)
+       ------------------------------------------------------------ */
     .pf-hero::before,
     .pf-hero::after,
     .lg-hero::before,
     .lg-hero::after,
+    .vip-banner::before,
+    .vip-banner::after,
     .pf-avatar-wrap,
     .lg-logo,
     .lg-logo-orbit {
         animation-duration: 16s !important;
     }
 
-    /* Аватар-ring не крутим — заменяем на пульсацию */
+    /* Кольцо аватара — пульсация вместо вращения */
     .pf-avatar-ring {
         animation-duration: 6s !important;
     }
 
-    /* --- 6. GPU-ускорение для тех, кто реально двигается --- */
+    /* ------------------------------------------------------------
+       1.7 GPU-ускорение только для реально двигающихся элементов
+       ------------------------------------------------------------ */
     .pf-avatar,
     .pf-quick-card,
     .pf-tab,
@@ -96,14 +129,16 @@
         backface-visibility: hidden;
     }
 
-    /* --- 7. Уменьшаем длительность всех переходов — меньше «дёргания» --- */
+    /* ------------------------------------------------------------
+       1.8 Сокращаем переходы — но оставляем плавность у карточек
+       ------------------------------------------------------------ */
     *,
     *::before,
     *::after {
-        transition-duration: .15s !important;
+        transition-duration: 0.15s !important;
     }
 
-    /* Но для сложных элементов — оставляем плавность */
+    /* Карточки — плавнее, потому что кликаются часто */
     .pf-card,
     .pf-quick-card,
     .pf-tab,
@@ -115,10 +150,12 @@
     .pf-note,
     .pf-ach,
     .pf-friend {
-        transition-duration: .25s !important;
+        transition-duration: 0.25s !important;
     }
 
-    /* --- 8. Убираем hover на тач (он залипает) --- */
+    /* ------------------------------------------------------------
+       1.9 На тач-устройствах убираем «залипающий» hover
+       ------------------------------------------------------------ */
     @media (hover: none) {
         .pf-quick-card:hover,
         .pf-card:hover,
@@ -138,7 +175,9 @@
         }
     }
 
-    /* --- 9. Широкие блоки — убираем parallax-подобные эффекты --- */
+    /* ------------------------------------------------------------
+       1.10 Уменьшаем декоративные пятна (меньше paint-область)
+       ------------------------------------------------------------ */
     .pf-hero::before,
     .pf-hero::after {
         top: -40% !important;
@@ -147,26 +186,46 @@
         height: 300px !important;
     }
 
-    /* --- 10. Звёзды на логине — оставляем, но их меньше --- */
+    /* ------------------------------------------------------------
+       1.11 Меньше звёзд на логине
+       ------------------------------------------------------------ */
     .lg-star:nth-child(n+8) {
         display: none;
     }
 }
 
-/* ============ Планшет ============ */
+
+/* ============================================================
+   2. ПЛАНШЕТ (769–1024px) — компромисс
+   ============================================================ */
 @media (min-width: 769px) and (max-width: 1024px) {
-    * {
+
+    /* Backdrop-filter отключаем только в контенте */
+    body.mars-stars-on .md-content,
+    body.mars-stars-on .rst-content,
+    body.mars-stars-on .wy-nav-content,
+    .ld-modal,
+    .pf-modal {
         backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
+
+    /* Замедляем hero-анимации */
     .pf-hero::before,
-    .pf-hero::after {
+    .pf-hero::after,
+    .lg-hero::before,
+    .lg-hero::after {
         animation-duration: 20s !important;
     }
 }
 
-/* ============ Маленькие телефоны (< 480px) ============ */
+
+/* ============================================================
+   3. МАЛЕНЬКИЕ ТЕЛЕФОНЫ (< 480px) — максимум экономии
+   ============================================================ */
 @media (max-width: 480px) {
-    /* Замедляем всё в 3 раза — не отключаем */
+
+    /* Замедляем всё декоративное в 3 раза */
     .pf-hero::before,
     .pf-hero::after,
     .lg-hero::before,
@@ -178,21 +237,43 @@
         animation-duration: 20s !important;
     }
 
-    /* Убираем самые тяжёлые пятна */
+    /* Убираем самые тяжёлые пятна (второй слой hero) */
     .pf-hero::after,
     .lg-hero::after,
     .vip-banner::after {
         display: none;
     }
-}
 
-/* ============ Battery saver / reduced motion ============ */
-@media (prefers-reduced-motion: reduce) {
+    /* Ещё сильнее сокращаем переходы */
     *,
     *::before,
     *::after {
-        animation-duration: .01ms !important;
+        transition-duration: 0.1s !important;
+    }
+}
+
+
+/* ============================================================
+   4. PREFERS-REDUCED-MOTION — доступность
+   (отдельно от 480px — это РАЗНЫЕ причины)
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    /* Дополнительно отключаем backdrop-filter */
+    body.mars-stars-on .md-content,
+    body.mars-stars-on .rst-content,
+    body.mars-stars-on .wy-nav-content,
+    .pf-hero,
+    .pf-card {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
     }
 }

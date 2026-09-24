@@ -8,7 +8,10 @@ comments: false
 <div style="text-align:center; margin-bottom:24px;">
     <h1 style="font-size:2rem; letter-spacing:2px; background:linear-gradient(135deg,#A29BFE,#6C63FF,#f39c12); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:0 0 8px; font-weight:900;">🎬 Генератор сцен</h1>
     <p style="color:#888; font-size:0.9rem; margin:0 0 12px;">Собери сцену из персонажей, мест и событий мира «Письмо из Красной пыли»</p>
-    <div id="sc-counter" style="display:inline-flex; align-items:center; gap:6px; background:rgba(108,99,255,0.1); border:1px solid rgba(108,99,255,0.3); padding:6px 14px; border-radius:20px; font-size:0.78rem; color:#6C63FF; font-weight:700;">🎭 Создано сцен: <span id="sc-counter-num">0</span></div>
+    <div style="display:inline-flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+        <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(108,99,255,0.1); border:1px solid rgba(108,99,255,0.3); padding:6px 14px; border-radius:20px; font-size:0.78rem; color:#6C63FF; font-weight:700;">🎭 Создано: <span id="sc-counter-num">0</span></div>
+        <div id="sc-user-badge" style="display:none; align-items:center; gap:6px; background:rgba(39,174,96,0.1); border:1px solid rgba(39,174,96,0.3); padding:6px 14px; border-radius:20px; font-size:0.78rem; color:#27ae60; font-weight:700;">✓ В профиле: <span id="sc-cloud-count">0</span></div>
+    </div>
 </div>
 
 <div style="background:linear-gradient(135deg,#f5f7fa,#e8ecf3); padding:24px; border-radius:16px; margin-bottom:24px; box-shadow:0 8px 24px rgba(0,0,0,0.06);">
@@ -39,6 +42,7 @@ comments: false
         <button id="sc-generate" style="padding:14px 32px; background:linear-gradient(135deg,#6C63FF,#A29BFE); color:#fff; border:none; border-radius:30px; font-size:1rem; font-weight:800; cursor:pointer; font-family:inherit; letter-spacing:0.5px; box-shadow:0 8px 24px rgba(108,99,255,0.4); touch-action:manipulation; transition:transform .2s;">🎬 Сгенерировать</button>
         <button id="sc-random" style="padding:14px 24px; background:#fff; color:#6C63FF; border:2px solid #6C63FF; border-radius:30px; font-size:0.95rem; font-weight:700; cursor:pointer; font-family:inherit; touch-action:manipulation; transition:all .2s;">🎲 Случайно</button>
         <button id="sc-continue" style="padding:14px 24px; background:#fff; color:#27ae60; border:2px solid #27ae60; border-radius:30px; font-size:0.95rem; font-weight:700; cursor:pointer; font-family:inherit; touch-action:manipulation; transition:all .2s; display:none;">➡️ Продолжить</button>
+        <button id="sc-save" style="padding:14px 24px; background:#fff; color:#f39c12; border:2px solid #f39c12; border-radius:30px; font-size:0.95rem; font-weight:700; cursor:pointer; font-family:inherit; touch-action:manipulation; transition:all .2s; display:none;">💾 В профиль</button>
         <button id="sc-copy" style="padding:14px 24px; background:#fff; color:#666; border:2px solid #ccd7e6; border-radius:30px; font-size:0.95rem; font-weight:700; cursor:pointer; font-family:inherit; touch-action:manipulation; transition:all .2s;">📋 Скопировать</button>
         <button id="sc-share" style="padding:14px 24px; background:#fff; color:#f39c12; border:2px solid #f39c12; border-radius:30px; font-size:0.95rem; font-weight:700; cursor:pointer; font-family:inherit; touch-action:manipulation; transition:all .2s;">🔗 Поделиться</button>
     </div>
@@ -52,8 +56,11 @@ comments: false
 <div id="sc-output" style="display:none;"></div>
 
 <div id="sc-history-wrap" style="margin-top:32px; display:none;">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <h3 style="margin:0; font-size:1.1rem; color:#333;">📚 Последние сцены</h3>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+        <div id="sc-hist-tabs" style="display:flex; gap:6px;">
+            <button id="sc-tab-local" class="sc-htab active" style="padding:8px 16px; border-radius:20px; border:none; background:#6C63FF; color:#fff; font-family:inherit; font-weight:700; font-size:.82rem; cursor:pointer;">💻 Локальные</button>
+            <button id="sc-tab-cloud" class="sc-htab" style="padding:8px 16px; border-radius:20px; border:none; background:#e8ecf3; color:#666; font-family:inherit; font-weight:700; font-size:.82rem; cursor:pointer; display:none;">☁️ Мои сцены</button>
+        </div>
         <button id="sc-clear-history" style="background:transparent; border:none; color:#999; font-size:.78rem; cursor:pointer; font-family:inherit; text-decoration:underline;">Очистить</button>
     </div>
     <div id="sc-history" style="display:grid; gap:10px;"></div>
@@ -65,47 +72,46 @@ comments: false
 @keyframes scSpin { to { transform: rotate(360deg); } }
 @keyframes scFadeIn { from { opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
 @keyframes scLineIn { from { opacity:0; transform:translateX(-10px);} to {opacity:1; transform:translateX(0);} }
-@keyframes scShine { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-@keyframes scGlow { 0%,100% { box-shadow: 0 20px 60px rgba(108,99,255,0.3);} 50% { box-shadow: 0 20px 80px rgba(108,99,255,0.5);} }
 
 #scene-app select:focus { border-color: #6C63FF; box-shadow: 0 0 0 3px rgba(108,99,255,0.15); }
 #scene-app button:hover { transform: translateY(-2px); }
 #scene-app button:active { transform: translateY(0) scale(.98); }
+.sc-htab.active { background:#6C63FF !important; color:#fff !important; }
+.sc-htab:not(.active) { background:#e8ecf3 !important; color:#666 !important; }
 
-/* ═══ OUTPUT ═══ */
 #sc-output { position:relative; border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(108,99,255,0.3); border:1px solid rgba(108,99,255,0.3); animation: scFadeIn .6s cubic-bezier(.16,1,.3,1); }
-#sc-output .scene-bg { position:absolute; inset:0; background-size:cover; background-position:center; filter:brightness(.35) saturate(1.1); z-index:0; }
-#sc-output .scene-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(20,15,35,.7), rgba(45,27,61,.8)); }
+#sc-output .scene-bg { position:absolute; inset:-20px; background-size:cover; background-position:center; background-color:#1a1a2e; filter:brightness(0.35) saturate(1.1) blur(6px); transform:scale(1.05); z-index:0; }
+#sc-output .scene-bg::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(20,15,35,.82), rgba(45,27,61,.88)); }
 #sc-output .scene-inner { position:relative; z-index:1; padding:40px 36px; color:#e0e0f0; }
 
-.scene-header { font-family: Georgia, serif; color: #A29BFE; font-size: 0.78rem; letter-spacing: 4px; text-align: center; margin-bottom: 10px; text-transform: uppercase; opacity:.8; }
-.scene-title { font-family: Georgia, serif; font-size: 1.8rem; font-weight: 900; text-align: center; color: #fff; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 4px 20px rgba(0,0,0,.6); }
-.scene-meta { text-align: center; color: #9999bb; font-size: 0.85rem; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid rgba(108,99,255,0.3); line-height:1.7; }
-.scene-meta em { color: #A29BFE; font-style: italic; }
-.scene-body { font-family: Georgia, serif; font-size: 1.05rem; line-height: 1.9; color: #d4d4e4; }
-.scene-body p { margin: 0 0 16px 0; opacity:0; animation: scLineIn .5s ease forwards; }
-.scene-body p .speaker { color: #A29BFE; font-weight: 700; }
-.scene-body p .reaction { color: #9999bb; font-style: italic; display:block; margin-top:4px; font-size:.9em; }
-.scene-body p em { color: #f39c12; font-style: italic; display: block; margin-top: 6px; font-size: 0.9em; }
-.scene-body hr { border:none; height:1px; background:linear-gradient(90deg, transparent, rgba(108,99,255,0.4), transparent); margin:24px 0; }
+.scene-header { font-family: Georgia, serif; color: #c4b8ff; font-size: 0.78rem; letter-spacing: 4px; text-align: center; margin-bottom: 10px; text-transform: uppercase; opacity:.95; text-shadow:0 2px 8px rgba(0,0,0,.9); }
+.scene-title { font-family: Georgia, serif; font-size: 1.9rem; font-weight: 900; text-align: center; color: #fff; margin-bottom: 20px; letter-spacing: 1px; text-shadow: 0 4px 20px rgba(0,0,0,.95), 0 0 30px rgba(108,99,255,.5); }
+.scene-meta { text-align: center; color: #d0d0e0; font-size: 0.85rem; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid rgba(162,155,254,.4); line-height: 1.7; text-shadow: 0 2px 6px rgba(0,0,0,.9); }
+.scene-meta em { color: #c4b8ff; font-style: italic; }
+.scene-body { font-family: Georgia, serif; font-size: 1.08rem; line-height: 1.95; color: #f5f5fa; text-shadow: 0 2px 8px rgba(0,0,0,.9), 0 0 20px rgba(0,0,0,.6); font-weight: 500; }
+.scene-body p { margin: 0 0 16px 0; opacity: 0; animation: scLineIn .5s ease forwards; }
+.scene-body p .speaker { color: #c4b8ff; font-weight: 800; text-shadow: 0 0 12px rgba(162,155,254,.6), 0 2px 6px rgba(0,0,0,.9); }
+.scene-body p .reaction { color: #d0d0e0; font-style: italic; display: block; margin-top: 4px; font-size: .9em; opacity:.85; }
+.scene-body p em { color: #ffd97a; font-style: italic; display: block; margin-top: 6px; font-size: 0.92em; text-shadow: 0 0 10px rgba(243,156,18,.5), 0 2px 6px rgba(0,0,0,.9); }
+.scene-end { text-align: center; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(162,155,254,.4); color: #c4b8ff; font-family: Georgia, serif; letter-spacing: 3px; font-size: 0.85rem; animation: scFadeIn 1s ease; text-shadow: 0 0 14px rgba(162,155,254,.6), 0 2px 6px rgba(0,0,0,.9); }
 
-.scene-end { text-align: center; margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(108,99,255,0.3); color: #A29BFE; font-family: Georgia, serif; letter-spacing: 3px; font-size: 0.85rem; animation: scFadeIn 1s ease; }
-
-/* ═══ HISTORY ═══ */
 .sc-history-item { background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:14px 16px; cursor:pointer; transition:all .25s; display:flex; gap:12px; align-items:center; animation: scFadeIn .3s ease; }
 .sc-history-item:hover { transform:translateX(4px); border-color:#6C63FF; box-shadow: 0 8px 20px -6px rgba(108,99,255,.25); }
 .sc-history-icon { width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,#6C63FF,#A29BFE); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0; }
 .sc-history-info { flex:1; min-width:0; }
 .sc-history-title { font-weight:800; color:#1a1a1a; font-size:.9rem; margin-bottom:2px; }
 .sc-history-sub { font-size:.72rem; color:#888; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.sc-history-del { width:30px; height:30px; border-radius:50%; border:none; background:rgba(231,76,60,.08); color:#e74c3c; cursor:pointer; font-family:inherit; font-size:.85rem; flex-shrink:0; transition:all .2s; }
+.sc-history-del:hover { background:#e74c3c; color:#fff; }
 
 @media (max-width: 600px) {
     #sc-output .scene-inner { padding: 26px 20px; }
-    .scene-body { font-size: 0.95rem; }
-    .scene-title { font-size: 1.3rem; }
+    .scene-body { font-size: 0.98rem; }
+    .scene-title { font-size: 1.35rem; }
 }
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function() {
     'use strict';
@@ -115,20 +121,20 @@ comments: false
        ═══════════════════════════════════════════════════════════ */
 
     var CHARACTERS = [
-        { name: 'Хевсур', trait: 'древний хранитель знаний', tag:'historian' },
-        { name: 'Талин', trait: 'молодой астроном Академии', tag:'astronomer' },
-        { name: 'Йарра', trait: 'мудрая женщина из Фарсиды', tag:'elder' },
-        { name: 'Аратан III', trait: 'последний король Эдема', tag:'king' },
-        { name: 'Ксанф', trait: 'предводитель пиратов', tag:'pirate' },
-        { name: 'Элла', trait: 'наставница и биолог', tag:'biologist' },
-        { name: 'Сарум Великий', trait: 'легендарный король', tag:'king' },
-        { name: 'Алира', trait: 'жрица Акхи', tag:'priestess' },
-        { name: 'Совия', trait: 'слепая пророчица', tag:'oracle' },
-        { name: 'Кан', trait: 'писец Академии', tag:'scribe' },
-        { name: 'Араш', trait: 'мореплаватель', tag:'sailor' },
-        { name: 'Миран', trait: 'инженер и изобретатель', tag:'engineer' },
-        { name: 'Ирайна', trait: 'исследовательница флоры', tag:'biologist' },
-        { name: 'Мнемис', trait: 'летописец мира', tag:'historian' }
+        { name: 'Хевсур', trait: 'древний хранитель знаний' },
+        { name: 'Талин', trait: 'молодой астроном Академии' },
+        { name: 'Йарра', trait: 'мудрая женщина из Фарсиды' },
+        { name: 'Аратан III', trait: 'последний король Эдема' },
+        { name: 'Ксанф', trait: 'предводитель пиратов' },
+        { name: 'Элла', trait: 'наставница и биолог' },
+        { name: 'Сарум Великий', trait: 'легендарный король' },
+        { name: 'Алира', trait: 'жрица Акхи' },
+        { name: 'Совия', trait: 'слепая пророчица' },
+        { name: 'Кан', trait: 'писец Академии' },
+        { name: 'Араш', trait: 'мореплаватель' },
+        { name: 'Миран', trait: 'инженер и изобретатель' },
+        { name: 'Ирайна', trait: 'исследовательница флоры' },
+        { name: 'Мнемис', trait: 'летописец мира' }
     ];
 
     var PLACES = [
@@ -178,7 +184,6 @@ comments: false
         { id: 'oath', name: 'Клятва', icon:'💫' }
     ];
 
-    // Диалоги по темам — 8-12 строк с ремарками
     var DIALOGUES = {
         meeting: [
             '{p1}: — Ты пришёл. Значит, слышал зов.',
@@ -391,7 +396,6 @@ comments: false
         ]
     };
 
-    // Вступление — 6 шаблонов
     var INTROS = [
         '{time}. {place} — {type}. Воздух разрежённый, холодный. По камням стелется длинная тень.',
         '{place}, {timeLow}. Ветер несёт пыль над равниной. {typeCap} спит.',
@@ -401,7 +405,6 @@ comments: false
         '{place} встречает {p1} и {p2} в {timeLow}. Воздух густой, как глина. Что-то должно случиться.'
     ];
 
-    // Ремарки между строк — атмосфера
     var REMARKS = [
         '(молчание)', '(ветер стихает)', '(глина трескается под ногами)',
         '(тень от стены становится длиннее)', '(далёкий гул под землёй)',
@@ -409,7 +412,6 @@ comments: false
         '(капли воды на камне)', '(ничего — только ветер)', '(тишина длится слишком долго)'
     ];
 
-    // Финал — 8 шаблонов
     var ENDINGS = [
         '{p1} посмотрел на небо. Где-то там, за пылью, горели звёзды, которых уже не видно.',
         '{p2} долго молчал. Потом кивнул — так, будто согласился с чем-то большим, чем этот разговор.',
@@ -421,7 +423,6 @@ comments: false
         'Ничего не изменилось. И изменилось всё.'
     ];
 
-    // Марсианские финалы
     var MARS_ENDINGS = [
         'Lān sur — глина помнит.',
         'Dzen thal, mar mōr ān.',
@@ -432,21 +433,31 @@ comments: false
         'Xalmar dzen thal nu.'
     ];
 
-    // Фоны сцен (по месту)
+    // ✅ Правильные расширения с учётом .png
     var SCENE_BGS = {
-        okhasen:   '/assets/images/guild-hall.jpg',
-        caves:     '/assets/images/lucid-origin_Ancient_Martian_council_hall_interior_grand_stone_chamber_with_tall_columns_thro-0.jpg',
-        academy:   '/assets/images/lucid-origin_Martian_hall_of_honor_wall_covered_with_golden_shields_and_portraits_of_legendar-0.jpg',
-        port:      '/assets/images/lucid-origin_Ancient_Martian_marketplace_inside_stone_hall_wooden_stalls_with_exotic_wares_ha-0.jpg',
-        valley:    '/assets/images/lucid-origin_Panoramic_view_of_ancient_Martian_feast_hall_long_wooden_tables_with_candles_sto-0.jpg',
-        sea:       '/assets/images/lucid-origin_Martian_clan_treasury_vault_mountains_of_golden_coins_and_clay_tablets_on_stone_-0.jpg',
-        observatory: '/assets/images/lucid-origin_Ancient_Martian_forge_workshop_arcane_technology_lab_with_glowing_blue_crystals_-0.jpg',
-        temple:    '/assets/images/lucid-origin_Ancient_Martian_council_hall_interior_grand_stone_chamber_with_tall_columns_thro-0.jpg',
-        ruins:     '/assets/images/guild-feast.jpg',
-        mountain:  '/assets/images/lucid-origin_Martian_hall_of_honor_wall_covered_with_golden_shields_and_portraits_of_legendar-0.jpg',
-        cosmodrome:'/assets/images/lucid-origin_Ancient_Martian_forge_workshop_arcane_technology_lab_with_glowing_blue_crystals_-0.jpg',
-        default:   '/assets/images/guild-hall.jpg'
+        okhasen:    '/assets/images/scene-okhasen.jpg',
+        caves:      '/assets/images/scene-caves.jpg',
+        academy:    '/assets/images/scene-academy.jpg',
+        port:       '/assets/images/scene-port.png',
+        valley:     '/assets/images/scene-valley.png',
+        sea:        '/assets/images/scene-sea.png',
+        observatory:'/assets/images/scene-observatory.jpg',
+        temple:     '/assets/images/scene-temple.jpg',
+        ruins:      '/assets/images/scene-ruins.jpg',
+        mountain:   '/assets/images/scene-mountain.jpg',
+        cosmodrome: '/assets/images/scene-cosmodrome.jpg',
+        default:    '/assets/images/guild-hall.jpg'
     };
+
+    /* ═══════════════════════════════════════════════════════════
+       SUPABASE
+       ═══════════════════════════════════════════════════════════ */
+    var SUPABASE_URL='https://ncytbgbzfjfoqmmgfygz.supabase.co';
+    var SUPABASE_KEY='sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
+    var sb=window.supabaseClient||(window.supabase?window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY):null);
+    var currentUser=null;
+    var cloudScenes=[];
+    var histTab='local';
 
     /* ═══════════════════════════════════════════════════════════
        УТИЛИТЫ
@@ -479,6 +490,7 @@ comments: false
     var output=document.getElementById('sc-output');
     var loading=document.getElementById('sc-loading');
     var continueBtn=document.getElementById('sc-continue');
+    var saveBtn=document.getElementById('sc-save');
 
     function fillSelect(sel,items){
         sel.innerHTML=items.map(function(it,i){return '<option value="'+i+'">'+esc(it.name)+'</option>';}).join('');
@@ -489,31 +501,38 @@ comments: false
     fillSelect(timeSel,TIMES);
     fillSelect(themeSel,THEMES);
 
-    // Разные персонажи
     p1Sel.onchange=function(){
         if(p2Sel.value===p1Sel.value)p2Sel.value=(parseInt(p1Sel.value,10)+1)%CHARACTERS.length;
     };
 
-    // Счётчик
     var counter=lsGetNum('mars_scene_counter');
     document.getElementById('sc-counter-num').textContent=counter;
+
+    /* ═══════════════════════════════════════════════════════════
+       PRELOAD ФОНОВ
+       ═══════════════════════════════════════════════════════════ */
+    (function preload(){
+        Object.values(SCENE_BGS).forEach(function(url){
+            if(!url)return;
+            var img=new Image();
+            img.decoding='async';
+            img.src=url;
+        });
+    })();
 
     /* ═══════════════════════════════════════════════════════════
        ГЕНЕРАЦИЯ
        ═══════════════════════════════════════════════════════════ */
     var lastParams=null;
 
-    function renderScene(params){
+    // Строит HTML сцены (без сохранения куда-либо)
+    function buildSceneHTML(params){
         var p1=CHARACTERS[params.p1];
         var p2=CHARACTERS[params.p2];
         var place=PLACES[params.place];
         var time=TIMES[params.time];
         var theme=THEMES[params.theme];
 
-        // Заголовок
-        var title=theme.name;
-
-        // Вступление
         var intro=pick(INTROS)
             .replace(/\{time\}/g, time.name)
             .replace(/\{timeLow\}/g, time.name.toLowerCase())
@@ -523,7 +542,6 @@ comments: false
             .replace(/\{p1\}/g, p1.name)
             .replace(/\{p2\}/g, p2.name);
 
-        // Диалог
         var lines=DIALOGUES[theme.id]||DIALOGUES.meeting;
         var body='<p style="animation-delay:0s;">'+esc(intro)+'</p>';
 
@@ -532,33 +550,26 @@ comments: false
             var text=line.replace(/^\{p1\}:\s*/,'').replace(/^\{p2\}:\s*/,'').replace(/^—\s*/,'');
             var delay=(0.15*(i+1)).toFixed(2);
             body+='<p style="animation-delay:'+delay+'s;"><span class="speaker">'+esc(speakerName)+':</span> '+esc(text)+'</p>';
-            // Вставить случайную ремарку каждые 3 строки
             if((i+1)%3===0 && i<lines.length-1){
                 body+='<p style="animation-delay:'+((0.15*(i+1))+0.05).toFixed(2)+'s;"><em>'+esc(pick(REMARKS))+'</em></p>';
             }
         });
 
-        // Финал
         var end=pick(ENDINGS)
             .replace(/\{p1\}/g, p1.name)
             .replace(/\{p2\}/g, p2.name)
             .replace(/\{place\}/g, place.name);
         body+='<p style="animation-delay:'+(0.15*(lines.length+1)).toFixed(2)+'s;"><em>'+esc(end)+'</em></p>';
 
-        // Марсианский финал
         var marsEnd=pick(MARS_ENDINGS);
-
-        // Фон
         var bgKey=place.bg in SCENE_BGS?place.bg:'default';
         var bg=SCENE_BGS[bgKey];
 
-        // Output
-        output.style.display='block';
-        output.innerHTML=
+        var html=
             '<div class="scene-bg" style="background-image:url(\''+bg+'\');"></div>'+
             '<div class="scene-inner">'+
                 '<div class="scene-header">Сцена · '+esc(place.name)+'</div>'+
-                '<div class="scene-title">'+esc(title)+'</div>'+
+                '<div class="scene-title">'+esc(theme.name)+'</div>'+
                 '<div class="scene-meta">'+
                     esc(p1.name)+' <em>('+esc(p1.trait)+')</em> · '+esc(p2.name)+' <em>('+esc(p2.trait)+')</em><br>'+
                     esc(time.name)+' · '+esc(place.name)+' — '+esc(place.type)+
@@ -567,14 +578,22 @@ comments: false
                 '<div class="scene-end">— '+esc(marsEnd)+' —</div>'+
             '</div>';
 
-        // Прокрутка
-        setTimeout(function(){output.scrollIntoView({behavior:'smooth',block:'start'});},100);
-
-        // Кнопка "Продолжить"
-        continueBtn.style.display='inline-block';
-        lastParams=params;
+        return { html:html, theme:theme, place:place, p1:p1, p2:p2, time:time };
     }
 
+    // Рендер (без сохранения в историю)
+    function showScene(params){
+        var built=buildSceneHTML(params);
+        output.style.display='block';
+        output.innerHTML=built.html;
+        setTimeout(function(){output.scrollIntoView({behavior:'smooth',block:'start'});},100);
+        continueBtn.style.display='inline-block';
+        saveBtn.style.display=currentUser?'inline-block':'none';
+        lastParams=params;
+        return built;
+    }
+
+    // Генерация с сохранением
     function generate(){
         var params={
             p1:parseInt(p1Sel.value,10),
@@ -585,19 +604,23 @@ comments: false
         };
         if(params.p1===params.p2){toast('Персонажи должны отличаться','warning');return;}
 
-        // Показываем загрузку
         output.style.display='none';
         loading.style.display='block';
+
         setTimeout(function(){
             loading.style.display='none';
-            renderScene(params);
-            // Счётчик
+            var built=showScene(params);
+
             counter++;
             lsSetNum('mars_scene_counter',counter);
             document.getElementById('sc-counter-num').textContent=counter;
-            // История
-            saveToHistory(params,output.innerText);
-        },400);
+
+            // Сохранить в localStorage (последние 10)
+            saveLocal(params,output.innerText);
+
+            // Сохранить в БД, если залогинен
+            if(currentUser) saveCloud(params,output.innerText);
+        },350);
     }
 
     function randomize(){
@@ -613,7 +636,6 @@ comments: false
 
     function continueStory(){
         if(!lastParams){toast('Сначала создайте сцену','info');return;}
-        // Меняем тему случайно, оставляем персонажей
         var newTheme=Math.floor(Math.random()*THEMES.length);
         while(newTheme===lastParams.theme)newTheme=Math.floor(Math.random()*THEMES.length);
         themeSel.value=newTheme;
@@ -646,9 +668,9 @@ comments: false
     }
 
     /* ═══════════════════════════════════════════════════════════
-       ИСТОРИЯ
+       ИСТОРИЯ — LOCAL
        ═══════════════════════════════════════════════════════════ */
-    function saveToHistory(params,text){
+    function saveLocal(params,text){
         try{
             var hist=lsGet('mars_scene_history');
             hist.unshift({
@@ -658,47 +680,172 @@ comments: false
             });
             hist=hist.slice(0,10);
             lsSet('mars_scene_history',hist);
-            renderHistory();
+            if(histTab==='local')renderHistory();
         }catch(e){}
     }
 
-    function renderHistory(){
-        var hist=lsGet('mars_scene_history');
-        var wrap=document.getElementById('sc-history-wrap');
-        var list=document.getElementById('sc-history');
-        if(!hist.length){wrap.style.display='none';return;}
-        wrap.style.display='block';
-        list.innerHTML=hist.map(function(h,i){
-            var p1=CHARACTERS[h.p1]?CHARACTERS[h.p1].name:'?';
-            var p2=CHARACTERS[h.p2]?CHARACTERS[h.p2].name:'?';
-            var place=PLACES[h.place]?PLACES[h.place].name:'?';
-            var theme=THEMES[h.theme]?THEMES[h.theme].name:'?';
-            return '<div class="sc-history-item" onclick="scRestore('+i+')">'+
-                '<div class="sc-history-icon">'+(THEMES[h.theme]?THEMES[h.theme].icon:'🎬')+'</div>'+
-                '<div class="sc-history-info">'+
-                    '<div class="sc-history-title">'+esc(theme)+' — '+esc(place)+'</div>'+
-                    '<div class="sc-history-sub">'+esc(p1)+' · '+esc(p2)+' · '+new Date(h.ts).toLocaleString('ru-RU',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</div>'+
-                '</div>'+
-            '</div>';
-        }).join('');
+    /* ═══════════════════════════════════════════════════════════
+       ИСТОРИЯ — CLOUD (Supabase)
+       ═══════════════════════════════════════════════════════════ */
+    async function loadUser(){
+        try{
+            if(!sb)return;
+            var s=await sb.auth.getSession();
+            currentUser=s&&s.data&&s.data.session?s.data.session.user:null;
+            if(currentUser){
+                document.getElementById('sc-user-badge').style.display='inline-flex';
+                await loadCloudScenes();
+            }
+        }catch(e){}
     }
 
-    window.scRestore=function(i){
+    async function loadCloudScenes(){
+        if(!currentUser||!sb)return;
+        try{
+            var r=await sb.from('user_scenes').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false}).limit(30);
+            cloudScenes=(r&&r.data)||[];
+            document.getElementById('sc-cloud-count').textContent=cloudScenes.length;
+            document.getElementById('sc-tab-cloud').style.display='inline-block';
+            if(histTab==='cloud')renderHistory();
+        }catch(e){}
+    }
+
+    async function saveCloud(params,text){
+        if(!currentUser||!sb)return;
+        try{
+            var p1=CHARACTERS[params.p1],p2=CHARACTERS[params.p2];
+            var place=PLACES[params.place],time=TIMES[params.time],theme=THEMES[params.theme];
+            await sb.from('user_scenes').insert([{
+                user_id:currentUser.id,
+                title:'Сцена в '+place.name,
+                place_name:place.name,
+                time_label:time.name,
+                theme_name:theme.name,
+                p1_index:params.p1,
+                p2_index:params.p2,
+                place_index:params.place,
+                time_index:params.time,
+                theme_index:params.theme,
+                text_content:text.slice(0,5000)
+            }]);
+            await loadCloudScenes();
+            toast('💾 Сохранено в профиле','success');
+        }catch(e){console.warn('saveCloud',e);}
+    }
+
+    window.scDeleteCloud=async function(id,ev){
+        ev.stopPropagation();
+        if(!confirm('Удалить эту сцену из профиля?'))return;
+        try{
+            await sb.from('user_scenes').delete().eq('id',id).eq('user_id',currentUser.id);
+            await loadCloudScenes();
+            toast('🗑️ Удалено','info');
+        }catch(e){toast('Ошибка','error');}
+    };
+
+    /* ═══════════════════════════════════════════════════════════
+       RENDER ИСТОРИИ
+       ═══════════════════════════════════════════════════════════ */
+    function renderHistory(){
+        var wrap=document.getElementById('sc-history-wrap');
+        var list=document.getElementById('sc-history');
+
+        if(histTab==='cloud'){
+            if(!cloudScenes.length){wrap.style.display='none';return;}
+            wrap.style.display='block';
+            list.innerHTML=cloudScenes.map(function(sc){
+                var icon=(THEMES[sc.theme_index]?THEMES[sc.theme_index].icon:'🎬');
+                return '<div class="sc-history-item" onclick="scRestoreCloud(\''+esc(sc.id)+'\')">'+
+                    '<div class="sc-history-icon">'+icon+'</div>'+
+                    '<div class="sc-history-info">'+
+                        '<div class="sc-history-title">'+esc(sc.theme_name||'Сцена')+' — '+esc(sc.place_name||'')+'</div>'+
+                        '<div class="sc-history-sub">☁️ '+new Date(sc.created_at).toLocaleString('ru-RU',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</div>'+
+                    '</div>'+
+                    '<button class="sc-history-del" onclick="scDeleteCloud(\''+esc(sc.id)+'\',event)" title="Удалить">✕</button>'+
+                '</div>';
+            }).join('');
+        } else {
+            var hist=lsGet('mars_scene_history');
+            if(!hist.length){wrap.style.display='none';return;}
+            wrap.style.display='block';
+            list.innerHTML=hist.map(function(h,i){
+                var p1=CHARACTERS[h.p1]?CHARACTERS[h.p1].name:'?';
+                var p2=CHARACTERS[h.p2]?CHARACTERS[h.p2].name:'?';
+                var place=PLACES[h.place]?PLACES[h.place].name:'?';
+                var theme=THEMES[h.theme]?THEMES[h.theme].name:'?';
+                var icon=THEMES[h.theme]?THEMES[h.theme].icon:'🎬';
+                return '<div class="sc-history-item" onclick="scRestoreLocal('+i+')">'+
+                    '<div class="sc-history-icon">'+icon+'</div>'+
+                    '<div class="sc-history-info">'+
+                        '<div class="sc-history-title">'+esc(theme)+' — '+esc(place)+'</div>'+
+                        '<div class="sc-history-sub">'+esc(p1)+' · '+esc(p2)+' · '+new Date(h.ts).toLocaleString('ru-RU',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</div>'+
+                    '</div>'+
+                '</div>';
+            }).join('');
+        }
+    }
+
+    // ✅ Восстановление ЛОКАЛЬНОЙ — БЕЗ сохранения в историю (нет дубликата)
+    window.scRestoreLocal=function(i){
         var hist=lsGet('mars_scene_history');
         if(!hist[i])return;
         var h=hist[i];
         p1Sel.value=h.p1;p2Sel.value=h.p2;placeSel.value=h.place;timeSel.value=h.time;themeSel.value=h.theme;
-        generate();
+        showScene({p1:h.p1,p2:h.p2,place:h.place,time:h.time,theme:h.theme});
+    };
+
+    // ✅ Восстановление CLOUD — тоже без дубликата
+    window.scRestoreCloud=function(id){
+        var sc=cloudScenes.filter(function(x){return x.id===id;})[0];
+        if(!sc)return;
+        p1Sel.value=sc.p1_index;p2Sel.value=sc.p2_index;placeSel.value=sc.place_index;timeSel.value=sc.time_index;themeSel.value=sc.theme_index;
+        showScene({p1:sc.p1_index,p2:sc.p2_index,place:sc.place_index,time:sc.time_index,theme:sc.theme_index});
     };
 
     document.getElementById('sc-clear-history').onclick=function(){
-        lsSet('mars_scene_history',[]);
-        renderHistory();
-        toast('История очищена','info');
+        if(histTab==='cloud'){
+            if(!confirm('Удалить ВСЕ свои сцены из профиля?'))return;
+            (async function(){
+                try{
+                    await sb.from('user_scenes').delete().eq('user_id',currentUser.id);
+                    await loadCloudScenes();
+                    toast('Очищено','info');
+                }catch(e){}
+            })();
+        }else{
+            lsSet('mars_scene_history',[]);
+            renderHistory();
+            toast('История очищена','info');
+        }
     };
 
     /* ═══════════════════════════════════════════════════════════
-       ЗАГРУЗКА ИЗ URL
+       РУЧНОЕ СОХРАНЕНИЕ (кнопка 💾)
+       ═══════════════════════════════════════════════════════════ */
+    saveBtn.onclick=function(){
+        if(!lastParams){toast('Сначала создайте сцену','info');return;}
+        if(!currentUser){toast('Войдите, чтобы сохранять','warning');return;}
+        saveCloud(lastParams,output.innerText);
+    };
+
+    /* ═══════════════════════════════════════════════════════════
+       ВКЛАДКИ ИСТОРИИ
+       ═══════════════════════════════════════════════════════════ */
+    document.getElementById('sc-tab-local').onclick=function(){
+        histTab='local';
+        document.getElementById('sc-tab-local').classList.add('active');
+        document.getElementById('sc-tab-cloud').classList.remove('active');
+        renderHistory();
+    };
+    document.getElementById('sc-tab-cloud').onclick=function(){
+        histTab='cloud';
+        document.getElementById('sc-tab-cloud').classList.add('active');
+        document.getElementById('sc-tab-local').classList.remove('active');
+        renderHistory();
+    };
+
+    /* ═══════════════════════════════════════════════════════════
+       URL-параметры
        ═══════════════════════════════════════════════════════════ */
     function loadFromURL(){
         var p=new URLSearchParams(location.search);
@@ -706,7 +853,7 @@ comments: false
         var vals={p1:parseInt(p.get('p1'),10),p2:parseInt(p.get('p2'),10),place:parseInt(p.get('place'),10),time:parseInt(p.get('time'),10),theme:parseInt(p.get('theme'),10)};
         if(vals.p1>=0&&vals.p1<CHARACTERS.length){
             p1Sel.value=vals.p1;p2Sel.value=vals.p2;placeSel.value=vals.place;timeSel.value=vals.time;themeSel.value=vals.theme;
-            generate();
+            showScene(vals);
         }
     }
 
@@ -719,10 +866,11 @@ comments: false
     document.getElementById('sc-copy').onclick=copyScene;
     document.getElementById('sc-share').onclick=shareScene;
 
-    // Автозагрузка
+    // Init
     renderHistory();
     loadFromURL();
+    loadUser();
 
-    console.log('🎬 Генератор сцен v2 VIP. Персонажей: '+CHARACTERS.length+', мест: '+PLACES.length+', тем: '+THEMES.length);
+    console.log('🎬 Генератор сцен v3. Персонажей: '+CHARACTERS.length+', мест: '+PLACES.length+', тем: '+THEMES.length);
 })();
 </script>

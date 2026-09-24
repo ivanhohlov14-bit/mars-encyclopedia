@@ -25,8 +25,7 @@ comments: false
 #gld-app a{text-decoration:none!important;border-bottom:none!important}
 .gld-fade{animation:gldFade .5s cubic-bezier(.16,1,.3,1) both}
 
-/* ═══ HERO ═══ */
-.gld-hero{position:relative;background:linear-gradient(135deg,rgba(20,15,35,.85),rgba(45,27,61,.75)),url('/assets/images/lucid-origin_Ancient_Martian_council_hall_interior_grand_stone_chamber_with_tall_columns_thro-0.jpg') center/cover;border-radius:24px;padding:60px 32px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.5);min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center}
+.gld-hero{position:relative;background:linear-gradient(135deg,rgba(20,15,35,.85),rgba(45,27,61,.75)),url('/assets/images/guild-hall.jpg') center/cover;border-radius:24px;padding:60px 32px;color:#fff;margin-bottom:24px;overflow:hidden;box-shadow:0 24px 60px -16px rgba(0,0,0,.5);min-height:280px;display:flex;align-items:center;justify-content:center;text-align:center}
 .gld-hero-content{position:relative;z-index:2}
 .gld-hero-crest{display:inline-flex;align-items:center;justify-content:center;width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--gk),var(--gk-l));font-size:3.5rem;margin-bottom:16px;box-shadow:0 20px 50px -10px var(--gk-s),0 0 0 6px rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.2);animation:gldFloat 4s ease-in-out infinite}
 .gld-hero-title{font-size:2.2rem;font-weight:800;margin:0 0 8px 0;text-shadow:0 4px 20px rgba(0,0,0,.7)}
@@ -37,7 +36,6 @@ comments: false
 .gld-hero-btn:hover{background:rgba(255,255,255,.3);transform:translateY(-3px)}
 .gld-hero-btn.primary{background:linear-gradient(135deg,var(--gold),#e67e22);border-color:transparent;box-shadow:0 8px 24px -6px rgba(243,156,18,.6)}
 
-/* ═══ СТАТИСТИКА ═══ */
 .gld-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px}
 .gld-stat{background:#fff;padding:18px 14px;border-radius:16px;text-align:center;border:2px solid transparent;box-shadow:0 4px 12px rgba(0,0,0,.05);transition:all .3s}
 .gld-stat:hover{transform:translateY(-6px);border-color:var(--gk);box-shadow:0 16px 40px -8px var(--gk-s)}
@@ -45,14 +43,12 @@ comments: false
 .gld-stat-value{font-size:2rem;font-weight:900;line-height:1;background:linear-gradient(135deg,var(--gk),var(--gk-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .gld-stat-label{font-size:.72rem;color:#888;text-transform:uppercase;letter-spacing:.8px;margin-top:6px;font-weight:700}
 
-/* ═══ FILTERS ═══ */
 .gld-filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:20px;padding:12px 16px;background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.05);box-shadow:0 4px 12px rgba(0,0,0,.04)}
 .gld-filter-btn{padding:8px 18px;border-radius:30px;border:2px solid transparent;background:rgba(0,0,0,.03);color:#666;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .25s;font-family:inherit}
 .gld-filter-btn.active{background:linear-gradient(135deg,var(--gk),var(--gk-l));color:#fff}
 .gld-search{flex:1;min-width:200px;padding:10px 18px;border-radius:30px;border:2px solid rgba(0,0,0,.08);font-size:.9rem;font-family:inherit;outline:none;background:#fafafa}
 .gld-search:focus{border-color:var(--gk);background:#fff}
 
-/* ═══ GRID ═══ */
 .gld-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;margin-bottom:40px}
 .gld-card{position:relative;background:#fff;border-radius:20px;border:2px solid rgba(0,0,0,.05);transition:all .4s cubic-bezier(.16,1,.3,1);overflow:hidden;animation:gldRise .5s ease both;display:flex;flex-direction:column}
 .gld-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--guild-color,var(--gk))}
@@ -70,7 +66,6 @@ comments: false
 .gld-card-status.open{background:rgba(0,0,0,.06);color:#666}
 .gld-card-actions{display:flex;gap:8px;padding:0 22px 20px}
 
-/* ═══ RANKS ═══ */
 .rank-badge{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;flex-shrink:0;font-size:.72rem;font-weight:900;position:relative}
 .rank-r5{background:linear-gradient(135deg,#f5d76e,#f39c12,#e67e22);color:#fff;border-radius:50%;box-shadow:0 4px 12px rgba(243,156,18,.6);font-size:1.1rem;animation:gldCrown 3s ease-in-out infinite}
 .rank-r4{background:linear-gradient(135deg,#c9a4ff,#8e44ad);color:#fff;border-radius:50%;font-size:1rem}
@@ -79,22 +74,22 @@ comments: false
 .rank-r1{background:linear-gradient(135deg,#27ae60,#16a085);color:#fff;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);font-size:.65rem}
 .subtitle-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:.65rem;font-weight:800;background:rgba(108,99,255,.12);color:var(--gk);border:1px solid rgba(108,99,255,.3)}
 
-/* ═══ PAGE HERO ═══ */
-.gld-page-hero{position:relative;background:linear-gradient(135deg,rgba(20,15,35,.85),rgba(45,27,61,.75)),url('/assets/images/lucid-origin_Ancient_Martian_council_hall_interior_grand_stone_chamber_with_tall_columns_thro-0.jpg') center/cover;border-radius:24px;padding:40px;color:#fff;margin-bottom:24px;min-height:240px}
+.gld-page-hero{position:relative;background:linear-gradient(135deg,rgba(20,15,35,.85),rgba(45,27,61,.75)),url('/assets/images/guild-hall.jpg') center/cover;border-radius:24px;padding:40px;color:#fff;margin-bottom:24px;min-height:240px}
 .gld-page-content{position:relative;z-index:2;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
 .gld-page-crest{width:120px;height:140px;background:linear-gradient(135deg,var(--guild-color,#6C63FF),rgba(0,0,0,.3));border-radius:8px 8px 50% 50%;display:flex;align-items:center;justify-content:center;font-size:4rem;box-shadow:0 20px 40px -10px rgba(0,0,0,.5),inset 0 0 0 3px rgba(255,255,255,.15);flex-shrink:0;overflow:hidden}
 .gld-page-crest img{width:100%;height:100%;object-fit:cover}
 .gld-page-info{flex:1;min-width:220px}
-.gld-page-name{font-size:2rem;font-weight:800;margin:0 0 6px 0;text-shadow:0 4px 12px rgba(0,0,0,.6)}
+.gld-page-name{font-size:2rem;font-weight:800;margin:0 0 6px 0;text-shadow:0 4px 12px rgba(0,0,0,.6);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.gld-page-name img{width:32px;height:auto;border-radius:4px;border:1px solid rgba(255,255,255,.3)}
+.gld-page-kingdom{font-size:.85rem;opacity:.9;margin:0 0 6px 0}
 .gld-page-motto{font-size:.95rem;font-style:italic;color:#f5d76e;margin:0 0 8px 0}
 .gld-page-desc{font-size:.85rem;opacity:.85;margin:0 0 12px 0;max-width:600px;line-height:1.5}
 .gld-page-stats{display:flex;gap:18px;flex-wrap:wrap;font-size:.85rem;align-items:center}
 .gld-page-stats b{font-size:1.1rem;display:block;color:#fff}
 .gld-page-stats .gld-coin-icon{width:24px;height:24px;border-radius:50%;vertical-align:middle;margin-right:4px;border:1px solid rgba(255,255,255,.3)}
 
-/* ═══ MEMBERS ═══ */
 .gld-members{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.06);margin-bottom:20px}
-.gld-members-banner{height:160px;background:url('/assets/images/lucid-origin_Panoramic_view_of_ancient_Martian_feast_hall_long_wooden_tables_with_candles_sto-0.jpg') center/cover;position:relative;overflow:hidden}
+.gld-members-banner{height:160px;background:url('/assets/images/guild-feast.jpg') center/cover;position:relative;overflow:hidden}
 .gld-members-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.7) 100%)}
 .gld-members-banner-content{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:16px;color:#fff;z-index:2}
 .gld-members-banner-title{font-size:1.05rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.8);background:linear-gradient(90deg,#fff,#f5d76e,#fff);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gldShine 4s linear infinite}
@@ -118,7 +113,6 @@ comments: false
 .gld-icon-btn:hover{transform:scale(1.1);border-color:var(--gk);color:var(--gk)}
 .gld-icon-btn.danger:hover{border-color:#e74c3c;color:#e74c3c}
 
-/* ═══ CHAT ═══ */
 .gld-chat{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.06);margin-bottom:20px;display:flex;flex-direction:column;max-height:700px;position:relative}
 .gld-chat-header{padding:16px 20px;background:linear-gradient(135deg,#2d1b3d,#1a1a2e);color:#fff;display:flex;align-items:center;gap:10px}
 .gld-chat-header-title{font-weight:800;font-size:1.05rem;flex:1}
@@ -134,7 +128,7 @@ comments: false
 .gld-chat-msg.own .gld-chat-msg-head{justify-content:flex-end}
 .gld-chat-msg-author{font-weight:800;color:#333;cursor:pointer}
 .gld-chat-msg-author:hover{color:var(--gk);text-decoration:underline}
-.gld-chat-msg-text{padding:10px 14px;border-radius:14px;background:#f0f0f5;color:#333;font-size:.88rem;line-height:1.45;word-wrap:break-word;display:inline-block;text-align:left;position:relative;padding-right:34px}
+.gld-chat-msg-text{padding:10px 34px 10px 14px;border-radius:14px;background:#f0f0f5;color:#333;font-size:.88rem;line-height:1.45;word-wrap:break-word;display:inline-block;text-align:left;position:relative}
 .gld-chat-msg.own .gld-chat-msg-text{background:linear-gradient(135deg,var(--gk),var(--gk-l));color:#fff;border-bottom-right-radius:4px}
 .gld-chat-msg:not(.own) .gld-chat-msg-text{border-bottom-left-radius:4px}
 .gld-chat-msg-text.edited::after{content:' (изм.)';font-size:.7rem;opacity:.6;font-style:italic}
@@ -149,15 +143,6 @@ comments: false
 .gld-chat-reaction{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;background:rgba(0,0,0,.05);border:1.5px solid transparent;border-radius:12px;font-size:.75rem;cursor:pointer;transition:all .2s;font-family:inherit;animation:gldPop .3s ease}
 .gld-chat-reaction:hover{background:rgba(108,99,255,.15)}
 .gld-chat-reaction.mine{background:rgba(108,99,255,.2);border-color:var(--gk)}
-.gld-chat-reaction-picker{position:absolute;background:#fff;border-radius:30px;padding:6px 10px;box-shadow:0 8px 32px rgba(0,0,0,.2);display:none;gap:4px;z-index:100;border:1px solid rgba(0,0,0,.08)}
-.gld-chat-reaction-picker.open{display:flex}
-.gld-chat-reaction-picker button{width:36px;height:36px;border:none;background:transparent;font-size:1.3rem;cursor:pointer;border-radius:50%;transition:transform .2s;font-family:inherit;padding:0}
-.gld-chat-reaction-picker button:hover{transform:scale(1.25);background:rgba(108,99,255,.1)}
-.gld-msg-menu{position:absolute;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.25);display:none;flex-direction:column;z-index:200;overflow:hidden;min-width:180px;border:1px solid rgba(0,0,0,.06)}
-.gld-msg-menu.open{display:flex;animation:gldPop .2s ease}
-.gld-msg-menu button{padding:12px 16px;background:transparent;border:none;text-align:left;font-family:inherit;font-size:.85rem;color:#333;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:10px;transition:background .15s}
-.gld-msg-menu button:hover{background:rgba(108,99,255,.08);color:var(--gk)}
-.gld-msg-menu button.danger:hover{background:rgba(231,76,60,.08);color:#e74c3c}
 .gld-chat-reply-preview{padding:8px 14px;background:rgba(108,99,255,.08);border-top:1px solid rgba(108,99,255,.2);font-size:.78rem;color:#555;display:flex;justify-content:space-between;align-items:center;gap:8px}
 .gld-chat-reply-preview button{background:transparent;border:none;cursor:pointer;color:#999;font-size:1rem;padding:0;font-family:inherit}
 .gld-chat-input{display:flex;gap:8px;padding:12px 16px;border-top:1px solid rgba(0,0,0,.06);background:#fafafa}
@@ -166,26 +151,33 @@ comments: false
 .gld-chat-input button{padding:12px 22px;background:linear-gradient(135deg,var(--gk),var(--gk-l));color:#fff;border:none;border-radius:24px;cursor:pointer;font-weight:800;font-family:inherit;font-size:.9rem}
 .gld-chat-input button:hover{transform:translateY(-2px)}
 
-/* ═══ TABS ═══ */
+.gld-msg-menu{position:fixed;background:#fff;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.25);display:none;flex-direction:column;z-index:999999;overflow:hidden;min-width:180px;border:1px solid rgba(0,0,0,.06)}
+.gld-msg-menu.open{display:flex;animation:gldPop .2s ease}
+.gld-msg-menu button{padding:12px 16px;background:transparent;border:none;text-align:left;font-family:inherit;font-size:.85rem;color:#333;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:10px;transition:background .15s}
+.gld-msg-menu button:hover{background:rgba(108,99,255,.08);color:var(--gk)}
+.gld-msg-menu button.danger:hover{background:rgba(231,76,60,.08);color:#e74c3c}
+
+.gld-emoji-panel{position:fixed;background:#fff;border-radius:16px;padding:10px;box-shadow:0 12px 40px rgba(0,0,0,.25);display:none;z-index:999999;border:1px solid rgba(0,0,0,.06);grid-template-columns:repeat(4,1fr);gap:4px;width:190px}
+.gld-emoji-panel.open{display:grid;animation:gldPop .2s ease}
+.gld-emoji-panel button{width:40px;height:40px;border:none;background:transparent;font-size:1.4rem;cursor:pointer;border-radius:10px;transition:all .2s;font-family:inherit;padding:0}
+.gld-emoji-panel button:hover{background:rgba(108,99,255,.12);transform:scale(1.15)}
+
 .gld-tabs{display:flex;gap:4px;margin-bottom:20px;padding:6px;background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.05);overflow-x:auto}
 .gld-tab{flex-shrink:0;padding:10px 18px;border:none;background:transparent;color:#666;font-size:.88rem;font-weight:700;border-radius:10px;cursor:pointer;transition:all .25s;font-family:inherit}
 .gld-tab.active{background:linear-gradient(135deg,var(--gk),var(--gk-l));color:#fff}
 
-/* ═══ QUESTS ═══ */
-.gld-quest{background:#fff;border-radius:14px;padding:16px 18px;margin-bottom:10px;border-left:4px solid var(--gk);box-shadow:0 4px 12px rgba(0,0,0,.04)}
+.gld-quest{background:#fff;border-radius:14px;padding:16px 18px;margin-bottom:10px;border-left:4px solid var(--gk);box-shadow:0 4px 12px rgba(0,0,0,.04);background-image:linear-gradient(rgba(255,255,255,.92),rgba(255,255,255,.92)),url('/assets/images/gpt-image-2_Martian_quest_board_ancient_wooden_notice_board_with_parchment_scrolls_pinned_ma-0.jpg');background-size:cover;background-position:center}
 .gld-quest-title{font-weight:800;color:#1a1a1a;margin-bottom:6px}
 .gld-quest-desc{font-size:.82rem;color:#666;margin-bottom:10px;line-height:1.5}
 .gld-quest-progress{height:8px;background:rgba(108,99,255,.1);border-radius:8px;overflow:hidden;margin-bottom:8px}
 .gld-quest-progress-bar{height:100%;background:linear-gradient(90deg,var(--gk),var(--gk-l));transition:width 1s}
 .gld-quest-meta{display:flex;justify-content:space-between;font-size:.75rem;color:#888}
 
-/* ═══ BANK ═══ */
 .gld-bank-balance{background:linear-gradient(135deg,var(--gold),#e67e22);color:#fff;padding:24px;border-radius:18px;text-align:center;margin-bottom:20px;box-shadow:0 12px 32px -8px rgba(243,156,18,.5);display:flex;flex-direction:column;align-items:center}
-.gld-bank-balance img{width:48px;height:48px;border-radius:50%;margin-bottom:8px;border:2px solid rgba(255,255,255,.4);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.gld-bank-balance img{width:56px;height:56px;border-radius:50%;margin-bottom:8px;border:2px solid rgba(255,255,255,.4);box-shadow:0 4px 12px rgba(0,0,0,.3);object-fit:cover}
 .gld-bank-balance-value{font-size:2.6rem;font-weight:900;line-height:1}
 .gld-bank-balance-label{font-size:.82rem;opacity:.9;margin-top:4px;letter-spacing:1px;text-transform:uppercase}
 
-/* ═══ ACTION MENU ═══ */
 .gld-action-menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:20px}
 .gld-action-card{background:#fff;border:2px solid rgba(0,0,0,.06);border-radius:16px;padding:18px 14px;text-align:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
 .gld-action-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gk),transparent);opacity:0;transition:opacity .3s}
@@ -195,8 +187,7 @@ comments: false
 .gld-action-title{font-size:.85rem;font-weight:800;color:#1a1a1a;margin-bottom:2px}
 .gld-action-desc{font-size:.72rem;color:#888}
 
-/* ═══ TECH ═══ */
-.gld-tech-card{background:#fff;border-radius:14px;padding:16px 18px;margin-bottom:10px;border-left:4px solid var(--gk);box-shadow:0 4px 12px rgba(0,0,0,.04);display:flex;align-items:center;gap:14px}
+.gld-tech-card{background:#fff;border-radius:14px;padding:16px 18px;margin-bottom:10px;border-left:4px solid var(--gk);box-shadow:0 4px 12px rgba(0,0,0,.04);display:flex;align-items:center;gap:14px;background-image:linear-gradient(rgba(255,255,255,.94),rgba(255,255,255,.94)),url('/assets/images/lucid-origin_Ancient_Martian_forge_workshop_arcane_technology_lab_with_glowing_blue_crystals_-0.jpg');background-size:cover;background-position:center}
 .gld-tech-icon{font-size:2rem;flex-shrink:0}
 .gld-tech-info{flex:1;min-width:0}
 .gld-tech-title{font-weight:800;color:#1a1a1a;margin-bottom:2px;font-size:.95rem}
@@ -204,7 +195,6 @@ comments: false
 .gld-tech-cost{font-size:.75rem;color:var(--gold);font-weight:800;margin-top:4px}
 .gld-tech-badge{padding:4px 10px;border-radius:12px;font-size:.7rem;font-weight:800;background:rgba(39,174,96,.15);color:#27ae60}
 
-/* ═══ MODALS ═══ */
 .gld-modal-bg{position:fixed;inset:0;z-index:99999;background:rgba(10,10,26,.75);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:20px;animation:gldFade .3s ease;overflow-y:auto}
 .gld-modal{background:#fff;max-width:520px;width:100%;border-radius:22px;padding:30px 28px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:gldRise .4s cubic-bezier(.16,1,.3,1);max-height:92vh;overflow-y:auto}
 .gld-modal.wide{max-width:760px}
@@ -233,10 +223,9 @@ comments: false
 .gld-rank-option.selected{border-color:var(--gk);background:rgba(108,99,255,.1)}
 .gld-rank-option:disabled{opacity:.4;cursor:not-allowed}
 
-/* ═══ PROFILE ═══ */
 .gld-profile-modal{display:grid;grid-template-columns:200px 1fr;overflow:hidden}
 .gld-profile-left{background:linear-gradient(135deg,#1a1a2e,#2d1b3d);padding:24px 16px;color:#fff;display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden}
-.gld-profile-left::before{content:'';position:absolute;inset:0;background:url('/assets/images/lucid-origin_Ancient_Martian_council_hall_interior_grand_stone_chamber_with_tall_columns_thro-0.jpg') center/cover;opacity:.25;pointer-events:none}
+.gld-profile-left::before{content:'';position:absolute;inset:0;background:url('/assets/images/guild-hall.jpg') center/cover;opacity:.25;pointer-events:none}
 .gld-profile-avatar-wrap{position:relative;z-index:2;margin-bottom:16px}
 .gld-profile-avatar{width:120px;height:120px;border-radius:50%;border:4px solid rgba(255,255,255,.3);object-fit:cover;display:block;box-shadow:0 12px 32px rgba(0,0,0,.5)}
 .gld-profile-rank-badge{position:absolute;bottom:-4px;right:-4px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:3px solid #fff;font-size:1.1rem}
@@ -258,10 +247,8 @@ comments: false
 .gld-profile-btn:hover{background:var(--gk);color:#fff}
 .gld-profile-btn.primary{background:var(--gk);color:#fff}
 
-/* ═══ MAIL / PM ═══ */
 .gld-mail-item{padding:14px 16px;border-radius:12px;background:rgba(0,0,0,.02);border-left:3px solid transparent;margin-bottom:8px;cursor:pointer;transition:all .2s}
 .gld-mail-item:hover{background:rgba(108,99,255,.06);transform:translateX(4px)}
-.gld-mail-item.unread{background:rgba(108,99,255,.08);border-left-color:var(--gk)}
 .gld-mail-head{display:flex;justify-content:space-between;margin-bottom:4px;font-size:.82rem}
 .gld-mail-from{font-weight:800;color:#333}
 .gld-mail-date{color:#999;font-size:.72rem}
@@ -278,11 +265,10 @@ comments: false
 .gld-empty{text-align:center;padding:60px 20px;background:#fff;border-radius:20px;border:2px dashed rgba(108,99,255,.2)}
 .gld-empty-icon{font-size:4rem;margin-bottom:12px;opacity:.5}
 
-/* ═══ DARK THEME ═══ */
-html body.mars-stars-on .gld-stat,html body.mars-stars-on .gld-card,html body.mars-stars-on .gld-filters,html body.mars-stars-on .gld-members,html body.mars-stars-on .gld-chat,html body.mars-stars-on .gld-quest,html body.mars-stars-on .gld-tabs,html body.mars-stars-on .gld-action-card,html body.mars-stars-on .gld-tech-card{background:#14142a;border-color:rgba(108,99,255,.3);color:#e0e0f0}
+html body.mars-stars-on .gld-stat,html body.mars-stars-on .gld-card,html body.mars-stars-on .gld-filters,html body.mars-stars-on .gld-members,html body.mars-stars-on .gld-chat,html body.mars-stars-on .gld-quest,html body.mars-stars-on .gld-tabs,html body.mars-stars-on .gld-action-card,html body.mars-stars-on .gld-tech-card{background-color:#14142a;border-color:rgba(108,99,255,.3);color:#e0e0f0}
 html body.mars-stars-on .gld-card-name,html body.mars-stars-on .gld-quest-title,html body.mars-stars-on .gld-member-name,html body.mars-stars-on .gld-tech-title{color:#e0e0f0}
 html body.mars-stars-on .gld-card-desc,html body.mars-stars-on .gld-quest-desc,html body.mars-stars-on .gld-tech-desc{color:#aaa}
-html body.mars-stars-on .gld-modal,html body.mars-stars-on .gld-msg-menu,html body.mars-stars-on .gld-chat-reaction-picker{background:#14142a}
+html body.mars-stars-on .gld-modal,html body.mars-stars-on .gld-msg-menu,html body.mars-stars-on .gld-emoji-panel{background:#14142a}
 html body.mars-stars-on .gld-modal-title,html body.mars-stars-on .gld-profile-right h3{color:#e0e0f0}
 html body.mars-stars-on .gld-field input,html body.mars-stars-on .gld-field textarea,html body.mars-stars-on .gld-field select{background:#1a1a30;color:#e0e0f0;border-color:rgba(108,99,255,.3)}
 html body.mars-stars-on .gld-chat-body,html body.mars-stars-on .gld-pm-body{background:linear-gradient(180deg,#0f0f1e,#14142a)}
@@ -307,7 +293,6 @@ html body.mars-stars-on .gld-msg-menu button:hover{background:rgba(108,99,255,.1
     .gld-profile-modal{grid-template-columns:1fr}
     .gld-profile-avatar{width:100px;height:100px}
     .gld-chat-msg-content{max-width:82%}
-    .gld-chat-msg-text{padding-right:30px}
     .gld-member-level{padding-left:4px}
     .gld-member-level-num{font-size:.95rem}
 }
@@ -323,7 +308,15 @@ html body.mars-stars-on .gld-msg-menu button:hover{background:rgba(108,99,255,.1
 
 var SUPABASE_URL='https://ncytbgbzfjfoqmmgfygz.supabase.co';
 var SUPABASE_KEY='sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
-var COIN_IMG='/assets/images/lucid-origin_Golden_coin_with_Mars_planet_engraving_ancient_runes_around_edge_worn_patina_shi-0.jpg';
+var COIN_IMG='/assets/images/guild-coin.jpg';
+var QUEST_BG='/assets/images/gpt-image-2_Martian_quest_board_ancient_wooden_notice_board_with_parchment_scrolls_pinned_ma-0.jpg';
+var MARKET_BG='/assets/images/lucid-origin_Ancient_Martian_marketplace_inside_stone_hall_wooden_stalls_with_exotic_wares_ha-0.jpg';
+var TREASURY_BG='/assets/images/lucid-origin_Martian_clan_treasury_vault_mountains_of_golden_coins_and_clay_tablets_on_stone_-0.jpg';
+var HONOR_BG='/assets/images/lucid-origin_Martian_hall_of_honor_wall_covered_with_golden_shields_and_portraits_of_legendar-0.jpg';
+var FORGE_BG='/assets/images/lucid-origin_Ancient_Martian_forge_workshop_arcane_technology_lab_with_glowing_blue_crystals_-0.jpg';
+var HALL_BG='/assets/images/guild-hall.jpg';
+var FEAST_BG='/assets/images/guild-feast.jpg';
+var ICON_WAR='/assets/images/icon-war.png';
 
 var KINGDOMS={
 'Эдем':{color:'#F4A460',light:'#F7C98A',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg'},
@@ -390,7 +383,7 @@ function toast(msg,type){
     type=type||'info';
     var c={success:'linear-gradient(135deg,#27ae60,#16a085)',info:'linear-gradient(135deg,#3498db,#2980b9)',warning:'linear-gradient(135deg,#e67e22,#d35400)',error:'linear-gradient(135deg,#e74c3c,#c0392b)'};
     var t=document.createElement('div');
-    t.style.cssText='position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:'+(c[type]||c.info)+';color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;box-shadow:0 12px 32px rgba(0,0,0,.3);z-index:99999;transition:transform .4s cubic-bezier(.16,1,.3,1);pointer-events:none;max-width:90vw;';
+    t.style.cssText='position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:'+(c[type]||c.info)+';color:#fff;padding:12px 26px;border-radius:30px;font-weight:700;font-size:.9rem;box-shadow:0 12px 32px rgba(0,0,0,.3);z-index:2147483647;transition:transform .4s cubic-bezier(.16,1,.3,1);pointer-events:none;max-width:90vw;';
     t.textContent=msg;document.body.appendChild(t);
     requestAnimationFrame(function(){t.style.transform='translateX(-50%) translateY(0)';});
     setTimeout(function(){t.style.transform='translateX(-50%) translateY(100px)';setTimeout(function(){t.remove();},400);},2400);
@@ -398,6 +391,7 @@ function toast(msg,type){
 function avatarFor(name){return 'https://ui-avatars.com/api/?name='+encodeURIComponent(name||'?')+'&background=6C63FF&color=fff&size=128&rounded=true';}
 function fmtTime(iso){var d=new Date(iso);var h=d.getHours(),m=d.getMinutes();return (h<10?'0':'')+h+':'+(m<10?'0':'')+m;}
 function getLevel(exp){exp=exp||0;var l=1;while(l<100&&exp>=Math.floor(Math.pow(l+1,1.8)*20))l++;var c=Math.floor(Math.pow(l,1.8)*20);var n=Math.floor(Math.pow(l+1,1.8)*20);var p=n>c?Math.min(((exp-c)/(n-c))*100,100):100;return{level:l,current:c,next:n,percent:p};}
+function kingdomByFlag(flag){var ks=Object.keys(KINGDOMS);for(var i=0;i<ks.length;i++){if(KINGDOMS[ks[i]].flag===flag)return ks[i];}return null;}
 
 async function loadData(){
     var s=await client.auth.getSession();
@@ -430,10 +424,12 @@ async function loadData(){
 
 async function createGuild(name,desc,icon,color,flag,motto){
     if(!currentUser||myGuildId){toast('Вы уже в гильдии','warning');return;}
-    if(!name||name.length<3||name.length>30){toast('Имя 3-30 символов','warning');return;}
+    if(!name||name.length<3||name.length>30){toast('Имя 3-30','warning');return;}
     var ex=await client.from('guilds').select('id').eq('name',name).maybeSingle();
     if(ex&&ex.data){toast('Имя занято','error');return;}
-    var res=await client.from('guilds').insert([{name:name,description:desc,icon:icon,color:color,flag:flag,motto:motto,leader_id:currentUser.id}]).select().single();
+    var kName=kingdomByFlag(flag);
+    var autoColor=kName?KINGDOMS[kName].color:color;
+    var res=await client.from('guilds').insert([{name:name,description:desc,icon:icon,color:autoColor,flag:flag,motto:motto,kingdom:kName,leader_id:currentUser.id}]).select().single();
     if(res.error){toast('Ошибка: '+res.error.message,'error');return;}
     await client.from('guild_members').insert([{guild_id:res.data.id,user_id:currentUser.id,rank:5,role:'leader'}]);
     toast('🏰 Гильдия создана!','success');
@@ -481,7 +477,6 @@ async function changeRank(userId,newRank,newSubtitle){
     toast('⚠️ Не сохранилось','error');return false;
 }
 
-/* ═══ CHAT ═══ */
 async function loadChat(){
     if(!currentGuildId)return;
     var r=await client.from('guild_chat').select('id,user_id,message,created_at,reply_to,edited').eq('guild_id',currentGuildId).order('created_at',{ascending:true}).limit(100);
@@ -511,29 +506,23 @@ function renderChatBody(){
         var mem=(membersMap[currentGuildId]||[]).filter(function(x){return x.user_id===m.user_id;})[0];
         var rank=mem?RANKS[mem.rank]||RANKS[1]:RANKS[1];
         var rb='<span class="rank-badge '+rank.class+'" style="width:20px;height:20px;font-size:.62rem;">'+(mem&&mem.rank===5?'👑':(mem&&mem.rank===4?'🛡️':'R'+(mem?mem.rank:1)))+'</span>';
-
         var replyHtml='';
         if(m.reply_to){
             var rp=chatMessages.filter(function(x){return x.id===m.reply_to;})[0];
             if(rp){var rpn=profilesMap[rp.user_id]||{};var rpName=rpn.display_name||rpn.username||'Аноним';
                 replyHtml='<div class="gld-chat-msg-reply" onclick="gldScrollTo(\''+escAttr(rp.id)+'\')">↩ '+esc(rpName)+': '+esc(rp.message.slice(0,50))+'</div>';}
         }
-
         var rxs=chatReactions[m.id]||[];
         var grouped={};rxs.forEach(function(rx){if(!grouped[rx.emoji])grouped[rx.emoji]=[];grouped[rx.emoji].push(rx.user_id);});
-        var rxHtml='';
-        var keys=Object.keys(grouped);
+        var rxHtml='';var keys=Object.keys(grouped);
         if(keys.length){
             rxHtml='<div class="gld-chat-reactions'+(isOwn?' own':'')+'">';
             keys.forEach(function(e){var mine=grouped[e].indexOf(currentUser.id)!==-1;
                 rxHtml+='<button class="gld-chat-reaction'+(mine?' mine':'')+'" onclick="gldToggleReaction(\''+escAttr(m.id)+'\',\''+escAttr(e)+'\')">'+e+' '+grouped[e].length+'</button>';});
             rxHtml+='</div>';
         }
-
         var textContent=esc(m.message).replace(/\n/g,'<br>');
-        var isTranslated=translations[m.id];
-        if(isTranslated)textContent='<em style="opacity:.75;font-size:.78rem;">🇬🇧 '+esc(isTranslated)+'</em><br>'+textContent;
-
+        if(translations[m.id])textContent='<em style="opacity:.75;font-size:.78rem;">🇬🇧 '+esc(translations[m.id])+'</em><br>'+textContent;
         return '<div class="gld-chat-msg'+(isOwn?' own':'')+'" data-msg-id="'+escAttr(m.id)+'">'+
             '<img src="'+escAttr(av)+'" class="gld-chat-msg-avatar" onclick="gldShowProfile(\''+escAttr(m.user_id)+'\')" onerror="this.onerror=null;this.src=\''+avatarFor(name)+'\';">'+
             '<div class="gld-chat-msg-content">'+replyHtml+
@@ -552,12 +541,14 @@ async function sendChat(){
     var msg=input.value.trim();if(!msg)return;
     input.disabled=true;
     if(editingId){
-        var r=await client.from('guild_chat').update({message:msg,edited:true,edited_at:new Date().toISOString()}).eq('id',editingId);
+        var r=await client.from('guild_chat').update({message:msg,edited:true,edited_at:new Date().toISOString()}).eq('id',editingId).select();
         input.disabled=false;
-        if(r.error){toast('Ошибка','error');return;}
+        if(r.error){toast('Ошибка: '+r.error.message,'error');return;}
+        if(!r.data||!r.data.length){toast('Нет прав на редактирование (RLS)','error');return;}
         delete translations[editingId];
         editingId=null;replyTo=null;
         input.placeholder='Написать сообщение...';input.value='';removeReplyPreview();
+        toast('✅ Сообщение изменено','success');
         await loadChat();updateChatUI();return;
     }
     var payload={guild_id:currentGuildId,user_id:currentUser.id,message:msg};
@@ -590,32 +581,46 @@ function startChatPolling(){
     },5000);
 }
 
-/* Меню сообщения */
 window.gldOpenMsgMenu=function(msgId,ev){
     ev.stopPropagation();
-    var old=document.querySelector('.gld-msg-menu.open');
-    if(old)old.remove();
+    var old=document.querySelector('.gld-msg-menu.open');if(old)old.remove();
+    var old2=document.querySelector('.gld-emoji-panel.open');if(old2)old2.remove();
     var m=chatMessages.filter(function(x){return x.id===msgId;})[0];if(!m)return;
     var isOwn=m.user_id===currentUser.id;
     var menu=document.createElement('div');menu.className='gld-msg-menu open';
     menu.innerHTML=
         '<button onclick="gldStartReply(\''+escAttr(msgId)+'\');gldCloseMenu()">↩ Ответить</button>'+
+        '<button onclick="gldOpenEmoji(\''+escAttr(msgId)+'\',event);gldCloseMenu()">😀 Реакция</button>'+
         (isOwn?'<button onclick="gldStartEdit(\''+escAttr(msgId)+'\');gldCloseMenu()">✏️ Редактировать</button>':'')+
         '<button onclick="gldToggleTranslate(\''+escAttr(msgId)+'\');gldCloseMenu()">🌐 '+(translations[msgId]?'Скрыть перевод':'Перевести')+'</button>'+
         (isOwn?'<button class="danger" onclick="gldDeleteMsg(\''+escAttr(msgId)+'\');gldCloseMenu()">🗑️ Удалить</button>':'');
     document.body.appendChild(menu);
     var rect=ev.target.getBoundingClientRect();
-    menu.style.position='fixed';
-    menu.style.top=(rect.bottom+6)+'px';
+    menu.style.top=Math.min(rect.bottom+6,window.innerHeight-260)+'px';
     menu.style.left=Math.min(rect.left,window.innerWidth-200)+'px';
     setTimeout(function(){document.addEventListener('click',closeMenuOnce);},10);
 };
 function closeMenuOnce(){gldCloseMenu();document.removeEventListener('click',closeMenuOnce);}
 window.gldCloseMenu=function(){var el=document.querySelector('.gld-msg-menu.open');if(el)el.remove();};
 
+window.gldOpenEmoji=function(msgId,ev){
+    ev.stopPropagation();
+    var old=document.querySelector('.gld-emoji-panel.open');if(old)old.remove();
+    var panel=document.createElement('div');panel.className='gld-emoji-panel open';
+    panel.innerHTML=REACTIONS.map(function(e){return '<button onclick="gldToggleReaction(\''+escAttr(msgId)+'\',\''+e+'\');gldCloseEmoji()">'+e+'</button>';}).join('');
+    document.body.appendChild(panel);
+    var rect=ev.target.getBoundingClientRect();
+    panel.style.top=Math.min(rect.bottom+6,window.innerHeight-200)+'px';
+    panel.style.left=Math.min(rect.left,window.innerWidth-200)+'px';
+    setTimeout(function(){document.addEventListener('click',closeEmojiOnce);},10);
+};
+function closeEmojiOnce(){gldCloseEmoji();document.removeEventListener('click',closeEmojiOnce);}
+window.gldCloseEmoji=function(){var el=document.querySelector('.gld-emoji-panel.open');if(el)el.remove();};
+
 window.gldDeleteMsg=async function(id){
     if(!confirm('Удалить сообщение?'))return;
-    await client.from('guild_chat').delete().eq('id',id).eq('user_id',currentUser.id);
+    var r=await client.from('guild_chat').delete().eq('id',id).eq('user_id',currentUser.id);
+    if(r.error){toast('Ошибка','error');return;}
     await loadChat();updateChatUI();
 };
 
@@ -658,7 +663,6 @@ window.gldToggleReaction=async function(msgId,emoji){
 };
 
 window.gldToggleTranslate=async function(msgId){
-    // Toggle: если переведено — убираем
     if(translations[msgId]){delete translations[msgId];updateChatUI();return;}
     var m=chatMessages.filter(function(x){return x.id===msgId;})[0];if(!m)return;
     var el=document.querySelector('[data-msg-id="'+msgId+'"] .gld-chat-msg-text');
@@ -668,16 +672,11 @@ window.gldToggleTranslate=async function(msgId){
     try{
         var res=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(m.message.slice(0,500))+'&langpair=ru|en');
         var data=await res.json();
-        var translated=data&&data.responseData&&data.responseData.translatedText||'—';
-        translations[msgId]=translated;
+        translations[msgId]=data&&data.responseData&&data.responseData.translatedText||'—';
         updateChatUI();
-    }catch(e){
-        el.innerHTML=origContent;
-        toast('Ошибка перевода','error');
-    }
+    }catch(e){el.innerHTML=origContent;toast('Ошибка перевода','error');}
 };
 
-/* LIST */
 function renderList(){
     document.documentElement.style.setProperty('--gk',myKingdom.color);
     document.documentElement.style.setProperty('--gk-l',myKingdom.light);
@@ -727,10 +726,11 @@ function renderCard(g,i){
     else if(myGuildId)action='<button class="gld-btn secondary" disabled style="opacity:.5;">Вы в гильдии</button>';
     else action='<button class="gld-btn primary" onclick="gldJoin('+g.id+')">➕ Вступить</button>';
     var crestHtml=g.icon&&g.icon.indexOf('/')===0?'<img src="'+escAttr(g.icon)+'">':(g.icon||'🏰');
-    return '<div class="gld-card gld-fade" style="--guild-color:'+(g.color||'#6C63FF')+';animation-delay:'+(i*.05)+'s;">'+
+    var kColor=g.kingdom&&KINGDOMS[g.kingdom]?KINGDOMS[g.kingdom].color:(g.color||'#6C63FF');
+    return '<div class="gld-card gld-fade" style="--guild-color:'+kColor+';animation-delay:'+(i*.05)+'s;">'+
         '<div class="gld-card-header"><div class="gld-card-icon">'+crestHtml+'</div>'+
         '<div style="flex:1;min-width:0;"><h3 class="gld-card-name">'+esc(g.name)+'</h3>'+
-        '<div class="gld-card-leader">👑 '+esc(lName)+'</div></div></div>'+
+        '<div class="gld-card-leader">👑 '+esc(lName)+(g.kingdom?' · 🏰 '+esc(g.kingdom):'')+'</div></div></div>'+
         '<p class="gld-card-desc">'+esc(g.description||'Без описания')+'</p>'+
         '<div class="gld-card-footer"><span class="gld-card-members">👥 '+count+'</span>'+status+'</div>'+
         '<div class="gld-card-actions">'+action+'</div></div>';
@@ -739,21 +739,24 @@ function renderCard(g,i){
 async function renderGuildDetail(){
     var g=guilds.filter(function(x){return x.id===currentGuildId;})[0];
     if(!g){currentView='list';render();return;}
+    var kName=g.kingdom||kingdomByFlag(g.flag);
+    var kObj=kName?KINGDOMS[kName]:null;
+    var gColor=kObj?kObj.color:(g.color||'#6C63FF');
+    var gLight=kObj?kObj.light:(g.color||'#6C63FF');
+    document.documentElement.style.setProperty('--gk',gColor);
+    document.documentElement.style.setProperty('--gk-l',gLight);
+    document.documentElement.style.setProperty('--gk-s',gColor+'40');
+
     var members=(membersMap[g.id]||[]).slice();
     var isLeader=g.leader_id===currentUser.id;
     var canManage=myRank>=4||isLeader;
 
-    // Сортировка
     members.sort(function(a,b){
         var pa=profilesMap[a.user_id]||{},pb=profilesMap[b.user_id]||{};
         if(sortBy==='rank')return (b.rank||1)-(a.rank||1);
         if(sortBy==='level')return (pb.level||0)-(pa.level||0);
         if(sortBy==='xp')return (pb.experience||0)-(pa.experience||0);
-        if(sortBy==='name'){
-            var na=(pa.display_name||pa.username||'').toLowerCase();
-            var nb=(pb.display_name||pb.username||'').toLowerCase();
-            return na.localeCompare(nb);
-        }
+        if(sortBy==='name'){var na=(pa.display_name||pa.username||'').toLowerCase();var nb=(pb.display_name||pb.username||'').toLowerCase();return na.localeCompare(nb);}
         return (b.rank||1)-(a.rank||1);
     });
 
@@ -800,13 +803,13 @@ async function renderGuildDetail(){
         content='<div class="gld-members gld-fade" style="padding:20px;">'+
             '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:12px;flex-wrap:wrap;">'+
             '<h3 style="margin:0;">✉️ Письма гильдии</h3>'+
-            (canManage?'<button class="gld-btn primary" style="max-width:200px;" onclick="gldWriteMessage()">➕ Написать письмо</button>':'')+'</div>'+
+            (canManage?'<button class="gld-btn primary" style="max-width:200px;" onclick="gldWriteMessage()">➕ Написать</button>':'')+'</div>'+
             (letters.length?letters.map(renderLetter).join(''):'<p style="color:#888;text-align:center;padding:30px;">Писем пока нет</p>')+
         '</div>';
     } else if(currentTab==='bank'){
         var myCoins=0;
         try{var cc=await client.from('user_currency').select('clay_talents').eq('user_id',currentUser.id).maybeSingle();myCoins=(cc&&cc.data&&cc.data.clay_talents)||0;}catch(e){}
-        content='<div class="gld-members gld-fade" style="padding:20px;">'+
+        content='<div class="gld-members gld-fade" style="padding:20px;background-image:linear-gradient(rgba(255,255,255,.96),rgba(255,255,255,.96)),url(\''+TREASURY_BG+'\');background-size:cover;">'+
             '<div class="gld-bank-balance">'+
                 '<img src="'+COIN_IMG+'" alt="">'+
                 '<div class="gld-bank-balance-value">'+(g.bank||0)+'</div>'+
@@ -820,17 +823,17 @@ async function renderGuildDetail(){
             '<div style="background:#f8f9fb;border-radius:14px;padding:14px;margin-top:16px;">'+
                 '<h4 style="margin:0 0 10px;font-size:.9rem;">📜 Как это работает</h4>'+
                 '<ul style="margin:0;padding-left:20px;font-size:.82rem;color:#666;line-height:1.6;">'+
-                '<li><b>Вложить</b> — перенести свои таланты в общую казну гильдии</li>'+
-                '<li><b>Снять</b> — доступно R4 и R5 для покупок и наград</li>'+
-                '<li>Таланты зарабатываются за достижения, квесты, ежедневный вход</li>'+
-                '<li>Из казны оплачиваются <b>технологии</b> гильдии</li>'+
+                '<li><b>Вложить</b> — перенести свои таланты в казну</li>'+
+                '<li><b>Снять</b> — доступно R4 и R5</li>'+
+                '<li>Таланты зарабатываются за достижения и квесты</li>'+
+                '<li>Из казны оплачиваются <b>технологии</b></li>'+
                 '</ul>'+
             '</div>'+
         '</div>';
     } else if(currentTab==='tech'){
         var purchased=[];
         try{var t=await client.from('guild_technologies').select('tech_id').eq('guild_id',g.id);purchased=(t&&t.data||[]).map(function(x){return x.tech_id;});}catch(e){}
-        content='<div class="gld-members gld-fade" style="padding:20px;">'+
+        content='<div class="gld-members gld-fade" style="padding:20px;background-image:linear-gradient(rgba(255,255,255,.96),rgba(255,255,255,.96)),url(\''+FORGE_BG+'\');background-size:cover;">'+
             '<h3 style="margin:0 0 16px;">⚙️ Технологии гильдии</h3>'+
             '<p style="color:#888;font-size:.85rem;margin:0 0 16px;">Покупаются из казны. Дают бонусы всем участникам.</p>'+
             TECHNOLOGIES.map(function(t){
@@ -846,13 +849,15 @@ async function renderGuildDetail(){
     }
 
     var crestHtml=g.icon&&g.icon.indexOf('/')===0?'<img src="'+escAttr(g.icon)+'" alt="">':(g.icon||'🏰');
+    var flagHtml=g.flag?'<img src="'+escAttr(g.flag)+'" alt="">':'';
     container.innerHTML=
     '<button class="gld-btn secondary" onclick="gldBack()" style="max-width:180px;margin-bottom:16px;">← К списку</button>'+
-    '<div class="gld-page-hero gld-fade" style="--guild-color:'+(g.color||'#6C63FF')+';">'+
+    '<div class="gld-page-hero gld-fade" style="--guild-color:'+gColor+';">'+
         '<div class="gld-page-content">'+
             '<div class="gld-page-crest">'+crestHtml+'</div>'+
             '<div class="gld-page-info">'+
-                '<h1 class="gld-page-name">'+esc(g.name)+'</h1>'+
+                '<h1 class="gld-page-name">'+flagHtml+esc(g.name)+'</h1>'+
+                (kName?'<p class="gld-page-kingdom">🏰 '+esc(kName)+'</p>':'')+
                 (g.motto?'<p class="gld-page-motto">«'+esc(g.motto)+'»</p>':'')+
                 (g.description?'<p class="gld-page-desc">'+esc(g.description)+'</p>':'')+
                 '<div class="gld-page-stats">'+
@@ -888,7 +893,7 @@ function renderMember(m,g){
         '<div class="gld-member-info"><div class="gld-member-name">'+esc(name)+(isMe?' (вы)':'')+
             (sub?'<span class="subtitle-badge">'+sub.icon+' '+sub.name+'</span>':'')+
         '</div><div class="gld-member-meta">'+rank.icon+' '+rank.label+'</div></div>'+
-        (lvl?'<div class="gld-member-level"><div class="gld-member-level-num">⭐ '+lvl.level+'</div><div class="gld-member-level-xp">'+p.experience+' XP</div></div>':'')+
+        (lvl?'<div class="gld-member-level"><div class="gld-member-level-num">⭐ '+lvl.level+'</div><div class="gld-member-level-xp">'+(p.experience||0)+' XP</div></div>':'')+
         (canManage?'<div class="gld-member-actions" onclick="event.stopPropagation();"><button class="gld-icon-btn" onclick="gldEditMember(\''+escAttr(m.user_id)+'\','+m.rank+',\''+escAttr(m.subtitle||'')+'\')">⚙️</button></div>':'')+
     '</div>';
 }
@@ -910,12 +915,10 @@ window.gldShowLetter=function(id){
     o.innerHTML='<div class="gld-modal"><button class="gld-modal-close" onclick="this.closest(\'.gld-modal-bg\').remove()">✕</button>'+
         '<h2 class="gld-modal-title">✉️ '+esc(l.subject)+'</h2>'+
         '<p style="color:#888;font-size:.82rem;margin:0 0 12px;">От: '+esc(name)+' · '+new Date(l.created_at).toLocaleString('ru-RU')+'</p>'+
-        '<p style="line-height:1.7;color:#333;white-space:pre-wrap;">'+esc(l.body)+'</p>'+
-        '</div>';
+        '<p style="line-height:1.7;color:#333;white-space:pre-wrap;">'+esc(l.body)+'</p></div>';
     document.body.appendChild(o);
 };
 
-/* MODALS */
 function openCreateModal(){
     if(!currentUser||myGuildId){toast('Недоступно','warning');return;}
     var o=document.createElement('div');o.className='gld-modal-bg';
@@ -924,23 +927,20 @@ function openCreateModal(){
         '<div class="gld-field"><label>Название</label><input id="g-name" maxlength="30"></div>'+
         '<div class="gld-field"><label>Девиз</label><input id="g-motto" maxlength="60"></div>'+
         '<div class="gld-field"><label>Описание</label><textarea id="g-desc" maxlength="300"></textarea></div>'+
-        '<div class="gld-field"><label>Герб (иконка)</label><div class="gld-icon-picker" id="g-icons">'+
+        '<div class="gld-field"><label>Герб</label><div class="gld-icon-picker" id="g-icons">'+
             GUILD_ICONS.map(function(ic,i){return '<button type="button" class="gld-icon-btn-pick'+(i===0?' selected':'')+'" data-icon="'+ic+'">'+ic+'</button>';}).join('')+
         '</div></div>'+
-        '<div class="gld-field"><label>Цвет</label><div class="gld-color-picker">'+
-            GUILD_COLORS.map(function(c,i){return '<button type="button" class="gld-color-btn'+(i===0?' selected':'')+'" data-color="'+c+'" style="background:'+c+';"></button>';}).join('')+
-        '</div></div>'+
-        '<div class="gld-field"><label>Флаг</label><div class="gld-icon-picker" id="g-flags">'+
+        '<div class="gld-field"><label>Флаг (даёт цвет темы)</label><div class="gld-icon-picker" id="g-flags">'+
             Object.keys(KINGDOMS).map(function(k,i){return '<button type="button" class="gld-icon-btn-pick'+(i===0?' selected':'')+'" data-flag="'+k+'" style="padding:4px;"><img src="'+KINGDOMS[k].flag+'"></button>';}).join('')+
         '</div></div>'+
-        '<div class="gld-modal-actions"><button class="gld-btn secondary" onclick="this.closest(\'.gld-modal-bg\').remove()">Отмена</button><button class="gld-btn primary" id="g-create">🏰 Создать</button></div>'+
-    '</div>';
+        '<div class="gld-modal-actions"><button class="gld-btn secondary" onclick="this.closest(\'.gld-modal-bg\').remove()">Отмена</button><button class="gld-btn primary" id="g-create">🏰 Создать</button></div></div>';
     document.body.appendChild(o);
     o.querySelectorAll('.gld-icon-btn-pick[data-icon]').forEach(function(b){b.onclick=function(){o.querySelectorAll('.gld-icon-btn-pick[data-icon]').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');};});
-    o.querySelectorAll('.gld-color-btn').forEach(function(b){b.onclick=function(){o.querySelectorAll('.gld-color-btn').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');};});
     o.querySelectorAll('.gld-icon-btn-pick[data-flag]').forEach(function(b){b.onclick=function(){o.querySelectorAll('.gld-icon-btn-pick[data-flag]').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');};});
     o.querySelector('#g-create').onclick=async function(){
-        await createGuild(o.querySelector('#g-name').value.trim(),o.querySelector('#g-desc').value.trim(),o.querySelector('.gld-icon-btn-pick[data-icon].selected').dataset.icon,o.querySelector('.gld-color-btn.selected').dataset.color,KINGDOMS[o.querySelector('.gld-icon-btn-pick[data-flag].selected').dataset.flag].flag,o.querySelector('#g-motto').value.trim());
+        var icon=o.querySelector('.gld-icon-btn-pick[data-icon].selected').dataset.icon;
+        var kName=o.querySelector('.gld-icon-btn-pick[data-flag].selected').dataset.flag;
+        await createGuild(o.querySelector('#g-name').value.trim(),o.querySelector('#g-desc').value.trim(),icon,KINGDOMS[kName].color,KINGDOMS[kName].flag,o.querySelector('#g-motto').value.trim());
         o.remove();
     };
 }
@@ -957,20 +957,16 @@ window.gldEditGuild=async function(){
         '<div class="gld-field"><label>Герб</label><div class="gld-icon-picker" id="ge-icons">'+
             GUILD_ICONS.map(function(ic){return '<button type="button" class="gld-icon-btn-pick'+(g.icon===ic?' selected':'')+'" data-icon="'+ic+'">'+ic+'</button>';}).join('')+
         '</div></div>'+
-        '<div class="gld-field"><label>Цвет</label><div class="gld-color-picker">'+
-            GUILD_COLORS.map(function(c){return '<button type="button" class="gld-color-btn'+(g.color===c?' selected':'')+'" data-color="'+c+'" style="background:'+c+';"></button>';}).join('')+
-        '</div></div>'+
-        '<div class="gld-field"><label>Флаг</label><div class="gld-icon-picker" id="ge-flags">'+
+        '<div class="gld-field"><label>Флаг (даёт цвет темы)</label><div class="gld-icon-picker" id="ge-flags">'+
             Object.keys(KINGDOMS).map(function(k){return '<button type="button" class="gld-icon-btn-pick'+(g.flag===KINGDOMS[k].flag?' selected':'')+'" data-flag="'+k+'" style="padding:4px;"><img src="'+KINGDOMS[k].flag+'"></button>';}).join('')+
         '</div></div>'+
-        '<div class="gld-modal-actions"><button class="gld-btn secondary" onclick="this.closest(\'.gld-modal-bg\').remove()">Отмена</button><button class="gld-btn primary" id="ge-save">💾 Сохранить</button></div>'+
-    '</div>';
+        '<div class="gld-modal-actions"><button class="gld-btn secondary" onclick="this.closest(\'.gld-modal-bg\').remove()">Отмена</button><button class="gld-btn primary" id="ge-save">💾 Сохранить</button></div></div>';
     document.body.appendChild(o);
     o.querySelectorAll('#ge-icons .gld-icon-btn-pick').forEach(function(b){b.onclick=function(){o.querySelectorAll('#ge-icons .gld-icon-btn-pick').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');};});
-    o.querySelectorAll('.gld-color-btn').forEach(function(b){b.onclick=function(){o.querySelectorAll('.gld-color-btn').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');};});
     o.querySelectorAll('.gld-icon-btn-pick[data-flag]').forEach(function(b){b.onclick=function(){o.querySelectorAll('.gld-icon-btn-pick[data-flag]').forEach(function(x){x.classList.remove('selected');});b.classList.add('selected');};});
     o.querySelector('#ge-save').onclick=async function(){
-        var upd={name:o.querySelector('#ge-name').value.trim(),motto:o.querySelector('#ge-motto').value.trim(),description:o.querySelector('#ge-desc').value.trim(),icon:o.querySelector('#ge-icons .selected').dataset.icon,color:o.querySelector('.gld-color-btn.selected').dataset.color,flag:KINGDOMS[o.querySelector('.gld-icon-btn-pick[data-flag].selected').dataset.flag].flag};
+        var kName=o.querySelector('.gld-icon-btn-pick[data-flag].selected').dataset.flag;
+        var upd={name:o.querySelector('#ge-name').value.trim(),motto:o.querySelector('#ge-motto').value.trim(),description:o.querySelector('#ge-desc').value.trim(),icon:o.querySelector('#ge-icons .selected').dataset.icon,color:KINGDOMS[kName].color,flag:KINGDOMS[kName].flag,kingdom:kName};
         var r=await client.from('guilds').update(upd).eq('id',currentGuildId);
         if(r.error){toast('Ошибка: '+r.error.message,'error');return;}
         toast('✅ Обновлено!','success');o.remove();await loadData();render();
@@ -993,7 +989,7 @@ window.gldAddQuest=async function(){
         var title=o.querySelector('#q-title').value.trim();if(!title){toast('Введите название','error');return;}
         var r=await client.from('guild_quests').insert([{guild_id:currentGuildId,title:title,description:o.querySelector('#q-desc').value.trim(),goal:parseInt(o.querySelector('#q-goal').value,10)||100,reward_xp:parseInt(o.querySelector('#q-xp').value,10)||0,reward_bank:parseInt(o.querySelector('#q-bank').value,10)||0,created_by:currentUser.id}]);
         if(r.error){toast('Ошибка: '+r.error.message,'error');return;}
-        toast('✅ Задание создано!','success');o.remove();render();
+        toast('✅ Создано!','success');o.remove();render();
     };
 };
 
@@ -1008,7 +1004,7 @@ window.gldWriteMessage=async function(){
     document.body.appendChild(o);
     o.querySelector('#l-send').onclick=async function(){
         var subj=o.querySelector('#l-subj').value.trim(),body=o.querySelector('#l-body').value.trim();
-        if(!subj||!body){toast('Заполните поля','error');return;}
+        if(!subj||!body){toast('Заполните','error');return;}
         var r=await client.from('guild_letters').insert([{guild_id:currentGuildId,author_id:currentUser.id,subject:subj,body:body}]);
         if(r.error){toast('Ошибка: '+r.error.message,'error');return;}
         toast('✅ Отправлено!','success');o.remove();render();
@@ -1016,8 +1012,7 @@ window.gldWriteMessage=async function(){
 };
 
 window.gldBankDeposit=async function(){
-    var amount=prompt('Сколько вложить в казну?');if(!amount)return;amount=parseInt(amount,10);if(!amount||amount<=0)return;
-    // Проверка личного баланса
+    var amount=prompt('Сколько вложить?');if(!amount)return;amount=parseInt(amount,10);if(!amount||amount<=0)return;
     try{
         var cc=await client.from('user_currency').select('clay_talents').eq('user_id',currentUser.id).maybeSingle();
         var cur=(cc&&cc.data&&cc.data.clay_talents)||0;
@@ -1027,36 +1022,33 @@ window.gldBankDeposit=async function(){
     var g=guilds.filter(function(x){return x.id===currentGuildId;})[0];
     await client.from('guilds').update({bank:(g.bank||0)+amount}).eq('id',currentGuildId);
     try{await client.from('guild_bank_transactions').insert([{guild_id:currentGuildId,user_id:currentUser.id,amount:amount,type:'deposit'}]);}catch(e){}
-    toast('💰 Вложено '+amount+' талантов!','success');await loadData();render();
+    toast('💰 Вложено!','success');await loadData();render();
 };
 
 window.gldBankWithdraw=async function(){
     if(myRank<4){toast('Только R4+','error');return;}
     var amount=prompt('Сколько снять?');if(!amount)return;amount=parseInt(amount,10);if(!amount||amount<=0)return;
     var g=guilds.filter(function(x){return x.id===currentGuildId;})[0];
-    if((g.bank||0)<amount){toast('В казне недостаточно','error');return;}
+    if((g.bank||0)<amount){toast('Недостаточно','error');return;}
     await client.from('guilds').update({bank:(g.bank||0)-amount}).eq('id',currentGuildId);
-    // Себе
     try{
         var cc=await client.from('user_currency').select('clay_talents').eq('user_id',currentUser.id).maybeSingle();
         if(cc&&cc.data)await client.from('user_currency').update({clay_talents:(cc.data.clay_talents||0)+amount}).eq('user_id',currentUser.id);
         else await client.from('user_currency').insert([{user_id:currentUser.id,clay_talents:amount}]);
     }catch(e){}
     try{await client.from('guild_bank_transactions').insert([{guild_id:currentGuildId,user_id:currentUser.id,amount:amount,type:'withdraw'}]);}catch(e){}
-    toast('💸 Снято '+amount,'success');await loadData();render();
+    toast('💸 Снято','success');await loadData();render();
 };
 
 window.gldBuyTech=async function(techId,cost){
     if(myRank<4){toast('Только R4+','error');return;}
     var g=guilds.filter(function(x){return x.id===currentGuildId;})[0];
-    if((g.bank||0)<cost){toast('В казне недостаточно талантов','error');return;}
+    if((g.bank||0)<cost){toast('Недостаточно талантов','error');return;}
     var t=TECHNOLOGIES.filter(function(x){return x.id===techId;})[0];
-    if(!confirm('Купить «'+t.name+'» за '+cost+' талантов?'))return;
-    try{
-        await client.from('guild_technologies').insert([{guild_id:currentGuildId,tech_id:techId,purchased_by:currentUser.id}]);
-    }catch(e){toast('Уже куплено или ошибка','error');return;}
+    if(!confirm('Купить «'+t.name+'» за '+cost+'?'))return;
+    try{await client.from('guild_technologies').insert([{guild_id:currentGuildId,tech_id:techId,purchased_by:currentUser.id}]);}catch(e){toast('Уже куплено','error');return;}
     await client.from('guilds').update({bank:(g.bank||0)-cost}).eq('id',currentGuildId);
-    toast('✅ Технология куплена!','success');await loadData();render();
+    toast('✅ Куплено!','success');await loadData();render();
 };
 
 function openEditMember(userId,rank,subtitle){
@@ -1069,7 +1061,7 @@ function openEditMember(userId,rank,subtitle){
     o.innerHTML='<div class="gld-modal"><button class="gld-modal-close" onclick="this.closest(\'.gld-modal-bg\').remove()">✕</button>'+
         '<h2 class="gld-modal-title">⚙️ '+esc(name)+'</h2>'+
         '<div class="gld-field"><label>Ранг</label><div class="gld-rank-picker">'+rankOpts+'</div></div>'+
-        '<div class="gld-field" id="sub-wrap" style="'+(rank===4?'':'display:none;')+'"><label>Подтитул (R4)</label><div class="gld-icon-picker" id="subs">'+subOpts+'</div></div>'+
+        '<div class="gld-field" id="sub-wrap" style="'+(rank===4?'':'display:none;')+'"><label>Подтитул</label><div class="gld-icon-picker" id="subs">'+subOpts+'</div></div>'+
         '<div class="gld-modal-actions"><button class="gld-btn secondary" onclick="this.closest(\'.gld-modal-bg\').remove()">Отмена</button><button class="gld-btn primary" id="save">💾 Сохранить</button></div></div>';
     document.body.appendChild(o);
     var selRank=rank,selSub=subtitle||null;
@@ -1090,9 +1082,8 @@ async function showMemberProfile(userId){
     var mem=(membersMap[currentGuildId]||[]).filter(function(x){return x.user_id===userId;})[0];
     var rankInfo=mem?RANKS[mem.rank]||RANKS[1]:RANKS[1];
     var sub=null;if(mem&&mem.rank===4&&mem.subtitle){sub=SUBTITLES.filter(function(s){return s.id===mem.subtitle;})[0];}
-    var canManage=(myRank>=4||(guilds.filter(function(x){return x.id===currentGuildId;})[0]||{}).leader_id===currentUser.id)&&(!mem||mem.rank<5)&&!isMe;
+    var canManage=myRank>=4&&(!mem||mem.rank<5)&&!isMe;
     var xpLeft=Math.max(level.next-(p.experience||0),0);
-
     var o=document.createElement('div');o.className='gld-modal-bg';
     o.innerHTML='<div class="gld-modal wide" style="padding:0;"><button class="gld-modal-close" onclick="this.closest(\'.gld-modal-bg\').remove()" style="z-index:3;">✕</button>'+
         '<div class="gld-profile-modal">'+
@@ -1154,12 +1145,12 @@ window.gldSendPM=async function(userId){
 window.gldAddFriend=async function(userId){
     try{
         var ex=await client.from('friendships').select('id,status').or('and(user_id.eq.'+currentUser.id+',friend_id.eq.'+userId+'),and(user_id.eq.'+userId+',friend_id.eq.'+currentUser.id+')').maybeSingle();
-        if(ex&&ex.data){toast(ex.data.status==='accepted'?'Уже друзья':'Заявка уже отправлена','info');return;}
+        if(ex&&ex.data){toast(ex.data.status==='accepted'?'Уже друзья':'Заявка уже есть','info');return;}
         var r=await client.from('friendships').insert([{user_id:currentUser.id,friend_id:userId,status:'pending'}]);
-        if(r.error){if(r.error.code==='23505')toast('Заявка уже есть','info');else toast('Ошибка: '+r.error.message,'error');return;}
+        if(r.error){if(r.error.code==='23505')toast('Заявка уже есть','info');else toast('Ошибка','error');return;}
         toast('✅ Заявка отправлена!','success');
         var bg=document.querySelector('.gld-modal-bg');if(bg)bg.remove();
-    }catch(e){toast('Ошибка: '+e.message,'error');}
+    }catch(e){toast('Ошибка','error');}
 };
 
 window.gldCreate=openCreateModal;

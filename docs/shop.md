@@ -14,7 +14,7 @@ comments: false
     <div class="sh-star"></div><div class="sh-star"></div><div class="sh-star"></div>
     <div class="sh-star"></div>
   </div>
-  <div class="sh-hero-coin"></div>
+  <img src="/assets/images/guild-coin.jpg" class="sh-hero-coin" alt="Глиняный талант">
   <div class="sh-hero-content">
     <div class="sh-hero-tag">🛒 Магазин · Цифровые товары</div>
     <div class="sh-hero-icon">🪙</div>
@@ -61,33 +61,25 @@ comments: false
     <div class="sh-how-num">01</div>
     <div class="sh-how-icon">🛒</div>
     <div class="sh-how-title">Выбираете товар</div>
-    <div class="sh-how-text">
-      Находите нужный набор талантов или VIP-подписку.
-    </div>
+    <div class="sh-how-text">Находите нужный набор талантов или VIP-подписку.</div>
   </div>
   <div class="sh-how-item">
     <div class="sh-how-num">02</div>
     <div class="sh-how-icon">💳</div>
     <div class="sh-how-title">Оплачиваете онлайн</div>
-    <div class="sh-how-text">
-      Безопасный платёж: карта, СБП, кошелёк.
-    </div>
+    <div class="sh-how-text">Безопасный платёж: карта, СБП, кошелёк.</div>
   </div>
   <div class="sh-how-item">
     <div class="sh-how-num">03</div>
     <div class="sh-how-icon">⚡</div>
     <div class="sh-how-title">Получаете мгновенно</div>
-    <div class="sh-how-text">
-      Таланты и VIP зачисляются на аккаунт за секунды.
-    </div>
+    <div class="sh-how-text">Таланты и VIP зачисляются на аккаунт за секунды.</div>
   </div>
   <div class="sh-how-item">
     <div class="sh-how-num">04</div>
     <div class="sh-how-icon">📧</div>
     <div class="sh-how-title">Чек на почту</div>
-    <div class="sh-how-text">
-      ЮKassa автоматически присылает чек на ваш email.
-    </div>
+    <div class="sh-how-text">ЮKassa автоматически присылает чек на email.</div>
   </div>
 </div>
 
@@ -98,7 +90,7 @@ comments: false
     <summary><span>Как быстро зачисляются таланты?</span><span class="sh-faq-icon">▸</span></summary>
     <div class="sh-faq-answer">
       <strong>Мгновенно</strong>. После оплаты баланс обновляется за 1–2 секунды.
-      Обновите страницу профиля — увидите новое количество талантов.
+      Обновите страницу профиля — увидите новое количество.
     </div>
   </details>
 
@@ -106,17 +98,16 @@ comments: false
     <summary><span>Что даёт VIP-подписка?</span><span class="sh-faq-icon">▸</span></summary>
     <div class="sh-faq-answer">
       Золотой бейдж в профиле, кастомный цвет ника, ранний доступ
-      к новым статьям, приоритетную поддержку и другие привилегии.
-      Действует <strong>12 месяцев</strong> с момента оплаты.
+      к новым статьям, приоритетную поддержку. Действует
+      <strong>12 месяцев</strong>.
     </div>
   </details>
 
   <details class="sh-faq-item">
     <summary><span>Можно ли вернуть деньги?</span><span class="sh-faq-icon">▸</span></summary>
     <div class="sh-faq-answer">
-      Возврат возможен, если таланты ещё не потрачены или VIP не был
-      активирован. Напишите в течение 7 дней через
-      <a href="/feedback/">форму обратной связи</a>.
+      Возврат возможен, если таланты не потрачены или VIP не активирован.
+      Напишите в течение 7 дней через <a href="/feedback/">форму обратной связи</a>.
     </div>
   </details>
 
@@ -124,7 +115,7 @@ comments: false
     <summary><span>Какой чек я получу?</span><span class="sh-faq-icon">▸</span></summary>
     <div class="sh-faq-answer">
       ЮKassa автоматически формирует <strong>чек самозанятого</strong>
-      и отправляет его на email и в приложение «Мой налог».
+      и отправляет его на email.
     </div>
   </details>
 
@@ -132,16 +123,7 @@ comments: false
     <summary><span>Что такое глиняные таланты?</span><span class="sh-faq-icon">▸</span></summary>
     <div class="sh-faq-answer">
       Это <strong>внутренняя валюта сайта</strong>. Используется
-      для покупки функций внутри сайта. Не является денежным
-      средством и не обменивается обратно на рубли.
-    </div>
-  </details>
-
-  <details class="sh-faq-item">
-    <summary><span>Можно ли оплатить картой другого банка?</span><span class="sh-faq-icon">▸</span></summary>
-    <div class="sh-faq-answer">
-      Да, любой картой <strong>российского банка</strong>, а также
-      через СБП. Если возникнут проблемы — напишите в поддержку.
+      для покупки функций на сайте. Не является денежным средством.
     </div>
   </details>
 </div>
@@ -156,10 +138,10 @@ comments: false
   </div>
 </div>
 
-<!-- МАЛЕНЬКАЯ ССЫЛКА НА РЕКВИЗИТЫ -->
-<div class="sh-req">
-  <a href="/requisites/">реквизиты</a>
-</div>
+<!-- РЕКВИЗИТЫ (компактный блок) -->
+<p class="sh-req">
+  Ознакомиться с <a href="/requisites/">реквизитами продавца</a>
+</p>
 
 </div>
 
@@ -183,8 +165,6 @@ comments: false
   0%,100%{ filter:drop-shadow(0 0 12px rgba(243,156,18,.7)) drop-shadow(0 0 30px rgba(243,156,18,.4)); }
   50%{ filter:drop-shadow(0 0 30px rgba(243,156,18,1)) drop-shadow(0 0 60px rgba(243,156,18,.7)); }
 }
-@keyframes shStarSpin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(180deg) scale(1.15)}100%{transform:rotate(360deg) scale(1)}}
-@keyframes shRingPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.6);opacity:0}}
 
 /* Монеты — плавный полёт */
 @keyframes shCoinFloatA{
@@ -246,23 +226,21 @@ comments: false
 .sh-star:nth-child(9){top:84%;left:28%;animation-delay:2.1s}
 .sh-star:nth-child(10){top:8%;left:38%;animation-delay:1.5s}
 
+/* ИЗОБРАЖЕНИЕ МОНЕТЫ В HERO */
 .sh-hero-coin{
-  position:absolute;top:50%;right:8%;
-  width:180px;height:180px;border-radius:50%;
+  position:absolute;
+  top:50%;right:10%;
+  width:200px;height:200px;
+  border-radius:50%;
+  object-fit:cover;
   transform:translateY(-50%);
-  background:radial-gradient(circle at 35% 35%, #f5d76e 0%, #f39c12 45%, #b9770e 75%, #7d5106 100%);
-  box-shadow:
-    inset -12px -12px 30px rgba(0,0,0,.4),
-    inset 8px 8px 20px rgba(255,255,255,.3),
-    0 0 60px 10px rgba(243,156,18,.5);
-  opacity:.35;
-  animation:shCoinGlow 6s ease-in-out infinite;
+  opacity:.55;
+  animation:
+    shFloat 5s ease-in-out infinite,
+    shCoinGlow 6s ease-in-out infinite;
   pointer-events:none;
-}
-.sh-hero-coin::before{
-  content:'🪙';position:absolute;
-  top:50%;left:50%;transform:translate(-50%,-50%);
-  font-size:5rem;opacity:.3;
+  z-index:1;
+  filter:drop-shadow(0 0 60px rgba(243,156,18,.7));
 }
 
 .sh-hero-content{position:relative;z-index:3;max-width:720px;margin:0 auto}
@@ -382,6 +360,7 @@ comments: false
 .sh-card-badge.hit{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff}
 .sh-card-badge.new{background:linear-gradient(135deg,#27ae60,#16a085);color:#fff}
 .sh-card-badge.vip{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff}
+.sh-card-badge.sale{background:linear-gradient(135deg,#e91e63,#c2185b);color:#fff}
 
 /* ═══ МОНЕТЫ — ЯЩИК С АНИМАЦИЕЙ ═══ */
 .sh-coins-box{
@@ -399,47 +378,21 @@ comments: false
   object-fit:cover;
   will-change:transform,filter;
 }
-/* 1 монета — 100 талантов */
 .sh-coins-soft .sh-coin{
   width:88px;height:88px;
   animation:shCoinFloatA 3.4s ease-in-out infinite, shGlowSoft 4.2s ease-in-out infinite;
 }
-/* 3 монеты — 500 талантов */
 .sh-coins-medium .sh-coin{
   width:56px;height:56px;
   animation:shCoinFloatB 3.8s ease-in-out infinite, shGlowMedium 3.2s ease-in-out infinite;
 }
-/* 6 монет — 1000 талантов + ореол */
+/* У 1000 — убрана пульсация кольца, оставлено только мягкое свечение */
 .sh-coins-strong .sh-coin{
   width:48px;height:48px;
   animation:shCoinFloatC 3.2s ease-in-out infinite, shGlowStrong 2.6s ease-in-out infinite;
 }
-.sh-coins-strong::before{
-  content:'';
-  position:absolute;
-  top:50%;left:50%;
-  width:200px;height:200px;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(243,156,18,.35), rgba(243,156,18,0) 70%);
-  border-radius:50%;
-  animation:shCoinGlow 3.5s ease-in-out infinite;
-  pointer-events:none;
-  z-index:0;
-}
-.sh-coins-strong::after{
-  content:'';
-  position:absolute;
-  top:50%;left:50%;
-  width:120px;height:120px;
-  transform:translate(-50%,-50%);
-  border:2px solid rgba(243,156,18,.5);
-  border-radius:50%;
-  animation:shRingPulse 2.4s ease-out infinite;
-  pointer-events:none;
-  z-index:0;
-}
 
-/* ═══ VIP — КОРОНА + ЗВЁЗДЫ ═══ */
+/* ═══ VIP — ТОЛЬКО КОРОНА ═══ */
 .sh-vip-box{
   position:relative;
   height:140px;
@@ -450,45 +403,14 @@ comments: false
   overflow:visible;
 }
 .sh-vip-crown{
-  font-size:5rem;
+  font-size:5.5rem;
   line-height:1;
   animation:shCrownFloat 4s ease-in-out infinite, shCrownGlow 3s ease-in-out infinite;
   z-index:2;
   position:relative;
 }
-.sh-vip-star{
-  position:absolute;
-  font-size:1.6rem;
-  animation:shStarSpin 4s ease-in-out infinite;
-  filter:drop-shadow(0 0 12px rgba(243,156,18,.9));
-  z-index:1;
-}
-.sh-vip-star:nth-child(1){ top:18%; left:20%; animation-delay:0s; }
-.sh-vip-star:nth-child(2){ top:24%; right:18%; animation-delay:.8s; }
-.sh-vip-star:nth-child(3){ bottom:22%; left:30%; animation-delay:1.6s; font-size:1.2rem; }
-.sh-vip-star:nth-child(4){ bottom:18%; right:28%; animation-delay:2.4s; font-size:1.4rem; }
-.sh-vip-box::before{
-  content:'';
-  position:absolute;
-  top:50%;left:50%;
-  width:180px;height:180px;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(circle, rgba(243,156,18,.3), rgba(243,156,18,0) 70%);
-  border-radius:50%;
-  animation:shCoinGlow 3.5s ease-in-out infinite;
-  pointer-events:none;
-  z-index:0;
-}
 
-/* Fallback иконка (эмодзи) */
-.sh-card-icon{
-  display:flex;align-items:center;justify-content:center;
-  font-size:3.5rem;
-  padding:32px 20px 8px;
-  line-height:1;
-  transition:transform .3s;
-}
-
+/* ═══ CARD BODY ═══ */
 .sh-card-body{
   flex:1;
   padding:12px 22px 20px;
@@ -524,9 +446,10 @@ comments: false
   padding:14px 0 12px;
   border-top:2px dashed rgba(0,0,0,.08);
   margin-bottom:14px;
+  flex-wrap:wrap;
 }
 .sh-card-price-current{
-  font-size:1.7rem;font-weight:900;
+  font-size:1.9rem;font-weight:900;
   background:linear-gradient(135deg,var(--cc,#f39c12),var(--cc-light,#f5d76e));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
@@ -534,8 +457,15 @@ comments: false
   font-variant-numeric:tabular-nums;
 }
 .sh-card-price-old{
-  font-size:.9rem;color:#bbb;font-weight:700;
+  font-size:.95rem;color:#bbb;font-weight:700;
   text-decoration:line-through;
+}
+.sh-card-price-save{
+  font-size:.7rem;color:#fff;font-weight:900;
+  background:linear-gradient(135deg,#e74c3c,#c0392b);
+  padding:3px 8px;border-radius:8px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
 }
 .sh-card-price-label{
   font-size:.7rem;color:#888;font-weight:800;
@@ -599,7 +529,7 @@ comments: false
 /* ═══ FAQ ═══ */
 .sh-faq{
   display:flex;flex-direction:column;gap:10px;
-  margin-bottom:40px;
+  margin-bottom:24px;
 }
 .sh-faq-item{
   background:#fff;border-radius:14px;
@@ -639,7 +569,7 @@ comments: false
 /* ═══ CTA ═══ */
 .sh-cta{
   display:flex;gap:22px;align-items:center;
-  padding:32px;margin-bottom:20px;
+  padding:32px;margin-bottom:16px;
   background:linear-gradient(135deg,#1a1a2e,#2d1b3d);
   border-radius:22px;color:#fff;
   box-shadow:0 24px 60px -16px rgba(243,156,18,.4);
@@ -673,25 +603,27 @@ comments: false
 }
 .sh-cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -4px rgba(243,156,18,.6)}
 
-/* ═══ МАЛЕНЬКАЯ ССЫЛКА НА РЕКВИЗИТЫ ═══ */
+/* ═══ РЕКВИЗИТЫ — КОМПАКТНАЯ СТРОКА ═══ */
 .sh-req{
   text-align:center;
-  padding:24px 16px 8px;
-  margin-top:8px;
+  padding:0;
+  margin:0 0 8px;
+  font-size:.72rem;
+  color:#c0c0d0;
+  font-weight:600;
+  line-height:1.5;
+  letter-spacing:.3px;
 }
 .sh-req a{
-  font-size:.62rem;
   color:#b8b8c8;
-  font-weight:600;
-  letter-spacing:.6px;
-  text-transform:lowercase;
+  font-weight:700;
   text-decoration:none!important;
-  transition:color .3s;
-  padding:6px 12px;
-  border-radius:6px;
+  border-bottom:1px dashed rgba(184,184,200,.4);
+  transition:all .25s;
 }
 .sh-req a:hover{
   color:#8a8aa0;
+  border-bottom-color:rgba(138,138,160,.6);
 }
 
 /* ═══ DARK MODE ═══ */
@@ -717,14 +649,14 @@ comments: false
   html body.mars-stars-on #shop-app .sh-filter-btn{background:rgba(255,255,255,.05);color:#aaa}
   html body.mars-stars-on #shop-app .sh-filter-btn:hover{background:rgba(255,255,255,.1);color:#fff}
   html body.mars-stars-on #shop-app .sh-card-price{border-top-color:rgba(255,255,255,.1)}
-  html body.mars-stars-on #shop-app .sh-req a{color:#555570}
-  html body.mars-stars-on #shop-app .sh-req a:hover{color:#7777a0}
+  html body.mars-stars-on #shop-app .sh-req{color:#555570}
+  html body.mars-stars-on #shop-app .sh-req a{color:#6a6a80}
 }
 
 /* ═══ MOBILE ═══ */
 @media (max-width:640px){
   .sh-hero{padding:44px 20px 50px;border-radius:20px;min-height:400px}
-  .sh-hero-coin{width:120px;height:120px;right:-10%}
+  .sh-hero-coin{width:130px;height:130px;right:-20px;opacity:.35}
   .sh-hero-title{font-size:1.7rem}
   .sh-hero-sub{font-size:.92rem}
   .sh-hero-icon{font-size:3rem}
@@ -739,10 +671,10 @@ comments: false
   .sh-coins-soft .sh-coin{width:72px;height:72px}
   .sh-coins-medium .sh-coin{width:48px;height:48px}
   .sh-coins-strong .sh-coin{width:42px;height:42px}
-  .sh-vip-crown{font-size:4rem}
+  .sh-vip-crown{font-size:4.5rem}
   .sh-card-body{padding:10px 20px 18px}
   .sh-card-name{font-size:1rem}
-  .sh-card-price-current{font-size:1.5rem}
+  .sh-card-price-current{font-size:1.6rem}
   .sh-how{grid-template-columns:1fr;gap:12px}
   .sh-how-item{padding:20px 18px}
   .sh-faq-item summary{padding:15px 18px;font-size:.88rem}
@@ -767,7 +699,7 @@ comments: false
 if (window.__shopLoaded) return;
 window.__shopLoaded = true;
 
-/* ═══ ТОВАРЫ ═══ */
+/* ═══ ТОВАРЫ — НОВЫЕ ЦЕНЫ СО СКИДКАМИ ═══ */
 var PRODUCTS = [
   // ─── Таланты ───
   {
@@ -778,9 +710,13 @@ var PRODUCTS = [
     coinCount:1,
     coinGlow:'soft',
     name:'100 глиняных талантов',
-    desc:'Набор внутренней валюты для покупки функций на сайте.',
+    desc:'Стартовый набор валюты для покупки функций на сайте.',
     features:['Мгновенное зачисление','Используется на сайте','Не обменивается обратно'],
-    price:100,
+    price:90,
+    priceOld:150,
+    save:40,
+    badge:'sale',
+    badgeText:'−40%',
     color:'#f39c12',
     colorLight:'#f5d76e',
     colorShadow:'rgba(243,156,18,.4)'
@@ -793,12 +729,13 @@ var PRODUCTS = [
     coinCount:3,
     coinGlow:'medium',
     name:'500 глиняных талантов',
-    desc:'Большой набор валюты. <strong>Скидка 20%</strong> к цене одиночных.',
-    features:['Мгновенное зачисление','Бонус +50 талантов','Экономия 100 ₽'],
-    price:400,
+    desc:'Оптимальный набор. <strong>Выгоднее в 3 раза</strong>, чем одиночные.',
+    features:['Мгновенное зачисление','Бонус +50 талантов','Экономия 210 ₽'],
+    price:290,
     priceOld:500,
+    save:42,
     badge:'hit',
-    badgeText:'Хит',
+    badgeText:'Хит · −42%',
     color:'#f39c12',
     colorLight:'#f5d76e',
     colorShadow:'rgba(243,156,18,.4)'
@@ -811,12 +748,13 @@ var PRODUCTS = [
     coinCount:6,
     coinGlow:'strong',
     name:'1000 глиняных талантов',
-    desc:'Максимальный набор. <strong>Скидка 30%</strong> и VIP-бонус на месяц.',
-    features:['Мгновенное зачисление','VIP-бонус на 30 дней','Экономия 300 ₽'],
-    price:700,
+    desc:'Максимальный набор. <strong>Лучшая цена</strong> за талант.',
+    features:['Мгновенное зачисление','Бонус +100 талантов','Экономия 510 ₽'],
+    price:490,
     priceOld:1000,
+    save:51,
     badge:'new',
-    badgeText:'Новинка',
+    badgeText:'Максимум · −51%',
     color:'#f39c12',
     colorLight:'#f5d76e',
     colorShadow:'rgba(243,156,18,.4)'
@@ -829,7 +767,7 @@ var PRODUCTS = [
     catName:'VIP-статус',
     iconType:'vip',
     name:'VIP-статус на 12 месяцев',
-    desc:'Золотой бейдж, кастомный цвет ника, ранний доступ к статьям.',
+    desc:'Полный набор привилегий на год по специальной цене.',
     features:[
       '🏆 Золотой бейдж в профиле',
       '🎨 Кастомный цвет ника',
@@ -837,9 +775,11 @@ var PRODUCTS = [
       '💬 Приоритетная поддержка',
       '⭐ Спецстатус на форуме'
     ],
-    price:1200,
+    price:990,
+    priceOld:2400,
+    save:59,
     badge:'vip',
-    badgeText:'VIP',
+    badgeText:'VIP · −59%',
     color:'#f39c12',
     colorLight:'#f5d76e',
     colorShadow:'rgba(243,156,18,.5)'
@@ -865,11 +805,10 @@ function initObserve(){
   items.forEach(function(el){ io.observe(el); });
 }
 
-/* ═══ ИКОНКИ — ТАЛАНТЫ (монеты) ИЛИ VIP (корона) ═══ */
+/* ═══ ИКОНКИ ═══ */
 function renderIcon(p){
   if (p.iconType === 'coins'){
     var coins = '';
-    // Позиции монет в ячейке: 1, 3, 6 штук
     var positions;
     if (p.coinCount === 1){
       positions = [{x:0, y:0}];
@@ -880,7 +819,6 @@ function renderIcon(p){
         {x:38, y:6}
       ];
     } else {
-      // 6 монет — 2 ряда
       positions = [
         {x:-42, y:-24},
         {x:0, y:-32},
@@ -901,10 +839,6 @@ function renderIcon(p){
 
   if (p.iconType === 'vip'){
     return '<div class="sh-vip-box">' +
-      '<span class="sh-vip-star">✨</span>' +
-      '<span class="sh-vip-star">⭐</span>' +
-      '<span class="sh-vip-star">✨</span>' +
-      '<span class="sh-vip-star">🌟</span>' +
       '<div class="sh-vip-crown">👑</div>' +
     '</div>';
   }
@@ -926,6 +860,9 @@ function renderProducts(filter){
     var priceOldHtml = p.priceOld
       ? '<span class="sh-card-price-old">' + p.priceOld + ' ₽</span>'
       : '';
+    var saveHtml = p.save
+      ? '<span class="sh-card-price-save">−' + p.save + '%</span>'
+      : '';
     var featuresHtml = p.features.map(function(f){
       return '<li>' + f + '</li>';
     }).join('');
@@ -942,7 +879,7 @@ function renderProducts(filter){
         '<div class="sh-card-price">' +
           '<span class="sh-card-price-current">' + p.price + ' ₽</span>' +
           priceOldHtml +
-          '<span class="sh-card-price-label">разово</span>' +
+          saveHtml +
         '</div>' +
         '<button type="button" class="sh-card-btn" data-id="' + p.id + '">🛒 Купить</button>' +
       '</div>' +
@@ -952,8 +889,8 @@ function renderProducts(filter){
   grid.querySelectorAll('.sh-card-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       var id = btn.dataset.id;
-      alert('Скоро! Оформление заказа для "' + id + '" появится после подключения ЮKassa.');
-      // TODO: window.location.href = '/checkout/?item=' + id;
+      // TODO: подключение ЮKassa
+      alert('Товар "' + id + '"\n\nСкоро! После подключения ЮKassa здесь откроется окно оплаты.');
     });
   });
 }

@@ -369,4 +369,5 @@ nav:
       - Мои закладки: bookmarks/index.md
 
   - О проекте:
+      - Обратная связь: feedback.md 
       - Лицензия: license.md

@@ -37,22 +37,23 @@ comments: false
 @keyframes fbSpin { to { transform: rotate(360deg); } }
 @keyframes fbFadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fbFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-@keyframes fbPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes fbFloatSoft { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+@keyframes fbPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: .85; } }
 @keyframes fbShine { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
 @keyframes fbStar { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
-@keyframes fbRing { 0% { transform: scale(0.9); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
 @keyframes fbSlideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
 @keyframes fbRiseUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fbDot { 0%, 100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7); } 50% { box-shadow: 0 0 0 8px rgba(39, 174, 96, 0); } }
+@keyframes fbBar { from { width: 0; } }
+@keyframes fbWave { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
+@keyframes fbGlowSoft { 0%, 100% { box-shadow: 0 0 20px rgba(108, 99, 255, 0.4); } 50% { box-shadow: 0 0 40px rgba(108, 99, 255, 0.7); } }
 
 .fb-fade { animation: fbFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 /* ═══════════════════════════════════════════════════════════
    LOADING
    ═══════════════════════════════════════════════════════════ */
-.fb-loading {
-    text-align: center;
-    padding: 80px 20px;
-}
+.fb-loading { text-align: center; padding: 80px 20px; }
 .fb-spinner {
     display: inline-block;
     width: 52px;
@@ -62,12 +63,7 @@ comments: false
     border-radius: 50%;
     animation: fbSpin 0.8s linear infinite;
 }
-.fb-loading p {
-    color: #999;
-    margin-top: 16px;
-    font-size: 0.9rem;
-    font-weight: 700;
-}
+.fb-loading p { color: #999; margin-top: 16px; font-size: 0.9rem; font-weight: 700; }
 
 /* ═══════════════════════════════════════════════════════════
    HERO
@@ -137,30 +133,16 @@ comments: false
 
 .fb-hero-content { position: relative; z-index: 3; max-width: 620px; margin: 0 auto; }
 
+/* 🎯 Emoji — только мягкое покачивание, БЕЗ КОЛЕЦ */
 .fb-hero-icon {
-    position: relative;
     display: inline-block;
-    font-size: 4rem;
+    font-size: 4.5rem;
     margin-bottom: 14px;
-    animation: fbFloat 4s ease-in-out infinite;
+    animation: fbFloatSoft 4s ease-in-out infinite;
     filter: drop-shadow(0 8px 32px rgba(162, 155, 254, 0.6));
     line-height: 1;
+    will-change: transform;
 }
-.fb-hero-icon::before,
-.fb-hero-icon::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    border: 2px solid rgba(162, 155, 254, 0.3);
-    border-radius: 50%;
-    animation: fbRing 3s ease-out infinite;
-    pointer-events: none;
-}
-.fb-hero-icon::after { animation-delay: 1.5s; }
 
 .fb-hero-title {
     font-size: 2.1rem;
@@ -200,22 +182,37 @@ comments: false
     font-size: 0.8rem;
     font-weight: 700;
     color: #fff;
+    transition: all 0.3s;
+}
+.fb-trust-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
 }
 .fb-trust-item .fb-trust-icon { font-size: 1rem; }
+
+/* Live dot в trust */
+.fb-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #27ae60;
+    animation: fbDot 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
 
 /* ═══════════════════════════════════════════════════════════
    FORM CONTAINER
    ═══════════════════════════════════════════════════════════ */
 .fb-form-wrap {
     position: relative;
-    background: #fff;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
     border-radius: 24px;
     padding: 0;
     margin-bottom: 24px;
     overflow: hidden;
     box-shadow:
         0 24px 60px -16px rgba(108, 99, 255, 0.35),
-        0 0 0 1px rgba(108, 99, 255, 0.08);
+        0 0 0 1px rgba(108, 99, 255, 0.15);
     animation: fbRiseUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 }
 .fb-form-wrap::before {
@@ -236,71 +233,109 @@ comments: false
     align-items: center;
     gap: 12px;
     padding: 20px 24px 16px;
-    background: linear-gradient(135deg, rgba(108, 99, 255, 0.04), rgba(162, 155, 254, 0.02));
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(162, 155, 254, 0.03));
+    border-bottom: 1px solid rgba(108, 99, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+.fb-form-head::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(162, 155, 254, 0.08), transparent);
+    animation: fbWave 4s ease-in-out infinite;
+    pointer-events: none;
 }
 .fb-form-head-icon {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     border-radius: 12px;
     background: linear-gradient(135deg, var(--fb-k), var(--fb-k-light));
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px -2px var(--fb-k-shadow);
+    box-shadow: 0 4px 16px -2px var(--fb-k-shadow);
+    animation: fbGlowSoft 3s ease-in-out infinite;
 }
-.fb-form-head-info { flex: 1; min-width: 0; }
+.fb-form-head-info { flex: 1; min-width: 0; position: relative; z-index: 1; }
 .fb-form-head-title {
     font-size: 1rem;
     font-weight: 900;
-    color: #1a1a2e;
+    color: #fff;
     margin: 0 0 2px;
     letter-spacing: -0.2px;
 }
 .fb-form-head-sub {
     font-size: 0.78rem;
-    color: #888;
+    color: rgba(255, 255, 255, 0.55);
     font-weight: 600;
 }
 .fb-form-head-badge {
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 12px;
-    background: rgba(39, 174, 96, 0.12);
-    color: #27ae60;
-    font-size: 0.7rem;
+    background: rgba(39, 174, 96, 0.15);
+    color: #2ecc71;
+    font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.3px;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     flex-shrink: 0;
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    position: relative;
+    z-index: 1;
 }
-.fb-form-head-badge::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #27ae60;
-    box-shadow: 0 0 8px #27ae60;
-    animation: fbPulse 2s ease-in-out infinite;
+.fb-form-head-badge .fb-live-dot {
+    width: 7px;
+    height: 7px;
 }
 
+/* Iframe wrapper — с тёмным фоном вместо белого */
 .fb-iframe-wrap {
     position: relative;
     width: 100%;
-    background: #fafbfd;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
     min-height: 900px;
+    padding: 0;
 }
+
+/* Прогресс-бар загрузки */
+.fb-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(108, 99, 255, 0.15);
+    overflow: hidden;
+    z-index: 4;
+    border-radius: 3px;
+}
+.fb-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--fb-k), var(--fb-k-light), #f5d76e);
+    background-size: 200% auto;
+    animation: fbBar 2.5s ease-out forwards, fbShine 1.5s linear infinite;
+    box-shadow: 0 0 12px var(--fb-k);
+}
+.fb-progress.hidden { display: none; }
+
 .fb-iframe {
     display: block;
     width: 100%;
     height: 900px;
     border: none;
     background: transparent;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
+    position: relative;
+    z-index: 2;
 }
 .fb-iframe-loader {
     position: absolute;
@@ -309,29 +344,26 @@ comments: false
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #fafbfd;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
     z-index: 3;
     transition: opacity 0.4s ease, visibility 0.4s ease;
     pointer-events: none;
 }
-.fb-iframe-loader.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
+.fb-iframe-loader.hidden { opacity: 0; visibility: hidden; }
 .fb-iframe-loader .fb-spinner {
     width: 44px;
     height: 44px;
     border-width: 3px;
 }
 .fb-iframe-loader p {
-    color: #999;
+    color: rgba(255, 255, 255, 0.6);
     margin-top: 14px;
     font-size: 0.85rem;
     font-weight: 700;
 }
 
 /* ═══════════════════════════════════════════════════════════
-   ALT CONTACTS — только Email
+   ALT CONTACTS
    ═══════════════════════════════════════════════════════════ */
 .fb-section-title {
     font-size: 1.05rem;
@@ -426,10 +458,7 @@ comments: false
     align-items: center;
     gap: 8px;
 }
-.fb-faq-list {
-    display: grid;
-    gap: 10px;
-}
+.fb-faq-list { display: grid; gap: 10px; }
 .fb-faq-item {
     display: flex;
     gap: 12px;
@@ -447,6 +476,7 @@ comments: false
     font-size: 1.15rem;
     flex-shrink: 0;
     line-height: 1.4;
+    filter: drop-shadow(0 2px 4px rgba(108, 99, 255, 0.3));
 }
 .fb-faq-text {
     font-size: 0.88rem;
@@ -480,23 +510,15 @@ comments: false
    DARK MODE
    ═══════════════════════════════════════════════════════════ */
 @media (prefers-color-scheme: dark) {
-    html body.mars-stars-on .fb-form-wrap,
     html body.mars-stars-on .fb-alt,
     html body.mars-stars-on .fb-faq {
         background: rgba(20, 20, 42, 0.9);
         border-color: rgba(108, 99, 255, 0.3);
         color: #e0e0f0;
     }
-    html body.mars-stars-on .fb-form-head-title,
     html body.mars-stars-on .fb-section-title,
     html body.mars-stars-on .fb-faq-title,
     html body.mars-stars-on .fb-alt-title { color: #e0e0f0; }
-    html body.mars-stars-on .fb-form-head {
-        background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(162, 155, 254, 0.05));
-        border-bottom-color: rgba(108, 99, 255, 0.2);
-    }
-    html body.mars-stars-on .fb-iframe-wrap,
-    html body.mars-stars-on .fb-iframe-loader { background: #1a1a2e; }
     html body.mars-stars-on .fb-faq-text { color: #c0c0d0; }
     html body.mars-stars-on .fb-faq-item { background: rgba(108, 99, 255, 0.08); }
 }
@@ -507,11 +529,11 @@ comments: false
 @media (max-width: 640px) {
     .fb-hero { padding: 34px 20px 30px; border-radius: 18px; }
     .fb-hero-title { font-size: 1.55rem; }
-    .fb-hero-icon { font-size: 3rem; }
+    .fb-hero-icon { font-size: 3.4rem; }
     .fb-hero-sub { font-size: 0.92rem; }
     .fb-trust-item { padding: 7px 12px; font-size: 0.72rem; }
     .fb-form-wrap { border-radius: 18px; }
-    .fb-form-head { padding: 16px 18px 12px; gap: 10px; }
+    .fb-form-head { padding: 14px 16px 12px; gap: 10px; }
     .fb-form-head-icon { width: 36px; height: 36px; font-size: 1rem; }
     .fb-form-head-title { font-size: 0.92rem; }
     .fb-form-head-sub { font-size: 0.72rem; }
@@ -546,7 +568,7 @@ comments: false
     // ═══════════════════════════════════════════════════════════
     var FORM_URL = 'https://forms.yandex.ru/u/6ab625b9f47e736f34b558d9';
     var EMAIL = 'mars-wiki@yandex.ru';
-    var TELEGRAM_URL = '';   // оставь пусто если нет Telegram
+    var TELEGRAM_URL = '';
 
     // ═══════════════════════════════════════════════════════════
     // RENDER
@@ -555,10 +577,7 @@ comments: false
         var starsHtml = '';
         for (var i = 0; i < 10; i++) starsHtml += '<div class="fb-star"></div>';
 
-        // Собираем список альтернативных контактов
         var altsHtml = '';
-
-        // Telegram — если указан
         if (TELEGRAM_URL) {
             altsHtml +=
                 '<a href="' + TELEGRAM_URL + '" target="_blank" rel="noopener" class="fb-alt" style="animation-delay:.3s;">' +
@@ -569,8 +588,6 @@ comments: false
                 '  </div>' +
                 '</a>';
         }
-
-        // Email — всегда
         if (EMAIL) {
             altsHtml +=
                 '<a href="mailto:' + EMAIL + '" class="fb-alt" style="animation-delay:.35s;">' +
@@ -599,7 +616,7 @@ comments: false
             '      Мы читаем каждое сообщение — обещаем.',
             '    </p>',
             '    <div class="fb-trust">',
-            '      <span class="fb-trust-item"><span class="fb-trust-icon">⚡</span> Отвечаем за 1–3 дня</span>',
+            '      <span class="fb-trust-item"><span class="fb-live-dot"></span> Отвечаем за 1–3 дня</span>',
             '      <span class="fb-trust-item"><span class="fb-trust-icon">🔒</span> Данные защищены</span>',
             '      <span class="fb-trust-item"><span class="fb-trust-icon">💬</span> Читаем всё</span>',
             '    </div>',
@@ -614,9 +631,12 @@ comments: false
             '      <div class="fb-form-head-title">Форма обратной связи</div>',
             '      <div class="fb-form-head-sub">Заполните — и мы получим ваше сообщение</div>',
             '    </div>',
-            '    <div class="fb-form-head-badge">Онлайн</div>',
+            '    <div class="fb-form-head-badge"><span class="fb-live-dot"></span> Онлайн</div>',
             '  </div>',
             '  <div class="fb-iframe-wrap">',
+            '    <div class="fb-progress" id="fb-progress">',
+            '      <div class="fb-progress-bar"></div>',
+            '    </div>',
             '    <div class="fb-iframe-loader" id="fb-loader">',
             '      <div class="fb-spinner"></div>',
             '      <p>Загрузка формы...</p>',
@@ -671,11 +691,12 @@ comments: false
     }
 
     // ═══════════════════════════════════════════════════════════
-    // IFRAME LOADER
+    // IFRAME LOADER + PROGRESS
     // ═══════════════════════════════════════════════════════════
     function bindIframeLoader() {
         var iframe = document.getElementById('fb-iframe');
         var loader = document.getElementById('fb-loader');
+        var progress = document.getElementById('fb-progress');
         if (!iframe || !loader) return;
 
         var hidden = false;
@@ -683,13 +704,16 @@ comments: false
             if (hidden) return;
             hidden = true;
             loader.classList.add('hidden');
+            if (progress) {
+                setTimeout(function() { progress.classList.add('hidden'); }, 300);
+            }
             setTimeout(function() {
                 if (loader && loader.parentNode) loader.style.display = 'none';
             }, 500);
         }
 
         iframe.addEventListener('load', hide);
-        setTimeout(hide, 5000);
+        setTimeout(hide, 6000);
     }
 
     // ═══════════════════════════════════════════════════════════
@@ -701,6 +725,6 @@ comments: false
         render();
     }
 
-    console.log('📬 Обратная связь v2 VIP готова');
+    console.log('📬 Обратная связь v3 VIP готова');
 })();
 </script>

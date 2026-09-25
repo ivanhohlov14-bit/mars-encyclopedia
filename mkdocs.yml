@@ -175,6 +175,7 @@ extra_javascript:
   - assets/js/scroll-mode.js
   - assets/js/collapse-menu.js?v=12
   - assets/js/auto-categories.js?v=2
+  - assets/js/vip.js?v=1 
 
   # ЛЕНИВО
   - assets/js/gimn-kimeria-data.js?v=1

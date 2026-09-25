@@ -23,7 +23,7 @@ theme:
   favicon: assets/favicon.png
   sticky_navigation: true
   collapse_navigation: true
-  include_homepage_in_sidebar: false
+  include_homepage_in_sidebar: true   
   prev_next_buttons_location: bottom
   navigation_depth: 4
 

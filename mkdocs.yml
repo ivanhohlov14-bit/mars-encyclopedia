@@ -376,5 +376,6 @@ nav:
       - Мои закладки: bookmarks/index.md
 
   - О проекте:
+      - Магазин: shop.md  
       - Обратная связь: feedback.md 
       - Лицензия: license.md

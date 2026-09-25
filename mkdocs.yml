@@ -11,7 +11,7 @@ site_favicon: assets/favicon.png
 
 copyright: |
   &copy; 2026 — Марсианская энциклопедия.
-  Все права защищены. Материалы доступны по лицензии CC BY-SA 4.0.
+  Материалы доступны по лицензии CC BY-SA 4.0.
 
 # ═══════════════════════════════════════════════════════════
 #   ТЕМА
@@ -302,7 +302,31 @@ nav:
               - Геология Марса: science/geology.md
               - Олимп: geography/olimp.md
               - Цвет поверхности: science/mars-color.md
-      - Находки NASA:
+          - Персонажи:
+              - Хевсур: people/hevsur.md
+              - Талин: people/talin.md
+              - Элла: people/ella.md
+              - Ирайна: people/irayina.md
+              - Йарра: people/yarra.md
+              - Миран: people/miran.md
+              - Сарум II: people/sarum-ii.md
+              - Сарум Великий: people/sarum-velikiy.md
+              - Аратан III: people/aratan-iii.md
+              - Харан: people/kharan.md
+              - Совия: people/soviya.md
+              - Араш: people/arash.md
+              - Кан: people/kan.md
+              - Алира: people/alira.md
+
+      - Боги и мифология:
+             - Кхо: mythology/kho.md
+             - Акха: mythology/akha.md
+             - Араксис: mythology/araksis.md
+             - Пророчество Харана: mythology/prorochestvo-kharana.md
+             - Ксанф (чудовище): mythology/ksanf-monster.md
+     
+      
+  - Находки NASA:
           - Загадка «марсианской медузы»: science/mars-jellyfish-curiosity-sighting.md
           - «Ракета» на Марсе: science/mars-rocket-object.md
           - «Квадратная структура»: science/square-structure.md
@@ -311,28 +335,7 @@ nav:
           - «Пирамида» на Марсе: science/mars-pyramid.md
           - Жизнь и вода: science/mars-life-water-2026.md
 
-  - Персонажи:
-      - Хевсур: people/hevsur.md
-      - Талин: people/talin.md
-      - Элла: people/ella.md
-      - Ирайна: people/irayina.md
-      - Йарра: people/yarra.md
-      - Миран: people/miran.md
-      - Сарум II: people/sarum-ii.md
-      - Сарум Великий: people/sarum-velikiy.md
-      - Аратан III: people/aratan-iii.md
-      - Харан: people/kharan.md
-      - Совия: people/soviya.md
-      - Араш: people/arash.md
-      - Кан: people/kan.md
-      - Алира: people/alira.md
-
-  - Боги и мифология:
-      - Кхо: mythology/kho.md
-      - Акха: mythology/akha.md
-      - Араксис: mythology/araksis.md
-      - Пророчество Харана: mythology/prorochestvo-kharana.md
-      - Ксанф (чудовище): mythology/ksanf-monster.md
+  
 
   - Медиатека:
       - Книги:

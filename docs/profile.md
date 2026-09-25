@@ -1802,3 +1802,107 @@ else init();
 <script>
 setTimeout(function(){if(typeof window.refreshAuthButton==='function')window.refreshAuthButton();},800);
 </script>
+
+<div id="profile-vip"></div>
+
+<script>
+(async function(){
+  var SUPABASE_URL = 'https://ncytbgbzfjfoqmmgfygz.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
+  if (!window.supabase) return;
+  var sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  
+  var s = await sb.auth.getSession();
+  var user = s && s.data && s.data.session ? s.data.session.user : null;
+  var wrap = document.getElementById('profile-vip');
+  
+  if (!user){
+    wrap.innerHTML = '<div style="text-align:center;padding:60px 20px;">' +
+      '<p style="font-size:3rem;margin:0;">🔒</p>' +
+      '<h2>Войдите в аккаунт</h2>' +
+      '<a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:30px;font-weight:800;text-decoration:none;margin-top:20px;">🔐 Войти</a>' +
+    '</div>';
+    return;
+  }
+  
+  // Загружаем профиль
+  var r = await sb.from('profiles').select('*').eq('user_id', user.id).single();
+  var p = r && r.data || {};
+  
+  var vipUntil = p.vip_until ? new Date(p.vip_until) : null;
+  var isVIP = vipUntil && vipUntil.getTime() > Date.now();
+  var daysLeft = isVIP ? Math.ceil((vipUntil - Date.now()) / 86400000) : 0;
+  
+  wrap.innerHTML = 
+    '<div style="max-width:720px;margin:0 auto;padding:0 8px 60px;font-family:-apple-system,sans-serif;">' +
+      '<div style="background:linear-gradient(135deg,#1a1a2e,#2d1b3d);border-radius:24px;padding:40px;color:#fff;text-align:center;margin-bottom:20px;">' +
+        '<div style="font-size:4rem;margin-bottom:12px;">' + (isVIP ? '👑' : '👤') + '</div>' +
+        '<h1 style="margin:0 0 8px;">' + (p.display_name || p.username || 'Пользователь') + '</h1>' +
+        (isVIP 
+          ? '<div style="display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(243,156,18,.2);border:1px solid rgba(243,156,18,.5);border-radius:20px;font-weight:800;color:#f5d76e;">👑 VIP активен · ' + daysLeft + ' дней</div>'
+          : '<div style="opacity:.7;">Обычный пользователь</div>') +
+      '</div>' +
+      
+      '<!-- Активация промокода -->' +
+      '<div style="background:#fff;border-radius:20px;padding:24px;border:2px solid rgba(0,0,0,.05);margin-bottom:20px;">' +
+        '<h3 style="margin:0 0 12px;">🎁 Активировать промокод</h3>' +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+          '<input id="promo-input" type="text" placeholder="Введите код" style="flex:1;min-width:200px;padding:12px 16px;border:2px solid #e8eaf0;border-radius:12px;font-size:.95rem;font-family:inherit;outline:none;">' +
+          '<button id="promo-btn" style="padding:12px 24px;background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-family:inherit;">Активировать</button>' +
+        '</div>' +
+        '<div id="promo-status" style="margin-top:10px;font-size:.85rem;"></div>' +
+      '</div>' +
+      
+      (isVIP ? 
+        '<!-- Настройки VIP -->' +
+        '<div style="background:#fff;border-radius:20px;padding:24px;border:2px solid rgba(0,0,0,.05);">' +
+          '<h3 style="margin:0 0 16px;">🎨 Настройки VIP</h3>' +
+          '<label style="display:block;margin-bottom:6px;font-weight:700;font-size:.85rem;">Цвет ника</label>' +
+          '<div id="color-picker" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">' +
+            ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63','#34495e','#e67e22','#f5d76e','#8e44ad'].map(function(c){
+              return '<button class="vip-color-btn" data-color="' + c + '" style="width:36px;height:36px;border-radius:50%;border:3px solid ' + (p.nick_color === c ? '#333' : 'transparent') + ';background:' + c + ';cursor:pointer;"></button>';
+            }).join('') +
+          '</div>' +
+          '<button id="save-vip" style="padding:12px 24px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-family:inherit;">💾 Сохранить</button>' +
+        '</div>'
+        : '') +
+    '</div>';
+  
+  // ─── Активация промокода ───
+  document.getElementById('promo-btn').onclick = async function(){
+    var code = document.getElementById('promo-input').value.trim().toUpperCase();
+    var status = document.getElementById('promo-status');
+    if (!code){ status.textContent = 'Введите код'; status.style.color = '#e74c3c'; return; }
+    
+    status.textContent = 'Проверяем...'; status.style.color = '#999';
+    
+    var r = await sb.rpc('activate_promo', { p_code: code });
+    if (r.error || !r.data.ok){
+      status.textContent = '❌ ' + (r.error?.message || r.data?.error || 'Ошибка');
+      status.style.color = '#e74c3c';
+    } else {
+      status.textContent = '✅ Активировано: ' + r.data.product;
+      status.style.color = '#27ae60';
+      setTimeout(function(){ location.reload(); }, 1200);
+    }
+  };
+  
+  // ─── Настройки VIP ───
+  if (isVIP){
+    var selectedColor = p.nick_color || '#6C63FF';
+    document.querySelectorAll('.vip-color-btn').forEach(function(btn){
+      btn.onclick = function(){
+        document.querySelectorAll('.vip-color-btn').forEach(function(b){ b.style.borderColor = 'transparent'; });
+        btn.style.borderColor = '#333';
+        selectedColor = btn.dataset.color;
+      };
+    });
+    
+    document.getElementById('save-vip').onclick = async function(){
+      var r = await sb.from('profiles').update({ nick_color: selectedColor }).eq('user_id', user.id);
+      if (r.error){ alert('Ошибка: ' + r.error.message); return; }
+      alert('✅ Сохранено');
+    };
+  }
+})();
+</script>

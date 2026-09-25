@@ -395,7 +395,7 @@ var AVATARS_TOP=[
 '/assets/images/аватар5.png'
 ];
 var AVATARS_BOTTOM=[
-'/assets/images/аватарка%20девушки.png',
+'/assets/images/авотарка%20девушки.png',
 '/assets/images/мужчина.png',
 '/assets/images/мужчина2.png',
 '/assets/images/мужчина%203.png',
@@ -1628,4 +1628,183 @@ else init();
 
 <script>
 setTimeout(function(){if(typeof window.refreshAuthButton==='function')window.refreshAuthButton();},800);
+</script>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- VIP-БЛОК С ПРОМОКОДАМИ                          -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="profile-vip-block"></div>
+
+<script>
+(function(){
+  'use strict';
+  
+  console.log('🚀 VIP-блок запущен');
+  
+  var COIN = '/assets/images/guild-coin.jpg';
+  var COLORS = ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63','#34495e','#e67e22','#f5d76e','#8e44ad'];
+  
+  function waitSb(n){
+    n = n || 0;
+    var sb = window.supabaseClient;
+    if (!sb){
+      if (n > 50){
+        var w = document.getElementById('profile-vip-block');
+        if (w) w.innerHTML = '<p style="text-align:center;color:#e74c3c;padding:20px;">Ошибка: Supabase не загружен</p>';
+        return;
+      }
+      setTimeout(function(){ waitSb(n+1); }, 100);
+      return;
+    }
+    console.log('✅ supabaseClient найден');
+    init(sb);
+  }
+  
+  function init(sb){
+    var wrap = document.getElementById('profile-vip-block');
+    if (!wrap) return;
+    
+    sb.auth.getSession().then(function(s){
+      var user = s && s.data && s.data.session ? s.data.session.user : null;
+      if (!user){
+        wrap.innerHTML = '';
+        return;
+      }
+      
+      sb.from('profiles').select('*').eq('user_id', user.id).single().then(function(r){
+        if (r.error){ console.error(r.error); return; }
+        var p = r.data || {};
+        var vipUntil = p.vip_until ? new Date(p.vip_until) : null;
+        var isVIP = vipUntil && vipUntil.getTime() > Date.now();
+        var daysLeft = isVIP ? Math.ceil((vipUntil - Date.now()) / 86400000) : 0;
+        
+        var h = '';
+        h += '<div style="max-width:720px;margin:24px auto 0;padding:0 8px;font-family:-apple-system,sans-serif;">';
+        
+        // ШАПКА VIP
+        h += '<div style="background:linear-gradient(135deg,#1a1a2e,#2d1b3d);border-radius:20px;padding:28px 24px;color:#fff;text-align:center;margin-bottom:16px;box-shadow:0 12px 40px -12px rgba(0,0,0,.4);">';
+        h += '<div style="font-size:3.5rem;margin-bottom:8px;">' + (isVIP ? '👑' : '⭐') + '</div>';
+        h += '<h2 style="margin:0 0 8px;font-size:1.4rem;color:#fff;">' + (isVIP ? 'VIP активен' : 'VIP-статус') + '</h2>';
+        if (isVIP){
+          h += '<div style="display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:rgba(243,156,18,.2);border:1px solid rgba(243,156,18,.5);border-radius:20px;font-weight:800;color:#f5d76e;">👑 Осталось ' + daysLeft + ' дней</div>';
+        } else {
+          h += '<p style="margin:0;opacity:.8;font-size:.9rem;">Активируйте промокод чтобы получить привилегии</p>';
+        }
+        h += '</div>';
+        
+        // АКТИВАЦИЯ ПРОМОКОДА
+        h += '<div style="background:#fff;border-radius:20px;padding:24px;border:2px solid rgba(0,0,0,.06);margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,.05);">';
+        h += '<h3 style="margin:0 0 4px;font-size:1.1rem;color:#1a1a2e;">🎁 Активировать промокод</h3>';
+        h += '<p style="margin:0 0 14px;color:#888;font-size:.85rem;">Введите код и получите привилегии</p>';
+        h += '<div style="display:flex;gap:8px;flex-wrap:wrap;">';
+        h += '<input id="vip-promo-input" type="text" placeholder="Например: TEST-VIP-2026" style="flex:1;min-width:180px;padding:12px 16px;border:2px solid #e8eaf0;border-radius:12px;font-size:.95rem;font-family:inherit;outline:none;box-sizing:border-box;transition:border-color .2s;">';
+        h += '<button id="vip-promo-btn" type="button" style="padding:12px 24px;background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-family:inherit;white-space:nowrap;transition:all .2s;">Активировать</button>';
+        h += '</div>';
+        h += '<div id="vip-promo-status" style="margin-top:10px;font-size:.85rem;font-weight:600;min-height:20px;"></div>';
+        h += '</div>';
+        
+        // НАСТРОЙКИ VIP
+        if (isVIP){
+          h += '<div style="background:#fff;border-radius:20px;padding:24px;border:2px solid rgba(0,0,0,.06);box-shadow:0 4px 16px rgba(0,0,0,.05);">';
+          h += '<h3 style="margin:0 0 6px;font-size:1.1rem;color:#1a1a2e;">🎨 Настройки VIP</h3>';
+          h += '<p style="margin:0 0 14px;color:#888;font-size:.85rem;">Выберите цвет вашего ника на сайте</p>';
+          h += '<div id="vip-color-picker" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">';
+          COLORS.forEach(function(c){
+            var sel = p.nick_color === c ? '#333' : 'transparent';
+            h += '<button type="button" class="vip-color" data-c="' + c + '" style="width:38px;height:38px;border-radius:50%;border:3px solid ' + sel + ';background:' + c + ';cursor:pointer;padding:0;transition:all .2s;"></button>';
+          });
+          h += '</div>';
+          h += '<button id="vip-save-color" type="button" style="padding:12px 24px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s;">💾 Сохранить цвет</button>';
+          h += '</div>';
+        }
+        
+        h += '</div>';
+        
+        wrap.innerHTML = h;
+        
+        // ─── АКТИВАЦИЯ ПРОМОКОДА ───
+        var inp = document.getElementById('vip-promo-input');
+        var btn = document.getElementById('vip-promo-btn');
+        var st = document.getElementById('vip-promo-status');
+        
+        btn.addEventListener('click', async function(){
+          var code = inp.value.trim().toUpperCase();
+          if (!code){
+            st.textContent = '⚠️ Введите код';
+            st.style.color = '#e74c3c';
+            return;
+          }
+          st.textContent = '⏳ Проверяем...';
+          st.style.color = '#999';
+          btn.disabled = true;
+          btn.style.opacity = '.6';
+          
+          try {
+            var res = await sb.rpc('activate_promo', { p_code: code });
+            console.log('📡 RPC:', res);
+            
+            if (res.error || !res.data || !res.data.ok){
+              var err = res.error ? res.error.message : (res.data && res.data.error) || 'Ошибка';
+              st.textContent = '❌ ' + err;
+              st.style.color = '#e74c3c';
+            } else {
+              st.textContent = '✅ Активировано: ' + res.data.product;
+              st.style.color = '#27ae60';
+              setTimeout(function(){ location.reload(); }, 1500);
+            }
+          } catch(e){
+            st.textContent = '❌ Ошибка: ' + e.message;
+            st.style.color = '#e74c3c';
+          }
+          
+          btn.disabled = false;
+          btn.style.opacity = '1';
+        });
+        
+        inp.addEventListener('keypress', function(e){
+          if (e.key === 'Enter') btn.click();
+        });
+        
+        // ─── СОХРАНЕНИЕ ЦВЕТА ───
+        if (isVIP){
+          var selected = p.nick_color || '#6C63FF';
+          var btns = document.querySelectorAll('.vip-color');
+          btns.forEach(function(b){
+            b.addEventListener('click', function(){
+              btns.forEach(function(x){ x.style.borderColor = 'transparent'; });
+              b.style.borderColor = '#333';
+              selected = b.dataset.c;
+            });
+          });
+          
+          var saveBtn = document.getElementById('vip-save-color');
+          saveBtn.addEventListener('click', async function(){
+            saveBtn.disabled = true;
+            saveBtn.textContent = '⏳ Сохраняем...';
+            
+            var res = await sb.from('profiles').update({ nick_color: selected }).eq('user_id', user.id);
+            
+            if (res.error){
+              alert('❌ Ошибка: ' + res.error.message);
+              saveBtn.disabled = false;
+              saveBtn.textContent = '💾 Сохранить цвет';
+            } else {
+              saveBtn.textContent = '✅ Сохранено!';
+              setTimeout(function(){
+                saveBtn.disabled = false;
+                saveBtn.textContent = '💾 Сохранить цвет';
+              }, 2000);
+            }
+          });
+        }
+      });
+    });
+  }
+  
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ waitSb(0); });
+  } else {
+    waitSb(0);
+  }
+})();
 </script>

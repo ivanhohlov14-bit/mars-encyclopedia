@@ -550,9 +550,8 @@ comments: false
     // ═══════════════════════════════════════════════════════════
     // CONFIG — ЗАМЕНИ ЗДЕСЬ
     // ═══════════════════════════════════════════════════════════
-    var FORM_URL = 'https://forms.yandex.ru/u/6ab60d5cd046881507aacad4';
-    var TELEGRAM_URL = 'https://t.me/mars_wiki';           // ← твой Telegram
-    var EMAIL = 'ivanhohlov14@gmail.com';                   // ← твой email
+    var FORM_URL = 'https://forms.yandex.ru/u/6ab625b9f47e736f34b558d9';
+    var EMAIL = 'mars-wiki@yandex.ru';                  
 
     // ═══════════════════════════════════════════════════════════
     // RENDER

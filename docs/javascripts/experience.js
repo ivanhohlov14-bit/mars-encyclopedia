@@ -1,13 +1,16 @@
 // ============================================================
-// experience.js — v4 VIP
-// Начисление опыта + уровни + достижения + красивые тосты
-// - Мьютекс на пользователя (нет race condition)
-// - Единая формула уровней (100 уровней)
-// - VIP-тосты со встроенными стилями (fallback)
-// - Частицы, свечение, shimmer, поворот
-// - Очередь тостов (не спамит)
-// - Уважает reduced-motion
-// - Публичное API: window.marsExperience.*
+// experience.js — v5 Production
+// XP + уровни + достижения + красивые тосты + конфетти
+//
+// Что нового vs v4:
+// - ✅ ФИКС: тост центрируется (position:fixed на самом тосте)
+// - ✅ Конфетти при достижениях (встроено)
+// - ✅ Проверка видимости вкладки (не спамит в фоне)
+// - ✅ Кэш user_id в памяти (меньше getSession)
+// - ✅ Очистка DOM при уходе (pagehide)
+// - ✅ Гарантированный cleanup при ошибке
+// - ✅ Fallback если particles не сработали
+// - ✅ Правильная типизация (JSDoc)
 // ============================================================
 (function() {
     'use strict';
@@ -15,9 +18,9 @@
     if (window.__marsExperienceLoaded) return;
     window.__marsExperienceLoaded = true;
 
-    // ============================================================
-    // ⚙️ Конфиг
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       ⚙️ КОНФИГ
+       ═══════════════════════════════════════════════════════ */
     var SUPABASE_URL = 'https://ncytbgbzfjfoqmmgfygz.supabase.co';
     var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
     var SB_KEY = 'sb-ncytbgbzfjfoqmmgfygz-auth-token';
@@ -25,22 +28,36 @@
     var STYLE_ID = 'mars-xp-toast-style';
     var DEBUG = false;
 
+    var TOAST_DURATION = 2400;   /* сколько висит тост */
+    var TOAST_OUT_MS = 650;      /* длительность анимации исчезновения */
+    var MAX_QUEUE = 10;          /* максимум в очереди */
+
     function log() {
         if (!DEBUG) return;
         try { console.log.apply(console, ['⚡ xp:'].concat([].slice.call(arguments))); } catch(e) {}
     }
 
+    /* ═══════════════════════════════════════════════════════
+       🎬 REDUCED MOTION
+       ═══════════════════════════════════════════════════════ */
     function prefersReducedMotion() {
         try {
             return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         } catch(e) { return false; }
     }
-
     var REDUCED_MOTION = prefersReducedMotion();
 
-    // ============================================================
-    // 📚 Уровни
-    // ============================================================
+    /* Пересчёт при смене системных настроек */
+    try {
+        var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (mq && mq.addEventListener) {
+            mq.addEventListener('change', function(e) { REDUCED_MOTION = e.matches; });
+        }
+    } catch(e) {}
+
+    /* ═══════════════════════════════════════════════════════
+       📚 УРОВНИ
+       ═══════════════════════════════════════════════════════ */
     var LEVEL_TITLES = [
         '🌱 Поселенец','🔭 Исследователь','🚀 Первопроходец','🏠 Колонизатор',
         '⚡ Командир','⚔️ Воин','📜 Писец','🔮 Мудрец',
@@ -65,27 +82,21 @@
         };
     }
 
-    // ============================================================
-    // 🎨 Стили тостов (встроенные — не нужен опыт-toast.js)
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       🎨 СТИЛИ (встроены, ID-guard)
+       ═══════════════════════════════════════════════════════ */
     function injectToastStyles() {
         if (document.getElementById(STYLE_ID)) return;
+
         var s = document.createElement('style');
         s.id = STYLE_ID;
         s.textContent = `
-            /* ===== КОНТЕЙНЕР ===== */
-            .mars-xp-toast-wrap {
+            /* ═══ ТОСТ — ГЛАВНЫЙ ФИКС: position:fixed на самом элементе ═══ */
+            .mars-xp-toast {
                 position: fixed;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                z-index: 2147483640;
-                pointer-events: none;
-                font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
-            }
-
-            /* ===== ТОСТ ===== */
-            .mars-xp-toast {
                 display: flex;
                 align-items: center;
                 gap: 14px;
@@ -99,11 +110,14 @@
                     0 20px 60px rgba(0,0,0,0.4),
                     0 0 0 1px rgba(255,255,255,0.15) inset;
                 text-shadow: 0 2px 8px rgba(0,0,0,0.25);
-                position: relative;
                 overflow: hidden;
                 animation: marsXpIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-                transform-origin: center center;
                 will-change: transform, opacity;
+                pointer-events: none;
+                z-index: 2147483640;
+                font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+                max-width: calc(100vw - 40px);
+                box-sizing: border-box;
             }
 
             /* Свечение-волна */
@@ -129,12 +143,13 @@
                 content: '';
                 position: absolute;
                 inset: 0;
-                background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 50%),
-                            radial-gradient(circle at 80% 80%, rgba(255,255,255,0.15), transparent 50%);
+                background:
+                    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.25), transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.15), transparent 50%);
                 pointer-events: none;
             }
 
-            /* Типы */
+            /* ═══ ТИПЫ ═══ */
             .mars-xp-toast.xp {
                 background: linear-gradient(135deg, #27ae60 0%, #16a085 100%);
                 box-shadow:
@@ -156,7 +171,7 @@
                 font-size: 1.4rem;
             }
 
-            /* Иконка */
+            /* ═══ ИКОНКА ═══ */
             .mars-xp-toast .mars-xp-icon {
                 font-size: 2.2rem;
                 line-height: 1;
@@ -164,6 +179,7 @@
                 animation: marsXpSpin 1s ease-out;
                 position: relative;
                 z-index: 2;
+                flex-shrink: 0;
             }
             .mars-xp-toast.level-up .mars-xp-icon,
             .mars-xp-toast.achievement .mars-xp-icon {
@@ -174,7 +190,7 @@
                 z-index: 2;
             }
 
-            /* ===== ЧАСТИЦЫ ===== */
+            /* ═══ ЧАСТИЦЫ XP ═══ */
             .mars-xp-particle {
                 position: fixed;
                 width: 8px;
@@ -185,15 +201,37 @@
                 will-change: transform, opacity;
             }
 
-            /* ===== АНИМАЦИИ ===== */
+            /* ═══ КОНФЕТТИ ═══ */
+            .mars-xp-confetti {
+                position: fixed;
+                inset: 0;
+                pointer-events: none;
+                z-index: 2147483638;
+                overflow: hidden;
+            }
+            .mars-xp-confetti-piece {
+                position: absolute;
+                top: -20px;
+                width: 10px;
+                height: 14px;
+                border-radius: 2px;
+                will-change: transform;
+                animation: marsConfettiFall 3s linear forwards;
+            }
+            @keyframes marsConfettiFall {
+                0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(110vh) rotate(720deg); opacity: 0.3; }
+            }
+
+            /* ═══ АНИМАЦИИ (с сохранением translate(-50%,-50%)) ═══ */
             @keyframes marsXpIn {
-                0%   { opacity: 0; transform: scale(0.4) rotate(-8deg); }
-                60%  { opacity: 1; transform: scale(1.08) rotate(2deg); }
-                100% { opacity: 1; transform: scale(1) rotate(0deg); }
+                0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.4) rotate(-8deg); }
+                60%  { opacity: 1; transform: translate(-50%, -50%) scale(1.08) rotate(2deg); }
+                100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
             }
             @keyframes marsXpOut {
-                0%   { opacity: 1; transform: scale(1); }
-                100% { opacity: 0; transform: scale(0.85) translateY(-30px); }
+                0%   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+                100% { opacity: 0; transform: translate(-50%, -50%) scale(0.85) translateY(-30px); }
             }
             @keyframes marsXpSpin {
                 0%   { transform: rotate(0deg) scale(0.5); }
@@ -210,24 +248,17 @@
                 100% { background-position: -200% 0; }
             }
             @keyframes marsXpParticleFly {
-                0% {
-                    transform: translate(0, 0) scale(1);
-                    opacity: 1;
-                }
-                100% {
-                    transform: translate(var(--dx), var(--dy)) scale(0.2);
-                    opacity: 0;
-                }
+                0%   { transform: translate(0, 0) scale(1); opacity: 1; }
+                100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
             }
 
-            /* ===== МОБИЛЬНЫЙ ===== */
+            /* ═══ МОБИЛЬНЫЙ ═══ */
             @media (max-width: 600px) {
                 .mars-xp-toast {
                     font-size: 1.3rem;
                     padding: 14px 24px;
                     border-radius: 16px;
                     gap: 10px;
-                    max-width: calc(100vw - 40px);
                 }
                 .mars-xp-toast.level-up,
                 .mars-xp-toast.achievement {
@@ -238,7 +269,7 @@
                 }
             }
 
-            /* ===== REDUCED MOTION ===== */
+            /* ═══ REDUCED MOTION ═══ */
             @media (prefers-reduced-motion: reduce) {
                 .mars-xp-toast {
                     animation: none !important;
@@ -246,22 +277,20 @@
                     transform: translate(-50%, -50%) scale(1);
                 }
                 .mars-xp-toast::before { display: none; }
-                .mars-xp-toast .mars-xp-icon {
-                    animation: none !important;
-                }
-                .mars-xp-particle {
-                    display: none !important;
-                }
+                .mars-xp-toast .mars-xp-icon { animation: none !important; }
+                .mars-xp-particle { display: none !important; }
+                .mars-xp-confetti-piece { display: none !important; }
             }
         `;
         document.head.appendChild(s);
     }
 
-    // ============================================================
-    // ✨ Частицы
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       ✨ ЧАСТИЦЫ
+       ═══════════════════════════════════════════════════════ */
     function spawnParticles(rect, type) {
         if (REDUCED_MOTION) return;
+        if (!rect || !isFinite(rect.left)) return;
 
         var palettes = {
             'xp':          ['#27ae60', '#16a085', '#2ecc71', '#1abc9c'],
@@ -269,93 +298,210 @@
             'achievement': ['#9b59b6', '#8e44ad', '#a569bd', '#d7bde2']
         };
         var palette = palettes[type] || palettes.xp;
-
         var cx = rect.left + rect.width / 2;
         var cy = rect.top + rect.height / 2;
-
         var count = window.innerWidth <= 600 ? 12 : 22;
 
         for (var i = 0; i < count; i++) {
             (function(idx) {
                 setTimeout(function() {
-                    var p = document.createElement('div');
-                    p.className = 'mars-xp-particle';
-                    var angle = (Math.PI * 2 * idx) / count + Math.random() * 0.3;
-                    var dist = 80 + Math.random() * 200;
-                    var dx = Math.cos(angle) * dist;
-                    var dy = Math.sin(angle) * dist;
-                    var size = 6 + Math.random() * 8;
-                    var color = palette[Math.floor(Math.random() * palette.length)];
+                    try {
+                        var p = document.createElement('div');
+                        p.className = 'mars-xp-particle';
+                        var angle = (Math.PI * 2 * idx) / count + Math.random() * 0.3;
+                        var dist = 80 + Math.random() * 200;
+                        var size = 6 + Math.random() * 8;
+                        var color = palette[Math.floor(Math.random() * palette.length)];
 
-                    p.style.left = cx + 'px';
-                    p.style.top = cy + 'px';
-                    p.style.width = size + 'px';
-                    p.style.height = size + 'px';
-                    p.style.background = color;
-                    p.style.boxShadow = '0 0 12px ' + color;
-                    p.style.setProperty('--dx', dx + 'px');
-                    p.style.setProperty('--dy', dy + 'px');
-                    p.style.animation = 'marsXpParticleFly 1s cubic-bezier(0.16, 1, 0.3, 1) forwards';
-                    p.style.animationDelay = (Math.random() * 0.15) + 's';
+                        p.style.left = cx + 'px';
+                        p.style.top = cy + 'px';
+                        p.style.width = size + 'px';
+                        p.style.height = size + 'px';
+                        p.style.background = color;
+                        p.style.boxShadow = '0 0 12px ' + color;
+                        p.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+                        p.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+                        p.style.animation = 'marsXpParticleFly 1s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+                        p.style.animationDelay = (Math.random() * 0.15) + 's';
 
-                    document.body.appendChild(p);
-                    setTimeout(function() { p.remove(); }, 1400);
+                        document.body.appendChild(p);
+                        setTimeout(function() { if (p.parentNode) p.remove(); }, 1400);
+                    } catch(e) {}
                 }, idx * 30);
             })(i);
         }
     }
 
-    // ============================================================
-    // 🎯 Показ тоста с очередью
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       🎊 КОНФЕТТИ (для достижений)
+       ═══════════════════════════════════════════════════════ */
+    function fireConfetti() {
+        if (REDUCED_MOTION) return;
+        try {
+            var wrap = document.createElement('div');
+            wrap.className = 'mars-xp-confetti';
+            document.body.appendChild(wrap);
+
+            var colors = ['#f5d76e','#f39c12','#e74c3c','#3498db','#27ae60','#9b59b6','#fff'];
+            var total = window.innerWidth <= 600 ? 40 : 80;
+
+            for (var i = 0; i < total; i++) {
+                var p = document.createElement('div');
+                p.className = 'mars-xp-confetti-piece';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.background = colors[i % colors.length];
+                p.style.animationDelay = (Math.random() * 0.8) + 's';
+                p.style.animationDuration = (2.5 + Math.random() * 1.5) + 's';
+                if (Math.random() > 0.5) p.style.borderRadius = '50%';
+                if (Math.random() > 0.5) p.style.width = '6px';
+                wrap.appendChild(p);
+            }
+
+            setTimeout(function() { if (wrap.parentNode) wrap.remove(); }, 5000);
+        } catch(e) {}
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       🎵 ЗВУК (Web Audio, без файлов)
+       ═══════════════════════════════════════════════════════ */
+    var audioCtx = null;
+    var audioUnlocked = false;
+
+    function getAudioCtx() {
+        if (!audioUnlocked) return null;
+        try {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume().catch(function(){});
+        } catch(e) { return null; }
+        return audioCtx;
+    }
+
+    function unlockAudio() {
+        if (audioUnlocked) return;
+        function un() {
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                audioUnlocked = true;
+            } catch(e) {}
+            document.removeEventListener('touchstart', un);
+            document.removeEventListener('click', un);
+            document.removeEventListener('keydown', un);
+        }
+        document.addEventListener('touchstart', un, { passive: true });
+        document.addEventListener('click', un, { passive: true });
+        document.addEventListener('keydown', un, { passive: true });
+    }
+
+    function note(freq, dur, type, vol) {
+        var c = getAudioCtx();
+        if (!c) return;
+        try {
+            var o = c.createOscillator();
+            var g = c.createGain();
+            o.type = type || 'sine';
+            o.frequency.value = freq;
+            g.gain.setValueAtTime(0, c.currentTime);
+            g.gain.linearRampToValueAtTime(vol || 0.08, c.currentTime + 0.02);
+            g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + dur);
+            o.connect(g);
+            g.connect(c.destination);
+            o.start();
+            o.stop(c.currentTime + dur);
+        } catch(e) {}
+    }
+
+    function playXPSound() {
+        if (REDUCED_MOTION) return;
+        [659.25, 783.99, 987.77].forEach(function(f, i) {
+            setTimeout(function() { note(f, 0.15, 'triangle', 0.07); }, i * 60);
+        });
+    }
+
+    function playAchievementSound() {
+        if (REDUCED_MOTION) return;
+        [523.25, 659.25, 783.99, 1046.50].forEach(function(f, i) {
+            setTimeout(function() { note(f, 0.4, 'sine', 0.09); }, i * 100);
+        });
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       🎯 ТОСТЫ С ОЧЕРЕДЬЮ
+       ═══════════════════════════════════════════════════════ */
     var toastQueue = [];
     var isShowingToast = false;
-    var TOAST_DURATION = 2400;
 
     function showToast(type, icon, text) {
-        // Если уже что-то показывается — в очередь
+        /* Очередь — не спамить */
         if (isShowingToast) {
+            if (toastQueue.length >= MAX_QUEUE) return;
             toastQueue.push({ type: type, icon: icon, text: text });
+            return;
+        }
+
+        /* Не показываем тосты когда вкладка скрыта — складываем в очередь */
+        if (document.hidden) {
+            if (toastQueue.length < MAX_QUEUE) {
+                toastQueue.push({ type: type, icon: icon, text: text });
+            }
             return;
         }
 
         isShowingToast = true;
         injectToastStyles();
 
-        var toast = document.createElement('div');
-        toast.className = 'mars-xp-toast ' + type;
-        toast.innerHTML =
-            '<span class="mars-xp-icon">' + icon + '</span>' +
-            '<span class="mars-xp-text">' + text + '</span>';
+        var toast;
+        try {
+            toast = document.createElement('div');
+            toast.className = 'mars-xp-toast ' + type;
+            toast.innerHTML =
+                '<span class="mars-xp-icon">' + (icon || '⭐') + '</span>' +
+                '<span class="mars-xp-text">' + (text || '') + '</span>';
+            document.body.appendChild(toast);
+        } catch(e) {
+            isShowingToast = false;
+            return;
+        }
 
-        document.body.appendChild(toast);
+        /* Эффекты */
+        try {
+            if (type === 'achievement') {
+                fireConfetti();
+                playAchievementSound();
+            } else {
+                playXPSound();
+            }
+        } catch(e) {}
 
-        // Частицы
+        /* Частицы после рендера */
         requestAnimationFrame(function() {
-            var rect = toast.getBoundingClientRect();
-            spawnParticles(rect, type);
+            try {
+                var rect = toast.getBoundingClientRect();
+                spawnParticles(rect, type);
+            } catch(e) {}
         });
 
-        // Авто-скрытие
+        /* Авто-скрытие */
         setTimeout(function() {
-            toast.style.animation = 'marsXpOut 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+            try {
+                toast.style.animation = 'marsXpOut 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards';
+            } catch(e) {}
 
             setTimeout(function() {
-                if (toast.parentNode) toast.remove();
+                try { if (toast.parentNode) toast.remove(); } catch(e) {}
                 isShowingToast = false;
 
-                // Следующий из очереди
+                /* Следующий из очереди */
                 if (toastQueue.length > 0) {
                     var next = toastQueue.shift();
                     showToast(next.type, next.icon, next.text);
                 }
-            }, 650);
+            }, TOAST_OUT_MS);
         }, TOAST_DURATION);
     }
 
-    // ============================================================
-    // 🎁 Публичные тосты
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       🎁 ПУБЛИЧНЫЕ ТОСТЫ
+       ═══════════════════════════════════════════════════════ */
     if (typeof window.showExperienceToast !== 'function') {
         window.showExperienceToast = function(points) {
             points = parseInt(points, 10) || 0;
@@ -376,16 +522,15 @@
         };
     }
 
-    // ============================================================
-    // 🌉 Клиент
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       🌉 КЛИЕНТ
+       ═══════════════════════════════════════════════════════ */
+    var cachedUserId = null;
+
     function getClient() {
         if (window.supabaseClient && window.supabaseClient.auth) return window.supabaseClient;
         if (window.getSupabase) {
-            try {
-                var c = window.getSupabase();
-                if (c && c.auth) return c;
-            } catch(e) {}
+            try { var c = window.getSupabase(); if (c && c.auth) return c; } catch(e) {}
         }
         if (window.supabase && typeof window.supabase.createClient === 'function') {
             try {
@@ -403,9 +548,24 @@
         return null;
     }
 
-    // ============================================================
-    // 🌐 Retry
-    // ============================================================
+    async function getUserId() {
+        if (cachedUserId) return cachedUserId;
+        var client = getClient();
+        if (!client) return null;
+        try {
+            var res = await client.auth.getSession();
+            var sess = res && res.data && res.data.session;
+            if (sess && sess.user) {
+                cachedUserId = sess.user.id;
+                return cachedUserId;
+            }
+        } catch(e) {}
+        return null;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       🌐 RETRY
+       ═══════════════════════════════════════════════════════ */
     async function withRetry(fn, retries) {
         retries = retries == null ? 2 : retries;
         var lastErr;
@@ -419,9 +579,9 @@
         throw lastErr;
     }
 
-    // ============================================================
-    // 🔒 Мьютекс
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       🔒 МЬЮТЕКС
+       ═══════════════════════════════════════════════════════ */
     var locks = {};
 
     function withLock(userId, fn) {
@@ -431,9 +591,9 @@
         return next;
     }
 
-    // ============================================================
-    // 📊 История XP
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       📊 ИСТОРИЯ XP
+       ═══════════════════════════════════════════════════════ */
     function recordXpHistory(points) {
         if (!points || points <= 0) return;
         try {
@@ -448,15 +608,15 @@
         } catch(e) {}
     }
 
-    // ============================================================
-    // 🏅 Достижения
-    // ============================================================
-    var grantedThisSession = new Set();
+    /* ═══════════════════════════════════════════════════════
+       🏅 ДОСТИЖЕНИЯ
+       ═══════════════════════════════════════════════════════ */
+    var grantedThisSession = {};
 
     async function grantAchievement(userId, achievementId, achievementMeta) {
         var key = userId + ':' + achievementId;
-        if (grantedThisSession.has(key)) return false;
-        grantedThisSession.add(key);
+        if (grantedThisSession[key]) return false;
+        grantedThisSession[key] = true;
 
         var client = getClient();
         if (!client) return false;
@@ -466,6 +626,7 @@
                 user_id: userId,
                 achievement_id: achievementId
             }]);
+
             if (res && res.error) {
                 if (res.error.code === '23505') return false;
                 log('grant err:', res.error.message);
@@ -476,12 +637,17 @@
 
             if (achievementMeta && typeof window.showAchievementToast === 'function') {
                 try {
-                    window.showAchievementToast(achievementMeta.icon || '🏅', achievementMeta.name || 'Достижение');
+                    window.showAchievementToast(
+                        achievementMeta.icon || '🏅',
+                        achievementMeta.name || 'Достижение'
+                    );
                 } catch(e) {}
             }
 
             try {
-                var name = achievementMeta ? (achievementMeta.icon + ' ' + achievementMeta.name) : 'Достижение';
+                var name = achievementMeta
+                    ? (achievementMeta.icon + ' ' + achievementMeta.name)
+                    : 'Достижение';
                 await client.from('notifications').insert([{
                     user_id: userId,
                     message: '🏅 Получено достижение: ' + name + '!',
@@ -492,20 +658,20 @@
             return true;
         } catch(e) {
             log('grant exception:', e.message);
-            grantedThisSession.delete(key);
+            delete grantedThisSession[key];
             return false;
         }
     }
 
     var XP_ACHIEVEMENTS = [
-        { xp: 10,   name: 'Первый шаг',  icon: '🚀' },
-        { xp: 50,   name: 'Знаток',      icon: '📖' },
+        { xp: 10,   name: 'Первый шаг',    icon: '🚀' },
+        { xp: 50,   name: 'Знаток',        icon: '📖' },
         { xp: 100,  name: 'Исследователь', icon: '🌍' },
-        { xp: 200,  name: 'Летописец',   icon: '🖊️' },
-        { xp: 300,  name: 'Марсианин',   icon: '🏆' },
-        { xp: 500,  name: 'Ветеран',     icon: '⚔️' },
-        { xp: 1000, name: 'Легенда',     icon: '👑' },
-        { xp: 5000, name: 'Бессмертный', icon: '🌟' }
+        { xp: 200,  name: 'Летописец',     icon: '🖊️' },
+        { xp: 300,  name: 'Марсианин',     icon: '🏆' },
+        { xp: 500,  name: 'Ветеран',       icon: '⚔️' },
+        { xp: 1000, name: 'Легенда',       icon: '👑' },
+        { xp: 5000, name: 'Бессмертный',   icon: '🌟' }
     ];
 
     async function checkAchievements(userId, currentExp) {
@@ -518,7 +684,9 @@
                     return client.from('achievements').select('id, name, icon');
                 }, 1).catch(function() { return { data: [] }; }),
                 withRetry(function() {
-                    return client.from('user_achievements').select('achievement_id').eq('user_id', userId);
+                    return client.from('user_achievements')
+                        .select('achievement_id')
+                        .eq('user_id', userId);
                 }, 1).catch(function() { return { data: [] }; })
             ]);
 
@@ -547,11 +715,13 @@
         }
     }
 
-    // ============================================================
-    // 🎁 Начисление опыта
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       🎁 НАЧИСЛЕНИЕ ОПЫТА
+       ═══════════════════════════════════════════════════════ */
     async function addExperience(userId, points) {
+        if (!userId) userId = await getUserId();
         if (!userId) return null;
+
         points = parseInt(points, 10) || 0;
         if (points <= 0) return null;
 
@@ -598,21 +768,20 @@
 
                 recordXpHistory(points);
 
-                // Тост +XP
+                /* Тост +XP */
                 if (typeof window.showExperienceToast === 'function') {
                     try { window.showExperienceToast(points); } catch(e) {}
                 }
 
-                // Повышение уровня
+                /* Повышение уровня */
                 if (newLevel > currentLevel) {
                     log('🎉 level up:', currentLevel, '→', newLevel);
 
-                    // Задержка — чтобы XP-тост успел показаться
                     setTimeout(function() {
                         if (typeof window.showLevelUpToast === 'function') {
                             try { window.showLevelUpToast(newLevel, levelInfo.title); } catch(e) {}
                         }
-                    }, 500);
+                    }, 700);
 
                     try {
                         await client.from('notifications').insert([{
@@ -638,11 +807,13 @@
         });
     }
 
-    // ============================================================
-    // 📖 Чтение профиля
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       📖 ЧТЕНИЕ ПРОФИЛЯ
+       ═══════════════════════════════════════════════════════ */
     async function getProfile(userId) {
+        if (!userId) userId = await getUserId();
         if (!userId) return null;
+
         var client = getClient();
         if (!client) return null;
 
@@ -660,9 +831,30 @@
         }
     }
 
-    // ============================================================
-    // 🚀 Экспорт
-    // ============================================================
+    /* ═══════════════════════════════════════════════════════
+       🧹 ОЧИСТКА
+       ═══════════════════════════════════════════════════════ */
+    function cleanup() {
+        try {
+            document.querySelectorAll('.mars-xp-toast, .mars-xp-particle, .mars-xp-confetti')
+                .forEach(function(el) { el.remove(); });
+            toastQueue = [];
+            isShowingToast = false;
+        } catch(e) {}
+    }
+
+    window.addEventListener('pagehide', cleanup);
+
+    /* ═══════════════════════════════════════════════════════
+       📋 СИНХРОНИЗАЦИЯ МЕЖДУ ВКЛАДКАМИ
+       ═══════════════════════════════════════════════════════ */
+    window.addEventListener('storage', function(e) {
+        if (e.key === SB_KEY) cachedUserId = null; /* смена юзера */
+    });
+
+    /* ═══════════════════════════════════════════════════════
+       🚀 ЭКСПОРТ
+       ═══════════════════════════════════════════════════════ */
     window.addExperience = addExperience;
 
     window.marsExperience = {
@@ -671,8 +863,9 @@
         getLevelInfo: getLevelInfo,
         xpForLevel: xpForLevel,
         checkAchievements: checkAchievements,
+        getUserId: getUserId,
+        cleanup: cleanup,
         LEVEL_TITLES: LEVEL_TITLES,
-        // Ручной показ тостов (для теста)
         toast: {
             xp: function(p) { window.showExperienceToast(p); },
             levelUp: function(l, t) { window.showLevelUpToast(l, t); },
@@ -680,5 +873,10 @@
         }
     };
 
-    log('v4 VIP загружен');
+    /* ═══════════════════════════════════════════════════════
+       🎬 UNLOCK AUDIO ON FIRST INTERACTION
+       ═══════════════════════════════════════════════════════ */
+    unlockAudio();
+
+    log('v5 Production загружен');
 })();

@@ -370,6 +370,7 @@ nav:
       - Топ статей: top/index.md
       - Квесты: quests/index.md
       - Квест-карта: quest-map/index.md
+      - Космический глазомер: interactive/scale-guess.md
 
   - Сообщество:
       - Форум: forum/index.md

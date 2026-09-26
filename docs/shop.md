@@ -50,11 +50,12 @@ comments: false
   <button class="sh-filter-btn" data-cat="vip" type="button">⭐ VIP</button>
 </div>
 
-<!-- СЕТКА -->
+<!-- СЕТКА ТОВАРОВ -->
 <div class="sh-grid sh-observe" id="sh-grid"></div>
 
 <!-- КАК ЭТО РАБОТАЕТ -->
 <h2 class="sh-h2 sh-observe">⚙️ Как это работает</h2>
+
 <div class="sh-how sh-observe">
   <div class="sh-how-item">
     <div class="sh-how-num">01</div>
@@ -96,10 +97,10 @@ comments: false
   <details class="sh-faq-item">
     <summary><span>Что даёт VIP-подписка?</span><span class="sh-faq-icon">▸</span></summary>
     <div class="sh-faq-answer">
-      Золотой бейдж 👑 рядом с ником, кастомный цвет ника,
-      рамки аватара, свой титул, фон профиля, свой emoji в чате,
-      <strong>+25 талантов при активации</strong> и ранний доступ
-      к новым статьям. Действует <strong>12 месяцев</strong>.
+      Золотой бейдж 👑 у ника, кастомный цвет ника, рамки аватара (13 штук),
+      свой титул, живой фон профиля, свой emoji в чате,
+      <strong>+25 талантов при активации</strong> и ранний доступ к статьям.
+      Действует <strong>12 месяцев</strong>.
     </div>
   </details>
 
@@ -123,7 +124,7 @@ comments: false
     <summary><span>Что такое глиняные таланты?</span><span class="sh-faq-icon">▸</span></summary>
     <div class="sh-faq-answer">
       Это <strong>внутренняя валюта сайта</strong>. Используется
-      для покупки функций на сайте. Не является денежным средством,
+      для покупки функций. Не является денежным средством,
       не обменивается обратно на рубли.
     </div>
   </details>
@@ -239,7 +240,7 @@ comments: false
 <!-- ═══ МОДАЛКА ОПЛАТЫ ═══ -->
 <div class="sh-modal-bg" id="sh-modal" style="display:none;">
   <div class="sh-modal">
-    <button class="sh-modal-close" type="button" onclick="shCloseModal()">✕</button>
+    <button class="sh-modal-close" type="button" onclick="shCloseModal()" aria-label="Закрыть">✕</button>
     <div class="sh-modal-icon" id="sh-modal-icon">🪙</div>
     <div class="sh-modal-title" id="sh-modal-title">Товар</div>
     <div class="sh-modal-price" id="sh-modal-price">990 ₽</div>
@@ -279,35 +280,35 @@ comments: false
   0%,100%{ filter:drop-shadow(0 0 12px rgba(243,156,18,.7)) drop-shadow(0 0 30px rgba(243,156,18,.4)); }
   50%{ filter:drop-shadow(0 0 30px rgba(243,156,18,1)) drop-shadow(0 0 60px rgba(243,156,18,.7)); }
 }
+
+/* Монеты — плавный полёт (твои оригинальные анимации) */
 @keyframes shCoinFloatA{
-  0%,100%{ transform:translate(var(--tx,0), var(--ty,0)) rotate(-3deg); }
-  50%{ transform:translate(var(--tx,0), calc(var(--ty,0) - 14px)) rotate(3deg); }
+  0%,100%{ transform:translate(0,0) rotate(-3deg); }
+  50%{ transform:translate(0,-14px) rotate(3deg); }
 }
 @keyframes shCoinFloatB{
-  0%,100%{ transform:translate(var(--tx,0), var(--ty,0)) rotate(2deg) scale(1); }
-  50%{ transform:translate(var(--tx,0), calc(var(--ty,0) - 10px)) rotate(-3deg) scale(1.05); }
+  0%,100%{ transform:translate(0,0) rotate(2deg) scale(1); }
+  50%{ transform:translate(0,-10px) rotate(-3deg) scale(1.05); }
 }
 @keyframes shCoinFloatC{
-  0%,100%{ transform:translate(var(--tx,0), var(--ty,0)) rotate(0) scale(1); }
-  50%{ transform:translate(var(--tx,0), calc(var(--ty,0) - 12px)) rotate(-4deg) scale(1.03); }
+  0%,100%{ transform:translate(0,0) rotate(0) scale(1); }
+  50%{ transform:translate(0,-12px) rotate(-4deg) scale(1.03); }
 }
-/* Свечение — 4 уровня */
-@keyframes shGlowFaint{
-  0%,100%{ filter:drop-shadow(0 0 4px rgba(243,156,18,.25)) brightness(1); }
-  50%{ filter:drop-shadow(0 0 10px rgba(243,156,18,.4)) brightness(1.04); }
-}
+
+/* Свечение монет — 3 уровня */
 @keyframes shGlowSoft{
-  0%,100%{ filter:drop-shadow(0 0 10px rgba(243,156,18,.5)) brightness(1.02); }
-  50%{ filter:drop-shadow(0 0 20px rgba(243,156,18,.8)) brightness(1.1); }
+  0%,100%{ filter:drop-shadow(0 0 8px rgba(243,156,18,.4)) brightness(1); }
+  50%{ filter:drop-shadow(0 0 18px rgba(243,156,18,.7)) brightness(1.08); }
 }
 @keyframes shGlowMedium{
-  0%,100%{ filter:drop-shadow(0 0 16px rgba(243,156,18,.7)) brightness(1.08); }
-  50%{ filter:drop-shadow(0 0 34px rgba(243,156,18,1)) brightness(1.2); }
+  0%,100%{ filter:drop-shadow(0 0 14px rgba(243,156,18,.65)) brightness(1.06); }
+  50%{ filter:drop-shadow(0 0 30px rgba(243,156,18,1)) brightness(1.18); }
 }
 @keyframes shGlowStrong{
-  0%,100%{ filter:drop-shadow(0 0 24px rgba(243,156,18,.9)) brightness(1.12) saturate(1.15); }
-  50%{ filter:drop-shadow(0 0 50px rgba(243,156,18,1)) brightness(1.3) saturate(1.3); }
+  0%,100%{ filter:drop-shadow(0 0 22px rgba(243,156,18,.85)) brightness(1.1) saturate(1.15); }
+  50%{ filter:drop-shadow(0 0 45px rgba(243,156,18,1)) brightness(1.28) saturate(1.3); }
 }
+
 @keyframes shSuperPulse{
   0%,100%{ box-shadow:0 0 0 0 rgba(231,76,60,.7), 0 20px 50px -14px rgba(231,76,60,.4); }
   50%{ box-shadow:0 0 0 12px rgba(231,76,60,0), 0 20px 50px -14px rgba(231,76,60,.6); }
@@ -319,8 +320,8 @@ comments: false
 
 /* ═══ HERO ═══ */
 .sh-hero{
-  position:relative;border-radius:26px;padding:60px 36px;color:#fff;
-  margin-bottom:24px;overflow:hidden;text-align:center;
+  position:relative;border-radius:26px;
+  padding:60px 36px;color:#fff;margin-bottom:24px;overflow:hidden;text-align:center;
   background:
     radial-gradient(circle at 20% 30%, rgba(243,156,18,.3), transparent 55%),
     radial-gradient(circle at 80% 70%, rgba(155,89,182,.25), transparent 55%),
@@ -350,6 +351,7 @@ comments: false
   transform:translateY(-50%);opacity:.55;
   animation:shFloat 5s ease-in-out infinite, shCoinGlow 6s ease-in-out infinite;
   pointer-events:none;z-index:1;
+  filter:drop-shadow(0 0 60px rgba(243,156,18,.7));
 }
 .sh-hero-content{position:relative;z-index:3;max-width:720px;margin:0 auto}
 .sh-hero-tag{
@@ -479,38 +481,37 @@ comments: false
 
 /* ═══ МОНЕТЫ ═══ */
 .sh-coins-box{
-  position:relative;height:150px;
+  position:relative;height:140px;
   display:flex;align-items:center;justify-content:center;
   padding:16px 20px 0;overflow:visible;
 }
 .sh-coin{
-  position:absolute;top:50%;left:50%;
-  border-radius:50%;object-fit:cover;
+  position:absolute;border-radius:50%;object-fit:cover;
   will-change:transform,filter;
 }
+.sh-coins-soft .sh-coin{
+  width:88px;height:88px;
+  animation:shCoinFloatA 3.4s ease-in-out infinite, shGlowSoft 4.2s ease-in-out infinite;
+}
+.sh-coins-medium .sh-coin{
+  width:56px;height:56px;
+  animation:shCoinFloatB 3.8s ease-in-out infinite, shGlowMedium 3.2s ease-in-out infinite;
+}
+.sh-coins-strong .sh-coin{
+  width:48px;height:48px;
+  animation:shCoinFloatC 3.2s ease-in-out infinite, shGlowStrong 2.6s ease-in-out infinite;
+}
 
-/* Размеры монет по уровням */
-.sh-coins-faint .sh-coin{ width:90px;height:90px; margin:-45px 0 0 -45px; }
-.sh-coins-soft .sh-coin{ width:72px;height:72px; margin:-36px 0 0 -36px; }
-.sh-coins-medium .sh-coin{ width:52px;height:52px; margin:-26px 0 0 -26px; }
-.sh-coins-strong .sh-coin{ width:44px;height:44px; margin:-22px 0 0 -22px; }
-
-/* Свечение — 4 уровня */
-.sh-coins-faint .sh-coin{ animation:shCoinFloatA 3.6s ease-in-out infinite, shGlowFaint 4.4s ease-in-out infinite; }
-.sh-coins-soft .sh-coin{ animation:shCoinFloatA 3.4s ease-in-out infinite, shGlowSoft 4.2s ease-in-out infinite; }
-.sh-coins-medium .sh-coin{ animation:shCoinFloatB 3.8s ease-in-out infinite, shGlowMedium 3.2s ease-in-out infinite; }
-.sh-coins-strong .sh-coin{ animation:shCoinFloatC 3.2s ease-in-out infinite, shGlowStrong 2.6s ease-in-out infinite; }
-
-/* ═══ VIP ═══ */
+/* ═══ VIP — КОРОНА ═══ */
 .sh-vip-box{
-  position:relative;height:150px;
+  position:relative;height:140px;
   display:flex;align-items:center;justify-content:center;
   padding:16px 20px 0;overflow:visible;
 }
 .sh-vip-crown{
   font-size:5.5rem;line-height:1;
   animation:shCrownFloat 4s ease-in-out infinite, shCrownGlow 3s ease-in-out infinite;
-  z-index:2;position:relative;color:#f5d76e;
+  z-index:2;position:relative;
 }
 
 /* ═══ CARD BODY ═══ */
@@ -567,6 +568,7 @@ comments: false
   cursor:pointer;font-family:inherit;letter-spacing:.3px;
   transition:all .25s cubic-bezier(.16,1,.3,1);
   box-shadow:0 8px 24px -6px var(--cc-shadow,rgba(243,156,18,.5));
+  text-decoration:none!important;
 }
 .sh-card-btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px -6px var(--cc-shadow,rgba(243,156,18,.6))}
 .sh-card-btn:active{transform:translateY(0) scale(.98)}
@@ -642,6 +644,7 @@ comments: false
   padding:11px 22px;border-radius:26px;
   background:linear-gradient(135deg,#f39c12,#e67e22);
   color:#fff;font-weight:900;font-size:.88rem;
+  text-decoration:none!important;
   box-shadow:0 8px 20px -4px rgba(243,156,18,.5);
   transition:all .25s;
 }
@@ -653,7 +656,7 @@ comments: false
   font-size:.72rem;color:#c0c0d0;font-weight:600;
   line-height:1.5;letter-spacing:.3px;
 }
-.sh-req a{color:#b8b8c8;font-weight:700;border-bottom:1px dashed rgba(184,184,200,.4);transition:all .25s}
+.sh-req a{color:#b8b8c8;font-weight:700;text-decoration:none!important;border-bottom:1px dashed rgba(184,184,200,.4);transition:all .25s}
 .sh-req a:hover{color:#8a8aa0;border-bottom-color:rgba(138,138,160,.6)}
 
 /* ═══ МОДАЛКА ═══ */
@@ -763,7 +766,7 @@ comments: false
   .sh-hero-coin{width:130px;height:130px;right:-20px;opacity:.35}
   .sh-hero-title{font-size:1.7rem}
   .sh-hero-sub{font-size:.92rem}
-  .sh-hero-icon{font-size:3rem}
+  .sh-hero-icon{font-size:3.2rem}
   .sh-meta-item{padding:6px 12px;font-size:.72rem}
   .sh-h2{font-size:1.2rem;margin:32px 0 16px}
   .sh-info{padding:16px 18px;font-size:.88rem;gap:12px}
@@ -771,11 +774,10 @@ comments: false
   .sh-filter{padding:8px;gap:6px}
   .sh-filter-btn{padding:7px 12px;font-size:.75rem}
   .sh-grid{grid-template-columns:1fr;gap:14px}
-  .sh-coins-box,.sh-vip-box{height:130px}
-  .sh-coins-faint .sh-coin{width:80px;height:80px;margin:-40px 0 0 -40px}
-  .sh-coins-soft .sh-coin{width:60px;height:60px;margin:-30px 0 0 -30px}
-  .sh-coins-medium .sh-coin{width:42px;height:42px;margin:-21px 0 0 -21px}
-  .sh-coins-strong .sh-coin{width:36px;height:36px;margin:-18px 0 0 -18px}
+  .sh-coins-box,.sh-vip-box{height:120px}
+  .sh-coins-soft .sh-coin{width:72px;height:72px}
+  .sh-coins-medium .sh-coin{width:48px;height:48px}
+  .sh-coins-strong .sh-coin{width:42px;height:42px}
   .sh-vip-crown{font-size:4.5rem}
   .sh-card-body{padding:10px 20px 18px}
   .sh-card-name{font-size:1rem}
@@ -820,13 +822,13 @@ if (window.__shopLoaded) return;
 window.__shopLoaded = true;
 
 /* ═══ КОНФИГ ═══ */
-var SUPABASE_URL = 'https://ncytbgbzfjfoqmmgfygz.supabase.co';
+var SUPABASE_URL = 'https://ncytbgbzfjqmmgfygz.supabase.co';
 var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
 var COIN_IMG = '/assets/images/guild-coin.jpg';
 
-/* ═══ ТОВАРЫ — с нарастающим количеством монет ═══ */
+/* ═══ ТОВАРЫ — 5 штук с твоими анимациями ═══ */
 var PRODUCTS = [
-  // 50 талантов — 1 монета, слабое свечение
+  // ─── 50 талантов — супер-акция ───
   {
     id:'tablets-1',
     formId:'sh-form-tablets',
@@ -834,7 +836,7 @@ var PRODUCTS = [
     catName:'Супер-акция',
     iconType:'coins',
     coinCount:1,
-    coinGlow:'faint',
+    coinGlow:'soft',
     name:'50 глиняных талантов',
     desc:'🔥 <strong>СУПЕР-ХИТ!</strong> Обычная цена 50 ₽ — сегодня за 1 ₽.',
     features:['50 талантов','Один раз на аккаунт','Скидка 98%'],
@@ -843,14 +845,14 @@ var PRODUCTS = [
     color:'#e74c3c', colorLight:'#ff7675', colorShadow:'rgba(231,76,60,.5)',
     isSuper:true
   },
-  // 100 талантов — 4 монеты
+  // ─── 100 талантов — 1 монета ───
   {
     id:'talents-100',
     formId:'sh-form-100',
     cat:'currency',
     catName:'Валюта сайта',
     iconType:'coins',
-    coinCount:4,
+    coinCount:1,
     coinGlow:'soft',
     name:'100 глиняных талантов',
     desc:'Стартовый набор валюты для покупки функций на сайте.',
@@ -859,14 +861,14 @@ var PRODUCTS = [
     badge:'sale', badgeText:'−40%',
     color:'#f39c12', colorLight:'#f5d76e', colorShadow:'rgba(243,156,18,.4)'
   },
-  // 500 талантов — 6 монет
+  // ─── 500 талантов — 3 монеты ───
   {
     id:'talents-500',
     formId:'sh-form-500',
     cat:'currency',
     catName:'Валюта сайта',
     iconType:'coins',
-    coinCount:6,
+    coinCount:3,
     coinGlow:'medium',
     name:'500 глиняных талантов',
     desc:'Оптимальный набор. <strong>Выгоднее в 3 раза</strong>, чем одиночные.',
@@ -875,14 +877,14 @@ var PRODUCTS = [
     badge:'hit', badgeText:'Хит · −42%',
     color:'#f39c12', colorLight:'#f5d76e', colorShadow:'rgba(243,156,18,.4)'
   },
-  // 1000 талантов — 9 монет, сильное свечение
+  // ─── 1000 талантов — 6 монет ───
   {
     id:'talents-1000',
     formId:'sh-form-1000',
     cat:'currency',
     catName:'Валюта сайта',
     iconType:'coins',
-    coinCount:9,
+    coinCount:6,
     coinGlow:'strong',
     name:'1000 глиняных талантов',
     desc:'Максимальный набор. <strong>Лучшая цена</strong> за талант.',
@@ -891,7 +893,7 @@ var PRODUCTS = [
     badge:'new', badgeText:'Максимум · −51%',
     color:'#f39c12', colorLight:'#f5d76e', colorShadow:'rgba(243,156,18,.4)'
   },
-  // VIP — корона
+  // ─── VIP — корона ───
   {
     id:'vip-12months',
     formId:'sh-form-vip',
@@ -903,7 +905,7 @@ var PRODUCTS = [
     features:[
       '👑 Золотой бейдж у ника',
       '🎨 Кастомный цвет ника',
-      '🖼️ Рамки аватара (13 штук)',
+      '🖼️ 13 рамок аватара',
       '🏆 Свой титул под ником',
       '🌌 Живой фон профиля',
       '😀 Свой emoji в чате',
@@ -921,13 +923,14 @@ var state = {
   user: null,
   email: '',
   activeFilter: 'all',
-  pendingProduct: null
+  pendingProduct: null,
+  modalOpen: false
 };
 
 var container = document.getElementById('shop-app');
 if (!container) return;
 
-/* ═══ УТИЛИТЫ ═══ */
+/* ═══ TOAST ═══ */
 function toast(msg, type){
   type = type || 'info';
   var t = document.createElement('div');
@@ -949,7 +952,6 @@ function toast(msg, type){
 
 /* ═══ SUPABASE — надёжное ожидание клиента ═══ */
 var sb = null;
-var sbReady = false;
 
 function tryGetSb(){
   if (sb && sb.auth) return sb;
@@ -970,11 +972,8 @@ function waitForSb(attempts){
   attempts = attempts || 0;
   return new Promise(function(resolve){
     var c = tryGetSb();
-    if (c && c.auth){
-      sbReady = true;
-      return resolve(c);
-    }
-    if (attempts > 60) return resolve(null); // 6 сек максимум
+    if (c && c.auth) return resolve(c);
+    if (attempts > 60) return resolve(null);
     setTimeout(function(){ waitForSb(attempts + 1).then(resolve); }, 100);
   });
 }
@@ -1013,41 +1012,34 @@ function initObserve(){
   items.forEach(function(el){ io.observe(el); });
 }
 
-/* ═══ ПОЗИЦИИ МОНЕТ ПО КОЛИЧЕСТВУ ═══ */
-function getCoinPositions(count){
-  switch(count){
-    case 1:
-      return [{x:0, y:0}];
-    case 4:
-      return [
-        {x:-38, y:-38}, {x:38, y:-38},
-        {x:-38, y:38},  {x:38, y:38}
-      ];
-    case 6:
-      return [
-        {x:-60, y:-30}, {x:0, y:-38}, {x:60, y:-30},
-        {x:-60, y:30},  {x:0, y:38},  {x:60, y:30}
-      ];
-    case 9:
-      return [
-        {x:-64, y:-48}, {x:0, y:-54}, {x:64, y:-48},
-        {x:-64, y:0},   {x:0, y:0},   {x:64, y:0},
-        {x:-64, y:48},  {x:0, y:54},  {x:64, y:48}
-      ];
-    default:
-      return [{x:0, y:0}];
-  }
-}
-
-/* ═══ ИКОНКА КАРТОЧКИ ═══ */
+/* ═══ ИКОНКА КАРТОЧКИ — твои анимации ═══ */
 function renderIcon(p){
   if (p.iconType === 'coins'){
-    var positions = getCoinPositions(p.coinCount);
+    var positions;
+    if (p.coinCount === 1){
+      positions = [{x:0, y:0}];
+    } else if (p.coinCount === 3){
+      positions = [
+        {x:-38, y:6},
+        {x:0, y:-6},
+        {x:38, y:6}
+      ];
+    } else {
+      positions = [
+        {x:-42, y:-24},
+        {x:0, y:-32},
+        {x:42, y:-24},
+        {x:-42, y:20},
+        {x:0, y:28},
+        {x:42, y:20}
+      ];
+    }
     var coins = '';
     positions.forEach(function(pos, i){
-      var delay = (i * 0.25).toFixed(2);
+      var delay = (i * 0.35).toFixed(2);
       coins += '<img src="' + COIN_IMG + '" class="sh-coin" alt="🪙" ' +
-        'style="--tx:' + pos.x + 'px;--ty:' + pos.y + 'px;animation-delay:' + delay + 's;" ' +
+        'style="animation-delay:' + delay + 's;' +
+        'transform:translate(' + pos.x + 'px, ' + pos.y + 'px);" ' +
         'onerror="this.replaceWith(document.createTextNode(\'🪙\'))">';
     });
     return '<div class="sh-coins-box sh-coins-' + p.coinGlow + '">' + coins + '</div>';
@@ -1058,7 +1050,7 @@ function renderIcon(p){
   return '';
 }
 
-/* ═══ РЕНДЕР ═══ */
+/* ═══ РЕНДЕР ТОВАРОВ ═══ */
 function renderProducts(filter){
   var grid = document.getElementById('sh-grid');
   if (!grid) return;
@@ -1075,9 +1067,7 @@ function renderProducts(filter){
     var saveHtml = p.save
       ? '<span class="sh-card-price-save">−' + p.save + '%</span>'
       : '';
-    var featuresHtml = p.features.map(function(f){
-      return '<li>' + f + '</li>';
-    }).join('');
+    var featuresHtml = p.features.map(function(f){ return '<li>' + f + '</li>'; }).join('');
 
     return '<div class="sh-card' + (p.isSuper ? ' sh-card-super' : '') + '" ' +
         'style="--cc:' + p.color + ';--cc-light:' + p.colorLight + ';--cc-shadow:' + p.colorShadow +
@@ -1121,10 +1111,9 @@ async function openModal(productId){
   if (!p) return;
 
   state.pendingProduct = p;
+  state.modalOpen = true;
 
-  var iconEl = document.getElementById('sh-modal-icon');
-  iconEl.textContent = p.iconType === 'vip' ? '👑' : '🪙';
-
+  document.getElementById('sh-modal-icon').textContent = p.iconType === 'vip' ? '👑' : '🪙';
   document.getElementById('sh-modal-title').textContent = p.name;
   document.getElementById('sh-modal-price').textContent = p.price + ' ₽';
   document.getElementById('sh-modal-desc').textContent = p.desc.replace(/<[^>]*>/g, '');
@@ -1146,7 +1135,6 @@ async function openModal(productId){
   }
 
   if (!state.user){
-    // Реально не залогинен
     emailInput.disabled = true;
     buyBtn.textContent = '🔐 Войти в аккаунт';
     buyBtn.onclick = function(){ window.location.href = '/login/'; };
@@ -1156,6 +1144,7 @@ async function openModal(productId){
 window.shCloseModal = function(){
   document.getElementById('sh-modal').style.display = 'none';
   state.pendingProduct = null;
+  state.modalOpen = false;
 };
 
 /* ═══ ОПЛАТА ═══ */
@@ -1205,36 +1194,34 @@ async function init(){
   renderProducts('all');
   initFilter();
 
-  // Модалка: клик по фону
-  document.getElementById('sh-modal').addEventListener('click', function(e){
-    if (e.target === this) shCloseModal();
+  var modal = document.getElementById('sh-modal');
+  modal.addEventListener('click', function(e){
+    if (e.target === modal) shCloseModal();
   });
 
-  // Enter в email
   document.getElementById('sh-modal-email').addEventListener('keypress', function(e){
     if (e.key === 'Enter') shPay();
   });
 
-  // Escape
   document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape') shCloseModal();
+    if (e.key === 'Escape' && state.modalOpen) shCloseModal();
   });
 
-  // Загружаем сессию
   await refreshUser();
   console.log('[shop] user:', state.user ? state.user.email : 'not logged in');
 
-  // Следим за сменой авторизации
   waitForSb().then(function(client){
     if (!client || !client.auth.onAuthStateChange) return;
-    client.auth.onAuthStateChange(function(event, session){
-      state.user = session ? session.user : null;
-      state.email = session && session.user ? (session.user.email || '') : '';
-      console.log('[shop] auth:', event);
-    });
+    try {
+      client.auth.onAuthStateChange(function(event, session){
+        state.user = session ? session.user : null;
+        state.email = session && session.user ? (session.user.email || '') : '';
+        console.log('[shop] auth:', event);
+      });
+    } catch(e){}
   });
 
-  console.log('🛒 Магазин v3 загружен. Товаров: ' + PRODUCTS.length);
+  console.log('🛒 Магазин v4 загружен. Товаров: ' + PRODUCTS.length);
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

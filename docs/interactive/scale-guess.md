@@ -1,6 +1,6 @@
 ---
 title: Космический глазомер
-description: Угадай реальные размеры объектов Марса — Rover, Олимп, Фобос и другие
+description: Угадай реальные размеры объектов Марса — тяни силуэт до нужного размера
 comments: false
 hide:
   - navigation
@@ -20,7 +20,7 @@ hide:
   <div class="sc-hero-content">
     <div class="sc-hero-tag">🔭 Интерактив · Игра</div>
     <h1 class="sc-hero-title">Космический глазомер</h1>
-    <p class="sc-hero-sub">Угадай, во сколько раз один объект Марса больше другого</p>
+    <p class="sc-hero-sub">Потяни второй силуэт и подбери его до правильного размера</p>
     <div class="sc-hero-stats">
       <div class="sc-stat">
         <div class="sc-stat-value" id="sc-stat-score">—</div>
@@ -42,46 +42,51 @@ hide:
   </div>
 </div>
 
-<!-- ИГРА -->
+<!-- ИГРОВОЕ ПОЛЕ -->
 <div class="sc-game" id="sc-game">
 
-  <!-- Объекты -->
-  <div class="sc-objects">
-    <div class="sc-object sc-object-a">
-      <div class="sc-obj-emoji" id="sc-emoji-a">🧑</div>
-      <div class="sc-obj-name" id="sc-name-a">Марсианин</div>
-      <div class="sc-obj-size" id="sc-size-a">1.7 м</div>
-    </div>
+  <div class="sc-stage" id="sc-stage">
 
-    <div class="sc-vs">
-      <div class="sc-vs-text">VS</div>
-      <div class="sc-vs-question">?</div>
-    </div>
-
-    <div class="sc-object sc-object-b">
-      <div class="sc-obj-emoji" id="sc-emoji-b">🏔️</div>
-      <div class="sc-obj-name" id="sc-name-b">Гора Олимп</div>
-      <div class="sc-obj-size sc-obj-unknown">??? м</div>
-    </div>
-  </div>
-
-  <!-- Вопрос -->
-  <div class="sc-question">
-    <div class="sc-question-text">Во сколько раз <strong>второй объект</strong> больше первого?</div>
-    <div class="sc-slider-wrap">
-      <input type="range" id="sc-slider" min="0" max="100" value="50" step="1">
-      <div class="sc-slider-value" id="sc-slider-display">
-        <span id="sc-slider-mult">×1</span>
+    <!-- Небо -->
+    <div class="sc-sky">
+      <div class="sc-sky-stars">
+        <div class="sc-sky-star"></div><div class="sc-sky-star"></div>
+        <div class="sc-sky-star"></div><div class="sc-sky-star"></div>
+        <div class="sc-sky-star"></div><div class="sc-sky-star"></div>
+        <div class="sc-sky-star"></div><div class="sc-sky-star"></div>
       </div>
-      <div class="sc-slider-labels">
-        <span>×0.1</span>
-        <span>×1</span>
-        <span>×10</span>
-        <span>×100</span>
-        <span>×10к</span>
-        <span>×100к</span>
+      <div class="sc-sky-moon"></div>
+    </div>
+
+    <!-- Земля (линия, на которой стоят объекты) -->
+    <div class="sc-ground-line"></div>
+    <div class="sc-ground-shadow"></div>
+
+    <!-- Объект 1 (эталон — фиксированный) -->
+    <div class="sc-figure sc-figure-a">
+      <div class="sc-figure-emoji" id="sc-figure-emoji-a">🧑</div>
+      <div class="sc-figure-label sc-figure-label-a">
+        <div class="sc-fl-name" id="sc-name-a">Марсианин</div>
+        <div class="sc-fl-size" id="sc-size-a">1.7 м</div>
       </div>
     </div>
+
+    <!-- Объект 2 (тянется) -->
+    <div class="sc-figure sc-figure-b" id="sc-figure-b">
+      <div class="sc-drag-pulse" id="sc-drag-pulse">↕</div>
+      <div class="sc-drag-indicator" id="sc-drag-indicator">
+        <div class="sc-drag-value" id="sc-drag-value">×1</div>
+      </div>
+      <div class="sc-figure-emoji" id="sc-figure-emoji-b">🏔️</div>
+      <div class="sc-figure-label sc-figure-label-b">
+        <div class="sc-fl-name" id="sc-name-b">Гора Олимп</div>
+        <div class="sc-fl-size sc-fl-unknown" id="sc-size-b">??? м</div>
+      </div>
+    </div>
+
+    <!-- Напоминание -->
+    <div class="sc-hint" id="sc-hint">🖐️ Тяни правый силуэт вверх-вниз</div>
+
   </div>
 
   <!-- Кнопка -->
@@ -113,9 +118,7 @@ hide:
 <!-- ДОСТИЖЕНИЯ -->
 <div class="sc-achievements">
   <h2 class="sc-h2">🏆 Достижения</h2>
-  <div class="sc-badges" id="sc-badges">
-    <!-- JS заполнит -->
-  </div>
+  <div class="sc-badges" id="sc-badges"></div>
 </div>
 
 <!-- ЛИДЕРБОРД -->
@@ -131,7 +134,7 @@ hide:
 <style>
 /* ═══ ROOT ═══ */
 #scale-app{
-  max-width:900px;margin:0 auto;padding:0 8px 40px;
+  max-width:1000px;margin:0 auto;padding:0 8px 40px;
   font-family:-apple-system,'Segoe UI',Roboto,sans-serif;
   color:#1a1a2e;line-height:1.6;
   -webkit-tap-highlight-color:transparent;
@@ -143,8 +146,8 @@ hide:
 @keyframes scPop{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
 @keyframes scStar{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
 @keyframes scShine{0%{background-position:-200% center}100%{background-position:200% center}}
-@keyframes scPulse{0%,100%{box-shadow:0 0 0 0 rgba(192,57,43,.7)}50%{box-shadow:0 0 0 15px rgba(192,57,43,0)}}
 @keyframes scBadgePop{0%{transform:scale(0) rotate(-180deg);opacity:0}60%{transform:scale(1.3) rotate(10deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes scPulse{0%,100%{transform:translateX(-50%) scale(1);opacity:.9}50%{transform:translateX(-50%) scale(1.3);opacity:.5}}
 
 /* ═══ HERO ═══ */
 .sc-hero{
@@ -198,85 +201,207 @@ hide:
 
 /* ═══ GAME ═══ */
 .sc-game{
-  background:#fff;border-radius:24px;padding:32px 28px;
+  background:#fff;border-radius:24px;padding:24px;
   box-shadow:0 20px 60px -20px rgba(0,0,0,.15);
   border:2px solid rgba(192,57,43,.1);
   margin-bottom:24px;animation:scFadeIn .5s ease;
 }
 
-/* Objects */
-.sc-objects{
-  display:grid;grid-template-columns:1fr auto 1fr;gap:16px;
-  align-items:center;margin-bottom:28px;
-  min-height:180px;
-}
-.sc-object{
-  text-align:center;padding:20px 12px;
-  border-radius:20px;background:#f8f9fb;
-  border:2px solid #e8eaf0;transition:all .3s;
-}
-.sc-object-a{border-color:rgba(108,99,255,.3);background:linear-gradient(135deg,#f0f4ff,#f8f9fb)}
-.sc-object-b{border-color:rgba(192,57,43,.3);background:linear-gradient(135deg,#fff5f5,#f8f9fb)}
-.sc-obj-emoji{font-size:4.5rem;line-height:1;margin-bottom:10px}
-.sc-obj-name{font-size:.9rem;font-weight:900;color:#1a1a2e;margin-bottom:6px}
-.sc-obj-size{
-  display:inline-block;font-size:.75rem;font-weight:800;
-  padding:4px 12px;border-radius:12px;
-  background:rgba(108,99,255,.15);color:#6C63FF;
-  font-variant-numeric:tabular-nums;
-}
-.sc-object-b .sc-obj-size{background:rgba(192,57,43,.15);color:#c0392b}
-.sc-obj-unknown{background:rgba(136,136,136,.15)!important;color:#888!important;letter-spacing:3px}
-
-.sc-vs{text-align:center;padding:0 6px}
-.sc-vs-text{
-  font-size:1.1rem;font-weight:900;color:#c0392b;
-  letter-spacing:2px;margin-bottom:6px;
-}
-.sc-vs-question{
-  font-size:2rem;font-weight:900;color:#f39c12;
-  animation:scPop 1.5s ease-in-out infinite;
+/* ═══ STAGE ═══ */
+.sc-stage{
+  position:relative;
+  height:520px;
+  border-radius:18px;
+  overflow:hidden;
+  background:linear-gradient(to bottom,#0a0a14 0%,#16213e 55%,#3d1e3d 85%,#5a2e2e 100%);
+  margin-bottom:20px;
+  user-select:none;
+  -webkit-user-select:none;
+  touch-action:none;
 }
 
-/* Slider */
-.sc-question{margin-bottom:24px}
-.sc-question-text{
-  text-align:center;font-size:.95rem;color:#4a4a5e;
-  margin-bottom:16px;font-weight:600;
+/* Небо */
+.sc-sky{position:absolute;inset:0;pointer-events:none}
+.sc-sky-stars{position:absolute;inset:0;overflow:hidden}
+.sc-sky-star{
+  position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;
+  box-shadow:0 0 4px #fff;animation:scStar 3s ease-in-out infinite;
 }
-.sc-question-text strong{color:#c0392b}
-.sc-slider-wrap{position:relative;padding:0 8px}
-.sc-slider-wrap input[type="range"]{
-  -webkit-appearance:none;appearance:none;
-  width:100%;height:10px;border-radius:5px;outline:none;
-  background:linear-gradient(90deg,#6C63FF 0%,#f39c12 50%,#c0392b 100%);
-  cursor:pointer;
+.sc-sky-star:nth-child(1){top:8%;left:12%}
+.sc-sky-star:nth-child(2){top:15%;left:32%;animation-delay:.5s;width:1.5px;height:1.5px}
+.sc-sky-star:nth-child(3){top:22%;left:58%;animation-delay:1.1s}
+.sc-sky-star:nth-child(4){top:10%;left:78%;animation-delay:.7s;width:1.5px;height:1.5px}
+.sc-sky-star:nth-child(5){top:35%;left:22%;animation-delay:1.5s}
+.sc-sky-star:nth-child(6){top:28%;left:68%;animation-delay:.3s;width:1.5px;height:1.5px}
+.sc-sky-star:nth-child(7){top:42%;left:88%;animation-delay:1.8s}
+.sc-sky-star:nth-child(8){top:18%;left:45%;animation-delay:1.3s;width:1.5px;height:1.5px}
+.sc-sky-moon{
+  position:absolute;top:12%;right:12%;
+  width:60px;height:60px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, #f5d76e, #c0392b 90%);
+  box-shadow:0 0 60px rgba(243,156,18,.5), 0 0 120px rgba(243,156,18,.2);
+  animation:scStar 6s ease-in-out infinite;
 }
-.sc-slider-wrap input[type="range"]::-webkit-slider-thumb{
-  -webkit-appearance:none;appearance:none;
-  width:26px;height:26px;border-radius:50%;
-  background:linear-gradient(135deg,#fff,#f0f0f0);
-  border:3px solid #c0392b;
-  box-shadow:0 4px 12px rgba(192,57,43,.4);
-  cursor:pointer;transition:all .2s;
+
+/* Линия земли */
+.sc-ground-line{
+  position:absolute;
+  bottom:110px;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,transparent 0%,#c0392b 15%,#f39c12 50%,#c0392b 85%,transparent 100%);
+  box-shadow:0 0 25px rgba(243,156,18,.6), 0 4px 15px rgba(192,57,43,.4);
+  z-index:3;
 }
-.sc-slider-wrap input[type="range"]::-webkit-slider-thumb:hover{transform:scale(1.15);box-shadow:0 6px 16px rgba(192,57,43,.6)}
-.sc-slider-wrap input[type="range"]::-moz-range-thumb{
-  width:26px;height:26px;border-radius:50%;
-  background:#fff;border:3px solid #c0392b;
-  box-shadow:0 4px 12px rgba(192,57,43,.4);
-  cursor:pointer;
+.sc-ground-shadow{
+  position:absolute;
+  bottom:50px;left:0;right:0;height:60px;
+  background:linear-gradient(to top,rgba(192,57,43,.3),transparent);
+  z-index:1;
 }
-.sc-slider-value{
-  text-align:center;margin:12px 0 6px;
-  font-size:1.6rem;font-weight:900;color:#c0392b;
+
+/* Силуэты */
+.sc-figure{
+  position:absolute;
+  bottom:113px;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  z-index:5;
+}
+.sc-figure-a{
+  left:25%;
+}
+.sc-figure-b{
+  left:75%;
+  cursor:grab;
+  touch-action:none;
+}
+.sc-figure-b.dragging{cursor:grabbing}
+.sc-figure-b.dragging .sc-drag-pulse{display:none}
+
+.sc-figure-emoji{
+  font-size:var(--size,90px);
+  line-height:1;
+  display:block;
+  text-align:center;
+  transition:font-size .06s linear;
+  filter:drop-shadow(0 8px 24px rgba(0,0,0,.6));
+  user-select:none;
+}
+.sc-figure-a .sc-figure-emoji{
+  font-size:90px;
+  filter:drop-shadow(0 8px 24px rgba(108,99,255,.5));
+}
+.sc-figure-b .sc-figure-emoji{
+  font-size:var(--size,90px);
+  filter:drop-shadow(0 8px 24px rgba(192,57,43,.6));
+}
+
+/* Подпись под фигурой (вне stage) */
+.sc-figure-label{
+  position:absolute;
+  top:100%;
+  left:50%;
+  transform:translateX(-50%);
+  margin-top:12px;
+  text-align:center;
+  white-space:nowrap;
+}
+.sc-fl-name{
+  font-size:.85rem;
+  font-weight:900;
+  color:#fff;
+  margin-bottom:2px;
+  text-shadow:0 2px 8px rgba(0,0,0,.8);
+}
+.sc-fl-size{
+  display:inline-block;
+  font-size:.7rem;
+  font-weight:800;
+  padding:2px 10px;
+  border-radius:10px;
+  background:rgba(108,99,255,.25);
+  color:#b0a8ff;
   font-variant-numeric:tabular-nums;
+  border:1px solid rgba(108,99,255,.4);
+  backdrop-filter:blur(6px);
 }
-.sc-slider-labels{
-  display:flex;justify-content:space-between;
-  font-size:.7rem;color:#888;font-weight:700;
-  padding:0 4px;font-variant-numeric:tabular-nums;
+.sc-figure-b .sc-fl-size{
+  background:rgba(192,57,43,.25);
+  color:#ff8a80;
+  border-color:rgba(192,57,43,.4);
 }
+.sc-fl-unknown{
+  background:rgba(136,136,136,.25)!important;
+  color:#ccc!important;
+  border-color:rgba(136,136,136,.4)!important;
+  letter-spacing:2px;
+}
+
+/* Индикатор тяги */
+.sc-drag-indicator{
+  position:absolute;
+  bottom:100%;
+  left:50%;
+  transform:translateX(-50%);
+  margin-bottom:12px;
+  padding:8px 18px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#c0392b,#e74c3c);
+  color:#fff;
+  font-weight:900;
+  font-size:1.15rem;
+  font-variant-numeric:tabular-nums;
+  box-shadow:0 10px 28px rgba(192,57,43,.6);
+  white-space:nowrap;
+  opacity:0;
+  transition:opacity .2s;
+  pointer-events:none;
+  z-index:10;
+}
+.sc-figure-b.dragging .sc-drag-indicator{opacity:1}
+
+/* Пульсирующая подсказка */
+.sc-drag-pulse{
+  position:absolute;
+  bottom:100%;
+  left:50%;
+  transform:translateX(-50%);
+  margin-bottom:16px;
+  width:44px;height:44px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f39c12,#c0392b);
+  color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;
+  font-weight:900;
+  box-shadow:0 0 30px rgba(243,156,18,.7);
+  animation:scPulse 1.6s ease-in-out infinite;
+  pointer-events:none;
+  z-index:9;
+}
+
+/* Общий хинт */
+.sc-hint{
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:8px 18px;
+  border-radius:20px;
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.5px;
+  pointer-events:none;
+  transition:opacity .3s;
+  z-index:8;
+}
+.sc-hint.hidden{opacity:0}
 
 /* Buttons */
 .sc-btn{
@@ -304,12 +429,11 @@ hide:
 .sc-result-score{
   font-size:3rem;font-weight:900;line-height:1;margin-bottom:8px;
   background:linear-gradient(135deg,#f39c12,#c0392b);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
 .sc-result-verdict{font-size:1rem;color:#4a4a5e;font-weight:700;margin-bottom:20px}
 .sc-result-details{
-  max-width:360px;margin:0 auto 20px;text-align:left;
+  max-width:380px;margin:0 auto 20px;text-align:left;
   background:rgba(255,255,255,.7);border-radius:12px;padding:14px 18px;
 }
 .sc-result-row{
@@ -324,7 +448,7 @@ hide:
   font-size:.8rem!important;color:#888!important;
 }
 
-/* ═══ H2 ═══ */
+/* H2 */
 .sc-h2{
   font-size:1.3rem;font-weight:900;color:#1a1a2e;
   margin:0 0 16px;padding-bottom:12px;
@@ -333,7 +457,7 @@ hide:
   letter-spacing:-.3px;
 }
 
-/* ═══ ACHIEVEMENTS ═══ */
+/* ACHIEVEMENTS */
 .sc-achievements{
   background:#fff;border-radius:24px;padding:24px 28px;
   border:2px solid rgba(192,57,43,.1);margin-bottom:24px;
@@ -343,7 +467,6 @@ hide:
   text-align:center;padding:16px 10px;
   border-radius:16px;background:#f8f9fb;
   border:2px solid #e8eaf0;transition:all .3s;
-  position:relative;
 }
 .sc-badge.unlocked{
   background:linear-gradient(135deg,#fff8e1,#fff5f5);
@@ -357,7 +480,7 @@ hide:
 .sc-badge-desc{font-size:.68rem;color:#aaa;margin-top:4px;line-height:1.4}
 .sc-badge.unlocked .sc-badge-desc{color:#856404}
 
-/* ═══ LEADERBOARD ═══ */
+/* LEADERBOARD */
 .sc-leaderboard{
   background:#fff;border-radius:24px;padding:24px 28px;
   border:2px solid rgba(192,57,43,.1);
@@ -383,15 +506,21 @@ hide:
   .sc-stat{padding:10px 6px}
   .sc-stat-value{font-size:1.1rem}
   .sc-stat-label{font-size:.58rem}
-  .sc-game{padding:22px 18px;border-radius:20px}
-  .sc-objects{gap:8px;min-height:150px}
-  .sc-obj-emoji{font-size:3rem}
-  .sc-obj-name{font-size:.78rem}
-  .sc-obj-size{font-size:.68rem;padding:3px 10px}
-  .sc-vs-text{font-size:.9rem}
-  .sc-vs-question{font-size:1.6rem}
-  .sc-slider-value{font-size:1.3rem}
-  .sc-slider-labels{font-size:.62rem}
+
+  .sc-game{padding:14px;border-radius:20px}
+  .sc-stage{height:420px;border-radius:14px}
+  .sc-ground-line{bottom:90px}
+  .sc-ground-shadow{bottom:30px;height:50px}
+  .sc-figure{bottom:93px}
+  .sc-figure-a .sc-figure-emoji{font-size:70px}
+  .sc-figure-emoji{--size:70px}
+  .sc-fl-name{font-size:.72rem}
+  .sc-fl-size{font-size:.62rem;padding:2px 8px}
+  .sc-drag-indicator{font-size:1rem;padding:6px 14px}
+  .sc-drag-pulse{width:38px;height:38px;font-size:1.1rem}
+  .sc-hint{font-size:.7rem;padding:6px 14px}
+  .sc-sky-moon{width:44px;height:44px}
+
   .sc-result-score{font-size:2.4rem}
   .sc-result-icon{font-size:2.4rem}
   .sc-result-details{padding:12px 14px}
@@ -443,35 +572,37 @@ function waitForSb(attempts){
 
 /* ═══ ОБЪЕКТЫ ═══ */
 var OBJECTS = [
-  { id:'human',    emoji:'🧑',      name:'Марсианин',           size:1.7,      unit:'м' },
-  { id:'tree',     emoji:'🌳',      name:'Марсианское дерево',  size:5,        unit:'м' },
-  { id:'rover',    emoji:'🚙',      name:'Ровер Perseverance',  size:3,        unit:'м' },
-  { id:'rock',     emoji:'🪨',      name:'Скала-валун',         size:10,       unit:'м' },
-  { id:'storm',    emoji:'🌪️',      name:'Пылевой смерч',       size:1000,     unit:'м' },
-  { id:'olympus',  emoji:'🏔️',      name:'Гора Олимп',          size:21900,    unit:'м' },
-  { id:'crater',   emoji:'🕳️',      name:'Кратер Езеро',        size:45000,    unit:'м' },
-  { id:'phobos',   emoji:'🌑',      name:'Фобос (луна)',        size:22200,    unit:'м' },
-  { id:'deimos',   emoji:'🌒',      name:'Деймос (луна)',       size:12400,    unit:'м' },
-  { id:'marineris',emoji:'⛰️',      name:'Долина Маринер',      size:200000,   unit:'м' },
-  { id:'everest',  emoji:'🗻',      name:'Эверест (для сравн.)', size:8848,     unit:'м' },
-  { id:'burj',     emoji:'🏙️',      name:'Бурдж-Халифа',        size:828,      unit:'м' }
+  { id:'human',    emoji:'🧑',  name:'Марсианин',           size:1.7,    unit:'м' },
+  { id:'tree',     emoji:'🌳',  name:'Марсианское дерево',  size:5,      unit:'м' },
+  { id:'rover',    emoji:'🚙',  name:'Ровер Perseverance',  size:3,      unit:'м' },
+  { id:'rock',     emoji:'🪨',  name:'Скала-валун',         size:10,     unit:'м' },
+  { id:'storm',    emoji:'🌪️',  name:'Пылевой смерч',       size:1000,   unit:'м' },
+  { id:'olympus',  emoji:'🏔️',  name:'Гора Олимп',          size:21900,  unit:'м' },
+  { id:'crater',   emoji:'🕳️',  name:'Кратер Езеро',        size:45000,  unit:'м' },
+  { id:'phobos',   emoji:'🌑',  name:'Фобос (луна)',        size:22200,  unit:'м' },
+  { id:'deimos',   emoji:'🌒',  name:'Деймос (луна)',       size:12400,  unit:'м' },
+  { id:'marineris',emoji:'⛰️',  name:'Долина Маринер',      size:200000, unit:'м' },
+  { id:'everest',  emoji:'🗻',  name:'Эверест (для сравн.)', size:8848,   unit:'м' },
+  { id:'burj',     emoji:'🏙️',  name:'Бурдж-Халифа',        size:828,    unit:'м' }
 ];
 
 /* ═══ ДОСТИЖЕНИЯ ═══ */
 var ACHIEVEMENTS = [
-  { id:'first',      emoji:'🎯', name:'Первый выстрел',      desc:'Сыграть первый раунд' },
-  { id:'streak3',    emoji:'🔥', name:'Три подряд',          desc:'3 раунда подряд с 70%+' },
-  { id:'streak5',    emoji:'🌟', name:'Размерный гений',     desc:'5 подряд с 70%+ (скрытое)' },
-  { id:'perfect',    emoji:'💎', name:'Идеальный глазомер',  desc:'100% в одном раунде' },
-  { id:'hundred',    emoji:'🏅', name:'Центурион',           desc:'100 сыгранных раундов' }
+  { id:'first',   emoji:'🎯', name:'Первый выстрел',     desc:'Сыграть первый раунд' },
+  { id:'streak3', emoji:'🔥', name:'Три подряд',         desc:'3 раунда подряд с 70%+' },
+  { id:'streak5', emoji:'🌟', name:'Размерный гений',    desc:'5 подряд с 70%+ (скрытое)' },
+  { id:'perfect', emoji:'💎', name:'Идеальный глазомер', desc:'100% в одном раунде' },
+  { id:'hundred', emoji:'🏅', name:'Центурион',          desc:'100 сыгранных раундов' }
 ];
 
 /* ═══ СОСТОЯНИЕ ═══ */
 var state = {
   user: null,
   currentPair: null,
-  sliderValue: 50,       // 0-100
+  userLog: 1,           // log10 текущего отношения (по умолчанию ×10)
   answered: false,
+  baseSize: 90,         // базовая высота эталона в px (десктоп)
+  drag: { active: false, startY: 0, startLog: 0, pointerId: null, moved: false },
   stats: {
     totalRounds: 0,
     bestScore: 0,
@@ -485,33 +616,47 @@ var container = document.getElementById('scale-app');
 if (!container) return;
 
 /* ═══ РАСЧЁТ ═══ */
-// Slider 0..100 → log10(ratio) от -2 до 5 (7 порядков)
-function sliderToLog(v){ return -2 + (v / 100) * 7; }
+// log10 диапазон: -2 (объект в 100 раз меньше) до 5 (в 100 000 раз больше)
+var LOG_MIN = -2;
+var LOG_MAX = 5;
+var LOG_RANGE = LOG_MAX - LOG_MIN;
+
+// Маппинг log → визуальный размер в px (нелинейно сжимаем, чтобы влезало на экран)
+function logToPx(log, base){
+  // log=-2 → 0.4*base; log=0 → base; log=2 → 1.7*base; log=5 → 2.9*base
+  return base * (1 + (log - LOG_MIN) * 0.28);
+}
+
+// Маппинг drag-пикселей → log. 50px вертикального перетаскивания = 1 порядок (×10)
+var DRAG_SENSITIVITY = 0.02; // log за 1px
+
 function logToRatio(l){ return Math.pow(10, l); }
 
 function formatRatio(r){
   if (r >= 1){
     if (r >= 1000000) return '×' + (r/1000000).toFixed(1) + 'М';
+    if (r >= 10000) return '×' + Math.round(r/1000) + 'к';
     if (r >= 1000) return '×' + (r/1000).toFixed(1) + 'к';
     if (r >= 10) return '×' + Math.round(r);
-    return '×' + r.toFixed(2).replace(/\.?0+$/, '');
+    if (r >= 1.1) return '×' + r.toFixed(1);
+    return '×1';
   } else {
     var inv = 1/r;
-    return '÷' + (inv >= 10 ? Math.round(inv) : inv.toFixed(2).replace(/\.?0+$/, ''));
+    if (inv >= 10) return '÷' + Math.round(inv);
+    return '÷' + inv.toFixed(1);
   }
 }
 
 function formatSize(s){
-  if (s >= 1000000) return (s/1000000).toFixed(1) + 'М м';
-  if (s >= 1000) return (s/1000).toFixed(1) + 'к м';
+  if (s >= 1000000) return (s/1000000).toFixed(1) + ' млн м';
+  if (s >= 1000) return (s/1000).toFixed(1) + ' км';
   if (s >= 10) return Math.round(s) + ' м';
-  return s + ' м';
+  return s.toFixed(1) + ' м';
 }
 
 function calcScore(userLog, realLog){
   var diff = Math.abs(userLog - realLog);
-  var score = Math.max(0, Math.round(100 - diff * 25));
-  return score;
+  return Math.max(0, Math.round(100 - diff * 25));
 }
 
 /* ═══ RENDER ═══ */
@@ -535,7 +680,6 @@ function renderBadges(){
 }
 
 function pickPair(){
-  // Выбираем два разных случайных объекта
   var a, b;
   var max = OBJECTS.length;
   a = OBJECTS[Math.floor(Math.random() * max)];
@@ -545,26 +689,42 @@ function pickPair(){
   return { a: a, b: b };
 }
 
+function renderUserSize(){
+  var figureB = document.getElementById('sc-figure-b');
+  var emojiB = document.getElementById('sc-figure-emoji-b');
+  var size = logToPx(state.userLog, state.baseSize);
+  emojiB.style.setProperty('--size', size + 'px');
+  emojiB.style.fontSize = size + 'px';
+  document.getElementById('sc-drag-value').textContent = formatRatio(logToRatio(state.userLog));
+}
+
+function updateBaseSize(){
+  var mobile = window.innerWidth <= 640;
+  state.baseSize = mobile ? 70 : 90;
+}
+
 function newRound(){
   state.currentPair = pickPair();
   state.answered = false;
-  state.sliderValue = 50;
+  state.userLog = 0; // начинаем с ×1 (тот же размер)
+
+  updateBaseSize();
 
   var p = state.currentPair;
-  document.getElementById('sc-emoji-a').textContent = p.a.emoji;
+  document.getElementById('sc-figure-emoji-a').textContent = p.a.emoji;
   document.getElementById('sc-name-a').textContent = p.a.name;
   document.getElementById('sc-size-a').textContent = formatSize(p.a.size);
 
-  document.getElementById('sc-emoji-b').textContent = p.b.emoji;
+  document.getElementById('sc-figure-emoji-b').textContent = p.b.emoji;
   document.getElementById('sc-name-b').textContent = p.b.name;
-  document.querySelector('.sc-obj-unknown').textContent = '??? м';
+  document.getElementById('sc-size-b').textContent = '???';
 
-  document.getElementById('sc-slider').value = 50;
-  document.getElementById('sc-slider').disabled = false;
-  updateSliderDisplay();
+  renderUserSize();
 
   document.getElementById('sc-submit').style.display = 'flex';
   document.getElementById('sc-result').style.display = 'none';
+  document.getElementById('sc-hint').classList.remove('hidden');
+  document.getElementById('sc-drag-pulse').style.display = 'flex';
 
   // Плавное появление
   var game = document.getElementById('sc-game');
@@ -573,24 +733,16 @@ function newRound(){
   game.style.animation = 'scFadeIn .4s ease';
 }
 
-function updateSliderDisplay(){
-  var log = sliderToLog(state.sliderValue);
-  var ratio = logToRatio(log);
-  document.getElementById('sc-slider-mult').textContent = formatRatio(ratio);
-}
-
 function submitAnswer(){
   if (state.answered) return;
   state.answered = true;
 
   var p = state.currentPair;
-  var userLog = sliderToLog(state.sliderValue);
   var realRatio = p.b.size / p.a.size;
   var realLog = Math.log10(realRatio);
-  var score = calcScore(userLog, realLog);
-  var userRatio = logToRatio(userLog);
+  var score = calcScore(state.userLog, realLog);
+  var userRatio = logToRatio(state.userLog);
 
-  // Иконка и вердикт
   var icon, verdict;
   if (score >= 95){ icon = '🎯'; verdict = 'Идеально! Ты знаток Марса!'; }
   else if (score >= 80){ icon = '🎉'; verdict = 'Отличный глазомер!'; }
@@ -606,7 +758,6 @@ function submitAnswer(){
   document.getElementById('sc-answer-real').textContent = formatRatio(realRatio);
   document.getElementById('sc-answer-math').textContent = formatSize(p.a.size) + ' vs ' + formatSize(p.b.size);
 
-  // Обновляем статистику
   state.stats.totalRounds++;
   if (score > state.stats.bestScore) state.stats.bestScore = score;
   if (score >= 70){
@@ -618,7 +769,6 @@ function submitAnswer(){
     state.stats.currentStreak = 0;
   }
 
-  // Достижения
   var newAchievements = [];
   function unlock(id){
     if (state.stats.achievements.indexOf(id) === -1){
@@ -635,23 +785,20 @@ function submitAnswer(){
   renderStats();
   renderBadges();
 
-  // Показываем результат
   document.getElementById('sc-submit').style.display = 'none';
   document.getElementById('sc-result').style.display = 'block';
-  document.querySelector('.sc-obj-unknown').textContent = formatSize(p.b.size);
-  document.getElementById('sc-slider').disabled = true;
+  document.getElementById('sc-size-b').textContent = formatSize(p.b.size);
+  document.getElementById('sc-size-b').classList.remove('sc-fl-unknown');
+  document.getElementById('sc-hint').classList.add('hidden');
+  document.getElementById('sc-drag-pulse').style.display = 'none';
 
-  // Новые достижения — toast
   if (newAchievements.length){
     newAchievements.forEach(function(id, i){
       var a = ACHIEVEMENTS.filter(function(x){ return x.id === id; })[0];
-      setTimeout(function(){
-        showToast('🏆 Достижение: ' + a.name);
-      }, 400 + i * 700);
+      setTimeout(function(){ showToast('🏆 Достижение: ' + a.name); }, 400 + i * 700);
     });
   }
 
-  // Сохраняем в Supabase
   saveProgress(score);
 }
 
@@ -669,6 +816,52 @@ function showToast(msg){
     t.style.transform = 'translateX(-50%) translateY(120px)';
     setTimeout(function(){ t.remove(); }, 400);
   }, 3000);
+}
+
+/* ═══ DRAG ═══ */
+function setupDrag(){
+  var figureB = document.getElementById('sc-figure-b');
+  var hint = document.getElementById('sc-hint');
+  var pulse = document.getElementById('sc-drag-pulse');
+
+  function onDown(e){
+    if (state.answered) return;
+    e.preventDefault();
+    state.drag.active = true;
+    state.drag.startY = e.clientY;
+    state.drag.startLog = state.userLog;
+    state.drag.pointerId = e.pointerId;
+    state.drag.moved = false;
+    figureB.classList.add('dragging');
+    try { figureB.setPointerCapture(e.pointerId); } catch(err){}
+  }
+
+  function onMove(e){
+    if (!state.drag.active) return;
+    e.preventDefault();
+    var dy = state.drag.startY - e.clientY; // вверх → положительно
+    if (Math.abs(dy) > 3) state.drag.moved = true;
+    var newLog = state.drag.startLog + dy * DRAG_SENSITIVITY;
+    newLog = Math.max(LOG_MIN, Math.min(LOG_MAX, newLog));
+    state.userLog = newLog;
+    renderUserSize();
+    if (state.drag.moved){
+      hint.classList.add('hidden');
+      pulse.style.display = 'none';
+    }
+  }
+
+  function onUp(e){
+    if (!state.drag.active) return;
+    state.drag.active = false;
+    figureB.classList.remove('dragging');
+    try { figureB.releasePointerCapture(e.pointerId); } catch(err){}
+  }
+
+  figureB.addEventListener('pointerdown', onDown);
+  figureB.addEventListener('pointermove', onMove);
+  figureB.addEventListener('pointerup', onUp);
+  figureB.addEventListener('pointercancel', onUp);
 }
 
 /* ═══ SUPABASE ═══ */
@@ -740,21 +933,21 @@ async function loadLeaderboard(){
 
 /* ═══ INIT ═══ */
 function init(){
-  var slider = document.getElementById('sc-slider');
-  slider.addEventListener('input', function(){
-    state.sliderValue = parseInt(slider.value, 10);
-    updateSliderDisplay();
-  });
-
+  setupDrag();
   document.getElementById('sc-submit').addEventListener('click', submitAnswer);
   document.getElementById('sc-next').addEventListener('click', newRound);
+
+  window.addEventListener('resize', function(){
+    updateBaseSize();
+    renderUserSize();
+  });
 
   newRound();
   renderStats();
   renderBadges();
   loadProfile();
 
-  console.log('🔭 Космический глазомер загружен. Объектов: ' + OBJECTS.length);
+  console.log('🔭 Космический глазомер v2 загружен. Объектов: ' + OBJECTS.length);
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

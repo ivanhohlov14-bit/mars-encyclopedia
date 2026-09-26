@@ -171,6 +171,7 @@ extra_javascript:
   - javascripts/remove-nav-buttons.js
   - assets/js/mobile.js
   - assets/js/wikipedia-footer.js?v=7
+  - javascripts/experience-animations.js
   - assets/js/language-switcher.js
   - assets/js/scroll-mode.js
   - assets/js/collapse-menu.js?v=12

@@ -371,6 +371,7 @@ nav:
       - Квесты: quests/index.md
       - Квест-карта: quest-map/index.md
       - Космический глазомер: interactive/scale-guess.md
+      - Тест «Возьмут ли тебя на Марс?»: interactive/mars-test.md
 
   - Сообщество:
       - Форум: forum/index.md

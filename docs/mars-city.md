@@ -724,3 +724,989 @@ hide:
   .ct-observe{opacity:1;transform:none}
 }
 </style>
+
+<script>
+(function(){
+'use strict';
+if (window.__cityLoaded) return;
+window.__cityLoaded = true;
+
+/* ═══════════════════ КОНСТАНТЫ ═══════════════════ */
+var SAVE_KEY = 'mars-city-save-v1';
+var TICK_MS = 1000;
+var SAVE_EVERY = 5; /* каждые 5 сек */
+var EVENT_EVERY_MIN = 45; /* сек между событиями (минимум) */
+var EVENT_EVERY_MAX = 90;
+
+/* ═══════════════════ РЕСУРСЫ ═══════════════════ */
+var RESOURCES = {
+  energy:    { icon:'⚡', name:'Энергия' },
+  water:     { icon:'💧', name:'Вода' },
+  food:      { icon:'🍞', name:'Еда' },
+  oxygen:    { icon:'💨', name:'Кислород' },
+  materials: { icon:'🪨', name:'Материалы' },
+  population:{ icon:'👥', name:'Население' },
+  credits:   { icon:'🪙', name:'Кредиты' }
+};
+
+/* ═══════════════════ ЗДАНИЯ ═══════════════════ */
+var BUILDINGS = [
+  {
+    id:'dome', name:'Купол жилья', icon:'🏠', color:'#3498db',
+    desc:'Жилой купол для колонистов',
+    effect:'+1 вместимость на уровень',
+    cost:{ materials: 50 },
+    unlockPop: 0,
+    produce: null,
+    storage: { population: 1 }
+  },
+  {
+    id:'solar', name:'Солнечная станция', icon:'☀️', color:'#f39c12',
+    desc:'Генерирует энергию из солнца',
+    effect:'+3 ⚡/сек на уровень',
+    cost:{ materials: 30, credits: 20 },
+    unlockPop: 0,
+    produce: { energy: 3 }
+  },
+  {
+    id:'ice', name:'Ледобур', icon:'💧', color:'#3498db',
+    desc:'Добывает воду из подземного льда',
+    effect:'+2 💧/сек на уровень',
+    cost:{ materials: 40, energy: 30 },
+    unlockPop: 0,
+    produce: { water: 2 }
+  },
+  {
+    id:'greenhouse', name:'Теплица', icon:'🌱', color:'#27ae60',
+    desc:'Выращивает еду под LED-светом',
+    effect:'+2 🍞/сек на уровень',
+    cost:{ materials: 60, water: 40, energy: 20 },
+    unlockPop: 1,
+    produce: { food: 2 }
+  },
+  {
+    id:'oxy', name:'Генератор O₂', icon:'💨', color:'#87ceeb',
+    desc:'Производит кислород из атмосферного CO₂',
+    effect:'+2 💨/сек на уровень',
+    cost:{ materials: 70, energy: 50 },
+    unlockPop: 2,
+    produce: { oxygen: 2 }
+  },
+  {
+    id:'mine', name:'Шахта', icon:'⛏️', color:'#95a5a6',
+    desc:'Добывает материалы из марсианского грунта',
+    effect:'+4 🪨/сек на уровень',
+    cost:{ materials: 50, energy: 40 },
+    unlockPop: 2,
+    produce: { materials: 4 }
+  },
+  {
+    id:'factory', name:'Завод', icon:'🏭', color:'#9b59b6',
+    desc:'Перерабатывает ресурсы в кредиты',
+    effect:'+3 🪙/сек на уровень',
+    cost:{ materials: 100, energy: 60 },
+    unlockPop: 3,
+    produce: { credits: 3 }
+  },
+  {
+    id:'lab', name:'Лаборатория', icon:'🔬', color:'#a29bfe',
+    desc:'Исследования усиливают все здания',
+    effect:'+5% ко всему производству',
+    cost:{ materials: 150, credits: 100, energy: 80 },
+    unlockPop: 4,
+    produce: null,
+    multiplier: 0.05
+  },
+  {
+    id:'medbay', name:'Медблок', icon:'🏥', color:'#e74c3c',
+    desc:'Поддерживает здоровье колонистов',
+    effect:'+10 к макс. населению',
+    cost:{ materials: 120, water: 60, energy: 50 },
+    unlockPop: 5,
+    produce: null,
+    storage: { population: 10 }
+  },
+  {
+    id:'entertain', name:'Развлекательный центр', icon:'🎭', color:'#e91e63',
+    desc:'Поднимает мораль (меньше бунтов)',
+    effect:'+5% к производству за уровень',
+    cost:{ materials: 180, credits: 150 },
+    unlockPop: 8,
+    produce: null,
+    multiplier: 0.05
+  },
+  {
+    id:'shield', name:'Щит радиации', icon:'🛡️', color:'#16a085',
+    desc:'Защищает колонию от солнечных вспышек',
+    effect:'-20% урона от событий',
+    cost:{ materials: 250, energy: 150 },
+    unlockPop: 12,
+    produce: null,
+    protection: 0.2
+  },
+  {
+    id:'spaceport', name:'Космопорт', icon:'🚀', color:'#f5d76e',
+    desc:'Торговля с Землёй — большой бонус кредитов',
+    effect:'+15 🪙/сек за уровень',
+    cost:{ materials: 500, credits: 400, energy: 300 },
+    unlockPop: 15,
+    produce: { credits: 15 }
+  }
+];
+
+/* ═══════════════════ АПГРЕЙДЫ ЗДАНИЙ ═══════════════════ */
+var UPGRADES = [
+  { id:'up-dome',     name:'Прочные купола',   icon:'🏠', desc:'+1 вместимость к каждому куполу', maxLevel:5, baseCost:{materials:100,credits:50} },
+  { id:'up-solar',    name:'Солнечные трекеры', icon:'☀️', desc:'+20% к производству энергии',   maxLevel:5, baseCost:{materials:80,credits:60} },
+  { id:'up-ice',      name:'Глубокий бур',      icon:'💧', desc:'+20% к добыче воды',             maxLevel:5, baseCost:{materials:80,credits:60} },
+  { id:'up-green',    name:'Гидропоника',       icon:'🌱', desc:'+20% к производству еды',        maxLevel:5, baseCost:{materials:100,credits:80} },
+  { id:'up-oxy',      name:'Углеродный фильтр', icon:'💨', desc:'+20% к производству O₂',        maxLevel:5, baseCost:{materials:100,credits:80} },
+  { id:'up-mine',     name:'Лазерный бур',      icon:'⛏️', desc:'+20% к добыче материалов',      maxLevel:5, baseCost:{materials:100,credits:60} },
+  { id:'up-factory',  name:'Автоматизация',     icon:'🏭', desc:'+20% к производству кредитов',   maxLevel:5, baseCost:{materials:150,credits:100} },
+  { id:'up-economy',  name:'Экономика',         icon:'📈', desc:'+10% ко всем кредитам',          maxLevel:5, baseCost:{materials:200,credits:200} }
+];
+
+/* ═══════════════════ ДОСТИЖЕНИЯ ═══════════════════ */
+var ACHIEVEMENTS = [
+  { id:'first',       icon:'🚀', title:'Первая посадка',      desc:'Построить первое здание' },
+  { id:'pop5',        icon:'👥', title:'Пять колонистов',      desc:'Достичь 5 жителей' },
+  { id:'pop20',       icon:'👨‍👩‍👧', title:'Двадцать',         desc:'Достичь 20 жителей' },
+  { id:'pop50',       icon:'🏘️', title:'Пятьдесят',           desc:'Достичь 50 жителей' },
+  { id:'pop100',      icon:'🌆', title:'Сто жителей',          desc:'Достичь 100 жителей' },
+  { id:'build10',     icon:'🏗️', title:'Строитель',           desc:'Построить 10 зданий' },
+  { id:'build30',     icon:'🏙️', title:'Архитектор',          desc:'Построить 30 зданий' },
+  { id:'build50',     icon:'🌟', title:'Мастер',              desc:'Построить 50 зданий' },
+  { id:'energy100',   icon:'⚡', title:'Энергетик',            desc:'100 энергии в запасе' },
+  { id:'energy1k',    icon:'🔋', title:'Реактор',              desc:'1000 энергии в запасе' },
+  { id:'water500',    icon:'💧', title:'Водолей',              desc:'500 воды в запасе' },
+  { id:'food500',     icon:'🍞', title:'Хлебороб',             desc:'500 еды в запасе' },
+  { id:'mat1k',       icon:'🪨', title:'Шахтёр',               desc:'1000 материалов' },
+  { id:'credit1k',    icon:'💰', title:'Богач',                desc:'1000 кредитов' },
+  { id:'credit10k',   icon:'💎', title:'Магнат',               desc:'10 000 кредитов' },
+  { id:'upgrade5',    icon:'📈', title:'Улучшайзер',           desc:'5 улучшений' },
+  { id:'upgrade20',   icon:'⚙️', title:'Инженер',              desc:'20 улучшений' },
+  { id:'day10',       icon:'🌅', title:'10 сол',               desc:'Прожить 10 дней' },
+  { id:'day50',       icon:'🌍', title:'50 сол',               desc:'Прожить 50 дней' },
+  { id:'survive5',    icon:'🌪️', title:'Ветеран бурь',         desc:'Пережить 5 событий' }
+];
+
+/* ═══════════════════ СОБЫТИЯ ═══════════════════ */
+var EVENTS = [
+  {
+    id:'dust', type:'bad', icon:'🌪️', title:'Пылевая буря',
+    text:'Пыль блокирует солнечные панели!',
+    effect:function(s){ 
+      var loss = Math.round(s.resources.energy * 0.15);
+      s.resources.energy = Math.max(0, s.resources.energy - loss);
+      return '⚡ −' + loss + ' энергии';
+    }
+  },
+  {
+    id:'meteor', type:'bad', icon:'☄️', title:'Метеорит!',
+    text:'Небольшой метеорит повредил купол.',
+    effect:function(s){
+      var loss = Math.round(s.resources.materials * 0.1);
+      s.resources.materials = Math.max(0, s.resources.materials - loss);
+      return '🪨 −' + loss + ' материалов';
+    }
+  },
+  {
+    id:'supply', type:'good', icon:'🚀', title:'Груз с Земли',
+    text:'Земля прислала подкрепление!',
+    effect:function(s){
+      var bonus = 100 + Math.floor(Math.random() * 200);
+      s.resources.materials += bonus;
+      s.resources.credits += Math.floor(bonus / 2);
+      return '🪨 +' + bonus + ' материалов, 🪙 +' + Math.floor(bonus/2);
+    }
+  },
+  {
+    id:'ice', type:'good', icon:'💧', title:'Найден лёд',
+    text:'Бур нашёл огромный пласт подземного льда!',
+    effect:function(s){
+      var bonus = 80 + Math.floor(Math.random() * 120);
+      s.resources.water += bonus;
+      return '💧 +' + bonus + ' воды';
+    }
+  },
+  {
+    id:'newcomer', type:'good', icon:'👶', title:'Новый колонист',
+    text:'Прибыл новый специалист!',
+    effect:function(s){
+      var max = getMaxPop();
+      if (s.resources.population < max){
+        s.resources.population += 1;
+        return '👥 +1 колонист';
+      }
+      s.resources.credits += 50;
+      return '👥 мест нет, но 🪙 +50 компенсации';
+    }
+  },
+  {
+    id:'solar', type:'good', icon:'🌞', title:'Солнечный день',
+    text:'Отличная погода, панели работают на максимум!',
+    effect:function(s){
+      var bonus = 150 + Math.floor(Math.random() * 100);
+      s.resources.energy += bonus;
+      return '⚡ +' + bonus + ' энергии';
+    }
+  },
+  {
+    id:'tech', type:'good', icon:'🔬', title:'Прорыв технологий',
+    text:'Лаборатория совершила открытие!',
+    effect:function(s){
+      var bonus = 200;
+      s.resources.credits += bonus;
+      s.stats.totalEarned += bonus;
+      return '🪙 +' + bonus + ' кредитов';
+    }
+  }
+];
+
+/* ═══════════════════ СОСТОЯНИЕ ═══════════════════ */
+var state = {
+  resources: {
+    energy: 30, water: 20, food: 15, oxygen: 10,
+    materials: 60, population: 3, credits: 30
+  },
+  buildings: {},   /* { id: count } */
+  upgrades: {},    /* { upId: level } */
+  achievements: {},/* { id: true } */
+  day: 1,
+  tick: 0,         /* сколько тиков прошло */
+  speed: 1,
+  paused: false,
+  eventsCount: 0,
+  lastEventTick: 0,
+  nextEventTick: 60,
+  stats: {
+    totalBuilt: 0,
+    totalUpgrades: 0,
+    maxPop: 3,
+    totalEarned: 0,
+    totalEvents: 0
+  }
+};
+
+/* ═══════════════════ УТИЛИТЫ ═══════════════════ */
+function esc(s){ return String(s||'').replace(/[&<>"']/g,function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+
+function fmt(n){
+  n = Math.floor(n || 0);
+  if (n < 1000) return String(n);
+  if (n < 1000000) return (n/1000).toFixed(1).replace(/\.0$/,'') + 'K';
+  return (n/1000000).toFixed(1).replace(/\.0$/,'') + 'M';
+}
+
+function toast(msg, type){
+  type = type || 'info';
+  var t = document.createElement('div');
+  t.className = 'ct-toast ' + type;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(function(){ t.classList.add('show'); });
+  setTimeout(function(){
+    t.classList.remove('show');
+    setTimeout(function(){ t.remove(); }, 400);
+  }, 2400);
+}
+
+/* ═══════════════════ ПОЛУЧЕНИЕ ПРОИЗВОДСТВА ═══════════════════ */
+function getBuildingCount(id){
+  return state.buildings[id] || 0;
+}
+
+function getUpgradeLevel(id){
+  return state.upgrades[id] || 0;
+}
+
+function getMultiplier(){
+  var m = 1;
+  /* Лаборатория */
+  var labCount = getBuildingCount('lab');
+  var labDef = BUILDINGS.filter(function(b){ return b.id === 'lab'; })[0];
+  if (labDef && labDef.multiplier) m += labCount * labDef.multiplier;
+  /* Развлекательный центр */
+  var entCount = getBuildingCount('entertain');
+  var entDef = BUILDINGS.filter(function(b){ return b.id === 'entertain'; })[0];
+  if (entDef && entDef.multiplier) m += entCount * entDef.multiplier;
+  return m;
+}
+
+function getUpgradeMultiplier(resourceType){
+  /* Тип ресурса → id апгрейда */
+  var map = {
+    energy: 'up-solar',
+    water: 'up-ice',
+    food: 'up-green',
+    oxygen: 'up-oxy',
+    materials: 'up-mine',
+    credits: 'up-factory'
+  };
+  var upId = map[resourceType];
+  if (!upId) return 1;
+  var lvl = getUpgradeLevel(upId);
+  return 1 + lvl * 0.2;
+}
+
+function getCreditMultiplier(){
+  var lvl = getUpgradeLevel('up-economy');
+  return 1 + lvl * 0.1;
+}
+
+function getMaxPop(){
+  var base = 4; /* базовая вместимость */
+  var domeCount = getBuildingCount('dome');
+  var domeDef = BUILDINGS.filter(function(b){ return b.id === 'dome'; })[0];
+  var domeCap = domeCount * (domeDef.storage.population);
+  var upLvl = getUpgradeLevel('up-dome');
+  domeCap += domeCount * upLvl; /* +1 за уровень апгрейда */
+
+  var medbayCount = getBuildingCount('medbay');
+  var medDef = BUILDINGS.filter(function(b){ return b.id === 'medbay'; })[0];
+  var medCap = medbayCount * (medDef.storage.population || 0);
+
+  return base + domeCap + medCap;
+}
+
+/* ═══════════════════ ПРОИЗВОДСТВО ЗА ТИК ═══════════════════ */
+function calcProduction(){
+  var prod = { energy:0, water:0, food:0, oxygen:0, materials:0, credits:0 };
+  var m = getMultiplier();
+
+  BUILDINGS.forEach(function(b){
+    var count = getBuildingCount(b.id);
+    if (!count || !b.produce) return;
+    Object.keys(b.produce).forEach(function(res){
+      var base = b.produce[res] * count;
+      var upMult = getUpgradeMultiplier(res);
+      var creditMult = res === 'credits' ? getCreditMultiplier() : 1;
+      prod[res] += base * upMult * creditMult * m;
+    });
+  });
+
+  return prod;
+}
+
+/* ═══════════════════ СТОИМОСТЬ ═══════════════════ */
+function getBuildingCost(b){
+  var count = getBuildingCount(b.id);
+  var factor = Math.pow(1.15, count);
+  var cost = {};
+  Object.keys(b.cost).forEach(function(res){
+    cost[res] = Math.ceil(b.cost[res] * factor);
+  });
+  return cost;
+}
+
+function getUpgradeCost(up){
+  var lvl = getUpgradeLevel(up.id);
+  var factor = Math.pow(1.6, lvl);
+  var cost = {};
+  Object.keys(up.baseCost).forEach(function(res){
+    cost[res] = Math.ceil(up.baseCost[res] * factor);
+  });
+  return cost;
+}
+
+function canAfford(cost){
+  return Object.keys(cost).every(function(res){
+    return (state.resources[res] || 0) >= cost[res];
+  });
+}
+
+function payCost(cost){
+  Object.keys(cost).forEach(function(res){
+    state.resources[res] -= cost[res];
+  });
+}
+
+/* ═══════════════════ СТРОИТЕЛЬСТВО ═══════════════════ */
+function build(bid){
+  var b = BUILDINGS.filter(function(x){ return x.id === bid; })[0];
+  if (!b) return;
+
+  /* Проверка unlockPop */
+  if (b.unlockPop && state.resources.population < b.unlockPop){
+    toast('Нужно ' + b.unlockPop + ' жителей', 'error');
+    return;
+  }
+
+  var cost = getBuildingCost(b);
+  if (!canAfford(cost)){
+    toast('Не хватает ресурсов', 'error');
+    return;
+  }
+  payCost(cost);
+
+  state.buildings[bid] = (state.buildings[bid] || 0) + 1;
+  state.stats.totalBuilt++;
+
+  toast('✅ ' + b.icon + ' ' + b.name + ' построен', 'success');
+
+  /* Достижения */
+  checkAchievements();
+
+  render();
+  scheduleSave();
+}
+
+/* ═══════════════════ УЛУЧШЕНИЕ ═══════════════════ */
+function upgrade(upId){
+  var up = UPGRADES.filter(function(u){ return u.id === upId; })[0];
+  if (!up) return;
+
+  var lvl = getUpgradeLevel(up.id);
+  if (lvl >= up.maxLevel){
+    toast('Максимальный уровень', 'info');
+    return;
+  }
+
+  var cost = getUpgradeCost(up);
+  if (!canAfford(cost)){
+    toast('Не хватает ресурсов', 'error');
+    return;
+  }
+  payCost(cost);
+
+  state.upgrades[upId] = lvl + 1;
+  state.stats.totalUpgrades++;
+
+  toast('📈 ' + up.name + ' → ур. ' + (lvl + 1), 'gold');
+  checkAchievements();
+  render();
+  scheduleSave();
+}
+
+/* ═══════════════════ ДОСТИЖЕНИЯ ═══════════════════ */
+function checkAchievements(){
+  var unlocked = [];
+
+  function tryUnlock(id){
+    if (!state.achievements[id]){
+      state.achievements[id] = true;
+      var a = ACHIEVEMENTS.filter(function(x){ return x.id === id; })[0];
+      if (a) unlocked.push(a);
+    }
+  }
+
+  var s = state.resources;
+  var totalB = state.stats.totalBuilt;
+
+  if (totalB >= 1) tryUnlock('first');
+  if (s.population >= 5) tryUnlock('pop5');
+  if (s.population >= 20) tryUnlock('pop20');
+  if (s.population >= 50) tryUnlock('pop50');
+  if (s.population >= 100) tryUnlock('pop100');
+  if (totalB >= 10) tryUnlock('build10');
+  if (totalB >= 30) tryUnlock('build30');
+  if (totalB >= 50) tryUnlock('build50');
+  if (s.energy >= 100) tryUnlock('energy100');
+  if (s.energy >= 1000) tryUnlock('energy1k');
+  if (s.water >= 500) tryUnlock('water500');
+  if (s.food >= 500) tryUnlock('food500');
+  if (s.materials >= 1000) tryUnlock('mat1k');
+  if (s.credits >= 1000) tryUnlock('credit1k');
+  if (s.credits >= 10000) tryUnlock('credit10k');
+  if (state.stats.totalUpgrades >= 5) tryUnlock('upgrade5');
+  if (state.stats.totalUpgrades >= 20) tryUnlock('upgrade20');
+  if (state.day >= 10) tryUnlock('day10');
+  if (state.day >= 50) tryUnlock('day50');
+  if (state.stats.totalEvents >= 5) tryUnlock('survive5');
+
+  /* Показываем каждое новое */
+  unlocked.forEach(function(a, i){
+    setTimeout(function(){
+      toast('🏆 ' + a.title + '!', 'gold');
+    }, i * 800);
+  });
+}
+
+/* ═══════════════════ СОБЫТИЯ ═══════════════════ */
+function triggerEvent(){
+  var ev = EVENTS[Math.floor(Math.random() * EVENTS.length)];
+  var extra = ev.effect(state);
+  state.stats.totalEvents++;
+  state.eventsCount++;
+  checkAchievements();
+
+  /* Показываем баннер */
+  var banner = document.getElementById('ct-event-banner');
+  if (banner){
+    banner.className = 'ct-event-banner ' + ev.type;
+    banner.innerHTML =
+      '<span class="ct-event-banner-icon">' + ev.icon + '</span>' +
+      '<span><strong>' + esc(ev.title) + '</strong> — ' + esc(ev.text) + ' ' +
+      '<span style="opacity:.85">' + esc(extra) + '</span></span>';
+    banner.style.display = 'flex';
+    setTimeout(function(){ banner.style.display = 'none'; }, 5000);
+  }
+
+  /* Добавляем в ленту */
+  var feed = document.getElementById('ct-events');
+  if (feed){
+    var item = document.createElement('div');
+    item.className = 'ct-event-item ' + ev.type;
+    item.innerHTML =
+      '<div class="ct-event-icon">' + ev.icon + '</div>' +
+      '<div class="ct-event-text"><strong>' + esc(ev.title) + '.</strong> ' +
+        esc(ev.text) + ' ' + esc(extra) + '</div>' +
+      '<div class="ct-event-time">Сол ' + state.day + '</div>';
+    feed.insertBefore(item, feed.firstChild);
+
+    /* Оставляем только 8 последних */
+    while (feed.children.length > 8){
+      feed.removeChild(feed.lastChild);
+    }
+  }
+
+  render();
+}
+
+/* ═══════════════════ ТИК ═══════════════════ */
+function doTick(){
+  if (state.paused) return;
+
+  state.tick++;
+
+  /* День = 60 тиков */
+  var newDay = Math.floor(state.tick / 60) + 1;
+  if (newDay !== state.day){
+    state.day = newDay;
+    checkAchievements();
+  }
+
+  var prod = calcProduction();
+
+  /* Добавляем ресурсы */
+  Object.keys(prod).forEach(function(res){
+    if (res === 'population') return;
+    state.resources[res] = (state.resources[res] || 0) + prod[res];
+  });
+
+  /* Население растёт если еда+вода в избытке */
+  var maxPop = getMaxPop();
+  var pop = state.resources.population;
+  if (pop < maxPop && state.resources.food > 20 && state.resources.water > 20 && state.resources.oxygen > 10){
+    /* Растём на 1 жителя в минуту (60 тиков) */
+    if (state.tick % 60 === 0){
+      state.resources.population++;
+      if (state.resources.population > state.stats.maxPop){
+        state.stats.maxPop = state.resources.population;
+      }
+    }
+  }
+
+  /* Если еды/воды/кислорода нет — теряем жителей */
+  if (state.tick % 60 === 0){
+    if (state.resources.food < 5 && state.resources.population > 1){
+      state.resources.population--;
+      pushEventFeed('bad', '🍞', 'Голод!', 'Не хватает еды — потерян 1 колонист');
+    }
+    if (state.resources.water < 5 && state.resources.population > 1){
+      state.resources.population--;
+      pushEventFeed('bad', '💧', 'Жажда!', 'Не хватает воды — потерян 1 колонист');
+    }
+    if (state.resources.oxygen < 5 && state.resources.population > 1){
+      state.resources.population--;
+      pushEventFeed('bad', '💨', 'Удушье!', 'Не хватает кислорода — потерян 1 колонист');
+    }
+  }
+
+  /* Потребление: каждый житель тратит воду/еду/O₂ */
+  var consume = state.resources.population / 60; /* за тик */
+  state.resources.food = Math.max(0, state.resources.food - consume * 0.5);
+  state.resources.water = Math.max(0, state.resources.water - consume * 0.5);
+  state.resources.oxygen = Math.max(0, state.resources.oxygen - consume * 0.3);
+
+  /* Кредиты учитываем в totalEarned */
+  if (prod.credits > 0){
+    state.stats.totalEarned += prod.credits;
+  }
+
+  /* События */
+  if (state.tick >= state.nextEventTick){
+    triggerEvent();
+    state.nextEventTick = state.tick + EVENT_EVERY_MIN + Math.floor(Math.random() * (EVENT_EVERY_MAX - EVENT_EVERY_MIN));
+  }
+
+  /* Сохранение */
+  if (state.tick % SAVE_EVERY === 0){
+    save();
+  }
+
+  render();
+}
+
+function pushEventFeed(type, icon, title, text){
+  var feed = document.getElementById('ct-events');
+  if (!feed) return;
+  var item = document.createElement('div');
+  item.className = 'ct-event-item ' + type;
+  item.innerHTML =
+    '<div class="ct-event-icon">' + icon + '</div>' +
+    '<div class="ct-event-text"><strong>' + esc(title) + '.</strong> ' + esc(text) + '</div>' +
+    '<div class="ct-event-time">Сол ' + state.day + '</div>';
+  feed.insertBefore(item, feed.firstChild);
+  while (feed.children.length > 8){
+    feed.removeChild(feed.lastChild);
+  }
+}
+
+/* ═══════════════════ РЕНДЕР ═══════════════════ */
+function render(){
+  renderResources();
+  renderControls();
+  renderBuild();
+  renderUpgrade();
+  renderAchievements();
+  renderStats();
+}
+
+function renderResources(){
+  var prod = calcProduction();
+  Object.keys(RESOURCES).forEach(function(res){
+    var valEl = document.getElementById('r-' + res);
+    var rateEl = document.getElementById('rr-' + res);
+    if (!valEl || !rateEl) return;
+
+    var val = state.resources[res] || 0;
+    valEl.textContent = fmt(val);
+
+    var rate = prod[res] || 0;
+    if (res === 'population'){
+      rateEl.textContent = '/' + getMaxPop();
+      rateEl.className = 'ct-res-rate';
+    } else {
+      var sign = rate > 0 ? '+' : '';
+      rateEl.textContent = sign + rate.toFixed(1) + '/с';
+      rateEl.className = 'ct-res-rate ' + (rate > 0 ? 'positive' : rate < 0 ? 'negative' : '');
+    }
+
+    /* Подсветка при изменении */
+    if (val < 5){
+      valEl.style.color = '#ff8a80';
+    } else {
+      valEl.style.color = '#fff';
+    }
+  });
+}
+
+function renderControls(){
+  var dayEl = document.getElementById('ct-day');
+  var popNowEl = document.getElementById('ct-pop-now');
+  var popMaxEl = document.getElementById('ct-pop-max');
+  if (dayEl) dayEl.textContent = state.day;
+  if (popNowEl) popNowEl.textContent = state.resources.population;
+  if (popMaxEl) popMaxEl.textContent = getMaxPop();
+}
+
+function renderBuild(){
+  var grid = document.getElementById('ct-build-grid');
+  if (!grid) return;
+
+  grid.innerHTML = BUILDINGS.map(function(b){
+    var count = getBuildingCount(b.id);
+    var cost = getBuildingCost(b);
+    var afford = canAfford(cost);
+    var unlocked = !b.unlockPop || state.resources.population >= b.unlockPop;
+
+    var costHtml = Object.keys(cost).map(function(res){
+      var have = state.resources[res] || 0;
+      var cls = have >= cost[res] ? 'have' : 'lack';
+      return '<span class="ct-cost-item ' + cls + '">' + RESOURCES[res].icon + ' ' + fmt(cost[res]) + '</span>';
+    }).join('');
+
+    var disabled = !unlocked || !afford;
+    var btnLabel = !unlocked ? '🔒 Нужно ' + b.unlockPop + ' 👥'
+      : afford ? '🏗️ Построить' : '❌ Не хватает';
+
+    return '<div class="ct-card' + (disabled ? ' disabled' : '') + '" style="--card-color:' + b.color + '">' +
+      (count > 0 ? '<div class="ct-card-level owned">×' + count + '</div>' : '') +
+      '<div class="ct-card-head">' +
+        '<div class="ct-card-emoji">' + b.icon + '</div>' +
+        '<div class="ct-card-info">' +
+          '<div class="ct-card-title">' + esc(b.name) + '</div>' +
+          '<div class="ct-card-sub">' + esc(b.desc) + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="ct-card-effect">→ ' + esc(b.effect) + '</div>' +
+      '<div class="ct-card-cost">' + costHtml + '</div>' +
+      '<div class="ct-card-actions">' +
+        '<button class="ct-btn" ' + (disabled ? 'disabled' : '') + ' onclick="ctBuild(\'' + b.id + '\')">' + btnLabel + '</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderUpgrade(){
+  var grid = document.getElementById('ct-upgrade-grid');
+  if (!grid) return;
+
+  grid.innerHTML = UPGRADES.map(function(up){
+    var lvl = getUpgradeLevel(up.id);
+    var cost = getUpgradeCost(up);
+    var afford = canAfford(cost);
+    var maxed = lvl >= up.maxLevel;
+
+    var costHtml = maxed ? '<span class="ct-cost-item have">МАКСИМУМ</span>' :
+      Object.keys(cost).map(function(res){
+        var have = state.resources[res] || 0;
+        var cls = have >= cost[res] ? 'have' : 'lack';
+        return '<span class="ct-cost-item ' + cls + '">' + RESOURCES[res].icon + ' ' + fmt(cost[res]) + '</span>';
+      }).join('');
+
+    var levelsHtml = '';
+    for (var i = 0; i < up.maxLevel; i++){
+      levelsHtml += '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px;background:' + (i < lvl ? '#f39c12' : 'rgba(0,0,0,.1)') + '"></span>';
+    }
+
+    return '<div class="ct-card" style="--card-color:#f39c12">' +
+      '<div class="ct-card-level ' + (lvl > 0 ? 'owned' : '') + '">ур. ' + lvl + '/' + up.maxLevel + '</div>' +
+      '<div class="ct-card-head">' +
+        '<div class="ct-card-emoji">' + up.icon + '</div>' +
+        '<div class="ct-card-info">' +
+          '<div class="ct-card-title">' + esc(up.name) + '</div>' +
+          '<div class="ct-card-sub">' + esc(up.desc) + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div style="margin-bottom:12px">' + levelsHtml + '</div>' +
+      '<div class="ct-card-cost">' + costHtml + '</div>' +
+      '<div class="ct-card-actions">' +
+        '<button class="ct-btn" ' + (!afford || maxed ? 'disabled' : '') + ' onclick="ctUpgrade(\'' + up.id + '\')">' +
+          (maxed ? '✅ Готово' : afford ? '📈 Улучшить' : '❌ Не хватает') +
+        '</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderAchievements(){
+  var grid = document.getElementById('ct-ach-grid');
+  var fill = document.getElementById('ct-ach-fill');
+  var done = document.getElementById('ct-ach-done');
+  var total = document.getElementById('ct-ach-total');
+  if (!grid) return;
+
+  var unlocked = Object.keys(state.achievements).length;
+  if (done) done.textContent = unlocked;
+  if (total) total.textContent = ACHIEVEMENTS.length;
+  if (fill) fill.style.width = (unlocked / ACHIEVEMENTS.length * 100) + '%';
+
+  grid.innerHTML = ACHIEVEMENTS.map(function(a){
+    var has = state.achievements[a.id];
+    return '<div class="ct-ach' + (has ? '' : ' locked') + '">' +
+      '<div class="ct-ach-icon">' + a.icon + '</div>' +
+      '<div class="ct-ach-info">' +
+        '<div class="ct-ach-title">' + esc(a.title) + '</div>' +
+        '<div class="ct-ach-desc">' + esc(a.desc) + '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function renderStats(){
+  var els = {
+    total: document.getElementById('st-total'),
+    upg: document.getElementById('st-upg'),
+    maxpop: document.getElementById('st-maxpop'),
+    earned: document.getElementById('st-earned'),
+    events: document.getElementById('st-events'),
+    time: document.getElementById('st-time'),
+    goal: document.getElementById('st-goal')
+  };
+
+  if (els.total) els.total.textContent = state.stats.totalBuilt;
+  if (els.upg) els.upg.textContent = state.stats.totalUpgrades;
+  if (els.maxpop) els.maxpop.textContent = state.stats.maxPop;
+  if (els.earned) els.earned.textContent = fmt(state.stats.totalEarned);
+  if (els.events) els.events.textContent = state.stats.totalEvents;
+
+  if (els.time){
+    var sec = state.tick;
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    els.time.textContent = m + 'м ' + s + 'с';
+  }
+
+  /* Текущая цель */
+  if (els.goal){
+    var goal = '—';
+    if (state.stats.totalBuilt < 1) goal = 'Построить первый купол';
+    else if (state.resources.population < 5) goal = 'Достичь 5 жителей';
+    else if (state.resources.population < 10) goal = 'Достичь 10 жителей';
+    else if (state.stats.totalBuilt < 15) goal = 'Построить 15 зданий';
+    else if (state.resources.population < 25) goal = 'Достичь 25 жителей';
+    else if (state.resources.credits < 1000) goal = 'Заработать 1000 кредитов';
+    else if (state.stats.totalBuilt < 30) goal = 'Построить 30 зданий';
+    else if (state.resources.population < 50) goal = 'Достичь 50 жителей';
+    else goal = '🌟 Построить мегаполис!';
+    els.goal.textContent = goal;
+  }
+}
+
+/* ═══════════════════ СОХРАНЕНИЕ ═══════════════════ */
+var saveTimeout = null;
+function scheduleSave(){
+  if (saveTimeout) clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(save, 2000);
+}
+
+function save(){
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify(state));
+  } catch(e){ console.warn('[city] save failed:', e.message); }
+}
+
+function load(){
+  try {
+    var raw = localStorage.getItem(SAVE_KEY);
+    if (!raw) return false;
+    var data = JSON.parse(raw);
+    if (!data || !data.resources) return false;
+
+    /* Мягкое слияние — сохраняем структуру, но берём данные */
+    state.resources = Object.assign(state.resources, data.resources || {});
+    state.buildings = data.buildings || {};
+    state.upgrades = data.upgrades || {};
+    state.achievements = data.achievements || {};
+    state.day = data.day || 1;
+    state.tick = data.tick || 0;
+    state.speed = data.speed || 1;
+    state.eventsCount = data.eventsCount || 0;
+    state.lastEventTick = data.lastEventTick || 0;
+    state.nextEventTick = data.nextEventTick || 60;
+    state.stats = Object.assign(state.stats, data.stats || {});
+
+    return true;
+  } catch(e){
+    console.warn('[city] load failed:', e.message);
+    return false;
+  }
+}
+
+function reset(){
+  if (!confirm('Сбросить весь прогресс?')) return;
+  try { localStorage.removeItem(SAVE_KEY); } catch(e){}
+  state.resources = { energy:30, water:20, food:15, oxygen:10, materials:60, population:3, credits:30 };
+  state.buildings = {};
+  state.upgrades = {};
+  state.achievements = {};
+  state.day = 1;
+  state.tick = 0;
+  state.speed = 1;
+  state.eventsCount = 0;
+  state.nextEventTick = 60;
+  state.stats = { totalBuilt:0, totalUpgrades:0, maxPop:3, totalEarned:0, totalEvents:0 };
+  toast('🔄 Прогресс сброшен', 'info');
+  render();
+}
+
+/* ═══════════════════ ОБРАБОТЧИКИ ═══════════════════ */
+function initTabs(){
+  document.querySelectorAll('.ct-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('.ct-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      var target = tab.dataset.tab;
+      document.querySelectorAll('.ct-tab-content').forEach(function(c){
+        c.classList.toggle('active', c.dataset.content === target);
+      });
+    });
+  });
+}
+
+function initSpeed(){
+  document.querySelectorAll('.ct-spd').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.ct-spd').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var spd = parseInt(btn.dataset.speed, 10);
+      state.speed = spd;
+      state.paused = spd === 0;
+    });
+  });
+}
+
+function initObserve(){
+  var items = document.querySelectorAll('.ct-observe');
+  if (!items.length) return;
+  if (!('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('ct-visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){
+        e.target.classList.add('ct-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(function(el){ io.observe(el); });
+}
+
+/* ═══════════════════ ЭКСПОРТ ═══════════════════ */
+window.ctBuild = build;
+window.ctUpgrade = upgrade;
+
+/* ═══════════════════ ЦИКЛ ═══════════════════ */
+var tickCounter = 0;
+function loop(){
+  tickCounter++;
+  var tickRate = Math.max(1, Math.floor(TICK_MS / state.speed));
+  if (tickCounter % tickRate === 0){
+    doTick();
+  }
+  requestAnimationFrame(loop);
+}
+
+/* ═══════════════════ INIT ═══════════════════ */
+function init(){
+  var loaded = load();
+  initObserve();
+  initTabs();
+  initSpeed();
+
+  /* Восстановить скорость */
+  var spdBtn = document.querySelector('.ct-spd[data-speed="' + state.speed + '"]');
+  if (spdBtn){
+    document.querySelectorAll('.ct-spd').forEach(function(b){ b.classList.remove('active'); });
+    spdBtn.classList.add('active');
+  }
+
+  document.getElementById('ct-save').addEventListener('click', function(){
+    save();
+    toast('💾 Сохранено', 'success');
+  });
+  document.getElementById('ct-reset').addEventListener('click', reset);
+
+  /* Если загружено — приветствие */
+  var feed = document.getElementById('ct-events');
+  if (loaded && feed){
+    feed.innerHTML = '';
+    pushEventFeed('info', '💾', 'Прогресс загружен', 'Продолжай с того же места, командир!');
+  }
+
+  render();
+
+  /* Автосохранение при уходе */
+  window.addEventListener('beforeunload', save);
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) save();
+  });
+
+  /* Стартуем цикл */
+  loop();
+
+  console.log('🏙️ Игра «Марсианский город» загружена' + (loaded ? ' (прогресс восстановлен)' : ''));
+}
+
+if (document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+})();
+</script>

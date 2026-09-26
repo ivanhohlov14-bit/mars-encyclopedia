@@ -1,221 +1,239 @@
 ---
-title: Магазин — цифровые товары Марсианской энциклопедии
-description: Купить глиняные таланты и VIP-подписку. Онлайн-оплата, фиксированные цены, мгновенное зачисление.
+title: Магазин
+description: Купить глиняные таланты и VIP-статус для Марсианской энциклопедии
 comments: false
+hide:
+  - navigation
+  - toc
 ---
 
 <div id="shop-app">
 
 <!-- HERO -->
 <div class="sh-hero sh-observe">
+  <div class="sh-hero-bg"></div>
   <div class="sh-hero-stars">
     <div class="sh-star"></div><div class="sh-star"></div><div class="sh-star"></div>
     <div class="sh-star"></div><div class="sh-star"></div><div class="sh-star"></div>
     <div class="sh-star"></div><div class="sh-star"></div><div class="sh-star"></div>
-    <div class="sh-star"></div>
+    <div class="sh-star"></div><div class="sh-star"></div><div class="sh-star"></div>
   </div>
-  <img src="/assets/images/guild-coin.jpg" class="sh-hero-coin" alt="Глиняный талант">
   <div class="sh-hero-content">
-    <div class="sh-hero-tag">🛒 Магазин · Цифровые товары</div>
-    <div class="sh-hero-icon">🪙</div>
-    <h1 class="sh-hero-title">Магазин Марсианской энциклопедии</h1>
+    <div class="sh-hero-tag">Магазин · Марсианская энциклопедия</div>
+    <div class="sh-hero-icon">🛒</div>
+    <h1 class="sh-hero-title">Магазин</h1>
     <p class="sh-hero-sub">
-      Глиняные таланты и VIP-подписка. Оплата онлайн,
-      мгновенное зачисление на аккаунт.
+      Поддержи проект и получи больше возможностей. Все платежи безопасны через ЮKassa.
     </p>
     <div class="sh-hero-meta">
-      <span class="sh-meta-item">📦 4 товара</span>
-      <span class="sh-meta-item">💳 Онлайн-оплата</span>
+      <span class="sh-meta-item">🔒 Безопасно</span>
       <span class="sh-meta-item">⚡ Мгновенно</span>
+      <span class="sh-meta-item">💳 Карты · СБП · T-Pay</span>
     </div>
   </div>
 </div>
 
-<!-- INFO -->
-<div class="sh-info sh-observe">
-  <div class="sh-info-icon">ℹ️</div>
-  <div class="sh-info-body">
-    <strong>Все товары — цифровые.</strong> После оплаты они зачисляются
-    на ваш аккаунт мгновенно. Оплата разовая, чек приходит на email.
-    Возврат — по закону о защите прав потребителей.
+<!-- ПРОФИЛЬ (если залогинен) -->
+<div class="sh-profile sh-observe" id="sh-profile" style="display:none;">
+  <div class="sh-profile-inner">
+    <div class="sh-profile-avatar">
+      <img id="sh-avatar" src="" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="sh-profile-info">
+      <div class="sh-profile-name" id="sh-name">Загрузка...</div>
+      <div class="sh-profile-balance">
+        <img src="/assets/images/guild-coin.jpg" alt="🪙" class="sh-coin-icon" onerror="this.replaceWith(document.createTextNode('🪙'))">
+        <span id="sh-talents">0</span> <span class="sh-balance-label">талантов</span>
+      </div>
+      <div class="sh-profile-vip" id="sh-vip-status" style="display:none;">
+        👑 VIP активен · до <span id="sh-vip-until"></span>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- ФИЛЬТР -->
-<h2 class="sh-h2 sh-observe">🛍️ Товары</h2>
-
-<div class="sh-filter sh-observe">
-  <button class="sh-filter-btn active" data-cat="all">🌐 Все</button>
-  <button class="sh-filter-btn" data-cat="currency">🪙 Таланты</button>
-  <button class="sh-filter-btn" data-cat="vip">⭐ VIP</button>
-</div>
-
-<!-- СЕТКА ТОВАРОВ -->
-<div class="sh-grid sh-observe" id="sh-grid"></div>
-
-<!-- КАК ЭТО РАБОТАЕТ -->
-<h2 class="sh-h2 sh-observe">⚙️ Как это работает</h2>
-
-<div class="sh-how sh-observe">
-  <div class="sh-how-item">
-    <div class="sh-how-num">01</div>
-    <div class="sh-how-icon">🛒</div>
-    <div class="sh-how-title">Выбираете товар</div>
-    <div class="sh-how-text">Находите нужный набор талантов или VIP-подписку.</div>
-  </div>
-  <div class="sh-how-item">
-    <div class="sh-how-num">02</div>
-    <div class="sh-how-icon">💳</div>
-    <div class="sh-how-title">Оплачиваете онлайн</div>
-    <div class="sh-how-text">Безопасный платёж: карта, СБП, кошелёк.</div>
-  </div>
-  <div class="sh-how-item">
-    <div class="sh-how-num">03</div>
-    <div class="sh-how-icon">⚡</div>
-    <div class="sh-how-title">Получаете мгновенно</div>
-    <div class="sh-how-text">Таланты и VIP зачисляются на аккаунт за секунды.</div>
-  </div>
-  <div class="sh-how-item">
-    <div class="sh-how-num">04</div>
-    <div class="sh-how-icon">📧</div>
-    <div class="sh-how-title">Чек на почту</div>
-    <div class="sh-how-text">ЮKassa автоматически присылает чек на email.</div>
+<!-- ПРЕДУПРЕЖДЕНИЕ (если НЕ залогинен) -->
+<div class="sh-warning sh-observe" id="sh-warning" style="display:none;">
+  <div class="sh-warning-icon">🔒</div>
+  <div class="sh-warning-body">
+    <div class="sh-warning-title">Войди, чтобы купить</div>
+    <div class="sh-warning-text">
+      Для покупки нужен аккаунт — так мы знаем, кому выдать товар.
+    </div>
+    <a href="/login/" class="sh-warning-btn">🔐 Войти</a>
   </div>
 </div>
 
-<!-- FAQ -->
-<h2 class="sh-h2 sh-observe">❓ Частые вопросы</h2>
-<div class="sh-faq sh-observe">
-  <details class="sh-faq-item">
-    <summary><span>Как быстро зачисляются таланты?</span><span class="sh-faq-icon">▸</span></summary>
-    <div class="sh-faq-answer">
-      <strong>Мгновенно</strong>. После оплаты баланс обновляется за 1–2 секунды.
-      Обновите страницу профиля — увидите новое количество.
-    </div>
-  </details>
-
-  <details class="sh-faq-item">
-    <summary><span>Что даёт VIP-подписка?</span><span class="sh-faq-icon">▸</span></summary>
-    <div class="sh-faq-answer">
-      Золотой бейдж в профиле, кастомный цвет ника, ранний доступ
-      к новым статьям, приоритетную поддержку. Действует
-      <strong>12 месяцев</strong>.
-    </div>
-  </details>
-
-  <details class="sh-faq-item">
-    <summary><span>Можно ли вернуть деньги?</span><span class="sh-faq-icon">▸</span></summary>
-    <div class="sh-faq-answer">
-      Возврат возможен, если таланты не потрачены или VIP не активирован.
-      Напишите в течение 7 дней через <a href="/feedback/">форму обратной связи</a>.
-    </div>
-  </details>
-
-  <details class="sh-faq-item">
-    <summary><span>Какой чек я получу?</span><span class="sh-faq-icon">▸</span></summary>
-    <div class="sh-faq-answer">
-      ЮKassa автоматически формирует <strong>чек самозанятого</strong>
-      и отправляет его на email.
-    </div>
-  </details>
-
-  <details class="sh-faq-item">
-    <summary><span>Что такое глиняные таланты?</span><span class="sh-faq-icon">▸</span></summary>
-    <div class="sh-faq-answer">
-      Это <strong>внутренняя валюта сайта</strong>. Используется
-      для покупки функций на сайте. Не является денежным средством.
-    </div>
-  </details>
+<!-- ВКЛАДКИ -->
+<div class="sh-tabs sh-observe">
+  <button class="sh-tab active" data-cat="all" type="button">🌐 Все товары</button>
+  <button class="sh-tab" data-cat="talents" type="button">🪙 Таланты</button>
+  <button class="sh-tab" data-cat="vip" type="button">👑 VIP-статус</button>
 </div>
 
-<!-- CTA -->
-<div class="sh-cta sh-observe">
-  <div class="sh-cta-icon">💬</div>
-  <div class="sh-cta-body">
-    <div class="sh-cta-title">Есть вопросы?</div>
-    <p>Напишите нам — ответим в течение 1–3 дней.</p>
-    <a href="/feedback/" class="sh-cta-btn">📬 Написать в поддержку</a>
+<!-- КАТАЛОГ -->
+<div class="sh-catalog sh-observe">
+  <div class="sh-grid" id="sh-grid"></div>
+</div>
+
+<!-- ПОДДЕРЖКА -->
+<div class="sh-support sh-observe">
+  <div class="sh-support-icon">💬</div>
+  <div class="sh-support-body">
+    <div class="sh-support-title">Возникли проблемы?</div>
+    <div class="sh-support-text">
+      Напиши на <a href="mailto:mars-wiki@yandex.ru">mars-wiki@yandex.ru</a> —
+      поможем с оплатой, возвратом или выдачей.
+    </div>
   </div>
 </div>
 
-<!-- РЕКВИЗИТЫ (компактный блок) -->
-<p class="sh-req">
-  Ознакомиться с <a href="/requisites/">реквизитами продавца</a>
-</p>
+<!-- МОДАЛКА ПОДТВЕРЖДЕНИЯ -->
+<div class="sh-modal-bg" id="sh-modal" style="display:none;">
+  <div class="sh-modal">
+    <button class="sh-modal-close" type="button" onclick="shCloseModal()">✕</button>
+    <div class="sh-modal-icon" id="sh-modal-icon">🪙</div>
+    <div class="sh-modal-title" id="sh-modal-title">Товар</div>
+    <div class="sh-modal-price" id="sh-modal-price">990 ₽</div>
+    <div class="sh-modal-desc" id="sh-modal-desc">Описание</div>
+    <div class="sh-modal-field">
+      <label for="sh-modal-email">Email для чека</label>
+      <input type="email" id="sh-modal-email" placeholder="your@email.com" autocomplete="email">
+    </div>
+    <div class="sh-modal-actions">
+      <button class="sh-btn-secondary" type="button" onclick="shCloseModal()">Отмена</button>
+      <button class="sh-btn-primary" type="button" id="sh-modal-buy">💳 Перейти к оплате</button>
+    </div>
+    <div class="sh-modal-note">🔒 Безопасная оплата через ЮKassa</div>
+  </div>
+</div>
+
+<!-- 4 СКРЫТЫЕ ФОРМЫ ЮKASSA -->
+<link rel="stylesheet" href="https://yookassa.ru/integration/simplepay/css/yookassa_construct_form.css?v=1.35.0">
+<div id="sh-forms" style="position:absolute;left:-9999px;top:-9999px;">
+
+  <!-- ФОРМА 1: 100 ТАЛАНТОВ (90 ₽) -->
+  <form target="_blank" class="yoomoney-payment-form sh-ym-form" id="sh-form-100" action="https://yookassa.ru/integration/simplepay/payment" method="post" accept-charset="utf-8">
+    <div class="ym-products"><div class="ym-product">
+      <input type="hidden" name="text" value="100 глиняных талантов">
+      <input type="hidden" name="price" value="90">
+      <input type="hidden" name="quantity" value="1">
+      <input type="hidden" name="paymentSubjectType" value="service">
+      <input type="hidden" name="paymentMethodType" value="full_prepayment">
+      <input type="hidden" name="tax" value="1">
+    </div></div>
+    <input type="hidden" name="ym_merchant_receipt" value="">
+    <input name="cps_email" type="hidden" value="">
+    <input name="shopSuccessURL" type="hidden" value="https://mars-wiki.ru/payment-success/">
+    <input name="shopFailURL" type="hidden" value="https://mars-wiki.ru/payment-error/">
+    <input name="customerNumber" type="hidden" value="">
+    <input name="sum" type="hidden" value="90">
+    <input name="shopId" type="hidden" value="1474664">
+  </form>
+
+  <!-- ФОРМА 2: 500 ТАЛАНТОВ (290 ₽) -->
+  <form target="_blank" class="yoomoney-payment-form sh-ym-form" id="sh-form-500" action="https://yookassa.ru/integration/simplepay/payment" method="post" accept-charset="utf-8">
+    <div class="ym-products"><div class="ym-product">
+      <input type="hidden" name="text" value="500 глиняных талантов">
+      <input type="hidden" name="price" value="290">
+      <input type="hidden" name="quantity" value="1">
+      <input type="hidden" name="paymentSubjectType" value="service">
+      <input type="hidden" name="paymentMethodType" value="full_prepayment">
+      <input type="hidden" name="tax" value="1">
+    </div></div>
+    <input type="hidden" name="ym_merchant_receipt" value="">
+    <input name="cps_email" type="hidden" value="">
+    <input name="shopSuccessURL" type="hidden" value="https://mars-wiki.ru/payment-success/">
+    <input name="shopFailURL" type="hidden" value="https://mars-wiki.ru/payment-error/">
+    <input name="customerNumber" type="hidden" value="">
+    <input name="sum" type="hidden" value="290">
+    <input name="shopId" type="hidden" value="1474664">
+  </form>
+
+  <!-- ФОРМА 3: 1000 ТАЛАНТОВ (490 ₽) -->
+  <form target="_blank" class="yoomoney-payment-form sh-ym-form" id="sh-form-1000" action="https://yookassa.ru/integration/simplepay/payment" method="post" accept-charset="utf-8">
+    <div class="ym-products"><div class="ym-product">
+      <input type="hidden" name="text" value="1000 глиняных талантов">
+      <input type="hidden" name="price" value="490">
+      <input type="hidden" name="quantity" value="1">
+      <input type="hidden" name="paymentSubjectType" value="service">
+      <input type="hidden" name="paymentMethodType" value="full_prepayment">
+      <input type="hidden" name="tax" value="1">
+    </div></div>
+    <input type="hidden" name="ym_merchant_receipt" value="">
+    <input name="cps_email" type="hidden" value="">
+    <input name="shopSuccessURL" type="hidden" value="https://mars-wiki.ru/payment-success/">
+    <input name="shopFailURL" type="hidden" value="https://mars-wiki.ru/payment-error/">
+    <input name="customerNumber" type="hidden" value="">
+    <input name="sum" type="hidden" value="490">
+    <input name="shopId" type="hidden" value="1474664">
+  </form>
+
+  <!-- ФОРМА 4: VIP 12 МЕСЯЦЕВ (990 ₽) -->
+  <form target="_blank" class="yoomoney-payment-form sh-ym-form" id="sh-form-vip" action="https://yookassa.ru/integration/simplepay/payment" method="post" accept-charset="utf-8">
+    <div class="ym-products"><div class="ym-product">
+      <input type="hidden" name="text" value="VIP-подписка на 12 месяцев">
+      <input type="hidden" name="price" value="990">
+      <input type="hidden" name="quantity" value="1">
+      <input type="hidden" name="paymentSubjectType" value="service">
+      <input type="hidden" name="paymentMethodType" value="full_prepayment">
+      <input type="hidden" name="tax" value="1">
+    </div></div>
+    <input type="hidden" name="ym_merchant_receipt" value="">
+    <input name="cps_email" type="hidden" value="">
+    <input name="shopSuccessURL" type="hidden" value="https://mars-wiki.ru/payment-success/">
+    <input name="shopFailURL" type="hidden" value="https://mars-wiki.ru/payment-error/">
+    <input name="customerNumber" type="hidden" value="">
+    <input name="sum" type="hidden" value="990">
+    <input name="shopId" type="hidden" value="1474664">
+  </form>
+
+</div>
 
 </div>
 
 <style>
 /* ═══ ROOT ═══ */
 #shop-app{
-  max-width:1100px;margin:0 auto;padding:0 8px 60px;
+  --sh-gold:#f5d76e; --sh-gold-dark:#d4af37; --sh-orange:#f39c12;
+  --sh-purple:#6C63FF; --sh-dark:#1a1a2e;
+  max-width:1080px; margin:0 auto; padding:0 8px 60px;
   font-family:-apple-system,'Segoe UI',Roboto,sans-serif;
-  color:#1a1a2e;line-height:1.7;
+  color:#1a1a2e; line-height:1.6;
   -webkit-tap-highlight-color:transparent;
 }
+#shop-app *{box-sizing:border-box}
 #shop-app a{text-decoration:none!important;border-bottom:none!important}
 
-@keyframes shFadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shSpin{to{transform:rotate(360deg)}}
+@keyframes shFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes shFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes shShine{0%{background-position:-200% center}100%{background-position:200% center}}
 @keyframes shStar{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
-@keyframes shCoinGlow{0%,100%{filter:drop-shadow(0 0 40px rgba(243,156,18,.6))}50%{filter:drop-shadow(0 0 80px rgba(243,156,18,.9))}}
-@keyframes shCrownFloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
-@keyframes shCrownGlow{
-  0%,100%{ filter:drop-shadow(0 0 12px rgba(243,156,18,.7)) drop-shadow(0 0 30px rgba(243,156,18,.4)); }
-  50%{ filter:drop-shadow(0 0 30px rgba(243,156,18,1)) drop-shadow(0 0 60px rgba(243,156,18,.7)); }
-}
+@keyframes shShine{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes shPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes shCoinSpin{0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)}}
+@keyframes shModalIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
 
-/* Монеты — плавный полёт */
-@keyframes shCoinFloatA{
-  0%,100%{ transform:translate(0,0) rotate(-3deg); }
-  50%{ transform:translate(0,-14px) rotate(3deg); }
-}
-@keyframes shCoinFloatB{
-  0%,100%{ transform:translate(0,0) rotate(2deg) scale(1); }
-  50%{ transform:translate(0,-10px) rotate(-3deg) scale(1.05); }
-}
-@keyframes shCoinFloatC{
-  0%,100%{ transform:translate(0,0) rotate(0) scale(1); }
-  50%{ transform:translate(0,-12px) rotate(-4deg) scale(1.03); }
-}
-
-/* Свечение монет — 3 уровня */
-@keyframes shGlowSoft{
-  0%,100%{ filter:drop-shadow(0 0 8px rgba(243,156,18,.4)) brightness(1); }
-  50%{ filter:drop-shadow(0 0 18px rgba(243,156,18,.7)) brightness(1.08); }
-}
-@keyframes shGlowMedium{
-  0%,100%{ filter:drop-shadow(0 0 14px rgba(243,156,18,.65)) brightness(1.06); }
-  50%{ filter:drop-shadow(0 0 30px rgba(243,156,18,1)) brightness(1.18); }
-}
-@keyframes shGlowStrong{
-  0%,100%{ filter:drop-shadow(0 0 22px rgba(243,156,18,.85)) brightness(1.1) saturate(1.15); }
-  50%{ filter:drop-shadow(0 0 45px rgba(243,156,18,1)) brightness(1.28) saturate(1.3); }
-}
-
-.sh-observe{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+.sh-observe{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.16,1,.3,1)}
 .sh-observe.sh-visible{opacity:1;transform:translateY(0)}
 
 /* ═══ HERO ═══ */
 .sh-hero{
-  position:relative;border-radius:26px;
-  padding:60px 36px 60px;
-  color:#fff;margin-bottom:24px;overflow:hidden;text-align:center;
+  position:relative; border-radius:26px; padding:56px 32px; color:#fff;
+  margin-bottom:24px; overflow:hidden; text-align:center; min-height:340px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 30px 90px -20px rgba(0,0,0,.55); isolation:isolate;
+}
+.sh-hero-bg{
+  position:absolute; inset:0; z-index:0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(243,156,18,.3), transparent 55%),
-    radial-gradient(circle at 80% 70%, rgba(155,89,182,.25), transparent 55%),
-    linear-gradient(135deg,#0a0a1e 0%,#1a1a2e 40%,#2d1b3d 70%,#0f3460 100%);
-  box-shadow:0 30px 90px -20px rgba(0,0,0,.7);
-  min-height:460px;
-  display:flex;align-items:center;justify-content:center;
+    radial-gradient(circle at 20% 30%,rgba(245,215,110,.25),transparent 55%),
+    radial-gradient(circle at 80% 70%,rgba(108,99,255,.25),transparent 55%),
+    linear-gradient(135deg,#0a0f1e 0%,#1a1a2e 40%,#2d1b3d 70%,#4a2a1a 100%);
 }
-.sh-hero-stars{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.sh-star{
-  position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;
-  box-shadow:0 0 6px #fff;animation:shStar 3.5s ease-in-out infinite;
-}
-.sh-star:nth-child(1){top:12%;left:8%;animation-delay:0s}
+.sh-hero-stars{position:absolute; inset:0; pointer-events:none; z-index:2}
+.sh-star{position:absolute; width:2px; height:2px; background:#fff; border-radius:50%; box-shadow:0 0 6px #fff; animation:shStar 3.5s ease-in-out infinite}
+.sh-star:nth-child(1){top:12%;left:8%}
 .sh-star:nth-child(2){top:22%;left:18%;animation-delay:.4s;width:1.5px;height:1.5px}
 .sh-star:nth-child(3){top:68%;left:12%;animation-delay:.9s}
 .sh-star:nth-child(4){top:32%;left:82%;animation-delay:1.4s}
@@ -225,472 +243,348 @@ comments: false
 .sh-star:nth-child(8){top:42%;left:94%;animation-delay:1.8s}
 .sh-star:nth-child(9){top:84%;left:28%;animation-delay:2.1s}
 .sh-star:nth-child(10){top:8%;left:38%;animation-delay:1.5s}
+.sh-star:nth-child(11){top:64%;left:66%;animation-delay:.7s}
+.sh-star:nth-child(12){top:28%;left:22%;animation-delay:1.9s;width:1.5px;height:1.5px}
 
-/* ИЗОБРАЖЕНИЕ МОНЕТЫ В HERO */
-.sh-hero-coin{
-  position:absolute;
-  top:50%;right:10%;
-  width:200px;height:200px;
-  border-radius:50%;
-  object-fit:cover;
-  transform:translateY(-50%);
-  opacity:.55;
-  animation:
-    shFloat 5s ease-in-out infinite,
-    shCoinGlow 6s ease-in-out infinite;
-  pointer-events:none;
-  z-index:1;
-  filter:drop-shadow(0 0 60px rgba(243,156,18,.7));
-}
-
-.sh-hero-content{position:relative;z-index:3;max-width:720px;margin:0 auto}
+.sh-hero-content{position:relative; z-index:3; max-width:640px}
 .sh-hero-tag{
-  display:inline-block;padding:7px 18px;border-radius:22px;
-  background:rgba(243,156,18,.18);border:1px solid rgba(243,156,18,.5);
-  color:#f5d76e;font-size:.75rem;font-weight:800;
-  letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;
+  display:inline-block; padding:7px 18px; border-radius:22px;
+  background:rgba(245,215,110,.18); border:1px solid rgba(245,215,110,.5);
+  color:#ffdf5e; font-size:.75rem; font-weight:800;
+  letter-spacing:1.5px; text-transform:uppercase; margin-bottom:16px;
   backdrop-filter:blur(10px);
 }
 .sh-hero-icon{
-  display:inline-block;font-size:4rem;margin-bottom:10px;
+  display:inline-block; font-size:4rem; margin-bottom:12px;
   animation:shFloat 4s ease-in-out infinite;
-  filter:drop-shadow(0 8px 32px rgba(243,156,18,.7));
-  line-height:1;
+  filter:drop-shadow(0 8px 32px rgba(245,215,110,.6)); line-height:1;
 }
 .sh-hero-title{
-  font-size:2.4rem;font-weight:900;margin:0 0 16px;
-  letter-spacing:-.6px;line-height:1.15;
-  background:linear-gradient(90deg,#fff 0%,#f5d76e 25%,#fff 50%,#f5d76e 75%,#fff 100%);
+  font-size:2.4rem; font-weight:900; margin:0 0 14px; letter-spacing:-.6px;
+  background:linear-gradient(90deg,#fff,#ffdf5e,#fff,#ffdf5e,#fff);
   background-size:200% auto;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;animation:shShine 6s linear infinite;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  animation:shShine 5s linear infinite;
   text-shadow:0 4px 20px rgba(0,0,0,.5);
 }
-.sh-hero-sub{font-size:1.05rem;opacity:.92;margin:0 0 24px;line-height:1.65;text-shadow:0 2px 8px rgba(0,0,0,.5)}
-.sh-hero-meta{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.sh-hero-sub{font-size:1rem; opacity:.92; margin:0 0 22px; line-height:1.6}
+.sh-hero-meta{display:flex; justify-content:center; gap:10px; flex-wrap:wrap}
 .sh-meta-item{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:8px 16px;border-radius:22px;
-  background:rgba(255,255,255,.1);backdrop-filter:blur(10px);
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 16px; border-radius:22px;
+  background:rgba(255,255,255,.1); backdrop-filter:blur(10px);
   border:1px solid rgba(255,255,255,.2);
-  font-size:.8rem;font-weight:700;color:#fff;
+  font-size:.8rem; font-weight:700; color:#fff;
 }
 
-/* ═══ INFO ═══ */
-.sh-info{
-  display:flex;gap:16px;align-items:flex-start;
-  padding:20px 24px;margin-bottom:20px;
-  background:linear-gradient(135deg,rgba(52,152,219,.08),rgba(135,206,235,.04));
-  border-left:5px solid #3498db;border-radius:16px;
-  font-size:.95rem;line-height:1.7;
+/* ═══ PROFILE ═══ */
+.sh-profile{
+  margin-bottom:20px; padding:16px 20px;
+  background:linear-gradient(135deg,#fff 0%,#fafbfd 100%);
+  border-radius:18px; border:2px solid rgba(245,215,110,.3);
+  box-shadow:0 8px 24px rgba(245,215,110,.15);
 }
-.sh-info-icon{font-size:1.8rem;flex-shrink:0;line-height:1}
-.sh-info-body{color:#444}
-.sh-info-body strong{color:#3498db;font-weight:900}
+.sh-profile-inner{display:flex; align-items:center; gap:16px; flex-wrap:wrap}
+.sh-profile-avatar{
+  width:56px; height:56px; border-radius:50%; flex-shrink:0; overflow:hidden;
+  background:linear-gradient(135deg,#f5d76e,#f39c12);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 12px rgba(243,156,18,.4);
+}
+.sh-profile-avatar img{width:100%; height:100%; object-fit:cover; display:block}
+.sh-profile-info{flex:1; min-width:180px}
+.sh-profile-name{font-size:1.05rem; font-weight:900; color:#1a1a2e; margin-bottom:4px}
+.sh-profile-balance{display:flex; align-items:center; gap:6px; font-size:.95rem; font-weight:800; color:#e67e22}
+.sh-coin-icon{width:22px; height:22px; border-radius:50%; object-fit:cover; box-shadow:0 0 0 2px #f5d76e; animation:shCoinSpin 3s linear infinite}
+.sh-balance-label{font-size:.82rem; color:#888; font-weight:700}
+.sh-profile-vip{
+  margin-top:4px; font-size:.82rem; font-weight:800; color:#e67e22;
+  display:inline-block; padding:3px 12px; border-radius:20px;
+  background:linear-gradient(135deg,rgba(245,215,110,.2),rgba(243,156,18,.1));
+  border:1px solid rgba(245,215,110,.5);
+}
 
-/* ═══ H2 ═══ */
-.sh-h2{
-  font-size:1.5rem;font-weight:900;color:#1a1a2e;
-  margin:44px 0 22px;padding-bottom:14px;
-  border-bottom:3px solid transparent;
-  border-image:linear-gradient(90deg,#f39c12,#f5d76e,transparent) 1;
-  letter-spacing:-.3px;
+/* ═══ WARNING ═══ */
+.sh-warning{
+  display:flex; gap:14px; align-items:center;
+  padding:18px 22px; margin-bottom:20px;
+  background:linear-gradient(135deg,rgba(108,99,255,.08),rgba(162,155,254,.04));
+  border-left:4px solid #6C63FF; border-radius:14px;
+}
+.sh-warning-icon{font-size:2rem; flex-shrink:0; line-height:1}
+.sh-warning-body{flex:1; min-width:180px}
+.sh-warning-title{font-size:1rem; font-weight:900; color:#333; margin-bottom:4px}
+.sh-warning-text{font-size:.85rem; color:#666; margin-bottom:10px}
+.sh-warning-btn{
+  display:inline-block; padding:10px 22px; border-radius:30px;
+  background:linear-gradient(135deg,#6C63FF,#A29BFE);
+  color:#fff; font-weight:900; font-size:.85rem;
+  text-decoration:none;
+  box-shadow:0 8px 20px -4px rgba(108,99,255,.4);
 }
 
-/* ═══ FILTER ═══ */
-.sh-filter{
-  display:flex;gap:8px;flex-wrap:wrap;
-  margin-bottom:24px;padding:10px;
-  background:#fff;border-radius:14px;
-  border:1px solid rgba(0,0,0,.05);
-  box-shadow:0 4px 12px rgba(0,0,0,.04);
-}
-.sh-filter-btn{
-  padding:8px 16px;border-radius:22px;
-  border:2px solid transparent;
-  background:rgba(0,0,0,.03);
-  color:#666;font-size:.82rem;font-weight:800;
-  cursor:pointer;font-family:inherit;
-  display:inline-flex;align-items:center;gap:5px;
+/* ═══ TABS ═══ */
+.sh-tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px}
+.sh-tab{
+  padding:12px 22px; border-radius:14px;
+  border:2px solid rgba(0,0,0,.06);
+  background:#fff; color:#666; font-size:.9rem; font-weight:800;
+  cursor:pointer; font-family:inherit;
   transition:all .25s cubic-bezier(.16,1,.3,1);
-  white-space:nowrap;
 }
-.sh-filter-btn:hover{background:rgba(0,0,0,.06);color:#333}
-.sh-filter-btn.active{
-  background:linear-gradient(135deg,#f39c12,#e67e22);
-  color:#fff;
-  box-shadow:0 6px 16px -4px rgba(243,156,18,.5);
+.sh-tab:hover{background:rgba(245,215,110,.1); color:#333}
+.sh-tab.active{
+  background:linear-gradient(135deg,#f5d76e,#f39c12);
+  color:#1a1a2e; border-color:transparent;
+  box-shadow:0 8px 20px -4px rgba(243,156,18,.5);
 }
 
-/* ═══ GRID ═══ */
+/* ═══ CATALOG ═══ */
+.sh-catalog{margin-bottom:40px}
 .sh-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:18px;
-  margin-bottom:40px;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:16px;
 }
 
 /* ═══ CARD ═══ */
 .sh-card{
-  position:relative;
-  background:#fff;border-radius:20px;
-  border:2px solid rgba(0,0,0,.05);
+  position:relative; background:#fff; border-radius:22px;
+  border:2px solid rgba(0,0,0,.06); padding:24px 20px 20px;
+  display:flex; flex-direction:column;
+  transition:all .35s cubic-bezier(.16,1,.3,1);
   overflow:hidden;
-  transition:all .4s cubic-bezier(.16,1,.3,1);
   animation:shFadeIn .4s ease both;
-  display:flex;flex-direction:column;
 }
 .sh-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:4px;
-  background:linear-gradient(90deg,var(--cc,#f39c12),var(--cc-light,#f5d76e));
-  z-index:1;
+  content:''; position:absolute; top:0; left:0; right:0; height:5px;
+  background:var(--card-color,#f39c12);
+  opacity:.85; transition:opacity .3s;
 }
 .sh-card:hover{
   transform:translateY(-6px);
-  border-color:var(--cc,#f39c12);
-  box-shadow:0 20px 50px -14px var(--cc-shadow,rgba(243,156,18,.3));
+  box-shadow:0 24px 56px -16px var(--card-color,rgba(243,156,18,.5));
+  border-color:var(--card-color,#f39c12);
 }
+.sh-card:hover::before{opacity:1}
+.sh-card.sh-card-vip{border-color:rgba(245,215,110,.5)}
+.sh-card.sh-card-vip::before{background:linear-gradient(90deg,#f5d76e,#e67e22,#f5d76e); background-size:200% auto; animation:shShine 3s linear infinite}
+
 .sh-card-badge{
-  position:absolute;top:16px;right:16px;
-  padding:5px 11px;border-radius:12px;
-  font-size:.65rem;font-weight:900;
-  letter-spacing:.5px;text-transform:uppercase;
-  z-index:2;
+  position:absolute; top:14px; right:14px;
+  padding:4px 12px; border-radius:14px;
+  font-size:.68rem; font-weight:900; letter-spacing:.5px;
+  text-transform:uppercase; z-index:2;
 }
-.sh-card-badge.hit{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff}
-.sh-card-badge.new{background:linear-gradient(135deg,#27ae60,#16a085);color:#fff}
-.sh-card-badge.vip{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff}
-.sh-card-badge.sale{background:linear-gradient(135deg,#e91e63,#c2185b);color:#fff}
+.sh-card-badge.hit{background:linear-gradient(135deg,#e74c3c,#c0392b); color:#fff}
+.sh-card-badge.best{background:linear-gradient(135deg,#27ae60,#16a085); color:#fff}
+.sh-card-badge.max{background:linear-gradient(135deg,#9b59b6,#8e44ad); color:#fff}
+.sh-card-badge.vip{background:linear-gradient(135deg,#f5d76e,#f39c12); color:#1a1a2e}
 
-/* ═══ МОНЕТЫ — ЯЩИК С АНИМАЦИЕЙ ═══ */
-.sh-coins-box{
-  position:relative;
-  height:140px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:16px 20px 0;
-  overflow:visible;
+.sh-card-icon{
+  font-size:4rem; text-align:center; margin:8px 0 12px;
+  line-height:1; filter:drop-shadow(0 8px 20px rgba(0,0,0,.15));
+  animation:shFloat 3.5s ease-in-out infinite;
 }
-.sh-coin{
-  position:absolute;
-  border-radius:50%;
-  object-fit:cover;
-  will-change:transform,filter;
-}
-.sh-coins-soft .sh-coin{
-  width:88px;height:88px;
-  animation:shCoinFloatA 3.4s ease-in-out infinite, shGlowSoft 4.2s ease-in-out infinite;
-}
-.sh-coins-medium .sh-coin{
-  width:56px;height:56px;
-  animation:shCoinFloatB 3.8s ease-in-out infinite, shGlowMedium 3.2s ease-in-out infinite;
-}
-/* У 1000 — убрана пульсация кольца, оставлено только мягкое свечение */
-.sh-coins-strong .sh-coin{
-  width:48px;height:48px;
-  animation:shCoinFloatC 3.2s ease-in-out infinite, shGlowStrong 2.6s ease-in-out infinite;
+.sh-card-icon img{
+  width:80px; height:80px; border-radius:50%; object-fit:cover;
+  box-shadow:0 0 0 4px #f5d76e,0 8px 24px rgba(245,215,110,.5);
+  animation:shCoinSpin 3s linear infinite;
+  display:inline-block;
 }
 
-/* ═══ VIP — ТОЛЬКО КОРОНА ═══ */
-.sh-vip-box{
-  position:relative;
-  height:140px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:16px 20px 0;
-  overflow:visible;
-}
-.sh-vip-crown{
-  font-size:5.5rem;
-  line-height:1;
-  animation:shCrownFloat 4s ease-in-out infinite, shCrownGlow 3s ease-in-out infinite;
-  z-index:2;
-  position:relative;
-}
-
-/* ═══ CARD BODY ═══ */
-.sh-card-body{
-  flex:1;
-  padding:12px 22px 20px;
-  display:flex;flex-direction:column;
-}
-.sh-card-cat{
-  font-size:.65rem;color:var(--cc,#f39c12);
-  font-weight:900;text-transform:uppercase;
-  letter-spacing:1px;margin-bottom:6px;
-}
-.sh-card-name{
-  font-size:1.1rem;font-weight:900;color:#1a1a2e;
-  margin-bottom:8px;letter-spacing:-.2px;line-height:1.25;
+.sh-card-title{
+  font-size:1.05rem; font-weight:900; color:#1a1a2e;
+  text-align:center; margin-bottom:6px; letter-spacing:-.2px;
 }
 .sh-card-desc{
-  font-size:.85rem;color:#666;line-height:1.6;margin-bottom:14px;
-  flex:1;
+  font-size:.85rem; color:#666; text-align:center;
+  line-height:1.5; margin-bottom:14px; min-height:48px;
 }
-.sh-card-desc strong{color:var(--cc,#f39c12);font-weight:900}
 
 .sh-card-features{
-  list-style:none;margin:0 0 16px;padding:0;
-  font-size:.8rem;color:#555;line-height:1.7;
+  list-style:none; padding:0; margin:0 0 16px;
+  border-top:1px dashed rgba(0,0,0,.08); padding-top:12px;
+  flex:1;
 }
-.sh-card-features li{padding-left:18px;position:relative}
+.sh-card-features li{
+  display:flex; gap:8px; align-items:flex-start;
+  font-size:.82rem; color:#555; line-height:1.5;
+  margin-bottom:6px;
+}
 .sh-card-features li::before{
-  content:'✓';position:absolute;left:0;top:0;
-  color:var(--cc,#f39c12);font-weight:900;
+  content:'✓'; color:#27ae60; font-weight:900; flex-shrink:0;
 }
 
 .sh-card-price{
-  display:flex;align-items:baseline;gap:10px;
-  padding:14px 0 12px;
-  border-top:2px dashed rgba(0,0,0,.08);
-  margin-bottom:14px;
-  flex-wrap:wrap;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  margin-bottom:14px; flex-wrap:wrap;
 }
-.sh-card-price-current{
-  font-size:1.9rem;font-weight:900;
-  background:linear-gradient(135deg,var(--cc,#f39c12),var(--cc-light,#f5d76e));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-  line-height:1;
-  font-variant-numeric:tabular-nums;
+.sh-price-current{
+  font-size:1.8rem; font-weight:900;
+  background:linear-gradient(135deg,#e67e22,#f39c12);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; line-height:1;
 }
-.sh-card-price-old{
-  font-size:.95rem;color:#bbb;font-weight:700;
-  text-decoration:line-through;
+.sh-price-old{
+  font-size:.95rem; color:#999; text-decoration:line-through;
+  font-weight:700;
 }
-.sh-card-price-save{
-  font-size:.7rem;color:#fff;font-weight:900;
+.sh-price-save{
+  font-size:.72rem; padding:3px 10px; border-radius:12px;
   background:linear-gradient(135deg,#e74c3c,#c0392b);
-  padding:3px 8px;border-radius:8px;
-  letter-spacing:.5px;
-  text-transform:uppercase;
-}
-.sh-card-price-label{
-  font-size:.7rem;color:#888;font-weight:800;
-  margin-left:auto;text-transform:uppercase;letter-spacing:.5px;
+  color:#fff; font-weight:900;
 }
 
 .sh-card-btn{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;padding:13px 20px;border-radius:14px;
-  border:none;
-  background:linear-gradient(135deg,var(--cc,#f39c12),var(--cc-light,#f5d76e));
-  color:#fff;
-  font-size:.92rem;font-weight:900;
-  cursor:pointer;font-family:inherit;
-  letter-spacing:.3px;
-  transition:all .25s cubic-bezier(.16,1,.3,1);
-  box-shadow:0 8px 24px -6px var(--cc-shadow,rgba(243,156,18,.5));
-  text-decoration:none!important;
-}
-.sh-card-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 14px 32px -6px var(--cc-shadow,rgba(243,156,18,.6));
-}
-.sh-card-btn:active{transform:translateY(0) scale(.98)}
-
-/* ═══ HOW ═══ */
-.sh-how{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px;margin-bottom:40px;
-}
-.sh-how-item{
-  position:relative;padding:26px 22px 22px;
-  background:#fff;border-radius:18px;
-  border:2px solid rgba(243,156,18,.1);
-  transition:all .4s cubic-bezier(.16,1,.3,1);
-  overflow:hidden;
-}
-.sh-how-item::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:4px;
-  background:linear-gradient(90deg,#f39c12,#f5d76e);
-}
-.sh-how-item:hover{
-  transform:translateY(-6px);
-  border-color:#f39c12;
-  box-shadow:0 20px 50px -14px rgba(243,156,18,.35);
-}
-.sh-how-num{
-  position:absolute;top:14px;right:18px;
-  font-size:2.4rem;font-weight:900;
-  color:rgba(243,156,18,.1);line-height:1;
-  font-variant-numeric:tabular-nums;
-}
-.sh-how-icon{font-size:2.4rem;margin-bottom:12px;line-height:1}
-.sh-how-title{
-  font-size:1rem;font-weight:900;color:#1a1a2e;
-  margin-bottom:10px;letter-spacing:-.2px;
-}
-.sh-how-text{font-size:.88rem;color:#555;line-height:1.7}
-
-/* ═══ FAQ ═══ */
-.sh-faq{
-  display:flex;flex-direction:column;gap:10px;
-  margin-bottom:24px;
-}
-.sh-faq-item{
-  background:#fff;border-radius:14px;
-  border:2px solid rgba(0,0,0,.05);overflow:hidden;
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  padding:14px 20px; border-radius:40px;
+  border:none; cursor:pointer; font-family:inherit;
+  font-weight:900; font-size:.95rem;
+  background:linear-gradient(135deg,#f5d76e,#f39c12);
+  color:#1a1a2e;
+  box-shadow:0 10px 24px -4px rgba(243,156,18,.5);
   transition:all .3s cubic-bezier(.16,1,.3,1);
+  position:relative; overflow:hidden;
 }
-.sh-faq-item:hover{
-  border-color:rgba(243,156,18,.3);
-  box-shadow:0 8px 24px -6px rgba(243,156,18,.2);
+.sh-card-btn::before{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:translateX(-100%); transition:transform .6s;
 }
-.sh-faq-item[open]{
-  border-color:#f39c12;
-  box-shadow:0 12px 32px -8px rgba(243,156,18,.3);
+.sh-card-btn:hover::before{transform:translateX(100%)}
+.sh-card-btn:hover{transform:translateY(-3px); box-shadow:0 16px 32px -6px rgba(243,156,18,.7)}
+.sh-card-btn:active{transform:translateY(0) scale(.98)}
+.sh-card-btn:disabled{
+  opacity:.5; cursor:not-allowed; transform:none!important;
+  background:#ccc; color:#666; box-shadow:none;
 }
-.sh-faq-item summary{
-  display:flex;justify-content:space-between;
-  align-items:center;gap:14px;
-  padding:18px 22px;cursor:pointer;
-  font-size:.95rem;font-weight:800;color:#1a1a2e;
-  list-style:none;transition:all .25s;user-select:none;
-}
-.sh-faq-item summary::-webkit-details-marker{display:none}
-.sh-faq-item summary:hover{color:#f39c12;background:rgba(243,156,18,.03)}
-.sh-faq-icon{
-  flex-shrink:0;color:#f39c12;font-size:1.2rem;font-weight:900;
-  transition:transform .3s;width:24px;height:24px;
-  display:flex;align-items:center;justify-content:center;
-}
-.sh-faq-item[open] .sh-faq-icon{transform:rotate(90deg)}
-.sh-faq-answer{
-  padding:0 22px 20px;
-  font-size:.9rem;color:#555;line-height:1.75;
-  animation:shFadeIn .35s ease;
-}
-.sh-faq-answer strong{color:#f39c12;font-weight:900}
 
-/* ═══ CTA ═══ */
-.sh-cta{
-  display:flex;gap:22px;align-items:center;
-  padding:32px;margin-bottom:16px;
-  background:linear-gradient(135deg,#1a1a2e,#2d1b3d);
-  border-radius:22px;color:#fff;
-  box-shadow:0 24px 60px -16px rgba(243,156,18,.4);
-  position:relative;overflow:hidden;
-  flex-wrap:wrap;
+/* ═══ SUPPORT ═══ */
+.sh-support{
+  display:flex; gap:14px; align-items:center;
+  padding:18px 22px; margin-top:40px;
+  background:linear-gradient(135deg,rgba(108,99,255,.08),rgba(162,155,254,.04));
+  border-left:4px solid #6C63FF; border-radius:14px;
 }
-.sh-cta::before{
-  content:'';position:absolute;top:-50%;right:-30%;
-  width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle,rgba(243,156,18,.2),transparent 70%);
-  animation:shFloat 10s ease-in-out infinite;
+.sh-support-icon{font-size:2rem; flex-shrink:0}
+.sh-support-body{flex:1}
+.sh-support-title{font-weight:900; margin-bottom:4px; color:#333}
+.sh-support-text{font-size:.88rem; color:#666; line-height:1.55}
+.sh-support-text a{color:#6C63FF; font-weight:800; text-decoration:underline!important}
+
+/* ═══ MODAL ═══ */
+.sh-modal-bg{
+  position:fixed; inset:0; z-index:2147483644;
+  background:rgba(10,10,26,.75);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  display:flex; align-items:center; justify-content:center;
+  padding:20px; animation:shFadeIn .3s ease;
 }
-.sh-cta-icon{
-  font-size:2.8rem;flex-shrink:0;line-height:1;
-  position:relative;z-index:2;
-  filter:drop-shadow(0 6px 20px rgba(243,156,18,.6));
+.sh-modal{
+  position:relative; background:#fff; border-radius:24px;
+  padding:34px 28px 26px; max-width:440px; width:100%;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 2px rgba(245,215,110,.4) inset;
+  animation:shModalIn .4s cubic-bezier(.16,1,.3,1);
 }
-.sh-cta-body{flex:1;position:relative;z-index:2;min-width:220px}
-.sh-cta-title{
-  font-size:1.15rem;font-weight:900;margin-bottom:8px;
+.sh-modal-close{
+  position:absolute; top:12px; right:14px;
+  width:34px; height:34px; border-radius:50%;
+  background:rgba(0,0,0,.06); border:none; cursor:pointer;
+  font-family:inherit; font-size:1rem; color:#666;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .2s;
 }
-.sh-cta-body p{font-size:.9rem;opacity:.85;margin:0 0 14px}
-.sh-cta-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:11px 22px;border-radius:26px;
-  background:linear-gradient(135deg,#f39c12,#e67e22);
-  color:#fff;font-weight:900;font-size:.88rem;
-  text-decoration:none!important;
+.sh-modal-close:hover{background:rgba(0,0,0,.12); transform:rotate(90deg)}
+.sh-modal-icon{
+  font-size:3.5rem; margin-bottom:10px; line-height:1;
+  animation:shPulse 2s ease-in-out infinite;
+}
+.sh-modal-icon img{
+  width:80px; height:80px; border-radius:50%; object-fit:cover;
+  box-shadow:0 0 0 4px #f5d76e,0 8px 24px rgba(245,215,110,.5);
+  animation:shCoinSpin 3s linear infinite;
+  display:inline-block;
+}
+.sh-modal-title{font-size:1.3rem; font-weight:900; color:#1a1a2e; margin-bottom:6px; letter-spacing:-.3px}
+.sh-modal-price{
+  font-size:2rem; font-weight:900; margin-bottom:12px;
+  background:linear-gradient(135deg,#e67e22,#f39c12);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.sh-modal-desc{font-size:.88rem; color:#666; line-height:1.5; margin-bottom:18px}
+.sh-modal-field{text-align:left; margin-bottom:16px}
+.sh-modal-field label{
+  display:block; font-size:.78rem; font-weight:800;
+  color:#555; margin-bottom:6px;
+  text-transform:uppercase; letter-spacing:.5px;
+}
+.sh-modal-field input{
+  width:100%; padding:12px 16px; border-radius:12px;
+  border:2px solid #e8eaf0; font-family:inherit; font-size:.95rem;
+  outline:none; background:#fafafa;
+  transition:all .2s;
+}
+.sh-modal-field input:focus{border-color:#f39c12; background:#fff; box-shadow:0 0 0 4px rgba(243,156,18,.15)}
+.sh-modal-actions{display:flex; gap:10px; margin-bottom:14px}
+.sh-btn-secondary{
+  flex:1; padding:13px 18px; border-radius:14px;
+  border:2px solid rgba(0,0,0,.08); background:#fff;
+  color:#666; font-weight:900; font-size:.9rem;
+  cursor:pointer; font-family:inherit;
+  transition:all .2s;
+}
+.sh-btn-secondary:hover{background:#f5f5f5}
+.sh-btn-primary{
+  flex:2; padding:13px 18px; border-radius:14px;
+  border:none; background:linear-gradient(135deg,#f5d76e,#f39c12);
+  color:#1a1a2e; font-weight:900; font-size:.9rem;
+  cursor:pointer; font-family:inherit;
   box-shadow:0 8px 20px -4px rgba(243,156,18,.5);
   transition:all .25s;
 }
-.sh-cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -4px rgba(243,156,18,.6)}
-
-/* ═══ РЕКВИЗИТЫ — КОМПАКТНАЯ СТРОКА ═══ */
-.sh-req{
-  text-align:center;
-  padding:0;
-  margin:0 0 8px;
-  font-size:.72rem;
-  color:#c0c0d0;
-  font-weight:600;
-  line-height:1.5;
-  letter-spacing:.3px;
-}
-.sh-req a{
-  color:#b8b8c8;
-  font-weight:700;
-  text-decoration:none!important;
-  border-bottom:1px dashed rgba(184,184,200,.4);
-  transition:all .25s;
-}
-.sh-req a:hover{
-  color:#8a8aa0;
-  border-bottom-color:rgba(138,138,160,.6);
-}
-
-/* ═══ DARK MODE ═══ */
-@media (prefers-color-scheme: dark){
-  html body.mars-stars-on #shop-app{color:#e0e0f0}
-  html body.mars-stars-on #shop-app .sh-filter,
-  html body.mars-stars-on #shop-app .sh-card,
-  html body.mars-stars-on #shop-app .sh-how-item,
-  html body.mars-stars-on #shop-app .sh-faq-item{
-    background:rgba(20,20,42,.92);
-    border-color:rgba(243,156,18,.2);
-    color:#e0e0f0;
-  }
-  html body.mars-stars-on #shop-app .sh-h2,
-  html body.mars-stars-on #shop-app .sh-card-name,
-  html body.mars-stars-on #shop-app .sh-how-title,
-  html body.mars-stars-on #shop-app .sh-faq-item summary{color:#e0e0f0}
-  html body.mars-stars-on #shop-app .sh-card-desc,
-  html body.mars-stars-on #shop-app .sh-card-features,
-  html body.mars-stars-on #shop-app .sh-how-text,
-  html body.mars-stars-on #shop-app .sh-faq-answer{color:#c0c0d0}
-  html body.mars-stars-on #shop-app .sh-info-body{color:#d0d0e0}
-  html body.mars-stars-on #shop-app .sh-filter-btn{background:rgba(255,255,255,.05);color:#aaa}
-  html body.mars-stars-on #shop-app .sh-filter-btn:hover{background:rgba(255,255,255,.1);color:#fff}
-  html body.mars-stars-on #shop-app .sh-card-price{border-top-color:rgba(255,255,255,.1)}
-  html body.mars-stars-on #shop-app .sh-req{color:#555570}
-  html body.mars-stars-on #shop-app .sh-req a{color:#6a6a80}
-}
+.sh-btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 26px -4px rgba(243,156,18,.7)}
+.sh-btn-primary:active{transform:translateY(0) scale(.98)}
+.sh-btn-primary:disabled{opacity:.5; cursor:wait; transform:none}
+.sh-modal-note{font-size:.72rem; color:#999; font-weight:700}
 
 /* ═══ MOBILE ═══ */
-@media (max-width:640px){
-  .sh-hero{padding:44px 20px 50px;border-radius:20px;min-height:400px}
-  .sh-hero-coin{width:130px;height:130px;right:-20px;opacity:.35}
+@media (max-width:600px){
+  .sh-hero{padding:40px 20px; border-radius:20px; min-height:280px}
   .sh-hero-title{font-size:1.7rem}
   .sh-hero-sub{font-size:.92rem}
   .sh-hero-icon{font-size:3rem}
-  .sh-meta-item{padding:6px 12px;font-size:.72rem}
-  .sh-h2{font-size:1.2rem;margin:32px 0 16px}
-  .sh-info{padding:16px 18px;font-size:.88rem;gap:12px}
-  .sh-info-icon{font-size:1.5rem}
-  .sh-filter{padding:8px;gap:6px}
-  .sh-filter-btn{padding:7px 12px;font-size:.75rem}
-  .sh-grid{grid-template-columns:1fr;gap:14px}
-  .sh-coins-box,.sh-vip-box{height:120px}
-  .sh-coins-soft .sh-coin{width:72px;height:72px}
-  .sh-coins-medium .sh-coin{width:48px;height:48px}
-  .sh-coins-strong .sh-coin{width:42px;height:42px}
-  .sh-vip-crown{font-size:4.5rem}
-  .sh-card-body{padding:10px 20px 18px}
-  .sh-card-name{font-size:1rem}
-  .sh-card-price-current{font-size:1.6rem}
-  .sh-how{grid-template-columns:1fr;gap:12px}
-  .sh-how-item{padding:20px 18px}
-  .sh-faq-item summary{padding:15px 18px;font-size:.88rem}
-  .sh-faq-answer{padding:0 18px 16px;font-size:.85rem}
-  .sh-cta{padding:24px 20px;gap:14px}
-  .sh-cta-icon{font-size:2.2rem}
-  .sh-cta-title{font-size:1rem}
+  .sh-meta-item{padding:6px 12px; font-size:.72rem}
+  .sh-grid{grid-template-columns:1fr; gap:12px}
+  .sh-card{padding:20px 16px 16px; border-radius:18px}
+  .sh-card-icon{font-size:3.2rem}
+  .sh-card-icon img{width:64px; height:64px}
+  .sh-card-title{font-size:.95rem}
+  .sh-card-desc{font-size:.8rem; min-height:auto}
+  .sh-price-current{font-size:1.6rem}
+  .sh-tab{padding:10px 16px; font-size:.82rem}
+  .sh-modal{padding:28px 20px 22px; border-radius:20px}
+  .sh-modal-title{font-size:1.15rem}
+  .sh-modal-price{font-size:1.7rem}
+  .sh-modal-icon{font-size:3rem}
+  .sh-modal-icon img{width:64px; height:64px}
 }
 
 @media (prefers-reduced-motion: reduce){
   #shop-app *,#shop-app *::before,#shop-app *::after{
-    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    animation-duration:.01ms!important; animation-iteration-count:1!important;
     transition-duration:.01ms!important;
   }
-  .sh-observe{opacity:1;transform:none}
+  .sh-observe{opacity:1; transform:none}
 }
+
+/* Скрываем дефолтные стили ЮKassa на нашей странице */
+#sh-forms .yoomoney-payment-form,
+#sh-forms .ym-products,
+#sh-forms .ym-customer-info,
+#sh-forms .ym-payment-btn-block{display:none!important}
 </style>
 
 <script>
@@ -699,94 +593,135 @@ comments: false
 if (window.__shopLoaded) return;
 window.__shopLoaded = true;
 
-/* ═══ ТОВАРЫ — НОВЫЕ ЦЕНЫ СО СКИДКАМИ ═══ */
-var PRODUCTS = [
-  // ─── Таланты ───
-  {
-    id:'talents-100',
-    cat:'currency',
-    catName:'Валюта сайта',
-    iconType:'coins',
-    coinCount:1,
-    coinGlow:'soft',
-    name:'100 глиняных талантов',
-    desc:'Стартовый набор валюты для покупки функций на сайте.',
-    features:['Мгновенное зачисление','Используется на сайте','Не обменивается обратно'],
-    price:90,
-    priceOld:150,
-    save:40,
-    badge:'sale',
-    badgeText:'−40%',
-    color:'#f39c12',
-    colorLight:'#f5d76e',
-    colorShadow:'rgba(243,156,18,.4)'
-  },
-  {
-    id:'talents-500',
-    cat:'currency',
-    catName:'Валюта сайта',
-    iconType:'coins',
-    coinCount:3,
-    coinGlow:'medium',
-    name:'500 глиняных талантов',
-    desc:'Оптимальный набор. <strong>Выгоднее в 3 раза</strong>, чем одиночные.',
-    features:['Мгновенное зачисление','Бонус +50 талантов','Экономия 210 ₽'],
-    price:290,
-    priceOld:500,
-    save:42,
-    badge:'hit',
-    badgeText:'Хит · −42%',
-    color:'#f39c12',
-    colorLight:'#f5d76e',
-    colorShadow:'rgba(243,156,18,.4)'
-  },
-  {
-    id:'talents-1000',
-    cat:'currency',
-    catName:'Валюта сайта',
-    iconType:'coins',
-    coinCount:6,
-    coinGlow:'strong',
-    name:'1000 глиняных талантов',
-    desc:'Максимальный набор. <strong>Лучшая цена</strong> за талант.',
-    features:['Мгновенное зачисление','Бонус +100 талантов','Экономия 510 ₽'],
-    price:490,
-    priceOld:1000,
-    save:51,
-    badge:'new',
-    badgeText:'Максимум · −51%',
-    color:'#f39c12',
-    colorLight:'#f5d76e',
-    colorShadow:'rgba(243,156,18,.4)'
-  },
+/* ═══════════════════ SUPABASE ═══════════════════ */
+var SUPABASE_URL = 'https://ncytbgbzfjfoqmmgfygz.supabase.co';
+var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
+var sb = null;
+try {
+  if (window.supabaseClient && window.supabaseClient.auth) sb = window.supabaseClient;
+  else if (window.supabase) sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+} catch(e){ console.warn('[shop] Supabase init', e); }
 
-  // ─── VIP ───
+/* ═══════════════════ ТОВАРЫ ═══════════════════ */
+var PRODUCTS = [
   {
-    id:'vip-12months',
-    cat:'vip',
-    catName:'VIP-статус',
-    iconType:'vip',
-    name:'VIP-статус на 12 месяцев',
-    desc:'Полный набор привилегий на год по специальной цене.',
-    features:[
-      '🏆 Золотой бейдж в профиле',
+    id: 'sh-form-100',
+    formId: 'sh-form-100',
+    category: 'talents',
+    icon: '🪙',
+    iconImg: '/assets/images/guild-coin.jpg',
+    title: '100 глиняных талантов',
+    desc: 'Стартовый набор валюты для покупки функций на сайте',
+    features: [
+      'Мгновенное зачисление',
+      'Используется на сайте',
+      'Не обменивается обратно'
+    ],
+    price: 90,
+    oldPrice: 150,
+    discount: '−40%',
+    badge: null,
+    color: '#f39c12'
+  },
+  {
+    id: 'sh-form-500',
+    formId: 'sh-form-500',
+    category: 'talents',
+    icon: '🪙',
+    iconImg: '/assets/images/guild-coin.jpg',
+    title: '500 глиняных талантов',
+    desc: 'Оптимальный набор валюты. Выгоднее в 3 раза, чем одиночные покупки',
+    features: [
+      'Мгновенное зачисление',
+      'Бонус +50 талантов',
+      'Экономия 210 ₽'
+    ],
+    price: 290,
+    oldPrice: 500,
+    discount: '−42%',
+    badge: { type: 'hit', text: '🔥 Хит' },
+    color: '#f39c12'
+  },
+  {
+    id: 'sh-form-1000',
+    formId: 'sh-form-1000',
+    category: 'talents',
+    icon: '🪙',
+    iconImg: '/assets/images/guild-coin.jpg',
+    title: '1000 глиняных талантов',
+    desc: 'Максимальный набор. Лучшая цена за талант',
+    features: [
+      'Мгновенное зачисление',
+      'Бонус +100 талантов',
+      'Экономия 510 ₽'
+    ],
+    price: 490,
+    oldPrice: 1000,
+    discount: '−51%',
+    badge: { type: 'max', text: '🏆 Максимум' },
+    color: '#e67e22'
+  },
+  {
+    id: 'sh-form-vip',
+    formId: 'sh-form-vip',
+    category: 'vip',
+    icon: '👑',
+    title: 'VIP-статус на 12 месяцев',
+    desc: 'Полный набор привилегий на год по специальной цене',
+    features: [
+      '👑 Золотой бейдж в профиле',
       '🎨 Кастомный цвет ника',
       '📚 Ранний доступ к статьям',
       '💬 Приоритетная поддержка',
       '⭐ Спецстатус на форуме'
     ],
-    price:990,
-    priceOld:2400,
-    save:59,
-    badge:'vip',
-    badgeText:'VIP · −59%',
-    color:'#f39c12',
-    colorLight:'#f5d76e',
-    colorShadow:'rgba(243,156,18,.5)'
+    price: 990,
+    oldPrice: 2400,
+    discount: '−59%',
+    badge: { type: 'vip', text: 'VIP' },
+    color: '#f5d76e',
+    isVip: true
   }
 ];
 
-/* ═══ SCROLL OBSERVE ═══ */
+/* ═══════════════════ СОСТОЯНИЕ ═══════════════════ */
+var state = {
+  user: null,
+  profile: null,
+  activeCategory: 'all',
+  pendingProduct: null,
+  email: ''
+};
+
+var container = document.getElementById('shop-app');
+if (!container) return;
+
+/* ═══════════════════ УТИЛИТЫ ═══════════════════ */
+function esc(s){
+  return String(s||'').replace(/[&<>"']/g,function(m){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+  });
+}
+function toast(msg, type){
+  type = type || 'info';
+  var t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);' +
+    'padding:12px 26px;border-radius:30px;color:#fff;font-weight:800;font-size:.9rem;' +
+    'box-shadow:0 12px 32px rgba(0,0,0,.3);z-index:2147483647;pointer-events:none;' +
+    'max-width:90vw;text-align:center;transition:transform .4s cubic-bezier(.16,1,.3,1);' +
+    'background:' + (type==='error' ? 'linear-gradient(135deg,#e74c3c,#c0392b)' :
+                     type==='success' ? 'linear-gradient(135deg,#27ae60,#16a085)' :
+                     'linear-gradient(135deg,#3498db,#2980b9)') + ';';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(function(){ t.style.transform = 'translateX(-50%) translateY(0)'; });
+  setTimeout(function(){
+    t.style.transform = 'translateX(-50%) translateY(120px)';
+    setTimeout(function(){ t.remove(); }, 400);
+  }, 2600);
+}
+
+/* ═══════════════════ SCROLL OBSERVE ═══════════════════ */
 function initObserve(){
   var items = document.querySelectorAll('.sh-observe');
   if (!items.length) return;
@@ -796,128 +731,230 @@ function initObserve(){
   }
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if (e.isIntersecting){
-        e.target.classList.add('sh-visible');
-        io.unobserve(e.target);
-      }
+      if (e.isIntersecting){ e.target.classList.add('sh-visible'); io.unobserve(e.target); }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
   items.forEach(function(el){ io.observe(el); });
 }
 
-/* ═══ ИКОНКИ ═══ */
-function renderIcon(p){
-  if (p.iconType === 'coins'){
-    var coins = '';
-    var positions;
-    if (p.coinCount === 1){
-      positions = [{x:0, y:0}];
-    } else if (p.coinCount === 3){
-      positions = [
-        {x:-38, y:6},
-        {x:0, y:-6},
-        {x:38, y:6}
-      ];
-    } else {
-      positions = [
-        {x:-42, y:-24},
-        {x:0, y:-32},
-        {x:42, y:-24},
-        {x:-42, y:20},
-        {x:0, y:28},
-        {x:42, y:20}
-      ];
-    }
-    positions.forEach(function(pos, i){
-      var delay = (i * 0.35).toFixed(2);
-      coins += '<img src="/assets/images/guild-coin.jpg" class="sh-coin" ' +
-        'style="animation-delay:' + delay + 's;' +
-        'transform:translate(' + pos.x + 'px, ' + pos.y + 'px);" alt="талант">';
-    });
-    return '<div class="sh-coins-box sh-coins-' + p.coinGlow + '">' + coins + '</div>';
-  }
-
-  if (p.iconType === 'vip'){
-    return '<div class="sh-vip-box">' +
-      '<div class="sh-vip-crown">👑</div>' +
-    '</div>';
-  }
-
-  return '<div class="sh-card-icon">' + (p.icon || '🛒') + '</div>';
+/* ═══════════════════ ФИЛЬТР ПО КАТЕГОРИИ ═══════════════════ */
+function getFilteredProducts(){
+  if (state.activeCategory === 'all') return PRODUCTS;
+  return PRODUCTS.filter(function(p){ return p.category === state.activeCategory; });
 }
 
-/* ═══ РЕНДЕР ТОВАРОВ ═══ */
-function renderProducts(filter){
+/* ═══════════════════ РЕНДЕР КАТАЛОГА ═══════════════════ */
+function renderCatalog(){
   var grid = document.getElementById('sh-grid');
   if (!grid) return;
-
-  var items = filter === 'all' ? PRODUCTS : PRODUCTS.filter(function(p){ return p.cat === filter; });
+  var items = getFilteredProducts();
 
   grid.innerHTML = items.map(function(p, i){
-    var badgeHtml = p.badge
-      ? '<div class="sh-card-badge ' + p.badge + '">' + p.badgeText + '</div>'
-      : '';
-    var priceOldHtml = p.priceOld
-      ? '<span class="sh-card-price-old">' + p.priceOld + ' ₽</span>'
-      : '';
-    var saveHtml = p.save
-      ? '<span class="sh-card-price-save">−' + p.save + '%</span>'
-      : '';
-    var featuresHtml = p.features.map(function(f){
-      return '<li>' + f + '</li>';
-    }).join('');
+    var iconHtml = p.iconImg
+      ? '<img src="' + p.iconImg + '" alt="" onerror="this.replaceWith(document.createTextNode(\'' + p.icon + '\'))">'
+      : p.icon;
 
-    return '<div class="sh-card" ' +
-        'style="--cc:' + p.color + ';--cc-light:' + p.colorLight + ';--cc-shadow:' + p.colorShadow + ';animation-delay:' + Math.min(i*.05, .4) + 's">' +
+    var badgeHtml = p.badge
+      ? '<span class="sh-card-badge ' + p.badge.type + '">' + esc(p.badge.text) + '</span>'
+      : '';
+
+    var featuresHtml = p.features.map(function(f){ return '<li>' + esc(f) + '</li>'; }).join('');
+
+    var saveHtml = p.oldPrice
+      ? '<span class="sh-price-save">' + p.discount + '</span>'
+      : '';
+
+    var oldHtml = p.oldPrice ? '<span class="sh-price-old">' + p.oldPrice + ' ₽</span>' : '';
+
+    return '<div class="sh-card' + (p.isVip ? ' sh-card-vip' : '') + '" ' +
+      'style="--card-color:' + p.color + ';animation-delay:' + Math.min(i*.05, .3) + 's;">' +
       badgeHtml +
-      renderIcon(p) +
-      '<div class="sh-card-body">' +
-        '<div class="sh-card-cat">' + p.catName + '</div>' +
-        '<div class="sh-card-name">' + p.name + '</div>' +
-        '<div class="sh-card-desc">' + p.desc + '</div>' +
-        '<ul class="sh-card-features">' + featuresHtml + '</ul>' +
-        '<div class="sh-card-price">' +
-          '<span class="sh-card-price-current">' + p.price + ' ₽</span>' +
-          priceOldHtml +
-          saveHtml +
-        '</div>' +
-        '<button type="button" class="sh-card-btn" data-id="' + p.id + '">🛒 Купить</button>' +
+      '<div class="sh-card-icon">' + iconHtml + '</div>' +
+      '<div class="sh-card-title">' + esc(p.title) + '</div>' +
+      '<div class="sh-card-desc">' + esc(p.desc) + '</div>' +
+      '<ul class="sh-card-features">' + featuresHtml + '</ul>' +
+      '<div class="sh-card-price">' +
+        '<span class="sh-price-current">' + p.price + ' ₽</span>' +
+        oldHtml + saveHtml +
       '</div>' +
+      '<button class="sh-card-btn" type="button" ' +
+        'onclick="shOpenModal(\'' + p.id + '\')">' +
+        '🛒 Купить' +
+      '</button>' +
     '</div>';
   }).join('');
+}
 
-  grid.querySelectorAll('.sh-card-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var id = btn.dataset.id;
-      // TODO: подключение ЮKassa
-      alert('Товар "' + id + '"\n\nСкоро! После подключения ЮKassa здесь откроется окно оплаты.');
+/* ═══════════════════ МОДАЛКА ═══════════════════ */
+window.shOpenModal = function(productId){
+  var p = PRODUCTS.filter(function(x){ return x.id === productId; })[0];
+  if (!p) return;
+
+  if (!state.user){
+    toast('Войдите, чтобы купить', 'error');
+    setTimeout(function(){ window.location.href = '/login/'; }, 1500);
+    return;
+  }
+
+  state.pendingProduct = p;
+
+  var modal = document.getElementById('sh-modal');
+  var iconEl = document.getElementById('sh-modal-icon');
+  iconEl.innerHTML = p.iconImg
+    ? '<img src="' + p.iconImg + '" alt="" onerror="this.replaceWith(document.createTextNode(\'' + p.icon + '\'))">'
+    : p.icon;
+
+  document.getElementById('sh-modal-title').textContent = p.title;
+  document.getElementById('sh-modal-price').textContent = p.price + ' ₽';
+  document.getElementById('sh-modal-desc').textContent = p.desc;
+
+  var emailInput = document.getElementById('sh-modal-email');
+  emailInput.value = state.email || '';
+
+  modal.style.display = 'flex';
+};
+
+window.shCloseModal = function(){
+  document.getElementById('sh-modal').style.display = 'none';
+  state.pendingProduct = null;
+};
+
+/* ═══════════════════ ОПЛАТА ═══════════════════ */
+function shPay(){
+  var p = state.pendingProduct;
+  if (!p || !state.user) return;
+
+  var emailInput = document.getElementById('sh-modal-email');
+  var email = (emailInput.value || '').trim();
+
+  if (!email || email.indexOf('@') === -1){
+    toast('Введите корректный email', 'error');
+    emailInput.focus();
+    return;
+  }
+
+  var form = document.getElementById(p.formId);
+  if (!form){
+    toast('Форма не найдена', 'error');
+    return;
+  }
+
+  // Заполняем форму
+  form.querySelector('[name="cps_email"]').value = email;
+  form.querySelector('[name="customerNumber"]').value = state.user.id;
+
+  state.email = email;
+
+  // Отправляем форму (target="_blank" → откроется в новой вкладке)
+  try {
+    form.submit();
+    shCloseModal();
+    toast('Открываем страницу оплаты...', 'info');
+  } catch(e){
+    toast('Ошибка отправки: ' + e.message, 'error');
+  }
+}
+
+/* ═══════════════════ ЗАГРУЗКА ПРОФИЛЯ ═══════════════════ */
+async function loadProfile(){
+  if (!sb) return;
+  try {
+    var s = await sb.auth.getSession();
+    var user = s && s.data && s.data.session ? s.data.session.user : null;
+    state.user = user;
+
+    if (!user){
+      document.getElementById('sh-warning').style.display = 'flex';
+      document.getElementById('sh-profile').style.display = 'none';
+      return;
+    }
+
+    state.email = user.email || '';
+
+    var pr = await sb.from('profiles').select('display_name,username,avatar_url,vip_until').eq('user_id', user.id).single();
+    var profile = pr && pr.data;
+
+    var currency = 0;
+    try {
+      var cur = await sb.from('user_currency').select('clay_talents').eq('user_id', user.id).maybeSingle();
+      currency = (cur && cur.data && cur.data.clay_talents) || 0;
+    } catch(e){}
+
+    // Имя
+    var name = (profile && (profile.display_name || profile.username)) || user.email.split('@')[0];
+    document.getElementById('sh-name').textContent = name;
+    document.getElementById('sh-talents').textContent = currency;
+
+    // Аватар
+    var av = profile && profile.avatar_url;
+    var img = document.getElementById('sh-avatar');
+    if (av){
+      img.src = av;
+      img.style.display = 'block';
+    } else {
+      img.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=f39c12&color=fff&size=128&rounded=true';
+      img.style.display = 'block';
+    }
+
+    // VIP
+    var vip = profile && profile.vip_until ? new Date(profile.vip_until) : null;
+    if (vip && vip.getTime() > Date.now()){
+      document.getElementById('sh-vip-until').textContent = vip.toLocaleDateString('ru-RU');
+      document.getElementById('sh-vip-status').style.display = 'inline-block';
+    } else {
+      document.getElementById('sh-vip-status').style.display = 'none';
+    }
+
+    document.getElementById('sh-profile').style.display = 'block';
+    document.getElementById('sh-warning').style.display = 'none';
+  } catch(e){
+    console.warn('[shop] loadProfile error:', e);
+    document.getElementById('sh-warning').style.display = 'flex';
+  }
+}
+
+/* ═══════════════════ ВКЛАДКИ ═══════════════════ */
+function initTabs(){
+  document.querySelectorAll('.sh-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('.sh-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      state.activeCategory = tab.dataset.cat;
+      renderCatalog();
     });
   });
 }
 
-function initFilter(){
-  document.querySelectorAll('.sh-filter-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      document.querySelectorAll('.sh-filter-btn').forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      renderProducts(btn.dataset.cat);
-    });
-  });
-}
-
-/* ═══ ЗАПУСК ═══ */
+/* ═══════════════════ INIT ═══════════════════ */
 function init(){
   initObserve();
-  renderProducts('all');
-  initFilter();
-  console.log('🛒 Магазин загружен. Товаров: ' + PRODUCTS.length);
+  initTabs();
+  renderCatalog();
+  loadProfile();
+
+  // Модалка: клик по фону
+  document.getElementById('sh-modal').addEventListener('click', function(e){
+    if (e.target === this) shCloseModal();
+  });
+
+  // Кнопка "Перейти к оплате"
+  document.getElementById('sh-modal-buy').addEventListener('click', shPay);
+
+  // Enter в email
+  document.getElementById('sh-modal-email').addEventListener('keypress', function(e){
+    if (e.key === 'Enter') shPay();
+  });
+
+  // Escape
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') shCloseModal();
+  });
+
+  console.log('🛒 Магазин v1 загружен. Товаров:', PRODUCTS.length);
 }
 
-if (document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', init);
-} else {
-  init();
-}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+else init();
 
 })();
 </script>

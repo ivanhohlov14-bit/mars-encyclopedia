@@ -1,19 +1,7 @@
 // ═══════════════════════════════════════════════════════════
-//   experience.js — v6 SUPER VIP
-//   Единая система: XP + Уровни + Достижения + Таланты + VIP
-//   Один движок, разные типы уведомлений, максимум анимаций
-//
-//   ─ Что внутри ─
-//   ✨ 5 типов тостов (XP / LevelUp / Achievement / Talents / VIP)
-//   🎊 Конфетти для крупных событий
-//   💫 Частицы при каждой награде
-//   🔊 Web Audio звуки (без файлов)
-//   🔒 Мьютекс + retry + single-flight (нет race condition)
-//   📢 Events API: marsXpGained / marsLevelUp / marsAchievement...
-//   💾 Кэш user_id (меньше запросов)
-//   ⏸️  Пауза в скрытой вкладке (не спамит)
-//   🧹 Cleanup при pagehide
-//   ♿ Reduced-motion
+//   experience.js — v6.1 SUPER VIP
+//   + монета guild-coin.jpg вместо эмодзи
+//   + панель тестирования для модераторов
 // ═══════════════════════════════════════════════════════════
 (function() {
 'use strict';
@@ -27,13 +15,14 @@ window.__marsExperienceV6 = true;
 var SUPABASE_URL  = 'https://ncytbgbzfjfoqmmgfygz.supabase.co';
 var SUPABASE_KEY  = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
 var SB_KEY        = 'sb-ncytbgbzfjfoqmmgfygz-auth-token';
+var COIN_IMG      = '/assets/images/guild-coin.jpg';
 
 var XP_HISTORY_KEY = 'mars-xp-history';
 var STYLE_ID       = 'mars-notif-styles-v6';
 
 var DEBUG          = false;
-var TOAST_DURATION = 2400;   // показ тоста
-var TOAST_OUT_MS   = 650;    // длительность exit-анимации
+var TOAST_DURATION = 2400;
+var TOAST_OUT_MS   = 650;
 var MAX_QUEUE      = 12;
 
 function log() {
@@ -85,16 +74,15 @@ function getLevelInfo(exp){
 }
 
 /* ═══════════════════════════════════════════════════════════
-   🎨 СТИЛИ — 5 типов уведомлений
+   🎨 СТИЛИ
    ═══════════════════════════════════════════════════════════ */
 function injectStyles(){
-  // FORCE: удаляем старые версии
   var old = document.getElementById(STYLE_ID);
   if (old) old.remove();
 
   var s = document.createElement('style');
   s.id = STYLE_ID;
-  s.setAttribute('data-version', 'v6');
+  s.setAttribute('data-version', 'v6.1');
   s.textContent = `
 /* ═══ ГЛАВНЫЙ ТОСТ ═══ */
 .mars-notif {
@@ -149,6 +137,18 @@ function injectStyles(){
   animation: marsNotifSpin 1.1s ease-out;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,.35));
 }
+.mars-notif .mi-icon img {
+  display: block;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,.4),
+    0 0 0 3px #f5d76e,
+    0 0 20px rgba(245,215,110,.6);
+  animation: marsCoinSpin 3s linear infinite;
+}
 .mars-notif .mi-text {
   position: relative;
   z-index: 2;
@@ -169,7 +169,7 @@ function injectStyles(){
   text-transform: uppercase;
 }
 
-/* ═══ 5 ТИПОВ — РАЗНЫЕ ГРАДИЕНТЫ ═══ */
+/* ═══ 5 ТИПОВ ═══ */
 .mars-notif.xp {
   background: linear-gradient(135deg, #27ae60 0%, #16a085 50%, #1abc9c 100%);
   box-shadow: 0 24px 70px rgba(39,174,96,.55), 0 0 0 4px rgba(255,255,255,.14) inset;
@@ -188,7 +188,6 @@ function injectStyles(){
   text-shadow: 0 1px 3px rgba(255,255,255,.4);
   box-shadow: 0 24px 70px rgba(212,175,55,.65), 0 0 0 4px rgba(255,255,255,.3) inset;
 }
-.mars-notif.talents .mi-icon { filter: drop-shadow(0 4px 12px rgba(0,0,0,.4)); }
 .mars-notif.vip {
   background: linear-gradient(135deg, #0f0f1e 0%, #2d1b3d 40%, #f5d76e 100%);
   box-shadow:
@@ -233,7 +232,7 @@ function injectStyles(){
 .mars-notif.clickable .mi-close { display: flex; }
 .mars-notif.clickable:hover { transform: translate(-50%, -50%) scale(1.03); }
 
-/* ═══ ЧАСТИЦЫ ═══ */
+/* ═══ ЧАСТИЦЫ / КОНФЕТТИ / ИСКРЫ ═══ */
 .mars-particle {
   position: fixed;
   width: 8px; height: 8px;
@@ -242,8 +241,6 @@ function injectStyles(){
   z-index: 2147483639;
   will-change: transform, opacity;
 }
-
-/* ═══ КОНФЕТТИ ═══ */
 .mars-confetti-wrap {
   position: fixed; inset: 0;
   pointer-events: none;
@@ -258,8 +255,6 @@ function injectStyles(){
   will-change: transform;
   animation: marsConfettiFall 3s linear forwards;
 }
-
-/* ═══ ЗОЛОТЫЕ ЧАСТИЦЫ ДЛЯ VIP ═══ */
 .mars-vip-spark {
   position: fixed;
   font-size: 1.4rem;
@@ -283,6 +278,10 @@ function injectStyles(){
   50%  { transform: rotate(180deg) scale(1.3); }
   100% { transform: rotate(360deg) scale(1); }
 }
+@keyframes marsCoinSpin {
+  0%   { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
 @keyframes marsNotifShine {
   0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
@@ -305,6 +304,133 @@ function injectStyles(){
   100% { transform: translate(var(--sx2), var(--sy2)) scale(.4) rotate(720deg); opacity: 0; }
 }
 
+/* ═══ ПАНЕЛЬ МОДЕРАТОРА ═══ */
+.mars-mod-panel {
+  position: fixed;
+  bottom: 20px; left: 20px;
+  z-index: 2147483643;
+  font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+.mars-mod-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #1a1a2e, #2d1b3d);
+  color: #f5d76e;
+  border: 2px solid #f5d76e;
+  border-radius: 44px;
+  font-weight: 900;
+  font-size: .85rem;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 12px 32px rgba(0,0,0,.4), 0 0 0 3px rgba(245,215,110,.15) inset;
+  transition: all .3s cubic-bezier(.16,1,.3,1);
+  letter-spacing: .3px;
+}
+.mars-mod-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(245,215,110,.4), 0 0 0 3px rgba(245,215,110,.3) inset;
+}
+.mars-mod-btn:active { transform: translateY(0) scale(.98); }
+.mars-mod-btn .mod-badge {
+  font-size: .6rem;
+  padding: 2px 7px;
+  border-radius: 8px;
+  background: #f5d76e;
+  color: #1a1a2e;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.mars-mod-panel.open .mars-mod-btn {
+  background: linear-gradient(135deg, #f5d76e, #e67e22);
+  color: #1a1a2e;
+}
+.mars-mod-panel.open .mars-mod-btn .mod-badge {
+  background: #1a1a2e;
+  color: #f5d76e;
+}
+
+.mars-mod-menu {
+  position: absolute;
+  bottom: 70px; left: 0;
+  width: 280px;
+  background: linear-gradient(135deg, #1a1a2e, #0f0f1e);
+  border: 2px solid #f5d76e;
+  border-radius: 20px;
+  padding: 16px 14px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.6), 0 0 40px rgba(245,215,110,.25);
+  display: none;
+  animation: marsModMenuIn .3s cubic-bezier(.16,1,.3,1);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.mars-mod-panel.open .mars-mod-menu { display: block; }
+
+@keyframes marsModMenuIn {
+  from { opacity: 0; transform: translateY(12px) scale(.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.mars-mod-title {
+  font-size: .7rem;
+  color: #f5d76e;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 0 0 10px 4px;
+  opacity: .8;
+}
+.mars-mod-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  margin-bottom: 6px;
+  background: rgba(255,255,255,.06);
+  border: 1.5px solid rgba(245,215,110,.25);
+  border-radius: 12px;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: .85rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all .2s cubic-bezier(.16,1,.3,1);
+}
+.mars-mod-item:hover {
+  background: rgba(245,215,110,.15);
+  border-color: #f5d76e;
+  transform: translateX(3px);
+}
+.mars-mod-item:active { transform: translateX(0) scale(.98); }
+.mars-mod-item .item-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.mars-mod-item .item-icon img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px #f5d76e;
+}
+.mars-mod-sep {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245,215,110,.4), transparent);
+  margin: 12px 0;
+}
+.mars-mod-hint {
+  font-size: .68rem;
+  color: rgba(255,255,255,.5);
+  text-align: center;
+  font-weight: 700;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
 /* ═══ МОБИЛЬНЫЙ ═══ */
 @media (max-width: 600px) {
   .mars-notif {
@@ -314,11 +440,14 @@ function injectStyles(){
     gap: 10px;
   }
   .mars-notif .mi-icon { font-size: 2rem; }
+  .mars-notif .mi-icon img { width: 44px; height: 44px; }
   .mars-notif .mi-main { font-size: 1.25rem; }
   .mars-notif .mi-sub { font-size: .68rem; }
+  .mars-mod-panel { bottom: 12px; left: 12px; }
+  .mars-mod-btn { padding: 10px 14px; font-size: .78rem; }
+  .mars-mod-menu { width: 260px; bottom: 60px; }
 }
 
-/* ═══ REDUCED MOTION ═══ */
 @media (prefers-reduced-motion: reduce) {
   .mars-notif {
     animation: none !important;
@@ -326,7 +455,8 @@ function injectStyles(){
     transform: translate(-50%, -50%) scale(1);
   }
   .mars-notif::before { display: none; }
-  .mars-notif .mi-icon { animation: none !important; }
+  .mars-notif .mi-icon,
+  .mars-notif .mi-icon img { animation: none !important; }
   .mars-particle,
   .mars-confetti-wrap,
   .mars-vip-spark { display: none !important; }
@@ -336,7 +466,7 @@ function injectStyles(){
 }
 
 /* ═══════════════════════════════════════════════════════════
-   🔊 ЗВУКИ (Web Audio, без файлов)
+   🔊 ЗВУКИ
    ═══════════════════════════════════════════════════════════ */
 var audioCtx = null, audioUnlocked = false;
 
@@ -379,35 +509,14 @@ function note(freq, dur, type, vol){
   } catch(e){}
 }
 
-function sfxXP(){ 
-  if (REDUCED_MOTION) return;
-  [659.25, 783.99, 987.77].forEach(function(f,i){ setTimeout(function(){ note(f, .15, 'triangle', .07); }, i*60); });
-}
-function sfxLevelUp(){
-  if (REDUCED_MOTION) return;
-  [523, 659, 783, 1046].forEach(function(f,i){ setTimeout(function(){ note(f, .35, 'sine', .09); }, i*90); });
-}
-function sfxAchievement(){
-  if (REDUCED_MOTION) return;
-  [523, 659, 783, 1046].forEach(function(f,i){ setTimeout(function(){ note(f, .5, 'triangle', .11); }, i*110); });
-  setTimeout(function(){ note(1567.98, .8, 'sine', .09); }, 550);
-}
-function sfxTalents(){
-  if (REDUCED_MOTION) return;
-  [880, 1174.66, 1567.98].forEach(function(f,i){ setTimeout(function(){ note(f, .25, 'sine', .09); }, i*70); });
-}
-function sfxVip(){
-  if (REDUCED_MOTION) return;
-  // Триумфальный аккорд
-  [261.63, 329.63, 392.00, 523.25].forEach(function(f,i){
-    setTimeout(function(){ note(f, .8, 'sine', .1); }, i*90);
-  });
-  setTimeout(function(){ note(1046.50, 1.2, 'triangle', .12); }, 400);
-  setTimeout(function(){ note(1567.98, 1.5, 'sine', .08); }, 700);
-}
+function sfxXP(){ if (REDUCED_MOTION) return; [659.25, 783.99, 987.77].forEach(function(f,i){ setTimeout(function(){ note(f, .15, 'triangle', .07); }, i*60); }); }
+function sfxLevelUp(){ if (REDUCED_MOTION) return; [523, 659, 783, 1046].forEach(function(f,i){ setTimeout(function(){ note(f, .35, 'sine', .09); }, i*90); }); }
+function sfxAchievement(){ if (REDUCED_MOTION) return; [523, 659, 783, 1046].forEach(function(f,i){ setTimeout(function(){ note(f, .5, 'triangle', .11); }, i*110); }); setTimeout(function(){ note(1567.98, .8, 'sine', .09); }, 550); }
+function sfxTalents(){ if (REDUCED_MOTION) return; [880, 1174.66, 1567.98].forEach(function(f,i){ setTimeout(function(){ note(f, .25, 'sine', .09); }, i*70); }); }
+function sfxVip(){ if (REDUCED_MOTION) return; [261.63, 329.63, 392.00, 523.25].forEach(function(f,i){ setTimeout(function(){ note(f, .8, 'sine', .1); }, i*90); }); setTimeout(function(){ note(1046.50, 1.2, 'triangle', .12); }, 400); setTimeout(function(){ note(1567.98, 1.5, 'sine', .08); }, 700); }
 
 /* ═══════════════════════════════════════════════════════════
-   💫 ЧАСТИЦЫ
+   💫 ЭФФЕКТЫ
    ═══════════════════════════════════════════════════════════ */
 function spawnParticles(rect, type){
   if (REDUCED_MOTION) return;
@@ -421,7 +530,6 @@ function spawnParticles(rect, type){
     vip:         ['#f5d76e','#fff','#e74c3c','#9b59b6','#3498db']
   };
   var palette = palettes[type] || palettes.xp;
-
   var cx = rect.left + rect.width / 2;
   var cy = rect.top + rect.height / 2;
   var count = window.innerWidth <= 600 ? 14 : 26;
@@ -454,20 +562,15 @@ function spawnParticles(rect, type){
   }
 }
 
-/* ═══════════════════════════════════════════════════════════
-   🎊 КОНФЕТТИ
-   ═══════════════════════════════════════════════════════════ */
 function fireConfetti(opts){
   if (REDUCED_MOTION) return;
   opts = opts || {};
   var count  = opts.count  || (window.innerWidth <= 600 ? 45 : 90);
   var colors = opts.colors || ['#f5d76e','#f39c12','#e74c3c','#3498db','#27ae60','#9b59b6','#fff'];
-
   try {
     var wrap = document.createElement('div');
     wrap.className = 'mars-confetti-wrap';
     document.body.appendChild(wrap);
-
     for (var i = 0; i < count; i++){
       var p = document.createElement('div');
       p.className = 'mars-confetti-piece';
@@ -483,9 +586,6 @@ function fireConfetti(opts){
   } catch(e){}
 }
 
-/* ═══════════════════════════════════════════════════════════
-   ✨ ЗОЛОТЫЕ ИСКРЫ ДЛЯ VIP
-   ═══════════════════════════════════════════════════════════ */
 function fireVipSparks(rect){
   if (REDUCED_MOTION) return;
   if (!rect) return;
@@ -493,7 +593,6 @@ function fireVipSparks(rect){
   var cy = rect.top + rect.height / 2;
   var icons = ['✦','★','✧','🌟','💫','✨'];
   var count = 24;
-
   for (var i = 0; i < count; i++){
     (function(idx){
       setTimeout(function(){
@@ -505,7 +604,6 @@ function fireVipSparks(rect){
           s.style.top = cy + 'px';
           s.style.color = ['#f5d76e','#fff','#ffd97a'][idx % 3];
           s.style.textShadow = '0 0 12px #f5d76e, 0 0 24px #f5d76e';
-
           var angle = (Math.PI * 2 * idx) / count + Math.random() * .5;
           var dist1 = 60 + Math.random() * 80;
           var dist2 = 180 + Math.random() * 200;
@@ -524,7 +622,7 @@ function fireVipSparks(rect){
 }
 
 /* ═══════════════════════════════════════════════════════════
-   🎯 ДВИЖОК ТОСТОВ — ОЧЕРЕДЬ
+   🎯 ДВИЖОК ТОСТОВ
    ═══════════════════════════════════════════════════════════ */
 var toastQueue = [];
 var isShowing = false;
@@ -532,6 +630,7 @@ var isShowing = false;
 function showNotif(type, opts){
   opts = opts || {};
   var icon = opts.icon || '⭐';
+  var iconHtml = opts.iconHtml || null;
   var main = opts.main || '';
   var sub  = opts.sub  || '';
   var duration = opts.duration || TOAST_DURATION;
@@ -556,8 +655,9 @@ function showNotif(type, opts){
   try {
     el = document.createElement('div');
     el.className = 'mars-notif ' + type + (onClick ? ' clickable' : '');
+    var iconPart = iconHtml || ('<span class="mi-icon">' + esc(icon) + '</span>');
     el.innerHTML =
-      '<span class="mi-icon">' + esc(icon) + '</span>' +
+      iconPart +
       '<span class="mi-text">' +
         '<span class="mi-main">' + esc(main) + '</span>' +
         (sub ? '<span class="mi-sub">' + esc(sub) + '</span>' : '') +
@@ -569,7 +669,6 @@ function showNotif(type, opts){
     return;
   }
 
-  // Клик — закрыть + действие
   if (onClick){
     el.addEventListener('click', function(e){
       e.stopPropagation();
@@ -578,7 +677,6 @@ function showNotif(type, opts){
     });
   }
 
-  // Эффекты
   try {
     if (type === 'xp') sfxXP();
     else if (type === 'levelup') { sfxLevelUp(); fireConfetti({count: 60}); }
@@ -587,7 +685,6 @@ function showNotif(type, opts){
     else if (type === 'vip') { sfxVip(); fireConfetti({count: 120}); }
   } catch(e){}
 
-  // Частицы после рендера
   requestAnimationFrame(function(){
     try {
       var rect = el.getBoundingClientRect();
@@ -599,7 +696,6 @@ function showNotif(type, opts){
     } catch(e){}
   });
 
-  // Авто-скрытие
   setTimeout(function(){ hideToast(el, false); }, duration);
 }
 
@@ -611,7 +707,6 @@ function hideToast(el, immediate){
   setTimeout(function(){
     try { if (el.parentNode) el.remove(); } catch(e){}
     isShowing = false;
-    // Следующий из очереди
     if (toastQueue.length > 0){
       var next = toastQueue.shift();
       showNotif(next.type, next.opts);
@@ -620,7 +715,7 @@ function hideToast(el, immediate){
 }
 
 /* ═══════════════════════════════════════════════════════════
-   📢 ПУБЛИЧНЫЕ ФУНКЦИИ ТОСТОВ (FORCE OVERWRITE)
+   📢 ПУБЛИЧНЫЕ ФУНКЦИИ — С МОНЕТОЙ
    ═══════════════════════════════════════════════════════════ */
 window.showExperienceToast = function(points, opts){
   points = parseInt(points, 10) || 0;
@@ -648,11 +743,15 @@ window.showAchievementToast = function(icon, name, opts){
   }, opts || {}));
 };
 
+/* 🪙 ТАЛАНТЫ — с картинкой монеты */
 window.showTalentsToast = function(amount, opts){
   amount = parseInt(amount, 10) || 0;
   if (amount <= 0) return;
+  var coinHtml = '<span class="mi-icon">' +
+    '<img src="' + COIN_IMG + '" alt="🪙" onerror="this.replaceWith(document.createTextNode(\'🪙\'))">' +
+    '</span>';
   showNotif('talents', Object.assign({
-    icon: '🪙',
+    iconHtml: coinHtml,
     main: '+' + amount + ' талантов',
     sub: 'Валюта Марса'
   }, opts || {}));
@@ -668,12 +767,13 @@ window.showVipToast = function(days, opts){
   }, opts || {}));
 };
 
-log('✅ v6 функции тостов зарегистрированы');
+log('✅ v6.1 функции тостов зарегистрированы');
 
 /* ═══════════════════════════════════════════════════════════
    🌉 SUPABASE КЛИЕНТ
    ═══════════════════════════════════════════════════════════ */
 var cachedUserId = null;
+var cachedUserRole = null;
 
 function getClient(){
   if (window.supabaseClient && window.supabaseClient.auth) return window.supabaseClient;
@@ -700,6 +800,122 @@ async function getUserId(){
     if (sess && sess.user){ cachedUserId = sess.user.id; return cachedUserId; }
   } catch(e){}
   return null;
+}
+
+async function getUserRole(){
+  if (cachedUserRole) return cachedUserRole;
+  var client = getClient(); if (!client) return null;
+  var uid = await getUserId();
+  if (!uid) return null;
+  try {
+    var res = await client.from('profiles').select('role').eq('user_id', uid).single();
+    var role = (res && res.data && res.data.role) || null;
+    cachedUserRole = role;
+    return role;
+  } catch(e){ return null; }
+}
+
+function isModerator(){
+  return cachedUserRole === 'moderator' || cachedUserRole === 'admin';
+}
+
+/* ═══════════════════════════════════════════════════════════
+   🎛 ПАНЕЛЬ МОДЕРАТОРА — ТЕСТИРОВАНИЕ
+   ═══════════════════════════════════════════════════════════ */
+function showModPanel(){
+  if (document.getElementById('mars-mod-panel')) return;
+
+  var panel = document.createElement('div');
+  panel.id = 'mars-mod-panel';
+  panel.className = 'mars-mod-panel';
+  panel.innerHTML =
+    '<div class="mars-mod-menu">' +
+      '<div class="mars-mod-title">🧪 Тест уведомлений</div>' +
+      '<button class="mars-mod-item" data-test="xp" type="button">' +
+        '<span class="item-icon">⭐</span> XP (+25)' +
+      '</button>' +
+      '<button class="mars-mod-item" data-test="levelup" type="button">' +
+        '<span class="item-icon">👑</span> Уровень 5' +
+      '</button>' +
+      '<button class="mars-mod-item" data-test="achievement" type="button">' +
+        '<span class="item-icon">🏆</span> Достижение' +
+      '</button>' +
+      '<button class="mars-mod-item" data-test="talents" type="button">' +
+        '<span class="item-icon"><img src="' + COIN_IMG + '" alt="🪙" onerror="this.parentElement.textContent=\'🪙\'"></span> Таланты (+50)' +
+      '</button>' +
+      '<button class="mars-mod-item" data-test="vip" type="button">' +
+        '<span class="item-icon">👑</span> VIP на 365 дней' +
+      '</button>' +
+      '<div class="mars-mod-sep"></div>' +
+      '<div class="mars-mod-title">🎁 Реальные действия</div>' +
+      '<button class="mars-mod-item" data-test="addtalents" type="button">' +
+        '<span class="item-icon">🪙</span> +10 талантов в БД' +
+      '</button>' +
+      '<button class="mars-mod-item" data-test="addxp" type="button">' +
+        '<span class="item-icon">💎</span> +100 XP в БД' +
+      '</button>' +
+      '<div class="mars-mod-sep"></div>' +
+      '<button class="mars-mod-item" data-test="resetroulette" type="button">' +
+        '<span class="item-icon">🔄</span> Сброс рулетки' +
+      '</button>' +
+      '<button class="mars-mod-item" data-test="resetreward" type="button">' +
+        '<span class="item-icon">🔄</span> Сброс награды' +
+      '</button>' +
+      '<div class="mars-mod-hint">Только для модераторов<br>не влияет на других</div>' +
+    '</div>' +
+    '<button class="mars-mod-btn" type="button">' +
+      '<span>🧪 Тест</span>' +
+      '<span class="mod-badge">MOD</span>' +
+    '</button>';
+
+  document.body.appendChild(panel);
+
+  var btn = panel.querySelector('.mars-mod-btn');
+  btn.onclick = function(){ panel.classList.toggle('open'); };
+
+  panel.querySelectorAll('.mars-mod-item').forEach(function(item){
+    item.onclick = async function(){
+      var test = item.dataset.test;
+
+      if (test === 'xp') window.showExperienceToast(25);
+      else if (test === 'levelup') window.showLevelUpToast(5, '⚡ Командир');
+      else if (test === 'achievement') window.showAchievementToast('🏆', 'Марсианин');
+      else if (test === 'talents') window.showTalentsToast(50);
+      else if (test === 'vip') window.showVipToast(365);
+
+      else if (test === 'addtalents'){
+        var uid = await getUserId();
+        if (uid) await addTalents(uid, 10, 'Тест модератора');
+      }
+      else if (test === 'addxp'){
+        var uid2 = await getUserId();
+        if (uid2) await addExperience(uid2, 100);
+      }
+      else if (test === 'resetroulette'){
+        try { localStorage.removeItem('mars-roulette-v5'); } catch(e){}
+        var rb = document.getElementById('daily-roulette-btn');
+        if (rb) rb.remove();
+        if (typeof window.showExperienceToast === 'function') {
+          window.showExperienceToast(0);
+        }
+        console.log('🎲 Рулетка сброшена');
+      }
+      else if (test === 'resetreward'){
+        try {
+          localStorage.removeItem('mars-reward-done-v5');
+          localStorage.removeItem('mars-reward-check-v5');
+        } catch(e){}
+        console.log('🎁 Награда сброшена — обнови страницу');
+      }
+    };
+  });
+
+  /* Клик вне панели закрывает меню */
+  document.addEventListener('click', function(e){
+    if (!panel.contains(e.target)) panel.classList.remove('open');
+  });
+
+  console.log('🧪 Панель модератора активирована');
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -747,7 +963,7 @@ function recordXpHistory(points){
 }
 
 /* ═══════════════════════════════════════════════════════════
-   📢 DISPATCH EVENTS — другие модули могут слушать
+   📢 EVENTS
    ═══════════════════════════════════════════════════════════ */
 function fireEvent(name, detail){
   try {
@@ -783,7 +999,6 @@ async function grantAchievement(userId, achId, meta){
     window.showAchievementToast(icon, name);
     fireEvent('marsAchievementUnlocked', { id: achId, name: name, icon: icon });
 
-    // Уведомление
     try {
       await client.from('notifications').insert([{
         user_id: userId,
@@ -915,7 +1130,6 @@ async function addTalents(userId, amount, reason){
 
   return withLock('talents-' + userId, async function(){
     try {
-      // Читаем текущие
       var res = await withRetry(function(){
         return client.from('user_currency').select('clay_talents').eq('user_id', userId).maybeSingle();
       }, 2);
@@ -948,7 +1162,7 @@ async function addTalents(userId, amount, reason){
 }
 
 /* ═══════════════════════════════════════════════════════════
-   👑 АКТИВАЦИЯ VIP (вызывать после успешной покупки/промокода)
+   👑 АКТИВАЦИЯ VIP
    ═══════════════════════════════════════════════════════════ */
 async function activateVip(userId, days, reason){
   if (!userId) userId = await getUserId();
@@ -973,11 +1187,9 @@ async function activateVip(userId, days, reason){
       return client.from('profiles').update({ vip_until: newUntil.toISOString() }).eq('user_id', userId);
     }, 2);
 
-    // Большое уведомление
     window.showVipToast(days, reason ? { sub: reason } : undefined);
     fireEvent('marsVipActivated', { days: days, until: newUntil.toISOString() });
 
-    // Уведомление в БД
     try {
       await client.from('notifications').insert([{
         user_id: userId,
@@ -1024,10 +1236,13 @@ function cleanup(){
 window.addEventListener('pagehide', cleanup);
 
 /* ═══════════════════════════════════════════════════════════
-   📢 СИНХРОНИЗАЦИЯ МЕЖДУ ВКЛАДКАМИ
+   📢 СИНХРОНИЗАЦИЯ ВКЛАДОК
    ═══════════════════════════════════════════════════════════ */
 window.addEventListener('storage', function(e){
-  if (e.key === SB_KEY) cachedUserId = null;
+  if (e.key === SB_KEY) {
+    cachedUserId = null;
+    cachedUserRole = null;
+  }
 });
 
 /* ═══════════════════════════════════════════════════════════
@@ -1036,21 +1251,18 @@ window.addEventListener('storage', function(e){
 window.addExperience = addExperience;
 
 window.marsExperience = {
-  // XP
   add: addExperience,
   getProfile: getProfile,
   getLevelInfo: getLevelInfo,
   xpForLevel: xpForLevel,
   checkAchievements: checkAchievements,
-  // Таланты
   addTalents: addTalents,
-  // VIP
   activateVip: activateVip,
-  // Утилиты
   getUserId: getUserId,
+  getUserRole: getUserRole,
+  isModerator: isModerator,
   cleanup: cleanup,
   LEVEL_TITLES: LEVEL_TITLES,
-  // Ручные тосты (для теста)
   toast: {
     xp:          function(p) { window.showExperienceToast(p); },
     levelUp:     function(l, t) { window.showLevelUpToast(l, t); },
@@ -1060,6 +1272,28 @@ window.marsExperience = {
   }
 };
 
-unlockAudio();
-log('v6 SUPER VIP загружен');
+/* ═══════════════════════════════════════════════════════════
+   🎬 BOOTSTRAP
+   ═══════════════════════════════════════════════════════════ */
+async function bootstrap(){
+  injectStyles();
+  unlockAudio();
+
+  /* Проверяем роль — если модератор, показываем панель */
+  try {
+    await getUserRole();
+    if (isModerator()) {
+      setTimeout(showModPanel, 1500);
+    }
+  } catch(e){}
+
+  log('v6.1 SUPER VIP загружен' + (isModerator() ? ' (модератор)' : ''));
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootstrap);
+} else {
+  bootstrap();
+}
+
 })();

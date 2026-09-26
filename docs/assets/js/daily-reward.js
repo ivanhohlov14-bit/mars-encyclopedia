@@ -1,23 +1,19 @@
 /**
  * ═══════════════════════════════════════════════════════════
- *   daily-reward.js v4 — SUPER VIP
- *   Ежедневная награда + рулетка + автозадания
+ *   daily-reward.js v5 FINAL SUPER VIP
+ *   Ежедневная награда + реальная рулетка + автозадания
  *
- *   Сохранено из v3:
- *   - Single-flight init, cooldown 10 мин
- *   - localStorage-флаги («уже получал сегодня»)
- *   - Cache-first для стрика
- *   - navigator.onLine + document.hidden
- *   - 1 retry, двойная защита от начисления
- *
- *   Новое в v4:
- *   ✨ Многослойные модалки со свечением + частицами
- *   🎊 Конфетти для бонусных стриков (3/7/14/30)
- *   🔊 Web Audio: монеты, фанфары, вращение
- *   🪙 Таланты в награду за стрик
- *   💫 Анимация «+XP» с полётом числа
- *   🎡 Рулетка: реальное замедление + вспышка приза
- *   🎯 Интеграция с experience.js v6 (showVipToast, showTalentsToast)
+ *   ✨ ЧТО ВНУТРИ ✨
+ *   🎡 Реальное SVG-колесо с 10 секторами и точной остановкой
+ *   🎊 Конфетти + частицы + вспышки
+ *   🔊 7 звуков через Web Audio (без файлов)
+ *   🪙 Таланты в награду за стрик (не только XP)
+ *   👑 Интеграция с experience.js v6 (showVipToast, showTalentsToast)
+ *   💫 Многослойные модалки со свечением и орбами
+ *   ⏸️ Пауза в скрытой вкладке
+ *   🔒 Защита от спама и повторных начислений
+ *   🧹 Автоочистка застрявших элементов
+ *   📢 События для других модулей
  * ═══════════════════════════════════════════════════════════
  */
 (function() {
@@ -33,16 +29,21 @@ var SUPABASE_URL = 'https://ncytbgbzfjfoqmmgfygz.supabase.co';
 var SUPABASE_KEY = 'sb_publishable_v5qJYCi85UdrUsz0tAOohQ_0wWdMR3D';
 var SB_KEY = 'sb-ncytbgbzfjfoqmmgfygz-auth-token';
 
-var K_CACHE_REWARD = 'mars-reward-check-v4';
-var K_REWARD_DONE  = 'mars-reward-done-v4';
-var K_ROULETTE     = 'mars-roulette-v4';
+var K_CACHE_REWARD = 'mars-reward-check-v5';
+var K_REWARD_DONE  = 'mars-reward-done-v5';
+var K_ROULETTE     = 'mars-roulette-v5';
 var K_STREAK_CACHE = 'mars-streak-cache-v3';
 
 var INIT_COOLDOWN  = 10 * 60 * 1000;
 var TASKS_COOLDOWN = 5 * 60 * 1000;
 var MAX_RETRIES    = 1;
 var RETRY_DELAY    = 2000;
-var STYLE_ID       = 'daily-reward-styles-v4';
+var STYLE_ID       = 'daily-reward-styles-v5';
+
+/* Анимация колеса */
+var SPIN_DURATION  = 4200;   /* мс — сколько крутится */
+var SPIN_MIN_TURNS = 5;      /* минимум полных оборотов */
+var SPIN_MAX_TURNS = 7;      /* максимум полных оборотов */
 
 var KINGDOMS = {
   'Аркадия':    { color:'#D4A574', light:'#E8C9A0', bg:'#FDF8F0' },
@@ -59,7 +60,7 @@ var KINGDOMS = {
   'Аливасото':  { color:'#81C784', light:'#A5D6A7', bg:'#F0FFF0' }
 };
 
-/* XP за стрик + таланты (бонус к базовой награде) */
+/* XP за стрик + таланты */
 var STREAK_REWARDS = {
   1:   { xp: 5,    talents: 0 },
   2:   { xp: 10,   talents: 0 },
@@ -73,24 +74,25 @@ var STREAK_REWARDS = {
   100: { xp: 1000, talents: 50 }
 };
 
+/* Призы рулетки — 10 штук для красивого колеса */
 var ROULETTE_PRIZES = [
-  { icon:'💎', label:'10 XP',    xp:10,  talents:0,  weight:28, color:'#3498db' },
-  { icon:'💎', label:'25 XP',    xp:25,  talents:0,  weight:22, color:'#2980b9' },
-  { icon:'🪙', label:'5 талантов', xp:0, talents:5,  weight:12, color:'#d4af37' },
-  { icon:'💎', label:'50 XP',    xp:50,  talents:0,  weight:14, color:'#9b59b6' },
-  { icon:'⭐', label:'100 XP',   xp:100, talents:0,  weight:8,  color:'#f39c12' },
-  { icon:'🪙', label:'25 талантов', xp:0, talents:25, weight:4, color:'#f5d76e' },
-  { icon:'👑', label:'250 XP',   xp:250, talents:0,  weight:3,  color:'#e67e22' },
-  { icon:'💎', label:'500 XP',   xp:500, talents:0,  weight:1,  color:'#e74c3c' },
-  { icon:'🔥', label:'Удача ×2', xp:0,   talents:0,  weight:5,  color:'#e74c3c', special:'luck' },
-  { icon:'😢', label:'Пусто',    xp:0,   talents:0,  weight:3,  color:'#7f8c8d' }
+  { icon:'💎', label:'10 XP',      xp:10,  talents:0,  weight:28, color:'#3498db' },
+  { icon:'💎', label:'25 XP',      xp:25,  talents:0,  weight:22, color:'#2980b9' },
+  { icon:'🪙', label:'5 талантов', xp:0,   talents:5,  weight:12, color:'#d4af37' },
+  { icon:'💎', label:'50 XP',      xp:50,  talents:0,  weight:14, color:'#9b59b6' },
+  { icon:'⭐', label:'100 XP',     xp:100, talents:0,  weight:8,  color:'#f39c12' },
+  { icon:'🪙', label:'25 талантов',xp:0,   talents:25, weight:4,  color:'#f5d76e' },
+  { icon:'👑', label:'250 XP',     xp:250, talents:0,  weight:3,  color:'#e67e22' },
+  { icon:'💎', label:'500 XP',     xp:500, talents:0,  weight:1,  color:'#e74c3c' },
+  { icon:'🔥', label:'Удача ×2',   xp:0,   talents:0,  weight:5,  color:'#e74c3c', special:'luck' },
+  { icon:'😢', label:'Пусто',      xp:0,   talents:0,  weight:3,  color:'#7f8c8d' }
 ];
 
 var QUEST_DEFINITIONS = [
-  { id:'read_article',   icon:'📖', title:'Прочитать статью',    reward:'+5 XP',  xp:5 },
-  { id:'visit_place',    icon:'📍', title:'Посетить новое место', reward:'+10 XP', xp:10 },
-  { id:'pass_quiz',      icon:'🧠', title:'Пройти викторину',     reward:'+20 XP', xp:20 },
-  { id:'use_translator', icon:'🗣️', title:'Перевести слово',      reward:'+5 XP',  xp:5 }
+  { id:'read_article',   icon:'📖', title:'Прочитать статью',     reward:'+5 XP',  xp:5 },
+  { id:'visit_place',    icon:'📍', title:'Посетить новое место',  reward:'+10 XP', xp:10 },
+  { id:'pass_quiz',      icon:'🧠', title:'Пройти викторину',      reward:'+20 XP', xp:20 },
+  { id:'use_translator', icon:'🗣️', title:'Перевести слово',       reward:'+5 XP',  xp:5 }
 ];
 
 /* ═══════════════════════════════════════════════════════════
@@ -191,7 +193,7 @@ async function withRetry(fn, retries) {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   🔊 ЗВУКИ
+   🔊 ЗВУКИ (Web Audio)
    ═══════════════════════════════════════════════════════════ */
 function getAudioCtx() {
   if (!state.audioUnlocked) return null;
@@ -237,30 +239,25 @@ function sfxOpen() {
     setTimeout(function(){ note(f, 0.18, 'triangle', 0.08); }, i * 60);
   });
 }
-
 function sfxReward() {
   [659.25, 783.99, 987.77, 1174.66].forEach(function(f,i){
     setTimeout(function(){ note(f, 0.35, 'sine', 0.1); }, i * 90);
   });
 }
-
 function sfxBonus() {
   [523, 659, 783, 1046, 1318].forEach(function(f,i){
     setTimeout(function(){ note(f, 0.4, 'triangle', 0.11); }, i * 100);
   });
   setTimeout(function(){ note(1567.98, 0.9, 'sine', 0.09); }, 600);
 }
-
 function sfxSpinTick() {
-  note(440 + Math.random() * 200, 0.04, 'square', 0.04);
+  note(440 + Math.random() * 200, 0.04, 'square', 0.035);
 }
-
 function sfxWin() {
   [880, 1174.66, 1567.98, 2093].forEach(function(f,i){
     setTimeout(function(){ note(f, 0.25, 'sine', 0.1); }, i * 70);
   });
 }
-
 function sfxLose() {
   [440, 330, 220].forEach(function(f,i){
     setTimeout(function(){ note(f, 0.25, 'sine', 0.06); }, i * 100);
@@ -290,11 +287,11 @@ function fireConfetti(opts) {
       'will-change:transform;';
     wrap.appendChild(p);
   }
-  setTimeout(function(){ wrap.remove(); }, 5000);
+  setTimeout(function(){ if (wrap.parentNode) wrap.remove(); }, 5200);
 }
 
 /* ═══════════════════════════════════════════════════════════
-   ✨ ЧАСТИЦЫ ОТ МОДАЛКИ
+   ✨ ЧАСТИЦЫ
    ═══════════════════════════════════════════════════════════ */
 function spawnParticles(cx, cy, count, colors) {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -319,7 +316,7 @@ function spawnParticles(cx, cy, count, colors) {
           p.style.transform = 'translate(' + (Math.cos(angle) * dist) + 'px,' + (Math.sin(angle) * dist - 40) + 'px) scale(.3)';
           p.style.opacity = '0';
         });
-        setTimeout(function(){ p.remove(); }, 1300);
+        setTimeout(function(){ if (p.parentNode) p.remove(); }, 1300);
       }, idx * 22);
     })(i);
   }
@@ -344,10 +341,6 @@ function injectStyles() {
     }
     @keyframes dailyPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
     @keyframes dailySpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-    @keyframes dailySpinWheel{
-      0%{transform:rotate(0)}
-      100%{transform:rotate(1440deg)}
-    }
     @keyframes dailyBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
     @keyframes dailyBounceStrong{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-20px) scale(1.1)}}
     @keyframes dailyShine{0%{background-position:-200% center}100%{background-position:200% center}}
@@ -370,9 +363,14 @@ function injectStyles() {
       0%{transform:scale(1);opacity:1}
       100%{transform:scale(2.5);opacity:0}
     }
-    @keyframes dailyRipple{
-      0%{transform:scale(0);opacity:.6}
-      100%{transform:scale(4);opacity:0}
+    @keyframes dailyFlash{
+      0%{opacity:0}
+      20%{opacity:1}
+      100%{opacity:0}
+    }
+    @keyframes dailyBtnPulse{
+      0%,100%{box-shadow:0 12px 32px rgba(0,0,0,.35),0 0 0 3px rgba(255,255,255,.1) inset}
+      50%{box-shadow:0 12px 32px rgba(0,0,0,.5),0 0 24px rgba(245,215,110,.6),0 0 0 3px rgba(255,255,255,.2) inset}
     }
 
     /* ═══ OVERLAY ═══ */
@@ -401,8 +399,6 @@ function injectStyles() {
       box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.18) inset;
       isolation:isolate;
     }
-
-    /* Многослойный фон */
     .daily-modal-card::before{
       content:'';position:absolute;inset:0;z-index:0;
       background:
@@ -412,8 +408,6 @@ function injectStyles() {
       pointer-events:none;
       animation:dailyPulse 6s ease-in-out infinite;
     }
-
-    /* Свечение-волна */
     .daily-modal-card::after{
       content:'';position:absolute;inset:0;z-index:0;
       background:linear-gradient(120deg,transparent 0%,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%,transparent 100%);
@@ -422,7 +416,6 @@ function injectStyles() {
       pointer-events:none;
     }
 
-    /* Летающие пятна на фоне */
     .daily-orb{
       position:absolute;width:180px;height:180px;border-radius:50%;
       background:radial-gradient(circle,rgba(255,255,255,.35),transparent 70%);
@@ -521,33 +514,57 @@ function injectStyles() {
     .daily-btn.primary{background:#fff;color:#333;border-color:#fff}
     .daily-btn.primary:hover{background:#f0f0f0;color:#000;box-shadow:0 16px 32px rgba(255,255,255,.4)}
 
-    /* ═══ РУЛЕТКА ═══ */
+    /* ═══ РУЛЕТКА — РЕАЛЬНОЕ КОЛЕСО ═══ */
     .daily-roulette-stage{
       position:relative;
-      width:200px;height:200px;margin:22px auto;
+      width:280px;height:280px;
+      margin:26px auto 22px;
       display:flex;align-items:center;justify-content:center;
     }
-    .daily-roulette-wheel{
-      font-size:6rem;line-height:1;
-      display:inline-block;
-      filter:drop-shadow(0 12px 32px rgba(0,0,0,.4));
-      z-index:2;
-      position:relative;
-    }
-    .daily-roulette-wheel.spinning{
-      animation:dailySpinWheel 3.2s cubic-bezier(.15,.8,.3,1) forwards;
+    .daily-roulette-wheel-svg{
+      width:100%;height:100%;
+      filter:drop-shadow(0 16px 40px rgba(0,0,0,.5));
+      transition:transform 4s cubic-bezier(.15,.9,.25,1);
+      transform-origin:50% 50%;
+      will-change:transform;
+      position:relative;z-index:2;
     }
     .daily-roulette-ring{
-      position:absolute;inset:0;border-radius:50%;
-      border:3px solid rgba(255,255,255,.5);
+      position:absolute;inset:-10px;border-radius:50%;
+      border:3px solid rgba(255,255,255,.6);
       pointer-events:none;
+      box-shadow:0 0 30px rgba(255,255,255,.35),inset 0 0 30px rgba(255,255,255,.2);
     }
     .daily-roulette-ring.pulse{
       animation:dailyRing 2s ease-out infinite;
     }
     .daily-roulette-pointer{
-      position:absolute;top:-6px;left:50%;transform:translateX(-50%);
-      font-size:1.6rem;z-index:3;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5));
+      position:absolute;top:-8px;left:50%;
+      transform:translateX(-50%);
+      font-size:2rem;z-index:5;
+      filter:drop-shadow(0 4px 8px rgba(0,0,0,.6));
+      animation:dailyBounce 1.6s ease-in-out infinite;
+    }
+    .daily-roulette-center{
+      position:absolute;top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      width:56px;height:56px;
+      border-radius:50%;
+      background:radial-gradient(circle at 30% 30%,#fff,#ddd 50%,#aaa);
+      border:3px solid #fff;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.6rem;
+      z-index:4;
+      box-shadow:0 4px 12px rgba(0,0,0,.5),inset 0 -4px 8px rgba(0,0,0,.15);
+      pointer-events:none;
+    }
+    .daily-wheel-sector-text{
+      font-family:-apple-system,'Segoe UI',Roboto,sans-serif;
+      font-weight:900;
+      pointer-events:none;
+      user-select:none;
+      text-anchor:middle;
+      dominant-baseline:middle;
     }
 
     /* ═══ ПРИЗ ═══ */
@@ -576,18 +593,13 @@ function injectStyles() {
       margin-bottom:22px;
     }
 
-    /* Вспышка */
+    /* ═══ ВСПЫШКА ═══ */
     .daily-flash{
       position:fixed;inset:0;pointer-events:none;z-index:2147483645;
       background:radial-gradient(circle at center,rgba(255,255,255,.9),rgba(255,215,110,.6) 30%,transparent 70%);
       opacity:0;
     }
     .daily-flash.fire{animation:dailyFlash .5s ease-out}
-    @keyframes dailyFlash{
-      0%{opacity:0}
-      20%{opacity:1}
-      100%{opacity:0}
-    }
 
     /* ═══ КНОПКА РУЛЕТКИ ═══ */
     .daily-roulette-btn{
@@ -598,8 +610,8 @@ function injectStyles() {
       font-weight:900;font-size:.95rem;
       cursor:pointer;font-family:inherit;
       box-shadow:0 12px 32px rgba(0,0,0,.35),0 0 0 3px rgba(255,255,255,.1) inset;
-      animation:dailyBounce 2.4s ease-in-out infinite;
-      transition:transform .3s;
+      animation:dailyBounce 2.4s ease-in-out infinite,dailyBtnPulse 2s ease-in-out infinite;
+      transition:transform .3s,opacity .3s;
       -webkit-tap-highlight-color:transparent;
       text-shadow:0 2px 4px rgba(0,0,0,.3);
     }
@@ -619,16 +631,16 @@ function injectStyles() {
       .daily-prize-label{font-size:1.7rem}
       .daily-prize-icon{font-size:4rem}
       .daily-btn{padding:13px 26px;font-size:.92rem}
-      .daily-roulette-stage{width:160px;height:160px;margin:16px auto}
-      .daily-roulette-wheel{font-size:4.5rem}
+      .daily-roulette-stage{width:230px;height:230px;margin:20px auto}
       .daily-roulette-btn{bottom:100px;right:12px;padding:12px 20px;font-size:.85rem}
       .daily-close{width:32px;height:32px;font-size:15px}
+      .daily-roulette-center{width:46px;height:46px;font-size:1.3rem}
     }
 
     @media (prefers-reduced-motion: reduce){
-      .daily-modal-card,.daily-icon,.daily-roulette-wheel,.daily-roulette-btn,
+      .daily-modal-card,.daily-icon,.daily-roulette-wheel-svg,.daily-roulette-btn,
       .daily-reward-big,.daily-bonus-badge,.daily-prize-icon,.daily-prize-label,
-      .daily-orb{animation:none !important}
+      .daily-orb,.daily-roulette-pointer{animation:none !important}
     }
   `;
   document.head.appendChild(s);
@@ -652,22 +664,18 @@ function showModal(html) {
     '</div>';
   document.body.appendChild(overlay);
 
-  overlay.querySelector('.daily-close').onclick = function(){
+  function closeOverlay() {
     overlay.remove();
     document.removeEventListener('keydown', escH);
-  };
-  overlay.addEventListener('click', function(e){
-    if (e.target === overlay){
-      overlay.remove();
-      document.removeEventListener('keydown', escH);
-    }
-  });
-  function escH(e){
-    if (e.key === 'Escape'){
-      overlay.remove();
-      document.removeEventListener('keydown', escH);
-    }
   }
+  function escH(e) {
+    if (e.key === 'Escape') closeOverlay();
+  }
+
+  overlay.querySelector('.daily-close').onclick = closeOverlay;
+  overlay.addEventListener('click', function(e){
+    if (e.target === overlay) closeOverlay();
+  });
   document.addEventListener('keydown', escH);
 
   return overlay;
@@ -702,32 +710,98 @@ function showDailyReward(streak, reward) {
     '<button class="daily-btn" id="daily-roulette-link" type="button" style="margin-top:14px;">🎲 Крутить рулетку</button>'
   );
 
-  /* Звук + конфетти для бонуса */
+  var card = overlay.querySelector('.daily-modal-card');
+  var rect = card ? card.getBoundingClientRect() : null;
+
   if (isBonus){
     sfxBonus();
     fireConfetti({ count: 100 });
-    /* Частицы от модалки */
-    var card = overlay.querySelector('.daily-modal-card');
-    if (card){
-      var rect = card.getBoundingClientRect();
-      spawnParticles(rect.left + rect.width/2, rect.top + rect.height/2, 30, ['#f5d76e','#f39c12','#fff','#ffe9b8']);
-    }
+    if (rect) spawnParticles(rect.left + rect.width/2, rect.top + rect.height/2, 30, ['#f5d76e','#f39c12','#fff','#ffe9b8']);
   } else {
     sfxReward();
-    /* Небольшие частицы для обычной награды */
-    var card2 = overlay.querySelector('.daily-modal-card');
-    if (card2){
-      var rect2 = card2.getBoundingClientRect();
-      spawnParticles(rect2.left + rect2.width/2, rect2.top + rect2.height/2, 16, ['#f5d76e','#f39c12','#fff']);
-    }
+    if (rect) spawnParticles(rect.left + rect.width/2, rect.top + rect.height/2, 16, ['#f5d76e','#f39c12','#fff']);
   }
 
-  /* Кнопка → рулетка */
+  /* Событие для других модулей */
+  try {
+    window.dispatchEvent(new CustomEvent('marsDailyRewardShown', {
+      detail: { streak: streak, xp: xp, talents: talents }
+    }));
+  } catch(e){}
+
   overlay.querySelector('#daily-roulette-link').onclick = function(){
     overlay.remove();
-    document.removeEventListener('keydown', escH);
-    openRoulette();
+    setTimeout(openRoulette, 100);
   };
+}
+
+/* ═══════════════════════════════════════════════════════════
+   🎡 ГЕНЕРАЦИЯ SVG-КОЛЕСА
+   ═══════════════════════════════════════════════════════════ */
+function buildWheelSVG() {
+  var n = ROULETTE_PRIZES.length;
+  var sectorDeg = 360 / n;
+  var cx = 100, cy = 100, r = 92;
+
+  var parts = [];
+
+  /* Обод */
+  parts.push('<circle cx="' + cx + '" cy="' + cy + '" r="' + (r + 3) + '" fill="#1a1a2e" opacity="0.4"/>');
+  parts.push('<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="#fff" stroke-width="2" opacity="0.5"/>');
+
+  for (var i = 0; i < n; i++) {
+    var a1 = (i * sectorDeg - 90) * Math.PI / 180;
+    var a2 = ((i + 1) * sectorDeg - 90) * Math.PI / 180;
+    var am = ((i + 0.5) * sectorDeg - 90) * Math.PI / 180;
+
+    var x1 = cx + r * Math.cos(a1);
+    var y1 = cy + r * Math.sin(a1);
+    var x2 = cx + r * Math.cos(a2);
+    var y2 = cy + r * Math.sin(a2);
+
+    var prize = ROULETTE_PRIZES[i];
+    var fill = prize.color || '#6C63FF';
+
+    /* Сектор */
+    var largeArc = sectorDeg > 180 ? 1 : 0;
+    var path = 'M ' + cx + ' ' + cy +
+               ' L ' + x1.toFixed(2) + ' ' + y1.toFixed(2) +
+               ' A ' + r + ' ' + r + ' 0 ' + largeArc + ' 1 ' + x2.toFixed(2) + ' ' + y2.toFixed(2) +
+               ' Z';
+
+    parts.push('<path d="' + path + '" fill="' + fill + '" stroke="#fff" stroke-width="1" opacity="0.95"/>');
+
+    /* Иконка в секторе */
+    var iconR = r * 0.68;
+    var ix = cx + iconR * Math.cos(am);
+    var iy = cy + iconR * Math.sin(am);
+
+    parts.push(
+      '<text x="' + ix.toFixed(1) + '" y="' + iy.toFixed(1) + '" ' +
+      'class="daily-wheel-sector-text" ' +
+      'font-size="20" fill="#fff">' +
+      esc(prize.icon) +
+      '</text>'
+    );
+
+    /* Короткое название */
+    var labelR = r * 0.86;
+    var lx = cx + labelR * Math.cos(am);
+    var ly = cy + labelR * Math.sin(am);
+    var shortLabel = prize.label.length > 9 ? prize.label.slice(0, 8) + '…' : prize.label;
+
+    parts.push(
+      '<text x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) + '" ' +
+      'class="daily-wheel-sector-text" ' +
+      'font-size="7" fill="#fff" opacity="0.95">' +
+      esc(shortLabel) +
+      '</text>'
+    );
+  }
+
+  return '<svg viewBox="0 0 200 200" class="daily-roulette-wheel-svg" id="daily-roulette-wheel">' +
+    parts.join('') +
+    '</svg>';
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -747,16 +821,35 @@ function pickPrize() {
 async function openRoulette() {
   var userId = state.user && state.user.id;
   if (!userId) {
-    if (typeof window.showVipToast === 'function'){
-      /* тихо — просто не открываем */
-    } else {
-      alert('Войдите, чтобы крутить рулетку');
+    try {
+      var sb = getClient();
+      if (sb) {
+        var sess = await sb.auth.getSession();
+        var u = sess && sess.data && sess.data.session && sess.data.session.user;
+        if (u) {
+          userId = u.id;
+          state.user = u;
+        }
+      }
+    } catch(e){}
+  }
+
+  if (!userId) {
+    if (typeof window.showExperienceToast === 'function') {
+      /* нет юзера — можно показать обычный alert */
     }
+    showModal(
+      '<div class="daily-icon">🔒</div>' +
+      '<h2 class="daily-title">Войдите, чтобы играть</h2>' +
+      '<p class="daily-subtitle">Рулетка доступна только залогиненным</p>' +
+      '<a href="/login/" class="daily-btn primary" style="text-decoration:none;">🔐 Войти</a>'
+    );
     return;
   }
 
   sfxOpen();
 
+  /* Уже крутил — модалка «приходи завтра» */
   if (isRouletteDoneToday()) {
     showModal(
       '<div class="daily-icon">⏰</div>' +
@@ -767,65 +860,93 @@ async function openRoulette() {
     return;
   }
 
+  /* Выбираем приз заранее */
   var prize = pickPrize();
+  var winnerIndex = ROULETTE_PRIZES.indexOf(prize);
+  if (winnerIndex < 0) winnerIndex = 0;
 
+  var n = ROULETTE_PRIZES.length;
+  var sectorDeg = 360 / n;
+  var sectorCenter = winnerIndex * sectorDeg + sectorDeg / 2;
+
+  /* Полные обороты + доворот (по часовой стрелке) */
+  var fullSpins = SPIN_MIN_TURNS + Math.floor(Math.random() * (SPIN_MAX_TURNS - SPIN_MIN_TURNS + 1));
+  var extraAngle = (360 - sectorCenter + 360) % 360;
+  var targetRotation = fullSpins * 360 + extraAngle;
+
+  /* Модалка с колесом */
   var overlay = showModal(
-    '<div style="font-size:1.5rem;font-weight:800;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.3);">🎲 Рулетка удачи</div>' +
+    '<div style="font-size:1.45rem;font-weight:900;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.35);letter-spacing:-.3px;">🎡 Рулетка удачи</div>' +
     '<div class="daily-roulette-stage">' +
       '<div class="daily-roulette-ring pulse"></div>' +
       '<div class="daily-roulette-pointer">▼</div>' +
-      '<div class="daily-roulette-wheel spinning" id="daily-roulette-wheel">🎰</div>' +
+      buildWheelSVG() +
+      '<div class="daily-roulette-center">🎰</div>' +
     '</div>' +
     '<div id="daily-roulette-result" class="daily-subtitle">Крутим...</div>'
   );
 
+  /* Помечаем как сыгранное сразу */
   markRouletteDoneToday();
 
+  /* Убираем кнопку рулетки плавно */
+  var rBtn = document.getElementById('daily-roulette-btn');
+  if (rBtn) {
+    rBtn.style.transition = 'transform .4s cubic-bezier(.16,1,.3,1),opacity .4s ease';
+    rBtn.style.transform = 'scale(0) rotate(-180deg)';
+    rBtn.style.opacity = '0';
+    setTimeout(function(){ if (rBtn.parentNode) rBtn.remove(); }, 420);
+  }
+
+  var wheel = overlay.querySelector('#daily-roulette-wheel');
+
+  /* Запуск вращения */
+  setTimeout(function() {
+    if (!wheel) return;
+    /* Скорость transition задаём через inline, чтобы точно совпало по времени */
+    wheel.style.transition = 'transform ' + (SPIN_DURATION / 1000) + 's cubic-bezier(.15,.9,.25,1)';
+    wheel.style.transform = 'rotate(' + targetRotation + 'deg)';
+  }, 100);
+
   /* Тикающий звук во время вращения */
-  var tickCount = 0;
-  var tickInterval = setInterval(function(){
-    tickCount++;
-    sfxSpinTick();
-    if (tickCount >= 18) clearInterval(tickInterval);
-  }, 150);
+  var tickInterval = setInterval(function(){ sfxSpinTick(); }, 130);
+  setTimeout(function(){ clearInterval(tickInterval); }, SPIN_DURATION);
 
-  /* Финал — показываем приз */
-  setTimeout(async function(){
-    clearInterval(tickInterval);
-
+  /* Финал */
+  setTimeout(async function() {
     /* Вспышка */
     var flash = document.createElement('div');
     flash.className = 'daily-flash fire';
     document.body.appendChild(flash);
-    setTimeout(function(){ flash.remove(); }, 600);
+    setTimeout(function(){ if (flash.parentNode) flash.remove(); }, 700);
 
-    /* Применяем награду */
-    if (prize.xp > 0) await addXP(userId, prize.xp);
-    if (prize.talents > 0 && window.marsExperience && window.marsExperience.addTalents){
+    /* Награда */
+    if (prize.xp > 0) {
+      try { await addXP(userId, prize.xp); } catch(e){}
+    }
+    if (prize.talents > 0 && window.marsExperience && window.marsExperience.addTalents) {
       try { await window.marsExperience.addTalents(userId, prize.talents, 'Из рулетки'); } catch(e){}
     }
 
-    /* Звуки */
-    if (prize.xp > 0 || prize.talents > 0){
+    /* Звуки + конфетти */
+    var isWin = prize.xp > 0 || prize.talents > 0;
+    if (isWin) {
       sfxWin();
-      fireConfetti({ count: 80, colors: [prize.color, '#f5d76e', '#fff', '#ffe9b8'] });
-    } else if (prize.special === 'luck'){
+      fireConfetti({ count: 90, colors: [prize.color, '#f5d76e', '#fff', '#ffe9b8'] });
+    } else if (prize.special === 'luck') {
       sfxWin();
-      fireConfetti({ count: 60, colors: ['#e74c3c','#f39c12','#f5d76e'] });
+      fireConfetti({ count: 60, colors: ['#e74c3c','#f39c12','#f5d76e','#fff'] });
     } else {
       sfxLose();
     }
 
     /* Показываем результат */
-    var wheel = overlay.querySelector('.daily-roulette-wheel');
     var resultEl = overlay.querySelector('#daily-roulette-result');
-    if (wheel) wheel.style.animation = 'none';
     if (resultEl) {
-      var isWin = prize.xp > 0 || prize.talents > 0 || prize.special === 'luck';
       var extra;
       if (prize.xp > 0) extra = '+' + prize.xp + ' XP добавлено!';
-      else if (prize.talents > 0) extra = '+' + prize.talents + ' талантов!';
-      else if (prize.special === 'luck') extra = 'Повезло! Попробуй ещё';
+      else if (prize.talents > 0) extra = '+' + prize.talents + ' талантов добавлено!';
+      else if (prize.special === 'luck') extra = 'Повезло! Возвращайся завтра';
       else extra = 'Повезёт в следующий раз';
 
       var resultHTML =
@@ -838,25 +959,33 @@ async function openRoulette() {
 
       resultEl.outerHTML = '<div id="daily-roulette-result">' + resultHTML + '</div>';
 
-      /* Частицы от центра */
-      var card = overlay.querySelector('.daily-modal-card');
-      if (card && isWin){
-        var rect = card.getBoundingClientRect();
+      /* Частицы от колеса */
+      var stage = overlay.querySelector('.daily-roulette-stage');
+      if (stage && isWin) {
+        var rect = stage.getBoundingClientRect();
         spawnParticles(
-          rect.left + rect.width/2,
-          rect.top + rect.height/2,
-          isWin ? 26 : 10,
-          [prize.color, '#f5d76e', '#fff']
+          rect.left + rect.width / 2,
+          rect.top + rect.height / 2,
+          30,
+          [prize.color, '#f5d76e', '#fff', '#ffe9b8']
         );
       }
 
-      var b = overlay.querySelector('#daily-close-btn');
-      if (b) b.onclick = function(){
-        overlay.remove();
-        document.removeEventListener('keydown', function(){});
-      };
+      var closeBtn = overlay.querySelector('#daily-close-btn');
+      if (closeBtn) {
+        closeBtn.onclick = function() {
+          overlay.remove();
+          try {
+            window.dispatchEvent(new CustomEvent('marsRouletteFinished', {
+              detail: { prize: prize.label, xp: prize.xp, talents: prize.talents }
+            }));
+          } catch(e){}
+        };
+      }
     }
-  }, 3400);
+
+    console.log('🎡 Рулетка: выпал приз', prize.label);
+  }, SPIN_DURATION + 200);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -946,8 +1075,16 @@ function getDailyTasks(userId) {
    🎲 КНОПКА РУЛЕТКИ
    ═══════════════════════════════════════════════════════════ */
 function showRouletteButton() {
+  /* Уже есть — не дублируем */
   if (document.getElementById('daily-roulette-btn')) return;
-  if (isRouletteDoneToday()) return;
+
+  /* Уже крутил — убираем если застряла */
+  if (isRouletteDoneToday()) {
+    var old = document.getElementById('daily-roulette-btn');
+    if (old) old.remove();
+    return;
+  }
+
   var btn = document.createElement('button');
   btn.id = 'daily-roulette-btn';
   btn.className = 'daily-roulette-btn';
@@ -1034,7 +1171,6 @@ async function doInit() {
 
     await addXP(state.user.id, reward.xp);
 
-    /* Таланты */
     if (reward.talents > 0 && window.marsExperience && window.marsExperience.addTalents){
       try {
         await window.marsExperience.addTalents(state.user.id, reward.talents, 'За стрик ' + newStreak + ' дней');
@@ -1076,7 +1212,12 @@ window.dailyReward = {
   addXP: addXP,
   getCurrentKingdom: function(){ return state.kingdom; },
   openRoulette: openRoulette,
-  init: init
+  init: init,
+  resetRoulette: function(){
+    try { localStorage.removeItem(K_ROULETTE); } catch(e){}
+    var btn = document.getElementById('daily-roulette-btn');
+    if (btn) btn.remove();
+  }
 };
 
 /* ═══════════════════════════════════════════════════════════
@@ -1103,6 +1244,13 @@ window.addEventListener('online', function(){
 function start() {
   injectStyles();
   unlockAudio();
+
+  /* Если застряла кнопка от прошлой сессии — убираем */
+  if (isRouletteDoneToday()) {
+    var stuck = document.getElementById('daily-roulette-btn');
+    if (stuck) stuck.remove();
+  }
+
   setTimeout(init, 500);
 }
 
@@ -1112,5 +1260,5 @@ if (document.readyState === 'loading') {
   start();
 }
 
-console.log('✅ daily-reward.js v4 SUPER VIP загружен');
+console.log('✅ daily-reward.js v5 FINAL SUPER VIP загружен');
 })();

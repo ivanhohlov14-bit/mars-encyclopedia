@@ -1157,34 +1157,42 @@ async function shPay(){
     return;
   }
 
-  var emailInput = document.getElementById('sh-modal-email');
-  var email = (emailInput.value || '').trim();
-
-  if (!email || email.indexOf('@') === -1){
-    toast('Введите корректный email', 'error');
-    emailInput.focus();
-    return;
-  }
-
-  var form = document.getElementById(p.formId);
-  if (!form){
-    toast('Форма не найдена', 'error');
-    return;
-  }
-
-  var emailField = form.querySelector('[name="cps_email"]');
-  var customerField = form.querySelector('[name="customerNumber"]');
-  if (emailField) emailField.value = email;
-  if (customerField) customerField.value = state.user.id;
-
-  state.email = email;
+  var buyBtn = document.getElementById('sh-modal-buy');
+  buyBtn.disabled = true;
+  buyBtn.textContent = '⏳ Создаём платёж...';
 
   try {
-    form.submit();
+    // Получаем токен сессии
+    var client = await waitForSb();
+    var sess = await client.auth.getSession();
+    var token = sess.data.session.access_token;
+
+    // Вызываем Edge Function
+    var res = await fetch('https://ncytbgbzfjfoqmmgfygz.supabase.co/functions/v1/yookassa-create-payment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: JSON.stringify({ product_id: p.formId })
+    });
+
+    var data = await res.json();
+
+    if (!data.ok){
+      throw new Error(data.error?.description || data.error?.message || 'Ошибка создания платежа');
+    }
+
+    // Редирект на страницу оплаты ЮKassa
     shCloseModal();
     toast('Открываем страницу оплаты...', 'info');
+    window.location.href = data.confirmation_url;
+
   } catch(e){
-    toast('Ошибка отправки: ' + e.message, 'error');
+    console.error('[shop] payment error:', e);
+    toast('Ошибка: ' + e.message, 'error');
+    buyBtn.disabled = false;
+    buyBtn.textContent = '💳 Перейти к оплате';
   }
 }
 

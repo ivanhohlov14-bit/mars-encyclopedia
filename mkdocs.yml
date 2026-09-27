@@ -61,6 +61,10 @@ markdown_extensions:
 #   EXTRA — метатеги, SEO, preconnect, security
 # ═══════════════════════════════════════════════════════════
 extra:
+  analytics:
+    provider: google
+    property: G-GN4G0ZY94H
+    
   meta:
     # Open Graph
     - property: og:type

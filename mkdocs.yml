@@ -343,7 +343,10 @@ nav:
           - Дорога на Марс: road-to-mars.md
           - Терраформирование Марса: terraforming.md
           - Связь с Марсом: mars-communication.md
-  - Исследование Марса:
+      - Общество:
+          - Законы Марса: society/mars-laws.md
+          - Что будет, если умереть на Марсе: society/mars-death.md
+      - Исследование Марса:
           - Марсоходы: mars-rovers.md
 
   - Медиатека:

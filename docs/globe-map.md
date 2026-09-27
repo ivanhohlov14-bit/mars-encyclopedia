@@ -451,7 +451,7 @@
   <!-- Поиск + координаты -->
   <div class="top-left-bar">
     <div class="search-container" id="searchContainer">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/stickers/sticker-galaxy.png" alt="galaxy" />
+      <img src="/assets/images/stickers/sticker-galaxy.png" alt="galaxy" />
       <input type="text" id="searchInput" placeholder="Поиск мест..." />
       <button class="search-btn" id="searchBtn" title="Найти">🔍</button>
       <span class="clear-btn" id="clearSearch">✕</span>
@@ -561,9 +561,9 @@ const mars = new THREE.Mesh(marsGeometry, marsMaterial);
 scene.add(mars);
 
 // Пути к текстурам
-const MAP_DARK = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/new-map.png';
-const MAP_SATELLITE = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/mars-satellite.png';
-const MAP_LIGHT = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/my-new-map.png';
+const MAP_DARK = '/assets/images/map/new-map.png';
+const MAP_SATELLITE = '/assets/images/map/mars-satellite.png';
+const MAP_LIGHT = '/assets/images/map/my-new-map.png';
 
 // Загружаем текстуры
 const textureDark = textureLoader.load(MAP_DARK);
@@ -638,9 +638,9 @@ function createMoon(radius, texturePath, color = 0xaaaaaa, size = 0.08) {
   return mesh;
 }
 
-const phobos = createMoon(PHOBOS_RADIUS, 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/215.jpg', 0xaaaaaa, 0.08);
+const phobos = createMoon(PHOBOS_RADIUS, '/assets/images/215.jpg', 0xaaaaaa, 0.08);
 phobosGroup.add(phobos);
-const deimos = createMoon(DEIMOS_RADIUS, 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/201.jpg', 0x888888, 0.06);
+const deimos = createMoon(DEIMOS_RADIUS, '/assets/images/201.jpg', 0x888888, 0.06);
 deimosGroup.add(deimos);
 
 function createOrbit(radius, color = 0x446688) {
@@ -749,7 +749,7 @@ function createLabelSprite(text, lat, lon, color = '#ff6633', link = '#', descri
 }
 
 // БАЗОВЫЙ ПУТЬ К ИЗОБРАЖЕНИЯМ
-const IMG_BASE = 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/';
+const IMG_BASE = '/assets/images/';
 
 const labelData = [
   ['🌊 Ацидалийское море', 33.8, -34.4, '#3388dd', 'https://mars-wiki.ru/geography/acidalia-sea/', 'Огромное море в северном полушарии Марса. Берега изрезаны древними каналами.', IMG_BASE + 'acidalia-sea.png'],

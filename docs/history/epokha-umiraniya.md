@@ -12,7 +12,7 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-acidalia-frozen.png" alt="Замёрзшее Ацидалийское море" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/history/eden-acidalia-frozen.png" alt="Замёрзшее Ацидалийское море" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Замёрзшее Ацидалийское море — символ конца марсианской цивилизации</div>
   </div>
 
@@ -32,7 +32,7 @@
   </div>
 
   <div style="display: flex; justify-content: center; gap: 12px; align-items: center; padding: 4px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 40px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 40px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <div style="font-size: 0.85rem;"><b><a href="https://mars-wiki.ru/history/edem/">Эдем</a></b></div>
   </div>
   <p style="font-size: 0.8rem; color: #555; text-align: center; margin: 2px 0 0 0;">Последний оплот марсианской цивилизации</p>
@@ -95,7 +95,7 @@
 ### Геологические факторы
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-sunset-ruins.png" alt="Закат марсианской цивилизации" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-sunset-ruins.png" alt="Закат марсианской цивилизации" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Закат марсианской цивилизации. Руины города под красным небом. Реконструкция по табличкам Хевсура.</div>
 </div>
 
@@ -163,7 +163,7 @@
 ---
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-sunset-ruins.png" alt="Руины Окхасена" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-sunset-ruins.png" alt="Руины Окхасена" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Руины Окхасена после гибели цивилизации. Реконструкция по табличкам Хевсура.</div>
 </div>
 

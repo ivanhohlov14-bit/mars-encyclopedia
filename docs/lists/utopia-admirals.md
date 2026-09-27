@@ -46,7 +46,7 @@ description: История и география Королевства Уто�
 <!-- ============ INFO PANEL ============ -->
 <div class="utopia-info">
   <div class="utopia-info-image">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Utopia_Mars._Shield_shape_round-0.jpg" alt="Герб Утопии" loading="lazy">
+    <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Utopia_Mars._Shield_shape_round-0.jpg" alt="Герб Утопии" loading="lazy">
     <div class="utopia-info-caption">Герб династии Угидов</div>
   </div>
   <div class="utopia-info-body">
@@ -219,7 +219,7 @@ description: История и география Королевства Уто�
 
 <!-- ============ ФИНАЛЬНЫЙ БАННЕР ============ -->
 <div class="utopia-final">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-utopia.png" alt="Герб Утопии" class="utopia-final-flag">
+  <img src="/assets/images/coat-of-arms-of-utopia.png" alt="Герб Утопии" class="utopia-final-flag">
   <div class="utopia-final-body">
     <div class="utopia-final-label">Островное королевство</div>
     <div class="utopia-final-name">Утопия</div>

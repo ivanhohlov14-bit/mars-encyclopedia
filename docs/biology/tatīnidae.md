@@ -7,7 +7,7 @@
   </div>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatinidae-concept.jpg" alt="Tatīnidae" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/tatinidae-concept.jpg" alt="Tatīnidae" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция представителя семейства Tatīnidae.</div>
   </div>
 

@@ -7,17 +7,17 @@
   <hr>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eridania-kingdom-map.png" alt="Карта Королевства Эридания" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/eridania-kingdom-map.png" alt="Карта Королевства Эридания" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Эридания. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Королевства Эридания" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Королевства Эридания" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Эридании</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-eridania.png" alt="Герб Королевства Эридания" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-eridania.png" alt="Герб Королевства Эридания" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Эридании</div>
     </div>
   </div>
@@ -62,15 +62,15 @@
   <p><b>Государства-соседи</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png" alt="Флаг Эллады" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-hellas.png" alt="Флаг Эллады" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/hellas/">Эллада</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/serpentida/">Серпентида</a>
     </div>
   </div>
@@ -98,7 +98,7 @@
 ## Эпоха Основания (ок. 500–1500 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eridania-arrival.png" alt="Основание Эридании" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eridania-arrival.png" alt="Основание Эридании" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Эридан-Ары. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -107,7 +107,7 @@
 В **800 году**, в 14 день месяца **Пробуждения** (*Ākha-dzen*), кланы окончательно объединились под властью первого короля — **Аргирида I** (780–840). Он установил законы, построил первые храмы и начал активную торговлю с Эдемом и Серпентидой. В табличках этого периода упоминаются первые контакты с северными соседями[^4].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eridania-temple.png" alt="Храм в долине Аргира" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eridania-temple.png" alt="Храм в долине Аргира" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Храм в долине Аргира. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -120,7 +120,7 @@
 ## Эпоха Расцвета (1500–2680 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eridania-trade.png" alt="Торговля Эридании" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eridania-trade.png" alt="Торговля Эридании" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Торговые караваны Эридании. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -133,7 +133,7 @@
 ## Эпоха Умирания (2680–2740 гг. Э.О.)
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eridania-hevsur.png" alt="Экспедиция Хевсура" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eridania-hevsur.png" alt="Экспедиция Хевсура" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Экспедиция Хевсура в подземный храм. Реконструкция по табличкам Академии.</div>
 </div>
 

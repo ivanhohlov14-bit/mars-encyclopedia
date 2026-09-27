@@ -9,7 +9,7 @@
   <h3 style="margin: 0; text-align: center;">Звёздное небо Марса</h3>
   <hr>
 <div style="text-align: center; margin: 10px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars_starmap.png" alt="Звёздное небо Марса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/mars_starmap.png" alt="Звёздное небо Марса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Звёздное небо Марса. Видны созвездия Kho-lān, Tren dzen nur и многие другие.</div>
 </div>
   
@@ -50,7 +50,7 @@
 ## Описание
 
 <div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_violet_sky.jpg" alt="Фиолетовое небо Марса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Mars_violet_sky.jpg" alt="Фиолетовое небо Марса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Фиолетовое небо Марса — редкое явление, вызванное рассеянием света на пылевых частицах.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Mars_violet_sky.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -66,7 +66,7 @@
 Для удобства ориентировки звёздное небо Марса разделено на участки, называемые созвездиями. Наблюдением за звёздным небом занималась марсианская астрономия, которая достигла значительных высот в Эпоху Расцвета благодаря строительству [Астрономической башни Роген-Арии](https://mars-wiki.ru/geography/astronomicheskaya-bashnya/).
 
 <div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_sky_at_noon_PIA01546.jpg" alt="Дневное небо Марса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Mars_sky_at_noon_PIA01546.jpg" alt="Дневное небо Марса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Дневное небо Марса, снятое марсоходом Pathfinder. Характерный розовато-жёлтый оттенок.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Mars_sky_at_noon_PIA01546.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -82,7 +82,7 @@
 ## Астрономические особенности
 
 <div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_sunset_PIA00920.jpg" alt="Закат на Марсе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Mars_sunset_PIA00920.jpg" alt="Закат на Марсе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Закат на Марсе, снятый посадочным аппаратом Pathfinder (1997). Голубоватое свечение у горизонта.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Mars_sunset_PIA00920.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -152,7 +152,7 @@
 ### Культурное значение созвездий
 
 <div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_sunset_PIA01547.jpg" alt="Закат на Марсе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Mars_sunset_PIA01547.jpg" alt="Закат на Марсе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Закат на Марсе. Голубоватое свечение вокруг Солнца вызвано рассеянием света на пыли.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Mars_sunset_PIA01547.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -168,7 +168,7 @@
 ## Астрономия в марсианском обществе
 
 <div style="float: right; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars_nebo.jpg" alt="Ночное небо Марса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/mars_nebo.jpg" alt="Ночное небо Марса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Ночное небо Марса. Видны звёзды и спутники планеты.<br>
     <span style="font-size: 0.7rem;">Изображение из репозитория Mars Encyclopedia</span>
@@ -190,7 +190,7 @@
 ## Научное обоснование
 
 <div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Martian-Sunset-O-de-Goursac-Curiosity-2013.jpg" alt="Закат на Марсе, Curiosity 2013" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Martian-Sunset-O-de-Goursac-Curiosity-2013.jpg" alt="Закат на Марсе, Curiosity 2013" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Закат на Марсе, снятый марсоходом Curiosity в 2013 году. Голубые и розовые оттенки.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Martian-Sunset-O-de-Goursac-Curiosity-2013.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>

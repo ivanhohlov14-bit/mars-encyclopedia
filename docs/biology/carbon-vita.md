@@ -6,7 +6,7 @@
   </div>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/carbon-life-mars.jpg" alt="Углеродная жизнь на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/carbon-life-mars.jpg" alt="Углеродная жизнь на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция углеродной жизни на Марсе. Реконструкция по данным Академии Окхасена.</div>
   </div>
 

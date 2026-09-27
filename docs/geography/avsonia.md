@@ -12,17 +12,17 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/avsonia-kingdom-map.png" alt="Карта Королевства Авсония" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/avsonia-kingdom-map.png" alt="Карта Королевства Авсония" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Авсония. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Королевства Авсония" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-avsonia.png" alt="Флаг Королевства Авсония" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Авсонии</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-avsonia.png" alt="Герб Королевства Авсония" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-avsonia.png" alt="Герб Королевства Авсония" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Авсонии</div>
     </div>
   </div>
@@ -106,19 +106,19 @@
 
   <div style="display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 2px;">
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/khong/">Кхонг</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/serpentida/">Серпендида</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
     </span>
   </div>
@@ -151,7 +151,7 @@
 **Королевство Авсония** (марс. *Avsonia Mar* — «Живая Авсония») — небольшое прибрежное государство Марса, располагавшееся на берегу моря Эллада, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **5 000 000 км²**[^1]. Протяжённость границ достигала **9 500 км**[^2]. Население Авсонии в период расцвета (ок. 2650 г. Э.О.) достигало **2 500 000 человек**[^3], что делало его одним из самых малонаселённых государств Марса. Столица — [Автон](https://mars-wiki.ru/geography/avton/). Координаты столицы: 54° ю.ш., 87° в.д.[^4]. Государственный язык — *Marzān* (восточный диалект), также были распространены местные наречия[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-coast.jpg" alt="Побережье Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/avsonia-coast.jpg" alt="Побережье Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье моря Эллада — сердце Авсонии. Реконструкция.</div>
 </div>
 
@@ -162,7 +162,7 @@
 Авсония граничила с **четырьмя государствами**: на западе — с [Кхонгом](https://mars-wiki.ru/geography/khong/), на востоке — с [Эриданией](https://mars-wiki.ru/geography/eridania/), на северо-западе — с [Серпендидой](https://mars-wiki.ru/geography/serpentida/) (по акватории моря Эллада), на северо-востоке — с [Кимерией](https://mars-wiki.ru/geography/kimeria/)[^11]. В состав Авсонии входили **7 провинций**, включая **4 области**, **2 города-государства** (Автон, Кхон-Мар) и **1 автономную область** (побережье моря Эллада)[^12]. Крупнейшими городами Авсонии были Автон, Кхон-Мар, Сур-Кхо, Эллос-Акха и Теней-Тор. Всего в стране насчитывалось около **100 населённых пунктов**, от крупных портовых городов до небольших рыбацких деревень на побережье[^13].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-city.jpg" alt="Город Автон" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/avsonia-city.jpg" alt="Город Автон" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Порт Автон — главный город Авсонии. Реконструкция.</div>
 </div>
 
@@ -185,7 +185,7 @@
 ## Физико-географическая характеристика
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Hellas_Planitia_by_the_Viking_orbiters.jpg" alt="Море Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Hellas_Planitia_by_the_Viking_orbiters.jpg" alt="Море Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Море Эллада — реальный снимок с аппарата Viking. Источник: NASA / JPL.</div>
 </div>
 
@@ -196,7 +196,7 @@
 Основная часть населения была сосредоточена на побережье моря Эллада, так как южнее уже не было воды: там простирались пустыни и горные массивы (Сухие горы, горы Хаксли, Южные горы)[^4]. Жизнь в этих южных регионах была возможна лишь в редких оазисах, где подземные воды выходили на поверхность, но даже там поселения оставались малочисленными и постоянно зависели от торговли с северными прибрежными городами. Основными занятиями жителей этих отдалённых районов оставались охота на пустынных ящеров и добыча соли из высохших соляных озёр, что позволяло им выживать в суровых условиях пустыни.
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-map-medieval.png" alt="Карта Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/avsonia-map-medieval.png" alt="Карта Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Авсония в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
 </div>
 
@@ -224,7 +224,7 @@
 ### Рельеф
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-hills.jpg" alt="Южные горы Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/avsonia-hills.jpg" alt="Южные горы Авсонии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Южные горы Авсонии. Реконструкция.</div>
 </div>
 
@@ -240,7 +240,7 @@
 ### Внутренние воды
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-tenei-river.jpg" alt="Река Теней" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/avsonia-tenei-river.jpg" alt="Река Теней" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Река Теней — главная водная артерия Авсонии. Реконструкция.</div>
 </div>
 
@@ -324,7 +324,7 @@
 ### Войны против Королевства Эллада
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-hellas-war.png" alt="Война с Элладой" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/avsonia-hellas-war.png" alt="Война с Элладой" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Война с Королевством Эллада — безуспешные битвы за остров Эллос. Реконструкция.</div>
 </div>
 
@@ -335,7 +335,7 @@
 ### Падение Королевства Эллада
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-ellos-ruins.jpg" alt="Руины Эллос-Акхи" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/avsonia-ellos-ruins.jpg" alt="Руины Эллос-Акхи" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Руины элладского города Эллос-Акха — наследие древней войны. Реконструкция.</div>
 </div>
 
@@ -354,7 +354,7 @@
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/avsonia-destruction.jpeg" alt="Гибель Авсонии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/avsonia-destruction.jpeg" alt="Гибель Авсонии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Авсонии — замерзающее море и опустевшие порты. Реконструкция.</div>
 </div>
 

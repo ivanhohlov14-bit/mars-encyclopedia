@@ -7,17 +7,17 @@
   <hr>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/khong-kingdom-map.png" alt="Карта Королевства Кхонг" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/khong-kingdom-map.png" alt="Карта Королевства Кхонг" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Кхонг. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Королевства Кхонг" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-khong.png" alt="Флаг Королевства Кхонг" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Кхонга</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-khong.png" alt="Герб Королевства Кхонг" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-khong.png" alt="Герб Королевства Кхонг" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Кхонга</div>
     </div>
   </div>
@@ -62,15 +62,15 @@
   <p><b>Государства-соседи</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/kimeria/">Кимерия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/utopia/">Утопия</a>
     </div>
   </div>
@@ -98,7 +98,7 @@
 ## Эпоха Основания (ок. 600–1500 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/khong-arrival.png" alt="Основание Кхонга" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/khong-arrival.png" alt="Основание Кхонга" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Кхонга. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -107,7 +107,7 @@
 В **900 году**, в 14 день месяца **Пробуждения** (*Ākha-dzen*), кланы окончательно объединились под властью первого короля — **Харитида I** (880–940). Он установил законы, построил первые рудники и начал активную торговлю с соседями. В табличках этого периода упоминаются первые контакты с Эдемом и Кимерией[^4].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/khong-mines.png" alt="Рудники Кхонга" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/khong-mines.png" alt="Рудники Кхонга" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Рудники Харитских гор. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -120,7 +120,7 @@
 ## Эпоха Расцвета (1500–2680 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/khong-smelting.png" alt="Кузницы Кхонга" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/khong-smelting.png" alt="Кузницы Кхонга" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Кузницы Кхонга. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -133,7 +133,7 @@
 ## Эпоха Умирания (2680–2740 гг. Э.О.)
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/khong-collapse.png" alt="Гибель Кхонга" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/khong-collapse.png" alt="Гибель Кхонга" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Гибель Кхонга. Замёрзшие рудники. Реконструкция по табличкам Хевсура.</div>
 </div>
 

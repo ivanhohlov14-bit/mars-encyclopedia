@@ -8,7 +8,7 @@
   </div>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-thalassica-concept.png" alt="Tatīna thalassica" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/tatina-thalassica-concept.png" alt="Tatīna thalassica" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Реконструкция внешнего облика Tatīna thalassica.</div>
   </div>
 
@@ -90,7 +90,7 @@
 </div>
 
 <div style="text-align: center; padding: 6px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-thalassica-distribution-map.png" alt="Карта распространения Tatīna kimeriana" style="width: 50%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; display: block; margin: 0 auto;">
+  <img src="/assets/images/tatina-thalassica-distribution-map.png" alt="Карта распространения Tatīna kimeriana" style="width: 50%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; display: block; margin: 0 auto;">
   <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Распространение ископаемых остатков Tatīna thalassica</div>
 </div>
 
@@ -104,7 +104,7 @@
 
   <hr style="margin: 6px 0;">
 
-  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/kimeria/">Королевство Кимерия</a></span></p>
+  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/kimeria/">Королевство Кимерия</a></span></p>
   <p><b>Местоположение</b> Зефирийское море, Марс</p>
   <p><b>Размер</b> Оценочно 2–3 метра (длина)</p>
   <p><b>Масса</b> Оценочно 150–200 кг</p>
@@ -224,7 +224,7 @@ Tatīna thalassica была **хищником-засадчиком** и **фи�
 Tatīna thalassica обитала в **прибрежных водах Зефирийского моря**, особенно в районе острова Элизиум и вдоль побережья леса Тиррения[^25].
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-thalassica-ecosystem.jpg" alt="Экосистема Зефирийского моря" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="/assets/images/tatina-thalassica-ecosystem.jpg" alt="Экосистема Зефирийского моря" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Реконструкция экосистемы Зефирийского моря: Tatīna thalassica на переднем плане.</div>
 </div>
 

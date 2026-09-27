@@ -9,7 +9,7 @@
   <h3 style="margin: 0; text-align: center;">Малая серая звезда</h3>
   <hr>
   <div style="text-align: center;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-ships-arriving-earth.png" alt="Марсианские корабли прибывают на Землю" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/mars-ships-arriving-earth.png" alt="Марсианские корабли прибывают на Землю" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.9rem; color: #555; margin-top: 4px;">Марсианские корабли-ковчеги в атмосфере Земли. Художественная визуализация.</div>
   </div>
   <p><b>Марсианское название:</b> Dzen Thali («Звезда-цель»), Dzen Hōr Xalkōln («Малая серая звезда»)</p>
@@ -63,7 +63,7 @@
 ---
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-earth-comparison.jpeg" alt="Сравнение Марса и Земли" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/mars-earth-comparison.jpeg" alt="Сравнение Марса и Земли" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Сравнение Марса и Земли. Слева — красный пустынный Марс, справа — голубая Земля с океанами.</div>
 </div>
 
@@ -92,7 +92,7 @@
 ## Перелёт на Землю
 
 <div style="float: left; margin: 0 20px 20px 0; width: 45%;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-earth-trajectory.jpeg" alt="Траектория перелёта Марс — Земля" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/mars-earth-trajectory.jpeg" alt="Траектория перелёта Марс — Земля" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px; text-align: center;">Траектория перелёта Марс — Земля с гравитационным манёвром у Венеры.</div>
 </div>
 
@@ -158,7 +158,7 @@
 ## Ключевые проблемы колонизации
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/early-earth-volcanic.jpeg" alt="Пейзаж ранней Земли" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/early-earth-volcanic.jpeg" alt="Пейзаж ранней Земли" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Ранняя Земля — вулканический пейзаж с плотной атмосферой и зелёными океанами.</div>
 </div>
 

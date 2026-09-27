@@ -12,17 +12,17 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eridania-kingdom-map.png" alt="Карта Королевства Эридания" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/eridania-kingdom-map.png" alt="Карта Королевства Эридания" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Эридания. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Королевства Эридания" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Королевства Эридания" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Эридании</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-eridania.png" alt="Герб Королевства Эридания" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-eridania.png" alt="Герб Королевства Эридания" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Эридании</div>
     </div>
   </div>
@@ -107,23 +107,23 @@
 
   <div style="display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 2px;">
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eritrea/">Эритрея</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/khong/">Кхонг</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/avsonia/">Авсония</a>
     </span>
   </div>
@@ -156,7 +156,7 @@
 **Королевство Эридания** (марс. *Eridania Sen* — «Земля Эридании») — крупное южное государство Марса, располагавшееся в южной части западного полушария планеты, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **14 000 000 км²**[^1]. Протяжённость границ достигала **14 000 км**[^2]. Население Эридании в период расцвета (ок. 2650 г. Э.О.) достигало **4 500 000 человек**[^3], что делало его пятым по численности населения государством Марса. Столица — [Эридан-Ара](https://mars-wiki.ru/geography/eridan-ara/). Координаты столицы: 60° ю.ш., 168° з.д.[^4]. Государственный язык — *Marzān* (южный диалект), также были распространены местные наречия, восходящие к языкам кочевников Эридании и Авсонии[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-desert.jpeg" alt="Пустыня Синерия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eridania-desert.jpeg" alt="Пустыня Синерия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Пустыня Синерия — сердце Эридании. Реконструкция.</div>
 </div>
 
@@ -167,7 +167,7 @@
 Эридания граничила с **пятью государствами**: на севере — с [Аркадией](https://mars-wiki.ru/geography/arkadia/) и Эритреей, на востоке — с Кхонгом, на юге — с Кимерией, на западе — с Авсонией[^13]. В состав Эридании входили **15 провинций**, включая **8 областей**, **4 королевства-вассала**, **2 города-государства** (Эридан-Ара и Мар-Ур) и **1 автономную область** (побережье залива Великих Королей)[^14]. Крупнейшими городами Эридании были Эридан-Ара, Мар-Ур, Син-Тор, Аргир-Акха и Кхо-Тар. Всего в стране насчитывалось около **250 населённых пунктов**, от крупных караванных городов до небольших деревень в пустыне Синерии[^15].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-cities.jpeg" alt="Города Эридании" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eridania-cities.jpeg" alt="Города Эридании" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Город на Южном тракте — торговый центр Эридании. Реконструкция.</div>
 </div>
 
@@ -196,7 +196,7 @@
 ### Географическое положение
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-map-medieval.png" alt="Карта Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eridania-map-medieval.png" alt="Карта Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Эридания в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
 </div>
 
@@ -231,7 +231,7 @@
 ## Рельеф
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Terra_Sirenum.png" alt="Слоистые отложения в Terra Sirenum" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Terra_Sirenum.png" alt="Слоистые отложения в Terra Sirenum" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Слоистые отложения в области Terra Sirenum. Источник: NASA / JPL-Caltech / UArizona.</div>
 </div>
 
@@ -248,7 +248,7 @@
 ## Внутренние воды
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-great-current-river.jpg" alt="Река Великое Течение" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eridania-great-current-river.jpg" alt="Река Великое Течение" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Река Великое Течение — главная водная артерия Эридании. Реконструкция.</div>
 </div>
 
@@ -352,7 +352,7 @@
 ### Эпоха Основания (ок. 500–800 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-foundation.jpg" alt="Основание Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eridania-foundation.jpg" alt="Основание Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Эридан-Ары. Реконструкция.</div>
 </div>
 
@@ -365,7 +365,7 @@
 ### Эпоха Расцвета (800–2500 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-temple.png" alt="Храм Аргира" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eridania-temple.png" alt="Храм Аргира" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Храм в долине Аргира — главное святилище Эридании. Реконструкция.</div>
 </div>
 
@@ -378,7 +378,7 @@
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eridania-destruction.png" alt="Гибель Эридании" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eridania-destruction.png" alt="Гибель Эридании" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Эридании — пылевая буря поглощает город. Реконструкция.</div>
 </div>
 

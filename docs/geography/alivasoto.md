@@ -15,18 +15,18 @@
 
   <!-- Карта -->
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/alivasoto-kingdom-map.png" alt="Карта Королевства Аливасото" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/alivasoto-kingdom-map.png" alt="Карта Королевства Аливасото" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Аливасото. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <!-- Флаг и герб -->
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png" alt="Флаг Королевства Аливасото" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-alivasoto.png" alt="Флаг Королевства Аливасото" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Аливасото</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-alivasoto.png" alt="Герб Королевства Аливасото" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-alivasoto.png" alt="Герб Королевства Аливасото" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Аливасото</div>
     </div>
   </div>
@@ -111,19 +111,19 @@
   </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/arkadia/">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eridania/">Эридания</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/kimeria/">Кимерия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eden/">Эдем</a>
     </div>
   </div>
@@ -165,7 +165,7 @@
 
 <!-- Вставка карты Аливасото (общий вид) -->
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/карта аливасото.png" alt="Карта Королевства Аливасото" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/карта аливасото.png" alt="Карта Королевства Аливасото" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Аркадия в середине II тысячелетия Э.О.</div>
 </div>
 
@@ -173,7 +173,7 @@
 
 <!-- Вставка изображения Большого острова (справа) -->
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/аливасото-остров.jpg" alt="Большой остров Аливасото" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/аливасото-остров.jpg" alt="Большой остров Аливасото" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Большой остров Аливасото. Реконструкция.</div>
 </div>
 
@@ -182,7 +182,7 @@
 В недрах горы, на глубине от **500** до **1 500** метров, находились месторождения камней лисот — редчайших драгоценных минералов[^18]. Доступ к ним был возможен только через систему естественных и искусственных пещер, которые местные жители расширяли веками. Эти пещеры тянулись на десятки километров, образуя настоящий подземный лабиринт, в котором легко было заблудиться. Стены пещер были покрыты кристаллическими наростами, которые слабо светились в темноте, создавая зловещее, но завораживающее свечение — сами шахтёры называли это «глазами горы». Вокруг горы, на высотах до **1 000** м, простирались террасы с плодородными почвами, где островитяне выращивали пурпурные злаки и корнеплоды, способные выживать в условиях разрежённой атмосферы и скудных осадков.
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/аливасото-гора.jpg" alt="Гора Аливасото" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/аливасото-гора.jpg" alt="Гора Аливасото" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Гора Аливасото — потухший вулкан. Реконструкция.</div>
 </div>
 
@@ -202,7 +202,7 @@
 
 <!-- Вставка изображения камней лисот -->
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/аливасото-камни.jpg" alt="Камни лисот" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/аливасото-камни.jpg" alt="Камни лисот" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Камни лисот — главное богатство Аливасото. Реконструкция.</div>
 </div>
 
@@ -252,7 +252,7 @@
 
 <!-- Вставка изображения цунами -->
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/аливасото-цунами.jpg" alt="Цунами, уничтожившее Аливасото" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/аливасото-цунами.jpg" alt="Цунами, уничтожившее Аливасото" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Цунами 2740 года, уничтожившее Аливасото. Реконструкция.</div>
 </div>
 

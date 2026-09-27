@@ -13,7 +13,7 @@
 
   <!-- Основное изображение -->
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Martian_surface_texture_red-orange_regolith_fine_dust_and_small_rocks_scattered_-0.jpg" alt="Текстура поверхности Марса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #c09070;">
+    <img src="/assets/images/lucid-origin_Martian_surface_texture_red-orange_regolith_fine_dust_and_small_rocks_scattered_-0.jpg" alt="Текстура поверхности Марса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #c09070;">
     <div style="font-size: 0.7rem; color: #5a3a20; margin-top: 4px;">Текстура марсианской поверхности. Реконструкция.</div>
   </div>
 
@@ -58,7 +58,7 @@
 ## Научное объяснение
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Microscopic_view_of_ferrihydrite_nanoparticles_poorly_crystalline_iron_oxide_rus-0.jpg" alt="Ферригидрит под микроскопом" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Microscopic_view_of_ferrihydrite_nanoparticles_poorly_crystalline_iron_oxide_rus-0.jpg" alt="Ферригидрит под микроскопом" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Частицы ферригидрита под микроскопом. Реконструкция.</div>
 </div>
 
@@ -69,7 +69,7 @@
 ## Был ли Марс красным всегда?
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_Mars_landscape_3.5_billion_years_ago_gray_basaltic_rocks_vast_blue_ocean-0.jpg" alt="Древний Марс 3,5 млрд лет назад" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Ancient_Mars_landscape_3.5_billion_years_ago_gray_basaltic_rocks_vast_blue_ocean-0.jpg" alt="Древний Марс 3,5 млрд лет назад" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Марс 3,5 млрд лет назад. Реконструкция.</div>
 </div>
 
@@ -78,7 +78,7 @@
 В тот период ферригидрит образовывался в холодных водах древних морей, медленно накапливаясь в осадочных породах. Но с поверхности он был скрыт под водой и льдом. Красный цвет стал преобладающим **позже**, когда Марс потерял большую часть атмосферы и жидкой воды. Пыль, обогащённая оксидами железа, поднялась в воздух и покрыла планету тонким слоем толщиной всего в несколько миллиметров. Именно эта **пыль**, а не цвет самих скал, придаёт Марсу его знаменитый оттенок[^7]. Марсоход Curiosity, пробурив поверхность, обнаружил, что под красной пылью скрывается **серо-синий базальт** — настоящий цвет планеты[^8].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 320px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Split_image_comparison_left_side_ancient_Mars_with_blue_oceans_and_gray_rocks_ri-0.jpg" alt="Сравнение: древний Марс и современный" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Split_image_comparison_left_side_ancient_Mars_with_blue_oceans_and_gray_rocks_ri-0.jpg" alt="Сравнение: древний Марс и современный" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Сравнение: древний Марс (слева) и современный (справа).</div>
 </div>
 
@@ -89,7 +89,7 @@
 В древности на Марсе существовали **белые пески** — результат отложения **карбонатов** и **каолинита** в прибрежных зонах. Например, марсоход *Perseverance* обнаружил тысячи белых пород каолинита в кратере Джезеро, что свидетельствует о **миллионах лет дождей** и влажных условиях[^10]. Каолинит — мягкий белый глинистый минерал, который на Земле образуется в тёплых влажных тропических условиях при длительном выветривании. Как отметил Адриан Броз, ведущий автор исследования: *«Вам нужно так много воды, что мы думаем, эти породы могут быть свидетельством древнего более тёплого и влажного климата, где дожди шли миллионы лет»*[^11].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_Martian_coastline_white_carbonate_sands_blue_shallow_ocean_red_clay_clif-0.jpg" alt="Древняя береговая линия Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Ancient_Martian_coastline_white_carbonate_sands_blue_shallow_ocean_red_clay_clif-0.jpg" alt="Древняя береговая линия Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Древняя береговая линия Марса. Реконструкция.</div>
 </div>
 
@@ -102,7 +102,7 @@
 Вулканы Марса — Олимп, Фарсида, Павонис — извергались **3,5–4 миллиарда лет назад**, задолго до Эпохи Умирания. Их извержения выбрасывали в атмосферу **пепел, серу и железо**, которые, смешиваясь с пылью, способствовали образованию красных оксидов. Однако вулканы **не создали** красный цвет планеты — они лишь **усилили** его, добавив новые порции железа в атмосферу и ускорив окисление[^14].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Massive_Martian_dust_storm_red_iron_oxide_dust_rising_into_thin_atmosphere_swirl-0.jpg" alt="Пыльная буря на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Massive_Martian_dust_storm_red_iron_oxide_dust_rising_into_thin_atmosphere_swirl-0.jpg" alt="Пыльная буря на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Пыльная буря на Марсе. Реконструкция.</div>
 </div>
 
@@ -111,7 +111,7 @@
 ## Цвет Марса в марсианской мифологии
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Mythological_scene_tears_of_a_water_goddess_falling_onto_soil_mixed_with_glowing-0.jpg" alt="Слёзы Акхи" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Mythological_scene_tears_of_a_water_goddess_falling_onto_soil_mixed_with_glowing-0.jpg" alt="Слёзы Акхи" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Слёзы Акхи падают на землю. Реконструкция.</div>
 </div>
 
@@ -121,7 +121,7 @@
 > — Из «Книги Харан»
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Close-up_of_molten_iron-rich_blood_soaking_into_dry_Martian_soil_glowing_orange--0.jpg" alt="Кровь Кхо впитывается в землю" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Close-up_of_molten_iron-rich_blood_soaking_into_dry_Martian_soil_glowing_orange--0.jpg" alt="Кровь Кхо впитывается в землю" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Кровь Кхо впитывается в марсианскую почву. Реконструкция.</div>
 </div>
 

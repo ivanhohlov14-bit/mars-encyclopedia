@@ -13,13 +13,13 @@
 
   <!-- Карта -->
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-map.png" alt="Карта Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <img src="/assets/images/hellas-sea-map.png" alt="Карта Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
     <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Расположение Моря Эллада. Отмечено синим. По данным Академии Окхасена.</div>
   </div>
 
   <!-- Батиметрия -->
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-bathymetry.png" alt="Батиметрия Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <img src="/assets/images/hellas-sea-bathymetry.png" alt="Батиметрия Моря Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
     <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Батиметрическая карта Моря Эллада.</div>
   </div>
 
@@ -96,19 +96,19 @@
   </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eden/" style="color: #1a3a4a; text-decoration: underline;">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/kimeria/" style="color: #1a3a4a; text-decoration: underline;">Кимерия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/avsonia/" style="color: #1a3a4a; text-decoration: underline;">Авсония</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритреи" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eritrea.png" alt="Флаг Эритреи" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eritreya/" style="color: #1a3a4a; text-decoration: underline;">Эритрея</a>
     </div>
   </div>
@@ -146,7 +146,7 @@
 ## Этимология
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-cradle-of-life.jpg" alt="Море Эллада — колыбель жизни" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/hellas-sea-cradle-of-life.jpg" alt="Море Эллада — колыбель жизни" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Море Эллада — колыбель жизни. Реконструкция.</div>
 </div>
 
@@ -176,7 +176,7 @@
 ### Лес Тиррения
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tirrenia-forest-ecosystem.jpg" alt="Лес Тиррения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/tirrenia-forest-ecosystem.jpg" alt="Лес Тиррения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Лес Тиррения на северном берегу Моря Эллада. Реконструкция.</div>
 </div>
 
@@ -185,7 +185,7 @@
 ### Острова
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-temple-hram-ug.jpg" alt="Храм Араксис на острове Храм-Уг" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/hellas-sea-temple-hram-ug.jpg" alt="Храм Араксис на острове Храм-Уг" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Древнейший храм Араксис на острове Храм-Уг. Реконструкция.</div>
 </div>
 
@@ -202,7 +202,7 @@
 ### Каналы
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-canal-saruma.jpg" alt="Канал Сарума" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/hellas-sea-canal-saruma.jpg" alt="Канал Сарума" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Канал Сарума. Реконструкция гидротехнического сооружения.</div>
 </div>
 
@@ -276,7 +276,7 @@
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/эллада-город.jpg" alt="Прибрежный город Моря Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/эллада-город.jpg" alt="Прибрежный город Моря Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Прибрежный город Моря Эллада в Эпоху Расцвета. Реконструкция.</div>
 </div>
 
@@ -285,7 +285,7 @@
 ### Эпоха Умирания (2680–2745 гг. Э.О.)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Somber_panoramic_cinematic_view_of_the_dying_Hellas_Sea_on_Mars_the_last_remaini-0.jpg" alt="Море Эллада в Эпоху Умирания" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Somber_panoramic_cinematic_view_of_the_dying_Hellas_Sea_on_Mars_the_last_remaini-0.jpg" alt="Море Эллада в Эпоху Умирания" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Море Эллада в Эпоху Умирания. Реконструкция.</div>
 </div>
 
@@ -294,7 +294,7 @@
 ## Экосистема
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-ecosystem.jpg" alt="Подводный мир Моря Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/hellas-sea-ecosystem.jpg" alt="Подводный мир Моря Эллада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир Моря Эллада. Реконструкция.</div>
 </div>
 
@@ -314,7 +314,7 @@
 ### В мифологии
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-myth-salt-mirror.png" alt="Миф о Солёном зеркале" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/hellas-sea-myth-salt-mirror.png" alt="Миф о Солёном зеркале" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Миф о Солёном зеркале. Реконструкция.</div>
 </div>
 
@@ -329,14 +329,14 @@
 Ныне Море Эллада — это пустыня, покрытая соляной коркой. Однако под поверхностью сохраняются огромные запасы льда и воды, которые, возможно, остаются жидкими на глубине[^23]. В книгах цикла, по состоянию на 2745 год, море полностью высохло и покрыто слоем соли и пепла; его поверхность используется беженцами как дорога, но под солью сохраняется память о древних волнах[^24].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hellas-sea-dried-today.jpg" alt="Море Эллада сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/hellas-sea-dried-today.jpg" alt="Море Эллада сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Высохшее Море Эллада сегодня. Фотореалистичная реконструкция.</div>
 </div>
 
 Равнина Эллада и сегодня остаётся самой глубокой низменностью Марса. Её дно покрыто слоями соли, пыли и пепла — немыми свидетелями великого прошлого. Ниже — реальный снимок равнины, сделанный орбитальными аппаратами «Викинг»: гигантский ударный бассейн, который когда-то был колыбелью марсианской жизни.
 
 <div style="text-align: center; margin: 20px 0; clear: both;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Hellas_Planitia_by_the_Viking_orbiters.jpg" alt="Равнина Эллада из космоса" style="width: 80%; max-width: 700px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Hellas_Planitia_by_the_Viking_orbiters.jpg" alt="Равнина Эллада из космоса" style="width: 80%; max-width: 700px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 6px;">Равнина Эллада. Снимок орбитальных аппаратов «Викинг». NASA.</div>
 </div>
 

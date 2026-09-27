@@ -12,7 +12,7 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ce9c8c434f657d2a645994519c49483c.jpg" alt="Трёхгранная пирамида в Кандоре" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #6a4a8a;">
+    <img src="/assets/images/ce9c8c434f657d2a645994519c49483c.jpg" alt="Трёхгранная пирамида в Кандоре" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #6a4a8a;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Загадочная трёхгранная структура в каньоне Кандор. Кадр Mars Global Surveyor, 2001.</div>
   </div>
 
@@ -20,7 +20,7 @@
     Общие данные
   </div>
   <p style="margin: 2px 0; color: #1a1a2e;"><b>Тип:</b> Неопознанная геологическая формация / артефакт</p>
-  <p style="margin: 2px 0; color: #1a1a2e;"><b>Страна:</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="https://mars-wiki.ru/geography/eden/" style="color: #6a3fb5; text-decoration: underline;">Королевство Эдем</a></span></p>
+  <p style="margin: 2px 0; color: #1a1a2e;"><b>Страна:</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="https://mars-wiki.ru/geography/eden/" style="color: #6a3fb5; text-decoration: underline;">Королевство Эдем</a></span></p>
   <p style="margin: 2px 0; color: #1a1a2e;"><b>Местоположение:</b> <a href="https://mars-wiki.ru/geography/candor-chasma/" style="color: #6a3fb5; text-decoration: underline;">Каньон Кандор</a>, система <a href="https://mars-wiki.ru/geography/valles-marineris/" style="color: #6a3fb5; text-decoration: underline;">Valles Marineris</a></p>
   <p style="margin: 2px 0; color: #1a1a2e;"><b>Координаты:</b> ~5° ю.ш., 75° з.д.</p>
 
@@ -76,7 +76,7 @@
 Однако представители NASA и учёные-геологи склоняются к версии **естественного геологического образования** — результата эрозии, ветра и тектонических процессов, сформировавших каньон Кандор за миллиарды лет[^10][^11]. Европейское космическое агентство (ESA) также подтвердило, что подобные формации являются *«плодом человеческого воображения на сильно эродированной поверхности»*[^12][^13].
 
 <div style="text-align: center; margin: 24px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_Martian_pyramid_silhouetted_against_starry_night_sky_Milky_Way_visible_a-0.jpg" alt="Пирамида на фоне звёздного неба" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Ancient_Martian_pyramid_silhouetted_against_starry_night_sky_Milky_Way_visible_a-0.jpg" alt="Пирамида на фоне звёздного неба" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Пирамида на фоне звёздного неба с Млечным Путём. Художественная реконструкция.</div>
 </div>
 
@@ -89,7 +89,7 @@
 Структура была впервые замечена **в 2001 году** независимым исследователем Китом Лейни при анализе снимков, полученных камерой Mars Orbiter Camera (MOC) на борту космического аппарата **Mars Global Surveyor** (NASA)[^1][^2]. Позже объект был переснят **в 2002, 2007** (Mars Reconnaissance Orbiter, HiRISE), **2014 и 2016 годах**[^3][^4].
 
 <div style="float: left; margin: 0 1.5rem 0.5rem 0; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Candor_Chasma_THEMIS_mosaic.jpg" alt="Панорама каньона Кандор" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="/assets/images/Candor_Chasma_THEMIS_mosaic.jpg" alt="Панорама каньона Кандор" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Панорама западной части каньона Кандор (Candor Chasma). Источник: NASA/JPL/MSSS</div>
 </div>
 
@@ -111,7 +111,7 @@
 Пост мгновенно стал вирусным. К 18–19 марта 2026 года новость облетела все мировые СМИ — от **Daily Mail** и **Mirror** до **ScienceAlert** и **WION**[^9][^10][^11]. Пользователи сравнивали объект с **египетскими пирамидами**, **«Лицом на Марсе»** из Кидонии и даже **доказательством существования древней цивилизации**[^12][^13].
 
 <div style="text-align: center; margin: 24px 0; clear: both;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/снимок_наса_пирамида.jpg" alt="Снимок NASA — пирамида в Кандоре" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/снимок_наса_пирамида.jpg" alt="Снимок NASA — пирамида в Кандоре" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Снимок NASA: трёхгранная пирамида в западной части каньона Кандор. Источник: NASA/JPL/MSSS</div>
 </div>
 
@@ -132,7 +132,7 @@
 4. **Это не первый случай парейдолии.** В 1976 году аппарат Viking-1 сфотографировал в регионе Кидония холм, похожий на человеческое лицо. В 2006 году ESA развеяло миф с помощью высококачественных 3D-снимков, показав, что это обычный эродированный островной холм[^16][^17].
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Martian_pyramid_seen_through_a_massive_dust_storm_only_silhouette_visible_throug-0.jpg" alt="Пирамида в пылевую бурю" style="max-width: 100%; height: auto; border-radius: 4px;">
+  <img src="/assets/images/lucid-origin_Martian_pyramid_seen_through_a_massive_dust_storm_only_silhouette_visible_throug-0.jpg" alt="Пирамида в пылевую бурю" style="max-width: 100%; height: auto; border-radius: 4px;">
   <div style="margin-top: 4px; color: #555;">Пирамида сквозь пылевую бурю. Реконструкция.</div>
 </div>
 
@@ -153,7 +153,7 @@
 3. **Отсутствие аналогичных форм.** В окрестностях каньона Кандор нет других структур с такой же идеальной трёхгранной симметрией.
 
 <div style="text-align: center; margin: 24px 0; clear: both;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Extreme_close-up_of_ancient_Martian_pyramid_stone_surface_weathered_red_sandston-0.jpg" alt="Крупный план поверхности пирамиды" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Extreme_close-up_of_ancient_Martian_pyramid_stone_surface_weathered_red_sandston-0.jpg" alt="Крупный план поверхности пирамиды" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Крупный план поверхности: выветренный красный песчаник. Реконструкция.</div>
 </div>
 
@@ -164,7 +164,7 @@
 Независимые исследователи, опираясь на расшифрованные таблички [Академии Окхасена](https://mars-wiki.ru/geography/akademiya-okhasena/) и летописи [Королевства Эдем](https://mars-wiki.ru/geography/eden/), предлагают альтернативную версию: **«пирамида» может быть обсерваторией или культовым сооружением**, построенным в **Эпоху Расцвета (2500–2680 гг. Э.О.)**[^14][^15][^20].
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/32dee7a998011f18dbd520d3b9467fa_1.jpeg" alt="Концепция обсерватории" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/32dee7a998011f18dbd520d3b9467fa_1.jpeg" alt="Концепция обсерватории" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция обсерватории Эпохи Расцвета. Реконструкция по данным Академии Окхасена.</div>
 </div>
 
@@ -193,7 +193,7 @@
 Исследователи Mars Institute **Джордж Хаас** и **Кит Лейни** в соавторстве опубликовали статью, в которой предположили, что симметрия структуры может указывать на **искусственное происхождение**[^25]. Хаас описал структуру как имеющую *«уровень геометрии и симметрии, который поддерживает высокую вероятность искусственного происхождения»*[^7].
 
 <div style="text-align: center; margin: 24px 0; clear: both;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_Martian_pyramid_under_construction_by_six-fingered_humanoid_workers_alie-0.jpg" alt="Пирамида в процессе строительства" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Ancient_Martian_pyramid_under_construction_by_six-fingered_humanoid_workers_alie-0.jpg" alt="Пирамида в процессе строительства" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Пирамида в процессе строительства шестипалыми рабочими. Реконструкция по табличкам.</div>
 </div>
 
@@ -221,7 +221,7 @@
 Однако сам Доббс признал, что эта находка *«не является прямым доказательством существования древней цивилизации»*[^6].
 
 <div style="text-align: center; margin: 24px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_Martian_pyramid_half-buried_in_red_sand_cracks_running_through_the_stone-0.jpg" alt="Пирамида, наполовину засыпанная песком" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Ancient_Martian_pyramid_half-buried_in_red_sand_cracks_running_through_the_stone-0.jpg" alt="Пирамида, наполовину засыпанная песком" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Пирамида, наполовину засыпанная красным песком. Трещины проходят сквозь камень. Реконструкция.</div>
 </div>
 

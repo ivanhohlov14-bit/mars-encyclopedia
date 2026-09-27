@@ -7,17 +7,17 @@
   <hr>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/avsonia-kingdom-map.png" alt="Карта Королевства Авсония" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/avsonia-kingdom-map.png" alt="Карта Королевства Авсония" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Авсония. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Королевства Авсония" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-avsonia.png" alt="Флаг Королевства Авсония" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Авсонии</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-avsonia.png" alt="Герб Королевства Авсония" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-avsonia.png" alt="Герб Королевства Авсония" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Авсонии</div>
     </div>
   </div>
@@ -61,15 +61,15 @@
   <p><b>Государства-соседи</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png" alt="Флаг Эллады" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-hellas.png" alt="Флаг Эллады" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/hellas/">Эллада</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/serpentida/">Серпентида</a>
     </div>
   </div>
@@ -97,7 +97,7 @@
 ## Эпоха Основания (ок. 500–1500 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/avsonia-arrival.png" alt="Основание Авсонии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/avsonia-arrival.png" alt="Основание Авсонии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Автона. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -106,7 +106,7 @@
 В **700 году**, в 14 день месяца **Пробуждения** (*Ākha-dzen*), кланы окончательно объединились под властью первого короля — **Авсонида I** (680–740). Он установил законы, построил первые порты и начал активную торговлю с Эдемом и Серпентидой. В табличках этого периода упоминаются первые контакты с северными соседями[^4].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/avsonia-ports.png" alt="Порты Авсонии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/avsonia-ports.png" alt="Порты Авсонии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Порты Авсонии. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -119,7 +119,7 @@
 ## Эпоха Расцвета (1500–2680 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/avsonia-trade.png" alt="Торговля Авсонии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/avsonia-trade.png" alt="Торговля Авсонии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Торговые корабли Авсонии. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -132,7 +132,7 @@
 ## Эпоха Умирания (2680–2740 гг. Э.О.)
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/avsonia-collapse.png" alt="Гибель Авсонии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/avsonia-collapse.png" alt="Гибель Авсонии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Гибель Авсонии. Замёрзшее море. Реконструкция по табличкам Хевсура.</div>
 </div>
 

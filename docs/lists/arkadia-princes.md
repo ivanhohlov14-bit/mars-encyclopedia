@@ -46,7 +46,7 @@ description: История и география Королевства Арк�
 <!-- ============ INFO PANEL ============ -->
 <div class="arkadia-info">
   <div class="arkadia-info-image">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Arkadia_Mars._Shield_shape_moun-0.jpg" alt="Герб Аркадии" loading="lazy">
+    <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Arkadia_Mars._Shield_shape_moun-0.jpg" alt="Герб Аркадии" loading="lazy">
     <div class="arkadia-info-caption">Герб династии Терманидов</div>
   </div>
   <div class="arkadia-info-body">
@@ -217,7 +217,7 @@ description: История и география Королевства Арк�
 
 <!-- ============ ФИНАЛЬНЫЙ БАННЕР ============ -->
 <div class="arkadia-final">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-arkadia.png" alt="Флаг Аркадии" class="arkadia-final-flag">
+  <img src="/assets/images/flag-of-arkadia.png" alt="Флаг Аркадии" class="arkadia-final-flag">
   <div class="arkadia-final-body">
     <div class="arkadia-final-label">Горное княжество</div>
     <div class="arkadia-final-name">Аркадия</div>

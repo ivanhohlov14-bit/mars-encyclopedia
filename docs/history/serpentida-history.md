@@ -7,17 +7,17 @@
   <hr>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/serpentida-kingdom-map.png" alt="Карта Королевства Серпентида" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/serpentida-kingdom-map.png" alt="Карта Королевства Серпентида" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Серпентида. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Королевства Серпентида" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Королевства Серпентида" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Серпентиды</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-serpentida.png" alt="Герб Королевства Серпентида" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-serpentida.png" alt="Герб Королевства Серпентида" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Серпентиды</div>
     </div>
   </div>
@@ -63,15 +63,15 @@
   <p><b>Государства-соседи</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png" alt="Флаг Эллады" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-hellas.png" alt="Флаг Эллады" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/hellas/">Эллада</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/kimeria/">Кимерия</a>
     </div>
   </div>
@@ -99,7 +99,7 @@
 ## Легендарная эпоха (ок. 500 г. до Э.О. — 500 г. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/serpentida-arrival.png" alt="Прибытие Серпа" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/serpentida-arrival.png" alt="Прибытие Серпа" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Прибытие Серпа на берег моря Эллады. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -108,7 +108,7 @@
 В **ок. 500 г. Э.О.**, согласно табличкам, найденным в руинах Акха-Кора, на месте рыбацкой деревни был построен город **Акха-Кор** («Водный престол»), ставший столицей Серпентиды. Город славился своими верфями, храмами Араксис и библиотекой, где хранились древнейшие таблички. К сожалению, Акха-Кор затонул в 1700 году Э.О. во время сильного землетрясения, и все таблички погибли[^4].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/serpentida-shipbuilding.png" alt="Верфи Акха-Кора" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/serpentida-shipbuilding.png" alt="Верфи Акха-Кора" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Верфи Акха-Кора. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -121,7 +121,7 @@
 ## Эпоха Расцвета (500–1700 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/serpentida-fleet.png" alt="Флот Серпентиды" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/serpentida-fleet.png" alt="Флот Серпентиды" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Флот Серпентиды в расцвете могущества. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -132,7 +132,7 @@
 В **1100 году**, в 12 день месяца **Ветров** (*Zal-ākha*), был построен Великий канал, соединивший море Эллады с Ацидалийским морем. Это позволило серпендидским кораблям проходить проливы без необходимости огибать южное побережье. Канал стал главной торговой артерией планеты и принёс Серпентиде огромные доходы[^9].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/serpentida-great-canal.png" alt="Великий канал" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/serpentida-great-canal.png" alt="Великий канал" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Великий канал, соединивший моря. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -147,7 +147,7 @@
 ## Эпоха Упадка (1700–2740 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/serpentida-collapse.png" alt="Гибель Акха-Кора" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/serpentida-collapse.png" alt="Гибель Акха-Кора" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Гибель Акха-Кора. Землетрясение и затопление столицы. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -156,7 +156,7 @@
 В **2000 году**, в 14 день месяца **Тьмы** (*Ākha-mōr*), в Серпентиде началось движение за независимость. В **2390 году**, в 22 день месяца **Ледяного покрова** (*Dzen-thal*), на престол взошла **Великая Акхара** (2370–2445) — последняя независимая правительница Серпентиды. Она отразила три вторжения эдемских армий и сохранила автономию своей земли до самой смерти. Её внуки, однако, добровольно присягнули Эдему через сто лет после её ухода[^14].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/serpentida-queen.png" alt="Великая Акхара" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/serpentida-queen.png" alt="Великая Акхара" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Великая Акхара — последняя независимая правительница Серпентиды. Реконструкция по табличкам Академии.</div>
 </div>
 

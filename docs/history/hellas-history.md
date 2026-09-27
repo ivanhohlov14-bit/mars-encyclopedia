@@ -7,17 +7,17 @@
   <hr>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/hellas-kingdom-map.png" alt="Карта Древнего Королевства Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/hellas-kingdom-map.png" alt="Карта Древнего Королевства Эллада" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Древнего Королевства Эллада. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png" alt="Флаг Древнего Королевства Эллада" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-hellas.png" alt="Флаг Древнего Королевства Эллада" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Эллады</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-hellas.png" alt="Герб Древнего Королевства Эллада" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-hellas.png" alt="Герб Древнего Королевства Эллада" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Эллады</div>
     </div>
   </div>
@@ -63,15 +63,15 @@
   <p><b>Государства-соседи</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/serpentida/">Серпентида</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/kimeria/">Кимерия</a>
     </div>
   </div>
@@ -99,7 +99,7 @@
 ## Древнейший период (ок. 5000–1000 гг. до Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/hellas-arrival.png" alt="Прибытие первых поселенцев в Элладу" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/hellas-arrival.png" alt="Прибытие первых поселенцев в Элладу" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Прибытие первых поселенцев на острова Эллады. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -108,7 +108,7 @@
 В **ок. 4000 г. до Э.О.** был построен первый храм Араксис, вокруг которого вырос город **Араксис-Сен** («Город богини Араксис»). Храм стал центром духовной и политической жизни. Жрецы Араксис, обладавшие знанием астрономии и медицины, правили островами как «Хранители воды» (*Akha-dzen*)[^4].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/hellas-temple.png" alt="Храм Араксис" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/hellas-temple.png" alt="Храм Араксис" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Храм Араксис в Араксис-Сене. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -121,7 +121,7 @@
 ## Эпоха Расцвета (1000 г. до Э.О. — 1000 г. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/hellas-astronomy.png" alt="Элладские астрономы" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/hellas-astronomy.png" alt="Элладские астрономы" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Элладские астрономы за составлением звёздных карт. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -132,7 +132,7 @@
 - **Сирум-Мудрый** (ок. 1850–1900 гг. Э.О.) — составивший календарь, которым пользовалось всё Королевство.
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/hellas-medicine.png" alt="Элладские врачи" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/hellas-medicine.png" alt="Элладские врачи" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Элладские врачи за приготовлением лекарств. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -147,7 +147,7 @@
 ## Эпоха Упадка (1000–2740 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/hellas-conquest.png" alt="Завоевание Эллады Серпентидой" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/hellas-conquest.png" alt="Завоевание Эллады Серпентидой" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Завоевание Эллады Серпентидой в 1000 году Э.О. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -156,7 +156,7 @@
 В **1400 году Э.О.**, в 22 день месяца **Тьмы** (*Lān-sen*), Серпентида начала терять влияние, и Эллада восстановила автономию. В **1500 году**, в 6 день месяца **Тьмы** (*Khō-mōr*), на острова вновь стали совершать пиратские набеги — на этот раз из Утопии[^12].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/hellas-alliance.png" alt="Союз с Эдемом" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/hellas-alliance.png" alt="Союз с Эдемом" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подписание союзного договора с Эдемом в 2000 году Э.О. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -167,7 +167,7 @@
 В **2725 году**, в 12 день месяца **Ледяного покрова** (*Ksanf-suf*), на престол взошёл **Сирум из Эллады** (2700–2740) — последний «Хранитель воды». Он правил жестоко, казня беженцев, пытавшихся покинуть острова, но при этом организовал эвакуацию части жителей в пещеры Фарсиды[^15].
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/hellas-collapse.png" alt="Гибель Эллады" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/hellas-collapse.png" alt="Гибель Эллады" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Гибель Эллады. Море замерзает, острова погружаются в вечную мерзлоту. Реконструкция по табличкам Хевсура.</div>
 </div>
 

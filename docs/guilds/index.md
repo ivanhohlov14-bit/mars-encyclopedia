@@ -319,18 +319,18 @@ var FEAST_BG='/assets/images/guild-feast.jpg';
 var ICON_WAR='/assets/images/icon-war.png';
 
 var KINGDOMS={
-'Эдем':{color:'#F4A460',light:'#F7C98A',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg'},
-'Аркадия':{color:'#D4A574',light:'#E8C9A0',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png'},
-'Эридания':{color:'#F5D76E',light:'#FAE9A0',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png'},
-'Кхонг':{color:'#A9A9A9',light:'#C8C8C8',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png'},
-'Авсония':{color:'#87CEEB',light:'#B0D8EB',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png'},
-'Кимерия':{color:'#B19CD9',light:'#D1C4E9',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png'},
-'Серпентида':{color:'#E57373',light:'#F5A0A0',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png'},
-'Эритрей':{color:'#64B5F6',light:'#90CAF9',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png'},
-'Утопия':{color:'#4DD0E1',light:'#80DEEA',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png'},
-'Эллада':{color:'#FF8A65',light:'#FFAB91',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png'},
-'Аливасото':{color:'#81C784',light:'#A5D6A7',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png'},
-'Ксанф':{color:'#3D3D3D',light:'#6B6B6B',flag:'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-ksanf.png'}
+'Эдем':{color:'#F4A460',light:'#F7C98A',flag:'/assets/images/flag-of-eden.jpg'},
+'Аркадия':{color:'#D4A574',light:'#E8C9A0',flag:'/assets/images/map/flag-of-arkadia.png'},
+'Эридания':{color:'#F5D76E',light:'#FAE9A0',flag:'/assets/images/flag-of-eridania.png'},
+'Кхонг':{color:'#A9A9A9',light:'#C8C8C8',flag:'/assets/images/flag-of-khong.png'},
+'Авсония':{color:'#87CEEB',light:'#B0D8EB',flag:'/assets/images/flag-of-avsonia.png'},
+'Кимерия':{color:'#B19CD9',light:'#D1C4E9',flag:'/assets/images/flag-of-kimeria.png'},
+'Серпентида':{color:'#E57373',light:'#F5A0A0',flag:'/assets/images/flag-of-serpentida.png'},
+'Эритрей':{color:'#64B5F6',light:'#90CAF9',flag:'/assets/images/flag-of-eritrea.png'},
+'Утопия':{color:'#4DD0E1',light:'#80DEEA',flag:'/assets/images/flag-of-utopia.png'},
+'Эллада':{color:'#FF8A65',light:'#FFAB91',flag:'/assets/images/flag-of-hellas.png'},
+'Аливасото':{color:'#81C784',light:'#A5D6A7',flag:'/assets/images/flag-of-alivasoto.png'},
+'Ксанф':{color:'#3D3D3D',light:'#6B6B6B',flag:'/assets/images/coat-of-arms-of-ksanf.png'}
 };
 
 var RANKS={

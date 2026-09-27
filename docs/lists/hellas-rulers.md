@@ -46,7 +46,7 @@ description: История и география Древнего Короле�
 <!-- ============ INFO PANEL ============ -->
 <div class="hellas-info">
   <div class="hellas-info-image">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Hellas_Mars._Shield_shape_class-0.jpg" alt="Герб Эллады" loading="lazy">
+    <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Hellas_Mars._Shield_shape_class-0.jpg" alt="Герб Эллады" loading="lazy">
     <div class="hellas-info-caption">Герб династии Элладидов</div>
   </div>
   <div class="hellas-info-body">
@@ -242,7 +242,7 @@ description: История и география Древнего Короле�
 
 <!-- ============ ФИНАЛЬНЫЙ БАННЕР ============ -->
 <div class="hellas-final">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-hellas.png" alt="Герб Эллады" class="hellas-final-flag">
+  <img src="/assets/images/coat-of-arms-of-hellas.png" alt="Герб Эллады" class="hellas-final-flag">
   <div class="hellas-final-body">
     <div class="hellas-final-label">Древнее королевство</div>
     <div class="hellas-final-name">Эллада</div>

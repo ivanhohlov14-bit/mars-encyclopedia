@@ -12,17 +12,17 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-kingdom-view.png" alt="Карта Королевства Ксанф" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/ksanf-kingdom-view.png" alt="Карта Королевства Ксанф" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Ксанф (бывш. Эритрей). По данным Академии Окхасена (2730 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-ksanf.png" alt="Флаг Королевства Ксанф" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-ksanf.png" alt="Флаг Королевства Ксанф" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Ксанфа</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-pirate-kingdom.png" alt="Герб Королевства Ксанф" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-pirate-kingdom.png" alt="Герб Королевства Ксанф" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Ксанфа</div>
     </div>
   </div>
@@ -79,7 +79,7 @@
 ## Географическое положение
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-sea-coast.jpeg" alt="Побережье Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eritrea-sea-coast.jpeg" alt="Побережье Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье Эритрейского моря — колыбель пиратского королевства. Реконструкция.</div>
 </div>
 
@@ -102,7 +102,7 @@
 ### Эпоха Основания (ок. 600–1200 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-fleet.jpeg" alt="Флот Эритрея" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eritrea-fleet.jpeg" alt="Флот Эритрея" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Флот Эритрея в период расцвета пиратства. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -123,7 +123,7 @@
 ### Падение Эритрея и мятеж (2700 г.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-king.png" alt="Король Ксанф" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/ksanf-king.png" alt="Король Ксанф" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Король Ксанф — предводитель пиратов. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -168,7 +168,7 @@
 ## Экономика
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-sea-frozen.png" alt="Замерзание Эритрейского моря" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eritrea-sea-frozen.png" alt="Замерзание Эритрейского моря" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Замерзание Эритрейского моря — гибель пиратского королевства. Реконструкция.</div>
 </div>
 
@@ -213,7 +213,7 @@
 ## Историческое значение
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-last-days.png" alt="Последние дни Ксанфа" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/ksanf-last-days.png" alt="Последние дни Ксанфа" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Последние дни Королевства Ксанф. Гравюра Нары (2740 г. Э.О.).</div>
 </div>
 

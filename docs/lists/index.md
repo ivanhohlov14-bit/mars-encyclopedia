@@ -37,7 +37,7 @@ description: Лучшие списки Марсианской энциклопе
   <!-- Короли Эдема -->
   <a class="featured-card" href="eden-kings/">
     <div class="featured-card-image">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" loading="lazy">
+      <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" loading="lazy">
       <span class="featured-card-tag">Избранное</span>
     </div>
     <div class="featured-card-body">
@@ -55,7 +55,7 @@ description: Лучшие списки Марсианской энциклопе
   <!-- Держатели ветра -->
   <a class="featured-card" href="arkadia-princes/">
     <div class="featured-card-image">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Arkadia_Mars._Shield_shape_moun-0.jpg" alt="Аркадия" loading="lazy">
+      <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Arkadia_Mars._Shield_shape_moun-0.jpg" alt="Аркадия" loading="lazy">
       <span class="featured-card-tag">Избранное</span>
     </div>
     <div class="featured-card-body">
@@ -73,7 +73,7 @@ description: Лучшие списки Марсианской энциклопе
   <!-- Короли Серпентиды -->
   <a class="featured-card" href="serpentida-kings/">
     <div class="featured-card-image">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Serpentida_Mars._Shield_shape_r-0.jpg" alt="Серпентида" loading="lazy">
+      <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Serpentida_Mars._Shield_shape_r-0.jpg" alt="Серпентида" loading="lazy">
       <span class="featured-card-tag">Избранное</span>
     </div>
     <div class="featured-card-body">
@@ -91,7 +91,7 @@ description: Лучшие списки Марсианской энциклопе
   <!-- Правители Эллады -->
   <a class="featured-card" href="hellas-rulers/">
     <div class="featured-card-image">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Hellas_Mars._Shield_shape_class-0.jpg" alt="Эллада" loading="lazy">
+      <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Hellas_Mars._Shield_shape_class-0.jpg" alt="Эллада" loading="lazy">
       <span class="featured-card-tag">Избранное</span>
     </div>
     <div class="featured-card-body">
@@ -109,7 +109,7 @@ description: Лучшие списки Марсианской энциклопе
   <!-- Пиратские короли Ксанфа -->
   <a class="featured-card" href="ksanf-pirates/">
     <div class="featured-card-image">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Ксанф" loading="lazy">
+      <img src="/assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Ксанф" loading="lazy">
       <span class="featured-card-tag">Избранное</span>
     </div>
     <div class="featured-card-body">
@@ -127,7 +127,7 @@ description: Лучшие списки Марсианской энциклопе
   <!-- Адмиралы Утопии -->
   <a class="featured-card" href="utopia-admirals/">
     <div class="featured-card-image">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Utopia_Mars._Shield_shape_round-0.jpg" alt="Утопия" loading="lazy">
+      <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Utopia_Mars._Shield_shape_round-0.jpg" alt="Утопия" loading="lazy">
       <span class="featured-card-tag">Избранное</span>
     </div>
     <div class="featured-card-body">
@@ -145,7 +145,7 @@ description: Лучшие списки Марсианской энциклопе
   <!-- Мастера Кхонга -->
   <a class="featured-card" href="khong-masters/">
     <div class="featured-card-image">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Khong_Mars._Shield_shape_angula-0.jpg" alt="Кхонг" loading="lazy">
+      <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Khong_Mars._Shield_shape_angula-0.jpg" alt="Кхонг" loading="lazy">
       <span class="featured-card-tag">Избранное</span>
     </div>
     <div class="featured-card-body">
@@ -163,7 +163,7 @@ description: Лучшие списки Марсианской энциклопе
   <!-- Великие писцы -->
   <a class="featured-card" href="great-scribes/">
     <div class="featured-card-image">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png" alt="Академия" loading="lazy">
+      <img src="/assets/images/akademiya-okhasena.png" alt="Академия" loading="lazy">
       <span class="featured-card-tag">Избранное</span>
     </div>
     <div class="featured-card-body">

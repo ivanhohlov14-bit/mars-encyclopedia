@@ -12,7 +12,7 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-canals.png" alt="Строительство каналов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/history/eden-canals.png" alt="Строительство каналов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Строительство системы каналов — символ могущества Эпохи Расцвета</div>
   </div>
 
@@ -32,7 +32,7 @@
   </div>
 
   <div style="display: flex; justify-content: center; gap: 12px; align-items: center; padding: 4px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 40px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 40px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <div style="font-size: 0.85rem;"><b><a href="https://mars-wiki.ru/history/edem/">Эдем</a></b></div>
   </div>
   <p style="font-size: 0.8rem; color: #555; text-align: center; margin: 2px 0 0 0;">Центр марсианской цивилизации</p>
@@ -117,7 +117,7 @@
 ## Общая характеристика
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-arabia-valley.png" alt="Долина Аравия — житница Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-arabia-valley.png" alt="Долина Аравия — житница Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Долина Аравия — главная житница Марса в Эпоху Расцвета. Реконструкция по табличкам Академии Окхасена.</div>
 </div>
 
@@ -140,7 +140,7 @@
 ### 2500–2550 гг. — Коронация первого короля Эдема
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-observatory.png" alt="Астрономическая башня в Роген-Арии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-observatory.png" alt="Астрономическая башня в Роген-Арии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Астрономическая башня в Роген-Арии — символ научного могущества Эпохи Расцвета. Реконструкция.</div>
 </div>
 
@@ -157,7 +157,7 @@
 ### 2600–2650 гг. — Строительство каналов
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-medieval-map.png" alt="Карта Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-medieval-map.png" alt="Карта Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Эдем в Эпоху Расцвета. По данным Академии Окхасена.</div>
 </div>
 
@@ -204,7 +204,7 @@
 ### Религия
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-acidalia-frozen.png" alt="Ацидалийское море в начале замерзания" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-acidalia-frozen.png" alt="Ацидалийское море в начале замерзания" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ацидалийское море — первые признаки замерзания. Реконструкция по табличкам Хевсура.</div>
 </div>
 

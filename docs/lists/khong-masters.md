@@ -46,7 +46,7 @@ description: История и география Королевства Кхо�
 <!-- ============ INFO PANEL ============ -->
 <div class="khong-info">
   <div class="khong-info-image">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Khong_Mars._Shield_shape_angula-0.jpg" alt="Герб Кхонга" loading="lazy">
+    <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Khong_Mars._Shield_shape_angula-0.jpg" alt="Герб Кхонга" loading="lazy">
     <div class="khong-info-caption">Герб династии Харитидов</div>
   </div>
   <div class="khong-info-body">
@@ -214,7 +214,7 @@ description: История и география Королевства Кхо�
 
 <!-- ============ ФИНАЛЬНЫЙ БАННЕР ============ -->
 <div class="khong-final">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-khong.png" alt="Герб Кхонга" class="khong-final-flag">
+  <img src="/assets/images/coat-of-arms-of-khong.png" alt="Герб Кхонга" class="khong-final-flag">
   <div class="khong-final-body">
     <div class="khong-final-label">Горное королевство</div>
     <div class="khong-final-name">Кхонг</div>

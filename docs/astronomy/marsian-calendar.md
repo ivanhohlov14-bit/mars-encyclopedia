@@ -10,7 +10,7 @@
   <hr>
 
   <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/martian-calendar-first-tablet.png" alt="Первое упоминание марсианского календаря" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <img src="/assets/images/martian-calendar-first-tablet.png" alt="Первое упоминание марсианского календаря" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <div style="font-size: 0.9rem; color: #555; margin-top: 6px;">Первое упоминание марсианского календаря на глиняной табличке из храма долины Аргир (ок. 1500 г. Э.О.).</div>
 </div>
 
@@ -25,47 +25,47 @@
   <p><b>Использовался:</b> в <a href="https://mars-wiki.ru/geography/eden/">Королевстве Эдем</a> и сопредельных землях в <a href="https://mars-wiki.ru/history/epokha-umiraniya/">Эпоху Умирания</a></p>
 <div style="display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 8px; padding: 8px 0; border-top: 1px solid #e0e0e0;">
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/khong/">Кхонг</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/avsonia/">Авсония</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/serpentida/">Серпентида</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/eritrea/">Эритрея</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/utopia/">Утопия</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png" alt="Флаг Эллады" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-hellas.png" alt="Флаг Эллады" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/history/hellas/">Эллада</a>
   </div>
   <div style="display: inline-flex; align-items: center; gap: 6px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png" alt="Флаг Аливасото" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-alivasoto.png" alt="Флаг Аливасото" style="width: 24px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <a href="https://mars-wiki.ru/geography/alivasoto/">Аливасото</a>
   </div>
 </div>

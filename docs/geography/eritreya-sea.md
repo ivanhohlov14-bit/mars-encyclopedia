@@ -12,13 +12,13 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-map.png" alt="Карта Эритрейского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <img src="/assets/images/erythraeum-sea-map.png" alt="Карта Эритрейского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
     <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Эритрейского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-bathymetry.png" alt="Батиметрия Эритрейского моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/erythraeum-sea-bathymetry.png" alt="Батиметрия Эритрейского моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
     </div>
   </div>
@@ -89,15 +89,15 @@
   </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/khong/" style="color: #1a3a4a; text-decoration: underline;">Кхонг</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsoniya.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-avsoniya.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/avsoniya/" style="color: #1a3a4a; text-decoration: underline;">Авсония</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eden/" style="color: #1a3a4a; text-decoration: underline;">Эдем</a>
     </div>
   </div>
@@ -133,7 +133,7 @@
 ## Этимология
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-red-waters.png" alt="Красные воды Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/erythraeum-sea-red-waters.png" alt="Красные воды Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Красные воды Эритрейского моря. Реконструкция.</div>
 </div>
 
@@ -161,7 +161,7 @@
 ### Острова
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-island-eritrea.png" alt="Остров Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/erythraeum-sea-island-eritrea.png" alt="Остров Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Остров Эритрея — пиратская база. Реконструкция.</div>
 </div>
 
@@ -203,7 +203,7 @@
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-port.png" alt="Порт Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/erythraeum-sea-port.png" alt="Порт Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Порт Эритрейского моря в Эпоху Расцвета. Реконструкция.</div>
 </div>
 
@@ -220,7 +220,7 @@
 ## Экосистема
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-ecosystem.png" alt="Подводный мир Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/erythraeum-sea-ecosystem.png" alt="Подводный мир Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир Эритрейского моря. Реконструкция.</div>
 </div>
 
@@ -240,7 +240,7 @@
 ### В мифологии
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-myth-blood-mirror.png" alt="Миф о кровавом зеркале" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/erythraeum-sea-myth-blood-mirror.png" alt="Миф о кровавом зеркале" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Миф о Кровавом зеркале. Реконструкция.</div>
 </div>
 
@@ -258,7 +258,7 @@
 ## Современное состояние
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/erythraeum-sea-dried-today.png" alt="Эритрейское море сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/erythraeum-sea-dried-today.png" alt="Эритрейское море сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Высохшее Эритрейское море сегодня. Фотореалистичная реконструкция.</div>
 </div>
 

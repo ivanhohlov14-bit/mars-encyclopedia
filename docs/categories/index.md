@@ -495,17 +495,17 @@ html body.mars-stars-on .categories-empty {
   // ИКОНКИ ДЛЯ КАЖДОЙ КАТЕГОРИИ (можно заменить на свои URL)
   // ============================================================
   var CATEGORY_ICONS = Object.assign(Object.create(null), {
-    'История': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/martian-calendar-first-tablet.png',
-    'География': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-map.png',
-    'Астрономия': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars_starmap.png',
-    'Персоналии': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ksanf-king.png',
-    'Мифология': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/araksis-statue-concept.png',
-    'Биология': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-concept.jpg',
-    'Термины': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/clay-memory.webp',
-    'Книги': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/santii-cover.png',
-    'Избранные списки': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg',
-    'Наука': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png',
-    'Игра': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-field.jpg'
+    'История': '/assets/images/martian-calendar-first-tablet.png',
+    'География': '/assets/images/mars-map.png',
+    'Астрономия': '/assets/images/mars_starmap.png',
+    'Персоналии': '/assets/images/ksanf-king.png',
+    'Мифология': '/assets/images/araksis-statue-concept.png',
+    'Биология': '/assets/images/tatina-kimeriana-concept.jpg',
+    'Термины': '/assets/images/clay-memory.webp',
+    'Книги': '/assets/images/santii-cover.png',
+    'Избранные списки': '/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg',
+    'Наука': '/assets/images/akademiya-okhasena.png',
+    'Игра': '/assets/images/mars-field.jpg'
   });
 
   // ============================================================

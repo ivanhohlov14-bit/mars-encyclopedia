@@ -12,7 +12,7 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-ark-silhouette-v2.jpg" alt="Корабли-ковчеги в космосе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/iskhod-ark-silhouette-v2.jpg" alt="Корабли-ковчеги в космосе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Корабли-ковчеги в космосе на пути к Земле</div>
 </div>
 
@@ -68,7 +68,7 @@
 ### Причины Исхода
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-ark-launch.jpg" alt="Старт кораблей-ковчегов" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/iskhod-ark-launch.jpg" alt="Старт кораблей-ковчегов" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Старт трёх кораблей-ковчегов с космодрома Фарсиды. Реконструкция по табличкам Академии Окхасена.</div>
 </div>
 
@@ -87,7 +87,7 @@
 ### Подготовка
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-launch-pad.png" alt="Космодром Фарсиды перед стартом" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/iskhod-launch-pad.png" alt="Космодром Фарсиды перед стартом" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Космодром Фарсиды. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -120,7 +120,7 @@
 ### Прибытие на Землю
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 250px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/earth-3.8-billion-years-ago.jpg" alt="Земля 3,8 млрд лет назад" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <img src="/assets/images/earth-3.8-billion-years-ago.jpg" alt="Земля 3,8 млрд лет назад" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <div style="font-size: 0.9rem; color: #555; margin-top: 6px; text-align: center;">Изображение Земли. (22 Zal-ākha 2690 год)</div>
 </div>
 
@@ -135,7 +135,7 @@
 ## Те, кто остался
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 200px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-mars-apocalypse.jpg" alt="Марсиане уходят в огне" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/iskhod-mars-apocalypse.jpg" alt="Марсиане уходят в огне" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Рисунок Нары (2740 г. Э.О.). Марсиане уходят.
   </div>
@@ -160,7 +160,7 @@
 ### Физиологические вызовы
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-early-earth-island.jpg" alt="Остров на Архейской Земле" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/iskhod-early-earth-island.jpg" alt="Остров на Архейской Земле" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Остров на Архейской Земле — оранжевое небо и зелёные океаны.
   </div>
@@ -185,7 +185,7 @@
 ### Для марсиан
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 150px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-farewell-grave.jpg" alt="Женщина провожает корабли" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/iskhod-farewell-grave.jpg" alt="Женщина провожает корабли" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Рисунок Нары (2740 г. Э.О.). Женщина провожает корабли. 
   </div>
@@ -202,7 +202,7 @@
 ### Для Земли
 
 <div style="float: right; margin: 0 0 10px 20px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-new-okhasen.jpg" alt="Новый Окхасен" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/iskhod-new-okhasen.jpg" alt="Новый Окхасен" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Нового Окхасена — первого марсианского поселения на Земле. Реконструкция.</div>
 </div>
 

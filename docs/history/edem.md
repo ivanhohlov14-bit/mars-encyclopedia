@@ -10,18 +10,18 @@
   <hr>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eden-kingdom-map.png" alt="Карта Королевства Эдем" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/eden-kingdom-map.png" alt="Карта Королевства Эдем" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Эдем. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <!-- ФЛАГ И ГЕРБ В ОДНОЙ СТРОКЕ -->
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Эдема</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-eden.png" alt="Герб Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-eden.png" alt="Герб Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Эдема</div>
     </div>
   </div>
@@ -74,23 +74,23 @@
   <p><b>Государства-соседи</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/arkadia/">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/utopia/">Утопия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/serpentida/">Серпендида</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/kimeria/">Кимерия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eritrea/">Эритрея</a>
     </div>
   </div>
@@ -114,35 +114,35 @@
 ## Эпоха Основания (1–2500 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-arrival.png" alt="Прибытие переселенцев из Серпендиды" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-arrival.png" alt="Прибытие переселенцев из Серпендиды" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Прибытие переселенцев из Серпендиды на берег Ацидалийского моря. Реконструкция по табличкам Академии.</div>
 </div>
 
 Первые поселения на территории будущего Королевства Эдем возникли на северном побережье [Ацидалийского моря](/geography/acidalia-sea/) в конце I тысячелетия до Э.О. Согласно легендам, записанным [Хевсуром](/people/hevsur/), эти земли были населены рыбацкими племенами, почитавшими богиню [Араксис](/mythology/araksis/) — покровительницу воды и памяти. Однако письменная история начинается в **1 году Э.О.**, когда переселенцы из древней [Серпендиды](/geography/serpendida/), спасаясь от междоусобных войн и засухи, основали портовый город [Окхасен](/geography/okhasen/) на восточном берегу Ацидалийского моря. Именно от этого события ведётся марсианское летосчисление[^3].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-okhasen-foundation.png" alt="Основание Окхасена" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-okhasen-foundation.png" alt="Основание Окхасена" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Окхасена в 1 году Э.О. Реконструкция по табличкам Академии.</div>
 </div>
 
 Согласно табличкам, найденным в долине Ксанфа, вождь переселенцев по имени **Сарум** (позже — Сарум I) объединил разрозненные общины и в **47 году Э.О.**, в 29 день месяца **Пробуждения** (*Ākha-dzen*), основал столицу — [Роген-Арию](/geography/rogen-aria/) («Врата Солнца»), расположенную в плодородной долине Эдем. Сарум I погиб в море во время шторма, но его сын, **Сарум II**, завершил строительство дворцов и заложил первый канал, соединивший реку Ксанф с заливом Маринера[^4].
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-rogen-aria-construction.png" alt="Строительство Роген-Арии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-rogen-aria-construction.png" alt="Строительство Роген-Арии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство Роген-Арии в 47 году Э.О. Реконструкция по табличкам Академии.</div>
 </div>
 
 В **712 году Э.О.**, в 20 день месяца **Цветения** (*Dzen-ākha*), при короле Термане I была основана [Академия Окхасена](/geography/akademiya-okhasena/) — главное научное учреждение Марса. В ней хранились тысячи глиняных табличек, велись астрономические наблюдения, составлялись карты звёздного неба. Академия быстро стала центром притяжения для учёных со всей планеты. Именно здесь были разработаны календарь, система каналов и основы навигации, позволившие эдемским кораблям достигать самых дальних заливов[^5].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-sarum-i.png" alt="Сарум I на берегу моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-sarum-i.png" alt="Сарум I на берегу моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Сарум I на берегу Ацидалийского моря. Реконструкция по табличкам Академии.</div>
 </div>
 
 В **891 году**, в 4 день месяца **Зноя** (*Mar-dzen*), на престол взошла **Акхара I** (870–1000) — первая женщина-королева, укрепившая южные рубежи и введшая обычай записывать все законы на глине, чтобы ни один судья не мог их исказить. Её правление стало примером мудрого управления, и до сих пор в летописях её имя упоминается с уважением[^6].
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-medieval-map.png" alt="Карта Эдема" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-medieval-map.png" alt="Карта Эдема" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Эдем в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
 </div>
 
@@ -161,21 +161,21 @@
 ## Эпоха Расцвета (2500–2680 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-canals.png" alt="Строительство системы каналов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-canals.png" alt="Строительство системы каналов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство системы каналов при Саруме Великом. Реконструкция по табличкам Академии.</div>
 </div>
 
 Эпоха Расцвета стала золотым веком Эдема. В **2500 году**, в 22 день месяца **Угасания** (*Kōl-ghar*), правитель Окхасена **Сарум Великий** (1544–1633 гг. Э.О.) провозгласил создание единого Королевства Эдем, объединив под своей властью 21 провинцию. В его правление была завершена грандиозная система каналов, соединивших Арес с морем Элладой и превративших долину [Аравия](/geography/arabia-valley/) в главную житницу Марса. Урожаи собирали дважды в год, и они кормили всё Королевство[^12].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-arabia-valley.png" alt="Долина Аравия — житница Марса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-arabia-valley.png" alt="Долина Аравия — житница Марса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Долина Аравия — главная житница Марса. Реконструкция по табличкам Академии.</div>
 </div>
 
 Сарум Великий также основал обсерватории в горах Фарсида, где жрецы-астрономы вели наблюдения за движением Фобоса и Деймоса. В **2520 году**, в 23 день месяца **Заморозков** (*Dzen-kōl*), Академия начала систематическое изучение магнитного поля Марса — первые отчёты были тревожными: поле медленно ослабевало, и атмосфера планеты постепенно улетучивалась в космос[^13].
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-observatory.png" alt="Обсерватория в горах Фарсида" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-observatory.png" alt="Обсерватория в горах Фарсида" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Обсерватория в горах Фарсида. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -188,7 +188,7 @@
 ## Эпоха Умирания (2680–2745 гг. Э.О.)
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/ksanf.png" alt="Пересохшая река Ксанф" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/ksanf.png" alt="Пересохшая река Ксанф" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Пересохшая река Ксанф в Эпоху Умирания. Реконструкция по табличкам Хевсура.</div>
 </div>
 
@@ -197,7 +197,7 @@
 В **2703 году**, в 26 день месяца **Ледяного покрова** (*Dzen-thal*), на престол взошёл **Аратан III** — последний король Эдема. Ему досталось королевство, стоящее на грани катастрофы: реки пересыхали, урожаи падали, а из недр планеты, через трещины в коре, начал выделяться сернистый газ. В **2710 году**, в месяц **Ледяного покрова** (*Ghōl-ākha*), катастрофа в Утопии — северная союзная область была засыпана пеплом. В том же году погиб князь [Аркадии](/geography/arkadia/) — северного соседа Эдема[^17].
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/King-Aratan-iii.png" alt="Король Аратан III" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/King-Aratan-iii.png" alt="Король Аратан III" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Король Аратан III — последний правитель Эдема. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -206,12 +206,12 @@
 В **2734 году**, в 9 день месяца **Ледяного покрова** (*Rōg-ari*), молодой астроном Академии Окхасена **[Талин](/people/talin/)** представил королю расчёты, доказывающие возможность перелёта к [Земле](/astronomy/earth/) — голубой планете, которую он наблюдал в телескоп. Король Аратан III поддержал проект, и политический строй Эдема трансформировался в **военно-научную диктатуру**, сосредоточенную на подготовке [Исхода](/books/iskhod/). Были созданы специальные конструкторские бюро, началось строительство трёх огромных [кораблей-ковчегов](/books/korabli-kovchegi/) на космодроме в долине Ксанфа[^19].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-ark-construction.png" alt="Строительство кораблей-ковчегов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-ark-construction.png" alt="Строительство кораблей-ковчегов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство кораблей-ковчегов на космодроме в долине Ксанфа. Реконструкция по табличкам Академии.</div>
 </div>
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-acidalia-frozen.png" alt="Замёрзшее Ацидалийское море" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-acidalia-frozen.png" alt="Замёрзшее Ацидалийское море" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Замёрзшее Ацидалийское море зимой 2735 года. Реконструкция по табличкам Хевсура.</div>
 </div>
 
@@ -222,7 +222,7 @@
 В **2738 году**, в 5 день месяца **Зноя** (*Mar-dzen*), Аратан III приказал ускорить работы, и в **2740 году**, 12 день месяца **Кхосен** (*Khōsen* — «место огня», начало жары), три корабля — **«Надежда»**, **«Память»** и **«Прощание»** — покинули поверхность Марса. Вместе с ними улетели лучшие представители эдемской цивилизации, унося с собой таблички Академии, семена растений и образцы глины. Король Аратан III остался на Марсе и пропал без вести во время извержения вулкана[^22].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-sunset-ruins.png" alt="Закат цивилизации" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-sunset-ruins.png" alt="Закат цивилизации" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Закат эдемской цивилизации. Руины города под красным небом. Реконструкция.</div>
 </div>
 

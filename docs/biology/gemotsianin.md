@@ -5,7 +5,7 @@
   <hr>
   
   <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/hemocyanin-molecule.jpg" alt="Гемоцианин — голубая кровь марсиан" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <img src="/assets/images/hemocyanin-molecule.jpg" alt="Гемоцианин — голубая кровь марсиан" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <div style="font-size: 0.9rem; color: #555; margin-top: 6px;">Молекула гемоцианина — основа голубой крови марсиан.</div>
 </div>
 

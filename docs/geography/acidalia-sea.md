@@ -13,14 +13,14 @@
 
   <!-- Карта -->
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/acidalia-planitia-map.png" alt="Карта Ацидалийского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <img src="/assets/images/map/acidalia-planitia-map.png" alt="Карта Ацидалийского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
     <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Ацидалийского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <!-- Батиметрия -->
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/acidalia-bathymetry.png" alt="Батиметрия моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/acidalia-bathymetry.png" alt="Батиметрия моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
     </div>
   </div>
@@ -93,15 +93,15 @@
   </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eden/" style="color: #1a3a4a; text-decoration: underline;">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/arkadia/" style="color: #1a3a4a; text-decoration: underline;">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/utopia/" style="color: #1a3a4a; text-decoration: underline;">Утопия</a>
     </div>
   </div>
@@ -138,7 +138,7 @@
 ## Этимология
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_breathtaking_cinematic_landscape_of_the_Acidalia_Sea_on_ancient_Mars_during_th-0.jpg" alt="Ацидалийское море в Эпоху Расцвета" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_A_breathtaking_cinematic_landscape_of_the_Acidalia_Sea_on_ancient_Mars_during_th-0.jpg" alt="Ацидалийское море в Эпоху Расцвета" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ацидалийское море в Эпоху Расцвета. Реконструкция.</div>
 </div>
 
@@ -173,7 +173,7 @@
 ### Острова
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_wide_panoramic_view_of_a_volcanic_island_in_the_Acidalia_Sea_on_ancient_Mars_w-0.jpg" alt="Остров в Ацидалийском море" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_A_wide_panoramic_view_of_a_volcanic_island_in_the_Acidalia_Sea_on_ancient_Mars_w-0.jpg" alt="Остров в Ацидалийском море" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Остров в Ацидалийском море. Реконструкция.</div>
 </div>
 
@@ -190,7 +190,7 @@
 ### Гидрология
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/карта круговорот воды в ацидалисйком море.png" alt="Круговорот воды в Ацидалийском море" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/карта круговорот воды в ацидалисйком море.png" alt="Круговорот воды в Ацидалийском море" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Круговорот воды в Ацидалийском море. Схема.</div>
 </div>
 
@@ -269,7 +269,7 @@
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_majestic_and_bustling_scene_of_the_port_of_Okhasen_on_the_Acidalia_Sea_during_-0.jpg" alt="Порт Окхасена в Эпоху Расцвета" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_A_majestic_and_bustling_scene_of_the_port_of_Okhasen_on_the_Acidalia_Sea_during_-0.jpg" alt="Порт Окхасена в Эпоху Расцвета" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Порт Окхасена в Эпоху Расцвета. Реконструкция.</div>
 </div>
 
@@ -283,7 +283,7 @@
 ### Эпоха Умирания (2680–2745 гг. Э.О.)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_melancholic_and_desolate_view_of_the_Acidalia_Sea_during_the_Dying_Era_on_Mars-0.jpg" alt="Ацидалийское море в Эпоху Умирания" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_A_melancholic_and_desolate_view_of_the_Acidalia_Sea_during_the_Dying_Era_on_Mars-0.jpg" alt="Ацидалийское море в Эпоху Умирания" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ацидалийское море в Эпоху Умирания. Реконструкция.</div>
 </div>
 
@@ -300,7 +300,7 @@
 ### Биологическое разнообразие
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_An_underwater_view_of_the_Acidalia_Sea_on_ancient_Mars_during_its_prime._A_diver-0.jpg" alt="Подводный мир Ацидалийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_An_underwater_view_of_the_Acidalia_Sea_on_ancient_Mars_during_its_prime._A_diver-0.jpg" alt="Подводный мир Ацидалийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир Ацидалийского моря. Реконструкция.</div>
 </div>
 
@@ -316,7 +316,7 @@
 ### Гибель экосистемы
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_tragic_and_haunting_scene_of_a_dead_Martian_sea._The_seabed_is_exposed_covered-0.jpg" alt="Гибель экосистемы Ацидалийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_A_tragic_and_haunting_scene_of_a_dead_Martian_sea._The_seabed_is_exposed_covered-0.jpg" alt="Гибель экосистемы Ацидалийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Гибель экосистемы Ацидалийского моря. Реконструкция.</div>
 </div>
 
@@ -329,7 +329,7 @@
 ### В мифологии
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/акха-миф-ацидалийское-море.png" alt="Миф о рождении Ацидалийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/акха-миф-ацидалийское-море.png" alt="Миф о рождении Ацидалийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Миф о рождении Ацидалийского моря. Реконструкция.</div>
 </div>
 
@@ -338,7 +338,7 @@
 Богиня [Араксис](https://mars-wiki.ru/mythology/araksis/) — покровительница воды, памяти и судьбы — почиталась как верховное божество всех прибрежных городов, от Окхасена до Роген-Арии. Её храмы строились прямо на утёсах, обращённых к морю, так чтобы жрецы могли ежедневно созерцать водную гладь и читать знаки, которые она посылала. Араксис изображалась в виде женщины с волосами, струящимися подобно волнам, и с глазами, в которых отражались все времена — прошлое, настоящее и будущее. Её главным атрибутом был глиняный кувшин, из которого она выливала воду, даруя жизнь, или, в гневе, забирала её обратно, насылая засуху.
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/ацидалийское-море-традиции.png" alt="Традиции на Ацидалийском море" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/ацидалийское-море-традиции.png" alt="Традиции на Ацидалийском море" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Традиции на Ацидалийском море. Реконструкция.</div>
 </div>
 
@@ -380,7 +380,7 @@
 ## Современное состояние
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_A_realistic_depiction_of_the_Acidalia_Planitia_today_or_in_the_near_future_a_vas-0.jpg" alt="Ацидалийская равнина сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_A_realistic_depiction_of_the_Acidalia_Planitia_today_or_in_the_near_future_a_vas-0.jpg" alt="Ацидалийская равнина сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Ацидалийская равнина сегодня. Фотореалистичная реконструкция.</div>
 </div>
 
@@ -389,7 +389,7 @@
 В книгах цикла, по состоянию на 2743 год, море полностью замёрзло и покрыто слоем пепла, выпавшим после извержений Фарсиды. Его поверхность используется беженцами как дорога, но подо льдом сохраняется память о том, что когда-то здесь плескались волны[^20], и эта память живёт в песнях и легендах, передаваемых из поколения в поколение.
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_цунами_на_ацидалийском_море._реалистичный_т-0.jpg" alt="Цунами на Ацидалийском море" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_цунами_на_ацидалийском_море._реалистичный_т-0.jpg" alt="Цунами на Ацидалийском море" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Ацидалийское море. Реконструкция.</div>
 </div>
 

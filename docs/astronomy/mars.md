@@ -19,7 +19,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_Valles_Marineris_EDIT.jpg" alt="Марс" style="width: 100%; height: auto; border-radius: 4px; border: 1px solid #3a3a4a;">
+    <img src="/assets/images/Mars_Valles_Marineris_EDIT.jpg" alt="Марс" style="width: 100%; height: auto; border-radius: 4px; border: 1px solid #3a3a4a;">
     <div style="font-size: 0.7rem; color: #a0a0b8; margin-top: 4px;">Марс и долина Маринер. NASA / ESA</div>
   </div>
 
@@ -114,7 +114,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
   </div>
   <div style="text-align: center; margin: 8px 0;">
     <audio id="mars-wind-audio" preload="none" loop style="width: 100%;">
-      <source src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/sounds/mars-wind.mp3" type="audio/mpeg">
+      <source src="/assets/sounds/mars-wind.mp3" type="audio/mpeg">
     </audio>
     <button onclick="var a=document.getElementById('mars-wind-audio'); if(a.paused){a.volume=0.7;a.play();this.textContent='Остановить';}else{a.pause();this.textContent='Включить звук ветра';}" style="margin-top: 4px; padding: 6px 14px; background: #6C63FF; color: #fff; border: none; border-radius: 4px; font-size: 0.8rem; font-family: inherit; cursor: pointer;">
       Включить звук ветра
@@ -139,7 +139,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 ## Физические характеристики
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Lava_flow_and_crater_ejecta.jpeg" alt="Лавовые потоки Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Lava_flow_and_crater_ejecta.jpeg" alt="Лавовые потоки Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Лавовые потоки и выбросы кратера. Снимок MRO. NASA.</div>
 </div>
 
@@ -182,7 +182,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 ## Орбита и вращение
 
 <div style="text-align: center; margin: 24px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-earth-comparison.jpeg" alt="Сравнение Марса и Земли" style="width: 70%; max-width: 550px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/mars-earth-comparison.jpeg" alt="Сравнение Марса и Земли" style="width: 70%; max-width: 550px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Сравнение размеров Марса и Земли.</div>
 </div>
 
@@ -203,7 +203,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 ## Спутники
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 260px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/phobos.png" alt="Фобос" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/phobos.png" alt="Фобос" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Фобос — крупнейший спутник Марса. Снимок NASA.</div>
 </div>
 
@@ -234,7 +234,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 ## Атмосфера
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_sunset_PIA00920.jpg" alt="Закат на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Mars_sunset_PIA00920.jpg" alt="Закат на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Закат на Марсе. Снимок NASA / JPL.</div>
 </div>
 
@@ -278,7 +278,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 ## Поверхность
 
 <div style="float: left; margin-right: 15px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Olympus_Mons.jpg" alt="Олимп" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Olympus_Mons.jpg" alt="Олимп" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Олимп — высочайший вулкан Солнечной системы. NASA.</div>
 </div>
 
@@ -317,7 +317,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 ## Геология и история
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/silicon-life-macro.jpg" alt="Кремниевая жизнь" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/silicon-life-macro.jpg" alt="Кремниевая жизнь" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Кремниевая жизнь Марса (<i>Silica vita</i>). Реконструкция.</div>
 </div>
 
@@ -411,7 +411,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 ## Королевства Марса
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-map.png" alt="Карта Марса с королевствами" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/mars-map.png" alt="Карта Марса с королевствами" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Марса с королевствами в Эпоху Расцвета. Академия Окхасена.</div>
 </div>
 
@@ -420,31 +420,31 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 <div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 20px 0; justify-content: center;">
 
   <div style="width: 160px; text-align: center;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
+    <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Эдем</div>
     <div style="font-size: 0.72rem; color: #555;">Самое могущественное государство, столица Роген-Ария.</div>
   </div>
 
   <div style="width: 160px; text-align: center;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
+    <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Аркадия</div>
     <div style="font-size: 0.72rem; color: #555;">Северное царство рудокопов и кузнецов.</div>
   </div>
 
   <div style="width: 160px; text-align: center;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
+    <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Кимерия</div>
     <div style="font-size: 0.72rem; color: #555;">Восточное государство, известное обсидиановой архитектурой.</div>
   </div>
 
   <div style="width: 160px; text-align: center;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
+    <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Серпентида</div>
     <div style="font-size: 0.72rem; color: #555;">Колыбель мореходов и письменности.</div>
   </div>
 
   <div style="width: 160px; text-align: center;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
+    <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 6px;">
     <div style="font-weight: 700; margin-top: 6px; font-size: 0.9rem;">Эридания</div>
     <div style="font-size: 0.72rem; color: #555;">Южное государство, хранитель древних знаний.</div>
   </div>
@@ -460,7 +460,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 ## Исход
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-ark-launch.jpg" alt="Отлёт ковчега" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/iskhod-ark-launch.jpg" alt="Отлёт ковчега" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Отлёт ковчега «Надежда». Реконструкция.</div>
 </div>
 
@@ -475,7 +475,7 @@ keywords: "Марс, планета, Фобос, Деймос, атмосфер�
 ## Исследование Марса
 
 <div style="float: left; margin-right: 15px; margin-bottom: 10px; width: 260px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mariner4.png" alt="Mariner 4" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/mariner4.png" alt="Mariner 4" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">«Маринер-4» — первый аппарат, передавший снимки Марса. NASA.</div>
 </div>
 

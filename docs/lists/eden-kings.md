@@ -46,7 +46,7 @@ description: Все 47 королей и 3 царицы Эдема — от Са
 <!-- ============ INFO PANEL ============ -->
 <div class="kings-info">
   <div class="kings-info-image">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Герб Эдема" loading="lazy">
+    <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Герб Эдема" loading="lazy">
     <div class="kings-info-caption">Герб династии Сарумидов</div>
   </div>
   <div class="kings-info-body">
@@ -281,7 +281,7 @@ description: Все 47 королей и 3 царицы Эдема — от Са
 
 <!-- ============ ФИНАЛЬНЫЙ БАННЕР ============ -->
 <div class="kings-final">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" class="kings-final-flag">
+  <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" class="kings-final-flag">
   <div class="kings-final-body">
     <div class="kings-final-label">Королевство</div>
     <div class="kings-final-name">Эдем</div>

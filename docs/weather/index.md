@@ -127,7 +127,7 @@ comments: false
     </p>
 
     <div class="mars-map-container">
-        <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-satellite.png"
+        <img src="/assets/images/mars-satellite.png"
              alt="Спутниковая карта Марса"
              class="mars-map-img"
              onerror="this.style.display='none'; document.getElementById('map-fallback').style.display='block';">

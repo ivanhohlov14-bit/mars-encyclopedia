@@ -13,14 +13,14 @@
 
   <!-- Карта -->
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/argyre-sea-map.png" alt="Карта Моря Аргира" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <img src="/assets/images/argyre-sea-map.png" alt="Карта Моря Аргира" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
     <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Моря Аргира. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <!-- Батиметрия -->
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/argyre-sea-bathymetry.png" alt="Батиметрия Моря Аргира" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/argyre-sea-bathymetry.png" alt="Батиметрия Моря Аргира" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
     </div>
   </div>
@@ -97,15 +97,15 @@
   </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/khong/" style="color: #1a3a4a; text-decoration: underline;">Кхонг</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-sineriya.png" alt="Флаг Синерии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-sineriya.png" alt="Флаг Синерии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/sineriya/" style="color: #1a3a4a; text-decoration: underline;">Синерия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsoniya.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-avsoniya.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/avsoniya/" style="color: #1a3a4a; text-decoration: underline;">Авсония</a>
     </div>
   </div>
@@ -143,7 +143,7 @@
 ## Этимология
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_Martian_coastline_white_carbonate_sands_blue_shallow_ocean_red_clay_clif-0.jpg" alt="Серебряные воды Моря Аргира" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Ancient_Martian_coastline_white_carbonate_sands_blue_shallow_ocean_red_clay_clif-0.jpg" alt="Серебряные воды Моря Аргира" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Серебряные воды Моря Аргира. Реконструкция.</div>
 </div>
 
@@ -173,7 +173,7 @@
 ### Острова
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/argyre-sea-temple-island.png" alt="Остров Храма" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/argyre-sea-temple-island.png" alt="Остров Храма" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Остров Храма в Море Аргира. Реконструкция.</div>
 </div>
 
@@ -182,7 +182,7 @@
 ### Гидрология
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/argyre-sea-spring-argir.png" alt="Родник Аргир" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/argyre-sea-spring-argir.png" alt="Родник Аргир" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Родник Аргир. Реконструкция подземного ключа.</div>
 </div>
 
@@ -224,7 +224,7 @@
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/argyre-sea-southern-tract.png" alt="Южный тракт" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/argyre-sea-southern-tract.png" alt="Южный тракт" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Южный тракт вдоль Моря Аргира. Реконструкция.</div>
 </div>
 
@@ -239,7 +239,7 @@
 ## Экосистема
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/argyre-sea-ecosystem.png" alt="Подводный мир Моря Аргира" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/argyre-sea-ecosystem.png" alt="Подводный мир Моря Аргира" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир Моря Аргира. Реконструкция.</div>
 </div>
 
@@ -259,7 +259,7 @@
 ### В мифологии
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/argyre-sea-myth-silver-waters.png" alt="Миф о серебряных водах" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/argyre-sea-myth-silver-waters.png" alt="Миф о серебряных водах" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Миф о серебряных водах. Реконструкция.</div>
 </div>
 
@@ -277,7 +277,7 @@
 ## Современное состояние
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/argyre-sea-dried-today.png" alt="Море Аргира сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/argyre-sea-dried-today.png" alt="Море Аргира сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Высохшее Море Аргира сегодня. Фотореалистичная реконструкция.</div>
 </div>
 

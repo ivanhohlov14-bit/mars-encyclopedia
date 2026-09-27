@@ -12,17 +12,17 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eden-kingdom-map.png" alt="Карта Королевства Эдем" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/eden-kingdom-map.png" alt="Карта Королевства Эдем" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Эдем. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Эдема</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-eden.png" alt="Герб Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-eden.png" alt="Герб Королевства Эдем" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Эдема</div>
     </div>
   </div>
@@ -106,23 +106,23 @@
 
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/utopia/">Утопия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/serpentida/">Серпендида</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eritrea.png" alt="Флаг Эритрея" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eritrea/">Эритрея</a>
     </div>
   </div>
@@ -164,7 +164,7 @@
 ---
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-arrival.png" alt="Прибытие переселенцев в Эдем" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-arrival.png" alt="Прибытие переселенцев в Эдем" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Прибытие переселенцев из Серпендиды на берег Ацидалийского моря. Реконструкция.</div>
 </div>
 
@@ -177,7 +177,7 @@
 ## Происхождение названия
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-okhasen-foundation.png" alt="Основание Окхасена" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-okhasen-foundation.png" alt="Основание Окхасена" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Окхасена в 1 году Э.О. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -192,7 +192,7 @@
 ### Географическое положение
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-medieval-map.png" alt="Карта Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-medieval-map.png" alt="Карта Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Эдема в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
 </div>
 
@@ -217,7 +217,7 @@
 *Основная статья: [История Эдема](https://mars-wiki.ru/history/edem/)*
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-sarum-i.png" alt="Сарум I" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-sarum-i.png" alt="Сарум I" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Сарум I — первый правитель Окхасена. Реконструкция.</div>
 </div>
 
@@ -228,7 +228,7 @@
 ### Эпоха Основания (1–2500 гг. Э.О.)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-rogen-aria-construction.png" alt="Строительство Роген-Арии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-rogen-aria-construction.png" alt="Строительство Роген-Арии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство Роген-Арии в 47 году Э.О. Реконструкция.</div>
 </div>
 
@@ -243,7 +243,7 @@
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-canals.png" alt="Строительство каналов" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-canals.png" alt="Строительство каналов" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Строительство системы каналов при Саруме Великом. Реконструкция.</div>
 </div>
 
@@ -256,7 +256,7 @@
 ### Эпоха Умирания (2680–2745 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/King-Aratan-iii.png" alt="Аратан III" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/King-Aratan-iii.png" alt="Аратан III" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Король Аратан III. Реконструкция.</div>
 </div>
 
@@ -273,7 +273,7 @@
 ---
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/iskhod-ark-launch.jpg" alt="Старт кораблей-ковчегов" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/iskhod-ark-launch.jpg" alt="Старт кораблей-ковчегов" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Старт трёх кораблей-ковчегов с космодрома Фарсиды. Реконструкция по табличкам Академии Окхасена.</div>
 </div>
 
@@ -286,7 +286,7 @@
 ---
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-sunset-ruins.png" alt="Руины Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-sunset-ruins.png" alt="Руины Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Закат эдемской цивилизации. Руины города под красным небом. Реконструкция.</div>
 </div>
 
@@ -307,7 +307,7 @@
 ### Государственная символика
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-flag-coat-of-arms.png" alt="Флаг и герб Королевства Эдем" style="width: 80%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-flag-coat-of-arms.png" alt="Флаг и герб Королевства Эдем" style="width: 80%; max-width: 500px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Флаг и герб Королевства Эдем. Символы воды, жизни и вечности.</div>
 </div>
 
@@ -369,7 +369,7 @@
 ## Вооружённые силы
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-army.jpg" alt="Армия Королевства Эдем" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-army.jpg" alt="Армия Королевства Эдем" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Армия Королевства Эдем. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -378,7 +378,7 @@
 Верховным главнокомандующим являлся **король Эдема**[^2]. На **2650 год Э.О.** штатная численность составляла около **150 000 человек** (примерно 1,8 % населения)[^3]. В состав входили **сухопутные войска** (кавалерия, пехота, лучники, инженерные части), **военно-морской флот** и **Королевская гвардия**[^4].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-warships.jpg" alt="Военно-морской флот Эдема" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-warships.jpg" alt="Военно-морской флот Эдема" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Военно-морской флот Королевства Эдема. Реконструкция.</div>
 </div>
 
@@ -393,7 +393,7 @@
 ## Экономика
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-marketplace.png" alt="Торговля в Эдеме" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-marketplace.png" alt="Торговля в Эдеме" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Торговля и рынки Королевства Эдем. Реконструкция.</div>
 </div>
 
@@ -443,7 +443,7 @@
 ## Транспорт и связь
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-canals-transport.jpg" alt="Каналы Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-canals-transport.jpg" alt="Каналы Эдема" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Система каналов Королевства Эдем. Реконструкция.</div>
 </div>
 
@@ -545,7 +545,7 @@
 ### Академия Окхасена
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 250px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 4px;">
+  <img src="/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 4px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 2px; text-align: center;">Главное здание Академии Окхасена</div>
 </div>
 
@@ -562,7 +562,7 @@
 ## Наука
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-observatory.png" alt="Обсерватория в горах Фарсиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/eden-observatory.png" alt="Обсерватория в горах Фарсиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Обсерватория в горах Фарсиды. Реконструкция.</div>
 </div>
 
@@ -589,7 +589,7 @@
 ## Культура и искусство
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/clay-memory.webp" alt="Lān sur — глина помнит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/clay-memory.webp" alt="Lān sur — глина помнит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Lān sur — глина помнит</div>
 </div>
 

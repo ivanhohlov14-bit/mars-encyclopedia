@@ -12,17 +12,17 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/khong-kingdom-map.png" alt="Карта Королевства Кхонг" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/khong-kingdom-map.png" alt="Карта Королевства Кхонг" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Кхонг. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Королевства Кхонг" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-khong.png" alt="Флаг Королевства Кхонг" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Кхонга</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-khong.png" alt="Герб Королевства Кхонг" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-khong.png" alt="Герб Королевства Кхонг" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Кхонга</div>
     </div>
   </div>
@@ -106,19 +106,19 @@
 
   <div style="display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 2px;">
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/avsonia/">Авсония</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/serpentida/">Серпендида</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Эритреи" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eritrea.png" alt="Флаг Эритреи" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eritrea/">Эритрея</a>
     </span>
   </div>
@@ -152,7 +152,7 @@
 **Королевство Кхонг** (марс. *Khong Ari* — «Избранный Кхонг») — небольшое, но стратегически важное юго-восточное государство Марса, располагавшееся у подножия горной цепи Харит на берегу моря Аргир, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **11 000 000 км²**[^1]. Протяжённость границ достигала **13 000 км**[^2]. Население Кхонга в период расцвета (ок. 2650 г. Э.О.) достигало **3 800 000 человек**[^3], что делало его одним из самых малонаселённых, но экономически развитых государств Марса. Столица — [Кхонг](https://mars-wiki.ru/geography/khong/). Координаты столицы: 63° ю.ш., 48° з.д.[^4]. Государственный язык — *Marzān* (восточный диалект), также были распространены местные наречия горных племён[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-mountains.jpg" alt="Горы Харит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/khong-mountains.jpg" alt="Горы Харит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Горы Харит — сердце Кхонга. Реконструкция.</div>
 </div>
 
@@ -163,7 +163,7 @@
 Кхонг граничил с **четырьмя государствами и двумя морями**: на западе — с [Эриданией](https://mars-wiki.ru/geography/eridania/), на востоке — с Авсонией, на северо-востоке — с Серпендидой, на северо-западе — с Эритреей (по акватории моря Аргир). На юге и юго-востоке королевство омывалось водами **моря Эллада**[^12]. В состав Кхонга входили **9 провинций**, включая **5 областей**, **2 королевства-вассала**, **1 город-государство** (Кхонг) и **1 автономную область** (побережье моря Аргир)[^13]. Крупнейшими городами Кхонга были Кхонг, Дзен-Сур, Харит-Акха, Тор-Кхо и Сар-Аргир. Всего в стране насчитывалось около **150 населённых пунктов**, от крупных горнодобывающих центров до небольших деревушек в пустыне Ноахида[^14].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-city.jpg" alt="Город Кхонг" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/khong-city.jpg" alt="Город Кхонг" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Горнодобывающий город Кхонг у подножия гор Харит. Реконструкция.</div>
 </div>
 
@@ -192,7 +192,7 @@
 ### Географическое положение
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-map-medieval.png" alt="Карта Кхонга" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/khong-map-medieval.png" alt="Карта Кхонга" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Кхонг в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
 </div>
 
@@ -217,7 +217,7 @@
 ### Геологическое строение
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars;_Arsia_Mons_cave_entrance_-MRO.jpg" alt="Вход в пещеру на горе Арсия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Mars;_Arsia_Mons_cave_entrance_-MRO.jpg" alt="Вход в пещеру на горе Арсия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Вход в пещеру на горе Арсия (Mars Reconnaissance Orbiter, NASA). Иллюстрирует вулканическое происхождение гор Харит.</div>
 </div>
 
@@ -232,7 +232,7 @@
 ## Рельеф
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-charit-mountains.jpg" alt="Горы Харит крупным планом" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/khong-charit-mountains.jpg" alt="Горы Харит крупным планом" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Горы Харит — главное богатство Кхонга. Реконструкция.</div>
 </div>
 
@@ -247,7 +247,7 @@
 ## Внутренние воды
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-charit-river.jpg" alt="Река Харит" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/khong-charit-river.jpg" alt="Река Харит" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Река Харит — главная водная артерия Кхонга. Реконструкция.</div>
 </div>
 
@@ -357,7 +357,7 @@
 ### Эпоха Основания (ок. 600–900 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-foundation.jpg" alt="Основание Кхонга" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/khong-foundation.jpg" alt="Основание Кхонга" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Кхонга у подножия гор Харит. Реконструкция.</div>
 </div>
 
@@ -370,7 +370,7 @@
 ### Эпоха Расцвета (900–2500 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-mines.png" alt="Рудники Кхонга" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/khong-mines.png" alt="Рудники Кхонга" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Рудники в горах Харит — основа экономики Кхонга. Реконструкция.</div>
 </div>
 
@@ -383,7 +383,7 @@
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/khong-destruction.jpg" alt="Гибель Кхонга" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/khong-destruction.jpg" alt="Гибель Кхонга" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Кхонга — замерзающие рудники и опустевшие шахты. Реконструкция.</div>
 </div>
 
@@ -501,7 +501,7 @@
 ## Наука
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/NASA Rover Returns Voice and Telephoto Views from Mars.jpg" alt="Марсоход NASA" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/NASA Rover Returns Voice and Telephoto Views from Mars.jpg" alt="Марсоход NASA" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Марсоход NASA на поверхности Марса. Иллюстрирует современное изучение планеты.</div>
 </div>
 

@@ -12,17 +12,17 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/utopia-map-medieval.png" alt="Карта Королевства Утопия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/utopia-map-medieval.png" alt="Карта Королевства Утопия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Утопия. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Королевства Утопия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-utopia.png" alt="Флаг Королевства Утопия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Утопии</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-utopia.png" alt="Герб Королевства Утопия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-utopia.png" alt="Герб Королевства Утопия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Утопии</div>
     </div>
   </div>
@@ -107,19 +107,19 @@
 
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
     </div>
   </div>
@@ -142,7 +142,7 @@
 **Королевство Утопия** (марс. *Utopia Mar* — «Живая Утопия») — крупное островное государство Марса, располагавшееся в южной части планеты, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **3 000 000 км²**[^1]. Протяжённость границ достигала **6 300 км**[^2]. Население Утопии в период расцвета (ок. 2650 г. Э.О.) достигало **2 800 000 человек**[^3], что делало её одной из самых плотно населённых стран Марса. Столица — [Кан-Уг](https://mars-wiki.ru/geography/kan-ug/). Координаты столицы: 67° ю.ш., 156° в.д.[^4]. Государственный язык — *Marzān* (утопийский диалект), также были распространены местные наречия[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_cinematic_wide_shot_of_the_Utopia_archipelago_on_ancient_Mars_numerous_isla-0.jpg" alt="Архипелаг Утопии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Epic_cinematic_wide_shot_of_the_Utopia_archipelago_on_ancient_Mars_numerous_isla-0.jpg" alt="Архипелаг Утопии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Архипелаг Утопии. Реконструкция.</div>
 </div>
 
@@ -163,14 +163,14 @@
 Утопия имела **самый большой и самый современный военный флот в мире Марса**[^16]. Её корабли были быстрее и лучше вооружены, чем у любых других государств. Утопийцы знали Мировой океан как свои шесть пальцев — они могли предсказывать течения, штормы и находить путь в любую погоду[^17].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Dramatic_cinematic_scene_of_the_Utopian_fleet_the_largest_and_most_advanced_navy-0.jpg" alt="Утопийский флот" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Dramatic_cinematic_scene_of_the_Utopian_fleet_the_largest_and_most_advanced_navy-0.jpg" alt="Утопийский флот" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Утопийский флот — самый мощный на Марсе. Реконструкция.</div>
 </div>
 
 На юге от островов Утопии существовал **небольшой водоворот**, который со временем рос. К **2738 году** он стал настолько огромным, что его можно было наблюдать с орбиты Марса[^18]. Это явление стало одним из первых признаков умирания морей в Эпоху Умирания[^19].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Dramatic_cinematic_shot_of_the_Great_Whirlpool_of_Utopia_in_2738_on_ancient_Mars-0.jpg" alt="Великий водоворот Утопии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Dramatic_cinematic_shot_of_the_Great_Whirlpool_of_Utopia_in_2738_on_ancient_Mars-0.jpg" alt="Великий водоворот Утопии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Великий водоворот Утопии (2738 г. Э.О.). Реконструкция.</div>
 </div>
 
@@ -248,7 +248,7 @@
 ### Эпоха Основания (ок. 500–700 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_panoramic_view_of_Kan-Ug_the_capital_city_of_Utopia_on_ancient_Mars_built_o-0.jpg" alt="Кан-Уг — столица Утопии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Epic_panoramic_view_of_Kan-Ug_the_capital_city_of_Utopia_on_ancient_Mars_built_o-0.jpg" alt="Кан-Уг — столица Утопии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Кан-Уг — столица Утопии. Реконструкция.</div>
 </div>
 
@@ -259,7 +259,7 @@
 ### Эпоха Расцвета (700–1670 гг. Э.О.)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_cinematic_shot_of_the_massive_bridge_network_of_Utopia_on_ancient_Mars_the_-0.jpg" alt="Мосты Утопии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Epic_cinematic_shot_of_the_massive_bridge_network_of_Utopia_on_ancient_Mars_the_-0.jpg" alt="Мосты Утопии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Мосты Утопии — чудо инженерии. Реконструкция.</div>
 </div>
 
@@ -270,7 +270,7 @@
 ### Торговая война с Эдемом (1670–1675 гг.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_cinematic_battle_scene_of_the_Trade_War_between_Utopia_and_Eden_on_ancient_-0.jpg" alt="Торговая война с Эдемом" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Epic_cinematic_battle_scene_of_the_Trade_War_between_Utopia_and_Eden_on_ancient_-0.jpg" alt="Торговая война с Эдемом" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Торговая война Утопии с Эдемом (1670–1675 гг. Э.О.). Реконструкция.</div>
 </div>
 
@@ -287,7 +287,7 @@
 ### Гибель Утопии (2740 г.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Tragic_epic_cinematic_scene_of_the_destruction_of_Utopia_in_2740_on_ancient_Mars-0.jpg" alt="Гибель Утопии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Tragic_epic_cinematic_scene_of_the_destruction_of_Utopia_in_2740_on_ancient_Mars-0.jpg" alt="Гибель Утопии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Утопии — цунами 2740 года. Реконструкция.</div>
 </div>
 

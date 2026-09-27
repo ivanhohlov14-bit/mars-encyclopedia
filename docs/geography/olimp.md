@@ -9,7 +9,7 @@
   <h3 style="margin: 0; text-align: center; color: #5d3a1a;">Олимп</h3>
   <hr style="border-color: #a67c52;">
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Olympus_Mons.jpg" alt="Гора Олимп на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a67c52;">
+    <img src="/assets/images/Olympus_Mons.jpg" alt="Гора Олимп на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a67c52;">
     <div style="font-size: 0.8rem; color: #5d3a1a; margin-top: 4px;">Гора Олимп — крупнейший вулкан Солнечной системы. Снимок Mars Global Surveyor</div>
   </div>
   <p><b>Тип объекта:</b> Щитовой вулкан</p>
@@ -52,7 +52,7 @@
 Название «Олимп» было присвоено вулкану в 1970-х годах по аналогии с горой Олимп в Греции — мифическим местом обитания богов. До этого он был известен как *Nix Olympica* («Снега Олимпа») — из-за светлого ореола, который астрономы наблюдали вокруг него в телескопы[^1].
 
 <div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a67c52; background: #f5ebe0; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Olympus_Mons_topography.jpg" alt="Топографическая карта Олимпа" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Olympus_Mons_topography.jpg" alt="Топографическая карта Олимпа" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #5d3a1a; padding: 4px 6px; text-align: left;">
     Топографическая карта горы Олимп с цветовой индикацией высот. Красный — вершина, синий — основание.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Olympus_Mons_topography.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -88,7 +88,7 @@
 Олимп — один из самых молодых крупных вулканов Марса. Его формирование началось в **позднюю ноахийскую эпоху** (около 3,8 млрд лет назад) и продолжалось с перерывами вплоть до **позднеамазонийского периода** (около 2–2,5 млн лет назад)[^7].
 
 <div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a67c52; background: #f5ebe0; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Olympus_Mons_caldera.jpg" alt="Кратер Олимпа" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Olympus_Mons_caldera.jpg" alt="Кратер Олимпа" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #5d3a1a; padding: 4px 6px; text-align: left;">
     Кальдера Олимпа — сложная система из нескольких вложенных кратеров. Снимок Mars Express.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Olympus_Mons_caldera.jpg" target="_blank" style="font-size: 0.7rem;">ESA / Wikimedia Commons</a>
@@ -129,7 +129,7 @@
 ### Мифология
 
 <div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a67c52; background: #f5ebe0; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Olympus_Mons_caldera.jpg" alt="Кальдера и вулканические кратеры" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Olympus_Mons_caldera.jpg" alt="Кальдера и вулканические кратеры" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #5d3a1a; padding: 4px 6px; text-align: left;">
     Кальдера и вулканические кратеры.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Olympus_Mons_sunset.jpg" target="_blank" style="font-size: 0.7rem;">ESA / Wikimedia Commons</a>

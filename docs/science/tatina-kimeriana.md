@@ -7,7 +7,7 @@
   </div>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-concept.jpg" alt="Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/tatina-kimeriana-concept.jpg" alt="Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Реконструкция внешнего облика Tatīna kimeriana.</div>
   </div>
 
@@ -86,7 +86,7 @@
 </div>
 
 <div style="text-align: center; padding: 6px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-distribution-map.png" alt="Карта распространения Tatīna kimeriana" style="width: 50%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; display: block; margin: 0 auto;">
+  <img src="/assets/images/tatina-kimeriana-distribution-map.png" alt="Карта распространения Tatīna kimeriana" style="width: 50%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; display: block; margin: 0 auto;">
   <div style="font-size: 0.65rem; color: #555; margin-top: 2px;">Распространение ископаемых остатков Tatīna kimeriana</div>
 </div>
 
@@ -100,7 +100,7 @@
 
 <hr style="margin: 6px 0;">
 
-<p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/kimeria/">Королевство Кимерия</a></span></p>
+<p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/kimeria/">Королевство Кимерия</a></span></p>
 <p><b>Местоположение</b> Кратер Гейла, Марс (~5° ю.ш., 138° в.д.)</p>
 <p><b>Размер</b> Оценочно 2–3 метра (высота)</p>
 <p><b>Масса</b> Оценочно 80–120 кг</p>
@@ -137,7 +137,7 @@ Tatīna kimeriana — организм средних размеров. На о�
 Tatīna kimeriana имеет уникальное строение, адаптированное к жизни на поверхности Марса[^8]:
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-anatomy-diagram.png" alt="Анатомическая схема Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="/assets/images/tatina-kimeriana-anatomy-diagram.png" alt="Анатомическая схема Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Схематическое строение Tatīna kimeriana. Реконструкция.</div>
 </div>
 
@@ -323,7 +323,7 @@ Silica vita
 Tatīna kimeriana обитала в **восточной части леса Тиррения** и на побережье **Зефирийского моря**[^46].
 
 <div style="float: left; margin: 0 1.5rem 0.5rem 0; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tirrenia-forest-ecosystem.jpg" alt="Лес Тиррения — экосистема Кимерии" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="/assets/images/tirrenia-forest-ecosystem.jpg" alt="Лес Тиррения — экосистема Кимерии" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Лес Тиррения — реконструкция экосистемы, где обитала Tatīna kimeriana.</div>
 </div>
 

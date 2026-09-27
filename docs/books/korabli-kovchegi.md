@@ -4,30 +4,30 @@
   <h3 style="margin: 0; text-align: center;">Корабли-ковчеги</h3>
   <hr>
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/korabli-kovchegi.png" alt="Корабли-ковчеги" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/korabli-kovchegi.png" alt="Корабли-ковчеги" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Художественная реконструкция корабля-ковчега «Надежда» в разрезе</div>
   </div>
   <p><b>Производитель:</b> <a href="/geography/okhasen/">Королевство Окхасен</a>, <a href="/geography/farsida/">Фарсида</a></p>
   <p><b>Страны-участницы:</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-okhasen.png" alt="Флаг Окхасена" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-okhasen.png" alt="Флаг Окхасена" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/okhasen/">Окхасен</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/utopia/">Утопия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/avsonia/">Авсония</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eridania/">Эридания</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eden/">Эдем</a>
     </div>
   </div>
@@ -108,7 +108,7 @@
 ### Двигательная установка
 
 <div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/korabli-kovchegi-engine.jpg" alt="Схема двигателя корабля-ковчега" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/korabli-kovchegi-engine.jpg" alt="Схема двигателя корабля-ковчега" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Схема термоядерного двигателя «Кхо-Дзен»<br>
     <span style="font-size: 0.7rem;">1 — реактор, 2 — сопло, 3 — система охлаждения, 4 — топливные баки</span>

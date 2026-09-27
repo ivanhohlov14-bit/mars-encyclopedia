@@ -46,7 +46,7 @@ description: История пиратского королевства Ксан
 <!-- ============ INFO PANEL ============ -->
 <div class="ksanf-info">
   <div class="ksanf-info-image">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Герб Ксанфа" loading="lazy">
+    <img src="/assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Герб Ксанфа" loading="lazy">
     <div class="ksanf-info-caption">Герб династии Ксанфидов</div>
   </div>
   <div class="ksanf-info-body">
@@ -291,7 +291,7 @@ description: История пиратского королевства Ксан
 
 <!-- ============ ФИНАЛЬНЫЙ БАННЕР ============ -->
 <div class="ksanf-final">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-pirate-kingdom.png" alt="Флаг Ксанфа" class="ksanf-final-flag">
+  <img src="/assets/images/flag-pirate-kingdom.png" alt="Флаг Ксанфа" class="ksanf-final-flag">
   <div class="ksanf-final-body">
     <div class="ksanf-final-label">Пиратское королевство</div>
     <div class="ksanf-final-name">Ксанф</div>

@@ -4,12 +4,12 @@
   <h3 style="margin: 0; text-align: center;">«Пистолет» на Марсе</h3>
   <hr>
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Screenshot 2026-08-16 161716.png" alt="Загадочный объект на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/Screenshot 2026-08-16 161716.png" alt="Загадочный объект на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Загадочный объект на марсианской поверхности. Кадр сделан марсоходом Opportunity в 2014 году и стал сенсацией в июле 2026 года. Источник: NASA/JPL-Caltech</div>
   </div>
 
   <p><b>Тип</b> Неопознанный артефакт / скальное образование</p>
-  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/arkadia/">Королевство Аркадия</a></span></p>
+  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/arkadia/">Королевство Аркадия</a></span></p>
   <p><b>Местоположение</b> SOL 3773, в районе хребта Вдовиак (Wdowiak Ridge), западный край кратера Индевор, Марс</p>
   <p><b>Дата съёмки</b> 2014 год</p>
   <p><b>Дата публикации</b> 30 июня – 1 июля 2026 года</p>
@@ -35,7 +35,7 @@
 Снимок был сделан **в 2014 году** навигационной камерой марсохода Opportunity в рамках плановой съёмки поверхности Марса в районе **SOL 3773**[^9]. На стандартном изображении пыльного марсианского ландшафта был обнаружен тёмный объект, который при увеличении приобрёл следующие очертания[^10]:
 
 <div style="float: left; margin: 0 1.5rem 0.5rem 0; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA18614.jpg" alt=" Хребет Вдовяк (Wdowiak Ridge)" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="/assets/images/PIA18614.jpg" alt=" Хребет Вдовяк (Wdowiak Ridge)" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;"> Хребет Вдовяк (Wdowiak Ridge) Источник: NASA/JPL-Caltech</div>
 </div>
 
@@ -80,7 +80,7 @@
 ### Почему молоток, а не пистолет?
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-jewelry-hammer-concept.png" alt="Концепция ювелирного молотка Аркадии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/arkadia-jewelry-hammer-concept.png" alt="Концепция ювелирного молотка Аркадии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Концепция ювелирного молотка мастеров Аркадии. Реконструкция по данным Академии Окхасена.</div>
 </div>
 

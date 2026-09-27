@@ -46,7 +46,7 @@ description: История и география Королевства Сер�
 <!-- ============ INFO PANEL ============ -->
 <div class="serpentida-info">
   <div class="serpentida-info-image">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Serpentida_Mars._Shield_shape_r-0.jpg" alt="Герб Серпентиды" loading="lazy">
+    <img src="/assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Serpentida_Mars._Shield_shape_r-0.jpg" alt="Герб Серпентиды" loading="lazy">
     <div class="serpentida-info-caption">Герб династии Серпендидов</div>
   </div>
   <div class="serpentida-info-body">
@@ -231,7 +231,7 @@ description: История и география Королевства Сер�
 
 <!-- ============ ФИНАЛЬНЫЙ БАННЕР ============ -->
 <div class="serpentida-final">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-serpentida.png" alt="Герб Серпентиды" class="serpentida-final-flag">
+  <img src="/assets/images/coat-of-arms-of-serpentida.png" alt="Герб Серпентиды" class="serpentida-final-flag">
   <div class="serpentida-final-body">
     <div class="serpentida-final-label">Древнейшее королевство</div>
     <div class="serpentida-final-name">Серпентида</div>

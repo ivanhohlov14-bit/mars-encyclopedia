@@ -7,17 +7,17 @@
   <hr>
   
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/arkadia-kingdom-map.png" alt="Карта Королевства Аркадия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/arkadia-kingdom-map.png" alt="Карта Королевства Аркадия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Аркадия. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Аркадии</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/coat-of-arms-of-arkadia.png" alt="Герб Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/map/coat-of-arms-of-arkadia.png" alt="Герб Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Аркадии</div>
     </div>
   </div>
@@ -63,15 +63,15 @@
   <p><b>Государства-соседи</b></p>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/utopia/">Утопия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="/geography/kimeria/">Кимерия</a>
     </div>
   </div>
@@ -99,7 +99,7 @@
 ## Эпоха Основания (ок. 800–1500 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/arkadia-arrival.png" alt="Прибытие переселенцев в Аркадию" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/arkadia-arrival.png" alt="Прибытие переселенцев в Аркадию" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Прибытие первых поселенцев на северные равнины. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -112,7 +112,7 @@
 В **1050 году**, в 14 день месяца **Ветров** (*Zal-ākha*), в хрониках Серпендиды впервые появляется название **«Аркадия»** для обозначения северных земель. К этому времени Аркадия уже контролировала все крупные рудники Утопии и вела активную торговлю с Эдемом, поставляя металл в обмен на зерно и глиняные таблички[^6].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/arkadia-mines.png" alt="Рудники Аркадии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/arkadia-mines.png" alt="Рудники Аркадии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Рудники Утопии — главное богатство Аркадии. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -125,7 +125,7 @@
 ## Эпоха Расцвета (1500–2680 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/arkadia-war.png" alt="Битва с Эдемом" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/arkadia-war.png" alt="Битва с Эдемом" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Битва при Ксанфской переправе (1643 г.). Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -134,7 +134,7 @@
 После поражения Аркадия потеряла часть территорий, но сохранила независимость. В **1650 году**, в 10 день месяца **Зноя** (*Mar-dzen*), был заключён мирный договор, скреплённый браком: дочь князя Аркадии вышла замуж за **Термана I** (Строителя каналов), что принесло мир на три поколения[^10].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/arkadia-peace.png" alt="Мирный договор с Эдемом" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/arkadia-peace.png" alt="Мирный договор с Эдемом" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подписание мирного договора с Эдемом. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -147,7 +147,7 @@
 ## Эпоха Умирания (2680–2735 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/arkadia-volcano.png" alt="Извержение вулканов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/arkadia-volcano.png" alt="Извержение вулканов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Извержение вулканов Фарсиды, погубившее Аркадию. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -158,7 +158,7 @@
 В **2735 году**, в 3 день месяца **Угасания** (*Kōl-ghar*), последние жители Аркадии покинули свои земли и ушли под землю, в пещеры Фарсиды. Королевство Аркадия прекратило своё существование[^15].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/arkadia-exodus.png" alt="Исход аркадийцев" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/arkadia-exodus.png" alt="Исход аркадийцев" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Исход аркадийцев в пещеры Фарсиды. Реконструкция по табличкам Академии.</div>
 </div>
 

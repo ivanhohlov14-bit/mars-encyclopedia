@@ -12,7 +12,7 @@
   </div>
 
   <div style="text-align: center; margin: 20px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/timeline-chart.png" alt="Хронология событий Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
+    <img src="/assets/images/timeline-chart.png" alt="Хронология событий Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
     <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Ключевые события марсианской истории</div>
   </div>
 
@@ -77,7 +77,7 @@
 ## Геологическая и астрономическая шкала (до 1 г. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Lowell_Mars_channels.jpg" alt="Карта каналов Марса, составленная Персивалем Лоуэллом" style="width: 100%; max-width: 400px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Lowell_Mars_channels.jpg" alt="Карта каналов Марса, составленная Персивалем Лоуэллом" style="width: 100%; max-width: 400px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">
     Карта каналов Марса, составленная американским астрономом Персивалем Лоуэллом (конец XIX — начало XX века). Источник: Wikimedia Commons.
   </div>
@@ -98,14 +98,14 @@
 ---
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 300px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Screenshot%202026-08-17%20004717.png" alt="Геологические периоды Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Screenshot%202026-08-17%20004717.png" alt="Геологические периоды Марса" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Геологические периоды Марса: Донойский, Нойский, Гесперийский и Амазонийский. Изображение из открытых источников.</div>
 </div>
 
 Первые систематические исследования Марса начались с изобретения телескопа. В 1609 году Галилео Галилей впервые наблюдал Марс в телескоп, а в 1659 году Христиан Гюйгенс составил первую карту поверхности планеты, отметив тёмные и светлые области[^2]. Эти наблюдения положили начало многовековой традиции изучения Красной планеты, которая достигла своего пика в XX–XXI веках с запуском автоматических станций.
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_Schiaparelli_MKL_Bd._11_1890_(128500338).jpg" alt="Карта Марса, составленная Джованни Скиапарелли (1890)" style="width: 100%; max-width: 400px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Mars_Schiaparelli_MKL_Bd._11_1890_(128500338).jpg" alt="Карта Марса, составленная Джованни Скиапарелли (1890)" style="width: 100%; max-width: 400px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">
     Карта Марса, составленная итальянским астрономом Джованни Скиапарелли (1890 г.). Источник: Wikimedia Commons.
   </div>
@@ -116,7 +116,7 @@
 ## Эпоха Основания (1–2500 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Proctor_Mars_Map.jpg" alt="Карта Марса, составленная Ричардом Проктором (1867)" style="width: 100%; max-width: 400px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Proctor_Mars_Map.jpg" alt="Карта Марса, составленная Ричардом Проктором (1867)" style="width: 100%; max-width: 400px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">
     Карта Марса, составленная английским астрономом Ричардом Проктором (1867 г.). Источник: Wikimedia Commons.
   </div>
@@ -141,7 +141,7 @@
 ## Эпоха Расцвета (2500–2680 гг. Э.О.)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 200px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_views_001.jpg" alt="Различные виды Марса, составное изображение" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Mars_views_001.jpg" alt="Различные виды Марса, составное изображение" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Различные виды Марса. Составное изображение. Источник: NASA / ESA.
   </div>
@@ -162,7 +162,7 @@
 ---
 
 <div style="float: right; margin-right: 20px; margin-bottom: 10px; width: 150px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Ridged_Plains_Overlying_Noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Ridged_Plains_Overlying_Noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Гребнистые равнины. Источник: NASA.
   </div>
@@ -175,7 +175,7 @@
 ## Эпоха Умирания (2680–2745 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 200px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_atmosphere.jpg" alt="Атмосфера Марса, снимок с орбитального аппарата" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Mars_atmosphere.jpg" alt="Атмосфера Марса, снимок с орбитального аппарата" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Атмосфера Марса. Снимок с орбитального аппарата. Источник: NASA.
   </div>
@@ -216,7 +216,7 @@
 ---
 
 <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-sim3292-2014-crop-globe.png" alt="Геологическая карта Марса (USGS, 2014)" style="width: 100%; max-width: 1000px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="/assets/images/USGS-sim3292-2014-crop-globe.png" alt="Геологическая карта Марса (USGS, 2014)" style="width: 100%; max-width: 1000px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Глобальная геологическая карта Марса (USGS, 2014). Цвета: нойский (коричневый), гесперийский (зелёный), амазонийский (синий).</div>
 </div>
 
@@ -227,7 +227,7 @@
 ## Заключение
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 200px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Mars_Hubble.jpg" alt="Марс, снимок телескопа Хаббл" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Mars_Hubble.jpg" alt="Марс, снимок телескопа Хаббл" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">
     Марс (телескопа Хаббл). Источник: NASA / ESA.
   </div>

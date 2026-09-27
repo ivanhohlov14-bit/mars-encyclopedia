@@ -12,17 +12,17 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/eritrea-kingdom-map.png" alt="Карта Королевства Эритрей" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/eritrea-kingdom-map.png" alt="Карта Королевства Эритрей" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Эритрей. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png" alt="Флаг Королевства Эритрей" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-eritrea.png" alt="Флаг Королевства Эритрей" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Эритрея</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-eritrea.png" alt="Герб Королевства Эритрей" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-eritrea.png" alt="Герб Королевства Эритрей" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Эритрея</div>
     </div>
   </div>
@@ -107,23 +107,23 @@
 
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-khong.png" alt="Флаг Кхонга" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/khong/">Кхонг</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/serpentida/">Серпентида</a>
     </div>
   </div>
@@ -157,7 +157,7 @@
 **Королевство Эритрей** (марс. *Eritrea Xal* — «Древний Эритрей») — самое воинственное и сильное по вооружению государство Марса до **2700 года Э.О.**, располагавшееся на западном побережье материка, контролируя стратегически важные проливы и морские пути. В **2700 году** пираты под предводительством Ксанфа подняли вооружённый мятеж, захватили власть и переименовали государство в [Королевство Ксанф](https://mars-wiki.ru/geography/ksanf/)[^1]. По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **5 000 000 км²**[^2]. Протяжённость границ достигала **10 000 км**[^3]. Население Эритрея в период расцвета (ок. 2650 г. Э.О.) достигало **4 200 000 человек**[^4], что делало его шестым по численности населения государством Марса. Столица — [Эритрей](https://mars-wiki.ru/geography/eritrea/). Координаты столицы: 15° с.ш., 75° з.д.[^5]. Государственный язык — *Marzān* (эритрейский диалект), также были распространены местные наречия[^6]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^7].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_cinematic_wide_shot_of_the_Eritrean_fleet_sailing_across_the_ancient_Martia-0.jpg" alt="Флот Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Epic_cinematic_wide_shot_of_the_Eritrean_fleet_sailing_across_the_ancient_Martia-0.jpg" alt="Флот Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Флот Эритрея — самый мощный на Марсе. Реконструкция.</div>
 </div>
 
@@ -170,7 +170,7 @@
 Эритрей был **самой сильной военной державой** Марса[^15]. Королевство отвоевало **полуостров у Эдема** возле залива Маринера, расширив свои границы[^16]. Однако постоянные войны истощили ресурсы, и к Эпохе Умирания Эритрей начал терять свою мощь. В 2700 году пираты под предводительством Ксанфа захватили власть, положив конец династии Эритреидов[^17].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Pirate-Fleet-of-Eritrea.jpg" alt="Пиратский флот Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/The-Pirate-Fleet-of-Eritrea.jpg" alt="Пиратский флот Эритрея" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Пиратский флот Эритрея. Реконструкция.</div>
 </div>
 
@@ -187,7 +187,7 @@
 ## Физико-географическая характеристика
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-map-medieval.png" alt="Карта Королевства Эритрей" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eritrea-map-medieval.png" alt="Карта Королевства Эритрей" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Эритрей в середине II тысячелетия Э.О. По данным Академии Окхасена</div>
 </div>
 
@@ -198,7 +198,7 @@
 Основная часть территории Эритрея была занята **прибрежными равнинами** и **невысокими холмами**. На севере королевства находился **полуостров**, отвоёванный у Эдема[^4].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eritrea-sea-coast.jpeg" alt="Побережье Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/eritrea-sea-coast.jpeg" alt="Побережье Эритрейского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье Эритрейского моря. Реконструкция.</div>
 </div>
   
@@ -260,7 +260,7 @@
 Первые поселения на полуострове Эритрейского моря возникли в середине I тысячелетия Э.О. Письменная история начинается с **основания Эритрея** (ок. 600 г. Э.О.) — города, построенного на полуострове[^2]. В **800 году Э.О.** правитель Эритрея объединил кланы, создав **Королевство Эритрей**[^3].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Founding-of-Eritrea.png" alt="Основание Эритрея" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/The-Founding-of-Eritrea.png" alt="Основание Эритрея" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Эритрея. Реконструкция.</div>
 </div>
 
@@ -287,7 +287,7 @@
 ### Путь Хевсура через Эритрей (2734 г.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-Burning-of-Ovren.jpg" alt="Сожжение Оврена" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/The-Burning-of-Ovren.jpg" alt="Сожжение Оврена" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Сожжение деревни Оврен. Реконструкция.</div>
 </div>
 
@@ -312,7 +312,7 @@
 ## Вооружённые силы
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/lucid-origin_Epic_portrait_of_a_six-fingered_Martian_warrior_from_the_kingdom_of_Eritrea_wear-0.jpg" alt="Эритрейский воин" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/lucid-origin_Epic_portrait_of_a_six-fingered_Martian_warrior_from_the_kingdom_of_Eritrea_wear-0.jpg" alt="Эритрейский воин" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Эритрейский воин в бронзовых доспехах. Реконструкция.</div>
 </div>
 

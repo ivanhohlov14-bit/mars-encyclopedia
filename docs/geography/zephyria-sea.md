@@ -12,13 +12,13 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-map.png" alt="Карта Зефирийского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <img src="/assets/images/zephyria-sea-map.png" alt="Карта Зефирийского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
     <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Зефирийского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-bathymetry.png" alt="Батиметрия Зефирийского моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/zephyria-sea-bathymetry.png" alt="Батиметрия Зефирийского моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
     </div>
   </div>
@@ -92,11 +92,11 @@
   </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eden/" style="color: #1a3a4a; text-decoration: underline;">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/arkadia/" style="color: #1a3a4a; text-decoration: underline;">Аркадия</a>
     </div>
   </div>
@@ -132,7 +132,7 @@
 ## Этимология
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-mirror-of-west.png" alt="Зеркало Запада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/zephyria-sea-mirror-of-west.png" alt="Зеркало Запада" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">«Зеркало Запада» — отражение неба в водах Зефирийского моря. Реконструкция.</div>
 </div>
 
@@ -160,7 +160,7 @@
 ### Острова и «плавучие плиты»
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-floating-plates.png" alt="Плавучие плиты" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/zephyria-sea-floating-plates.png" alt="Плавучие плиты" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">«Плавучие плиты» Зефирийского моря. Реконструкция.</div>
 </div>
 
@@ -208,7 +208,7 @@
 ### Эпоха Умирания (2680–2745 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-dried-road.png" alt="Высохшее дно Зефирийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/zephyria-sea-dried-road.png" alt="Высохшее дно Зефирийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Высохшее дно Зефирийского моря — дорога беженцев. Реконструкция.</div>
 </div>
 
@@ -219,7 +219,7 @@
 ## Экосистема
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-ecosystem.png" alt="Подводный мир Зефирийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/zephyria-sea-ecosystem.png" alt="Подводный мир Зефирийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подводный мир Зефирийского моря. Реконструкция.</div>
 </div>
 
@@ -239,7 +239,7 @@
 ### В мифологии
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-temple-of-winds.png" alt="Храм ветров на острове Зефир" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/zephyria-sea-temple-of-winds.png" alt="Храм ветров на острове Зефир" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Храм ветров на острове Зефир. Реконструкция.</div>
 </div>
 
@@ -257,7 +257,7 @@
 ## Современное состояние
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/zephyria-sea-today.png" alt="Зефирийское море сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/zephyria-sea-today.png" alt="Зефирийское море сегодня" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Зефирийская равнина сегодня. Фотореалистичная реконструкция.</div>
 </div>
 

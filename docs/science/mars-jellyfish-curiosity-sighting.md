@@ -4,12 +4,12 @@
   <h3 style="margin: 0; text-align: center;">«Медуза» на Марсе</h3>
   <hr>
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/mars-jellyfish-ufo.jpg" alt="Загадочный объект на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/mars-jellyfish-ufo.jpg" alt="Загадочный объект на Марсе" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Загадочный объект на марсианском горизонте. Кадр сделан марсоходом Curiosity 20 августа 2023 года и стал сенсацией в августе 2026 года. Источник: NASA/JPL-Caltech</div>
   </div>
 
   <p><b>Тип</b> Неопознанный артефакт</p>
-  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/kimeria/">Королевство Кимерия</a></span></p>
+  <p><b>Страна</b> <span style="display: inline-flex; align-items: center; gap: 4px;"><img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;"> <a href="/geography/kimeria/">Королевство Кимерия</a></span></p>
   <p><b>Местоположение</b> Кратер Гейла, Марс (~5° ю.ш., 138° в.д.)</p>
   <p><b>Координаты объекта</b> 5°22′ ю.ш., 137°48′ в.д.</p>
   <p><b>Дата съёмки</b> 20 августа 2023 года</p>
@@ -38,7 +38,7 @@
 - **Расстояние до марсохода** — примерно 50–100 метров[^9].
   
 <div style="float: left; margin: 0 1.5rem 0.5rem 0; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/curiosity-panorama-gale-crater.webp" alt="Панорама кратера Гейла" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="/assets/images/curiosity-panorama-gale-crater.webp" alt="Панорама кратера Гейла" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Панорама кратера Гейла, где Curiosity обнаружил загадочный объект. Источник: NASA/JPL-Caltech</div>
 </div>
 
@@ -65,7 +65,7 @@
 Согласно записям, [Королевство Кимерия](/geography/kimeria/) располагалось на восточном побережье [Зефирийского моря](/geography/zephyria-sea/), занимая стратегически важные территории от леса Тиррения до пролива Элизиум-Акха. Столица — [Кимерия](/geography/kimeria/) с координатами **8° с.ш., 105° в.д.** — находилась всего в нескольких градусах от кратера Гейла, что делает объект потенциальной частью культурного наследия кимерийцев[^19].
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eden-obelisk-concept.jpg" alt="Концепция обсидиановой опоры" style="max-width: 100%; height: auto; border-radius: 2px;">
+  <img src="/assets/images/eden-obelisk-concept.jpg" alt="Концепция обсидиановой опоры" style="max-width: 100%; height: auto; border-radius: 2px;">
   <div style="margin-top: 4px; color: #555;">Концепция обсидиановой опоры — возможный аналог «медузы» из архитектуры Кимерии. Реконструкция по табличкам Академии Окхасена.</div>
 </div>
 
@@ -91,7 +91,7 @@
 Предположительно, объект может принадлежать к гипотетическому виду **Tatīna kimeriana** — двуногому стебельному организму с обсидиановой бронёй и способностью к мгновенной маскировке (эффект «исчезновения»). Две тонкие опоры, видимые на снимке, — это локомоторные конечности, а чёрный цвет тела объясняется кремниевым экзоскелетом, идеально маскирующим организм на фоне вулканических пород[^24].
 
 <div style="float: right; margin: 0 0 0.5rem 1.5rem; width: 220px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 6px; font-size: 0.8rem; text-align: center;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/tatina-kimeriana-concept.jpg" alt="Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/tatina-kimeriana-concept.jpg" alt="Tatīna kimeriana" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Реконструкция внешнего облика Tatīna kimeriana.</div>
 </div>
 

@@ -483,18 +483,18 @@ if (!container) return;
 
 /* ═══ КОРОЛЕВСТВА ═══ */
 var KINGDOM_FLAGS = {
-  'Эдем': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg',
-  'Аркадия': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png',
-  'Эридания': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png',
-  'Кхонг': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-khong.png',
-  'Авсония': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png',
-  'Кимерия': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png',
-  'Серпентида': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png',
-  'Эритрей': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eritrea.png',
-  'Утопия': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png',
-  'Эллада': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-hellas.png',
-  'Аливасото': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-alivasoto.png',
-  'Ксанф': 'https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-ksanf.png'
+  'Эдем': '/assets/images/flag-of-eden.jpg',
+  'Аркадия': '/assets/images/map/flag-of-arkadia.png',
+  'Эридания': '/assets/images/flag-of-eridania.png',
+  'Кхонг': '/assets/images/flag-of-khong.png',
+  'Авсония': '/assets/images/flag-of-avsonia.png',
+  'Кимерия': '/assets/images/flag-of-kimeria.png',
+  'Серпентида': '/assets/images/flag-of-serpentida.png',
+  'Эритрей': '/assets/images/flag-of-eritrea.png',
+  'Утопия': '/assets/images/flag-of-utopia.png',
+  'Эллада': '/assets/images/flag-of-hellas.png',
+  'Аливасото': '/assets/images/flag-of-alivasoto.png',
+  'Ксанф': '/assets/images/coat-of-arms-of-ksanf.png'
 };
 var KC = {'Аркадия':'#D4A574','Ксанф':'#3D3D3D','Эдем':'#F4A460','Эридания':'#F5D76E','Кхонг':'#A9A9A9','Авсония':'#87CEEB','Кимерия':'#B19CD9','Серпентида':'#E57373','Эритрей':'#64B5F6','Утопия':'#4DD0E1','Эллада':'#FF8A65','Аливасото':'#81C784'};
 var K_ORDER = ['Эдем','Аркадия','Эридания','Кхонг','Авсония','Кимерия','Серпентида','Эритрей','Утопия','Эллада','Аливасото','Ксанф'];

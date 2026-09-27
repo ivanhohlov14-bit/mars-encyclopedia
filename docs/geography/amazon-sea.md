@@ -12,13 +12,13 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-map.png" alt="Карта Амазонского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
+    <img src="/assets/images/amazon-sea-map.png" alt="Карта Амазонского моря" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #8daebf;">
     <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 4px;">Карта Амазонского моря. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-bathymetry.png" alt="Батиметрия Амазонского моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/amazon-sea-bathymetry.png" alt="Батиметрия Амазонского моря" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #8daebf; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #2a4a5a; margin-top: 2px;">Батиметрическая карта</div>
     </div>
   </div>
@@ -91,11 +91,11 @@
   </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/arkadia/" style="color: #1a3a4a; text-decoration: underline;">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #8daebf; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eridania/" style="color: #1a3a4a; text-decoration: underline;">Эридания</a>
     </div>
   </div>
@@ -137,7 +137,7 @@
 ## Этимология
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-farsida-mirror.png" alt="Зеркало Фарсиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/amazon-sea-farsida-mirror.png" alt="Зеркало Фарсиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">«Зеркало Фарсиды» — Амазонское море на закате. Реконструкция.</div>
 </div>
 
@@ -168,7 +168,7 @@
 3. **Комплексный** — Эпоха Умирания (с 2680 г. Э.О. и до закрытия Академии), когда изучение моря приобрело практическое значение для выживания цивилизации.
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-tar-akha-map.png" alt="Первая карта Амазонского моря Тар-Акхи" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/amazon-sea-tar-akha-map.png" alt="Первая карта Амазонского моря Тар-Акхи" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Первая карта Амазонского моря, составленная Тар-Акхой (ок. 1650 г. Э.О.). Реконструкция.</div>
 </div>
 
@@ -197,7 +197,7 @@
 ### Батиметрия
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-bathymetry-depths.png" alt="Батиметрический профиль Амазонского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/amazon-sea-bathymetry-depths.png" alt="Батиметрический профиль Амазонского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Батиметрический профиль Амазонского моря. Схема.</div>
 </div>
 
@@ -269,7 +269,7 @@
 ### Флора и фауна
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-golden-acipenser.png" alt="Золотой аципенсер" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/amazon-sea-golden-acipenser.png" alt="Золотой аципенсер" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Золотой аципенсер — ценная промысловая рыба Амазонского моря. Реконструкция.</div>
 </div>
 
@@ -361,7 +361,7 @@
 ## Экономика
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-port-tana-akha.png" alt="Порт Тана-Акха" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/amazon-sea-port-tana-akha.png" alt="Порт Тана-Акха" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Порт Тана-Акха — главный торговый узел Амазонского моря. Реконструкция.</div>
 </div>
 
@@ -398,7 +398,7 @@
 ## Экология
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/amazon-sea-ecological-disaster.png" alt="Экологическое бедствие в Темпейском заливе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/amazon-sea-ecological-disaster.png" alt="Экологическое бедствие в Темпейском заливе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Экологическое бедствие в Темпейском заливе (2707 г. Э.О.). Реконструкция.</div>
 </div>
 

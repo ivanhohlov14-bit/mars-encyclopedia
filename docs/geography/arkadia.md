@@ -12,17 +12,17 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/arkadia-kingdom-map.png" alt="Карта Королевства Аркадия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/arkadia-kingdom-map.png" alt="Карта Королевства Аркадия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Аркадия. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Аркадии</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/coat-of-arms-of-arkadia.png" alt="Герб Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/map/coat-of-arms-of-arkadia.png" alt="Герб Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Аркадии</div>
     </div>
   </div>
@@ -107,11 +107,11 @@
 
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
     </div>
   </div>
@@ -158,7 +158,7 @@
 **Королевство Аркадия** (марс. *Arcadia Xal* — «Древняя Аркадия») — крупное северное государство Марса, располагавшееся в западной части северного полушария планеты, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **17 000 000 км²**[^1]. Протяжённость границ достигала **17 000 км**[^2]. Население Аркадии в период расцвета (ок. 2650 г. Э.О.) достигало **6 700 000 человек**[^3], что делало его четвёртым по численности населения государством Марса после Утопии, Эдема и Эллады. Столица — [Аркасен](https://mars-wiki.ru/geography/arkasen/). Координаты столицы: 48° с.ш., 105° з.д.[^4]. Государственный язык — *Marzān* (северный диалект), также были распространены местные наречия, восходящие к языкам кочевников Эридании и Эритреи[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-landscape.jpg" alt="Пейзаж Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-landscape.jpg" alt="Пейзаж Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Суровый пейзаж северной Аркадии — горы Фарсиды на горизонте. Реконструкция.</div>
 </div>
 
@@ -169,7 +169,7 @@
 Аркадия граничила с **тремя государствами**: на востоке — с [Эдемом](https://mars-wiki.ru/geography/eden/), на юго-западе — с Эритреей, на юге — с пустыней Эриданией, населённой кочевыми племенами[^12]. В состав Аркадии входили **18 провинций**, включая **10 областей**, **5 королевств-вассалов**, **2 города-государства** (Аркасен и Виндхейм) и **1 автономную область** (Эритрейское побережье)[^13]. Крупнейшими городами Аркадии были Аркасен, Виндхейм, Кан-Ут, Фар-Ут и Хал-Тор. Всего в стране насчитывалось около **350 населённых пунктов**, от крупных горнодобывающих центров до небольших рыбацких деревень на побережье Амазонского и Ацидалийского морей[^14].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-cities.jpg" alt="Города Аркадии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-cities.jpg" alt="Города Аркадии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Горнодобывающий город Аркадии. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -200,7 +200,7 @@
 ### Географическое положение
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 300px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-map-medieval.png" alt="Карта Аркадии (середина II тысячелетия Э.О.)" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-map-medieval.png" alt="Карта Аркадии (середина II тысячелетия Э.О.)" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Аркадия в середине II тысячелетия Э.О.</div>
 </div>
 
@@ -209,7 +209,7 @@
 Основная часть территории Аркадии (около **70 %**) была занята горами **Фарсида** (Тарсис) — крупнейшим вулканическим плато Марса, на котором расположены высочайшие вулканы Солнечной системы: **Олимп** (26 200 м), **Арсия** (19 700 м), **Павлина** (18 200 м) и **Аскрийская гора** (18 100 м)[^4]. Горы занимали центральную и южную часть королевства, тогда как северные территории были представлены равнинами и низменностями, прилегающими к Амазонскому и Ацидалийскому морям[^5].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-mountains.jpg" alt="Горы Фарсиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-mountains.jpg" alt="Горы Фарсиды" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Горы Фарсиды — сердце Аркадии. Реконструкция.</div>
 </div>
 
@@ -244,7 +244,7 @@
 ## Рельеф
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-tempe-forest.jpg" alt="Лес Темпе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-tempe-forest.jpg" alt="Лес Темпе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Лес Темпе — один из крупнейших лесных массивов Аркадии. Реконструкция.</div>
 </div>
 
@@ -255,7 +255,7 @@
 Восточная часть Аркадии, прилегающая к границе с Эдемом, представляла собой **предгорья Фарсиды** — систему холмов и невысоких хребтов, покрытых лесами и кустарниками. Здесь находился знаменитый **лес Темпе** — один из крупнейших лесных массивов на побережье Ацидалийского моря[^3].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-detalia-forest.jpg" alt="Лес Деталия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-detalia-forest.jpg" alt="Лес Деталия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Лес Деталия — «зелёный оазис» на экваторе Марса. Реконструкция.</div>
 </div>
 
@@ -274,7 +274,7 @@
 ### Крупнейшие реки Аркадии
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-kho-river.jpeg" alt="Река Кхо" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-kho-river.jpeg" alt="Река Кхо" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Начало реки Кхо. Реконструкция.</div>
 </div>
 
@@ -387,7 +387,7 @@
 ### Эпоха Основания (ок. 800–1200 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-fortress.jpg" alt="Крепости Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-fortress.jpg" alt="Крепости Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Горная крепость Аркадии — защита от кочевников. Реконструкция.</div>
 </div>
 
@@ -400,7 +400,7 @@
 ### Эпоха Расцвета (1200–2500 гг. Э.О.)
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-terman-iii.png" alt="Король Терман III" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-terman-iii.png" alt="Король Терман III" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Король Терман III — последний правитель Аркадии. Реконструкция.</div>
 </div>
 
@@ -413,7 +413,7 @@
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-destruction.jpg" alt="Гибель Аркадии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-destruction.jpg" alt="Гибель Аркадии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Извержение Олимпа — гибель Королевства Аркадия. Реконструкция.</div>
 </div>
 
@@ -428,7 +428,7 @@
 ## Государственное устройство
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 170px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-flag-coat-of-arms.png" alt="Флаг и герб Королевства Аркадия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-flag-coat-of-arms.png" alt="Флаг и герб Королевства Аркадия" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Флаг вооруженных сил Аркадии.</div>
 </div>
 
@@ -464,7 +464,7 @@
 ## Вооружённые силы
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-army.png" alt="Армия Аркадии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-army.png" alt="Армия Аркадии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Армия Королевства Аркадия. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -561,7 +561,7 @@
 ## Культура
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 220px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-jewelry-hammer-concept.png" alt="Инструмент кузнецов Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-jewelry-hammer-concept.png" alt="Инструмент кузнецов Аркадии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Инструмент для обработки обсидиана и металлов. Реконструкция.</div>
 </div>
 
@@ -581,7 +581,7 @@
 ### Архитектура
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/arkadia-kho-temple.png" alt="Храм Кхо" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/arkadia-kho-temple.png" alt="Храм Кхо" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Храм бога огня Кхо на вершине вулкана. Реконструкция.</div>
 </div>
 

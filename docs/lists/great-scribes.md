@@ -46,7 +46,7 @@ description: История и наследие школы писцов Акад
 <!-- ============ INFO PANEL ============ -->
 <div class="scribes-info">
   <div class="scribes-info-image">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" loading="lazy">
+    <img src="/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" loading="lazy">
     <div class="scribes-info-caption">Главное здание Академии Окхасена</div>
   </div>
   <div class="scribes-info-body">
@@ -226,7 +226,7 @@ description: История и наследие школы писцов Акад
 
 <!-- ============ ФИНАЛЬНЫЙ БАННЕР ============ -->
 <div class="scribes-final">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" class="scribes-final-flag">
+  <img src="/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" class="scribes-final-flag">
   <div class="scribes-final-body">
     <div class="scribes-final-label">Хранители памяти</div>
     <div class="scribes-final-name">Академия Окхасена</div>

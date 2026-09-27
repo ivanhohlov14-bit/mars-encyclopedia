@@ -12,17 +12,17 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/kimeria-kingdom-map.png" alt="Карта Королевства Кимерия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/map/kimeria-kingdom-map.png" alt="Карта Королевства Кимерия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Кимерия. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
   <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Королевства Кимерия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Королевства Кимерия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Кимерии</div>
     </div>
     <div style="text-align: center;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/coat-of-arms-of-kimeria.png" alt="Герб Королевства Кимерия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+      <img src="/assets/images/coat-of-arms-of-kimeria.png" alt="Герб Королевства Кимерия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Герб Кимерии</div>
     </div>
   </div>
@@ -115,23 +115,23 @@
 
   <div style="display: flex; flex-wrap: wrap; gap: 4px 8px; margin-top: 2px;">
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-avsonia.png" alt="Флаг Авсонии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/avsonia/">Авсония</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-utopia.png" alt="Флаг Утопии" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/utopia/">Утопия</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eden/">Эдем</a>
     </span>
     <span style="display: inline-flex; align-items: center; gap: 3px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпендиды" style="width: 18px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/serpentida/">Серпендида</a>
     </span>
   </div>
@@ -163,7 +163,7 @@
 **Королевство Кимерия** (марс. *Kimeria Xal* — «Древняя Кимерия») — крупное восточное государство Марса, располагавшееся на берегу Зефирийского моря, в [Эпоху Умирания](https://mars-wiki.ru/history/epokha-umiraniya/). По данным интерактивной карты Mars Explore, площадь королевства в его границах составляла **10 500 000 км²**[^1]. Протяжённость границ достигала **13 800 км**[^2]. Население Кимерии в период расцвета (ок. 2650 г. Э.О.) достигало **6 500 000 человек**[^3], что делало его третьим по численности населения государством Марса после Утопии и Эдема. Столица — [Кимерия](https://mars-wiki.ru/geography/kimeria/). Координаты столицы: 8° с.ш., 105° в.д.[^4]. Государственный язык — *Marzān* (восточный диалект), также были распространены местные наречия[^5]. Денежная единица — **глиняный талант** (марс. *sur-tal*)[^6].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/The-coast-of-the-Zephyr-Sea.jpg" alt="Побережье Зефирийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/The-coast-of-the-Zephyr-Sea.jpg" alt="Побережье Зефирийского моря" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Побережье Зефирийского моря. Реконструкция.</div>
 </div>
 
@@ -174,7 +174,7 @@
 Кимерия граничила с **пятью государствами**: на юге — с [Авсонией](https://mars-wiki.ru/geography/avsonia/), на востоке — с [Эриданией](https://mars-wiki.ru/geography/eridania/), на севере — с [Утопией](https://mars-wiki.ru/geography/utopia/), на западе — с [Эдемом](https://mars-wiki.ru/geography/eden/), на юге — с [Серпендидой](https://mars-wiki.ru/geography/serpentida/)[^11]. В состав Кимерии входили **14 провинций**, включая **8 областей**, **3 королевства-вассала**, **2 города-государства** (Кимерия, Дао-Тор) и **1 автономную область** (побережье залива Большой Сирт)[^12]. Крупнейшими городами Кимерии были Кимерия, Дао-Тор, Сирт-Акха, Элизиум-Акха, Тиррения и Северный. Всего в стране насчитывалось около **300 населённых пунктов**, от крупных портовых городов до небольших рыбацких деревень[^13].
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-city.jpg" alt="Город Кимерия" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/kimeria-city.jpg" alt="Город Кимерия" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Город Кимерия — столица королевства. Реконструкция.</div>
 </div>
 
@@ -199,7 +199,7 @@
 ### Географическое положение
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-map-medieval.png" alt="Карта Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/kimeria-map-medieval.png" alt="Карта Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Карта Королевства Кимерия в середине II тысячелетия Э.О. По данным Академии Окхасена.</div>
 </div>
 
@@ -228,7 +228,7 @@
 ### Рельеф
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-forest.jpg" alt="Лес Тиррения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/kimeria-forest.jpg" alt="Лес Тиррения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Лес Тиррения — главное богатство Кимерии. Реконструкция.</div>
 </div>
 
@@ -244,7 +244,7 @@
 ### Внутренние воды
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Tao-River-and-Canal.jpg" alt="Река Дао и канал" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/Tao-River-and-Canal.jpg" alt="Река Дао и канал" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Река Дао и водный канал. Реконструкция.</div>
 </div>
 
@@ -273,7 +273,7 @@
 ## Почвы
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/2509gulliesclosenew.jpg" alt="Овраги на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/2509gulliesclosenew.jpg" alt="Овраги на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Овраги в южном полушарии Марса. Снимок HiRISE (NASA).</div>
 </div>
 
@@ -337,7 +337,7 @@
 ### Войны с Королевством Эллада
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-hellas-war.jpg" alt="Война с Элладой" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/kimeria-hellas-war.jpg" alt="Война с Элладой" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Война с Королевством Эллада. Реконструкция.</div>
 </div>
 
@@ -346,7 +346,7 @@
 ### Войны с Утопией за остров Элизиум
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-elysium-war.jpg" alt="Война с Утопией" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/kimeria-elysium-war.jpg" alt="Война с Утопией" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Война с Утопией за остров Элизиум. Реконструкция.</div>
 </div>
 
@@ -359,7 +359,7 @@
 ### Эпоха Основания (ок. 400–600 гг. Э.О.)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-foundation.png" alt="Основание Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/kimeria-foundation.png" alt="Основание Кимерии" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Кимерии. Реконструкция.</div>
 </div>
 
@@ -374,7 +374,7 @@
 ### Эпоха Умирания (2680–2740 гг. Э.О.)
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/kimeria-destruction.jpg" alt="Гибель Кимерии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/kimeria-destruction.jpg" alt="Гибель Кимерии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Кимерии — замерзающее море и умирающий лес. Реконструкция.</div>
 </div>
 

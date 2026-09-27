@@ -12,7 +12,7 @@
   </div>
 
   <div style="text-align: center; margin: 20px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/eras-timeline-chart.jpg" alt="Временная шкала эпох Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
+    <img src="/assets/images/eras-timeline-chart.jpg" alt="Временная шкала эпох Марса" style="width: 100%; max-width: 800px; border: 1px solid #a2a9b1; border-radius: 8px;">
     <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Временная шкала геологической и культурной истории Марса</div>
   </div>
 
@@ -81,7 +81,7 @@
 
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Screenshot%202026-08-17%20004717.png" alt="Геологические периоды Марса" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/Screenshot%202026-08-17%20004717.png" alt="Геологические периоды Марса" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">
     Геологические периоды Марса: Донойский, Нойский, Гесперийский и Амазонийский. Изображение из открытых источников.
   </div>
@@ -102,7 +102,7 @@
 В основе датировки — образование [бассейна Эллада](https://ru.wikipedia.org/wiki/Равнина_Эллада), [нагорья Фарсида](https://ru.wikipedia.org/wiki/Провинция_Фарсида) и [долин Маринера](https://ru.wikipedia.org/wiki/Долины_Маринер) 3,8–4,1 млрд лет назад. О том, что происходило в донойский период, известно мало. Установлено только, что его характеризовало возможное наличие магнитного поля и многочисленные столкновения с космическими телами, одно из которых, вероятно, повлекло за собой глобальную дихотомию Марса[^10].
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 250px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Ridged_Plains_Overlying_Noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 4px;">
+  <img src="/assets/images/Ridged_Plains_Overlying_Noachian.jpg" alt="Гребнистые равнины, перекрывающие нойские отложения" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 4px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 2px; text-align: center;">Гребнистые равнины, перекрывающие более древние нойские отложения. Иллюстрирует стратиграфию Марса. Источник: NASA</div>
 </div>
 
@@ -158,7 +158,7 @@
 Названа по [Гесперийскому плато](https://ru.wikipedia.org/wiki/Гесперийское_плато?action=edit&redlink=1) (Hesperia Planum)[^14].
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 250px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Lava_flow_and_crater_ejecta.jpeg" alt="Лавовый поток и выбросы из кратера на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 4px;">
+  <img src="/assets/images/Lava_flow_and_crater_ejecta.jpeg" alt="Лавовый поток и выбросы из кратера на Марсе" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 4px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 2px; text-align: center;">Лавовый поток и выбросы из ударного кратера. Снимок демонстрирует вулканическую активность Гесперийской эпохи. Источник: NASA</div>
 </div>
 
@@ -278,7 +278,7 @@
 ## Геологическая карта Марса (2014)
 
 <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-sim3292-2014-crop-globe.png" alt="Геологическая карта Марса (USGS, 2014)" style="width: 100%; max-width: 1000px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="/assets/images/USGS-sim3292-2014-crop-globe.png" alt="Геологическая карта Марса (USGS, 2014)" style="width: 100%; max-width: 1000px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Глобальная геологическая карта Марса (USGS, 2014). Цвета: нойский (коричневый), гесперийский (зелёный), амазонийский (синий).</div>
 </div>
 
@@ -295,7 +295,7 @@
 ### Эпоха Основания (1–2500 гг. Э.О.)
 
 <div style="float: right; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-okhasen-foundation.png" alt="Основание Окхасена" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-okhasen-foundation.png" alt="Основание Окхасена" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Окхасена в 1 году Э.О. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -316,7 +316,7 @@
 ### Эпоха Расцвета (2500–2680 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-canals.png" alt="Строительство системы каналов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-canals.png" alt="Строительство системы каналов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство системы каналов при Саруме Великом. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -336,7 +336,7 @@
 ### Эпоха Умирания (2680–2745 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-acidalia-frozen.png" alt="Замёрзшее Ацидалийское море" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-acidalia-frozen.png" alt="Замёрзшее Ацидалийское море" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Замёрзшее Ацидалийское море зимой 2735 года. Реконструкция по табличкам Хевсура.</div>
 </div>
 

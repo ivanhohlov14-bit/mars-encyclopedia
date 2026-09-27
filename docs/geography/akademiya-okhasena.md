@@ -6,7 +6,7 @@
   
   <!-- ===== ФОТО ===== -->
   <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" style="width: 100%; max-width: 250px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Главное здание Академии Окхасена</div>
   </div>
   

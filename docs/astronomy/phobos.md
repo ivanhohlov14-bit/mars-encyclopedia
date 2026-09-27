@@ -9,7 +9,7 @@
   <h3 style="margin: 0; text-align: center;">Фобос</h3>
   <hr>
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/phobos.png" alt="Фобос" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/phobos.png" alt="Фобос" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Фобос, снимок Mars Reconnaissance Orbiter (2008)</div>
   </div>
   <p><b>Первооткрыватель:</b> Асаф Холл</p>
@@ -71,7 +71,7 @@
 ## Название
 
 <div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Orbits_of_Phobos_and_Deimos.gif" alt="Сравнение орбит Фобоса и Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Orbits_of_Phobos_and_Deimos.gif" alt="Сравнение орбит Фобоса и Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Сравнение орбит Фобоса и Деймоса. Деймос (внешняя орбита) обращается дальше и медленнее.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Orbits_of_Phobos_and_Deimos.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -89,7 +89,7 @@
 ## Орбитальные характеристики
 
 <div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" alt="Прохождение Фобоса мимо Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" alt="Прохождение Фобоса мимо Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Прохождение Фобоса мимо Деймоса (реальное видео, 2008). Снято камерой HiRISE на Mars Reconnaissance Orbiter.<br>
     <a href="https://commons.wikimedia.org/wiki/File:PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -132,7 +132,7 @@
 ## Поверхность
 
 <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/USGS-Phobos-MarsMoon Map.png" alt="Топографическая карта Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/USGS-Phobos-MarsMoon Map.png" alt="Топографическая карта Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Топографическая карта Фобоса<br>
     <a href="https://commons.wikimedia.org/wiki/File:USGS-Phobos-MarsMoon-Map.png" target="_blank" style="font-size: 0.7rem;">USGS / Wikimedia Commons</a>
@@ -144,7 +144,7 @@
 Поверхность Фобоса густо усеяна ударными кратерами. Насчитывается около 1300 кратеров диаметром более 200 метров, из них 30 — более 2 километров[^4]. Из-за малой гравитации выбросы от ударов на Фобосе распространяются на гораздо большие расстояния, чем на Земле[^25]. Поверхность можно разделить на два основных типа: старая, густо усеянная кратерами поверхность, покрытая слоем реголита, и области с бороздами — параллельными впадинами, вероятно образовавшимися в результате удара, создавшего кратер Стикни[^27][^29].
 
 <div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Stickney_crater_on_Phobos.jpg" alt="Кратер Стикни на Фобосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Stickney_crater_on_Phobos.jpg" alt="Кратер Стикни на Фобосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Кратер Стикни — крупнейший ударный кратер на Фобосе, диаметр — около 9,7 км. Снимок Mars Reconnaissance Orbiter.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Stickney_crater_on_Phobos.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -162,7 +162,7 @@
 ### Монолит Фобоса
 
 <div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Monolith55103h-crop.jpg" alt="Монолит на Фобосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Monolith55103h-crop.jpg" alt="Монолит на Фобосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Монолит на Фобосе — загадочный объект на поверхности спутника (снимок MRO).<br>
     <a href="https://commons.wikimedia.org/wiki/File:Monolith55103h-crop.jpg" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -207,7 +207,7 @@
 ## Исследования
 
 <div style="float: right; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA05553.gif" alt="Орбитальное движение Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/PIA05553.gif" alt="Орбитальное движение Фобоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Орбитальное движение Фобоса вокруг Марса (анимация).<br>
     <a href="https://commons.wikimedia.org/wiki/File:PIA05553.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>

@@ -9,7 +9,7 @@
   <h3 style="margin: 0; text-align: center;">Деймос</h3>
   <hr>
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Deimos-MRO.jpg" alt="Деймос" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/Deimos-MRO.jpg" alt="Деймос" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">Деймос, снимок Mars Reconnaissance Orbiter</div>
   </div>
   <p><b>Первооткрыватель:</b> Асаф Холл</p>
@@ -64,7 +64,7 @@
 ## Название
 
 <div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/Orbits_of_Phobos_and_Deimos.gif" alt="Сравнение орбит Фобоса и Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/Orbits_of_Phobos_and_Deimos.gif" alt="Сравнение орбит Фобоса и Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Сравнение орбит Фобоса и Деймоса. Деймос (внешняя орбита) обращается дальше и медленнее.<br>
     <a href="https://commons.wikimedia.org/wiki/File:Orbits_of_Phobos_and_Deimos.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -84,7 +84,7 @@
 ## Орбитальные характеристики
 
 <div style="float: left; max-width: 280px; margin: 0 20px 10px 0; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" alt="Прохождение Фобоса мимо Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" alt="Прохождение Фобоса мимо Деймоса" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Прохождение Фобоса мимо Деймоса (реальное видео, 2008). Снято камерой HiRISE на Mars Reconnaissance Orbiter.<br>
     <a href="https://commons.wikimedia.org/wiki/File:PIA17352-MarsMoons-PhobosPassesDeimos-RealTime.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>
@@ -127,7 +127,7 @@
 ### Общий обзор
 
 <div style="text-align: center; margin: 8px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/deimos.png" alt="Топографическая карта Деймоса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/deimos.png" alt="Топографическая карта Деймоса" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.8rem; color: #555; margin-top: 4px;">
     Топографическая карта Деймоса с цветовой индикацией высот. Красный/оранжевый — высокие области, синий/зелёный — низкие.
   </div>
@@ -140,7 +140,7 @@
 ### Крупнейшие кратеры
 
 <div style="float: right; max-width: 280px; margin: 0 0 10px 20px; border-radius: 4px; border: 1px solid #a2a9b1; background: #f9f9f9; padding: 4px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/SwiftCrater.gif" alt="Кратер Свифт на Деймосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
+  <img src="/assets/images/SwiftCrater.gif" alt="Кратер Свифт на Деймосе" style="width: 100%; height: auto; display: block; border-radius: 4px 4px 0 0;">
   <div style="font-size: 0.8rem; color: #555; padding: 4px 6px; text-align: left;">
     Кратер Свифт на Деймосе — один из двух крупных кратеров, названный в честь Джонатана Свифта.<br>
     <a href="https://commons.wikimedia.org/wiki/File:SwiftCrater.gif" target="_blank" style="font-size: 0.7rem;">NASA / Wikimedia Commons</a>

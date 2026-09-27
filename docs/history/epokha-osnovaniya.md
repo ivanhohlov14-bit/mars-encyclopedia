@@ -12,7 +12,7 @@
   </div>
 
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-okhasen-foundation.png" alt="Основание Окхасена" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+    <img src="/assets/images/history/eden-okhasen-foundation.png" alt="Основание Окхасена" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Основание Окхасена в 1 году Э.О.</div>
   </div>
 
@@ -32,7 +32,7 @@
   </div>
 
   <div style="display: flex; justify-content: center; gap: 12px; align-items: center; padding: 4px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 40px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+    <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 40px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
     <div style="font-size: 0.85rem;"><b><a href="https://mars-wiki.ru/geography/serpentida/">Серпентида</a></b></div>
   </div>
   <p style="font-size: 0.8rem; color: #555; text-align: center; margin: 2px 0 0 0;">Колыбель марсианской цивилизации</p>
@@ -45,23 +45,23 @@
 
   <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; padding: 4px 0;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/history/edem/">Эдем</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-serpentida.png" alt="Флаг Серпентиды" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/serpentida/">Серпентида</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Аркадии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/arkadia/">Аркадия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-kimeria.png" alt="Флаг Кимерии" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/kimeria/">Кимерия</a>
     </div>
     <div style="display: inline-flex; align-items: center; gap: 4px;">
-      <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
+      <img src="/assets/images/flag-of-eridania.png" alt="Флаг Эридании" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
       <a href="https://mars-wiki.ru/geography/eridania/">Эридания</a>
     </div>
   </div>
@@ -134,7 +134,7 @@
 ### Легендарный период
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 260px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/primitive-marsians.png" alt="Первые марсиане" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/primitive-marsians.png" alt="Первые марсиане" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Первые марсианские поселения. Реконструкция по устным преданиям.</div>
 </div>
 
@@ -171,7 +171,7 @@
 ## Хронология Эпохи Основания
 
 <div style="float: right; margin-left: 20px; margin-bottom: 10px; width: 260px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/first-trade-routes.jpg" alt="Первые торговые пути" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/first-trade-routes.jpg" alt="Первые торговые пути" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Первые торговые пути между городами. Реконструкция.</div>
 </div>
 
@@ -192,7 +192,7 @@
 ### 500–1500 гг. Э.О. — Формирование государств
 
 <div style="text-align: center; margin-bottom: 8px;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" style="width: 100%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 4px;">
+    <img src="/assets/images/akademiya-okhasena.png" alt="Академия Окхасена" style="width: 100%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 4px;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Главное здание Академии Окхасена</div>
 </div>
 
@@ -230,7 +230,7 @@
 Согласно табличкам, найденным Хевсуром, основание Окхасена связано с группой рыбаков и беженцев с юга, бежавших от засухи. Они выбрали это место из-за обилия рыбы в [Ацидалийском море](https://mars-wiki.ru/geography/acidalia-sea/) и пресной воды в реке [Ксанф](https://mars-wiki.ru/geography/ksanf-river/).
 
 <div style="text-align: center; margin: 20px 0;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/okhasen-harbor.jpg" alt="Гавань Окхасена" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/okhasen-harbor.jpg" alt="Гавань Окхасена" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гавань Окхасена в Эпоху Основания. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -243,7 +243,7 @@
 ### Основание Академии Окхасена (712 г. Э.О.)
 
  <div style="float: right; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/martian-calendar-first-tablet.png" alt="Первое упоминание марсианского календаря" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <img src="/assets/images/martian-calendar-first-tablet.png" alt="Первое упоминание марсианского календаря" style="max-width: 80%; height: auto; border-radius: 8px; border: 1px solid #a2a9b1; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <div style="font-size: 0.9rem; color: #555; margin-top: 6px;"> Первая глиняная табличка в архиве Академии (ок. 1500 г. Э.О.).</div>
 </div>
 
@@ -258,7 +258,7 @@
 ### Появление письменности и Lān sur (890 г. Э.О.)
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/clay-memory.webp" alt="Lān sur — глина помнит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/clay-memory.webp" alt="Lān sur — глина помнит" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Lān sur — глина помнит. Центральный символ марсианской мифологии.</div>
 </div>
 
@@ -277,7 +277,7 @@
 ### Религия
 
 <div style="float: left; margin-right: 20px; margin-bottom: 10px; width: 40%;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/araksis-temple.png" alt="Храм Араксис" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <img src="/assets/images/history/araksis-temple.png" alt="Храм Араксис" style="width: 100%; height: auto; border: 1px solid #a2a9b1; border-radius: 8px;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Храм Араксис в Эпоху Основания. Реконструкция.</div>
 </div>
 
@@ -300,7 +300,7 @@
 ### Экономика
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/history/eden-canals.png" alt="Строительство системы каналов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/history/eden-canals.png" alt="Строительство системы каналов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Строительство системы каналов при Саруме Великом. Реконструкция по табличкам Академии.</div>
 </div>
 

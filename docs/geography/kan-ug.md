@@ -13,7 +13,7 @@
 
   <!-- Карта -->
   <div style="text-align: center; margin: 8px 0;">
-    <img src="https://raw.githubusercontent.com/ivanhohlov14-bit/mars-encyclopedia/main/docs/assets/images/images/utopia-map-medieval.png" alt="Карта острова Кан-Уг" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #d4c5a0;">
+    <img src="/assets/images/images/utopia-map-medieval.png" alt="Карта острова Кан-Уг" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #d4c5a0;">
     <div style="font-size: 0.7rem; color: #5a4a3a; margin-top: 4px;">Карта острова Кан-Уг. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 

@@ -1,0 +1,319 @@
+/* ═══════════════════════════════════════════════════════════
+   PROFILE v8 — VIP-анимации, скролл-табы, безопасность
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─────────── VIP AURORA BORDER (hero) ─────────── */
+@keyframes pfAuroraSpin {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes pfAuroraGlow {
+  0%, 100% { filter: blur(20px); opacity: .5; }
+  50%      { filter: blur(30px); opacity: .8; }
+}
+@keyframes pfParticleFloat {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-120px) translateX(30px) scale(0.3); opacity: 0; }
+}
+
+/* Обёртка hero с aurora-бордером — только для VIP */
+.pf-hero-vip-v8 {
+  position: relative;
+  isolation: isolate;
+}
+.pf-hero-vip-v8::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 27px;
+  background: conic-gradient(
+    from 0deg,
+    #f5d76e, #f39c12, #e67e22, #e74c3c,
+    #9b59b6, #3498db, #27ae60, #f5d76e
+  );
+  background-size: 300% 300%;
+  animation: pfAuroraSpin 6s linear infinite;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: .7;
+}
+.pf-hero-vip-v8::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: 40px;
+  background: inherit;
+  background-size: 300% 300%;
+  animation: pfAuroraSpin 6s linear infinite, pfAuroraGlow 3s ease-in-out infinite;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Частицы внутри hero (только VIP) */
+.pf-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+}
+.pf-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #f5d76e;
+  box-shadow: 0 0 10px #f5d76e, 0 0 20px rgba(245,215,110,.5);
+  animation: pfParticleFloat linear infinite;
+}
+
+/* ─────────── SHIMMER НА НИКЕ (только VIP) ─────────── */
+.pf-name.vip-name-v8 {
+  background-size: 200% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: vipShimmer 6s linear infinite !important;
+  text-shadow: 0 0 30px rgba(245,215,110,.4);
+}
+
+/* ─────────── СКРОЛЛ-ТАБЫ С ПЕРЕТАСКИВАНИЕМ ─────────── */
+.pf-tabs-v8 {
+  position: relative;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  padding: 6px;
+  display: flex;
+  gap: 4px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.pf-tabs-v8::-webkit-scrollbar { display: none; }
+.pf-tabs-v8.pf-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+.pf-tabs-v8.pf-dragging .pf-tab {
+  pointer-events: none;
+}
+
+/* ─────────── КАРТОЧКИ БЕЗОПАСНОСТИ ─────────── */
+.pf-sec-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,.06);
+  margin-bottom: 10px;
+  transition: all .25s;
+}
+.pf-sec-card:hover {
+  border-color: var(--kc);
+  box-shadow: 0 8px 24px -8px rgba(108,99,255,.25);
+  transform: translateY(-2px);
+}
+.pf-sec-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(108,99,255,.1), rgba(108,99,255,.05));
+}
+.pf-sec-icon.ok   { background: linear-gradient(135deg, rgba(39,174,96,.15), rgba(39,174,96,.05)); }
+.pf-sec-icon.warn { background: linear-gradient(135deg, rgba(243,156,18,.15), rgba(243,156,18,.05)); }
+.pf-sec-icon.off  { background: linear-gradient(135deg, rgba(149,165,166,.15), rgba(149,165,166,.05)); }
+.pf-sec-body { flex: 1; min-width: 0; }
+.pf-sec-title {
+  font-size: .95rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pf-sec-desc {
+  font-size: .78rem;
+  color: #888;
+  line-height: 1.4;
+}
+.pf-sec-badge {
+  font-size: .65rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.pf-sec-badge.ok   { background: rgba(39,174,96,.15); color: #27ae60; }
+.pf-sec-badge.warn { background: rgba(243,156,18,.15); color: #e67e22; }
+.pf-sec-badge.off  { background: rgba(149,165,166,.15); color: #7f8c8d; }
+.pf-sec-action {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--kc);
+  background: transparent;
+  color: var(--kc);
+  font-weight: 700;
+  font-size: .78rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pf-sec-action:hover {
+  background: var(--kc);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.pf-sec-action.primary {
+  background: var(--kc);
+  color: #fff;
+}
+.pf-sec-action.primary:hover {
+  box-shadow: 0 6px 16px -4px var(--ks);
+}
+
+/* ─────────── БЫСТРЫЕ ССЫЛКИ (раскрывающийся блок) ─────────── */
+.pf-quick-expand {
+  background: linear-gradient(135deg, #fafbfd 0%, #fff 100%);
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.06);
+  margin-bottom: 18px;
+  overflow: hidden;
+  transition: all .3s;
+}
+.pf-quick-expand:hover { border-color: var(--kc); }
+.pf-quick-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  cursor: pointer;
+  user-select: none;
+  background: linear-gradient(135deg, rgba(108,99,255,.04), transparent);
+}
+.pf-quick-header-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pf-quick-header-arrow {
+  font-size: 1.1rem;
+  color: var(--kc);
+  transition: transform .3s;
+}
+.pf-quick-expand.open .pf-quick-header-arrow {
+  transform: rotate(180deg);
+}
+.pf-quick-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s cubic-bezier(.16,1,.3,1);
+}
+.pf-quick-expand.open .pf-quick-body {
+  max-height: 600px;
+}
+.pf-quick-body-inner {
+  padding: 0 22px 22px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+.pf-quick-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1.5px solid rgba(0,0,0,.06);
+  color: #333 !important;
+  font-size: .82rem;
+  font-weight: 700;
+  transition: all .25s;
+  text-decoration: none !important;
+}
+.pf-quick-link:hover {
+  border-color: var(--kc);
+  color: var(--kc) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -6px var(--ks);
+}
+.pf-quick-link-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ─────────── ГОСТЕВОЙ ПРОФИЛЬ (модалка) ─────────── */
+.pf-guest-modal {
+  max-width: 600px !important;
+}
+.pf-guest-hero {
+  position: relative;
+  border-radius: 18px;
+  padding: 28px 24px;
+  margin-bottom: 18px;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+.pf-guest-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+.pf-guest-stat {
+  padding: 12px 8px;
+  background: rgba(255,255,255,.1);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+.pf-guest-stat-label {
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  opacity: .8;
+  margin-bottom: 4px;
+}
+.pf-guest-stat-value {
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+/* ─────────── ТЕМНАЯ ТЕМА ─────────── */
+body.mars-stars-on .pf-tabs-v8 { background: #14142a; border-color: rgba(108,99,255,.3); }
+body.mars-stars-on .pf-sec-card { background: #1a1a30; border-color: rgba(108,99,255,.2); }
+body.mars-stars-on .pf-sec-title { color: #e0e0f0; }
+body.mars-stars-on .pf-quick-expand { background: linear-gradient(135deg, #1a1a30, #14142a); border-color: rgba(108,99,255,.2); }
+body.mars-stars-on .pf-quick-link { background: #1a1a30; color: #ccc !important; border-color: rgba(108,99,255,.2); }
+
+/* ─────────── МОБИЛЬНАЯ АДАПТАЦИЯ ─────────── */
+@media (max-width: 600px) {
+  .pf-sec-card { flex-wrap: wrap; }
+  .pf-sec-action { width: 100%; text-align: center; }
+  .pf-guest-stats { grid-template-columns: repeat(2, 1fr); }
+  .pf-quick-body-inner { grid-template-columns: 1fr 1fr; }
+}

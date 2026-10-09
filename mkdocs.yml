@@ -158,6 +158,7 @@ extra_javascript:
 
   # БАЗОВОЕ
   - javascripts/mobile-touch.js
+  - assets/js/profile-economy.js?v=1
   - javascripts/lazy-images.js
   - javascripts/mobile-cache.js
   - javascripts/comments.js

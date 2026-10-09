@@ -29,9 +29,11 @@ comments: false
 @keyframes vipBadgeGlow{0%,100%{filter:brightness(1);box-shadow:0 2px 8px rgba(243,156,18,.5)}50%{filter:brightness(1.25);box-shadow:0 2px 16px rgba(243,156,18,1)}}
 @keyframes vipFrameSpin{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 @keyframes vipCrownPop{0%,100%{transform:scale(1) rotate(-3deg)}50%{transform:scale(1.15) rotate(3deg)}}
-@keyframes vipGoldShine{0%{background-position:-200% center}100%{background-position:200% center}}
 @keyframes vipCardPulse{0%,100%{box-shadow:0 4px 16px rgba(243,156,18,.15)}50%{box-shadow:0 8px 32px rgba(243,156,18,.4)}}
 @keyframes vipSparkle{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.3)}}
+@keyframes pfAuroraSpin{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes pfAuroraGlow{0%,100%{filter:blur(20px);opacity:.5}50%{filter:blur(30px);opacity:.8}}
+@keyframes pfParticleFloat{0%{transform:translateY(0) translateX(0) scale(1);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-120px) translateX(30px) scale(.3);opacity:0}}
 
 /* ═══════════════════════════════════════════════════════════
    КОНТЕЙНЕР
@@ -41,7 +43,7 @@ comments: false
 #profile-app *{box-sizing:border-box}
 
 /* ═══════════════════════════════════════════════════════════
-   HERO
+   HERO + VIP AURORA
    ═══════════════════════════════════════════════════════════ */
 .pf-hero{position:relative;border-radius:24px;padding:40px 36px;color:#fff;margin-bottom:20px;overflow:hidden;box-shadow:0 20px 60px -12px rgba(0,0,0,.4);transition:background .5s;animation:pfFadeIn .5s ease both;isolation:isolate}
 .pf-hero::before{content:'';position:absolute;top:-60%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,var(--ks),transparent 70%);border-radius:50%;animation:pfFloat 8s ease-in-out infinite;pointer-events:none;z-index:0}
@@ -50,8 +52,16 @@ comments: false
 .pf-hero.pf-hero-vip::after{background:radial-gradient(circle,rgba(245,215,110,.25),transparent 70%)}
 .pf-hero-content{position:relative;z-index:2;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
 
+/* Aurora-бордер вокруг hero — только VIP */
+.pf-hero.pf-hero-aurora::before{content:'';position:absolute;inset:-3px;border-radius:27px;background:conic-gradient(from 0deg,#f5d76e,#f39c12,#e67e22,#e74c3c,#9b59b6,#3498db,#27ae60,#f5d76e);background-size:300% 300%;animation:pfAuroraSpin 6s linear infinite;z-index:-1;filter:blur(8px);opacity:.7}
+.pf-hero.pf-hero-aurora::after{content:'';position:absolute;inset:-20px;border-radius:40px;background:inherit;background-size:300% 300%;animation:pfAuroraSpin 6s linear infinite,pfAuroraGlow 3s ease-in-out infinite;z-index:-2;pointer-events:none}
+
+/* Частицы */
+.pf-particles{position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none;z-index:1}
+.pf-particle{position:absolute;width:4px;height:4px;border-radius:50%;background:#f5d76e;box-shadow:0 0 10px #f5d76e,0 0 20px rgba(245,215,110,.5);animation:pfParticleFloat linear infinite}
+
 /* ═══════════════════════════════════════════════════════════
-   АВАТАР — ФИКСИРОВАННЫЙ РАЗМЕР (не растягивается!)
+   АВАТАР
    ═══════════════════════════════════════════════════════════ */
 .pf-avatar-wrap{position:relative;flex-shrink:0;cursor:pointer;transition:transform .3s;margin-bottom:14px;z-index:1}
 .pf-avatar-wrap:hover{transform:scale(1.03)}
@@ -65,7 +75,7 @@ comments: false
 .pf-role-badge{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:rgba(255,255,255,.95);color:var(--kc);padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:800;white-space:nowrap;border:2px solid rgba(255,255,255,.5);z-index:6}
 
 /* ═══════════════════════════════════════════════════════════
-   ИМЯ + БЕЙДЖИ (z-index 100 — поверх всех градиентов!)
+   ИМЯ
    ═══════════════════════════════════════════════════════════ */
 .pf-info{flex:1;min-width:220px;position:relative;z-index:10}
 .pf-name{font-size:2rem;font-weight:800;margin:0 0 8px 0;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;cursor:pointer;transition:all .25s;position:relative;z-index:10}
@@ -74,7 +84,13 @@ comments: false
 .pf-name.vip-name{font-weight:900!important;background-size:200% auto!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;animation:vipShimmer 8s linear infinite!important}
 .pf-vip-badge{display:inline-flex;align-items:center;justify-content:center;margin-left:6px;padding:4px 10px;border-radius:8px;background:linear-gradient(135deg,#f5d76e,#f39c12);font-size:1rem;line-height:1;box-shadow:0 2px 8px rgba(243,156,18,.5);animation:vipBadgeGlow 2.5s ease-in-out infinite;font-weight:900;cursor:help;color:#fff;position:relative;z-index:100!important;text-shadow:0 1px 2px rgba(0,0,0,.3)}
 .pf-vip-title{display:inline-block;margin-left:6px;padding:3px 12px;border-radius:10px;background:linear-gradient(135deg,rgba(243,156,18,.25),rgba(245,215,110,.15));border:1px solid rgba(243,156,18,.5);font-size:.74rem;font-weight:900;color:#ffdf5e;letter-spacing:.3px;text-transform:uppercase;position:relative;z-index:100!important;text-shadow:0 1px 4px rgba(0,0,0,.5)}
-.pf-mod-badge{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:800;text-transform:uppercase;box-shadow:0 4px 14px rgba(231,76,60,.5);border:1px solid rgba(255,255,255,.3);position:relative;z-index:100!important;text-shadow:0 1px 2px rgba(0,0,0,.3)}
+.pf-mod-badge{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:800;text-transform:uppercase;box-shadow:0 4px 14px rgba(231,76,60,.5);border:1px solid rgba(255,255,255,.3);position:relative;z-index:100!important;cursor:pointer}
+
+/* Скрытие VIP-плашек для не-VIP */
+body.pf-not-vip .pf-vip-badge,
+body.pf-not-vip .pf-vip-title,
+body.pf-not-vip .pf-mypage-vip{display:none!important}
+
 .pf-kingdom-badge{background:rgba(0,0,0,.35);backdrop-filter:blur(8px);color:#fff;padding:5px 14px;border-radius:20px;font-size:.72rem;font-weight:700;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.3);cursor:pointer;position:relative;z-index:5}
 .pf-kingdom-badge:hover{background:rgba(0,0,0,.5);transform:translateY(-2px)}
 .pf-kingdom-badge img{width:18px;height:auto;border-radius:2px;display:block}
@@ -111,10 +127,9 @@ comments: false
 .pf-mypage-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
 .pf-mypage-action{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border:1.5px solid rgba(0,0,0,.06);border-radius:12px;color:#333;cursor:pointer;font-size:.85rem;font-weight:700;transition:all .25s}
 .pf-mypage-action:hover{transform:translateY(-2px);border-color:var(--kc);color:var(--kc)}
-.pf-mypage-vip .pf-mypage-action:hover{border-color:var(--vip-orange);color:var(--vip-dark)}
 
 /* ═══════════════════════════════════════════════════════════
-   QUICK GRID
+   QUICK GRID + EXPAND
    ═══════════════════════════════════════════════════════════ */
 .pf-quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px}
 .pf-quick-card{display:flex;align-items:center;gap:12px;padding:16px 18px;background:#fff;border-radius:16px;border:2px solid transparent;color:inherit;transition:all .3s;box-shadow:0 4px 12px rgba(0,0,0,.05);cursor:pointer;text-decoration:none!important;position:relative;overflow:hidden}
@@ -126,13 +141,25 @@ comments: false
 .pf-quick-title{font-size:.9rem;font-weight:800;color:#1a1a1a;margin-bottom:2px}
 .pf-quick-desc{font-size:.72rem;color:#888;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
+.pf-quick-expand{background:linear-gradient(135deg,#fafbfd,#fff);border-radius:18px;border:1px solid rgba(0,0,0,.06);margin-bottom:18px;overflow:hidden;transition:all .3s}
+.pf-quick-expand:hover{border-color:var(--kc)}
+.pf-quick-header{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;user-select:none;background:linear-gradient(135deg,rgba(108,99,255,.04),transparent)}
+.pf-quick-header-title{font-size:1rem;font-weight:800;color:#1a1a2e;display:flex;align-items:center;gap:10px}
+.pf-quick-header-arrow{font-size:1.1rem;color:var(--kc);transition:transform .3s}
+.pf-quick-expand.open .pf-quick-header-arrow{transform:rotate(180deg)}
+.pf-quick-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
+.pf-quick-expand.open .pf-quick-body{max-height:900px}
+.pf-quick-body-inner{padding:0 22px 22px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.pf-quick-link{display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff;border-radius:12px;border:1.5px solid rgba(0,0,0,.06);color:#333!important;font-size:.82rem;font-weight:700;transition:all .25s;text-decoration:none!important}
+.pf-quick-link:hover{border-color:var(--kc);color:var(--kc)!important;transform:translateY(-2px);box-shadow:0 6px 16px -6px var(--ks)}
+.pf-quick-link-icon{font-size:1.3rem;flex-shrink:0}
+
 /* ═══════════════════════════════════════════════════════════
    TABS
    ═══════════════════════════════════════════════════════════ */
 .pf-tabs-wrap{position:relative;margin-bottom:20px}
 .pf-tabs{display:flex;gap:4px;overflow-x:auto;padding:6px;background:#fff;border-radius:16px;border:1px solid rgba(0,0,0,.05);scrollbar-width:none;scroll-behavior:smooth;cursor:grab;user-select:none;box-shadow:0 2px 8px rgba(0,0,0,.04)}
 .pf-tabs::-webkit-scrollbar{display:none}
-.pf-tabs.dragging{cursor:grabbing}
 .pf-tab{flex-shrink:0;padding:10px 16px;border:none;background:transparent;color:#666;font-size:.85rem;font-weight:700;border-radius:12px;cursor:pointer;transition:all .25s;white-space:nowrap;display:flex;align-items:center;gap:6px;font-family:inherit;user-select:none}
 .pf-tab:hover{background:rgba(0,0,0,.04);color:#333}
 .pf-tab.active{background:linear-gradient(135deg,var(--kc),var(--kl));color:#fff;box-shadow:0 6px 16px -4px var(--ks)}
@@ -141,11 +168,13 @@ comments: false
 .pf-tab.mod-tab.active{background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff}
 .pf-tab.vip-tab{color:#f39c12}
 .pf-tab.vip-tab.active{background:linear-gradient(135deg,#f5d76e,#f39c12);color:#fff;box-shadow:0 6px 16px -4px rgba(243,156,18,.5)}
+.pf-tab.wallet-tab{color:#e67e22}
+.pf-tab.wallet-tab.active{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;box-shadow:0 6px 16px -4px rgba(243,156,18,.5)}
 .pf-tab-content{display:none;animation:pfFadeIn .3s ease}
 .pf-tab-content.active{display:block}
 
 /* ═══════════════════════════════════════════════════════════
-   CARDS (обычные)
+   CARDS
    ═══════════════════════════════════════════════════════════ */
 .pf-card{background:#fff;border-radius:18px;border:1px solid rgba(0,0,0,.06);padding:22px 26px;margin-bottom:18px;box-shadow:0 4px 16px rgba(0,0,0,.04);transition:box-shadow .3s}
 .pf-card-title{font-size:1.1rem;font-weight:800;color:#1a1a1a;margin:0 0 16px 0;display:flex;align-items:center;gap:10px}
@@ -157,22 +186,34 @@ comments: false
 .pf-btn-danger{background:#e74c3c;border-color:#e74c3c}
 .pf-btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
 
-/* ═══════════════════════════════════════════════════════════
-   VIP CARDS (золотые, с анимациями) — только для VIP
-   ═══════════════════════════════════════════════════════════ */
 .pf-card-vip{position:relative;background:linear-gradient(135deg,#fffbf0 0%,#fff 40%,#fffbf0 100%)!important;border:2px solid rgba(243,156,18,.3)!important;box-shadow:0 4px 16px rgba(243,156,18,.15)!important;overflow:hidden;animation:vipCardPulse 4s ease-in-out infinite}
 .pf-card-vip::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#f5d76e,#f39c12,#e67e22,#f39c12,#f5d76e);background-size:200% auto;animation:pfShine 2.5s linear infinite}
 .pf-card-vip::after{content:'👑';position:absolute;top:12px;right:16px;font-size:2.5rem;opacity:.08;animation:vipCrownPop 3s ease-in-out infinite;pointer-events:none}
 .pf-card-vip:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(243,156,18,.3)!important}
-.pf-card-vip .pf-card-title{color:var(--vip-dark);text-shadow:0 1px 2px rgba(243,156,18,.15)}
-.pf-card-vip .pf-ct-icon{filter:drop-shadow(0 2px 4px rgba(243,156,18,.4))}
-
-/* VIP карточка со свечением по краям */
-.pf-card-vip-glow{background:linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 100%)!important;color:#fff!important;border:2px solid #f5d76e!important;box-shadow:0 0 40px rgba(243,156,18,.4),0 0 80px rgba(243,156,18,.2) inset!important}
-.pf-card-vip-glow .pf-card-title{color:#ffdf5e!important}
+.pf-card-vip .pf-card-title{color:var(--vip-dark)}
 
 /* ═══════════════════════════════════════════════════════════
-   ACTIVITY CHARTS
+   SECURITY CARDS
+   ═══════════════════════════════════════════════════════════ */
+.pf-sec-card{display:flex;align-items:center;gap:14px;padding:16px 18px;background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.06);margin-bottom:10px;transition:all .25s}
+.pf-sec-card:hover{border-color:var(--kc);box-shadow:0 8px 24px -8px rgba(108,99,255,.25);transform:translateY(-2px)}
+.pf-sec-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;background:linear-gradient(135deg,rgba(108,99,255,.1),rgba(108,99,255,.05))}
+.pf-sec-icon.ok{background:linear-gradient(135deg,rgba(39,174,96,.15),rgba(39,174,96,.05))}
+.pf-sec-icon.warn{background:linear-gradient(135deg,rgba(243,156,18,.15),rgba(243,156,18,.05))}
+.pf-sec-icon.off{background:linear-gradient(135deg,rgba(149,165,166,.15),rgba(149,165,166,.05))}
+.pf-sec-body{flex:1;min-width:0}
+.pf-sec-title{font-size:.95rem;font-weight:800;color:#1a1a2e;margin-bottom:3px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pf-sec-desc{font-size:.78rem;color:#888;line-height:1.4}
+.pf-sec-badge{font-size:.65rem;font-weight:800;padding:3px 9px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px}
+.pf-sec-badge.ok{background:rgba(39,174,96,.15);color:#27ae60}
+.pf-sec-badge.warn{background:rgba(243,156,18,.15);color:#e67e22}
+.pf-sec-badge.off{background:rgba(149,165,166,.15);color:#7f8c8d}
+.pf-sec-action{padding:8px 16px;border-radius:10px;border:1.5px solid var(--kc);background:transparent;color:var(--kc);font-weight:700;font-size:.78rem;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap;flex-shrink:0}
+.pf-sec-action:hover{background:var(--kc);color:#fff;transform:translateY(-1px)}
+.pf-sec-action.primary{background:var(--kc);color:#fff}
+
+/* ═══════════════════════════════════════════════════════════
+   ACTIVITY / CHARTS
    ═══════════════════════════════════════════════════════════ */
 .pf-charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:18px}
 .pf-chart{background:linear-gradient(135deg,#fafbfd,#fff);border-radius:14px;padding:18px;border:1px solid rgba(0,0,0,.05)}
@@ -182,13 +223,6 @@ comments: false
 .pf-bar:hover{filter:brightness(1.15)}
 .pf-bar::after{content:attr(data-val);position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:.65rem;font-weight:800;color:var(--kc);opacity:0;transition:opacity .2s}
 .pf-bar:hover::after{opacity:1}
-.pf-pie-wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.pf-pie{width:130px;height:130px;border-radius:50%;flex-shrink:0}
-.pf-pie-legend{flex:1;min-width:140px}
-.pf-pie-legend-item{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:.82rem}
-.pf-pie-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
-.pf-pie-label{flex:1;color:#555;font-weight:600}
-.pf-pie-value{color:#1a1a1a;font-weight:800}
 .pf-heatmap{display:grid;grid-template-columns:repeat(13,1fr);gap:3px}
 .pf-heat-cell{aspect-ratio:1;border-radius:3px;background:rgba(108,99,255,.08);transition:transform .2s;cursor:help}
 .pf-heat-cell:hover{transform:scale(1.4);z-index:2}
@@ -210,8 +244,7 @@ comments: false
 .pf-ach.locked{opacity:.45;filter:grayscale(.6)}
 .pf-ach.locked::after{content:'🔒';position:absolute;top:6px;right:8px;font-size:.9rem}
 .pf-ach:not(.locked)::after{content:'✓';position:absolute;top:6px;right:8px;font-size:.85rem;color:#27ae60;font-weight:900}
-.pf-ach-icon{font-size:1.8rem;flex-shrink:0;transition:transform .3s}
-.pf-ach:hover .pf-ach-icon{transform:scale(1.15)}
+.pf-ach-icon{font-size:1.8rem;flex-shrink:0}
 .pf-ach-name{font-size:.85rem;font-weight:700;color:#1a1a1a;margin-bottom:2px}
 .pf-ach-date{font-size:.7rem;color:#888}
 
@@ -239,7 +272,7 @@ comments: false
    ═══════════════════════════════════════════════════════════ */
 .pf-friend{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;transition:all .25s;align-items:center;cursor:pointer}
 .pf-friend:hover{background:rgba(108,99,255,.08);transform:translateX(4px)}
-.pf-friend-avatar{width:44px;height:44px;aspect-ratio:1/1;border-radius:50%;object-fit:cover;border:2px solid var(--kc);flex-shrink:0;position:relative}
+.pf-friend-avatar{width:44px;height:44px;aspect-ratio:1/1;border-radius:50%;object-fit:cover;border:2px solid var(--kc);flex-shrink:0}
 .pf-friend-info{flex:1;min-width:0}
 .pf-friend-name{font-weight:700;color:#1a1a1a;font-size:.92rem;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
 .pf-friend-status{font-size:.75rem;color:#888}
@@ -278,28 +311,25 @@ comments: false
 .pf-chat-input input{flex:1;padding:13px 20px;border:2px solid rgba(0,0,0,.08);border-radius:30px;font-size:.9rem;font-family:inherit;outline:none;background:#fff;transition:all .2s}
 .pf-chat-input input:focus{border-color:var(--kc);box-shadow:0 0 0 4px var(--ks)}
 .pf-chat-input button{padding:12px 26px;background:linear-gradient(135deg,var(--kc),var(--kl));color:#fff;border:none;border-radius:30px;cursor:pointer;font-weight:800;font-family:inherit;font-size:.9rem;transition:all .2s}
-.pf-chat-input button:hover{transform:translateY(-2px);box-shadow:0 8px 20px -4px var(--ks)}
 .pf-typing{display:inline-flex;gap:4px;padding:11px 16px;background:#fff;border-radius:16px;border-bottom-left-radius:4px}
 .pf-typing span{width:6px;height:6px;border-radius:50%;background:#6C63FF;animation:pfTyping 1.2s infinite}
 .pf-typing span:nth-child(2){animation-delay:.15s}
 .pf-typing span:nth-child(3){animation-delay:.3s}
 
 /* ═══════════════════════════════════════════════════════════
-   SECURITY
+   WALLET
    ═══════════════════════════════════════════════════════════ */
-.pf-badge-2fa{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;font-weight:800;background:linear-gradient(135deg,#27ae60,#16a085);color:#fff;box-shadow:0 4px 12px rgba(39,174,96,.4)}
-.pf-badge-2fa.off{background:rgba(0,0,0,.08);color:#666;box-shadow:none}
-.pf-toggle{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05)}
-.pf-toggle:last-child{border-bottom:none}
-.pf-toggle-label{font-size:.9rem;color:#333;font-weight:600}
-.pf-toggle-desc{font-size:.75rem;color:#888;margin-top:2px}
-.pf-switch{position:relative;width:48px;height:26px;background:rgba(0,0,0,.1);border-radius:26px;cursor:pointer;transition:all .3s;flex-shrink:0}
-.pf-switch.on{background:linear-gradient(135deg,#27ae60,#16a085)}
-.pf-switch::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:all .3s;box-shadow:0 2px 6px rgba(0,0,0,.2)}
-.pf-switch.on::after{left:25px}
-.pf-device{display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;align-items:center}
-.pf-device-icon{font-size:1.5rem;flex-shrink:0}
-.pf-device-info{flex:1;min-width:0}
+.pf-wallet-hero{background:linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 50%,#4a2a3a 100%)!important;color:#fff!important;border:none!important;padding:32px 28px!important;text-align:center}
+.pf-wallet-balance{font-size:3rem;font-weight:900;color:#ffdf5e;text-shadow:0 4px 20px rgba(243,156,18,.6)}
+.pf-tx-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;margin-bottom:6px}
+.pf-tx-item.pos{background:rgba(39,174,96,.06)}
+.pf-tx-item.neg{background:rgba(231,76,60,.06)}
+.pf-tx-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;flex-shrink:0}
+.pf-tx-icon.pos{background:linear-gradient(135deg,#27ae60,#16a085)}
+.pf-tx-icon.neg{background:linear-gradient(135deg,#e74c3c,#c0392b)}
+.pf-tx-amount{font-weight:900;font-size:1rem;flex-shrink:0}
+.pf-tx-amount.pos{color:#27ae60}
+.pf-tx-amount.neg{color:#e74c3c}
 
 /* ═══════════════════════════════════════════════════════════
    AVATARS
@@ -321,7 +351,7 @@ comments: false
 .pf-kingdom-btn.selected{color:#fff;box-shadow:0 6px 16px -4px var(--ks);border-color:transparent}
 
 /* ═══════════════════════════════════════════════════════════
-   VIP SETTINGS (рамки, фоны, титулы)
+   VIP SETTINGS
    ═══════════════════════════════════════════════════════════ */
 .pf-frame-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:10px}
 .pf-frame-option{cursor:pointer;padding:8px 4px;border-radius:12px;text-align:center;background:#fff;border:2px solid rgba(0,0,0,.06);transition:all .2s}
@@ -339,7 +369,7 @@ comments: false
 .pf-bg-name{font-size:.65rem;font-weight:800;color:#333;margin-top:4px;text-align:center}
 .pf-title-presets{display:flex;gap:6px;flex-wrap:wrap}
 .pf-title-preset{padding:6px 12px;border-radius:20px;border:1.5px solid rgba(243,156,18,.3);background:rgba(243,156,18,.05);color:#e67e22;font-size:.78rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}
-.pf-title-preset:hover{background:rgba(243,156,18,.15);transform:translateY(-1px);box-shadow:0 4px 12px -2px rgba(243,156,18,.3)}
+.pf-title-preset:hover{background:rgba(243,156,18,.15);transform:translateY(-1px)}
 
 /* ═══════════════════════════════════════════════════════════
    DANGER ZONE
@@ -362,7 +392,13 @@ comments: false
 .pf-modal-avatar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:10px;margin-bottom:16px}
 .pf-modal-avatar-grid img{width:100%;aspect-ratio:1/1;border-radius:50%;cursor:pointer;border:3px solid transparent;object-fit:cover;transition:all .25s;background:#f0f0f5;display:block}
 .pf-modal-avatar-grid img:hover{transform:scale(1.08);border-color:var(--kc)}
-.pf-modal-avatar-grid img.selected{border-color:var(--kc);box-shadow:0 0 0 4px var(--ks)}
+
+.pf-guest-modal{max-width:600px!important}
+.pf-guest-hero{position:relative;border-radius:18px;padding:28px 24px;margin-bottom:18px;text-align:center;color:#fff;overflow:hidden}
+.pf-guest-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.pf-guest-stat{padding:12px 8px;background:rgba(255,255,255,.1);border-radius:12px;backdrop-filter:blur(8px)}
+.pf-guest-stat-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.8px;opacity:.8;margin-bottom:4px}
+.pf-guest-stat-value{font-size:1.3rem;font-weight:900}
 
 /* ═══════════════════════════════════════════════════════════
    TOAST
@@ -373,20 +409,6 @@ comments: false
 .pf-toast.error{background:linear-gradient(135deg,#e74c3c,#c0392b)}
 .pf-toast.info{background:linear-gradient(135deg,#3498db,#2980b9)}
 .pf-toast.vip{background:linear-gradient(135deg,#f5d76e,#f39c12);color:#1a1a1a;font-weight:900}
-
-/* ═══════════════════════════════════════════════════════════
-   SKELETON
-   ═══════════════════════════════════════════════════════════ */
-.pf-skel{background:linear-gradient(90deg,#f0f0f4 25%,#f8f8fc 50%,#f0f0f4 75%);background-size:200% 100%;animation:pfShine 1.5s ease-in-out infinite;border-radius:14px;margin-bottom:16px}
-
-/* ═══════════════════════════════════════════════════════════
-   VIP SPARKLES (декоративные искры в hero)
-   ═══════════════════════════════════════════════════════════ */
-.pf-sparkle{position:absolute;color:#fff;pointer-events:none;z-index:3;animation:vipSparkle 3s ease-in-out infinite}
-.pf-sparkle:nth-child(1){top:15%;left:8%;animation-delay:0s}
-.pf-sparkle:nth-child(2){top:25%;right:12%;animation-delay:.6s}
-.pf-sparkle:nth-child(3){bottom:20%;left:15%;animation-delay:1.2s}
-.pf-sparkle:nth-child(4){bottom:30%;right:8%;animation-delay:1.8s}
 
 /* ═══════════════════════════════════════════════════════════
    DARK MODE
@@ -402,7 +424,9 @@ body.mars-stars-on .pf-note,
 body.mars-stars-on .pf-chart,
 body.mars-stars-on .pf-frame-option,
 body.mars-stars-on .pf-bg-option,
-body.mars-stars-on .pf-kingdom-btn{background:#14142a;border-color:rgba(108,99,255,.3);color:#e0e0f0}
+body.mars-stars-on .pf-kingdom-btn,
+body.mars-stars-on .pf-sec-card,
+body.mars-stars-on .pf-quick-expand{background:#14142a;border-color:rgba(108,99,255,.3);color:#e0e0f0}
 body.mars-stars-on .pf-mypage-title,
 body.mars-stars-on .pf-card-title,
 body.mars-stars-on .pf-quick-title,
@@ -411,7 +435,9 @@ body.mars-stars-on .pf-friend-name,
 body.mars-stars-on .pf-note-title,
 body.mars-stars-on .pf-chart-title,
 body.mars-stars-on .pf-frame-name,
-body.mars-stars-on .pf-bg-name{color:#e0e0f0}
+body.mars-stars-on .pf-bg-name,
+body.mars-stars-on .pf-sec-title{color:#e0e0f0}
+body.mars-stars-on .pf-quick-link{background:#1a1a30;color:#ccc!important;border-color:rgba(108,99,255,.2)}
 body.mars-stars-on .pf-tab{color:#9999bb}
 body.mars-stars-on .pf-tab:hover{background:rgba(108,99,255,.12);color:#fff}
 body.mars-stars-on .pf-chat{background:rgba(20,20,40,.6);border-color:rgba(108,99,255,.3)}
@@ -420,11 +446,7 @@ body.mars-stars-on .pf-chat-chip{background:#14142a;color:#ccc;border-color:rgba
 body.mars-stars-on .pf-modal{background:#14142a}
 body.mars-stars-on .pf-modal-input{background:#1a1a30;color:#e0e0f0;border-color:rgba(108,99,255,.3)}
 body.mars-stars-on .pf-icon-btn{background:#252550;border-color:rgba(108,99,255,.3);color:#ccc}
-body.mars-stars-on .pf-ach{background:#1a1a30}
-body.mars-stars-on .pf-note{background:#1a1a30}
 body.mars-stars-on .pf-notes-search{background:#1a1a30;color:#e0e0f0;border-color:rgba(108,99,255,.3)}
-body.mars-stars-on .pf-card-vip{background:linear-gradient(135deg,#1f1808,#14142a 40%,#1f1808)!important;border-color:rgba(243,156,18,.4)!important}
-body.mars-stars-on .pf-card-vip .pf-card-title{color:#ffdf5e}
 
 /* ═══════════════════════════════════════════════════════════
    MOBILE
@@ -438,16 +460,18 @@ body.mars-stars-on .pf-card-vip .pf-card-title{color:#ffdf5e}
   .pf-card{padding:18px 16px}
   .pf-quick-grid{grid-template-columns:1fr 1fr;gap:8px}
   .pf-quick-card{padding:12px 10px;flex-direction:column;text-align:center;gap:6px}
-  .pf-quick-title{font-size:.78rem}
   .pf-quick-desc{display:none}
   .pf-ach-grid{grid-template-columns:1fr}
   .pf-mypage{padding:18px 16px}
   .pf-mypage-grid{grid-template-columns:1fr 1fr}
   .pf-mypage-actions{grid-template-columns:1fr}
   .pf-chat-msg{max-width:92%}
-  .pf-leaderboard th:nth-child(4),.pf-leaderboard td:nth-child(4){display:none}
   .pf-notes-grid{grid-template-columns:1fr}
   .pf-avatar-option{width:56px!important;height:56px!important;max-width:56px!important;max-height:56px!important}
+  .pf-sec-card{flex-wrap:wrap}
+  .pf-sec-action{width:100%;text-align:center}
+  .pf-guest-stats{grid-template-columns:repeat(2,1fr)}
+  .pf-quick-body-inner{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -456,12 +480,11 @@ body.mars-stars-on .pf-card-vip .pf-card-title{color:#ffdf5e}
 
 <script>
 /* ═══════════════════════════════════════════════════════════
-   PROFILE v6.0 — Production
+   PROFILE v8 — Полная версия
+   Включает: экономику, безопасность, VIP-эффекты, гостевые профили
    ═══════════════════════════════════════════════════════════ */
 (function(){
 'use strict';
-
-/* ═══ ЗАЩИТА ═══ */
 if (window.__profileLoaded) return;
 window.__profileLoaded = true;
 
@@ -477,109 +500,75 @@ var K_XP = 'mars-xp-history';
 var K_CHAT = 'mars-ai-chat-history';
 var K_TAB = 'mars-profile-tab-v6';
 var K_ACH = 'mars-ach-filter';
+var K_WALLET = 'mars-wallet-cache-v1';
 
 var container = document.getElementById('profile-app');
 if (!container) return;
 
 /* ═══ КОРОЛЕВСТВА ═══ */
 var KINGDOM_FLAGS = {
-  'Эдем': '/assets/images/flag-of-eden.jpg',
-  'Аркадия': '/assets/images/map/flag-of-arkadia.png',
-  'Эридания': '/assets/images/flag-of-eridania.png',
-  'Кхонг': '/assets/images/flag-of-khong.png',
-  'Авсония': '/assets/images/flag-of-avsonia.png',
-  'Кимерия': '/assets/images/flag-of-kimeria.png',
-  'Серпентида': '/assets/images/flag-of-serpentida.png',
-  'Эритрей': '/assets/images/flag-of-eritrea.png',
-  'Утопия': '/assets/images/flag-of-utopia.png',
-  'Эллада': '/assets/images/flag-of-hellas.png',
-  'Аливасото': '/assets/images/flag-of-alivasoto.png',
-  'Ксанф': '/assets/images/coat-of-arms-of-ksanf.png'
+  'Эдем':'/assets/images/flag-of-eden.jpg','Аркадия':'/assets/images/map/flag-of-arkadia.png',
+  'Эридания':'/assets/images/flag-of-eridania.png','Кхонг':'/assets/images/flag-of-khong.png',
+  'Авсония':'/assets/images/flag-of-avsonia.png','Кимерия':'/assets/images/flag-of-kimeria.png',
+  'Серпентида':'/assets/images/flag-of-serpentida.png','Эритрей':'/assets/images/flag-of-eritrea.png',
+  'Утопия':'/assets/images/flag-of-utopia.png','Эллада':'/assets/images/flag-of-hellas.png',
+  'Аливасото':'/assets/images/flag-of-alivasoto.png','Ксанф':'/assets/images/coat-of-arms-of-ksanf.png'
 };
 var KC = {'Аркадия':'#D4A574','Ксанф':'#3D3D3D','Эдем':'#F4A460','Эридания':'#F5D76E','Кхонг':'#A9A9A9','Авсония':'#87CEEB','Кимерия':'#B19CD9','Серпентида':'#E57373','Эритрей':'#64B5F6','Утопия':'#4DD0E1','Эллада':'#FF8A65','Аливасото':'#81C784'};
 var K_ORDER = ['Эдем','Аркадия','Эридания','Кхонг','Авсония','Кимерия','Серпентида','Эритрей','Утопия','Эллада','Аливасото','Ксанф'];
 
-/* ═══ АВАТАРКИ — 5 сверху + 5 снизу (с авотарка девушки.png — с ошибкой в имени!) ═══ */
-var AV_TOP = [
-  '/assets/images/аватар1.png',
-  '/assets/images/аватар2.png',
-  '/assets/images/аватар3.png',
-  '/assets/images/аватар4.png',
-  '/assets/images/аватар5.png'
-];
-var AV_BOTTOM = [
-  '/assets/images/авотарка девушки.png',
-  '/assets/images/мужчина.png',
-  '/assets/images/мужчина2.png',
-  '/assets/images/мужчина 3.png',
-  '/assets/images/аватар 2.png'
-];
+/* ═══ АВАТАРКИ ═══ */
+var AV_TOP = ['/assets/images/аватар1.png','/assets/images/аватар2.png','/assets/images/аватар3.png','/assets/images/аватар4.png','/assets/images/аватар5.png'];
+var AV_BOTTOM = ['/assets/images/авотарка девушки.png','/assets/images/мужчина.png','/assets/images/мужчина2.png','/assets/images/мужчина 3.png','/assets/images/аватар 2.png'];
 var ALL_AVATARS = AV_TOP.concat(AV_BOTTOM);
-
-/* ═══ ФОНЫ С КАРТИНКАМИ ═══ */
-var IMG_BG = [
-  '/assets/images/night.jpg',
-  '/assets/images/scene-observatory.jpg',
-  '/assets/images/zephyria-sea.png',
-  '/assets/images/acidalia-sea.png'
-];
-
-/* ═══ PRELOAD — мгновенная загрузка ═══ */
-(function(){
-  var all = ALL_AVATARS.concat(IMG_BG).concat(['/assets/images/guild-coin.jpg']);
-  all.forEach(function(u){
-    try { var i = new Image(); i.decoding = 'async'; i.src = u; } catch(e){}
-  });
-})();
-
+var IMG_BG = ['/assets/images/night.jpg','/assets/images/scene-observatory.jpg','/assets/images/zephyria-sea.png','/assets/images/acidalia-sea.png'];
 var COIN = '/assets/images/guild-coin.jpg';
+
+/* Preload */
+(function(){
+  var all = ALL_AVATARS.concat(IMG_BG).concat([COIN]);
+  all.forEach(function(u){ try{var i=new Image();i.decoding='async';i.src=u;}catch(e){} });
+})();
 
 /* ═══ VIP РАМКИ ═══ */
 var VIP_FRAMES = {
-  none:      {name:'Без рамки', css:'', color:'#999'},
-  gold:      {name:'Золото', css:'linear-gradient(135deg,#f5d76e,#f39c12,#e67e22,#f5d76e)', color:'#f39c12'},
-  silver:    {name:'Серебро', css:'linear-gradient(135deg,#ecf0f1,#95a5a6,#7f8c8d,#ecf0f1)', color:'#95a5a6'},
-  fire:      {name:'Огонь', css:'linear-gradient(135deg,#e74c3c,#f39c12,#e74c3c)', color:'#e74c3c'},
-  ice:       {name:'Лёд', css:'linear-gradient(135deg,#5dade2,#85c1e9,#3498db,#5dade2)', color:'#5dade2'},
-  emerald:   {name:'Изумруд', css:'linear-gradient(135deg,#27ae60,#16a085,#2ecc71)', color:'#27ae60'},
-  royal:     {name:'Королевская', css:'linear-gradient(135deg,#9b59b6,#8e44ad,#d1a4e8)', color:'#9b59b6'},
-  cherry:    {name:'Вишня', css:'linear-gradient(135deg,#e91e63,#c2185b,#ff6090)', color:'#e91e63'},
-  cyber:     {name:'Кибер', css:'linear-gradient(135deg,#00bcd4,#00e5ff,#00838f)', color:'#00bcd4'},
-  sunset:    {name:'Закат', css:'linear-gradient(135deg,#ff6b6b,#feca57,#f39c12)', color:'#ff6b6b'},
-  ocean:     {name:'Океан', css:'linear-gradient(135deg,#0f3460,#16537e,#4a90e2)', color:'#4a90e2'},
-  legendary: {name:'Легенда', css:'conic-gradient(from 0deg,#f5d76e,#e74c3c,#9b59b6,#3498db,#27ae60,#f5d76e)', color:'#f5d76e', animated:true},
-  rainbow:   {name:'Радуга', css:'conic-gradient(from 0deg,#e74c3c,#f39c12,#f5d76e,#27ae60,#3498db,#9b59b6,#e74c3c)', color:'#e74c3c', animated:true}
+  none:{name:'Без рамки',css:'',color:'#999'},
+  gold:{name:'Золото',css:'linear-gradient(135deg,#f5d76e,#f39c12,#e67e22,#f5d76e)',color:'#f39c12'},
+  silver:{name:'Серебро',css:'linear-gradient(135deg,#ecf0f1,#95a5a6,#7f8c8d,#ecf0f1)',color:'#95a5a6'},
+  fire:{name:'Огонь',css:'linear-gradient(135deg,#e74c3c,#f39c12,#e74c3c)',color:'#e74c3c'},
+  ice:{name:'Лёд',css:'linear-gradient(135deg,#5dade2,#85c1e9,#3498db,#5dade2)',color:'#5dade2'},
+  emerald:{name:'Изумруд',css:'linear-gradient(135deg,#27ae60,#16a085,#2ecc71)',color:'#27ae60'},
+  royal:{name:'Королевская',css:'linear-gradient(135deg,#9b59b6,#8e44ad,#d1a4e8)',color:'#9b59b6'},
+  cherry:{name:'Вишня',css:'linear-gradient(135deg,#e91e63,#c2185b,#ff6090)',color:'#e91e63'},
+  cyber:{name:'Кибер',css:'linear-gradient(135deg,#00bcd4,#00e5ff,#00838f)',color:'#00bcd4'},
+  sunset:{name:'Закат',css:'linear-gradient(135deg,#ff6b6b,#feca57,#f39c12)',color:'#ff6b6b'},
+  ocean:{name:'Океан',css:'linear-gradient(135deg,#0f3460,#16537e,#4a90e2)',color:'#4a90e2'},
+  legendary:{name:'Легенда',css:'conic-gradient(from 0deg,#f5d76e,#e74c3c,#9b59b6,#3498db,#27ae60,#f5d76e)',color:'#f5d76e',animated:true},
+  rainbow:{name:'Радуга',css:'conic-gradient(from 0deg,#e74c3c,#f39c12,#f5d76e,#27ae60,#3498db,#9b59b6,#e74c3c)',color:'#e74c3c',animated:true}
 };
 
 /* ═══ VIP ФОНЫ ═══ */
 var VIP_BGS = {
-  default:     {name:'Обычный', css:'linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 40%,#4a2a3a 100%)'},
-  cosmic:      {name:'Космос', css:'radial-gradient(circle at 20% 30%,rgba(108,99,255,.3),transparent 60%),linear-gradient(135deg,#0a0a1e,#1a1a2e,#2d1b3d)'},
-  fire:        {name:'Огонь', css:'linear-gradient(135deg,#2c0a0a,#5c1a1a,#8b2a1a,#2c0a0a)'},
-  ice:         {name:'Лёд', css:'linear-gradient(135deg,#0a1a2c,#1a3a5c,#2c5a8b,#0a1a2c)'},
-  night:       {name:'Ночь', css:'linear-gradient(rgba(10,10,26,.6),rgba(45,27,61,.75)),url("/assets/images/night.jpg") center/cover'},
-  observatory: {name:'Обсерватория', css:'linear-gradient(rgba(10,10,26,.65),rgba(45,27,61,.75)),url("/assets/images/scene-observatory.jpg") center/cover'},
-  zephyria:    {name:'Зефир. море', css:'linear-gradient(rgba(10,26,44,.6),rgba(20,42,60,.7)),url("/assets/images/zephyria-sea.png") center/cover'},
-  acidalia:    {name:'Ацидалийское', css:'linear-gradient(rgba(10,26,44,.6),rgba(20,42,60,.7)),url("/assets/images/acidalia-sea.png") center/cover'},
-  legend:      {name:'Легенда', css:'conic-gradient(from 0deg at 50% 50%,rgba(108,99,255,.25),rgba(243,156,18,.25),rgba(231,76,60,.25),rgba(39,174,96,.25),rgba(108,99,255,.25)),linear-gradient(135deg,#1a1a2e,#2d1b3d)'}
+  default:{name:'Обычный',css:'linear-gradient(135deg,#1a1a2e 0%,#2d1b3d 40%,#4a2a3a 100%)'},
+  cosmic:{name:'Космос',css:'radial-gradient(circle at 20% 30%,rgba(108,99,255,.3),transparent 60%),linear-gradient(135deg,#0a0a1e,#1a1a2e,#2d1b3d)'},
+  fire:{name:'Огонь',css:'linear-gradient(135deg,#2c0a0a,#5c1a1a,#8b2a1a,#2c0a0a)'},
+  ice:{name:'Лёд',css:'linear-gradient(135deg,#0a1a2c,#1a3a5c,#2c5a8b,#0a1a2c)'},
+  night:{name:'Ночь',css:'linear-gradient(rgba(10,10,26,.6),rgba(45,27,61,.75)),url("/assets/images/night.jpg") center/cover'},
+  observatory:{name:'Обсерватория',css:'linear-gradient(rgba(10,10,26,.65),rgba(45,27,61,.75)),url("/assets/images/scene-observatory.jpg") center/cover'},
+  zephyria:{name:'Зефир. море',css:'linear-gradient(rgba(10,26,44,.6),rgba(20,42,60,.7)),url("/assets/images/zephyria-sea.png") center/cover'},
+  acidalia:{name:'Ацидалийское',css:'linear-gradient(rgba(10,26,44,.6),rgba(20,42,60,.7)),url("/assets/images/acidalia-sea.png") center/cover'},
+  legend:{name:'Легенда',css:'conic-gradient(from 0deg at 50% 50%,rgba(108,99,255,.25),rgba(243,156,18,.25),rgba(231,76,60,.25),rgba(39,174,96,.25),rgba(108,99,255,.25)),linear-gradient(135deg,#1a1a2e,#2d1b3d)'}
 };
 
-/* ═══ ГОТОВЫЕ ТИТУЛЫ ═══ */
-var READY_TITLES = [
-  '🌱 Хранитель глины','⚔️ Мастер клинка','🛡️ Страж границ',
-  '📜 Летописец Марса','🔮 Провидец','👑 Лорд Красной планеты',
-  '⚡ Командир колонии','🔥 Феникс пустыни','💎 Хранитель сокровищ',
-  '🌌 Звёздный исследователь','🏔️ Покоритель Олимпа','🚀 Первопроходец',
-  '🧬 Мастер генов','🛠️ Инженер Фарсиды','📖 Мудрец Академии',
-  '⚗️ Алхимик Киммерии','🐉 Дракон Марса','✨ Легенда'
-];
+/* ═══ ТИТУЛЫ ═══ */
+var READY_TITLES = ['🌱 Хранитель глины','⚔️ Мастер клинка','🛡️ Страж границ','📜 Летописец Марса','🔮 Провидец','👑 Лорд Красной планеты','⚡ Командир колонии','🔥 Феникс пустыни','💎 Хранитель сокровищ','🌌 Звёздный исследователь','🏔️ Покоритель Олимпа','🚀 Первопроходец','🧬 Мастер генов','🛠️ Инженер Фарсиды','📖 Мудрец Академии','⚗️ Алхимик Киммерии','🐉 Дракон Марса','✨ Легенда'];
 
 /* ═══ ФИЛЬТР МАТА ═══ */
-var BAD = ['бля','хуй','пизд','ебан','ебал','сука','мраз','гандон','мудак','долбо','пидор','жоп','срак','говн','нахуй','уебан','хер','шлюх'];
+var BAD = ['бля','хуй','пизд','ебан','ебал','сука','мраз','гандон','мудак','долбо','пидор','жоп','срак','говн','нахуй','уебан','шер','шлюх'];
 function isClean(t){
   if (!t) return true;
   var l = t.toLowerCase();
-  for (var i = 0; i < BAD.length; i++) if (l.indexOf(BAD[i]) !== -1) return false;
+  for (var i=0;i<BAD.length;i++) if (l.indexOf(BAD[i])!==-1) return false;
   return true;
 }
 
@@ -590,11 +579,7 @@ var ROLES = [
   {l:41,n:'🏛️ Сенатор'},{l:51,n:'⚔️ Мастер'},{l:61,n:'💎 Лорд'},
   {l:71,n:'🔥 Феникс'},{l:81,n:'🌟 Легенда'},{l:91,n:'👑 Полубог'},{l:100,n:'🐉 Бессмертный'}
 ];
-function getRole(l){
-  var r = ROLES[0];
-  for (var i = 0; i < ROLES.length; i++) if (l >= ROLES[i].l) r = ROLES[i];
-  return r.n;
-}
+function getRole(l){ var r=ROLES[0]; for(var i=0;i<ROLES.length;i++) if(l>=ROLES[i].l) r=ROLES[i]; return r.n; }
 
 /* ═══ ДОСТИЖЕНИЯ ═══ */
 var ACH = [
@@ -606,58 +591,32 @@ var ACH = [
   {id:11,n:'Эрудит',i:'🎓',d:'25 статей',c:'read'},
   {id:12,n:'Учёный',i:'🔬',d:'50 статей',c:'read'},
   {id:13,n:'Хранитель',i:'📚',d:'100 статей',c:'read'},
-  {id:14,n:'Библиотекарь',i:'📔',d:'200 статей',c:'read'},
-  {id:15,n:'Архивариус',i:'🗂️',d:'300 статей',c:'read'},
   {id:20,n:'Первые 10',i:'⚡',d:'10 XP',c:'xp'},
   {id:21,n:'Сотка',i:'💯',d:'100 XP',c:'xp'},
   {id:22,n:'Пятисотка',i:'🔥',d:'500 XP',c:'xp'},
   {id:23,n:'Тысячник',i:'🏆',d:'1000 XP',c:'xp'},
-  {id:24,n:'Пять тысяч',i:'💎',d:'5000 XP',c:'xp'},
-  {id:25,n:'Десятка',i:'🎯',d:'10000 XP',c:'xp'},
   {id:30,n:'Уровень 5',i:'5️⃣',d:'5 уровень',c:'lvl'},
   {id:31,n:'Уровень 10',i:'🔟',d:'10 уровень',c:'lvl'},
   {id:32,n:'Уровень 20',i:'2️⃣0️⃣',d:'20 уровень',c:'lvl'},
   {id:33,n:'Уровень 30',i:'3️⃣0️⃣',d:'30 уровень',c:'lvl'},
-  {id:34,n:'Уровень 50',i:'5️⃣0️⃣',d:'50 уровень',c:'lvl'},
-  {id:35,n:'Уровень 75',i:'7️⃣5️⃣',d:'75 уровень',c:'lvl'},
-  {id:36,n:'Уровень 100',i:'💯',d:'100 уровень',c:'lvl'},
   {id:40,n:'Неделя',i:'🔥',d:'7 дней',c:'streak'},
   {id:41,n:'Две недели',i:'🔥',d:'14 дней',c:'streak'},
   {id:42,n:'Месяц',i:'💪',d:'30 дней',c:'streak'},
-  {id:43,n:'Сто дней',i:'⚡',d:'100 дней',c:'streak'},
-  {id:45,n:'Год',i:'🏆',d:'365 дней',c:'streak'},
   {id:50,n:'Первый друг',i:'👥',d:'1 друг',c:'social'},
   {id:51,n:'Компания',i:'👨‍👩‍👧',d:'5 друзей',c:'social'},
   {id:52,n:'Круг',i:'🫂',d:'10 друзей',c:'social'},
-  {id:53,n:'Популярный',i:'⭐',d:'25 друзей',c:'social'},
-  {id:55,n:'Легенда',i:'🌟',d:'100 друзей',c:'social'},
   {id:60,n:'Новичок',i:'🏰',d:'В гильдии',c:'guild'},
   {id:61,n:'Основатель',i:'👑',d:'Создать гильдию',c:'guild'},
   {id:62,n:'Участник',i:'🛡️',d:'5 в гильдии',c:'guild'},
-  {id:63,n:'Командир',i:'⚔️',d:'10 в гильдии',c:'guild'},
-  {id:64,n:'Мастер',i:'🏛️',d:'25 в гильдии',c:'guild'},
   {id:70,n:'Первый талант',i:'🪙',d:'1 талант',c:'currency'},
   {id:71,n:'Сто талантов',i:'💰',d:'100 талантов',c:'currency'},
   {id:72,n:'Богач',i:'💎',d:'1000 талантов',c:'currency'},
-  {id:73,n:'Магнат',i:'👑',d:'10000 талантов',c:'currency'},
   {id:80,n:'Эдемец',i:'🌅',d:'Эдем',c:'kingdom'},
   {id:82,n:'Кимер',i:'🔮',d:'Кимерию',c:'kingdom'},
   {id:85,n:'Пират',i:'⚓',d:'Ксанф',c:'kingdom'},
-  {id:86,n:'Странник',i:'🧭',d:'Сменить королевство',c:'kingdom'},
-  {id:90,n:'Ночной страж',i:'🌙',d:'7 ночей',c:'special'},
-  {id:91,n:'Трудоголик',i:'⚙️',d:'10 часов',c:'special'},
-  {id:92,n:'Марафонец',i:'🏃',d:'50 часов',c:'special'},
-  {id:93,n:'Легенда сайта',i:'🌟',d:'100 часов',c:'special'},
   {id:94,n:'Комментатор',i:'💬',d:'1 коммент',c:'special'},
-  {id:95,n:'Оратор',i:'🗣️',d:'50 комментов',c:'special'},
-  {id:96,n:'Летописец',i:'📜',d:'100 комментов',c:'special'},
   {id:97,n:'Кузнец слов',i:'⚒️',d:'10 заметок',c:'special'},
-  {id:99,n:'Архивист',i:'🗄️',d:'100 заметок',c:'special'},
-  {id:100,n:'Библиофил',i:'📚',d:'50 закладок',c:'special'},
-  {id:105,n:'Квестер',i:'🗺️',d:'10 квестов',c:'special'},
-  {id:106,n:'Игрок',i:'🎮',d:'5 игр',c:'special'},
-  {id:109,n:'Провидец',i:'🔮',d:'10 гороскопов',c:'special'},
-  {id:110,n:'Оракул',i:'🧿',d:'100 гороскопов',c:'special'}
+  {id:105,n:'Квестер',i:'🗺️',d:'10 квестов',c:'special'}
 ];
 
 /* ═══ БЫСТРЫЙ ДОСТУП ═══ */
@@ -667,19 +626,44 @@ var QUICK = [
   {href:'/game/',i:'👑',t:'Империя',d:'Стратегия'},
   {href:'/weather/',i:'🌡️',t:'Погода',d:'Прогноз'},
   {href:'/museum/',i:'🏛️',t:'Музей',d:'Виртуальный'},
-  {href:'/duel/',i:'⚔️',t:'Дуэль',d:'Сражения'},
-  {href:'/scene-generator/',i:'🎬',t:'Сцены',d:'Генератор'},
-  {href:'/sky/',i:'🌠',t:'Небо',d:'Симулятор'},
   {href:'/guilds/',i:'🏰',t:'Гильдии',d:'Объединения'},
   {href:'/names/',i:'🔤',t:'Имя',d:'Генератор'},
   {href:'/forum/',i:'💬',t:'Форум',d:'Общение'},
-  {href:'/scrolls/',i:'📜',t:'Свитки',d:'Летописи'},
-  {href:'/horoscope/',i:'🔮',t:'Гороскоп',d:'Предсказания'},
   {href:'/top/',i:'🏆',t:'Топ',d:'Рейтинг'},
   {href:'/quests/',i:'🗺️',t:'Квесты',d:'Задания'},
   {href:'/feed/',i:'📰',t:'Лента',d:'События'},
-  {href:'/bookmarks/',i:'📚',t:'Закладки',d:'Сохранённое'},
   {href:'/shop/',i:'🛒',t:'Магазин',d:'VIP и таланты'}
+];
+
+/* ═══ ВСЕ РАЗДЕЛЫ (раскрывающийся блок) ═══ */
+var ALL_LINKS = [
+  {h:'/feedback/',i:'📮',n:'Обратная связь'},
+  {h:'/interactive/mars-test/',i:'🧪',n:'Тест «Возьмут ли на Марс»'},
+  {h:'/interactive/scale-guess/',i:'📏',n:'Космический глазомер'},
+  {h:'/interactive/exodus/',i:'🚀',n:'«К Исходу»'},
+  {h:'/globe-map/',i:'🌍',n:'Карта Марса'},
+  {h:'/game/',i:'👑',n:'Марсианская империя'},
+  {h:'/mars-city/',i:'🏙️',n:'Марсианский город'},
+  {h:'/scan-dates/',i:'📅',n:'Сканер дат'},
+  {h:'/weather/',i:'🌡️',n:'Погода на Марсе'},
+  {h:'/museum/',i:'🏛️',n:'Музей'},
+  {h:'/duel/',i:'⚔️',n:'Дуэль переводчиков'},
+  {h:'/scene-generator/',i:'🎬',n:'Генератор сцен'},
+  {h:'/sky/',i:'🌠',n:'Небо Марса'},
+  {h:'/guilds/',i:'🏰',n:'Гильдии'},
+  {h:'/names/',i:'🔤',n:'Марсианское имя'},
+  {h:'/horoscope/',i:'🔮',n:'Гороскоп'},
+  {h:'/top/',i:'🏆',n:'Топ статей'},
+  {h:'/quests/',i:'🗺️',n:'Квесты'},
+  {h:'/quest-map/',i:'🧭',n:'Квест-карта'},
+  {h:'/shop/',i:'🛒',n:'Магазин'},
+  {h:'/translator/',i:'🌐',n:'Переводчик'},
+  {h:'/music/constructor/',i:'🎵',n:'Конструктор мелодий'},
+  {h:'/feed/',i:'📰',n:'Лента активности'},
+  {h:'/forum/',i:'💬',n:'Форум'},
+  {h:'/achievements/',i:'🏅',n:'Достижения'},
+  {h:'/bookmarks/',i:'📚',n:'Закладки'},
+  {h:'/scrolls/',i:'📜',n:'Свитки Хевсура'}
 ];
 
 /* ═══ БАЗА ЗНАНИЙ ═══ */
@@ -690,39 +674,40 @@ var KB = [
   {id:'hevsur',k:['хевсур'],a:'Хевсур — летописец Кимерии. 📜',l:'people/hevsur/'},
   {id:'talin',k:['талин'],a:'Талин — великий астроном. 🔭',l:'people/talin/'},
   {id:'xp',k:['опыт','xp'],a:'XP за: статьи, комментарии, квесты. +5 XP за статью.',l:'profile/'},
-  {id:'vip',k:['vip','вип'],a:'VIP: бейдж, свой цвет ника, рамка аватара, титул, emoji, фон, +25 талантов.',l:'shop/'}
+  {id:'vip',k:['vip','вип'],a:'VIP: бейдж, свой цвет ника, рамка аватара, титул, фон, +25 талантов.',l:'shop/'},
+  {id:'talents',k:['таланты','талант','глина'],a:'Глиняные таланты — внутренняя валюта. Тратить в /guilds/ и на /shop/.',l:'shop/'}
 ];
 function findA(q){
   if (!q) return null;
   var l = q.toLowerCase().replace(/[^\u0400-\u04FFa-z0-9\s]/g,' ').trim();
   if (!l) return null;
   var stop = ['что','такое','кто','это','где','как','когда','почему','мне','про','о','в','на','и','с','у','для'];
-  var w = l.split(/\s+/).filter(function(x){ return x.length > 2 && stop.indexOf(x) === -1; });
+  var w = l.split(/\s+/).filter(function(x){ return x.length>2 && stop.indexOf(x)===-1; });
   if (!w.length) return null;
-  var best = null, sc = 0;
-  for (var i = 0; i < KB.length; i++){
-    var s = 0;
-    for (var j = 0; j < w.length; j++)
-      for (var k = 0; k < KB[i].k.length; k++){
-        if (w[j] === KB[i].k[k]){ s += 5; break; }
-        if (w[j].indexOf(KB[i].k[k]) === 0 || KB[i].k[k].indexOf(w[j]) === 0){ s += 3; break; }
+  var best=null, sc=0;
+  for (var i=0;i<KB.length;i++){
+    var s=0;
+    for (var j=0;j<w.length;j++)
+      for (var k=0;k<KB[i].k.length;k++){
+        if (w[j]===KB[i].k[k]){ s+=5; break; }
+        if (w[j].indexOf(KB[i].k[k])===0 || KB[i].k[k].indexOf(w[j])===0){ s+=3; break; }
       }
-    if (s > sc){ sc = s; best = KB[i]; }
+    if (s>sc){ sc=s; best=KB[i]; }
   }
-  return sc >= 3 ? best : null;
+  return sc>=3 ? best : null;
 }
 
 /* ═══ SESSION ═══ */
 function readSess(){
-  var keys = [K_SESS, K_SB, K_BAK], raw = null, i;
-  for (i = 0; i < keys.length; i++){ try { raw = localStorage.getItem(keys[i]); if (raw) break; } catch(e){} }
-  if (!raw) for (i = 0; i < keys.length; i++){ try { raw = sessionStorage.getItem(keys[i]); if (raw) break; } catch(e){} }
+  var keys=[K_SESS,K_SB,K_BAK], raw=null, i;
+  for (i=0;i<keys.length;i++){ try{raw=localStorage.getItem(keys[i]); if(raw) break;}catch(e){} }
+  if (!raw) for (i=0;i<keys.length;i++){ try{raw=sessionStorage.getItem(keys[i]); if(raw) break;}catch(e){} }
   if (!raw) return null;
   try {
-    var p = JSON.parse(raw);
-    if (Array.isArray(p)) p = p[p.length - 1];
+    var p=JSON.parse(raw);
+    if (Array.isArray(p)) p=p[p.length-1];
     if (!p || !p.access_token || !p.user) return null;
-    if (p.expires_at && p.expires_at * 1000 < Date.now()) return null;
+    if (p.expires_at && p.expires_at*1000 < Date.now()) return null;
     return p;
   } catch(e){ return null; }
 }
@@ -731,1078 +716,1381 @@ function readCache(ttl){
     var raw = localStorage.getItem(K_CACHE);
     if (!raw) return null;
     var c = JSON.parse(raw);
-    if (!c || Date.now() - c.ts > (ttl || 5 * 60 * 1000)) return null;
+    if (!c || Date.now()-c.ts > (ttl||5*60*1000)) return null;
     return c.data;
   } catch(e){ return null; }
 }
-function writeCache(d){
-  try { localStorage.setItem(K_CACHE, JSON.stringify({data:d, ts:Date.now()})); } catch(e){}
-}
+function writeCache(d){ try{localStorage.setItem(K_CACHE,JSON.stringify({data:d,ts:Date.now()}));}catch(e){} }
 
 /* ═══ API ═══ */
-async function GET(p, t){
-  var h = {'apikey': SB_KEY};
-  if (t) h['Authorization'] = 'Bearer ' + t;
-  var r = await fetch(SB_URL + '/rest/v1/' + p, {headers: h});
-  if (!r.ok){
-    if (r.status === 401) throw new Error('Не авторизован');
-    throw new Error('HTTP ' + r.status);
-  }
-  var x = await r.text();
-  if (!x) return null;
-  try { return JSON.parse(x); } catch(e){ return null; }
+async function GET(p,t){
+  var h={'apikey':SB_KEY}; if(t) h['Authorization']='Bearer '+t;
+  var r=await fetch(SB_URL+'/rest/v1/'+p,{headers:h});
+  if(!r.ok){ if(r.status===401) throw new Error('Не авторизован'); throw new Error('HTTP '+r.status); }
+  var x=await r.text(); if(!x) return null;
+  try{return JSON.parse(x);}catch(e){return null;}
 }
-async function POST(p, b, t, pref){
-  var h = {'apikey': SB_KEY, 'Content-Type': 'application/json'};
-  if (t) h['Authorization'] = 'Bearer ' + t;
-  if (pref) h['Prefer'] = pref;
-  var r = await fetch(SB_URL + '/rest/v1/' + p, {method:'POST', headers:h, body:JSON.stringify(b)});
-  if (!r.ok) throw new Error('HTTP ' + r.status);
-  var x = await r.text();
-  if (!x) return null;
-  try { return JSON.parse(x); } catch(e){ return null; }
+async function POST(p,b,t,pref){
+  var h={'apikey':SB_KEY,'Content-Type':'application/json'};
+  if(t) h['Authorization']='Bearer '+t;
+  if(pref) h['Prefer']=pref;
+  var r=await fetch(SB_URL+'/rest/v1/'+p,{method:'POST',headers:h,body:JSON.stringify(b)});
+  if(!r.ok) throw new Error('HTTP '+r.status);
+  var x=await r.text(); if(!x) return null;
+  try{return JSON.parse(x);}catch(e){return null;}
 }
-async function PATCH(p, b, t){
-  var h = {'apikey': SB_KEY, 'Content-Type': 'application/json'};
-  if (t) h['Authorization'] = 'Bearer ' + t;
-  var r = await fetch(SB_URL + '/rest/v1/' + p, {method:'PATCH', headers:h, body:JSON.stringify(b)});
-  if (!r.ok) throw new Error('HTTP ' + r.status);
+async function PATCH(p,b,t){
+  var h={'apikey':SB_KEY,'Content-Type':'application/json'};
+  if(t) h['Authorization']='Bearer '+t;
+  var r=await fetch(SB_URL+'/rest/v1/'+p,{method:'PATCH',headers:h,body:JSON.stringify(b)});
+  if(!r.ok) throw new Error('HTTP '+r.status);
   return true;
 }
-async function DEL(p, t){
-  var h = {'apikey': SB_KEY};
-  if (t) h['Authorization'] = 'Bearer ' + t;
-  var r = await fetch(SB_URL + '/rest/v1/' + p, {method:'DELETE', headers:h});
-  if (!r.ok) throw new Error('HTTP ' + r.status);
+async function DEL(p,t){
+  var h={'apikey':SB_KEY}; if(t) h['Authorization']='Bearer '+t;
+  var r=await fetch(SB_URL+'/rest/v1/'+p,{method:'DELETE',headers:h});
+  if(!r.ok) throw new Error('HTTP '+r.status);
   return true;
 }
+function sbClient(){ return window.supabaseClient; }
 
 /* ═══ UTILS ═══ */
-function esc(s){
-  return String(s || '').replace(/[&<>"']/g, function(m){
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
-  });
-}
-function escAttr(s){
-  return String(s || '').replace(/['"\\<>]/g, function(m){
-    return {"'":'\\\'','"':'\\"','\\':'\\\\','<':'\\u003c','>':'\\u003e'}[m];
-  });
-}
-function toast(m, t){
-  t = t || 'info';
-  var e = document.createElement('div');
-  e.className = 'pf-toast ' + t;
-  e.textContent = m;
+function esc(s){ return String(s||'').replace(/[&<>"']/g,function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+function escAttr(s){ return String(s||'').replace(/['"\\<>]/g,function(m){ return {"'":'\\\'','"':'\\"','\\':'\\\\','<':'\\u003c','>':'\\u003e'}[m]; }); }
+function toast(m,t){
+  t=t||'info';
+  var e=document.createElement('div'); e.className='pf-toast '+t; e.textContent=m;
   document.body.appendChild(e);
-  requestAnimationFrame(function(){ e.classList.add('show'); });
-  setTimeout(function(){
-    e.classList.remove('show');
-    setTimeout(function(){ e.remove(); }, 400);
-  }, 2500);
+  requestAnimationFrame(function(){e.classList.add('show');});
+  setTimeout(function(){ e.classList.remove('show'); setTimeout(function(){e.remove();},400); }, 2500);
 }
 function trackAct(){
   try {
-    var a = JSON.parse(localStorage.getItem(K_ACT) || '{}');
-    var td = new Date().toISOString().slice(0,10);
-    a[td] = (a[td] || 0) + 1;
-    var cut = new Date(Date.now() - 90*86400000).toISOString().slice(0,10);
-    Object.keys(a).forEach(function(k){ if (k < cut) delete a[k]; });
-    localStorage.setItem(K_ACT, JSON.stringify(a));
+    var a=JSON.parse(localStorage.getItem(K_ACT)||'{}');
+    var td=new Date().toISOString().slice(0,10);
+    a[td]=(a[td]||0)+1;
+    var cut=new Date(Date.now()-90*86400000).toISOString().slice(0,10);
+    Object.keys(a).forEach(function(k){ if(k<cut) delete a[k]; });
+    localStorage.setItem(K_ACT,JSON.stringify(a));
   } catch(e){}
 }
-function getAct(){ try { return JSON.parse(localStorage.getItem(K_ACT) || '{}'); } catch(e){ return {}; } }
-function getXP(){ try { return JSON.parse(localStorage.getItem(K_XP) || '{}'); } catch(e){ return {}; } }
+function getAct(){ try{return JSON.parse(localStorage.getItem(K_ACT)||'{}');}catch(e){return {};} }
+function getXP(){ try{return JSON.parse(localStorage.getItem(K_XP)||'{}');}catch(e){return {};} }
 function getLvl(e){
-  e = e || 0;
-  var l = 1;
-  while (l < 100 && e >= Math.floor(Math.pow(l+1, 1.8) * 20)) l++;
-  var c = Math.floor(Math.pow(l, 1.8) * 20);
-  var n = Math.floor(Math.pow(l+1, 1.8) * 20);
-  return {level:l, current:c, next:n, percent: n > c ? Math.min(((e-c)/(n-c))*100, 100) : 100};
+  e=e||0; var l=1;
+  while(l<100 && e>=Math.floor(Math.pow(l+1,1.8)*20)) l++;
+  var c=Math.floor(Math.pow(l,1.8)*20);
+  var n=Math.floor(Math.pow(l+1,1.8)*20);
+  return {level:l,current:c,next:n,percent:n>c?Math.min(((e-c)/(n-c))*100,100):100};
 }
 function ini(n){
   if (!n) return '?';
-  var p = String(n).trim().split(/[\s._-]+/);
-  if (p.length >= 2) return (p[0][0] + p[1][0]).toUpperCase();
+  var p=String(n).trim().split(/[\s._-]+/);
+  if (p.length>=2) return (p[0][0]+p[1][0]).toUpperCase();
   return n[0].toUpperCase();
 }
-function avFallback(n){
-  return 'https://ui-avatars.com/api/?name=' + encodeURIComponent(ini(n)) + '&background=6C63FF&color=fff&size=128&rounded=true';
-}
+function avFallback(n){ return 'https://ui-avatars.com/api/?name='+encodeURIComponent(ini(n))+'&background=6C63FF&color=fff&size=128&rounded=true'; }
+function fmtDate(iso){ if(!iso) return ''; return new Date(iso).toLocaleString('ru-RU',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}); }
+function fmtTxType(t){ return {earn:'💰 Начисление',spend:'💸 Списание',promo:'🎁 Промокод',purchase:'🛒 Покупка',refund:'↩️ Возврат',admin:'⚙️ Админ'}[t]||t; }
+function fmtTxSource(s){ return {daily:'Ежедневка',quest:'Квест',guild:'Гильдия',shop:'Магазин',promo:'Промокод',read:'Чтение'}[s]||(s||''); }
 
 /* ═══ STATE ═══ */
-var cu = null, cp = null;
-var achs = [], notes = [], notifs = [], leaders = [], friends = [], reqs = [];
-var guild = null, gmembers = [];
-var streak = 0, currency = 0;
-var chat = [];
-var achF = 'all';
-var noteQ = '';
-try { chat = JSON.parse(localStorage.getItem(K_CHAT) || '[]'); } catch(e){ chat = []; }
-try { achF = localStorage.getItem(K_ACH) || 'all'; } catch(e){}
+var cu=null, cp=null;
+var achs=[], notes=[], notifs=[], leaders=[], friends=[], reqs=[];
+var guild=null, gmembers=[];
+var streak=0, currency=0;
+var wallet={balance:0,total_earned:0};
+var txs=[], shopItems=[];
+var chat=[];
+var achF='all';
+var noteQ='';
+var loadedAll=false;
+try{chat=JSON.parse(localStorage.getItem(K_CHAT)||'[]');}catch(e){chat=[];}
+try{achF=localStorage.getItem(K_ACH)||'all';}catch(e){}
 
 function isVIP(){
-  var u = cp && cp.vip_until ? new Date(cp.vip_until) : null;
-  return u && u.getTime() > Date.now();
+  var u=cp&&cp.vip_until?new Date(cp.vip_until):null;
+  return u && u.getTime()>Date.now();
 }
-function vipDays(){
-  if (!isVIP()) return 0;
-  return Math.ceil((new Date(cp.vip_until) - Date.now()) / 86400000);
-}
+function vipDays(){ if(!isVIP()) return 0; return Math.ceil((new Date(cp.vip_until)-Date.now())/86400000); }
 
-/* ═══════════════════════════════════════════════════════════
-   GOLD VIP ICON — универсальная функция для вставки рядом с ником
-   ═══════════════════════════════════════════════════════════ */
-function goldVIPIcon(isVIP, title){
-  if (!isVIP) return '';
-  var tip = title || 'VIP-пользователь';
-  return ' <span class="pf-vip-badge" title="' + escAttr(tip) + '" style="font-size:.85em;padding:2px 7px;margin-left:4px;vertical-align:middle">👑</span>';
+function goldVIPIcon(isV,title){
+  if (!isV) return '';
+  return ' <span class="pf-vip-badge" title="'+(title||'VIP-пользователь')+'" style="font-size:.85em;padding:2px 7px;margin-left:4px;vertical-align:middle">👑</span>';
 }
 
-/* ═══════════════════════════════════════════════════════════
-   RENDER
-   ═══════════════════════════════════════════════════════════ */
-function render(){
-  if (!cp || !cu) return;
-  var kc = KC[cp.kingdom] || '#6C63FF';
-  document.documentElement.style.setProperty('--kc', kc);
-  document.documentElement.style.setProperty('--kl', kc + 'cc');
-  document.documentElement.style.setProperty('--ks', kc + '40');
-  document.documentElement.style.setProperty('--kb', kc + '15');
+/* ═══ ЭКОНОМИКА ═══ */
+function readWalletCache(){
+  try{ var raw=localStorage.getItem(K_WALLET); if(!raw) return null;
+    var c=JSON.parse(raw); if(!c||!c.uid||c.uid!==(cu&&cu.id)) return null;
+    if (Date.now()-c.ts > 5*60*1000) return null;
+    return c;
+  }catch(e){ return null; }
+}
+function writeWalletCache(){
+  try{ localStorage.setItem(K_WALLET,JSON.stringify({uid:cu&&cu.id,balance:wallet.balance,total_earned:wallet.total_earned,ts:Date.now()})); }catch(e){}
+}
+async function loadWallet(){
+  if (!cu) return;
+  try{
+    var r=await GET('user_currency?user_id=eq.'+cu.id+'&select=clay_talents,total_earned',cu._token);
+    if (r && r[0]){ wallet.balance=r[0].clay_talents||0; wallet.total_earned=r[0].total_earned||0; writeWalletCache(); }
+  }catch(e){ console.warn('[wallet]',e.message); }
+}
+async function loadTx(){
+  if (!cu) return;
+  try{
+    var r=await GET('transactions?user_id=eq.'+cu.id+'&select=id,amount,balance_after,type,source,meta,created_at&order=created_at.desc&limit=30',cu._token);
+    txs=r||[];
+  }catch(e){ txs=[]; }
+}
+async function loadShop(){
+  if (shopItems.length) return;
+  try{
+    var r=await GET('shop_items?is_active=eq.true&select=slug,name,description,category,price_talents,payload,icon&order=sort_order.asc',cu._token);
+    shopItems=r||[];
+  }catch(e){ shopItems=[]; }
+}
 
-  var lvl = getLvl(cp.experience || 0);
-  var name = cp.display_name || cp.username || (cu.email || '').split('@')[0];
-  var av = cp.avatar_url || avFallback(name);
-  var role = getRole(lvl.level);
-  var kingdom = cp.kingdom;
-  var flag = kingdom ? KINGDOM_FLAGS[kingdom] : null;
-  var mod = cp.role === 'moderator' || cp.role === 'admin';
-  var xpLeft = Math.max(lvl.next - (cp.experience || 0), 0);
-  var vip = isVIP();
-  var days = vipDays();
+window.pfClaimDaily=async function(){
+  var btn=document.getElementById('pf-daily-btn');
+  var orig=btn?btn.innerHTML:'';
+  if (btn){ btn.disabled=true; btn.innerHTML='⏳...'; }
+  try{
+    var sb=sbClient();
+    var r=await sb.rpc('claim_daily_reward');
+    if (r.error) throw r.error;
+    var d=r.data||{};
+    if (!d.ok){ toast('⚠️ '+(d.error||'Не удалось'),'info'); if(btn){btn.disabled=false;btn.innerHTML=orig;} return; }
+    if (btn) btn.innerHTML='🎁 +'+d.reward;
+    toast('🎁 +'+d.reward+' талантов · серия '+d.streak+' 🔥','vip');
+    spawnConfetti();
+    setTimeout(async function(){ await loadWallet(); await loadTx(); render(); }, 900);
+  }catch(e){ toast('Ошибка: '+e.message,'error'); if(btn){btn.disabled=false;btn.innerHTML=orig;} }
+};
 
-  var h = '';
-
-  /* ═══ HERO ═══ */
-  var bgKey = cp.profile_bg || 'default';
-  var bgCss = (VIP_BGS[bgKey] && VIP_BGS[bgKey].css) || VIP_BGS.default.css;
-
-  h += '<div class="pf-hero ' + (vip ? 'pf-hero-vip' : '') + '" style="background:' + bgCss + ';">';
-  if (vip) {
-    h += '<span class="pf-sparkle" style="top:15%;left:8%">✦</span>';
-    h += '<span class="pf-sparkle" style="top:25%;right:12%">✦</span>';
-    h += '<span class="pf-sparkle" style="bottom:20%;left:15%">✦</span>';
-    h += '<span class="pf-sparkle" style="bottom:30%;right:8%">✦</span>';
+function spawnConfetti(){
+  var colors=['#f5d76e','#f39c12','#6C63FF','#e74c3c','#27ae60','#e67e22'];
+  for (var i=0;i<40;i++){
+    var el=document.createElement('div');
+    el.style.cssText='position:fixed;top:-20px;width:10px;height:14px;z-index:999999;pointer-events:none;border-radius:2px;';
+    el.style.background=colors[Math.floor(Math.random()*colors.length)];
+    el.style.left=(Math.random()*100)+'vw';
+    document.body.appendChild(el);
+    var dur=1800+Math.random()*1200;
+    var drift=(Math.random()-0.5)*200;
+    el.animate([
+      {transform:'translate(0,0) rotate(0deg)',opacity:1},
+      {transform:'translate('+drift+'px,110vh) rotate('+(720+Math.random()*360)+'deg)',opacity:0.3}
+    ],{duration:dur,easing:'cubic-bezier(.3,.7,.6,1)'}).onfinish=function(){el.remove();};
   }
-  h += '<div class="pf-hero-content">';
+}
 
-  /* Аватар */
-  h += '<div class="pf-avatar-wrap" onclick="pfAvPick()" title="Сменить аватар">';
-  h += '<div class="pf-avatar-ring"></div>';
-  var fk = cp.avatar_frame || 'none';
-  var fr = VIP_FRAMES[fk];
-  if (vip && fr && fr.css){
-    h += '<span class="vip-avatar-frame' + (fr.animated ? ' animated' : '') + '" style="background:' + fr.css + ';background-size:200% 200%;">';
-    h += '<img src="' + escAttr(av) + '" class="pf-avatar" onerror="this.onerror=null;this.src=\'' + avFallback(name) + '\';">';
-    h += '</span>';
+window.pfBuyWithTalents=function(slug,price){
+  var bg=document.createElement('div'); bg.className='pf-modal-bg';
+  var m=document.createElement('div'); m.className='pf-modal';
+  m.innerHTML='<h3>🛒 Подтверждение</h3><p>Списать <b>'+price+' 🪙 талантов</b>?</p>'+
+    '<p style="font-size:.85rem;color:#888;">Баланс: <b>'+wallet.balance+'</b></p>'+
+    '<div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" id="pf-buy-c">Отмена</button>'+
+    '<button class="pf-btn" id="pf-buy-o">✅ Купить</button></div>';
+  bg.appendChild(m); document.body.appendChild(bg);
+  bg.addEventListener('click',function(e){if(e.target===bg)bg.remove();});
+  m.querySelector('#pf-buy-c').onclick=function(){bg.remove();};
+  m.querySelector('#pf-buy-o').onclick=async function(){
+    var btn=this; btn.disabled=true; btn.textContent='⏳...';
+    try{
+      var sb=sbClient();
+      var r=await sb.rpc('purchase_shop_item',{p_slug:slug});
+      if (r.error) throw r.error;
+      var d=r.data||{};
+      if (!d.ok){ toast('⚠️ '+(d.error||'Не удалось'),'error'); bg.remove(); return; }
+      toast('✅ '+d.product,'vip'); spawnConfetti(); bg.remove();
+      setTimeout(async function(){ await loadWallet(); await loadTx(); render(); }, 700);
+    }catch(e){ toast('Ошибка: '+e.message,'error'); btn.disabled=false; btn.textContent='✅ Купить'; }
+  };
+};
+
+window.pfDonateGuild=function(guildId){
+  var bg=document.createElement('div'); bg.className='pf-modal-bg';
+  var m=document.createElement('div'); m.className='pf-modal';
+  var max=Math.max(10,wallet.balance);
+  var quick=[10,50,100,500].filter(function(x){return x<=wallet.balance;});
+  if (wallet.balance>=10 && quick.indexOf(wallet.balance)===-1) quick.push(wallet.balance);
+  m.innerHTML='<h3>💎 Вклад в гильдию</h3><p>У тебя <b>'+wallet.balance+'</b> талантов</p>'+
+    '<input id="pf-don-in" type="number" class="pf-modal-input" min="1" max="'+max+'" value="'+Math.min(50,max)+'">'+
+    '<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;">'+
+    quick.map(function(v){return '<button type="button" class="pf-title-preset" data-don="'+v+'">'+v+' 🪙</button>';}).join('')+
+    '</div><div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" id="pf-don-c">Отмена</button>'+
+    '<button class="pf-btn" id="pf-don-o">💎 Вложить</button></div>';
+  bg.appendChild(m); document.body.appendChild(bg);
+  bg.addEventListener('click',function(e){if(e.target===bg)bg.remove();});
+  m.querySelector('#pf-don-c').onclick=function(){bg.remove();};
+  m.querySelectorAll('[data-don]').forEach(function(b){ b.onclick=function(){ m.querySelector('#pf-don-in').value=b.dataset.don; }; });
+  m.querySelector('#pf-don-o').onclick=async function(){
+    var amount=parseInt(m.querySelector('#pf-don-in').value,10);
+    if (!amount||amount<=0){toast('Введите сумму','error');return;}
+    if (amount>wallet.balance){toast('Недостаточно талантов','error');return;}
+    var btn=this; btn.disabled=true; btn.textContent='⏳...';
+    try{
+      var sb=sbClient();
+      var r=await sb.rpc('donate_to_guild',{p_guild_id:guildId,p_amount:amount});
+      if (r.error) throw r.error;
+      var d=r.data||{};
+      if (!d.ok){ toast('⚠️ '+(d.error||'Не удалось'),'error'); bg.remove(); return; }
+      toast('💎 +'+amount+' в банк гильдии!','vip'); spawnConfetti(); bg.remove();
+      setTimeout(async function(){ await loadWallet(); await loadTx(); render(); }, 700);
+    }catch(e){ toast('Ошибка: '+e.message,'error'); btn.disabled=false; btn.textContent='💎 Вложить'; }
+  };
+};
+
+window.pfActivatePromo=async function(code){
+  if (!code) return;
+  var st=document.getElementById('vip-promo-st');
+  var btn=document.getElementById('vip-promo-btn');
+  if (st){ st.textContent='⏳ Проверяем...'; st.style.color='#999'; }
+  if (btn) btn.disabled=true;
+  try{
+    var sb=sbClient();
+    var r=await sb.rpc('activate_promo',{p_code:String(code).trim().toUpperCase()});
+    if (r.error) throw r.error;
+    var d=r.data||{};
+    if (!d.ok){ if(st){st.textContent='❌ '+(d.error||'Ошибка');st.style.color='#e74c3c';} return; }
+    if (st){ st.textContent='✅ '+d.product; st.style.color='#27ae60'; }
+    toast('👑 '+d.product,'vip'); spawnConfetti();
+    setTimeout(async function(){
+      await loadWallet(); await loadTx(); render();
+      if (d.product && /VIP/i.test(d.product)) setTimeout(function(){ location.reload(); }, 1500);
+    }, 700);
+  }catch(e){ if(st){st.textContent='❌ '+e.message;st.style.color='#e74c3c';} }
+  finally { if (btn) btn.disabled=false; }
+};
+
+/* ═══ VIP ЭФФЕКТЫ ═══ */
+function applyVipEffects(){
+  if (!cp) return;
+  var vip=isVIP();
+  document.body.classList.toggle('pf-not-vip',!vip);
+  var hero=document.querySelector('.pf-hero');
+  if (!hero) return;
+  if (vip){
+    hero.classList.add('pf-hero-aurora');
+    if (!hero.querySelector('.pf-particles')){
+      var p=document.createElement('div'); p.className='pf-particles';
+      for (var i=0;i<12;i++){
+        var el=document.createElement('span'); el.className='pf-particle';
+        el.style.left=(Math.random()*100)+'%';
+        el.style.bottom=(Math.random()*40)+'%';
+        el.style.animationDuration=(4+Math.random()*4)+'s';
+        el.style.animationDelay=(Math.random()*4)+'s';
+        el.style.width=el.style.height=(2+Math.random()*4)+'px';
+        p.appendChild(el);
+      }
+      hero.appendChild(p);
+    }
   } else {
-    h += '<img src="' + escAttr(av) + '" class="pf-avatar" onerror="this.onerror=null;this.src=\'' + avFallback(name) + '\';">';
+    hero.classList.remove('pf-hero-aurora');
+    var oldP=hero.querySelector('.pf-particles'); if (oldP) oldP.remove();
   }
-  h += '<div class="pf-avatar-badge">📷</div>';
-  h += '<div class="pf-role-badge">' + esc(role) + '</div>';
-  h += '</div>';
+}
 
-  /* Инфо */
-  h += '<div class="pf-info">';
-  var nCls = 'pf-name' + (vip ? ' vip-name' : '');
-  var nCol = cp.nick_color || kc;
-  var nSty = vip ? ' style="background:linear-gradient(90deg,' + nCol + ' 0%,#f5d76e 25%,' + nCol + ' 50%,#f5d76e 75%,' + nCol + ' 100%);background-size:200% auto;"' : '';
-  h += '<h1 class="' + nCls + '"' + nSty + ' onclick="pfEditName()">' + esc(name) + ' <span class="pf-name-edit">✏️</span>';
-  if (vip) h += ' <span class="pf-vip-badge" title="VIP до ' + new Date(cp.vip_until).toLocaleDateString('ru-RU') + '">' + (cp.vip_badge || '👑') + '</span>';
-  if (vip && cp.custom_title) h += ' <span class="pf-vip-title">' + esc(cp.custom_title) + '</span>';
-  if (mod) h += ' <span class="pf-mod-badge" onclick="event.stopPropagation();pfTab(\'moderation\')">🛡️ Модератор</span>';
-  h += '</h1>';
-  if (vip) h += '<div style="font-size:.78rem;margin-bottom:10px;color:rgba(255,255,255,.75);font-weight:700;">👑 VIP активен · осталось ' + days + ' дней</div>';
-
-  if (kingdom) h += '<div style="margin-bottom:12px;"><span class="pf-kingdom-badge" onclick="pfTab(\'settings\')">' + (flag ? '<img src="' + escAttr(flag) + '">' : '') + ' ' + esc(kingdom) + '</span></div>';
-  else h += '<div style="margin-bottom:12px;"><span class="pf-kingdom-badge" onclick="pfTab(\'settings\')">🏰 Выбрать королевство</span></div>';
-
-  h += '<p class="pf-email">' + esc(cu.email || '') + '</p>';
-  h += '<div class="pf-stats">';
-  h += '<div class="pf-stat-item" onclick="pfTab(\'achievements\')"><div class="pf-stat-label">Уровень</div><div class="pf-stat-value">⭐ ' + lvl.level + '</div></div>';
-  h += '<div class="pf-stat-item" onclick="pfTab(\'activity\')"><div class="pf-stat-label">Опыт</div><div class="pf-stat-value">💎 ' + (cp.experience || 0) + '</div></div>';
-  h += '<div class="pf-stat-item" onclick="pfTab(\'achievements\')"><div class="pf-stat-label">Награды</div><div class="pf-stat-value">🏆 ' + achs.length + '</div></div>';
-  if (streak > 0) h += '<div class="pf-stat-item" onclick="pfTab(\'activity\')"><div class="pf-stat-label">Серия</div><div class="pf-stat-value">🔥 ' + streak + '</div></div>';
-  h += '<div class="pf-stat-item" onclick="pfTab(\'friends\')"><div class="pf-stat-label">Друзья</div><div class="pf-stat-value">👥 ' + friends.length + '</div></div>';
-  h += '</div>';
-  h += '<div class="pf-currency-click" onclick="window.location.href=\'/shop/\'"><img src="' + COIN + '" class="pf-stat-coin"> <span>' + currency + '</span> талантов →</div>';
-  h += '<div class="pf-progress-bar"><div class="pf-progress-fill" style="width:' + lvl.percent + '%"></div></div>';
-  h += '<div class="pf-progress-text">До уровня ' + (lvl.level+1) + ': ' + xpLeft + ' XP</div>';
-  h += '</div></div></div>';
-
-  /* ═══ MYPAGE — другой дизайн для VIP ═══ */
-  h += '<div class="pf-mypage ' + (vip ? 'pf-mypage-vip' : '') + '">';
-  h += '<h2 class="pf-mypage-title">' + (vip ? '👑 Моя страничка' : 'Моя страничка') + '</h2>';
-  h += '<p class="pf-mypage-sub">' + (vip ? 'Быстрый обзор · VIP-режим' : 'Быстрый обзор') + '</p>';
-  h += '<div class="pf-mypage-grid">';
-  h += '<div class="pf-mypage-tile" onclick="pfTab(\'achievements\')"><div class="pf-mypage-tile-label">Достижения</div><div class="pf-mypage-tile-value">' + achs.length + '/' + ACH.length + '</div><div class="pf-mypage-tile-sub">' + Math.round(achs.length/ACH.length*100) + '%</div></div>';
-  h += '<div class="pf-mypage-tile" onclick="pfTab(\'notes\')"><div class="pf-mypage-tile-label">Заметки</div><div class="pf-mypage-tile-value">' + notes.length + '</div><div class="pf-mypage-tile-sub">записей</div></div>';
-  h += '<div class="pf-mypage-tile" onclick="pfTab(\'friends\')"><div class="pf-mypage-tile-label">Друзья</div><div class="pf-mypage-tile-value">' + friends.length + '</div><div class="pf-mypage-tile-sub">в кругу</div></div>';
-  h += '<div class="pf-mypage-tile" onclick="pfTab(\'activity\')"><div class="pf-mypage-tile-label">Дней</div><div class="pf-mypage-tile-value">' + Object.keys(getAct()).length + '</div><div class="pf-mypage-tile-sub">активных</div></div>';
-  h += '</div>';
-  h += '<div class="pf-mypage-actions">';
-  h += '<a href="/achievements/" class="pf-mypage-action">🏅 Награды</a>';
-  h += '<a href="/bookmarks/" class="pf-mypage-action">📚 Закладки</a>';
-  h += '<a href="/quests/" class="pf-mypage-action">🗺️ Квесты</a>';
-  h += '<a href="/shop/" class="pf-mypage-action">🛒 Магазин</a>';
-  h += '</div></div>';
-
-  /* ═══ QUICK GRID ═══ */
-  h += '<div class="pf-quick-grid">';
-  QUICK.forEach(function(q){
-    h += '<a href="' + q.href + '" class="pf-quick-card"><div class="pf-quick-icon">' + q.i + '</div><div><div class="pf-quick-title">' + q.t + '</div><div class="pf-quick-desc">' + q.d + '</div></div></a>';
+/* ═══ СКРОЛЛ-ТАБЫ ═══ */
+function setupDraggableTabs(){
+  var tabs=document.getElementById('pf-tabs');
+  if (!tabs||tabs.dataset.drag==='1') return;
+  tabs.dataset.drag='1';
+  var isDown=false,startX=0,startScroll=0,moved=0;
+  tabs.addEventListener('mousedown',function(e){
+    if (e.target.closest('.pf-tab')) return;
+    isDown=true; moved=0; startX=e.pageX; startScroll=tabs.scrollLeft;
+    tabs.style.cursor='grabbing'; tabs.style.userSelect='none';
   });
-  h += '</div>';
+  document.addEventListener('mousemove',function(e){
+    if (!isDown) return; e.preventDefault();
+    moved=Math.abs(e.pageX-startX);
+    tabs.scrollLeft=startScroll-(e.pageX-startX);
+  });
+  document.addEventListener('mouseup',function(){
+    if (!isDown) return; isDown=false;
+    tabs.style.cursor='grab'; tabs.style.userSelect='';
+    if (moved>5){
+      var block=function(ev){ev.stopPropagation();ev.preventDefault();};
+      tabs.addEventListener('click',block,{capture:true,once:true});
+      setTimeout(function(){tabs.removeEventListener('click',block,{capture:true});},50);
+    }
+  });
+}
 
-  /* ═══ TABS ═══ */
-  var tabs = [{id:'overview',i:'👤',l:'Обзор'},{id:'activity',i:'📊',l:'Активность'}];
+/* ═══ БЫСТРЫЕ ССЫЛКИ ═══ */
+function injectQuickLinks(){
+  var app=document.getElementById('profile-app');
+  if (!app||app.querySelector('.pf-quick-expand')) return;
+  var grid=app.querySelector('.pf-quick-grid'); if (!grid) return;
+  var exp=document.createElement('div'); exp.className='pf-quick-expand';
+  var body=ALL_LINKS.map(function(l){ return '<a href="'+l.h+'" class="pf-quick-link"><span class="pf-quick-link-icon">'+l.i+'</span><span>'+esc(l.n)+'</span></a>'; }).join('');
+  exp.innerHTML='<div class="pf-quick-header"><div class="pf-quick-header-title">⚡ Все разделы сайта <span style="font-size:.75rem;font-weight:600;color:#888;">('+ALL_LINKS.length+')</span></div><div class="pf-quick-header-arrow">▼</div></div><div class="pf-quick-body"><div class="pf-quick-body-inner">'+body+'</div></div>';
+  grid.parentNode.insertBefore(exp,grid.nextSibling);
+  exp.querySelector('.pf-quick-header').addEventListener('click',function(){ exp.classList.toggle('open'); });
+}
+
+/* ═══ РЕНДЕР ═══ */
+function render(){
+  if (!cp||!cu) return;
+  var kc=KC[cp.kingdom]||'#6C63FF';
+  document.documentElement.style.setProperty('--kc',kc);
+  document.documentElement.style.setProperty('--kl',kc+'cc');
+  document.documentElement.style.setProperty('--ks',kc+'40');
+  document.documentElement.style.setProperty('--kb',kc+'15');
+
+  var lvl=getLvl(cp.experience||0);
+  var name=cp.display_name||cp.username||(cu.email||'').split('@')[0];
+  var av=cp.avatar_url||avFallback(name);
+  var role=getRole(lvl.level);
+  var kingdom=cp.kingdom;
+  var flag=kingdom?KINGDOM_FLAGS[kingdom]:null;
+  var mod=cp.role==='moderator'||cp.role==='admin';
+  var xpLeft=Math.max(lvl.next-(cp.experience||0),0);
+  var vip=isVIP();
+  var days=vipDays();
+
+  var h='';
+
+  /* HERO */
+  var bgKey=cp.profile_bg||'default';
+  var bgCss=(VIP_BGS[bgKey]&&VIP_BGS[bgKey].css)||VIP_BGS.default.css;
+  h+='<div class="pf-hero '+(vip?'pf-hero-vip':'')+'" style="background:'+bgCss+';">';
+  if (vip){
+    h+='<span class="pf-sparkle" style="top:15%;left:8%">✦</span>';
+    h+='<span class="pf-sparkle" style="top:25%;right:12%">✦</span>';
+    h+='<span class="pf-sparkle" style="bottom:20%;left:15%">✦</span>';
+    h+='<span class="pf-sparkle" style="bottom:30%;right:8%">✦</span>';
+  }
+  h+='<div class="pf-hero-content">';
+  h+='<div class="pf-avatar-wrap" onclick="pfAvPick()" title="Сменить аватар">';
+  h+='<div class="pf-avatar-ring"></div>';
+  var fk=cp.avatar_frame||'none';
+  var fr=VIP_FRAMES[fk];
+  if (vip&&fr&&fr.css){
+    h+='<span class="vip-avatar-frame'+(fr.animated?' animated':'')+'" style="background:'+fr.css+';background-size:200% 200%;">';
+    h+='<img src="'+escAttr(av)+'" class="pf-avatar" onerror="this.onerror=null;this.src=\''+avFallback(name)+'\';">';
+    h+='</span>';
+  } else {
+    h+='<img src="'+escAttr(av)+'" class="pf-avatar" onerror="this.onerror=null;this.src=\''+avFallback(name)+'\';">';
+  }
+  h+='<div class="pf-avatar-badge">📷</div>';
+  h+='<div class="pf-role-badge">'+esc(role)+'</div>';
+  h+='</div>';
+
+  h+='<div class="pf-info">';
+  var nCls='pf-name'+(vip?' vip-name':'');
+  var nCol=cp.nick_color||kc;
+  var nSty=vip?' style="background:linear-gradient(90deg,'+nCol+' 0%,#f5d76e 25%,'+nCol+' 50%,#f5d76e 75%,'+nCol+' 100%);background-size:200% auto;"':'';
+  h+='<h1 class="'+nCls+'"'+nSty+' onclick="pfEditName()">'+esc(name)+' <span class="pf-name-edit">✏️</span>';
+  if (vip) h+=' <span class="pf-vip-badge" title="VIP до '+new Date(cp.vip_until).toLocaleDateString('ru-RU')+'">'+(cp.vip_badge||'👑')+'</span>';
+  if (vip&&cp.custom_title) h+=' <span class="pf-vip-title">'+esc(cp.custom_title)+'</span>';
+  if (mod) h+=' <span class="pf-mod-badge" onclick="event.stopPropagation();pfTab(\'moderation\')">🛡️ Модератор</span>';
+  h+='</h1>';
+  if (vip) h+='<div style="font-size:.78rem;margin-bottom:10px;color:rgba(255,255,255,.75);font-weight:700;">👑 VIP активен · осталось '+days+' дней</div>';
+
+  if (kingdom) h+='<div style="margin-bottom:12px;"><span class="pf-kingdom-badge" onclick="pfTab(\'settings\')">'+(flag?'<img src="'+escAttr(flag)+'">':'')+' '+esc(kingdom)+'</span></div>';
+  else h+='<div style="margin-bottom:12px;"><span class="pf-kingdom-badge" onclick="pfTab(\'settings\')">🏰 Выбрать королевство</span></div>';
+
+  h+='<p class="pf-email">'+esc(cu.email||(cu.is_anonymous?'Анонимный вход':'Без почты'))+'</p>';
+  h+='<div class="pf-stats">';
+  h+='<div class="pf-stat-item" onclick="pfTab(\'achievements\')"><div class="pf-stat-label">Уровень</div><div class="pf-stat-value">⭐ '+lvl.level+'</div></div>';
+  h+='<div class="pf-stat-item" onclick="pfTab(\'activity\')"><div class="pf-stat-label">Опыт</div><div class="pf-stat-value">💎 '+(cp.experience||0)+'</div></div>';
+  h+='<div class="pf-stat-item" onclick="pfTab(\'achievements\')"><div class="pf-stat-label">Награды</div><div class="pf-stat-value">🏆 '+achs.length+'</div></div>';
+  if (streak>0) h+='<div class="pf-stat-item" onclick="pfTab(\'activity\')"><div class="pf-stat-label">Серия</div><div class="pf-stat-value">🔥 '+streak+'</div></div>';
+  h+='<div class="pf-stat-item" onclick="pfTab(\'friends\')"><div class="pf-stat-label">Друзья</div><div class="pf-stat-value">👥 '+friends.length+'</div></div>';
+  h+='</div>';
+  h+='<div class="pf-currency-click" onclick="pfTab(\'wallet\')"><img src="'+COIN+'" class="pf-stat-coin"> <span>'+wallet.balance+'</span> талантов →</div>';
+  h+='<div class="pf-progress-bar"><div class="pf-progress-fill" style="width:'+lvl.percent+'%"></div></div>';
+  h+='<div class="pf-progress-text">До уровня '+(lvl.level+1)+': '+xpLeft+' XP</div>';
+  h+='</div></div></div>';
+
+  /* MYPAGE */
+  h+='<div class="pf-mypage '+(vip?'pf-mypage-vip':'')+'">';
+  h+='<h2 class="pf-mypage-title">'+(vip?'👑 Моя страничка':'Моя страничка')+'</h2>';
+  h+='<p class="pf-mypage-sub">'+(vip?'Быстрый обзор · VIP-режим':'Быстрый обзор')+'</p>';
+  h+='<div class="pf-mypage-grid">';
+  h+='<div class="pf-mypage-tile" onclick="pfTab(\'achievements\')"><div class="pf-mypage-tile-label">Достижения</div><div class="pf-mypage-tile-value">'+achs.length+'/'+ACH.length+'</div><div class="pf-mypage-tile-sub">'+Math.round(achs.length/ACH.length*100)+'%</div></div>';
+  h+='<div class="pf-mypage-tile" onclick="pfTab(\'notes\')"><div class="pf-mypage-tile-label">Заметки</div><div class="pf-mypage-tile-value">'+notes.length+'</div><div class="pf-mypage-tile-sub">записей</div></div>';
+  h+='<div class="pf-mypage-tile" onclick="pfTab(\'friends\')"><div class="pf-mypage-tile-label">Друзья</div><div class="pf-mypage-tile-value">'+friends.length+'</div><div class="pf-mypage-tile-sub">в кругу</div></div>';
+  h+='<div class="pf-mypage-tile" onclick="pfTab(\'wallet\')"><div class="pf-mypage-tile-label">Таланты</div><div class="pf-mypage-tile-value">'+wallet.balance+'</div><div class="pf-mypage-tile-sub">🪙</div></div>';
+  h+='</div>';
+  h+='<div class="pf-mypage-actions">';
+  h+='<a href="/achievements/" class="pf-mypage-action">🏅 Награды</a>';
+  h+='<a href="/bookmarks/" class="pf-mypage-action">📚 Закладки</a>';
+  h+='<a href="/quests/" class="pf-mypage-action">🗺️ Квесты</a>';
+  h+='<a href="/shop/" class="pf-mypage-action">🛒 Магазин</a>';
+  h+='</div></div>';
+
+  /* QUICK GRID */
+  h+='<div class="pf-quick-grid">';
+  QUICK.forEach(function(q){ h+='<a href="'+q.href+'" class="pf-quick-card"><div class="pf-quick-icon">'+q.i+'</div><div><div class="pf-quick-title">'+q.t+'</div><div class="pf-quick-desc">'+q.d+'</div></div></a>'; });
+  h+='</div>';
+
+  /* TABS */
+  var tabs=[{id:'overview',i:'👤',l:'Обзор'},{id:'activity',i:'📊',l:'Активность'}];
   if (mod) tabs.push({id:'moderation',i:'🛡️',l:'Модерация',cls:'mod-tab'});
   tabs.push({id:'vip',i:'👑',l:'VIP',cls:'vip-tab'});
+  tabs.push({id:'wallet',i:'💰',l:'Кошелёк',cls:'wallet-tab',c:wallet.balance});
   tabs.push({id:'guild',i:'🏰',l:'Гильдия'},{id:'achievements',i:'🏅',l:'Достижения',c:achs.length},{id:'notes',i:'📝',l:'Заметки',c:notes.length},{id:'friends',i:'👥',l:'Друзья',c:friends.length},{id:'ai',i:'🤖',l:'ИИ-гид'},{id:'notifications',i:'🔔',l:'Уведомления'},{id:'leaderboard',i:'🏆',l:'Лидеры'},{id:'security',i:'🔐',l:'Безопасность'},{id:'settings',i:'⚙️',l:'Настройки'});
 
-  var active = localStorage.getItem(K_TAB) || 'overview';
-  if (!tabs.find(function(t){ return t.id === active; })) active = 'overview';
+  var active=localStorage.getItem(K_TAB)||'overview';
+  if (!tabs.find(function(t){return t.id===active;})) active='overview';
 
-  h += '<div class="pf-tabs-wrap"><div class="pf-tabs" id="pf-tabs">';
-  tabs.forEach(function(t){
-    h += '<button class="pf-tab ' + (t.cls||'') + (t.id === active ? ' active' : '') + '" data-tab="' + t.id + '">' + t.i + ' ' + t.l + (t.c ? ' <span class="pf-tab-count">' + t.c + '</span>' : '') + '</button>';
-  });
-  h += '</div></div>';
+  h+='<div class="pf-tabs-wrap"><div class="pf-tabs" id="pf-tabs">';
+  tabs.forEach(function(t){ h+='<button class="pf-tab '+(t.cls||'')+(t.id===active?' active':'')+'" data-tab="'+t.id+'">'+t.i+' '+t.l+(t.c?' <span class="pf-tab-count">'+t.c+'</span>':'')+'</button>'; });
+  h+='</div></div>';
 
-  /* ═══ OVERVIEW ═══ */
-  h += '<div class="pf-tab-content' + (active === 'overview' ? ' active' : '') + '" data-content="overview">';
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> О себе</h3>';
-  h += '<p style="margin:0 0 12px;color:#555;font-size:.95rem;line-height:1.6;" id="pf-bio">' + esc(cp.bio || '✍️ Ещё ничего не рассказал о себе.') + '</p>';
-  h += '<button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button></div>';
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>';
-  var md = getMD();
-  h += '<div style="text-align:center;padding:20px;background:linear-gradient(135deg,var(--kb),rgba(255,255,255,.4));border-radius:14px;">';
-  h += '<div style="font-size:1.2rem;font-weight:800;color:var(--kc);">' + md.month + '</div>';
-  h += '<div style="font-size:2.5rem;font-weight:900;color:#1a1a1a;margin:6px 0;">' + md.day + '</div>';
-  h += '<div style="font-size:.9rem;color:#666;">Год ' + md.year + ' Э.О.</div></div></div></div>';
+  /* OVERVIEW */
+  h+='<div class="pf-tab-content'+(active==='overview'?' active':'')+'" data-content="overview">';
+  h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> О себе</h3>';
+  h+='<p style="margin:0 0 12px;color:#555;font-size:.95rem;line-height:1.6;" id="pf-bio">'+esc(cp.bio||'✍️ Ещё ничего не рассказал о себе.')+'</p>';
+  h+='<button class="pf-btn pf-btn-outline" onclick="pfEditBio()">✏️ Редактировать</button></div>';
+  h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">🗓️</span> Марсианский календарь</h3>';
+  var md=getMD();
+  h+='<div style="text-align:center;padding:20px;background:linear-gradient(135deg,var(--kb),rgba(255,255,255,.4));border-radius:14px;">';
+  h+='<div style="font-size:1.2rem;font-weight:800;color:var(--kc);">'+md.month+'</div>';
+  h+='<div style="font-size:2.5rem;font-weight:900;color:#1a1a1a;margin:6px 0;">'+md.day+'</div>';
+  h+='<div style="font-size:.9rem;color:#666;">Год '+md.year+' Э.О.</div></div></div></div>';
 
-  /* ═══ ACTIVITY ═══ */
-  h += '<div class="pf-tab-content' + (active === 'activity' ? ' active' : '') + '" data-content="activity">';
-  h += '<div class="pf-charts-grid">';
-  var xh = getXP(), d14 = [], mx = 1;
-  for (var i = 13; i >= 0; i--){
-    var d = new Date(Date.now() - i * 86400000);
-    var k = d.toISOString().slice(0,10);
-    var v = xh[k] || 0;
-    if (v > mx) mx = v;
-    d14.push({v:v, d:d});
+  /* ACTIVITY */
+  h+='<div class="pf-tab-content'+(active==='activity'?' active':'')+'" data-content="activity">';
+  h+='<div class="pf-charts-grid">';
+  var xh=getXP(), d14=[], mx=1;
+  for (var i=13;i>=0;i--){
+    var d=new Date(Date.now()-i*86400000);
+    var k=d.toISOString().slice(0,10);
+    var v=xh[k]||0;
+    if (v>mx) mx=v;
+    d14.push({v:v,d:d});
   }
-  h += '<div class="pf-chart"><div class="pf-chart-title">📈 XP за 14 дней</div><div class="pf-bar-chart">';
+  h+='<div class="pf-chart"><div class="pf-chart-title">📈 XP за 14 дней</div><div class="pf-bar-chart">';
   d14.forEach(function(day){
-    var p = (day.v / mx) * 100;
-    h += '<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;"><div class="pf-bar" style="height:' + Math.max(p, 3) + '%" data-val="' + day.v + '"></div></div>';
+    var p=(day.v/mx)*100;
+    h+='<div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;"><div class="pf-bar" style="height:'+Math.max(p,3)+'%" data-val="'+day.v+'"></div></div>';
   });
-  h += '</div></div>';
-  h += '<div class="pf-chart"><div class="pf-chart-title">🥧 Источники XP</div><div class="pf-pie-wrap">';
-  h += '<div class="pf-pie" style="background:conic-gradient(#6C63FF 0 45%,#f39c12 45% 75%,#27ae60 75% 90%,#e74c3c 90% 100%);"></div>';
-  h += '<div class="pf-pie-legend">';
-  h += '<div class="pf-pie-legend-item"><span class="pf-pie-dot" style="background:#6C63FF;"></span><span class="pf-pie-label">Чтение</span><span class="pf-pie-value">45%</span></div>';
-  h += '<div class="pf-pie-legend-item"><span class="pf-pie-dot" style="background:#f39c12;"></span><span class="pf-pie-label">Квесты</span><span class="pf-pie-value">30%</span></div>';
-  h += '<div class="pf-pie-legend-item"><span class="pf-pie-dot" style="background:#27ae60;"></span><span class="pf-pie-label">Награды</span><span class="pf-pie-value">15%</span></div>';
-  h += '<div class="pf-pie-legend-item"><span class="pf-pie-dot" style="background:#e74c3c;"></span><span class="pf-pie-label">Прочее</span><span class="pf-pie-value">10%</span></div>';
-  h += '</div></div></div></div>';
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">🔥</span> Активность за 90 дней</h3><div class="pf-heatmap">' + renderHeat() + '</div></div></div>';
+  h+='</div></div></div>';
+  h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">🔥</span> Активность за 90 дней</h3><div class="pf-heatmap">'+renderHeat()+'</div></div></div>';
 
-  /* ═══ VIP ═══ */
-  h += '<div class="pf-tab-content' + (active === 'vip' ? ' active' : '') + '" data-content="vip">' + renderVIP(vip) + '</div>';
+  /* VIP */
+  h+='<div class="pf-tab-content'+(active==='vip'?' active':'')+'" data-content="vip">'+renderVIP(vip)+'</div>';
 
-  /* ═══ MODERATION ═══ */
+  /* WALLET */
+  h+='<div class="pf-tab-content'+(active==='wallet'?' active':'')+'" data-content="wallet">'+renderWallet(vip)+'</div>';
+
+  /* MODERATION */
   if (mod){
-    h += '<div class="pf-tab-content' + (active === 'moderation' ? ' active' : '') + '" data-content="moderation"><div class="pf-card" style="background:linear-gradient(135deg,rgba(231,76,60,.05),rgba(192,57,43,.03));border:2px solid rgba(231,76,60,.25);"><h3 class="pf-card-title" style="color:#c0392b;"><span class="pf-ct-icon">🛡️</span> Центр модерации</h3><a href="/lists/moderation/" class="pf-btn pf-btn-danger">🛡️ Открыть панель</a></div></div>';
+    h+='<div class="pf-tab-content'+(active==='moderation'?' active':'')+'" data-content="moderation"><div class="pf-card" style="background:linear-gradient(135deg,rgba(231,76,60,.05),rgba(192,57,43,.03));border:2px solid rgba(231,76,60,.25);"><h3 class="pf-card-title" style="color:#c0392b;"><span class="pf-ct-icon">🛡️</span> Центр модерации</h3><a href="/lists/moderation/" class="pf-btn pf-btn-danger">🛡️ Открыть панель</a></div></div>';
   }
 
-  /* ═══ GUILD ═══ */
-  h += '<div class="pf-tab-content' + (active === 'guild' ? ' active' : '') + '" data-content="guild">';
+  /* GUILD */
+  h+='<div class="pf-tab-content'+(active==='guild'?' active':'')+'" data-content="guild">';
   if (guild){
-    h += '<div class="pf-card" onclick="window.location.href=\'/guilds/\'" style="cursor:pointer;background:linear-gradient(135deg,' + (guild.color || kc) + ',rgba(0,0,0,.2));color:#fff;padding:26px 28px;border-radius:18px;margin-bottom:18px;"><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;"><div style="width:76px;height:76px;border-radius:18px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:2.5rem;border:2px solid rgba(255,255,255,.45);">' + (guild.icon || '🏰') + '</div><div style="flex:1;"><div style="font-size:1.5rem;font-weight:800;margin-bottom:6px;">' + esc(guild.name) + '</div><div style="font-size:.85rem;opacity:.92;">👥 ' + gmembers.length + ' · нажми →</div></div></div></div>';
-    h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">📜</span> Описание</h3><p style="margin:0;color:#555;line-height:1.6;">' + esc(guild.description || 'Без описания') + '</p></div>';
-    h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><a href="/guilds/" class="pf-btn pf-btn-outline">🏰 В раздел гильдий</a>';
-    if (guild.leader_id === cu.id) h += '<button class="pf-btn pf-btn-danger" style="margin-left:8px;" onclick="pfDelGuild()">🗑️ Удалить</button>';
-    h += '</div>';
+    h+='<div class="pf-card" onclick="window.location.href=\'/guilds/\'" style="cursor:pointer;background:linear-gradient(135deg,'+(guild.color||kc)+',rgba(0,0,0,.2));color:#fff;padding:26px 28px;border-radius:18px;margin-bottom:18px;"><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;"><div style="width:76px;height:76px;border-radius:18px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:2.5rem;border:2px solid rgba(255,255,255,.45);">'+(guild.icon||'🏰')+'</div><div style="flex:1;"><div style="font-size:1.5rem;font-weight:800;margin-bottom:6px;">'+esc(guild.name)+'</div><div style="font-size:.85rem;opacity:.92;">👥 '+gmembers.length+' · 💰 '+((guild.bank||0))+' талантов · нажми →</div></div></div></div>';
+    h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">📜</span> Описание</h3><p style="margin:0;color:#555;line-height:1.6;">'+esc(guild.description||'Без описания')+'</p></div>';
+    h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'">';
+    h+='<button type="button" class="pf-btn" style="width:100%;justify-content:center;background:linear-gradient(135deg,#f39c12,#e67e22);border:none;color:#fff;margin-bottom:10px;" onclick="pfDonateGuild('+guild.id+')">💎 Вложить таланты в банк</button>';
+    h+='<a href="/guilds/" class="pf-btn pf-btn-outline">🏰 В раздел гильдий</a>';
+    if (guild.leader_id===cu.id) h+='<button class="pf-btn pf-btn-danger" style="margin-left:8px;" onclick="pfDelGuild()">🗑️ Удалить</button>';
+    h+='</div>';
   } else {
-    h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '" style="text-align:center;padding:50px 20px;"><div style="font-size:4rem;margin-bottom:12px;">🏰</div><h3 style="margin:0 0 8px;">Вы не в гильдии</h3><a href="/guilds/" class="pf-btn">🔍 Найти гильдию</a></div>';
+    h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'" style="text-align:center;padding:50px 20px;"><div style="font-size:4rem;margin-bottom:12px;">🏰</div><h3 style="margin:0 0 8px;">Вы не в гильдии</h3><a href="/guilds/" class="pf-btn">🔍 Найти гильдию</a></div>';
   }
-  h += '</div>';
+  h+='</div>';
 
-  /* ═══ ACHIEVEMENTS ═══ */
-  h += '<div class="pf-tab-content' + (active === 'achievements' ? ' active' : '') + '" data-content="achievements"><div class="pf-card' + (vip ? ' pf-card-vip' : '') + '">';
-  h += '<h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Достижения (' + achs.length + '/' + ACH.length + ')</h3>';
-  h += '<div style="height:10px;background:rgba(108,99,255,.1);border-radius:10px;overflow:hidden;margin-bottom:16px;"><div style="height:100%;width:' + Math.round(achs.length/ACH.length*100) + '%;background:linear-gradient(90deg,var(--kc),var(--kl));border-radius:10px;"></div></div>';
-  h += '<div class="pf-ach-filters">';
-  [{id:'all',n:'Все'},{id:'start',n:'Начало'},{id:'read',n:'Чтение'},{id:'xp',n:'Опыт'},{id:'lvl',n:'Уровни'},{id:'streak',n:'Серия'},{id:'social',n:'Друзья'},{id:'guild',n:'Гильдии'},{id:'currency',n:'Валюта'},{id:'kingdom',n:'Королевства'},{id:'special',n:'Особые'}].forEach(function(f){
-    h += '<button class="pf-ach-filter' + (achF === f.id ? ' active' : '') + '" data-f="' + f.id + '">' + f.n + '</button>';
-  });
-  h += '</div><div class="pf-ach-grid" id="pf-ach-grid">' + renderAchGrid() + '</div></div></div>';
+  /* ACHIEVEMENTS */
+  h+='<div class="pf-tab-content'+(active==='achievements'?' active':'')+'" data-content="achievements"><div class="pf-card'+(vip?' pf-card-vip':'')+'">';
+  h+='<h3 class="pf-card-title"><span class="pf-ct-icon">🏅</span> Достижения ('+achs.length+'/'+ACH.length+')</h3>';
+  h+='<div style="height:10px;background:rgba(108,99,255,.1);border-radius:10px;overflow:hidden;margin-bottom:16px;"><div style="height:100%;width:'+Math.round(achs.length/ACH.length*100)+'%;background:linear-gradient(90deg,var(--kc),var(--kl));border-radius:10px;"></div></div>';
+  h+='<div class="pf-ach-filters">';
+  [{id:'all',n:'Все'},{id:'start',n:'Начало'},{id:'read',n:'Чтение'},{id:'xp',n:'Опыт'},{id:'lvl',n:'Уровни'},{id:'streak',n:'Серия'},{id:'social',n:'Друзья'},{id:'guild',n:'Гильдии'},{id:'currency',n:'Валюта'},{id:'kingdom',n:'Королевства'},{id:'special',n:'Особые'}].forEach(function(f){ h+='<button class="pf-ach-filter'+(achF===f.id?' active':'')+'" data-f="'+f.id+'">'+f.n+'</button>'; });
+  h+='</div><div class="pf-ach-grid" id="pf-ach-grid">'+renderAchGrid()+'</div></div></div>';
 
-  /* ═══ NOTES ═══ */
-  h += '<div class="pf-tab-content' + (active === 'notes' ? ' active' : '') + '" data-content="notes"><div class="pf-card' + (vip ? ' pf-card-vip' : '') + '">';
-  h += '<h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> Заметки (' + notes.length + ')</h3>';
-  h += '<div class="pf-notes-toolbar"><input type="text" class="pf-notes-search" placeholder="🔍 Поиск..." value="' + escAttr(noteQ) + '" oninput="pfNoteQ(this.value)"><button class="pf-btn" onclick="pfNoteForm()">➕ Новая</button></div>';
-  var fl = notes.filter(function(n){
-    if (!noteQ) return true;
-    var q = noteQ.toLowerCase();
-    return (n.title || '').toLowerCase().indexOf(q) !== -1 || (n.content || '').toLowerCase().indexOf(q) !== -1;
-  });
-  if (!fl.length) h += '<p style="text-align:center;color:#888;padding:40px 20px;">' + (noteQ ? 'Ничего не найдено' : 'Пока нет заметок') + '</p>';
+  /* NOTES */
+  h+='<div class="pf-tab-content'+(active==='notes'?' active':'')+'" data-content="notes"><div class="pf-card'+(vip?' pf-card-vip':'')+'">';
+  h+='<h3 class="pf-card-title"><span class="pf-ct-icon">📝</span> Заметки ('+notes.length+')</h3>';
+  h+='<div class="pf-notes-toolbar"><input type="text" class="pf-notes-search" placeholder="🔍 Поиск..." value="'+escAttr(noteQ)+'" oninput="pfNoteQ(this.value)"><button class="pf-btn" onclick="pfNoteForm()">➕ Новая</button></div>';
+  var fl=notes.filter(function(n){ if (!noteQ) return true; var q=noteQ.toLowerCase(); return (n.title||'').toLowerCase().indexOf(q)!==-1||(n.content||'').toLowerCase().indexOf(q)!==-1; });
+  if (!fl.length) h+='<p style="text-align:center;color:#888;padding:40px 20px;">'+(noteQ?'Ничего не найдено':'Пока нет заметок')+'</p>';
   else {
-    h += '<div class="pf-notes-grid">';
+    h+='<div class="pf-notes-grid">';
     fl.forEach(function(n){
-      h += '<div class="pf-note' + (n.pinned ? ' pinned' : '') + '" onclick="pfEditNote(' + n.id + ')">';
-      if (n.pinned) h += '<span class="pf-note-pin">📌</span>';
-      h += '<div class="pf-note-title">' + esc(n.title || 'Без названия') + '</div>';
-      h += '<div class="pf-note-content">' + esc(n.content) + '</div>';
-      h += '<div class="pf-note-footer"><span>' + new Date(n.updated_at || n.created_at).toLocaleDateString('ru-RU') + '</span>';
-      h += '<div class="pf-note-actions" onclick="event.stopPropagation();"><button onclick="pfPinNote(' + n.id + ')">' + (n.pinned ? '📍' : '📌') + '</button><button onclick="pfEditNote(' + n.id + ')">✏️</button><button class="danger" onclick="pfDelNote(' + n.id + ')">🗑️</button></div></div></div>';
+      h+='<div class="pf-note'+(n.pinned?' pinned':'')+'" onclick="pfEditNote('+n.id+')">';
+      if (n.pinned) h+='<span class="pf-note-pin">📌</span>';
+      h+='<div class="pf-note-title">'+esc(n.title||'Без названия')+'</div>';
+      h+='<div class="pf-note-content">'+esc(n.content)+'</div>';
+      h+='<div class="pf-note-footer"><span>'+new Date(n.updated_at||n.created_at).toLocaleDateString('ru-RU')+'</span>';
+      h+='<div class="pf-note-actions" onclick="event.stopPropagation();"><button onclick="pfPinNote('+n.id+')">'+(n.pinned?'📍':'📌')+'</button><button onclick="pfEditNote('+n.id+')">✏️</button><button class="danger" onclick="pfDelNote('+n.id+')">🗑️</button></div></div></div>';
     });
-    h += '</div>';
+    h+='</div>';
   }
-  h += '</div></div>';
+  h+='</div></div>';
 
-  /* ═══ FRIENDS — с золотой VIP иконкой ═══ */
-  h += '<div class="pf-tab-content' + (active === 'friends' ? ' active' : '') + '" data-content="friends">';
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Друзья (' + friends.length + ')</h3>';
-  if (!friends.length) h += '<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет друзей.</p>';
+  /* FRIENDS */
+  h+='<div class="pf-tab-content'+(active==='friends'?' active':'')+'" data-content="friends">';
+  h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">👥</span> Друзья ('+friends.length+')</h3>';
+  if (!friends.length) h+='<p style="text-align:center;color:#888;padding:40px 20px;">Пока нет друзей.</p>';
   else friends.forEach(function(f){
-    var n = f.other.display_name || f.other.username || 'Аноним';
-    var a = f.other.avatar_url || avFallback(n);
-    var isFriendVIP = f.other.vip_until && new Date(f.other.vip_until).getTime() > Date.now();
-    h += '<div class="pf-friend" onclick="pfGuest(\'' + escAttr(f.other.user_id) + '\')"><img src="' + escAttr(a) + '" class="pf-friend-avatar" loading="lazy" onerror="this.onerror=null;this.src=\'' + avFallback(n) + '\';"><div class="pf-friend-info"><div class="pf-friend-name">' + esc(n) + goldVIPIcon(isFriendVIP, 'VIP-друг') + '</div><div class="pf-friend-status">👥 Друзья</div></div><div class="pf-friend-actions" onclick="event.stopPropagation();"><button class="pf-icon-btn danger" onclick="pfRmFriend(\'' + escAttr(f.other.user_id) + '\')">✕</button></div></div>';
+    var n=f.other.display_name||f.other.username||'Аноним';
+    var a=f.other.avatar_url||avFallback(n);
+    var isFrVIP=f.other.vip_until&&new Date(f.other.vip_until).getTime()>Date.now();
+    h+='<div class="pf-friend" onclick="pfGuest(\''+escAttr(f.other.user_id)+'\')"><img src="'+escAttr(a)+'" class="pf-friend-avatar" loading="lazy" onerror="this.onerror=null;this.src=\''+avFallback(n)+'\';"><div class="pf-friend-info"><div class="pf-friend-name">'+esc(n)+goldVIPIcon(isFrVIP,'VIP-друг')+'</div><div class="pf-friend-status">👥 Друзья</div></div><div class="pf-friend-actions" onclick="event.stopPropagation();"><button class="pf-icon-btn danger" onclick="pfRmFriend(\''+escAttr(f.other.user_id)+'\')">✕</button></div></div>';
   });
-  h += '</div>';
-  if (reqs.length > 0){
-    h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">📨</span> Заявки (' + reqs.length + ')</h3>';
+  h+='</div>';
+  if (reqs.length>0){
+    h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">📨</span> Заявки ('+reqs.length+')</h3>';
     reqs.forEach(function(f){
-      var n = f.other.display_name || f.other.username || 'Аноним';
-      var a = f.other.avatar_url || avFallback(n);
-      var isReqVIP = f.other.vip_until && new Date(f.other.vip_until).getTime() > Date.now();
-      h += '<div class="pf-friend"><img src="' + escAttr(a) + '" class="pf-friend-avatar" onclick="pfGuest(\'' + escAttr(f.other.user_id) + '\')" onerror="this.onerror=null;this.src=\'' + avFallback(n) + '\';"><div class="pf-friend-info"><div class="pf-friend-name">' + esc(n) + goldVIPIcon(isReqVIP, 'VIP') + '</div><div class="pf-friend-status">хочет дружить</div></div><div class="pf-friend-actions"><button class="pf-icon-btn success" onclick="pfAccFriend(\'' + escAttr(f.other.user_id) + '\')">✓</button><button class="pf-icon-btn danger" onclick="pfDeclFriend(\'' + escAttr(f.other.user_id) + '\')">✕</button></div></div>';
+      var n=f.other.display_name||f.other.username||'Аноним';
+      var a=f.other.avatar_url||avFallback(n);
+      h+='<div class="pf-friend"><img src="'+escAttr(a)+'" class="pf-friend-avatar" onclick="pfGuest(\''+escAttr(f.other.user_id)+'\')" onerror="this.onerror=null;this.src=\''+avFallback(n)+'\';"><div class="pf-friend-info"><div class="pf-friend-name">'+esc(n)+'</div><div class="pf-friend-status">хочет дружить</div></div><div class="pf-friend-actions"><button class="pf-icon-btn success" onclick="pfAccFriend(\''+escAttr(f.other.user_id)+'\')">✓</button><button class="pf-icon-btn danger" onclick="pfDeclFriend(\''+escAttr(f.other.user_id)+'\')">✕</button></div></div>';
     });
-    h += '</div>';
+    h+='</div>';
   }
-  h += '</div>';
+  h+='</div>';
 
-  /* ═══ AI ═══ */
-  h += '<div class="pf-tab-content' + (active === 'ai' ? ' active' : '') + '" data-content="ai"><div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">🤖</span> ИИ-гид</h3><div class="pf-chat-wrap">';
-  h += '<div class="pf-chat" id="pf-chat">';
-  if (!chat.length) h += '<div class="pf-chat-msg bot">Привет! Спроси о королевствах, персонажах, VIP!</div>';
-  else chat.slice(-30).forEach(function(m){
-    h += '<div class="pf-chat-msg ' + (m.role === 'user' ? 'user' : 'bot') + '">' + fmtChat(m) + '</div>';
-  });
-  h += '</div><div style="display:flex;flex-wrap:wrap;gap:8px;">';
-  ['Что такое Кимерия?','Что даёт VIP?','Как получить опыт?','Что такое гильдии?'].forEach(function(q){
-    h += '<button type="button" class="pf-chat-chip" onclick="pfAsk(\'' + escAttr(q) + '\')">' + esc(q) + '</button>';
-  });
-  h += '</div><div class="pf-chat-input"><input type="text" id="pf-chat-in" placeholder="Вопрос..." onkeypress="if(event.key===\'Enter\')pfSend()"><button type="button" onclick="pfSend()">➤</button></div></div></div></div>';
+  /* AI */
+  h+='<div class="pf-tab-content'+(active==='ai'?' active':'')+'" data-content="ai"><div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">🤖</span> ИИ-гид</h3><div class="pf-chat-wrap">';
+  h+='<div class="pf-chat" id="pf-chat">';
+  if (!chat.length) h+='<div class="pf-chat-msg bot">Привет! Спроси о королевствах, персонажах, VIP, талантах!</div>';
+  else chat.slice(-30).forEach(function(m){ h+='<div class="pf-chat-msg '+(m.role==='user'?'user':'bot')+'">'+fmtChat(m)+'</div>'; });
+  h+='</div><div style="display:flex;flex-wrap:wrap;gap:8px;">';
+  ['Что такое Кимерия?','Что даёт VIP?','Как получить опыт?','Что такое таланты?'].forEach(function(q){ h+='<button type="button" class="pf-chat-chip" onclick="pfAsk(\''+escAttr(q)+'\')">'+esc(q)+'</button>'; });
+  h+='</div><div class="pf-chat-input"><input type="text" id="pf-chat-in" placeholder="Вопрос..." onkeypress="if(event.key===\'Enter\')pfSend()"><button type="button" onclick="pfSend()">➤</button></div></div></div></div>';
 
-  /* ═══ NOTIFICATIONS ═══ */
-  h += '<div class="pf-tab-content' + (active === 'notifications' ? ' active' : '') + '" data-content="notifications"><div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Уведомления (' + notifs.length + ')</h3>';
-  if (!notifs.length) h += '<p style="text-align:center;color:#888;padding:40px 20px;">Уведомлений нет.</p>';
+  /* NOTIFICATIONS */
+  h+='<div class="pf-tab-content'+(active==='notifications'?' active':'')+'" data-content="notifications"><div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">🔔</span> Уведомления ('+notifs.length+')</h3>';
+  if (!notifs.length) h+='<p style="text-align:center;color:#888;padding:40px 20px;">Уведомлений нет.</p>';
   else notifs.forEach(function(n){
-    h += '<div style="display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;"><div style="font-size:1.3rem;">📬</div><div style="flex:1;"><div style="font-size:.88rem;color:#333;">' + esc(n.message || '') + '</div><div style="font-size:.72rem;color:#999;margin-top:2px;">' + new Date(n.created_at).toLocaleString('ru-RU', {day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}) + '</div></div></div>';
+    h+='<div style="display:flex;gap:12px;padding:12px 14px;border-radius:12px;background:rgba(0,0,0,.03);margin-bottom:8px;"><div style="font-size:1.3rem;">📬</div><div style="flex:1;"><div style="font-size:.88rem;color:#333;">'+esc(n.message||'')+'</div><div style="font-size:.72rem;color:#999;margin-top:2px;">'+new Date(n.created_at).toLocaleString('ru-RU',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})+'</div></div></div>';
   });
-  h += '</div></div>';
+  h+='</div></div>';
 
-  /* ═══ LEADERBOARD — с золотой иконкой ═══ */
-  h += '<div class="pf-tab-content' + (active === 'leaderboard' ? ' active' : '') + '" data-content="leaderboard"><div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">🏆</span> Топ-10</h3>';
-  if (!leaders.length) h += '<p style="text-align:center;color:#888;padding:40px 20px;">Недоступно.</p>';
+  /* LEADERBOARD */
+  h+='<div class="pf-tab-content'+(active==='leaderboard'?' active':'')+'" data-content="leaderboard"><div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">🏆</span> Топ-10</h3>';
+  if (!leaders.length) h+='<p style="text-align:center;color:#888;padding:40px 20px;">Недоступно.</p>';
   else {
-    h += '<table class="pf-leaderboard"><thead><tr><th>#</th><th>Участник</th><th style="text-align:right;">Ур.</th><th style="text-align:right;">XP</th></tr></thead><tbody>';
-    leaders.forEach(function(l, i){
-      var nm = l.display_name || l.username || 'Аноним';
-      var med = ['🥇','🥈','🥉'];
-      var isMe = l.user_id === cu.id;
-      var isLeaderVIP = l.vip_until && new Date(l.vip_until).getTime() > Date.now();
-      h += '<tr class="' + (isMe ? 'pf-me' : '') + '" onclick="pfGuest(\'' + escAttr(l.user_id) + '\')"><td>' + (med[i] || (i+1)) + '</td><td><span class="pf-lb-name"><img src="' + escAttr(l.avatar_url || avFallback(nm)) + '" class="pf-lb-avatar" loading="lazy" onerror="this.onerror=null;this.src=\'' + avFallback(nm) + '\';"><span>' + esc(nm) + (isMe ? ' (вы)' : '') + '</span>' + goldVIPIcon(isLeaderVIP, 'VIP') + '</span></td><td style="text-align:right;">' + (l.level || getLvl(l.experience || 0).level) + '</td><td style="text-align:right;"><b>' + (l.experience || 0) + '</b></td></tr>';
+    h+='<table class="pf-leaderboard"><thead><tr><th>#</th><th>Участник</th><th style="text-align:right;">Ур.</th><th style="text-align:right;">XP</th></tr></thead><tbody>';
+    leaders.forEach(function(l,i){
+      var nm=l.display_name||l.username||'Аноним';
+      var med=['🥇','🥈','🥉'];
+      var isMe=l.user_id===cu.id;
+      var isLVIP=l.vip_until&&new Date(l.vip_until).getTime()>Date.now();
+      h+='<tr class="'+(isMe?'pf-me':'')+'" onclick="pfGuest(\''+escAttr(l.user_id)+'\')"><td>'+(med[i]||(i+1))+'</td><td><span class="pf-lb-name"><img src="'+escAttr(l.avatar_url||avFallback(nm))+'" class="pf-lb-avatar" loading="lazy" onerror="this.onerror=null;this.src=\''+avFallback(nm)+'\';"><span>'+esc(nm)+(isMe?' (вы)':'')+'</span>'+goldVIPIcon(isLVIP,'VIP')+'</span></td><td style="text-align:right;">'+(l.level||getLvl(l.experience||0).level)+'</td><td style="text-align:right;"><b>'+(l.experience||0)+'</b></td></tr>';
     });
-    h += '</tbody></table>';
+    h+='</tbody></table>';
   }
-  h += '</div></div>';
+  h+='</div></div>';
 
-  /* ═══ SECURITY ═══ */
-  h += '<div class="pf-tab-content' + (active === 'security' ? ' active' : '') + '" data-content="security">';
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">📧</span> Email-2FA</h3><div id="pf-2fa" style="margin-bottom:20px;"></div><div class="pf-toggle"><div><div class="pf-toggle-label">🔐 Email-2FA</div><div class="pf-toggle-desc">Код при входе</div></div><div class="pf-switch" id="pf-sw2fa" onclick="pfTog2FA()"></div></div></div>';
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">📱</span> Вход с другого устройства</h3><p style="color:#666;font-size:.88rem;margin:0 0 14px;">QR-код для входа</p><button type="button" class="pf-btn" onclick="pfQR()" style="width:100%;justify-content:center;">📱 Показать QR</button></div>';
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">🔑</span> Пароль</h3><button class="pf-btn" onclick="pfChPass()">🔐 Сменить</button></div></div>';
+  /* SECURITY — полностью новая версия */
+  h+='<div class="pf-tab-content'+(active==='security'?' active':'')+'" data-content="security">'+renderSecurity(vip)+'</div>';
 
-  /* ═══ SETTINGS ═══ */
-  h += '<div class="pf-tab-content' + (active === 'settings' ? ' active' : '') + '" data-content="settings">';
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя</h3><p style="color:#555;margin:0 0 12px;">Текущее: <b>' + esc(name) + '</b></p><button class="pf-btn pf-btn-outline" onclick="pfEditName()">✏️ Изменить</button></div>';
-
-  /* Аватарки — 5 сверху + 5 снизу */
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">🖼️</span> Аватар</h3>';
-  h += '<div class="pf-avatar-section"><div class="pf-avatar-section-title">Новые (5)</div><div class="pf-avatar-grid">';
-  AV_TOP.forEach(function(u){
-    h += '<img src="' + u + '" class="pf-avatar-option' + (av === u ? ' selected' : '') + '" onclick="pfSetAv(\'' + escAttr(u) + '\')" loading="lazy" onerror="this.style.display=\'none\'">';
-  });
-  h += '</div></div>';
-  h += '<div class="pf-avatar-section"><div class="pf-avatar-section-title">Классические (5)</div><div class="pf-avatar-grid">';
-  AV_BOTTOM.forEach(function(u){
-    h += '<img src="' + u + '" class="pf-avatar-option' + (av === u ? ' selected' : '') + '" onclick="pfSetAv(\'' + escAttr(u) + '\')" loading="lazy" onerror="this.style.display=\'none\'">';
-  });
-  h += '</div></div></div>';
-
-  /* Королевство */
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">🏰</span> Королевство</h3><div class="pf-kingdom-grid">';
+  /* SETTINGS */
+  h+='<div class="pf-tab-content'+(active==='settings'?' active':'')+'" data-content="settings">';
+  h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">👤</span> Имя</h3><p style="color:#555;margin:0 0 12px;">Текущее: <b>'+esc(name)+'</b></p><button class="pf-btn pf-btn-outline" onclick="pfEditName()">✏️ Изменить</button></div>';
+  h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">🖼️</span> Аватар</h3>';
+  h+='<div class="pf-avatar-section"><div class="pf-avatar-section-title">Новые (5)</div><div class="pf-avatar-grid">';
+  AV_TOP.forEach(function(u){ h+='<img src="'+u+'" class="pf-avatar-option'+(av===u?' selected':'')+'" onclick="pfSetAv(\''+escAttr(u)+'\')" loading="lazy" onerror="this.style.display=\'none\'">'; });
+  h+='</div></div>';
+  h+='<div class="pf-avatar-section"><div class="pf-avatar-section-title">Классические (5)</div><div class="pf-avatar-grid">';
+  AV_BOTTOM.forEach(function(u){ h+='<img src="'+u+'" class="pf-avatar-option'+(av===u?' selected':'')+'" onclick="pfSetAv(\''+escAttr(u)+'\')" loading="lazy" onerror="this.style.display=\'none\'">'; });
+  h+='</div></div></div>';
+  h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">🏰</span> Королевство</h3><div class="pf-kingdom-grid">';
   K_ORDER.forEach(function(n){
-    var sel = cp.kingdom === n;
-    var c = KC[n] || '#6C63FF';
-    var f = KINGDOM_FLAGS[n];
-    h += '<button class="pf-kingdom-btn' + (sel ? ' selected' : '') + '" style="' + (sel ? 'background:' + c + ';border-color:' + c + ';' : '') + '" onclick="pfSetK(\'' + n + '\')"><img src="' + escAttr(f) + '"><span>' + n + '</span></button>';
+    var sel=cp.kingdom===n; var c=KC[n]||'#6C63FF'; var f=KINGDOM_FLAGS[n];
+    h+='<button class="pf-kingdom-btn'+(sel?' selected':'')+'" style="'+(sel?'background:'+c+';border-color:'+c+';':'')+'" onclick="pfSetK(\''+n+'\')"><img src="'+escAttr(f)+'"><span>'+n+'</span></button>';
   });
-  h += '</div></div>';
-  h += '<button class="pf-danger-btn" onclick="pfDanger()">⚠️ Опасная зона</button>';
-  h += '</div>';
+  h+='</div></div>';
+  h+='<button class="pf-danger-btn" onclick="pfDanger()">⚠️ Опасная зона</button>';
+  h+='</div>';
 
-  container.innerHTML = h;
+  container.innerHTML=h;
   attachTabs();
-  if (active === 'security') rend2FA();
-  if (active === 'vip') attachPromo();
+  applyVipEffects();
+  setupDraggableTabs();
+  injectQuickLinks();
+  if (active==='security') rend2FA();
+  if (active==='vip') attachPromo();
 }
 
 /* ═══ VIP TAB ═══ */
 function renderVIP(vip){
-  var h = '';
-  var days = vipDays();
-  if (vip){
-    h += '<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">👑</span> VIP активен · ' + days + ' дней</h3><p style="margin:0;color:#666;">У тебя все привилегии — настрой под себя!</p></div>';
-  } else {
-    h += '<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">👑</span> VIP-статус</h3><p style="margin:0 0 16px;color:#666;line-height:1.6;">VIP даёт: золотой бейдж, свой цвет ника, рамку аватара, кастомный титул, свой emoji, живой фон профиля, <b>+25 талантов</b>.</p><a href="/shop/" class="pf-btn" style="width:100%;justify-content:center;">🛒 Купить VIP</a></div>';
-  }
+  var h=''; var days=vipDays();
+  if (vip){ h+='<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">👑</span> VIP активен · '+days+' дней</h3><p style="margin:0;color:#666;">У тебя все привилегии — настрой под себя!</p></div>'; }
+  else { h+='<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">👑</span> VIP-статус</h3><p style="margin:0 0 16px;color:#666;line-height:1.6;">VIP даёт: золотой бейдж, свой цвет ника, рамку аватара, кастомный титул, свой emoji, живой фон профиля, <b>+25 талантов</b>.</p><a href="/shop/" class="pf-btn" style="width:100%;justify-content:center;">🛒 Купить VIP</a></div>'; }
 
-  /* Промокод */
-  h += '<div class="pf-card' + (vip ? ' pf-card-vip' : '') + '"><h3 class="pf-card-title"><span class="pf-ct-icon">🎁</span> Активировать промокод</h3>';
-  h += '<p style="margin:0 0 14px;color:#888;font-size:.85rem;">Введите код чтобы получить VIP или таланты</p>';
-  h += '<div style="display:flex;gap:8px;flex-wrap:wrap;">';
-  h += '<input id="vip-promo-in" type="text" placeholder="TEST-VIP-2026" style="flex:1;min-width:180px;padding:12px 16px;border:2px solid #e8eaf0;border-radius:12px;font-size:.95rem;font-family:inherit;outline:none;box-sizing:border-box;">';
-  h += '<button id="vip-promo-btn" type="button" style="padding:12px 24px;background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-family:inherit;">Активировать</button>';
-  h += '</div><div id="vip-promo-st" style="margin-top:10px;font-size:.85rem;font-weight:600;min-height:20px;"></div></div>';
+  h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">🎁</span> Активировать промокод</h3>';
+  h+='<p style="margin:0 0 14px;color:#888;font-size:.85rem;">Введите код чтобы получить VIP или таланты</p>';
+  h+='<div style="display:flex;gap:8px;flex-wrap:wrap;">';
+  h+='<input id="vip-promo-in" type="text" placeholder="TEST-VIP-2026" style="flex:1;min-width:180px;padding:12px 16px;border:2px solid #e8eaf0;border-radius:12px;font-size:.95rem;font-family:inherit;outline:none;box-sizing:border-box;">';
+  h+='<button id="vip-promo-btn" type="button" style="padding:12px 24px;background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-family:inherit;">Активировать</button>';
+  h+='</div><div id="vip-promo-st" style="margin-top:10px;font-size:.85rem;font-weight:600;min-height:20px;"></div></div>';
 
   if (vip){
-    /* Своя аватарка */
-    h += '<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">📷</span> Своя аватарка</h3>';
-    var av = cp.avatar_url || avFallback(cp.display_name || cp.username || '');
-    h += '<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">';
-    h += '<img src="' + escAttr(av) + '" style="width:64px;height:64px;aspect-ratio:1/1;border-radius:50%;object-fit:cover;border:3px solid #f39c12;" onerror="this.onerror=null;this.src=\'' + avFallback(cp.display_name || 'U') + '\';">';
-    h += '<label style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;border-radius:12px;font-weight:800;cursor:pointer;font-size:.85rem;font-family:inherit;">📤 Загрузить<input type="file" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none;" onchange="pfUpload(this)"></label>';
-    h += '<span style="font-size:.75rem;color:#888;">до 2 МБ · JPG, PNG, WEBP</span>';
-    h += '</div></div>';
+    h+='<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">📷</span> Своя аватарка</h3>';
+    var av=cp.avatar_url||avFallback(cp.display_name||cp.username||'');
+    h+='<div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">';
+    h+='<img src="'+escAttr(av)+'" style="width:64px;height:64px;aspect-ratio:1/1;border-radius:50%;object-fit:cover;border:3px solid #f39c12;" onerror="this.onerror=null;this.src=\''+avFallback(cp.display_name||'U')+'\';">';
+    h+='<label style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;border-radius:12px;font-weight:800;cursor:pointer;font-size:.85rem;font-family:inherit;">📤 Загрузить<input type="file" accept="image/jpeg,image/png,image/webp,image/gif" style="display:none;" onchange="pfUpload(this)"></label>';
+    h+='<span style="font-size:.75rem;color:#888;">до 2 МБ · JPG, PNG, WEBP</span></div></div>';
 
-    /* Рамки */
-    h += '<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">🖼️</span> Рамка аватара</h3><div class="pf-frame-grid">';
+    h+='<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">🖼️</span> Рамка аватара</h3><div class="pf-frame-grid">';
     Object.keys(VIP_FRAMES).forEach(function(k){
-      var f = VIP_FRAMES[k];
-      var sel = (cp.avatar_frame === k || (!cp.avatar_frame && k === 'none'));
-      h += '<div class="pf-frame-option' + (sel ? ' selected' : '') + '" onclick="pfVipSet(\'avatar_frame\',\'' + k + '\')">';
-      h += '<div class="pf-frame-preview' + (f.animated ? ' animated' : '') + '" style="background:' + (f.css || '#eee') + ';' + (f.css ? 'background-size:200% 200%;' : '') + '">';
-      h += '<img src="' + escAttr(cp.avatar_url || avFallback(cp.display_name || 'U')) + '" onerror="this.onerror=null;this.src=\'' + avFallback(cp.display_name || 'U') + '\';">';
-      h += '</div><div class="pf-frame-name">' + f.name + '</div></div>';
+      var f=VIP_FRAMES[k]; var sel=(cp.avatar_frame===k||(!cp.avatar_frame&&k==='none'));
+      h+='<div class="pf-frame-option'+(sel?' selected':'')+'" onclick="pfVipSet(\'avatar_frame\',\''+k+'\')">';
+      h+='<div class="pf-frame-preview'+(f.animated?' animated':'')+'" style="background:'+(f.css||'#eee')+';'+(f.css?'background-size:200% 200%;':'')+'">';
+      h+='<img src="'+escAttr(cp.avatar_url||avFallback(cp.display_name||'U'))+'" onerror="this.onerror=null;this.src=\''+avFallback(cp.display_name||'U')+'\';">';
+      h+='</div><div class="pf-frame-name">'+f.name+'</div></div>';
     });
-    h += '</div></div>';
+    h+='</div></div>';
 
-    /* Титул */
-    h += '<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">🏆</span> Свой титул</h3>';
-    h += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">';
-    h += '<input id="vip-title-in" type="text" maxlength="30" value="' + escAttr(cp.custom_title || '') + '" placeholder="Выбери готовый или напиши" style="flex:1;min-width:200px;padding:11px 16px;border:2px solid #e8eaf0;border-radius:12px;font-size:.9rem;font-family:inherit;outline:none;">';
-    h += '<button onclick="pfTitle()" style="padding:11px 20px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-family:inherit;">💾</button>';
-    h += '</div><div style="font-size:.78rem;color:#888;margin-bottom:8px;">Или выбери готовый:</div><div class="pf-title-presets">';
-    READY_TITLES.forEach(function(t){
-      h += '<button type="button" class="pf-title-preset" onclick="pfTitle(\'' + escAttr(t) + '\')">' + t + '</button>';
-    });
-    h += '</div></div>';
+    h+='<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">🏆</span> Свой титул</h3>';
+    h+='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">';
+    h+='<input id="vip-title-in" type="text" maxlength="30" value="'+escAttr(cp.custom_title||'')+'" placeholder="Выбери готовый или напиши" style="flex:1;min-width:200px;padding:11px 16px;border:2px solid #e8eaf0;border-radius:12px;font-size:.9rem;font-family:inherit;outline:none;">';
+    h+='<button onclick="pfTitle()" style="padding:11px 20px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-family:inherit;">💾</button></div>';
+    h+='<div style="font-size:.78rem;color:#888;margin-bottom:8px;">Или выбери готовый:</div><div class="pf-title-presets">';
+    READY_TITLES.forEach(function(t){ h+='<button type="button" class="pf-title-preset" onclick="pfTitle(\''+escAttr(t)+'\')">'+t+'</button>'; });
+    h+='</div></div>';
 
-    /* Emoji */
-    h += '<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">😀</span> Свой emoji</h3>';
-    h += '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">';
-    h += '<input id="vip-emoji-in" type="text" maxlength="4" value="' + escAttr(cp.custom_emoji || '') + '" placeholder="🔥" style="width:80px;padding:11px 16px;border:2px solid #e8eaf0;border-radius:12px;font-size:1.3rem;text-align:center;font-family:inherit;outline:none;">';
-    h += '<button onclick="pfEmoji()" style="padding:11px 20px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border:none;border-radius:12px;font-weight:800;cursor:pointer;font-family:inherit;">💾</button>';
-    h += '</div></div>';
-
-    /* Цвет ника */
-    h += '<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">🎨</span> Цвет ника</h3><div style="display:flex;gap:8px;flex-wrap:wrap;">';
+    h+='<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">🎨</span> Цвет ника</h3><div style="display:flex;gap:8px;flex-wrap:wrap;">';
     ['#6C63FF','#e74c3c','#27ae60','#f39c12','#3498db','#9b59b6','#1abc9c','#e91e63','#34495e','#e67e22','#f5d76e','#8e44ad'].forEach(function(c){
-      var isSel = (cp.nick_color === c);
-      h += '<button type="button" onclick="pfVipSet(\'nick_color\',\'' + c + '\')" style="width:38px;height:38px;border-radius:50%;border:3px solid ' + (isSel ? '#333' : 'transparent') + ';background:' + c + ';cursor:pointer;padding:0;"></button>';
+      var isSel=cp.nick_color===c;
+      h+='<button type="button" onclick="pfVipSet(\'nick_color\',\''+c+'\')" style="width:38px;height:38px;border-radius:50%;border:3px solid '+(isSel?'#333':'transparent')+';background:'+c+';cursor:pointer;padding:0;"></button>';
     });
-    h += '</div></div>';
+    h+='</div></div>';
 
-    /* Фон профиля */
-    h += '<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">🌌</span> Фон профиля</h3><div class="pf-bg-grid">';
+    h+='<div class="pf-card pf-card-vip"><h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">🌌</span> Фон профиля</h3><div class="pf-bg-grid">';
     Object.keys(VIP_BGS).forEach(function(k){
-      var bg = VIP_BGS[k];
-      var sel = (cp.profile_bg === k || (!cp.profile_bg && k === 'default'));
-      h += '<div class="pf-bg-option' + (sel ? ' selected' : '') + '" onclick="pfVipSet(\'profile_bg\',\'' + k + '\')">';
-      h += '<div class="pf-bg-preview" style="background:' + bg.css + ';background-size:cover;background-position:center;"></div>';
-      h += '<div class="pf-bg-name">' + bg.name + '</div></div>';
+      var bg=VIP_BGS[k]; var sel=(cp.profile_bg===k||(!cp.profile_bg&&k==='default'));
+      h+='<div class="pf-bg-option'+(sel?' selected':'')+'" onclick="pfVipSet(\'profile_bg\',\''+k+'\')">';
+      h+='<div class="pf-bg-preview" style="background:'+bg.css+';background-size:cover;background-position:center;"></div>';
+      h+='<div class="pf-bg-name">'+bg.name+'</div></div>';
     });
-    h += '</div></div>';
+    h+='</div></div>';
   }
   return h;
 }
 
-/* ═══ ВСПОМОГАТЕЛЬНЫЕ ═══ */
+/* ═══ WALLET TAB ═══ */
+function renderWallet(vip){
+  var h='';
+  h+='<div class="pf-card pf-wallet-hero'+(vip?' pf-card-vip':'')+'">';
+  h+='<div style="font-size:.75rem;letter-spacing:2px;text-transform:uppercase;opacity:.7;margin-bottom:8px;">Твой кошелёк</div>';
+  h+='<div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:8px;">';
+  h+='<img src="'+COIN+'" style="width:52px;height:52px;border-radius:50%;animation:pfCoin 3s ease-in-out infinite,pfCoinGlow 4s ease-in-out infinite;" onerror="this.style.display=\'none\'">';
+  h+='<span class="pf-wallet-balance">'+wallet.balance+'</span></div>';
+  h+='<div style="font-size:.9rem;opacity:.75;margin-bottom:20px;">глиняных талантов</div>';
+  h+='<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">';
+  h+='<a href="/shop/" class="pf-btn" style="background:linear-gradient(135deg,#f39c12,#e67e22);border:none;color:#fff;">🛒 Купить таланты</a>';
+  h+='<button type="button" id="pf-daily-btn" class="pf-btn" style="background:linear-gradient(135deg,#27ae60,#16a085);border:none;color:#fff;" onclick="pfClaimDaily()">🎁 Ежедневка</button>';
+  h+='</div>';
+  h+='<div style="font-size:.78rem;opacity:.6;margin-top:14px;">Всего заработано: <b style="color:#ffdf5e;">'+wallet.total_earned+'</b> 🪙</div></div>';
+
+  var talentItems=shopItems.filter(function(i){ return i.price_talents && i.category!=='vip'; });
+  if (talentItems.length){
+    h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">🛍️</span> Потратить таланты</h3>';
+    h+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;">';
+    talentItems.forEach(function(it){
+      var canBuy=wallet.balance>=it.price_talents;
+      h+='<div style="padding:14px;border:2px solid '+(canBuy?'rgba(243,156,18,.4)':'rgba(0,0,0,.1)')+';border-radius:14px;background:'+(canBuy?'linear-gradient(135deg,#fffbf0,#fff)':'#f9f9fb')+';">';
+      h+='<div style="font-size:1.8rem;text-align:center;margin-bottom:6px;">'+(it.icon||'🎁')+'</div>';
+      h+='<div style="font-weight:800;font-size:.9rem;text-align:center;margin-bottom:4px;">'+esc(it.name)+'</div>';
+      h+='<div style="font-size:.72rem;color:#888;text-align:center;margin-bottom:10px;min-height:2.4em;">'+esc(it.description||'')+'</div>';
+      h+='<div style="text-align:center;font-weight:900;color:#e67e22;font-size:1.1rem;margin-bottom:8px;">'+it.price_talents+' 🪙</div>';
+      if (canBuy) h+='<button class="pf-btn" style="width:100%;justify-content:center;background:linear-gradient(135deg,#f39c12,#e67e22);border:none;color:#fff;font-size:.8rem;padding:8px 12px;" onclick="pfBuyWithTalents(\''+esc(it.slug)+'\','+it.price_talents+')">Купить</button>';
+      else h+='<button class="pf-btn" style="width:100%;justify-content:center;font-size:.8rem;padding:8px 12px;" disabled>Не хватает</button>';
+      h+='</div>';
+    });
+    h+='</div></div>';
+  }
+
+  h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'"><h3 class="pf-card-title"><span class="pf-ct-icon">📜</span> Последние операции</h3>';
+  if (!txs.length) h+='<p style="text-align:center;color:#888;padding:30px;">Пока нет операций</p>';
+  else {
+    txs.forEach(function(t){
+      var pos=t.amount>0;
+      h+='<div class="pf-tx-item '+(pos?'pos':'neg')+'">';
+      h+='<div class="pf-tx-icon '+(pos?'pos':'neg')+'">'+(pos?'↓':'↑')+'</div>';
+      h+='<div style="flex:1;min-width:0;"><div style="font-weight:700;font-size:.86rem;color:#1a1a2e;">'+fmtTxType(t.type)+' · '+esc(fmtTxSource(t.source))+'</div>';
+      h+='<div style="font-size:.72rem;color:#888;">'+fmtDate(t.created_at)+' · баланс: '+t.balance_after+'</div></div>';
+      h+='<div class="pf-tx-amount '+(pos?'pos':'neg')+'">'+(pos?'+':'')+t.amount+' 🪙</div></div>';
+    });
+  }
+  h+='</div>';
+  return h;
+}
+
+/* ═══ SECURITY TAB ═══ */
+function renderSecurity(vip){
+  var email=cu.email||'';
+  var hasEmail=!!email;
+  var isAnon=!hasEmail||cu.is_anonymous;
+  var isVerified=!!cu.email_confirmed_at;
+  var h='';
+
+  if (isAnon){
+    h+='<div class="pf-card" style="border:2px solid rgba(243,156,18,.3);background:linear-gradient(135deg,#fffbf0,#fff);">';
+    h+='<h3 class="pf-card-title" style="color:#e67e22;"><span class="pf-ct-icon">📧</span> Привязать почту</h3>';
+    h+='<p style="color:#666;font-size:.88rem;margin:0 0 16px;">Ты зашёл анонимно. Привяжи email, чтобы сохранить аккаунт и не потерять прогресс.</p>';
+    h+='<input id="pf-bind-email" type="email" placeholder="your@email.com" style="width:100%;padding:12px 16px;border:2px solid #e8eaf0;border-radius:12px;font-size:.9rem;margin-bottom:8px;box-sizing:border-box;font-family:inherit;outline:none;">';
+    h+='<input id="pf-bind-pass" type="password" placeholder="Пароль (мин. 6)" style="width:100%;padding:12px 16px;border:2px solid #e8eaf0;border-radius:12px;font-size:.9rem;margin-bottom:10px;box-sizing:border-box;font-family:inherit;outline:none;">';
+    h+='<button class="pf-btn" style="width:100%;justify-content:center;" onclick="pfBindEmail()">📎 Привязать</button>';
+    h+='<div id="pf-bind-st" style="margin-top:10px;font-size:.82rem;min-height:18px;"></div></div>';
+  }
+
+  h+='<div class="pf-card'+(vip?' pf-card-vip':'')+'">';
+  h+='<h3 class="pf-card-title"><span class="pf-ct-icon">🔐</span> Вход и безопасность</h3>';
+
+  /* Email */
+  h+='<div class="pf-sec-card"><div class="pf-sec-icon '+(isVerified?'ok':(hasEmail?'warn':'off'))+'">'+(isVerified?'✅':(hasEmail?'📧':'❌'))+'</div>';
+  h+='<div class="pf-sec-body"><div class="pf-sec-title">Email-адрес '+(isVerified?'<span class="pf-sec-badge ok">Подтверждён</span>':(hasEmail?'<span class="pf-sec-badge warn">Не подтверждён</span>':'<span class="pf-sec-badge off">Не указан</span>'))+'</div>';
+  h+='<div class="pf-sec-desc">'+(email?esc(email):'Почта не привязана')+'</div></div>';
+  if (hasEmail && !isVerified) h+='<button class="pf-sec-action" onclick="pfResendConfirm()">Отправить письмо</button>';
+  else if (hasEmail) h+='<button class="pf-sec-action" onclick="pfChangeEmail()">Сменить</button>';
+  else h+='<button class="pf-sec-action primary" onclick="pfChangeEmail()">Добавить</button>';
+  h+='</div>';
+
+  /* Пароль */
+  h+='<div class="pf-sec-card"><div class="pf-sec-icon '+(hasEmail?'ok':'off')+'">🔑</div>';
+  h+='<div class="pf-sec-body"><div class="pf-sec-title">Пароль</div>';
+  h+='<div class="pf-sec-desc">'+(hasEmail?'Пароль установлен. Можно сменить или сбросить.':'Установи пароль после привязки email.')+'</div></div>';
+  h+='<button class="pf-sec-action" onclick="pfChangePassword()" '+(hasEmail?'':'disabled style="opacity:.4;cursor:not-allowed;"')+'>Сменить</button></div>';
+
+  /* OAuth */
+  h+='<div class="pf-sec-card"><div class="pf-sec-icon">🔗</div>';
+  h+='<div class="pf-sec-body"><div class="pf-sec-title">Вход через соцсети</div>';
+  h+='<div class="pf-sec-desc">Привяжи аккаунт Google, VK, OK или MAX</div></div>';
+  h+='<button class="pf-sec-action" onclick="pfLinkOAuth()">Привязать</button></div>';
+
+  /* 2FA */
+  h+='<div class="pf-sec-card"><div class="pf-sec-icon warn">🛡️</div>';
+  h+='<div class="pf-sec-body"><div class="pf-sec-title">Email-2FA</div>';
+  h+='<div class="pf-sec-desc">Запрашивать код на почту при входе с нового устройства</div></div>';
+  h+='<button class="pf-sec-action primary" onclick="pfToggle2FA()">Настроить</button></div>';
+
+  /* Magic link */
+  h+='<div class="pf-sec-card"><div class="pf-sec-icon">✨</div>';
+  h+='<div class="pf-sec-body"><div class="pf-sec-title">Вход по ссылке или коду</div>';
+  h+='<div class="pf-sec-desc">Получить magic link или 6-значный код на почту</div></div>';
+  h+='<button class="pf-sec-action" onclick="pfSendMagicLink()">Отправить</button></div>';
+
+  /* Reauth */
+  h+='<div class="pf-sec-card"><div class="pf-sec-icon">🔒</div>';
+  h+='<div class="pf-sec-body"><div class="pf-sec-title">Подтверждение личности</div>';
+  h+='<div class="pf-sec-desc">Запрашивать пароль перед важными действиями</div></div>';
+  h+='<button class="pf-sec-action" onclick="pfReauthenticate()">Проверить</button></div>';
+
+  /* QR */
+  h+='<div class="pf-sec-card"><div class="pf-sec-icon">📱</div>';
+  h+='<div class="pf-sec-body"><div class="pf-sec-title">Вход с другого устройства</div>';
+  h+='<div class="pf-sec-desc">QR-код для переноса сессии</div></div>';
+  h+='<button class="pf-sec-action" onclick="pfQR()">Показать QR</button></div>';
+
+  h+='</div>';
+  return h;
+}
+
+/* ═══ ВСПОМОГАТЕЛЬНЫЕ РЕНДЕРЫ ═══ */
 function renderHeat(){
-  var a = getAct(); var c = [];
-  var mx = Math.max.apply(null, Object.values(a).concat([1]));
-  for (var i = 89; i >= 0; i--){
-    var d = new Date(Date.now() - i * 86400000);
-    var k = d.toISOString().slice(0,10);
-    var v = a[k] || 0;
-    var l = 0;
-    if (v > 0) l = Math.min(4, Math.ceil((v/mx) * 4));
-    c.push('<div class="pf-heat-cell' + (l > 0 ? ' l' + l : '') + '" title="' + d.toLocaleDateString('ru-RU') + ': ' + v + '"></div>');
+  var a=getAct(); var c=[];
+  var mx=Math.max.apply(null,Object.values(a).concat([1]));
+  for (var i=89;i>=0;i--){
+    var d=new Date(Date.now()-i*86400000);
+    var k=d.toISOString().slice(0,10);
+    var v=a[k]||0;
+    var l=0;
+    if (v>0) l=Math.min(4,Math.ceil((v/mx)*4));
+    c.push('<div class="pf-heat-cell'+(l>0?' l'+l:'')+'" title="'+d.toLocaleDateString('ru-RU')+': '+v+'"></div>');
   }
   return c.join('');
 }
 function renderAchGrid(){
-  var f = achF === 'all' ? ACH : ACH.filter(function(a){ return a.c === achF; });
-  var e = {};
-  achs.forEach(function(a){ e[a.achievement_id] = a; });
+  var f=achF==='all'?ACH:ACH.filter(function(a){return a.c===achF;});
+  var e={};
+  achs.forEach(function(a){e[a.achievement_id]=a;});
   return f.map(function(a){
-    var er = e[a.id];
-    return '<div class="pf-ach' + (er ? '' : ' locked') + '"><div class="pf-ach-icon">' + (er ? a.i : '🔒') + '</div><div><div class="pf-ach-name">' + esc(a.n) + '</div><div class="pf-ach-date">' + (er ? (er.earned_at ? new Date(er.earned_at).toLocaleDateString('ru-RU') : 'Получено') : esc(a.d)) + '</div></div></div>';
+    var er=e[a.id];
+    return '<div class="pf-ach'+(er?'':' locked')+'"><div class="pf-ach-icon">'+(er?a.i:'🔒')+'</div><div><div class="pf-ach-name">'+esc(a.n)+'</div><div class="pf-ach-date">'+(er?(er.earned_at?new Date(er.earned_at).toLocaleDateString('ru-RU'):'Получено'):esc(a.d))+'</div></div></div>';
   }).join('');
 }
 function fmtChat(m){
-  var t = esc(m.text).replace(/\n/g, '<br>');
-  if (m.links && m.links.length){
-    t += '<div class="pf-chat-links">';
-    m.links.forEach(function(l){
-      t += '<a class="pf-chat-link" href="/' + escAttr(l.l) + '">📖 ' + esc(l.q || 'Открыть') + ' →</a>';
-    });
-    t += '</div>';
+  var t=esc(m.text).replace(/\n/g,'<br>');
+  if (m.links&&m.links.length){
+    t+='<div class="pf-chat-links">';
+    m.links.forEach(function(l){ t+='<a class="pf-chat-link" href="/'+escAttr(l.l)+'">📖 '+esc(l.q||'Открыть')+' →</a>'; });
+    t+='</div>';
   }
   return t;
 }
 function getMD(){
-  var m = ['Ākha-dzen','Kōl-khan','Dzen-ākha','Khōsen','Mar-dzen','Ariya-mar','Zal-ākha','Thal-khō','Kōl-ghar','Mōr-ākha','Dzen-kōl','Xal-mar','Lān-sen','Khō-mōr','Ākha-mōr','Kōl-suf','Dzen-thal','Ghōl-ākha','Rōg-ari','Mar-lān','Ksanf-suf','Yar-okh'];
-  var d = [31,30,32,31,33,30,31,32,29,31,30,28,29,31,32,33,31,30,29,31,32,33];
-  var MD = d.reduce(function(s, x){ return s + x; }, 0);
-  var EY = 668.6;
-  var now = new Date();
-  var df = (now - new Date(2026, 0, 1)) / 86400000;
-  var yr = Math.floor(3798000000 + 2740 + df / EY);
-  var doy = Math.floor((df * (MD / EY)) % MD);
-  var rem = doy, mi = 0;
-  for (var i = 0; i < d.length; i++){
-    if (rem < d[i]){ mi = i; break; }
-    rem -= d[i];
-  }
-  return {year: yr.toLocaleString(), month: m[mi], day: rem + 1};
+  var m=['Ākha-dzen','Kōl-khan','Dzen-ākha','Khōsen','Mar-dzen','Ariya-mar','Zal-ākha','Thal-khō','Kōl-ghar','Mōr-ākha','Dzen-kōl','Xal-mar','Lān-sen','Khō-mōr','Ākha-mōr','Kōl-suf','Dzen-thal','Ghōl-ākha','Rōg-ari','Mar-lān','Ksanf-suf','Yar-okh'];
+  var d=[31,30,32,31,33,30,31,32,29,31,30,28,29,31,32,33,31,30,29,31,32,33];
+  var MD=d.reduce(function(s,x){return s+x;},0);
+  var EY=668.6;
+  var now=new Date();
+  var df=(now-new Date(2026,0,1))/86400000;
+  var yr=Math.floor(3798000000+2740+df/EY);
+  var doy=Math.floor((df*(MD/EY))%MD);
+  var rem=doy,mi=0;
+  for (var i=0;i<d.length;i++){ if (rem<d[i]){ mi=i; break; } rem-=d[i]; }
+  return {year:yr.toLocaleString(),month:m[mi],day:rem+1};
 }
 
 /* ═══ TABS ═══ */
 function attachTabs(){
-  var w = document.getElementById('pf-tabs');
+  var w=document.getElementById('pf-tabs');
   if (!w) return;
-  w.querySelectorAll('.pf-tab').forEach(function(t){
-    t.onclick = function(){ pfTab(t.dataset.tab); };
-  });
-  w.addEventListener('wheel', function(e){
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)){
-      e.preventDefault();
-      w.scrollLeft += e.deltaY * 1.2;
-    }
-  }, {passive:false});
+  w.querySelectorAll('.pf-tab').forEach(function(t){ t.onclick=function(){ pfTab(t.dataset.tab); }; });
 }
-window.pfTab = function(id){
-  localStorage.setItem(K_TAB, id);
+window.pfTab=function(id){
+  localStorage.setItem(K_TAB,id);
   document.querySelectorAll('.pf-tab').forEach(function(t){
-    var on = t.dataset.tab === id;
-    t.classList.toggle('active', on);
-    if (on && t.scrollIntoView) t.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    var on=t.dataset.tab===id;
+    t.classList.toggle('active',on);
+    if (on&&t.scrollIntoView) t.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
   });
-  document.querySelectorAll('.pf-tab-content').forEach(function(c){
-    c.classList.toggle('active', c.dataset.content === id);
-  });
-  if (id === 'security') rend2FA();
-  if (id === 'vip') attachPromo();
+  document.querySelectorAll('.pf-tab-content').forEach(function(c){ c.classList.toggle('active',c.dataset.content===id); });
+  if (id==='security') rend2FA();
+  if (id==='vip') attachPromo();
 };
 
 /* ═══ ПРОМОКОД ═══ */
 function attachPromo(){
-  var inp = document.getElementById('vip-promo-in');
-  var btn = document.getElementById('vip-promo-btn');
-  var st = document.getElementById('vip-promo-st');
-  if (!inp || !btn || inp.dataset.bound === '1') return;
-  inp.dataset.bound = '1';
-  btn.addEventListener('click', async function(){
-    var c = inp.value.trim().toUpperCase();
-    if (!c){ st.textContent = '⚠️ Введите код'; st.style.color = '#e74c3c'; return; }
-    st.textContent = '⏳ Проверяем...'; st.style.color = '#999';
-    btn.disabled = true;
-    try {
-      var sb = window.supabaseClient;
-      var res = await sb.rpc('activate_promo', {p_code: c});
-      if (res.error || !res.data || !res.data.ok){
-        st.textContent = '❌ ' + ((res.error && res.error.message) || (res.data && res.data.error) || 'Ошибка');
-        st.style.color = '#e74c3c';
-      } else {
-        st.textContent = '✅ ' + res.data.product;
-        st.style.color = '#27ae60';
-        toast('👑 ' + res.data.product, 'vip');
-        setTimeout(function(){ location.reload(); }, 1500);
-      }
-    } catch(e){
-      st.textContent = '❌ ' + e.message;
-      st.style.color = '#e74c3c';
-    }
-    btn.disabled = false;
-  });
-  inp.addEventListener('keypress', function(e){ if (e.key === 'Enter') btn.click(); });
+  var inp=document.getElementById('vip-promo-in');
+  var btn=document.getElementById('vip-promo-btn');
+  if (!inp||!btn||inp.dataset.bound==='1') return;
+  inp.dataset.bound='1';
+  btn.addEventListener('click',function(){ window.pfActivatePromo(inp.value); });
+  inp.addEventListener('keypress',function(e){ if(e.key==='Enter'){e.preventDefault();window.pfActivatePromo(inp.value);} });
 }
 
 /* ═══ MODALS ═══ */
 function showM(opts){
-  var bg = document.createElement('div');
-  bg.className = 'pf-modal-bg';
-  var m = document.createElement('div');
-  m.className = 'pf-modal';
-  var f = '';
-  (opts.fields || []).forEach(function(x){
-    var v = escAttr(x.value || '');
-    if (x.type === 'textarea') f += '<textarea class="pf-modal-input" id="m-' + x.name + '" placeholder="' + escAttr(x.placeholder || '') + '" maxlength="' + (x.max || 5000) + '">' + v + '</textarea>';
-    else f += '<input type="' + (x.type || 'text') + '" class="pf-modal-input" id="m-' + x.name + '" placeholder="' + escAttr(x.placeholder || '') + '" value="' + v + '" maxlength="' + (x.max || 200) + '">';
+  var bg=document.createElement('div'); bg.className='pf-modal-bg';
+  var m=document.createElement('div'); m.className='pf-modal';
+  var f='';
+  (opts.fields||[]).forEach(function(x){
+    var v=escAttr(x.value||'');
+    if (x.type==='textarea') f+='<textarea class="pf-modal-input" id="m-'+x.name+'" placeholder="'+escAttr(x.placeholder||'')+'" maxlength="'+(x.max||5000)+'">'+v+'</textarea>';
+    else f+='<input type="'+(x.type||'text')+'" class="pf-modal-input" id="m-'+x.name+'" placeholder="'+escAttr(x.placeholder||'')+'" value="'+v+'" maxlength="'+(x.max||200)+'">';
   });
-  m.innerHTML = '<h3>' + esc(opts.title || '') + '</h3>' + (opts.sub ? '<p>' + esc(opts.sub) + '</p>' : '') + f + '<div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" id="m-c">Отмена</button><button class="pf-btn" id="m-o">' + esc(opts.okText || 'Сохранить') + '</button></div>';
-  bg.appendChild(m);
-  document.body.appendChild(bg);
+  m.innerHTML='<h3>'+esc(opts.title||'')+'</h3>'+(opts.sub?'<p>'+esc(opts.sub)+'</p>':'')+f+'<div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" id="m-c">Отмена</button><button class="pf-btn" id="m-o">'+esc(opts.okText||'Сохранить')+'</button></div>';
+  bg.appendChild(m); document.body.appendChild(bg);
   function cl(){ bg.remove(); }
-  bg.addEventListener('click', function(e){ if (e.target === bg) cl(); });
-  m.querySelector('#m-c').onclick = cl;
-  var fi = m.querySelector('.pf-modal-input');
-  if (fi) setTimeout(function(){ fi.focus(); if (fi.select) fi.select(); }, 100);
-  m.querySelector('#m-o').onclick = function(){
-    var v = {};
-    (opts.fields || []).forEach(function(x){
-      var el = m.querySelector('#m-' + x.name);
-      v[x.name] = el ? el.value.trim() : '';
-    });
-    cl();
-    if (opts.onOk) opts.onOk(v);
+  bg.addEventListener('click',function(e){ if(e.target===bg) cl(); });
+  m.querySelector('#m-c').onclick=cl;
+  var fi=m.querySelector('.pf-modal-input');
+  if (fi) setTimeout(function(){ fi.focus(); if(fi.select) fi.select(); },100);
+  m.querySelector('#m-o').onclick=function(){
+    var v={};
+    (opts.fields||[]).forEach(function(x){ var el=m.querySelector('#m-'+x.name); v[x.name]=el?el.value.trim():''; });
+    cl(); if (opts.onOk) opts.onOk(v);
   };
-  m.addEventListener('keydown', function(e){
-    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA'){ e.preventDefault(); m.querySelector('#m-o').click(); }
-    if (e.key === 'Escape') cl();
+  m.addEventListener('keydown',function(e){
+    if (e.key==='Enter'&&e.target.tagName!=='TEXTAREA'){ e.preventDefault(); m.querySelector('#m-o').click(); }
+    if (e.key==='Escape') cl();
   });
 }
 
-/* ═══════════════════════════════════════════════════════════
-   ACTIONS
-   ═══════════════════════════════════════════════════════════ */
-window.pfEditName = function(){
-  var c = cp.display_name || cp.username || '';
+/* ═══ ACTIONS ═══ */
+window.pfEditName=function(){
+  var c=cp.display_name||cp.username||'';
   showM({
     title:'✏️ Новое имя', sub:'2–20 символов',
-    fields:[{name:'name', value:c, placeholder:'Ваше имя', max:20}],
+    fields:[{name:'name',value:c,placeholder:'Ваше имя',max:20}],
     onOk: async function(v){
-      if (!v.name || v.name.length < 2 || v.name.length > 20){ toast('2–20 символов', 'error'); return; }
-      if (!isClean(v.name)){ toast('Недопустимые слова', 'error'); return; }
+      if (!v.name||v.name.length<2||v.name.length>20){ toast('2–20 символов','error'); return; }
+      if (!isClean(v.name)){ toast('Недопустимые слова','error'); return; }
       try {
-        await PATCH('profiles?user_id=eq.' + cu.id, {display_name: v.name}, cu._token);
-        cp.display_name = v.name;
-        toast('✅', 'success');
-        writeCache({user: cu.user, profile: cp});
-        setTimeout(render, 300);
-      } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
+        await PATCH('profiles?user_id=eq.'+cu.id,{display_name:v.name},cu._token);
+        cp.display_name=v.name;
+        toast('✅','success'); writeCache({user:cu.user,profile:cp}); setTimeout(render,300);
+      } catch(e){ toast('Ошибка: '+e.message,'error'); }
     }
   });
 };
 
-window.pfAvPick = function(){
-  var h = '<h3>🖼️ Выбрать аватар</h3><p>Нажми чтобы установить</p>';
-  h += '<div style="margin-bottom:16px;"><div style="font-size:.78rem;color:#888;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Новые (5)</div><div class="pf-modal-avatar-grid">';
-  AV_TOP.forEach(function(u){
-    h += '<img src="' + u + '" class="' + (cp.avatar_url === u ? 'selected' : '') + '" onclick="pfSetAvClose(\'' + escAttr(u) + '\')" onerror="this.style.display=\'none\'">';
-  });
-  h += '</div></div>';
-  h += '<div style="margin-bottom:16px;"><div style="font-size:.78rem;color:#888;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Классические (5)</div><div class="pf-modal-avatar-grid">';
-  AV_BOTTOM.forEach(function(u){
-    h += '<img src="' + u + '" class="' + (cp.avatar_url === u ? 'selected' : '') + '" onclick="pfSetAvClose(\'' + escAttr(u) + '\')" onerror="this.style.display=\'none\'">';
-  });
-  h += '</div></div>';
-  h += '<div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" onclick="document.querySelector(\'.pf-modal-bg\').remove()">Закрыть</button></div>';
-  var bg = document.createElement('div');
-  bg.className = 'pf-modal-bg';
-  var m = document.createElement('div');
-  m.className = 'pf-modal';
-  m.style.maxWidth = '560px';
-  m.innerHTML = h;
-  bg.appendChild(m);
-  document.body.appendChild(bg);
-  bg.addEventListener('click', function(e){ if (e.target === bg) bg.remove(); });
+window.pfAvPick=function(){
+  var h='<h3>🖼️ Выбрать аватар</h3><p>Нажми чтобы установить</p>';
+  h+='<div style="margin-bottom:16px;"><div style="font-size:.78rem;color:#888;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Новые (5)</div><div class="pf-modal-avatar-grid">';
+  AV_TOP.forEach(function(u){ h+='<img src="'+u+'" class="'+(cp.avatar_url===u?'selected':'')+'" onclick="pfSetAvClose(\''+escAttr(u)+'\')" onerror="this.style.display=\'none\'">'; });
+  h+='</div></div>';
+  h+='<div style="margin-bottom:16px;"><div style="font-size:.78rem;color:#888;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Классические (5)</div><div class="pf-modal-avatar-grid">';
+  AV_BOTTOM.forEach(function(u){ h+='<img src="'+u+'" class="'+(cp.avatar_url===u?'selected':'')+'" onclick="pfSetAvClose(\''+escAttr(u)+'\')" onerror="this.style.display=\'none\'">'; });
+  h+='</div></div>';
+  h+='<div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" onclick="document.querySelector(\'.pf-modal-bg\').remove()">Закрыть</button></div>';
+  var bg=document.createElement('div'); bg.className='pf-modal-bg';
+  var m=document.createElement('div'); m.className='pf-modal'; m.style.maxWidth='560px';
+  m.innerHTML=h; bg.appendChild(m); document.body.appendChild(bg);
+  bg.addEventListener('click',function(e){if(e.target===bg)bg.remove();});
 };
-
-window.pfSetAvClose = async function(u){
+window.pfSetAvClose=async function(u){
   try {
-    await PATCH('profiles?user_id=eq.' + cu.id, {avatar_url: u}, cu._token);
-    cp.avatar_url = u;
-    toast('✅', 'success');
-    writeCache({user: cu.user, profile: cp});
-    var b = document.querySelector('.pf-modal-bg');
-    if (b) b.remove();
+    await PATCH('profiles?user_id=eq.'+cu.id,{avatar_url:u},cu._token);
+    cp.avatar_url=u; toast('✅','success'); writeCache({user:cu.user,profile:cp});
+    var b=document.querySelector('.pf-modal-bg'); if (b) b.remove();
     render();
-  } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
+  } catch(e){ toast('Ошибка: '+e.message,'error'); }
 };
-window.pfSetAv = async function(u){
-  if (cp.avatar_url === u) return;
+window.pfSetAv=async function(u){
+  if (cp.avatar_url===u) return;
   try {
-    await PATCH('profiles?user_id=eq.' + cu.id, {avatar_url: u}, cu._token);
-    cp.avatar_url = u;
-    toast('✅', 'success');
-    writeCache({user: cu.user, profile: cp});
-    render();
-  } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
+    await PATCH('profiles?user_id=eq.'+cu.id,{avatar_url:u},cu._token);
+    cp.avatar_url=u; toast('✅','success'); writeCache({user:cu.user,profile:cp}); render();
+  } catch(e){ toast('Ошибка: '+e.message,'error'); }
 };
-window.pfSetK = async function(n){
-  if (cp.kingdom === n) return;
+window.pfSetK=async function(n){
+  if (cp.kingdom===n) return;
   try {
-    await PATCH('profiles?user_id=eq.' + cu.id, {kingdom: n}, cu._token);
-    cp.kingdom = n;
-    toast('✅ ' + n, 'success');
-    writeCache({user: cu.user, profile: cp});
-    render();
-  } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
+    await PATCH('profiles?user_id=eq.'+cu.id,{kingdom:n},cu._token);
+    cp.kingdom=n; toast('✅ '+n,'success'); writeCache({user:cu.user,profile:cp}); render();
+  } catch(e){ toast('Ошибка: '+e.message,'error'); }
 };
-window.pfEditBio = function(){
+window.pfEditBio=function(){
   showM({
     title:'📝 Биография', sub:'Расскажите о себе',
-    fields:[{name:'bio', type:'textarea', value: cp.bio || '', placeholder:'Пара слов...', max:1000}],
+    fields:[{name:'bio',type:'textarea',value:cp.bio||'',placeholder:'Пара слов...',max:1000}],
     onOk: async function(v){
-      if (!isClean(v.bio)){ toast('Недопустимые слова', 'error'); return; }
+      if (!isClean(v.bio)){ toast('Недопустимые слова','error'); return; }
       try {
-        await PATCH('profiles?user_id=eq.' + cu.id, {bio: v.bio}, cu._token);
-        cp.bio = v.bio;
-        var el = document.getElementById('pf-bio');
-        if (el) el.textContent = v.bio || '✍️ Ещё ничего не рассказал о себе.';
-        writeCache({user: cu.user, profile: cp});
-        toast('✅', 'success');
-      } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
+        await PATCH('profiles?user_id=eq.'+cu.id,{bio:v.bio},cu._token);
+        cp.bio=v.bio;
+        var el=document.getElementById('pf-bio'); if (el) el.textContent=v.bio||'✍️ Ещё ничего не рассказал о себе.';
+        writeCache({user:cu.user,profile:cp}); toast('✅','success');
+      } catch(e){ toast('Ошибка: '+e.message,'error'); }
     }
   });
 };
 
-window.pfVipSet = async function(f, v){
+window.pfVipSet=async function(f,v){
   try {
-    var u = {};
-    u[f] = v;
-    await PATCH('profiles?user_id=eq.' + cu.id, u, cu._token);
-    cp[f] = v;
-    writeCache({user: cu.user, profile: cp});
-    toast('✅', 'success');
-    render();
-  } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
+    var u={}; u[f]=v;
+    await PATCH('profiles?user_id=eq.'+cu.id,u,cu._token);
+    cp[f]=v; writeCache({user:cu.user,profile:cp}); toast('✅','success'); render();
+  } catch(e){ toast('Ошибка: '+e.message,'error'); }
 };
-window.pfTitle = function(preset){
-  var t = preset || (document.getElementById('vip-title-in') ? document.getElementById('vip-title-in').value.trim() : '');
-  if (!t){ pfVipSet('custom_title', null); return; }
-  if (t.length > 30){ toast('Макс 30 символов', 'error'); return; }
-  if (!isClean(t)){ toast('❌ Недопустимые слова', 'error'); return; }
-  pfVipSet('custom_title', t);
+window.pfTitle=function(preset){
+  var t=preset||(document.getElementById('vip-title-in')?document.getElementById('vip-title-in').value.trim():'');
+  if (!t){ pfVipSet('custom_title',null); return; }
+  if (t.length>30){ toast('Макс 30 символов','error'); return; }
+  if (!isClean(t)){ toast('❌ Недопустимые слова','error'); return; }
+  pfVipSet('custom_title',t);
 };
-window.pfEmoji = function(){
-  var e = document.getElementById('vip-emoji-in') ? document.getElementById('vip-emoji-in').value.trim() : '';
-  pfVipSet('custom_emoji', e || null);
-};
-window.pfUpload = async function(input){
-  var f = input.files[0];
-  if (!f) return;
-  if (f.size > 2 * 1024 * 1024){ toast('Файл > 2 МБ', 'error'); return; }
-  if (!/^image\/(jpeg|png|webp|gif)$/.test(f.type)){ toast('Только JPG, PNG, WEBP', 'error'); return; }
-  toast('⏳ Загрузка...', 'info');
+window.pfUpload=async function(input){
+  var f=input.files[0]; if (!f) return;
+  if (f.size>2*1024*1024){ toast('Файл > 2 МБ','error'); return; }
+  if (!/^image\/(jpeg|png|webp|gif)$/.test(f.type)){ toast('Только JPG, PNG, WEBP','error'); return; }
+  toast('⏳ Загрузка...','info');
   try {
-    var ext = f.name.split('.').pop().toLowerCase();
-    var path = cu.id + '/avatar-' + Date.now() + '.' + ext;
-    var sb = window.supabaseClient;
-    var up = await sb.storage.from('avatars').upload(path, f, {upsert: true});
+    var ext=f.name.split('.').pop().toLowerCase();
+    var path=cu.id+'/avatar-'+Date.now()+'.'+ext;
+    var sb=sbClient();
+    var up=await sb.storage.from('avatars').upload(path,f,{upsert:true});
     if (up.error) throw up.error;
-    var url = sb.storage.from('avatars').getPublicUrl(path).data.publicUrl;
-    await PATCH('profiles?user_id=eq.' + cu.id, {avatar_url: url}, cu._token);
-    cp.avatar_url = url;
-    writeCache({user: cu.user, profile: cp});
-    toast('✅', 'success');
-    render();
-  } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
+    var url=sb.storage.from('avatars').getPublicUrl(path).data.publicUrl;
+    await PATCH('profiles?user_id=eq.'+cu.id,{avatar_url:url},cu._token);
+    cp.avatar_url=url; writeCache({user:cu.user,profile:cp}); toast('✅','success'); render();
+  } catch(e){ toast('Ошибка: '+e.message,'error'); }
 };
 
-window.pfNoteQ = function(v){
-  noteQ = v;
-  render();
-  setTimeout(function(){
-    var el = document.querySelector('.pf-notes-search');
-    if (el){ el.focus(); el.setSelectionRange(el.value.length, el.value.length); }
-  }, 10);
+window.pfNoteQ=function(v){
+  noteQ=v; render();
+  setTimeout(function(){ var el=document.querySelector('.pf-notes-search'); if (el){ el.focus(); el.setSelectionRange(el.value.length,el.value.length); } },10);
 };
-window.pfNoteForm = function(id){
-  var n = id ? notes.find(function(x){ return x.id === id; }) : null;
+window.pfNoteForm=function(id){
+  var n=id?notes.find(function(x){return x.id===id;}):null;
   showM({
-    title: n ? 'Редактировать' : 'Новая заметка',
+    title:n?'Редактировать':'Новая заметка',
     fields:[
-      {name:'title', value: n ? (n.title || '') : '', placeholder:'Заголовок', max:100},
-      {name:'content', type:'textarea', value: n ? (n.content || '') : '', placeholder:'Текст...', max:5000}
+      {name:'title',value:n?(n.title||''):'',placeholder:'Заголовок',max:100},
+      {name:'content',type:'textarea',value:n?(n.content||''):'',placeholder:'Текст...',max:5000}
     ],
     onOk: async function(v){
-      if (!v.content){ toast('Введите текст', 'error'); return; }
-      if (!isClean(v.title) || !isClean(v.content)){ toast('Недопустимые слова', 'error'); return; }
+      if (!v.content){ toast('Введите текст','error'); return; }
+      if (!isClean(v.title)||!isClean(v.content)){ toast('Недопустимые слова','error'); return; }
       try {
-        if (id) await PATCH('user_notes?id=eq.' + id, {title: v.title, content: v.content, updated_at: new Date().toISOString()}, cu._token);
-        else await POST('user_notes', {user_id: cu.id, title: v.title, content: v.content}, cu._token);
-        toast('✅', 'success');
-        var r = await GET('user_notes?user_id=eq.' + cu.id + '&select=*&order=pinned.desc,updated_at.desc', cu._token);
-        notes = r || [];
-        render();
-      } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
+        if (id) await PATCH('user_notes?id=eq.'+id,{title:v.title,content:v.content,updated_at:new Date().toISOString()},cu._token);
+        else await POST('user_notes',{user_id:cu.id,title:v.title,content:v.content},cu._token);
+        toast('✅','success');
+        var r=await GET('user_notes?user_id=eq.'+cu.id+'&select=*&order=pinned.desc,updated_at.desc',cu._token);
+        notes=r||[]; render();
+      } catch(e){ toast('Ошибка: '+e.message,'error'); }
     }
   });
 };
-window.pfEditNote = function(id){ pfNoteForm(id); };
-window.pfPinNote = async function(id){
-  var n = notes.find(function(x){ return x.id === id; });
-  if (!n) return;
+window.pfEditNote=function(id){ pfNoteForm(id); };
+window.pfPinNote=async function(id){
+  var n=notes.find(function(x){return x.id===id;}); if (!n) return;
   try {
-    await PATCH('user_notes?id=eq.' + id, {pinned: !n.pinned}, cu._token);
-    var r = await GET('user_notes?user_id=eq.' + cu.id + '&select=*&order=pinned.desc,updated_at.desc', cu._token);
-    notes = r || [];
-    render();
-  } catch(e){ toast('Ошибка', 'error'); }
+    await PATCH('user_notes?id=eq.'+id,{pinned:!n.pinned},cu._token);
+    var r=await GET('user_notes?user_id=eq.'+cu.id+'&select=*&order=pinned.desc,updated_at.desc',cu._token);
+    notes=r||[]; render();
+  } catch(e){ toast('Ошибка','error'); }
 };
-window.pfDelNote = function(id){
-  showM({
-    title:'Удалить?', sub:'Необратимо', fields:[], okText:'Удалить',
+window.pfDelNote=function(id){
+  showM({ title:'Удалить?', sub:'Необратимо', fields:[], okText:'Удалить',
     onOk: async function(){
       try {
-        await DEL('user_notes?id=eq.' + id, cu._token);
-        notes = notes.filter(function(n){ return n.id !== id; });
-        render();
-        toast('🗑️', 'info');
-      } catch(e){ toast('Ошибка', 'error'); }
+        await DEL('user_notes?id=eq.'+id,cu._token);
+        notes=notes.filter(function(n){return n.id!==id;}); render(); toast('🗑️','info');
+      } catch(e){ toast('Ошибка','error'); }
     }
   });
 };
 
-window.pfGuest = async function(uid){
-  if (uid === cu.id){ pfTab('overview'); return; }
-  var bg = document.createElement('div');
-  bg.className = 'pf-modal-bg';
-  var m = document.createElement('div');
-  m.className = 'pf-modal';
-  m.style.maxWidth = '520px';
-  m.innerHTML = '<h3>👤 Профиль</h3><p>Загрузка...</p>';
-  bg.appendChild(m);
-  document.body.appendChild(bg);
-  bg.addEventListener('click', function(e){ if (e.target === bg) bg.remove(); });
+/* ═══ ГОСТЕВОЙ ПРОФИЛЬ (ПОЛНЫЙ) ═══ */
+window.pfGuest=async function(uid){
+  if (uid===cu.id){ pfTab('overview'); return; }
+  var bg=document.createElement('div'); bg.className='pf-modal-bg';
+  var m=document.createElement('div'); m.className='pf-modal pf-guest-modal';
+  m.innerHTML='<div style="text-align:center;padding:40px 20px;"><div style="display:inline-block;width:40px;height:40px;border:3px solid #6C63FF;border-top-color:transparent;border-radius:50%;animation:pfSpin .8s linear infinite;"></div><p style="color:#999;margin-top:14px;">Загрузка...</p></div>';
+  bg.appendChild(m); document.body.appendChild(bg);
+  bg.addEventListener('click',function(e){ if(e.target===bg) bg.remove(); });
+
   try {
-    var p = (await GET('profiles?user_id=eq.' + uid + '&select=*', cu._token))[0];
-    if (!p){ m.innerHTML = '<h3>Не найден</h3>'; return; }
-    var nm = p.display_name || p.username || 'Аноним';
-    var a = p.avatar_url || avFallback(nm);
-    var lv = getLvl(p.experience || 0);
-    var isV = p.vip_until && new Date(p.vip_until).getTime() > Date.now();
-    var vCol = p.nick_color || '#6C63FF';
-    var nameH = '<h3 style="justify-content:center;font-size:1.4rem;margin:0 0 6px;' + (isV ? 'background:linear-gradient(90deg,' + vCol + ' 0%,#f5d76e 25%,' + vCol + ' 50%,#f5d76e 75%,' + vCol + ' 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:vipShimmer 8s linear infinite;' : '') + '">' + esc(nm) + (isV ? ' <span class="pf-vip-badge">' + (p.vip_badge || '👑') + '</span>' : '') + '</h3>';
-    var frame = VIP_FRAMES[p.avatar_frame];
-    var avH = '<img src="' + escAttr(a) + '" style="width:100px;height:100px;aspect-ratio:1/1;border-radius:50%;border:4px solid var(--kc);object-fit:cover;margin-bottom:12px;" onerror="this.onerror=null;this.src=\'' + avFallback(nm) + '\';">';
-    if (isV && frame && frame.css) avH = '<span class="vip-avatar-frame' + (frame.animated ? ' animated' : '') + '" style="background:' + frame.css + ';background-size:200% 200%;margin-bottom:12px;display:inline-block;">' + avH + '</span>';
-    var isFr = friends.some(function(f){ return f.other.user_id === uid; });
-    m.innerHTML = '<div style="text-align:center;padding:12px 0 20px;">' + avH + nameH + (isV && p.custom_title ? '<div class="pf-vip-title" style="margin-bottom:6px;">' + esc(p.custom_title) + '</div>' : '') + '<div style="font-size:.85rem;color:#888;">⭐ Ур. ' + lv.level + ' · 💎 ' + (p.experience || 0) + ' XP</div>' + (p.bio ? '<p style="margin:16px 0 0;color:#555;font-size:.9rem;line-height:1.5;font-style:italic;">' + esc(p.bio) + '</p>' : '') + '</div><div class="pf-modal-actions">' + (isFr ? '<button class="pf-btn pf-btn-danger" onclick="pfRmFriend(\'' + escAttr(uid) + '\');document.querySelector(\'.pf-modal-bg\').remove();">Удалить</button>' : '<button class="pf-btn" onclick="pfAddFriend(\'' + escAttr(uid) + '\');document.querySelector(\'.pf-modal-bg\').remove();">➕ В друзья</button>') + '<button class="pf-btn pf-btn-outline" onclick="document.querySelector(\'.pf-modal-bg\').remove()">Закрыть</button></div>';
-  } catch(e){ m.innerHTML = '<h3>Ошибка</h3><p>' + esc(e.message) + '</p>'; }
+    var results=await Promise.all([
+      GET('profiles?user_id=eq.'+uid+'&select=*',cu._token),
+      GET('user_achievements?user_id=eq.'+uid+'&select=achievement_id,earned_at',cu._token),
+      GET('guild_members?user_id=eq.'+uid+'&select=guild_id,role,rank',cu._token)
+    ]);
+    var p=results[0]&&results[0][0];
+    var ua=results[1]||[];
+    var gm=results[2]&&results[2][0];
+    if (!p){ m.innerHTML='<h3>😕 Профиль не найден</h3><div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" onclick="this.closest(\'.pf-modal-bg\').remove()">Закрыть</button></div>'; return; }
+
+    var guildData=null;
+    if (gm&&gm.guild_id){
+      var gr=await GET('guilds?id=eq.'+gm.guild_id+'&select=name,icon,color,rating,guild_level,bank',cu._token);
+      if (gr&&gr[0]) guildData=Object.assign({},gr[0],{member_role:gm.role,member_rank:gm.rank});
+    }
+
+    var name=p.display_name||p.username||'Аноним';
+    var av=p.avatar_url||avFallback(name);
+    var isV=p.vip_until&&new Date(p.vip_until).getTime()>Date.now();
+    var vCol=p.nick_color||'#6C63FF';
+    var lvl=getLvl(p.experience||0);
+    var role=getRole(lvl.level);
+    var kc=KC[p.kingdom]||'#6C63FF';
+    var flag=KINGDOM_FLAGS[p.kingdom];
+
+    var frCheck=await GET('friendships?or=(and(user_id.eq.'+cu.id+',friend_id.eq.'+uid+'),and(user_id.eq.'+uid+',friend_id.eq.'+cu.id+'))&select=id,status',cu._token);
+    var fr=frCheck&&frCheck[0];
+    var isFriend=fr&&fr.status==='accepted';
+    var isPending=fr&&fr.status==='pending';
+
+    var heroBg='linear-gradient(135deg,'+kc+' 0%,'+kc+'aa 40%,#1a1a2e 100%)';
+    var BG_MAP={
+      cosmic:'radial-gradient(circle at 20% 30%,rgba(108,99,255,.3),transparent 60%),linear-gradient(135deg,#0a0a1e,#1a1a2e,#2d1b3d)',
+      fire:'linear-gradient(135deg,#2c0a0a,#5c1a1a,#8b2a1a,#2c0a0a)',
+      ice:'linear-gradient(135deg,#0a1a2c,#1a3a5c,#2c5a8b,#0a1a2c)',
+      night:'linear-gradient(rgba(10,10,26,.6),rgba(45,27,61,.75)),url("/assets/images/night.jpg") center/cover',
+      observatory:'linear-gradient(rgba(10,10,26,.65),rgba(45,27,61,.75)),url("/assets/images/scene-observatory.jpg") center/cover'
+    };
+    if (isV&&p.profile_bg&&BG_MAP[p.profile_bg]) heroBg=BG_MAP[p.profile_bg];
+
+    var h='';
+    h+='<div class="pf-guest-hero'+(isV?' pf-hero-aurora':'')+'" style="background:'+heroBg+';position:relative;isolation:isolate;">';
+    if (isV){
+      h+='<div class="pf-particles">';
+      for (var pi=0;pi<8;pi++) h+='<span class="pf-particle" style="left:'+(Math.random()*100)+'%;bottom:'+(Math.random()*40)+'%;animation-duration:'+(4+Math.random()*4)+'s;animation-delay:'+(Math.random()*4)+'s;"></span>';
+      h+='</div>';
+    }
+    h+='<img src="'+esc(av)+'" style="width:96px;height:96px;border-radius:50%;border:4px solid '+(isV?'#f5d76e':'rgba(255,255,255,.5)')+';object-fit:cover;box-shadow:0 8px 32px rgba(0,0,0,.3);position:relative;z-index:2;" onerror="this.onerror=null;this.src=\''+avFallback(name)+'\';">';
+    var nameStyle=isV?'background:linear-gradient(90deg,'+vCol+' 0%,#f5d76e 25%,'+vCol+' 50%,#f5d76e 75%,'+vCol+' 100%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:vipShimmer 6s linear infinite;':'color:#fff;';
+    h+='<h3 style="margin:12px 0 4px;font-size:1.5rem;font-weight:900;'+nameStyle+';position:relative;z-index:2;">'+esc(name)+(isV?' 👑':'')+'</h3>';
+    if (isV&&p.custom_title) h+='<div style="font-size:.78rem;color:#ffdf5e;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;position:relative;z-index:2;">'+esc(p.custom_title)+'</div>';
+    h+='<div style="font-size:.85rem;opacity:.85;position:relative;z-index:2;">'+esc(role)+'</div>';
+    if (flag) h+='<div style="margin-top:10px;position:relative;z-index:2;"><span style="background:rgba(0,0,0,.3);padding:4px 12px;border-radius:16px;font-size:.78rem;font-weight:700;display:inline-flex;align-items:center;gap:6px;"><img src="'+flag+'" style="width:16px;border-radius:2px;"> '+esc(p.kingdom)+'</span></div>';
+    h+='</div>';
+
+    h+='<div class="pf-guest-stats">';
+    h+='<div class="pf-guest-stat" style="background:linear-gradient(135deg,'+kc+'22,'+kc+'08);border:1px solid '+kc+'44;"><div class="pf-guest-stat-label" style="color:#666;">Уровень</div><div class="pf-guest-stat-value" style="color:'+kc+';">⭐ '+lvl.level+'</div></div>';
+    h+='<div class="pf-guest-stat" style="background:linear-gradient(135deg,rgba(108,99,255,.1),rgba(108,99,255,.04));border:1px solid rgba(108,99,255,.2);"><div class="pf-guest-stat-label" style="color:#666;">Опыт</div><div class="pf-guest-stat-value" style="color:#6C63FF;">💎 '+(p.experience||0)+'</div></div>';
+    h+='<div class="pf-guest-stat" style="background:linear-gradient(135deg,rgba(243,156,18,.1),rgba(243,156,18,.04));border:1px solid rgba(243,156,18,.2);"><div class="pf-guest-stat-label" style="color:#666;">Награды</div><div class="pf-guest-stat-value" style="color:#e67e22;">🏆 '+ua.length+'</div></div>';
+    h+='</div>';
+
+    h+='<div style="height:8px;background:rgba(0,0,0,.08);border-radius:8px;overflow:hidden;margin-bottom:6px;"><div style="height:100%;width:'+lvl.percent+'%;background:linear-gradient(90deg,'+kc+',#6C63FF);border-radius:8px;"></div></div>';
+    h+='<div style="font-size:.72rem;color:#888;text-align:center;margin-bottom:16px;">До уровня '+(lvl.level+1)+': '+Math.max(lvl.next-(p.experience||0),0)+' XP</div>';
+
+    if (p.bio) h+='<div style="background:#f8f9fb;border-radius:12px;padding:14px 16px;margin-bottom:14px;font-size:.88rem;color:#555;line-height:1.5;font-style:italic;">'+esc(p.bio)+'</div>';
+
+    if (guildData){
+      h+='<div style="background:linear-gradient(135deg,'+(guildData.color||kc)+'22,transparent);border:1px solid '+(guildData.color||kc)+'44;border-radius:14px;padding:14px 16px;margin-bottom:14px;cursor:pointer;" onclick="this.closest(\'.pf-modal-bg\').remove();window.location.href=\'/guilds/\'">';
+      h+='<div style="display:flex;align-items:center;gap:12px;">';
+      h+='<div style="width:44px;height:44px;border-radius:10px;background:'+(guildData.color||kc)+';display:flex;align-items:center;justify-content:center;font-size:1.5rem;">'+(guildData.icon||'🏰')+'</div>';
+      h+='<div style="flex:1;"><div style="font-weight:800;color:#1a1a2e;">'+esc(guildData.name)+'</div>';
+      h+='<div style="font-size:.75rem;color:#888;">Роль: '+esc(guildData.member_role||'member')+' · Ур. '+ (guildData.guild_level||1) +' · 💰 '+(guildData.bank||0)+'</div></div>';
+      h+='</div></div>';
+    }
+
+    if (ua.length){
+      h+='<div style="margin-bottom:14px;"><div style="font-size:.75rem;font-weight:800;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Достижения</div>';
+      h+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;">';
+      ua.slice(-6).forEach(function(a){
+        h+='<div style="padding:10px;background:linear-gradient(135deg,#fffbf0,#fff);border:1px solid rgba(243,156,18,.2);border-radius:10px;text-align:center;"><div style="font-size:1.4rem;">🏅</div><div style="font-size:.7rem;font-weight:700;color:#555;margin-top:4px;">#'+a.achievement_id+'</div></div>';
+      });
+      h+='</div></div>';
+    }
+
+    h+='<div class="pf-modal-actions" style="margin-top:8px;">';
+    if (isFriend) h+='<button class="pf-btn pf-btn-danger" onclick="window.pfRmFriend(\''+uid+'\');this.closest(\'.pf-modal-bg\').remove();">💔 Удалить из друзей</button>';
+    else if (isPending) h+='<button class="pf-btn pf-btn-outline" disabled>⏳ Заявка отправлена</button>';
+    else h+='<button class="pf-btn" onclick="window.pfAddFriend(\''+uid+'\');this.closest(\'.pf-modal-bg\').remove();">➕ Добавить в друзья</button>';
+    h+='<button class="pf-btn pf-btn-outline" onclick="this.closest(\'.pf-modal-bg\').remove()">Закрыть</button>';
+    h+='</div>';
+
+    m.innerHTML=h;
+  } catch(e){
+    m.innerHTML='<h3>❌ Ошибка</h3><p>'+esc(e.message)+'</p><div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" onclick="this.closest(\'.pf-modal-bg\').remove()">Закрыть</button></div>';
+  }
 };
 
-window.pfAddFriend = async function(uid){
-  if (uid === cu.id) return;
+window.pfAddFriend=async function(uid){
+  if (uid===cu.id) return;
   try {
-    var ex = await GET('friendships?or=(and(user_id.eq.' + cu.id + ',friend_id.eq.' + uid + '),and(user_id.eq.' + uid + ',friend_id.eq.' + cu.id + '))&select=id', cu._token);
-    if (ex && ex.length){ toast('Заявка уже есть', 'info'); return; }
-    await POST('friendships', {user_id: cu.id, friend_id: uid, status: 'pending'}, cu._token);
-    toast('✅ Заявка отправлена', 'success');
-    await loadFr();
-    render();
-  } catch(e){ toast('Ошибка', 'error'); }
+    var ex=await GET('friendships?or=(and(user_id.eq.'+cu.id+',friend_id.eq.'+uid+'),and(user_id.eq.'+uid+',friend_id.eq.'+cu.id+'))&select=id',cu._token);
+    if (ex&&ex.length){ toast('Заявка уже есть','info'); return; }
+    await POST('friendships',{user_id:cu.id,friend_id:uid,status:'pending'},cu._token);
+    toast('✅ Заявка отправлена','success'); await loadFr(); render();
+  } catch(e){ toast('Ошибка','error'); }
 };
-window.pfRmFriend = function(uid){
-  showM({
-    title:'Удалить из друзей?', fields:[], okText:'Удалить',
+window.pfRmFriend=function(uid){
+  showM({ title:'Удалить из друзей?', fields:[], okText:'Удалить',
     onOk: async function(){
       try {
-        await DEL('friendships?or=(and(user_id.eq.' + cu.id + ',friend_id.eq.' + uid + '),and(user_id.eq.' + uid + ',friend_id.eq.' + cu.id + '))', cu._token);
-        toast('🗑️', 'info');
-        await loadFr();
-        render();
-      } catch(e){ toast('Ошибка', 'error'); }
+        await DEL('friendships?or=(and(user_id.eq.'+cu.id+',friend_id.eq.'+uid+'),and(user_id.eq.'+uid+',friend_id.eq.'+cu.id+'))',cu._token);
+        toast('🗑️','info'); await loadFr(); render();
+      } catch(e){ toast('Ошибка','error'); }
     }
   });
 };
-window.pfAccFriend = async function(uid){
+window.pfAccFriend=async function(uid){
   try {
-    await PATCH('friendships?user_id=eq.' + uid + '&friend_id=eq.' + cu.id, {status:'accepted', updated_at:new Date().toISOString()}, cu._token);
-    toast('✅', 'success');
-    await loadFr();
-    render();
-  } catch(e){ toast('Ошибка', 'error'); }
+    await PATCH('friendships?user_id=eq.'+uid+'&friend_id=eq.'+cu.id,{status:'accepted',updated_at:new Date().toISOString()},cu._token);
+    toast('✅','success'); await loadFr(); render();
+  } catch(e){ toast('Ошибка','error'); }
 };
-window.pfDeclFriend = async function(uid){
+window.pfDeclFriend=async function(uid){
   try {
-    await DEL('friendships?user_id=eq.' + uid + '&friend_id=eq.' + cu.id, cu._token);
-    toast('Отклонено', 'info');
-    await loadFr();
-    render();
-  } catch(e){ toast('Ошибка', 'error'); }
+    await DEL('friendships?user_id=eq.'+uid+'&friend_id=eq.'+cu.id,cu._token);
+    toast('Отклонено','info'); await loadFr(); render();
+  } catch(e){ toast('Ошибка','error'); }
 };
 
-window.pfSend = function(){
-  var inp = document.getElementById('pf-chat-in');
-  if (!inp) return;
-  var q = inp.value.trim();
-  if (!q) return;
-  inp.value = '';
-  pfAsk(q);
+window.pfSend=function(){
+  var inp=document.getElementById('pf-chat-in'); if (!inp) return;
+  var q=inp.value.trim(); if (!q) return;
+  inp.value=''; pfAsk(q);
 };
-window.pfAsk = function(q){
-  var c = document.getElementById('pf-chat');
-  if (!c) return;
-  var u = document.createElement('div');
-  u.className = 'pf-chat-msg user';
-  u.textContent = q;
-  c.appendChild(u);
-  c.scrollTop = c.scrollHeight;
-  chat.push({role:'user', text:q});
-  var t = document.createElement('div');
-  t.className = 'pf-typing';
-  t.innerHTML = '<span></span><span></span><span></span>';
-  c.appendChild(t);
-  c.scrollTop = c.scrollHeight;
+window.pfAsk=function(q){
+  var c=document.getElementById('pf-chat'); if (!c) return;
+  var u=document.createElement('div'); u.className='pf-chat-msg user'; u.textContent=q;
+  c.appendChild(u); c.scrollTop=c.scrollHeight;
+  chat.push({role:'user',text:q});
+  var t=document.createElement('div'); t.className='pf-typing'; t.innerHTML='<span></span><span></span><span></span>';
+  c.appendChild(t); c.scrollTop=c.scrollHeight;
   setTimeout(function(){
     t.remove();
-    var f = findA(q);
-    var bm = document.createElement('div');
-    bm.className = 'pf-chat-msg bot';
+    var f=findA(q);
+    var bm=document.createElement('div'); bm.className='pf-chat-msg bot';
     if (f){
-      var txt = f.a;
-      if (f.l){
-        txt += '<div class="pf-chat-links"><a class="pf-chat-link" href="/' + f.l + '">📖 Подробнее →</a></div>';
-      }
-      bm.innerHTML = txt;
-      chat.push({role:'bot', text:f.a, links:[{q:'Подробнее', l:f.l}]});
+      var txt=f.a;
+      if (f.l) txt+='<div class="pf-chat-links"><a class="pf-chat-link" href="/'+f.l+'">📖 Подробнее →</a></div>';
+      bm.innerHTML=txt;
+      chat.push({role:'bot',text:f.a,links:[{q:'Подробнее',l:f.l}]});
     } else {
-      bm.innerHTML = 'Не нашёл ответа 🤔';
-      chat.push({role:'bot', text:'Не нашёл'});
+      bm.innerHTML='Не нашёл ответа 🤔';
+      chat.push({role:'bot',text:'Не нашёл'});
     }
-    c.appendChild(bm);
-    c.scrollTop = c.scrollHeight;
-    try { localStorage.setItem(K_CHAT, JSON.stringify(chat.slice(-30))); } catch(e){}
-  }, 600);
+    c.appendChild(bm); c.scrollTop=c.scrollHeight;
+    try{localStorage.setItem(K_CHAT,JSON.stringify(chat.slice(-30)));}catch(e){}
+  },600);
 };
 
+/* ═══ 2FA ═══ */
 async function rend2FA(){
-  var s = document.getElementById('pf-2fa');
-  var sw = document.getElementById('pf-sw2fa');
+  var s=document.getElementById('pf-2fa'); var sw=document.getElementById('pf-sw2fa');
   if (!s) return;
   try {
-    var r = await GET('user_2fa?user_id=eq.' + cu.id + '&select=*', cu._token);
-    var on = r && r[0] && r[0].email_2fa_enabled;
-    if (on){ s.innerHTML = '<div class="pf-badge-2fa">✅ Включена</div>'; if (sw) sw.classList.add('on'); }
-    else { s.innerHTML = '<div class="pf-badge-2fa off">⚠️ Выключена</div>'; if (sw) sw.classList.remove('on'); }
-  } catch(e){ s.innerHTML = '<div class="pf-badge-2fa off">⚠️</div>'; }
+    var r=await GET('user_2fa?user_id=eq.'+cu.id+'&select=*',cu._token);
+    var on=r&&r[0]&&r[0].email_2fa_enabled;
+    if (on){ s.innerHTML='<div class="pf-badge-2fa">✅ Включена</div>'; if (sw) sw.classList.add('on'); }
+    else { s.innerHTML='<div class="pf-badge-2fa off">⚠️ Выключена</div>'; if (sw) sw.classList.remove('on'); }
+  } catch(e){ s.innerHTML='<div class="pf-badge-2fa off">⚠️</div>'; }
 }
-window.pfTog2FA = async function(){
+window.pfToggle2FA=async function(){
   try {
-    var r = await GET('user_2fa?user_id=eq.' + cu.id + '&select=*', cu._token);
-    var cur = r && r[0] && r[0].email_2fa_enabled;
-    var nv = !cur;
-    showM({
-      title: (nv ? 'Включить' : 'Выключить') + ' 2FA?', fields:[],
-      okText: nv ? 'Включить' : 'Выключить',
+    var r=await GET('user_2fa?user_id=eq.'+cu.id+'&select=*',cu._token);
+    var cur=r&&r[0]&&r[0].email_2fa_enabled;
+    var nv=!cur;
+    showM({ title:(nv?'Включить':'Выключить')+' 2FA?', fields:[], okText: nv?'Включить':'Выключить',
       onOk: async function(){
         try {
-          if (r && r[0]) await PATCH('user_2fa?user_id=eq.' + cu.id, {email_2fa_enabled: nv, updated_at: new Date().toISOString()}, cu._token);
-          else await POST('user_2fa', {user_id: cu.id, email_2fa_enabled: nv}, cu._token);
-          toast(nv ? '✅' : '🔓', nv ? 'success' : 'info');
-          rend2FA();
-        } catch(e){ toast('Ошибка', 'error'); }
+          if (r&&r[0]) await PATCH('user_2fa?user_id=eq.'+cu.id,{email_2fa_enabled:nv,updated_at:new Date().toISOString()},cu._token);
+          else await POST('user_2fa',{user_id:cu.id,email_2fa_enabled:nv},cu._token);
+          toast(nv?'✅':'🔓', nv?'success':'info'); rend2FA();
+        } catch(e){ toast('Ошибка','error'); }
       }
     });
-  } catch(e){ toast('Ошибка', 'error'); }
-};
-window.pfChPass = function(){
-  showM({
-    title:'🔑 Смена пароля', sub:'Ссылка на ' + (cu.email || ''), fields:[],
-    okText:'Отправить',
-    onOk: async function(){
-      try {
-        var sb = window.supabaseClient;
-        if (sb && sb.auth) await sb.auth.resetPasswordForEmail(cu.email, {redirectTo: location.origin + '/profile/'});
-        toast('📧 Отправлено', 'success');
-      } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
-    }
-  });
-};
-window.pfQR = function(){
-  if (window.marsLinkDevice && typeof window.marsLinkDevice.open === 'function'){ window.marsLinkDevice.open((cu && cu.email) || ''); return; }
-  if (window.marsQrScanner && window.marsQrScanner.isMobile){ window.marsQrScanner.open(); return; }
-  toast('QR-модуль не загружен', 'info');
+  } catch(e){ toast('Ошибка','error'); }
 };
 
-window.pfDanger = function(){
-  var h = '<h3 style="color:#c0392b;">⚠️ Опасная зона</h3><p>Действия необратимы.</p><div style="display:flex;flex-direction:column;gap:10px;margin:20px 0;"><button class="pf-btn pf-btn-danger" style="width:100%;justify-content:center;" onclick="pfDelAcc()">🗑️ Удалить аккаунт</button><button class="pf-btn pf-btn-outline" style="width:100%;justify-content:center;" onclick="pfLogout()">🚪 Выйти</button></div><div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" onclick="document.querySelector(\'.pf-modal-bg\').remove()">Отмена</button></div>';
-  var bg = document.createElement('div');
-  bg.className = 'pf-modal-bg';
-  var m = document.createElement('div');
-  m.className = 'pf-modal';
-  m.innerHTML = h;
-  bg.appendChild(m);
-  document.body.appendChild(bg);
-  bg.addEventListener('click', function(e){ if (e.target === bg) bg.remove(); });
+/* ═══ БЕЗОПАСНОСТЬ — новые методы ═══ */
+window.pfBindEmail=async function(){
+  var e=document.getElementById('pf-bind-email');
+  var p=document.getElementById('pf-bind-pass');
+  var st=document.getElementById('pf-bind-st');
+  if (!e||!p||!st) return;
+  var email=e.value.trim(), pass=p.value;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ st.textContent='❌ Некорректный email'; st.style.color='#e74c3c'; return; }
+  if (pass.length<6){ st.textContent='❌ Пароль мин. 6'; st.style.color='#e74c3c'; return; }
+  st.textContent='⏳...'; st.style.color='#999';
+  try {
+    var sb=sbClient();
+    var r=await sb.auth.updateUser({email:email,password:pass});
+    if (r.error) throw r.error;
+    st.textContent='✅ Письмо отправлено на '+email; st.style.color='#27ae60';
+    toast('📧 Проверь почту!','success');
+  } catch(err){ st.textContent='❌ '+err.message; st.style.color='#e74c3c'; }
 };
-window.pfDelAcc = function(){
-  var b = document.querySelector('.pf-modal-bg');
-  if (b) b.remove();
-  showM({
-    title:'⚠️ Удалить аккаунт?', sub:'Введите email:',
-    fields:[{name:'email', type:'email', placeholder: cu.email, max:100}],
-    okText:'Удалить',
+window.pfResendConfirm=async function(){
+  if (!cu.email) return;
+  try {
+    var sb=sbClient();
+    var r=await sb.auth.resend({type:'signup',email:cu.email});
+    if (r.error) throw r.error;
+    toast('📧 Отправлено','success');
+  } catch(e){ toast('Ошибка: '+e.message,'error'); }
+};
+window.pfChangeEmail=function(){
+  var bg=document.createElement('div'); bg.className='pf-modal-bg';
+  var m=document.createElement('div'); m.className='pf-modal';
+  m.innerHTML='<h3>📧 '+(cu.email?'Смена email':'Добавить email')+'</h3>'+
+    '<p style="color:#666;font-size:.85rem;">На новый адрес придёт письмо для подтверждения.</p>'+
+    '<input id="pf-ce" type="email" class="pf-modal-input" value="'+escAttr(cu.email||'')+'" placeholder="new@email.com">'+
+    '<div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" onclick="this.closest(\'.pf-modal-bg\').remove()">Отмена</button>'+
+    '<button class="pf-btn" id="pf-ce-o">Отправить</button></div>';
+  bg.appendChild(m); document.body.appendChild(bg);
+  bg.addEventListener('click',function(e){ if(e.target===bg) bg.remove(); });
+  m.querySelector('#pf-ce-o').onclick=async function(){
+    var email=m.querySelector('#pf-ce').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('Некорректный email','error'); return; }
+    this.disabled=true;
+    try {
+      var sb=sbClient();
+      var r=await sb.auth.updateUser({email:email});
+      if (r.error) throw r.error;
+      toast('📧 Письмо на '+email,'success'); bg.remove();
+    } catch(e){ toast('Ошибка: '+e.message,'error'); this.disabled=false; }
+  };
+};
+window.pfChangePassword=async function(){
+  if (!cu.email){ toast('Сначала привяжи email','error'); return; }
+  try {
+    var sb=sbClient();
+    var r=await sb.auth.resetPasswordForEmail(cu.email,{redirectTo:location.origin+'/profile/'});
+    if (r.error) throw r.error;
+    toast('📧 Ссылка для сброса отправлена','success');
+  } catch(e){ toast('Ошибка: '+e.message,'error'); }
+};
+window.pfLinkOAuth=function(){
+  var bg=document.createElement('div'); bg.className='pf-modal-bg';
+  var m=document.createElement('div'); m.className='pf-modal';
+  m.innerHTML='<h3>🔗 Вход через соцсети</h3><p style="color:#666;font-size:.85rem;">Выбери сервис для привязки.</p>'+
+    '<div style="display:flex;flex-direction:column;gap:10px;margin:16px 0;">'+
+    '<button class="pf-btn" style="width:100%;justify-content:center;background:#DB4437;border-color:#DB4437;" onclick="pfDoOAuth(\'google\')">🔍 Google</button>'+
+    '<button class="pf-btn" style="width:100%;justify-content:center;background:#4C75A3;border-color:#4C75A3;" onclick="pfDoOAuth(\'vk\')">🔵 VKontakte</button>'+
+    '<button class="pf-btn" style="width:100%;justify-content:center;background:#EE8208;border-color:#EE8208;" onclick="pfDoOAuth(\'ok\')">🟠 Одноклассники</button>'+
+    '<button class="pf-btn" style="width:100%;justify-content:center;background:linear-gradient(135deg,#6C63FF,#A29BFE);border-color:transparent;" onclick="pfDoOAuth(\'max\')">🟣 MAX</button>'+
+    '</div><div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" onclick="this.closest(\'.pf-modal-bg\').remove()">Закрыть</button></div>';
+  bg.appendChild(m); document.body.appendChild(bg);
+  bg.addEventListener('click',function(e){ if(e.target===bg) bg.remove(); });
+};
+window.pfDoOAuth=async function(provider){
+  if (provider==='max'){ toast('🔮 MAX скоро появится!','info'); return; }
+  try {
+    var sb=sbClient();
+    var r=await sb.auth.signInWithOAuth({provider:provider,options:{redirectTo:location.origin+'/profile/'}});
+    if (r.error) throw r.error;
+  } catch(e){ toast('Ошибка: '+e.message,'error'); }
+};
+window.pfSendMagicLink=async function(){
+  if (!cu.email){ toast('Сначала привяжи email','error'); return; }
+  try {
+    var sb=sbClient();
+    var r=await sb.auth.signInWithOtp({email:cu.email,options:{shouldCreateUser:false}});
+    if (r.error) throw r.error;
+    toast('✨ Magic link отправлен','success');
+  } catch(e){ toast('Ошибка: '+e.message,'error'); }
+};
+window.pfReauthenticate=async function(){
+  if (!cu.email){ toast('Сначала привяжи email','error'); return; }
+  var bg=document.createElement('div'); bg.className='pf-modal-bg';
+  var m=document.createElement('div'); m.className='pf-modal';
+  m.innerHTML='<h3>🔒 Подтверждение личности</h3><p style="color:#666;font-size:.85rem;">Введи пароль.</p>'+
+    '<input id="pf-reauth-pass" type="password" class="pf-modal-input" placeholder="Пароль">'+
+    '<div id="pf-reauth-st" style="font-size:.82rem;min-height:18px;margin-bottom:8px;"></div>'+
+    '<div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" onclick="this.closest(\'.pf-modal-bg\').remove()">Отмена</button>'+
+    '<button class="pf-btn" id="pf-reauth-o">Подтвердить</button></div>';
+  bg.appendChild(m); document.body.appendChild(bg);
+  bg.addEventListener('click',function(e){ if(e.target===bg) bg.remove(); });
+  m.querySelector('#pf-reauth-o').onclick=async function(){
+    var pass=m.querySelector('#pf-reauth-pass').value;
+    var st=m.querySelector('#pf-reauth-st');
+    if (!pass){ st.textContent='❌ Введи пароль'; st.style.color='#e74c3c'; return; }
+    this.disabled=true; this.textContent='⏳...';
+    try {
+      var sb=sbClient();
+      var r=await sb.auth.signInWithPassword({email:cu.email,password:pass});
+      if (r.error) throw r.error;
+      toast('✅ Личность подтверждена','success'); bg.remove();
+    } catch(e){ st.textContent='❌ '+e.message; st.style.color='#e74c3c'; this.disabled=false; this.textContent='Подтвердить'; }
+  };
+};
+
+window.pfQR=function(){
+  if (window.marsLinkDevice && typeof window.marsLinkDevice.open==='function'){ window.marsLinkDevice.open((cu&&cu.email)||''); return; }
+  if (window.marsQrScanner && window.marsQrScanner.isMobile){ window.marsQrScanner.open(); return; }
+  toast('QR-модуль не загружен','info');
+};
+window.pfDanger=function(){
+  var h='<h3 style="color:#c0392b;">⚠️ Опасная зона</h3><p>Действия необратимы.</p><div style="display:flex;flex-direction:column;gap:10px;margin:20px 0;"><button class="pf-btn pf-btn-danger" style="width:100%;justify-content:center;" onclick="pfDelAcc()">🗑️ Удалить аккаунт</button><button class="pf-btn pf-btn-outline" style="width:100%;justify-content:center;" onclick="pfLogout()">🚪 Выйти</button></div><div class="pf-modal-actions"><button class="pf-btn pf-btn-outline" onclick="document.querySelector(\'.pf-modal-bg\').remove()">Отмена</button></div>';
+  var bg=document.createElement('div'); bg.className='pf-modal-bg';
+  var m=document.createElement('div'); m.className='pf-modal'; m.innerHTML=h;
+  bg.appendChild(m); document.body.appendChild(bg);
+  bg.addEventListener('click',function(e){ if(e.target===bg) bg.remove(); });
+};
+window.pfDelAcc=function(){
+  var b=document.querySelector('.pf-modal-bg'); if (b) b.remove();
+  showM({ title:'⚠️ Удалить аккаунт?', sub:'Введите email:', fields:[{name:'email',type:'email',placeholder:cu.email,max:100}], okText:'Удалить',
     onOk: async function(v){
-      if (v.email !== cu.email){ toast('Не совпадает', 'error'); return; }
+      if (v.email!==cu.email){ toast('Не совпадает','error'); return; }
       try {
-        var r = await fetch(SB_URL + '/functions/v1/delete-user', {method:'DELETE', headers:{'Authorization':'Bearer ' + cu._token}});
-        var j = await r.json();
+        var r=await fetch(SB_URL+'/functions/v1/delete-user',{method:'DELETE',headers:{'Authorization':'Bearer '+cu._token}});
+        var j=await r.json();
         if (j.error) throw new Error(j.error);
         pfLogout();
-      } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
+      } catch(e){ toast('Ошибка: '+e.message,'error'); }
     }
   });
 };
-window.pfLogout = function(){
-  [K_SESS, K_SB, K_BAK, K_CACHE].forEach(function(k){
-    try { localStorage.removeItem(k); } catch(e){}
-    try { sessionStorage.removeItem(k); } catch(e){}
+window.pfLogout=function(){
+  [K_SESS,K_SB,K_BAK,K_CACHE,K_WALLET].forEach(function(k){
+    try{localStorage.removeItem(k);}catch(e){}
+    try{sessionStorage.removeItem(k);}catch(e){}
   });
-  try { document.cookie = K_SESS + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; } catch(e){}
-  window.location.href = '/';
+  try{document.cookie=K_SESS+'=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';}catch(e){}
+  window.location.href='/';
 };
-window.pfDelGuild = function(){
+window.pfDelGuild=function(){
   if (!guild) return;
-  showM({
-    title:'Удалить гильдию?', fields:[], okText:'Удалить',
+  showM({ title:'Удалить гильдию?', fields:[], okText:'Удалить',
     onOk: async function(){
       try {
-        await DEL('guilds?id=eq.' + guild.id, cu._token);
-        toast('🗑️', 'info');
-        setTimeout(function(){ location.reload(); }, 500);
-      } catch(e){ toast('Ошибка', 'error'); }
+        await DEL('guilds?id=eq.'+guild.id,cu._token);
+        toast('🗑️','info'); setTimeout(function(){location.reload();},500);
+      } catch(e){ toast('Ошибка','error'); }
     }
   });
 };
@@ -1810,108 +2098,109 @@ window.pfDelGuild = function(){
 /* ═══ LOAD ═══ */
 async function loadFr(){
   try {
-    var r = await GET('friendships?or=(user_id.eq.' + cu.id + ',friend_id.eq.' + cu.id + ')&select=*', cu._token);
-    if (!r || !r.length){ friends = []; reqs = []; return; }
-    var ids = {};
-    r.forEach(function(f){ ids[f.user_id] = true; ids[f.friend_id] = true; });
+    var r=await GET('friendships?or=(user_id.eq.'+cu.id+',friend_id.eq.'+cu.id+')&select=*',cu._token);
+    if (!r||!r.length){ friends=[]; reqs=[]; return; }
+    var ids={};
+    r.forEach(function(f){ ids[f.user_id]=true; ids[f.friend_id]=true; });
     delete ids[cu.id];
-    var a = Object.keys(ids);
-    if (!a.length){ friends = []; reqs = []; return; }
-    var p = await GET('profiles?user_id=in.(' + a.join(',') + ')&select=user_id,display_name,username,avatar_url,vip_until', cu._token);
-    var pm = {};
-    (p || []).forEach(function(x){ pm[x.user_id] = x; });
-    friends = []; reqs = [];
+    var a=Object.keys(ids);
+    if (!a.length){ friends=[]; reqs=[]; return; }
+    var p=await GET('profiles?user_id=in.('+a.join(',')+')&select=user_id,display_name,username,avatar_url,vip_until',cu._token);
+    var pm={};
+    (p||[]).forEach(function(x){ pm[x.user_id]=x; });
+    friends=[]; reqs=[];
     r.forEach(function(f){
-      var oid = f.user_id === cu.id ? f.friend_id : f.user_id;
-      var it = Object.assign({}, f, {other: Object.assign({user_id: oid}, pm[oid] || {})});
-      if (f.status === 'accepted') friends.push(it);
-      else if (f.status === 'pending' && f.friend_id === cu.id) reqs.push(it);
+      var oid=f.user_id===cu.id?f.friend_id:f.user_id;
+      var it=Object.assign({},f,{other:Object.assign({user_id:oid},pm[oid]||{})});
+      if (f.status==='accepted') friends.push(it);
+      else if (f.status==='pending'&&f.friend_id===cu.id) reqs.push(it);
     });
-  } catch(e){ friends = []; reqs = []; }
+  } catch(e){ friends=[]; reqs=[]; }
 }
 
-async function loadAll(sess, silent){
-  cu = sess.user;
-  cu._token = sess.access_token;
-  var p = await GET('profiles?user_id=eq.' + encodeURIComponent(sess.user.id) + '&select=*', sess.access_token);
-  cp = Array.isArray(p) && p.length ? p[0] : null;
+async function loadAll(sess,silent){
+  cu=sess.user; cu._token=sess.access_token;
+  var p=await GET('profiles?user_id=eq.'+encodeURIComponent(sess.user.id)+'&select=*',sess.access_token);
+  cp=Array.isArray(p)&&p.length?p[0]:null;
   if (!cp){
     try {
-      var c = await POST('profiles', {
-        user_id: sess.user.id,
-        username: (sess.user.email || '').split('@')[0],
-        display_name: (sess.user.email || '').split('@')[0]
-      }, sess.access_token, 'return=representation');
-      cp = Array.isArray(c) && c.length ? c[0] : null;
-    } catch(e){ throw new Error('Профиль: ' + e.message); }
+      var emailBase=(sess.user.email||('user'+Date.now())).split('@')[0];
+      var c=await POST('profiles',{user_id:sess.user.id,username:emailBase,display_name:emailBase},sess.access_token,'return=representation');
+      cp=Array.isArray(c)&&c.length?c[0]:null;
+    } catch(e){ throw new Error('Профиль: '+e.message); }
   }
-  writeCache({user: sess.user, profile: cp});
+  writeCache({user:sess.user,profile:cp});
   if (!silent) render();
   try {
-    var r = await Promise.all([
-      GET('user_achievements?user_id=eq.' + sess.user.id + '&select=achievement_id,earned_at', sess.access_token).catch(function(){ return []; }),
-      GET('user_notes?user_id=eq.' + sess.user.id + '&select=*&order=pinned.desc,updated_at.desc', sess.access_token).catch(function(){ return []; }),
-      GET('notifications?user_id=eq.' + sess.user.id + '&select=*&order=created_at.desc&limit=30', sess.access_token).catch(function(){ return []; }),
-      GET('profiles?select=user_id,username,display_name,experience,level,avatar_url,vip_until&order=experience.desc&limit=10', sess.access_token).catch(function(){ return []; }),
-      GET('daily_logins?user_id=eq.' + sess.user.id + '&select=streak&order=login_date.desc&limit=1', sess.access_token).catch(function(){ return []; }),
-      GET('guild_members?user_id=eq.' + sess.user.id + '&select=guild_id,role', sess.access_token).catch(function(){ return []; }),
-      GET('user_currency?user_id=eq.' + sess.user.id + '&select=clay_talents', sess.access_token).catch(function(){ return []; })
+    var r=await Promise.all([
+      GET('user_achievements?user_id=eq.'+sess.user.id+'&select=achievement_id,earned_at',sess.access_token).catch(function(){return [];}),
+      GET('user_notes?user_id=eq.'+sess.user.id+'&select=*&order=pinned.desc,updated_at.desc',sess.access_token).catch(function(){return [];}),
+      GET('notifications?user_id=eq.'+sess.user.id+'&select=*&order=created_at.desc&limit=30',sess.access_token).catch(function(){return [];}),
+      GET('profiles?select=user_id,username,display_name,experience,level,avatar_url,vip_until&order=experience.desc&limit=10',sess.access_token).catch(function(){return [];}),
+      GET('daily_logins?user_id=eq.'+sess.user.id+'&select=streak&order=login_date.desc&limit=1',sess.access_token).catch(function(){return [];}),
+      GET('guild_members?user_id=eq.'+sess.user.id+'&select=guild_id,role',sess.access_token).catch(function(){return [];}),
+      GET('user_currency?user_id=eq.'+sess.user.id+'&select=clay_talents,total_earned',sess.access_token).catch(function(){return [];}),
+      GET('transactions?user_id=eq.'+sess.user.id+'&select=id,amount,balance_after,type,source,meta,created_at&order=created_at.desc&limit=30',sess.access_token).catch(function(){return [];}),
+      GET('shop_items?is_active=eq.true&select=slug,name,description,category,price_talents,payload,icon&order=sort_order.asc',sess.access_token).catch(function(){return [];})
     ]);
-    var ua = r[0] || [];
-    notes = r[1] || [];
-    notifs = r[2] || [];
-    leaders = r[3] || [];
-    streak = (r[4] && r[4][0] && r[4][0].streak) || 0;
-    var gm = r[5] && r[5][0];
-    currency = (r[6] && r[6][0] && r[6][0].clay_talents) || 0;
+    var ua=r[0]||[];
+    notes=r[1]||[];
+    notifs=r[2]||[];
+    leaders=r[3]||[];
+    streak=(r[4]&&r[4][0]&&r[4][0].streak)||0;
+    var gm=r[5]&&r[5][0];
+    if (r[6]&&r[6][0]){ wallet.balance=r[6][0].clay_talents||0; wallet.total_earned=r[6][0].total_earned||0; }
+    txs=r[7]||[];
+    shopItems=r[8]||[];
     if (ua.length){
-      achs = ua.map(function(x){
-        var m = ACH.filter(function(a){ return a.id === x.achievement_id; })[0] || {};
-        return Object.assign({}, m, {achievement_id: x.achievement_id, earned_at: x.earned_at});
+      achs=ua.map(function(x){
+        var m=ACH.filter(function(a){return a.id===x.achievement_id;})[0]||{};
+        return Object.assign({},m,{achievement_id:x.achievement_id,earned_at:x.earned_at});
       });
-    } else achs = [];
-    if (gm && gm.guild_id){
+    } else achs=[];
+    if (gm&&gm.guild_id){
       try {
-        var gr = await GET('guilds?id=eq.' + gm.guild_id + '&select=*', sess.access_token);
-        guild = gr && gr[0];
+        var gr=await GET('guilds?id=eq.'+gm.guild_id+'&select=*',sess.access_token);
+        guild=gr&&gr[0];
         if (guild){
-          var mr = await GET('guild_members?guild_id=eq.' + guild.id + '&select=user_id,role&limit=50', sess.access_token);
-          gmembers = mr || [];
+          var mr=await GET('guild_members?guild_id=eq.'+guild.id+'&select=user_id,role&limit=50',sess.access_token);
+          gmembers=mr||[];
         }
       } catch(e){}
     }
     await loadFr();
     render();
-  } catch(e){ console.warn('[bg]', e.message); }
+    loadedAll=true;
+  } catch(e){ console.warn('[bg]',e.message); }
 }
 
 function showLogin(){
-  container.innerHTML = '<div style="max-width:400px;margin:60px auto;padding:40px 28px;text-align:center;background:#fff;border-radius:20px;box-shadow:0 12px 40px rgba(0,0,0,.1);"><div style="font-size:4rem;margin-bottom:12px;">🔒</div><h2 style="margin:0 0 8px;color:#2c3e50;">Вы не вошли</h2><p style="color:#888;margin:0 0 20px;">Войдите, чтобы просмотреть профиль</p><a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
+  container.innerHTML='<div style="max-width:400px;margin:60px auto;padding:40px 28px;text-align:center;background:#fff;border-radius:20px;box-shadow:0 12px 40px rgba(0,0,0,.1);"><div style="font-size:4rem;margin-bottom:12px;">🔒</div><h2 style="margin:0 0 8px;color:#2c3e50;">Вы не вошли</h2><p style="color:#888;margin:0 0 20px;">Войдите, чтобы просмотреть профиль</p><a href="/login/" style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#6C63FF,#A29BFE);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🔐 Войти</a></div>';
 }
 
 async function init(){
   trackAct();
-  var s = readSess();
+  var s=readSess();
   if (!s){ showLogin(); return; }
-  var c = readCache(5 * 60 * 1000);
-  if (c && c.profile && c.user && c.user.id === s.user.id){
-    cu = s.user;
-    cu._token = s.access_token;
-    cp = c.profile;
+  var c=readCache(5*60*1000);
+  var wc=readWalletCache();
+  if (wc){ wallet.balance=wc.balance; wallet.total_earned=wc.total_earned; }
+  if (c&&c.profile&&c.user&&c.user.id===s.user.id){
+    cu=s.user; cu._token=s.access_token; cp=c.profile;
     render();
-    loadAll(s, true).catch(function(e){ console.warn(e.message); });
+    loadAll(s,true).catch(function(e){console.warn(e.message);});
     return;
   }
-  try { await loadAll(s, false); } catch(e){ toast('Ошибка: ' + e.message, 'error'); }
+  try { await loadAll(s,false); } catch(e){ toast('Ошибка: '+e.message,'error'); }
 }
 
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+if (document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
 else init();
 
-/* ═══ Обновление кнопки авторизации ═══ */
 setTimeout(function(){
-  if (typeof window.refreshAuthButton === 'function') window.refreshAuthButton();
-}, 800);
+  if (typeof window.refreshAuthButton==='function') window.refreshAuthButton();
+},800);
 
+console.log('✅ profile.md v8 loaded');
 })();
 </script>

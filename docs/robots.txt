@@ -1,11 +1,9 @@
 # ═══════════════════════════════════════════════════════════════
 #   robots.txt — mars-wiki.ru
-#   Обновлён: сентябрь 2026
-#   Задача: максимум трафика от поисковиков, минимум паразитов
+#   Обновлён: 2026
 # ═══════════════════════════════════════════════════════════════
 
-# ─── 1. ВСЕ ОСТАЛЬНЫЕ ПО УМОЛЧАНИЮ ────────────────────────────
-# Общее правило: всё открыто, кроме явно запрещённого ниже
+# ─── 1. ДЕФОЛТ ДЛЯ ВСЕХ ──────────────────────────────────────
 User-agent: *
 Allow: /
 Disallow: /admin/
@@ -13,26 +11,31 @@ Disallow: /login/
 Disallow: /logout/
 Disallow: /cart/
 Disallow: /checkout/
-Disallow: /*?utm_
-Disallow: /*?from=
-Disallow: /*&utm_
-Disallow: /*?ref=
 Disallow: /search?
-Disallow: /*.json$
-Disallow: /*.xml$
-Allow: /*.xml$
-Allow: /sitemap.xml
-Allow: /*.jpg$
-Allow: /*.png$
-Allow: /*.svg$
-Allow: /*.webp$
-Allow: /*.css$
-Allow: /*.js$
+Disallow: /api/
 Disallow: /wp-admin/
 Disallow: /wp-includes/
+Disallow: /*?utm_
+Disallow: /*?from=
+Disallow: /*?ref=
+Disallow: /*&utm_
+Disallow: /*.json$
+# Разрешаем всё, что нужно для картинок и стилей
+Allow: /assets/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+Allow: /*.avif$
+Allow: /*.ico$
+Allow: /*.css$
+Allow: /*.js$
+Allow: /sitemap.xml
+Allow: /image-sitemap.xml
 
-# ─── 2. ПОИСКОВЫЕ СИСТЕМЫ (всё разрешено) ────────────────────
-# Google
+# ─── 2. GOOGLE ───────────────────────────────────────────────
 User-agent: Googlebot
 Allow: /
 
@@ -51,14 +54,14 @@ Allow: /
 User-agent: Storebot-Google
 Allow: /
 
-# Яндекс
+# ─── 3. ЯНДЕКС ───────────────────────────────────────────────
 User-agent: Yandex
 Allow: /
 Disallow: /admin/
 Disallow: /login/
 Disallow: /search?
-Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&from&ref
 Crawl-delay: 0.5
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&from&ref
 
 User-agent: YandexBot
 Allow: /
@@ -69,8 +72,9 @@ Crawl-delay: 0.5
 
 User-agent: YandexImages
 Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content
 
-# Bing / Microsoft
+# ─── 4. BING / MICROSOFT ─────────────────────────────────────
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
@@ -79,29 +83,31 @@ User-agent: msnbot
 Allow: /
 Crawl-delay: 1
 
-# DuckDuckGo (использует Bing, но всё же)
+User-agent: BingPreview
+Allow: /
+
+User-agent: adidxbot
+Allow: /
+
+# ─── 5. ДРУГИЕ ПОИСКОВИКИ ────────────────────────────────────
 User-agent: DuckDuckBot
 Allow: /
 
-# Mail.ru
 User-agent: Mail.RU_Bot
 Allow: /
 Crawl-delay: 1
 
-# Yahoo
 User-agent: Slurp
 Allow: /
-Crawl-delay: 1
 
-# Baidu
 User-agent: Baiduspider
 Allow: /
 Crawl-delay: 1
 
-# ═══════════════════════════════════════════════════════════════
-#   3. СОЦИАЛЬНЫЕ СЕТИ И МЕССЕНДЖЕРЫ
-#   (нужны для красивых превью при отправке ссылок)
-# ═══════════════════════════════════════════════════════════════
+User-agent: Sogou
+Allow: /
+
+# ─── 6. СОЦСЕТИ (для превью ссылок) ──────────────────────────
 User-agent: Twitterbot
 Allow: /
 
@@ -138,9 +144,7 @@ Allow: /
 User-agent: SkypeUriPreview
 Allow: /
 
-# ═══════════════════════════════════════════════════════════════
-#   4. АРХИВЫ (полезны для репутации)
-# ═══════════════════════════════════════════════════════════════
+# ─── 7. АРХИВЫ ───────────────────────────────────────────────
 User-agent: ia_archiver
 Allow: /
 
@@ -150,10 +154,7 @@ Allow: /
 User-agent: Wayback
 Allow: /
 
-# ═══════════════════════════════════════════════════════════════
-#   5. AI-КРАУЛЕРЫ — БЛОКИРУЕМ
-#   Они собирают контент для обучения моделей и НЕ приводят трафик
-# ═══════════════════════════════════════════════════════════════
+# ─── 8. AI-КРАУЛЕРЫ — БЛОКИРУЕМ (не дают трафик) ─────────────
 User-agent: GPTBot
 Disallow: /
 
@@ -220,10 +221,7 @@ Disallow: /
 User-agent: Webzio-Extended
 Disallow: /
 
-# ═══════════════════════════════════════════════════════════════
-#   6. SEO-ПАРСЕРЫ И ПАРАЗИТИЧЕСКИЕ БОТЫ — БЛОКИРУЕМ
-#   Они не дают трафик, но жрут ресурсы хостинга
-# ═══════════════════════════════════════════════════════════════
+# ─── 9. SEO-ПАРСЕРЫ ──────────────────────────────────────────
 User-agent: AhrefsBot
 Disallow: /
 
@@ -254,6 +252,9 @@ Disallow: /
 User-agent: rogerbot
 Disallow: /
 
+User-agent: RogerBot
+Disallow: /
+
 User-agent: Exabot
 Disallow: /
 
@@ -272,12 +273,7 @@ Disallow: /
 User-agent: Screaming Frog SEO Spider
 Disallow: /
 
-User-agent: RogerBot
-Disallow: /
-
-# ═══════════════════════════════════════════════════════════════
-#   7. СПАМ-БОТЫ, СБОРЩИКИ EMAIL, ХАКЕРЫ
-# ═══════════════════════════════════════════════════════════════
+# ─── 10. СПАМ / СБОРЩИКИ / СКАНЕРЫ ───────────────────────────
 User-agent: Semalt
 Disallow: /
 
@@ -347,9 +343,7 @@ Disallow: /
 User-agent: sqlmap
 Disallow: /
 
-# ═══════════════════════════════════════════════════════════════
-#   8. МОНИТОРИНГ И АНАЛИТИКА (разрешаем — они полезны)
-# ═══════════════════════════════════════════════════════════════
+# ─── 11. МОНИТОРИНГ / ВЕРИФИКАЦИЯ ────────────────────────────
 User-agent: UptimeRobot
 Allow: /
 
@@ -374,13 +368,6 @@ Allow: /
 User-agent: YandexMobileBot
 Allow: /
 
-# ═══════════════════════════════════════════════════════════════
-#   9. ДИРЕКТИВЫ ДЛЯ ЯНДЕКСА
-# ═══════════════════════════════════════════════════════════════
-# Указываем главное зеркало (без www)
-Host: https://mars-wiki.ru
-
-# ═══════════════════════════════════════════════════════════════
-#  10. КАРТА САЙТА (для всех поисковиков)
-# ═══════════════════════════════════════════════════════════════
+# ─── 12. КАРТЫ САЙТА ─────────────────────────────────────────
 Sitemap: https://mars-wiki.ru/sitemap.xml
+Sitemap: https://mars-wiki.ru/image-sitemap.xml

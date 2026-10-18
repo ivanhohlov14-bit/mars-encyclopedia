@@ -20,7 +20,7 @@ theme:
   name: readthedocs
   language: ru
   logo: assets/logo.png
-  favicon: assets/favicon.png
+  favicon: assets/favicon.ico
   sticky_navigation: true
   collapse_navigation: true
   include_homepage_in_sidebar: true   
@@ -195,6 +195,10 @@ extra_javascript:
   - assets/js/effects-menu.js
 
 extra_head:
+  - <link rel="icon" href="/favicon.ico" sizes="any">
+  - <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+  - <meta name="msapplication-TileColor" content="#6C63FF">
+  - <meta name="msapplication-TileImage" content="/assets/images/mstile-144x144.png">
   - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   - <link rel="manifest" href="/assets/manifest.json">
   - <meta name="format-detection" content="telephone=no">

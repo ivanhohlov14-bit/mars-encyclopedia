@@ -30,23 +30,48 @@ theme:
   navigation_depth: 4
 
 # ═══════════════════════════════════════════════════════════
-#   ПЛАГИНЫ (только установленные)
+#   ПЛАГИНЫ (порядок важен!)
 # ═══════════════════════════════════════════════════════════
 plugins:
+  # 1. Навигация и структура (должен идти первым)
+  - awesome-pages
+  # 2. Поиск (должен идти ранним для других плагинов)
   - search:
       lang:
         - ru
         - en
       separator: '[\s\-\.]+'
       min_search_length: 2
+  # 3. SEO и метаданные
   - advanced-seo:
       url_base: https://mars-wiki.ru
       use_canonical_url: true
       add_schema_org_json_ld: true
+  # 4. Удобство и надежность
+  - git-revision-date-localized:
+      type: date
+      locale: ru
+      fallback_to_build_date: true
+  - redirects:
+      redirect_maps:
+        # Сюда можно добавлять правила: 'старый/путь.md': 'новый/путь.md'
+        'geography/old-page.md': 'geography/new-page.md'
+  - glightbox:
+      auto_theme: true
+      touchNavigation: true
+  - timetoread:
+      words_per_minute: 180 # Скорость чтения для русского языка
+  # 5. Оптимизация и сборка (в конце)
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+  - build-cache # Ускоряет повторные сборки
+  # 6. Макросы (если используете)
   - macros
 
 # ═══════════════════════════════════════════════════════════
-#   MARKDOWN EXTENSIONS (только базовые + безопасные)
+#   MARKDOWN EXTENSIONS
 # ═══════════════════════════════════════════════════════════
 markdown_extensions:
   - admonition
@@ -55,15 +80,24 @@ markdown_extensions:
   - footnotes
   - tables
   - toc:
-      permalink: "¶"
       toc_depth: 4
   - def_list
   - abbr
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
 
 # ═══════════════════════════════════════════════════════════
-#   EXTRA — метатеги, SEO, preconnect, security
+#   EXTRA — метатеги, SEO, безопасность
 # ═══════════════════════════════════════════════════════════
 extra:
+  # Заголовки безопасности (работают на уровне хостинга, напр. Netlify/Cloudflare)
+  security:
+    csp: "default-src 'self'; img-src 'self' data: https://raw.githubusercontent.com https://*.supabase.co; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://mc.yandex.ru https://*.supabase.co;"
+    hsts: "max-age=31536000; includeSubDomains"
+    x_frame_options: "SAMEORIGIN"
+
   analytics:
     provider: google
     property: G-GN4G0ZY94H
@@ -143,6 +177,7 @@ extra_css:
   - stylesheets/mobile-fast.css
   - stylesheets/mobile-smooth.css
   - stylesheets/wiki-vip.css
+  - assets/css/vip-animations.css # <-- НОВЫЙ ФАЙЛ ДЛЯ АНИМАЦИЙ
 
 extra_javascript:
   # КРИТИЧНО
@@ -158,6 +193,7 @@ extra_javascript:
   - javascripts/session-keeper.js
   - assets/js/wiki-vip.js
   - assets/js/wake-lock.js
+  - assets/js/pagefind-init.js
 
   # БАЗОВОЕ
   - javascripts/mobile-touch.js

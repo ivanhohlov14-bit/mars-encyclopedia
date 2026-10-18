@@ -33,12 +33,7 @@ theme:
 #   ПЛАГИНЫ
 # ═══════════════════════════════════════════════════════════
 plugins:
-  - search:
-      lang:
-        - ru
-        - en
-      separator: '[\s\-\.]+'
-      min_search_length: 2
+  - search
   - advanced-seo:
       url_base: https://mars-wiki.ru
       use_canonical_url: true
@@ -47,7 +42,6 @@ plugins:
       type: date
       locale: ru
       fallback_to_build_date: true
-  - macros
 
 # ═══════════════════════════════════════════════════════════
 #   MARKDOWN EXTENSIONS

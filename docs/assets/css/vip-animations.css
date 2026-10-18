@@ -1,0 +1,16 @@
+/* Плавное появление ссылок */
+a {
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+a:hover {
+    text-shadow: 0 0 8px rgba(108, 99, 255, 0.6);
+}
+/* Плавное появление блоков */
+.md-content__inner > * {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

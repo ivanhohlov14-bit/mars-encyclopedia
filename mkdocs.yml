@@ -20,6 +20,7 @@ theme:
   name: readthedocs
   custom_dir: overrides
   language: ru
+  locale: ru
   logo: assets/logo.png
   favicon: assets/favicon.ico
   sticky_navigation: true

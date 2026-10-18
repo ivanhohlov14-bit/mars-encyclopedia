@@ -30,44 +30,28 @@ theme:
   navigation_depth: 4
 
 # ═══════════════════════════════════════════════════════════
-#   ПЛАГИНЫ (порядок важен!)
+#   ПЛАГИНЫ
 # ═══════════════════════════════════════════════════════════
 plugins:
-  # 1. Навигация и структура (должен идти первым)
-  - awesome-pages
-  # 2. Поиск (должен идти ранним для других плагинов)
   - search:
       lang:
         - ru
         - en
       separator: '[\s\-\.]+'
       min_search_length: 2
-  # 3. SEO и метаданные
   - advanced-seo:
       url_base: https://mars-wiki.ru
       use_canonical_url: true
       add_schema_org_json_ld: true
-  # 4. Удобство и надежность
   - git-revision-date-localized:
       type: date
       locale: ru
       fallback_to_build_date: true
-  - redirects:
-      redirect_maps:
-        # Сюда можно добавлять правила: 'старый/путь.md': 'новый/путь.md'
-        'geography/old-page.md': 'geography/new-page.md'
   - glightbox:
       auto_theme: true
       touchNavigation: true
   - timetoread:
-      words_per_minute: 180 # Скорость чтения для русского языка
-  # 5. Оптимизация и сборка (в конце)
-  - minify:
-      minify_html: true
-      minify_js: true
-      minify_css: true
-  - build-cache # Ускоряет повторные сборки
-  # 6. Макросы (если используете)
+      words_per_minute: 180
   - macros
 
 # ═══════════════════════════════════════════════════════════
@@ -89,21 +73,14 @@ markdown_extensions:
   - pymdownx.inlinehilite
 
 # ═══════════════════════════════════════════════════════════
-#   EXTRA — метатеги, SEO, безопасность
+#   EXTRA
 # ═══════════════════════════════════════════════════════════
 extra:
-  # Заголовки безопасности (работают на уровне хостинга, напр. Netlify/Cloudflare)
-  security:
-    csp: "default-src 'self'; img-src 'self' data: https://raw.githubusercontent.com https://*.supabase.co; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://mc.yandex.ru https://*.supabase.co;"
-    hsts: "max-age=31536000; includeSubDomains"
-    x_frame_options: "SAMEORIGIN"
-
   analytics:
     provider: google
     property: G-GN4G0ZY94H
     
   meta:
-    # Open Graph
     - property: og:type
       content: website
     - property: og:site_name
@@ -116,14 +93,8 @@ extra:
       content: Свободный справочник о мире «Письмо из Красной пыли» — история, география, культура Марса
     - property: og:image
       content: https://mars-wiki.ru/assets/images/header-banner.png
-    - property: og:image:width
-      content: "1200"
-    - property: og:image:height
-      content: "630"
     - property: og:url
       content: https://mars-wiki.ru/
-
-    # Twitter / X
     - name: twitter:card
       content: summary_large_image
     - name: twitter:title
@@ -132,8 +103,6 @@ extra:
       content: Свободный справочник о мире «Письмо из Красной пыли»
     - name: twitter:image
       content: https://mars-wiki.ru/assets/images/header-banner.png
-
-    # SEO
     - name: description
       content: Марсианская энциклопедия — полный справочник по миру Марса. История, география, персонажи, мифология, культура.
     - name: keywords
@@ -144,12 +113,6 @@ extra:
       content: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
     - name: theme-color
       content: "#6C63FF"
-    - name: apple-mobile-web-app-capable
-      content: "yes"
-    - name: apple-mobile-web-app-status-bar-style
-      content: black-translucent
-    - name: apple-mobile-web-app-title
-      content: Mars Wiki
 
   link:
     - rel: preconnect
@@ -177,25 +140,17 @@ extra_css:
   - stylesheets/mobile-fast.css
   - stylesheets/mobile-smooth.css
   - stylesheets/wiki-vip.css
-  - assets/css/vip-animations.css # <-- НОВЫЙ ФАЙЛ ДЛЯ АНИМАЦИЙ
 
 extra_javascript:
-  # КРИТИЧНО
   - javascripts/mobile-optimizer.js?v=4
   - javascripts/mobile-smooth.js?v=4
-
-  # SUPABASE
   - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js
   - assets/js/supabase-client.js
-
-  # АВТОРИЗАЦИЯ
   - javascripts/auth-button.js
   - javascripts/session-keeper.js
   - assets/js/wiki-vip.js
   - assets/js/wake-lock.js
   - assets/js/pagefind-init.js
-
-  # БАЗОВОЕ
   - javascripts/mobile-touch.js
   - javascripts/lazy-images.js
   - javascripts/mobile-cache.js
@@ -219,8 +174,6 @@ extra_javascript:
   - assets/js/collapse-menu.js?v=12
   - assets/js/auto-categories.js?v=2
   - assets/js/vip.js?v=1
-
-  # ЛЕНИВО
   - assets/js/gimn-kimeria-data.js?v=1
   - assets/js/gimn-player.js?v=1
   - assets/js/qrcode.min.js

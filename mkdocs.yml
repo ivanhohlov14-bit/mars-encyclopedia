@@ -21,7 +21,7 @@ theme:
   language: ru
   locale: ru
   logo: assets/logo.png
-  favicon: docs/favicon.ico
+  favicon: assets/favicon.png
   sticky_navigation: true
   collapse_navigation: true
   include_homepage_in_sidebar: true

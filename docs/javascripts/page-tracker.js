@@ -1,15 +1,10 @@
 // ============================================================
-// page-tracker.js — v3 VIP
-// Начисление XP за дочитывание статьи до конца (90%)
-// - Не дублирует showXpToast — использует experience-toast.js
-// - Не дублирует ожидание сессии — использует window.marsSession
-// - Единый источник XP-суммы (XP_PER_ARTICLE)
-// - rAF-троттлинг scroll (было на каждый пиксель)
-// - Проверка что это статья (а не служебная страница)
-// - document$ для MkDocs SPA
-// - Safe storage + версионирование ключа
-// - Reduced-motion: тост не показывается
-// - Публичное API: window.marsPageTracker.*
+// page-tracker.js — v4 VIP (Innovation Update)
+// - Порог чтения снижен до 70%
+// - Добавлен визуальный Progress Bar (полоса чтения)
+// - Защита от накрутки: минимум 15 секунд на странице
+// - Проверка видимости вкладки (не дает опыт, если вкладка скрыта)
+// - Оптимизация через requestAnimationFrame
 // ============================================================
 (function() {
     'use strict';
@@ -21,12 +16,19 @@
     // ⚙️ Конфиг
     // ============================================================
     var XP_PER_ARTICLE = 5;
-    var THRESHOLD_PERCENT = 90;
-    var PAGE_KEY_VERSION = 'v3_';         // если формула изменится — старые ключи не сработают
-    var MIN_DOC_HEIGHT = 800;             // если статья короче — не считаем
-    var MIN_SCROLL_RANGE = 150;           // если maxScroll меньше — не считаем
+    var THRESHOLD_PERCENT = 70;           // 🔥 ИЗМЕНЕНО НА 70%
+    var MIN_TIME_ON_PAGE_SEC = 15;        // 🔥 НОВОЕ: Минимум 15 секунд на странице
+    var PAGE_KEY_VERSION = 'v4_';         
+    var MIN_DOC_HEIGHT = 800;             
+    var MIN_SCROLL_RANGE = 150;           
     var MAX_SESSION_WAIT_MS = 5000;
     var DEBUG = false;
+
+    var pageLoadTime = Date.now();
+    var awarded = false;
+    var scrollScheduled = false;
+    var currentUser = null;
+    var progressBar = null;
 
     function log() {
         if (!DEBUG) return;
@@ -40,56 +42,65 @@
     function lsSet(k, v) { try { localStorage.setItem(k, v); } catch(e) {} }
 
     // ============================================================
-    // 🚫 Исключения
+    // 🚫 Исключения и проверки
     // ============================================================
     var EXCLUDED_PATHS = [
-        '/', '/index/',
-        '/profile/', '/login/', '/register/', '/profile-view/',
-        '/stats/', '/game/', '/moderator/',
-        '/license/', '/support/', '/start-here/',
-        '/globe-map/', '/interactive/', '/interactive/exodus/',
-        '/music/constructor/', '/translator/',
-        '/achievements/', '/quest-map/', '/quests/', '/top/',
-        '/bookmarks/', '/feed/', '/horoscope/', '/scrolls/',
-        '/forum/', '/guilds/', '/names/', '/sky/',
-        '/scene-generator/', '/duel/', '/museum/', '/weather/',
-        '/scan-dates/', '/categories/',
-        '/lists/', '/terms/',
-        '/en/', '/en/index/'
+        '/', '/index/', '/profile/', '/login/', '/register/', '/profile-view/',
+        '/stats/', '/game/', '/moderator/', '/license/', '/support/', '/start-here/',
+        '/globe-map/', '/interactive/', '/interactive/exodus/', '/music/constructor/',
+        '/translator/', '/achievements/', '/quest-map/', '/quests/', '/top/',
+        '/bookmarks/', '/feed/', '/horoscope/', '/scrolls/', '/forum/', '/guilds/',
+        '/names/', '/sky/', '/scene-generator/', '/duel/', '/museum/', '/weather/',
+        '/scan-dates/', '/categories/', '/lists/', '/terms/', '/en/', '/en/index/'
     ];
 
     function isExcluded() {
         var path = window.location.pathname;
-        // Нормализуем: убираем trailing slash
         var norm = path.replace(/\/$/, '') || '/';
         for (var i = 0; i < EXCLUDED_PATHS.length; i++) {
-            var ex = EXCLUDED_PATHS[i];
-            var exNorm = ex.replace(/\/$/, '') || '/';
+            var exNorm = EXCLUDED_PATHS[i].replace(/\/$/, '') || '/';
             if (norm === exNorm) return true;
         }
         return false;
     }
 
-    // ============================================================
-    // 🔍 Проверка что это статья
-    // ============================================================
     function isArticlePage() {
-        // Есть контент-область
         var content = document.querySelector('.md-content__inner') ||
                       document.querySelector('.rst-content') ||
                       document.querySelector('article') ||
                       document.querySelector('.document');
         if (!content) return false;
-
-        // В контенте есть заголовок
-        var h1 = content.querySelector('h1');
-        if (!h1) return false;
-
-        // Достаточно длинный контент (не 404, не заглушка)
-        var text = content.textContent || '';
-        if (text.length < 300) return false;
-
+        if (!content.querySelector('h1')) return false;
+        if ((content.textContent || '').length < 300) return false;
         return true;
+    }
+
+    // ============================================================
+    // 🎨 Создание Progress Bar (Нововведение)
+    // ============================================================
+    function createProgressBar() {
+        if (document.getElementById('mars-read-progress')) return;
+        
+        var style = document.createElement('style');
+        style.innerHTML = `
+            #mars-read-progress {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #6C63FF, #A29BFE);
+                width: 0%;
+                z-index: 999999;
+                transition: width 0.1s ease-out;
+                box-shadow: 0 0 8px rgba(108, 99, 255, 0.6);
+                pointer-events: none;
+            }
+        `;
+        document.head.appendChild(style);
+
+        progressBar = document.createElement('div');
+        progressBar.id = 'mars-read-progress';
+        document.body.appendChild(progressBar);
     }
 
     // ============================================================
@@ -97,30 +108,21 @@
     // ============================================================
     function waitForUser(maxMs) {
         maxMs = maxMs || MAX_SESSION_WAIT_MS;
-
         return new Promise(function(resolve) {
-            // 1. Уже есть в marsSession
             if (window.marsSession && window.marsSession.user) {
-                resolve(window.marsSession.user);
-                return;
+                resolve(window.marsSession.user); return;
             }
-
             var start = Date.now();
             var iv = setInterval(function() {
                 if (window.marsSession && window.marsSession.user) {
-                    clearInterval(iv);
-                    resolve(window.marsSession.user);
-                    return;
+                    clearInterval(iv); resolve(window.marsSession.user); return;
                 }
                 if (Date.now() - start > maxMs) {
                     clearInterval(iv);
-                    // Fallback — напрямую
-                    var client = window.supabaseClient ||
-                                 (window.getSupabase && window.getSupabase());
+                    var client = window.supabaseClient || (window.getSupabase && window.getSupabase());
                     if (!client || !client.auth) { resolve(null); return; }
                     client.auth.getSession().then(function(r) {
-                        var u = r && r.data && r.data.session && r.data.session.user;
-                        resolve(u || null);
+                        resolve((r && r.data && r.data.session && r.data.session.user) || null);
                     }).catch(function() { resolve(null); });
                 }
             }, 200);
@@ -130,9 +132,6 @@
     // ============================================================
     // 📜 Основная логика скролла
     // ============================================================
-    var awarded = false;
-    var scrollScheduled = false;
-
     function checkScroll(user) {
         if (awarded) return;
 
@@ -140,37 +139,58 @@
         var windowHeight = window.innerHeight || 0;
         var documentHeight = document.documentElement.scrollHeight || 0;
 
-        // Слишком короткий документ
         if (documentHeight < MIN_DOC_HEIGHT) return;
 
         var maxScroll = documentHeight - windowHeight;
         if (maxScroll < MIN_SCROLL_RANGE) return;
 
         var percent = (scrollY / maxScroll) * 100;
+
+        // Обновляем Progress Bar
+        if (progressBar) {
+            progressBar.style.width = Math.min(percent, 100) + '%';
+        }
+
         if (percent < THRESHOLD_PERCENT) return;
 
-        // ✅ Дочитал
-        awarded = true;
+        // 🔥 Проверка 1: Минимальное время на странице
+        var timeSpent = (Date.now() - pageLoadTime) / 1000;
+        if (timeSpent < MIN_TIME_ON_PAGE_SEC) {
+            // Если проскроллил быстро, ждем оставшееся время
+            var timeLeft = (MIN_TIME_ON_PAGE_SEC * 1000) - (Date.now() - pageLoadTime);
+            setTimeout(function() { checkScroll(user); }, timeLeft + 100);
+            return;
+        }
 
-        // Ставим флаг СРАЗУ — защита от повторных триггеров
+        // 🔥 Проверка 2: Вкладка должна быть активна
+        if (document.hidden) {
+            return; // Ждем, пока пользователь вернется на вкладку
+        }
+
+        // ✅ Все проверки пройдены — начисляем!
+        awarded = true;
         var pageKey = PAGE_KEY_VERSION + 'read_' + window.location.pathname;
         lsSet(pageKey, '1');
 
-        // Начисляем опыт
+        if (progressBar) {
+            progressBar.style.background = '#4CAF50'; // Зеленеет при получении
+            setTimeout(function() {
+                progressBar.style.opacity = '0';
+                setTimeout(function() { progressBar.remove(); }, 500);
+            }, 2000);
+        }
+
         if (typeof window.addExperience === 'function') {
-            // addExperience сам покажет тост (experience.js v3)
             window.addExperience(user.id, XP_PER_ARTICLE).catch(function(e) {
                 log('addExperience err:', e && e.message);
             });
         } else {
-            // Fallback — если experience.js не загрузился
             log('addExperience недоступен');
             if (typeof window.showExperienceToast === 'function') {
                 window.showExperienceToast(XP_PER_ARTICLE);
             }
         }
 
-        // Снимаем листенеры
         window.removeEventListener('scroll', onScroll);
         window.removeEventListener('resize', onResize);
     }
@@ -185,49 +205,34 @@
     }
 
     function onResize() {
-        if (awarded) return;
-        if (currentUser) checkScroll(currentUser);
+        if (!awarded && currentUser) checkScroll(currentUser);
     }
 
     // ============================================================
     // 🚀 Init
     // ============================================================
-    var currentUser = null;
-
     async function init() {
-        if (isExcluded()) {
-            log('страница исключена');
-            return;
-        }
-        if (!isArticlePage()) {
-            log('не статья');
-            return;
-        }
+        awarded = false;
+        currentUser = null;
+        pageLoadTime = Date.now(); // Сбрасываем таймер при SPA-переходе
 
-        // Уже читал эту страницу?
+        if (isExcluded() || !isArticlePage()) return;
+
         var pageKey = PAGE_KEY_VERSION + 'read_' + window.location.pathname;
-        if (lsGet(pageKey)) {
-            log('уже прочитано ранее');
-            return;
-        }
+        if (lsGet(pageKey)) return; // Уже читал
 
         var user = await waitForUser(MAX_SESSION_WAIT_MS);
-        if (!user) {
-            log('нет пользователя');
-            return;
-        }
+        if (!user) return;
 
         currentUser = user;
+        createProgressBar(); // Включаем полосу прогресса
 
-        // Листенеры
         window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('resize', onResize, { passive: true });
 
-        // Проверка сразу — вдруг уже внизу (например, deep-link на анкор)
+        // Первичная проверка
         setTimeout(function() { checkScroll(user); }, 800);
         setTimeout(function() { checkScroll(user); }, 2500);
-
-        log('слушаем скролл для', window.location.pathname);
     }
 
     if (document.readyState === 'loading') {
@@ -236,31 +241,24 @@
         init();
     }
 
-    // MkDocs Material SPA-переходы
+    // SPA-переходы
     if (typeof document$ !== 'undefined' && document$.subscribe) {
         try {
             document$.subscribe(function() {
-                awarded = false;
-                currentUser = null;
                 setTimeout(init, 200);
             });
         } catch(e) {}
     }
 
-    // ============================================================
     // 🌐 Публичное API
-    // ============================================================
     window.marsPageTracker = {
         XP_PER_ARTICLE: XP_PER_ARTICLE,
         THRESHOLD_PERCENT: THRESHOLD_PERCENT,
         refresh: init,
         isAwarded: function() { return awarded; },
         clearMemory: function() {
-            // Сброс флага для текущей страницы
             var pageKey = PAGE_KEY_VERSION + 'read_' + window.location.pathname;
             try { localStorage.removeItem(pageKey); } catch(e) {}
         }
     };
-
-    log('загружен');
 })();

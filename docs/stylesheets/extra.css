@@ -1,6 +1,6 @@
 /* ============================================================
-   МАРСИАНСКАЯ ЭНЦИКЛОПЕДИЯ — VIP STYLES v4
-   Светлая тема. Оптимизированная версия.
+   МАРСИАНСКАЯ ЭНЦИКЛОПЕДИЯ — VIP STYLES v5
+   Светлая тема. Оптимизированная и улучшенная версия.
 
    Структура:
      1. Переменные
@@ -206,9 +206,14 @@ nav.wy-nav-side .wy-side-nav-search a {
     color: #ffffff !important;
 }
 
-.wy-menu-vertical a {
-    color: var(--c-text);
+/* ─── МЕНЮ: текст чёрный как в Википедии ─── */
+.wy-menu-vertical a,
+.wy-menu-vertical a:link,
+.wy-menu-vertical a:visited,
+.wy-menu-vertical a:active {
+    color: #202122;
     background: var(--c-bg);
+    text-decoration: none;
     transition: background var(--trans-fast), color var(--trans-fast), padding-left var(--trans-fast);
 }
 .wy-menu-vertical a:hover {
@@ -218,12 +223,28 @@ nav.wy-nav-side .wy-side-nav-search a {
 }
 
 .wy-menu-vertical li.current a {
-    color: var(--c-text);
+    color: #202122;
     background: var(--c-bg);
 }
 .wy-menu-vertical li.current a:hover {
     background: var(--c-bg-hover);
     color: var(--c-link);
+}
+
+/* Заголовки-разделы меню */
+.wy-menu-vertical p.caption,
+.wy-menu-vertical .caption {
+    color: #54595d;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    font-size: 0.82rem;
+}
+
+/* Название сайта в шапке сайдбара */
+.wy-side-nav-search > div.version,
+.wy-side-nav-search .version {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 
@@ -292,7 +313,8 @@ a:visited { color: var(--c-link-visited); }
 /* Заголовки — anchor-ссылки */
 h1 > a.headerlink,
 h2 > a.headerlink,
-h3 > a.headerlink {
+h3 > a.headerlink,
+h4 > a.headerlink {
     opacity: 0;
     margin-left: 0.5rem;
     text-decoration: none;
@@ -301,7 +323,8 @@ h3 > a.headerlink {
 }
 h1:hover > a.headerlink,
 h2:hover > a.headerlink,
-h3:hover > a.headerlink {
+h3:hover > a.headerlink,
+h4:hover > a.headerlink {
     opacity: 1;
 }
 
@@ -458,10 +481,36 @@ footer,
     box-shadow: var(--shadow-md);
 }
 
+/* --- Код --- */
+code, tt {
+    background: var(--c-bg-subtle);
+    border: 1px solid var(--c-border-light);
+    border-radius: var(--radius-sm);
+    padding: 1px 6px;
+    font-size: 0.9em;
+    color: #c7254e;
+    font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+}
+pre {
+    background: var(--c-bg-subtle);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-4);
+    overflow-x: auto;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
+}
+
 
 /* ============================================================
    6. МЕНЮ-АККОРДЕОН
-   Сохраняем активный путь видимым
+   Сохраняем активный путь видимым, старые стрелки ▸
    ============================================================ */
 
 /* По умолчанию скрываем вложки */
@@ -496,7 +545,7 @@ footer,
     display: none;
 }
 
-/* Маркер раскрытия — стрелочка */
+/* Маркер раскрытия — старая стрелка ▸ */
 .wy-menu-vertical li:has(> ul) > a {
     position: relative;
     padding-right: 28px;
@@ -504,21 +553,20 @@ footer,
 }
 
 .wy-menu-vertical li:has(> ul) > a::after {
-    content: '';
+    content: '▸';
     position: absolute;
-    right: 10px;
+    right: 8px;
     top: 50%;
-    width: 6px;
-    height: 6px;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: translateY(-70%) rotate(-45deg);
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: inherit;
+    opacity: 0.55;
     transition: transform var(--trans-fast);
-    opacity: 0.5;
+    pointer-events: none;
 }
 
-.wy-menu-vertical li.mars-open > a::after {
-    transform: translateY(-30%) rotate(45deg);
+.wy-menu-vertical li:has(> ul).mars-open > a::after {
+    transform: translateY(-50%) rotate(90deg);
     opacity: 1;
 }
 
@@ -982,7 +1030,6 @@ body.sidebar-hidden .wy-nav-side {
    12. ПРОИЗВОДИТЕЛЬНОСТЬ — МОБИЛЬНАЯ ОПТИМИЗАЦИЯ
    ============================================================ */
 @media (max-width: 1024px) {
-    /* Убираем глобальные transition на layout */
     body,
     .wy-nav-content,
     .wy-nav-side,
@@ -990,13 +1037,11 @@ body.sidebar-hidden .wy-nav-side {
         transition: none;
     }
 
-    /* Таблицы — без transition */
     table td,
     table tr {
         transition: none;
     }
 
-    /* Убираем box-shadow на инфобоксах */
     .infobox,
     .infobox:hover {
         box-shadow: none;
@@ -1007,7 +1052,6 @@ body.sidebar-hidden .wy-nav-side {
         transition: none;
     }
 
-    /* Картинки — без hover-эффекта */
     .rst-content img,
     .rst-content img:hover {
         box-shadow: none;
@@ -1016,7 +1060,6 @@ body.sidebar-hidden .wy-nav-side {
 }
 
 @media (max-width: 768px) {
-    /* Оставляем только лёгкие transition */
     .wy-menu-vertical a {
         transition: background 0.15s ease, color 0.15s ease;
     }

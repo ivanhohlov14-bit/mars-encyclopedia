@@ -8,10 +8,6 @@ site_url: https://mars-wiki.ru/
 site_description: Свободный справочник о мире «Письмо из Красной пыли» — история, география, персонажи, культура Марса
 site_author: Редакция Марсианской энциклопедии
 
-copyright: |
-  &copy; 2026 — Марсианская энциклопедия.
-  Материалы доступны по лицензии CC BY-SA 4.0.
-
 # ═══════════════════════════════════════════════════════════
 #   ТЕМА
 # ═══════════════════════════════════════════════════════════
@@ -21,12 +17,20 @@ theme:
   language: ru
   locale: ru
   logo: assets/logo.png
-  favicon: https://mars-wiki.ru/assets/favicon.png
+  # favicon: https://mars-wiki.ru/assets/favicon.png <-- Убрали отсюда, чтобы не конфликтовало
   sticky_navigation: true
   collapse_navigation: true
   include_homepage_in_sidebar: true
   prev_next_buttons_location: bottom
   navigation_depth: 4
+
+# ═══════════════════════════════════════════════════════════
+#   ЖЕЛЕЗОБЕТОННАЯ ФАВИКОНКА
+# ═══════════════════════════════════════════════════════════
+extra_head:
+  - <link rel="icon" type="image/png" href="https://mars-wiki.ru/assets/favicon.png">
+  - <link rel="shortcut icon" type="image/png" href="https://mars-wiki.ru/assets/favicon.png">
+  - <link rel="apple-touch-icon" href="https://mars-wiki.ru/assets/favicon.png">
 
 # ═══════════════════════════════════════════════════════════
 #   ПЛАГИНЫ
@@ -43,7 +47,7 @@ plugins:
       fallback_to_build_date: true
 
 # ═══════════════════════════════════════════════════════════
-#   MARKDOWN EXTENSIONS — ТОЛЬКО СТАНДАРТНЫЕ, БЕЗ pymdownx
+#   MARKDOWN EXTENSIONS
 # ═══════════════════════════════════════════════════════════
 markdown_extensions:
   - admonition
@@ -133,6 +137,7 @@ extra_css:
 extra_javascript:
   - javascripts/mobile-optimizer.js?v=4
   - javascripts/mobile-smooth.js?v=4
+  - javascripts/custom-nav.js  # <--- НОВЫЙ СКРИПТ ДЛЯ МЕНЮ
   - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js
   - assets/js/supabase-client.js
   - javascripts/auth-button.js
@@ -175,7 +180,7 @@ extra_javascript:
   - assets/js/effects-menu.js
 
 # ═══════════════════════════════════════════════════════════
-#   НАВИГАЦИЯ (ВАШ СПИСОК БЕЗ ИЗМЕНЕНИЙ)
+#   НАВИГАЦИЯ
 # ═══════════════════════════════════════════════════════════
 nav:
   - Заглавная страница: index.md
@@ -332,35 +337,41 @@ nav:
           - «Ацидалийское море»: books/acidalia-sea-book.md
       - Музыка:
           - Конструктор мелодий: music/constructor.md
-      - Переводчик: translator.md
+      - Переводчик:
+          - Марсианский переводчик: translator.md
 
   - Интерактив:
-      - «К Исходу»: interactive/exodus.md
-      - Карта Марса: globe-map.md
-      - Марсианская империя: game/index.md
-      - Марсианский город: mars-city.md
-      - Сканер дат: scan-dates.md
-      - Погода на Марсе: weather/index.md
-      - Музей: museum/index.md
-      - Дуэль переводчиков: duel/index.md
-      - Генератор сцен: scene-generator/index.md
-      - Небо Марса: sky/index.md
-      - Гильдии: guilds/index.md
-      - Марсианское имя: names/index.md
-      - Гороскоп: horoscope/index.md
-      - Топ статей: top/index.md
-      - Квесты: quests/index.md
-      - Квест-карта: quest-map/index.md
-      - Космический глазомер: interactive/scale-guess.md
-      - Тест «Возьмут ли тебя на Марс?»: interactive/mars-test.md
-
+      - Игры:
+          - «К Исходу»: interactive/exodus.md
+          - Марсианская империя: game/index.md
+          - Марсианский город: mars-city.md
+          - Дуэль переводчиков: duel/index.md
+          - Космический глазомер: interactive/scale-guess.md
+      - Тесты и квесты:     
+          - Тест «Возьмут ли тебя на Марс?»: interactive/mars-test.md
+          - Квесты: quests/index.md
+          - Квест-карта: quest-map/index.md
+      - Карты:
+          - Карта Марса:  globe-map.md
+          - Небо Марса: sky/index.md-map.md
+      - Генераторы:
+          - Генератор сцен: scene-generator/index.md
+          - Марсианское имя: names/index.md
+      - Другое:
+          - Сканер дат: scan-dates.md
+          - Погода на Марсе: weather/index.md
+          - Музей: museum/index.md
+          - Гороскоп: horoscope/index.md
+          - Топ статей: top/index.md
+          
   - Сообщество:
+      - Гильдии: guilds/index.md
       - Форум: forum/index.md
       - Лента активности: feed/index.md
       - Достижения: achievements/index.md
       - Свитки Хевсура: scrolls/index.md
       - Мои закладки: bookmarks/index.md
-
+      
   - О проекте:
       - Магазин: shop.md
       - Обратная связь: feedback.md

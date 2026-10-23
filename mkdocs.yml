@@ -21,7 +21,7 @@ theme:
   language: ru
   locale: ru
   logo: assets/logo.png
-  favicon: assets/favicon.ico
+  favicon: docs/favicon.ico
   sticky_navigation: true
   collapse_navigation: true
   include_homepage_in_sidebar: true
@@ -122,13 +122,14 @@ extra:
 extra_css:
   - stylesheets/extra.css
   - assets/css/mars-theme.css
+  - stylesheets/nav-collapse.css
   - assets/css/wikipedia-footer.css
   - assets/css/scroll-mode.css
   - stylesheets/hide-dup.css
   - stylesheets/mobile-fast.css
   - stylesheets/mobile-smooth.css
   - stylesheets/wiki-vip.css
-
+  
 extra_javascript:
   - javascripts/mobile-optimizer.js?v=4
   - javascripts/mobile-smooth.js?v=4

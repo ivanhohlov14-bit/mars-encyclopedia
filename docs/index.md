@@ -276,43 +276,54 @@ comments: false
     </table>
 
     <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaecf0;">
-      <p style="font-weight: bold; color: #1a1a2e; margin-bottom: 10px;">Где приобрести:</p>
-      <style>
-        .compact-links { display: flex; flex-wrap: wrap; gap: 6px; }
-        .compact-links a {
-            display: inline-block; padding: 6px 12px; background: #f8f9fa;
-            border: 1px solid #d0d7de; border-radius: 6px;
-            font-size: 0.85rem; color: #333 !important; text-decoration: none;
-            transition: all 0.2s; line-height: 1.2;
-        }
-        .compact-links a:hover {
-            background: #f0f0ff; border-color: #6C63FF;
-            color: #6C63FF !important; transform: translateY(-1px);
-            box-shadow: 0 2px 6px rgba(108,99,255,0.15);
-        }
-      </style>
-      <div class="compact-links">
-        <a href="https://author.today/work/670144" target="_blank" rel="noopener">📖 Author.Today</a>
-        <a href="https://www.litres.ru/book/mnemis/pis-mo-iz-krasnoi-pyli-kniga-pervaia-atsidaliiskoe-more-74637094/" target="_blank" rel="noopener">📘 ЛитРес (Текст)</a>
-        <a href="https://www.litres.ru/audiobook/mnemis/acidaliyskoe-more-73934404/" target="_blank" rel="noopener">🎧 ЛитРес (Аудио)</a>
-        <a href="https://fantasy-worlds.ru/lib/id73005648" target="_blank" rel="noopener">🌍 Fantasy Worlds</a>
-        <a href="https://bookz.ru/authors/mnemis/book-pis-mo-iz-krasnoi-pyli-kniga-pervaia-atsidaliiskoe-more-74637094-1807814" target="_blank" rel="noopener">📖 Bookz.ru</a>
-        <a href="https://getreder.ru/book/atsidaliiskoe-more" target="_blank" rel="noopener">📗 GetReder</a>
-        <a href="https://www.ozon.ru/product/atsidaliyskoe-more-mnemis-elektronnaya-audiokniga-4419780470/" target="_blank" rel="noopener">🎧 Ozon (Аудио)</a>
-        <a href="https://knigavuhe.org/paid/book/acidalijjskoe-more/" target="_blank" rel="noopener">🎧 Knigavuhe (Аудио)</a>
-        <a href="https://unexus.ru/books/atsidaliyskoe-more" target="_blank" rel="noopener">📕 UnExus</a>
-        <a href="https://chtivo.net/catalog/uncategorized/pismo-iz-krasnoj-pyli-aczidalijskoe-more/" target="_blank" rel="noopener">📚 Чтиво.Книги</a>
-      </div>
-    </div>
+  <style>
+    .vip-contact-title { 
+        font-size: 0.85rem; 
+        color: #888; 
+        text-transform: uppercase; 
+        letter-spacing: 0.5px; 
+        font-weight: 600; 
+        margin-bottom: 12px; 
+    }
+    .compact-links { display: flex; flex-wrap: wrap; gap: 6px; }
+    .compact-links a {
+        display: inline-block; padding: 6px 12px; background: #f8f9fa;
+        border: 1px solid #d0d7de; border-radius: 6px;
+        font-size: 0.85rem; color: #333 !important; text-decoration: none;
+        transition: all 0.2s; line-height: 1.2;
+    }
+    .compact-links a:hover {
+        background: #f0f0ff; border-color: #6C63FF;
+        color: #6C63FF !important; transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(108,99,255,0.15);
+    }
+  </style>
+
+  <div class="vip-contact-title">Где приобрести:</div>
+  
+  <div class="compact-links">
+    <a href="https://author.today/work/670144" target="_blank" rel="noopener">📖 Author.Today</a>
+    <a href="https://www.litres.ru/book/mnemis/pis-mo-iz-krasnoi-pyli-kniga-pervaia-atsidaliiskoe-more-74637094/" target="_blank" rel="noopener">📘 ЛитРес (Текст)</a>
+    <a href="https://www.litres.ru/audiobook/mnemis/acidaliyskoe-more-73934404/" target="_blank" rel="noopener">🎧 ЛитРес (Аудио)</a>
+    <a href="https://fantasy-worlds.ru/lib/id73005648" target="_blank" rel="noopener">🌍 Fantasy Worlds</a>
+    <a href="https://bookz.ru/authors/mnemis/book-pis-mo-iz-krasnoi-pyli-kniga-pervaia-atsidaliiskoe-more-74637094-1807814" target="_blank" rel="noopener">📖 Bookz.ru</a>
+    <a href="https://getreder.ru/book/atsidaliiskoe-more" target="_blank" rel="noopener">📗 GetReder</a>
+    <a href="https://www.ozon.ru/product/atsidaliyskoe-more-mnemis-elektronnaya-audiokniga-4419780470/" target="_blank" rel="noopener">🎧 Ozon (Аудио)</a>
+    <a href="https://knigavuhe.org/paid/book/acidalijjskoe-more/" target="_blank" rel="noopener">🎧 Knigavuhe (Аудио)</a>
+    <a href="https://unexus.ru/books/atsidaliyskoe-more" target="_blank" rel="noopener">📕 UnExus</a>
+    <a href="https://chtivo.net/catalog/uncategorized/pismo-iz-krasnoj-pyli-aczidalijskoe-more/" target="_blank" rel="noopener">📚 Чтиво.Книги</a>
+  </div>
+</div>
   </div>
 
-  <div class="vip-card vip-lazy">
+ <div class="vip-card vip-lazy">
     <h3><img src="assets/images/stickers/sticker-galaxy.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> О проекте</h3>
-    <p>«Марсианская энциклопедия» представляет собой открытый <strong>научно-исследовательский и культурный проект</strong>, посвящённый реконструкции <strong>гипотетической истории Марса</strong>. Проект адресован широкой аудитории, интересующейся вопросами происхождения жизни во <strong>Вселенной</strong>, эволюции планет, климатологии и возможных форм разума за пределами Земли.</p>
     
-    <p>В отличие от классических художественных произведений, материалы энциклопедии предлагают читателю не готовые ответы, а пространство для размышлений. Мы моделируем историю Марса, строго опираясь на <strong>законы физики, астробиологии и геологии</strong>. Каждый миф, событие или биологический вид в нашем справочнике — это <strong>научно обоснованная гипотеза</strong>, которая не противоречит современному знанию, но оставляет простор для альтернативных интерпретаций.</p>
+    <p>«Марсианская энциклопедия» — открытый <strong>научно-исследовательский проект</strong>, реконструирующий <strong>гипотетическую историю Марса</strong> для всех, кто интересуется эволюцией планет и происхождением жизни во <strong>Вселенной</strong>.</p>
     
-    <p>Редакция энциклопедии стремится сохранить <strong>баланс между строгостью научного факта и глубиной художественного вымысла</strong>, создавая целостную и достоверную картину <strong>угасающего мира</strong>. Мы приветствуем обратную связь от читателей, исследователей и энтузиастов космонавтики.</p>
+    <p>Мы не даём готовых ответов, а создаём пространство для размышлений. Опираясь на <strong>законы физики, астробиологии и геологии</strong>, мы моделируем события прошлого. Каждый миф или биологический вид в справочнике — это <strong>научно обоснованная гипотеза</strong>, не противоречащая современным знаниям.</p>
+    
+    <p>Наша цель — сохранить <strong>баланс между научным фактом и художественным вымыслом</strong>, создав целостную картину <strong>угасающего мира</strong>. Мы всегда рады обратной связи от читателей и исследователей.</p>
 
     <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaecf0;">
       <style>

@@ -1272,3 +1272,18 @@ body.sidebar-hidden .wy-nav-side {
 .wy-menu-vertical li.current > a {
     border-right: none !important;
 }
+/* ============================================================
+   ФИКС СТИКЕРОВ: Убираем квадратные тени у иконок и флагов
+   ============================================================ */
+
+/* Отключаем тени и скругления для стикеров, флагов и мелких иконок */
+.rst-content img.vip-sticker,
+.rst-content img[src*="sticker-"],
+.rst-content img[src*="flag-"],
+.rst-content img[src*="coat-of-arms"],
+.rst-content img[src*="icon"] {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+}

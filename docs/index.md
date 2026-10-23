@@ -263,37 +263,96 @@ comments: false
 
 <table>
 <thead>
-<tr><th>Название</th><th>Год</th><th>Краткое описание</th></tr>
+<tr><th>Название</th><th>Дата</th><th>Краткое описание</th></tr>
 </thead>
 <tbody>
-<tr><td><strong><a href="books/acidalia-sea.md">«Ацидалийское море»</a></strong></td><td>2026</td><td>Первый роман. Знакомит с миром Эпохи Умирания и жизнью в Окхасене</td></tr>
+<tr>
+  <td><strong><a href="https://mars-wiki.ru/books/acidalia-sea-book/">«Ацидалийское море»</a></strong><br><span style="font-size: 0.8em; color: #666;">(роман)</span></td>
+  <td>2026</td>
+  <td>Первый роман. Знакомит с миром Эпохи Умирания и жизнью в Окхасене.</td>
+</tr>
+<tr>
+  <td><strong><a href="https://mars-wiki.ru/books/comics1">«Письмо из Красной пыли»</a></strong><br><span style="font-size: 0.8em; color: #666;">(комикс)</span></td>
+  <td>2026</td>
+  <td>Графическая адаптация. Визуальное погружение в мир Марса.</td>
+</tr>
 </tbody>
 </table>
 
-<p style="margin-top: 15px; font-weight: bold; color: #1a1a2e;">Где приобрести:</p>
-<ul style="margin-top: 8px;">
-<li><a href="https://getreder.ru/book/atsidaliiskoe-more" target="_blank" rel="noopener">Электронная книга на getreder.ru</a></li>
-<li><a href="https://www.litres.ru/audiobook/mnemis/acidaliyskoe-more-73934404/" target="_blank" rel="noopener">Аудиокнига на ЛитРес</a></li>
-<li><a href="https://author.today/work/670144?ysclid=mvl27g1fwp623175583" target="_blank" rel="noopener">Читать на Author.Today</a></li>
-</ul>
+<div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaecf0;">
+  <p style="font-weight: bold; color: #1a1a2e; margin-bottom: 10px;">Где приобрести:</p>
+  
+  <style>
+    .compact-links { display: flex; flex-wrap: wrap; gap: 6px; }
+    .compact-links a {
+        display: inline-block; padding: 6px 12px; background: #f8f9fa;
+        border: 1px solid #d0d7de; border-radius: 6px;
+        font-size: 0.85rem; color: #333 !important; text-decoration: none;
+        transition: all 0.2s; line-height: 1.2;
+    }
+    .compact-links a:hover {
+        background: #f0f0ff; border-color: #6C63FF;
+        color: #6C63FF !important; transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(108,99,255,0.15);
+    }
+  </style>
+
+  <div class="compact-links">
+    <a href="https://author.today/work/670144" target="_blank" rel="noopener">📖 Author.Today</a>
+    <a href="https://www.litres.ru/book/mnemis/pis-mo-iz-krasnoi-pyli-kniga-pervaia-atsidaliiskoe-more-74637094/" target="_blank" rel="noopener">📘 ЛитРес (Текст)</a>
+    <a href="https://www.litres.ru/audiobook/mnemis/acidaliyskoe-more-73934404/" target="_blank" rel="noopener">🎧 ЛитРес (Аудио)</a>
+    <a href="https://getreder.ru/book/atsidaliiskoe-more" target="_blank" rel="noopener">📗 GetReder</a>
+    <a href="https://unexus.ru/books/atsidaliyskoe-more" target="_blank" rel="noopener">📕 UnExus</a>
+    <a href="https://chtivo.net/catalog/uncategorized/pismo-iz-krasnoj-pyli-aczidalijskoe-more/" target="_blank" rel="noopener">📚 Чтиво.Книги</a>
+  </div>
+</div>
+
 </div>
 
 <div class="vip-card vip-lazy">
 <h3><img src="assets/images/stickers/sticker-galaxy.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> О проекте</h3>
 
-<p>Проект адресован широкой аудитории, интересующейся вопросами происхождения жизни во Вселенной, эволюции планет и возможных форм разума за пределами Земли. Марсианская энциклопедия предлагает читателю не готовые ответы, а пространство для размышлений — модели того, какой могла бы быть история Марса, если бы на нём действительно существовала жизнь.</p>
+<p>«Марсианская энциклопедия» представляет собой открытый научно-исследовательский и культурный проект, посвящённый реконструкции гипотетической истории Марса. Проект адресован широкой аудитории, интересующейся вопросами происхождения жизни во Вселенной, эволюции планет, климатологии и возможных форм разума за пределами Земли.</p>
 
-<p>Все гипотезы, представленные в проекте, основаны на реальных научных данных и не противоречат современному знанию. По вопросам сотрудничества и уточнения материалов: mnemis.author@mail.ru.</p>
-</div>
+<p>В отличие от классических художественных произведений, материалы энциклопедии предлагают читателю не готовые ответы, а пространство для размышлений. Мы моделируем историю Марса, строго опираясь на законы физики, астробиологии и геологии. Каждый миф, событие или биологический вид в нашем справочнике — это научно обоснованная гипотеза, которая не противоречит современному знанию, но оставляет простор для альтернативных интерпретаций.</p>
 
-<div class="vip-card vip-lazy">
-<h3><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Интерактивные элементы</h3>
+<p>Редакция энциклопедии стремится сохранить баланс между строгостью научного факта и глубиной художественного вымысла, создавая целостную и достоверную картину угасающего мира. Мы приветствуем обратную связь от читателей, исследователей и энтузиастов космонавтики.</p>
 
-<h4><img src="assets/images/stickers/sticker-cube.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Случайная статья</h4>
+<div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaecf0;">
+  <style>
+    .vip-contact-title { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 12px; }
+    .vip-contact-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .vip-contact-card {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 8px 14px; background: #ffffff;
+        border: 1px solid #d0d7de; border-radius: 8px;
+        font-size: 0.9rem; color: #333 !important; text-decoration: none;
+        transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .vip-contact-card:hover {
+        background: #f8f9fa; border-color: #6C63FF;
+        color: #6C63FF !important; transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(108,99,255,0.15);
+    }
+    .vip-contact-icon {
+        width: 24px; height: 24px; background: rgba(108, 99, 255, 0.1);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font-size: 0.8rem; color: #6C63FF;
+    }
+  </style>
 
-<div style="text-align: center; margin: 1.2rem 0;">
-  <button id="randomArticleBtn" class="vip-btn">🎲 Случайная статья</button>
-</div>
+  <div class="vip-contact-title">Связаться с редакцией</div>
+  
+  <div class="vip-contact-grid">
+    <a href="mailto:mnemis.author@mail.ru" class="vip-contact-card">
+      <span class="vip-contact-icon">✉</span>
+      mnemis.author@mail.ru
+    </a>
+    <a href="mailto:mars-wiki@yandex.ru" class="vip-contact-card">
+      <span class="vip-contact-icon">✉</span>
+      mars-wiki@yandex.ru
+    </a>
+  </div>
 </div>
 
 </div>
@@ -387,6 +446,16 @@ comments: false
 
 <div style="text-align:center;margin-top:14px;padding-top:12px;border-top:1px solid #eaecf0;">
   <a href="lists/" style="font-size:.9rem;">Все избранные списки →</a>
+</div>
+</div>
+
+<div class="vip-card vip-lazy">
+<h3><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Интерактивные элементы</h3>
+
+<h4><img src="assets/images/stickers/sticker-cube.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Случайная статья</h4>
+
+<div style="text-align: center; margin: 1.2rem 0;">
+  <button id="randomArticleBtn" class="vip-btn">🎲 Случайная статья</button>
 </div>
 </div>
 

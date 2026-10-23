@@ -1,13 +1,12 @@
 # ═══════════════════════════════════════════════════════════
 #   МАРСИАНСКАЯ ЭНЦИКЛОПЕДИЯ
-#   Production-grade конфигурация v2 (safe)
+#   Конфигурация (stable, без внешних зависимостей для билда)
 # ═══════════════════════════════════════════════════════════
 
 site_name: Марсианская энциклопедия
 site_url: https://mars-wiki.ru/
 site_description: Свободный справочник о мире «Письмо из Красной пыли» — история, география, персонажи, культура Марса
 site_author: Редакция Марсианской энциклопедии
-site_favicon: assets/favicon.png
 
 copyright: |
   &copy; 2026 — Марсианская энциклопедия.
@@ -44,7 +43,7 @@ plugins:
       fallback_to_build_date: true
 
 # ═══════════════════════════════════════════════════════════
-#   MARKDOWN EXTENSIONS
+#   MARKDOWN EXTENSIONS — ТОЛЬКО СТАНДАРТНЫЕ, БЕЗ pymdownx
 # ═══════════════════════════════════════════════════════════
 markdown_extensions:
   - admonition
@@ -56,10 +55,10 @@ markdown_extensions:
       toc_depth: 4
   - def_list
   - abbr
-  - pymdownx.details
-  - pymdownx.superfences
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
+  - fenced_code
+  - codehilite:
+      guess_lang: false
+      linenums: false
 
 # ═══════════════════════════════════════════════════════════
 #   EXTRA
@@ -174,18 +173,8 @@ extra_javascript:
   - assets/js/yandex-metrika.js?v=1
   - assets/js/effects-menu.js
 
-extra_head:
-  - <link rel="icon" href="/favicon.ico" sizes="any">
-  - <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
-  - <meta name="msapplication-TileColor" content="#6C63FF">
-  - <meta name="msapplication-TileImage" content="/assets/images/mstile-144x144.png">
-  - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-  - <link rel="manifest" href="/assets/manifest.json">
-  - <meta name="format-detection" content="telephone=no">
-  - <meta http-equiv="x-ua-compatible" content="IE=edge">
-
 # ═══════════════════════════════════════════════════════════
-#   НАВИГАЦИЯ (ВАШ ОРИГИНАЛЬНЫЙ СПИСОК — БЕЗ ИЗМЕНЕНИЙ)
+#   НАВИГАЦИЯ (ВАШ СПИСОК БЕЗ ИЗМЕНЕНИЙ)
 # ═══════════════════════════════════════════════════════════
 nav:
   - Заглавная страница: index.md

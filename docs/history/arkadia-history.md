@@ -1,17 +1,22 @@
 # История Королевства Аркадия
 
-*См. также: [Хронология Аркадии](/history/timeline/), [Список князей Аркадии](/history/kings/), [Происхождение названия](/history/etymology/), [Периодизация](/history/periodization/)*
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
+</div>
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Аркадия</h3>
-  <hr>
+  
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Аркадия</h3>
+  </div>
   
   <div style="text-align: center; margin: 8px 0;">
     <img src="/assets/images/map/arkadia-kingdom-map.png" alt="Карта Королевства Аркадия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
     <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Карта Королевства Аркадия. По данным Академии Окхасена (2650 г. Э.О.).</div>
   </div>
 
- <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 8px 0; flex-wrap: wrap; align-items: center;">
     <div style="text-align: center;">
       <img src="/assets/images/map/flag-of-arkadia.png" alt="Флаг Королевства Аркадия" style="width: 120px; height: auto; border-radius: 4px; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
       <div style="font-size: 0.7rem; color: #555; margin-top: 2px;">Флаг Аркадии</div>
@@ -22,9 +27,10 @@
     </div>
   </div>
 
-
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 800 г. Э.О. — основание Аркасена</li>
     <li>• 1200 г. — объединение северных кланов</li>
     <li>• 1500 г. — первое упоминание названия «Аркадия»</li>
@@ -33,34 +39,53 @@
     <li>• 2710 г. — гибель князя Термана</li>
     <li>• 2735 г. — гибель Аркадии</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Arcadia Xal</i> («Древняя Аркадия»)</p>
-  <p><b>Тип государства</b> Выборная монархия (княжество)</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a></p>
-  <p><b>Столица</b> <a href="/geography/arkasen/">Аркасен</a></p>
-  <p><b>Крупнейшие города</b> Фар-Ут, Кан-Ут</p>
-  <p><b>Правящая династия</b> Терманиды (выборные князья)</p>
-  <p><b>Годы существования</b> ок. 800 г. Э.О. — 2735 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ бога <a href="/mythology/kho/">Кхо</a> (огня и вулканов)</p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
+  <p><b>Марсианское название:</b> <i>Arcadia Xal</i> («Древняя Аркадия»)</p>
+  <p><b>Тип государства:</b> Выборная монархия (княжество)</p>
+  <p><b>Официальный язык:</b> <a href="/terms/marzan/">Marzān</a></p>
+  <p><b>Столица:</b> <a href="/geography/arkasen/">Аркасен</a></p>
+  <p><b>Крупнейшие города:</b> Фар-Ут, Кан-Ут</p>
+  <p><b>Правящая династия:</b> Терманиды (выборные князья)</p>
+  <p><b>Годы существования:</b> ок. 800 г. Э.О. — 2735 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ бога <a href="/mythology/kho/">Кхо</a> (огня и вулканов)</p>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~17 млн км²</li>
     <li>• % водной поверхности ~12 %</li>
   </ul>
 
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Население
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Оценка (2650 г. Э.О.) ~6,7 млн чел.</li>
     <li>• Плотность ~0,39 чел./км²</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
 
   <hr style="margin: 6px 0;">
-  
-  <p><b>Государства-соседи</b></p>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
+  </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
@@ -75,31 +100,26 @@
       <a href="/geography/kimeria/">Кимерия</a>
     </div>
   </div>
-  
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/acidalia-sea/">Ацидалийское море</a>, залив Горн, Амазонское море</p>
-  <p><b>Крупнейшие реки</b> Великого Течения, Мангалы</p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a></p>
+
+  <hr style="margin: 6px 0;">
+
+  <p><b>Крупнейшие водоёмы:</b> <a href="/geography/acidalia-sea/">Ацидалийское море</a>, залив Горн, Амазонское море</p>
+  <p><b>Крупнейшие реки:</b> Великого Течения, Мангалы</p>
+  <p><b>Связанные понятия:</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a></p>
 </div>
 
 > **Краткая справка:** Подробнее о происхождении названия «Аркадия» см. [Этимология Аркадии](/history/etymology/). О периодизации истории — [Периодизация истории Аркадии](/history/periodization/).
 
----
-
-История Королевства Аркадии как самостоятельного государства в марсианской историографии отсчитывается от **около 800 года Э.О.**, когда северные племена рудокопов и кузнецов, населявшие равнины Утопии и северное побережье Ацидалийского моря, начали объединяться в союзы для защиты от набегов кочевников и контроля над месторождениями металлов[^1].
+**История Королевства Аркадии** как самостоятельного государства в марсианской историографии отсчитывается от **около 800 года Э.О.**, когда северные племена рудокопов и кузнецов, населявшие равнины Утопии и северное побережье Ацидалийского моря, начали объединяться в союзы для защиты от набегов кочевников и контроля над месторождениями металлов[^1].
 
 В отличие от южного Эдема, где власть передавалась по наследству, Аркадия с самого начала была **выборной монархией**: князья, носившие титул **«Держатель ветра»** (*kōl-ghar*), избирались советом старейшин из числа наиболее уважаемых военачальников. Именно эта традиция определила характер северного государства — сурового, прагматичного и независимого[^2].
-
-> **Периоды истории Аркадии:**
-> - **Эпоха Основания** (ок. 800–1500 гг. Э.О.)
-> - **Эпоха Расцвета** (1500–2680 гг. Э.О.)
-> - **Эпоха Умирания** (2680–2735 гг. Э.О.)
 
 ---
 
 ## Эпоха Основания (ок. 800–1500 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="/assets/images/history/arkadia-arrival.png" alt="Прибытие переселенцев в Аркадию" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/arkadia-arrival.jpg" alt="Прибытие переселенцев в Аркадию" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Прибытие первых поселенцев на северные равнины. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -112,7 +132,7 @@
 В **1050 году**, в 14 день месяца **Ветров** (*Zal-ākha*), в хрониках Серпендиды впервые появляется название **«Аркадия»** для обозначения северных земель. К этому времени Аркадия уже контролировала все крупные рудники Утопии и вела активную торговлю с Эдемом, поставляя металл в обмен на зерно и глиняные таблички[^6].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="/assets/images/history/arkadia-mines.png" alt="Рудники Аркадии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/arkadia-mines.jpg" alt="Рудники Аркадии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Рудники Утопии — главное богатство Аркадии. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -125,7 +145,7 @@
 ## Эпоха Расцвета (1500–2680 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="/assets/images/history/arkadia-war.png" alt="Битва с Эдемом" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/arkadia-war.jpg" alt="Битва с Эдемом" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Битва при Ксанфской переправе (1643 г.). Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -134,7 +154,7 @@
 После поражения Аркадия потеряла часть территорий, но сохранила независимость. В **1650 году**, в 10 день месяца **Зноя** (*Mar-dzen*), был заключён мирный договор, скреплённый браком: дочь князя Аркадии вышла замуж за **Термана I** (Строителя каналов), что принесло мир на три поколения[^10].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="/assets/images/history/arkadia-peace.png" alt="Мирный договор с Эдемом" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/arkadia-peace.jpg" alt="Мирный договор с Эдемом" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Подписание мирного договора с Эдемом. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -147,8 +167,8 @@
 ## Эпоха Умирания (2680–2735 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="/assets/images/history/arkadia-volcano.png" alt="Извержение вулканов" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Извержение вулканов Фарсиды, погубившее Аркадию. Реконструкция по табличкам Академии.</div>
+  <img src="/assets/images/arkadia-exodus.jpg" alt="Исход аркадийцев" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Исход аркадийцев в пещеры Фарсиды. Реконструкция по табличкам Академии.</div>
 </div>
 
 В **2680 году**, в 30 день месяца **Тьмы** (*Khō-mōr*), начались первые извержения вулканов Фарсиды. Пепел засыпал северные равнины, уничтожив пастбища и посевы. В **2710 году**, в 12 день месяца **Ледяного покрова** (*Dzen-thal*), во время нового извержения погиб князь **Терман**, пытаясь вывести свой отряд к южным перевалам. С его смертью Аркадия распалась на десятки мелких общин[^13].
@@ -157,9 +177,9 @@
 
 В **2735 году**, в 3 день месяца **Угасания** (*Kōl-ghar*), последние жители Аркадии покинули свои земли и ушли под землю, в пещеры Фарсиды. Королевство Аркадия прекратило своё существование[^15].
 
-<div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="/assets/images/history/arkadia-exodus.png" alt="Исход аркадийцев" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Исход аркадийцев в пещеры Фарсиды. Реконструкция по табличкам Академии.</div>
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/assets/images/arkadia-destruction.jpg" alt="Гибель Аркадии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Извержение Олимпа — гибель Королевства Аркадия. Реконструкция.</div>
 </div>
 
 Хотя Аркадия погибла, её народ не исчез бесследно. Именно аркадийцы принесли в пещеры знания о металлургии, строительстве подземных убежищ и выживании в холоде. Без них беженцы из южных городов, не привыкшие к морозам, погибли бы гораздо быстрее. В последних записях Хевсура есть строка: *«Мы, окхасенцы, смеялись над северянами. А они научили нас добывать огонь из камня, когда не осталось дров. Lān sur»*[^16].

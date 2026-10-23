@@ -1,10 +1,16 @@
 # История Королевства Серпентида
 
-*См. также: [Хронология Серпентиды](/history/timeline/), [Список королей Серпентиды](/history/kings/), [Происхождение названия](/history/etymology/), [Периодизация](/history/periodization/)*
+<!-- Блок "Хорошая статья" -->
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
+</div>
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Серпентида</h3>
-  <hr>
+  
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Серпентида</h3>
+  </div>
   
   <div style="text-align: center; margin: 8px 0;">
     <img src="/assets/images/map/serpentida-kingdom-map.png" alt="Карта Королевства Серпентида" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
@@ -22,45 +28,58 @@
     </div>
   </div>
 
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
-    <li>• ок. 500 г. до Э.О. — легендарное основание Серпентиды</li>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
+    <li>• ок. 500 г. до Э.О. — легендарное основание</li>
     <li>• ок. 500 г. Э.О. — основание Акха-Кора</li>
     <li>• 1000 г. — расцвет морского могущества</li>
-    <li>• 1500 г. — первое упоминание названия «Серпентида»</li>
+    <li>• 1500 г. — первое упоминание названия</li>
     <li>• 1670–1675 гг. — торговая война с Эдемом</li>
     <li>• 1700 г. — затопление Акха-Кора</li>
     <li>• 2390–2445 гг. — правление Великой Акхары</li>
     <li>• 2740 г. — гибель Серпентиды</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Serpentida Xal</i> («Древняя Серпентида»)</p>
-  <p><b>Тип государства</b> Морская наследственная монархия</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a></p>
-  <p><b>Столица</b> <a href="/geography/akha-tar/">Акха-Тар</a> («Водный трон»)</p>
-  <p><b>Крупнейшие города</b> Акха-Кор, Серп-Ара, Тар-Ксан</p>
-  <p><b>Правящая династия</b> Серпендиды (Серп — Акхара-Мореход — Сарум Серпендидский)</p>
-  <p><b>Годы существования</b> ок. 500 г. до Э.О. — 2740 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ богини <a href="/mythology/araksis/">Араксис</a></p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
+  <p><b>Марсианское название:</b> <i>Serpentida Xal</i> («Древняя Серпентида»)</p>
+  <p><b>Тип государства:</b> Морская наследственная монархия</p>
+  <p><b>Официальный язык:</b> <a href="/terms/marzan/">Marzān</a></p>
+  <p><b>Столица:</b> <a href="/geography/akha-tar/">Акха-Тар</a> («Водный трон»)</p>
+  <p><b>Крупнейшие города:</b> Акха-Кор, Серп-Ара, Тар-Ксан</p>
+  <p><b>Правящая династия:</b> Серпендиды (Серп — Акхара-Мореход — Сарум Серпендидский)</p>
+  <p><b>Годы существования:</b> ок. 500 г. до Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ богини <a href="/mythology/araksis/">Араксис</a></p>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория и Население
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~8 млн км²</li>
     <li>• % водной поверхности ~45 %</li>
-  </ul>
-
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
     <li>• Оценка (2650 г. Э.О.) ~5 млн чел.</li>
     <li>• Плотность ~0,62 чел./км²</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
 
   <hr style="margin: 6px 0;">
-  
-  <p><b>Государства-соседи</b></p>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
+  </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
@@ -75,31 +94,25 @@
       <a href="/geography/kimeria/">Кимерия</a>
     </div>
   </div>
-  
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/hellas-sea/">Море Эллады</a>, <a href="/geography/acidalia-sea/">Ацидалийское море</a>, залив Горн</p>
-  <p><b>Крупнейшие реки</b> Борл, Ноахида</p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a></p>
+
+  <hr style="margin: 6px 0;">
+
+  <p><b>Крупнейшие водоёмы:</b> <a href="/geography/hellas-sea/">Море Эллады</a>, <a href="/geography/acidalia-sea/">Ацидалийское море</a>, залив Горн</p>
+  <p><b>Крупнейшие реки:</b> Борл, Ноахида</p>
+  <p><b>Связанные понятия:</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a></p>
 </div>
 
-> **Краткая справка:** Подробнее о происхождении названия «Серпентида» см. [Этимология Серпентиды](/history/etymology/). О периодизации истории — [Периодизация истории Серпентиды](/history/periodization/).
 
----
-
-История Серпентиды — это история колыбели марсианской цивилизации. Именно здесь, на берегах тёплого моря Эллады, зародились мореходство, письменность и календарь, которые позже были переняты всеми народами Марса. Серпентида была древнейшим из известных государств планеты, и её влияние на формирование эдемской и элладской культур трудно переоценить[^1].
+**История Серпентиды** — это история колыбели марсианской цивилизации. Именно здесь, на берегах тёплого моря Эллады, зародились мореходство, письменность и календарь, которые позже были переняты всеми народами Марса. Серпентида была древнейшим из известных государств планеты, и её влияние на формирование эдемской и элладской культур трудно переоценить[^1].
 
 Согласно преданиям, записанным Хевсуром со слов старейшин Серпентиды, первым королём этой земли стал легендарный **Серп** — вождь, который привёл свой народ к берегам тёплого моря Эллады после великого землетрясения, разрушившего их прежние жилища в горах. Имя «Серпентида» происходит либо от его имени, либо от слова «серпен» (в древнем наречии — «изогнутый», «змеевидный»), что указывает на извилистые берега моря, изрезанные бухтами и проливами[^2].
-
-> **Периоды истории Серпентиды:**
-> - **Легендарная эпоха** (ок. 500 г. до Э.О. — 500 г. Э.О.)
-> - **Эпоха Расцвета** (500–1700 гг. Э.О.)
-> - **Эпоха Упадка** (1700–2740 гг. Э.О.)
 
 ---
 
 ## Легендарная эпоха (ок. 500 г. до Э.О. — 500 г. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="/assets/images/history/serpentida-arrival.png" alt="Прибытие Серпа" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/serp-arrival.jpg" alt="Прибытие Серпа" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Прибытие Серпа на берег моря Эллады. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -108,7 +121,7 @@
 В **ок. 500 г. Э.О.**, согласно табличкам, найденным в руинах Акха-Кора, на месте рыбацкой деревни был построен город **Акха-Кор** («Водный престол»), ставший столицей Серпентиды. Город славился своими верфями, храмами Араксис и библиотекой, где хранились древнейшие таблички. К сожалению, Акха-Кор затонул в 1700 году Э.О. во время сильного землетрясения, и все таблички погибли[^4].
 
 <div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="/assets/images/history/serpentida-shipbuilding.png" alt="Верфи Акха-Кора" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/akha-kor-shipyards.jpg" alt="Верфи Акха-Кора" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Верфи Акха-Кора. Реконструкция по табличкам Академии.</div>
 </div>
 
@@ -120,21 +133,21 @@
 
 ## Эпоха Расцвета (500–1700 гг. Э.О.)
 
-<div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="/assets/images/history/serpentida-fleet.png" alt="Флот Серпентиды" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Флот Серпентиды в расцвете могущества. Реконструкция по табличкам Академии.</div>
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/assets/images/The-Serpentida-Fleet.jpg" alt="Флот Серпентиды" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Флот Серпентиды в море Эллада. Реконструкция.</div>
 </div>
 
 В этот период Серпентида была сильнейшей морской державой Марса. Её корабли достигали самых дальних заливов, торговали с Аркадией, Эдемом и даже с отдалёнными поселениями на юге. Серпендидцы первыми научились строить корабли с килем, способные выдерживать штормы, и первыми вышли в открытый Мировой океан[^7].
 
 В **1000 году Э.О.**, в 5 день месяца **Зноя** (*Ariya-mar*), на престол взошла **Акхара-Мореход** (980–1040) — первая женщина на троне Серпентиды. Она совершила плавание к западным берегам Хриса, установив торговые отношения с тамошними племенами. Её статуя стояла в порту Акха-Кора до самого затопления города[^8].
 
-В **1100 году**, в 12 день месяца **Ветров** (*Zal-ākha*), был построен Великий канал, соединивший море Эллады с Ацидалийским морем. Это позволило серпендидским кораблям проходить проливы без необходимости огибать южное побережье. Канал стал главной торговой артерией планеты и принёс Серпентиде огромные доходы[^9].
-
-<div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="/assets/images/history/serpentida-great-canal.png" alt="Великий канал" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Великий канал, соединивший моря. Реконструкция по табличкам Академии.</div>
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/assets/images/history/eden-canals.png" alt="Строительство каналов" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Строительство системы каналов. Реконструкция по табличкам Академии.</div>
 </div>
+
+В **1100 году**, в 12 день месяца **Ветров** (*Zal-ākha*), был построен Великий канал, соединивший море Эллады с Ацидалийским морем. Это позволило серпендидским кораблям проходить проливы без необходимости огибать южное побережье. Канал стал главной торговой артерией планеты и принёс Серпентиде огромные доходы[^9].
 
 В **1280 году**, в 8 день месяца **Угасания** (*Kōl-ghar*), на престол взошёл **Тар-Ксан** (1250–1310). При нём флот Серпентиды насчитывал до пятисот кораблей. Он отразил нападение пиратов из острова Утопии и временно захватил контроль над проливами Ацидалийского моря. Его правление считается вторым «золотым веком» Серпентиды[^10].
 
@@ -147,18 +160,13 @@
 ## Эпоха Упадка (1700–2740 гг. Э.О.)
 
 <div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="/assets/images/history/serpentida-collapse.png" alt="Гибель Акха-Кора" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <img src="/assets/images/akha-kor-destruction.jpg" alt="Гибель Акха-Кора" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
   <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Гибель Акха-Кора. Землетрясение и затопление столицы. Реконструкция по табличкам Академии.</div>
 </div>
 
 После гибели Акха-Кора Серпентида распалась на несколько мелких княжеств, которые постепенно попали под власть Эдема. В **1800 году**, в 2 день месяца **Тьмы** (*Khō-mōr*), последние независимые города Серпентиды признали верховную власть короля Эдема[^13].
 
 В **2000 году**, в 14 день месяца **Тьмы** (*Ākha-mōr*), в Серпентиде началось движение за независимость. В **2390 году**, в 22 день месяца **Ледяного покрова** (*Dzen-thal*), на престол взошла **Великая Акхара** (2370–2445) — последняя независимая правительница Серпентиды. Она отразила три вторжения эдемских армий и сохранила автономию своей земли до самой смерти. Её внуки, однако, добровольно присягнули Эдему через сто лет после её ухода[^14].
-
-<div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="/assets/images/history/serpentida-queen.png" alt="Великая Акхара" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Великая Акхара — последняя независимая правительница Серпентиды. Реконструкция по табличкам Академии.</div>
-</div>
 
 К **2500 году**, в 15 день месяца **Зноя** (*Ariya-mar*), Серпентида окончательно утратила независимость и стала частью Королевства Эдем. Однако её культура и традиции сохранились: серпендидские мореходы продолжали бороздить моря, а их потомки основали новые поселения на побережье Зефирийского моря[^15].
 

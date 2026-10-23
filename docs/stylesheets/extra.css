@@ -234,7 +234,7 @@ nav.wy-nav-side .wy-side-nav-search a {
 /* Заголовки-разделы меню */
 .wy-menu-vertical p.caption,
 .wy-menu-vertical .caption {
-    color: #54595d;
+    color: var(--c-accent);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.3px;

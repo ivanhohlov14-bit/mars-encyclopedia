@@ -238,7 +238,7 @@ comments: false
   <div class="vip-card vip-lazy">
     <h3><img src="assets/images/stickers/sticker-tablet.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Избранная статья</h3>
     <h4>Хевсур — последний хранитель глины</h4>
-    <p><strong><a href="https://mars-wiki.ru/people/hevsur/">Хевсур</a></strong> (2685 – ок. 2745 гг. Э.О.) — марсианский историк, писец и хранитель архива Академии Окхасена. Центральный персонаж эпопеи «Письмо из Красной пыли», посвятивший свою жизнь сбору, систематизации и сохранению знаний о гибнущем Марсе. Его главное наследие — «глиняная библиотека» — собрание тысяч табличек, которые пережили гибель планеты и легли в основу марсианской энциклопедии. В отличие от <a href="https://mars-wiki.ru/people/talin/">Талина</a>, который улетел к Земле, Хевсур выбрал остаться на Марсе, чтобы записать его последние дни. Он никогда не расставался со своим стилосом — простым деревянным инструментом, который стал символом его преданности памяти.</p>
+    <p><strong><a href="https://mars-wiki.ru/people/hevsur/">Хевсур</a></strong> (2685 – ок. 2745 гг. Э.О.) — марсианский историк, писец и хранитель архива Академии Окхасена. Центральный персонаж эпопеи «Письмо из Красной пыли», посвятивший свою жизнь сбору, систематизации и сохранению знаний о гибнущем Марсе. Его главное наследие — «глиняная библиотека» — собрание тысяч табличек, которые пережили гибель планеты и легли в основу марсианской энциклопедии. В отличие от <a href="https://mars-wiki.ru/people/talin/">Талина</a>, который улетел к Земле, Хевсур выбрал остаться на Марсе, чтобы записать его последние дни.</p>
     <p><a href="https://mars-wiki.ru/people/hevsur/">Читать полную статью о Хевсуре →</a></p>
   </div>
 
@@ -321,8 +321,6 @@ comments: false
     
     <p>«Марсианская энциклопедия» — открытый <strong>научно-исследовательский проект</strong>, реконструирующий <strong>гипотетическую историю Марса</strong> для всех, кто интересуется эволюцией планет и происхождением жизни во <strong>Вселенной</strong>.</p>
     
-    <p>Мы не даём готовых ответов, а создаём пространство для размышлений. Опираясь на <strong>законы физики, астробиологии и геологии</strong>, мы моделируем события прошлого. Каждый миф или биологический вид в справочнике — это <strong>научно обоснованная гипотеза</strong>, не противоречащая современным знаниям.</p>
-    
     <p>Наша цель — сохранить <strong>баланс между научным фактом и художественным вымыслом</strong>, создав целостную картину <strong>угасающего мира</strong>. Мы всегда рады обратной связи от читателей и исследователей.</p>
 
     <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaecf0;">
@@ -356,15 +354,6 @@ comments: false
           <span class="vip-contact-icon">✉</span> mars-wiki@yandex.ru
         </a>
       </div>
-    </div>
-  </div>
-
-  <!-- ИНТЕРАКТИВНЫЕ ЭЛЕМЕНТЫ (В САМОМ НИЗУ ЛЕВОЙ КОЛОНКИ) -->
-  <div class="vip-card vip-lazy">
-    <h3><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Интерактивные элементы</h3>
-    <h4><img src="assets/images/stickers/sticker-cube.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Случайная статья</h4>
-    <div style="text-align: center; margin: 1.2rem 0;">
-      <button id="randomArticleBtn" class="vip-btn">🎲 Случайная статья</button>
     </div>
   </div>
 
@@ -458,6 +447,14 @@ comments: false
     </div>
     <div style="text-align:center;margin-top:14px;padding-top:12px;border-top:1px solid #eaecf0;">
       <a href="lists/" style="font-size:.9rem;">Все избранные списки →</a>
+    </div>
+  </div>
+
+  <div class="vip-card vip-lazy">
+    <h3><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Интерактивные элементы</h3>
+    <h4><img src="assets/images/stickers/sticker-cube.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Случайная статья</h4>
+    <div style="text-align: center; margin: 1.2rem 0;">
+      <button id="randomArticleBtn" class="vip-btn">🎲 Случайная статья</button>
     </div>
   </div>
 

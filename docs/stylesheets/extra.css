@@ -471,16 +471,6 @@ footer,
     opacity: 0;
 }
 
-/* --- Картинки --- */
-.rst-content img {
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow var(--trans-base);
-}
-.rst-content img:hover {
-    box-shadow: var(--shadow-md);
-}
-
 /* --- Код --- */
 code, tt {
     background: var(--c-bg-subtle);

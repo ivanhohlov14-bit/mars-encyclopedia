@@ -1,4 +1,5 @@
-mkdocs==1.5.3
-mkdocs-roamlinks-plugin==0.1.0
+mkdocs>=1.6,<2
 mkdocs-material>=9.0.0
 mkdocs-advanced-seo
+mkdocs-roamlinks-plugin
+mkdocs-macros-plugin

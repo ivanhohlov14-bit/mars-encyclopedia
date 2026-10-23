@@ -1248,3 +1248,27 @@ body.sidebar-hidden .wy-nav-side {
         font-size: 0.78rem !important;
     }
 }
+
+/* ============================================================
+   БЕЛЫЙ ФОН ДЛЯ РАСКРЫТЫХ И АКТИВНЫХ РАЗДЕЛОВ МЕНЮ
+   ============================================================ */
+
+/* Переопределяем серый фон у контейнеров списков и активных пунктов */
+.wy-menu-vertical,
+.wy-menu-vertical ul,
+.wy-menu-vertical li,
+.wy-menu-vertical li.current,
+.wy-menu-vertical li.current > ul,
+.wy-menu-vertical li.current a,
+.wy-menu-vertical li.current a:hover,
+.wy-menu-vertical li.mars-open > ul {
+    background-color: #ffffff !important;
+}
+
+/* Если тема добавляет серую полоску или рамку справа у активного пункта */
+.wy-menu-vertical li.current {
+    border-right: none !important;
+}
+.wy-menu-vertical li.current > a {
+    border-right: none !important;
+}

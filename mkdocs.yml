@@ -1,6 +1,6 @@
 # ═══════════════════════════════════════════════════════════
 #   МАРСИАНСКАЯ ЭНЦИКЛОПЕДИЯ
-#   Production-grade конфигурация v2 (safe)
+#   Production-grade конфигурация v3 (Material / VIP)
 # ═══════════════════════════════════════════════════════════
 
 site_name: Марсианская энциклопедия
@@ -14,20 +14,63 @@ copyright: |
   Материалы доступны по лицензии CC BY-SA 4.0.
 
 # ═══════════════════════════════════════════════════════════
-#   ТЕМА
+#   ТЕМА: MATERIAL (СОВРЕМЕННАЯ, БЫСТРАЯ, ИНТЕРАКТИВНАЯ)
 # ═══════════════════════════════════════════════════════════
 theme:
-  name: readthedocs
+  name: material
   custom_dir: overrides
   language: ru
-  locale: ru
   logo: assets/logo.png
   favicon: assets/favicon.ico
-  sticky_navigation: true
-  collapse_navigation: true
-  include_homepage_in_sidebar: true   
-  prev_next_buttons_location: bottom
-  navigation_depth: 4
+  
+  # Палитра: поддерживает светлую и темную тему с переключателем
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Переключить на темную тему
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Переключить на светлую тему
+
+  # Иконки для элементов навигации (добавляет визуальный стиль)
+  icon:
+    repo: fontawesome/brands/github
+
+  # КЛЮЧЕВЫЕ ФИЧИ ДЛЯ СКОРОСТИ И ИНТЕРАКТИВА
+  features:
+    # SPA-режим: страницы загружаются мгновенно, без полной перезагрузки
+    - navigation.instant
+    # (Опционально, если у вас Material Insiders) Предзагрузка страниц при наведении:
+    # - navigation.instant.prefetch
+    # Автоматическое обновление URL при прокрутке к заголовку
+    - navigation.tracking
+    # Верхние вкладки для основных разделов
+    - navigation.tabs
+    # Вложенные разделы в боковой панели (раскрывающиеся)
+    - navigation.sections
+    - navigation.expand
+    # Кнопка "Наверх"
+    - navigation.top
+    # "Хлебные крошки" (путь до текущей страницы)
+    - navigation.path
+    # Подсветка текущего раздела в навигации
+    - navigation.indexes
+    # Содержание (TOC) следует за прокруткой
+    - toc.follow
+    # Улучшенный поиск: подсказки и подсветка
+    - search.suggest
+    - search.highlight
+    # Кнопки копирования кода и аннотации
+    - content.code.copy
+    - content.code.annotate
+    # Быстрый доступ к правкам (если добавите ссылку на репозиторий)
+    # - content.action.edit
 
 # ═══════════════════════════════════════════════════════════
 #   ПЛАГИНЫ
@@ -42,6 +85,15 @@ plugins:
       type: date
       locale: ru
       fallback_to_build_date: true
+  - roamlinks
+  - macros
+  # Минификация для продакшена (уменьшает размер файлов)
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
+      htmlmin_opts:
+        remove_comments: true
 
 # ═══════════════════════════════════════════════════════════
 #   MARKDOWN EXTENSIONS
@@ -54,21 +106,31 @@ markdown_extensions:
   - tables
   - toc:
       toc_depth: 4
+      permalink: true # Якорные ссылки для заголовков
   - def_list
   - abbr
   - pymdownx.details
   - pymdownx.superfences
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 # ═══════════════════════════════════════════════════════════
-#   EXTRA
+#   EXTRA (SEO, МЕТА-ТЕГИ)
 # ═══════════════════════════════════════════════════════════
 extra:
   analytics:
     provider: google
     property: G-GN4G0ZY94H
-    
+  
   meta:
     - property: og:type
       content: website
@@ -118,7 +180,7 @@ extra:
       href: https://mc.yandex.ru
 
 # ═══════════════════════════════════════════════════════════
-#   ФАЙЛЫ
+#   ФАЙЛЫ (CSS / JS)
 # ═══════════════════════════════════════════════════════════
 extra_css:
   - stylesheets/extra.css
@@ -129,6 +191,8 @@ extra_css:
   - stylesheets/mobile-fast.css
   - stylesheets/mobile-smooth.css
   - stylesheets/wiki-vip.css
+  # Добавьте этот файл для анимаций и "VIP-эффектов" (создайте его)
+  - assets/css/animations.css
 
 extra_javascript:
   - javascripts/mobile-optimizer.js?v=4
@@ -179,7 +243,6 @@ extra_head:
   - <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
   - <meta name="msapplication-TileColor" content="#6C63FF">
   - <meta name="msapplication-TileImage" content="/assets/images/mstile-144x144.png">
-  - <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   - <link rel="manifest" href="/assets/manifest.json">
   - <meta name="format-detection" content="telephone=no">
   - <meta http-equiv="x-ua-compatible" content="IE=edge">

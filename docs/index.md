@@ -232,245 +232,236 @@ comments: false
 </div>
 
 <div class="wiki-layout">
+<!-- ================= ЛЕВАЯ КОЛОНКА ================= -->
 <div class="wiki-column-left">
 
-<div class="vip-card vip-lazy">
-<h3><img src="assets/images/stickers/sticker-tablet.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Избранная статья</h3>
-
-<h4>Хевсур — последний хранитель глины</h4>
-
-<p><strong><a href="https://mars-wiki.ru/people/hevsur/">Хевсур</a></strong> (2685 – ок. 2745 гг. Э.О.) — марсианский историк, писец и хранитель архива Академии Окхасена. Центральный персонаж эпопеи «Письмо из Красной пыли», посвятивший свою жизнь сбору, систематизации и сохранению знаний о гибнущем Марсе. Его главное наследие — «глиняная библиотека» — собрание тысяч табличек, которые пережили гибель планеты и легли в основу марсианской энциклопедии. В отличие от <a href="https://mars-wiki.ru/people/talin/">Талина</a>, который улетел к Земле, Хевсур выбрал остаться на Марсе, чтобы записать его последние дни. Он никогда не расставался со своим стилосом — простым деревянным инструментом, который стал символом его преданности памяти.</p>
-<p><a href="https://mars-wiki.ru/people/hevsur/">Читать полную статью о Хевсуре →</a></p>
-</div>
-
-<div class="vip-card vip-lazy">
-<h3><img src="assets/images/stickers/sticker-pin.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Знаете ли вы?</h3>
-
-<ul>
-<li><img src="assets/images/stickers/sticker-rocket.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> <strong>Талин</strong> — главный астронавигатор Марса, впервые увидел Землю в телескоп в 2714 году. Его расчёты траектории стали основой для Исхода к Земле.</li>
-<li><img src="assets/images/stickers/sticker-waves.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> <strong>Ацидалийское море</strong> — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет.</li>
-<li><img src="assets/images/stickers/sticker-tablet.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> <strong>Марсианская письменность</strong> — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках.</li>
-<li><img src="assets/images/stickers/sticker-scales-no.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Слово <strong>«Lān sur»</strong> в переводе означает <strong>«Глина помнит»</strong>. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории.</li>
-</ul>
-</div>
-
-<div class="vip-card vip-lazy">
-<h3><img src="assets/images/stickers/sticker-books.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> О цикле книг «Письмо из Красной пыли»</h3>
-
-<p><strong>«Письмо из Красной пыли»</strong> — цикл романов в жанре твёрдой научной фантастики и планетарной драмы, созданный автором <strong>Mnemis</strong>. Действие происходит на Марсе в последние десятилетия перед гибелью планеты — в Эпоху Умирания. Цикл объединяет научную достоверность с глубокими философскими размышлениями о памяти, надежде и цене выживания.</p>
-
-<h4>Вышедшие книги</h4>
-
-<table>
-<thead>
-<tr><th>Название</th><th>Дата</th><th>Краткое описание</th></tr>
-</thead>
-<tbody>
-<tr>
-  <td><strong><a href="https://mars-wiki.ru/books/acidalia-sea-book/">«Ацидалийское море»</a></strong><br><span style="font-size: 0.8em; color: #666;">(роман)</span></td>
-  <td>2026</td>
-  <td>Первый роман. Знакомит с миром Эпохи Умирания и жизнью в Окхасене.</td>
-</tr>
-<tr>
-  <td><strong><a href="https://mars-wiki.ru/books/comics1">«Письмо из Красной пыли»</a></strong><br><span style="font-size: 0.8em; color: #666;">(комикс)</span></td>
-  <td>2026</td>
-  <td>Графическая адаптация. Визуальное погружение в мир Марса.</td>
-</tr>
-</tbody>
-</table>
-
-<div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaecf0;">
-  <p style="font-weight: bold; color: #1a1a2e; margin-bottom: 10px;">Где приобрести:</p>
-  
-  <style>
-    .compact-links { display: flex; flex-wrap: wrap; gap: 6px; }
-    .compact-links a {
-        display: inline-block; padding: 6px 12px; background: #f8f9fa;
-        border: 1px solid #d0d7de; border-radius: 6px;
-        font-size: 0.85rem; color: #333 !important; text-decoration: none;
-        transition: all 0.2s; line-height: 1.2;
-    }
-    .compact-links a:hover {
-        background: #f0f0ff; border-color: #6C63FF;
-        color: #6C63FF !important; transform: translateY(-1px);
-        box-shadow: 0 2px 6px rgba(108,99,255,0.15);
-    }
-  </style>
-
-  <div class="compact-links">
-    <a href="https://author.today/work/670144" target="_blank" rel="noopener">📖 Author.Today</a>
-    <a href="https://www.litres.ru/book/mnemis/pis-mo-iz-krasnoi-pyli-kniga-pervaia-atsidaliiskoe-more-74637094/" target="_blank" rel="noopener">📘 ЛитРес (Текст)</a>
-    <a href="https://www.litres.ru/audiobook/mnemis/acidaliyskoe-more-73934404/" target="_blank" rel="noopener">🎧 ЛитРес (Аудио)</a>
-    <a href="https://getreder.ru/book/atsidaliiskoe-more" target="_blank" rel="noopener">📗 GetReder</a>
-    <a href="https://unexus.ru/books/atsidaliyskoe-more" target="_blank" rel="noopener">📕 UnExus</a>
-    <a href="https://chtivo.net/catalog/uncategorized/pismo-iz-krasnoj-pyli-aczidalijskoe-more/" target="_blank" rel="noopener">📚 Чтиво.Книги</a>
+  <div class="vip-card vip-lazy">
+    <h3><img src="assets/images/stickers/sticker-tablet.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Избранная статья</h3>
+    <h4>Хевсур — последний хранитель глины</h4>
+    <p><strong><a href="https://mars-wiki.ru/people/hevsur/">Хевсур</a></strong> (2685 – ок. 2745 гг. Э.О.) — марсианский историк, писец и хранитель архива Академии Окхасена. Центральный персонаж эпопеи «Письмо из Красной пыли», посвятивший свою жизнь сбору, систематизации и сохранению знаний о гибнущем Марсе. Его главное наследие — «глиняная библиотека» — собрание тысяч табличек, которые пережили гибель планеты и легли в основу марсианской энциклопедии. В отличие от <a href="https://mars-wiki.ru/people/talin/">Талина</a>, который улетел к Земле, Хевсур выбрал остаться на Марсе, чтобы записать его последние дни. Он никогда не расставался со своим стилосом — простым деревянным инструментом, который стал символом его преданности памяти.</p>
+    <p><a href="https://mars-wiki.ru/people/hevsur/">Читать полную статью о Хевсуре →</a></p>
   </div>
-</div>
 
-</div>
-
-<div class="vip-card vip-lazy">
-<h3><img src="assets/images/stickers/sticker-galaxy.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> О проекте</h3>
-
-<p>«Марсианская энциклопедия» представляет собой открытый научно-исследовательский и культурный проект, посвящённый реконструкции гипотетической истории Марса. Проект адресован широкой аудитории, интересующейся вопросами происхождения жизни во Вселенной, эволюции планет, климатологии и возможных форм разума за пределами Земли.</p>
-
-<p>В отличие от классических художественных произведений, материалы энциклопедии предлагают читателю не готовые ответы, а пространство для размышлений. Мы моделируем историю Марса, строго опираясь на законы физики, астробиологии и геологии. Каждый миф, событие или биологический вид в нашем справочнике — это научно обоснованная гипотеза, которая не противоречит современному знанию, но оставляет простор для альтернативных интерпретаций.</p>
-
-<p>Редакция энциклопедии стремится сохранить баланс между строгостью научного факта и глубиной художественного вымысла, создавая целостную и достоверную картину угасающего мира. Мы приветствуем обратную связь от читателей, исследователей и энтузиастов космонавтики.</p>
-
-<div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaecf0;">
-  <style>
-    .vip-contact-title { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 12px; }
-    .vip-contact-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-    .vip-contact-card {
-        display: inline-flex; align-items: center; gap: 8px;
-        padding: 8px 14px; background: #ffffff;
-        border: 1px solid #d0d7de; border-radius: 8px;
-        font-size: 0.9rem; color: #333 !important; text-decoration: none;
-        transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.02);
-    }
-    .vip-contact-card:hover {
-        background: #f8f9fa; border-color: #6C63FF;
-        color: #6C63FF !important; transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(108,99,255,0.15);
-    }
-    .vip-contact-icon {
-        width: 24px; height: 24px; background: rgba(108, 99, 255, 0.1);
-        border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        font-size: 0.8rem; color: #6C63FF;
-    }
-  </style>
-
-  <div class="vip-contact-title">Связаться с редакцией</div>
-  
-  <div class="vip-contact-grid">
-    <a href="mailto:mnemis.author@mail.ru" class="vip-contact-card">
-      <span class="vip-contact-icon">✉</span>
-      mnemis.author@mail.ru
-    </a>
-    <a href="mailto:mars-wiki@yandex.ru" class="vip-contact-card">
-      <span class="vip-contact-icon">✉</span>
-      mars-wiki@yandex.ru
-    </a>
+  <div class="vip-card vip-lazy">
+    <h3><img src="assets/images/stickers/sticker-pin.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Знаете ли вы?</h3>
+    <ul>
+      <li><img src="assets/images/stickers/sticker-rocket.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> <strong>Талин</strong> — главный астронавигатор Марса, впервые увидел Землю в телескоп в 2714 году. Его расчёты траектории стали основой для Исхода к Земле.</li>
+      <li><img src="assets/images/stickers/sticker-waves.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> <strong>Ацидалийское море</strong> — реально существующая равнина на Марсе, которая в книгах является крупнейшим водоёмом и символом уходящей жизни. В 2735 году море замёрзло впервые за тысячи лет.</li>
+      <li><img src="assets/images/stickers/sticker-tablet.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> <strong>Марсианская письменность</strong> — лого-силлабическая, содержит более 200 знаков. Она была создана в 890 году Э.О. и использовалась для записи всех знаний на глиняных табличках.</li>
+      <li><img src="assets/images/stickers/sticker-scales-no.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Слово <strong>«Lān sur»</strong> в переводе означает <strong>«Глина помнит»</strong>. Это сакральная фраза, которая стала девизом писцов и хранителей памяти на протяжении всей марсианской истории.</li>
+    </ul>
   </div>
-</div>
 
-</div>
+  <div class="vip-card vip-lazy">
+    <h3><img src="assets/images/stickers/sticker-books.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> О цикле книг «Письмо из Красной пыли»</h3>
+    <p><strong>«Письмо из Красной пыли»</strong> — цикл романов в жанре твёрдой научной фантастики и планетарной драмы, созданный автором <strong>Mnemis</strong>. Действие происходит на Марсе в последние десятилетия перед гибелью планеты — в Эпоху Умирания. Цикл объединяет научную достоверность с глубокими философскими размышлениями о памяти, надежде и цене выживания.</p>
+    
+    <h4>Вышедшие книги</h4>
+    <table>
+      <thead>
+        <tr><th>Название</th><th>Дата</th><th>Краткое описание</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong><a href="https://mars-wiki.ru/books/acidalia-sea-book/">«Ацидалийское море»</a></strong><br><span style="font-size: 0.8em; color: #666;">(роман)</span></td>
+          <td>2026</td>
+          <td>Первый роман. Знакомит с миром Эпохи Умирания и жизнью в Окхасене.</td>
+        </tr>
+        <tr>
+          <td><strong><a href="https://mars-wiki.ru/books/comics1">«Письмо из Красной пыли»</a></strong><br><span style="font-size: 0.8em; color: #666;">(комикс)</span></td>
+          <td>23 окт.</td>
+          <td>Графическая адаптация. Визуальное погружение в мир Марса.</td>
+        </tr>
+      </tbody>
+    </table>
 
+    <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaecf0;">
+      <p style="font-weight: bold; color: #1a1a2e; margin-bottom: 10px;">Где приобрести:</p>
+      <style>
+        .compact-links { display: flex; flex-wrap: wrap; gap: 6px; }
+        .compact-links a {
+            display: inline-block; padding: 6px 12px; background: #f8f9fa;
+            border: 1px solid #d0d7de; border-radius: 6px;
+            font-size: 0.85rem; color: #333 !important; text-decoration: none;
+            transition: all 0.2s; line-height: 1.2;
+        }
+        .compact-links a:hover {
+            background: #f0f0ff; border-color: #6C63FF;
+            color: #6C63FF !important; transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(108,99,255,0.15);
+        }
+      </style>
+      <div class="compact-links">
+        <a href="https://author.today/work/670144" target="_blank" rel="noopener">📖 Author.Today</a>
+        <a href="https://www.litres.ru/book/mnemis/pis-mo-iz-krasnoi-pyli-kniga-pervaia-atsidaliiskoe-more-74637094/" target="_blank" rel="noopener">📘 ЛитРес (Текст)</a>
+        <a href="https://www.litres.ru/audiobook/mnemis/acidaliyskoe-more-73934404/" target="_blank" rel="noopener">🎧 ЛитРес (Аудио)</a>
+        <a href="https://fantasy-worlds.ru/lib/id73005648" target="_blank" rel="noopener">🌍 Fantasy Worlds</a>
+        <a href="https://bookz.ru/authors/mnemis/book-pis-mo-iz-krasnoi-pyli-kniga-pervaia-atsidaliiskoe-more-74637094-1807814" target="_blank" rel="noopener">📖 Bookz.ru</a>
+        <a href="https://getreder.ru/book/atsidaliiskoe-more" target="_blank" rel="noopener">📗 GetReder</a>
+        <a href="https://www.ozon.ru/product/atsidaliyskoe-more-mnemis-elektronnaya-audiokniga-4419780470/" target="_blank" rel="noopener">🎧 Ozon (Аудио)</a>
+        <a href="https://knigavuhe.org/paid/book/acidalijjskoe-more/" target="_blank" rel="noopener">🎧 Knigavuhe (Аудио)</a>
+        <a href="https://unexus.ru/books/atsidaliyskoe-more" target="_blank" rel="noopener">📕 UnExus</a>
+        <a href="https://chtivo.net/catalog/uncategorized/pismo-iz-krasnoj-pyli-aczidalijskoe-more/" target="_blank" rel="noopener">📚 Чтиво.Книги</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="vip-card vip-lazy">
+    <h3><img src="assets/images/stickers/sticker-galaxy.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> О проекте</h3>
+    <p>«Марсианская энциклопедия» представляет собой открытый <strong>научно-исследовательский и культурный проект</strong>, посвящённый реконструкции <strong>гипотетической истории Марса</strong>. Проект адресован широкой аудитории, интересующейся вопросами происхождения жизни во <strong>Вселенной</strong>, эволюции планет, климатологии и возможных форм разума за пределами Земли.</p>
+    
+    <p>В отличие от классических художественных произведений, материалы энциклопедии предлагают читателю не готовые ответы, а пространство для размышлений. Мы моделируем историю Марса, строго опираясь на <strong>законы физики, астробиологии и геологии</strong>. Каждый миф, событие или биологический вид в нашем справочнике — это <strong>научно обоснованная гипотеза</strong>, которая не противоречит современному знанию, но оставляет простор для альтернативных интерпретаций.</p>
+    
+    <p>Редакция энциклопедии стремится сохранить <strong>баланс между строгостью научного факта и глубиной художественного вымысла</strong>, создавая целостную и достоверную картину <strong>угасающего мира</strong>. Мы приветствуем обратную связь от читателей, исследователей и энтузиастов космонавтики.</p>
+
+    <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaecf0;">
+      <style>
+        .vip-contact-title { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 12px; }
+        .vip-contact-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .vip-contact-card {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 14px; background: #ffffff;
+            border: 1px solid #d0d7de; border-radius: 8px;
+            font-size: 0.9rem; color: #333 !important; text-decoration: none;
+            transition: all 0.2s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+        .vip-contact-card:hover {
+            background: #f8f9fa; border-color: #6C63FF;
+            color: #6C63FF !important; transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(108,99,255,0.15);
+        }
+        .vip-contact-icon {
+            width: 24px; height: 24px; background: rgba(108, 99, 255, 0.1);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; color: #6C63FF;
+        }
+      </style>
+      <div class="vip-contact-title">Связаться с редакцией</div>
+      <div class="vip-contact-grid">
+        <a href="mailto:mnemis.author@mail.ru" class="vip-contact-card">
+          <span class="vip-contact-icon">✉</span> mnemis.author@mail.ru
+        </a>
+        <a href="mailto:mars-wiki@yandex.ru" class="vip-contact-card">
+          <span class="vip-contact-icon">✉</span> mars-wiki@yandex.ru
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ИНТЕРАКТИВНЫЕ ЭЛЕМЕНТЫ (В САМОМ НИЗУ ЛЕВОЙ КОЛОНКИ) -->
+  <div class="vip-card vip-lazy">
+    <h3><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Интерактивные элементы</h3>
+    <h4><img src="assets/images/stickers/sticker-cube.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Случайная статья</h4>
+    <div style="text-align: center; margin: 1.2rem 0;">
+      <button id="randomArticleBtn" class="vip-btn">🎲 Случайная статья</button>
+    </div>
+  </div>
+
+</div> <!-- ЗАКРЫВАЕМ ЛЕВУЮ КОЛОНКУ -->
+
+
+<!-- ================= ПРАВАЯ КОЛОНКА ================= -->
 <div class="wiki-column-right">
 
-<div class="vip-card vip-lazy">
-<h4><img src="assets/images/stickers/sticker-calendar.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Марсианский календарь</h4>
-<div id="martianCalendar" style="text-align:center;font-family:'Georgia',serif;">
-  <div id="martianDate" style="font-size:1.2rem;color:var(--text-color,#202122);">Загрузка...</div>
-</div>
-</div>
-
-<div class="vip-card vip-lazy">
-<h4><img src="assets/images/stickers/sticker-calendar.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> В этот день на Марсе</h4>
-<div id="thisDayBlock" style="font-family:'Georgia',serif;text-align:center;font-size:1rem;">
-  <div style="font-weight:bold;margin-bottom:10px;">
-    <img src="assets/images/stickers/sticker-calendar.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24">
-    <span id="thisDayDate">загрузка...</span>
+  <div class="vip-card vip-lazy">
+    <h4><img src="assets/images/stickers/sticker-calendar.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Марсианский календарь</h4>
+    <div id="martianCalendar" style="text-align:center;font-family:'Georgia',serif;">
+      <div id="martianDate" style="font-size:1.2rem;color:var(--text-color,#202122);">Загрузка...</div>
+    </div>
   </div>
-  <div id="thisDayEvents" style="text-align:left;font-size:.95rem;line-height:1.55;">загрузка...</div>
-  <div id="thisDayQuote" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border-color,#eaecf0);font-style:italic;font-size:.9rem;color:var(--text-muted,#555);"></div>
-</div>
-</div>
 
-<div class="vip-card vip-lazy">
-<h4><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Изображение дня</h4>
-<div id="pictureOfDayBlock" style="font-family:'Georgia',serif;text-align:center;">
-  <div id="podWrap" style="min-height:200px;display:flex;align-items:center;justify-content:center;">
-    <div style="color:var(--text-muted,#888);font-style:italic;">загрузка...</div>
+  <div class="vip-card vip-lazy">
+    <h4><img src="assets/images/stickers/sticker-calendar.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> В этот день на Марсе</h4>
+    <div id="thisDayBlock" style="font-family:'Georgia',serif;text-align:center;font-size:1rem;">
+      <div style="font-weight:bold;margin-bottom:10px;">
+        <img src="assets/images/stickers/sticker-calendar.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24">
+        <span id="thisDayDate">загрузка...</span>
+      </div>
+      <div id="thisDayEvents" style="text-align:left;font-size:.95rem;line-height:1.55;">загрузка...</div>
+      <div id="thisDayQuote" style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border-color,#eaecf0);font-style:italic;font-size:.9rem;color:var(--text-muted,#555);"></div>
+    </div>
   </div>
-  <div id="podCaption" style="margin-top:12px;font-size:.95rem;font-style:italic;color:var(--text-muted,#555);"></div>
-  <div id="podCounter" style="margin-top:6px;font-size:.75rem;color:var(--text-muted,#888);border-top:1px solid var(--border-color,#eaecf0);padding-top:6px;"></div>
-</div>
-</div>
 
-<div class="vip-card vip-lazy">
-<h4><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Цитата дня</h4>
-<div id="quoteOfTheDay" style="border-left:4px solid #6C63FF;padding:12px 20px;font-style:italic;font-family:'Georgia',serif;font-size:1.05rem;">
-  <span id="quoteText">Загрузка...</span>
-</div>
-</div>
-
-<div class="vip-card vip-lazy">
-<h4><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Спутники Марса</h4>
-<div id="moonPhase" style="font-family:'Georgia',serif;text-align:center;font-size:1rem;">
-  <div><span style="font-weight:bold;">
-    <img src="assets/images/stickers/sticker-phobos.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Фобос:
-  </span> <span id="phobosStatus">загрузка...</span></div>
-  <div><span style="font-weight:bold;">
-    <img src="assets/images/stickers/sticker-deimos.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Деймос:
-  </span> <span id="deimosStatus">загрузка...</span></div>
-  <div style="margin-top:8px;font-size:.8rem;color:var(--text-muted,#555);">
-    <div id="phobosTimer"></div>
-    <div id="deimosTimer"></div>
+  <div class="vip-card vip-lazy">
+    <h4><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Изображение дня</h4>
+    <div id="pictureOfDayBlock" style="font-family:'Georgia',serif;text-align:center;">
+      <div id="podWrap" style="min-height:200px;display:flex;align-items:center;justify-content:center;">
+        <div style="color:var(--text-muted,#888);font-style:italic;">загрузка...</div>
+      </div>
+      <div id="podCaption" style="margin-top:12px;font-size:.95rem;font-style:italic;color:var(--text-muted,#555);"></div>
+      <div id="podCounter" style="margin-top:6px;font-size:.75rem;color:var(--text-muted,#888);border-top:1px solid var(--border-color,#eaecf0);padding-top:6px;"></div>
+    </div>
   </div>
-  <div style="margin-top:10px;font-size:.7rem;color:var(--text-muted,#888);border-top:1px solid var(--border-color,#eaecf0);padding-top:6px;">
-    Данные: NASA Horizons (28 июня 2026, 14:34 UT)
+
+  <div class="vip-card vip-lazy">
+    <h4><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Цитата дня</h4>
+    <div id="quoteOfTheDay" style="border-left:4px solid #6C63FF;padding:12px 20px;font-style:italic;font-family:'Georgia',serif;font-size:1.05rem;">
+      <span id="quoteText">Загрузка...</span>
+    </div>
   </div>
-</div>
-</div>
 
-<div class="vip-card vip-lazy">
-<h3><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Избранные списки</h3>
-
-<div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #eaecf0;">
-  <div style="flex:0 0 100px;text-align:center;">
-    <a href="lists/eden-kings/">
-      <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" loading="lazy" decoding="async" width="100" height="100" style="width:100px;height:100px;object-fit:cover;border-radius:8px;border:1px solid #c8ccd1;display:block;transition:transform .3s;">
-    </a>
-    <div style="font-size:.62rem;color:#888;margin-top:5px;line-height:1.15;">Герб династии<br>королей Эдема</div>
+  <div class="vip-card vip-lazy">
+    <h4><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Спутники Марса</h4>
+    <div id="moonPhase" style="font-family:'Georgia',serif;text-align:center;font-size:1rem;">
+      <div><span style="font-weight:bold;">
+        <img src="assets/images/stickers/sticker-phobos.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Фобос:
+      </span> <span id="phobosStatus">загрузка...</span></div>
+      <div><span style="font-weight:bold;">
+        <img src="assets/images/stickers/sticker-deimos.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Деймос:
+      </span> <span id="deimosStatus">загрузка...</span></div>
+      <div style="margin-top:8px;font-size:.8rem;color:var(--text-muted,#555);">
+        <div id="phobosTimer"></div>
+        <div id="deimosTimer"></div>
+      </div>
+      <div style="margin-top:10px;font-size:.7rem;color:var(--text-muted,#888);border-top:1px solid var(--border-color,#eaecf0);padding-top:6px;">
+        Данные: NASA Horizons (28 июня 2026, 14:34 UT)
+      </div>
+    </div>
   </div>
-  <div style="flex:1;min-width:0;">
-    <div style="font-size:.72rem;color:#6C63FF;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Последний избранный</div>
-    <div style="font-size:1.05rem;line-height:1.3;"><a href="lists/eden-kings/">Список королей Эдема</a></div>
+
+  <div class="vip-card vip-lazy">
+    <h3><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Избранные списки</h3>
+    <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #eaecf0;">
+      <div style="flex:0 0 100px;text-align:center;">
+        <a href="lists/eden-kings/">
+          <img src="assets/images/lucid-origin_Ancient_heraldic_coat_of_arms_for_the_Kingdom_of_Eden_Mars._Shield_shape_traditi-0.jpg" alt="Эдем" loading="lazy" decoding="async" width="100" height="100" style="width:100px;height:100px;object-fit:cover;border-radius:8px;border:1px solid #c8ccd1;display:block;transition:transform .3s;">
+        </a>
+        <div style="font-size:.62rem;color:#888;margin-top:5px;line-height:1.15;">Герб династии<br>королей Эдема</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:.72rem;color:#6C63FF;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Последний избранный</div>
+        <div style="font-size:1.05rem;line-height:1.3;"><a href="lists/eden-kings/">Список королей Эдема</a></div>
+      </div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #eaecf0;">
+      <div style="flex:0 0 100px;text-align:center;">
+        <a href="lists/ksanf-pirates/">
+          <img src="assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Ксанф" loading="lazy" decoding="async" width="100" height="100" style="width:100px;height:100px;object-fit:cover;border-radius:8px;border:1px solid #c8ccd1;display:block;transition:transform .3s;">
+        </a>
+        <div style="font-size:.62rem;color:#888;margin-top:5px;line-height:1.15;">Герб династии<br>Ксанфид</div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:.72rem;color:#6C63FF;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Предыдущий</div>
+        <div style="font-size:1.05rem;line-height:1.3;"><a href="lists/ksanf-pirates/">Пиратские короли Ксанфа</a></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:14px;padding-top:12px;border-top:1px solid #eaecf0;">
+      <a href="lists/" style="font-size:.9rem;">Все избранные списки →</a>
+    </div>
   </div>
-</div>
 
-<div style="display:flex;gap:14px;align-items:flex-start;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid #eaecf0;">
-  <div style="flex:0 0 100px;text-align:center;">
-    <a href="lists/ksanf-pirates/">
-      <img src="assets/images/lucid-origin_Heraldic_coat_of_arms_for_the_Pirate_Kingdom_of_Ksanf_Mars._Shield_shape_rough-h-0.jpg" alt="Ксанф" loading="lazy" decoding="async" width="100" height="100" style="width:100px;height:100px;object-fit:cover;border-radius:8px;border:1px solid #c8ccd1;display:block;transition:transform .3s;">
-    </a>
-    <div style="font-size:.62rem;color:#888;margin-top:5px;line-height:1.15;">Герб династии<br>Ксанфид</div>
+  <div class="vip-card vip-lazy">
+    <h4><img src="assets/images/stickers/sticker-sound.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Звук ветра на Марсе</h4>
+    <div style="text-align:center;margin:10px 0;">
+      <button id="windSoundBtn" class="vip-btn">🎵 Включить звук ветра</button>
+    </div>
+    <audio id="windAudio" loop preload="none">
+      <source src="assets/sounds/mars-wind.mp3" type="audio/mpeg">
+    </audio>
   </div>
-  <div style="flex:1;min-width:0;">
-    <div style="font-size:.72rem;color:#6C63FF;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">Предыдущий</div>
-    <div style="font-size:1.05rem;line-height:1.3;"><a href="lists/ksanf-pirates/">Пиратские короли Ксанфа</a></div>
-  </div>
-</div>
 
-<div style="text-align:center;margin-top:14px;padding-top:12px;border-top:1px solid #eaecf0;">
-  <a href="lists/" style="font-size:.9rem;">Все избранные списки →</a>
-</div>
-</div>
-
-<div class="vip-card vip-lazy">
-<h3><img src="assets/images/stickers/sticker-stars.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Интерактивные элементы</h3>
-
-<h4><img src="assets/images/stickers/sticker-cube.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Случайная статья</h4>
-
-<div style="text-align: center; margin: 1.2rem 0;">
-  <button id="randomArticleBtn" class="vip-btn">🎲 Случайная статья</button>
-</div>
-</div>
-
-<div class="vip-card vip-lazy">
-<h4><img src="assets/images/stickers/sticker-sound.png" class="vip-sticker" alt="" loading="lazy" decoding="async" width="24" height="24"> Звук ветра на Марсе</h4>
-<div style="text-align:center;margin:10px 0;">
-  <button id="windSoundBtn" class="vip-btn">🎵 Включить звук ветра</button>
-</div>
-<audio id="windAudio" loop preload="none">
-  <source src="assets/sounds/mars-wind.mp3" type="audio/mpeg">
-</audio>
-</div>
-
-</div>
-</div>
+</div> <!-- ЗАКРЫВАЕМ ПРАВУЮ КОЛОНКУ -->
+</div> <!-- ЗАКРЫВАЕМ WIKI-LAYOUT -->
 
 <script>
 // ============================================================

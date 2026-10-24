@@ -1,10 +1,16 @@
 # История Королевства Кимерия
 
-*См. также: [Хронология Кимерии](/history/timeline/), [Список королей Кимерии](/history/kings/), [Происхождение названия](/history/etymology/), [Периодизация](/history/periodization/)*
+<!-- Блок "Хорошая статья" -->
+<div style="background: #fef6e7; border: 1px solid #fcb; padding: 6px 14px; margin: 0 0 16px 0; border-radius: 4px; display: flex; align-items: center; gap: 10px; width: fit-content;">
+  <span style="font-size: 20px; color: #b8860b;">★</span>
+  <span style="font-weight: bold; color: #b8860b;">Хорошая статья</span>
+</div>
 
 <div class="infobox" style="float: right; width: 280px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; margin: 0 0 1rem 1.5rem; font-size: 0.9rem;">
-  <h3 style="margin: 0; text-align: center;">Королевство Кимерия</h3>
-  <hr>
+  
+  <div style="background: #f5f0e6; padding: 6px; margin: -10px -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; border-radius: 0 0 4px 4px;">
+    <h3 style="margin: 0; text-align: center; font-size: 1.2rem;">Королевство Кимерия</h3>
+  </div>
   
   <div style="text-align: center; margin: 8px 0;">
     <img src="/assets/images/map/kimeria-kingdom-map.png" alt="Карта Королевства Кимерия" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
@@ -22,45 +28,58 @@
     </div>
   </div>
 
-  <p><b>История</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    История
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• ок. 400 г. Э.О. — основание Кимерии</li>
     <li>• 600 г. — объединение кланов</li>
     <li>• 800–1000 гг. — войны с Элладой и Утопией</li>
     <li>• 1200 г. — строительство канала</li>
-    <li>• 1500 г. — первое упоминание названия «Кимерия»</li>
-    <li>• 2500 г. — провозглашение Королевства Кимерия</li>
+    <li>• 1500 г. — первое упоминание названия</li>
+    <li>• 2500 г. — провозглашение Королевства</li>
     <li>• 2650 г. — расцвет Кимерии</li>
     <li>• 2740 г. — гибель Кимерии</li>
   </ul>
+
   <hr style="margin: 6px 0;">
 
-  <p><b>Марсианское название</b> <i>Kimeria Xal</i> («Древняя Кимерия»)</p>
-  <p><b>Тип государства</b> Наследственная монархия</p>
-  <p><b>Официальный язык</b> <a href="/terms/marzan/">Marzān</a> (восточный диалект)</p>
-  <p><b>Столица</b> <a href="/geography/kimeria/">Кимерия</a></p>
-  <p><b>Крупнейшие города</b> Тиррения, Элизиум, Кан-Акха</p>
-  <p><b>Правящая династия</b> Кимериды</p>
-  <p><b>Годы существования</b> ок. 400 г. Э.О. — 2740 г. Э.О.</p>
-  <p><b>Гос. религия</b> культ богини <a href="/mythology/araksis/">Араксис</a></p>
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Основные данные
+  </div>
+  <p><b>Марсианское название:</b> <i>Kimeria Xal</i> («Древняя Кимерия»)</p>
+  <p><b>Тип государства:</b> Наследственная монархия</p>
+  <p><b>Официальный язык:</b> <a href="/terms/marzan/">Marzān</a> (восточный диалект)</p>
+  <p><b>Столица:</b> <a href="/geography/kimeria/">Кимерия</a></p>
+  <p><b>Крупнейшие города:</b> Тиррения, Элизиум, Кан-Акха</p>
+  <p><b>Правящая династия:</b> Кимериды</p>
+  <p><b>Годы существования:</b> ок. 400 г. Э.О. — 2740 г. Э.О.</p>
+  <p><b>Гос. религия:</b> культ богини <a href="/mythology/araksis/">Араксис</a></p>
 
-  <p><b>Территория</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Территория и Население
+  </div>
+  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem; line-height: 1.6;">
     <li>• Всего ~10,5 млн км²</li>
     <li>• % водной поверхности ~25 %</li>
-  </ul>
-
-  <p><b>Население</b></p>
-  <ul style="margin: 0; padding-left: 15px; font-size: 0.85rem;">
     <li>• Оценка (2650 г. Э.О.) ~6,5 млн чел.</li>
     <li>• Плотность ~0,62 чел./км²</li>
   </ul>
 
-  <p><b>Валюта</b> глиняный талант (sur-tal)</p>
+  <hr style="margin: 6px 0;">
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Экономика
+  </div>
+  <p><b>Валюта:</b> глиняный талант (sur-tal)</p>
 
   <hr style="margin: 6px 0;">
-  
-  <p><b>Государства-соседи</b></p>
+
+  <div style="background: #f5f0e6; padding: 6px 8px; margin: 0 -10px 8px -10px; border-bottom: 1px solid #a2a9b1; text-align: center; font-weight: bold; font-size: 0.9rem;">
+    Государства-соседи
+  </div>
   <div style="display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 2px;">
     <div style="display: inline-flex; align-items: center; gap: 4px;">
       <img src="/assets/images/flag-of-eden.jpg" alt="Флаг Эдема" style="width: 20px; height: auto; border: 1px solid #ccc; border-radius: 2px;">
@@ -79,44 +98,42 @@
       <a href="/geography/eritrea/">Эритрея</a>
     </div>
   </div>
-  
-  <p><b>Крупнейшие водоёмы</b> <a href="/geography/zephyria-sea/">Зефирийское море</a>, <a href="/geography/acidalia-sea/">Ацидалийское море</a></p>
-  <p><b>Крупнейшие реки</b> Тиррения, Элизий</p>
-  <p><b>Связанные понятия</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a></p>
+
+  <hr style="margin: 6px 0;">
+
+  <p><b>Крупнейшие водоёмы:</b> <a href="/geography/zephyria-sea/">Зефирийское море</a>, <a href="/geography/acidalia-sea/">Ацидалийское море</a></p>
+  <p><b>Крупнейшие реки:</b> Тиррения, Элизий</p>
+  <p><b>Связанные понятия:</b> <a href="/terms/lan-sur/">Lān sur</a>, <a href="/terms/tablichki/">Глиняные таблички</a></p>
 </div>
 
-> **Краткая справка:** Подробнее о происхождении названия «Кимерия» см. [Этимология Кимерии](/history/etymology/). О периодизации истории — [Периодизация истории Кимерии](/history/periodization/).
-
----
-
-История Королевства Кимерия — это история восточного форпоста марсианской цивилизации. Расположенная на берегу Зефирийского моря, Кимерия была известна своими лесами, богатыми рудами и уникальной архитектурой из обсидиана. Её восточное положение делало её мостом между западными королевствами и отдалёнными землями, а её учёные и жрецы славились искусством наблюдения за звёздами[^1].
+**История Королевства Кимерия** — это история восточного форпоста марсианской цивилизации. Расположенная на берегу Зефирийского моря, Кимерия была известна своими лесами, богатыми рудами и уникальной архитектурой из обсидиана. Её восточное положение делало её мостом между западными королевствами и отдалёнными землями, а её учёные и жрецы славились искусством наблюдения за звёздами[^1].
 
 Согласно легендам, записанным Хевсуром, первыми жителями этих земель были племена охотников и рыболовов, которые поклонялись древним богам леса и воды. Однако письменная история Кимерии начинается с основания города Кимерия в **ок. 400 г. Э.О.**, когда восточные кланы объединились под властью первого короля из династии Кимеридов[^2].
-
-> **Периоды истории Кимерии:**
-> - **Эпоха Основания** (ок. 400–1500 гг. Э.О.)
-> - **Эпоха Расцвета** (1500–2680 гг. Э.О.)
-> - **Эпоха Умирания** (2680–2740 гг. Э.О.)
 
 ---
 
 ## Эпоха Основания (ок. 400–1500 гг. Э.О.)
 
-<div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="/assets/images/history/kimeria-arrival.png" alt="Основание Кимерии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Кимерии в 400 году Э.О. Реконструкция по табличкам Академии.</div>
+<div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
+  <img src="/assets/images/kimeria-foundation.png" alt="Основание Кимерии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Основание Кимерии. Реконструкция.</div>
 </div>
 
 Первые поселения на территории будущей Кимерии возникли ещё в конце I тысячелетия до Э.О., когда племена охотников и рыболовов обосновались на побережье Зефирийского моря. Однако письменная история начинается в **ок. 400 г. Э.О.**, когда восточные кланы объединились и основали город **Кимерия**, названный так в честь древнего племенного вождя[^3].
 
 В **600 году**, в 14 день месяца **Пробуждения** (*Ākha-dzen*), кланы окончательно объединились под властью первого короля — **Кимерида I** (560–620). Он установил законы, построил крепости на границах и начал активную торговлю с южными соседями. В табличках этого периода упоминаются первые контакты с Элладой и Серпентидой[^4].
 
-<div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="/assets/images/history/kimeria-forest.png" alt="Леса Тиррения" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Леса Тиррения — главное богатство Кимерии. Реконструкция по табличкам Академии.</div>
+<div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
+  <img src="/assets/images/kimeria-hellas-war.jpg" alt="Война с Элладой" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Война с Королевством Эллада. Реконструкция.</div>
 </div>
 
 В **800–1000 гг.** Кимерия вела войны с Элладой за контроль над островами в Зефирийском море и с Утопией за богатые рудные месторождения на севере. В **900 году**, в 6 день месяца **Ветров** (*Zal-ākha*), была одержана победа над Утопией, и Кимерия получила контроль над стратегически важными проливами[^5].
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/assets/images/kimeria-elysium-war.jpg" alt="Война с Утопией" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Война с Утопией за остров Элизиум. Реконструкция.</div>
+</div>
 
 В **1200 году**, в 22 день месяца **Угасания** (*Kōl-ghar*), при короле **Тар-Эл-Кимериде** (1180–1240) был построен Великий канал, соединивший Зефирийское море с рекой Тиррения. Этот канал стал главной торговой артерией восточных земель и принёс Кимерии огромные доходы[^6].
 
@@ -124,21 +141,29 @@
 
 ---
 
+## Природа и география
+
+<div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
+  <img src="/assets/images/tirrenia-forest-ecosystem.jpg" alt="Лес Тиррения" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Лес Тиррения на северном берегу Моря Эллада. Реконструкция.</div>
+</div>
+
+На крутом северном берегу Моря Эллада располагался **Лес Тиррения** — крупный массив голосеменных растений, состоявший из высоких фиолетовых деревьев, достигавших 20–30 метров в высоту. Их густые кроны образовывали непроходимые чащи, служившие естественной защитой от ветров и набегов кочевников. 
+
+Древесина леса Тиррения, твёрдая и смолистая, высоко ценилась в судостроении и храмовом зодчестве; из неё строились корабли флота Серпентиды и колонны храма Араксис на острове Эллос. В Эпоху Умирания лес активно вырубали для отопления и строительства временных убежищ; к 2700 году от него остались лишь пни и пепел, а на его месте раскинулись пустоши, покрытые соляной коркой.
+
+---
+
 ## Эпоха Расцвета (1500–2680 гг. Э.О.)
 
-<div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="/assets/images/history/kimeria-obsidian.png" alt="Обсидиановые постройки Кимерии" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Обсидиановые постройки Кимерии. Реконструкция по табличкам Академии.</div>
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/assets/images/kimeria-city.jpg" alt="Город Кимерия" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Город Кимерия — столица королевства. Реконструкция.</div>
 </div>
 
 Эпоха Расцвета стала для Кимерии временем культурного и экономического подъёма. В **2500 году**, в 15 день месяца **Зноя** (*Ariya-mar*), Кимерия была провозглашена королевством. Её правители приняли титул «Король Кимерии» и начали активное строительство обсидиановых дворцов и храмов[^8].
 
 В **2600 году**, в 23 день месяца **Заморозков** (*Dzen-kōl*), Кимерия достигла пика могущества. Её население достигло 6,5 миллионов человек, что делало её третьим по численности государством Марса после Эдема и Аркадии. Кимерийские торговцы контролировали все восточные рынки, поставляя обсидиан, древесину и редкие металлы[^9].
-
-<div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="/assets/images/history/kimeria-guardians.png" alt="Обсидиановые стражи" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Обсидиановые стражи — символ Кимерии. Реконструкция по табличкам Академии.</div>
-</div>
 
 Кимерия была известна своими **обсидиановыми стражами** — чёрными статуями, установленными на границах и в городах. Согласно табличкам, они служили навигационными ориентирами для моряков и символизировали защиту королевства. В «Сказании о стражах» (табличка № 89) говорится: *«И построили они чёрных стражей на двух опорах, чтобы охранять врата своих городов»*[^10].
 
@@ -148,21 +173,16 @@
 
 ## Эпоха Умирания (2680–2740 гг. Э.О.)
 
-<div style="float: right; margin: 0 0 1rem 1.5rem; width: 280px;">
-  <img src="/assets/images/history/kimeria-frozen.png" alt="Замёрзшее Зефирийское море" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Замёрзшее Зефирийское море. Реконструкция по табличкам Хевсура.</div>
-</div>
-
 С **2680 года**, в 30 день месяца **Тьмы** (*Khō-mōr*), началось глобальное похолодание. Зефирийское море начало замерзать, и кимерийские порты закрылись на зиму впервые за всю историю. В **2710 году**, в 12 день месяца **Ледяного покрова** (*Dzen-thal*), ледостав стал постоянным, и торговля морем прекратилась[^12].
 
 В **2725 году**, в 15 день месяца **Ледяного покрова** (*Ksanf-suf*), реки Кимерии начали пересыхать. Леса Тиррения, прежде дававшие древесину и убежище, стали редеть, и начался массовый голод. Король **Кимерид IV** (2705–2735) пытался спасти положение, углубляя каналы и строя подземные хранилища для воды, но ресурсов не хватало[^13].
 
-<div style="float: left; margin: 0 1.5rem 1rem 0; width: 280px;">
-  <img src="/assets/images/history/kimeria-exodus.png" alt="Исход кимерийцев" style="max-width: 100%; height: auto; border-radius: 4px; border: 1px solid #a2a9b1;">
-  <div style="font-size: 0.7rem; color: #555; margin-top: 4px; text-align: center;">Исход кимерийцев в пещеры Фарсиды. Реконструкция по табличкам Академии.</div>
-</div>
-
 В **2735 году**, в 18 день месяца **Тьмы** (*Ākha-mōr*), Зефирийское море замёрзло полностью — толщина льда достигла полутора метров. В **2740 году**, в 12 день месяца **Кхосен** (*Khōsen*), последние жители Кимерии покинули свои земли. Часть из них ушла в пещеры Фарсиды, где смешалась с беженцами из других королевств. Король Кимерид IV погиб при попытке спасти городские архивы из горящего дворца[^14].
+
+<div style="text-align: center; margin: 20px 0;">
+  <img src="/assets/images/kimeria-destruction.jpg" alt="Гибель Кимерии" style="width: 80%; max-width: 600px; border: 1px solid #a2a9b1; border-radius: 8px;">
+  <div style="font-size: 0.7rem; color: #555; margin-top: 4px;">Гибель Кимерии — замерзающее море и умирающий лес. Реконструкция.</div>
+</div>
 
 С гибелью Кимерии утрачены были не только земли и население, но и уникальные знания о кремниевой жизни, которые кимерийские жрецы собирали веками. В табличках Хевсура сохранилась запись: *«Кимерия пала, но её стражи всё ещё смотрят на восток. Lān sur»*[^15].
 
@@ -184,7 +204,6 @@
 - [Зефирийское море](/geography/zephyria-sea/)
 - [Леса Тиррения](/geography/tirrenia-forest/)
 - [Обсидиановые стражи](/mythology/guardians/)
-- [Кимерид IV](/people/kimerid-iv/)
 - [Эпоха Расцвета](/history/epokha-rascveta/)
 - [Эпоха Умирания](/history/epokha-umiraniya/)
 - [Академия Окхасена](/geography/akademiya-okhasena/)
@@ -214,3 +233,5 @@
 [^16]: Академия Окхасена, «Обсидиановая архитектура», 2650 г. Э.О.
 [^17]: Академия Окхасена, «Астрономия Кимерии», 2650 г. Э.О.
 [^18]: Хевсур, «Сказание о стражах», табличка № 89.
+[^23]: Академия Окхасена, «Химия Марса и зарождение жизни», 2650 г. Э.О.
+[^24]: Академия Окхасена, «Tatīna kimeriana: гипотеза о кремниевой фауне», 2650 г. Э.О.
